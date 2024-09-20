@@ -72,6 +72,19 @@
 
 	$: calendarDataByYear = flatGroup(data.calendar ?? [], (d) => parseISO(d.date).getFullYear());
 	sortFunc((d) => d[0], 'desc');
+
+	const dataSet = data.gitContributions.map((d) => {
+		return {
+			...d,
+			value: d.contributionCount
+		};
+	});
+
+	console.log(dataSet);
+
+	const now = new Date();
+	const firstDayOfYear = startOfYear(now);
+	const lastDayOfYear = endOfYear(now);
 </script>
 
 <svelte:head>
@@ -143,6 +156,29 @@
 	</Chart>
 </div>
 
+<div class="h-[200px] rounded border p-4">
+	<Chart
+		data={dataSet}
+		x={'date'}
+		r={'value'}
+		rScale={scaleThreshold().unknown('transparent')}
+		rDomain={[2, 5, 7, 10]}
+		rRange={[
+			'hsl(var(--color-primary-100))',
+			'hsl(var(--color-primary-300))',
+			'hsl(var(--color-primary-500))',
+			'hsl(var(--color-primary-700))'
+		]}
+		let:tooltip
+	>
+		<Svg>
+			<Calendar start={firstDayOfYear} end={lastDayOfYear} {tooltip} monthPath />
+		</Svg>
+
+		<Tooltip header={(d) => format(d.date, PeriodType.Day)} />
+	</Chart>
+</div>
+
 <!-- More Stats -->
 <div class="mx-auto my-12 flex w-full flex-col space-y-3 text-center">
 	<a
@@ -195,14 +231,14 @@
 {/each}
 <!-- End of More Stats -->
 
-<!-- <div
+<div
 	class="overflow-hidden rounded border p-4"
 	style:height="{140 * calendarDataByYear.length + 16}px"
 >
 	<Chart
-		data={data.calendar}
+		data={dataSet}
 		x="date"
-		r="contributionCount"
+		r="value"
 		rScale={scaleThreshold().unknown('transparent')}
 		rDomain={[1, 10, 20, 30]}
 		rRange={[
@@ -235,17 +271,12 @@
 		</Svg>
 
 		<Tooltip header={(d) => format(d.date, PeriodType.Day)} let:data>
-			{#if data?.contributionCount != null}
-				<TooltipItem
-					label="Contributions"
-					value={data.contributionCount}
-					format="integer"
-					valueAlign="right"
-				/>
+			{#if data?.value != null}
+				<TooltipItem label="Contributions" value={data.value} format="integer" valueAlign="right" />
 			{/if}
 		</Tooltip>
 	</Chart>
-</div> -->
+</div>
 
 <div id="heatmap" class="my-12 inline-flex w-full items-center justify-center">
 	<hr class="my-8 h-[2px] w-64 rounded-xl border-0 bg-gray-200 dark:bg-gray-700" />
@@ -343,7 +374,7 @@
 	/>
 </div>
 
-<div class="mx-auto my-10 w-fit">
+<div class="mx-auto my-10 flex w-fit space-x-4">
 	<Button
 		class="group me-2 inline-flex items-center justify-center rounded-lg border border-green-700 bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-green-700 hover:bg-green-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 dark:border-green-500 dark:text-green-100 dark:hover:bg-green-600 dark:hover:text-white dark:focus:ring-green-800 md:text-xl"
 		on:click={() => goto('/apps/github-contribution-tracker')}
