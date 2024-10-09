@@ -26,7 +26,7 @@
 			icon: Cookie
 		});
 	}
-	let userData = $page.data.user.userData;
+	let userData = '';
 	//
 	export let data;
 	let { contentBlocksData, infoBlocksData } = data;

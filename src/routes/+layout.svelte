@@ -1,4 +1,4 @@
-<script lang="ts">
+ <script lang="ts">
 	import { page } from '$app/stores';
 	import { toast } from 'svelte-sonner';
 	import { Download } from 'lucide-svelte';
@@ -42,7 +42,7 @@
 		}, 3000);
 	});
 
-	$: userData = $page.data.user.userData;
+	$: userData = '';
 </script>
 
 <svelte:head>
