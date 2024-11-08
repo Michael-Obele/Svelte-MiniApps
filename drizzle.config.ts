@@ -12,3 +12,17 @@ export default defineConfig({
 	strict: true,
 	dialect: 'sqlite'
 });
+
+// export default defineConfig({
+// 	schema: './src/lib/server/db/schema.ts',
+
+// 	dbCredentials: {
+// 		url: process.env.DATABASE_URL,
+// 		authToken: process.env.DATABASE_AUTH_TOKEN
+// 	},
+
+// 	verbose: true,
+// 	strict: true,
+// 	driver: 'turso',
+// 	dialect: 'sqlite'
+// });
