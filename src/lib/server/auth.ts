@@ -1,7 +1,6 @@
-import type { RequestEvent } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { sha256 } from '@oslojs/crypto/sha2';
-import { encodeBase32LowerCase, encodeHexLowerCase } from '@oslojs/encoding';
+import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import { db } from '$lib/server/db';
 import * as table from '$lib/server/db/schema';
 
@@ -9,13 +8,14 @@ const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
 export const sessionCookieName = 'auth-session';
 
-export function generateSessionToken() {
+function generateSessionToken(): string {
 	const bytes = crypto.getRandomValues(new Uint8Array(20));
-	const token = encodeBase32LowerCase(bytes);
+	const token = encodeBase32LowerCaseNoPadding(bytes);
 	return token;
 }
 
-export async function createSession(token: string, userId: string) {
+export async function createSession(userId: string): Promise<table.Session> {
+	const token = generateSessionToken();
 	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
 	const session: table.Session = {
 		id: sessionId,
@@ -26,8 +26,11 @@ export async function createSession(token: string, userId: string) {
 	return session;
 }
 
-export async function validateSessionToken(token: string) {
-	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+export async function invalidateSession(sessionId: string): Promise<void> {
+	await db.delete(table.session).where(eq(table.session.id, sessionId));
+}
+
+export async function validateSession(sessionId: string) {
 	const [result] = await db
 		.select({
 			// Adjust user table here to tweak returned data
@@ -61,21 +64,4 @@ export async function validateSessionToken(token: string) {
 	return { session, user };
 }
 
-export type SessionValidationResult = Awaited<ReturnType<typeof validateSessionToken>>;
-
-export async function invalidateSession(sessionId: string) {
-	await db.delete(table.session).where(eq(table.session.id, sessionId));
-}
-
-export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date) {
-	event.cookies.set(sessionCookieName, token, {
-		expires: expiresAt,
-		path: '/'
-	});
-}
-
-export function deleteSessionTokenCookie(event: RequestEvent) {
-	event.cookies.delete(sessionCookieName, {
-		path: '/'
-	});
-}
+export type SessionValidationResult = Awaited<ReturnType<typeof validateSession>>;
