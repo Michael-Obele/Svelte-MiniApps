@@ -30,7 +30,6 @@
 		"autoprefixer": "^10.4.20",
 		"bits-ui": "^1.0.0-next.49",
 		"clsx": "^2.1.1",
-		"drizzle-kit": "^0.22.0",
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
@@ -55,9 +54,13 @@
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"@prisma/adapter-libsql": "^5.22.0",
+		"@prisma/client": "5.22.0",
 		"better-sqlite3": "^11.1.2",
+		"drizzle-kit": "^0.28.0",
 		"drizzle-orm": "^0.33.0",
 		"lucide-svelte": "^0.456.0",
-		"mode-watcher": "^0.4.1"
+		"mode-watcher": "^0.4.1",
+		"prisma": "^5.22.0"
 	}
 }

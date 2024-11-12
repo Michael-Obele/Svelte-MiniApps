@@ -1,7 +1,8 @@
 import { hash, verify } from '@node-rs/argon2';
-import { encodeBase32LowerCase } from '@oslojs/encoding';
+import { generateRandomString } from '@oslojs/crypto/random';
 import { fail, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
+import { dev } from '$app/environment';
 import * as auth from '$lib/server/auth';
 import { db } from '$lib/server/db';
 import * as table from '$lib/server/db/schema';
@@ -44,15 +45,20 @@ export const actions: Actions = {
 			return fail(400, { message: 'Incorrect username or password' });
 		}
 
-		const sessionToken = auth.generateSessionToken();
-		const session = await auth.createSession(sessionToken, existingUser.id);
-		auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
+		const session = await auth.createSession(existingUser.id);
+		event.cookies.set(auth.sessionCookieName, session.id, {
+			path: '/',
+			sameSite: 'lax',
+			httpOnly: true,
+			expires: session.expiresAt,
+			secure: !dev
+		});
 
 		return redirect(302, '/demo/lucia');
 	},
 	register: async (event) => {
 		const formData = await event.request.formData();
-		const username = formData.get('username');
+		const username = formData.get('username') as string;
 		const password = formData.get('password');
 
 		if (!validateUsername(username)) {
@@ -74,9 +80,14 @@ export const actions: Actions = {
 		try {
 			await db.insert(table.user).values({ id: userId, username, passwordHash });
 
-			const sessionToken = auth.generateSessionToken();
-			const session = await auth.createSession(sessionToken, userId);
-			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
+			const session = await auth.createSession(userId);
+			event.cookies.set(auth.sessionCookieName, session.id, {
+				path: '/',
+				sameSite: 'lax',
+				httpOnly: true,
+				expires: session.expiresAt,
+				secure: !dev
+			});
 		} catch (e) {
 			return fail(500, { message: 'An error has occurred' });
 		}
@@ -84,11 +95,10 @@ export const actions: Actions = {
 	}
 };
 
-function generateUserId() {
-	// ID with 120 bits of entropy, or about the same as UUID v4.
-	const bytes = crypto.getRandomValues(new Uint8Array(15));
-	const id = encodeBase32LowerCase(bytes);
-	return id;
+const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
+
+function generateUserId(length = 21): string {
+	return generateRandomString({ read: (bytes) => crypto.getRandomValues(bytes) }, alphabet, length);
 }
 
 function validateUsername(username: unknown): username is string {
@@ -96,7 +106,7 @@ function validateUsername(username: unknown): username is string {
 		typeof username === 'string' &&
 		username.length >= 3 &&
 		username.length <= 31 &&
-		/^[a-z0-9_-]+$/.test(username)
+		/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)?$/.test(username)
 	);
 }
 
