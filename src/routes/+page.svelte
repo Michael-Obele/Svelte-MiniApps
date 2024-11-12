@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { projects, done, siteimage, siteurl, sitename } from '$lib';
-	// import Svelte from '$lib/logo/svelte.svelte';
+	import Svelte from '$lib/logo/svelte.svelte';
 	import { ArrowRight, BadgeDollarSign, CheckCircle2, Cookie } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
@@ -10,6 +10,8 @@
 	//
 	import InfoBlock from './InfoBlock.svelte';
 	import ContentBlock from './ContentBlock.svelte';
+	//
+	import { contentBlocksData, infoBlocksData } from './data';
 	//
 	// import { requestNotificationPermission } from '$lib/notifications';
 	//
@@ -26,13 +28,13 @@
 		data: any;
 	}
 
-	import { contentBlocksData, infoBlocksData } from './data';
-
 	onMount(() => {
 		// Optionally request permission on component mount
 		// ADD: notification feature to the app
 		// requestNotificationPermission();
 	});
+
+	let { data }: Props = $props();
 </script>
 
 <!-- Welcome Section -->
