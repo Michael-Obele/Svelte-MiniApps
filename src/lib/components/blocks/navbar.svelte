@@ -7,6 +7,12 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Github, Menu } from 'lucide-svelte';
 
+	const menuItems = [
+		{ name: 'Home', href: '/' },
+		{ name: 'Apps', href: '/apps' },
+		{ name: 'About', href: '/about' }
+	];
+
 	// Reactive statement to determine if the current route matches the item
 	let isActive = (item: string) => {
 		const routeId = $page.url.pathname;
@@ -19,13 +25,10 @@
 
 	let show = $state(false);
 
-	let href = (item: string) => {
-		if (item === 'Home') {
-			return '/';
-		} else {
-			return `/${item.toLowerCase()}`;
-		}
-	};
+	$effect(() => {
+		// Recalculate isActive for each menu item when the route changes
+		menuItems.forEach((item) => isActive(item.href));
+	});
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
@@ -72,12 +75,12 @@
 			<ul
 				class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900 rtl:space-x-reverse"
 			>
-				{#each ['Home', 'Apps', 'About'] as item}
+				{#each menuItems as item}
 					<li>
 						<a
-							href={href(item)}
-							class={`${isActive(item) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-red-700 md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
-							aria-current={isActive(item) ? 'page' : undefined}>{item}</a
+							href={item.href}
+							class={`${isActive(item.name) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-red-700 md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
+							aria-current={isActive(item.name) ? 'page' : undefined}>{item.name}</a
 						>
 					</li>
 				{/each}
