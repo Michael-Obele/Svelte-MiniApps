@@ -3,6 +3,7 @@
 	import { Toaster } from '$lib/components/ui/sonner/index.js';
 	import '../app.css';
 	import Footer from '@/components/blocks/footer.svelte';
+	import Navbar from '@/components/blocks/navbar.svelte';
 	let { children } = $props();
 </script>
 
@@ -14,6 +15,8 @@
 
 <ModeWatcher />
 <Toaster />
+
+<Navbar />
 <div class="min-h-screen">
 	{@render children()}
 </div>

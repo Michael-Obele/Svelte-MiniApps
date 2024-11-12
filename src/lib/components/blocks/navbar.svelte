@@ -1,31 +1,23 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
-
 	import { page } from '$app/stores';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import Sun from 'lucide-svelte/icons/sun';
-	import Moon from 'lucide-svelte/icons/moon';
-	import { toggleMode } from 'mode-watcher';
 	import Svelte from '$lib/logo/svelte.svelte';
 	import { Button } from '$lib/components/ui/button';
-
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Github, Menu } from 'lucide-svelte';
 
 	// Reactive statement to determine if the current route matches the item
-	let isActive = $derived((item: string) => {
+	let isActive = (item: string) => {
 		const routeId = $page.url.pathname;
-		show = false;
 		if (item === 'Home' && routeId == '/') {
 			return true;
 		} else {
 			return routeId && (`/${item}` === routeId || routeId.includes(item.toLowerCase()));
 		}
-	});
+	};
 
 	let show = $state(false);
-
-	let { userData } = $props();
 
 	let href = (item: string) => {
 		if (item === 'Home') {

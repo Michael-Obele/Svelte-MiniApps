@@ -32,9 +32,12 @@
 		// Optionally request permission on component mount
 		// ADD: notification feature to the app
 		// requestNotificationPermission();
+		// console.log('username:', username);
 	});
 
 	let { data }: Props = $props();
+
+	console.log('data', data);
 </script>
 
 <!-- Welcome Section -->
@@ -48,12 +51,13 @@
 							class="my-3 text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
 						>
 							Welcome
-							<!-- {#if userData}
+							{#if data?.user?.username}
+								{@const username = data.user.username}
 								Back,
 								<span class="capitalize text-green-700 dark:text-green-300">
-									{userData.username}!
+									{username}!
 								</span>
-							{/if} -->
+							{/if}
 							to...
 							<br />
 							<span
@@ -78,7 +82,7 @@
 				<div
 					class="justify-cente mx-auto hidden h-[60%] w-[60%] flex-row items-center md:flex md:w-full lg:h-full"
 				>
-					<!-- <Svelte /> -->
+					<Svelte />
 				</div>
 			</div>
 		</div>
