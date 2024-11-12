@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LightSwitch from '$lib/components/blocks/LightSwitch.svelte';
+	import ThemeSwitch from '@/components/blocks/ThemeSwitch.svelte';
 	import { scrollToTop } from '$lib/utils';
 	import { Heart, MoveUp, ArrowUpFromDot, ArrowUp } from 'lucide-svelte';
 </script>
@@ -15,7 +15,7 @@
 				Back to top
 				<ArrowUp class="ml-2 size-5" />
 			</button>
-			<LightSwitch />
+			<ThemeSwitch />
 		</div>
 
 		<!-- New Content: Made with Love and Installable Message -->

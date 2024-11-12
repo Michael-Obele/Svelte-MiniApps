@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LightSwitch from './LightSwitch.svelte';
+	import ThemeSwitch from './ThemeSwitch.svelte';
 
 	import { page } from '$app/stores';
 	import * as Avatar from '$lib/components/ui/avatar';
@@ -50,7 +50,7 @@
 		<!-- End of Logo -->
 		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:space-x-0">
 			<div class="px-2">
-				<LightSwitch />
+				<ThemeSwitch />
 				<Button variant="outline" type="button" size="icon">
 					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
 						<span class="sr-only">See GitHub Repo</span>
