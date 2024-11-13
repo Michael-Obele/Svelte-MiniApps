@@ -24,11 +24,6 @@
 	};
 
 	let show = $state(false);
-
-	$effect(() => {
-		// Recalculate isActive for each menu item when the route changes
-		menuItems.forEach((item) => isActive(item.href));
-	});
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
