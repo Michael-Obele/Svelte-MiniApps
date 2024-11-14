@@ -5,12 +5,20 @@
 	import Footer from '@/components/blocks/footer.svelte';
 	import Navbar from '@/components/blocks/navbar.svelte';
 	let { children } = $props();
+
+	import lottie from 'lottie-web';
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		// Make onMount async
+		// Dynamically import @lordicon/element *inside* onMount
+		const { defineElement } = await import('@lordicon/element');
+		defineElement(lottie.loadAnimation);
+	});
 </script>
 
 <svelte:head>
 	<title>Svelte MiniApps</title>
-
-	<script defer src="https://cdn.lordicon.com/lordicon.js"></script>
 </svelte:head>
 
 <ModeWatcher />
