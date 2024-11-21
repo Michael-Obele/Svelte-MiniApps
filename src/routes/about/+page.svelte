@@ -116,7 +116,7 @@
 		content="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
 	/>
 	<meta property="og:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<meta property="og:url" content="https://svelte-apps.me/About" />
+	<meta property="og:url" content="https://svelte-apps.me/about" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="About Page | Svelte MiniApps" />
 	<meta
@@ -124,7 +124,7 @@
 		content="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
 	/>
 	<meta name="twitter:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<link rel="canonical" href="https://svelte-apps.me/About" />
+	<link rel="canonical" href="https://svelte-apps.me/about" />
 </svelte:head>
 
 <section class="m-2 px-2 py-3 lg:px-10">
