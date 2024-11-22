@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import InfoBtn from './info.svelte';
     import CreateBudget from './components/CreateBudget.svelte';
     import BudgetList from './components/BudgetList.svelte';
@@ -294,4 +294,4 @@
             />
         {/if}
     {/if}
-</div>
+</div> -->
