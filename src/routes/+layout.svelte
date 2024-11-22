@@ -2,8 +2,8 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from '$lib/components/ui/sonner/index.js';
 	import '../app.css';
-	import Footer from '@/components/blocks/footer.svelte';
-	import Navbar from '@/components/blocks/navbar.svelte';
+	import Footer from '@/components/blocks/Footer.svelte';
+	import Navbar from '@/components/blocks/Navbar.svelte';
 	let { children } = $props();
 
 	import lottie from 'lottie-web';

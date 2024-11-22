@@ -130,3 +130,85 @@
 	  @apply bg-background text-foreground;
 	}
   }
+
+
+  .shadow12 {
+	color: rgba(255, 255, 255, 1);
+	text-shadow:
+		2px 2px 0px rgb(201, 6, 6),
+		2px -2px 0px rgb(201, 6, 6),
+		-2px 2px 0px rgb(201, 6, 6),
+		-2px -2px 0px rgb(201, 6, 6),
+		2px 0px 0px rgb(201, 6, 6),
+		0px 2px 0px rgb(201, 6, 6),
+		-2px 0px 0px rgb(201, 6, 6),
+		0px -2px 0px rgb(201, 6, 6);
+}
+
+.easy {
+	@apply bg-green-100 text-green-800 dark:bg-gray-700 dark:text-green-400;
+}
+
+.medium {
+	@apply bg-orange-100 text-orange-800 dark:bg-gray-700  dark:text-orange-400;
+}
+
+.hard {
+	@apply bg-purple-100 text-purple-800 dark:bg-gray-700 dark:text-purple-400;
+}
+
+.utility {
+	@apply bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-400;
+}
+
+.security {
+	@apply bg-green-100 text-green-800 dark:bg-gray-700 dark:text-green-400;
+}
+
+.design {
+	@apply bg-pink-100 text-pink-800 dark:bg-gray-700 dark:text-pink-400;
+}
+
+.productivity {
+	@apply bg-orange-100 text-orange-800 dark:bg-gray-700 dark:text-orange-400;
+}
+
+.education {
+	@apply bg-indigo-100 text-indigo-800 dark:bg-gray-700 dark:text-indigo-400;
+}
+
+.finance {
+	@apply bg-yellow-100 text-yellow-800 dark:bg-gray-700 dark:text-yellow-400;
+}
+
+.health {
+	@apply bg-red-100 text-red-800 dark:bg-gray-700 dark:text-red-400;
+}
+
+.multimedia {
+	@apply bg-purple-100 text-purple-800 dark:bg-gray-700 dark:text-purple-400;
+}
+
+.developer-tools {
+	@apply bg-sky-100 text-sky-800 dark:bg-gray-700 dark:text-sky-400;
+}
+
+.fun {
+	@apply bg-teal-100 text-teal-800 dark:bg-gray-700 dark:text-teal-400;
+}
+
+.math {
+	@apply bg-lime-100 text-lime-800 dark:bg-gray-700 dark:text-lime-400;
+}
+
+.game {
+	@apply bg-amber-100 text-amber-800 dark:bg-gray-700 dark:text-amber-400;
+}
+
+.inactive {
+	@apply mb-3 me-3 rounded-full border border-blue-600 bg-white px-5 py-2.5 text-center text-base font-medium text-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:bg-gray-900 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800;
+}
+
+.active {
+	@apply mb-3 me-3 rounded-full border border-white bg-green-300 px-5 py-2.5 text-center text-base font-medium text-green-900 hover:border-green-200 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 dark:border-green-900 dark:bg-green-900 dark:text-white dark:hover:border-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800;
+}

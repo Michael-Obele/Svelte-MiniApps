@@ -8,6 +8,8 @@
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
 	import LordIcon from './LordIcon.svelte';
 	//
+	import { getGreeting, getRandomMantra } from '$lib/utils/greetings';
+	//
 	import InfoBlock from './InfoBlock.svelte';
 	import ContentBlock from './ContentBlock.svelte';
 	//
@@ -20,6 +22,19 @@
 	let twitterTitle = `${websiteTitle} - Simplify Tasks with Mini Applications`;
 	let twitterDescription = `Svelte MiniApps - The go-to collection of interactive tools built with Svelte. Explore and enhance your workflow!`;
 	//
+
+	let greeting = $state(getGreeting());
+	let mantra = $state(getRandomMantra());
+
+	// Update greeting and mantra periodically
+	$effect(() => {
+		const interval = setInterval(() => {
+			greeting = getGreeting();
+			mantra = getRandomMantra();
+		}, 60000); // Update every minute
+
+		return () => clearInterval(interval);
+	});
 
 	// let userData = $page.data.user.userData;
 
@@ -50,6 +65,15 @@
 						<h1
 							class="my-3 text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
 						>
+							{greeting}!
+							<br />
+							<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
+								{mantra.phrase}
+							</span>
+						</h1>
+						<h2
+							class="my-3 text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
+						>
 							Welcome
 							{#if data?.user?.username}
 								{@const username = data.user.username}
@@ -65,7 +89,7 @@
 							>
 								Svelte Mini Apps
 							</span>
-						</h1>
+						</h2>
 						<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
 							Discover a collection of small, but powerful Svelte-based web applications that
 							showcase the versatility and simplicity of this modern JavaScript framework.
