@@ -7,7 +7,7 @@ export const contentBlocksData = [
 			]
 		},
 		paragraph:
-			"Svelte MiniApps are tiny, focused tools built with SvelteKit for lightning speed. These mini applications are designed to conquer everyday tasks with ease, providing a powerful yet lightweight solution for your daily needs. Whether you're managing tasks, tracking habits, or calculating quick figures, Svelte MiniApps can handle it all efficiently."
+			"Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 	},
 	{
 		header: {
@@ -17,7 +17,7 @@ export const contentBlocksData = [
 			]
 		},
 		paragraph:
-			'Svelte MiniApps leverage the power of Svelte, a modern, component-based JavaScript framework that offers a unique approach to building user interfaces. Unlike traditional frameworks that rely on a virtual DOM, Svelte compiles your components into highly-optimized JavaScript code that updates the DOM directly, resulting in lightning-fast performance and a smooth user experience.',
+			'Ever noticed how some apps just feel smoother and more responsive? That\'s the magic of Svelte at work! We\'ve chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless.',
 		iconId: 'axteoudt'
 	},
 	{
@@ -28,7 +28,7 @@ export const contentBlocksData = [
 			]
 		},
 		paragraph:
-			"Svelte MiniApps inherit Svelte's intuitive and efficient syntax, making them accessible to developers of all levels. Svelte provides the foundation and tools for building MiniApps, emphasizing simplicity and efficiency to create sophisticated tools with minimal code, streamlining development and maintenance.",
+			"Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start.",
 		iconId: 'zguybvqs'
 	},
 	{
@@ -39,7 +39,7 @@ export const contentBlocksData = [
 			]
 		},
 		paragraph:
-			"Harnessing Svelte's modular architecture and robust tooling, Svelte MiniApps are customized to fulfill various web tool needs, from personal projects to enterprise-level solutions. Their versatility and performance ensure smooth operation, making them ideal for a wide range of tasks, from everyday utilities to more complex applications.",
+			"Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our MiniApps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them.",
 		iconId: 'yxyampao'
 	}
 ];
@@ -49,24 +49,24 @@ export const infoBlocksData = [
 		dir: 'left',
 		iconId: 'ercyvufy',
 		iconDir: 'right',
-		header: 'Share the app:',
+		header: 'Share the Joy:',
 		paragraph:
-			'<strong>Spread the word</strong> Casually mention the awesome Svelte MiniApp you discovered to your friends and colleagues. Share it on social media (Twitter, TikTok, etc.) or bring it up in conversation. Is there a specific task this Svelte MiniApp helped you with? Describe how it streamlined your workflow and how it might benefit others. The more people who know about this valuable tool, the bigger the Svelte MiniApp community can become!'
+			'<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, colleagues, or your social media circle. Whether it\'s a productivity breakthrough or a clever solution you discovered, your experience could be exactly what someone else needs to hear. Every share helps our community grow stronger!'
 	},
 	{
 		dir: 'right',
 		iconId: 'rpgflpkp',
 		iconDir: 'left',
-		header: 'Report a bug:',
+		header: 'Help Us Improve:',
 		paragraph:
-			"We're committed to making your Svelte MiniApp experience the best it can be. If you encounter any issues, please help us fix them by contributing to the project on GitHub. This could involve creating a new issue to report the bug, or even fixing the bug yourself and submitting a pull request. Not a coding pro? No worries! You can still be a valuable asset by simply describing the bug you encountered in a GitHub issue. The more details you provide (steps to reproduce, screenshots, etc.), the easier it will be for developers to identify and fix the problem."
+			"Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
 	},
 	{
 		dir: 'left',
 		iconId: 'kndkiwmf',
 		iconDir: 'right',
-		header: 'Contribute to the app:',
+		header: 'Join the Creation:',
 		paragraph:
-			"Do you have ideas for new features or improvements? We'd love to hear them! Feel free to submit a GitHub issue or pull request with your suggestions.<br />Additionally, there are many apps on the list that haven't been implemented yet. If you're interested in helping out, you can choose one of these apps and start working on it. Your contributions will help make the Svelte MiniApp even more useful and enjoyable for everyone."
+			"Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 	}
 ];

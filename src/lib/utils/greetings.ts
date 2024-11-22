@@ -57,6 +57,23 @@ export const getGreeting = (): string => {
     return "Good evening";
 };
 
-export const getRandomMantra = (): Mantra => {
-    return mantras[Math.floor(Math.random() * mantras.length)];
-};
+export function getDailyMantra(): Mantra {
+    // Get today's date as a string (YYYY-MM-DD format)
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Use the date string to create a consistent index for today
+    let hash = 0;
+    for (let i = 0; i < today.length; i++) {
+        hash = ((hash << 5) - hash) + today.charCodeAt(i);
+        hash = hash & hash; // Convert to 32-bit integer
+    }
+    
+    // Use the hash to select today's mantra
+    const index = Math.abs(hash) % mantras.length;
+    return mantras[index];
+}
+
+export function getRandomMantra(): Mantra {
+    const index = Math.floor(Math.random() * mantras.length);
+    return mantras[index];
+}

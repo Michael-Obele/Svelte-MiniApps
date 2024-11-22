@@ -8,7 +8,8 @@
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
 	import LordIcon from './LordIcon.svelte';
 	//
-	import { getGreeting, getRandomMantra } from '$lib/utils/greetings';
+	import { getGreeting, getDailyMantra, getRandomMantra } from '$lib/utils/greetings';
+	import { RefreshCw } from 'lucide-svelte';
 	//
 	import InfoBlock from './InfoBlock.svelte';
 	import ContentBlock from './ContentBlock.svelte';
@@ -18,19 +19,24 @@
 	// import { requestNotificationPermission } from '$lib/notifications';
 	//
 	let websiteTitle = 'Svelte MiniApps';
-	let websiteDescription = 'A collection of useful and engaging tools built with Svelte.';
-	let twitterTitle = `${websiteTitle} - Simplify Tasks with Mini Applications`;
-	let twitterDescription = `Svelte MiniApps - The go-to collection of interactive tools built with Svelte. Explore and enhance your workflow!`;
+	let websiteDescription =
+		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
+	let twitterTitle = `${websiteTitle} - Smart Tools for Modern Life`;
+	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 	//
 
 	let greeting = $state(getGreeting());
-	let mantra = $state(getRandomMantra());
+	let mantra = $state(getDailyMantra());
+
+	function refreshMantra() {
+		mantra = getRandomMantra();
+	}
 
 	// Update greeting and mantra periodically
 	$effect(() => {
 		const interval = setInterval(() => {
 			greeting = getGreeting();
-			mantra = getRandomMantra();
+			mantra = getDailyMantra();
 		}, 60000); // Update every minute
 
 		return () => clearInterval(interval);
@@ -61,45 +67,57 @@
 		<div class="px-4 xl:container md:px-6">
 			<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 				<div class="flex flex-col justify-center space-y-4">
-					<header class="space-y-2">
-						<h1
-							class="my-3 text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
-						>
-							{greeting}!
-							<br />
-							<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
-								{mantra.phrase}
-							</span>
-						</h1>
-						<h2
-							class="my-3 text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
-						>
-							Welcome
-							{#if data?.user?.username}
-								{@const username = data.user.username}
-								Back,
-								<span class="capitalize text-green-700 dark:text-green-300">
-									{username}!
-								</span>
-							{/if}
-							to...
-							<br />
-							<span
+					<header class="flex flex-col space-y-6 sm:space-y-8">
+						<div class="space-y-2">
+							<h1
 								class="text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
 							>
-								Svelte Mini Apps
-							</span>
-						</h2>
-						<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
-							Discover a collection of small, but powerful Svelte-based web applications that
-							showcase the versatility and simplicity of this modern JavaScript framework.
-						</p>
+								{greeting}!
+								<br />
+								<div class="my-2 flex items-center gap-2">
+									<span
+										class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none"
+									>
+										{mantra.phrase}
+									</span>
+									<button
+										class="inline-flex size-3 items-center justify-center rounded-full pt-1 text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8 sm:pt-2"
+										onclick={refreshMantra}
+										title="Get a new mantra"
+									>
+										<RefreshCw class="h-4 w-4" />
+									</button>
+								</div>
+							</h1>
+						</div>
+
+						<div class="space-y-4">
+							<h2
+								class="text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-3xl xl:text-4xl/none"
+							>
+								Welcome
+								{#if data?.user?.username}
+									{@const username = data.user.username}
+									Back,
+									<span class="capitalize text-green-700 dark:text-green-300">
+										{username}!
+									</span>
+								{/if}
+								to...
+								<br />
+								<span class=""> Svelte Mini Apps </span>
+							</h2>
+							<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
+								Hey there! Welcome to my collection of handy web tools. Each one is crafted with
+								Svelte to make your life a bit easier, one app at a time.
+							</p>
+						</div>
 					</header>
 					<a
 						class="inline-flex h-10 items-center justify-center rounded-md bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
 						href="/apps"
 					>
-						Explore Apps
+						Start Exploring
 						<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
 					</a>
 				</div>
@@ -121,23 +139,16 @@
 				<div class="flex flex-col items-center justify-center space-y-4 text-center">
 					<div class="space-y-2">
 						<h2 class="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl">
-							<strong class="text-[#F03E3E]"> Svelte </strong> Mini Apps Gallery
+							Tools That Make a Difference
 						</h2>
 						<p
 							class="mb-6 max-w-[900px] text-lg font-normal text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 						>
-							Explore a collection of small, but powerful <strong class="text-[#F03E3E]"
-								>Svelte-based</strong
-							> web applications that showcase the versatility and simplicity of this modern JavaScript
-							framework.
+							From managing your budget to boosting productivity, each app here is designed with one
+							goal: to help you get things done. Built with <strong class="text-[#F03E3E]"
+								>Svelte</strong
+							>, these tools are fast, responsive, and a joy to use.
 						</p>
-						<a
-							href="/apps"
-							class="inline-flex items-center justify-center rounded-lg bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
-						>
-							Explore Apps
-							<ArrowRight class="ml-2 h-5 w-5" />
-						</a>
 					</div>
 				</div>
 
@@ -146,7 +157,7 @@
 					class="mx-auto mt-10 max-w-screen-xl bg-white px-4 py-12 dark:bg-gray-900 lg:py-16"
 				>
 					<h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-						Projects Include:
+						What's in the Toolbox:
 					</h2>
 					<ul
 						class="mt-10 grid w-full list-inside grid-cols-1 gap-6 space-y-1 text-gray-900 dark:text-gray-400 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
@@ -207,14 +218,14 @@
 				<ContentBlock iconId={'xyboiuok'}>
 					{#snippet header()}
 						<div>
-							<strong class="text-[#F03E3E]"> Love </strong> this app?
+							<strong class="text-[#F03E3E]">Join</strong> the Journey
 						</div>
 					{/snippet}
 
 					{#snippet paragraph()}
 						<span>
-							We're thrilled you're enjoying your Svelte MiniApp experience! Here are some ways to
-							stay connected and help us grow:
+							Every great tool starts with feedback from people like you. Here's how you can be part
+							of making these apps even better:
 						</span>
 					{/snippet}
 				</ContentBlock>
@@ -242,10 +253,10 @@
 					{/each}
 
 					<p class="mt-4 text-lg text-gray-800 dark:text-gray-200">
-						Your contribution to our app's growth and development is invaluable. By sharing the app
-						and reporting any bugs you encounter, you're actively helping us improve. For more
-						information about our mission and how you can get involved, visit our
-						<a class="text-[#F03E3E] underline" href="/about"> About page! </a>
+						Your insights and experiences help shape these tools into something truly useful.
+						Whether it's sharing ideas, reporting issues, or just letting me know how you use the
+						apps, every bit of feedback counts. Want to learn more about the project? Check out our
+						<a class="text-[#F03E3E] hover:underline" href="/about">story</a>.
 					</p>
 				</div>
 			</div>
