@@ -73,7 +73,7 @@
 					</header>
 					<a
 						class="inline-flex h-10 items-center justify-center rounded-md bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
-						href="/Apps"
+						href="/apps"
 					>
 						Explore Apps
 						<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
@@ -108,7 +108,7 @@
 							framework.
 						</p>
 						<a
-							href="/Apps"
+							href="/apps"
 							class="inline-flex items-center justify-center rounded-lg bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
 						>
 							Explore Apps
@@ -221,7 +221,7 @@
 						Your contribution to our app's growth and development is invaluable. By sharing the app
 						and reporting any bugs you encounter, you're actively helping us improve. For more
 						information about our mission and how you can get involved, visit our
-						<a class="text-[#F03E3E] underline" href="/About"> About page! </a>
+						<a class="text-[#F03E3E] underline" href="/about"> About page! </a>
 					</p>
 				</div>
 			</div>
