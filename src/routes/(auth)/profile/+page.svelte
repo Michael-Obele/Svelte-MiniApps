@@ -3,5 +3,3 @@
 
 	let { data }: { data: PageData } = $props();
 </script>
-
-age
