@@ -15,6 +15,8 @@
 	import ContentBlock from './ContentBlock.svelte';
 	//
 	import { contentBlocksData, infoBlocksData } from './data';
+	import BlurInText from '@/components/blocks/BlurInText.svelte';
+	import BlurFade from '@/components/blocks/BlurFade.svelte';
 	//
 	// import { requestNotificationPermission } from '$lib/notifications';
 	//
@@ -49,70 +51,63 @@
 		data: any;
 	}
 
-	onMount(() => {
-		// Optionally request permission on component mount
-		// ADD: notification feature to the app
-		// requestNotificationPermission();
-		// console.log('username:', username);
-	});
-
 	let { data }: Props = $props();
 
 	console.log('data', data);
 </script>
 
 <!-- Welcome Section -->
+<header class="mx-auto my-12 flex flex-col justify-center space-y-2">
+	<BlurFade delay={0.25}>
+		<h1
+			class="text-center text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
+		>
+			{greeting}!
+		</h1>
+	</BlurFade>
+	<BlurFade delay={0.25 * 2}>
+		<h3 class="my-2 flex items-center justify-center gap-2 text-center">
+			<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
+				{mantra.phrase}
+			</span>
+			<button
+				class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
+				onclick={refreshMantra}
+				title="Get a new mantra"
+			>
+				<RefreshCw class="h-4 w-4" />
+			</button>
+		</h3>
+	</BlurFade>
+</header>
+
+<!-- Hero -->
 <div class="pb-5 xl:px-10">
 	<section class="w-full py-8 md:py-14 lg:py-24">
 		<div class="px-4 xl:container md:px-6">
 			<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 				<div class="flex flex-col justify-center space-y-4">
-					<header class="flex flex-col space-y-6 sm:space-y-8">
-						<div class="space-y-2">
-							<h1
-								class="text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
-							>
-								{greeting}!
-								<br />
-								<div class="my-2 flex items-center gap-2">
-									<span
-										class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none"
-									>
-										{mantra.phrase}
-									</span>
-									<button
-										class="inline-flex size-3 items-center justify-center rounded-full pt-1 text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8 sm:pt-2"
-										onclick={refreshMantra}
-										title="Get a new mantra"
-									>
-										<RefreshCw class="h-4 w-4" />
-									</button>
-								</div>
-							</h1>
-						</div>
-
-						<div class="space-y-4">
-							<h2
-								class="text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-3xl xl:text-4xl/none"
-							>
-								Welcome
-								{#if data?.user?.username}
-									{@const username = data.user.username}
-									Back,
-									<span class="capitalize text-green-700 dark:text-green-300">
-										{username}!
-									</span>
-								{/if}
-								to...
-								<br />
-								<span class=""> Svelte Mini Apps </span>
-							</h2>
-							<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
-								Hey there! Welcome to my collection of handy web tools. Each one is crafted with
-								Svelte to make your life a bit easier, one app at a time.
-							</p>
-						</div>
-					</header>
+					<div class="flex flex-col space-y-6 sm:space-y-8">
+						<h2
+							class="text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+						>
+							Welcome
+							{#if data?.user?.username}
+								{@const username = data.user.username}
+								Back,
+								<span class="capitalize text-green-700 dark:text-green-300">
+									{username}!
+								</span>
+							{/if}
+							to...
+							<br />
+							<span class=""> Svelte Mini Apps </span>
+						</h2>
+						<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
+							Hey there! Welcome to my collection of handy web tools. Each one is crafted with
+							Svelte to make your life a bit easier, one app at a time.
+						</p>
+					</div>
 					<a
 						class="inline-flex h-10 items-center justify-center rounded-md bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
 						href="/apps"
@@ -121,11 +116,11 @@
 						<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
 					</a>
 				</div>
-				<div
+				<BlurInText
+					as="div"
+					word={Svelte}
 					class="justify-cente mx-auto hidden h-[60%] w-[60%] flex-row items-center md:flex md:w-full lg:h-full"
-				>
-					<Svelte />
-				</div>
+				/>
 			</div>
 		</div>
 	</section>
@@ -165,8 +160,12 @@
 						{#each projects as project}
 							{#if done.includes(project.title)}
 								<li class="flex items-center">
-									<CheckCircle2 class="mr-2 h-5 w-5 text-green-700" />
-									{project.title}
+									<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
+									<a
+										class="text-green-700 after:content-['_↗'] dark:text-green-300"
+										href={'/apps/' + project.title.replace(/\s+/g, '-').toLowerCase()}
+										>{project.title}</a
+									>
 								</li>
 							{:else}
 								<li class="flex items-center">
