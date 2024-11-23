@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
-	import { projects, done, siteimage, siteurl, sitename } from '$lib';
+	import { projects, done, siteimage, siteurl, sitename } from '@/index';
 	import Svelte from '$lib/logo/svelte.svelte';
 	import { ArrowRight, BadgeDollarSign, CheckCircle2, Cookie } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
@@ -17,6 +16,7 @@
 	import { contentBlocksData, infoBlocksData } from './data';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
 	import BlurFade from '@/components/blocks/BlurFade.svelte';
+	import { enhance } from '$app/forms';
 	//
 	// import { requestNotificationPermission } from '$lib/notifications';
 	//
@@ -28,20 +28,38 @@
 	//
 
 	let greeting = $state(getGreeting());
-	let mantra = $state(getDailyMantra());
 
-	function refreshMantra() {
-		mantra = getRandomMantra();
+	// Helper function to get hours until next time period
+	function getMillisecondsUntilNextPeriod() {
+		const now = new Date();
+		const hour = now.getHours();
+
+		// Morning: 5-11, Afternoon: 12-17, Evening: 18-4
+		let nextHour;
+		if (hour >= 0 && hour < 5)
+			nextHour = 5; // Wait until morning (5 AM)
+		else if (hour >= 5 && hour < 12)
+			nextHour = 12; // Wait until afternoon (12 PM)
+		else if (hour >= 12 && hour < 18)
+			nextHour = 18; // Wait until evening (6 PM)
+		else nextHour = 29; // Wait until next morning (5 AM next day)
+
+		const nextTime = new Date();
+		nextTime.setHours(nextHour, 0, 0, 0);
+		if (nextHour === 29) nextTime.setDate(nextTime.getDate() + 1);
+
+		return nextTime.getTime() - now.getTime();
 	}
 
-	// Update greeting and mantra periodically
+	// Update greeting when time period changes
 	$effect(() => {
-		const interval = setInterval(() => {
+		const timeoutId = setTimeout(() => {
 			greeting = getGreeting();
-			mantra = getDailyMantra();
-		}, 60000); // Update every minute
+			// Recursively set the next timeout
+			timeoutId.refresh();
+		}, getMillisecondsUntilNextPeriod());
 
-		return () => clearInterval(interval);
+		return () => clearTimeout(timeoutId);
 	});
 
 	// let userData = $page.data.user.userData;
@@ -53,30 +71,33 @@
 
 	let { data }: Props = $props();
 
-	console.log('data', data);
+	console.log('data:', data);
 </script>
 
 <!-- Welcome Section -->
 <header class="mx-auto my-12 flex flex-col justify-center space-y-2">
 	<BlurFade delay={0.25}>
-		<h1
+		<BlurInText
+			as="h1"
 			class="text-center text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
 		>
 			{greeting}!
-		</h1>
+		</BlurInText>
 	</BlurFade>
 	<BlurFade delay={0.25 * 2}>
 		<h3 class="my-2 flex items-center justify-center gap-2 text-center">
 			<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
-				{mantra.phrase}
+				{data.mantra}
 			</span>
-			<button
-				class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
-				onclick={refreshMantra}
-				title="Get a new mantra"
-			>
-				<RefreshCw class="h-4 w-4" />
-			</button>
+			<form action="?/generatemantra" use:enhance method="POST">
+				<button
+					class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
+					type="submit"
+					title="Get a new mantra"
+				>
+					<RefreshCw class="h-4 w-4" />
+				</button>
+			</form>
 		</h3>
 	</BlurFade>
 </header>
@@ -87,8 +108,9 @@
 		<div class="px-4 xl:container md:px-6">
 			<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 				<div class="flex flex-col justify-center space-y-4">
-					<div class="flex flex-col space-y-6 sm:space-y-8">
-						<h2
+					<div class="flex flex-col">
+						<BlurInText
+							as="h2"
 							class="text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
 						>
 							Welcome
@@ -100,21 +122,27 @@
 								</span>
 							{/if}
 							to...
-							<br />
-							<span class=""> Svelte Mini Apps </span>
-						</h2>
-						<p class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
-							Hey there! Welcome to my collection of handy web tools. Each one is crafted with
-							Svelte to make your life a bit easier, one app at a time.
-						</p>
+						</BlurInText>
+						<BlurInText
+							as="h2"
+							word="Svelte Mini Apps"
+							class="-mt-5 text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+						/>
+						<BlurInText
+							as="p"
+							word="Hey there! Welcome to my collection of handy web tools. Each one is crafted with Svelte to make your life a bit easier, one app at a time."
+							class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl"
+						/>
 					</div>
-					<a
+					<BlurInText
+						as="span"
 						class="inline-flex h-10 items-center justify-center rounded-md bg-red-700 px-5 py-2.5 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
-						href="/apps"
 					>
-						Start Exploring
-						<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
-					</a>
+						<a href="/apps" class="flex items-center">
+							Start Exploring
+							<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
+						</a>
+					</BlurInText>
 				</div>
 				<BlurInText
 					as="div"
