@@ -2,11 +2,8 @@
 	import { QRCodeImage } from 'svelte-qrcode-image';
 	import * as htmlToImage from 'html-to-image';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import type { UserContext } from '$lib/types';
 	import { getContext } from 'svelte';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-
-	const { userUsername } = getContext<UserContext>('userContext');
 
 	let inputText = '';
 
@@ -50,7 +47,6 @@
 	<header class="mb-4 text-4xl font-bold">
 		<h1>
 			Welcome,
-			<span class="text-green-400">{userUsername || ''}</span>
 			<br /> to the QR Code Generator
 		</h1>
 	</header>
@@ -107,7 +103,7 @@
 		</AlertDialog.Root>
 
 		<Button
-			on:click={saveQRCode}
+			onclick={saveQRCode}
 			aria-label="Save QR Code"
 			class="mt-4 rounded-md bg-green-500 p-2 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
 		>
