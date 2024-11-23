@@ -14,40 +14,51 @@
 	import { onMount } from 'svelte';
 
 	const h3Ids = [
-		'MiniApps',
-		'introduction',
-		'tools',
-		'inspiration',
-		'spark',
-		'toolkit',
-		'future',
-		'next'
+		'Overview',
+		'Features',
+		'Journey',
+		'Philosophy',
+		'Motivation',
+		'Technology',
+		'Vision',
+		'Roadmap'
 	];
 	let activeId: string[] = $state([]);
-	onMount(() => {
+	let visibleSections = $state(new Set<string>());
+
+	$effect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						const currentIndex = h3Ids.indexOf(entry.target.id);
-						activeId = h3Ids.slice(0, currentIndex + 1);
+						// Add this section to visible sections
+						visibleSections.add(entry.target.id);
 					} else {
-						const indexToRemove = activeId.indexOf(entry.target.id);
-						if (indexToRemove !== -1) {
-							activeId.splice(indexToRemove, 1);
-						}
+						// Remove this section from visible sections
+						visibleSections.delete(entry.target.id);
+					}
+
+					// Update activeId based on all currently visible sections
+					const visibleIndices = Array.from(visibleSections).map((id) => h3Ids.indexOf(id));
+					if (visibleIndices.length > 0) {
+						// Get the highest visible index
+						const maxVisibleIndex = Math.max(...visibleIndices);
+						// Activate all sections up to and including the highest visible one
+						activeId = h3Ids.slice(0, maxVisibleIndex + 1);
+					} else {
+						// If nothing is visible, clear active sections
+						activeId = [];
 					}
 				});
 			},
 			{
-				rootMargin: '0px',
-				threshold: 0.7
+				rootMargin: '-20% 0px -20% 0px', // Add margins to make activation more precise
+				threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] // Multiple thresholds for smoother transitions
 			}
 		);
 
 		h3Ids.forEach((id) => {
 			const el = document.getElementById(id);
-
 			if (el) {
 				observer.observe(el);
 			}
@@ -56,7 +67,6 @@
 		return () => {
 			h3Ids.forEach((id) => {
 				const el = document.getElementById(id);
-
 				if (el) {
 					observer.unobserve(el);
 				}
@@ -68,7 +78,7 @@
 	let gitIconTrigger = $state('in');
 	let gitIconState = $state('in-reveal');
 
-	onMount(() => {
+	$effect(() => {
 		const options = {
 			root: null,
 			rootMargin: '0px',
@@ -93,7 +103,7 @@
 		}, options);
 
 		// Observe the lord-icon component
-		const icon = document.querySelector('#giticon');
+		const icon = document.getElementById('giticon');
 		if (icon) {
 			iconObserver.observe(icon);
 		}
@@ -129,7 +139,7 @@
 
 <section class="m-2 px-2 py-3 lg:px-10">
 	<h3
-		id="MiniApps"
+		id="Overview"
 		class="mb-10 mt-5 cursor-pointer text-center text-3xl font-medium leading-loose text-gray-900 underline decoration-green-400 decoration-wavy decoration-4 underline-offset-8 transition-all dark:text-white dark:decoration-green-600"
 	>
 		Svelte MiniApps: Powerful Tiny Tools Built with
@@ -137,7 +147,7 @@
 			SvelteKit
 
 			<lord-icon
-				target="#MiniApps"
+				target="#Overview"
 				colors="primary:red,secondary:green"
 				src="https://cdn.lordicon.com/gqjpawbc.json"
 				trigger="loop-on-hover"
@@ -207,10 +217,10 @@
 		</div>
 	</div>
 	<div class="px-16">
-		<h3 id="introduction" class="bold mx-auto my-5 w-fit cursor-pointer text-2xl">
+		<h3 id="Features" class="bold mx-auto my-5 w-fit cursor-pointer text-2xl">
 			Why Choose Svelte MiniApps?
 		</h3>
-		<div id="introduction-list" class="mx-auto my-5 w-fit max-w-[80%]">
+		<div id="Features-list" class="mx-auto my-5 w-fit max-w-[80%]">
 			<ul class="space-y-4 text-left">
 				{#each features as feature, i}
 					<li
@@ -238,7 +248,7 @@
 			</ul>
 		</div>
 		<div class="">
-			<h3 id="tools" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+			<h3 id="Journey" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
 				Explore a Range of Tools:
 			</h3>
 			<p class="mx-auto my-8 text-center leading-8 tracking-wide md:w-[50vw]">
@@ -278,7 +288,7 @@
 				</li>
 			</ul>
 		</div>
-		<h3 id="inspiration" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+		<h3 id="Philosophy" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
 			The <span class="font-semibold text-green-500 dark:text-green-400"> "Aha Moment" </span>
 			Behind Svelte MiniApps:
 		</h3>
@@ -296,7 +306,7 @@
 			</span>
 			on getting the job done, just like that trusty screwdriver you use all the time.
 		</p>
-		<h3 id="spark" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+		<h3 id="Motivation" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
 			Here's what sparked this project:
 		</h3>
 
@@ -324,7 +334,7 @@
 				<!-- (Consider showcasing some mini-apps in action with before/after GIFs or screenshots! [Add Mini-App Examples]) -->
 			</ul>
 		</div>
-		<h3 id="toolkit" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+		<h3 id="Technology" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
 			Svelte MiniApps: Your Pocket-Sized Toolkit
 		</h3>
 		<p class="mx-auto my-8 text-center text-lg leading-8 tracking-wide md:w-[50vw] lg:text-2xl">
@@ -341,7 +351,7 @@
 				<span class="text-lg text-black dark:text-white lg:text-2xl"> specialty tools here. </span>
 			</span>
 		</p>
-		<h3 id="future" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
+		<h3 id="Vision" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
 			The Future of Svelte MiniApps: Your Development Playground
 		</h3>
 		<p class="mx-auto my-8 text-center text-lg leading-8 tracking-wide md:w-[50vw] lg:text-2xl">
@@ -383,7 +393,7 @@
 				{/each}
 			</ul>
 		</div>
-		<h3 id="next" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
+		<h3 id="Roadmap" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
 			What's Next?
 		</h3>
 		<div class="mx-auto my-5 w-fit max-w-[90%]">
@@ -421,7 +431,7 @@
 	<a
 		href="https://github.com/Michael-Obele/Svelte-MiniApps"
 		target="_blank"
-		class="group mb-4 flex flex-row items-center justify-center rounded-md px-4 py-2 font-bold text-green-500 hover:text-green-700 dark:text-green-300 dark:hover:text-green-500 md:mb-0 md:flex-col"
+		class="group mb-4 flex flex-col items-center justify-center rounded-md px-4 py-2 font-bold text-green-500 hover:text-green-700 dark:text-green-300 dark:hover:text-green-500 md:mb-0 md:flex-row"
 		aria-label="Support us on GitHub"
 	>
 		Support Us on GitHub
@@ -442,7 +452,7 @@
 		action="https://submit-form.com/CeUldzMcN"
 		method="POST"
 		target="_blank"
-		class="mx-auto mb-4 flex w-full items-center justify-center sm:w-full md:mb-0"
+		class="mx-auto mb-4 flex w-full items-center justify-center sm:max-w-4xl md:mb-0"
 	>
 		<input
 			type="text"
@@ -459,14 +469,6 @@
 			Submit
 		</Button>
 	</form>
-
-	<div class="md:text-left">
-		<h3 class="mb-2 text-center text-lg font-semibold">What's Next?</h3>
-		<ul class="ml-10 list-disc">
-			<li>Enhanced personalization features (based on your suggestions)</li>
-			<li>New integrations to streamline your workflow</li>
-		</ul>
-	</div>
 </footer>
 
 <!-- End of Footer -->
