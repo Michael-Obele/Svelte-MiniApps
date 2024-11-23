@@ -57,17 +57,40 @@ export const getGreeting = (): string => {
     return "Good evening";
 };
 
+
+// Helper function to get hours until next time period
+export function getMillisecondsUntilNextPeriod() {
+    const now = new Date();
+    const hour = now.getHours();
+
+    // Morning: 5-11, Afternoon: 12-17, Evening: 18-4
+    let nextHour;
+    if (hour >= 0 && hour < 5)
+        nextHour = 5; // Wait until morning (5 AM)
+    else if (hour >= 5 && hour < 12)
+        nextHour = 12; // Wait until afternoon (12 PM)
+    else if (hour >= 12 && hour < 18)
+        nextHour = 18; // Wait until evening (6 PM)
+    else nextHour = 29; // Wait until next morning (5 AM next day)
+
+    const nextTime = new Date();
+    nextTime.setHours(nextHour, 0, 0, 0);
+    if (nextHour === 29) nextTime.setDate(nextTime.getDate() + 1);
+
+    return nextTime.getTime() - now.getTime();
+}
+
 export function getDailyMantra(): Mantra {
     // Get today's date as a string (YYYY-MM-DD format)
     const today = new Date().toISOString().split('T')[0];
-    
+
     // Use the date string to create a consistent index for today
     let hash = 0;
     for (let i = 0; i < today.length; i++) {
         hash = ((hash << 5) - hash) + today.charCodeAt(i);
         hash = hash & hash; // Convert to 32-bit integer
     }
-    
+
     // Use the hash to select today's mantra
     const index = Math.abs(hash) % mantras.length;
     return mantras[index];

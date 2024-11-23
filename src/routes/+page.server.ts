@@ -1,23 +1,26 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { Gemini_API_KEY, Gemini_Model } from '$env/static/private';
+import { MISTRAL_API_KEY } from '$env/static/private';
 import type { PageServerLoad } from './$types';
 import { mantras } from '$lib/utils/greetings';
+import { Mistral } from '@mistralai/mistralai';
+
+// Initialize Mistral client
+const mistralClient = new Mistral({ apiKey: MISTRAL_API_KEY });
 
 async function generateDailyMantra() {
 	try {
-		const genAI = new GoogleGenerativeAI(Gemini_API_KEY);
-		const model = genAI.getGenerativeModel({
-			model: 'gemini-1.5-flash', generationConfig: {
-				candidateCount: 1,
-				maxOutputTokens: 10,
-				temperature: 0.95,
-			},
+		const prompt = "Generate exactly one casual life mantra in 4-6 words. Must start with an action word (do, find, make, keep, let). Make it conversational like 'Do more of what makes you happy'. Focus on everyday joy or self-care. Do not provide multiple options. Use simple, direct words. Return only the mantra text with no additional formatting or punctuation.";
+
+		const response = await mistralClient.chat.complete({
+			model: "mistral-tiny",
+			messages: [{ role: 'user', content: prompt }]
 		});
-		const prompt = "Create a simple, casual life mantra (4-6 words) that feels like friendly advice. Start with an action word (like 'do', 'find', 'make', 'keep', 'let'). Make it feel natural and conversational, similar to 'Do more of what makes you happy'. Focus on everyday joy, self-care, or simple wisdom. Don't use complex or formal language.";
-		const result = await model.generateContent(prompt);
-		const mantra = result.response.text().replace(/\*\*/g, '').trim();
-		console.log('Generated mantra:', mantra);
-		return mantra;
+
+		console.log('Mistral response:', response);
+		if (response.choices) {
+			const mantra = response.choices[0]?.message?.content || mantras[0].phrase;
+			console.log('Generated mantra:', mantra);
+			return mantra as string;
+		}
 	} catch (error: any) {
 		console.error('Error generating mantra:', error);
 
@@ -26,6 +29,7 @@ async function generateDailyMantra() {
 			console.log('Rate limit reached, using fallback mantra');
 		}
 
+		// Get a random mantra from our collection
 		const fallbackMantra = mantras[Math.floor(Math.random() * mantras.length)].phrase;
 		console.log('Using fallback mantra:', fallbackMantra);
 		return fallbackMantra;

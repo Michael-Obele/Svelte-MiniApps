@@ -7,7 +7,7 @@
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
 	import LordIcon from './LordIcon.svelte';
 	//
-	import { getGreeting, getDailyMantra, getRandomMantra } from '$lib/utils/greetings';
+	import { getGreeting, getMillisecondsUntilNextPeriod } from '$lib/utils/greetings';
 	import { RefreshCw } from 'lucide-svelte';
 	//
 	import InfoBlock from './InfoBlock.svelte';
@@ -17,8 +17,7 @@
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
 	import BlurFade from '@/components/blocks/BlurFade.svelte';
 	import { enhance } from '$app/forms';
-	//
-	// import { requestNotificationPermission } from '$lib/notifications';
+	import { Skeleton } from '@/components/ui/skeleton';
 	//
 	let websiteTitle = 'Svelte MiniApps';
 	let websiteDescription =
@@ -28,28 +27,6 @@
 	//
 
 	let greeting = $state(getGreeting());
-
-	// Helper function to get hours until next time period
-	function getMillisecondsUntilNextPeriod() {
-		const now = new Date();
-		const hour = now.getHours();
-
-		// Morning: 5-11, Afternoon: 12-17, Evening: 18-4
-		let nextHour;
-		if (hour >= 0 && hour < 5)
-			nextHour = 5; // Wait until morning (5 AM)
-		else if (hour >= 5 && hour < 12)
-			nextHour = 12; // Wait until afternoon (12 PM)
-		else if (hour >= 12 && hour < 18)
-			nextHour = 18; // Wait until evening (6 PM)
-		else nextHour = 29; // Wait until next morning (5 AM next day)
-
-		const nextTime = new Date();
-		nextTime.setHours(nextHour, 0, 0, 0);
-		if (nextHour === 29) nextTime.setDate(nextTime.getDate() + 1);
-
-		return nextTime.getTime() - now.getTime();
-	}
 
 	// Update greeting when time period changes
 	$effect(() => {
@@ -65,14 +42,49 @@
 	// let userData = $page.data.user.userData;
 
 	interface Props {
-		//
 		data: any;
 	}
 
 	let { data }: Props = $props();
 
+	let isLoading = $state(false);
+
+	function handleSubmit() {
+		isLoading = true;
+		return async ({ update }:any) => {
+			await update();
+			isLoading = false;
+		};
+	}
+
 	console.log('data:', data);
 </script>
+
+<svelte:head>
+	<title>{websiteTitle} - Smart Tools for Modern Life</title>
+	<meta name="description" content={websiteDescription} />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={websiteTitle} />
+	<meta property="og:description" content={websiteDescription} />
+	<meta property="og:image" content={siteimage} />
+	<meta property="og:url" content={siteurl} />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={twitterTitle} />
+	<meta name="twitter:description" content={twitterDescription} />
+	<meta name="twitter:image" content={siteimage} />
+
+	<!-- Additional Meta Tags -->
+	<meta
+		name="keywords"
+		content="svelte apps, web tools, productivity tools, mini applications, svelte toolkit"
+	/>
+	<meta name="author" content={sitename} />
+	<link rel="canonical" href={siteurl} />
+</svelte:head>
 
 <!-- Welcome Section -->
 <header class="mx-auto my-12 flex flex-col justify-center space-y-2">
@@ -85,20 +97,24 @@
 		</BlurInText>
 	</BlurFade>
 	<BlurFade delay={0.25 * 2}>
-		<h3 class="my-2 flex items-center justify-center gap-2 text-center">
-			<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
-				{data.mantra}
-			</span>
-			<form action="?/generatemantra" use:enhance method="POST">
-				<button
-					class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
-					type="submit"
-					title="Get a new mantra"
-				>
-					<RefreshCw class="h-4 w-4" />
-				</button>
-			</form>
-		</h3>
+		{#if !isLoading && data.mantra}
+			<h3 class="my-2 flex items-center justify-center gap-2 text-center">
+				<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
+					{data.mantra}
+				</span>
+				<form action="?/generatemantra" use:enhance={handleSubmit} method="POST">
+					<button
+						class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
+						type="submit"
+						title="Get a new mantra"
+					>
+						<RefreshCw class="h-4 w-4" />
+					</button>
+				</form>
+			</h3>
+		{:else}
+			<Skeleton class="mx-auto h-10 w-[35vw] rounded-md text-center" />
+		{/if}
 	</BlurFade>
 </header>
 
