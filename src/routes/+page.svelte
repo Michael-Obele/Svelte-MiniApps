@@ -51,7 +51,7 @@
 
 	function handleSubmit() {
 		isLoading = true;
-		return async ({ update }:any) => {
+		return async ({ update }: any) => {
 			await update();
 			isLoading = false;
 		};
@@ -127,7 +127,7 @@
 					<div class="flex flex-col">
 						<BlurInText
 							as="h2"
-							class="text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+							class="text-2xl font-bold text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
 						>
 							Welcome
 							{#if data?.user?.username}
@@ -142,7 +142,7 @@
 						<BlurInText
 							as="h2"
 							word="Svelte Mini Apps"
-							class="-mt-5 text-2xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+							class="text-2xl font-bold text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
 						/>
 						<BlurInText
 							as="p"
