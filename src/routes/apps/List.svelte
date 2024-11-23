@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProjectsGrid from './ProjectsGrid.svelte';
-	import { done } from '$lib/index';
-	import { projects } from '$lib/index';
+	import { done } from '@/index';
+	import { projects } from '@/index';
 
 	export let filteredBy: string;
 
