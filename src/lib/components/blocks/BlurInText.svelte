@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import type { Component } from 'svelte';
+	import type { Snippet } from 'svelte';
 	import { Motion } from 'svelte-motion';
 
 	interface Props {
@@ -12,9 +13,11 @@
 		duration?: number;
 		as?: string;
 		class?: string;
+		children?: Snippet;
 	}
 
 	let {
+		children,
 		word = 'Blur In',
 		variant = {
 			hidden: { filter: 'blur(10px)', opacity: 0 },
@@ -32,22 +35,25 @@
 	let combinedVariants = variant || defaultVariants;
 </script>
 
-<Motion initial="hidden" animate="visible" transition={{ duration }} variants={combinedVariants}>
-	{#snippet children({ motion }: any)}
-		<svelte:element
-			this={as}
-			class={cn(
-				className,
-				'font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]'
-			)}
-			use:motion
-		>
-			{#if typeof word === 'string'}
-				{word}
-			{:else}
-				{@const Component = word}
-				<Component />
-			{/if}
-		</svelte:element>
-	{/snippet}
+<Motion
+	initial="hidden"
+	animate="visible"
+	transition={{ duration }}
+	variants={combinedVariants}
+	let:motion
+>
+	<svelte:element
+		this={as}
+		class={cn(' tracking-[-0.02em] drop-shadow-sm md:leading-[5rem]', className)}
+		use:motion
+	>
+		{#if children}
+			{@render children?.()}
+		{:else if typeof word === 'string'}
+			{word}
+		{:else}
+			{@const Component = word}
+			<Component />
+		{/if}
+	</svelte:element>
 </Motion>
