@@ -185,39 +185,39 @@
 				<span class="hidden xl:block">
 					{id}
 				</span>
-				<ChevronsRight />
+				{#if i !== h3Ids.length - 1}
+					<ChevronsRight />
+				{/if}
 			</a>
 		{/each}
 	</ol>
 
 	<!-- End of Stepper -->
 
-	<div class="mx-auto grid min-h-[80vh] max-w-[1024px] space-y-3 text-lg lg:text-2xl">
+	<div class="mx-auto grid min-h-[80vh] max-w-[1024px] space-y-3">
 		<div class="block max-w-md rounded-lg p-6">
-			<p class="justify-start text-left text-gray-900 dark:text-white">
-				<span class="bold text-xl text-green-800 dark:text-green-400 lg:text-3xl"
-					>Supercharge your workflow!
-				</span>
+			<p class="justify-start text-left text-base text-gray-900 dark:text-white">
+				<span class="font-bold text-green-800 dark:text-green-400">Supercharge your workflow!</span>
 				Svelte MiniApps are tiny, focused tools built with
-				<strong class="text-xl text-red-500 dark:text-red-700 lg:text-3xl"> SvelteKit</strong> for lightning
-				speed. Conquer everyday tasks with ease.
+				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong> for lightning speed. Conquer
+				everyday tasks with ease.
 			</p>
 		</div>
 
 		<div class="block max-w-md justify-self-end rounded-lg p-6">
-			<p class="text-right text-gray-900 dark:text-white">
-				<span class="bold text-xl text-green-800 dark:text-green-400 lg:text-3xl"
-					>Work anytime, anywhere!</span
-				>
+			<p class="text-right text-base text-gray-900 dark:text-white">
+				<span class="font-bold text-green-800 dark:text-green-400">Work anytime, anywhere!</span>
 				These tiny web apps, built with
-				<strong class="text-xl text-red-500 dark:text-red-700 lg:text-3xl">SvelteKit</strong>, let
-				you install them for seamless offline access. Conquer your daily challenges, even without an
-				internet connection.
+				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong>, let you install them for
+				seamless offline access. Conquer your daily challenges, even without an internet connection.
 			</p>
 		</div>
 	</div>
 	<div class="px-16">
-		<h3 id="Features" class="bold mx-auto my-5 w-fit cursor-pointer text-2xl">
+		<h3
+			id="Features"
+			class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
 			Why Choose Svelte MiniApps?
 		</h3>
 		<div id="Features-list" class="mx-auto my-5 w-fit max-w-[80%]">
@@ -248,10 +248,13 @@
 			</ul>
 		</div>
 		<div class="">
-			<h3 id="Journey" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+			<h3
+				id="Journey"
+				class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+			>
 				Explore a Range of Tools:
 			</h3>
-			<p class="mx-auto my-8 text-center leading-8 tracking-wide md:w-[50vw]">
+			<p class="mx-auto my-8 text-center text-base leading-relaxed">
 				Our collection covers a wide variety of use cases, from basic tools like unit converters to
 				more complex ones like persistent to-do lists.
 			</p>
@@ -288,25 +291,31 @@
 				</li>
 			</ul>
 		</div>
-		<h3 id="Philosophy" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
-			The <span class="font-semibold text-green-500 dark:text-green-400"> "Aha Moment" </span>
-			Behind Svelte MiniApps:
+		<h3
+			id="Philosophy"
+			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
+			The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
 		</h3>
 
-		<p class="mx-auto my-8 text-center text-lg leading-8 tracking-wide md:w-[50vw] lg:text-2xl">
-			We've all been there
-			<span class="text-xl font-semibold text-green-500 dark:text-green-400 lg:text-3xl">
-				- wrestling with a complex framework for a simple task.
-			</span> <br />
+		<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
+			We've all been there -
+			<span class="font-semibold text-green-500 dark:text-green-400">
+				wrestling with a complex framework for a simple task.
+			</span>
+			<br />
 			Svelte MiniApps were born from the frustration of heavyweight solutions for lightweight problems.
 			<br />
 			We wanted something
-			<span class="text-xl font-semibold text-green-500 dark:text-green-400 lg:text-3xl">
+			<span class="font-semibold text-green-500 dark:text-green-400">
 				modular, efficient, and focused
 			</span>
 			on getting the job done, just like that trusty screwdriver you use all the time.
 		</p>
-		<h3 id="Motivation" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+		<h3
+			id="Motivation"
+			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
 			Here's what sparked this project:
 		</h3>
 
@@ -334,35 +343,36 @@
 				<!-- (Consider showcasing some mini-apps in action with before/after GIFs or screenshots! [Add Mini-App Examples]) -->
 			</ul>
 		</div>
-		<h3 id="Technology" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-2xl">
+		<h3
+			id="Technology"
+			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
 			Svelte MiniApps: Your Pocket-Sized Toolkit
 		</h3>
-		<p class="mx-auto my-8 text-center text-lg leading-8 tracking-wide md:w-[50vw] lg:text-2xl">
-			Imagine your development workflow as a cluttered toolbox. Svelte MiniApps are the <span
-				class="bold text-xl text-green-800 dark:text-green-400 lg:text-3xl"
-			>
+		<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
+			Imagine your development workflow as a cluttered toolbox. Svelte MiniApps are the
+			<span class="font-bold text-green-800 dark:text-green-400">
 				handy, bite-sized tools
-				<span class="text-lg text-black dark:text-white lg:text-2xl">
-					you grab for specific tasks.
-				</span>
+				<span class="font-normal text-black dark:text-white">you grab for specific tasks.</span>
 				No bulky all-in-ones
-				<span class="text-lg text-black dark:text-white lg:text-2xl"> or</span>
+				<span class="font-normal text-black dark:text-white">or</span>
 				dusty
-				<span class="text-lg text-black dark:text-white lg:text-2xl"> specialty tools here. </span>
+				<span class="font-normal text-black dark:text-white">specialty tools here.</span>
 			</span>
 		</p>
-		<h3 id="Vision" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
+		<h3
+			id="Vision"
+			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
 			The Future of Svelte MiniApps: Your Development Playground
 		</h3>
-		<p class="mx-auto my-8 text-center text-lg leading-8 tracking-wide md:w-[50vw] lg:text-2xl">
-			Svelte MiniApps is an <span
-				class="bold text-xl text-green-800 dark:text-green-400 lg:text-3xl"
-			>
+		<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
+			Svelte MiniApps is an
+			<span class="font-bold text-green-800 dark:text-green-400">
 				ever-evolving project,
-				<span class="text-lg text-white lg:text-2xl">
+				<span class="font-normal text-white">
 					and
-					<span class="bold text-xl text-green-800 dark:text-green-400 lg:text-3xl"> you </span>
-
+					<span class="font-bold text-green-800 dark:text-green-400">you</span>
 					hold the reins!
 				</span>
 			</span>
@@ -393,7 +403,10 @@
 				{/each}
 			</ul>
 		</div>
-		<h3 id="Roadmap" class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-2xl">
+		<h3
+			id="Roadmap"
+			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		>
 			What's Next?
 		</h3>
 		<div class="mx-auto my-5 w-fit max-w-[90%]">
