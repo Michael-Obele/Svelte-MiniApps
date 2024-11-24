@@ -148,7 +148,7 @@
 						/>
 						<BlurInText
 							as="p"
-							word="Hey there! Welcome to my collection of handy web tools. Each one is crafted with Svelte to make your life a bit easier, one app at a time."
+							word="Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
 							class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl"
 						/>
 					</div>

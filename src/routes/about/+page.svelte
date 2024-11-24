@@ -3,7 +3,6 @@
 
 	let { data }: { data: PageData } = $props();
 
-	import test from '$lib/assets/lottie/wired-outline-1329.apng';
 	// Use the direct path to the JSON file instead of importing it
 	const test2 = '/lottie/responsive-hover.json';
 
@@ -94,7 +93,7 @@
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					setTimeout(() => {
-						gitIconState = '';
+						gitIconState = 'pinch';
 						gitIconTrigger = 'loop';
 					}, 3500);
 					// entry.target.setAttribute('trigger', 'morph'); // Uncomment if you have a way to dynamically update the attribute
