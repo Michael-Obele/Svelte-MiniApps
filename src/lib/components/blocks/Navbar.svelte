@@ -2,7 +2,7 @@
 	import ThemeSwitch from './ThemeSwitch.svelte';
 	import { page } from '$app/stores';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import Svelte from '$lib/logo/svelte.svelte';
+	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Github, Menu } from 'lucide-svelte';
