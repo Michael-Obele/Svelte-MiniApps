@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { projects, done, siteimage, siteurl, sitename } from '@/index';
-	import Svelte from '$lib/logo/svelte.svelte';
+	import Svelte from '$lib/assets/svelte.svelte';
 	import { ArrowRight, BadgeDollarSign, CheckCircle2, Cookie } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';

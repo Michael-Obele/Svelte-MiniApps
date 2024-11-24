@@ -8,7 +8,7 @@
 	import { afterUpdate, getContext } from 'svelte';
 
 	const { userUsername } = getContext<UserContext>('userContext');
-	import NoWord from '$lib/logo/not-found.svelte';
+	import NoWord from '$lib/assets/not-found.svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';

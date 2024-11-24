@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import type { PageData } from './$types';s
-	import Construction from '$lib/logo/Construction.svelte';
+	import Construction from '$lib/assets/Construction.svelte';
 	// export let data: PageData;
 	import { siteimage, siteurl, sitename } from '$lib';
 </script>
