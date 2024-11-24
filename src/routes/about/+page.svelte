@@ -3,6 +3,10 @@
 
 	let { data }: { data: PageData } = $props();
 
+	import test from '$lib/assets/lottie/wired-outline-1329.apng';
+	// Use the direct path to the JSON file instead of importing it
+	const test2 = '/lottie/responsive-hover.json';
+
 	import { ChevronsRight } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	interface Feature {
@@ -12,6 +16,7 @@
 
 	import { features, future, next, reasons, splitDescription } from './data';
 	import { onMount } from 'svelte';
+	import MorphSvg from '@/components/MorphSVG.svelte';
 
 	const h3Ids = [
 		'Overview',
@@ -138,6 +143,17 @@
 </svelte:head>
 
 <section class="m-2 px-2 py-3 lg:px-10">
+	<!-- <lord-icon
+		src={test2}
+		trigger="loop-on-hover"
+		stroke="thick"
+		state="hover-pinch"
+		colors="primary:#3080e8,secondary:#b4b4b4"
+		style="width:250px;height:250px"
+	></lord-icon> -->
+
+	<!-- <MorphSvg /> -->
+
 	<h3
 		id="Overview"
 		class="mb-10 mt-5 cursor-pointer text-center text-3xl font-medium leading-loose text-gray-900 underline decoration-green-400 decoration-wavy decoration-4 underline-offset-8 transition-all dark:text-white dark:decoration-green-600"
@@ -247,6 +263,7 @@
 				{/each}
 			</ul>
 		</div>
+
 		<div class="">
 			<h3
 				id="Journey"

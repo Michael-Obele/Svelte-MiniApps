@@ -26,6 +26,8 @@
 	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 	//
 
+	const arrow = '/lottie/trending-flat.json';
+
 	let greeting = $state(getGreeting());
 
 	// Update greeting when time period changes
@@ -51,13 +53,13 @@
 
 	function handleSubmit() {
 		isLoading = true;
-		return async ({ update }: any) => {
+		return async ({ update }: { update: () => Promise<void> }) => {
 			await update();
 			isLoading = false;
 		};
 	}
 
-	console.log('data:', data);
+	// console.log('data:', data);
 </script>
 
 <svelte:head>
@@ -156,7 +158,15 @@
 					>
 						<a href="/apps" class="flex items-center">
 							Start Exploring
-							<ArrowRight class="ml-2 hidden h-5 w-5 md:grid" />
+							<lord-icon
+								target="div"
+								src={arrow}
+								colors="primary:white,secondary:green"
+								trigger="loop-on-hover"
+								class="ml-2 hidden h-5 w-5 md:grid"
+								state="hover-pinch"
+							>
+							</lord-icon>
 						</a>
 					</BlurInText>
 				</div>
