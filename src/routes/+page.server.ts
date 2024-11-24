@@ -1,6 +1,6 @@
 import { MISTRAL_API_KEY } from '$env/static/private';
 import type { PageServerLoad } from './$types';
-import { mantras } from '$lib/utils/greetings';
+import { getRandomMantra, mantras } from '$lib/utils/greetings';
 import { Mistral } from '@mistralai/mistralai';
 
 // Initialize Mistral client
@@ -32,7 +32,7 @@ async function generateDailyMantra(): Promise<string> {
 		}
 
 		// Get a random mantra from our collection
-		const fallbackMantra = mantras[Math.floor(Math.random() * mantras.length)].phrase;
+		const fallbackMantra = getRandomMantra().phrase;
 		console.log('Using fallback mantra:', fallbackMantra);
 		return fallbackMantra;
 	}
@@ -49,8 +49,6 @@ function isMantraExpired(timestamp: string): boolean {
 export const load: PageServerLoad = async (event) => {
 	let mantra: string;
 	const storedMantra = event.cookies.get('daily_mantra');
-
-
 
 	// Generate new mantra if:
 	// 1. No stored mantra exists
