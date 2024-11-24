@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Loading from './Loading.svelte';
+
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
 	import { Button } from '$lib/components/ui/button';
@@ -133,9 +135,9 @@
 
 					<Button type="submit" class="w-full" disabled={isLoading}>
 						{#if isLoading}
-							<span class="mr-2 h-4 w-4 animate-spin">⏳</span>
+							<Loading class="fill-red-600/70 text-white dark:text-white" />
 						{/if}
-						Sign in with Email
+						Sign in with Username
 					</Button>
 
 					<p class="px-8 text-center text-sm text-muted-foreground">

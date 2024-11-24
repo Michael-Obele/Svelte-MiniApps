@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import type { PageServerData } from './$types';
 	import { projects, done, siteimage, siteurl, sitename } from '@/index';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { ArrowRight, BadgeDollarSign, CheckCircle2, Cookie } from 'lucide-svelte';
@@ -41,10 +42,8 @@
 		return () => clearTimeout(timeoutId);
 	});
 
-	// let userData = $page.data.user.userData;
-
 	interface Props {
-		data: any;
+		data: PageServerData;
 	}
 
 	let { data }: Props = $props();

@@ -38,14 +38,6 @@ async function generateDailyMantra(): Promise<string> {
 	}
 }
 
-function isMantraExpired(timestamp: string): boolean {
-	const lastGenerated = new Date(timestamp);
-	const now = new Date();
-
-	// Check if it's a different day
-	return lastGenerated.toDateString() !== now.toDateString();
-}
-
 export const load: PageServerLoad = async (event) => {
 	let mantra: string;
 	const storedMantra = event.cookies.get('daily_mantra');

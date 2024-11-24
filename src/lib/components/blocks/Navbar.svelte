@@ -3,9 +3,9 @@
 	import { page } from '$app/stores';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Github, Menu } from 'lucide-svelte';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy } from 'lucide-svelte';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -24,6 +24,12 @@
 	};
 
 	let show = $state(false);
+
+	let { data } = $props();
+
+	$effect(() => {
+		console.log('data:', data);
+	});
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
@@ -47,6 +53,50 @@
 						<Github class="h-[1.2rem] w-[1.2rem]" />
 					</a>
 				</Button>
+				{#if data.user?.username}
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+							<Avatar.Root class="size-8">
+								<Avatar.Fallback class="capitalize">
+									{data.user.username.charAt(0)}
+								</Avatar.Fallback>
+							</Avatar.Root>
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Content class="w-56">
+							<DropdownMenu.Group>
+								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									<User class="mr-2 size-4" />
+									<span>{data.user.username}</span>
+								</DropdownMenu.Item>
+								<DropdownMenu.Item>
+									<Settings class="mr-2 size-4" />
+									<span>Settings</span>
+								</DropdownMenu.Item>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									<LifeBuoy class="mr-2 size-4" />
+									<span>Support</span>
+								</DropdownMenu.Item>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									<a href="/logout" class="flex w-full items-center">
+										<LogOut class="mr-2 size-4" />
+										<span>Log out</span>
+									</a>
+								</DropdownMenu.Item>
+							</DropdownMenu.Group>
+						</DropdownMenu.Content>
+					</DropdownMenu.Root>
+				{:else}
+					<Button variant="outline" type="button" size="sm">
+						<a href="/login" class="flex items-center space-x-2">
+							<LogIn class="h-4 w-4" />
+							<span>Login</span>
+						</a>
+					</Button>
+				{/if}
 			</div>
 			<Button
 				data-collapse-toggle="navbar-user"

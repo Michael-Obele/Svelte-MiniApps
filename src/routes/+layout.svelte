@@ -4,10 +4,17 @@
 	import '../app.css';
 	import Footer from '@/components/blocks/Footer.svelte';
 	import Navbar from '@/components/blocks/Navbar.svelte';
-	let { children } = $props();
+	import type { LayoutServerData } from './$types';
 
 	import lottie from 'lottie-web';
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
+
+	interface Props {
+		data: LayoutServerData;
+		children: Snippet;
+	}
+
+	let { data, children }: Props = $props();
 
 	onMount(async () => {
 		// Make onMount async
@@ -24,7 +31,7 @@
 <ModeWatcher />
 <Toaster />
 
-<Navbar />
+<Navbar {data} />
 <div class="min-h-screen">
 	{@render children()}
 </div>
