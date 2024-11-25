@@ -19,6 +19,7 @@
 	import BlurFade from '@/components/blocks/BlurFade.svelte';
 	import { enhance } from '$app/forms';
 	import { Skeleton } from '@/components/ui/skeleton';
+	import { userContext } from '@/utils';
 	//
 	let websiteTitle = 'Svelte MiniApps';
 	let websiteDescription =
@@ -59,6 +60,12 @@
 	}
 
 	// console.log('data:', data);
+
+	let username = $state(data.user);
+
+	$effect(() => {
+		userContext.set(username?.username);
+	});
 </script>
 
 <svelte:head>

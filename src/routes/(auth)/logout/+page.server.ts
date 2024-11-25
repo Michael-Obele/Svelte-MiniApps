@@ -17,6 +17,6 @@ export const actions: Actions = {
 		await auth.invalidateSession(event.locals.session.id);
 		event.cookies.delete(auth.sessionCookieName, { path: '/' });
 
-		return redirect(302, '/login');
+		return redirect(302, '/');
 	}
 };

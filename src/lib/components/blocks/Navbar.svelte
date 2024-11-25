@@ -6,6 +6,9 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy } from 'lucide-svelte';
+	import { getContext } from 'svelte';
+	import type { UserContext } from '$lib/types';
+	import { userContext } from '@/utils';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -23,12 +26,15 @@
 		}
 	};
 
+	let user = $userContext;
+
 	let show = $state(false);
 
-	let { data } = $props();
+	let username = $state(user);
 
 	$effect(() => {
-		console.log('data:', data);
+		console.log('user:', user);
+		console.log('username:', username);
 	});
 </script>
 
@@ -53,12 +59,12 @@
 						<Github class="h-[1.2rem] w-[1.2rem]" />
 					</a>
 				</Button>
-				{#if data.user?.username}
+				{#if $userContext}
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
 							<Avatar.Root class="size-8">
 								<Avatar.Fallback class="capitalize">
-									{data.user.username.charAt(0)}
+									{$userContext.charAt(0)}
 								</Avatar.Fallback>
 							</Avatar.Root>
 						</DropdownMenu.Trigger>
@@ -68,7 +74,7 @@
 								<DropdownMenu.Separator />
 								<DropdownMenu.Item>
 									<User class="mr-2 size-4" />
-									<span>{data.user.username}</span>
+									<span class="capitalize">{$userContext}</span>
 								</DropdownMenu.Item>
 								<DropdownMenu.Item>
 									<Settings class="mr-2 size-4" />

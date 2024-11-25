@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { persisted } from 'svelte-persisted-store';
 import { writable } from 'svelte/store';
+import type { UserContext } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -50,7 +51,7 @@ export const showPassword = writable(false);
 export const seenCookie = persisted<boolean>('seen-cookie', false);
 export const seenNewAppAlert = persisted<boolean>('seen-new-app-alert', false);
 
-
+export const userContext = persisted<string | undefined>('user', undefined);
 
 /**
  * Scrolls the window to the top of the page with a smooth scrolling effect.

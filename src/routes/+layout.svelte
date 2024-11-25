@@ -5,9 +5,10 @@
 	import Footer from '@/components/blocks/Footer.svelte';
 	import Navbar from '@/components/blocks/Navbar.svelte';
 	import type { LayoutServerData } from './$types';
-
+	import type { UserContext } from '$lib/types';
 	import lottie from 'lottie-web';
-	import { onMount, type Snippet } from 'svelte';
+	import { onMount, setContext, type Snippet } from 'svelte';
+	import { userContext } from '@/utils';
 
 	interface Props {
 		data: LayoutServerData;
@@ -31,7 +32,7 @@
 <ModeWatcher />
 <Toaster />
 
-<Navbar {data} />
+<Navbar />
 <div class="min-h-screen">
 	{@render children()}
 </div>

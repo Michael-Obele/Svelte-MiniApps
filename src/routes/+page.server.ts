@@ -8,11 +8,20 @@ const mistralClient = new Mistral({ apiKey: MISTRAL_API_KEY });
 
 async function generateDailyMantra(): Promise<string> {
 	try {
-		const prompt = "Generate exactly one casual life mantra in 4-6 words. Must start with an action word (do, find, make, keep, let). Make it conversational like 'Do more of what makes you happy'. Focus on everyday joy or self-care. Do not provide multiple options. Use simple, direct words. Return only the mantra text with no additional formatting or punctuation.";
+		const prompt = `Generate a unique and unexpected life mantra in 4-6 words. 
+Rules:
+1. Start with one of these action words (randomly choose): dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark
+2. Make it feel fresh and unconventional, avoiding common phrases
+3. Focus on joy, growth, or self-discovery
+4. Use vivid, specific words instead of generic ones
+5. Keep the tone casual and conversational
+6. Each generation should feel distinctly different from previous ones
+
+Return only the mantra text with no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
 			model: "mistral-tiny",
-			messages: [{ role: 'user', content: prompt }]
+			messages: [{ role: 'user', content: prompt }], stop: ['.']
 		});
 
 		console.log('Mistral response:', response);
