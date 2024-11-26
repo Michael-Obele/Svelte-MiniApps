@@ -5,10 +5,11 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy } from 'lucide-svelte';
+	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy, X } from 'lucide-svelte';
 	import { getContext } from 'svelte';
 	import type { UserContext } from '$lib/types';
 	import { userContext } from '@/utils';
+	import { beforeNavigate } from '$app/navigation';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -16,26 +17,27 @@
 		{ name: 'About', href: '/about' }
 	];
 
+	let user = $userContext;
+
+	let show = $state(false);
+
+	// Reset `show` when navigating
+	beforeNavigate(() => {
+		show = false;
+	});
+
+	let username = $state(user);
+
 	// Reactive statement to determine if the current route matches the item
 	let isActive = (item: string) => {
 		const routeId = $page.url.pathname;
+
 		if (item === 'Home' && routeId == '/') {
 			return true;
 		} else {
 			return routeId && (`/${item}` === routeId || routeId.includes(item.toLowerCase()));
 		}
 	};
-
-	let user = $userContext;
-
-	let show = $state(false);
-
-	let username = $state(user);
-
-	$effect(() => {
-		console.log('user:', user);
-		console.log('username:', username);
-	});
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
@@ -114,9 +116,9 @@
 				onclick={() => (show = !show)}
 				aria-expanded="false"
 			>
-				<span class="sr-only">Open main menu</span>
-
-				<Menu aria-hidden="true" />
+				<span class="sr-only">Open/Close main menu</span>
+				<X class={show ? 'block' : 'hidden'} aria-hidden="true" />
+				<Menu class={show ? 'hidden' : 'block'} aria-hidden="true" />
 			</Button>
 		</div>
 		<div
