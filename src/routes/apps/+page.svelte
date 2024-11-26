@@ -4,6 +4,7 @@
 
 	import { filter } from '$lib/utils';
 	import Input from '$lib/components/ui/input/input.svelte';
+	import BlurInText from '@/components/blocks/BlurInText.svelte';
 
 	function setFilterValue(filterValue: string): () => void {
 		return () => {
@@ -13,6 +14,12 @@
 
 	let app = $state('');
 </script>
+
+
+
+<BlurInText>
+	<h1 class="my-8 text-center text-4xl font-bold">Explore Our Mini Applications</h1>
+</BlurInText>
 
 <div class="flex flex-wrap items-center justify-center py-4 md:py-8">
 	<Button

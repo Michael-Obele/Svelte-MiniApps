@@ -16,6 +16,7 @@
 	import { features, future, next, reasons, splitDescription } from './data';
 	import { onMount } from 'svelte';
 	import MorphSvg from '@/components/MorphSVG.svelte';
+	import BlurInText from '@/components/blocks/BlurInText.svelte';
 
 	const h3Ids = [
 		'Overview',
@@ -153,6 +154,8 @@
 
 	<!-- <MorphSvg /> -->
 
+	<BlurInText>
+
 	<h3
 		id="Overview"
 		class="mb-10 mt-5 cursor-pointer text-center text-3xl font-medium leading-loose text-gray-900 underline decoration-green-400 decoration-wavy decoration-4 underline-offset-8 transition-all dark:text-white dark:decoration-green-600"
@@ -171,6 +174,7 @@
 			</lord-icon>
 		</span>
 	</h3>
+	</BlurInText>
 
 	<!-- Stepper -->
 

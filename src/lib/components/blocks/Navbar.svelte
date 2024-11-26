@@ -14,7 +14,8 @@
 	const menuItems = [
 		{ name: 'Home', href: '/' },
 		{ name: 'Apps', href: '/apps' },
-		{ name: 'About', href: '/about' }
+		{ name: 'About', href: '/about' },
+		{ name: 'Changelog', href: '/changelog' }
 	];
 
 	let user = $userContext;

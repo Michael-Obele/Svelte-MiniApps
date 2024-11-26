@@ -33,6 +33,10 @@
 		visible: { filter: 'blur(0px)', opacity: 1 }
 	};
 	let combinedVariants = variant || defaultVariants;
+
+	if (children){
+		as = 'div'
+	}
 </script>
 
 <Motion
