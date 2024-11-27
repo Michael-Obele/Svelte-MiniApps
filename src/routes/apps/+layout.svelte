@@ -1,4 +1,9 @@
 <script lang="ts">
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <svelte:head>
@@ -29,4 +34,4 @@
 	<link rel="canonical" href="https://svelte-apps.me/apps" />
 </svelte:head>
 
-<slot />
+{@render children?.()}

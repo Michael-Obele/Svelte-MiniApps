@@ -1,17 +1,20 @@
 <script lang="ts">
-	import { afterUpdate, beforeUpdate, onMount, setContext } from 'svelte';
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 
 	import { page } from '$app/stores';
 	import { CodeXml } from 'lucide-svelte';
-	$: route = $page.url.pathname.split('/');
-	$: routeId = route[2];
-	$: currentRoute = route[route.length - 1];
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	let userUsername = $page.data.user.userData?.username;
-	let sessionUserName = $page.data.user.session?.user?.name;
-	setContext('userContext', { userUsername, sessionUserName });
+	let { children }: Props = $props();
+	let route = $derived($page.url.pathname.split('/'));
+	let routeId = $derived(route[2]);
+	let currentRoute = $derived(route[route.length - 1]);
+
+	
+
 	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps/tree/master/src/routes/apps/(app)';
 </script>
 
@@ -72,5 +75,5 @@
 </div>
 
 <div class="relative mt-6 min-h-screen">
-	<slot />
+	{@render children?.()}
 </div>

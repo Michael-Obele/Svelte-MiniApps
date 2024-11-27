@@ -10,14 +10,17 @@ async function generateDailyMantra(): Promise<string> {
 	try {
 		const prompt = `Generate a unique and unexpected life mantra in 4-6 words. 
 Rules:
-1. Start with one of these action words (randomly choose): dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark
-2. Make it feel fresh and unconventional, avoiding common phrases
+1. Start with one of these action words (randomly choose) or something like these: dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark
+2. Make it feel fresh and unconventional, avoiding common phrases or repetitions
 3. Focus on joy, growth, or self-discovery
 4. Use vivid, specific words instead of generic ones
 5. Keep the tone casual and conversational
-6. Each generation should feel distinctly different from previous ones
+6. Each generation should feel distinctly different from previous ones, be as unique as possible
+7. IMPORTANT: Each word must be separated by a single space
+8. Do not combine words together - keep them as separate words
+9. Format example: "Spark Your Inner Light" (correct) vs "SparkYourInnerLight" (incorrect)
 
-Return only the mantra text with no additional formatting or punctuation.`;
+Return only the mantra text with words separated by spaces, no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
 			model: "mistral-tiny",
