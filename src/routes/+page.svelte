@@ -8,7 +8,7 @@
 	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
 	import LordIcon from './LordIcon.svelte';
 	//
-	import { getGreeting, getMillisecondsUntilNextPeriod } from '$lib/utils/greetings';
+	import { getGreeting, getMillisecondsUntilNextPeriod } from '@/utility/greetings';
 	import { RefreshCw } from 'lucide-svelte';
 	//
 	import InfoBlock from './InfoBlock.svelte';

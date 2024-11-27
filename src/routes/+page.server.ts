@@ -1,6 +1,6 @@
 import { MISTRAL_API_KEY } from '$env/static/private';
 import type { PageServerLoad } from './$types';
-import { getRandomMantra, mantras } from '$lib/utils/greetings';
+import { getRandomMantra, mantras } from '@/utility/greetings';
 import { Mistral } from '@mistralai/mistralai';
 
 // Initialize Mistral client
