@@ -40,7 +40,7 @@
 						<Github class="size-5" strokeWidth={1.5} />
 					</a>
 					<a
-						href="https://twitter.com/michaelobele"
+						href="https://twitter.com/Dev_Obele"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground transition-colors hover:text-primary"
@@ -49,7 +49,7 @@
 						<Twitter class="size-5" strokeWidth={1.5} />
 					</a>
 					<a
-						href="https://linkedin.com/in/michael-obele"
+						href="https://www.linkedin.com/in/michael-amachree-263841325/"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground transition-colors hover:text-primary"
