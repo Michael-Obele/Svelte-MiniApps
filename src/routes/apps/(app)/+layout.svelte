@@ -15,7 +15,7 @@
 
 	
 
-	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps/tree/master/src/routes/apps/(app)';
+	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps-sv5/tree/master/src/routes/apps/(app)';
 </script>
 
 <svelte:head>
