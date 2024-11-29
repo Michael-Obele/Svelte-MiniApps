@@ -32,6 +32,31 @@ Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of 
 **Prerequisites:**
 
 - Node.js and npm (or another package manager).
+- PostgreSQL database (for production)
+
+**Database Setup:**
+The project uses Prisma ORM for database management. Follow these steps to set up your database:
+
+1. Copy the example environment file:
+```bash
+cp .env.example .env
+```
+
+2. Update the DATABASE_URL in your .env file:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+```
+
+3. Initialize your database:
+```bash
+npx prisma generate  # Generate Prisma Client
+npx prisma db push   # Push schema changes to database
+```
+
+For development, you can use Prisma Studio to manage your data:
+```bash
+npm run db:studio
+```
 
 **Explore the Mini-Apps:**
 Clone the repository and run the development server to explore the mini-apps.
@@ -39,17 +64,16 @@ Clone the repository and run the development server to explore the mini-apps.
 ```bash
 git clone https://github.com/Michael-Obele/Svelte-MiniApps-sv5.git
 cd Svelte-MiniApps-sv5
-cp .env.example .env
 bun install
 bun run dev
 ```
 
-###### **Important**: ~~For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.~~
+###### **Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
 
 <details>
-    <summary>No more prisma</summary>
+    <summary>Database ORM</summary>
    <p style="background-color: #000; border-left: 5px solid #ccc; font-color:#fff; padding: 10px; margin: 20px 0;">
-     The project has been updated to use Drizzle ORM instead of Prisma. This change was made to simplify the project and make it more modular.
+     The project uses Prisma ORM for database management. Prisma provides type-safe database access with great developer experience.
    </p>
  </details>
 
