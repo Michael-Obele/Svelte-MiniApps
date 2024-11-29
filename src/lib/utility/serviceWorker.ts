@@ -16,7 +16,10 @@ export function registerServiceWorker() {
 
   console.log('[ServiceWorker] Starting registration...');
   navigator.serviceWorker
-    .register('/service-worker.js')
+    .register('/service-worker.js', { 
+      type: 'module',
+      updateViaCache: 'none'
+    })
     .then((registration) => {
       console.log('[ServiceWorker] Registration successful:', {
         scope: registration.scope,
@@ -25,6 +28,12 @@ export function registerServiceWorker() {
         waiting: !!registration.waiting
       });
 
+      // Check for updates every hour
+      setInterval(() => {
+        console.log('[ServiceWorker] Checking for updates...');
+        registration.update();
+      }, 60 * 60 * 1000);
+
       // Handle updates when a new service worker is found
       registration.addEventListener('updatefound', () => {
         console.log('[ServiceWorker] New service worker being installed');
@@ -32,12 +41,9 @@ export function registerServiceWorker() {
         
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
-            // When the new service worker is installed and there's an existing controller
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              console.log('[ServiceWorker] New version available');
-              if (window.confirm('A new version of the app is available. Load new version?')) {
-                window.location.reload();
-              }
+            if (newWorker.state === 'installed') {
+              console.log('[ServiceWorker] New version installed');
+              window.location.reload();
             }
           });
         }
@@ -46,9 +52,7 @@ export function registerServiceWorker() {
       // Handle the case when a new service worker takes control
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         console.log('[ServiceWorker] New service worker activated');
-        if (window.confirm('A new version of the app is available. Load new version?')) {
-          window.location.reload();
-        }
+        window.location.reload();
       });
     })
     .catch((error) => {

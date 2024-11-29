@@ -24,7 +24,7 @@ Rules:
 Return only a single mantra text with it's words separated by spaces, no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
-			model: "mistral-tiny",
+			model: "mistral-small-latest",
 			messages: [{ role: 'user', content: prompt }], stop: ['.']
 		});
 
