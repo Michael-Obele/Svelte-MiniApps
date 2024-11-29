@@ -5,19 +5,23 @@
 
 	import { AudioLines } from 'lucide-svelte';
 	import type { UserContext } from '$lib/types';
-	import { afterUpdate, getContext } from 'svelte';
+	import { getContext } from 'svelte';
 
-	const { userUsername } = getContext<UserContext>('userContext');
 	import NoWord from '$lib/assets/not-found.svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { siteimage, siteurl } from '$lib';
-	//
+	
 
-	export let form: ActionData;
-	let isLoading = false;
+	interface Props {
+		//
+		form: ActionData;
+	}
+
+	let { form }: Props = $props();
+	let isLoading = $state(false);
 
 	interface DictionaryEntry {
 		title?: string;
@@ -126,122 +130,169 @@
 <form
 	use:enhance={handleSubmit}
 	method="POST"
-	class="mx-auto flex max-w-md flex-col justify-center"
+	class="mx-auto flex max-w-2xl flex-col justify-center px-4"
 >
-	<span class="my-5 ms-3 flex-1 whitespace-nowrap text-center text-xl">
-		Welcome,
-		{#if userUsername}
-			<span class="font-semibold text-green-600 dark:text-green-400"> {userUsername}</span>
-		{:else}
-			<span class="font-semibold text-gray-700 dark:text-gray-300">Guest</span>
-		{/if}!
-		<p class="">Let's explore the world of words together.</p>
-	</span>
-	<Input
-		type="text"
-		name="word"
-		value={form?.word ?? ''}
-		placeholder="Enter a word"
-		class="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-	/>
+	<div class="mb-8 text-center">
+		<h1 class="mb-2 text-3xl font-bold text-gray-800 dark:text-white">English Dictionary</h1>
+		<p class="text-lg text-gray-600 dark:text-gray-300">Explore the world of words together.</p>
+	</div>
 
-	<Button
-		type="submit"
-		class="mt-4 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-	>
-		Find Meaning
-	</Button>
+	<div class="flex flex-col gap-4 sm:flex-row">
+		<Input
+			type="text"
+			name="word"
+			value={form?.word ?? ''}
+			placeholder="Enter a word"
+			class="flex-1 rounded-lg border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+		/>
+		<Button
+			type="submit"
+			disabled={isLoading}
+			class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+		>
+			{isLoading ? 'Searching...' : 'Find Meaning'}
+		</Button>
+	</div>
 </form>
 
-<h2 class="my-8 bg-green-100 text-center text-2xl text-green-800 dark:bg-red-800 dark:text-white">
-	{isLoading ? 'Meaning Loading...' : ''}
-</h2>
+{#if isLoading}
+	<div class="mx-auto my-8 text-center">
+		<div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
+		<p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Searching for meaning...</p>
+	</div>
+{/if}
 
-<section class:hidden={isLoading} class="mx-auto my-10 flex max-w-3xl flex-col justify-center">
-	{#if form?.error == true}
+<section class:hidden={isLoading} class="mx-auto my-10 flex max-w-3xl flex-col justify-center space-y-6 px-4">
+	{#if form?.error}
 		<div
-			class="error space-y-5 rounded-lg bg-red-100 p-4 text-center text-red-800 shadow-md dark:bg-red-900 dark:text-red-200"
+			class="error space-y-4 rounded-lg bg-red-50 p-6 text-center shadow-lg dark:bg-red-900/50"
 		>
 			<NoWord />
-			<h2 class="text-xl font-semibold">{form?.title}</h2>
-			<p class="text-md mt-2">{form?.message}</p>
-			<p class="mt-1 text-sm text-red-600 dark:text-red-400">{form?.resolution}</p>
+			<h2 class="text-2xl font-bold text-red-800 dark:text-red-200">{form?.title}</h2>
+			{#if form?.message}
+				<p class="text-lg text-red-700 dark:text-red-300">{form?.message}</p>
+			{/if}
+			{#if form?.resolution}
+				<p class="text-sm text-red-600 dark:text-red-400">{form?.resolution}</p>
+			{/if}
 		</div>
-	{:else if form?.error == false}
-		{#each form?.data || [] as item}
-			<article class="rounded-lg bg-white p-4 shadow-md dark:bg-gray-900">
-				<header>
-					<h1 class="mb-2 text-center text-2xl font-bold text-red-600 dark:text-red-400">
+	{:else if form?.data}
+		{#each form.data as item}
+			<article class="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
+				<header class="border-b border-gray-200 bg-gray-50 px-6 py-4 dark:border-gray-700 dark:bg-gray-900">
+					<h1 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
 						{item?.word}
 					</h1>
+					{#if item?.phonetic}
+						<p class="mt-2 text-center text-lg text-gray-600 dark:text-gray-300">
+							{item.phonetic}
+						</p>
+					{/if}
 				</header>
-				{#if item?.phonetic}
-					<!-- content here -->
-					<p class="mb-2 text-lg font-semibold text-green-600 dark:text-green-400">
-						Phonetic: <span class="rounded-md bg-gray-200 px-2 py-1 dark:bg-gray-700"
-							>{item.phonetic}</span
-						>
-					</p>
-				{/if}
-				{#each item?.phonetics || [] as phonetic}
-					{#if phonetic.audio}
-						<div
-							class="mb-2 flex w-fit flex-row items-center space-x-5 rounded-lg bg-white p-4 shadow-md dark:bg-gray-800"
-						>
-							<AudioLines />
-							<audio controls src={phonetic.audio} class="ml-4"></audio>
-							<p class="text-md mb-1 text-green-600 dark:text-green-400">{phonetic.text}</p>
+
+				<div class="p-6">
+					{#if item?.phonetics?.length}
+						<div class="mb-6 space-y-3">
+							{#each item.phonetics as phonetic}
+								{#if phonetic.audio}
+									<div class="flex items-center gap-4 rounded-lg bg-gray-50 p-3 dark:bg-gray-900">
+										<AudioLines class="h-6 w-6 text-indigo-500" />
+										<audio controls src={phonetic.audio} class="h-8"></audio>
+										{#if phonetic.text}
+											<span class="text-sm text-gray-600 dark:text-gray-300">{phonetic.text}</span>
+										{/if}
+									</div>
+								{/if}
+							{/each}
 						</div>
 					{/if}
-				{/each}
-				{#each item?.meanings || [] as data}
-					<section>
-						<h2 class="mb-1 text-xl font-semibold text-green-600 dark:text-green-400">
-							{data.partOfSpeech}
-						</h2>
-						<ol class="list-inside list-decimal space-y-4 text-green-600 dark:text-green-400">
-							{#each data.definitions as definition}
-								<li>
-									{definition.definition}
-									{#if definition.synonyms}
-										<ul class="mt-2 list-inside list-disc space-y-1 ps-5">
-											<li>Synonyms: {definition.synonyms.join(', ')}</li>
-										</ul>
-									{/if}
-									{#if definition.antonyms}
-										<ul class="mt-2 list-inside list-disc space-y-1 ps-5">
-											<li>Antonyms: {definition.antonyms.join(', ')}</li>
-										</ul>
-									{/if}
-									{#if definition.example}
-										<ul class="mt-2 list-inside list-disc space-y-1 ps-5">
-											<li>Example: {definition.example}</li>
-										</ul>
-									{/if}
-								</li>
+
+					{#if item?.meanings?.length}
+						<div class="space-y-6">
+							{#each item.meanings as meaning}
+								<div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
+									<h2 class="mb-3 text-xl font-semibold text-indigo-600 dark:text-indigo-400">
+										{meaning.partOfSpeech}
+									</h2>
+									<div class="space-y-4">
+										{#each meaning.definitions as definition, index}
+											<div class="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-800">
+												<p class="text-gray-800 dark:text-gray-200">
+													<span class="mr-2 font-medium text-indigo-600 dark:text-indigo-400"
+														>{index + 1}.</span
+													>
+													{definition.definition}
+												</p>
+												{#if definition.example}
+													<p class="mt-2 text-sm italic text-gray-600 dark:text-gray-400">
+														"<span>{definition.example}</span>"
+													</p>
+												{/if}
+												{#if definition.synonyms?.length}
+													<div class="mt-2">
+														<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+															>Synonyms:</span
+														>
+														<div class="mt-1 flex flex-wrap gap-2">
+															{#each definition.synonyms as synonym}
+																<span
+																	class="rounded-full bg-indigo-50 px-3 py-1 text-sm text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-300"
+																>
+																	{synonym}
+																</span>
+															{/each}
+														</div>
+													</div>
+												{/if}
+												{#if definition.antonyms?.length}
+													<div class="mt-2">
+														<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+															>Antonyms:</span
+														>
+														<div class="mt-1 flex flex-wrap gap-2">
+															{#each definition.antonyms as antonym}
+																<span
+																	class="rounded-full bg-red-50 px-3 py-1 text-sm text-red-600 dark:bg-red-900/50 dark:text-red-300"
+																>
+																	{antonym}
+																</span>
+															{/each}
+														</div>
+													</div>
+												{/if}
+											</div>
+										{/each}
+									</div>
+								</div>
 							{/each}
-						</ol>
-					</section>
-				{/each}
-				<footer>
-					<p
-						class="mt-5 rounded-md bg-white p-2 text-sm text-green-600 shadow-md dark:bg-gray-800 dark:text-green-400"
-					>
-						License: {item?.license.name} -
-						<a
-							href={item?.license.url}
-							class="text-blue-500 hover:underline dark:text-blue-400"
-							target="_blank"
-							rel="noopener">{item?.license.url}</a
-						>
-					</p>
-				</footer>
+						</div>
+					{/if}
+
+					{#if item?.origin}
+						<div class="mt-6 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
+							<h3 class="font-medium text-gray-900 dark:text-white">Origin</h3>
+							<p class="mt-1 text-gray-600 dark:text-gray-300">{item.origin}</p>
+						</div>
+					{/if}
+				</div>
+
+				{#if item?.license}
+					<footer class="border-t border-gray-200 bg-gray-50 px-6 py-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
+						<p>
+							License: {item.license.name}
+							{#if item.license.url}
+								-
+								<a
+									href={item.license.url}
+									class="text-indigo-600 hover:underline dark:text-indigo-400"
+									target="_blank"
+									rel="noopener noreferrer">View License</a
+								>
+							{/if}
+						</p>
+					</footer>
+				{/if}
 			</article>
-			{#if item?.origin}
-				<p class="mt-4 text-lg font-semibold text-green-600 dark:text-green-400">
-					Origin: {item?.origin}
-				</p>
-			{/if}
 		{/each}
 	{/if}
 </section>

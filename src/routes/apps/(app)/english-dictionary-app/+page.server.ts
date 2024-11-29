@@ -1,4 +1,13 @@
+import { error, fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
+
+// Constants
+const API_BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en';
+const CACHE_DURATION = 3600000; // 1 hour in milliseconds
+const MAX_WORD_LENGTH = 50;
+
+// Cache implementation
+const cache = new Map<string, { data: any; timestamp: number }>();
 
 export interface ApiError {
 	title: string;
@@ -42,45 +51,158 @@ interface Definition {
 	example?: string;
 }
 
+// Helper function to validate word
+function validateWord(word: string): string | null {
+	if (!word || typeof word !== 'string') {
+		return 'Word is required';
+	}
+	
+	const trimmedWord = word.trim();
+	
+	if (trimmedWord.length === 0) {
+		return 'Word cannot be empty';
+	}
+	
+	if (trimmedWord.length > MAX_WORD_LENGTH) {
+		return `Word cannot be longer than ${MAX_WORD_LENGTH} characters`;
+	}
+	
+	if (!/^[a-zA-Z\s-]+$/.test(trimmedWord)) {
+		return 'Word can only contain letters, spaces, and hyphens';
+	}
+	
+	return null;
+}
+
+// Helper function to check cache
+function getCachedData(key: string): any | null {
+	const cached = cache.get(key);
+	if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+		console.log('Cache hit for:', key);
+		return cached.data;
+	}
+	return null;
+}
+
+// Helper function to set cache
+function setCacheData(key: string, data: any): void {
+	cache.set(key, { data, timestamp: Date.now() });
+	// Clean up old cache entries
+	if (cache.size > 100) { // Limit cache size
+		const oldestKey = Array.from(cache.keys())[0];
+		cache.delete(oldestKey);
+	}
+}
+
+// Helper function to fetch dictionary data with timeout
+async function fetchDictionaryData(word: string): Promise<{ data: DictionaryEntry[] | null; error?: any }> {
+	const controller = new AbortController();
+	const timeout = setTimeout(() => controller.abort(), 5000);
+
+	try {
+		const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(word)}`, {
+			signal: controller.signal,
+			headers: {
+				'Accept': 'application/json',
+				'User-Agent': 'SvelteMiniApps/1.0'
+			}
+		});
+
+		clearTimeout(timeout);
+
+		if (!response.ok) {
+			const errorData: ApiError = await response.json();
+			return { data: null, error: errorData };
+		}
+
+		const data: DictionaryEntry[] = await response.json();
+		return { data };
+	} catch (error) {
+		clearTimeout(timeout);
+		throw error;
+	}
+}
+
+// Helper function to handle API errors
+function handleApiError(error: any, word: string) {
+	if ((error as Error).name === 'AbortError') {
+		return fail(408, {
+			word,
+			error: true,
+			title: 'Request Timeout',
+			message: 'The request took too long to complete.',
+			resolution: 'Please try again. If the problem persists, check your internet connection.'
+		});
+	}
+
+	return fail(500, {
+		word,
+		error: true,
+		title: 'Service Error',
+		message: 'An unexpected error occurred while fetching the dictionary data.',
+		resolution: 'Please try again later. If the problem persists, contact support.'
+	});
+}
+
 export const actions: Actions = {
 	default: async ({ request }) => {
-		// Extract form data from the request
+		// Extract and validate form data
 		const formData = await request.formData();
-		// Retrieve the 'word' field from the form data and convert it to a string
 		const word = String(formData.get('word'));
-
-		// Encode the word to ensure it's URL-safe
-		const encodedWord = encodeURIComponent(word);
-		// Construct the API URL using the encoded word
-		const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodedWord}`;
-
+		
 		try {
-			// Attempt to fetch data from the API
-			const response = await fetch(apiUrl);
-
-			// Check if the response was successful
-			if (!response.ok) {
-				// If not, parse the error data from the response
-				const errorData: ApiError = await response.json();
-				// Return the error data along with the original word and an indication of an error
-				return { word, error: true, errorData };
+			// Validate input
+			const validationError = validateWord(word);
+			if (validationError) {
+				return fail(400, {
+					word,
+					error: true,
+					title: 'Invalid Input',
+					message: validationError,
+					resolution: 'Please enter a valid word using only letters, spaces, or hyphens.'
+				});
 			}
 
-			// If the response was successful, parse the data from the response
-			const data: DictionaryEntry[] = await response.json();
-			// Return the data along with the original word and an indication of no error
-			return { word, error: false, data };
+			const trimmedWord = word.trim().toLowerCase();
+			
+			// Check cache first
+			const cachedData = getCachedData(trimmedWord);
+			if (cachedData) {
+				return {
+					word: trimmedWord,
+					error: false,
+					data: cachedData,
+					cached: true
+				};
+			}
+
+			// Fetch data from API
+			try {
+				const { data, error } = await fetchDictionaryData(trimmedWord);
+				
+				if (error) {
+					return fail(400, {
+						word: trimmedWord,
+						error: true,
+						...error
+					});
+				}
+
+				// Cache the successful response
+				setCacheData(trimmedWord, data);
+
+				return {
+					word: trimmedWord,
+					error: false,
+					data,
+					cached: false
+				};
+			} catch (error) {
+				return handleApiError(error, trimmedWord);
+			}
 		} catch (error) {
-			// Handle any network errors that occurred during the fetch operation
-			console.error('Network error:', error);
-			// In case of a network error, construct and return a custom error object
-			return {
-				word,
-				error: true,
-				title: 'Network Error', // Title of the error
-				message: 'Failed to fetch dictionary entry', // Detailed message about the error
-				resolution: 'Please try again later.' // Suggested action to resolve the error
-			};
+			console.error('Dictionary API error:', error);
+			return handleApiError(error, word);
 		}
 	}
 };
