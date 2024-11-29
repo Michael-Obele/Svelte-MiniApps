@@ -19,8 +19,9 @@ Rules:
 7. IMPORTANT: Each word must be separated by a single space
 8. Do not combine words together - keep them as separate words
 9. Format example: "Spark Your Inner Light" (correct) vs "SparkYourInnerLight" (incorrect)
+10. Don't return a mantra that's longer than 8 words
 
-Return only the mantra text with words separated by spaces, no additional formatting or punctuation.`;
+Return only a single mantra text with it's words separated by spaces, no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
 			model: "mistral-tiny",

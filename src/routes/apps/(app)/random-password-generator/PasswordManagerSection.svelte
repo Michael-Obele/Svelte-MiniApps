@@ -97,7 +97,7 @@
 						</form>
 
 						<Button
-							on:click={() => toggleReadOnly(i)}
+							onclick={() => toggleReadOnly(i)}
 							variant="outline"
 							class="mt-1 {!readOnlyStates[i]
 								? 'bg-blue-500 text-black hover:bg-blue-500 hover:text-white dark:text-white'
