@@ -72,6 +72,12 @@
 	});
 </script>
 
+<div class="w-full bg-red-50/80 dark:bg-red-900/20 py-2 border-b border-red-100 dark:border-red-800/30">
+	<p class="text-red-700/90 dark:text-red-200/90 text-center text-sm font-medium">
+		🚧 Beta version - Some features may be temporarily unavailable
+	</p>
+</div>
+
 <svelte:head>
 	<title>{websiteTitle} - Smart Tools for Modern Life</title>
 	<meta name="description" content={websiteDescription} />
