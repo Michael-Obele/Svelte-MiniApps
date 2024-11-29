@@ -2,6 +2,10 @@
 	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/ui/button';
 	import { LogOut } from 'lucide-svelte';
+	import { invalidate, invalidateAll } from "$app/navigation";
+	$effect(() => {
+		invalidateAll();
+	});
 </script>
 
 <svelte:head>

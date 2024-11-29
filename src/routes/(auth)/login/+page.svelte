@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Loading from './Loading.svelte';
+	import Loading from '@/components/blocks/Loading.svelte';
 
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
@@ -10,6 +10,10 @@
 	import { AlertCircle, Eye, EyeOff, Github } from 'lucide-svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
+	import { invalidate, invalidateAll } from "$app/navigation";
+	$effect(() => {
+		invalidateAll();
+	});
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 

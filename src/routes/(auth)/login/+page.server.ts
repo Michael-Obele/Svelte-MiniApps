@@ -1,9 +1,7 @@
-import { hash, verify } from '@node-rs/argon2';
+import { verify } from '@node-rs/argon2';
 import { fail, redirect } from '@sveltejs/kit';
-import { eq } from 'drizzle-orm';
 import * as auth from '$lib/server/auth';
 import { db } from '$lib/server/db';
-import * as table from '$lib/server/db/schema';
 import type { Actions, PageServerLoad } from './$types';
 import { dev } from '$app/environment';
 
@@ -33,8 +31,9 @@ export const actions: Actions = {
             });
         }
 
-        const results = await db.select().from(table.user).where(eq(table.user.username, username));
-        const existingUser = results.at(0);
+        const existingUser = await db.user.findUnique({
+            where: { username: username as string }
+        });
 
         if (!existingUser) {
             return fail(400, {

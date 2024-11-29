@@ -12,7 +12,7 @@ export const load: PageServerLoad = async (event) => {
 export const actions: Actions = {
 	logout: async (event) => {
 		if (!event.locals.session) {
-			return fail(401);
+			return redirect(302, '/');
 		}
 		await auth.invalidateSession(event.locals.session.id);
 		event.cookies.delete(auth.sessionCookieName, { path: '/' });

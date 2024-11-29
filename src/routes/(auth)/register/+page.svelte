@@ -6,6 +6,11 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { AlertCircle, Eye, EyeOff } from 'lucide-svelte';
+	import Loading from '@/components/blocks/Loading.svelte';
+	import { invalidate, invalidateAll } from "$app/navigation";
+	$effect(() => {
+		invalidateAll();
+	});
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -158,7 +163,7 @@
 
 				<Button type="submit" class="w-full" disabled={isLoading || !passwordMatch}>
 					{#if isLoading}
-						<span class="mr-2 h-4 w-4 animate-spin">⏳</span>
+					<Loading class="fill-red-600/70 text-white dark:text-white" />
 					{/if}
 					Create Account
 				</Button>

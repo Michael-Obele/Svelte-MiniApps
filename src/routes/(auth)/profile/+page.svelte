@@ -35,15 +35,15 @@
 		<!-- User Profile Card  -->
 		<UserProfileCard />
 		<!-- Mini App List  -->
-		<MiniAppList />
+		<!-- <MiniAppList /> -->
 		<!-- Account Settings  -->
-		<AccountSettingsList {form} />
+		<!-- <AccountSettingsList {form} /> -->
 		<!-- Updates List  -->
-		<LatestUpdatesList />
+		<!-- <LatestUpdatesList /> -->
 		<!-- Favorite Apps  -->
-		<FavoriteAppList />
+		<!-- <FavoriteAppList /> -->
 		<!-- Saved Passwords  -->
-		<PwdComponent {form} />
+		<!-- <PwdComponent {form} /> -->
 		<!-- Upcoming Features  -->
 		<div class="col-span-1 grid gap-4 md:col-span-2 lg:col-span-3 lg:grid-cols-subgrid">
 			<div class="col-start-1 lg:col-start-2">

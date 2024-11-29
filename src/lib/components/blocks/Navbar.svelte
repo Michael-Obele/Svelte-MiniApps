@@ -10,6 +10,9 @@
 	import type { UserContext } from '$lib/types';
 	import { userContext } from '@/utils';
 	import { beforeNavigate } from '$app/navigation';
+	import { invalidate, invalidateAll } from '$app/navigation';
+	
+
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -18,7 +21,7 @@
 		{ name: 'Changelog', href: '/changelog' }
 	];
 
-	let user = $userContext;
+	
 
 	let show = $state(false);
 
@@ -27,7 +30,13 @@
 		show = false;
 	});
 
-	let username = $state(user);
+	$effect(() => {
+		console.log('user on navbar', $userContext);
+		
+		// Invalidate the session to check for user state changes
+		invalidate('app:userContext');
+	});
+
 
 	// Reactive statement to determine if the current route matches the item
 	let isActive = (item: string) => {
@@ -57,7 +66,7 @@
 			<div class="px-2">
 				<ThemeSwitch />
 				<Button variant="outline" type="button" size="icon">
-					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
+					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps-sv5">
 						<span class="sr-only">See GitHub Repo</span>
 						<Github class="h-[1.2rem] w-[1.2rem]" />
 					</a>

@@ -7,20 +7,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import { StarIcon } from 'lucide-svelte';
 
-	// Function to check if the user or git data indicates admin status
-	function isAdmin(userOrGit: { isAdmin?: boolean }) {
-		// Checks if userOrGit has a truthy isAdmin property, returns boolean.
-		return !!userOrGit?.isAdmin;
-	}
-
-	// Function to format the registration method
-	function registrationMethod(user: { createdAt: string | null }) {
-		if (user?.createdAt !== null) return 'username';
-		if (user?.createdAt == null) return 'OAuth';
-		return '';
-	}
-
-	let userData = $page.data.user?.userData;
+	
 </script>
 
 <!--

@@ -27,7 +27,10 @@
 	let twitterTitle = `${websiteTitle} - Smart Tools for Modern Life`;
 	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 	//
-
+	import { invalidate, invalidateAll } from "$app/navigation";
+	import { setContext } from 'svelte';
+	
+	// 
 	const arrow = '/lottie/trending-flat.json';
 
 	let greeting = $state(getGreeting());
@@ -59,12 +62,13 @@
 		};
 	}
 
-	// console.log('data:', data);
 
 	let username = $state(data.user);
 
 	$effect(() => {
+		console.log('user:', username);
 		userContext.set(username?.username);
+		invalidate('user');
 	});
 </script>
 
@@ -101,7 +105,9 @@
 			as="h1"
 			class="text-center text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
 		>
-			{greeting}!
+			<span class="capitalize text-green-700 dark:text-green-300">
+				{`${greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
+			</span>
 		</BlurInText>
 	</BlurFade>
 	<BlurFade delay={0.25 * 2}>
