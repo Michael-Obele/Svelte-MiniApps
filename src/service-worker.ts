@@ -142,6 +142,17 @@ async function generateOfflineResponse(request: Request): Promise<Response> {
 self.addEventListener('fetch', (event: FetchEvent) => {
   if (event.request.method !== 'GET') return;
 
+  const url = new URL(event.request.url);
+  
+  // Skip service worker for certain requests
+  if (
+    url.pathname.startsWith('/browser-sync/') ||
+    url.pathname.startsWith('chrome-extension://') ||
+    url.hostname !== self.location.hostname
+  ) {
+    return;
+  }
+
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
@@ -151,20 +162,28 @@ self.addEventListener('fetch', (event: FetchEvent) => {
         const cachedResponse = await cache.match(event.request);
         
         // Start fetching from network in background
-        const networkPromise = fetch(event.request).then(async response => {
+        const networkPromise = fetch(event.request.clone()).then(async response => {
           if (response.ok && !isApiRequest(event.request)) {
-            await cache.put(event.request, response.clone());
+            try {
+              await cache.put(event.request, response.clone());
+            } catch (error) {
+              console.warn('[Service Worker] Failed to cache:', error);
+            }
           }
           return response;
+        }).catch(error => {
+          console.warn('[Service Worker] Network fetch failed:', error);
+          throw error;
         });
 
         // If we have a cached response
         if (cachedResponse) {
-          // If it's an API request or the cache is stale, wait for network
+          // If it's an API request or the cache is stale, try network first
           if (isApiRequest(event.request) || isCacheStale(cachedResponse)) {
             try {
               return await networkPromise;
             } catch (error) {
+              console.log('[Service Worker] Falling back to cache for:', event.request.url);
               return cachedResponse;
             }
           }
@@ -172,10 +191,16 @@ self.addEventListener('fetch', (event: FetchEvent) => {
           return cachedResponse;
         }
 
-        // If no cache, wait for network
-        return await networkPromise;
+        // If no cache, try network
+        try {
+          return await networkPromise;
+        } catch (error) {
+          // If network fails and we have no cache, return offline response
+          console.log('[Service Worker] No cache available, returning offline response for:', event.request.url);
+          return generateOfflineResponse(event.request);
+        }
       } catch (error) {
-        console.log('[Service Worker] Fetch failed:', event.request.url, error);
+        console.error('[Service Worker] Fetch handler error:', error);
         return generateOfflineResponse(event.request);
       }
     })()
