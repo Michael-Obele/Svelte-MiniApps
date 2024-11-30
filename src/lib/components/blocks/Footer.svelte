@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from '@/components/blocks/ThemeSwitch.svelte';
+	import NukeButton from '@/components/NukeButton.svelte';
 	import { scrollToTop } from '$lib/utils';
 	import {
 		Heart,
@@ -71,6 +72,7 @@
 						<ArrowUp class="ml-2 size-4" strokeWidth={1.5} />
 					</button>
 					<ThemeSwitch />
+					<NukeButton class="opacity-40 transition-opacity hover:opacity-100" />
 				</div>
 				<div class="flex items-center space-x-2">
 					<span class="flex items-center text-sm text-muted-foreground">

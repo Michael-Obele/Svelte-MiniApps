@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
-
 	import { page } from '$app/stores';
 	import { CodeXml } from 'lucide-svelte';
 	interface Props {
@@ -12,8 +11,6 @@
 	let route = $derived($page.url.pathname.split('/'));
 	let routeId = $derived(route[2]);
 	let currentRoute = $derived(route[route.length - 1]);
-
-	
 
 	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps-sv5/tree/master/src/routes/apps/(app)';
 </script>
