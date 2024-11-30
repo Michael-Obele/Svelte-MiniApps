@@ -15,9 +15,13 @@
 	let searchQuery = $state<string>('');
 	let searchResults = $state<SearchResults>([]);
 	let randomEmoji = $state<EmojiResult>(emoji.random());
+	let emojiCheckInput = $state<string>('');
+	let emojiCheckResult = $state<{exists: boolean; found?: {emoji: string; key: string;}}>();
 
 	function emojify(): void {
-		outputText = emoji.emojify(inputText);
+		outputText = emoji.emojify(
+			convertToEmojiFormat(inputText)
+		);
 	}
 
 	function unemojify(): void {
@@ -28,6 +32,21 @@
 		outputText = emoji.strip(inputText);
 	}
 
+	function stripText(): void {
+		if (!inputText) {
+			outputText = '';
+			return;
+		}
+		// First convert text to emoji format
+		const emojiFormatted = convertToEmojiFormat(inputText);
+		// Then only keep the emoji shortcodes
+		const emojiOnly = emojiFormatted
+			.split(' ')
+			.filter(word => /^:\w+:/.test(word))
+			.join(' ');
+		outputText = emojiOnly;
+	}
+
 	function search(): void {
 		searchResults = emoji.search(searchQuery);
 	}
@@ -36,12 +55,38 @@
 		randomEmoji = emoji.random();
 	}
 
-	function findEmoji(input: string): EmojiResult | undefined {
+	function findEmoji(input: string):  {emoji: string; key: string; }  | undefined {
 		return emoji.find(input);
 	}
 
 	function hasEmoji(input: string): boolean {
 		return emoji.has(input);
+	}
+
+	function convertToEmojiFormat(text:string): string {
+		// Split the input text into words
+		const words = text.split(' ');
+		
+		// Process each word
+		const processedWords = words.map(word => {
+			// Extract any punctuation
+			const punctuation = word.match(/[.,!?]$/)?.[0] || '';
+			const cleanWord = word.replace(/[.,!?]/g, '');
+			
+			// First wrap the word in colons
+			let processedWord = `:${cleanWord}:${punctuation}`;
+			
+			// Check if it's an actual emoji word
+			if (!emoji.find(cleanWord)) {
+				// If it's not an emoji, remove the colons
+				processedWord = cleanWord + punctuation;
+			}
+			
+			return processedWord;
+		});
+		
+		const result = processedWords.join(' ');
+		return result;
 	}
 
 	async function copyToClipboard(text: string, message: string = 'Copied to clipboard!'): Promise<void> {
@@ -94,31 +139,75 @@
 			</button>
 			<button
 				onclick={unemojify}
-				class="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
+				class="rounded-md bg-purple-500 px-4 py-2 text-white hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700"
 			>
 				Unemojify
 			</button>
 			<button
 				onclick={strip}
-				class="rounded-md bg-slate-500 px-4 py-2 text-white hover:bg-slate-600 dark:bg-slate-600 dark:hover:bg-slate-700"
+				class="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
 			>
 				Strip Emojis
+			</button>
+			<button
+				onclick={stripText}
+				class="rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
+			>
+				Keep Only Emojis
 			</button>
 		</div>
 		{#if outputText}
 			<div class="mt-4 rounded-md bg-slate-100 p-4 dark:bg-slate-700">
-				<div class="mb-2 flex items-center justify-between">
-					<h3 class="font-semibold text-slate-700 dark:text-slate-300">Output:</h3>
+				<div class="flex items-center justify-between">
+					<p class="text-lg">{outputText}</p>
 					<button
 						onclick={() => copyToClipboard(outputText)}
-						class="rounded-md bg-blue-500 px-2 py-1 text-sm text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+						class="ml-4 rounded-md bg-slate-200 px-3 py-1 text-sm hover:bg-slate-300 dark:bg-slate-600 dark:hover:bg-slate-500"
 					>
 						Copy
 					</button>
 				</div>
-				<p class="break-words text-slate-600 dark:text-slate-400">{outputText}</p>
 			</div>
 		{/if}
+
+		<!-- Emoji Check Section -->
+		<div class="mt-8 rounded-lg bg-white p-6 shadow-lg dark:bg-slate-800">
+			<h2 class="mb-4 text-2xl font-semibold text-slate-800 dark:text-slate-200">Emoji Checker</h2>
+			<div class="flex gap-4">
+				<input
+					type="text"
+					bind:value={emojiCheckInput}
+					placeholder="Enter a word to check for emoji..."
+					class="flex-1 rounded-md border border-slate-300 px-4 py-2 dark:border-slate-600 dark:bg-slate-700"
+				/>
+				<button
+					onclick={() => {
+						const found = findEmoji(emojiCheckInput);
+						const exists = hasEmoji(emojiCheckInput);
+						emojiCheckResult = { exists, found };
+					}}
+					class="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+				>
+					Check Emoji
+				</button>
+			</div>
+			{#if emojiCheckResult}
+				<div class="mt-4 rounded-md bg-slate-100 p-4 dark:bg-slate-700">
+					{#if emojiCheckResult.exists}
+						<p class="text-green-600 dark:text-green-400">
+							✓ This word has an emoji!
+							{#if emojiCheckResult.found}
+								<span class="ml-2">
+									Emoji: {emojiCheckResult.found.emoji} (:{emojiCheckResult.found.key}:)
+								</span>
+							{/if}
+						</p>
+					{:else}
+						<p class="text-red-600 dark:text-red-400">✗ This word does not have an emoji</p>
+					{/if}
+				</div>
+			{/if}
+		</div>
 	</div>
 
 	<!-- Emoji Search Section -->

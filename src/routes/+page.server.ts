@@ -28,7 +28,6 @@ Return only a single mantra text with it's words separated by spaces, no additio
 			messages: [{ role: 'user', content: prompt }], stop: ['.']
 		});
 
-		console.log('Mistral response:', response);
 		if (!response.choices) {
 			throw new Error('No response from Mistral');
 		}
@@ -41,7 +40,7 @@ Return only a single mantra text with it's words separated by spaces, no additio
 
 		// If we hit rate limit or any other error, use a random mantra from our collection
 		if (error.status === 429) {
-			console.log('Rate limit reached, using fallback mantra');
+			console.error('Rate limit reached, using fallback mantra');
 		}
 
 		// Get a random mantra from our collection

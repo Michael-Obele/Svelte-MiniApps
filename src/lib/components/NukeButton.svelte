@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Trash2 } from 'lucide-svelte';
+    import { Bomb } from 'lucide-svelte';
     import { toast } from 'svelte-sonner';
     import { Button } from './ui/button';
     import { cn } from '$lib/utils';
@@ -63,5 +63,5 @@
     onclick={nukeData}
 >
 <span class="sr-only">Reset App & Nuke Data</span>
-    <Trash2 class="h-4 w-4" />
+    <Bomb class="h-4 w-4" />
 </Button>
