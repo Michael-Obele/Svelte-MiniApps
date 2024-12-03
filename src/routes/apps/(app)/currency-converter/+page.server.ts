@@ -117,12 +117,15 @@ export const actions: Actions = {
 					}
 
 					console.log(`Attempt ${attempts + 1}/${maxAttempts} to fetch rates`);
+					console.log('Request URL:', `https://www.google.com/search?q=${currencyAmount}+${currencyFrom}+to+${currencyTo}+&hl=en`);
+					const selectedUserAgent = getRandomUserAgent();
+					console.log('Using User-Agent:', selectedUserAgent);
 					
 					const response = await fetchWithTimeout(
 						`https://www.google.com/search?q=${currencyAmount}+${currencyFrom}+to+${currencyTo}+&hl=en`,
 						{
 							headers: {
-								'User-Agent': getRandomUserAgent(),
+								'User-Agent': selectedUserAgent,
 								'Accept': 'text/html',
 								'Accept-Language': 'en-US,en;q=0.9'
 							}
@@ -130,69 +133,79 @@ export const actions: Actions = {
 						7000
 					);
 
+					console.log('Response status:', response.status);
+					console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
 					if (!response.ok) {
 						// Special handling for rate limiting
 						if (response.status === 429) {
-							// Get retry-after header or use default backoff
 							const retryAfter = response.headers.get('retry-after');
 							const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : Math.min(1000 * Math.pow(2, attempts), 10000);
-							console.log(`Rate limited. Waiting ${waitTime}ms before retry...`);
+							console.log(`Rate limited (429). Retry-After header: ${retryAfter}, Waiting: ${waitTime}ms`);
 							await new Promise(resolve => setTimeout(resolve, waitTime));
 							attempts++;
 							continue;
 						}
-						throw new Error(`HTTP error! status: ${response.status}`);
+						console.error(`HTTP error! Status: ${response.status}, Status Text: ${response.statusText}`);
+						throw new Error(`HTTP error! status: ${response.status}, statusText: ${response.statusText}`);
 					}
 
 					const body = await response.text();
-					console.log('Response received, parsing data...');
+					console.log('Response received, content length:', body.length);
+					console.log('First 1000 characters of response:', body.substring(0, 1000));
 					
 					const $ = cheerio.load(body);
 					
-					// Debug the HTML content
-					console.log('HTML Content:', body.substring(0, 500)); // Log first 500 chars of response
-					
 					// Try multiple possible selectors
 					let rate: string | undefined;
+					let foundSelector: string | undefined;
 					
 					// Try different selectors that might contain the rate
 					const possibleSelectors = [
-						'.SwHCTb', // Common selector for currency conversion
-						'.DFlfde', // Alternative selector
-						'.iBp4i',  // Previous selector
+						'.SwHCTb',    // Common selector for currency conversion
+						'.DFlfde',    // Alternative selector
+						'.iBp4i',     // Previous selector
 						'[data-value]', // Generic attribute selector
-						'.dDoNo' // Another possible selector
+						'.dDoNo',     // Another possible selector
+						'.BNeawe.iBp4i.AP7Wnd', // Additional selector
+						'.BNeawe.tAd8D.AP7Wnd'  // Additional selector
 					];
 					
+					console.log('Attempting to find rate with selectors...');
 					for (const selector of possibleSelectors) {
 						const element = $(selector);
-						console.log(`Trying selector "${selector}":`, element.text());
-						if (element.length > 0) {
-							const text = element.text().trim();
-							if (text) {
-								rate = text.split(' ')[0];
-								console.log(`Found rate with selector "${selector}":`, rate);
-								break;
-							}
+						const text = element.text().trim();
+						console.log(`Selector "${selector}":`, { found: element.length > 0, text });
+						if (element.length > 0 && text) {
+							rate = text.split(' ')[0];
+							foundSelector = selector;
+							console.log(`Found rate "${rate}" with selector "${selector}"`);
+							break;
 						}
 					}
 
 					if (!rate) {
-						// If no rate found, try a more general approach
+						console.log('No rate found with selectors, trying regex approach...');
 						const bodyText = $('body').text();
+						console.log('Body text sample:', bodyText.substring(0, 200));
 						const matches = bodyText.match(/(\d+\.?\d*)\s*[A-Z]{3}/);
 						if (matches) {
 							rate = matches[1];
-							console.log('Found rate using regex:', rate);
+							console.log('Found rate using regex:', rate, 'Full match:', matches[0]);
 						}
 					}
 
 					if (!rate) {
 						console.error('No rate found in response');
+						console.log('Available text content:', $('body').text().substring(0, 500));
 						throw new Error('Rate information not found');
 					}
 
-					console.log('Successfully parsed rate:', rate);
+					console.log('Successfully parsed rate:', {
+						rate,
+						foundWith: foundSelector || 'regex',
+						currencyPair: `${currencyFrom}-${currencyTo}`
+					});
 
 					// Cache the successful result
 					rateCache.set(cacheKey, {
@@ -213,13 +226,22 @@ export const actions: Actions = {
 						}
 					};
 				} catch (error) {
-					console.error(`Attempt ${attempts + 1} failed:`, error);
+					console.error(`Attempt ${attempts + 1} failed:`, {
+						error,
+						message: error instanceof Error ? error.message : 'Unknown error',
+						stack: error instanceof Error ? error.stack : undefined,
+						type: error instanceof Error ? error.constructor.name : typeof error
+					});
 					lastError = error as Error;
 					attempts++;
 					
 					if (attempts < maxAttempts) {
 						const delay = 1000 * attempts;
-						console.log(`Retrying in ${delay}ms...`);
+						console.log(`Retrying in ${delay}ms...`, {
+							attemptNumber: attempts,
+							maxAttempts,
+							nextDelayMs: delay
+						});
 						await new Promise(resolve => setTimeout(resolve, delay));
 					}
 				}
