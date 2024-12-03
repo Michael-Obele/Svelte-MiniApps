@@ -200,7 +200,7 @@
 								type="text"
 								id="currencyAmount"
 								name="currencyAmount"
-								pattern="[0-9]*\.?[0-9]*"
+								pattern="[0-9]*[.,]?[0-9]*"
 								onchange={(e) => formatNumberInput(e)}
 								value={''}
 								placeholder="Enter amount"
