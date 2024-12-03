@@ -57,15 +57,30 @@
 	}
 
 	function formatNumberInput(e: Event) {
-		const target = e.target as HTMLInputElement; // Type assertion for e.target
-
-		// Get the input value and remove any existing commas
-		let value = target.value.replace(/,/g, '');
-
-		// Format the number with commas as thousands separators
-		value = Number(value).toLocaleString();
-
-		// Update the input value with the formatted number
+		const target = e.target as HTMLInputElement;
+		
+		// First, remove any non-numeric characters except dots and commas
+		let value = target.value.replace(/[^\d.,]/g, '');
+		
+		// Replace multiple dots with a single dot and ensure only one decimal point
+		value = value.replace(/\.+/g, '.');
+		const parts = value.split('.');
+		if (parts.length > 2) {
+			value = parts[0] + '.' + parts.slice(1).join('');
+		}
+		
+		// Remove commas and format with proper thousand separators
+		value = value.replace(/,/g, '');
+		if (value) {
+			const [integerPart, decimalPart] = value.split('.');
+			// Format integer part with thousand separators
+			let formattedInteger = Number(integerPart).toLocaleString('en-US');
+			
+			// Add back decimal part if it exists
+			value = decimalPart ? `${formattedInteger}.${decimalPart}` : formattedInteger;
+		}
+		
+		// Update the input value
 		target.value = value;
 	}
 </script>
@@ -200,7 +215,6 @@
 								type="text"
 								id="currencyAmount"
 								name="currencyAmount"
-								pattern="[0-9]*[.,]?[0-9]*"
 								onchange={(e) => formatNumberInput(e)}
 								value={''}
 								placeholder="Enter amount"

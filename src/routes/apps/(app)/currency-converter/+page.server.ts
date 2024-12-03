@@ -23,7 +23,28 @@ async function fetchWithTimeout(
 // Validation constants
 const CURRENCY_CODE_REGEX = /^[A-Z]{3}$/;
 const MAX_AMOUNT = 999999999;
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
+// Cache configuration
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+const rateCache = new Map<string, { rate: string; timestamp: number }>();
+
+// Multiple User-Agent strings to rotate
+const USER_AGENTS = [
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15'
+];
+
+// Get a random User-Agent
+function getRandomUserAgent(): string {
+	return USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
+}
+
+// Generate cache key
+function getCacheKey(from: string, to: string): string {
+	return `${from}-${to}`;
+}
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -62,6 +83,26 @@ export const actions: Actions = {
 				});
 			}
 
+			// Check cache first
+			const cacheKey = getCacheKey(currencyFrom, currencyTo);
+			const cachedResult = rateCache.get(cacheKey);
+			
+			if (cachedResult && Date.now() - cachedResult.timestamp < CACHE_DURATION) {
+				console.log('Using cached rate');
+				return {
+					success: true,
+					currencyFrom,
+					currencyTo,
+					currencyAmount,
+					status: 200,
+					body: {
+						rate: cachedResult.rate,
+						timestamp: new Date().toISOString(),
+						cached: true
+					}
+				};
+			}
+
 			// Fetch exchange rate with retry mechanism
 			let attempts = 0;
 			const maxAttempts = 3;
@@ -69,13 +110,19 @@ export const actions: Actions = {
 
 			while (attempts < maxAttempts) {
 				try {
+					// Add random delay between attempts (1-3 seconds)
+					if (attempts > 0) {
+						const randomDelay = Math.floor(Math.random() * 2000) + 1000;
+						await new Promise(resolve => setTimeout(resolve, randomDelay));
+					}
+
 					console.log(`Attempt ${attempts + 1}/${maxAttempts} to fetch rates`);
 					
 					const response = await fetchWithTimeout(
 						`https://www.google.com/search?q=${currencyAmount}+${currencyFrom}+to+${currencyTo}+&hl=en`,
 						{
 							headers: {
-								'User-Agent': USER_AGENT,
+								'User-Agent': getRandomUserAgent(),
 								'Accept': 'text/html',
 								'Accept-Language': 'en-US,en;q=0.9'
 							}
@@ -84,6 +131,16 @@ export const actions: Actions = {
 					);
 
 					if (!response.ok) {
+						// Special handling for rate limiting
+						if (response.status === 429) {
+							// Get retry-after header or use default backoff
+							const retryAfter = response.headers.get('retry-after');
+							const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : Math.min(1000 * Math.pow(2, attempts), 10000);
+							console.log(`Rate limited. Waiting ${waitTime}ms before retry...`);
+							await new Promise(resolve => setTimeout(resolve, waitTime));
+							attempts++;
+							continue;
+						}
 						throw new Error(`HTTP error! status: ${response.status}`);
 					}
 
@@ -137,6 +194,12 @@ export const actions: Actions = {
 
 					console.log('Successfully parsed rate:', rate);
 
+					// Cache the successful result
+					rateCache.set(cacheKey, {
+						rate,
+						timestamp: Date.now()
+					});
+
 					return {
 						success: true,
 						currencyFrom,
@@ -145,7 +208,8 @@ export const actions: Actions = {
 						status: 200,
 						body: {
 							rate,
-							timestamp: new Date().toISOString()
+							timestamp: new Date().toISOString(),
+							cached: false
 						}
 					};
 				} catch (error) {
@@ -169,16 +233,24 @@ export const actions: Actions = {
 				if (lastError.message === 'Request timed out') {
 					errorMessage = 'The request timed out. Please try again.';
 				} else if (lastError.message.includes('HTTP error')) {
-					errorMessage = 'The currency service is temporarily unavailable.';
+					if (lastError.message.includes('429')) {
+						errorMessage = 'Service is temporarily unavailable due to too many requests. Please try again in a few minutes.';
+					} else {
+						errorMessage = 'The currency service is temporarily unavailable.';
+					}
 				} else if (lastError.message === 'Rate information not found') {
 					errorMessage = 'Invalid currency pair or rate not available.';
 				}
+			} else {
+				// Handle case when lastError is null
+				errorMessage = 'Unable to connect to the currency service. Please check your internet connection and try again.';
 			}
 
 			return fail(500, {
 				success: false,
 				error: errorMessage,
-				values: { currencyFrom, currencyTo, currencyAmount }
+				values: { currencyFrom, currencyTo, currencyAmount },
+				status: 500
 			});
 
 		} catch (error) {
