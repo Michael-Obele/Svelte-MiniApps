@@ -1,13 +1,10 @@
 <script lang="ts">
-	import { QRCodeImage } from 'svelte-qrcode-image';
 	import * as htmlToImage from 'html-to-image';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-	import { Label } from '$lib/components/ui/label';
 	import TextInput from './TextInput.svelte';
 	import ContactInput from './ContactInput.svelte';
 	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '$lib/components/ui/tabs';
+	import QRCodeDisplay from './QRCodeDisplay.svelte';
 
 	let inputText = $state('');
 	let selectedTab = $state('text');
@@ -118,44 +115,7 @@
 
 			{#if inputText}
 				<div class="mt-6 flex flex-col items-center justify-center space-y-4">
-					<AlertDialog.Root>
-						<AlertDialog.Trigger>
-							<div class="cursor-pointer rounded-lg border p-4 shadow-sm transition-all hover:shadow-md">
-								<QRCodeImage
-									text={inputText}
-									displayID="qr-code-image"
-									displayClass="h-64 w-64 rounded-md"
-								/>
-							</div>
-						</AlertDialog.Trigger>
-						<AlertDialog.Content>
-							<AlertDialog.Header>
-								<AlertDialog.Title>Your QR Code</AlertDialog.Title>
-								<AlertDialog.Description>
-									<div class="mt-4 flex justify-center">
-										<QRCodeImage
-											text={inputText}
-											displayClass="h-96 w-96 rounded-md"
-										/>
-									</div>
-								</AlertDialog.Description>
-							</AlertDialog.Header>
-							<AlertDialog.Footer>
-								<AlertDialog.Cancel>Close</AlertDialog.Cancel>
-								<Button onclick={saveQRCode} variant="default">
-									Download
-								</Button>
-							</AlertDialog.Footer>
-						</AlertDialog.Content>
-					</AlertDialog.Root>
-
-					<Button
-						onclick={saveQRCode}
-						size="lg"
-						class="w-full max-w-sm"
-					>
-						Download QR Code
-					</Button>
+					<QRCodeDisplay {inputText} {saveQRCode} />
 				</div>
 			{/if}
 		</div>
