@@ -133,21 +133,21 @@ async function getGoogleExchangeRate(currencyFrom: string, currencyTo: string, c
                 throw new Error('Rate information not found');
             }
 
-            // Clean and parse the rate
-            const cleanRate = rate.replace(/[^\d.,]/g, '').replace(',', '.');
-            const numericRate = parseFloat(cleanRate);
+            // Clean and parse the rate - this is actually the converted amount
+            const cleanAmount = rate.replace(/[^\d.,]/g, '').replace(',', '.');
+            const convertedAmount = parseFloat(cleanAmount);
             
-            if (isNaN(numericRate)) {
-                throw new Error('Invalid rate format');
+            if (isNaN(convertedAmount)) {
+                throw new Error('Invalid amount format');
             }
 
-            // Calculate the converted amount
-            const convertedAmount = (currencyAmount * numericRate).toFixed(2);
+            // Calculate the actual rate by dividing the converted amount by the original amount
+            const actualRate = (convertedAmount / currencyAmount).toFixed(6);
 
             return { 
                 success: true, 
-                rate: numericRate.toString(),
-                convertedAmount: convertedAmount
+                rate: actualRate,
+                convertedAmount: convertedAmount.toString() // Use the parsed number as string
             };
         } catch (error) {
             console.error(`[Google] Attempt ${attempts + 1} failed:`, error);

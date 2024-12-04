@@ -4,11 +4,12 @@
 	import type { ActionData, SubmitFunction } from './$types';
 	import { _currencies } from './+page';
 	import * as Alert from "$lib/components/ui/alert/index.js";
-	import {AlertCircle} from 'lucide-svelte';
+	import {AlertCircle, ArrowLeftRight} from 'lucide-svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
 	import Switch from '$lib/components/ui/switch/switch.svelte';
 	import Label from '@/components/ui/label/label.svelte';
+	import { Button } from '@/components/ui/button';
 
 	interface Props {
 		data: any;
@@ -185,6 +186,22 @@
 									</datalist>
 								</div>
 							</div>
+
+							<!-- Swap Button -->
+							<Button
+								type="button"
+								class="mt-5 h-10 w-10 rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+								onclick={() => {
+									const fromInput = document.getElementById('currencyFrom') as HTMLInputElement;
+									const toInput = document.getElementById('currencyTo') as HTMLInputElement;
+									const fromValue = fromInput.value;
+									fromInput.value = toInput.value;
+									toInput.value = fromValue;
+								}}
+								aria-label="Swap currencies"
+							>
+								<ArrowLeftRight class="h-5 w-5" />
+							</Button>
 
 							<!-- To Currency -->
 							<div class="w-full max-w-[160px] space-y-2">
