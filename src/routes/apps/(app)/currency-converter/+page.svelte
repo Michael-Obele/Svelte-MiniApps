@@ -3,10 +3,12 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData, SubmitFunction } from './$types';
 	import { _currencies } from './+page';
+	import * as Alert from "$lib/components/ui/alert/index.js";
+	import {AlertCircle} from 'lucide-svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
-
-
+	import Switch from '$lib/components/ui/switch/switch.svelte';
+	import Label from '@/components/ui/label/label.svelte';
 
 	interface Props {
 		data: any;
@@ -15,39 +17,47 @@
 
 	let { data, form = $bindable() }: Props = $props();
 	let isLoading = $state(false);
+	let forceRefresh = $state(false);
+
 	interface FormActionData {
 		status?: number;
+		error?: string;
+		currencyFrom?: string;
+		currencyTo?: string;
+		currencyAmount?: number;
 		body?: {
 			error?: string;
-			rate?: string;
+			rate: number;
+			convertedAmount: number;
+			cached?: boolean;
+			cacheAge?: number;
 		};
 	}
+
 	let currencyList = data.currencyList;
 
 	// Start form submission process.
 	const handleSubmit: SubmitFunction = () => {
 		isLoading = true; // Indicate submission is in progress.
-		toast.loading('Submitting...'); // Show loading toast.
+		toast.loading('Converting currencies...'); // Show loading toast.
 		if (form) {
 			form.status = 0;
 		}
 
 		return async ({ update, result }) => {
-			if (result.type === 'failure') {
-				toast.dismiss(); // Dismiss all toasts.
-				toast.error('Error'); // Show error toast.
-			} else {
-				toast.dismiss(); // Dismiss all toasts.
-				toast.success('Success', {
-					action: {
-						label: 'OK',
-						onClick: () => toast.dismiss()
-					}
-				}); // Show success toast.
-			}
-
 			await update(); // Wait for update to finish.
 			isLoading = false; // Submission process ends.
+			toast.dismiss(); // Dismiss loading toast.
+
+			console.log('[Frontend] Form data after update:', form);
+			console.log('[Frontend] Result after update:', result);
+
+			// Check form status first as it represents the final state
+			if (form?.status === 200) {
+				toast.success('Successfully converted currencies');
+			} else if (form?.error) {
+				toast.error(form.error);
+			} 
 		};
 	};
 
@@ -205,7 +215,7 @@
 						</div>
 
 						<!-- Amount -->
-						<div class="w-full max-w-[200px] space-y-2">
+						<div class="w-full max-w-[300px] space-y-2">
 							<label
 								for="currencyAmount"
 								class="block text-center text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -213,62 +223,111 @@
 							>
 							<Input
 								type="text"
-								id="currencyAmount"
 								name="currencyAmount"
-								onchange={(e) => formatNumberInput(e)}
-								value={''}
-								placeholder="Enter amount"
+								id="currencyAmount"
 								required
+								value={form?.currencyAmount ?? ''}
+								placeholder="Enter amount"
+								oninput={formatNumberInput}
 								class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-center text-gray-900 shadow-sm transition-colors focus:border-[#F03E3E] focus:ring-2 focus:ring-[#F03E3E] dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-[#FA5252] dark:focus:ring-[#FA5252]"
 							/>
 						</div>
+
+						<!-- Force Refresh Switch -->
+						<div class="flex items-center space-x-2">
+							<input type="hidden" name="forceRefresh" value={forceRefresh ? 'true' : 'false'}>
+							<div class="flex items-center space-x-2">
+								<Switch 
+									bind:checked={forceRefresh}
+									id="force-refresh"
+								/>
+								<Label
+									for="force-refresh"
+									class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+								>
+									Force Fresh Rate
+								</Label>
+							</div>
+						</div>
+						<Alert.Root variant="destructive" class="mt-2 max-w-lg {forceRefresh ? '' : 'hidden'}">
+							<AlertCircle class="h-4 w-4" />
+							<Alert.Description>
+								Please use Force Fresh Rate sparingly. The cache is only active for 5 minutes to ensure rate accuracy.
+							</Alert.Description>
+						</Alert.Root>
 					</div>
 
 					<button
 						type="submit"
-						disabled={isLoading}
-						class="group relative mx-auto w-fit overflow-hidden rounded-xl bg-gradient-to-br from-[#F03E3E] to-[#E03131] px-8 py-3 text-center text-sm font-medium text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-[#E03131] hover:to-[#C92A2A] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#F03E3E] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 dark:from-[#FA5252] dark:to-[#F03E3E] dark:hover:from-[#F03E3E] dark:hover:to-[#E03131]"
+						class="mx-auto inline-flex w-fit items-center justify-center rounded-lg border border-transparent bg-[#F03E3E] px-8 py-3 text-base font-medium text-white shadow-sm hover:bg-[#e03b3b] focus:outline-none focus:ring-2 focus:ring-[#F03E3E] focus:ring-offset-2"
 					>
-						<span class="relative z-10 flex items-center justify-center gap-2">
-							{#if isLoading}
-								<span class="inline-flex items-center gap-2">
-									<span class="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent shadow-sm"></span>
-									Converting...
-								</span>
-							{:else}
-								<span class="transform transition-transform duration-300 group-hover:scale-105">
-									Convert Currency
-								</span>
-							{/if}
-						</span>
-						<div class="absolute inset-0 -z-10 bg-gradient-to-tr from-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+						{#if isLoading}
+							<svg
+								class="mr-3 h-5 w-5 animate-spin text-white"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+							>
+								<circle
+									class="opacity-25"
+									cx="12"
+									cy="12"
+									r="10"
+									stroke="currentColor"
+									stroke-width="4"
+								/>
+								<path
+									class="opacity-75"
+									fill="currentColor"
+									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+								/>
+							</svg>
+							Converting...
+						{:else}
+							Convert
+						{/if}
 					</button>
+
 				</form>
 
-				<!-- Result Section -->
-				{#if form?.status === 200}
+				{#if form?.status === 200 && form?.body?.convertedAmount !== undefined && form?.body?.rate !== undefined}
 					<div class="mt-8 rounded-lg bg-gray-50 p-6 shadow-sm dark:bg-gray-800/50">
 						<div class="space-y-3 text-center">
-							<p class="text-lg font-medium text-[#F03E3E] dark:text-[#FA5252]">
-								Conversion Result
-							</p>
-							<div class="space-y-2">
-								<p class="text-gray-700 dark:text-gray-300">
-									<span class="font-medium">{form?.currencyAmount.toLocaleString()}</span>
-									<span class="ml-1">{getCurrencyLabel(form?.currencyFrom)}</span>
+							<div class="flex flex-col items-center justify-center space-y-2">
+								<p class="text-lg font-medium text-gray-900 dark:text-white">
+									{Number(form?.currencyAmount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {getCurrencyLabel(form?.currencyFrom)} = {Number(form.body.convertedAmount).toLocaleString(
+										'en-US',
+										{
+											minimumFractionDigits: 2,
+											maximumFractionDigits: 2
+										}
+									)} {getCurrencyLabel(form?.currencyTo)}
 								</p>
-								<p class="text-2xl font-bold text-[#F03E3E] dark:text-[#FA5252]">
-									<span>{form?.body?.rate}</span>
-									<span class="ml-1">{getCurrencyLabel(form?.currencyTo)}</span>
+								<p class="text-sm text-gray-500 dark:text-gray-400">
+									1 {getCurrencyLabel(form?.currencyFrom)} = {Number(form.body.rate).toLocaleString(
+										'en-US',
+										{
+											minimumFractionDigits: 4,
+											maximumFractionDigits: 4
+										}
+									)} {getCurrencyLabel(form?.currencyTo)}
+									{#if form?.body?.cached}
+										<span class="ml-2 text-xs text-gray-500">
+											(Cached {form.body.cacheAge !== undefined 
+												? `${Math.floor(form.body.cacheAge / 60)}m ${form.body.cacheAge % 60}s ago`
+												: 'just now'})
+										</span>
+									{/if}
 								</p>
 							</div>
 						</div>
 					</div>
-				{:else if form?.status === 500}
-					<div class="mt-8 rounded-lg bg-red-50 p-6 text-center shadow-sm dark:bg-red-900/10">
-						<p class="text-sm text-red-600 dark:text-red-400">
-							An error occurred: {form?.body?.error}
-						</p>
+				{:else if form?.error}
+					<div class="mt-8 rounded-lg bg-red-50 p-6 shadow-sm dark:bg-red-900/20">
+						<div class="flex items-center justify-center gap-2 text-red-700 dark:text-red-400">
+							<AlertCircle class="h-5 w-5" />
+							<p>{form.error}</p>
+						</div>
 					</div>
 				{/if}
 			</div>

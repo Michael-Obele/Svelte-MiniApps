@@ -12,7 +12,7 @@ async function generateDailyMantra(): Promise<string> {
 Rules:
 1. Start with one of these action words (randomly choose) or something like these: dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark
 2. Make it feel fresh and unconventional, avoiding common phrases or repetitions
-3. Focus on joy, growth, or self-discovery
+3. Focus on joy, growth, or self-discovery and humor or playfulness.
 4. Use vivid, specific words instead of generic ones
 5. Keep the tone casual and conversational
 6. Each generation should feel distinctly different from previous ones, be as unique as possible
