@@ -1,17 +1,23 @@
 {
   "name": "Svelte MiniApps",
   "short_name": "MiniApps",
-  "description": "A collection of mini applications built with SvelteKit",
+  "description": "A collection of mini applications built with SvelteKit, featuring tools for productivity, finance, and utilities",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "any",
   "display_override": ["window-controls-overlay"],
   "lang": "en-US",
   "dir": "ltr",
-  "categories": ["utilities", "productivity"],
+  "categories": [
+    "utilities",
+    "productivity",
+    "finance",
+    "tools",
+    "education"
+  ],
   "protocol_handlers": [
     {
       "protocol": "web+miniapps",
@@ -60,6 +66,21 @@
       "description": "View all mini applications"
     },
     {
+      "name": "Budget Tracker",
+      "url": "/apps/budget-tracker",
+      "description": "Manage your finances"
+    },
+    {
+      "name": "Currency Converter",
+      "url": "/apps/currency-converter",
+      "description": "Convert between currencies"
+    },
+    {
+      "name": "QR Code Generator",
+      "url": "/apps/qr-code-generator",
+      "description": "Generate QR codes"
+    },
+    {
       "name": "Profile",
       "url": "/profile",
       "description": "View your profile"
@@ -73,5 +94,11 @@
       "text": "text",
       "url": "url"
     }
-  }
+  },
+  "related_applications": [
+    {
+      "platform": "chrome_web_store",
+      "url": "https://svelte-mini-apps.netlify.app/manifest.json"
+    }
+  ]
 }
