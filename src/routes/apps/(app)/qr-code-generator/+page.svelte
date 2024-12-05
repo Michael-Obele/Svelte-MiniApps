@@ -108,7 +108,7 @@
 						<ContactInput bind:contactInfo={contactInfo} />
 					</Tabs.Content>
 					<Tabs.Content value="social">
-						<SocialLinks bind:socialLinks={socialLinks} addSocialLink={addSocialLink} removeSocialLink={removeSocialLink} />
+						<SocialLinks bind:socialLinks={socialLinks} {addSocialLink} {removeSocialLink}  />
 					</Tabs.Content>
 				</div>
 			</Tabs.Root>

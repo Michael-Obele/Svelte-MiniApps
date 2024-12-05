@@ -39,4 +39,10 @@
   <Button variant="outline" class="w-full" onclick={addSocialLink}>
     Add Another Link
   </Button>
+  <!-- {#if inputText}
+     <form action="" method="POST">
+       <input type="hidden" name="socialLinks" value={JSON.stringify(socialLinks)} />
+       <Button variant="default" type="submit">Create Socail Links Page</Button>
+     </form>
+  {/if} -->
 </div>
