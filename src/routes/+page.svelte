@@ -141,7 +141,7 @@
 </header>
 
 <!-- Hero -->
-<div class="pb-5 xl:px-10">
+<div id="hero" class="pb-5 xl:px-10">
 	<section class="w-full py-8 md:py-14 lg:py-24">
 		<div class="px-4 xl:container md:px-6">
 			<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -179,7 +179,7 @@
 						<a href="/apps" class="flex items-center">
 							Start Exploring
 							<lord-icon
-								target="div"
+								target="#hero"
 								src={arrow}
 								colors="primary:white,secondary:green"
 								trigger="loop-on-hover"
