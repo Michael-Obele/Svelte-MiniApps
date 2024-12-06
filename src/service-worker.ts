@@ -6,6 +6,13 @@ import {generateOfflineHtml} from './lib/utility/offlineTemplate';
 
 declare const self: ServiceWorkerGlobalScope;
 
+// Debug logging
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'DEBUG') {
+    console.log('[Service Worker Debug]', event.data);
+  }
+});
+
 const CACHE_NAME = `cache-${version}`;
 const OFFLINE_URL = '/offline';
 const OFFLINE_PAGE = generateOfflineHtml();
@@ -95,14 +102,20 @@ function isPageRequest(request: Request): boolean {
 // Helper function to check if request is an API request
 function isApiRequest(request: Request): boolean {
   const url = new URL(request.url);
-  return url.pathname.includes('/api/') || 
+  return url.pathname.startsWith('/api/') || 
          (request.headers.get('Accept') || '').includes('application/json');
+}
+
+// Helper function to check if request is for offline page
+function isOfflinePage(request: Request): boolean {
+  const url = new URL(request.url);
+  return url.pathname === OFFLINE_URL;
 }
 
 // Helper function to check if cache is stale
 function isCacheStale(response: Response): boolean {
   const dateHeader = response.headers.get('date');
-  if (!dateHeader) return true;
+  if (!dateHeader) return false; // Changed to false to prefer cache when date is unknown
   
   const age = Date.now() - new Date(dateHeader).getTime();
   return age > MAX_AGE;
@@ -162,44 +175,57 @@ self.addEventListener('fetch', (event: FetchEvent) => {
         // Try the cache first
         const cachedResponse = await cache.match(event.request);
         
-        // Start fetching from network in background
-        const networkPromise = fetch(event.request.clone()).then(async response => {
-          if (response.ok && !isApiRequest(event.request)) {
-            try {
-              await cache.put(event.request, response.clone());
-            } catch (error) {
-              console.warn('[Service Worker] Failed to cache:', error);
+        // For offline page, use network-first strategy with aggressive checking
+        if (isOfflinePage(event.request)) {
+          try {
+            const networkResponse = await fetch(event.request.clone());
+            if (networkResponse.ok) {
+              await cache.put(event.request, networkResponse.clone());
+              return networkResponse;
             }
+          } catch (error) {
+            if (cachedResponse) return cachedResponse;
+            throw error;
           }
-          return response;
-        }).catch(error => {
-          console.warn('[Service Worker] Network fetch failed:', error);
-          throw error;
-        });
+        }
+        
+        // For API requests, use network-first with cache fallback
+        if (isApiRequest(event.request)) {
+          try {
+            const networkResponse = await fetch(event.request.clone());
+            if (networkResponse.ok) {
+              await cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            }
+          } catch (error) {
+            if (cachedResponse) return cachedResponse;
+            throw error;
+          }
+        }
 
-        // If we have a cached response
+        // For all other requests, use cache-first strategy
         if (cachedResponse) {
-          // If it's an API request or the cache is stale, try network first
-          if (isApiRequest(event.request) || isCacheStale(cachedResponse)) {
-            try {
-              return await networkPromise;
-            } catch (error) {
-              console.log('[Service Worker] Falling back to cache for:', event.request.url);
-              return cachedResponse;
-            }
+          // Only fetch from network if cache is stale, and do it in the background
+          if (isCacheStale(cachedResponse)) {
+            fetch(event.request.clone())
+              .then(async response => {
+                if (response.ok) {
+                  await cache.put(event.request, response.clone());
+                }
+              })
+              .catch(error => console.warn('[Service Worker] Background fetch failed:', error));
           }
-          // Otherwise return cached response immediately
           return cachedResponse;
         }
 
         // If no cache, try network
-        try {
-          return await networkPromise;
-        } catch (error) {
-          // If network fails and we have no cache, return offline response
-          console.log('[Service Worker] No cache available, returning offline response for:', event.request.url);
-          return generateOfflineResponse(event.request);
+        const networkResponse = await fetch(event.request.clone());
+        if (networkResponse.ok) {
+          await cache.put(event.request, networkResponse.clone());
+          return networkResponse;
         }
+        
+        throw new Error('No cache or network response available');
       } catch (error) {
         console.error('[Service Worker] Fetch handler error:', error);
         return generateOfflineResponse(event.request);
