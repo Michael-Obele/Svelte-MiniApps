@@ -12,7 +12,7 @@ const OFFLINE_PAGE = generateOfflineHtml();
 const ASSETS = [...build, ...files];
 
 // Maximum age of cached responses
-const MAX_AGE = 24 * 60 * 60 * 1000; // 24 hours
+const MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 console.log('[Service Worker] Initializing with:', {
   version,
@@ -24,8 +24,8 @@ console.log('[Service Worker] Initializing with:', {
 self.addEventListener('install', (event: ExtendableEvent) => {
   console.log('[Service Worker] Installing...');
   
-  // Skip waiting to activate the new service worker immediately
-  self.skipWaiting();
+  // Don't skip waiting to avoid sudden reloads
+  // self.skipWaiting();
   
   event.waitUntil(
     (async () => {
@@ -61,18 +61,19 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 
 // Activate the new service worker and remove old caches
 self.addEventListener('activate', (event: ExtendableEvent) => {
-  console.log('[Service Worker] Activating...');
   event.waitUntil(
     (async () => {
-      // Delete old caches
+      // Clean up old caches
       const keys = await caches.keys();
       await Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
       );
-
-      // Take control of all clients immediately
+      
+      // Claim clients only after cleanup
       await self.clients.claim();
       console.log('[Service Worker] Activation complete');
     })()

@@ -6,11 +6,9 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy, X } from 'lucide-svelte';
-	import { getContext } from 'svelte';
-	import type { UserContext } from '$lib/types';
 	import { userContext } from '@/utils';
 	import { beforeNavigate } from '$app/navigation';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
 	
 
 
