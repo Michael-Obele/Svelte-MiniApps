@@ -65,6 +65,7 @@ async function getGoogleExchangeRate(currencyFrom: string, currencyTo: string, c
             }
 
             console.log(`[Google] Attempt ${attempts + 1}/${maxAttempts} to fetch rates`);
+            console.log(`[Google] Attempting to fetch conversion for ${currencyAmount} ${currencyFrom} to ${currencyTo}`);
             const selectedUserAgent = getRandomUserAgent();
             
             const response = await fetchWithTimeout(
@@ -96,7 +97,7 @@ async function getGoogleExchangeRate(currencyFrom: string, currencyTo: string, c
             const body = await response.text();
             const $ = cheerio.load(body);
             
-            let rate: string | undefined;
+            let convertedValue: string | undefined;
             let foundSelector: string | undefined;
             
             const possibleSelectors = [
@@ -113,41 +114,49 @@ async function getGoogleExchangeRate(currencyFrom: string, currencyTo: string, c
                 const element = $(selector);
                 const text = element.text().trim();
                 if (element.length > 0 && text) {
-                    rate = text.split(' ')[0];
+                    convertedValue = text.split(' ')[0];
                     foundSelector = selector;
-                    console.log(`[Google] Found rate "${rate}" with selector "${selector}"`);
+                    console.log(`[Google] Found converted value "${text}" with selector "${selector}"`);
                     break;
                 }
             }
 
-            if (!rate) {
+            if (!convertedValue) {
                 const bodyText = $('body').text();
                 const matches = bodyText.match(/(\d+\.?\d*)\s*[A-Z]{3}/);
                 if (matches) {
-                    rate = matches[1];
-                    console.log('[Google] Found rate using regex:', rate);
+                    convertedValue = matches[1];
+                    console.log('[Google] Found converted value using regex:', convertedValue);
                 }
             }
 
-            if (!rate) {
-                throw new Error('Rate information not found');
+            if (!convertedValue) {
+                throw new Error('Conversion information not found');
             }
 
-            // Clean and parse the rate - this is actually the converted amount
-            const cleanAmount = rate.replace(/[^\d.,]/g, '').replace(',', '.');
-            const convertedAmount = parseFloat(cleanAmount);
+            // Clean and format the values
+            function formatNumber(value: string): string {
+                // Remove all non-numeric characters except decimal point, and ensure only one decimal point
+                return value.replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '');
+            }
+
+            // Format both values before calculation
+            const cleanConvertedAmount = formatNumber(convertedValue);
+            const cleanInputAmount = formatNumber(currencyAmount.toString());
+
+            // Calculate rate using clean numbers
+            const rate = String(Number(cleanConvertedAmount) / Number(cleanInputAmount));
             
-            if (isNaN(convertedAmount)) {
-                throw new Error('Invalid amount format');
-            }
+            // Format the final output
+            const convertedAmount = cleanConvertedAmount;
 
-            // Calculate the actual rate by dividing the converted amount by the original amount
-            const actualRate = (convertedAmount / currencyAmount).toFixed(6);
+            console.log(`[Google] Conversion result: ${currencyAmount} ${currencyFrom} = ${convertedAmount} ${currencyTo}`);
+            console.log(`[Google] Calculated rate: ${rate} ${currencyTo} per ${currencyFrom}`);
 
             return { 
                 success: true, 
-                rate: actualRate,
-                convertedAmount: convertedAmount.toString() // Use the parsed number as string
+                rate,
+                convertedAmount
             };
         } catch (error) {
             console.error(`[Google] Attempt ${attempts + 1} failed:`, error);
@@ -278,6 +287,8 @@ export const actions: Actions = {
                 console.log('Google scraping failed, trying Exchange Rate API');
                 result = await getExchangeRateAPI(currencyFrom, currencyTo, currencyAmount);
             }
+            
+           
 
             if (result.success && result.rate && result.convertedAmount) {
                 // Cache the successful result (only cache the rate, not the converted amount)
