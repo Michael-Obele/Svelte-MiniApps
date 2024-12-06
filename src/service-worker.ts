@@ -6,20 +6,21 @@ import {generateOfflineHtml} from './lib/utility/offlineTemplate';
 
 declare const self: ServiceWorkerGlobalScope;
 
-// Debug logging
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'DEBUG') {
-    console.log('[Service Worker Debug]', event.data);
-  }
-});
-
-const CACHE_NAME = `cache-${version}`;
+// Create a more stable cache name that doesn't change with every deployment
+const CACHE_NAME = `app-cache-${version.split('.')[0]}`; // Only use major version
 const OFFLINE_URL = '/offline';
 const OFFLINE_PAGE = generateOfflineHtml();
 const ASSETS = [...build, ...files];
 
 // Maximum age of cached responses
 const MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+// Debug logging
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'DEBUG') {
+    console.log('[Service Worker Debug]', event.data);
+  }
+});
 
 console.log('[Service Worker] Initializing with:', {
   version,
@@ -31,37 +32,42 @@ console.log('[Service Worker] Initializing with:', {
 self.addEventListener('install', (event: ExtendableEvent) => {
   console.log('[Service Worker] Installing...');
   
-  // Don't skip waiting to avoid sudden reloads
-  // self.skipWaiting();
-  
   event.waitUntil(
     (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      console.log('[Service Worker] Caching all assets:', ASSETS);
-      
-      // Cache all static assets
-      await Promise.all([
-        // Cache the offline page
-        cache.put(new Request(OFFLINE_URL), new Response(OFFLINE_PAGE, {
-          headers: new Headers({
-            'Content-Type': 'text/html; charset=utf-8',
-            'Cache-Control': 'no-cache'
-          })
-        })),
-        // Cache other assets
-        ...ASSETS.map(async (asset) => {
-          try {
-            const response = await fetch(asset, { cache: 'reload' });
-            if (response.ok) {
-              await cache.put(asset, response);
+      try {
+        const cache = await caches.open(CACHE_NAME);
+        console.log('[Service Worker] Caching all assets:', ASSETS);
+        
+        // Cache all static assets
+        const cachePromises = [
+          // Cache the offline page
+          cache.put(new Request(OFFLINE_URL), new Response(OFFLINE_PAGE, {
+            headers: new Headers({
+              'Content-Type': 'text/html; charset=utf-8',
+              'Cache-Control': 'no-cache'
+            })
+          })),
+          // Cache other assets
+          ...ASSETS.map(async (asset) => {
+            try {
+              const response = await fetch(asset, { 
+                cache: 'reload',
+                credentials: 'same-origin'
+              });
+              if (response.ok) {
+                await cache.put(asset, response);
+              }
+            } catch (error) {
+              console.warn(`Failed to cache asset: ${asset}`, error);
             }
-          } catch (error) {
-            console.warn(`Failed to cache asset: ${asset}`, error);
-          }
-        })
-      ]);
+          })
+        ];
 
-      console.log('[Service Worker] Installation complete');
+        await Promise.all(cachePromises);
+        console.log('[Service Worker] Installation complete');
+      } catch (error) {
+        console.error('[Service Worker] Installation failed:', error);
+      }
     })()
   );
 });
@@ -70,19 +76,25 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 self.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(
     (async () => {
-      // Clean up old caches
-      const keys = await caches.keys();
-      await Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-      
-      // Claim clients only after cleanup
-      await self.clients.claim();
-      console.log('[Service Worker] Activation complete');
+      try {
+        // Clean up old caches
+        const keys = await caches.keys();
+        await Promise.all(
+          keys.map((key) => {
+            // Only delete caches that don't match our current cache name
+            if (key !== CACHE_NAME && key.startsWith('app-cache-')) {
+              console.log('[Service Worker] Deleting old cache:', key);
+              return caches.delete(key);
+            }
+          })
+        );
+        
+        // Claim clients only after cleanup
+        await self.clients.claim();
+        console.log('[Service Worker] Activation complete');
+      } catch (error) {
+        console.error('[Service Worker] Activation failed:', error);
+      }
     })()
   );
 });

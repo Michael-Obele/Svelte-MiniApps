@@ -18,7 +18,7 @@ export function registerServiceWorker() {
   navigator.serviceWorker
     .register('/service-worker.js', { 
       type: 'module',
-      updateViaCache: 'none'
+      updateViaCache: 'all' // Changed to 'all' to respect cache headers
     })
     .then((registration) => {
       console.log('[ServiceWorker] Registration successful:', {
@@ -28,11 +28,18 @@ export function registerServiceWorker() {
         waiting: !!registration.waiting
       });
 
-      // Check for updates every hour
+      // Check for updates daily instead of hourly
+      const CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+      let lastCheck = Date.now();
+
       setInterval(() => {
-        console.log('[ServiceWorker] Checking for updates...');
-        registration.update();
-      }, 60 * 60 * 1000);
+        // Only check if it's been at least CHECK_INTERVAL since the last check
+        if (Date.now() - lastCheck >= CHECK_INTERVAL) {
+          console.log('[ServiceWorker] Checking for updates...');
+          lastCheck = Date.now();
+          registration.update();
+        }
+      }, CHECK_INTERVAL);
 
       // Handle updates when a new service worker is found
       registration.addEventListener('updatefound', () => {
@@ -41,18 +48,14 @@ export function registerServiceWorker() {
         
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed') {
-              console.log('[ServiceWorker] New version installed');
-              window.location.reload();
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // Only reload if there's an existing controller (not first install)
+              console.log('[ServiceWorker] New version installed, will reload on next visit');
+              // Don't force reload, let the user refresh naturally
+              // window.location.reload();
             }
           });
         }
-      });
-
-      // Handle the case when a new service worker takes control
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        console.log('[ServiceWorker] New service worker activated');
-        window.location.reload();
       });
     })
     .catch((error) => {
