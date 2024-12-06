@@ -10,6 +10,7 @@
 	import Switch from '$lib/components/ui/switch/switch.svelte';
 	import Label from '@/components/ui/label/label.svelte';
 	import { Button } from '@/components/ui/button';
+	import Loading from '@/components/blocks/Loading.svelte';
 
 	interface Props {
 		data: any;
@@ -269,7 +270,7 @@
 						<Alert.Root variant="destructive" class="mt-2 max-w-lg {forceRefresh ? '' : 'hidden'}">
 							<AlertCircle class="h-4 w-4" />
 							<Alert.Description>
-								Please use Force Fresh Rate sparingly. The cache is only active for 5 minutes to ensure rate accuracy.
+								Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure rate accuracy.
 							</Alert.Description>
 						</Alert.Root>
 					</div>
@@ -279,26 +280,8 @@
 						class="mx-auto inline-flex w-fit items-center justify-center rounded-lg border border-transparent bg-[#F03E3E] px-8 py-3 text-base font-medium text-white shadow-sm hover:bg-[#e03b3b] focus:outline-none focus:ring-2 focus:ring-[#F03E3E] focus:ring-offset-2"
 					>
 						{#if isLoading}
-							<svg
-								class="mr-3 h-5 w-5 animate-spin text-white"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<circle
-									class="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									stroke-width="4"
-								/>
-								<path
-									class="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-								/>
-							</svg>
+							
+							<Loading class="fill-white-600 mr-3 h-5 w-5 animate-spin text-white" />
 							Converting...
 						{:else}
 							Convert

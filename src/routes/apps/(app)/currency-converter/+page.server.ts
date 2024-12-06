@@ -29,7 +29,7 @@ const CURRENCY_CODE_REGEX = /^[A-Z]{3}$/;
 const MAX_AMOUNT = 999999999;
 
 // Cache configuration
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+const CACHE_DURATION = 8 * 60 * 1000; // 5 minutes in milliseconds
 const rateCache = new Map<string, { rate: string; timestamp: number }>();
 
 // Multiple User-Agent strings to rotate
