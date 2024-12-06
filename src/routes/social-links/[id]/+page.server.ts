@@ -33,13 +33,3 @@ export const load = (async ({ params }) => {
     }
 }) satisfies PageServerLoad;
 
-// Helper function to save links (used by API endpoint)
-export async function saveLinks(id: string, links: any[]) {
-    try {
-        // TO DO: implement saving links without using Prisma
-        return true;
-    } catch (e) {
-        console.error('Error saving links:', e);
-        return false;
-    }
-}
