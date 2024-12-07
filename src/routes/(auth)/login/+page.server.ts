@@ -5,11 +5,26 @@ import { db } from '$lib/server/db';
 import type { Actions, PageServerLoad } from './$types';
 import { dev } from '$app/environment';
 
+const oauthErrors = {
+    missing_params: 'Missing OAuth parameters',
+    invalid_state: 'Invalid OAuth state',
+    invalid_code: 'Invalid authorization code',
+    github_api_error: 'Failed to fetch GitHub user data'
+} as const;
+
+type OAuthError = keyof typeof oauthErrors;
+
 export const load: PageServerLoad = async (event) => {
     if (event.locals.user) {
         return redirect(302, '/');
     }
-    return {};
+
+    const error = event.url.searchParams.get('error') as OAuthError | null;
+    const errorMessage = error ? oauthErrors[error] : null;
+
+    return {
+        error: errorMessage
+    };
 };
 
 export const actions: Actions = {

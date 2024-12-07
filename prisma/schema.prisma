@@ -23,6 +23,8 @@ model User {
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
   SocialLinkPage SocialLinkPage[]
+  githubId       String?          @unique @db.VarChar(255)
+  googleId       String?          @unique @db.VarChar(255)
 
   @@index([username])
   @@map("user")

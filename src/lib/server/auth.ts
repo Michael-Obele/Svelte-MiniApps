@@ -2,6 +2,7 @@ import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import { db } from '$lib/server/db';
 import type { Session, User } from '@prisma/client';
+import bcryptjs from 'bcryptjs';
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -72,6 +73,15 @@ export async function validateSession(sessionId: string) {
   }
 
   return { session, user };
+}
+
+export async function generatePasswordHash(password: string): Promise<string> {
+  const saltRounds = 10;
+  return bcryptjs.hash(password, saltRounds);
+}
+
+export async function verifyPassword(password: string, hash: string): Promise<boolean> {
+  return bcryptjs.compare(password, hash);
 }
 
 export type SessionValidationResult = Awaited<ReturnType<typeof validateSession>>;

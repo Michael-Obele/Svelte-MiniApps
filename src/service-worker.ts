@@ -240,6 +240,17 @@ self.addEventListener('fetch', (event: FetchEvent) => {
         throw new Error('No cache or network response available');
       } catch (error) {
         console.error('[Service Worker] Fetch handler error:', error);
+        // Let SvelteKit handle the error page for page requests
+        if (isPageRequest(event.request)) {
+          try {
+            // Try to get the network response without caching
+            const networkResponse = await fetch(event.request.clone());
+            return networkResponse;
+          } catch (networkError) {
+            // If completely offline, show the offline page
+            return generateOfflineResponse(event.request);
+          }
+        }
         return generateOfflineResponse(event.request);
       }
     })()

@@ -7,7 +7,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy, X } from 'lucide-svelte';
 	import { userContext } from '@/utils';
-	import { beforeNavigate } from '$app/navigation';
+	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 	
 
@@ -106,12 +106,14 @@
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				{:else}
-					<Button variant="outline" type="button" size="sm">
-						<a href="/login" class="flex items-center space-x-2">
+				<a href="/login">
+					<Button variant="outline" type="button" size="sm" >
+						<span class="flex items-center space-x-2" >
 							<LogIn class="h-4 w-4" />
 							<span>Login</span>
-						</a>
+						</span>
 					</Button>
+				</a>
 				{/if}
 			</div>
 			<Button
