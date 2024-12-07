@@ -80,7 +80,9 @@ export const actions: Actions = {
             maxAge: 60 * 60 * 24 * 30 // 30 days
         });
 
-        return redirect(302, '/');
+        console.info('User logged in');
+
+        return redirect(301, '/');
     }
 };
 

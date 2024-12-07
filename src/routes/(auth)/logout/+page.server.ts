@@ -16,6 +16,7 @@ export const actions: Actions = {
 		}
 		await auth.invalidateSession(event.locals.session.id);
 		event.cookies.delete(auth.sessionCookieName, { path: '/' });
+		console.info('User logged out');
 
 		return redirect(302, '/');
 	}

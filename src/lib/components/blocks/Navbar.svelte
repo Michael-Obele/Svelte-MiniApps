@@ -32,7 +32,7 @@
 		console.log('user on navbar', $userContext);
 		
 		// Invalidate the session to check for user state changes
-		invalidate('app:userContext');
+		invalidate('app:user');
 	});
 
 
