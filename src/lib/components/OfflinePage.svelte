@@ -1,4 +1,3 @@
-<!-- Offline Page Component -->
 <script lang="ts">
   import { onMount } from 'svelte';
   
@@ -77,20 +76,52 @@
 </div>
 
 <style>
+  :root {
+    /* Light theme */
+    --bg-gradient-from: #f3f4f6;
+    --bg-gradient-to: #e5e7eb;
+    --content-bg: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --button-primary-bg: #3b82f6;
+    --button-primary-hover: #2563eb;
+    --button-secondary-bg: #e5e7eb;
+    --button-secondary-hover: #d1d5db;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Dark theme */
+      --bg-gradient-from: #1f2937;
+      --bg-gradient-to: #111827;
+      --content-bg: #1f2937;
+      --text-primary: #e5e7eb;
+      --text-secondary: #cbd5e0;
+      --border-color: #374151;
+      --button-primary-bg: #4f46e5;
+      --button-primary-hover: #3730a3;
+      --button-secondary-bg: #4a5568;
+      --button-secondary-hover: #2d3748;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
   .offline-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-from) 0%, var(--bg-gradient-to) 100%);
   }
 
   .offline-content {
-    background: white;
+    background: var(--content-bg);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
     max-width: 32rem;
     width: 100%;
     text-align: center;
@@ -101,19 +132,19 @@
   }
 
   .wifi-off {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0 auto;
   }
 
   h1 {
     font-size: 1.875rem;
     font-weight: 700;
-    color: #111827;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
   p {
-    color: #4b5563;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
   }
 
@@ -139,26 +170,26 @@
   }
 
   .retry-button {
-    background-color: #3b82f6;
-    color: white;
+    background-color: var(--button-primary-bg);
+    color: #ffffff;
   }
 
   .retry-button:hover:not(:disabled) {
-    background-color: #2563eb;
+    background-color: var(--button-primary-hover);
   }
 
   .share-button {
-    background-color: #e5e7eb;
-    color: #374151;
+    background-color: var(--button-secondary-bg);
+    color: var(--text-secondary);
   }
 
   .share-button:hover {
-    background-color: #d1d5db;
+    background-color: var(--button-secondary-hover);
   }
 
   .info {
     text-align: left;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
   }
 
@@ -169,7 +200,7 @@
   }
 
   li {
-    color: #4b5563;
+    color: var(--text-secondary);
     padding: 0.5rem 0;
     display: flex;
     align-items: center;
@@ -177,7 +208,7 @@
 
   li::before {
     content: "•";
-    color: #3b82f6;
+    color: var(--button-primary-bg);
     font-weight: bold;
     margin-right: 0.5rem;
   }
