@@ -12,6 +12,7 @@ Svelte MiniApps is a collection of small, single-purpose applications designed f
 - [List of Apps](#list-of-apps) 📋
 - [Contributing](#contributing) 🤝
 - [License](#license) 📄
+- [Old Version](#old-version) 🔙
 
 ## About
 
@@ -62,11 +63,13 @@ npm run db:studio
 Clone the repository and run the development server to explore the mini-apps.
 
 ```bash
-git clone https://github.com/Michael-Obele/Svelte-MiniApps-sv5.git
-cd Svelte-MiniApps-sv5
+git clone https://github.com/Michael-Obele/Svelte-MiniApps.git
+cd Svelte-MiniApps
 bun install
 bun run dev
 ```
+
+**Note:** The Vite development server runs on port **5178** instead of the traditional **5173**. Make sure to access your app at `http://localhost:5178`.
 
 ###### **Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
 
@@ -104,6 +107,13 @@ We welcome contributions! Fork the repository, make your changes, and submit a p
 - **Single-purpose tools:** Each mini-app should focus on a specific task.
 - **User-friendly:** Ensure the mini-app is easy to use with clear instructions.
 - **Clean code:** Follow Svelte best practices and keep code organized.
+
+## Old Version
+
+For those interested in the previous version of Svelte MiniApps, it is available at the following repository:
+- **Svelte MiniApps v4**: [Svelte-MiniApps-sv4](https://github.com/Michael-Obele/Svelte-MiniApps-sv4)
+
+This version is located at `sv4.svelte-apps` and contains the earlier implementations of the mini-apps, built with Svelte 4. Users may explore this version for reference or migration purposes.
 
 ## License
 
