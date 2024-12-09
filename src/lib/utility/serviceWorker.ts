@@ -1,3 +1,5 @@
+import { notifyUpdateAvailable } from '../stores/serviceWorkerStore';
+
 export function registerServiceWorker() {
   if (typeof window === 'undefined') {
     console.log('[ServiceWorker] Skipping registration - not in browser');
@@ -49,12 +51,18 @@ export function registerServiceWorker() {
         if (newWorker) {
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // Only reload if there's an existing controller (not first install)
-              console.log('[ServiceWorker] New version installed, will reload on next visit');
-              // Don't force reload, let the user refresh naturally
-              // window.location.reload();
+              // New service worker is installed and ready to take over
+              console.log('[ServiceWorker] New version ready to be activated');
+              notifyUpdateAvailable(registration);
             }
           });
+        }
+      });
+
+      // Listen for the SKIP_WAITING message
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data && event.data.type === 'SKIP_WAITING') {
+          registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
         }
       });
     })
