@@ -12,12 +12,12 @@ export const load: PageServerLoad = async (event) => {
 export const actions: Actions = {
 	logout: async (event) => {
 		if (!event.locals.session) {
-			redirect(302, '/');
+			 redirect(302, '/');
 		}
 		await auth.invalidateSession(event.locals.session.id);
 		event.cookies.delete(auth.sessionCookieName, { path: '/' });
 		console.info('User logged out');
-
+		
 		redirect(302, '/');
 	}
 };

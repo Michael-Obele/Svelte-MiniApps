@@ -13,7 +13,9 @@
                 return;
             }
 
-            toast.loading('Nuking site data...');
+            toast.loading('Nuking site data...',{
+                duration: Number.POSITIVE_INFINITY
+            });
 
             // Clear all caches
             const cacheKeys = await caches.keys();

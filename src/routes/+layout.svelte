@@ -41,13 +41,11 @@
 <Toaster 
 	expand={true}
 	richColors 
-	closeButton
 	theme="system"
 	position="top-center"
 	toastOptions={{
 		// Default duration of 4 seconds
 		duration: 4000,
-		class: 'svelte-toast', 
 		style: 'background-color: var(--background); color: var(--foreground); border: 1px solid var(--border);'
 	}}
 />
@@ -58,18 +56,3 @@
 	</div>
 	<Footer />
 
-<style>
-	.svelte-toast {
-		background-color: var(--background);
-		color: var(--foreground);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		padding: 12px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		transition: all 0.3s ease;
-	}
-	
-	.svelte-toast:hover {
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	}
-</style>

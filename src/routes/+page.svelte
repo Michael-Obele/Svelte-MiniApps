@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { PageServerData } from './$types';
 	import { projects, done, siteimage, siteurl, sitename } from '@/index';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import { ArrowRight, BadgeDollarSign, CheckCircle2, Cookie } from 'lucide-svelte';
-	import { toast } from 'svelte-sonner';
-	// import { seenCookie, seenNewAppAlert } from '$lib/utils';
+	import {  CheckCircle2 } from 'lucide-svelte';
 	import LordIcon from './LordIcon.svelte';
 	//
 	import { getGreeting, getMillisecondsUntilNextPeriod, mantras } from '@/utility/greetings';
@@ -28,7 +25,6 @@
 	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 	//
 	import { invalidate, invalidateAll } from "$app/navigation";
-	import { setContext } from 'svelte';
 	
 	// 
 	const arrow = '/lottie/trending-flat.json';
@@ -76,7 +72,7 @@
 
 <div class="w-full border-b border-red-100 bg-red-50/80 py-2 dark:border-red-800/30 dark:bg-red-900/20">
 	<p class="text-center text-sm font-medium text-red-700/90 dark:text-red-200/90">
-		🚧 Beta version - Some features may be temporarily unavailable
+	🚧 Welcome to our new platform! Please check the changelog as we migrate features.
 	</p>
 </div>
 
