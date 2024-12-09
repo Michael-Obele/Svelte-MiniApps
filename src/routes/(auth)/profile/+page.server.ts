@@ -5,7 +5,7 @@ import { db } from '$lib/server/db';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.user) {
-		return redirect(302, '/login');
+		redirect(302, '/login');
 	}
 	return {
 		user: event.locals.user

@@ -17,7 +17,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	// Check if user already has a session
 	if (event.cookies.get(SESSION_COOKIE_NAME)) {
 		console.log(' User already has session, redirecting to home');
-		return redirect(303, "/");
+		redirect(303, "/");
 	}
 
 	const code = event.url.searchParams.get("code");
@@ -33,7 +33,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	if (!code || !state || !storedState) {
 		console.error(' Missing required OAuth parameters:', { code, state, storedState });
 		// Use 303 for redirects after POST-like operations
-		return redirect(303, "/login?error=missing_params");
+		redirect(303, "/login?error=missing_params");
 	}
 
 	if (state !== storedState) {
@@ -41,7 +41,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			receivedState: state,
 			storedState: storedState
 		});
-		return redirect(303, "/login?error=invalid_state");
+		redirect(303, "/login?error=invalid_state");
 	}
 
 	console.log(' State validation passed');
@@ -55,7 +55,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		console.log(' Authorization code validated successfully');
 	} catch (e) {
 		console.error(' Failed to validate authorization code:', e);
-		return redirect(303, "/login?error=invalid_code");
+		redirect(303, "/login?error=invalid_code");
 	}
 
 	console.log(' Fetching GitHub user data...');
@@ -70,7 +70,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			status: githubUserResponse.status,
 			statusText: githubUserResponse.statusText
 		});
-		return redirect(303, "/login?error=github_api_error");
+		redirect(303, "/login?error=github_api_error");
 	}
 
 	const githubUser = await githubUserResponse.json();
@@ -130,5 +130,5 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 	console.log(' OAuth flow completed successfully, redirecting to home page');
 	// Use 303 See Other for the final redirect
-	return redirect(303, "/");
+	redirect(303, "/");
 }

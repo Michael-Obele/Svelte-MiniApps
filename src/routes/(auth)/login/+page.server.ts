@@ -16,7 +16,7 @@ type OAuthError = keyof typeof oauthErrors;
 
 export const load: PageServerLoad = async (event) => {
     if (event.locals.user) {
-        return redirect(302, '/');
+        redirect(302, '/');
     }
 
     const error = event.url.searchParams.get('error') as OAuthError | null;
@@ -82,7 +82,7 @@ export const actions: Actions = {
 
         console.info('User logged in');
 
-        return redirect(301, '/');
+         redirect(301, '/');
     }
 };
 

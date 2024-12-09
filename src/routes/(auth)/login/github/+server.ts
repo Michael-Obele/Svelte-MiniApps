@@ -11,7 +11,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	// Check if user already has a session
 	if (event.cookies.get("session")) {
 		console.log('✓ User already has session, redirecting to home');
-		return redirect(302, "/");
+		redirect(302, "/");
 	}
 
 	// Clear any existing oauth state
@@ -39,5 +39,5 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	console.log('✅ Redirecting to GitHub login page');
 	
 	// Use a 303 See Other redirect to prevent the browser from resubmitting
-	return redirect(303, url.toString());
+	redirect(303, url.toString());
 }

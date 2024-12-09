@@ -7,7 +7,7 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
-		return redirect(302, '/');
+		redirect(302, '/');
 	}
 	return {};
 };
@@ -76,7 +76,7 @@ export const actions: Actions = {
 			maxAge: 60 * 60 * 24 * 30 // 30 days
 		});
 
-		return redirect(302, '/');
+		redirect(302, '/');
 	}
 };
 
