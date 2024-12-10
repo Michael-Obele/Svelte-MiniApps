@@ -6,14 +6,17 @@ import {generateOfflineHtml} from './lib/utility/offlineTemplate';
 
 declare const self: ServiceWorkerGlobalScope;
 
-// Create a more stable cache name that doesn't change with every deployment
-const CACHE_NAME = `app-cache-${version.split('.')[0]}`; // Only use major version
+// Create a unique cache name that includes the full version
+const CACHE_NAME = `app-cache-${version}`;
+const ASSETS = [...build, ...files];
 const OFFLINE_URL = '/offline';
 const OFFLINE_PAGE = generateOfflineHtml();
-const ASSETS = [...build, ...files];
 
 // Maximum age of cached responses
 const MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+// Store the current version in cache for comparison
+const VERSION_KEY = 'app-version';
 
 // Debug logging
 self.addEventListener('message', (event) => {
@@ -35,8 +38,20 @@ self.addEventListener('install', (event: ExtendableEvent) => {
   event.waitUntil(
     (async () => {
       try {
+        // Check if we need to update by comparing versions
+        const existingCache = await caches.match(VERSION_KEY);
+        const currentVersion = existingCache ? await existingCache.text() : null;
+        
+        if (currentVersion === version) {
+          console.log('[Service Worker] Already at latest version:', version);
+          return;
+        }
+
         const cache = await caches.open(CACHE_NAME);
-        console.log('[Service Worker] Caching all assets:', ASSETS);
+        console.log('[Service Worker] Caching all assets for version:', version);
+        
+        // Store the current version
+        await cache.put(VERSION_KEY, new Response(version));
         
         // Cache all static assets
         const cachePromises = [
@@ -64,7 +79,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
         ];
 
         await Promise.all(cachePromises);
-        console.log('[Service Worker] Installation complete');
+        console.log('[Service Worker] Installation complete for version:', version);
       } catch (error) {
         console.error('[Service Worker] Installation failed:', error);
       }
@@ -174,6 +189,7 @@ self.addEventListener('fetch', (event: FetchEvent) => {
   if (
     url.pathname.startsWith('/browser-sync/') ||
     url.pathname.startsWith('chrome-extension://') ||
+    url.pathname === VERSION_KEY || // Skip version check requests
     url.hostname !== self.location.hostname
   ) {
     return;

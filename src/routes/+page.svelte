@@ -70,7 +70,7 @@
 	});
 </script>
 
-<div class="w-full border-b border-red-100 bg-red-50/80 py-2 dark:border-red-800/30 dark:bg-red-900/20">
+<div class="w-full border-b border-red-100 bg-red-50/80 p-1 py-2 dark:border-red-800/30 dark:bg-red-900/20">
 	<p class="text-center text-sm font-medium text-red-700/90 dark:text-red-200/90">
 	🚧 Welcome to our new platform! Please check the changelog as we migrate features.
 	</p>

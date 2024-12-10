@@ -64,7 +64,7 @@
 			<div class="px-2">
 				<ThemeSwitch />
 				<Button variant="outline" type="button" size="icon">
-					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps-sv5">
+					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
 						<span class="sr-only">See GitHub Repo</span>
 						<Github class="h-[1.2rem] w-[1.2rem]" />
 					</a>
