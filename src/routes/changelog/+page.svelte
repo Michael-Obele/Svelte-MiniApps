@@ -1,7 +1,7 @@
 <script>
-    import { fade } from 'svelte/transition';
     import BlurInText from '$lib/components/blocks/BlurInText.svelte';
     import { Motion } from 'svelte-motion';
+
 
     const items = [
         {
@@ -129,6 +129,7 @@
             ]
         }
     ];
+
 </script>
 
 <div class="min-h-screen bg-gradient-to-b from-background to-background/95">
@@ -309,6 +310,10 @@
             {/each}
         </div>
 
+        <section class="container mx-auto mt-16 max-w-3xl px-4 py-8 text-center">
+            <p>For those who wish to use the SV4 version of the app, you can access it at <a href="https://old.svelte-apps.me" class="text-blue-500 underline">old.svelte-apps.me</a> or <a href="https://sv4.svelte-apps.me" class="text-blue-500 underline">sv4.svelte-apps.me</a>.</p>
+        </section>
+
         <div class="mt-16 text-center">
             <p class="text-sm text-white/40">
                 Last updated: {new Date().toLocaleDateString()}
@@ -317,16 +322,3 @@
     </div>
 </div>
 
-<style>
-    @media (min-width: 768px) {
-        .left-timeline::before {
-            content: '';
-            @apply absolute left-1/2 top-1/2 h-0.5 w-1/2 -translate-y-1/2 transform bg-white/10;
-        }
-        
-        .right-timeline::before {
-            content: '';
-            @apply absolute left-0 top-1/2 h-0.5 w-1/2 -translate-y-1/2 transform bg-white/10;
-        }
-    }
-</style>
