@@ -1,15 +1,14 @@
 <script lang="ts">
 	import * as emoji from 'node-emoji';
-	let randomEmoji = emoji.random();
 	import { Clipboard, RefreshCcw } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { copyToClipboard } from '@/utils';
-	function generateRandomEmoji() {
+
+	let randomEmoji = emoji.random();
+
+	function generateRandomEmoji(): void {
 		randomEmoji = emoji.random();
 	}
-	
-
-	
 </script>
 
 <svelte:head>
@@ -48,39 +47,20 @@
 	</script>
 </svelte:head>
 
-<div class="min-h-screen">
-	<h1 class="px-5 py-10 text-center text-4xl font-bold text-gray-800 dark:text-green-300">
-		Welcome
-		to the Random Emoji Generator!
+<div class="flex min-h-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
+	<h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+		Random Emoji Generator
 	</h1>
-	<div class="flex flex-col items-center justify-center">
-		<p class="mb-8 text-center text-lg text-gray-700 dark:text-green-200">
-			Click the Button below to generate a random emoji.
-		</p>
-		<Button
-			class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 dark:bg-green-500 dark:text-white dark:hover:bg-green-600"
-			onclick={generateRandomEmoji}
-		>
-			Generate Random Emoji
+	<div class="flex items-center space-x-4">
+		<Button onclick={generateRandomEmoji} class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
+			<RefreshCcw class="mr-2 inline-block h-5 w-5" /> Generate
 		</Button>
-		{#if randomEmoji.emoji}
-			<div class="flex flex-col items-center">
-				<h2 class="mt-4 text-2xl font-semibold text-gray-800 dark:text-green-300 md:text-3xl">
-					{randomEmoji.emoji}
-				</h2>
-				<h3 class="mt-2 text-lg capitalize text-gray-700 dark:text-green-200 md:text-xl">
-					{randomEmoji.name.split('_').join(' ')}
-				</h3>
-			</div>
-			<Button
-				variant="secondary"
-				class="mt-4 rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-500"
-				type="button"
-				onclick={() => copyToClipboard(randomEmoji.emoji)}
-				aria-label="Copy emoji to clipboard"
-			>
-				<Clipboard class="h-6 w-6" />
-			</Button>
-		{/if}
+		<Button onclick={() => copyToClipboard(randomEmoji.emoji, 'Emoji copied to clipboard')} class="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600">
+			<Clipboard class="mr-2 inline-block h-5 w-5" /> Copy
+		</Button>
+	</div>
+	<div class="flex flex-col items-center justify-center space-y-4">
+		<p class="mt-6 text-6xl">{randomEmoji.emoji}</p>
+		<p>{randomEmoji.name.split('_').join(' ')}</p>
 	</div>
 </div>

@@ -158,7 +158,7 @@
 					</div>
 				</div>
 
-				<form use:enhance={handleSubmit} method="POST" class="flex flex-col space-y-8">
+				<form use:enhance={handleSubmit} method="POST" class="my-6 flex flex-col space-y-8">
 					<div class="flex flex-col items-center gap-6">
 						<div class="flex w-full flex-col items-center gap-6 sm:flex-row sm:justify-center">
 							<!-- From Currency -->
@@ -191,7 +191,7 @@
 							<!-- Swap Button -->
 							<Button
 								type="button"
-								class="mt-5 h-10 w-10 rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+								class="mt-0 h-10 w-10 rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 sm:mt-5"
 								onclick={() => {
 									const fromInput = document.getElementById('currencyFrom') as HTMLInputElement;
 									const toInput = document.getElementById('currencyTo') as HTMLInputElement;
