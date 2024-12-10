@@ -11,9 +11,10 @@
 	import { Copy, RefreshCw } from "lucide-svelte";
 	import { siteimage, siteurl, sitename } from '$lib';
 	import { fade } from "svelte/transition";
+	import { writable } from 'svelte/store';
 
 	let password = $state('');
-	let passwordLength = $state(12);
+	let passwordLength = $state([12]);
 	let includeUppercase = $state(true);
 	let includeLowercase = $state(true);
 	let includeNumbers = $state(true);
@@ -38,7 +39,7 @@
 		}
 
 		let result = '';
-		for (let i = 0; i < passwordLength; i++) {
+		for (let i = 0; i < passwordLength[0]; i++) {
 			result += chars.charAt(Math.floor(Math.random() * chars.length));
 		}
 
@@ -149,13 +150,13 @@
 
 			<div class="space-y-4">
 				<div class="space-y-2">
-					<!-- <Label>Password Length: {passwordLength}</Label> -->
-					<!-- <Slider
+					<Label>Password Length: {passwordLength}</Label>
+					<Slider
 						bind:value={passwordLength}
 						min={8}
 						max={32}
 						step={1}
-					/> -->
+					/>
 				</div>
 
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
