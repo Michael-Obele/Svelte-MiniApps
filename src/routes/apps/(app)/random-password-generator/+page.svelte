@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { Button } from "$lib/components/ui/button";
 	import { Input } from "$lib/components/ui/input";
 	import { Slider } from "$lib/components/ui/slider";
@@ -11,7 +9,7 @@
 	import { Copy, RefreshCw } from "lucide-svelte";
 	import { siteimage, siteurl, sitename } from '$lib';
 	import { fade } from "svelte/transition";
-	import { writable } from 'svelte/store';
+	import { copyToClipboard } from '$lib/utils';
 
 	let password = $state('');
 	let passwordLength = $state([12]);
@@ -57,14 +55,7 @@
 		passwordStrength = strength;
 	};
 
-	const copyToClipboard = async () => {
-		try {
-			await navigator.clipboard.writeText(password);
-			toast.success('Password copied to clipboard');
-		} catch (err) {
-			toast.error('Failed to copy password');
-		}
-	};
+	
 
 	$effect(() => {
 		if (password) calculateStrength();
@@ -130,7 +121,7 @@
 						readonly
 						class="font-mono text-lg"
 					/>
-					<Button variant="outline" size="icon" onclick={copyToClipboard} disabled={!password}>
+					<Button variant="outline" size="icon" onclick={()=> copyToClipboard(password, 'Password copied to clipboard')} disabled={!password}>
 						<Copy class="h-4 w-4" />
 					</Button>
 					<Button variant="outline" size="icon" onclick={generatePassword}>

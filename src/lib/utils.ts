@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { persisted } from 'svelte-persisted-store';
 import { writable } from 'svelte/store';
 import type { UserContext } from "./types";
+import { toast } from "svelte-sonner";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -23,10 +24,36 @@ export function scrollToID(id: string): void {
 	}
 }
 
-
-
-// A writable store that represents a filter state, initially set to false
-export let filter = persisted('filter', 'all');
+/**
+ * Copies the provided text to the clipboard, displaying a customizable success or error message.
+ * Optionally executes success or error callbacks.
+ *
+ * @param {string} text - The text to be copied to the clipboard.
+ * @param {string} [msg='Text copied to clipboard'] - The success message to be displayed.
+ * @param {string} [errorMsg='Failed to copy text'] - The error message to be displayed.
+ * @param {function} [onSuccess] - The callback function to be executed on success.
+ * @param {function} [onError] - The callback function to be executed on error.
+ * @returns {Promise<boolean>} A promise resolving to a boolean indicating whether the copy operation was successful.
+ */
+export const copyToClipboard = async (
+  text: string,
+  msg: string = 'Text copied to clipboard',
+  errorMsg: string = 'Failed to copy text',
+  onSuccess?: () => void,
+  onError?: (error: Error) => void
+): Promise<boolean> => {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast.success(msg);
+    if (onSuccess) onSuccess(); // Execute the success callback if provided
+    return true; // Indicate success
+  } catch (err) {
+    toast.error(errorMsg);
+    if (onError) onError(err as Error); // Execute the error callback if provided
+    console.error('Copy to clipboard failed: ', err);
+    return false; // Indicate failure
+  }
+};
 
 /**
  * Converts an object to a JSON string, handling BigInt values by converting them to strings.
@@ -44,12 +71,14 @@ export function stringifyWithBigInt(obj: any): string {
 }
 
 export const isLoading = writable(false);
-
 export const savePassword = writable(false);
 export const showPassword = writable(false);
 
 export const seenCookie = persisted<boolean>('seen-cookie', false);
 export const seenNewAppAlert = persisted<boolean>('seen-new-app-alert', false);
+
+// A writable store that represents a filter state, initially set to false
+export let filter = persisted('filter', 'all');
 
 export const userContext = persisted<string | undefined>('user', undefined);
 

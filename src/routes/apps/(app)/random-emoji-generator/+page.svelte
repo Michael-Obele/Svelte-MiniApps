@@ -3,25 +3,11 @@
 	let randomEmoji = emoji.random();
 	import { Clipboard, RefreshCcw } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { copyToClipboard } from '@/utils';
 	function generateRandomEmoji() {
 		randomEmoji = emoji.random();
 	}
-	function copyToClipboard(text: string) {
-		navigator.clipboard.writeText(text).then(
-			() =>
-				toast.success('Copied', {
-					action: {
-						label: 'OK',
-						onClick: () => toast.dismiss()
-					}
-				}),
-			function (err) {
-				() => toast.error('Could not copy text: ', err);
-				console.error('Could not copy text: ', err);
-			}
-		);
-	}
-	import { toast } from 'svelte-sonner';
+	
 
 	
 </script>
