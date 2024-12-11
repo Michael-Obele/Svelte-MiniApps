@@ -278,7 +278,7 @@
 						especially useful if you encounter any caching issues or need to reset the app to its default
 						state.
 					</p>
-					<ul class="mt-4 space-y-2 text-left text-gray-600 dark:text-gray-300">
+					<ul class="mx-auto mt-4 flex w-fit flex-col justify-center space-y-2 text-center text-gray-600 dark:text-gray-300">
 						{#each dataManagement.features as feature}
 							<li class="flex items-start">
 								
