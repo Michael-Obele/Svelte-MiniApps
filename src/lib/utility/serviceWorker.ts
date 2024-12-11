@@ -1,6 +1,7 @@
 import { notifyUpdateAvailable } from '../stores/serviceWorkerStore';
 
-export function registerServiceWorker() {
+// Function to register the service worker
+export async function registerServiceWorker() {
   if (typeof window === 'undefined') {
     console.log('[ServiceWorker] Skipping registration - not in browser');
     return;
@@ -17,84 +18,95 @@ export function registerServiceWorker() {
   }
 
   console.log('[ServiceWorker] Starting registration...');
-  navigator.serviceWorker
-    .register('/service-worker.js', { 
+  try {
+    const registration = await navigator.serviceWorker.register('/service-worker.js', { 
       type: 'module',
       updateViaCache: 'all' // Changed to 'all' to respect cache headers
-    })
-    .then((registration) => {
-      console.log('[ServiceWorker] Registration successful:', {
-        scope: registration.scope,
-        active: !!registration.active,
-        installing: !!registration.installing,
-        waiting: !!registration.waiting
-      });
+    });
+    console.log('[ServiceWorker] Registration successful:', {
+      scope: registration.scope,
+      active: !!registration.active,
+      installing: !!registration.installing,
+      waiting: !!registration.waiting
+    });
 
-      // Check for updates daily instead of hourly
-      const CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
-      let lastCheck = Date.now();
+    // Fetch and check the hash
+    const hashResponse = await fetch('/service-worker-hash.json');
+    if (hashResponse.ok) {
+      const hashData = await hashResponse.json();
+      const cache = await caches.open('app-cache');
+      const storedHashResponse = await cache.match('app-hash');
+      const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
+      if (storedHash === hashData.hash) {
+        console.log('[ServiceWorker] Hash has not changed, discarding registration.');
+        return;
+      }
+    }
 
-      setInterval(() => {
-        // Only check if it's been at least CHECK_INTERVAL since the last check
-        if (Date.now() - lastCheck >= CHECK_INTERVAL) {
-          console.log('[ServiceWorker] Checking for updates...');
-          lastCheck = Date.now();
+    // Check for updates daily instead of hourly
+    const CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+    let lastCheck = Date.now();
 
-          // Fetch the current version or hash from the server
-          fetch('./service-worker-version.json')
-            .then((response) => response.json())
-            .then((data) => {
-              const currentVersion = localStorage.getItem('serviceWorkerVersion');
+    setInterval(() => {
+      // Only check if it's been at least CHECK_INTERVAL since the last check
+      if (Date.now() - lastCheck >= CHECK_INTERVAL) {
+        console.log('[ServiceWorker] Checking for updates...');
+        lastCheck = Date.now();
 
-              if (currentVersion !== data.version) {
-                console.log('[ServiceWorker] New version detected:', data.version);
-                localStorage.setItem('serviceWorkerVersion', data.version);
+        // Fetch the current version or hash from the server
+        fetch('./service-worker-version.json')
+          .then((response) => response.json())
+          .then((data) => {
+            const currentVersion = localStorage.getItem('serviceWorkerVersion');
 
-                // Fetch the current hash from the server
-                fetch('/service-worker-hash.json')
-                  .then((response) => response.json())
-                  .then((data) => {
-                    const currentHash = localStorage.getItem('serviceWorkerHash');
+            if (currentVersion !== data.version) {
+              console.log('[ServiceWorker] New version detected:', data.version);
+              localStorage.setItem('serviceWorkerVersion', data.version);
 
-                    if (currentHash !== data.hash) {
-                      console.log('[ServiceWorker] New content detected:', data.hash);
-                      localStorage.setItem('serviceWorkerHash', data.hash);
-                      registration.update();
-                    } else {
-                      console.log('[ServiceWorker] No new content detected.');
-                    }
-                  });
-              } else {
-                console.log('[ServiceWorker] No new version detected.');
-              }
-            });
-        }
-      }, CHECK_INTERVAL);
+              // Fetch the current hash from the server
+              fetch('/service-worker-hash.json')
+                .then((response) => response.json())
+                .then((data) => {
+                  const currentHash = localStorage.getItem('serviceWorkerHash');
 
-      // Handle updates when a new service worker is found
-      registration.addEventListener('updatefound', () => {
-        console.log('[ServiceWorker] New service worker being installed');
-        const newWorker = registration.installing;
-        
-        if (newWorker) {
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New service worker is installed and ready to take over
-              console.log('[ServiceWorker] New version ready to be activated');
-              notifyUpdateAvailable(registration);
+                  if (currentHash !== data.hash) {
+                    console.log('[ServiceWorker] New content detected:', data.hash);
+                    localStorage.setItem('serviceWorkerHash', data.hash);
+                    registration.update();
+                  } else {
+                    console.log('[ServiceWorker] No new content detected.');
+                  }
+                });
+            } else {
+              console.log('[ServiceWorker] No new version detected.');
             }
           });
-        }
-      });
+      }
+    }, CHECK_INTERVAL);
 
-      // Listen for the SKIP_WAITING message
-      navigator.serviceWorker.addEventListener('message', (event) => {
-        if (event.data && event.data.type === 'SKIP_WAITING') {
-          registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
-        }
-      });
-    })
-    .catch((error) => {
-      console.error('[ServiceWorker] Registration failed:', error);
+    // Handle updates when a new service worker is found
+    registration.addEventListener('updatefound', () => {
+      console.log('[ServiceWorker] New service worker being installed');
+      const newWorker = registration.installing;
+      
+      if (newWorker) {
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // New service worker is installed and ready to take over
+            console.log('[ServiceWorker] New version ready to be activated');
+            notifyUpdateAvailable(registration);
+          }
+        });
+      }
     });
+
+    // Listen for the SKIP_WAITING message
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SKIP_WAITING') {
+        registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
+      }
+    });
+  } catch (error) {
+    console.error('[ServiceWorker] Registration failed:', error);
+  }
 }

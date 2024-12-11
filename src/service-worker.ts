@@ -52,6 +52,12 @@ self.addEventListener('install', (event: ExtendableEvent) => {
           const hashResponse = await fetch(HASH_FILE);
           if (hashResponse.ok) {
             const hashData = await hashResponse.json();
+            const storedHashResponse = await cache.match(HASH_KEY);
+            const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
+            if (storedHash === hashData.hash) {
+              console.log('[Service Worker] Hash has not changed, discarding new service worker.');
+              return;
+            }
             await cache.put(HASH_KEY, new Response(hashData.hash));
           }
         } catch (error) {
@@ -111,6 +117,13 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(
     (async () => {
       try {
+        // Check if the service worker is already controlling clients
+        const clients = await self.clients.matchAll();
+        if (clients.length > 0) {
+          console.log('[Service Worker] Already controlling clients, skipping activation.');
+          return;
+        }
+        
         // Check if hash has changed
         const cache = await caches.open(CACHE_NAME);
         const storedHashResponse = await cache.match(HASH_KEY);
@@ -128,7 +141,9 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
               // Force clients to reload to get new version
               await self.clients.claim();
               const clients = await self.clients.matchAll();
-              clients.forEach(client => client.navigate(client.url));
+              clients.forEach(client => {
+                (client as any).navigate(client.url);
+              });
             }
           }
         } catch (error) {
