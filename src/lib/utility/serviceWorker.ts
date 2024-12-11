@@ -100,18 +100,32 @@ export async function registerServiceWorker() {
     }, CHECK_INTERVAL);
 
     // Handle updates when a new service worker is found
-    registration.addEventListener('updatefound', () => {
+    registration.addEventListener('updatefound', async () => {
       console.log('[ServiceWorker] New service worker being installed');
       const newWorker = registration.installing;
       
       if (newWorker) {
-        newWorker.addEventListener('statechange', () => {
+        newWorker.addEventListener('statechange', async () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // New service worker is installed and ready to take over
-            console.log('[ServiceWorker] New version ready to be activated');
-            if (!notificationShown) { // Check if notification has already been shown
-              notifyUpdateAvailable(registration);
-              notificationShown = true; // Set the flag to true after showing the notification
+            // Fetch the current hash from the server
+            const hashResponse = await fetch('/service-worker-hash.json');
+            if (hashResponse.ok) {
+              const hashData = await hashResponse.json();
+              const currentHash = hashData.hash;
+              const cache = await caches.open('app-cache');
+              const storedHashResponse = await cache.match('app-hash');
+              const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
+
+              if (currentHash !== storedHash) {
+                // New service worker is installed and ready to take over
+                console.log('[ServiceWorker] New version ready to be activated');
+                if (!notificationShown) { // Check if notification has already been shown
+                  notifyUpdateAvailable(registration);
+                  notificationShown = true; // Set the flag to true after showing the notification
+                }
+              } else {
+                console.log('[ServiceWorker] Hash has not changed, skipping notification.');
+              }
             }
           }
         });
