@@ -5,10 +5,12 @@
 
 	// Use the direct path to the JSON file instead of importing it
 	const test2 = '/lottie/responsive-hover.json';
+	const magicWand = '/lottie/magic-wand.json';
+	const bookmark = '/lottie/bookmark.json';
 
 	import { Bomb, ChevronsRight } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import { features, future, next, reasons, splitDescription } from './data';
+	import { features, future, next, reasons, splitDescription, dataManagement } from './data';
 	import MorphSvg from '@/components/blocks/MorphSVG.svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
 
@@ -210,7 +212,7 @@
 
 	<div class="mx-auto grid min-h-[80vh] max-w-[1024px] space-y-3">
 		<div class="block max-w-md rounded-lg p-6">
-			<p class="justify-start text-left text-base text-gray-900 dark:text-white">
+			<p class="justify-start text-left text-base text-gray-900 dark:text-white md:text-xl">
 				<span class="font-bold text-green-800 dark:text-green-400">Supercharge your workflow!</span>
 				Svelte MiniApps are tiny, focused tools built with
 				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong> for lightning speed. Conquer
@@ -219,7 +221,7 @@
 		</div>
 
 		<div class="block max-w-md justify-self-end rounded-lg p-6">
-			<p class="text-right text-base text-gray-900 dark:text-white">
+			<p class="text-right text-base text-gray-900 dark:text-white md:text-xl">
 				<span class="font-bold text-green-800 dark:text-green-400">Work anytime, anywhere!</span>
 				These tiny web apps, built with
 				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong>, let you install them for
@@ -227,7 +229,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="px-16">
+	<section class="px-16">
 		<h3
 			id="Features"
 			class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -239,62 +241,62 @@
 				{#each features as feature, i}
 					<li
 						id={feature.title.split(' ').join('-')}
-						class="flex flex-col items-center md:flex-row"
+						class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out dark:border-gray-700 md:flex-row md:items-center"
 					>
 						<lord-icon
 							target="li"
 							src="https://cdn.lordicon.com/cgzlioyf.json"
 							trigger="morph"
 							colors="primary:#c71f16,secondary:#109173"
-							class="mr-5 h-10 w-10 text-green-500 dark:text-green-400"
+							class="mr-4 h-12 w-12 text-green-500 dark:text-green-400"
 						>
 						</lord-icon>
-						<span class="felx flex-col font-semibold">
-							{feature.title}:
-							<span class="ml-10 font-normal md:-indent-2">
-								{#each splitDescription(feature.description, 10) as line, j}
-									<p class="indent-{j}">{line}</p>
+						<div class="flex flex-col">
+							<span class="text-lg font-semibold text-gray-900 dark:text-white">
+								{feature.title}
+							</span>
+							<span class="ml-4 font-normal text-gray-600 dark:text-gray-300">
+								{#each feature.description.split('\n') as line, j}
+									<p >{line}</p>
 								{/each}
 							</span>
-						</span>
+						</div>
 					</li>
 				{/each}
 
 				<!-- Data Management & Troubleshooting -->
-				<div class="mx-auto mt-8 max-w-2xl text-center">
+				<div class="mx-auto mt-8 text-center">
 					<h3
 						id="DataManagement"
 						class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
 					>
-						Data Management & Troubleshooting
+						{dataManagement.title}
 					</h3>
 					<p class="mt-4 text-gray-600 dark:text-gray-300">
-						Our app includes a powerful "Nuke Button" <Bomb class="inline-block h-5 w-5" /> that allows
+						Our app includes a powerful "Nuke Button" <Bomb class="inline-block h-5 w-5 text-red-500" /> that allows
 						you to clear all cached data, including service worker caches and local storage. This is
 						especially useful if you encounter any caching issues or need to reset the app to its default
 						state.
 					</p>
 					<ul class="mt-4 space-y-2 text-left text-gray-600 dark:text-gray-300">
-						<li class="flex items-start">
-							<span class="mr-2">•</span>
-							<span>Clear all cached data, including service worker caches and local storage</span>
-						</li>
-						<li class="flex items-start">
-							<span class="mr-2">•</span>
-							<span>Reset the app to its initial state when experiencing issues</span>
-						</li>
-						<li class="flex items-start">
-							<span class="mr-2">•</span>
-							<span>Unregister service workers for a fresh start</span>
-						</li>
-						<li class="flex items-start">
-							<span class="mr-2">•</span>
-							<span>Automatically reload the app after clearing data</span>
-						</li>
+						{#each dataManagement.features as feature}
+							<li class="flex items-start">
+								
+								<lord-icon
+							src={bookmark}
+							trigger="loop-on-hover"
+							stroke="thick"
+							target="li"
+							state="hover-draw"
+							class="mr-2 size-8 text-muted-foreground transition-colors hover:text-primary"
+							colors="primary:red,secondary:green"
+						></lord-icon>
+								<span>{feature}</span>
+							</li>
+						{/each}
 					</ul>
 					<p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-						Use this feature if you encounter any caching issues or need to reset the app to its
-						default state.
+						{dataManagement.note}
 					</p>
 				</div>
 
@@ -353,7 +355,7 @@
 					The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
 				</h3>
 
-				<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
+				<p class="mx-auto my-8 text-base leading-relaxed md:w-[50vw]">
 					We've all been there -
 					<span class="font-semibold text-green-500 dark:text-green-400">
 						wrestling with a complex framework for a simple task.
@@ -497,7 +499,7 @@
 				</div>
 			</ul>
 		</div>
-	</div>
+	</section>
 </section>
 
 <!-- Footer -->

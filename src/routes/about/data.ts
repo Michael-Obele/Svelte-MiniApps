@@ -65,7 +65,24 @@ export const next = [
 	}
 ];
 
-// Function to split the description into an array of strings, each containing a maximum number of words
+export const dataManagement = {
+    title: 'Data Management & Troubleshooting',
+    description: `Our app includes a powerful "Nuke Button" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state.`,
+    features: [
+        'Clear all cached data, including service worker caches and local storage',
+        'Reset the app to its initial state when experiencing issues',
+        'Unregister service workers for a fresh start',
+        'Automatically reload the app after clearing data'
+    ],
+    note: 'Use this feature if you encounter any caching issues or need to reset the app to its default state.'
+};
+
+/**
+ * Split a description into an array of strings, each containing a maximum number of words.
+ * @param {string} description - The description to split
+ * @param {number} maxWords - The maximum number of words per line
+ * @returns {string[]} An array of strings, each containing a maximum number of words
+ */
 export function splitDescription(description: string, maxWords: number): string[] {
 	const words = description.split(' ');
 	const result = [];

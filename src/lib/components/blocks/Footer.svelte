@@ -14,6 +14,9 @@
 		Download
 	} from 'lucide-svelte';
 
+	const logoX = '/lottie/logo-x.json';
+	const logoLinkendin = '/lottie/logo-linkedin.json';
+
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -47,7 +50,15 @@
 						class="text-muted-foreground transition-colors hover:text-primary"
 						aria-label="Twitter"
 					>
-						<Twitter class="size-5" strokeWidth={1.5} />
+						<lord-icon
+							src={logoX}
+							trigger="loop"
+							stroke="thick"
+							state="hover-draw"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary"
+							colors="primary:white,secondary:green"
+							aria-label="Twitter"
+						></lord-icon>
 					</a>
 					<a
 						href="https://www.linkedin.com/in/michael-amachree-263841325/"
@@ -56,7 +67,16 @@
 						class="text-muted-foreground transition-colors hover:text-primary"
 						aria-label="LinkedIn"
 					>
-						<Linkedin class="size-5" strokeWidth={1.5} />
+						
+						<lord-icon
+							src={logoLinkendin}
+							trigger="loop"
+							stroke="thick"
+							state="pinch"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary"
+							colors="primary:white,secondary:green"
+							aria-label="LinkedIn"
+						></lord-icon>
 					</a>
 				</div>
 			</div>
