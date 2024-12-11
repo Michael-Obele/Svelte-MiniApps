@@ -39,7 +39,35 @@ export function registerServiceWorker() {
         if (Date.now() - lastCheck >= CHECK_INTERVAL) {
           console.log('[ServiceWorker] Checking for updates...');
           lastCheck = Date.now();
-          registration.update();
+
+          // Fetch the current version or hash from the server
+          fetch('/service-worker-version.json')
+            .then((response) => response.json())
+            .then((data) => {
+              const currentVersion = localStorage.getItem('serviceWorkerVersion');
+
+              if (currentVersion !== data.version) {
+                console.log('[ServiceWorker] New version detected:', data.version);
+                localStorage.setItem('serviceWorkerVersion', data.version);
+
+                // Fetch the current hash from the server
+                fetch('/service-worker-hash.json')
+                  .then((response) => response.json())
+                  .then((data) => {
+                    const currentHash = localStorage.getItem('serviceWorkerHash');
+
+                    if (currentHash !== data.hash) {
+                      console.log('[ServiceWorker] New content detected:', data.hash);
+                      localStorage.setItem('serviceWorkerHash', data.hash);
+                      registration.update();
+                    } else {
+                      console.log('[ServiceWorker] No new content detected.');
+                    }
+                  });
+              } else {
+                console.log('[ServiceWorker] No new version detected.');
+              }
+            });
         }
       }, CHECK_INTERVAL);
 

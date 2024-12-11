@@ -168,3 +168,23 @@ Always include proper meta tags for:
 3. Implement local data persistence
 4. Support PWA features
 5. Ensure graceful degradation
+
+## Application Routes
+
+- **`/about`**: Provides an overview of the Svelte MiniApps, including features and philosophy.
+- **`/changelog`**: Displays the application's changelog, detailing updates and new features.
+- **`/handle-protocol`**: Manages application-specific protocols.
+- **`/social-links`**: Allows users to manage their social media links.
+- **`/social-links/[id]`**: Detailed view and management for a specific social link.
+- **`/apps`**: Lists all available mini-apps within the application.
+- **`/apps/(app)/advanced-emoji-tools`**: A tool for advanced emoji manipulations.
+- **`/apps/(app)/budget-tracker`**: Helps users track their budget and manage expenses.
+- **`/apps/(app)/currency-converter`**: Converts currencies based on current exchange rates.
+- **`/apps/(app)/english-dictionary-app`**: Provides English word definitions and translations.
+- **`/apps/(app)/qr-code-generator`**: Generates QR codes for various data inputs.
+- **`/apps/(app)/random-emoji-generator`**: Generates random emojis for fun and creative use.
+- **`/apps/(app)/random-password-generator`**: Creates secure random passwords for users.
+- **`/(auth)/login`**: User login page.
+- **`/(auth)/logout`**: Logs the user out of the application.
+- **`/(auth)/profile`**: User profile management page.
+- **`/(auth)/register`**: New user registration page.

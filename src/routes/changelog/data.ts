@@ -1,7 +1,7 @@
 export const items = [
     {
         title: "Offline-First Architecture",
-        description: "Complete rebuild focusing on offline capabilities and local-first data management.",
+        description: "Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app.",
         className: "md:col-span-2",
         color: "from-blue-500/20 via-transparent",
         icon: "🌐"
@@ -38,6 +38,19 @@ export const items = [
 ];
 
 export const timeline = [
+    {
+        date: "December 11, 2024",
+        title: "Enhanced Data Management & Troubleshooting",
+        description: "Improved user control over app data and caching",
+        items: [
+            "Added comprehensive Nuke Button functionality to clear all cached data",
+            "Clear caches, localStorage, sessionStorage, and IndexedDB data",
+            "Automatic service worker unregistration for fresh starts",
+            "Added user guidance for troubleshooting app issues"
+        ],
+        icon: "💣",
+        color: "from-red-500 to-orange-500"
+    },
     {
         date: "December 10, 2024",
         title: "Password Generator Reimplementation & Clipboard Utility",
