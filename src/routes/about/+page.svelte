@@ -8,16 +8,9 @@
 
 	import { Bomb, ChevronsRight } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
-	interface Feature {
-		title: string;
-		description: string;
-	}
-
 	import { features, future, next, reasons, splitDescription } from './data';
-	import { onMount } from 'svelte';
-	import MorphSvg from '@/components/MorphSVG.svelte';
+	import MorphSvg from '@/components/blocks/MorphSVG.svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
-	import NukeButton from '@/components/NukeButton.svelte';
 
 	const h3Ids = [
 		'Features',

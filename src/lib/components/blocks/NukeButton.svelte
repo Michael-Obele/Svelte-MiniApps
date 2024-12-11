@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Bomb } from 'lucide-svelte';
     import { toast } from 'svelte-sonner';
-    import { Button } from './ui/button';
+    import { Button } from '../ui/button';
     import { cn } from '$lib/utils';
 
     let { class: className = '' } = $props();

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from '@/components/blocks/ThemeSwitch.svelte';
-	import NukeButton from '@/components/NukeButton.svelte';
+	import NukeButton from '@/components/blocks/NukeButton.svelte';
 	import { scrollToTop } from '$lib/utils';
 	import {
 		Heart,
