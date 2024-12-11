@@ -21,13 +21,25 @@ const HASH_KEY = 'app-hash';
 const HASH_FILE = '/service-worker-hash.json';
 
 // Debug logging
-self.addEventListener('message', (event) => {
+self.addEventListener('message', async (event) => {
   if (event.data && event.data.type === 'DEBUG') {
     console.log('[Service Worker Debug]', event.data);
   }
   // Handle cache invalidation message
   if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
+    const hashResponse = await fetch(HASH_FILE);
+    if (hashResponse.ok) {
+      const hashData = await hashResponse.json();
+      const cache = await caches.open(CACHE_NAME);
+      const storedHashResponse = await cache.match(HASH_KEY);
+      const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
+      const newHash = hashData.hash;
+      if (newHash !== storedHash) {
+        self.skipWaiting();
+      } else {
+        console.log('[Service Worker] Hash has not changed, skipping SKIP_WAITING message.');
+      }
+    }
   }
 });
 
@@ -54,9 +66,17 @@ self.addEventListener('install', (event: ExtendableEvent) => {
             const hashData = await hashResponse.json();
             const storedHashResponse = await cache.match(HASH_KEY);
             const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
-            if (storedHash === hashData.hash) {
+            const newHash = hashData.hash;
+            const currentHash = storedHash;
+            if (newHash !== currentHash) {
+              // Notify user about the new version
+              self.clients.matchAll().then(clients => {
+                clients.forEach(client => {
+                  client.postMessage({ type: 'NEW_VERSION_AVAILABLE' });
+                });
+              });
+            } else {
               console.log('[Service Worker] Hash has not changed, discarding new service worker.');
-              return;
             }
             await cache.put(HASH_KEY, new Response(hashData.hash));
           }

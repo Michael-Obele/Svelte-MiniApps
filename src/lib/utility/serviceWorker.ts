@@ -49,6 +49,32 @@ export async function registerServiceWorker() {
     const CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
     let lastCheck = Date.now();
 
+    async function getNewHash() {
+      const newHashResponse = await fetch('/service-worker-hash.json');
+      if (newHashResponse.ok) {
+        const newHashData = await newHashResponse.json();
+        return newHashData.hash;
+      }
+    }
+
+    async function getCurrentHash() {
+      const currentHash = localStorage.getItem('serviceWorkerHash');
+      return currentHash;
+    }
+
+    async function checkForUpdates() {
+      const newHash = await getNewHash();
+      const currentHash = await getCurrentHash();
+
+      if (newHash !== currentHash) {
+        console.log('[ServiceWorker] New content detected:', newHash);
+        localStorage.setItem('serviceWorkerHash', newHash);
+        registration.update();
+      } else {
+        console.log('[Service Worker] Hash has not changed, no update needed.');
+      }
+    }
+
     setInterval(() => {
       // Only check if it's been at least CHECK_INTERVAL since the last check
       if (Date.now() - lastCheck >= CHECK_INTERVAL) {
@@ -65,20 +91,7 @@ export async function registerServiceWorker() {
               console.log('[ServiceWorker] New version detected:', data.version);
               localStorage.setItem('serviceWorkerVersion', data.version);
 
-              // Fetch the current hash from the server
-              fetch('/service-worker-hash.json')
-                .then((response) => response.json())
-                .then((data) => {
-                  const currentHash = localStorage.getItem('serviceWorkerHash');
-
-                  if (currentHash !== data.hash) {
-                    console.log('[ServiceWorker] New content detected:', data.hash);
-                    localStorage.setItem('serviceWorkerHash', data.hash);
-                    registration.update();
-                  } else {
-                    console.log('[ServiceWorker] No new content detected.');
-                  }
-                });
+              checkForUpdates();
             } else {
               console.log('[ServiceWorker] No new version detected.');
             }
@@ -106,9 +119,15 @@ export async function registerServiceWorker() {
     });
 
     // Listen for the SKIP_WAITING message
-    navigator.serviceWorker.addEventListener('message', (event) => {
+    navigator.serviceWorker.addEventListener('message', async (event) => {
       if (event.data && event.data.type === 'SKIP_WAITING') {
-        registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
+        const newHash = await getNewHash();
+        const currentHash = await getCurrentHash();
+        if (newHash !== currentHash) {
+          registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
+        } else {
+          console.log('[ServiceWorker] Hash has not changed, skipping SKIP_WAITING message.');
+        }
       }
     });
   } catch (error) {

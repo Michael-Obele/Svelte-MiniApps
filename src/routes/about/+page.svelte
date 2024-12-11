@@ -502,6 +502,8 @@
 	</section>
 </section>
 
+<!-- Add Attribution to shadcn and lordicon and anyother service used -->
+
 <!-- Footer -->
 <footer
 	class="flex flex-col items-center justify-between bg-gray-800 px-4 py-8 text-white md:flex-row"
