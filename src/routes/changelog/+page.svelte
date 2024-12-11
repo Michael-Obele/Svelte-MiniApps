@@ -21,7 +21,7 @@
 
 		<BlurInText>
 			<h1
-				class="mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text text-center text-4xl font-bold text-transparent sm:text-5xl"
+				class="mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
 			>
 				Changelog: Svelte 4 to Svelte 5
 			</h1>
