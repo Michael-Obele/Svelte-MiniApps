@@ -33,14 +33,8 @@ export const items = [
         className: "md:col-span-1",
         color: "from-red-500/20 via-transparent",
         icon: "📱"
-    },
-    {
-        title: "Copy to Clipboard Utility",
-        description: "Introduced a versatile copyToClipboard function to streamline text copying across the app.",
-        className: "md:col-span-1",
-        color: "from-teal-500/20 via-transparent",
-        icon: "📋"
     }
+  
 ];
 
 export const timeline = [
