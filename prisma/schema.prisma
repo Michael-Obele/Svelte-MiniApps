@@ -8,23 +8,29 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("DATABASE_URL")
+//   directUrl = env("DIRECT_URL")
+// }
+
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db" // or any path you prefer for your SQLite database file
 }
 
 model User {
   id             String           @id @default(uuid())
   age            Int?
-  username       String           @unique @db.VarChar(255)
-  passwordHash   String           @map("password_hash") @db.Text
+  username       String           @unique
+  passwordHash   String           @map("password_hash")
   sessions       Session[]
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
   SocialLinkPage SocialLinkPage[]
-  githubId       String?          @unique @db.VarChar(255)
-  googleId       String?          @unique @db.VarChar(255)
+  githubId       String?          @unique
+  googleId       String?          @unique
+  UserPassword   UserPassword[]
 
   @@index([username])
   @@map("user")
@@ -48,7 +54,7 @@ model SocialLinkPage {
   userId    String       @map("user_id")
   user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   links     SocialLink[]
-  title     String?      @db.VarChar(255)
+  title     String?
   isPublic  Boolean      @default(true) @map("is_public")
 
   @@map("social_link_pages")
@@ -58,11 +64,22 @@ model SocialLink {
   id        String         @id @default(uuid())
   createdAt DateTime       @default(now()) @map("created_at")
   updatedAt DateTime       @updatedAt @map("updated_at")
-  label     String         @db.VarChar(255)
-  url       String         @db.Text
+  label     String
+  url       String
   pageId    String         @map("page_id")
   page      SocialLinkPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
   order     Int            @default(0)
 
   @@map("social_links")
+}
+
+model UserPassword {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("user_passwords")
 }
