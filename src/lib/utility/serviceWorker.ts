@@ -41,7 +41,7 @@ export function registerServiceWorker() {
           lastCheck = Date.now();
 
           // Fetch the current version or hash from the server
-          fetch('/service-worker-version.json')
+          fetch('./service-worker-version.json')
             .then((response) => response.json())
             .then((data) => {
               const currentVersion = localStorage.getItem('serviceWorkerVersion');

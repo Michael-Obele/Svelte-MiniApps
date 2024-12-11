@@ -15,8 +15,10 @@ const OFFLINE_PAGE = generateOfflineHtml();
 // Reduce cache duration to 1 day for better updates
 const MAX_AGE = 24 * 60 * 60 * 1000; // 1 day
 
-// Store the current version in cache for comparison
+// Store the current version and hash in cache for comparison
 const VERSION_KEY = 'app-version';
+const HASH_KEY = 'app-hash';
+const HASH_FILE = '/service-worker-hash.json';
 
 // Debug logging
 self.addEventListener('message', (event) => {
@@ -44,6 +46,17 @@ self.addEventListener('install', (event: ExtendableEvent) => {
       try {
         const cache = await caches.open(CACHE_NAME);
         console.log('[Service Worker] Caching all assets for version:', version);
+        
+        // Fetch and store the current hash
+        try {
+          const hashResponse = await fetch(HASH_FILE);
+          if (hashResponse.ok) {
+            const hashData = await hashResponse.json();
+            await cache.put(HASH_KEY, new Response(hashData.hash));
+          }
+        } catch (error) {
+          console.warn('[Service Worker] Failed to fetch hash:', error);
+        }
         
         // Store the current version
         await cache.put(VERSION_KEY, new Response(version));
@@ -98,6 +111,30 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(
     (async () => {
       try {
+        // Check if hash has changed
+        const cache = await caches.open(CACHE_NAME);
+        const storedHashResponse = await cache.match(HASH_KEY);
+        const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
+        
+        try {
+          const hashResponse = await fetch(HASH_FILE);
+          if (hashResponse.ok) {
+            const hashData = await hashResponse.json();
+            if (storedHash !== hashData.hash) {
+              console.log('[Service Worker] Hash changed, clearing caches');
+              // Delete all caches
+              const cacheKeys = await caches.keys();
+              await Promise.all(cacheKeys.map(key => caches.delete(key)));
+              // Force clients to reload to get new version
+              await self.clients.claim();
+              const clients = await self.clients.matchAll();
+              clients.forEach(client => client.navigate(client.url));
+            }
+          }
+        } catch (error) {
+          console.warn('[Service Worker] Failed to check hash:', error);
+        }
+
         // Immediately claim clients to ensure the new service worker takes over
         await self.clients.claim();
         
