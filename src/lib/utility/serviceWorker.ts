@@ -120,7 +120,7 @@ export async function registerServiceWorker() {
                 // New service worker is installed and ready to take over
                 console.log('[ServiceWorker] New version ready to be activated');
                 if (!notificationShown) { // Check if notification has already been shown
-                  notifyUpdateAvailable(registration);
+                  notifyUpdateAvailable(registration, currentHash);
                   notificationShown = true; // Set the flag to true after showing the notification
                 }
               } else {
