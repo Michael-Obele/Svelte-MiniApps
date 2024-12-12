@@ -114,6 +114,9 @@
 		<div class="space-y-4 rounded-lg border bg-card p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
+					<Button variant="outline" size="icon" onclick={generatePassword}>
+						<RefreshCw class="h-4 w-4" />
+					</Button>
 					<Input
 						type="text"
 						value={password}
@@ -123,9 +126,6 @@
 					/>
 					<Button variant="outline" size="icon" onclick={()=> copyToClipboard(password, 'Password copied to clipboard')} disabled={!password}>
 						<Copy class="h-4 w-4" />
-					</Button>
-					<Button variant="outline" size="icon" onclick={generatePassword}>
-						<RefreshCw class="h-4 w-4" />
 					</Button>
 				</div>
 
