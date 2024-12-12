@@ -4,9 +4,18 @@ import { RefreshCw } from 'lucide-svelte';
 
 let swRegistration: ServiceWorkerRegistration | null = null;
 
-export function notifyUpdateAvailable(registration: ServiceWorkerRegistration) {
+export function notifyUpdateAvailable(registration: ServiceWorkerRegistration, currentHash: string) {
     swRegistration = registration;
-    
+
+    // Retrieve the stored hash from local storage
+    const storedHash = localStorage.getItem('serviceWorkerHash');
+
+    // Compare the current hash with the stored hash
+    if (storedHash === currentHash) {
+        console.log('[ServiceWorker] Hash has not changed, skipping notification.');
+        return; // Skip notification if hashes match
+    }
+
     toast('New Update Available', {
         description: 'A new version of the app is ready to install',
         duration: Number.POSITIVE_INFINITY, 
