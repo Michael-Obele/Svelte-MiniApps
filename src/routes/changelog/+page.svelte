@@ -103,7 +103,9 @@
 										<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-5"></div>
 										<div class="relative">
 											<h3 class="mb-3 text-xl font-bold text-white">
-												<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent">{item.title}</span>
+												<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent"
+													>{item.title}</span
+												>
 											</h3>
 
 											<!-- Date Badge -->
@@ -132,7 +134,7 @@
 
 											<!-- Hover Effect -->
 											<div
-												class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500 "
+												class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500"
 											></div>
 										</div>
 									</div>
@@ -173,7 +175,9 @@
 								<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-5"></div>
 								<div class="relative">
 									<h3 class="mb-2 text-lg font-bold text-white">
-										<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent">{item.title}</span>
+										<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent"
+											>{item.title}</span
+										>
 									</h3>
 
 									<!-- Date Badge -->
@@ -202,7 +206,7 @@
 
 									<!-- Hover Effect -->
 									<div
-										class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500 group-hover:opacity-10"
+										class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500"
 									></div>
 								</div>
 							</div>
