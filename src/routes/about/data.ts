@@ -1,15 +1,5 @@
 export const features = [
 	{
-		title: 'Born from Real Needs',
-		description:
-			'Each mini-app started as a solution to a real problem I faced. Instead of juggling multiple complex tools, I wanted simple, focused solutions that just work.'
-	},
-	{
-		title: 'Browser-First Philosophy',
-		description:
-			'No app stores, no installations - just open your browser and start using them. These tools live where you work: in your browser tabs, ready when you need them.'
-	},
-	{
 		title: 'Install When You Want',
 		description:
 			"While they work great in the browser, you can also install them as PWAs. It's like having native apps that don't eat up your system resources - the best of both worlds."
@@ -17,7 +7,7 @@ export const features = [
 	{
 		title: 'Svelte-Powered Speed',
 		description:
-			'I chose SvelteKit because it\'s blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless.'
+			"We chose SvelteKit because it's blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless."
 	}
 ];
 
@@ -66,15 +56,15 @@ export const next = [
 ];
 
 export const dataManagement = {
-    title: 'Data Management & Troubleshooting',
-    description: `Our app includes a powerful "Nuke Button" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state.`,
-    features: [
-        'Clear all cached data, including service worker caches and local storage',
-        'Reset the app to its initial state when experiencing issues',
-        'Unregister service workers for a fresh start',
-        'Automatically reload the app after clearing data'
-    ],
-    note: 'Use this feature if you encounter any caching issues or need to reset the app to its default state.'
+	title: 'Data Management & Troubleshooting',
+	description: `Our app includes a powerful "Nuke Button" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state.`,
+	features: [
+		'Clear all cached data, including service worker caches and local storage',
+		'Reset the app to its initial state when experiencing issues',
+		'Unregister service workers for a fresh start',
+		'Automatically reload the app after clearing data'
+	],
+	note: 'Use this feature if you encounter any caching issues or need to reset the app to its default state.'
 };
 
 /**

@@ -2,7 +2,7 @@
 	import type { PageServerData } from './$types';
 	import { projects, done, siteimage, siteurl, sitename } from '@/index';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import {  CheckCircle2 } from 'lucide-svelte';
+	import { CheckCircle2 } from 'lucide-svelte';
 	import LordIcon from './LordIcon.svelte';
 	//
 	import { getGreeting, getMillisecondsUntilNextPeriod, mantras } from '@/utility/greetings';
@@ -24,9 +24,9 @@
 	let twitterTitle = `${websiteTitle} - Smart Tools for Modern Life`;
 	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 	//
-	import { invalidate, invalidateAll } from "$app/navigation";
-	
-	// 
+	import { invalidate, invalidateAll } from '$app/navigation';
+
+	//
 	const arrow = '/lottie/trending-flat.json';
 
 	let greeting = $state(getGreeting());
@@ -48,7 +48,6 @@
 
 	let { data }: Props = $props();
 
-
 	let isLoading = $state(false);
 
 	function handleSubmit() {
@@ -59,8 +58,6 @@
 		};
 	}
 
-
-
 	$effect(() => {
 		userContext.set(data.user?.username);
 		invalidate('user');
@@ -68,9 +65,11 @@
 	});
 </script>
 
-<div class="w-full border-b border-red-100 bg-red-50/80 p-1 py-2 dark:border-red-800/30 dark:bg-red-900/20">
+<div
+	class="w-full border-b border-red-100 bg-red-50/80 p-1 py-2 dark:border-red-800/30 dark:bg-red-900/20"
+>
 	<p class="text-center text-sm font-medium text-red-700/90 dark:text-red-200/90">
-	🚧 Welcome to our new platform! Please check the changelog as we migrate features.
+		🚧 Welcome to our new platform! Please check the changelog as we migrate features.
 	</p>
 </div>
 
@@ -112,7 +111,7 @@
 			</span>
 		</BlurInText>
 	</BlurFade>
-	<BlurFade delay={0.25 * 2}>
+	<BlurFade class="px-1" delay={0.25 * 2}>
 		{#if !isLoading && data.mantra}
 			<h3 class="my-2 flex items-center justify-center gap-2 text-center">
 				<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">

@@ -128,12 +128,6 @@ export const projects: Project[] = [
 		difficulty: 'hard'
 	},
 	{
-		title: 'Math Equation Solver',
-		details: 'Solves simple math equations and shows the steps to get the answer.',
-		tag: 'education',
-		difficulty: 'hard'
-	},
-	{
 		title: 'Simple Drawing App',
 		details: 'Lets you create basic drawings using lines, shapes, and colors.',
 		tag: 'design',

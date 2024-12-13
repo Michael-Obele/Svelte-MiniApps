@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Illustration from './Illustration.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -13,14 +14,21 @@
 	import { features, future, next, reasons, splitDescription, dataManagement } from './data';
 	import MorphSvg from '@/components/blocks/MorphSVG.svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
+	import Why from '$lib/assets/Question 7.png?enhanced';
+	import Data from '$lib/assets/Bomb.png?enhanced';
+	import Aha from '$lib/assets/Problem Solving 4.png?enhanced';
+	import Tools from '$lib/assets/Solving Problem 1.png?enhanced';
+	import Next from '$lib/assets/Creativity.png?enhanced';
+	import Vision from '$lib/assets/Rocket Boy.png?enhanced';
+
+	import Group from './Group.svelte';
 
 	const h2Ids = [
 		'Features',
 		'DataManagement',
-		'Journey',
+		'Tools',
 		'Philosophy',
 		'Motivation',
-		'Technology',
 		'Vision',
 		'Roadmap'
 	];
@@ -204,28 +212,25 @@
 	</ol>
 
 	<!-- End of Stepper -->
-		<div class="mx-auto grid min-h-[80vh] max-w-[1024px] space-y-3">
-			<div class="block max-w-md rounded-lg p-6">
-				<p class="justify-start text-left text-base text-gray-900 dark:text-white md:text-xl">
-					<span class="font-bold text-green-800 dark:text-green-400"
-						>Supercharge your workflow!</span
-					>
-					Svelte MiniApps are tiny, focused tools built with
-					<strong class="text-red-500 dark:text-red-700">SvelteKit</strong> for lightning speed. Conquer
-					everyday tasks with ease.
-				</p>
-			</div>
-
-			<div class="block max-w-md justify-self-end rounded-lg p-6">
-				<p class="text-right text-base text-gray-900 dark:text-white md:text-xl">
-					<span class="font-bold text-green-800 dark:text-green-400">Work anytime, anywhere!</span>
-					These tiny web apps, built with
-					<strong class="text-red-500 dark:text-red-700">SvelteKit</strong>, let you install them
-					for seamless offline access. Conquer your daily challenges, even without an internet
-					connection.
-				</p>
-			</div>
+	<div class="mx-auto grid min-h-[80vh] max-w-[1024px] space-y-3">
+		<div class="block max-w-md rounded-lg p-6">
+			<p class="justify-start text-left text-base text-gray-900 dark:text-white md:text-xl">
+				<span class="font-bold text-green-800 dark:text-green-400">Supercharge your workflow!</span>
+				Svelte MiniApps are tiny, focused tools built with
+				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong> for lightning speed. Conquer
+				everyday tasks with ease.
+			</p>
 		</div>
+
+		<div class="block max-w-md justify-self-end rounded-lg p-6">
+			<p class="text-right text-base text-gray-900 dark:text-white md:text-xl">
+				<span class="font-bold text-green-800 dark:text-green-400">Work anytime, anywhere!</span>
+				These tiny web apps, built with
+				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong>, let you install them for
+				seamless offline access. Conquer your daily challenges, even without an internet connection.
+			</p>
+		</div>
+	</div>
 
 	<main class="px-1 md:px-16">
 		<section>
@@ -237,34 +242,42 @@
 					Why Choose Svelte MiniApps?
 				</h2>
 			</header>
-			<div id="Features-list" class="mx-auto my-5 w-fit max-w-[80%]">
-				<ul class="space-y-4 text-left">
-					{#each features as feature, i}
-						<li
-							id={feature.title.split(' ').join('-')}
-							class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out dark:border-gray-700 md:flex-row md:items-center"
-						>
-							<lord-icon
-								target="li"
-								src="https://cdn.lordicon.com/cgzlioyf.json"
-								trigger="morph"
-								colors="primary:#c71f16,secondary:#109173"
-								class="mr-4 h-12 w-12 text-green-500 dark:text-green-400"
-							></lord-icon>
-							<div class="flex flex-col">
-								<span class="text-lg font-semibold text-gray-900 dark:text-white">
-									{feature.title}
-								</span>
-								<span class="ml-4 font-normal text-gray-600 dark:text-gray-300">
-									{#each feature.description.split('\n') as line, j}
-										<p>{line}</p>
-									{/each}
-								</span>
-							</div>
-						</li>
-					{/each}
-				</ul>
-			</div>
+			<Group>
+				{#snippet image()}
+					<Illustration image={Why} alt="Why  Choose Svelte MiniApps?" />
+				{/snippet}
+
+				{#snippet content()}
+					<div id="Features-list" class="mx-auto my-5">
+						<ul class="space-y-4 text-left">
+							{#each features as feature, i}
+								<li
+									id={feature.title.split(' ').join('-')}
+									class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out dark:border-gray-700 md:flex-row md:items-center"
+								>
+									<lord-icon
+										target="li"
+										src="https://cdn.lordicon.com/cgzlioyf.json"
+										trigger="morph"
+										colors="primary:#c71f16,secondary:#109173"
+										class="mr-4 h-12 w-12 text-green-500 dark:text-green-400"
+									></lord-icon>
+									<div class="flex flex-col">
+										<span class="text-lg font-semibold text-gray-900 dark:text-white">
+											{feature.title}
+										</span>
+										<span class="ml-4 font-normal text-gray-600 dark:text-gray-300">
+											{#each feature.description.split('\n') as line, j}
+												<p>{line}</p>
+											{/each}
+										</span>
+									</div>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/snippet}
+			</Group>
 		</section>
 
 		<section class="mx-auto mt-8 text-center">
@@ -276,12 +289,22 @@
 					{dataManagement.title}
 				</h2>
 			</header>
-			<p class="mt-4 text-gray-600 dark:text-gray-300">
-				Our app includes a powerful "Nuke Button" <Bomb class="inline-block h-5 w-5 text-red-500" />
-				that allows you to clear all cached data, including service worker caches and local storage.
-				This is especially useful if you encounter any caching issues or need to reset the app to its
-				default state.
-			</p>
+			<Group dir="right">
+				{#snippet image()}
+					<Illustration image={Data} alt="Data Management & Troubleshooting" />
+				{/snippet}
+
+				{#snippet content()}
+					<p>
+						Our app includes a powerful "Nuke Button" <Bomb
+							class="inline-block h-5 w-5 text-red-500"
+						/>
+						that allows you to clear all cached data, including service worker caches and local storage.
+						This is especially useful if you encounter any caching issues or need to reset the app to
+						its default state.
+					</p>
+				{/snippet}
+			</Group>
 			<ul class="my-8 space-y-4 text-left">
 				{#each dataManagement.features as feature}
 					<li
@@ -308,16 +331,25 @@
 		<section>
 			<header>
 				<h2
-					id="Journey"
+					id="Tools"
 					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
 				>
 					Explore a Range of Tools:
 				</h2>
 			</header>
-			<p class="mx-auto my-8 text-center text-base leading-relaxed">
-				Our collection covers a wide variety of use cases, from basic tools like unit converters to
-				more complex ones like persistent to-do lists.
-			</p>
+
+			<Group>
+				{#snippet image()}
+					<Illustration image={Tools} alt=" Tools for Svelte MiniApps" />
+				{/snippet}
+
+				{#snippet content()}
+					<p class="mx-auto my-8 text-center text-base leading-relaxed">
+						Our collection covers a wide variety of use cases, from basic tools like unit converters
+						to more complex ones like persistent to-do lists.
+					</p>
+				{/snippet}
+			</Group>
 			<ul class="mx-auto w-fit space-y-4 text-center">
 				<li id="Browse" class="flex flex-col items-center space-x-3 md:flex-row">
 					<lord-icon
@@ -356,31 +388,34 @@
 					The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
 				</h2>
 			</header>
-			<p class="mx-auto my-8 text-base leading-relaxed md:w-[50vw]">
-				We've all been there -
-				<span class="font-semibold text-green-500 dark:text-green-400">
-					wrestling with a complex framework for a simple task.
-				</span>
-				<br />
-				Svelte MiniApps were born from the frustration of heavyweight solutions for lightweight problems.
-				<br />
-				We wanted something
-				<span class="font-semibold text-green-500 dark:text-green-400">
-					modular, efficient, and focused
-				</span>
-				on getting the job done, just like that trusty screwdriver you use all the time.
-			</p>
-		</section>
 
-		<section>
-			<header>
-				<h2
-					id="Motivation"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					Here's what sparked this project:
-				</h2>
-			</header>
+			<Group>
+				{#snippet image()}
+					<Illustration image={Aha} alt="The reason behind Svelte MiniApps" />
+				{/snippet}
+
+				{#snippet content()}
+					<p class="mx-auto my-8 space-y-5 text-base leading-relaxed">
+						We've all been there -
+						<span class="font-semibold text-green-500 dark:text-green-400">
+							wrestling with a complex framework for a simple task.
+						</span>
+						<span>
+							Svelte MiniApps were born from the frustration of heavyweight solutions for
+							lightweight problems.
+						</span>
+					</p>
+					<p class="mx-auto my-8 space-y-5 text-base leading-relaxed">
+						We wanted something
+
+						<span class="font-semibold text-green-500 dark:text-green-400">
+							modular, efficient, and focused
+						</span>
+						on getting the job done, just like that trusty screwdriver you use all the time.
+					</p>
+				{/snippet}
+			</Group>
+
 			<div class="mx-auto my-5 w-fit max-w-[80%]">
 				<ul class="space-y-4 text-left">
 					{#each reasons as reason, i}
@@ -410,45 +445,30 @@
 		<section>
 			<header>
 				<h2
-					id="Technology"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					Svelte MiniApps: Your Pocket-Sized Toolkit
-				</h2>
-			</header>
-			<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
-				Imagine your development workflow as a cluttered toolbox. Svelte MiniApps are the
-				<span class="font-bold text-green-800 dark:text-green-400">
-					handy, bite-sized tools
-					<span class="font-normal text-black dark:text-white">you grab for specific tasks.</span>
-					No bulky all-in-ones
-					<span class="font-normal text-black dark:text-white">or</span>
-					dusty
-					<span class="font-normal text-black dark:text-white">specialty tools here.</span>
-				</span>
-			</p>
-		</section>
-
-		<section>
-			<header>
-				<h2
 					id="Vision"
 					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
 				>
-					The Future of Svelte MiniApps: Your Development Playground
+					The Future of Svelte MiniApps: What's Next?
 				</h2>
 			</header>
-			<p class="mx-auto my-8 text-center text-base leading-relaxed md:w-[50vw]">
-				Svelte MiniApps is an
-				<span class="font-bold text-green-800 dark:text-green-400">
-					ever-evolving project,
-					<span class="font-normal text-white">
-						and
-						<span class="font-bold text-green-800 dark:text-green-400">you</span>
-						hold the reins!
-					</span>
-				</span>
-			</p>
+			<Group dir="right">
+				{#snippet image()}
+					<Illustration image={Vision} alt="The Future of Svelte MiniApps" />
+				{/snippet}
+				{#snippet content()}
+					<p class="my-8 text-center text-base leading-relaxed">
+						Svelte MiniApps is an
+						<span class="font-bold text-green-800 dark:text-green-400">
+							ever-evolving project,
+							<span class="font-normal text-white">
+								and
+								<span class="font-bold text-green-800 dark:text-green-400">you</span>
+								hold the reins!
+							</span>
+						</span>
+					</p>
+				{/snippet}
+			</Group>
 			<div class="mx-auto my-5 w-fit max-w-[90%]">
 				<ul class="space-y-4 text-left">
 					{#each future as item, i}
@@ -473,17 +493,7 @@
 					{/each}
 				</ul>
 			</div>
-		</section>
 
-		<section>
-			<header>
-				<h2
-					id="Roadmap"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					What's Next?
-				</h2>
-			</header>
 			<div class="mx-auto my-5 w-fit max-w-[90%]">
 				<ul class="space-y-4 text-left">
 					{#each next as item, i}
