@@ -20,7 +20,7 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="w-full bg-background py-6 text-foreground shadow-lg md:py-8">
+<footer class="w-full border-t border-slate-600 bg-background py-6 text-foreground shadow-lg md:py-8">
 	<div class="container mx-auto px-4 md:px-6">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- Left Column -->

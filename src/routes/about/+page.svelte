@@ -242,7 +242,7 @@
 					Why Choose Svelte MiniApps?
 				</h2>
 			</header>
-			<Group>
+			<Group dir='left'>
 				{#snippet image()}
 					<Illustration image={Why} alt="Why  Choose Svelte MiniApps?" />
 				{/snippet}
@@ -288,6 +288,7 @@
 				>
 					{dataManagement.title}
 				</h2>
+
 			</header>
 			<Group dir="right">
 				{#snippet image()}
@@ -338,7 +339,7 @@
 				</h2>
 			</header>
 
-			<Group>
+			<Group dir='left'>
 				{#snippet image()}
 					<Illustration image={Tools} alt=" Tools for Svelte MiniApps" />
 				{/snippet}
@@ -389,7 +390,7 @@
 				</h2>
 			</header>
 
-			<Group>
+			<Group dir='right'>
 				{#snippet image()}
 					<Illustration image={Aha} alt="The reason behind Svelte MiniApps" />
 				{/snippet}
@@ -451,7 +452,7 @@
 					The Future of Svelte MiniApps: What's Next?
 				</h2>
 			</header>
-			<Group dir="right">
+			<Group dir="left">
 				{#snippet image()}
 					<Illustration image={Vision} alt="The Future of Svelte MiniApps" />
 				{/snippet}
@@ -525,7 +526,7 @@
 <!-- Add Attribution to shadcn and lordicon and anyother service used -->
 
 <!-- Footer -->
-<footer
+<!-- <footer
 	class="flex flex-col items-center justify-between bg-gray-800 px-4 py-8 text-white md:flex-row"
 >
 	<a
@@ -569,7 +570,7 @@
 			Submit
 		</Button>
 	</form>
-</footer>
+</footer> -->
 
 <!-- End of Footer -->
 
