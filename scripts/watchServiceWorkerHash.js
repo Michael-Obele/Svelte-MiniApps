@@ -1,28 +1,33 @@
-import chokidar from 'chokidar';
-import { exec } from 'child_process';
+import { spawn } from 'bun';
 
-// Path to the service worker file
-const serviceWorkerPath = './src/service-worker.ts';
+// Path to your `generateServiceWorkerHash` script
+const hashScript = "bun run scripts/generateServiceWorkerHash.js";
 
-// Watch all files in the src directory
-const watcher = chokidar.watch('./src/**/*', {
-  persistent: true
+// Start the Vite development server
+const viteProcess = spawn({
+  cmd: ["bun", "vite", "dev"],
+  stdout: "inherit",
+  stderr: "inherit",
 });
 
-// Event listener for file changes
-watcher.on('change', (path) => {
-  console.log(`File ${path} has been changed. Regenerating hash...`);
-  exec('bun run scripts/generateServiceWorkerHash.js', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error generating hash: ${error.message}`);
-      return;
+// Watch for changes in the `src` folder
+Bun.watch({
+  path: "src/**/*", // Watch all files and subdirectories in `src`
+  async onChange(event) {
+    console.log(`[${event}] Detected change in src folder. Running ${hashScript}`);
+    try {
+      const result = await Bun.spawn({
+        cmd: hashScript.split(" "),
+        stdout: "inherit",
+        stderr: "inherit",
+      }).exited;
+      if (result !== 0) {
+        console.error("Error running generateServiceWorkerHash script.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-    if (stderr) {
-      console.error(`Error output: ${stderr}`);
-      return;
-    }
-    console.log(`Hash generation output: ${stdout}`);
-  });
+  },
 });
 
-console.log('Watching for changes in src directory...');
+console.log("Watching `src` folder for changes...");

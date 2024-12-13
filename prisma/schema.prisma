@@ -11,13 +11,8 @@ generator client {
 datasource db {
   provider  = "sqlite"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  // directUrl = env("DIRECT_URL")
 }
-
-// datasource db {
-//   provider = "sqlite"
-//   url      = "file:./dev.db" // or any path you prefer for your SQLite database file
-// }
 
 model User {
   id             String           @id @default(uuid())

@@ -60,13 +60,11 @@
 	}
 
 
-	let username = $state(data.user);
 
 	$effect(() => {
-		console.log('user:', username);
-		userContext.set(username?.username);
+		userContext.set(data.user?.username);
 		invalidate('user');
-		invalidate('mantra');
+		console.log('userContext.set', userContext);
 	});
 </script>
 

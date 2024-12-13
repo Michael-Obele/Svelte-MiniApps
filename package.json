@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "concurrently \"bun run watch:hash\" \"vite dev\"",
+		"dev": "bun vite dev",
 		"build": "node scripts/generateServiceWorkerHash.js && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -15,7 +15,7 @@
 		"db:push": "prisma db push",
 		"db:migrate": "prisma migrate dev",
 		"db:studio": "prisma studio",
-		"watch:hash": "node scripts/watchServiceWorkerHash.js"
+		"watch:hash": "node --watch-path=./src scripts/generateServiceWorkerHash.js"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.45.3",
@@ -40,7 +40,7 @@
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
-		"svelte": "^5.0.0",
+		"svelte": "^5.12.0",
 		"svelte-check": "^4.0.0",
 		"svelte-sonner": "^0.3.28",
 		"tailwind-merge": "^2.5.5",
@@ -49,7 +49,7 @@
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"vite": "^5.0.0"
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.21.0",
@@ -59,7 +59,7 @@
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
-		"@prisma/client": "^6.0.0",
+		"@prisma/client": "6.0.0",
 		"@types/bcryptjs": "^2.4.6",
 		"arctic": "^2.3.0",
 		"bcryptjs": "^2.4.3",

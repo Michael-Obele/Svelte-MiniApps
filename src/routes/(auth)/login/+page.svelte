@@ -38,7 +38,7 @@
 	<meta name="description" content="Login to access your Svelte MiniApps account" />
 </svelte:head>
 
-<section class="min-h-screen bg-background">
+<section class="min-h-screen bg-background py-3">
 	<div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
 		<!-- Logo -->
 		<a href="/" class="my-5 flex items-center space-x-3 rtl:space-x-reverse">
