@@ -15,7 +15,7 @@ function generateServiceWorkerHash() {
 
 	// Write hash to a file
 	fs.writeFileSync(
-		'/static/service-worker-hash.json',
+		'./static/service-worker-hash.json',
 		JSON.stringify(
 			{
 				hash: hash,
