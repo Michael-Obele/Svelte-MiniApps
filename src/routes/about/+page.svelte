@@ -1,35 +1,15 @@
 <script lang="ts">
-	import Illustration from './Illustration.svelte';
-	import type { PageData } from './$types';
+	import Vision from './Vision.svelte';
+	import Philosophy from './Philosophy.svelte';
+	import Tools from './Tools.svelte';
+	import DataManagement from './DataManagement.svelte';
+	import Features from './Features.svelte';
 
-	let { data }: { data: PageData } = $props();
+	import { ChevronsRight } from 'lucide-svelte';
 
-	// Use the direct path to the JSON file instead of importing it
-	const test2 = '/lottie/responsive-hover.json';
-	const magicWand = '/lottie/magic-wand.json';
-	const bookmark = '/lottie/bookmark.json';
-
-	import { Bomb, ChevronsRight } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { features, future, next, reasons, splitDescription, dataManagement } from './data';
-	import MorphSvg from '@/components/blocks/MorphSVG.svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
-	import Why from '$lib/assets/Question 7.png?enhanced';
-	import Data from '$lib/assets/Bomb.png?enhanced';
-	import Aha from '$lib/assets/Problem Solving 4.png?enhanced';
-	import Tools from '$lib/assets/Solving Problem 1.png?enhanced';
-	import Next from '$lib/assets/Creativity.png?enhanced';
-	import Vision from '$lib/assets/Rocket Boy.png?enhanced';
 
-	import Group from './Group.svelte';
-
-	const h2Ids = [
-		'Features',
-		'DataManagement',
-		'Tools',
-		'Philosophy',
-		'Vision',
-	];
+	const Ids = ['Features', 'DataManagement', 'Tools', 'Philosophy', 'Vision'];
 	let activeId: string[] = $state([]);
 	let visibleSections = $state(new Set<string>());
 
@@ -39,7 +19,7 @@
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					const currentIndex = h2Ids.indexOf(entry.target.id);
+					const currentIndex = Ids.indexOf(entry.target.id);
 
 					if (entry.isIntersecting) {
 						// Update last active index if this section is further down
@@ -50,19 +30,19 @@
 						// Only update lastActiveIndex if we're scrolling up past it
 						if (currentIndex === lastActiveIndex) {
 							// Find the highest visible section
-							const visibleIndices = Array.from(visibleSections).map((id) => h2Ids.indexOf(id));
+							const visibleIndices = Array.from(visibleSections).map((id) => Ids.indexOf(id));
 							lastActiveIndex =
 								visibleIndices.length > 0 ? Math.max(...visibleIndices) : currentIndex - 1;
 						}
 					}
 
 					// Always keep all sections up to lastActiveIndex active
-					activeId = lastActiveIndex >= 0 ? h2Ids.slice(0, lastActiveIndex + 1) : [];
+					activeId = lastActiveIndex >= 0 ? Ids.slice(0, lastActiveIndex + 1) : [];
 					// Ensure the last active section stays active even if scrolled past
-					if (lastActiveIndex === h2Ids.length - 1 && !entry.isIntersecting) {
+					if (lastActiveIndex === Ids.length - 1 && !entry.isIntersecting) {
 						// Only push if the last section was previously active
-						if (activeId.includes(h2Ids[lastActiveIndex])) {
-							activeId.push(h2Ids[lastActiveIndex]);
+						if (activeId.includes(Ids[lastActiveIndex])) {
+							activeId.push(Ids[lastActiveIndex]);
 						}
 					}
 				});
@@ -73,7 +53,7 @@
 			}
 		);
 
-		h2Ids.forEach((id) => {
+		Ids.forEach((id) => {
 			const el = document.getElementById(id);
 			if (el) {
 				observer.observe(el);
@@ -81,7 +61,7 @@
 		});
 
 		return () => {
-			h2Ids.forEach((id) => {
+			Ids.forEach((id) => {
 				const el = document.getElementById(id);
 				if (el) {
 					observer.unobserve(el);
@@ -108,7 +88,6 @@
 						gitIconState = 'pinch';
 						gitIconTrigger = 'loop';
 					}, 3500);
-					// entry.target.setAttribute('trigger', 'morph'); // Uncomment if you have a way to dynamically update the attribute
 				} else {
 					setTimeout(() => {
 						gitIconState = 'in-reveal';
@@ -180,7 +159,7 @@
 		id="stepper"
 		class="sticky top-1 z-50 mx-auto flex w-full max-w-fit flex-row flex-wrap content-center items-center justify-center space-x-2 self-center justify-self-center rounded-lg border border-gray-200 bg-white p-3 text-center text-sm font-medium text-gray-500 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:space-x-4 sm:space-y-0 sm:p-4 sm:text-base lg:p-3 rtl:space-x-reverse"
 	>
-		{#each h2Ids as id, i}
+		{#each Ids as id, i}
 			<a
 				href="#{id}"
 				class={`my-1 flex cursor-pointer items-center capitalize ${activeId.includes(id) ? 'text-green-600 dark:text-green-500' : ''}`}
@@ -202,7 +181,7 @@
 				<span class="hidden xl:block">
 					{id}
 				</span>
-				{#if i !== h2Ids.length - 1}
+				{#if i !== Ids.length - 1}
 					<ChevronsRight />
 				{/if}
 			</a>
@@ -230,353 +209,17 @@
 		</div>
 	</div>
 
-	<main class="px-1 md:px-16">
-		<section>
-			<header>
-				<h2
-					id="Features"
-					class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					Why Choose Svelte MiniApps?
-				</h2>
-			</header>
-			<Group dir='left'>
-				{#snippet image()}
-					<Illustration image={Why} alt="Why  Choose Svelte MiniApps?" />
-				{/snippet}
+	<main class="space-x-6 px-1 md:px-16">
+		<Features></Features>
 
-				{#snippet content()}
-					<div id="Features-list" class="mx-auto my-5">
-						<ul class="space-y-4 text-left">
-							{#each features as feature, i}
-								<li
-									id={feature.title.split(' ').join('-')}
-									class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out dark:border-gray-700 md:flex-row md:items-center"
-								>
-									<lord-icon
-										target="li"
-										src="https://cdn.lordicon.com/cgzlioyf.json"
-										trigger="morph"
-										colors="primary:#c71f16,secondary:#109173"
-										class="mr-4 h-12 w-12 text-green-500 dark:text-green-400"
-									></lord-icon>
-									<div class="flex flex-col">
-										<span class="text-lg font-semibold text-gray-900 dark:text-white">
-											{feature.title}
-										</span>
-										<span class="ml-4 font-normal text-gray-600 dark:text-gray-300">
-											{#each feature.description.split('\n') as line, j}
-												<p>{line}</p>
-											{/each}
-										</span>
-									</div>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/snippet}
-			</Group>
-		</section>
+		<DataManagement></DataManagement>
 
-		<section class="mx-auto mt-8 text-center">
-			<header>
-				<h2
-					id="DataManagement"
-					class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					{dataManagement.title}
-				</h2>
+		<Tools></Tools>
 
-			</header>
-			<Group dir="right">
-				{#snippet image()}
-					<Illustration image={Data} alt="Data Management & Troubleshooting" />
-				{/snippet}
+		<Philosophy></Philosophy>
 
-				{#snippet content()}
-					<p>
-						Our app includes a powerful "Nuke Button" <Bomb
-							class="inline-block h-5 w-5 text-red-500"
-						/>
-						that allows you to clear all cached data, including service worker caches and local storage.
-						This is especially useful if you encounter any caching issues or need to reset the app to
-						its default state.
-					</p>
-				{/snippet}
-			</Group>
-			<ul class="my-8 space-y-4 text-left">
-				{#each dataManagement.features as feature}
-					<li
-						class="mx-auto flex flex-col items-start border-none border-gray-300 p-3 text-right transition duration-200 ease-in-out dark:border-gray-700 sm:w-fit sm:flex-row"
-					>
-						<lord-icon
-							src={bookmark}
-							trigger="loop-on-hover"
-							stroke="thick"
-							target="li"
-							state="hover-draw"
-							class="mb-2 size-8 text-muted-foreground transition-colors hover:text-primary sm:mx-2"
-							colors="primary:red,secondary:green"
-						></lord-icon>
-						<span>{feature}</span>
-					</li>
-				{/each}
-			</ul>
-			<p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-				{dataManagement.note}
-			</p>
-		</section>
-
-		<section>
-			<header>
-				<h2
-					id="Tools"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					Explore a Range of Tools:
-				</h2>
-			</header>
-
-			<Group dir='left'>
-				{#snippet image()}
-					<Illustration image={Tools} alt=" Tools for Svelte MiniApps" />
-				{/snippet}
-
-				{#snippet content()}
-					<p class="mx-auto my-8 text-center text-base leading-relaxed">
-						Our collection covers a wide variety of use cases, from basic tools like unit converters
-						to more complex ones like persistent to-do lists.
-					</p>
-				{/snippet}
-			</Group>
-			<ul class="mx-auto w-fit space-y-4 text-center">
-				<li id="Browse" class="flex flex-col items-center space-x-3 md:flex-row">
-					<lord-icon
-						src="https://cdn.lordicon.com/unukghxb.json"
-						target="li"
-						trigger="morph"
-						colors="primary:#c71f16,secondary:#109173"
-						class="mr-5 h-8 w-8 text-green-500 dark:text-green-400"
-					></lord-icon>
-					<span class="">
-						Browse the available apps and discover ones that can enhance your workflow.
-					</span>
-				</li>
-
-				<li id="Dive" class="flex flex-col items-center space-x-3 md:flex-row">
-					<lord-icon
-						src="https://cdn.lordicon.com/uvqdhrsk.json"
-						target="li"
-						trigger="morph"
-						colors="primary:#c71f16,secondary:#109173"
-						class="mr-5 h-10 w-10 text-green-500 dark:text-green-400"
-					></lord-icon>
-					<span class="">
-						Dive into the code and learn from the examples to build your own mini-apps
-					</span>
-				</li>
-			</ul>
-		</section>
-
-		<section>
-			<header>
-				<h2
-					id="Philosophy"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
-				</h2>
-			</header>
-
-			<Group dir='right'>
-				{#snippet image()}
-					<Illustration image={Aha} alt="The reason behind Svelte MiniApps" />
-				{/snippet}
-
-				{#snippet content()}
-					<p class="mx-auto my-8 space-y-5 text-base leading-relaxed">
-						We've all been there -
-						<span class="font-semibold text-green-500 dark:text-green-400">
-							wrestling with a complex framework for a simple task.
-						</span>
-						<span>
-							Svelte MiniApps were born from the frustration of heavyweight solutions for
-							lightweight problems.
-						</span>
-					</p>
-					<p class="mx-auto my-8 space-y-5 text-base leading-relaxed">
-						We wanted something
-
-						<span class="font-semibold text-green-500 dark:text-green-400">
-							modular, efficient, and focused
-						</span>
-						on getting the job done, just like that trusty screwdriver you use all the time.
-					</p>
-				{/snippet}
-			</Group>
-
-			<div class="mx-auto my-5 w-fit max-w-[80%]">
-				<ul class="space-y-4 text-left">
-					{#each reasons as reason, i}
-						<li class="flex flex-col items-center md:flex-row">
-							<lord-icon
-								src="https://cdn.lordicon.com/mjyxajfq.json"
-								trigger="loop"
-								colors="primary:#c71f16,secondary:#109173"
-								class="mr-5 h-16 w-16 text-green-500 dark:text-green-400"
-							>
-							</lord-icon>
-							<span class="felx flex-col font-semibold">
-								{reason.title}:
-								<span class="ml-10 font-normal md:-indent-2">
-									{#each splitDescription(reason.description, 10) as line, j}
-										<p class="indent-{j}">{line}</p>
-									{/each}
-								</span>
-							</span>
-						</li>
-					{/each}
-					<!-- (Consider showcasing some mini-apps in action with before/after GIFs or screenshots! [Add Mini-App Examples]) -->
-				</ul>
-			</div>
-		</section>
-
-		<section>
-			<header>
-				<h2
-					id="Vision"
-					class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-				>
-					The Future of Svelte MiniApps: What's Next?
-				</h2>
-			</header>
-			<Group dir="left">
-				{#snippet image()}
-					<Illustration image={Vision} alt="The Future of Svelte MiniApps" />
-				{/snippet}
-				{#snippet content()}
-					<p class="my-8 text-center text-base leading-relaxed">
-						Svelte MiniApps is an
-						<span class="font-bold text-green-800 dark:text-green-400">
-							ever-evolving project,
-							<span class="font-normal text-white">
-								and
-								<span class="font-bold text-green-800 dark:text-green-400">you</span>
-								hold the reins!
-							</span>
-						</span>
-					</p>
-				{/snippet}
-			</Group>
-			<div class="mx-auto my-5 w-fit max-w-[90%]">
-				<ul class="space-y-4 text-left">
-					{#each future as item, i}
-						<li id={item.title.split(' ').join('-')} class="flex flex-col items-center md:flex-row">
-							<lord-icon
-								target="#{item.title.split(' ').join('-')}"
-								src={`https://cdn.lordicon.com/${i == 0 ? 'jdalicnn' : 'wzrwaorf'}.json`}
-								trigger="morph"
-								colors="primary:#c71f16,secondary:#109173"
-								class="mr-5 h-16 w-16 text-green-500 dark:text-green-400"
-							>
-							</lord-icon>
-							<span class="felx flex-col font-semibold">
-								{item.title}:
-								<span class="ml-10 font-normal md:-indent-2">
-									{#each splitDescription(item.description, 10) as line, j}
-										<p class="indent-{j}">{line}</p>
-									{/each}
-								</span>
-							</span>
-						</li>
-					{/each}
-				</ul>
-			</div>
-
-			<div class="mx-auto my-5 w-fit max-w-[90%]">
-				<ul class="space-y-4 text-left">
-					{#each next as item, i}
-						<li id={item.title.split(' ').join('-')} class="flex flex-col items-center md:flex-row">
-							<lord-icon
-								target="#{item.title.split(' ').join('-')}"
-								src={`https://cdn.lordicon.com/${i == 0 ? 'xpuzvjaf' : 'kndkiwmf'}.json`}
-								trigger="morph"
-								colors="primary:#c71f16,secondary:#109173"
-								class="mr-5 h-16 w-16 text-green-500 dark:text-green-400"
-							>
-							</lord-icon>
-							<span class="felx flex-col font-semibold">
-								{item.title}
-								<span class="ml-10 font-normal md:-indent-2">
-									{#each splitDescription(item.description, 10) as line, j}
-										<p class="indent-{j}">{line}</p>
-									{/each}
-								</span>
-							</span>
-						</li>
-					{/each}
-				</ul>
-			</div>
-		</section>
+		<Vision></Vision>
 	</main>
 </div>
 
 <!-- Add Attribution to shadcn and lordicon and anyother service used -->
-
-<!-- Footer -->
-<!-- <footer
-	class="flex flex-col items-center justify-between bg-gray-800 px-4 py-8 text-white md:flex-row"
->
-	<a
-		href="https://github.com/Michael-Obele/Svelte-MiniApps"
-		target="_blank"
-		class="group mb-4 flex flex-col items-center justify-center rounded-md px-4 py-2 font-bold text-green-500 hover:text-green-700 dark:text-green-300 dark:hover:text-green-500 md:mb-0 md:flex-row"
-		aria-label="Support us on GitHub"
-	>
-		Support Us on GitHub
-		<lord-icon
-			id="giticon"
-			target="a"
-			src="https://cdn.lordicon.com/yedgackm.json"
-			trigger={gitIconTrigger}
-			delay="1500"
-			state={gitIconState}
-			class="h-20 w-20"
-			colors="primary:#000000,secondary:#22c55e,tertiary:#ffffff"
-		>
-		</lord-icon>
-	</a>
-
-	<form
-		action="https://submit-form.com/CeUldzMcN"
-		method="POST"
-		target="_blank"
-		class="mx-auto mb-4 flex w-full items-center justify-center sm:max-w-4xl md:mb-0"
-	>
-		<input
-			type="text"
-			name="message"
-			class="mr-2 w-3/4 rounded-md border border-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-			placeholder="Share your thoughts..."
-			aria-label="Share your thoughts"
-		/>
-		<Button
-			type="submit"
-			class="rounded-md bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-800"
-			aria-label="Submit your thoughts"
-		>
-			Submit
-		</Button>
-	</form>
-</footer> -->
-
-<!-- End of Footer -->
-
-<style>
-	h2 {
-		padding-top: 3rem;
-	}
-	/* * {
-		border: 1px red solid;
-	} */
-</style>
