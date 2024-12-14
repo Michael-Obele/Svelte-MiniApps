@@ -83,7 +83,8 @@ model UserPassword {
 
 model Mantra {
   id        String   @id @default(uuid())
-  content   String
+  content   String   @unique
+  like      Boolean  @default(false)
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at")

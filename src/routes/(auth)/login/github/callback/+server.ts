@@ -1,7 +1,7 @@
 // routes/login/github/callback/+server.ts
 import { generateSessionToken, createSession, setSessionTokenCookie, SESSION_COOKIE_NAME } from "$lib/server/session";
 import { github } from "$lib/server/oauth";
-import { db } from '$lib/server/db';
+import {prisma}from '$lib/server/db';
 import { redirect } from "@sveltejs/kit";
 import { encodeHexLowerCase } from "@oslojs/encoding";
 import { sha256 } from "@oslojs/crypto/sha2";

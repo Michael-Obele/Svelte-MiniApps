@@ -1,4 +1,4 @@
-import { db } from "./db";
+import {prisma}from "./db";
 import { encodeHexLowerCase } from "@oslojs/encoding";
 import { sha256 } from "@oslojs/crypto/sha2";
 import type { User, Session } from "@prisma/client";
@@ -10,7 +10,7 @@ export const SESSION_COOKIE_NAME = 'auth-session';
 export async function validateSessionToken(token: string): Promise<SessionValidationResult> {
     const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
     
-    const session = await db.session.findUnique({
+    const session = await prisma.session.findUnique({
         where: { id: sessionId },
         include: { user: true }
     });
@@ -20,14 +20,14 @@ export async function validateSessionToken(token: string): Promise<SessionValida
     }
 
     if (Date.now() >= session.expiresAt.getTime()) {
-        await db.session.delete({ where: { id: session.id } });
+        await prisma.session.delete({ where: { id: session.id } });
         return { session: null, user: null };
     }
 
     // Extend session if it's close to expiring
     if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 15) {
         const newExpiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
-        await db.session.update({
+        await prisma.session.update({
             where: { id: session.id },
             data: { expiresAt: newExpiresAt }
         });
@@ -38,11 +38,11 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 }
 
 export async function invalidateSession(sessionId: string): Promise<void> {
-    await db.session.delete({ where: { id: sessionId } });
+    await prisma.session.delete({ where: { id: sessionId } });
 }
 
 export async function invalidateUserSessions(userId: string): Promise<void> {
-    await db.session.deleteMany({ where: { userId } });
+    await prisma.session.deleteMany({ where: { userId } });
 }
 
 export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date): void {
@@ -76,7 +76,7 @@ export async function createSession(token: string, userId: string): Promise<Sess
     const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
     const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30); // 30 days
 
-    const session = await db.session.create({
+    const session = await prisma.session.create({
         data: {
             id: sessionId,
             userId,

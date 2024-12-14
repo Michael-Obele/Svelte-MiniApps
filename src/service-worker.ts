@@ -11,7 +11,7 @@ const CACHE_NAME = `app-cache-${version}`;
 const ASSETS = [...build, ...files];
 const OFFLINE_URL = '/offline';
 const OFFLINE_PAGE = generateOfflineHtml();
-const HASH_FILE = '/service-worker-hash.json';
+const HASH_FILE = '/static/service-worker-hash.json';
 
 // Cache duration
 const MAX_AGE = IS_DEV

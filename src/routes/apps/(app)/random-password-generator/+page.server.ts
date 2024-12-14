@@ -3,7 +3,7 @@
 // import { fail } from '@sveltejs/kit';
 // import type { Prisma } from '@prisma/client';
 
-// import { db } from '$lib/database';
+// import {prisma}from '$lib/database';
 
 // /**
 //  * This function defines a set of actions related to saving, viewing, updating, and hiding passwords.
@@ -20,14 +20,14 @@
 	
 
 // 		// Check if the user exists in the database
-// 		const user = await db.user.findUnique({ where: { id } });
+// 		const user = await prisma.user.findUnique({ where: { id } });
 // 		if (!user) {
 // 			return fail(404, { invalid: true });
 // 		}
 
 // 		try {
 // 			// Save the password for the user
-// 			const savePassword = await db.savePassword.create({
+// 			const savePassword = await prisma.savePassword.create({
 // 				data: { password: password, userId: user.id }
 // 			});
 // 			return { saved: true };
@@ -43,13 +43,13 @@
 // 		const title = String(data.get('title'))
 // 		const details = String(data.get('details'))
 // 		// Check if the password exists in the database 
-// 		const existingPassword = await db.savePassword.findUnique({ where: { id } });
+// 		const existingPassword = await prisma.savePassword.findUnique({ where: { id } });
 // 		if (!existingPassword) {
 // 			return fail(404, { invalid: true });
 // 		}
 // 		try {
 // 			// Update the password for the user 
-// 			const updatePassword: Prisma.SavePasswordUpdateInput = await db.savePassword.update({ where: { id }, data: { title, details } });
+// 			const updatePassword: Prisma.SavePasswordUpdateInput = await prisma.savePassword.update({ where: { id }, data: { title, details } });
 // 			return { updated: true };
 // 		} catch (err) {
 // 			console.error('Error:', err);
@@ -60,12 +60,12 @@
 // 	delete: async ({ request }) => {
 // 		const data = await request.formData();
 // 		const id = String(data.get('id'));
-// 		const existingPassword = await db.savePassword.findUnique({ where: { id } });
+// 		const existingPassword = await prisma.savePassword.findUnique({ where: { id } });
 // 		if (!existingPassword) {
 // 			return fail(404, { invalid: true });
 // 		}
 // 		try {
-// 			await db.savePassword.delete({ where: { id } });
+// 			await prisma.savePassword.delete({ where: { id } });
 // 			return { deleted: true };
 // 		} catch (err) {
 // 			console.error('Error:', err);
@@ -80,7 +80,7 @@
 
 // 		// Ensure id is a string or undefined, not null
 // 		// Check if the user exists in the database
-// 		const user = await db.user.findUnique({ where: { id } });
+// 		const user = await prisma.user.findUnique({ where: { id } });
 // 		if (!user) {
 // 			return fail(404, { invalid: true });
 // 		}
@@ -100,7 +100,7 @@
 
 // 		try {
 // 			// Retrieve and display saved passwords for the user
-// 			const displayPassword = await db.savePassword.findMany({
+// 			const displayPassword = await prisma.savePassword.findMany({
 // 				where: { userId: user.id },
 // 				select: passwordDetails,
 // 				orderBy: { createdAt: 'desc' }

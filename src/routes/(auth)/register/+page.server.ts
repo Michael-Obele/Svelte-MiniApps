@@ -2,7 +2,7 @@ import { hash } from '@node-rs/argon2';
 import { fail, redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import * as auth from '$lib/server/auth';
-import { db } from '$lib/server/db';
+import {prisma}from '$lib/server/db';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -39,7 +39,7 @@ export const actions: Actions = {
 		}
 
 		// Check if username is taken
-		const existingUser = await db.user.findUnique({
+		const existingUser = await prisma.user.findUnique({
 			where: { username: username as string }
 		});
 
@@ -59,7 +59,7 @@ export const actions: Actions = {
 			parallelism: 1
 		});
 
-		await db.user.create({
+		await prisma.user.create({
 			data: {
 				id: userId,
 				username: username as string,

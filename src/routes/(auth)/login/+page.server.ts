@@ -1,7 +1,7 @@
 import { verify } from '@node-rs/argon2';
 import { fail, redirect } from '@sveltejs/kit';
 import * as auth from '$lib/server/auth';
-import { db } from '$lib/server/db';
+import {prisma}from '$lib/server/db';
 import type { Actions, PageServerLoad } from './$types';
 import { dev } from '$app/environment';
 
@@ -46,7 +46,7 @@ export const actions: Actions = {
             });
         }
 
-        const existingUser = await db.user.findUnique({
+        const existingUser = await prisma.user.findUnique({
             where: { username: username as string }
         });
 
