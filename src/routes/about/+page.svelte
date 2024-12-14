@@ -28,9 +28,7 @@
 		'DataManagement',
 		'Tools',
 		'Philosophy',
-		'Motivation',
 		'Vision',
-		'Roadmap'
 	];
 	let activeId: string[] = $state([]);
 	let visibleSections = $state(new Set<string>());

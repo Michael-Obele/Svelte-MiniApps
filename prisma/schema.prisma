@@ -9,6 +9,7 @@ generator client {
 }
 
 datasource db {
+  // provider  = "postgresql"
   provider  = "sqlite"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
@@ -26,6 +27,7 @@ model User {
   githubId       String?          @unique
   googleId       String?          @unique
   UserPassword   UserPassword[]
+  mantras        Mantra[]
 
   @@index([username])
   @@map("user")
@@ -77,4 +79,15 @@ model UserPassword {
   updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("user_passwords")
+}
+
+model Mantra {
+  id        String   @id @default(uuid())
+  content   String
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("mantras")
 }

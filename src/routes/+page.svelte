@@ -6,7 +6,7 @@
 	import LordIcon from './LordIcon.svelte';
 	//
 	import { getGreeting, getMillisecondsUntilNextPeriod, mantras } from '@/utility/greetings';
-	import { RefreshCw } from 'lucide-svelte';
+	import { RefreshCw, Star, StarOff } from 'lucide-svelte';
 	//
 	import InfoBlock from './InfoBlock.svelte';
 	import ContentBlock from './ContentBlock.svelte';
@@ -63,6 +63,17 @@
 		invalidate('user');
 		console.log('userContext.set', userContext);
 	});
+
+	let selectedOption = $state('like');
+
+	const handleLike = () => {
+		isLoading = true;
+		return async ({ update }: any) => {
+			await update({ reset: false });
+			isLoading = false;
+			console.log('Feedback submitted:', selectedOption);
+		};
+	};
 </script>
 
 <div
@@ -114,10 +125,48 @@
 	<BlurFade class="px-1" delay={0.25 * 2}>
 		{#if !isLoading && data.mantra}
 			<h3 class="my-2 flex items-center justify-center gap-2 text-center">
+				<!-- Use a modal and this form to submit feedback -->
+				<form
+					action="?/likeMantra"
+					class="items-center"
+					use:enhance={handleLike}
+					method="POST"
+				>
+					<div class="flex items-center space-x-4">
+						<label class="flex items-center">
+							<input
+								type="radio"
+								name="feedback"
+								value="like"
+								bind:group={selectedOption}
+								class="peer absolute h-0 w-0 opacity-0"
+							/>
+							<Star class="h-4 w-4 peer-checked:text-primary peer-hover:text-gray-600" />
+							<span class="sr-only ml-1">Like</span>
+						</label>
+						<label class="flex cursor-pointer items-center">
+							<input
+								type="radio"
+								name="feedback"
+								value="dislike"
+								bind:group={selectedOption}
+								class="peer absolute h-0 w-0 opacity-0"
+							/>
+							<StarOff class="h-4 w-4 peer-checked:text-primary peer-hover:text-gray-600" />
+							<span class="sr-only ml-1">Dislike</span>
+						</label>
+						<button type="submit" class="sr-only">Submit feedback</button>
+					</div>
+				</form>
 				<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
 					{data.mantra}
 				</span>
-				<form action="?/generatemantra" use:enhance={handleSubmit} method="POST">
+				<form
+					action="?/generatemantra"
+					class="items-center"
+					use:enhance={handleSubmit}
+					method="POST"
+				>
 					<button
 						class="mt-1 inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:mt-2 sm:size-8"
 						type="submit"

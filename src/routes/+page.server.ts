@@ -87,5 +87,16 @@ export const actions = {
 		});
 
 		return { mantra };
+	},
+
+	likeMantra: async (event) => {
+		const formData = await event.request.formData();
+		const mantra = event.cookies.get('daily_mantra');
+		const like = formData.get('like');
+
+		console.log('Liked mantra:', mantra);
+		console.log('Like:', like);
+
 	}
+
 };
