@@ -98,10 +98,9 @@ export const actions = {
 		const formData = await event.request.formData();
 		const like = formData.get('like') as String;
 		const mantra = formData.get('mantra')??'' as String;
-
 		let LikeState = like === 'like' ? 'unlike' : 'like'
 
-		console.log('Liked mantra:', mantra);
+		console.log( like === 'like' ? 'Liked' : 'Unliked', mantra);
 
 		if(!mantra && !like) {
 			return fail(400, {
@@ -124,22 +123,23 @@ export const actions = {
 					id: existingMantra.id
 				},
 				data: {
-					like: LikeState === 'like' ? true : false
+					like: like === 'like' ? true : false
 				}
 			});
-			console.log( LikeState === 'like' ? 'Liked' : 'Unliked', mantra);
+			console.log( like === 'like' ? 'Liked' : 'Unliked', mantra);
 			return {like: LikeState}
 		}
 
 		const likeMantra = await prisma.mantra.create({
 			data: {
 				content: mantra as string,
-				like: LikeState === 'like' ? true : false,
+				like: like === 'like' ? true : false,
 				user: {
 					connect: { id: event.locals.user?.id }
 				}
 			}
 		});
+		
 
         event.cookies.set('liked_mantra', LikeState , {
             path: '/',
