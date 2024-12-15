@@ -28,6 +28,7 @@
 	let isSaved = $state(false);
 	let viewing = $state(false);
 	let saving = $state(false);
+	let isPasswordVisible = $state(false);
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -81,12 +82,15 @@
 			saving = false;
 		};
 	}
+	
 
 	function handleView() {
 		viewing = true;
+		// Add your form submission logic here
 		return async ({ update }: { update: () => Promise<void> }) => {
 			await update();
 			viewing = false;
+			isPasswordVisible = !isPasswordVisible; // Toggle visibility
 		};
 	}
 
@@ -95,6 +99,7 @@
 		createdAt: string;
 		details: null | string;
 	};
+ 
 </script>
 
 <svelte:head>
@@ -149,6 +154,7 @@
 					<form action="?/save" use:enhance={handleSubmit} method="POST">
 						<input type="hidden" name="id" value={$userContext?.id} />
 						<input type="hidden" name="password" value={password} />
+						{#if !saving}
 						<Button
 							type="submit"
 							variant="outline"
@@ -157,6 +163,9 @@
 						>
 							<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
 						</Button>
+						{:else}
+						<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+						{/if}
 					</form>
 					<Input
 						type="text"
@@ -213,25 +222,25 @@
 				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
 
 				{#if $userContext?.username}
-					<form action="?/view" use:enhance={handleView} method="POST">
-						<input type="hidden" name="id" value={$userContext?.id} />
-						<Button
-							type="submit"
-							variant="secondary"
-							class="w-full"
-							formaction={form?.displayPassword?.length === 0 ? undefined : "?/hide"}
-						>
-							{#if form?.displayPassword?.length === 0}
-								{#if viewing}
-									<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-								{:else}
-									View Saved Password
-								{/if}
-							{:else}
-								Hide Saved Password
-							{/if}
-						</Button>
-					</form>
+				<form action="?/view" use:enhance={handleView} method="POST">
+					<input type="hidden" name="id" value={$userContext?.id} />
+					<Button
+					  type="submit"
+					  variant="secondary"
+					  class="w-full"
+					  formaction={form?.displayPassword?.length === 0 ? undefined : "?/hide"}
+					>
+					  {#if isPasswordVisible}
+						Hide Saved Password
+					  {:else}
+						{#if viewing}
+						  <Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+						{:else}
+						  View Saved Password
+						{/if}
+					  {/if}
+					</Button>
+				  </form>
 					{#each (form?.displayPassword ?? []) as password}
 						<PasswordDisplay {password} />
 					{/each}

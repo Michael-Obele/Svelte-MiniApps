@@ -61,7 +61,6 @@ export const actions: Actions = {
                 select: passwordDetails,
                 orderBy: { createdAt: 'desc' }
             });
-            console.log('displayPassword', displayPassword);
             return { displayPassword };
         } catch (error) {
             console.error(error);
