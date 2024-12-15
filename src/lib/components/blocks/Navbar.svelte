@@ -69,12 +69,12 @@
 						<Github class="h-[1.2rem] w-[1.2rem]" />
 					</a>
 				</Button>
-				{#if $userContext}
+				{#if $userContext?.username}
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
 							<Avatar.Root class="size-8">
 								<Avatar.Fallback class="capitalize">
-									{$userContext.charAt(0)}
+									{$userContext.username.charAt(0)}
 								</Avatar.Fallback>
 							</Avatar.Root>
 						</DropdownMenu.Trigger>
@@ -84,7 +84,7 @@
 								<DropdownMenu.Separator />
 								<DropdownMenu.Item>
 									<User class="mr-2 size-4" />
-									<span class="capitalize">{$userContext}</span>
+									<span class="capitalize">{$userContext.username}</span>
 								</DropdownMenu.Item>
 								<DropdownMenu.Item>
 									<Settings class="mr-2 size-4" />

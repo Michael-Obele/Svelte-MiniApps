@@ -24,9 +24,10 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	$effect(() => {
-		userContext.set(data.user?.username);
+		userContext.set(data?.user??null);
+		$inspect('userContext.set', data?.user??null);
 		invalidate('user');
-		console.log('userContext.set', userContext);
+		$inspect('userContext.set', userContext);
 	});
 </script>
 

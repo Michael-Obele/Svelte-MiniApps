@@ -1,13 +1,11 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
-
-	import { getGreeting, getMillisecondsUntilNextPeriod, mantras } from '@/utility/greetings';
+	import { getGreeting, getMillisecondsUntilNextPeriod } from '@/utility/greetings';
 	import { RefreshCw, Star, StarOff } from 'lucide-svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
 	import BlurFade from '@/components/blocks/BlurFade.svelte';
 	import { enhance } from '$app/forms';
 	import { Skeleton } from '@/components/ui/skeleton';
-	import { userContext } from '@/utils';
 	import { invalidate } from '$app/navigation';
 
 	let greeting = $state(getGreeting());

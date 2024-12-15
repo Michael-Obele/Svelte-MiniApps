@@ -1,15 +1,22 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button";
-	import { Input } from "$lib/components/ui/input";
-	import { Slider } from "$lib/components/ui/slider";
-	import { Switch } from "$lib/components/ui/switch";
-	import { Label } from "$lib/components/ui/label";
-	import { Progress } from "$lib/components/ui/progress";
-	import { toast } from "svelte-sonner";
-	import { Copy, RefreshCw } from "lucide-svelte";
+	import { enhance } from '$app/forms';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Slider } from '$lib/components/ui/slider';
+	import { Switch } from '$lib/components/ui/switch';
+	import { Label } from '$lib/components/ui/label';
+	import { Progress } from '$lib/components/ui/progress';
+	import { toast } from 'svelte-sonner';
+	import { Copy, Star, StarOff } from 'lucide-svelte';
 	import { siteimage, siteurl, sitename } from '$lib';
-	import { fade } from "svelte/transition";
+	import { fade } from 'svelte/transition';
 	import { copyToClipboard } from '$lib/utils';
+	import { userContext } from '@/utils';
+	import type { ActionData, PageData } from './$types';
+	import { Skeleton } from '@/components/ui/skeleton';
+	import PasswordDisplay from './PasswordDisplay.svelte';
+
+	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	let password = $state('');
 	let passwordLength = $state([12]);
@@ -18,6 +25,9 @@
 	let includeNumbers = $state(true);
 	let includeSymbols = $state(true);
 	let passwordStrength = $state(0);
+	let isSaved = $state(false);
+	let viewing = $state(false);
+	let saving = $state(false);
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -43,6 +53,10 @@
 
 		password = result;
 		calculateStrength();
+
+		if (result) {
+			isSaved = false;
+		}
 	};
 
 	const calculateStrength = () => {
@@ -55,41 +69,59 @@
 		passwordStrength = strength;
 	};
 
-	
-
 	$effect(() => {
 		if (password) calculateStrength();
 	});
+
+	function handleSubmit() {
+		saving = true;
+		return async ({ update }: { update: () => Promise<void> }) => {
+			await update();
+			isSaved = true;
+			saving = false;
+		};
+	}
+
+	function handleView() {
+		viewing = true;
+		return async ({ update }: { update: () => Promise<void> }) => {
+			await update();
+			viewing = false;
+		};
+	}
+
+	type PasswordRecord = {
+		passwordHash: string;
+		createdAt: string;
+		details: null | string;
+	};
 </script>
 
 <svelte:head>
-	<title>Svelte MiniApps - Password Generator</title>
+	<title>{sitename} - Password Generator</title>
 	<meta
 		name="description"
 		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 	/>
-	<meta property="og:title" content="Svelte MiniApps - Password Generator" />
+	<meta property="og:title" content="{sitename} - Password Generator" />
 	<meta
 		property="og:description"
 		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 	/>
-	<meta property="og:url" content="https://svelte-apps.me/apps/password-generator" />
-	<meta property="og:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
+	<meta property="og:url" content="{siteurl}apps/password-generator" />
+	<meta property="og:image" content={siteimage} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="en_US" />
 
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:title"
-		content="Svelte MiniApps - Password Generator - Secure Your Accounts"
-	/>
+	<meta name="twitter:title" content="{sitename} - Password Generator - Secure Your Accounts" />
 	<meta
 		name="twitter:description"
-		content="Generate strong, random passwords with ease using the Svelte MiniApps Random Password Generator."
+		content="Generate strong, random passwords with ease using the {sitename} Random Password Generator."
 	/>
-	<meta name="twitter:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
+	<meta name="twitter:image" content={siteimage} />
 
-	<link rel="canonical" href="https://svelte-apps.me/apps/password-generator" />
+	<link rel="canonical" href="{siteurl}apps/password-generator" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="UTF-8" />
 	<meta name="robots" content="index, follow" />
@@ -114,9 +146,18 @@
 		<div class="space-y-4 rounded-lg border bg-card p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					<Button variant="outline" size="icon" onclick={generatePassword}>
-						<RefreshCw class="h-4 w-4" />
-					</Button>
+					<form action="?/save" use:enhance={handleSubmit} method="POST">
+						<input type="hidden" name="id" value={$userContext?.id} />
+						<input type="hidden" name="password" value={password} />
+						<Button
+							type="submit"
+							variant="outline"
+							size="icon"
+							disabled={!$userContext || !password}
+						>
+							<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
+						</Button>
+					</form>
 					<Input
 						type="text"
 						value={password}
@@ -124,7 +165,12 @@
 						readonly
 						class="font-mono text-lg"
 					/>
-					<Button variant="outline" size="icon" onclick={()=> copyToClipboard(password, 'Password copied to clipboard')} disabled={!password}>
+					<Button
+						variant="outline"
+						size="icon"
+						onclick={() => copyToClipboard(password, 'Password copied to clipboard')}
+						disabled={!password}
+					>
 						<Copy class="h-4 w-4" />
 					</Button>
 				</div>
@@ -142,12 +188,7 @@
 			<div class="space-y-4">
 				<div class="space-y-2">
 					<Label>Password Length: {passwordLength}</Label>
-					<Slider
-						bind:value={passwordLength}
-						min={8}
-						max={32}
-						step={1}
-					/>
+					<Slider bind:value={passwordLength} min={8} max={32} step={1} />
 				</div>
 
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -170,6 +211,31 @@
 				</div>
 
 				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
+
+				{#if $userContext?.username}
+					<form action="?/view" use:enhance={handleView} method="POST">
+						<input type="hidden" name="id" value={$userContext?.id} />
+						<Button
+							type="submit"
+							variant="secondary"
+							class="w-full"
+							formaction={form?.displayPassword?.length === 0 ? undefined : "?/hide"}
+						>
+							{#if form?.displayPassword?.length === 0}
+								{#if viewing}
+									<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+								{:else}
+									View Saved Password
+								{/if}
+							{:else}
+								Hide Saved Password
+							{/if}
+						</Button>
+					</form>
+					{#each (form?.displayPassword ?? []) as password}
+						<PasswordDisplay {password} />
+					{/each}
+				{/if}
 			</div>
 		</div>
 	</div>
