@@ -188,3 +188,10 @@ Always include proper meta tags for:
 - **`/(auth)/logout`**: Logs the user out of the application.
 - **`/(auth)/profile`**: User profile management page.
 - **`/(auth)/register`**: New user registration page.
+
+## Use for SEO Optimization
+
+To optimize your Svelte application for search engines and enhance its visibility, utilize the following constants from the `$lib` directory. These constants can be integrated into your components to improve SEO and social media sharing.
+
+```ts
+import { sitename, siteurl, siteimage } from '$lib';

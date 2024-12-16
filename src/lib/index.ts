@@ -1,8 +1,8 @@
 // place files you want to import through the `$lib` alias in this folder.
 // place files you want to import through the `$lib` alias in this folder.
-export const sitename = 'svelte-apps.me';
+export const sitename = 'Svelte MiniApps';
 
-export const siteurl = 'https://next.svelte-apps.me/';
+export const siteurl = 'https://svelte-apps.me/';
 
 export const siteimage = 'https://i.ibb.co/ZhhhnCz/svelte-badge.png';
 
