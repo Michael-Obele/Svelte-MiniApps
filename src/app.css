@@ -86,6 +86,7 @@
 
   body {
     @apply bg-background text-foreground;
+    interpolation-size: allow-keywords;
   }
 }
 
