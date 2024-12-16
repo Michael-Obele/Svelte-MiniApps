@@ -9,8 +9,6 @@
 	import { userContext } from '@/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
-	
-
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -19,7 +17,9 @@
 		{ name: 'Changelog', href: '/changelog' }
 	];
 
-	
+	let open = () =>{
+		show = !show;
+	}
 
 	let show = $state(false);
 
@@ -30,11 +30,10 @@
 
 	$effect(() => {
 		console.log('user on navbar', $userContext);
-		
+
 		// Invalidate the session to check for user state changes
 		invalidate('app:user');
 	});
-
 
 	// Reactive statement to determine if the current route matches the item
 	let isActive = (item: string) => {
@@ -106,17 +105,17 @@
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				{:else}
-				<a href="/login">
-					<Button variant="outline" type="button" size="sm" >
-						<span class="flex items-center space-x-2" >
-							<LogIn class="h-4 w-4" />
-							<span>Login</span>
-						</span>
-					</Button>
-				</a>
+					<a href="/login">
+						<Button variant="outline" type="button" size="sm">
+							<span class="flex items-center space-x-2">
+								<LogIn class="h-4 w-4" />
+								<span>Login</span>
+							</span>
+						</Button>
+					</a>
 				{/if}
 			</div>
-			<Button
+			<!-- <Button
 				data-collapse-toggle="navbar-user"
 				variant="outline"
 				type="button"
@@ -129,6 +128,36 @@
 				<span class="sr-only">Open/Close main menu</span>
 				<X class={show ? 'block' : 'hidden'} aria-hidden="true" />
 				<Menu class={show ? 'hidden' : 'block'} aria-hidden="true" />
+			</Button> -->
+
+			<Button
+				data-collapse-toggle="navbar-user"
+				variant="outline"
+				type="button"
+				size="icon"
+				
+				onclick={() => open()}
+			>
+			<div class="relative size-6 rounded p-3 focus:outline-none">
+
+				<div
+					class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
+				>
+					<span
+						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+                    {show ? 'translate-y-[.0125rem] rotate-45' : '-translate-y-1.5'}"
+					></span>
+					<span
+						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+                    {show ? 'opacity-0' : ''}"
+					></span>
+					<span
+						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+                    {show ? '-translate-y-[.0125rem] -rotate-45' : 'translate-y-1.5'}"
+					></span>
+				</div>
+			</div>
+
 			</Button>
 		</div>
 		<div
