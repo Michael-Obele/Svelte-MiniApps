@@ -11,8 +11,8 @@
 >
 	<!-- Done check -->
 	<span
-		class:opacity-100={done.includes(item.title)}
-		class:opacity-20={!done.includes(item.title)}
+		class:opacity-100={done.includes(item.link)}
+		class:opacity-20={!done.includes(item.link)}
 		class="absolute right-5 top-5"
 	>
 		<BadgeCheck class="size-16 text-green-800 dark:text-green-400" />
@@ -36,7 +36,7 @@
 	<p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
 		{item.details}
 	</p>
-	{#if done.includes(item.title)}
+	{#if done.includes(item.link)}
 		<span
 			class="absolute bottom-5 inline-flex items-center text-lg font-medium text-red-600 group-hover:underline dark:text-red-500"
 			>Try now

@@ -3,7 +3,7 @@
 	import { Box, Lock, Pen, CheckSquare, Book } from 'lucide-svelte';
 	import { PartyPopper, Diff, Gamepad2 } from 'lucide-svelte';
 
-	export let item;
+	let { item } = $props();
 </script>
 
 <span

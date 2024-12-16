@@ -35,12 +35,12 @@
 						class="mt-10 grid w-full list-inside grid-cols-1 gap-6 space-y-1 text-gray-900 dark:text-gray-400 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
 					>
 						{#each projects as project}
-							{#if done.includes(project.title)}
+							{#if done.includes(project.link)}
 								<li class="flex items-center">
 									<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
 									<a
 										class="text-green-700 after:content-['_↗'] dark:text-green-300"
-										href={'/apps/' + project.title.replace(/\s+/g, '-').toLowerCase()}
+										href={'/apps/' + project.link}
 										>{project.title}</a
 									>
 								</li>

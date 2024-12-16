@@ -21,7 +21,7 @@ export async function GET({ url }): Promise<Response> {
 
 	const dynamicRoutes = await Promise.all(
 		appNames.map(async (name) => ({
-			url: `/apps/${slugify(name.toLowerCase())}`,
+			url: `/apps/${name}`,
 			lastmod: await getLastModified(slugify(name)), // Await the result
 			priority: 0.8,
 			changefreq: 'weekly'
