@@ -139,7 +139,7 @@ export const actions = {
 	likeMantra: async (event) => {
 		const formData = await event.request.formData();
 		const like = formData.get('like') as string;
-		const mantra = formData.get('mantra')??'' as string;
+		const mantra = formData.get('mantra') as string;
         
 		if(!mantra && !like) {
 			return fail(400, {
