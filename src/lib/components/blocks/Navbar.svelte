@@ -135,7 +135,6 @@
 				variant="outline"
 				type="button"
 				size="icon"
-				
 				onclick={() => open()}
 			>
 			<div class="relative size-6 rounded p-3 focus:outline-none">

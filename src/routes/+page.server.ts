@@ -1,7 +1,7 @@
 import { MISTRAL_API_KEY } from '$env/static/private';
-import { prisma } from '@/server/db';
+import { prisma } from '$lib/server/db';
 import type { PageServerLoad } from './$types';
-import { getRandomMantra, mantras } from '@/utility/greetings';
+import { getRandomMantra, mantras } from '$lib/utility/greetings';
 import { Mistral } from '@mistralai/mistralai';
 import { fail } from '@sveltejs/kit';
 
@@ -52,6 +52,48 @@ Return only a single mantra text with it's words separated by spaces, no additio
 	}
 }
 
+function setLikedMantraCookie(cookies: any, likeState: string) {
+    cookies.set('liked_mantra', likeState, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 30 // 30 days
+    });
+}
+
+async function updateOrCreateMantra(mantra: string, like: string, userId: string | undefined) {
+    const likeState = like === 'like' ? true : false;
+
+    const existingMantra = await prisma.mantra.findUnique({
+        where: {
+            content: mantra
+        }
+    });
+
+    if (existingMantra) {
+        await prisma.mantra.update({
+            where: {
+                id: existingMantra.id
+            },
+            data: {
+                like: likeState
+            }
+        });
+        console.log(like === 'like' ? 'Liked' : 'Unliked', mantra);
+        return like === 'like' ? 'unlike' : 'like';
+    }
+
+    await prisma.mantra.create({
+        data: {
+            content: mantra,
+            like: likeState,
+            user: {
+                connect: { id: userId }
+            }
+        }
+    });
+    return like === 'like' ? 'unlike' : 'like';
+}
+
+
 export const load: PageServerLoad = async (event) => {
 	let mantra: string;
 	const storedMantra = event.cookies.get('daily_mantra');
@@ -96,12 +138,9 @@ export const actions = {
 
 	likeMantra: async (event) => {
 		const formData = await event.request.formData();
-		const like = formData.get('like') as String;
-		const mantra = formData.get('mantra')??'' as String;
-		let LikeState = like === 'like' ? 'unlike' : 'like'
-
-		console.log( like === 'like' ? 'Liked' : 'Unliked', mantra);
-
+		const like = formData.get('like') as string;
+		const mantra = formData.get('mantra')??'' as string;
+        
 		if(!mantra && !like) {
 			return fail(400, {
 				message: 'Mantra is required',
@@ -110,42 +149,8 @@ export const actions = {
 			});
 		}
 
-		// Check if mantra already exists
-		const existingMantra = await prisma.mantra.findUnique({
-			where: {
-				content: mantra as string
-			}
-		});
-
-		if (existingMantra) {
-			await prisma.mantra.update({
-				where: {
-					id: existingMantra.id
-				},
-				data: {
-					like: like === 'like' ? true : false
-				}
-			});
-			console.log( like === 'like' ? 'Liked' : 'Unliked', mantra);
-			return {like: LikeState}
-		}
-
-		const likeMantra = await prisma.mantra.create({
-			data: {
-				content: mantra as string,
-				like: like === 'like' ? true : false,
-				user: {
-					connect: { id: event.locals.user?.id }
-				}
-			}
-		});
-		
-
-        event.cookies.set('liked_mantra', LikeState , {
-            path: '/',
-            maxAge: 60 * 60 * 24 * 30 // 30 days
-        });
-
+        const LikeState = await updateOrCreateMantra(String(mantra), like, event.locals.user?.id);
+        setLikedMantraCookie(event.cookies, LikeState);
 		return {like: LikeState}
 
 	}
