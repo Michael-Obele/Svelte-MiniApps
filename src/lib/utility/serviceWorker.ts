@@ -35,7 +35,7 @@ export async function registerServiceWorker() {
 
 		async function checkForUpdates() {
 			try {
-				const hashResponse = await fetch('/static/service-worker-hash.json');
+				const hashResponse = await fetch('/service-worker-hash.json');
 				if (!hashResponse.ok) return;
 
 				const hashData = await hashResponse.json();
@@ -69,7 +69,7 @@ export async function registerServiceWorker() {
 			newWorker.addEventListener('statechange', async () => {
 				if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
 					try {
-						const hashResponse = await fetch('/static/service-worker-hash.json');
+						const hashResponse = await fetch('/service-worker-hash.json');
 						if (!hashResponse.ok) return;
 
 						const hashData = await hashResponse.json();

@@ -120,10 +120,3 @@
 		{/each}
 	</ul>
 </div>
-
-<style>
-	.line-through {
-		text-decoration: line-through;
-		color: #888;
-	}
-</style>
