@@ -158,7 +158,7 @@ export const projects: Project[] = [
 		details: 'Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated.',
 		tag: 'developer-tools',
 		difficulty: 'medium',
-		link: 'github-tracker'
+		link: 'github-contribution-tracker'
 	},
 	{
 		title: 'Markdown Editor',
