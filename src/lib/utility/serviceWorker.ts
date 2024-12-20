@@ -1,4 +1,4 @@
-import { notifyUpdateAvailable } from '../stores/serviceWorkerStore';
+import { notifyUpdateAvailable } from './serviceWorkerStore';
 
 export async function registerServiceWorker() {
 	if (typeof window === 'undefined') {
