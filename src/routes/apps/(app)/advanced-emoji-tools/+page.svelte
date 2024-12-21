@@ -169,16 +169,16 @@
 						<Textarea bind:value={inputText} placeholder="Enter text here..." rows={4} />
 						<div class="flex flex-wrap gap-2">
 							<Button variant="default" onclick={emojify}>
-								<span class="mr-2">✨</span> Emojify
+								<span class="mr-1">✨</span> Emojify
 							</Button>
 							<Button variant="secondary" onclick={unemojify}>
-								<span class="mr-2">📝</span> Unemojify
+								<span class="mr-1">📝</span> Unemojify
 							</Button>
 							<Button variant="destructive" onclick={strip}>
-								<span class="mr-2">🗑️</span> Strip Emojis
+								<span class="mr-1">🗑️</span> Strip Emojis
 							</Button>
 							<Button variant="outline" onclick={stripText}>
-								<span class="mr-2">🎯</span> Keep Only Emojis
+								<span class="mr-1">🎯</span> Keep Only Emojis
 							</Button>
 						</div>
 						{#if outputText}
@@ -334,11 +334,12 @@
 							<Button onclick={search}>Search</Button>
 						</div>
 						{#if searchResults.length > 0}
-							<div class="flex flex-row flex-wrap gap-4 sm:flex-nowrap">
+							<div class="flex flex-row flex-wrap gap-4">
 								{#each searchResults as result}
 									<ContextMenu.Root>
 										<ContextMenu.Trigger>
 											<Button
+												onclick={() => copyToClipboard(result.emoji, `Copied ${result.name}!`)}
 												variant="outline"
 												class="flex h-auto min-w-32 flex-col p-4 transition-transform hover:scale-105"
 											>
