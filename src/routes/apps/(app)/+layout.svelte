@@ -3,6 +3,7 @@
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { page } from '$app/stores';
 	import { CodeXml } from 'lucide-svelte';
+	import { fade } from 'svelte/transition';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -71,6 +72,6 @@
 	</Breadcrumb.Root>
 </div>
 
-<div class="relative mt-6 min-h-screen">
+<div class="relative mt-6 min-h-screen" transition:fade={{ duration: 150 }}>
 	{@render children?.()}
 </div>

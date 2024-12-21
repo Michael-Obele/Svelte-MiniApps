@@ -9,6 +9,9 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Separator } from '$lib/components/ui/separator';
+	import * as ContextMenu from '$lib/components/ui/context-menu/index.js';
+	import { copyToClipboard } from '@/utils';
+	import { fade, fly } from 'svelte/transition';
 
 	interface EmojiResult {
 		emoji: string;
@@ -23,8 +26,8 @@
 	let searchResults = $state<SearchResults>([]);
 	let randomEmoji = $state<EmojiResult>(emoji.random());
 	let emojiCheckInput = $state<string>('');
-	let emojiCheckResult = $state<{exists: boolean; found?: {emoji: string; key: string;}}>();
-	let activeTab = $state<string>('transform');
+	let emojiCheckResult = $state<{ exists: boolean; found?: { emoji: string; key: string } }>();
+	let activeTab = $state<string>('random');
 
 	function emojify(): void {
 		// First unemojify to convert any existing emojis to shortcodes
@@ -56,7 +59,7 @@
 		const withShortcodes = emoji.unemojify(inputText);
 		// Extract only the emoji shortcodes and convert them back to emoji
 		const matches = withShortcodes.match(/:\w+:/g) || [];
-		const emojis = matches.map(match => emoji.emojify(match));
+		const emojis = matches.map((match) => emoji.emojify(match));
 		outputText = emojis.join(' ');
 	}
 
@@ -68,7 +71,7 @@
 		randomEmoji = emoji.random();
 	}
 
-	function findEmoji(input: string):  {emoji: string; key: string; }  | undefined {
+	function findEmoji(input: string): { emoji: string; key: string } | undefined {
 		return emoji.find(input);
 	}
 
@@ -76,44 +79,41 @@
 		return emoji.has(input);
 	}
 
-	function convertToEmojiFormat(text:string): string {
+	function convertToEmojiFormat(text: string): string {
 		// Split the input text into words
 		const words = text.split(' ');
-		
+
 		// Process each word
-		const processedWords = words.map(word => {
+		const processedWords = words.map((word) => {
 			// Store original word to check capitalization
 			const originalWord = word;
 			const lowerCased = word.toLowerCase();
-			
+
 			// Extract any punctuation
 			const punctuation = lowerCased.match(/[.,!?]$/)?.[0] || '';
 			const cleanWord = lowerCased.replace(/[.,!?]/g, '');
-			
+
 			// First wrap the word in colons
 			let processedWord = `:${cleanWord}:${punctuation}`;
-			
+
 			// Check if it's an actual emoji word
 			if (!emoji.find(cleanWord)) {
 				// If it's not an emoji, remove the colons and restore original capitalization
 				processedWord = originalWord;
 			}
-			
+
 			return processedWord;
 		});
-		
+
 		const result = processedWords.join(' ');
 		return result;
 	}
 
-	async function copyToClipboard(text: string, message: string = 'Copied to clipboard!'): Promise<void> {
-		try {
-			await navigator.clipboard.writeText(text);
-			toast.success(message);
-		} catch (err) {
-			toast.error('Failed to copy to clipboard');
+	const handleSearchKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			search();
 		}
-	}
+	};
 </script>
 
 <svelte:head>
@@ -142,7 +142,7 @@
 		<p class="text-sm text-muted-foreground">Tap any emoji to copy it to your clipboard 📋</p>
 	</div>
 
-	<Tabs.Root value={activeTab} class="w-full" onValueChange={(val) => activeTab = val}>
+	<Tabs.Root value={activeTab} class="w-full" onValueChange={(val) => (activeTab = val)}>
 		<Tabs.List class="grid w-full grid-cols-4">
 			<Tabs.Trigger value="transform">Transform</Tabs.Trigger>
 			<Tabs.Trigger value="check">Check</Tabs.Trigger>
@@ -158,11 +158,7 @@
 						<Card.Description>Convert your text to and from emoji format</Card.Description>
 					</Card.Header>
 					<Card.Content class="space-y-4">
-						<Textarea
-							bind:value={inputText}
-							placeholder="Enter text here..."
-							rows={4}
-						/>
+						<Textarea bind:value={inputText} placeholder="Enter text here..." rows={4} />
 						<div class="flex flex-wrap gap-2">
 							<Button variant="default" onclick={emojify}>
 								<span class="mr-2">✨</span> Emojify
@@ -202,15 +198,14 @@
 					</Card.Header>
 					<Card.Content class="space-y-4">
 						<div class="flex gap-2">
-							<Input
-								bind:value={emojiCheckInput}
-								placeholder="Enter a word to check..."
-							/>
-							<Button onclick={() => {
-								const found = findEmoji(emojiCheckInput);
-								const exists = hasEmoji(emojiCheckInput);
-								emojiCheckResult = { exists, found };
-							}}>Check</Button>
+							<Input bind:value={emojiCheckInput} placeholder="Enter a word to check..." />
+							<Button
+								onclick={() => {
+									const found = findEmoji(emojiCheckInput);
+									const exists = hasEmoji(emojiCheckInput);
+									emojiCheckResult = { exists, found };
+								}}>Check</Button
+							>
 						</div>
 						{#if emojiCheckResult}
 							<div class="rounded-lg bg-muted p-4">
@@ -239,40 +234,6 @@
 				</Card.Root>
 			</Tabs.Content>
 
-			<Tabs.Content value="search">
-				<Card.Root>
-					<Card.Header>
-						<Card.Title>Emoji Search</Card.Title>
-						<Card.Description>Find the perfect emoji for your needs</Card.Description>
-					</Card.Header>
-					<Card.Content>
-						<div class="mb-4 flex gap-2">
-							<Input
-								bind:value={searchQuery}
-								placeholder="Search emojis..."
-							/>
-							<Button onclick={search}>Search</Button>
-						</div>
-						{#if searchResults.length > 0}
-							<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-								{#each searchResults as result}
-									<Button
-										variant="outline"
-										class="flex h-auto flex-col p-4 transition-transform hover:scale-105"
-										onclick={() => copyToClipboard(result.emoji, `Copied ${result.name}!`)}
-									>
-										<span class="mb-2 text-3xl">{result.emoji}</span>
-										<span class="w-full truncate text-xs text-muted-foreground">
-											{result.name}
-										</span>
-									</Button>
-								{/each}
-							</div>
-						{/if}
-					</Card.Content>
-				</Card.Root>
-			</Tabs.Content>
-
 			<Tabs.Content value="random">
 				<Card.Root>
 					<Card.Header>
@@ -280,16 +241,57 @@
 						<Card.Description>Get inspired with a random emoji</Card.Description>
 					</Card.Header>
 					<Card.Content class="text-center">
-						<Button
-							variant="outline"
-							size="lg"
-							class="mb-4 h-40 w-40"
-							onclick={() => copyToClipboard(randomEmoji.emoji, `Copied ${randomEmoji.name}!`)}
-						>
-							<div class="text-6xl transition-transform hover:scale-110">
-								{randomEmoji.emoji}
-							</div>
-						</Button>
+						<ContextMenu.Root>
+							<ContextMenu.Trigger>
+								<Button
+									onclick={() => copyToClipboard(randomEmoji.emoji, 'Emoji copied to clipboard!')}
+									variant="outline"
+									size="lg"
+									class="relative mb-4 h-40 w-40 overflow-hidden transition-all duration-300 hover:shadow-lg"
+								>
+									{#key randomEmoji.emoji}
+										<div
+											in:fly={{ y: 20, duration: 300, delay: 50 }}
+											out:fly={{ y: -20, duration: 200 }}
+											class="absolute inset-0 flex items-center justify-center"
+										>
+											<div
+												class="transform-gpu text-6xl transition-all duration-300 hover:scale-110 active:scale-95"
+											>
+												{randomEmoji.emoji}
+											</div>
+										</div>
+									{/key}
+								</Button>
+							</ContextMenu.Trigger>
+							<ContextMenu.Content class="p-2">
+								<ContextMenu.Item
+									onclick={() => copyToClipboard(randomEmoji.emoji, 'Emoji copied to clipboard!')}
+								>
+									Copy Emoji
+									<ContextMenu.Shortcut class="mx-2">⌘C</ContextMenu.Shortcut>
+								</ContextMenu.Item>
+								<ContextMenu.Item
+									onclick={() =>
+										copyToClipboard(randomEmoji.name, 'Emoji name copied to clipboard!')}
+								>
+									Copy Name
+									<ContextMenu.Shortcut class="mx-2">⇧⌘C</ContextMenu.Shortcut>
+								</ContextMenu.Item>
+								<ContextMenu.Separator />
+								<ContextMenu.Item
+									onclick={() =>
+										copyToClipboard(
+											`${randomEmoji.emoji} ${randomEmoji.name}`,
+											'Emoji and name copied to clipboard!'
+										)}
+								>
+									Copy Both
+									<ContextMenu.Shortcut class="mx-2">⌥⌘C</ContextMenu.Shortcut>
+								</ContextMenu.Item>
+							</ContextMenu.Content>
+						</ContextMenu.Root>
+
 						<div class="space-y-2">
 							<Badge variant="secondary" class="text-lg">
 								{randomEmoji.name}
@@ -300,6 +302,69 @@
 								</Button>
 							</div>
 						</div>
+					</Card.Content>
+				</Card.Root>
+			</Tabs.Content>
+
+			<Tabs.Content value="search">
+				<Card.Root>
+					<Card.Header>
+						<Card.Title>Emoji Search</Card.Title>
+						<Card.Description>Find the perfect emoji for your needs</Card.Description>
+					</Card.Header>
+					<Card.Content>
+						<div class="mb-4 flex gap-2">
+							<Input
+								bind:value={searchQuery}
+								onkeydown={handleSearchKeyDown}
+								placeholder="Search emojis..."
+							/>
+							<Button onclick={search}>Search</Button>
+						</div>
+						{#if searchResults.length > 0}
+							<div class="flex flex-row flex-wrap gap-4 sm:flex-nowrap">
+								{#each searchResults as result}
+									<ContextMenu.Root>
+										<ContextMenu.Trigger>
+											<Button
+												variant="outline"
+												class="flex h-auto min-w-32 flex-col p-4 transition-transform hover:scale-105"
+											>
+												<span class="mb-2 text-3xl">{result.emoji}</span>
+												<span class="w-full truncate text-xs text-muted-foreground">
+													{result.name}
+												</span>
+											</Button>
+										</ContextMenu.Trigger>
+										<ContextMenu.Content class="w-48">
+											<ContextMenu.Item
+												onclick={() => copyToClipboard(result.emoji, `Copied ${result.name}!`)}
+											>
+												Copy Emoji
+												<ContextMenu.Shortcut class="mx-2">⌘C</ContextMenu.Shortcut>
+											</ContextMenu.Item>
+											<ContextMenu.Item
+												onclick={() => copyToClipboard(result.name, `Copied name: ${result.name}`)}
+											>
+												Copy Name
+												<ContextMenu.Shortcut class="mx-2">⇧⌘C</ContextMenu.Shortcut>
+											</ContextMenu.Item>
+											<ContextMenu.Separator />
+											<ContextMenu.Item
+												onclick={() =>
+													copyToClipboard(
+														`${result.emoji} ${result.name}`,
+														'Copied emoji and name!'
+													)}
+											>
+												Copy Both
+												<ContextMenu.Shortcut class="mx-2">⌥⌘C</ContextMenu.Shortcut>
+											</ContextMenu.Item>
+										</ContextMenu.Content>
+									</ContextMenu.Root>
+								{/each}
+							</div>
+						{/if}
 					</Card.Content>
 				</Card.Root>
 			</Tabs.Content>

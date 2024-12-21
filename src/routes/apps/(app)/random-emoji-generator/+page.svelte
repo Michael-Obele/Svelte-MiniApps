@@ -47,20 +47,31 @@
 	</script>
 </svelte:head>
 
-<div class="flex min-h-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
-	<h1 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+<div class="container flex min-h-screen flex-col items-center justify-center">
+	<h1 class="mb-4 text-4xl font-bold tracking-tighter text-gray-900 dark:text-white">
 		Random Emoji Generator
 	</h1>
+
 	<div class="flex items-center space-x-4">
-		<Button onclick={generateRandomEmoji} class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-			<RefreshCcw class="mr-2 inline-block h-5 w-5" /> Generate
+		<Button variant="default" onclick={generateRandomEmoji} class="flex items-center">
+			<RefreshCcw class="mr-2 size-5" />
+			Generate
 		</Button>
-		<Button onclick={() => copyToClipboard(randomEmoji.emoji, 'Emoji copied to clipboard')} class="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600">
-			<Clipboard class="mr-2 inline-block h-5 w-5" /> Copy
+
+		<Button
+			variant="secondary"
+			onclick={() => copyToClipboard(randomEmoji.emoji, 'Emoji copied to clipboard')}
+			class="flex items-center"
+		>
+			<Clipboard class="mr-2 size-5" />
+			Copy
 		</Button>
 	</div>
-	<div class="flex flex-col items-center justify-center space-y-4">
-		<p class="mt-6 text-6xl">{randomEmoji.emoji}</p>
-		<p>{randomEmoji.name.split('_').join(' ')}</p>
+
+	<div class="mt-6 flex flex-col items-center justify-center space-y-4">
+		<p class="text-6xl">{randomEmoji.emoji}</p>
+		<p class="text-gray-600 dark:text-gray-300">
+			{randomEmoji.name.split('_').join(' ')}
+		</p>
 	</div>
 </div>
