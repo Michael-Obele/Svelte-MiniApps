@@ -10,7 +10,7 @@ export const done = [
 	'random-password-generator',
 	'github-contribution-tracker',
 	'qr-code-generator',
-	'english-dictionary-app',
+	'dictionary-app',
 	'random-emoji-generator',
 	'currency-converter',
 	'advanced-emoji-tools',
@@ -23,7 +23,7 @@ export type Project = {
 	details: string;
 	tag: string;
 	difficulty: 'easy' | 'medium' | 'hard';
-	link:string;
+	link: string;
 };
 
 export const projects: Project[] = [
@@ -155,28 +155,32 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'GitHub Contribution Tracker',
-		details: 'Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated.',
+		details:
+			'Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated.',
 		tag: 'developer-tools',
 		difficulty: 'medium',
 		link: 'github-contribution-tracker'
 	},
 	{
 		title: 'Markdown Editor',
-		details: 'Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects.',
+		details:
+			'Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects.',
 		tag: 'utility',
 		difficulty: 'medium',
 		link: 'markdown-editor'
 	},
 	{
 		title: 'English Dictionary App',
-		details: 'Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback.',
+		details:
+			'Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback.',
 		tag: 'productivity',
 		difficulty: 'hard',
 		link: 'dictionary-app'
 	},
 	{
 		title: 'Pomodoro Timer',
-		details: 'Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you.',
+		details:
+			'Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you.',
 		tag: 'productivity',
 		difficulty: 'easy',
 		link: 'pomodoro-timer'
@@ -197,7 +201,8 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Rock Paper Scissors Game',
-		details: 'Lets you play the classic rock, paper, scissors game against the computer and shows the outcome.',
+		details:
+			'Lets you play the classic rock, paper, scissors game against the computer and shows the outcome.',
 		tag: 'game',
 		difficulty: 'easy',
 		link: 'rock-paper-scissors'
@@ -211,7 +216,8 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Recipe Book Organizer',
-		details: 'Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions.',
+		details:
+			'Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions.',
 		tag: 'productivity',
 		difficulty: 'medium',
 		link: 'recipe-organizer'
