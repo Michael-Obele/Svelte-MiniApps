@@ -17,9 +17,9 @@
 		{ name: 'Changelog', href: '/changelog' }
 	];
 
-	let open = () =>{
+	let open = () => {
 		show = !show;
-	}
+	};
 
 	let show = $state(false);
 
@@ -135,28 +135,27 @@
 				variant="outline"
 				type="button"
 				size="icon"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-lg px-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
 				onclick={() => open()}
 			>
-			<div class="relative size-6 rounded p-3 focus:outline-none">
-
-				<div
-					class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
-				>
-					<span
-						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+				<div class="relative size-6 rounded p-3 focus:outline-none">
+					<div
+						class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
+					>
+						<span
+							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
                     {show ? 'translate-y-[.0125rem] rotate-45' : '-translate-y-1.5'}"
-					></span>
-					<span
-						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+						></span>
+						<span
+							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
                     {show ? 'opacity-0' : ''}"
-					></span>
-					<span
-						class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
+						></span>
+						<span
+							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
                     {show ? '-translate-y-[.0125rem] -rotate-45' : 'translate-y-1.5'}"
-					></span>
+						></span>
+					</div>
 				</div>
-			</div>
-
 			</Button>
 		</div>
 		<div
