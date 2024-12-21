@@ -114,6 +114,14 @@
 			search();
 		}
 	};
+
+	const handleCheckKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			const found = findEmoji(emojiCheckInput);
+			const exists = hasEmoji(emojiCheckInput);
+			emojiCheckResult = { exists, found };
+		}
+	};
 </script>
 
 <svelte:head>
@@ -198,7 +206,11 @@
 					</Card.Header>
 					<Card.Content class="space-y-4">
 						<div class="flex gap-2">
-							<Input bind:value={emojiCheckInput} placeholder="Enter a word to check..." />
+							<Input
+								onkeydown={handleCheckKeyDown}
+								bind:value={emojiCheckInput}
+								placeholder="Enter a word to check..."
+							/>
 							<Button
 								onclick={() => {
 									const found = findEmoji(emojiCheckInput);
