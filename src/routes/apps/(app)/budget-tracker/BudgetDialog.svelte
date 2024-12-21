@@ -1,9 +1,9 @@
 <script lang="ts">
 	let {
-		editingBudget,
-		editBudgetName,
-		editBudgetAmount,
-		editBudgetCurrency,
+		editingBudget = $bindable(),
+		editBudgetName = $bindable(),
+		editBudgetAmount = $bindable(),
+		editBudgetCurrency = $bindable(),
 		updateBudget,
 		currencies
 	} = $props();

@@ -16,8 +16,8 @@
 		expenseAmount = $bindable(),
 		selectedCurrency = $bindable('USD'),
 		currencies,
-		addBudget = $bindable(),
-		addExpense = $bindable(),
+		addBudget,
+		addExpense,
 		formsSection
 	} = $props();
 
