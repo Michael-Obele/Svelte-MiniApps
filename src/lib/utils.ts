@@ -1,9 +1,9 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { persisted } from 'svelte-persisted-store';
 import { writable } from 'svelte/store';
-import type { UserContext } from "./types";
-import { toast } from "svelte-sonner";
+import type { UserContext } from './types';
+import { toast } from 'svelte-sonner';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -36,23 +36,23 @@ export function scrollToID(id: string): void {
  * @returns {Promise<boolean>} A promise resolving to a boolean indicating whether the copy operation was successful.
  */
 export const copyToClipboard = async (
-  text: string,
-  msg: string = 'Text copied to clipboard',
-  errorMsg: string = 'Failed to copy text',
-  onSuccess?: () => void,
-  onError?: (error: Error) => void
+	text: string,
+	msg: string = 'Text copied to clipboard',
+	errorMsg: string = 'Failed to copy text',
+	onSuccess?: () => void,
+	onError?: (error: Error) => void
 ): Promise<boolean> => {
-  try {
-    await navigator.clipboard.writeText(text);
-    toast.success(msg);
-    if (onSuccess) onSuccess(); // Execute the success callback if provided
-    return true; // Indicate success
-  } catch (err) {
-    toast.error(errorMsg);
-    if (onError) onError(err as Error); // Execute the error callback if provided
-    console.error('Copy to clipboard failed: ', err);
-    return false; // Indicate failure
-  }
+	try {
+		await navigator.clipboard.writeText(text);
+		toast.success(msg);
+		if (onSuccess) onSuccess(); // Execute the success callback if provided
+		return true; // Indicate success
+	} catch (err) {
+		toast.error(errorMsg);
+		if (onError) onError(err as Error); // Execute the error callback if provided
+		console.error('Copy to clipboard failed: ', err);
+		return false; // Indicate failure
+	}
 };
 
 /**
@@ -81,9 +81,9 @@ export const seenNewAppAlert = persisted<boolean>('seen-new-app-alert', false);
 export let filter = persisted('filter', 'all');
 
 interface User {
-    id: string;
-    username: string;
-    // Add other properties as needed
+	id: string;
+	username: string;
+	// Add other properties as needed
 }
 
 export const userContext = persisted<User | null>('user', null);
@@ -97,22 +97,3 @@ export function scrollToTop() {
 		behavior: 'smooth' // For smooth scrolling
 	});
 }
-
-// Define the type for a single budget
-export type Budget = {
-	name: string;
-	amount: string;
-	expenses: Expense[];
-};
-
-// Define the type for an expense
-export type Expense = {
-	name: string;
-	amount: string;
-	done?: boolean;
-};
-
-// Store budgets in localStorage
-export const budgets = persisted<Budget[]>('budgets', []);
-
-export const budgetCurrency = persisted<string>('budget-currency', '$');

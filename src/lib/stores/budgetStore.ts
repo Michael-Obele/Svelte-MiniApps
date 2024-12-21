@@ -1,5 +1,6 @@
 // src/lib/stores/budgetStore.ts
 import { writable } from 'svelte/store';
+import { persisted } from 'svelte-persisted-store';
 
 // src/lib/types/budget.ts
 export interface Budget {
@@ -19,7 +20,7 @@ export interface Expense {
 }
 
 function createBudgetStore() {
-	const { subscribe, set, update } = writable<Budget[]>([]);
+	const { subscribe, set, update } = persisted<Budget[]>('budgets', []);
 
 	return {
 		subscribe,

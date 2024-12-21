@@ -184,8 +184,8 @@
 			bind:expenseAmount
 			bind:selectedCurrency
 			{currencies}
-			addBudget
-			addExpense
+			{addBudget}
+			{addExpense}
 			{formsSection}
 		/>
 
@@ -208,7 +208,7 @@
 	bind:editBudgetName
 	bind:editBudgetAmount
 	bind:editBudgetCurrency
-	updateBudget
+	{updateBudget}
 	{currencies}
 />
 
