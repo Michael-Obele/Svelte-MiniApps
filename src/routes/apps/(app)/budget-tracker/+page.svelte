@@ -117,7 +117,7 @@
 
 	function getProgressBarColor(percentage: number): string {
 		if (percentage >= 90) return 'bg-destructive dark:bg-destructive';
-		if (percentage >= 75) return 'bg-yellow-500 dark:bg-yellow-500';
+		if (percentage > 50) return 'bg-yellow-500 dark:bg-yellow-500';
 		if (percentage <= 50) return 'bg-emerald-500 dark:bg-emerald-500';
 		return '';
 	}
@@ -156,12 +156,45 @@
 		editingBudget = null;
 	}
 
-	// Add function to open edit dialog
+	//Function to open edit dialog
 	function openEditDialog(budget: Budget) {
 		editingBudget = budget;
 		editBudgetName = budget.name;
 		editBudgetAmount = String(budget.amount);
 		editBudgetCurrency = budget.currency;
+	}
+
+	// Function to format numbers with commas
+	function formatNumberWithCommas(value: string | number): string {
+		return Number(value).toLocaleString();
+	}
+
+	function formatNumberInput(e: Event) {
+		const target = e.target as HTMLInputElement;
+
+		// First, remove any non-numeric characters except dots and commas
+		let value = target.value.replace(/[^\d.,]/g, '');
+
+		// Replace multiple dots with a single dot and ensure only one decimal point
+		value = value.replace(/\.+/g, '.');
+		const parts = value.split('.');
+		if (parts.length > 2) {
+			value = parts[0] + '.' + parts.slice(1).join('');
+		}
+
+		// Remove commas and format with proper thousand separators
+		value = value.replace(/,/g, '');
+		if (value) {
+			const [integerPart, decimalPart] = value.split('.');
+			// Format integer part with thousand separators
+			let formattedInteger = Number(integerPart).toLocaleString('en-US');
+
+			// Add back decimal part if it exists
+			value = decimalPart ? `${formattedInteger}.${decimalPart}` : formattedInteger;
+		}
+
+		// Update the input value
+		target.value = value;
 	}
 </script>
 
@@ -187,6 +220,7 @@
 			{addBudget}
 			{addExpense}
 			{formsSection}
+			{formatNumberInput}
 		/>
 
 		<!-- Budgets List -->
