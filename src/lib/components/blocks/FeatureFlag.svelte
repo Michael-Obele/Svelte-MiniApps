@@ -1,14 +1,19 @@
 <script lang="ts">
-    interface Props {
-        children?: import('svelte').Snippet;
-    }
+	interface Props {
+		children?: import('svelte').Snippet;
+		visible?: boolean;
+	}
 
-    let { children }: Props = $props();
-    if (import.meta.env.VITE_FEATURE_FLAG) {
-        console.log('Feature flag is enabled');
-    }
-    </script>
+	let { children, visible }: Props = $props();
 
-{#if import.meta.env.VITE_FEATURE_FLAG}
-{@render children?.()}
+	let show = visible ?? import.meta.env.VITE_FEATURE_FLAG;
+	if (show) {
+		console.log('Feature flag is enabled');
+	}
+</script>
+
+{#if show}
+	<div class="container mx-auto my-8 px-4 py-8">
+		{@render children?.()}
+	</div>
 {/if}
