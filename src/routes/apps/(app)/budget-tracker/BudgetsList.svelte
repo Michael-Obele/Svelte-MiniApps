@@ -14,6 +14,8 @@
 		getProgressBarColor: (percentage: number) => string;
 		formatCurrency: (amount: number, currency: string) => string;
 		calculateTotalExpenses: (expenses: Expense[]) => number;
+		getCurrencySymbol: (currencyCode: string) => string;
+		formatNumberWithCommas: (value: string | number) => string;
 	}
 
 	let {
@@ -22,7 +24,9 @@
 		getProgressPercentage,
 		getProgressBarColor,
 		formatCurrency,
-		calculateTotalExpenses
+		calculateTotalExpenses,
+		getCurrencySymbol,
+		formatNumberWithCommas
 	}: Props = $props();
 
 	function getBudgetStatusIconAndColor(percentage: number): { icon: any; color: string } {
@@ -76,22 +80,21 @@
 					<div class="flex justify-between text-sm">
 						<span>Budget:</span>
 						<span class="font-semibold">
-							{formatCurrency(budget.amount, budget.currency)}
+							{getCurrencySymbol(budget.currency)}{formatNumberWithCommas(budget.amount.toString())}
 						</span>
 					</div>
 					<div class="flex justify-between text-sm">
 						<span>Spent:</span>
-						<span class="font-semibold"
-							>{formatCurrency(calculateTotalExpenses(budget.expenses), budget.currency)}</span
-						>
+						<span class="font-semibold">
+							{getCurrencySymbol(budget.currency)}
+							{formatNumberWithCommas(calculateTotalExpenses(budget.expenses))}
+						</span>
 					</div>
 					<div class="flex justify-between text-sm">
 						<span>Remaining:</span>
 						<span class="font-semibold">
-							{formatCurrency(
-								budget.amount - calculateTotalExpenses(budget.expenses),
-								budget.currency
-							)}
+							{getCurrencySymbol(budget.currency)}
+							{formatNumberWithCommas(budget.amount - calculateTotalExpenses(budget.expenses))}
 						</span>
 					</div>
 				</div>
@@ -104,7 +107,10 @@
 								<div class="flex items-center justify-between text-sm">
 									<span>{expense.description}</span>
 									<div class="flex items-center gap-2">
-										<span>{formatCurrency(expense.amount, budget.currency)}</span>
+										<span>
+											{getCurrencySymbol(budget.currency)}
+											{formatNumberWithCommas(expense.amount)}</span
+										>
 										<Button
 											variant="ghost"
 											size="icon"

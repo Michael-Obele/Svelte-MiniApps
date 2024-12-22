@@ -196,6 +196,18 @@
 		// Update the input value
 		target.value = value;
 	}
+
+	// Add this helper function at the top of your script section
+	function getCurrencySymbol(currencyCode: string): string {
+		const symbols: { [key: string]: string } = {
+			USD: '$',
+			EUR: '€',
+			GBP: '£',
+			JPY: '¥',
+			NGN: '₦'
+		};
+		return symbols[currencyCode] || currencyCode;
+	}
 </script>
 
 <div class="container mx-auto max-w-4xl space-y-8 p-4">
@@ -230,6 +242,8 @@
 			{getProgressPercentage}
 			{getProgressBarColor}
 			{formatCurrency}
+			{getCurrencySymbol}
+			{formatNumberWithCommas}
 			{calculateTotalExpenses}
 		/>
 	</div>
