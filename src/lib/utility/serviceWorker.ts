@@ -41,8 +41,8 @@ export async function registerServiceWorker() {
 				const hashData = await hashResponse.json();
 				const newHash = hashData.hash;
 				const storedHash = localStorage.getItem('serviceWorkerHash');
-
-				if (newHash !== storedHash) {
+				// Only trigger update if hash has changed
+				if (newHash && newHash !== storedHash) {
 					console.log('[ServiceWorker] New hash detected:', newHash);
 					await registration.update();
 				} else {

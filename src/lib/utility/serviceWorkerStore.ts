@@ -10,14 +10,15 @@ export function notifyUpdateAvailable(registration: ServiceWorkerRegistration, n
 	// Retrieve the stored hash from local storage
 	const storedHash = localStorage.getItem('serviceWorkerHash');
 
-	// Ensure hash has actually changed
+	// Ensure hash has actually changed and is not null/empty
 	if (!newHash || newHash === storedHash) {
 		console.log('[ServiceWorker] Hash unchanged, skipping notification');
 		return;
 	}
 
-	// Store the new hash before showing notification
-	localStorage.setItem('serviceWorkerHash', newHash);
+	// Only store the hash AFTER the user accepts the update
+	// Remove this line here:
+	// localStorage.setItem('serviceWorkerHash', newHash);
 
 	toast('New Update Available', {
 		description: 'A new version of the app is ready to install',
@@ -25,7 +26,11 @@ export function notifyUpdateAvailable(registration: ServiceWorkerRegistration, n
 		icon: RefreshCw,
 		action: {
 			label: 'Update Now',
-			onClick: () => applyUpdate()
+			onClick: () => {
+				// Store the hash only when update is accepted
+				localStorage.setItem('serviceWorkerHash', newHash);
+				applyUpdate();
+			}
 		},
 		cancel: {
 			label: 'Later',
