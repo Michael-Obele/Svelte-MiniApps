@@ -4,7 +4,11 @@ import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config: Config = {
 	darkMode: ['class'],
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/svelte-ux/**/*.{svelte,js}',
+		'./node_modules/layerchart/**/*.{svelte,js}'
+	],
 	safelist: ['dark'],
 	theme: {
 		container: {
@@ -58,14 +62,15 @@ const config: Config = {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// LayerChart tokens mapped to shadcn-svelte colors.
+				surface: {
+					content: 'hsl(var(--card-foreground) / <alpha-value>)',
+					100: 'hsl(var(--background) / <alpha-value>)',
+					200: 'hsl(var(---muted) / <alpha-value>)',
+					// not sure what color maps here (should be darker than 200).  Could add a new color to `app.css`
+					300: 'hsl(var(--background) / <alpha-value>)'
 				}
-			},
-			surface: {
-				content: 'hsl(var(--card-foreground) / <alpha-value>)',
-				100: 'hsl(var(--background) / <alpha-value>)',
-				200: 'hsl(var(---muted) / <alpha-value>)',
-				// not sure what color maps here (should be darker than 200).  Could add a new color to `app.css`
-				300: 'hsl(var(--background) / <alpha-value>)'
 			},
 			borderRadius: {
 				xl: 'calc(var(--radius) + 4px)',

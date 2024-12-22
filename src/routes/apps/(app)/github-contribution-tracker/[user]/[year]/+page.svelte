@@ -45,14 +45,16 @@
 	};
 
 	// Reactive declarations
-	let contributionsByMonth = arrangeDataByMonth(data.gitContributions);
-	let monthlyContributionData = calculateMonthlyContributions(contributionsByMonth);
-	let calendarData = data.calendar.map((d) => ({
-		...d,
-		date: parseISO(d.date),
-		value: d.contributionCount
-	}));
-	let calendarDataByYear = flatGroup(calendarData, (d: any) => d.date.getFullYear());
+	let contributionsByMonth = $state(arrangeDataByMonth(data.gitContributions));
+	let monthlyContributionData = $state(calculateMonthlyContributions(contributionsByMonth));
+	let calendarData = $state(
+		data.calendar.map((d) => ({
+			...d,
+			date: parseISO(d.date),
+			value: d.contributionCount
+		}))
+	);
+	let calendarDataByYear = $state(flatGroup(calendarData, (d: any) => d.date.getFullYear()));
 </script>
 
 <svelte:head>
