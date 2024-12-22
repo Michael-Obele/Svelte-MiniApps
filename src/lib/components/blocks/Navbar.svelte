@@ -143,16 +143,16 @@
 						class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
 					>
 						<span
-							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
-                    {show ? 'translate-y-[.0125rem] rotate-45' : '-translate-y-1.5'}"
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
+									{show ? 'translate-y-[.0125rem] rotate-45' : '-translate-y-1.5'}"
 						></span>
 						<span
-							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
-                    {show ? 'opacity-0' : ''}"
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
+									{show ? 'opacity-0' : ''}"
 						></span>
 						<span
-							class="absolute block h-0.5 w-full transform bg-white transition duration-300 ease-in-out
-                    {show ? '-translate-y-[.0125rem] -rotate-45' : 'translate-y-1.5'}"
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
+									{show ? '-translate-y-[.0125rem] -rotate-45' : 'translate-y-1.5'}"
 						></span>
 					</div>
 				</div>
