@@ -49,6 +49,16 @@ async function fetchGitHubData(user: string, year: string) {
 	return client.request<ContributionData>(query);
 }
 
+async function fetchStreakStats(user: string, theme: 'light' | 'dark') {
+	const streakStatsUrl = {
+		light: `https://github-readme-streak-stats.herokuapp.com/?user=${user}&theme=default&hide_border=false`,
+		dark: `https://github-readme-streak-stats.herokuapp.com/?user=${user}&theme=dark&hide_border=false`
+	};
+
+	const response = await fetch(streakStatsUrl[theme]);
+	return response.ok ? await response.text() : null;
+}
+
 export const load = (async ({ params, setHeaders }) => {
 	const { user, year } = params;
 
@@ -73,16 +83,19 @@ export const load = (async ({ params, setHeaders }) => {
 				contributionCount: day.contributionCount
 			}))
 		);
-
-		const streakStatsUrl = `https://github-readme-streak-stats.herokuapp.com/?user=${user}&theme=dark&hide_border=false`;
-		const streakResponse = await fetch(streakStatsUrl);
-		const streakStats = streakResponse.ok ? await streakResponse.text() : null;
+		const [lightStreakStats, darkStreakStats] = await Promise.all([
+			fetchStreakStats(user, 'light'),
+			fetchStreakStats(user, 'dark')
+		]);
 
 		return {
 			props: { user, year },
 			gitContributions,
 			totalContributions,
-			streakStats,
+			streakStats: {
+				light: lightStreakStats,
+				dark: darkStreakStats
+			},
 			calendar: gitContributions
 		};
 	} catch (error) {

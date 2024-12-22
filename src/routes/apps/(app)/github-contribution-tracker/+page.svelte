@@ -36,42 +36,42 @@
 	}
 </script>
 
-<UnderConstruction />
-
 <FeatureFlag>
-	<div class="container mx-auto px-4 py-8">
-		<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
-
-		<div class="mx-auto max-w-md">
-			<form onsubmit={handleSubmit} class="space-y-6">
-				<div class="space-y-2">
-					<label for="username" class="text-sm font-medium">GitHub Username</label>
-					<Input
-						id="username"
-						name="username"
-						bind:value={username}
-						placeholder="Enter GitHub username"
-						required
-					/>
-				</div>
-
-				<div class="space-y-2">
-					<label for="year" class="text-sm font-medium">Year</label>
-					<Input
-						id="year"
-						name="year"
-						type="number"
-						bind:value={year}
-						min="2008"
-						max={new Date().getFullYear()}
-						required
-					/>
-				</div>
-
-				<Button type="submit" disabled={isLoading} class="w-full">
-					{isLoading ? 'Loading...' : 'Track Contributions'}
-				</Button>
-			</form>
-		</div>
-	</div>
+	<!-- <UnderConstruction /> -->
 </FeatureFlag>
+
+<div class="container mx-auto px-4 py-8">
+	<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
+
+	<div class="mx-auto max-w-md">
+		<form onsubmit={handleSubmit} class="space-y-6">
+			<div class="space-y-2">
+				<label for="username" class="text-sm font-medium">GitHub Username</label>
+				<Input
+					id="username"
+					name="username"
+					bind:value={username}
+					placeholder="Enter GitHub username"
+					required
+				/>
+			</div>
+
+			<div class="space-y-2">
+				<label for="year" class="text-sm font-medium">Year</label>
+				<Input
+					id="year"
+					name="year"
+					type="number"
+					bind:value={year}
+					min="2008"
+					max={new Date().getFullYear()}
+					required
+				/>
+			</div>
+
+			<Button type="submit" disabled={isLoading} class="w-full">
+				{isLoading ? 'Loading...' : 'Track Contributions'}
+			</Button>
+		</form>
+	</div>
+</div>

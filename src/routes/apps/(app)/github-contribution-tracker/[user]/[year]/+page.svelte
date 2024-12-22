@@ -73,9 +73,14 @@
 {#if data.streakStats}
 	<div class="my-5">
 		<div
-			class="mx-auto flex w-full justify-center"
+			class="mx-auto flex w-full justify-center dark:hidden"
 			contenteditable="false"
-			bind:innerHTML={data.streakStats}
+			bind:innerHTML={data.streakStats.light}
+		></div>
+		<div
+			class="mx-auto hidden w-full justify-center dark:flex"
+			contenteditable="false"
+			bind:innerHTML={data.streakStats.dark}
 		></div>
 	</div>
 {/if}
@@ -93,7 +98,7 @@
 		>
 	</div>
 </div>
-
+<!-- Monthly Contributions -->
 <div class="mx-auto h-[400px] w-[90vw] rounded border p-4">
 	<Chart
 		data={monthlyContributionData}
@@ -112,7 +117,12 @@
 			<Highlight area />
 		</Svg>
 
-		<Tooltip.Root class="bg-red-800 fill-green-400 dark:bg-red-500 dark:text-black" let:data>
+		<Tooltip.Root
+			class="bg-red-800 fill-green-400 dark:bg-red-500 dark:text-black"
+			offset={8}
+			placement="top"
+			let:data
+		>
 			<Tooltip.Header>{formatDate(data.date, 'MMMM')}</Tooltip.Header>
 			<Tooltip.List>
 				<Tooltip.Item
@@ -172,6 +182,8 @@
 								<Highlight area />
 							</Svg>
 							<Tooltip.Root
+								offset={12}
+								placement="right"
 								class="bg-red-800 fill-green-400 dark:bg-red-500 dark:text-black"
 								let:data
 							>
@@ -200,7 +212,7 @@
 	>
 </div>
 
-<div class="h-[20vw] w-[95vw] rounded border p-4 pl-6 pt-6">
+<div class="mx-auto h-[20vw] w-[95vw] rounded border p-4 pl-6 pt-6">
 	<Chart
 		data={calendarData}
 		x="date"
@@ -229,7 +241,7 @@
 			{/each}
 		</Svg>
 
-		<Tooltip.Root let:data>
+		<Tooltip.Root offset={16} placement="top" let:data>
 			<Tooltip.Header>{format(data.date, PeriodType.Day)}</Tooltip.Header>
 			{#if data?.value != null}
 				<Tooltip.List>
