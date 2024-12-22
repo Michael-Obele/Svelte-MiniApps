@@ -97,3 +97,36 @@ export function scrollToTop() {
 		behavior: 'smooth' // For smooth scrolling
 	});
 }
+
+/**
+ * Creates a function that calls the provided function only once.
+ * Subsequent calls will be ignored.
+ *
+ * @param fn - The function to be called once.
+ * @returns A function that calls the original function only once.
+ */
+export function once<T extends Event>(fn: (event: T) => void): (event: T) => void {
+	let called = false;
+
+	return function (this: any, event: T) {
+		if (!called) {
+			called = true;
+			fn.call(this, event);
+		}
+	};
+}
+
+/**
+ * Creates a function that prevents the default action of an event and then calls the provided function.
+ *
+ * @template T The type of the event.
+ * @param fn The function to be called after preventing the default action.
+ * @returns A function that prevents the default action and then calls the provided function.
+ */
+export function preventDefault<T extends Event>(fn: (event: T) => void): (event: T) => void {
+	return function (this: any, event: T) {
+		// Explicitly define 'this' type
+		event.preventDefault();
+		fn.call(this, event);
+	};
+}
