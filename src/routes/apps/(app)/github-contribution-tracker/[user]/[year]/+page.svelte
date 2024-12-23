@@ -116,7 +116,7 @@
 </div>
 
 <!-- Monthly Contributions -->
-<div class="mx-auto h-[400px] w-[90vw] rounded border p-4">
+<div class="container mx-auto h-[400px] w-[90vw] rounded border p-4">
 	<Chart
 		data={monthlyContributionData}
 		x="date"
