@@ -47,6 +47,7 @@
 					id="username"
 					name="username"
 					bind:value={username}
+					autocomplete="username"
 					placeholder="Enter GitHub username"
 					required
 				/>
