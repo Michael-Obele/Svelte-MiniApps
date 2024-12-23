@@ -12,7 +12,6 @@
 		openEditExpenseDialog: (budgetId: string, expense: Expense) => void;
 		getProgressPercentage: (budget: Budget) => number;
 		getProgressBarColor: (percentage: number) => string;
-		formatCurrency: (amount: number, currency: string) => string;
 		calculateTotalExpenses: (expenses: Expense[]) => number;
 		getCurrencySymbol: (currencyCode: string) => string;
 		formatNumberWithCommas: (value: string | number) => string;
@@ -23,7 +22,6 @@
 		openEditExpenseDialog,
 		getProgressPercentage,
 		getProgressBarColor,
-		formatCurrency,
 		calculateTotalExpenses,
 		getCurrencySymbol,
 		formatNumberWithCommas

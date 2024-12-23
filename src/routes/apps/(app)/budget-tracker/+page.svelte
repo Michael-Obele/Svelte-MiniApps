@@ -51,7 +51,7 @@
 	});
 
 	function addBudget() {
-		if (!budgetName || !budgetAmount || !selectedCurrency) {
+		if (!budgetName || budgetAmount === undefined || budgetAmount === '' || !selectedCurrency) {
 			toast.error('Please fill in all fields');
 			return;
 		}
@@ -141,7 +141,12 @@
 			return;
 		}
 
-		if (!editBudgetName || !editBudgetAmount || !editBudgetCurrency) {
+		if (
+			!editBudgetName ||
+			editBudgetAmount === undefined ||
+			editBudgetAmount === '' ||
+			!editBudgetCurrency
+		) {
 			toast.error('Please fill in all fields');
 			return;
 		}
@@ -241,7 +246,6 @@
 			{openEditExpenseDialog}
 			{getProgressPercentage}
 			{getProgressBarColor}
-			{formatCurrency}
 			{getCurrencySymbol}
 			{formatNumberWithCommas}
 			{calculateTotalExpenses}
