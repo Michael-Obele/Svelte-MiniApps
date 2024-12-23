@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { ArrowUp, ArrowLeft } from 'lucide-svelte';
+	import { ArrowUp, ArrowLeft, ArrowDown } from 'lucide-svelte';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Drawer from '$lib/components/ui/drawer';
 	import { Chart, Bars, Calendar, Axis, Group, Text, Svg, Tooltip, Highlight } from 'layerchart';
@@ -9,7 +9,14 @@
 	import { PeriodType, format } from 'svelte-ux';
 	import { startOfYear, parseISO, endOfYear } from 'date-fns';
 	import { flatGroup } from 'd3-array';
-	import { scrollToID, scrollToTop, once, preventDefault } from '$lib/utils';
+	import { scrollToID, scrollToTop } from '$lib/utils';
+	import {
+		Card,
+		CardHeader,
+		CardTitle,
+		CardDescription,
+		CardContent
+	} from '$lib/components/ui/card';
 
 	let { data } = $props();
 
@@ -65,39 +72,49 @@
 	/>
 </svelte:head>
 
-<h1 class="text-center text-2xl">GitHub Contributions</h1>
-
-<h1 class="my-15 text-center text-xl">
-	For <span class="capitalize">{user}</span> - {year}
-</h1>
-{#if data.streakStats}
-	<div class="my-5">
-		<div
-			class="mx-auto flex w-full justify-center dark:hidden"
-			contenteditable="false"
-			bind:innerHTML={data.streakStats.light}
-		></div>
-		<div
-			class="mx-auto hidden w-full justify-center dark:flex"
-			contenteditable="false"
-			bind:innerHTML={data.streakStats.dark}
-		></div>
-	</div>
-{/if}
-<div class="mx-auto w-fit space-y-3 text-center">
-	<h3>
-		On {data.props.year}.
-		<span>Your Total contributions are {data.totalContributions}</span>
-	</h3>
-
-	<div class="inline-flex w-full items-center justify-center">
-		<hr class="my-8 h-[2px] w-64 rounded-xl border-0 bg-gray-200 dark:bg-gray-700" />
-		<span
-			class="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-2xl font-medium text-gray-900 dark:bg-gray-900 dark:text-white"
-			>that's</span
+<div class="mx-auto my-8 max-w-3xl space-y-6 text-center">
+	<div class="space-y-4">
+		<h1
+			class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-white/70 sm:text-5xl"
 		>
+			GitHub Contributions
+		</h1>
+		<h2 class="text-2xl text-gray-700 dark:text-gray-200">
+			For <span
+				class="font-semibold capitalize text-primary transition-colors hover:text-primary/80 dark:text-white"
+				>{user}</span
+			>
+			<span class="mx-2 text-gray-400">•</span>
+			<span class="font-bold text-primary dark:text-white">{year}</span>
+		</h2>
 	</div>
+
+	{#if data.streakStats}
+		<div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50">
+			<div
+				class="mx-auto flex w-full justify-center dark:hidden"
+				contenteditable="false"
+				bind:innerHTML={data.streakStats.light}
+			></div>
+			<div
+				class="mx-auto hidden w-full justify-center dark:flex"
+				contenteditable="false"
+				bind:innerHTML={data.streakStats.dark}
+			></div>
+		</div>
+	{/if}
+
+	<p class="text-lg text-gray-600 dark:text-gray-300">
+		In {data.props.year}, you made
+		<span
+			class="inline-block font-bold text-primary transition-all hover:scale-105 dark:text-white"
+		>
+			{data.totalContributions}
+		</span>
+		contributions.
+	</p>
 </div>
+
 <!-- Monthly Contributions -->
 <div class="mx-auto h-[400px] w-[90vw] rounded border p-4">
 	<Chart
@@ -136,80 +153,113 @@
 </div>
 
 <!-- More Stats -->
-<div class="mx-auto my-12 flex w-full flex-col space-y-3 text-center">
-	<a
-		href="#heatmap"
-		class="text-center text-2xl font-medium hover:underline dark:text-blue-500"
-		onclick={once(preventDefault(() => scrollToID('heatmap')))}
-	>
-		Scroll to Heat Map
-	</a>
-	<h3 class="text-center text-3xl font-bold text-gray-900 dark:text-white">More Stats</h3>
+<div class="container mx-auto my-8 px-4">
+	<Card class="w-full">
+		<CardContent class="flex flex-col items-center space-y-4 p-6">
+			<Button
+				variant="ghost"
+				class="group text-2xl font-medium transition-colors hover:text-primary"
+				onclick={() => scrollToID('heatmap')}
+			>
+				<span class="mr-2">View Contribution Heat Map</span>
+				<ArrowDown class="h-5 w-5 transition-transform group-hover:translate-y-1" />
+			</Button>
+
+			<div class="flex w-full items-center justify-center">
+				<div class="h-px w-full bg-border"></div>
+				<span class="bg-background px-6 text-3xl font-bold"> More Stats </span>
+				<div class="h-px w-full bg-border"></div>
+			</div>
+		</CardContent>
+	</Card>
 </div>
 
-{#each contributionsByMonth as month, i}
-	{#if month.some((day) => day.contributionCount > 0)}
-		<div class="my-10 flex flex-col items-center justify-center space-y-2">
-			<h3 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
-				{formatDate(month[i].date, 'MMMM yyyy')}
-			</h3>
-			<h5 class="text-center text-2xl font-bold text-gray-900 dark:text-white">
-				Total Contributions: {month.reduce((a, b) => a + b.contributionCount, 0)}
-			</h5>
-			<Drawer.Root>
-				<Drawer.Trigger class={buttonVariants({ variant: 'secondary' })}>View Chart</Drawer.Trigger>
-				<Drawer.Content class="px-3">
-					<div class="mt-5 h-[80vh] w-full rounded border p-4 md:mx-auto md:w-[80vw]">
-						<Chart
-							data={month}
-							x="contributionCount"
-							y="date"
-							xDomain={[0, null]}
-							xNice
-							yScale={scaleBand().padding(0.4)}
-							padding={{ left: 20, bottom: 20 }}
-							tooltip={{ mode: 'band' }}
-						>
-							<Svg>
-								<Axis placement="bottom" grid rule />
-								<Axis placement="left" format={(d) => formatDate(d, 'dd MMM')} grid rule />
-								<Bars
-									radius={4}
-									rounded="right"
-									strokeWidth={1}
-									class="fill-green-700 dark:fill-green-500"
-								/>
-								<Highlight area />
-							</Svg>
-							<Tooltip.Root
-								offset={12}
-								placement="right"
-								class="bg-red-800 fill-green-400 dark:bg-red-500 dark:text-black"
-								let:data
-							>
-								<Tooltip.Header>{formatDate(data.date, 'eee, MMMM do')}</Tooltip.Header>
-								<Tooltip.List>
-									<Tooltip.Item label="contributionCount" value={data.contributionCount} />
-								</Tooltip.List>
-							</Tooltip.Root>
-						</Chart>
-					</div>
-					<Drawer.Footer>
-						<Drawer.Close class={buttonVariants({ variant: 'destructive' })}>Close</Drawer.Close>
-					</Drawer.Footer>
-				</Drawer.Content>
-			</Drawer.Root>
-		</div>
-	{/if}
-{/each}
+<!-- Each Month -->
+<div class="container mx-auto px-4">
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+		{#each contributionsByMonth as month, i}
+			{#if month.some((day) => day.contributionCount > 0)}
+				<Card class="flex flex-col">
+					<CardHeader>
+						<CardTitle class="text-xl font-bold text-gray-900 dark:text-white">
+							{formatDate(month[i].date, 'MMMM yyyy')}
+						</CardTitle>
+						<CardDescription>
+							Total Contributions: {month.reduce((a, b) => a + b.contributionCount, 0)}
+						</CardDescription>
+					</CardHeader>
+					<CardContent class="flex-grow">
+						<Drawer.Root>
+							<Drawer.Trigger class={buttonVariants({ variant: 'secondary', class: 'w-full' })}>
+								View Chart
+							</Drawer.Trigger>
+							<Drawer.Content class="px-3">
+								<div class="mt-5 h-[80vh] w-full rounded border p-4 md:mx-auto md:w-[80vw]">
+									<Chart
+										data={month}
+										x="contributionCount"
+										y="date"
+										xDomain={[0, null]}
+										xNice
+										yScale={scaleBand().padding(0.4)}
+										padding={{ left: 20, bottom: 20 }}
+										tooltip={{ mode: 'band' }}
+									>
+										<Svg>
+											<Axis placement="bottom" grid rule />
+											<Axis placement="left" format={(d) => formatDate(d, 'dd MMM')} grid rule />
+											<Bars
+												radius={4}
+												rounded="right"
+												strokeWidth={1}
+												class="fill-green-700 dark:fill-green-500"
+											/>
+											<Highlight area />
+										</Svg>
+										<Tooltip.Root
+											offset={12}
+											placement="right"
+											class="bg-red-800 fill-green-400 dark:bg-red-500 dark:text-black"
+											let:data
+										>
+											<Tooltip.Header>{formatDate(data.date, 'eee, MMMM do')}</Tooltip.Header>
+											<Tooltip.List>
+												<Tooltip.Item label="contributionCount" value={data.contributionCount} />
+											</Tooltip.List>
+										</Tooltip.Root>
+									</Chart>
+								</div>
+								<Drawer.Footer>
+									<Drawer.Close class={buttonVariants({ variant: 'destructive' })}
+										>Close</Drawer.Close
+									>
+								</Drawer.Footer>
+							</Drawer.Content>
+						</Drawer.Root>
+					</CardContent>
+				</Card>
+			{/if}
+		{/each}
+	</div>
+</div>
+
 <!-- End of More Stats -->
 
-<div id="heatmap" class="my-12 inline-flex w-full items-center justify-center">
-	<hr class="my-8 h-[2px] w-64 rounded-xl border-0 bg-gray-200 dark:bg-gray-700" />
-	<span
-		class="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-2xl font-medium text-gray-900 dark:bg-gray-900 dark:text-white"
-		>Heat Map</span
-	>
+<div id="heatmap" class="relative my-16 flex w-full items-center justify-center overflow-hidden">
+	<div class="absolute inset-0 flex items-center">
+		<div
+			class="border-gradient-to-r w-full border-t from-gray-200/0 via-gray-200 to-gray-200/0 dark:from-gray-700/0 dark:via-gray-700 dark:to-gray-700/0"
+		></div>
+	</div>
+	<div class="relative flex justify-center text-2xl font-medium">
+		<span class="bg-background px-6 text-gray-900 transition-colors dark:text-white">
+			<span
+				class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent dark:from-white dark:to-white/70"
+			>
+				Heat Map
+			</span>
+		</span>
+	</div>
 </div>
 
 <div class="mx-auto h-[20vw] w-[95vw] rounded border p-4 pl-6 pt-6">
@@ -257,20 +307,24 @@
 	</Chart>
 </div>
 
-<div class="mx-auto my-10 flex w-fit items-center justify-center">
+<div class="mx-auto my-10 flex w-fit items-center justify-center gap-4">
 	<Button
-		class="group me-2 inline-flex items-center justify-center rounded-lg border border-green-700 bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-green-700 hover:bg-green-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 dark:border-green-500 dark:text-green-100 dark:hover:bg-green-600 dark:hover:text-white dark:focus:ring-green-800 md:text-xl"
+		variant="outline"
+		class="group relative transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-lg"
 		onclick={() => goto('/apps/github-contribution-tracker')}
 	>
-		<ArrowLeft class="h-6 w-6 md:mr-2" />
-		<span class="hidden md:inline"> Go Back </span>
+		<ArrowLeft
+			class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1 md:mr-2"
+		/>
+		<span class="hidden md:inline">Go Back</span>
 	</Button>
 
 	<Button
-		class="group me-2 inline-flex items-center justify-center rounded-lg border border-green-700 bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-green-700 hover:bg-green-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 dark:border-green-500 dark:text-green-100 dark:hover:bg-green-600 dark:hover:text-white dark:focus:ring-green-800 md:text-xl"
+		variant="outline"
+		class="group relative transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-lg"
 		onclick={scrollToTop}
 	>
 		<span class="hidden md:inline">Back to Top</span>
-		<ArrowUp class="h-6 w-6 md:ml-2" />
+		<ArrowUp class="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 md:ml-2" />
 	</Button>
 </div>

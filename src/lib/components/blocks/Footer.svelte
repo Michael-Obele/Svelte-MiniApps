@@ -57,7 +57,7 @@
 							trigger="loop"
 							stroke="thick"
 							state="hover-draw"
-							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block dark:text-black"
+							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block"
 							colors="primary:white,secondary:green"
 							aria-label="Twitter"
 						></lord-icon>
@@ -66,7 +66,7 @@
 							trigger="loop"
 							stroke="thick"
 							state="hover-draw"
-							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden dark:text-black"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden"
 							colors="primary:black,secondary:green"
 							aria-label="Twitter"
 						></lord-icon>
@@ -83,7 +83,7 @@
 							trigger="loop"
 							stroke="thick"
 							state="pinch"
-							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block dark:text-black"
+							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block"
 							colors="primary:white,secondary:green"
 							aria-label="LinkedIn"
 						></lord-icon>
@@ -92,7 +92,7 @@
 							trigger="loop"
 							stroke="thick"
 							state="pinch"
-							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden dark:text-black"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden"
 							colors="primary:black,secondary:green"
 							aria-label="LinkedIn"
 						></lord-icon>

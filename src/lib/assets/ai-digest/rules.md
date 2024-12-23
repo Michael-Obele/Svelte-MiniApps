@@ -1,6 +1,7 @@
 # Coding Style Guide and Preferences
 
 ## Technology Stack
+
 - **Framework**: SvelteKit with TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: shadcn-svelte
@@ -9,12 +10,13 @@
   - PostgreSQL for data storage
   - Prisma as ORM with TypeScript integration
   - Follow schema-first development approach
-- **Animations**: 
+- **Animations**:
   - svelte/transition (fade, etc.)
   - svelte-motion for complex animations
 - **State Management**: Svelte stores and context
 
 ## Project Structure
+
 - **`$lib/components/ui/`**: shadcn-svelte UI components
 - **`$lib/assets/`**: Static assets and illustrations
 - **`$lib/server/`**: Server-side utilities and database operations
@@ -22,6 +24,7 @@
 - **`src/app.d.ts`**: TypeScript declarations
 
 ## Coding Standards
+
 - Always use TypeScript in Svelte components with `<script lang="ts">`
 - Use `onclick` instead of `on:click` for event handling
 - Prefer type-safe props and events
@@ -33,11 +36,13 @@
   - Utilize Prisma's type safety features
 
 ## Color Scheme
+
 ### Light Mode
-- Background: 
+
+- Background:
   - Primary: `bg-white`
   - Secondary: `bg-gray-50`
-- Text: 
+- Text:
   - Primary: `text-gray-900`
   - Secondary: `text-gray-600`, `text-gray-500`
   - Error/Warning: `text-red-500`
@@ -47,8 +52,9 @@
 - Alerts/Warnings: `bg-red-50/80`, `text-red-700/90`
 
 ### Dark Mode
+
 - Background: `dark:bg-gray-900`
-- Text: 
+- Text:
   - Primary: `dark:text-white`
   - Secondary: `dark:text-gray-300`, `dark:text-gray-400`
   - Error/Warning: `dark:text-red-400`
@@ -57,12 +63,14 @@
 - Alerts/Warnings: `dark:bg-red-900/20`, `dark:text-red-200/90`
 
 ### Gradient Patterns
+
 - Backgrounds: `from-[color]-500/20 via-transparent`
 - Vertical Lines: `from-blue-500/20 via-purple-500/20 to-green-500/20`
 
 ## Layout Patterns
+
 - Container width: `max-w-screen-xl`, `xl:container`
-- Spacing: 
+- Spacing:
   - Padding: `px-4 py-8` (base), `md:px-6` (responsive)
   - Margins: `space-y-4`, `gap-4`
 - Responsive design: Uses `md:`, `lg:`, `xl:` breakpoints
@@ -70,69 +78,73 @@
 - Grid layouts: `grid`, `md:col-span-2`, `md:col-span-1`
 
 ## Data Structure Patterns
+
 ```typescript
 // Feature/Card Items Pattern
 interface Item {
-    title: string;
-    description: string;
-    className: string;
-    color: string;
-    icon: string;
+	title: string;
+	description: string;
+	className: string;
+	color: string;
+	icon: string;
 }
 
 // Timeline Entry Pattern
 interface TimelineEntry {
-    date: string;
-    title: string;
-    description: string;
-    items: string[];
+	date: string;
+	title: string;
+	description: string;
+	items: string[];
 }
 
 // Update Section Pattern
 interface UpdateSection {
-    category: string;
-    items: string[];
+	category: string;
+	items: string[];
 }
 ```
 
 ## Component Structure
+
 ```svelte
 <script lang="ts">
-  // 1. Imports (grouped by functionality)
-  import { page } from '$app/stores';
-  import type { ComponentProps } from './$types';
-  import { fade } from 'svelte/transition';
-  
-  // 2. Props/Exports
-  interface Props {
-    data: PageServerData;
-  }
-  
-  // 3. State/Variables
-  let isLoading = false;
-  
-  // 4. Functions/Handlers
-  function handleSubmit() {
-    // Implementation
-  }
+	// 1. Imports (grouped by functionality)
+	import { page } from '$app/stores';
+	import type { ComponentProps } from './$types';
+	import { fade } from 'svelte/transition';
+
+	// 2. Props/Exports
+	interface Props {
+		data: PageServerData;
+	}
+
+	// 3. State/Variables
+	let isLoading = false;
+
+	// 4. Functions/Handlers
+	function handleSubmit() {
+		// Implementation
+	}
 </script>
 
 <!-- Template structure -->
 <div class="container-classes">
-  <!-- Group related elements in semantic sections -->
-  <section class="section-classes">
-    <!-- Component content -->
-  </section>
+	<!-- Group related elements in semantic sections -->
+	<section class="section-classes">
+		<!-- Component content -->
+	</section>
 </div>
 ```
 
 ## Animation Patterns
+
 - Use `transition:fade` for simple transitions
 - Use `Motion` component for complex animations
 - Apply transitions to lists and dynamic content
 - Use gradients for visual interest
 
 ## Best Practices
+
 1. Use semantic HTML elements
 2. Group related Tailwind classes logically
 3. Implement proper dark mode support
@@ -145,6 +157,7 @@ interface UpdateSection {
 10. Implement gradient patterns for visual hierarchy
 
 ## File Organization
+
 - Components in `$lib/components/`
 - UI components in `$lib/components/ui/`
 - Utility functions in `$lib/utils/`
@@ -152,17 +165,21 @@ interface UpdateSection {
 - Routes in `src/routes/`
 
 ## Import Aliases
+
 - `$lib` for library imports
 - `@/` for root-relative imports
 - `$app` for SvelteKit-specific imports
 
 ## Meta Information
+
 Always include proper meta tags for:
+
 - SEO optimization
 - Social media sharing (Open Graph, Twitter)
 - Responsive viewport settings
 
 ## Progressive Enhancement
+
 1. Implement offline-first architecture
 2. Use service workers for offline capabilities
 3. Implement local data persistence
@@ -195,3 +212,15 @@ To optimize your Svelte application for search engines and enhance its visibilit
 
 ```ts
 import { sitename, siteurl, siteimage } from '$lib';
+```
+
+Do not use self closing tags for HTML elements. Instead, use the empty tag syntax.
+Except the usually html tags like `img`, `br`, `hr` etc.
+
+```html
+<!-- Bad -->
+<div class="container" />
+
+<!-- Good -->
+<div class="container"></div>
+```
