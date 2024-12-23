@@ -20,7 +20,9 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="w-full border-t border-slate-600 bg-background py-6 text-foreground shadow-lg md:py-8">
+<footer
+	class="w-full border-t border-slate-600 bg-background py-6 text-foreground shadow-lg md:py-8"
+>
 	<div class="container mx-auto px-4 md:px-6">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- Left Column -->
@@ -55,8 +57,17 @@
 							trigger="loop"
 							stroke="thick"
 							state="hover-draw"
-							class="size-5 text-muted-foreground transition-colors hover:text-primary"
+							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block dark:text-black"
 							colors="primary:white,secondary:green"
+							aria-label="Twitter"
+						></lord-icon>
+						<lord-icon
+							src={logoX}
+							trigger="loop"
+							stroke="thick"
+							state="hover-draw"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden dark:text-black"
+							colors="primary:black,secondary:green"
 							aria-label="Twitter"
 						></lord-icon>
 					</a>
@@ -67,14 +78,22 @@
 						class="text-muted-foreground transition-colors hover:text-primary"
 						aria-label="LinkedIn"
 					>
-						
 						<lord-icon
 							src={logoLinkendin}
 							trigger="loop"
 							stroke="thick"
 							state="pinch"
-							class="size-5 text-muted-foreground transition-colors hover:text-primary"
+							class="hidden size-5 text-muted-foreground transition-colors hover:text-primary dark:inline-block dark:text-black"
 							colors="primary:white,secondary:green"
+							aria-label="LinkedIn"
+						></lord-icon>
+						<lord-icon
+							src={logoLinkendin}
+							trigger="loop"
+							stroke="thick"
+							state="pinch"
+							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden dark:text-black"
+							colors="primary:black,secondary:green"
 							aria-label="LinkedIn"
 						></lord-icon>
 					</a>
