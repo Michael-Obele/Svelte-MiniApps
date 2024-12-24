@@ -3,7 +3,9 @@
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
-	let visible = false;
+	let { link = true }: { link?: boolean } = $props();
+
+	let visible = $state(false);
 	setTimeout(() => {
 		visible = true;
 	}, 1000);
@@ -18,16 +20,18 @@
 			add new features and improvements.
 		</p>
 
-		<p class="text-sm text-gray-500 dark:text-gray-400">
-			In the meantime, you can continue using the
-			<a
-				href="https://old.svelte-apps.me/{$page.url.pathname}"
-				class="text-blue-500 transition-colors hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
-			>
-				current version
-			</a>
-			with all its existing features.
-		</p>
+		{#if link}
+			<p class="text-sm text-gray-500 dark:text-gray-400">
+				In the meantime, you can continue using the
+				<a
+					href="https://old.svelte-apps.me/{$page.url.pathname}"
+					class="text-blue-500 transition-colors hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+				>
+					current version
+				</a>
+				with all its existing features.
+			</p>
+		{/if}
 		{#if visible}
 			<div class="relative mx-auto mt-8 h-[400px] w-full max-w-xl" transition:fade>
 				<div

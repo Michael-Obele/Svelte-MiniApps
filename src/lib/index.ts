@@ -15,7 +15,8 @@ export const done = [
 	'currency-converter',
 	'advanced-emoji-tools',
 	'budget-tracker',
-	'todo-list'
+	'todo-list',
+	'markdown-editor'
 ];
 //
 export type Project = {
