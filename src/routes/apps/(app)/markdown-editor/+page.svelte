@@ -14,10 +14,10 @@
 
 <UnderConstruction link={false} />
 
-<FeatureFlag>
-	<div class="flex flex-col md:flex-row">
-		<div class="md:w-1/2">
-			<Toolbar bind:value />
+<FeatureFlag class="my-36">
+	<div class="flex flex-col lg:flex-row">
+		<div class="lg:w-1/2">
+			<Toolbar bind:value onChange={handleInput} />
 			<Editor bind:value onInput={handleInput} />
 		</div>
 		<div class="md:w-1/2">
