@@ -6,7 +6,7 @@ import { build, files, version } from '$service-worker';
 declare const self: ServiceWorkerGlobalScope;
 
 const IS_DEV = import.meta.env.DEV;
-const CACHE_NAME = `app-cache-${version}`;
+const CACHE_NAME = `app-cache-v${version}`; // Include version in cache name
 const ASSETS = [...build, ...files];
 const OFFLINE_URL = '/offline';
 const HASH_FILE = '/service-worker-hash.json';
@@ -28,7 +28,6 @@ self.addEventListener('message', async (event) => {
 			return;
 		}
 
-		// In the activate event listener
 		try {
 			const hashResponse = await fetch(HASH_FILE);
 			if (hashResponse.ok) {
@@ -38,7 +37,6 @@ self.addEventListener('message', async (event) => {
 				const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
 				const clientStoredHash = localStorage.getItem('serviceWorkerHash');
 
-				// Check both cache and localStorage hash to ensure we really need to update
 				if (storedHash !== hashData.hash && clientStoredHash !== hashData.hash) {
 					console.log('[Service Worker] Hash changed, notifying clients');
 					const clients = await self.clients.matchAll();
@@ -65,17 +63,14 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 			try {
 				const cache = await caches.open(CACHE_NAME);
 
-				// In dev mode, only cache offline page
 				if (IS_DEV) {
 					console.log('[Service Worker] Dev mode: Minimal caching');
 					await cache.addAll([OFFLINE_URL]);
 					return;
 				}
 
-				// Production caching
 				console.log('[Service Worker] Caching assets for version:', version);
 
-				// Fetch and store hash
 				try {
 					const hashResponse = await fetch(HASH_FILE);
 					if (hashResponse.ok) {
@@ -86,7 +81,6 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 					console.warn('[Service Worker] Hash fetch failed:', error);
 				}
 
-				// Cache static assets and offline page
 				const assetsToCache = [...ASSETS, OFFLINE_URL];
 				const cachePromises = assetsToCache.map(async (asset) => {
 					try {
@@ -98,7 +92,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 						if (response.ok) {
 							const cacheResponse = response.clone();
 							const headers = new Headers(cacheResponse.headers);
-							headers.set('Cache-Control', `max-age=${MAX_AGE}`);
+							headers.set('Cache-Control', `max-age=${MAX_AGE}`); // Fixed syntax
 
 							const modifiedResponse = new Response(await cacheResponse.blob(), {
 								status: cacheResponse.status,
@@ -109,7 +103,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 							await cache.put(asset, modifiedResponse);
 						}
 					} catch (error) {
-						console.warn(`Failed to cache asset: ${asset}`, error);
+						console.warn(`Failed to cache asset: ${asset}`, error); // Fixed syntax
 					}
 				});
 
@@ -127,13 +121,11 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 	event.waitUntil(
 		(async () => {
 			try {
-				// In dev mode, skip most activation logic
 				if (IS_DEV) {
 					await self.clients.claim();
 					return;
 				}
 
-				// Clean up old caches
 				const keys = await caches.keys();
 				await Promise.all(
 					keys.map((key) => {
@@ -143,7 +135,6 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 					})
 				);
 
-				// Check hash for potential updates
 				try {
 					const hashResponse = await fetch(HASH_FILE);
 					if (hashResponse.ok) {
@@ -180,20 +171,16 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 self.addEventListener('fetch', (event: FetchEvent) => {
 	const request = event.request;
 
-	// Skip non-GET requests
 	if (request.method !== 'GET') return;
 
-	// Page request handling
 	if (isPageRequest(request)) {
 		event.respondWith(
 			(async () => {
 				try {
-					// In dev mode, always go to network
 					if (IS_DEV) {
 						return await fetch(request);
 					}
 
-					// Network-first strategy
 					const networkResponse = await fetch(request);
 					if (networkResponse.ok) {
 						const cache = await caches.open(CACHE_NAME);
@@ -204,7 +191,6 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 					console.log('[Service Worker] Network request failed, falling back to cache');
 				}
 
-				// Fall back to cache or offline page
 				const cachedResponse = await caches.match(request);
 				if (cachedResponse && cachedResponse.ok) {
 					return cachedResponse;
@@ -216,13 +202,38 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 		return;
 	}
 
-	// API requests remain network-only
 	if (isApiRequest(request)) {
-		event.respondWith(fetch(request));
+		event.respondWith(
+			(async () => {
+				try {
+					return await fetchWithRetry(request); // Use fetchWithRetry for API requests
+				} catch (error) {
+					console.error('[Service Worker] Network request failed:', error);
+					return new Response('Network error', { status: 503, statusText: 'Network error' });
+				}
+			})()
+		);
 		return;
 	}
 
-	// Stale-while-revalidate for static assets
+	if (isStaticAsset(request)) {
+		event.respondWith(
+			caches.match(request).then((cachedResponse) => {
+				return (
+					cachedResponse ||
+					fetchWithRetry(request).then((networkResponse) => {
+						// Use fetchWithRetry for static assets
+						return caches.open(CACHE_NAME).then((cache) => {
+							cache.put(request, networkResponse.clone());
+							return networkResponse;
+						});
+					})
+				);
+			})
+		);
+		return;
+	}
+
 	event.respondWith(
 		(async () => {
 			const cache = await caches.open(CACHE_NAME);
@@ -251,4 +262,26 @@ function isPageRequest(request: Request): boolean {
 
 function isApiRequest(request: Request): boolean {
 	return request.url.includes('/api/');
+}
+
+function isStaticAsset(request: Request): boolean {
+	return /\.(png|jpg|jpeg|svg|gif|webp|js|css)$/i.test(request.url);
+}
+
+// Utility function for retrying network requests with exponential backoff
+async function fetchWithRetry(request: Request, retries = 3): Promise<Response> {
+	for (let i = 0; i < retries; i++) {
+		try {
+			const response = await fetch(request);
+			return response;
+		} catch (error) {
+			if (i === retries - 1) {
+				// If it's the last retry, return a fallback Response
+				return new Response('Network error', { status: 503, statusText: 'Network error' });
+			}
+			await new Promise((res) => setTimeout(res, Math.pow(2, i) * 1000)); // Exponential backoff
+		}
+	}
+	// This line should never be reached, but TypeScript needs it
+	throw new Error('Unreachable code');
 }

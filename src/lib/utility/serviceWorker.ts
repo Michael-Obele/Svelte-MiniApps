@@ -1,6 +1,11 @@
 import { notifyUpdateAvailable } from './serviceWorkerStore';
 
+let isRegistered = false;
+
 export async function registerServiceWorker() {
+	if (isRegistered) return; // Prevent multiple registrations
+	isRegistered = true;
+
 	if (typeof window === 'undefined') {
 		console.log('[ServiceWorker] Skipping registration - not in browser');
 		return;
@@ -21,6 +26,8 @@ export async function registerServiceWorker() {
 			type: 'module',
 			updateViaCache: 'none'
 		});
+
+		console.log('[ServiceWorker] Registration successful:', registration);
 
 		console.log('[ServiceWorker] Registration successful:', {
 			scope: registration.scope,
