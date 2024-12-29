@@ -87,38 +87,47 @@ async function updateMantraLikeState(mantra: string, userId: string | undefined)
 	return newLikeState;
 }
 
+// Note: Svelte Load function
+
+interface MantraData {
+	mantra: string;
+	like: boolean;
+}
+
 export const load: PageServerLoad = async (event) => {
-	let mantra: string;
-	const storedMantra = event.cookies.get('daily_mantra');
+	let mantraData: MantraData;
+	const storedMantraData = event.cookies.get('mantra_data');
 
 	// Generate new mantra if:
-	// 1. No stored mantra exists
-	// 2. The stored mantra is from a previous day
-	if (!storedMantra) {
-		mantra = await generateDailyMantra();
+	// 1. No stored mantra data exists
+	// 2. The stored mantra data is from a previous day
+	if (!storedMantraData) {
+		const mantra = await generateDailyMantra();
+		mantraData = { mantra, like: false };
 
-		// Store the new mantra and timestamp in cookies
-		event.cookies.set('daily_mantra', mantra, {
+		// Store the new mantra data in cookies
+		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
 			path: '/',
 			maxAge: 60 * 60 * 24 // 1 day
 		});
 	} else {
-		mantra = storedMantra;
+		mantraData = JSON.parse(storedMantraData) as MantraData;
 	}
 
 	return {
 		user: event.locals.user,
-		mantra,
-		like: false // Always send false initially
+		mantra: mantraData.mantra,
+		like: mantraData.like
 	};
 };
 
 export const actions = {
 	generatemantra: async (event) => {
 		const mantra = await generateDailyMantra();
+		const mantraData = { mantra, like: false };
 
-		// Update the stored mantra and timestamp
-		event.cookies.set('daily_mantra', mantra, {
+		// Update the stored mantra data
+		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
 			path: '/',
 			maxAge: 60 * 60 * 24 // 1 day
 		});
@@ -138,6 +147,16 @@ export const actions = {
 		}
 
 		const newLikeState = await updateMantraLikeState(String(mantra), event.locals.user?.id);
+
+		// Update the mantra data in cookies
+		const storedMantraData = event.cookies.get('mantra_data');
+		let mantraData = storedMantraData ? JSON.parse(storedMantraData) : { mantra, like: false };
+		mantraData.like = newLikeState;
+		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
+			path: '/',
+			maxAge: 60 * 60 * 24 // 1 day
+		});
+
 		return { like: newLikeState };
 	}
 };

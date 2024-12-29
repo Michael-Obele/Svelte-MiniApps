@@ -53,18 +53,7 @@
 		$inspect('Form', form?.like);
 		$inspect('Data', data.like);
 		$inspect('Like State', likeState);
-
-		// Retrieve the like state from localStorage on mount
-		const storedLikeState = localStorage.getItem('likeState');
-		if (storedLikeState) {
-			likeState = storedLikeState;
-		} else {
-			// Set the initial like state from server response
-			likeState = (form?.like ?? data.like) ? 'unlike' : 'like';
-		}
-
-		// Store the like state in localStorage
-		localStorage.setItem('likeState', likeState);
+		likeState = (form?.like ?? data.like) ? 'unlike' : 'like';
 	});
 </script>
 
