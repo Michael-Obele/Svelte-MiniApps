@@ -48,7 +48,7 @@ Return only a single mantra text with its words separated by spaces, no addition
 
 		// Get a random mantra from our collection
 		const fallbackMantra = getRandomMantra().phrase;
-		console.log('Using fallback mantra:', fallbackMantra);
+		console.info('Using fallback mantra:', fallbackMantra);
 		return fallbackMantra;
 	}
 }
