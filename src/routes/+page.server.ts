@@ -26,8 +26,9 @@ Rules:
 Return only a single mantra text with it's words separated by spaces, no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
-			model: "mistral-small-latest",
-			messages: [{ role: 'user', content: prompt }], stop: ['.']
+			model: 'mistral-small-latest',
+			messages: [{ role: 'user', content: prompt }],
+			stop: ['.']
 		});
 
 		if (!response.choices) {
@@ -36,7 +37,6 @@ Return only a single mantra text with it's words separated by spaces, no additio
 		const mantra = response.choices[0]?.message?.content || mantras[0].phrase;
 		console.log('Generated mantra:', mantra);
 		return mantra as string;
-
 	} catch (error: any) {
 		console.error('Error generating mantra:', error);
 
@@ -52,53 +52,43 @@ Return only a single mantra text with it's words separated by spaces, no additio
 	}
 }
 
-function setLikedMantraCookie(cookies: any, likeState: string) {
-    cookies.set('liked_mantra', likeState, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 30 // 30 days
-    });
+async function updateMantraLikeState(mantra: string, userId: string | undefined) {
+	const existingMantra = await prisma.mantra.findUnique({
+		where: {
+			content: mantra
+		}
+	});
+
+	if (existingMantra) {
+		const newLikeState = !existingMantra.like;
+		await prisma.mantra.update({
+			where: {
+				id: existingMantra.id
+			},
+			data: {
+				like: newLikeState
+			}
+		});
+		console.log(newLikeState ? 'Liked' : 'Unliked', mantra);
+		return newLikeState;
+	}
+
+	const newLikeState = true;
+	await prisma.mantra.create({
+		data: {
+			content: mantra,
+			like: newLikeState,
+			user: {
+				connect: { id: userId }
+			}
+		}
+	});
+	return newLikeState;
 }
-
-async function updateOrCreateMantra(mantra: string, like: string, userId: string | undefined) {
-    const likeState = like === 'like' ? true : false;
-
-    const existingMantra = await prisma.mantra.findUnique({
-        where: {
-            content: mantra
-        }
-    });
-
-    if (existingMantra) {
-        await prisma.mantra.update({
-            where: {
-                id: existingMantra.id
-            },
-            data: {
-                like: likeState
-            }
-        });
-        console.log(like === 'like' ? 'Liked' : 'Unliked', mantra);
-        return like === 'like' ? 'unlike' : 'like';
-    }
-
-    await prisma.mantra.create({
-        data: {
-            content: mantra,
-            like: likeState,
-            user: {
-                connect: { id: userId }
-            }
-        }
-    });
-    return like === 'like' ? 'unlike' : 'like';
-}
-
 
 export const load: PageServerLoad = async (event) => {
 	let mantra: string;
 	const storedMantra = event.cookies.get('daily_mantra');
-    const likedMantra = event.cookies.get('liked_mantra');
-
 
 	// Generate new mantra if:
 	// 1. No stored mantra exists
@@ -111,7 +101,6 @@ export const load: PageServerLoad = async (event) => {
 			path: '/',
 			maxAge: 60 * 60 * 24 // 1 day
 		});
-
 	} else {
 		mantra = storedMantra;
 	}
@@ -119,7 +108,7 @@ export const load: PageServerLoad = async (event) => {
 	return {
 		user: event.locals.user,
 		mantra,
-        like:likedMantra?? 'like'
+		like: false // Always send false initially
 	};
 };
 
@@ -133,26 +122,21 @@ export const actions = {
 			maxAge: 60 * 60 * 24 // 1 day
 		});
 
-		return { mantra, like: 'like' };
+		return { mantra, like: false };
 	},
 
 	likeMantra: async (event) => {
 		const formData = await event.request.formData();
-		const like = formData.get('like') as string;
 		const mantra = formData.get('mantra') as string;
-        
-		if(!mantra && !like) {
+
+		if (!mantra) {
 			return fail(400, {
 				message: 'Mantra is required',
-				mantra: mantra,
-			
+				mantra: mantra
 			});
 		}
 
-        const LikeState = await updateOrCreateMantra(String(mantra), like, event.locals.user?.id);
-        setLikedMantraCookie(event.cookies, LikeState);
-		return {like: LikeState}
-
+		const newLikeState = await updateMantraLikeState(String(mantra), event.locals.user?.id);
+		return { like: newLikeState };
 	}
-
 };
