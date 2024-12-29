@@ -24,10 +24,15 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	$effect(() => {
-		userContext.set(data?.user??null);
-		$inspect('userContext.set', data?.user??null);
+		userContext.set(data?.user ?? null);
+		$inspect('userContext.set', data?.user ?? null);
 		invalidate('user');
 		$inspect('userContext.set', userContext);
+
+		// Reload the page once when coming from the login page
+		if (document.referrer.includes('/login')) {
+			window.location.reload();
+		}
 	});
 </script>
 
@@ -66,11 +71,11 @@
 </svelte:head>
 
 <!-- Welcome Section -->
-<Welcome {data} {form}/>
+<Welcome {data} {form} />
 
 <div class="pb-5 xl:px-10">
 	<!-- Hero -->
-	<Hero {data}/>
+	<Hero {data} />
 
 	<!-- Apps Section -->
 	<AppsSection />
@@ -79,5 +84,5 @@
 	<InfoBlocks />
 
 	<!-- Content Section -->
-	<Content/>
+	<Content />
 </div>

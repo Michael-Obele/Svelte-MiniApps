@@ -18,9 +18,8 @@
 			timeoutId.refresh();
 		}, getMillisecondsUntilNextPeriod());
 
-	return () => clearTimeout(timeoutId);
+		return () => clearTimeout(timeoutId);
 	});
-
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -47,15 +46,26 @@
 		};
 	};
 
-	let likeState = $state(''); // Initialize a reactive variable for like state 
+	let likeState = $state(''); // Initialize a reactive variable for like state
 
-// Assuming `data` contains the response from the server
-$effect(() => {
-	$inspect('Form',form?.like);
-	$inspect('Data',data.like);
-	$inspect('Like State',likeState);
-  likeState = form?.like?? data.like; // Set the initial like state from server response
-});
+	// Assuming `data` contains the response from the server
+	$effect(() => {
+		$inspect('Form', form?.like);
+		$inspect('Data', data.like);
+		$inspect('Like State', likeState);
+		likeState = (form?.like ?? data.like) ? 'unlike' : 'like'; // Set the initial like state from server response
+
+		// Store the like state in localStorage
+		localStorage.setItem('likeState', likeState);
+	});
+
+	// Retrieve the like state from localStorage on mount
+	$effect(() => {
+		const storedLikeState = localStorage.getItem('likeState');
+		if (storedLikeState) {
+			likeState = storedLikeState;
+		}
+	});
 </script>
 
 <header class="mx-auto my-12 flex flex-col justify-center space-y-2">
@@ -79,8 +89,12 @@ $effect(() => {
 					{#if !isLiked && data.user?.username}
 						<div class="flex items-center">
 							<button type="submit">
-								<Star class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'unlike' ? 'hidden' : '' }" />
-								<StarOff class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'like' ? 'hidden' : '' }" />
+								<Star
+									class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'unlike' ? 'hidden' : ''}"
+								/>
+								<StarOff
+									class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'like' ? 'hidden' : ''}"
+								/>
 							</button>
 						</div>
 					{:else if isLiked}
