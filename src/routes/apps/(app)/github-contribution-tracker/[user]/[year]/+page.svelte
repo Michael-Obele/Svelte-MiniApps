@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { ArrowUp, ArrowLeft, ArrowDown } from 'lucide-svelte';
+	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from 'lucide-svelte';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Drawer from '$lib/components/ui/drawer';
 	import { Chart, Bars, Calendar, Axis, Group, Text, Svg, Tooltip, Highlight } from 'layerchart';
@@ -326,5 +326,14 @@
 	>
 		<span class="hidden md:inline">Back to Top</span>
 		<ArrowUp class="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 md:ml-2" />
+	</Button>
+
+	<Button
+		variant="outline"
+		class="group relative transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-lg"
+		onclick={() => location.reload()}
+	>
+		<RotateCw class="h-5 w-5 transition-transform duration-300 group-hover:rotate-180 md:ml-2" />
+		<span class="hidden md:inline">Reload Page</span>
 	</Button>
 </div>
