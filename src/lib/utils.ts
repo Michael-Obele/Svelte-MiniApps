@@ -2,7 +2,6 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { persisted } from 'svelte-persisted-store';
 import { writable } from 'svelte/store';
-import type { UserContext } from './types';
 import { toast } from 'svelte-sonner';
 
 export function cn(...inputs: ClassValue[]) {
@@ -78,7 +77,7 @@ export const seenCookie = persisted<boolean>('seen-cookie', false);
 export const seenNewAppAlert = persisted<boolean>('seen-new-app-alert', false);
 
 // A writable store that represents a filter state, initially set to false
-export let filter = persisted('filter', 'all');
+export let filter = persisted('filter', 'done');
 
 interface User {
 	id: string;
