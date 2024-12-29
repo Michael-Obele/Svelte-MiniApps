@@ -12,18 +12,18 @@ async function generateDailyMantra(): Promise<string> {
 	try {
 		const prompt = `Generate a unique and unexpected life mantra in 4-6 words. 
 Rules:
-1. Start with one of these action words (randomly choose) or something like these: dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark
-2. Make it feel fresh and unconventional, avoiding common phrases or repetitions
-3. Focus on joy, growth, or self-discovery and humor or playfulness.
-4. Use vivid, specific words instead of generic ones
-5. Keep the tone casual and conversational
-6. Each generation should feel distinctly different from previous ones, be as unique as possible
-7. IMPORTANT: Each word must be separated by a single space
-8. Do not combine words together - keep them as separate words
-9. Format example: "Spark Your Inner Light" (correct) vs "SparkYourInnerLight" (incorrect)
-10. Don't return a mantra that's longer than 8 words
+1. Start with one of these action words (randomly choose): dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark.
+2. Make it feel fresh and unconventional, avoiding common phrases or repetitions.
+3. Focus on joy, growth, self-discovery, humor, or playfulness.
+4. Use vivid, specific words instead of generic ones.
+5. Keep the tone casual and conversational.
+6. Each generation should feel distinctly different from previous ones, be as unique as possible.
+7. IMPORTANT: Each word must be separated by a single space.
+8. Do not combine words together - keep them as separate words.
+9. Format example: "Spark Your Inner Light" (correct) vs "SparkYourInnerLight" (incorrect).
+10. Do not return a mantra longer than 8 words.
 
-Return only a single mantra text with it's words separated by spaces, no additional formatting or punctuation.`;
+Return only a single mantra text with its words separated by spaces, no additional formatting or punctuation.`;
 
 		const response = await mistralClient.chat.complete({
 			model: 'mistral-small-latest',
@@ -31,12 +31,13 @@ Return only a single mantra text with it's words separated by spaces, no additio
 			stop: ['.']
 		});
 
-		if (!response.choices) {
+		if (!response.choices || response.choices.length === 0) {
 			throw new Error('No response from Mistral');
 		}
-		const mantra = response.choices[0]?.message?.content || mantras[0].phrase;
+		const content = response.choices[0]?.message?.content;
+		const mantra = typeof content === 'string' ? content.trim() : getRandomMantra().phrase;
 		console.log('Generated mantra:', mantra);
-		return mantra as string;
+		return mantra;
 	} catch (error: any) {
 		console.error('Error generating mantra:', error);
 
