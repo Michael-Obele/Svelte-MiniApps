@@ -35,41 +35,64 @@ Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of 
 - Node.js and npm (or another package manager).
 - PostgreSQL database (for production)
 
+**Explore the Mini-Apps:**
+Fork the repository, clone your fork, and run the development server to explore the mini-apps.
+
+1. Fork the repository on GitHub.
+2. Clone your fork:
+
+```bash
+git clone https://github.com/your-username/Svelte-MiniApps.git
+cd Svelte-MiniApps
+```
+
+3. Install dependencies:
+
+```bash
+bun install
+```
+
+4. Create a new branch for your contribution:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+5. Run the development server:
+
+```bash
+bun run dev
+```
+
+**Note:** The Vite development server runs on port **5178** instead of the traditional **5173**. Make sure to access your app at `http://localhost:5178`.
+
 **Database Setup:**
 The project uses Prisma ORM for database management. Follow these steps to set up your database:
 
 1. Copy the example environment file:
+
 ```bash
 cp .env.example .env
 ```
 
 2. Update the DATABASE_URL in your .env file:
+
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
 ```
 
 3. Initialize your database:
+
 ```bash
 npx prisma generate  # Generate Prisma Client
 npx prisma db push   # Push schema changes to database
 ```
 
 For development, you can use Prisma Studio to manage your data:
+
 ```bash
 npm run db:studio
 ```
-
-**Explore the Mini-Apps:**
-Clone the repository and run the development server to explore the mini-apps.
-
-```bash
-git clone https://github.com/Michael-Obele/Svelte-MiniApps.git
-cd Svelte-MiniApps
-bun install
-bun run dev
-```
-
-**Note:** The Vite development server runs on port **5178** instead of the traditional **5173**. Make sure to access your app at `http://localhost:5178`.
 
 ###### **Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
 
@@ -111,6 +134,7 @@ We welcome contributions! Fork the repository, make your changes, and submit a p
 ## Old Version
 
 For those interested in the previous version of Svelte MiniApps, it is available at the following repository:
+
 - **Svelte MiniApps v4**: [Svelte-MiniApps-sv4](https://github.com/Michael-Obele/Svelte-MiniApps-sv4)
 
 This version is located at `sv4.svelte-apps` and contains the earlier implementations of the mini-apps, built with Svelte 4. Users may explore this version for reference or migration purposes.
