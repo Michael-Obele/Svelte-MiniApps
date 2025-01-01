@@ -41,7 +41,7 @@
 		class={`mb-3 me-3 rounded-md px-5 py-2.5 text-center text-base font-medium focus:outline-none focus:ring-4 ${
 			$filter === 'all'
 				? 'border border-white bg-green-300 text-green-900 hover:border-green-200 hover:bg-green-700 focus:ring-green-300 dark:border-green-900 dark:bg-green-900 dark:text-white dark:hover:border-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800'
-				: 'border border-blue-600 bg-white text-blue-700 hover:bg-blue-700 hover:text-white focus:ring-blue-300 dark:border-blue-500 dark:bg-gray-900 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800'
+				: 'border border-green-600 bg-white text-green-700 hover:bg-green-700 hover:text-white focus:ring-green-300 dark:border-green-500 dark:bg-gray-900 dark:text-green-500 dark:hover:bg-green-500 dark:hover:text-white dark:focus:ring-green-800'
 		}`}
 	>
 		All
@@ -53,7 +53,7 @@
 			name="app"
 			bind:value={app}
 			placeholder="Find App..."
-			class="rounded-md border border-blue-300 px-3 py-2 placeholder-blue-500 focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm"
+			class="rounded-md border border-blue-300 px-3 py-2 placeholder-blue-500 focus:border-green-500 focus:outline-none focus:ring-green-500 focus-visible:ring-green-600 sm:text-sm"
 		/>
 		<div class="absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-bold text-gray-400">
 			<Command class="size-4 text-gray-400" aria-roledescription="Press Ctrl+K to search" /> + K
@@ -64,7 +64,7 @@
 		class={`mb-3 me-3 rounded-md px-5 py-2.5 text-center text-base font-medium focus:outline-none focus:ring-4 ${
 			$filter === 'done'
 				? 'border border-white bg-green-300 text-green-900 hover:border-green-200 hover:bg-green-700 focus:ring-green-300 dark:border-green-900 dark:bg-green-900 dark:text-white dark:hover:border-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800'
-				: 'border border-blue-600 bg-white text-blue-700 hover:bg-blue-700 hover:text-white focus:ring-blue-300 dark:border-blue-500 dark:bg-gray-900 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800'
+				: 'border border-green-600 bg-white text-green-700 hover:bg-green-700 hover:text-white focus:ring-green-300 dark:border-green-500 dark:bg-gray-900 dark:text-green-500 dark:hover:bg-green-500 dark:hover:text-white dark:focus:ring-green-800'
 		}`}
 	>
 		Done
@@ -78,4 +78,5 @@
 {:else if $filter === 'done'}
 	<List filteredBy="done" />
 {/if}
+
 <!-- End of Filtered List -->
