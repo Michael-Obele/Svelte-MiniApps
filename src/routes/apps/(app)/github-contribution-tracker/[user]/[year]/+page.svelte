@@ -117,10 +117,10 @@
 
 <!-- Snippet for pluralization -->
 {#snippet contribution(number: number)}
-	{#if number > 1 || number === 0}
-		contributions
-	{:else}
+	{#if number === 1}
 		contribution
+	{:else}
+		contributions
 	{/if}
 {/snippet}
 <!-- End of Snippet -->
