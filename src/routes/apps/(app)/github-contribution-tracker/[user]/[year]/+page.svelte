@@ -111,9 +111,19 @@
 		>
 			{data.totalContributions}
 		</span>
-		contributions.
+		{@render contribution(data.totalContributions)}
 	</p>
 </div>
+
+<!-- Snippet for pluralization -->
+{#snippet contribution(number: number)}
+	{#if number > 1 || number === 0}
+		contributions
+	{:else}
+		contribution
+	{/if}
+{/snippet}
+<!-- End of Snippet -->
 
 <!-- Monthly Contributions -->
 <div class="container mx-auto h-[400px] w-[90vw] rounded border p-4">
