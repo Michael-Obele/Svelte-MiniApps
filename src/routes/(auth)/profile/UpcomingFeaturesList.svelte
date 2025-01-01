@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 

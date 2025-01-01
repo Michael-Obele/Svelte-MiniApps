@@ -1,6 +1,6 @@
 <!-- Handle Protocol Page -->
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { done } from '$lib';
@@ -26,7 +26,7 @@
   onMount(() => {
     try {
       // Get the URL parameter
-      const urlParam = $page.url.searchParams.get('url');
+      const urlParam = page.url.searchParams.get('url');
       if (!urlParam) {
         error = 'No URL parameter provided';
         return;

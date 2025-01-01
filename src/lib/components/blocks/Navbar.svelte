@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
@@ -37,7 +37,7 @@
 
 	// Reactive statement to determine if the current route matches the item
 	let isActive = (item: string) => {
-		const routeId = $page.url.pathname;
+		const routeId = page.url.pathname;
 
 		if (item === 'Home' && routeId == '/') {
 			return true;

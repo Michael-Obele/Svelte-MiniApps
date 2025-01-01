@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Construction from '@/assets/Construction.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { fade } from 'svelte/transition';
 
 	let { link = true }: { link?: boolean } = $props();
@@ -24,7 +24,7 @@
 			<p class="text-sm text-gray-500 dark:text-gray-400">
 				In the meantime, you can continue using the
 				<a
-					href="https://old.svelte-apps.me/{$page.url.pathname}"
+					href="https://old.svelte-apps.me/{page.url.pathname}"
 					class="text-blue-500 transition-colors hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
 				>
 					current version

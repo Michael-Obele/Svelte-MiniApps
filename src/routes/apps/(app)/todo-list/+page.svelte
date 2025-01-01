@@ -4,7 +4,7 @@
 	let { data }: { data: PageData } = $props();
 
 	import { sitename, siteurl, siteimage } from '$lib';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { X } from 'lucide-svelte';
 	import { Button } from '@/components/ui/button';
 	import Input from '@/components/ui/input/input.svelte';
@@ -146,7 +146,7 @@
 		name="keywords"
 		content="todo list, task management, svelte, sveltekit, typescript, web application"
 	/>
-	<link rel="canonical" href={`${siteurl}${$page.url.pathname}`} />
+	<link rel="canonical" href={`${siteurl}${page.url.pathname}`} />
 
 	<!-- Open Graph -->
 	<meta property="og:type" content="website" />
@@ -157,7 +157,7 @@
 		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
 	/>
 	<meta property="og:image" content={siteimage} />
-	<meta property="og:url" content={`${siteurl}${$page.url.pathname}`} />
+	<meta property="og:url" content={`${siteurl}${page.url.pathname}`} />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />

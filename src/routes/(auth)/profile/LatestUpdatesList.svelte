@@ -15,7 +15,7 @@
 		}
 		return convertNewlinesToBr(originalText);
 	}
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
 
 	import { Separator } from '$lib/components/ui/separator';
@@ -43,7 +43,7 @@ Utilizes `fetch` to retrieve commit data from the GitHub API and handles loading
 		<CardTitle>Svelte MiniApps Update List</CardTitle>
 	</CardHeader>
 	<CardContent class="grid gap-4">
-		{#await $page.data.commitData}
+		{#await page.data.commitData}
 			<p class="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
 				Loading commit data...
 			</p>

@@ -9,7 +9,7 @@
 	import type { UserContext } from '$lib/types';
 	import lottie from 'lottie-web';
 	import { onMount, setContext, type Snippet } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 
 	interface Props {

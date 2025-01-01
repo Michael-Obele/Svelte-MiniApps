@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
 

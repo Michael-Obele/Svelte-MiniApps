@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
 	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
 	import { Badge } from '$lib/components/ui/badge';
@@ -21,7 +21,7 @@ This component displays a user's profile information, including their avatar, us
 - **Password Recovery Message**: Informs users without an associated email about the inability to recover their password.
 
 ## Data Source
-Utilizes the `userData` object from the `$page.data.user` store to populate the profile information.
+Utilizes the `userData` object from the `page.data.user` store to populate the profile information.
 -->
 
 <Card>

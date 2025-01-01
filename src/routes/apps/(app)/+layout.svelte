@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { CodeXml } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 	interface Props {
@@ -9,7 +9,7 @@
 	}
 
 	let { children }: Props = $props();
-	let route = $derived($page.url.pathname.split('/'));
+	let route = $derived(page.url.pathname.split('/'));
 	let routeId = $derived(route[2]);
 	let currentRoute = $derived(route[route.length - 1]);
 
