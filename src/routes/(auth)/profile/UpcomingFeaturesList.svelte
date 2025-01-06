@@ -21,25 +21,3 @@ This component is intended to display a list of a user's favorite mini-apps. Cur
 ## Current State
 As of now, the component displays a "None Yet" message, indicating that the favorite app functionality is not yet implemented.
 -->
-
-<Card>
-	<CardHeader>
-		<CardTitle>Upcoming Apps</CardTitle>
-	</CardHeader>
-	<CardContent class="grid gap-4">
-		<ScrollArea class="h-64 rounded-md">
-			{#each projects as app, i}
-				{#if !done.includes(app.title)}
-					<div class="flex items-center justify-between">
-						<div>
-							<div class="font-semibold">{app.title}</div>
-							<div class="text-sm text-muted-foreground">{truncateText(app.details, 65)}</div>
-						</div>
-						<div class="text-sm text-muted-foreground">Coming soon</div>
-					</div>
-					<Separator />
-				{/if}
-			{/each}
-		</ScrollArea>
-	</CardContent>
-</Card>
