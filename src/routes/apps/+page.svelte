@@ -58,9 +58,8 @@
 		/>
 		<div class="absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-bold text-gray-400">
 			<Cmd.Shortcut
-				class="flex items-center justify-center sm:text-base"
-				aria-roledescription="Press Ctrl+K to search"
-				><Command class="size-3 text-gray-400 sm:size-4" />+k</Cmd.Shortcut
+				class="flex items-center justify-center rounded-sm bg-gray-700 p-[0.1rem] text-gray-200 dark:bg-gray-800 dark:text-gray-300"
+				aria-roledescription="Press Ctrl+K to search"><Command class="size-3" />k</Cmd.Shortcut
 			>
 			<!-- <Command class="size-4 text-gray-400" aria-roledescription="Press Ctrl+K to search" /> + K -->
 		</div>
