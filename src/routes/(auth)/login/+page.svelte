@@ -10,9 +10,15 @@
 	import { AlertCircle, Eye, EyeOff, Github } from 'lucide-svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
-	import { invalidate, invalidateAll } from "$app/navigation";
+	import { invalidate, invalidateAll } from '$app/navigation';
+	import { userContext } from '@/utils';
 	$effect(() => {
 		invalidateAll();
+		if (document.referrer.includes('/logout')) {
+			console.log('Reloading page');
+			window.location.reload();
+		}
+		userContext.set(data?.user ?? null);
 	});
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
@@ -50,10 +56,10 @@
 			</div>
 		</a>
 
-		<div
-			class="w-full rounded-lg bg-card p-6 shadow sm:max-w-md sm:p-8 md:mt-0"
-		>
-			<h2 class="mb-1 text-xl font-bold leading-tight tracking-tight md:text-2xl">Sign in to your account</h2>
+		<div class="w-full rounded-lg bg-card p-6 shadow sm:max-w-md sm:p-8 md:mt-0">
+			<h2 class="mb-1 text-xl font-bold leading-tight tracking-tight md:text-2xl">
+				Sign in to your account
+			</h2>
 			<div class="mb-4 flex flex-col gap-3">
 				{#if form?.message || data.error}
 					<Alert variant="destructive">
