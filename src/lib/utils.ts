@@ -82,7 +82,7 @@ export let filter = persisted('filter', 'done');
 interface User {
 	id: string;
 	username: string;
-	// Add other properties as needed
+	role: string; // Add the role property
 }
 
 export const userContext = persisted<User | null>('user', null);

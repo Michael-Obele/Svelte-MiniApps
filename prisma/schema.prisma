@@ -20,6 +20,7 @@ model User {
   age            Int?
   username       String           @unique
   passwordHash   String           @map("password_hash")
+  role           String           @default("user")
   sessions       Session[]
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
@@ -76,7 +77,7 @@ model UserPassword {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   details      String?
   passwordHash String   @map("password_hash")
-  createdAt    DateTime @default(now()) @map("created_at")
+  createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("user_passwords")

@@ -20,28 +20,3 @@ This component displays a list of available mini-apps that are ready to use. It 
 ## Data Source
 Utilizes the `projects` and `done` arrays imported from `$lib` to determine available apps and their completion status.
 -->
-
-<Card>
-	<CardHeader>
-		<CardTitle>Mini Apps</CardTitle>
-	</CardHeader>
-	<ScrollArea class="h-64 rounded-md">
-		<CardContent class="grid gap-4">
-			<div class="grid gap-2">
-				{#each projects as app}
-					{#if done.includes(app.title)}
-						<div class="flex items-center justify-between">
-							<div>
-								<div class="font-semibold">{app.title}</div>
-								<div class="text-sm text-muted-foreground">{truncateText(app.details, 65)}</div>
-							</div>
-							<a href="/apps/{app.title.split(' ').join('-')}">
-								<Button size="sm">Open</Button>
-							</a>
-						</div>
-					{/if}
-				{/each}
-			</div>
-		</CardContent>
-	</ScrollArea>
-</Card>

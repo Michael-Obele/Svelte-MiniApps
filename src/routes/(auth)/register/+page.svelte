@@ -7,7 +7,9 @@
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { AlertCircle, Eye, EyeOff } from 'lucide-svelte';
 	import Loading from '@/components/blocks/Loading.svelte';
-	import { invalidate, invalidateAll } from "$app/navigation";
+	import { invalidate, invalidateAll } from '$app/navigation';
+	import { Switch } from '$lib/components/ui/switch/index.js';
+
 	$effect(() => {
 		invalidateAll();
 	});
@@ -20,6 +22,7 @@
 	let passwordMatch = $state(true);
 	let showPassword = $state(false);
 	let showConfirmPassword = $state(false);
+	let isAdmin = $state(false); // Default to not admin
 
 	function handleSubmit() {
 		isLoading = true;
@@ -51,7 +54,9 @@
 	<meta name="description" content="Create your Svelte MiniApps account" />
 </svelte:head>
 
-<div class="container mx-auto flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-8">
+<div
+	class="container mx-auto flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-8"
+>
 	<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 		<div class="flex flex-col space-y-2 text-center">
 			<h1 class="text-2xl font-semibold tracking-tight">Create an account</h1>
@@ -161,9 +166,15 @@
 					{/if}
 				</div>
 
+				<div class="flex items-center space-x-2">
+					<input type="hidden" name="role" value={isAdmin ? 'tester' : 'user'} />
+					<Switch id="tester-mode" bind:checked={isAdmin} />
+					<Label for="tester-mode">Tester</Label>
+				</div>
+
 				<Button type="submit" class="w-full" disabled={isLoading || !passwordMatch}>
 					{#if isLoading}
-					<Loading class="fill-red-600/70 text-white dark:text-white" />
+						<Loading class="fill-red-600/70 text-white dark:text-white" />
 					{/if}
 					Create Account
 				</Button>

@@ -18,10 +18,23 @@ export const actions: Actions = {
 		const username = formData.get('username');
 		const password = formData.get('password');
 		const confirmPassword = formData.get('confirmPassword');
+		const role = formData.get('role'); // Get the role from the form data
+
+		console.log('Form Data:', { username, password, confirmPassword, role });
+
+		if (!username || !password || !role) {
+			return fail(400, {
+				message: 'All fields are required',
+				username: String(username),
+				password: String(password),
+				role: String(role)
+			});
+		}
 
 		if (!validateUsername(username)) {
 			return fail(400, {
-				message: 'Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens',
+				message:
+					'Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens',
 				username: String(username)
 			});
 		}
@@ -59,11 +72,14 @@ export const actions: Actions = {
 			parallelism: 1
 		});
 
+		console.log('Creating user with ID:', userId);
+
 		await prisma.user.create({
 			data: {
 				id: userId,
 				username: username as string,
-				passwordHash
+				passwordHash,
+				role: role as string // Add the role to the user creation
 			}
 		});
 
@@ -76,12 +92,19 @@ export const actions: Actions = {
 			maxAge: 60 * 60 * 24 * 30 // 30 days
 		});
 
+		console.log('User created and session started:', { userId, sessionId: session.id });
+
 		redirect(302, '/');
 	}
 };
 
 function validateUsername(username: unknown): username is string {
-	return typeof username === 'string' && username.length >= 3 && username.length <= 31 && /^[a-z0-9_-]+$/.test(username);
+	return (
+		typeof username === 'string' &&
+		username.length >= 3 &&
+		username.length <= 31 &&
+		/^[a-z0-9_-]+$/.test(username)
+	);
 }
 
 function validatePassword(password: unknown): password is string {

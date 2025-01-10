@@ -4,6 +4,7 @@ export interface User {
 	name: string;
 	email: string;
 	image: string;
+	role: string; // Add the role property
 }
 
 export interface UserData {
@@ -22,6 +23,7 @@ export interface UserSessionData {
 export interface UserContext {
 	currentUser: UserSessionData | null;
 	userUsername: string;
+	role: string; // Add the role property
 }
 
 export interface UserDB {

@@ -25,12 +25,9 @@
 
 	$effect(() => {
 		userContext.set(data?.user ?? null);
-		$inspect('userContext.set', data?.user ?? null);
-		invalidate('user');
-		$inspect('userContext.set', userContext);
-
-		// Reload the page once when coming from the login page
-		if (document.referrer.includes('/login')) {
+		// Reload the page once when coming from the login page or register page
+		if (document.referrer.includes('/login') || document.referrer.includes('/register')) {
+			console.log('Reloading page');
 			window.location.reload();
 		}
 	});

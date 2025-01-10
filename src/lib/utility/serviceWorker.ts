@@ -52,6 +52,7 @@ export async function registerServiceWorker() {
 				if (newHash && newHash !== storedHash) {
 					console.log('[ServiceWorker] New hash detected:', newHash);
 					await registration.update();
+					notifyUpdateAvailable(registration, newHash);
 				} else {
 					console.log('[ServiceWorker] Hash unchanged, no update needed');
 				}
@@ -88,7 +89,7 @@ export async function registerServiceWorker() {
 							console.log('[ServiceWorker] New version ready with hash:', newHash);
 							notifyUpdateAvailable(registration, newHash);
 						} else {
-							console.log('[ServiceWorker] Hash unchanged, skipping notification');
+							console.log('[ServiceWorker] Hash unchanged, skipping update');
 						}
 					} catch (error) {
 						console.error('[ServiceWorker] Hash check failed:', error);

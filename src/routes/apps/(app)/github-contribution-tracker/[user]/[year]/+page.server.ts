@@ -51,8 +51,8 @@ async function fetchGitHubData(user: string, year: string) {
 
 async function fetchStreakStats(user: string, theme: 'light' | 'dark') {
 	const streakStatsUrl = {
-		light: `https://github-readme-streak-stats.herokuapp.com/?user=${user}&theme=default&hide_border=false`,
-		dark: `https://github-readme-streak-stats.herokuapp.com/?user=${user}&theme=dark&hide_border=false`
+		light: `https://github-readme-streak-stats-nine-alpha.vercel.app?user=${user}&theme=default`,
+		dark: `https://github-readme-streak-stats-nine-alpha.vercel.app?user=${user}&theme=highcontrast`
 	};
 
 	const response = await fetch(streakStatsUrl[theme]);
