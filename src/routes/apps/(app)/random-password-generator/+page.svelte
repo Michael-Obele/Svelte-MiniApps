@@ -19,7 +19,7 @@
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	let password = $state('');
-	let passwordLength = $state([12]);
+	let passwordLength = $state(12);
 	let includeUppercase = $state(true);
 	let includeLowercase = $state(true);
 	let includeNumbers = $state(true);
@@ -48,7 +48,7 @@
 		}
 
 		let result = '';
-		for (let i = 0; i < passwordLength[0]; i++) {
+		for (let i = 0; i < passwordLength; i++) {
 			result += chars.charAt(Math.floor(Math.random() * chars.length));
 		}
 
@@ -194,7 +194,7 @@
 			<div class="space-y-4">
 				<div class="space-y-2">
 					<Label>Password Length: {passwordLength}</Label>
-					<Slider bind:value={passwordLength} min={8} max={32} step={1} />
+					<Slider bind:value={passwordLength} min={8} max={32} step={1} type="single" />
 				</div>
 
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
