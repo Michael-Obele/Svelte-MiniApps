@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useMotionTemplate, useMotionValue, Motion } from 'svelte-motion';
-	import { cn } from '$lib/utils/cn';
+	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	export let text: string | undefined = undefined;
@@ -40,10 +40,11 @@
 
 <div
 	class={cn(
-		'aspect-square  relative flex  h-full w-full items-center justify-center bg-transparent p-0.5',
+		'relative  flex aspect-square  h-full w-full items-center justify-center bg-transparent p-0.5',
 		className
 	)}
 >
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		on:mousemove={onMouseMove}
 		class="group/card relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-transparent"
@@ -53,6 +54,7 @@
 				class="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"
 			></div>
 			<Motion let:motion {style}>
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<div
 					use:motion
 					class="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-blue-700 opacity-0 backdrop-blur-xl transition duration-500 group-hover/card:opacity-100"
@@ -75,6 +77,7 @@
 			<div
 				class="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white"
 			>
+				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<div
 					class="absolute h-full w-full rounded-full bg-white/[0.8] blur-sm dark:bg-black/[0.8]"
 				/>

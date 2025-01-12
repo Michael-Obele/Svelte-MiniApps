@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { cn } from '@/utils/cn';
 	import { PUBLIC_FEATURE_FLAG } from '$env/static/public';
-	import { userContext } from '@/utils';
+	import { userContext, cn } from '@/utils';
 
 	interface Props {
 		children?: import('svelte').Snippet;
