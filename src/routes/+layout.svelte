@@ -6,7 +6,6 @@
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';
 	import type { LayoutServerData } from './$types';
-	import type { UserContext } from '$lib/types';
 	import lottie from 'lottie-web';
 	import { onMount, setContext, type Snippet } from 'svelte';
 	import { page } from '$app/state';
