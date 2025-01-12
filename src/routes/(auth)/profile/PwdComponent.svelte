@@ -7,8 +7,6 @@
 
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 
-	export let form: ActionData;
-
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { enhance } from '$app/forms';
 	import { formatDistance } from 'date-fns';

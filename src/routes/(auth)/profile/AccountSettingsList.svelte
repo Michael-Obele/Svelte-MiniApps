@@ -11,7 +11,6 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
-	export let form: ActionData;
 
 	let showPassword = false;
 	$: password = showPassword ? 'text' : 'password';
