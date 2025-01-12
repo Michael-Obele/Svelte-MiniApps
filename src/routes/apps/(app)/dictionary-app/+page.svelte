@@ -4,8 +4,6 @@
 	import Input from '$lib/components/ui/input/input.svelte';
 
 	import { AudioLines } from 'lucide-svelte';
-	import type { UserContext } from '$lib/types';
-	import { getContext } from 'svelte';
 
 	import NoWord from '$lib/assets/not-found.svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
@@ -13,7 +11,6 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { siteimage, siteurl } from '$lib';
-	
 
 	interface Props {
 		//
@@ -157,16 +154,19 @@
 
 {#if isLoading}
 	<div class="mx-auto my-8 text-center">
-		<div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
+		<div
+			class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"
+		></div>
 		<p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Searching for meaning...</p>
 	</div>
 {/if}
 
-<section class:hidden={isLoading} class="mx-auto my-10 flex max-w-3xl flex-col justify-center space-y-6 px-4">
+<section
+	class:hidden={isLoading}
+	class="mx-auto my-10 flex max-w-3xl flex-col justify-center space-y-6 px-4"
+>
 	{#if form?.error}
-		<div
-			class="error space-y-4 rounded-lg bg-red-50 p-6 text-center shadow-lg dark:bg-red-900/50"
-		>
+		<div class="error space-y-4 rounded-lg bg-red-50 p-6 text-center shadow-lg dark:bg-red-900/50">
 			<NoWord />
 			<h2 class="text-2xl font-bold text-red-800 dark:text-red-200">{form?.title}</h2>
 			{#if form?.message}
@@ -179,7 +179,9 @@
 	{:else if form?.data}
 		{#each form.data as item}
 			<article class="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
-				<header class="border-b border-gray-200 bg-gray-50 px-6 py-4 dark:border-gray-700 dark:bg-gray-900">
+				<header
+					class="border-b border-gray-200 bg-gray-50 px-6 py-4 dark:border-gray-700 dark:bg-gray-900"
+				>
 					<h1 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
 						{item?.word}
 					</h1>
@@ -277,7 +279,9 @@
 				</div>
 
 				{#if item?.license}
-					<footer class="border-t border-gray-200 bg-gray-50 px-6 py-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
+					<footer
+						class="border-t border-gray-200 bg-gray-50 px-6 py-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400"
+					>
 						<p>
 							License: {item.license.name}
 							{#if item.license.url}
