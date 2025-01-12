@@ -22,7 +22,7 @@
 		budgetStore.loadBudgets();
 	});
 	let isSticky = $state(false);
-	let formsSection: HTMLElement;
+	let formsSection: HTMLElement | null = null;
 
 	// Add supported currencies
 	const currencies = [
