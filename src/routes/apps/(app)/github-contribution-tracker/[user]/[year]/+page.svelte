@@ -256,7 +256,6 @@
 
 <!-- End of More Stats -->
 
-<!-- Beginning of Heat Map -->
 <div id="heatmap" class="relative my-16 flex w-full items-center justify-center overflow-hidden">
 	<div class="absolute inset-0 flex items-center">
 		<div
@@ -274,7 +273,8 @@
 	</div>
 </div>
 
-<div class="mx-auto h-[20vw] w-[95vw] rounded border p-4 pl-6 pt-6">
+<!-- Beginning of Heat Map Large Screen -->
+<div class="mx-auto hidden h-[20vw] w-[95vw] rounded border p-4 pl-6 pt-6 md:block">
 	<Chart
 		data={calendarData}
 		x="date"
@@ -318,13 +318,16 @@
 		</Tooltip.Root>
 	</Chart>
 </div>
-<!-- End of Heat Map -->
+<!-- End of Heat Map Large Screen -->
 
-<GitGraph data={calendarData} options={{}} range={6} start={1} year={2025} />
+<!-- Beginning of Heat Map Small Screen -->
+<div class="md:hidden">
+	<GitGraph data={calendarData} options={{}} range={6} start={1} year={2025} />
 
-<GitGraph data={calendarData} options={{}} range={6} start={7} year={2025} />
+	<GitGraph data={calendarData} options={{}} range={6} start={7} year={2025} />
+</div>
 
-<!-- <GitGraph options={{ verticalOrientation: false }} range="6" start="7" /> -->
+<!-- End of Heat Map Small Screen -->
 
 <div class="mx-auto my-10 flex w-fit items-center justify-center gap-4">
 	<Button
