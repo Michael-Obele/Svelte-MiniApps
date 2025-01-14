@@ -17,6 +17,7 @@
 		CardDescription,
 		CardContent
 	} from '$lib/components/ui/card';
+	import GitGraph from './GitGraph.svelte';
 
 	let { data } = $props();
 
@@ -255,6 +256,7 @@
 
 <!-- End of More Stats -->
 
+<!-- Beginning of Heat Map -->
 <div id="heatmap" class="relative my-16 flex w-full items-center justify-center overflow-hidden">
 	<div class="absolute inset-0 flex items-center">
 		<div
@@ -316,6 +318,13 @@
 		</Tooltip.Root>
 	</Chart>
 </div>
+<!-- End of Heat Map -->
+
+<GitGraph data={calendarData} options={{}} range={6} start={1} year={2025} />
+
+<GitGraph data={calendarData} options={{}} range={6} start={7} year={2025} />
+
+<!-- <GitGraph options={{ verticalOrientation: false }} range="6" start="7" /> -->
 
 <div class="mx-auto my-10 flex w-fit items-center justify-center gap-4">
 	<Button
