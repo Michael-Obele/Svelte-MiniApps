@@ -326,7 +326,6 @@
 
 	<GitGraph data={calendarData} options={{}} range={6} start={7} year={2025} />
 </div>
-
 <!-- End of Heat Map Small Screen -->
 
 <div class="mx-auto my-10 flex w-fit items-center justify-center gap-4">

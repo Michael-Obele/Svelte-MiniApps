@@ -47,10 +47,7 @@
 	// Instantiate CalHeatmap
 	let cal: CalHeatmap;
 
-	onMount(() => {
-		dayjs.extend(weekday);
-		dayjs.extend(localizedFormat);
-
+	$effect(() => {
 		cal = new CalHeatmap();
 
 		try {
@@ -72,8 +69,8 @@
 					subDomain: {
 						type: 'ghDay',
 						radius: 2,
-						width: small.current ? 10 : medium.current ? 12 : 13,
-						height: small.current ? 10 : medium.current ? 12 : 13,
+						width: small.current ? 10 : medium.current ? 11 : 12,
+						height: small.current ? 10 : medium.current ? 11 : 12,
 						gutter: 4
 					},
 					...options
