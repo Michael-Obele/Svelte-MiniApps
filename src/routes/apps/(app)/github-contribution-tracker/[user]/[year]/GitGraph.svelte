@@ -16,9 +16,8 @@
 	import utc from 'dayjs/plugin/utc';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { writable } from 'svelte/store';
-	import { format as formatDate } from 'date-fns';
+	import { format } from 'date-fns';
 	import { toZonedTime, formatInTimeZone } from 'date-fns-tz';
-	import { date } from 'svelte-ux';
 
 	dayjs.extend(weekday);
 	dayjs.extend(localizedFormat);
@@ -47,9 +46,9 @@
 		[key: string]: any;
 	}
 
-	const small = new MediaQuery('max-width: 599px');
-	const medium = new MediaQuery('min-width: 600px');
-	const large = new MediaQuery('min-width: 1024px');
+	const small = new MediaQuery('max-width: 25rem');
+	const medium = new MediaQuery('max-width: 26.5rem');
+	const large = new MediaQuery('min-width: 27rem');
 	const error = writable<Error | null>(null);
 
 	let {
@@ -60,10 +59,15 @@
 		year = new Date().getFullYear()
 	}: GitGraphProps = $props();
 
+	// Function to determine size based on media queries
+	function getSize() {
+		return small.current ? 8 : medium.current ? 10 : large.current ? 12 : 15;
+	}
+
 	// Instantiate CalHeatmap
 	let cal: CalHeatmap;
 
-	$effect(() => {
+	onMount(() => {
 		cal = new CalHeatmap();
 
 		// $inspect(data);
@@ -88,34 +92,13 @@
 					subDomain: {
 						type: 'ghDay',
 						radius: 2,
-						width: small.current ? 10 : medium.current ? 11 : 12,
-						height: small.current ? 10 : medium.current ? 11 : 12,
+						width: getSize(),
+						height: getSize(),
 						gutter: 4
 					},
 					...options
 				},
 				[
-					// [
-					// 	Tooltip,
-					// 	{
-					// 		text: (date: any, value: number) => {
-					// 			const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-					// 			const dateObj = typeof date === 'number' ? new Date(date) : new Date(date);
-
-					// 			// Add 24 hours to the date
-					// 			dateObj.setHours(dateObj.getHours() + 24);
-
-					// 			console.log(dateObj);
-					// 			console.log(date);
-
-					// 			return `${value || 'No'} contributions on ${formatInTimeZone(
-					// 				dateObj,
-					// 				localTz,
-					// 				'EEEE, MMMM d, yyyy'
-					// 			)}`;
-					// 		}
-					// 	}
-					// ],
 					[
 						Tooltip,
 						{
@@ -158,10 +141,9 @@
 							width: 30,
 							textAlign: 'start',
 							text: () => {
-								const weekdays = [...Array(7)].map((_, i) =>
-									new Intl.DateTimeFormat('en', { weekday: 'short' }).format(
-										new Date(2024, 0, i + 1)
-									)
+								const weekdays = Array.from(
+									{ length: 7 },
+									(_, i) => format(new Date(2024, 0, i + 1), 'E') // 'E' for short day name
 								);
 								return weekdays.map((d, i) => (i % 2 !== 0 ? '' : d));
 							},
@@ -186,7 +168,7 @@
 	</div>
 {:else}
 	<div
-		class="container mx-auto flex flex-col justify-center px-4 py-8"
+		class="container mx-auto flex flex-col justify-center space-y-3 px-4 py-8"
 		role="region"
 		aria-label="GitHub Contribution Graph"
 	>
