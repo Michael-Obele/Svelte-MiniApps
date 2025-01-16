@@ -37,15 +37,6 @@
 				</p>
 				<div class="flex space-x-4">
 					<a
-						href="https://github.com/Michael-Obele"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-muted-foreground transition-colors hover:text-primary"
-						aria-label="GitHub"
-					>
-						<Github class="size-5" strokeWidth={1.5} />
-					</a>
-					<a
 						href="https://twitter.com/Dev_Obele"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -70,6 +61,15 @@
 							colors="primary:black,secondary:green"
 							aria-label="Twitter"
 						></lord-icon>
+					</a>
+					<a
+						href="https://github.com/Michael-Obele"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground transition-colors hover:text-primary"
+						aria-label="GitHub"
+					>
+						<Github class="size-5" strokeWidth={1.5} />
 					</a>
 					<a
 						href="https://www.linkedin.com/in/michael-amachree-263841325/"
