@@ -12,8 +12,18 @@
 	import { onMount } from 'svelte';
 	import weekday from 'dayjs/plugin/weekday';
 	import localizedFormat from 'dayjs/plugin/localizedFormat';
+	import timezone from 'dayjs/plugin/timezone';
+	import utc from 'dayjs/plugin/utc';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { writable } from 'svelte/store';
+	import { format as formatDate } from 'date-fns';
+	import { toZonedTime, formatInTimeZone } from 'date-fns-tz';
+	import { date } from 'svelte-ux';
+
+	dayjs.extend(weekday);
+	dayjs.extend(localizedFormat);
+	dayjs.extend(timezone);
+	dayjs.extend(utc);
 
 	// types.ts
 	interface ContributionDay {
@@ -42,7 +52,13 @@
 	const large = new MediaQuery('min-width: 1024px');
 	const error = writable<Error | null>(null);
 
-	let { range, options = {}, start, data = null, year }: GitGraphProps = $props();
+	let {
+		range,
+		options = {},
+		start = 1,
+		data = null,
+		year = new Date().getFullYear()
+	}: GitGraphProps = $props();
 
 	// Instantiate CalHeatmap
 	let cal: CalHeatmap;
@@ -50,13 +66,16 @@
 	$effect(() => {
 		cal = new CalHeatmap();
 
+		// $inspect(data);
+
 		try {
 			cal.paint(
 				{
 					data: { source: data, x: 'date', y: 'value', defaultValue: 0 },
 					date: {
 						locale: `en`,
-						start: new Date(`${year}-0${start}-01`)
+						start: new Date(Date.UTC(year, start - 1, 1)),
+						min: new Date(Date.UTC(year))
 					},
 					verticalOrientation: false,
 					range: range,
@@ -76,11 +95,52 @@
 					...options
 				},
 				[
+					// [
+					// 	Tooltip,
+					// 	{
+					// 		text: (date: any, value: number) => {
+					// 			const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+					// 			const dateObj = typeof date === 'number' ? new Date(date) : new Date(date);
+
+					// 			// Add 24 hours to the date
+					// 			dateObj.setHours(dateObj.getHours() + 24);
+
+					// 			console.log(dateObj);
+					// 			console.log(date);
+
+					// 			return `${value || 'No'} contributions on ${formatInTimeZone(
+					// 				dateObj,
+					// 				localTz,
+					// 				'EEEE, MMMM d, yyyy'
+					// 			)}`;
+					// 		}
+					// 	}
+					// ],
 					[
 						Tooltip,
 						{
-							text: (date: Date, value: number, dayjsDate: any) =>
-								`${value || 'No'} contributions on ${dayjsDate.format('dddd, MMMM D, YYYY')}`
+							text: (date: any, value: number) => {
+								console.log('Date in milliseconds:', date);
+
+								// Ensure we're working with UTC
+								const utcDateFromMs = new Date(Number(date));
+								console.log('Initial Date Object:', utcDateFromMs);
+
+								// Convert to UTC if not already in UTC
+								const utcDate = dayjs.utc(utcDateFromMs).toDate();
+								utcDate.setHours(utcDate.getHours() + 24);
+								console.log('UTC Date:', utcDate.toISOString());
+
+								// Get the user's local timezone
+								const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+								// Format the date in the user's local timezone, ensuring we're starting from UTC
+								return `${value || 'No'} contributions on ${formatInTimeZone(
+									utcDate,
+									localTz,
+									'EEEE, MMMM d, yyyy'
+								)}`;
+							}
 						}
 					],
 					[

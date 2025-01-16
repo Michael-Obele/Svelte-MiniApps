@@ -322,9 +322,9 @@
 
 <!-- Beginning of Heat Map Small Screen -->
 <div class="md:hidden">
-	<GitGraph data={calendarData} options={{}} range={6} start={1} year={2025} />
+	<GitGraph data={calendarData} options={{}} range={6} start={1} year={Number(year)} />
 
-	<GitGraph data={calendarData} options={{}} range={6} start={7} year={2025} />
+	<GitGraph data={calendarData} options={{}} range={6} start={7} year={Number(year)} />
 </div>
 <!-- End of Heat Map Small Screen -->
 
