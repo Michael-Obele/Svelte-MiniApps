@@ -6,7 +6,7 @@
 	import { cn } from '$lib/utils';
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 
-	let { class: className = '' } = $props();
+	let props = $props();
 
 	async function clearCache() {
 		toast.loading('Clearing cache...', { duration: Number.POSITIVE_INFINITY });
@@ -67,12 +67,17 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger
-		class="{buttonVariants({
-			variant: 'outline'
-		})} hover:text-destructive-foreground) outline outline-1 hover:bg-destructive {className}"
+		class={[
+			buttonVariants({
+				variant: 'outline',
+				size: 'icon'
+			}),
+			'hover:text-destructive-foreground)  outline outline-1 hover:bg-destructive',
+			props.class
+		]}
 	>
 		<span class="sr-only">Reset App & Nuke Data</span>
-		<Bomb class="h-4 w-4" />
+		<Bomb class="size-4" />
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content>
 		<DropdownMenu.Group>
