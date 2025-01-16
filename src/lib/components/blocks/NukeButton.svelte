@@ -1,88 +1,90 @@
 <script lang="ts">
 	import { Bomb } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
-	import { Button } from '../ui/button';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { cn } from '$lib/utils';
+	import { buttonVariants } from '$lib/components/ui/button/index.js';
 
 	let { class: className = '' } = $props();
 
-	async function nukeData() {
-		try {
-			// Show confirmation dialog
-			if (!confirm('⚠️ Warning: This will delete all cached data and reset the app. Continue?')) {
-				return;
-			}
+	async function clearCache() {
+		toast.loading('Clearing cache...', { duration: Number.POSITIVE_INFINITY });
+		const cacheKeys = await caches.keys();
+		await Promise.all(
+			cacheKeys.map(async (key) => {
+				try {
+					await caches.delete(key);
+				} catch (error) {
+					console.error(`Failed to delete cache ${key}:`, error);
+				}
+			})
+		);
+		toast.dismiss();
+		toast.success('Cache cleared!');
+	}
 
-			toast.loading('Nuking site data...', {
-				duration: Number.POSITIVE_INFINITY
-			});
+	function clearCookies() {
+		toast.loading('Clearing cookies...', { duration: Number.POSITIVE_INFINITY });
+		document.cookie.split(';').forEach((c) => {
+			document.cookie = c.trim().split('=')[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+		});
+		toast.dismiss();
+		toast.success('Cookies cleared!');
+	}
 
-			// Clear all caches
-			const cacheKeys = await caches.keys();
-			await Promise.all(
-				cacheKeys.map(async (key) => {
-					try {
-						await caches.delete(key);
-					} catch (error) {
-						console.error(`Failed to delete cache ${key}:`, error);
-					}
-				})
-			);
+	function clearLocalStorage() {
+		toast.loading('Clearing local storage...', { duration: Number.POSITIVE_INFINITY });
+		localStorage.clear();
+		toast.dismiss();
+		toast.success('Local storage cleared!');
+	}
 
-			// Clear localStorage
-			localStorage.clear();
+	function clearAll() {
+		clearCache();
+		clearCookies();
+		clearLocalStorage();
+		toast.success('All data cleared!');
+	}
 
-			// Clear sessionStorage
-			sessionStorage.clear();
-
-			// Unregister service workers
-			if ('serviceWorker' in navigator) {
-				const registrations = await navigator.serviceWorker.getRegistrations();
-				await Promise.all(
-					registrations.map(async (reg) => {
-						try {
-							await reg.unregister();
-						} catch (error) {
-							console.error('Failed to unregister service worker:', error);
-						}
-					})
-				);
-			}
-
-			// Clear IndexedDB databases
-			const databases = await window.indexedDB.databases();
-			await Promise.all(
-				databases.map(async (db) => {
-					if (db.name) {
-						try {
-							await window.indexedDB.deleteDatabase(db.name);
-						} catch (error) {
-							console.error(`Failed to delete database ${db.name}:`, error);
-						}
-					}
-				})
-			);
-
-			toast.dismiss();
-			toast.success('Site data cleared! Reloading...');
-
-			// Reload the page after a short delay
-			setTimeout(() => {
-				window.location.href = '/';
-			}, 1500);
-		} catch (error) {
-			console.error('Error nuking data:', error);
-			toast.error('Failed to clear some data. Try again or check console for details.');
+	function handleSelection(option: string) {
+		switch (option) {
+			case 'cache':
+				clearCache();
+				break;
+			case 'cookies':
+				clearCookies();
+				break;
+			case 'localStorage':
+				clearLocalStorage();
+				break;
+			case 'all':
+				clearAll();
+				break;
 		}
 	}
 </script>
 
-<Button
-	variant="outline"
-	size="icon"
-	class={cn('outline outline-1 hover:bg-destructive hover:text-destructive-foreground', className)}
-	onclick={nukeData}
->
-	<span class="sr-only">Reset App & Nuke Data</span>
-	<Bomb class="h-4 w-4" />
-</Button>
+<DropdownMenu.Root>
+	<DropdownMenu.Trigger
+		class="{buttonVariants({
+			variant: 'outline'
+		})} hover:text-destructive-foreground) outline outline-1 hover:bg-destructive {className}"
+	>
+		<span class="sr-only">Reset App & Nuke Data</span>
+		<Bomb class="h-4 w-4" />
+	</DropdownMenu.Trigger>
+	<DropdownMenu.Content>
+		<DropdownMenu.Group>
+			<DropdownMenu.GroupHeading>Clear Data</DropdownMenu.GroupHeading>
+			<DropdownMenu.Separator />
+			<DropdownMenu.Item onclick={() => handleSelection('cache')}>Clear Cache</DropdownMenu.Item>
+			<DropdownMenu.Item onclick={() => handleSelection('cookies')}>Clear Cookies</DropdownMenu.Item
+			>
+			<DropdownMenu.Item onclick={() => handleSelection('localStorage')}
+				>Clear Local Storage</DropdownMenu.Item
+			>
+			<DropdownMenu.Item onclick={() => handleSelection('all')}>Clear All</DropdownMenu.Item>
+		</DropdownMenu.Group>
+	</DropdownMenu.Content>
+</DropdownMenu.Root>
