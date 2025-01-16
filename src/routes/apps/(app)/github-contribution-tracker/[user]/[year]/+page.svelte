@@ -18,6 +18,7 @@
 		CardContent
 	} from '$lib/components/ui/card';
 	import GitGraph from './GitGraph.svelte';
+	import { toast } from 'svelte-sonner';
 
 	let { data } = $props();
 
@@ -63,6 +64,11 @@
 		}))
 	);
 	let calendarDataByYear = $state(flatGroup(calendarData, (d: any) => d.date.getFullYear()));
+
+	function reloadPage() {
+		toast.message('Reloading page...');
+		location.reload();
+	}
 </script>
 
 <svelte:head>
@@ -352,7 +358,7 @@
 	<Button
 		variant="outline"
 		class="group relative transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-lg"
-		onclick={() => location.reload()}
+		onclick={reloadPage}
 	>
 		<RotateCw class="h-5 w-5 transition-transform duration-300 group-hover:rotate-180 md:ml-2" />
 		<span class="hidden md:inline">Reload Page</span>
