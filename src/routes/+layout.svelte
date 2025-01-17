@@ -10,6 +10,7 @@
 	import { onMount, setContext, type Snippet } from 'svelte';
 	import { page } from '$app/state';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
+	import { partytownSnippet } from '@builder.io/partytown/integration';
 
 	interface Props {
 		data: LayoutServerData;
@@ -34,6 +35,28 @@
 <svelte:head>
 	<title>Svelte MiniApps</title>
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
+
+	<script>
+		// Forward the necessary functions to the web worker layer
+		partytown = {
+			forward: ['dataLayer.push', 'gtag']
+		};
+	</script>
+
+	{@html '<script>' + partytownSnippet() + '</script>'}
+	<!-- Google tag (gtag.js) -->
+	<script
+		type="text/partytown"
+		src="https://www.googletagmanager.com/gtag/js?id=G-Q6RH7QGJDV"
+	></script>
+	<script type="text/partytown">
+		window.dataLayer = window.dataLayer || [];
+		window.gtag = function () {
+			dataLayer.push(arguments);
+		};
+		gtag('js', new Date());
+		gtag('config', 'G-Q6RH7QGJDV');
+	</script>
 </svelte:head>
 
 <ModeWatcher />
