@@ -35,7 +35,10 @@ async function getEasyCurrenciesExchangeRate(
 	try {
 		console.log('[Easy-Currencies] Attempting to fetch rate');
 
-		const converter = new Converter('AlphaVantage', env.AlphaVantage);
+		// Doesn't work (yet)
+		// const converter = new Converter({ name: 'AlphaVantage', key: env.AlphaVantage });
+
+		const converter = new Converter();
 
 		// Convert the currency
 		// const converted = await Convert(currencyAmount).from(currencyFrom).to(currencyTo);
@@ -199,12 +202,12 @@ export const actions: Actions = {
 				return response;
 			}
 
-			// Use easy-currencies instead of Google scraping or Exchange Rate API
+			// Use easy-currencies instead of easy-currencies or Exchange Rate API
 			let result = await getEasyCurrenciesExchangeRate(currencyFrom, currencyTo, currencyAmount);
 
 			// If easy-currencies or returns an invalid result, try Exchange Rate API
 			if (!isValidConversionResult(result, currencyAmount)) {
-				console.log('Google scraping failed or returned invalid result, trying Exchange Rate API');
+				console.log('easy-currencies failed or returned invalid result, trying Exchange Rate API');
 				result = await getExchangeRateAPI(currencyFrom, currencyTo, currencyAmount);
 			}
 
