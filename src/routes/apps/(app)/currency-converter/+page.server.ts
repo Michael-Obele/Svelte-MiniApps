@@ -1,27 +1,15 @@
 import { error, fail, type Actions } from '@sveltejs/kit';
 import * as cheerio from 'cheerio';
 import { env } from '$env/dynamic/private';
+import { Convert } from 'easy-currencies';
+import { Converter } from 'easy-currencies';
 
 // Types
 interface ConversionResult {
-    success: boolean;
-    rate?: string;
-    convertedAmount?: string;
-    error?: string;
-}
-
-/**
- * Fetches a resource with a specified timeout.
- */
-async function fetchWithTimeout(
-    url: string | URL | Request,
-    options: RequestInit | undefined,
-    timeout = 7000
-): Promise<Response> {
-    return Promise.race([
-        fetch(url, options),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), timeout))
-    ]) as Promise<Response>;
+	success: boolean;
+	rate?: string;
+	convertedAmount?: string;
+	error?: string;
 }
 
 // Validation constants
@@ -32,306 +20,235 @@ const MAX_AMOUNT = 999999999;
 const CACHE_DURATION = 8 * 60 * 1000; // 5 minutes in milliseconds
 const rateCache = new Map<string, { rate: string; timestamp: number }>();
 
-// Multiple User-Agent strings to rotate
-const USER_AGENTS = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15'
-];
-
-// Helper functions
-function getRandomUserAgent(): string {
-    return USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
-}
-
 function getCacheKey(from: string, to: string): string {
-    return `${from}-${to}`;
+	return `${from}-${to}`;
 }
 
 /**
- * Attempts to get exchange rate by scraping Google
+ * Converts currency using the easy-currencies library.
  */
-async function getGoogleExchangeRate(currencyFrom: string, currencyTo: string, currencyAmount: number): Promise<ConversionResult> {
-    let attempts = 0;
-    const maxAttempts = 3;
-    let lastError: Error | null = null;
+async function getEasyCurrenciesExchangeRate(
+	currencyFrom: string,
+	currencyTo: string,
+	currencyAmount: number
+): Promise<ConversionResult> {
+	try {
+		console.log('[Easy-Currencies] Attempting to fetch rate');
 
-    while (attempts < maxAttempts) {
-        try {
-            if (attempts > 0) {
-                const randomDelay = Math.floor(Math.random() * 2000) + 1000;
-                await new Promise(resolve => setTimeout(resolve, randomDelay));
-            }
+		const converter = new Converter('AlphaVantage', env.AlphaVantage);
 
-            console.log(`[Google] Attempt ${attempts + 1}/${maxAttempts} to fetch rates`);
-            console.log(`[Google] Attempting to fetch conversion for ${currencyAmount} ${currencyFrom} to ${currencyTo}`);
-            const selectedUserAgent = getRandomUserAgent();
-            
-            const response = await fetchWithTimeout(
-                `https://www.google.com/search?q=${currencyAmount}+${currencyFrom}+to+${currencyTo}+&hl=en`,
-                {
-                    headers: {
-                        'User-Agent': selectedUserAgent,
-                        'Accept': 'text/html',
-                        'Accept-Language': 'en-US,en;q=0.9'
-                    }
-                },
-                7000
-            );
+		// Convert the currency
+		// const converted = await Convert(currencyAmount).from(currencyFrom).to(currencyTo);
+		const converted = await converter.convert(currencyAmount, currencyFrom, currencyTo);
 
-            console.log('[Google] Response status:', response.status);
+		// 'converted' contains the converted amount directly
+		const convertedAmount = converted.toFixed(2);
 
-            if (!response.ok) {
-                if (response.status === 429) {
-                    const retryAfter = response.headers.get('retry-after');
-                    const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : Math.min(1000 * Math.pow(2, attempts), 10000);
-                    console.log(`[Google] Rate limited (429). Waiting: ${waitTime}ms`);
-                    await new Promise(resolve => setTimeout(resolve, waitTime));
-                    attempts++;
-                    continue;
-                }
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+		// Fetch the rates for the base currency to get the rate directly
+		const rates = await Convert().from(currencyFrom).fetch();
+		const rate = rates.rates[currencyTo].toFixed(6); // Assuming 6 decimal places for precision
 
-            const body = await response.text();
-            const $ = cheerio.load(body);
-            
-            let convertedValue: string | undefined;
-            let foundSelector: string | undefined;
-            
-            const possibleSelectors = [
-                '.SwHCTb',
-                '.DFlfde',
-                '.iBp4i',
-                '[data-value]',
-                '.dDoNo',
-                '.BNeawe.iBp4i.AP7Wnd',
-                '.BNeawe.tAd8D.AP7Wnd'
-            ];
-            
-            for (const selector of possibleSelectors) {
-                const element = $(selector);
-                const text = element.text().trim();
-                if (element.length > 0 && text) {
-                    convertedValue = text.split(' ')[0];
-                    foundSelector = selector;
-                    console.log(`[Google] Found converted value "${text}" with selector "${selector}"`);
-                    break;
-                }
-            }
-
-            if (!convertedValue) {
-                const bodyText = $('body').text();
-                const matches = bodyText.match(/(\d+\.?\d*)\s*[A-Z]{3}/);
-                if (matches) {
-                    convertedValue = matches[1];
-                    console.log('[Google] Found converted value using regex:', convertedValue);
-                }
-            }
-
-            if (!convertedValue) {
-                throw new Error('Conversion information not found');
-            }
-
-            // Clean and format the values
-            function formatNumber(value: string): string {
-                // Remove all non-numeric characters except decimal point, and ensure only one decimal point
-                return value.replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '');
-            }
-
-            // Format both values before calculation
-            const cleanConvertedAmount = formatNumber(convertedValue);
-            const cleanInputAmount = formatNumber(currencyAmount.toString());
-
-            // Calculate rate using clean numbers
-            const rate = String(Number(cleanConvertedAmount) / Number(cleanInputAmount));
-            
-            // Format the final output
-            const convertedAmount = cleanConvertedAmount;
-
-            console.log(`[Google] Conversion result: ${currencyAmount} ${currencyFrom} = ${convertedAmount} ${currencyTo}`);
-            console.log(`[Google] Calculated rate: ${rate} ${currencyTo} per ${currencyFrom}`);
-
-            return { 
-                success: true, 
-                rate,
-                convertedAmount
-            };
-        } catch (error) {
-            console.error(`[Google] Attempt ${attempts + 1} failed:`, error);
-            lastError = error as Error;
-            attempts++;
-            
-            if (attempts < maxAttempts) {
-                const delay = 1000 * attempts;
-                await new Promise(resolve => setTimeout(resolve, delay));
-            }
-        }
-    }
-
-    return { 
-        success: false, 
-        error: lastError?.message || 'Failed to fetch rate from Google' 
-    };
+		// Check if conversion was successful
+		if (!isNaN(Number(convertedAmount)) && rate) {
+			return {
+				success: true,
+				rate,
+				convertedAmount
+			};
+		} else {
+			return {
+				success: false,
+				error: 'Failed to convert currency using easy-currencies'
+			};
+		}
+	} catch (err) {
+		console.error('[Easy-Currencies] Error:', err);
+		return {
+			success: false,
+			error: 'An error occurred while converting currency'
+		};
+	}
 }
 
 /**
  * Attempts to get exchange rate from Exchange Rate API
  */
-async function getExchangeRateAPI(currencyFrom: string, currencyTo: string, amount: number): Promise<ConversionResult> {
-    try {
-        console.log('[ExchangeRate-API] Attempting to fetch rate');
-        const apiKey = env.EXCHANGE_RATE_API_KEY;
-        
-        if (!apiKey) {
-            console.error('[ExchangeRate-API] No API key found');
-            return { success: false, error: 'Exchange Rate API key not configured' };
-        }
+async function getExchangeRateAPI(
+	currencyFrom: string,
+	currencyTo: string,
+	amount: number
+): Promise<ConversionResult> {
+	try {
+		console.log('[ExchangeRate-API] Attempting to fetch rate');
+		const apiKey = env.EXCHANGE_RATE_API_KEY;
 
-        const response = await fetch(
-            `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${currencyFrom}/${currencyTo}/${amount}`
-        );
+		if (!apiKey) {
+			console.error('[ExchangeRate-API] No API key found');
+			return { success: false, error: 'Exchange Rate API key not configured' };
+		}
 
-        if (!response.ok) {
-            console.error('[ExchangeRate-API] API request failed:', response.status);
-            return { success: false, error: 'Exchange Rate API request failed' };
-        }
+		const response = await fetch(
+			`https://v6.exchangerate-api.com/v6/${apiKey}/pair/${currencyFrom}/${currencyTo}/${amount}`
+		);
 
-        const data = await response.json();
-        console.log('[ExchangeRate-API] Response:', data);
+		if (!response.ok) {
+			console.error('[ExchangeRate-API] API request failed:', response.status);
+			return { success: false, error: 'Exchange Rate API request failed' };
+		}
 
-        if (data.conversion_rate && data.conversion_result) {
-            return { 
-                success: true, 
-                rate: data.conversion_rate.toString(),
-                convertedAmount: data.conversion_result.toString()
-            };
-        }
+		const data = await response.json();
+		console.log('[ExchangeRate-API] Response:', data);
 
-        return { success: false, error: 'No rate found in API response' };
-    } catch (error) {
-        console.error('[ExchangeRate-API] Error:', error);
-        return { success: false, error: 'Exchange Rate API error' };
-    }
+		if (data.conversion_rate && data.conversion_result) {
+			return {
+				success: true,
+				rate: data.conversion_rate.toString(),
+				convertedAmount: data.conversion_result.toString()
+			};
+		}
+
+		return { success: false, error: 'No rate found in API response' };
+	} catch (error) {
+		console.error('[ExchangeRate-API] Error:', error);
+		return { success: false, error: 'Exchange Rate API error' };
+	}
+}
+
+/**
+ * Validates if the conversion result is reasonable.
+ */
+function isValidConversionResult(result: ConversionResult, currencyAmount: number): boolean {
+	if (!result.success || !result.rate || !result.convertedAmount) {
+		return false;
+	}
+	const rate = parseFloat(result.rate);
+	const convertedAmount = parseFloat(result.convertedAmount);
+	return rate > 0 && convertedAmount > 0 && Math.abs(convertedAmount - currencyAmount * rate) < 0.1;
 }
 
 export const actions: Actions = {
-    default: async ({ request }) => {
-        try {
-            // Parse form data
-            const formData = await request.formData();
-            let currencyFrom: string = String(formData.get('currencyFrom')).trim().toUpperCase();
-            let currencyTo: string = String(formData.get('currencyTo')).trim().toUpperCase();
-            const rawAmount = String(formData.get('currencyAmount')).replace(/,/g, '');
-            const currencyAmount = Number(rawAmount);
-            const forceRefresh = formData.get('forceRefresh') === 'true';
+	default: async ({ request }) => {
+		try {
+			// Parse form data
+			const formData = await request.formData();
+			let currencyFrom: string = String(formData.get('currencyFrom')).trim().toUpperCase();
+			let currencyTo: string = String(formData.get('currencyTo')).trim().toUpperCase();
+			const rawAmount = String(formData.get('currencyAmount')).replace(/,/g, '');
+			const currencyAmount = Number(rawAmount);
+			const forceRefresh = formData.get('forceRefresh') === 'true';
 
-            console.log('Processing request:', { currencyFrom, currencyTo, currencyAmount, forceRefresh });
+			console.log('Processing request:', {
+				currencyFrom,
+				currencyTo,
+				currencyAmount,
+				forceRefresh
+			});
 
-            // Input validation
-            if (!CURRENCY_CODE_REGEX.test(currencyFrom)) {
-                return fail(400, { 
-                    error: 'Please enter a valid 3-letter currency code (e.g., USD)',
-                    field: 'currencyFrom',
-                    values: { currencyFrom, currencyTo, currencyAmount }
-                });
-            }
+			// Input validation
+			if (!CURRENCY_CODE_REGEX.test(currencyFrom)) {
+				return fail(400, {
+					error: 'Please enter a valid 3-letter currency code (e.g., USD)',
+					field: 'currencyFrom',
+					values: { currencyFrom, currencyTo, currencyAmount }
+				});
+			}
 
-            if (!CURRENCY_CODE_REGEX.test(currencyTo)) {
-                return fail(400, {
-                    error: 'Please enter a valid 3-letter currency code (e.g., EUR)',
-                    field: 'currencyTo',
-                    values: { currencyFrom, currencyTo, currencyAmount }
-                });
-            }
+			if (!CURRENCY_CODE_REGEX.test(currencyTo)) {
+				return fail(400, {
+					error: 'Please enter a valid 3-letter currency code (e.g., EUR)',
+					field: 'currencyTo',
+					values: { currencyFrom, currencyTo, currencyAmount }
+				});
+			}
 
-            if (!currencyAmount || isNaN(currencyAmount) || currencyAmount <= 0 || currencyAmount > MAX_AMOUNT) {
-                return fail(400, {
-                    error: 'Please enter a valid amount between 0 and 999,999,999',
-                    field: 'currencyAmount',
-                    values: { currencyFrom, currencyTo, currencyAmount }
-                });
-            }
+			if (
+				!currencyAmount ||
+				isNaN(currencyAmount) ||
+				currencyAmount <= 0 ||
+				currencyAmount > MAX_AMOUNT
+			) {
+				return fail(400, {
+					error: 'Please enter a valid amount between 0 and 999,999,999',
+					field: 'currencyAmount',
+					values: { currencyFrom, currencyTo, currencyAmount }
+				});
+			}
 
-            // Check cache unless forceRefresh is true
-            const cacheKey = getCacheKey(currencyFrom, currencyTo);
-            const cachedResult = rateCache.get(cacheKey);
-            
-            if (!forceRefresh && cachedResult && Date.now() - cachedResult.timestamp < CACHE_DURATION) {
-                console.log('Using cached rate');
-                const convertedAmount = (currencyAmount * parseFloat(cachedResult.rate)).toFixed(2);
-                const response = {
-                    success: true,
-                    currencyFrom,
-                    currencyTo,
-                    currencyAmount,
-                    status: 200,
-                    body: {
-                        rate: cachedResult.rate,
-                        convertedAmount,
-                        timestamp: new Date().toISOString(),
-                        cached: true,
-                        cacheAge: Math.round((Date.now() - cachedResult.timestamp) / 1000) // age in seconds
-                    }
-                };
-                console.log('[Server] Sending successful response to frontend:', response);
-                return response;
-            }
+			// Check cache unless forceRefresh is true
+			const cacheKey = getCacheKey(currencyFrom, currencyTo);
+			const cachedResult = rateCache.get(cacheKey);
 
-            // Try Google scraping first
-            let result = await getGoogleExchangeRate(currencyFrom, currencyTo, currencyAmount);
+			if (!forceRefresh && cachedResult && Date.now() - cachedResult.timestamp < CACHE_DURATION) {
+				console.log('Using cached rate');
+				const convertedAmount = (currencyAmount * parseFloat(cachedResult.rate)).toFixed(2);
+				const response = {
+					success: true,
+					currencyFrom,
+					currencyTo,
+					currencyAmount,
+					status: 200,
+					body: {
+						rate: cachedResult.rate,
+						convertedAmount,
+						timestamp: new Date().toISOString(),
+						cached: true,
+						cacheAge: Math.round((Date.now() - cachedResult.timestamp) / 1000) // age in seconds
+					}
+				};
+				console.log('[Server] Sending successful response to frontend:', response);
+				return response;
+			}
 
-            // If Google fails, try Exchange Rate API
-            if (!result.success) {
-                console.log('Google scraping failed, trying Exchange Rate API');
-                result = await getExchangeRateAPI(currencyFrom, currencyTo, currencyAmount);
-            }
-            
-           
+			// Use easy-currencies instead of Google scraping or Exchange Rate API
+			let result = await getEasyCurrenciesExchangeRate(currencyFrom, currencyTo, currencyAmount);
 
-            if (result.success && result.rate && result.convertedAmount) {
-                // Cache the successful result (only cache the rate, not the converted amount)
-                rateCache.set(cacheKey, {
-                    rate: result.rate,
-                    timestamp: Date.now()
-                });
+			// If easy-currencies or returns an invalid result, try Exchange Rate API
+			if (!isValidConversionResult(result, currencyAmount)) {
+				console.log('Google scraping failed or returned invalid result, trying Exchange Rate API');
+				result = await getExchangeRateAPI(currencyFrom, currencyTo, currencyAmount);
+			}
 
-                // Send the rate to the frontend
-                const response = {
-                    success: true,
-                    currencyFrom,
-                    currencyTo,
-                    currencyAmount,
-                    status: 200,
-                    body: {
-                        rate: result.rate,
-                        convertedAmount: result.convertedAmount,
-                        timestamp: new Date().toISOString(),
-                        cached: false
-                    }
-                };
-                console.log('[Server] Sending successful response to frontend:', response);
-                return response;
-            }
+			if (result.success && result.rate && result.convertedAmount) {
+				// Cache the successful result (only cache the rate, not the converted amount)
+				rateCache.set(cacheKey, {
+					rate: result.rate,
+					timestamp: Date.now()
+				});
 
-            // Both methods failed
-            const errorResponse = fail(500, {
-                success: false,
-                error: 'Unable to fetch exchange rates from any source',
-                values: { currencyFrom, currencyTo, currencyAmount }
-            });
-            console.log('[Server] Sending error response to frontend:', errorResponse);
-            return errorResponse;
+				// Send the rate to the frontend
+				const response = {
+					success: true,
+					currencyFrom,
+					currencyTo,
+					currencyAmount,
+					status: 200,
+					body: {
+						rate: result.rate,
+						convertedAmount: result.convertedAmount,
+						timestamp: new Date().toISOString(),
+						cached: false
+					}
+				};
+				console.log('[Server] Sending successful response to frontend:', response);
+				return response;
+			}
 
-        } catch (error) {
-            console.error('[Server] Unexpected error:', error);
-            const errorResponse = fail(500, {
-                success: false,
-                error: 'An unexpected error occurred. Please try again later.'
-            });
-            console.log('[Server] Sending error response to frontend:', errorResponse);
-            return errorResponse;
-        }
-    }
+			// Both methods failed
+			const errorResponse = fail(500, {
+				success: false,
+				error: 'Unable to fetch exchange rates from any source',
+				values: { currencyFrom, currencyTo, currencyAmount }
+			});
+			console.log('[Server] Sending error response to frontend:', errorResponse);
+			return errorResponse;
+		} catch (error) {
+			console.error('[Server] Unexpected error:', error);
+			const errorResponse = fail(500, {
+				success: false,
+				error: 'An unexpected error occurred. Please try again later.'
+			});
+			console.log('[Server] Sending error response to frontend:', errorResponse);
+			return errorResponse;
+		}
+	}
 };
