@@ -6,6 +6,12 @@ export const siteurl = 'https://svelte-apps.me/';
 
 export const siteimage = 'https://i.ibb.co/ZhhhnCz/svelte-badge.png';
 
+export const site = {
+	name: 'Svelte MiniApps',
+	url: 'https://svelte-apps.me/',
+	image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png'
+};
+
 export const done = [
 	'random-password-generator',
 	'github-contribution-tracker',
