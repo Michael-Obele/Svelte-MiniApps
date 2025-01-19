@@ -8,7 +8,6 @@
 	import '@cartamd/plugin-code/default.css';
 	import '@cartamd/plugin-slash/default.css';
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
 	import { site } from '$lib/index';
 
 	const carta = new Carta({
@@ -16,11 +15,44 @@
 		extensions: [code(), slash()]
 	});
 
-	let value: string = $state('');
-	if (browser) value = localStorage.getItem('markdownContent') || '';
+	let markdownDemo = `# Welcome to Markdown Magic!
+
+## Unleash the Power of Simple Formatting
+- **Bold text** is as easy as **this**.  
+- *Italicized*? Just use *this*.  
+- Want a strikethrough? Try ~~this~~.  
+
+---
+
+## Links? No Problem!
+Check out [Markdown's official site](https://www.markdownguide.org) for the full scoop.
+
+---
+
+## Lists? Check!
+### Here's what you can do:
+1. Ordered lists for step-by-step guides.  
+
+- Unordered lists for quick notes.  
+
+---
+
+## Images? Here's How:
+![Svelte Logo](https://i.ibb.co/64rLRDY/svelte-96x96.png)  
+
+---
+
+## Code Blocks? Absolutely!
+\`\`\`js
+console.log("Hello, Markdown!")
+\`\`\`
+`;
+
+	let value: string = $state(markdownDemo);
+	if (browser) value = localStorage.getItem('markdownContent') || markdownDemo;
 
 	$effect(() => {
-		if (browser) localStorage.setItem('markdownContent', value || '');
+		if (browser) localStorage.setItem('markdownContent', value || markdownDemo);
 	});
 </script>
 
@@ -57,7 +89,7 @@
 		<div class="container mx-auto min-h-screen px-4 py-12">
 			<div class="mx-auto flex max-w-4xl flex-col items-center space-y-8">
 				<h1
-					class="bg-gradient-to-r from-red-500 via-black to-green-500 bg-clip-text text-center text-5xl font-extrabold tracking-tight text-gray-900 text-transparent dark:text-gray-100 sm:text-6xl"
+					class="text-center text-5xl font-extrabold tracking-tight text-black dark:text-gray-100 sm:text-6xl"
 				>
 					Markdown Editor
 				</h1>
@@ -66,14 +98,36 @@
 				>
 					<p>
 						Welcome to my <strong class="text-red-600 dark:text-green-400">Markdown Editor</strong>!
-						Here, you can easily write, see, and tweak your markdown. Best of all, everything you
-						write is automatically saved to your browser's localStorage, so you won't lose your
-						work.
+						Here, you can easily write, preview, and edit your
+						<a
+							href="https://www.markdownguide.org/basic-syntax/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-blue-600 hover:underline dark:text-blue-400">Markdown</a
+						>. For those new to Markdown, it's a lightweight markup language with plain-text
+						formatting syntax, making it simple to create rich text using just regular keyboard
+						characters.
 					</p>
 					<p>
 						Whether you're jotting down notes, blogging, or organizing ideas, this tool is designed
-						to make your writing life simpler and more productive. Enjoy the blend of simplicity and
-						power in this little project of mine!
+						to make your writing life simpler and more productive. All your work is automatically
+						saved to your browser's localStorage, ensuring you never lose what you've written.
+					</p>
+					<p>
+						Curious to learn more about Markdown? Check out the <a
+							href="https://daringfireball.net/projects/markdown/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-blue-600 hover:underline dark:text-blue-400">official Markdown site</a
+						>
+						for syntax details, or visit
+						<a
+							href="https://commonmark.org/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-blue-600 hover:underline dark:text-blue-400">CommonMark</a
+						> for a standardized version of Markdown syntax. Enjoy the blend of simplicity and power
+						in this little project of mine!
 					</p>
 				</div>
 			</div>
@@ -84,7 +138,7 @@
 	</div>
 </div>
 
-<style>
+<style global>
 	/* Editor dark mode */
 	/* Only if you are using the default theme */
 	:global(.dark .carta-theme__default) {
@@ -104,13 +158,26 @@
 
 	:global(.markdown-body) {
 		box-sizing: border-box;
-		min-width: 200px;
+		min-width: 100px;
 		max-width: 980px;
 		margin: 0 auto;
 		padding: 45px;
 
 		@media (max-width: 767px) {
 			padding: 15px;
+		}
+	}
+
+	:global {
+		.carta-input,
+		.carta-renderer {
+			min-height: 120px;
+			max-height: 60vh;
+			overflow: auto;
+		}
+		.carta-renderer {
+			background-color: var(--background-color);
+			color: var(--text-color);
 		}
 	}
 </style>
