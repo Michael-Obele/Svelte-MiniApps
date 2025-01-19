@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { Bomb } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
-	import { Button } from '$lib/components/ui/button/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import { cn } from '$lib/utils';
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 
 	let props = $props();
@@ -22,6 +20,7 @@
 		);
 		toast.dismiss();
 		toast.success('Cache cleared!');
+		window.location.reload();
 	}
 
 	function clearCookies() {
@@ -31,6 +30,7 @@
 		});
 		toast.dismiss();
 		toast.success('Cookies cleared!');
+		window.location.reload();
 	}
 
 	function clearLocalStorage() {
@@ -38,6 +38,7 @@
 		localStorage.clear();
 		toast.dismiss();
 		toast.success('Local storage cleared!');
+		window.location.reload();
 	}
 
 	function clearAll() {
@@ -45,6 +46,7 @@
 		clearCookies();
 		clearLocalStorage();
 		toast.success('All data cleared!');
+		window.location.reload();
 	}
 
 	function handleSelection(option: string) {
