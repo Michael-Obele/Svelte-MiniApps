@@ -232,7 +232,7 @@
 
 		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8 text-center">
 			<p>
-				For those who wish to use the SV4 version of the app, you can access it at <a
+				For those who wish to use the Svelte 4 version of the app, you can access it at <a
 					href="https://old.svelte-apps.me"
 					class="text-blue-500 underline">old.svelte-apps.me</a
 				>
@@ -240,11 +240,5 @@
 				<a href="https://sv4.svelte-apps.me" class="text-blue-500 underline">sv4.svelte-apps.me</a>.
 			</p>
 		</section>
-
-		<div class="mt-16 text-center">
-			<p class="text-sm text-white/40">
-				Last updated: {new Date().toLocaleDateString()}
-			</p>
-		</div>
 	</div>
 </div>
