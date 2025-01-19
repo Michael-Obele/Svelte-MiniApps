@@ -211,7 +211,7 @@ Always include proper meta tags for:
 To optimize your Svelte application for search engines and enhance its visibility, utilize the following constants from the `$lib` directory. These constants can be integrated into your components to improve SEO and social media sharing.
 
 ```ts
-import { sitename, siteurl, siteimage } from '$lib';
+import { site } from '$lib';
 ```
 
 Do not use self closing tags for HTML elements. Instead, use the empty tag syntax.

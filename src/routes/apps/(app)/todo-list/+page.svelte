@@ -3,7 +3,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	import { sitename, siteurl, siteimage } from '$lib';
+	import { site } from '$lib';
 	import { page } from '$app/state';
 	import { X } from 'lucide-svelte';
 	import { Button } from '@/components/ui/button';
@@ -134,7 +134,7 @@
 </script>
 
 <svelte:head>
-	<title>Todo List | {sitename}</title>
+	<title>Todo List | {site.name}</title>
 	<meta
 		name="description"
 		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
@@ -146,18 +146,18 @@
 		name="keywords"
 		content="todo list, task management, svelte, sveltekit, typescript, web application"
 	/>
-	<link rel="canonical" href={`${siteurl}${page.url.pathname}`} />
+	<link rel="canonical" href={`${site.url}${page.url.pathname}`} />
 
 	<!-- Open Graph -->
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content={sitename} />
+	<meta property="og:site_name" content={site.name} />
 	<meta property="og:title" content="Todo List" />
 	<meta
 		property="og:description"
 		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
 	/>
-	<meta property="og:image" content={siteimage} />
-	<meta property="og:url" content={`${siteurl}${page.url.pathname}`} />
+	<meta property="og:image" content={site.image} />
+	<meta property="og:url" content={`${site.url}${page.url.pathname}`} />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -166,7 +166,7 @@
 		name="twitter:description"
 		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
 	/>
-	<meta name="twitter:image" content={siteimage} />
+	<meta name="twitter:image" content={site.image} />
 </svelte:head>
 
 <div class="mx-auto max-w-screen-xl px-4 py-8 dark:bg-gray-900">

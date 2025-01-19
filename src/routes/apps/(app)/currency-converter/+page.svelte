@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { sitename, siteurl, siteimage } from '$lib'; // Import site-related variables
+	import { site } from '$lib'; // Import site-related variables
 	import { enhance } from '$app/forms';
 	import type { ActionData, SubmitFunction } from './$types';
 	import { _currencies } from './+page';
-	import * as Alert from "$lib/components/ui/alert/index.js";
-	import {AlertCircle, ArrowLeftRight} from 'lucide-svelte';
+	import * as Alert from '$lib/components/ui/alert/index.js';
+	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
 	import Switch from '$lib/components/ui/switch/switch.svelte';
@@ -59,46 +59,46 @@
 				toast.success('Successfully converted currencies');
 			} else if (form?.error) {
 				toast.error(form.error);
-			} 
+			}
 		};
 	};
 
 	function getCurrencyLabel(currencyTo: string) {
-		const foundCurrency = currencyList.find((f: { value: string; }) => f.value === currencyTo);
+		const foundCurrency = currencyList.find((f: { value: string }) => f.value === currencyTo);
 		return foundCurrency ? foundCurrency.label : currencyTo; // Return label if found, else return the currency code
 	}
 
 	function formatNumberInput(e: Event) {
 		const target = e.target as HTMLInputElement;
-		
+
 		// First, remove any non-numeric characters except dots and commas
 		let value = target.value.replace(/[^\d.,]/g, '');
-		
+
 		// Replace multiple dots with a single dot and ensure only one decimal point
 		value = value.replace(/\.+/g, '.');
 		const parts = value.split('.');
 		if (parts.length > 2) {
 			value = parts[0] + '.' + parts.slice(1).join('');
 		}
-		
+
 		// Remove commas and format with proper thousand separators
 		value = value.replace(/,/g, '');
 		if (value) {
 			const [integerPart, decimalPart] = value.split('.');
 			// Format integer part with thousand separators
 			let formattedInteger = Number(integerPart).toLocaleString('en-US');
-			
+
 			// Add back decimal part if it exists
 			value = decimalPart ? `${formattedInteger}.${decimalPart}` : formattedInteger;
 		}
-		
+
 		// Update the input value
 		target.value = value;
 	}
 </script>
 
 <svelte:head>
-	<title>Currency Converter - {sitename}</title>
+	<title>Currency Converter - {site.name}</title>
 	<meta
 		name="description"
 		content="Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
@@ -109,32 +109,32 @@
 	/>
 
 	<!-- Open Graph Meta Tags -->
-	<meta property="og:title" content="Currency Converter - {sitename}" />
+	<meta property="og:title" content="Currency Converter - {site.name}" />
 	<meta
 		property="og:description"
 		content="Convert currencies easily and quickly with our free online tool."
 	/>
-	<meta property="og:image" content={siteimage} />
-	<meta property="og:url" content="{siteurl}apps/currency-converter" />
+	<meta property="og:image" content={site.image} />
+	<meta property="og:url" content="{site.url}apps/currency-converter" />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content={sitename} />
+	<meta property="og:site_name" content={site.name} />
 	<meta property="og:locale" content="en_US" />
 
 	<!-- Twitter Card Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Currency Converter - {sitename}" />
+	<meta name="twitter:title" content="Currency Converter - {site.name}" />
 	<meta
 		name="twitter:description"
 		content="Convert currencies easily and quickly with our free online tool."
 	/>
-	<meta name="twitter:image" content={siteimage} />
+	<meta name="twitter:image" content={site.image} />
 	<meta name="twitter:site" content="@yourtwitterhandle" />
 	<!-- Optional -->
 	<meta name="twitter:creator" content="@yourtwitterhandle" />
 	<!-- Optional -->
 
 	<!-- Canonical URL -->
-	<link rel="canonical" href="{siteurl}apps/currency-converter" />
+	<link rel="canonical" href="{site.url}apps/currency-converter" />
 
 	<!-- Other optional meta tags -->
 	<meta name="robots" content="index, follow" />
@@ -144,16 +144,20 @@
 
 <main class="w-full py-5 md:py-8 lg:py-10">
 	<div class="px-4 xl:container md:px-6">
-		<section class="mx-auto max-w-screen-xl justify-center rounded-md bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg">
+		<section
+			class="mx-auto max-w-screen-xl justify-center rounded-md bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
+		>
 			<div class="mx-auto max-w-2xl">
 				<div class="flex flex-col items-center justify-center space-y-4 text-center">
 					<div class="space-y-2">
-						<h1 class="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-5xl">
+						<h1
+							class="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white md:text-4xl lg:text-5xl"
+						>
 							Currency <span class="text-[#F03E3E] dark:text-[#FA5252]">Converter</span>
 						</h1>
 						<p class="mb-8 max-w-[600px] text-base text-gray-600 dark:text-gray-400 md:text-lg">
-							Convert currencies effortlessly. Just input the amount and currencies, and get your results
-							instantly.
+							Convert currencies effortlessly. Just input the amount and currencies, and get your
+							results instantly.
 						</p>
 					</div>
 				</div>
@@ -253,12 +257,9 @@
 
 						<!-- Force Refresh Switch -->
 						<div class="flex items-center space-x-2">
-							<input type="hidden" name="forceRefresh" value={forceRefresh ? 'true' : 'false'}>
+							<input type="hidden" name="forceRefresh" value={forceRefresh ? 'true' : 'false'} />
 							<div class="flex items-center space-x-2">
-								<Switch 
-									bind:checked={forceRefresh}
-									id="force-refresh"
-								/>
+								<Switch bind:checked={forceRefresh} id="force-refresh" />
 								<Label
 									for="force-refresh"
 									class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -270,7 +271,8 @@
 						<Alert.Root variant="destructive" class="mt-2 max-w-lg {forceRefresh ? '' : 'hidden'}">
 							<AlertCircle class="h-4 w-4" />
 							<Alert.Description>
-								Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure rate accuracy.
+								Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to
+								ensure rate accuracy.
 							</Alert.Description>
 						</Alert.Root>
 					</div>
@@ -280,14 +282,12 @@
 						class="mx-auto inline-flex w-fit items-center justify-center rounded-lg border border-transparent bg-[#F03E3E] px-8 py-3 text-base font-medium text-white shadow-sm hover:bg-[#e03b3b] focus:outline-none focus:ring-2 focus:ring-[#F03E3E] focus:ring-offset-2"
 					>
 						{#if isLoading}
-							
 							<Loading class="fill-white-600 mr-3 h-5 w-5 animate-spin text-white" />
 							Converting...
 						{:else}
 							Convert
 						{/if}
 					</button>
-
 				</form>
 
 				{#if form?.status === 200 && form?.body?.convertedAmount !== undefined && form?.body?.rate !== undefined}
@@ -295,13 +295,17 @@
 						<div class="space-y-3 text-center">
 							<div class="flex flex-col items-center justify-center space-y-2">
 								<p class="text-lg font-medium text-gray-900 dark:text-white">
-									{Number(form?.currencyAmount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {getCurrencyLabel(form?.currencyFrom)} = {Number(form.body.convertedAmount).toLocaleString(
-										'en-US',
-										{
-											minimumFractionDigits: 2,
-											maximumFractionDigits: 2
-										}
-									)} {getCurrencyLabel(form?.currencyTo)}
+									{Number(form?.currencyAmount || 0).toLocaleString('en-US', {
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2
+									})}
+									{getCurrencyLabel(form?.currencyFrom)} = {Number(
+										form.body.convertedAmount
+									).toLocaleString('en-US', {
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2
+									})}
+									{getCurrencyLabel(form?.currencyTo)}
 								</p>
 								<p class="text-sm text-gray-500 dark:text-gray-400">
 									1 {getCurrencyLabel(form?.currencyFrom)} = {Number(form.body.rate).toLocaleString(
@@ -310,10 +314,11 @@
 											minimumFractionDigits: 4,
 											maximumFractionDigits: 4
 										}
-									)} {getCurrencyLabel(form?.currencyTo)}
+									)}
+									{getCurrencyLabel(form?.currencyTo)}
 									{#if form?.body?.cached}
 										<span class="ml-2 text-xs text-gray-500">
-											(Cached {form.body.cacheAge !== undefined 
+											(Cached {form.body.cacheAge !== undefined
 												? `${Math.floor(form.body.cacheAge / 60)}m ${form.body.cacheAge % 60}s ago`
 												: 'just now'})
 										</span>

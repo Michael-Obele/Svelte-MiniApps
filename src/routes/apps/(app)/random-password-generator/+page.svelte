@@ -8,7 +8,7 @@
 	import { Progress } from '$lib/components/ui/progress';
 	import { toast } from 'svelte-sonner';
 	import { Copy, Star, StarOff } from 'lucide-svelte';
-	import { siteimage, siteurl, sitename } from '$lib';
+	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
 	import { copyToClipboard } from '$lib/utils';
 	import { userContext } from '@/utils';
@@ -100,30 +100,30 @@
 </script>
 
 <svelte:head>
-	<title>{sitename} - Password Generator</title>
+	<title>{site.name} - Password Generator</title>
 	<meta
 		name="description"
 		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 	/>
-	<meta property="og:title" content="{sitename} - Password Generator" />
+	<meta property="og:title" content="{site.name} - Password Generator" />
 	<meta
 		property="og:description"
 		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 	/>
-	<meta property="og:url" content="{siteurl}apps/password-generator" />
-	<meta property="og:image" content={siteimage} />
+	<meta property="og:url" content="{site.url}apps/password-generator" />
+	<meta property="og:image" content={site.image} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="en_US" />
 
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="{sitename} - Password Generator - Secure Your Accounts" />
+	<meta name="twitter:title" content="{site.name} - Password Generator - Secure Your Accounts" />
 	<meta
 		name="twitter:description"
-		content="Generate strong, random passwords with ease using the {sitename} Random Password Generator."
+		content="Generate strong, random passwords with ease using the {site.name} Random Password Generator."
 	/>
-	<meta name="twitter:image" content={siteimage} />
+	<meta name="twitter:image" content={site.image} />
 
-	<link rel="canonical" href="{siteurl}apps/password-generator" />
+	<link rel="canonical" href="{site.url}apps/password-generator" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="UTF-8" />
 	<meta name="robots" content="index, follow" />

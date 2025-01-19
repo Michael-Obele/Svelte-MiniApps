@@ -10,7 +10,7 @@
 	import AppsSection from './AppsSection.svelte';
 
 	import type { ActionData, PageData } from './$types';
-	import { siteimage, siteurl, sitename } from '@/index';
+	import { site } from '@/index';
 	import { userContext } from '@/utils';
 	//
 	let websiteTitle = 'Svelte MiniApps';
@@ -49,22 +49,22 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={websiteTitle} />
 	<meta property="og:description" content={websiteDescription} />
-	<meta property="og:image" content={siteimage} />
-	<meta property="og:url" content={siteurl} />
+	<meta property="og:image" content={site.image} />
+	<meta property="og:url" content={site.url} />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={twitterTitle} />
 	<meta name="twitter:description" content={twitterDescription} />
-	<meta name="twitter:image" content={siteimage} />
+	<meta name="twitter:image" content={site.image} />
 
 	<!-- Additional Meta Tags -->
 	<meta
 		name="keywords"
 		content="svelte apps, web tools, productivity tools, mini applications, svelte toolkit"
 	/>
-	<meta name="author" content={sitename} />
-	<link rel="canonical" href={siteurl} />
+	<meta name="author" content={site.name} />
+	<link rel="canonical" href={site.url} />
 </svelte:head>
 
 <!-- Welcome Section -->

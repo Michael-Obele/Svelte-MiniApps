@@ -10,7 +10,7 @@
 	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import { siteimage, siteurl } from '$lib';
+	import { site } from '$lib';
 
 	interface Props {
 		//
@@ -86,27 +86,27 @@
 	/>
 	<meta property="og:title" content="Svelte MiniApps - English Dictionary App" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content={siteurl + 'apps/english-dictionary-app'} />
+	<meta property="og:url" content={site.url + 'apps/english-dictionary-app'} />
 	<meta
 		property="og:description"
 		content="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more."
 	/>
-	<meta property="og:image" content={siteimage} />
+	<meta property="og:image" content={site.image} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Svelte MiniApps - English Dictionary App" />
 	<meta
 		name="twitter:description"
 		content="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more."
 	/>
-	<meta name="twitter:image" content={siteimage} />
-	<link rel="canonical" href={siteurl + 'apps/english-dictionary-app'} />
+	<meta name="twitter:image" content={site.image} />
+	<link rel="canonical" href={site.url + 'apps/english-dictionary-app'} />
 
 	<script type="application/ld+json">
         {
             "@context": "http://schema.org",
             "@type": "WebApplication",
             "name": "English Dictionary App",
-            "url": siteurl + 'apps/english-dictionary-app', // Use imported siteurl directly
+            "url": site.url + 'apps/english-dictionary-app', // Use imported site.url directly
             "description": "An interactive tool for looking up English words and their meanings, including definitions, synonyms, and antonyms.",
             "applicationCategory": "reference",
             "operatingSystem": "Web",

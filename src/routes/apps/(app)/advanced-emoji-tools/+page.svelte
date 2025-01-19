@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { siteimage, siteurl, sitename } from '$lib';
+	import { site } from '$lib';
 	import * as emoji from 'node-emoji';
 	import { toast } from 'svelte-sonner';
 	import * as Card from '$lib/components/ui/card';
@@ -132,15 +132,15 @@
 		name="description"
 		content="An advanced toolset for working with emojis. Convert text to emojis, search for emojis, and more."
 	/>
-	<link rel="canonical" href="{siteurl}apps/advanced-emoji-tools" />
+	<link rel="canonical" href="{site.url}apps/advanced-emoji-tools" />
 
 	<!-- Social Media / Open Graph Meta Tags -->
 	<meta property="og:title" content="Advanced Emoji Tools" />
 	<meta property="og:description" content="Convert text to emojis, search for emojis, and more." />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="{siteurl}apps/advanced-emoji-tools" />
-	<meta property="og:image" content={siteimage} />
-	<meta property="og:site_name" content={sitename} />
+	<meta property="og:url" content="{site.url}apps/advanced-emoji-tools" />
+	<meta property="og:image" content={site.image} />
+	<meta property="og:site_name" content={site.name} />
 </svelte:head>
 
 <div class="container mx-auto space-y-8 px-4 py-8">
