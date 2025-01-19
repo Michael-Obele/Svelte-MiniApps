@@ -268,14 +268,24 @@ export const projects: Project[] = [
 	}
 ];
 
-//
-
-export function truncateText(text: string, maxLength: number) {
+/**
+ * Truncates a given text to a specified maximum length.
+ *
+ * If the text exceeds the specified maximum length, it will be truncated and
+ * appended with an ellipsis ('...').
+ *
+ * @param {string} text - The text to be truncated.
+ * @param {number} maxLength - The maximum length of the truncated text.
+ * @returns {string} The truncated text.
+ *
+ * @example
+ * truncateText('This is a long text.', 10); // returns 'This is a...'
+ * truncateText('Short text', 15); // returns 'Short text'
+ */
+export function truncateText(text: string, maxLength: number): string {
 	const originalText = text || '';
 	if (originalText.length > maxLength) {
 		return originalText.slice(0, maxLength - 3) + '...';
 	}
 	return originalText;
 }
-
-//
