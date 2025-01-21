@@ -50,13 +50,18 @@
 		return () => observer.disconnect();
 	});
 
+	const formatFigure = (value: string) => {
+		// use string manipulation to remove the ',' and '.' from the value
+		return Number(value.replace(/,|\./g, ''));
+	};
+
 	function addBudget() {
 		if (!budgetName || budgetAmount === undefined || budgetAmount === '' || !selectedCurrency) {
 			toast.error('Please fill in all fields');
 			return;
 		}
 
-		budgetStore.addBudget(budgetName, Number(budgetAmount), selectedCurrency);
+		budgetStore.addBudget(budgetName, formatFigure(budgetAmount), selectedCurrency);
 		toast.success('Budget added successfully');
 		budgetName = '';
 		budgetAmount = '';
@@ -69,7 +74,7 @@
 			return;
 		}
 
-		budgetStore.addExpense(selectedBudgetId, expenseDescription, Number(expenseAmount));
+		budgetStore.addExpense(selectedBudgetId, expenseDescription, formatFigure(expenseAmount));
 		toast.success('Expense added successfully');
 		expenseDescription = '';
 		expenseAmount = '';
