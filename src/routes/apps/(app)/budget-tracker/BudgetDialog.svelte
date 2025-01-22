@@ -11,6 +11,16 @@
 	import { Input } from '$lib/components/ui/input';
 	import * as Select from '$lib/components/ui/select';
 	import { Button } from '$lib/components/ui/button';
+
+	function formatNumber(input: any) {
+		// This function will format the number but not change its type to string
+		let val = input.valueAsNumber;
+		if (!isNaN(val)) {
+			input.value = val.toLocaleString('en-US');
+		} else {
+			input.value = '';
+		}
+	}
 </script>
 
 <Dialog.Root open={!!editingBudget} onOpenChange={(open) => !open && (editingBudget = null)}>
@@ -23,7 +33,14 @@
 		</Dialog.Header>
 		<div class="grid gap-4 py-4">
 			<Input bind:value={editBudgetName} placeholder="Budget Name" />
-			<Input bind:value={editBudgetAmount} type="number" placeholder="Amount" />
+			<Input
+				bind:value={editBudgetAmount}
+				type="number"
+				oninput={(e) => formatNumber(e)}
+				placeholder="Budget Amount"
+				inputmode="decimal"
+				pattern="[0-9,]*"
+			/>
 			<Select.Root type="single" bind:value={editBudgetCurrency}>
 				<Select.Trigger class="w-full">{editBudgetCurrency}</Select.Trigger>
 				<Select.Content>
