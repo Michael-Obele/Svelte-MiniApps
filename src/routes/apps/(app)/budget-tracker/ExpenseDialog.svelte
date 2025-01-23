@@ -28,7 +28,12 @@
 			</Dialog.Description>
 		</Dialog.Header>
 		<div class="grid gap-4 py-4">
-			<Input bind:value={editExpenseDescription} placeholder="Description" />
+			<Input
+				bind:value={editExpenseDescription}
+				placeholder="Description"
+				inputmode="decimal"
+				pattern="[0-9,]*"
+			/>
 			<Input bind:value={editExpenseAmount} type="number" placeholder="Amount" />
 		</div>
 		<Dialog.Footer>
