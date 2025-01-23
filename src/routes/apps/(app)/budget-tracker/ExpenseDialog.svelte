@@ -9,13 +9,15 @@
 		editExpenseDescription: string;
 		editExpenseAmount: string;
 		updateExpense: () => void;
+		formatNumber: (value: number) => string;
 	}
 
 	let {
 		editingExpense = $bindable(),
 		editExpenseDescription = $bindable(),
 		editExpenseAmount = $bindable(),
-		updateExpense
+		updateExpense,
+		formatNumber
 	}: Props = $props();
 </script>
 
@@ -35,6 +37,14 @@
 				pattern="[0-9,]*"
 			/>
 			<Input bind:value={editExpenseAmount} type="number" placeholder="Amount" />
+			<Input
+				value={formatNumber(Number(editExpenseAmount))}
+				type="text"
+				placeholder="Formatted Amount"
+				inputmode="decimal"
+				pattern="[0-9,]*"
+				disabled
+			/>
 		</div>
 		<Dialog.Footer>
 			<Button onclick={() => (editingExpense = null)} variant="outline">Cancel</Button>

@@ -1,26 +1,28 @@
 <script lang="ts">
+	import * as Dialog from '$lib/components/ui/dialog';
+	import { Input } from '$lib/components/ui/input';
+	import * as Select from '$lib/components/ui/select';
+	import { Button } from '$lib/components/ui/button';
+
+	interface Props {
+		editingBudget: { id: string; name: string; amount: number; currency: string } | null;
+		editBudgetName: string;
+		editBudgetAmount: string;
+		editBudgetCurrency: string;
+		updateBudget: () => void;
+		formatNumber: (value: number) => string;
+		currencies: { value: string; label: string; symbol: string }[];
+	}
+
 	let {
 		editingBudget = $bindable(),
 		editBudgetName = $bindable(),
 		editBudgetAmount = $bindable(),
 		editBudgetCurrency = $bindable(),
 		updateBudget,
+		formatNumber,
 		currencies
-	} = $props();
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import * as Select from '$lib/components/ui/select';
-	import { Button } from '$lib/components/ui/button';
-
-	function formatNumber(input: any) {
-		// This function will format the number but not change its type to string
-		let val = input.valueAsNumber;
-		if (!isNaN(val)) {
-			input.value = val.toLocaleString('en-US');
-		} else {
-			input.value = '';
-		}
-	}
+	}: Props = $props();
 </script>
 
 <Dialog.Root open={!!editingBudget} onOpenChange={(open) => !open && (editingBudget = null)}>
@@ -36,10 +38,17 @@
 			<Input
 				bind:value={editBudgetAmount}
 				type="number"
-				oninput={(e) => formatNumber(e)}
 				placeholder="Budget Amount"
 				inputmode="decimal"
 				pattern="[0-9,]*"
+			/>
+			<Input
+				value={formatNumber(Number(editBudgetAmount))}
+				type="text"
+				placeholder="Formated Budget Amount"
+				inputmode="decimal"
+				pattern="[0-9,]*"
+				disabled
 			/>
 			<Select.Root type="single" bind:value={editBudgetCurrency}>
 				<Select.Trigger class="w-full">{editBudgetCurrency}</Select.Trigger>

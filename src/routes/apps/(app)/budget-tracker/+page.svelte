@@ -218,6 +218,10 @@
 		};
 		return symbols[currencyCode] || currencyCode;
 	}
+
+	function formatNumber(value: number) {
+		return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
+	}
 </script>
 
 <div class="container mx-auto max-w-4xl space-y-8 p-4">
@@ -266,6 +270,7 @@
 	bind:editBudgetAmount
 	bind:editBudgetCurrency
 	{updateBudget}
+	{formatNumber}
 	{currencies}
 />
 
@@ -274,4 +279,5 @@
 	bind:editExpenseDescription
 	bind:editExpenseAmount
 	{updateExpense}
+	{formatNumber}
 />
