@@ -19,7 +19,7 @@
 		addBudget,
 		formatNumberInput,
 		addExpense,
-		formsSection
+		formsSection = $bindable()
 	} = $props();
 
 	$effect(() => {

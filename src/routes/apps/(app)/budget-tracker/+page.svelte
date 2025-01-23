@@ -252,10 +252,10 @@
 			bind:expenseDescription
 			bind:expenseAmount
 			bind:selectedCurrency
+			bind:formsSection
 			{currencies}
 			{addBudget}
 			{addExpense}
-			{formsSection}
 			{formatNumberInput}
 		/>
 
