@@ -35,6 +35,7 @@
 
 	let selectedCurrency = $state('USD');
 
+	// Observe the forms section to determine if it is sticky
 	$effect(() => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -50,11 +51,12 @@
 		return () => observer.disconnect();
 	});
 
+	// Format a figure by removing commas and dots
 	const formatFigure = (value: string) => {
-		// use string manipulation to remove the ',' and '.' from the value
 		return Number(value.replace(/,|\./g, ''));
 	};
 
+	// Add a new budget
 	function addBudget() {
 		if (!budgetName || budgetAmount === undefined || budgetAmount === '' || !selectedCurrency) {
 			toast.error('Please fill in all fields');
@@ -68,6 +70,7 @@
 		selectedCurrency = 'USD';
 	}
 
+	// Add a new expense
 	function addExpense() {
 		if (!selectedBudgetId || !expenseDescription || !expenseAmount) {
 			toast.error('Please fill in all fields');
@@ -82,6 +85,7 @@
 		selectedBudgetName = 'Select Budget'; // Reset the name
 	}
 
+	// Format a currency amount
 	function formatCurrency(amount: number, currency: string): string {
 		return new Intl.NumberFormat('en-US', {
 			style: 'currency',
@@ -89,10 +93,12 @@
 		}).format(amount);
 	}
 
+	// Calculate the total expenses for a budget
 	function calculateTotalExpenses(expenses: Expense[]): number {
 		return expenses.reduce((total, expense) => total + expense.amount, 0);
 	}
 
+	// Update an existing expense
 	function updateExpense() {
 		if (!editingExpense) {
 			toast.error('No expense selected for editing');
@@ -114,12 +120,13 @@
 		editingExpense = null;
 	}
 
-	// Function to get progress percentage
+	// Get the progress percentage for a budget
 	function getProgressPercentage(budget: Budget): number {
 		const spent = calculateTotalExpenses(budget.expenses ?? []);
 		return Math.min((spent / budget.amount) * 100, 100);
 	}
 
+	// Get the color for the progress bar based on the percentage
 	function getProgressBarColor(percentage: number): string {
 		if (percentage >= 90) return 'bg-destructive dark:bg-destructive';
 		if (percentage > 50) return 'bg-yellow-500 dark:bg-yellow-500';
@@ -127,19 +134,20 @@
 		return '';
 	}
 
+	// Open the edit expense dialog
 	function openEditExpenseDialog(budgetId: string, expense: Expense) {
 		editingExpense = { budgetId, expense };
 		editExpenseDescription = expense.description;
 		editExpenseAmount = String(expense.amount);
 	}
 
-	// Add these state variables
+	// Add these state variables for editing budgets
 	let editingBudget = $state<Budget | null>(null);
 	let editBudgetName = $state('');
 	let editBudgetAmount = $state('');
 	let editBudgetCurrency = $state('');
 
-	// Add this function to handle budget updates
+	// Update an existing budget
 	function updateBudget() {
 		if (!editingBudget) {
 			toast.error('No budget selected for editing');
@@ -166,7 +174,7 @@
 		editingBudget = null;
 	}
 
-	//Function to open edit dialog
+	// Open the edit budget dialog
 	function openEditDialog(budget: Budget) {
 		editingBudget = budget;
 		editBudgetName = budget.name;
@@ -174,11 +182,12 @@
 		editBudgetCurrency = budget.currency;
 	}
 
-	// Function to format numbers with commas
+	// Format a number with commas
 	function formatNumberWithCommas(value: string | number): string {
 		return Number(value).toLocaleString();
 	}
 
+	// Format the input number with proper thousand separators
 	function formatNumberInput(e: Event) {
 		const target = e.target as HTMLInputElement;
 
@@ -207,7 +216,7 @@
 		target.value = value;
 	}
 
-	// Add this helper function at the top of your script section
+	// Get the currency symbol for a given currency code
 	function getCurrencySymbol(currencyCode: string): string {
 		const symbols: { [key: string]: string } = {
 			USD: '$',
@@ -219,6 +228,7 @@
 		return symbols[currencyCode] || currencyCode;
 	}
 
+	// Format a number with commas
 	function formatNumber(value: number) {
 		return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
 	}
