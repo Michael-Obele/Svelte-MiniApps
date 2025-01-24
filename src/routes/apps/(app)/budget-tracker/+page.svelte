@@ -22,7 +22,7 @@
 		budgetStore.loadBudgets();
 	});
 	let isSticky = $state(false);
-	let formsSection: HTMLElement | null = null;
+	let formsSection: HTMLElement | null = $state(null);
 
 	// Add supported currencies
 	const currencies = [
@@ -272,7 +272,9 @@
 	</div>
 </div>
 
-<FloatingBtn {isSticky} />
+{#if isSticky}
+	<FloatingBtn />
+{/if}
 
 <BudgetDialog
 	bind:editingBudget

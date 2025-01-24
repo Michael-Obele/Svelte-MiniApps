@@ -1,11 +1,10 @@
 <script lang="ts">
 	import * as Select from '$lib/components/ui/select';
-	import { budgetStore, type Budget, type Expense } from '$lib/stores/budgetStore';
+	import { budgetStore } from '$lib/stores/budgetStore';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Card } from '$lib/components/ui/card';
 	import { PlusCircle, Trash2 } from 'lucide-svelte';
-	import { toast } from 'svelte-sonner';
 
 	let {
 		budgetName = $bindable(),
