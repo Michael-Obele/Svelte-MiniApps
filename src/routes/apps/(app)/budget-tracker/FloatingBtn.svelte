@@ -11,7 +11,7 @@
 		<Button
 			variant="outline"
 			size="icon"
-			class="fixed bottom-4 right-4 z-50"
+			class="sticky bottom-4 left-8 z-50 mb-5 mt-8"
 			onclick={() => scrollToTop()}
 		>
 			<ArrowUp class="h-4 w-4" />
