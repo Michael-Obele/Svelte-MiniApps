@@ -169,9 +169,9 @@
 	<meta name="twitter:image" content={site.image} />
 </svelte:head>
 
-<div class="mx-auto max-w-screen-xl px-4 py-8 dark:bg-gray-900">
-	<h1 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">To-Do List with Persistence</h1>
-	<div class="mb-4 flex">
+<div class="container mx-auto p-6 dark:bg-gray-900">
+	<h1 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">To-Do List with Persistence</h1>
+	<div class="mb-6 flex items-center space-x-4">
 		<Input
 			type="text"
 			placeholder="Add a new todo"
@@ -179,16 +179,17 @@
 			onkeydown={(e) => {
 				if (e.key === 'Enter') addTodo();
 			}}
-			class="mr-2 flex-grow rounded border border-gray-300 px-3 py-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+			class="flex-grow rounded-lg border border-gray-300 px-4 py-2 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 		/>
 		<Button
 			onclick={addTodo}
-			class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">Add</Button
+			class="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white shadow-md hover:bg-blue-700"
+			>Add</Button
 		>
 	</div>
 
 	<!-- Custom Column Management -->
-	<div class="mb-4 flex">
+	<div class="mb-6 flex items-center space-x-4">
 		<Input
 			type="text"
 			placeholder="Add new column"
@@ -196,23 +197,25 @@
 			onkeydown={(e) => {
 				if (e.key === 'Enter') addCustomColumn();
 			}}
-			class="mr-2 flex-grow rounded border border-gray-300 px-3 py-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+			class="flex-grow rounded-lg border border-gray-300 px-4 py-2 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 		/>
 		<Button
 			onclick={addCustomColumn}
-			class="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+			class="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white shadow-md hover:bg-indigo-700"
 			>Add Column</Button
 		>
 	</div>
 
 	<div class="overflow-x-auto">
-		<table class="w-full">
-			<thead>
+		<table class="w-full table-auto border-collapse">
+			<thead class="bg-gray-100 dark:bg-gray-700">
 				<tr class="border-b dark:border-gray-700">
-					<th class="p-2">Complete</th>
-					<th class="p-2">Task</th>
+					<th class="p-4 text-left text-lg font-semibold text-gray-600 dark:text-gray-200"
+						>Complete</th
+					>
+					<th class="p-4 text-left text-lg font-semibold text-gray-600 dark:text-gray-200">Task</th>
 					{#each customColumns as column}
-						<th class="p-2">
+						<th class="p-4 text-left text-lg font-semibold text-gray-600 dark:text-gray-200">
 							{#if editingColumn === column}
 								<!-- Edit input field -->
 								<Input
@@ -228,7 +231,7 @@
 											saveColumnName();
 										}
 									}}
-									class="w-full rounded border border-gray-300 px-2 py-1 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+									class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 								/>
 							{:else}
 								<!-- Display column name -->
@@ -240,34 +243,31 @@
 											editColumnName(column);
 										}
 									}}
-									class="cursor-pointer p-2 text-left"
+									class="text-lg font-semibold text-gray-600 dark:text-gray-200"
 								>
 									{column}
 								</Button>
 							{/if}
-							<button
-								onclick={() => removeCustomColumn(column)}
-								class="rounded bg-red-500 p-1 text-xs font-bold text-white hover:bg-red-700"
-								><X size={12} /></button
-							>
 						</th>
 					{/each}
-					<th class="p-2">Actions</th>
+					<th class="p-4 text-left text-lg font-semibold text-gray-600 dark:text-gray-200"
+						>Actions</th
+					>
 				</tr>
 			</thead>
 			<tbody>
 				{#each todos as todo (todo.id)}
 					<tr class="border-b dark:border-gray-700">
-						<td class="p-2">
+						<td class="p-4">
 							<Checkbox bind:checked={todo.completed} onchange={() => toggleTodo(todo.id)} />
 						</td>
-						<td class="p-2">
+						<td class="p-4">
 							<span class="text-gray-900 dark:text-white" class:line-through={todo.completed}>
 								{todo.text}
 							</span>
 						</td>
 						{#each customColumns as column}
-							<td class="p-2">
+							<td class="p-4">
 								<Input
 									type="text"
 									value={todo[column]}
@@ -275,14 +275,14 @@
 										const target = e.target as HTMLInputElement;
 										updateCustomValue(todo.id, column, target.value);
 									}}
-									class="w-full rounded border border-gray-300 px-2 py-1 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+									class="w-full rounded-lg border border-gray-300 px-2 py-1 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 								/>
 							</td>
 						{/each}
-						<td class="p-2">
+						<td class="p-4">
 							<Button
 								onclick={() => deleteTodo(todo.id)}
-								class="rounded bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-700"
+								class="rounded-lg bg-red-600 px-2 py-1 font-semibold text-white shadow-md hover:bg-red-700"
 								>Delete</Button
 							>
 						</td>
