@@ -3,16 +3,14 @@
 	import Aha from '$lib/assets/Problem Solving 4.png?enhanced';
 	import Group from './Group.svelte';
 	import Illustration from './Illustration.svelte';
+	import Header from './Header.svelte';
+	let { id } = $props();
 </script>
 
-<section id="Philosophy">
-	<header>
-		<h2
-			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-		>
-			The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
-		</h2>
-	</header>
+<section {id}>
+	<Header {id}>
+		The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
+	</Header>
 
 	<Group dir="right">
 		{#snippet image()}

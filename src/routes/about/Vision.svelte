@@ -3,16 +3,12 @@
 	import Vision from '$lib/assets/Rocket Boy.png?enhanced';
 	import Group from './Group.svelte';
 	import Illustration from './Illustration.svelte';
+	import Header from './Header.svelte';
+	let { id } = $props();
 </script>
 
-<section id="Vision">
-	<header>
-		<h2
-			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-		>
-			The Future of Svelte MiniApps: What's Next?
-		</h2>
-	</header>
+<section {id}>
+	<Header {id}>The Future of Svelte MiniApps: What's Next?</Header>
 	<Group dir="left">
 		{#snippet image()}
 			<Illustration image={Vision} alt="The Future of Svelte MiniApps" />

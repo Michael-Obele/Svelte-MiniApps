@@ -1,18 +1,13 @@
 <script lang="ts">
 	import Illustration from './Illustration.svelte';
 	import Tools from '$lib/assets/Solving Problem 1.png?enhanced';
-
 	import Group from './Group.svelte';
+	import Header from './Header.svelte';
+	let { id } = $props();
 </script>
 
-<section id="Tools">
-	<header>
-		<h2
-			class="bold mx-auto mb-12 mt-16 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-		>
-			Explore a Range of Tools:
-		</h2>
-	</header>
+<section {id}>
+	<Header {id}>Explore a Range of Tools:</Header>
 
 	<Group dir="left">
 		{#snippet image()}

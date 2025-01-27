@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Header from './Header.svelte';
+
 	import Illustration from './Illustration.svelte';
 
 	// Use the direct path to the JSON file instead of importing it
@@ -7,18 +9,14 @@
 	import { Bomb } from 'lucide-svelte';
 	import { dataManagement } from './data';
 	import Data from '$lib/assets/Bomb.png?enhanced';
-
+	let { id } = $props();
 	import Group from './Group.svelte';
 </script>
 
-<section id="DataManagement" class="mx-auto mt-8 text-center">
-	<header>
-		<h2
-			class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-		>
-			{dataManagement.title}
-		</h2>
-	</header>
+<section {id} class="mx-auto mt-8 text-center">
+	<Header {id}>
+		{dataManagement.title}
+	</Header>
 	<Group dir="right">
 		{#snippet image()}
 			<Illustration image={Data} alt="Data Management & Troubleshooting" />

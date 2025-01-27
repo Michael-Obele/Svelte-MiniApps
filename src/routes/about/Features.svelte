@@ -3,16 +3,12 @@
 	import { features, future, next, reasons, splitDescription, dataManagement } from './data';
 	import Why from '$lib/assets/Question 7.png?enhanced';
 	import Group from './Group.svelte';
+	import Header from './Header.svelte';
+	let { id } = $props();
 </script>
 
-<section id="Features">
-	<header>
-		<h2
-			class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-		>
-			Why Choose Svelte MiniApps?
-		</h2>
-	</header>
+<section {id}>
+	<Header {id}>Why Choose Svelte MiniApps?</Header>
 	<Group dir="left">
 		{#snippet image()}
 			<Illustration image={Why} alt="Why  Choose Svelte MiniApps?" />

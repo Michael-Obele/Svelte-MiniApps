@@ -210,15 +210,11 @@
 	</div>
 
 	<main class="space-x-6 px-1 md:px-16">
-		<Features></Features>
-
-		<DataManagement></DataManagement>
-
-		<Tools></Tools>
-
-		<Philosophy></Philosophy>
-
-		<Vision></Vision>
+		<Features id="Features"></Features>
+		<DataManagement id="DataManagement"></DataManagement>
+		<Tools id="Tools"></Tools>
+		<Philosophy id="Philosophy"></Philosophy>
+		<Vision id="Vision"></Vision>
 	</main>
 </div>
 
