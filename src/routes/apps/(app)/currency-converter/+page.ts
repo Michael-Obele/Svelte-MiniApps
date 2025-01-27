@@ -599,8 +599,8 @@ export const _currencies = [
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async (event) => {
-	let currencyList = _currencies;
+export const load: PageLoad = async () => {
+	const currencyList = _currencies;
 	return {
 		currencyList
 	};

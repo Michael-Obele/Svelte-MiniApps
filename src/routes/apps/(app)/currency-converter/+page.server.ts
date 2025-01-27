@@ -1,5 +1,4 @@
 import { error, fail, type Actions } from '@sveltejs/kit';
-import * as cheerio from 'cheerio';
 import { env } from '$env/dynamic/private';
 import { Convert } from 'easy-currencies';
 import { Converter } from 'easy-currencies';
@@ -134,8 +133,8 @@ export const actions: Actions = {
 		try {
 			// Parse form data
 			const formData = await request.formData();
-			let currencyFrom: string = String(formData.get('currencyFrom')).trim().toUpperCase();
-			let currencyTo: string = String(formData.get('currencyTo')).trim().toUpperCase();
+			const currencyFrom: string = String(formData.get('currencyFrom')).trim().toUpperCase();
+			const currencyTo: string = String(formData.get('currencyTo')).trim().toUpperCase();
 			const rawAmount = String(formData.get('currencyAmount')).replace(/,/g, '');
 			const currencyAmount = Number(rawAmount);
 			const forceRefresh = formData.get('forceRefresh') === 'true';

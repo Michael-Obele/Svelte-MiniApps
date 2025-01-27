@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib'; // Import site-related variables
 	import { enhance } from '$app/forms';
-	import type { ActionData, SubmitFunction } from './$types';
-	import { _currencies } from './+page';
+	import type { ActionData, SubmitFunction, PageData } from './$types';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
@@ -13,7 +12,7 @@
 	import Loading from '@/components/blocks/Loading.svelte';
 
 	interface Props {
-		data: any;
+		data: PageData;
 		form: ActionData & FormActionData;
 	}
 
