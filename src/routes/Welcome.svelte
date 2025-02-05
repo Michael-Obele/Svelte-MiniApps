@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
-	import { getGreeting, getMillisecondsUntilNextPeriod } from '@/utility/greetings';
+	import { getGreetingAndNextPeriod } from '@/utility/greetings';
 	import { RefreshCw, Star, StarOff } from 'lucide-svelte';
 	import BlurInText from '@/components/blocks/BlurInText.svelte';
 	import BlurFade from '@/components/blocks/BlurFade.svelte';
@@ -8,15 +8,15 @@
 	import { Skeleton } from '@/components/ui/skeleton';
 	import { invalidate } from '$app/navigation';
 
-	let greeting = $state(getGreeting());
+	let greeting = $state(getGreetingAndNextPeriod().greeting);
 
 	// Update greeting when time period changes
 	$effect(() => {
 		const timeoutId = setTimeout(() => {
-			greeting = getGreeting();
+			greeting = getGreetingAndNextPeriod().greeting;
 			// Recursively set the next timeout
 			timeoutId.refresh();
-		}, getMillisecondsUntilNextPeriod());
+		}, getGreetingAndNextPeriod().millisecondsUntilNext);
 
 		return () => clearTimeout(timeoutId);
 	});

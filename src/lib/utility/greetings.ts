@@ -115,6 +115,11 @@ export const mantras: Mantra[] = [
 	{ phrase: 'Let resilience be your guiding force' }
 ];
 
+/**
+ * Returns a greeting message based on the current time.
+ *
+ * @returns A string representing the current time-based greeting.
+ */
 export const getGreeting = (): string => {
 	const hour = new Date().getHours();
 	if (hour < 12) return 'Good morning';
@@ -123,27 +128,87 @@ export const getGreeting = (): string => {
 };
 
 // Helper function to get hours until next time period
-export function getMillisecondsUntilNextPeriod() {
+/**
+ * Calculates the number of milliseconds until the next time period (morning, afternoon, or evening) based on the current hour.
+ *
+ * @returns The number of milliseconds until the next time period.
+ */
+export function getMillisecondsUntilNextPeriod(): number {
+	// Get the current date and hour
 	const now = new Date();
 	const hour = now.getHours();
 
-	// Morning: 5-11, Afternoon: 12-17, Evening: 18-4
-	let nextHour;
-	if (hour >= 0 && hour < 5)
-		nextHour = 5; // Wait until morning (5 AM)
-	else if (hour >= 5 && hour < 12)
-		nextHour = 12; // Wait until afternoon (12 PM)
-	else if (hour >= 12 && hour < 18)
-		nextHour = 18; // Wait until evening (6 PM)
-	else nextHour = 29; // Wait until next morning (5 AM next day)
+	// Determine the next time period based on the current hour
+	let nextHour: number;
+	if (hour >= 0 && hour < 5) {
+		// Wait until morning (5 AM)
+		nextHour = 5;
+	} else if (hour >= 5 && hour < 12) {
+		// Wait until afternoon (12 PM)
+		nextHour = 12;
+	} else if (hour >= 12 && hour < 18) {
+		// Wait until evening (6 PM)
+		nextHour = 18;
+	} else {
+		// Wait until next morning (5 AM next day)
+		nextHour = 29;
+	}
 
+	// Create a new Date object for the next time period
 	const nextTime = new Date();
 	nextTime.setHours(nextHour, 0, 0, 0);
-	if (nextHour === 29) nextTime.setDate(nextTime.getDate() + 1);
+	if (nextHour === 29) {
+		// If it's 29, increment the date to the next day
+		nextTime.setDate(nextTime.getDate() + 1);
+	}
 
+	// Return the difference between the next time and the current time in milliseconds
 	return nextTime.getTime() - now.getTime();
 }
 
+/**
+ * Returns a greeting message based on the current time and calculates the time until the next greeting period.
+ *
+ * @returns An object containing the current greeting and milliseconds until the next greeting period.
+ */
+export function getGreetingAndNextPeriod(): { greeting: string; millisecondsUntilNext: number } {
+	const now = new Date();
+	const hour = now.getHours();
+	let greeting: string;
+	let nextHour: number;
+
+	if (hour >= 0 && hour < 5) {
+		greeting = 'Good night';
+		nextHour = 5; // Next period starts at 5 AM (morning)
+	} else if (hour >= 5 && hour < 12) {
+		greeting = 'Good morning';
+		nextHour = 12; // Next period starts at 12 PM (afternoon)
+	} else if (hour >= 12 && hour < 18) {
+		greeting = 'Good afternoon';
+		nextHour = 18; // Next period starts at 6 PM (evening)
+	} else {
+		greeting = 'Good evening';
+		nextHour = 29; // Next period starts at 5 AM next day
+	}
+
+	// Calculate time until next period
+	const nextTime = new Date(now);
+	nextTime.setHours(nextHour, 0, 0, 0);
+	if (nextHour === 29) {
+		nextTime.setDate(nextTime.getDate() + 1);
+		nextTime.setHours(5, 0, 0, 0); // Set to 5 AM next day
+	}
+
+	const millisecondsUntilNext = nextTime.getTime() - now.getTime();
+
+	return { greeting, millisecondsUntilNext };
+}
+
+/**
+ * Returns a random mantra from the array of mantras.
+ *
+ * @returns A random mantra from the array of mantras.
+ */
 export function getRandomMantra(): Mantra {
 	const index = Math.floor(Math.random() * mantras.length);
 	return mantras[index];
