@@ -1,7 +1,7 @@
 import { MISTRAL_API_KEY } from '$env/static/private';
 import { prisma } from '$lib/server/db';
 import type { PageServerLoad } from './$types';
-import { getRandomMantra, mantras } from '$lib/utility/greetings';
+import { getRandomMantra } from '$lib/utility/greetings';
 import { Mistral } from '@mistralai/mistralai';
 import { fail } from '@sveltejs/kit';
 
@@ -87,12 +87,12 @@ async function updateMantraLikeState(mantra: string, userId: string | undefined)
 	return newLikeState;
 }
 
-// Note: Svelte Load function
-
 interface MantraData {
 	mantra: string;
 	like: boolean;
 }
+
+// Note: Svelte Load function
 
 export const load: PageServerLoad = async (event) => {
 	let mantraData: MantraData;
