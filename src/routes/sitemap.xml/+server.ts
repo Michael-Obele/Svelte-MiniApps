@@ -9,9 +9,9 @@ const staticPages: { url: string; priority?: number; changefreq?: string }[] = [
 	{ url: '/', priority: 0.8, changefreq: 'daily' }, // Root route
 	{ url: '/about', priority: 0.5, changefreq: 'weekly' }, // About page
 	{ url: '/apps', priority: 0.8, changefreq: 'weekly' }, // Apps page
-	{ url: '/changelog', priority: 0.6, changefreq: 'monthly' }, // Changelog page
-	{ url: '/handle-protocol', priority: 0.4, changefreq: 'monthly' }, // Handle Protocol page
-	{ url: '/social-links', priority: 0.5, changefreq: 'monthly' }, // Social Links page
+	{ url: '/changelog', priority: 0.6, changefreq: 'monthly' } // Changelog page
+	// { url: '/handle-protocol', priority: 0.4, changefreq: 'monthly' }, // Handle Protocol page
+	// { url: '/social-links', priority: 0.5, changefreq: 'monthly' }, // Social Links page
 	// Add more static routes here
 ];
 
