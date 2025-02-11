@@ -1,7 +1,24 @@
-<script>
+<script lang="ts">
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
-	import { items, timeline, updates } from './data';
+	import { items, timeline, updates, getTypeStyles } from './data';
+	import { slide } from 'svelte/transition';
+	import {
+		Card,
+		CardHeader,
+		CardTitle,
+		CardDescription,
+		CardContent
+	} from '$lib/components/ui/card';
+	import { Badge } from '$lib/components/ui/badge';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
+	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
+	import { ArrowRightIcon } from 'lucide-svelte';
+	import Highlight from './Highlight.svelte';
+	import { once, preventDefault, scrollToID } from '@/utils';
+
+	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>
 
 <div class="min-h-screen bg-gradient-to-b from-background to-background/95">
@@ -41,204 +58,164 @@
 					transition={{ duration: 0.5 }}
 				>
 					<div
-						class={`group relative overflow-hidden rounded-xl bg-white/5 p-8 hover:bg-white/10 ${item.className}`}
+						class={`group relative overflow-hidden rounded-xl bg-white/5 p-8 ${item.className} transition-transform duration-300 hover:scale-105`}
 					>
 						<div class="relative z-10">
-							<div class="mb-4 text-3xl">{item.icon}</div>
+							<div class="mb-4">
+								<item.icon size="32" />
+							</div>
 							<h3 class="mb-2 text-xl font-semibold text-white">{item.title}</h3>
 							<p class="text-white/60">{item.description}</p>
 						</div>
-						<div
-							class={`absolute inset-0 z-0 bg-gradient-to-br ${item.color} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
-						></div>
 					</div>
 				</Motion>
 			{/each}
 		</div>
 
-		<!-- Timeline -->
-		<div class="container mx-auto w-full">
-			<h2 class="mb-12 text-center text-3xl font-bold sm:text-4xl">
-				<span class="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
-					>Development Timeline</span
-				>
-			</h2>
+		<Highlight />
 
-			<!-- Desktop Timeline (hidden on mobile) -->
-			<div class="relative hidden md:block">
-				<div class="relative h-full overflow-hidden p-10">
-					<!-- Center Line with Gradient -->
-					<div
-						class="absolute left-1/2 h-full w-[2px] bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-green-500/20"
-						style="transform: translateX(-50%);"
-					></div>
-
-					{#each timeline as item, i}
-						<Motion
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: i * 0.15 }}
-						>
-							<!-- Timeline Entry -->
-							<div
-								class="mb-16 flex w-full items-center justify-between {i % 2 === 0
-									? ''
-									: 'flex-row-reverse'}"
-							>
-								<div class="order-1 w-5/12"></div>
-
-								<!-- Timeline Node -->
-								<div
-									class="z-20 order-1 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-background/80 shadow-xl ring-2 ring-white/10 backdrop-blur-sm"
-								>
-									<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-30"></div>
-									<span class="relative z-10 text-xl">{item.icon}</span>
-								</div>
-
-								<!-- Content Card -->
-								<div class="order-1 w-5/12">
-									<div
-										class="group relative overflow-hidden rounded-xl border border-white/10 bg-background/50 p-6 shadow-xl backdrop-blur-sm transition-all duration-300"
-									>
-										<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-5"></div>
-										<div class="relative">
-											<h3 class="mb-3 text-xl font-bold text-white">
-												<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent"
-													>{item.title}</span
-												>
-											</h3>
-
-											<!-- Date Badge -->
-											<div
-												class="mb-3 inline-block rounded-full bg-gradient-to-r from-background/80 to-background px-3 py-1 text-sm font-medium text-white/80 ring-1 ring-white/10"
-											>
-												{item.date}
-											</div>
-
-											<!-- Description -->
-											<p class="mb-4 text-sm leading-relaxed tracking-wide text-white/70">
-												{item.description}
-											</p>
-
-											<!-- Feature List -->
-											<ul class="space-y-2">
-												{#each item.items as bullet}
-													<li class="flex items-start gap-2 text-sm text-white/60">
-														<span
-															class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br {item.color}"
-														></span>
-														{bullet}
-													</li>
-												{/each}
-											</ul>
-
-											<!-- Hover Effect -->
-											<div
-												class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500"
-											></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</Motion>
-					{/each}
-				</div>
+		<section id="timeline" class="py-10">
+			<!-- Updated timeline header using shadcn-svelte Badge component -->
+			<div class="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+				<h2 class="text-3xl font-bold">Migration Timeline</h2>
+				<a href="#updates" onclick={once(preventDefault(() => scrollToID('updates')))}>
+					<Badge class="cursor-pointer text-xs">TL;DR Summary</Badge>
+				</a>
 			</div>
-
-			<!-- Mobile Timeline (hidden on desktop) -->
-			<div class="relative block px-4 md:hidden">
-				<!-- Vertical Line with Gradient -->
-				<div
-					class="absolute left-3 top-0 h-full w-[2px] bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-green-500/20"
-				></div>
-
-				{#each timeline as item, i}
-					<Motion
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: i * 0.15 }}
+			<div class="relative mx-auto max-w-3xl">
+				<!-- Timeline line -->
+				<div class="absolute left-4 top-0 hidden h-full w-0.5 bg-border sm:left-1/2 sm:block"></div>
+				<!-- Timeline items -->
+				{#each timeline as item, index}
+					<a
+						href="#{index}"
+						class="mb-8 flex flex-col transition-transform duration-300 hover:scale-105 sm:mb-12"
+						transition:slide
+						onclick={() => (selectedItem = item)}
+						style="cursor: pointer;"
 					>
-						<!-- Timeline Entry -->
-						<div class="mb-8 ml-8">
-							<!-- Timeline Node -->
-							<div
-								class="absolute -left-[8px] z-20 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-background/80 shadow-xl ring-2 ring-white/10 backdrop-blur-sm"
-							>
-								<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-30"></div>
-								<span class="relative z-10 text-base">{item.icon}</span>
+						<div
+							class="flex flex-col items-center sm:flex-row sm:gap-8"
+							class:sm:flex-row-reverse={index % 2}
+						>
+							<!-- Date badge -->
+							<div class="mb-4 flex-1 text-center sm:mb-0">
+								<Badge variant="outline">{item.date}</Badge>
 							</div>
-
-							<!-- Content Card -->
+							<!-- Icon -->
 							<div
-								class="group relative overflow-hidden rounded-xl border border-white/10 bg-background/50 p-4 shadow-xl backdrop-blur-sm transition-all duration-300"
+								class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-card shadow"
 							>
-								<div class="absolute inset-0 bg-gradient-to-br {item.color} opacity-5"></div>
-								<div class="relative">
-									<h3 class="mb-2 text-lg font-bold text-white">
-										<span class="bg-gradient-to-r {item.color} bg-clip-text text-transparent"
-											>{item.title}</span
-										>
-									</h3>
-
-									<!-- Date Badge -->
-									<div
-										class="mb-2 inline-block rounded-full bg-gradient-to-r from-background/80 to-background px-2 py-1 text-xs font-medium text-white/80 ring-1 ring-white/10"
-									>
-										{item.date}
-									</div>
-
-									<!-- Description -->
-									<p class="mb-3 text-xs leading-relaxed tracking-wide text-white/70">
-										{item.description}
-									</p>
-
-									<!-- Feature List -->
-									<ul class="space-y-1.5">
-										{#each item.items as bullet}
-											<li class="flex items-start gap-2 text-xs text-white/60">
-												<span
-													class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br {item.color}"
-												></span>
-												{bullet}
-											</li>
-										{/each}
-									</ul>
-
-									<!-- Hover Effect -->
-									<div
-										class="absolute inset-0 -z-10 bg-gradient-to-br {item.color} opacity-0 transition-all duration-500"
-									></div>
-								</div>
+								<item.icon class={`h-4 w-4 ${getTypeStyles(item.type)}`} />
 							</div>
+							<!-- Content -->
+							<Card class="flex-1 p-4">
+								<h3 class="mb-2 font-semibold">{item.title}</h3>
+								<p class="text-sm text-muted-foreground">{item.description}</p>
+							</Card>
 						</div>
-					</Motion>
+					</a>
 				{/each}
 			</div>
-		</div>
+		</section>
 
-		<!-- Detailed Updates -->
-		<div class="mx-auto mt-24 max-w-3xl space-y-8">
-			{#each updates as section}
-				<div class="rounded-xl bg-white/5 p-8 backdrop-blur-sm">
-					<h2 class="mb-6 text-2xl font-semibold text-white">{section.category}</h2>
-					<ul class="list-disc space-y-4 pl-6 text-white/80">
-						{#each section.items as item}
-							<li>{item}</li>
+		<!-- Updated Modal for Timeline Item Details with full props and improved styling -->
+		<Dialog.Root
+			open={!!selectedItem}
+			onOpenChange={(open) => {
+				if (!open) selectedItem = null;
+			}}
+		>
+			<Dialog.Content class="space-y-4 p-6 sm:max-w-[425px]">
+				<Dialog.Header>
+					<div class="flex flex-col items-center gap-3">
+						{#if selectedItem}
+							<selectedItem.icon
+								class={`h-6 w-6 items-start ${getTypeStyles(selectedItem.type)}`}
+							/>
+						{/if}
+						<Dialog.Title class="text-lg font-bold">
+							{selectedItem?.title}
+						</Dialog.Title>
+					</div>
+					<Dialog.Description class="text-sm text-muted-foreground">
+						{selectedItem?.description}
+					</Dialog.Description>
+				</Dialog.Header>
+				<!-- New info section for date and type -->
+				{#if selectedItem}
+					<div class="flex flex-wrap gap-2">
+						<Badge variant="outline" class="text-sm">{selectedItem.date}</Badge>
+						<Badge variant="outline" class="text-sm capitalize">{selectedItem.type}</Badge>
+					</div>
+				{/if}
+				<!-- Details List -->
+				{#if selectedItem}
+					<ul class="my-4 ml-6 list-disc space-y-2">
+						{#each selectedItem.items as detail}
+							<li class="text-sm">{detail}</li>
 						{/each}
 					</ul>
-				</div>
-			{/each}
-		</div>
+				{/if}
+				<Dialog.Footer>
+					<Button onclick={() => (selectedItem = null)}>Close</Button>
+				</Dialog.Footer>
+			</Dialog.Content>
+		</Dialog.Root>
 
-		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8 text-center">
-			<p>
-				For those who wish to use the Svelte 4 version of the app, you can access it at <a
-					href="https://old.svelte-apps.me"
-					class="text-blue-500 underline">old.svelte-apps.me</a
-				>
-				or
-				<a href="https://sv4.svelte-apps.me" class="text-blue-500 underline">sv4.svelte-apps.me</a>.
+		<!-- Detailed Updates (replaced section) -->
+		<section id="updates" class="py-10">
+			<h2 class="mb-2 text-center text-3xl font-bold">TL;DR: Key Summaries</h2>
+			<p class="mb-10 text-center text-sm text-white/60">
+				Click on any timeline item above for full details.
 			</p>
+			<div class="grid gap-6 md:grid-cols-2">
+				{#each updates as section}
+					<Card>
+						<CardHeader>
+							<CardTitle>{section.category}</CardTitle>
+							<CardDescription>Highlights</CardDescription>
+						</CardHeader>
+						<CardContent class="space-y-4">
+							{#each section.items as item}
+								<Alert class="flex items-start gap-2">
+									<ArrowRightIcon class="mt-1 h-4 w-4" />
+									<AlertTitle class="leading-relaxed">{item}</AlertTitle>
+								</Alert>
+							{/each}
+						</CardContent>
+					</Card>
+				{/each}
+			</div>
+		</section>
+
+		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8">
+			<Card>
+				<CardHeader>
+					<CardTitle>Need Svelte 4?</CardTitle>
+					<CardDescription>Access the older version</CardDescription>
+				</CardHeader>
+				<CardContent class="text-center text-sm sm:text-base">
+					<p class="mb-4">
+						For those who wish to use the Svelte 4 version of the app, you can visit:
+					</p>
+					<p>
+						<a
+							href="https://old.svelte-apps.me"
+							class="font-semibold text-blue-500 underline hover:text-blue-300"
+						>
+							old.svelte-apps.me
+						</a>
+						or
+						<a
+							href="https://sv4.svelte-apps.me"
+							class="font-semibold text-blue-500 underline hover:text-blue-300"
+						>
+							sv4.svelte-apps.me
+						</a>.
+					</p>
+				</CardContent>
+			</Card>
 		</section>
 	</div>
 </div>

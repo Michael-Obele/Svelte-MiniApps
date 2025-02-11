@@ -1,3 +1,12 @@
+import {
+	CodeIcon,
+	RocketIcon,
+	UserIcon,
+	SearchIcon,
+	WrenchIcon,
+	CircleSlashIcon
+} from 'lucide-svelte';
+
 export const items = [
 	{
 		title: 'Offline-First Architecture',
@@ -5,39 +14,65 @@ export const items = [
 			'Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app.',
 		className: 'md:col-span-2',
 		color: 'from-blue-500/20 via-transparent',
-		icon: '🌐'
+		icon: CodeIcon
 	},
 	{
 		title: 'Enhanced Performance',
 		description: 'Optimized load times and responsiveness through local data management.',
 		className: 'md:col-span-1',
 		color: 'from-purple-500/20 via-transparent',
-		icon: '⚡'
+		icon: RocketIcon
 	},
 	{
 		title: 'Svelte 5 Migration',
 		description: 'Complete upgrade to Svelte 5 with modern features and optimizations.',
 		className: 'md:col-span-1',
 		color: 'from-green-500/20 via-transparent',
-		icon: '🔄'
+		icon: SearchIcon
 	},
 	{
 		title: 'Local Data Persistence',
 		description: 'Robust local storage implementation with IndexedDB and background sync.',
 		className: 'md:col-span-1',
 		color: 'from-yellow-500/20 via-transparent',
-		icon: '💾'
+		icon: WrenchIcon
 	},
 	{
 		title: 'PWA Support',
 		description: 'Full Progressive Web App capabilities with offline support and installability.',
 		className: 'md:col-span-1',
 		color: 'from-red-500/20 via-transparent',
-		icon: '📱'
+		icon: CircleSlashIcon
 	}
 ];
 
-export const timeline = [
+// Utility function to determine icon style based on type.
+export const getTypeStyles = (type: string) => {
+	switch (type) {
+		case 'breaking':
+			return 'text-destructive';
+		case 'feature':
+			return 'text-green-500';
+		case 'improvement':
+			return 'text-blue-500';
+		case 'deprecation':
+			return 'text-yellow-500';
+		default:
+			return 'text-foreground';
+	}
+};
+
+export type TimelineItem = {
+	date: string;
+	title: string;
+	description: string;
+	items: string[];
+	type: 'breaking' | 'feature' | 'improvement' | 'deprecation';
+	icon: typeof RocketIcon; // one of the lucide-svelte icons
+	color: string;
+};
+
+export const timeline: TimelineItem[] = [
 	{
 		date: 'January 16-19, 2025',
 		title: 'Enhancements and Refactoring Across Apps',
@@ -52,7 +87,8 @@ export const timeline = [
 			'Refactored GitGraph component for improved responsiveness and code cleanliness',
 			'Updated dependencies, including Svelte and TypeScript libraries'
 		],
-		icon: '🔧',
+		type: 'improvement',
+		icon: CodeIcon,
 		color: 'from-blue-500 to-cyan-500'
 	},
 	{
@@ -70,7 +106,8 @@ export const timeline = [
 			'Removed unused components, interfaces, and imports to streamline the codebase',
 			'Refined feature flag logic to include privileged user roles'
 		],
-		icon: '🧹',
+		type: 'feature',
+		icon: UserIcon,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -88,7 +125,8 @@ export const timeline = [
 			'Refactored mantra and welcome components for cleaner state management',
 			'Updated dependencies and improved UI with new command shortcut component'
 		],
-		icon: '♻️',
+		type: 'deprecation',
+		icon: CircleSlashIcon,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -106,7 +144,8 @@ export const timeline = [
 			'Enhanced service worker logic for better offline experience and caching',
 			'Refined state management in reactive declarations for better app performance'
 		],
-		icon: '✨',
+		type: 'feature',
+		icon: RocketIcon,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -122,7 +161,8 @@ export const timeline = [
 			"Introduced 'Under Construction' component for informing users about ongoing development",
 			'Added advanced emoji tools with new context menu and keyboard interactions'
 		],
-		icon: '✨',
+		type: 'feature',
+		icon: SearchIcon,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -139,7 +179,8 @@ export const timeline = [
 			'Refactored OAuth callback handler for GitHub to improve maintainability',
 			'Updated service worker hash output path for deployment consistency'
 		],
-		icon: '🔧',
+		type: 'improvement',
+		icon: WrenchIcon,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -154,7 +195,8 @@ export const timeline = [
 			'Removed service-worker-hash.json file to clean up the project structure',
 			'Updated service worker hash file path for consistency'
 		],
-		icon: '✨',
+		type: 'breaking',
+		icon: CircleSlashIcon,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -170,7 +212,8 @@ export const timeline = [
 			'Updated build scripts and dependencies for compatibility and efficiency',
 			'Added password generation button to the random password generator'
 		],
-		icon: '🔧',
+		type: 'improvement',
+		icon: WrenchIcon,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -183,7 +226,8 @@ export const timeline = [
 			'Automatic service worker unregistration for fresh starts',
 			'Added user guidance for troubleshooting app issues'
 		],
-		icon: '💣',
+		type: 'breaking',
+		icon: CircleSlashIcon,
 		color: 'from-red-500 to-orange-500'
 	},
 	{
@@ -197,7 +241,8 @@ export const timeline = [
 			'Integrated slider component for flexible password length control',
 			'Refactored emoji and password generators to use the new clipboard utility'
 		],
-		icon: '🔐',
+		type: 'feature',
+		icon: RocketIcon,
 		color: 'from-violet-500 to-fuchsia-500'
 	},
 	{
@@ -210,7 +255,8 @@ export const timeline = [
 			'Created API endpoints for social links handling',
 			'Enhanced QR code generator with text and social links input'
 		],
-		icon: '🔄',
+		type: 'feature',
+		icon: RocketIcon,
 		color: 'from-blue-500 to-cyan-500'
 	},
 	{
@@ -223,7 +269,8 @@ export const timeline = [
 			'Implemented emoji checker functionality',
 			'Added pattern validation for currency amounts'
 		],
-		icon: '💱',
+		type: 'improvement',
+		icon: WrenchIcon,
 		color: 'from-orange-500 to-yellow-500'
 	},
 	{
@@ -236,7 +283,8 @@ export const timeline = [
 			'Enhanced service worker functionality',
 			'Switched from drizzle-orm to Prisma for better database management'
 		],
-		icon: '⚙️',
+		type: 'improvement',
+		icon: WrenchIcon,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -249,7 +297,8 @@ export const timeline = [
 			'Created offline page component',
 			'Enhanced navbar with user context'
 		],
-		icon: '🔐',
+		type: 'feature',
+		icon: RocketIcon,
 		color: 'from-yellow-500 to-amber-500'
 	},
 	{
@@ -262,38 +311,32 @@ export const timeline = [
 			'Updated welcome message and about page layout',
 			'Added alert component with description support'
 		],
-		icon: '✨',
+		type: 'feature',
+		icon: RocketIcon,
 		color: 'from-red-500 to-pink-500'
 	}
 ];
 
 export const updates = [
 	{
-		category: 'Technical Updates',
+		category: 'Major Refactoring',
 		items: [
-			'Implemented Service Workers for enhanced offline capabilities',
-			'Added PWA support for better mobile experience',
-			'Optimized asset caching and delivery',
-			'Integrated IndexedDB for local data storage'
+			'Revamped code quality with widespread component refactors',
+			'Optimized service worker and asset caching for improved offline support'
 		]
 	},
 	{
-		category: 'User Experience',
+		category: 'User Experience Enhancements',
 		items: [
-			'Enhanced offline state indicators and notifications',
-			'Improved loading states and feedback mechanisms',
-			'Added visual sync status indicators',
-			'Streamlined navigation and interactions'
+			'Streamlined UI design and navigation for an intuitive experience',
+			'Enhanced offline indicators and interaction feedback'
 		]
 	},
 	{
-		category: 'New Features',
-		items: ['Implemented copyToClipboard utility for improved text copying functionality.']
-	},
-	{
-		category: 'Refactor',
+		category: 'Feature Integrations',
 		items: [
-			'Refactored random-emoji-generator and random-password-generator to utilize the new copyToClipboard utility.'
+			'Introduced utilities like copyToClipboard and dynamic password generation',
+			'Implemented new APIs for social links, QR codes, and advanced authentication'
 		]
 	}
 ];
