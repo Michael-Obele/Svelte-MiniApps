@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { fade } from 'svelte/transition';
   import NF from '$lib/assets/404.svelte';
   import Bad from '$lib/assets/Bad.svelte';
@@ -38,11 +38,11 @@
     action: 'Please try again or contact support if the problem persists.'
   };
 
-  $: currentError = errorInfo[$page.status] || defaultError;
+  let currentError = $derived(errorInfo[page.status] || defaultError);
 </script>
 
 <svelte:head>
-  <title>{currentError.title} - Error {$page.status}</title>
+  <title>{currentError.title} - Error {page.status}</title>
 </svelte:head>
 
 <section 
@@ -53,7 +53,7 @@
     <div class="relative flex flex-col items-center">
       <div class="mb-5 flex justify-center">
         <div class="flex size-60 flex-row items-center transition-transform hover:scale-105 sm:size-96">
-          {#if $page.status === 404}
+          {#if page.status === 404}
             <NF />
           {:else}
             <Bad />
@@ -82,13 +82,13 @@
             <div class="flex items-center space-x-3">
               <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Status:</span>
               <code class="rounded bg-gray-100 px-2 py-0.5 font-mono text-sm text-gray-900 dark:bg-gray-700 dark:text-gray-300">
-                {$page.status}
+                {page.status}
               </code>
             </div>
             <div class="flex items-center space-x-3">
               <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Path:</span>
               <code class="rounded bg-gray-100 px-2 py-0.5 font-mono text-sm text-gray-900 dark:bg-gray-700 dark:text-gray-300">
-                {$page.url.pathname}
+                {page.url.pathname}
               </code>
             </div>
           </div>
