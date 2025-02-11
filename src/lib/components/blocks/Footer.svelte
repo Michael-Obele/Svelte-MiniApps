@@ -144,7 +144,7 @@
 			class="mt-8 flex flex-col items-center justify-between space-y-4 border-t pt-8 md:flex-row md:space-y-0"
 		>
 			<p class="flex items-center text-center text-sm text-muted-foreground md:text-left">
-				<Copyright class="me-1 size-4" strokeWidth={1.5} />
+				<Copyright class="me-1 size-4" strokeWidth={1.5} /> 2024-
 				{currentYear} Michael Obele. All rights reserved.
 			</p>
 			<p class="flex items-center text-center text-sm text-muted-foreground md:text-right">
