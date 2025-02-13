@@ -5,23 +5,15 @@
 	import '../app.css';
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';
-	import type { LayoutServerData } from './$types';
+	import type { LayoutProps } from './$types';
 	import lottie from 'lottie-web';
-	import { onMount, setContext, type Snippet } from 'svelte';
-	import { page } from '$app/state';
+	import { onMount, type Snippet } from 'svelte';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 
-	interface Props {
-		data: LayoutServerData;
-		children: Snippet;
-	}
-
-	let { data, children }: Props = $props();
+	let { data, children }: LayoutProps = $props();
 
 	onMount(async () => {
-		$inspect('Layout:', data.user);
-
 		// Dynamically import @lordicon/element *inside* onMount
 		if (browser) {
 			registerServiceWorker();

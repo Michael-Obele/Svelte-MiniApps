@@ -9,7 +9,7 @@
 
 	import AppsSection from './AppsSection.svelte';
 
-	import type { ActionData, PageData } from './$types';
+	import type { PageProps } from './$types';
 	import { site } from '@/index';
 	import { userContext } from '@/utils';
 	//
@@ -18,10 +18,8 @@
 		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
 	let twitterTitle = `${websiteTitle} - Smart Tools for Modern Life`;
 	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
-	//
-	import { invalidate } from '$app/navigation';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form }: PageProps = $props();
 
 	$effect(() => {
 		userContext.set(data?.user ?? null);
