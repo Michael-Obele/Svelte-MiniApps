@@ -78,7 +78,7 @@
 			<!-- Updated timeline header using shadcn-svelte Badge component -->
 			<div class="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
 				<h2 class="text-3xl font-bold">Migration Timeline</h2>
-				<a href="#updates" onclick={once(preventDefault(() => scrollToID('updates')))}>
+				<a href="#updates" onclick={preventDefault(() => scrollToID('updates'))}>
 					<Badge class="cursor-pointer text-xs">TL;DR Summary</Badge>
 				</a>
 			</div>
