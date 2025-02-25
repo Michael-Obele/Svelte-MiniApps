@@ -35,6 +35,16 @@
 					after: 'let { name }: Props = $props()'
 				}
 			]
+		},
+		{
+			title: 'Svelte Hack 2024 Winner',
+			description: '4th place in the Migration Magician category',
+			examples: [
+				{
+					before: 'Svelte 4 codebase',
+					after: 'Award-winning Svelte 5 migration'
+				}
+			]
 		}
 	];
 </script>
