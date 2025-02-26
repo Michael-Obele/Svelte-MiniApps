@@ -354,11 +354,5 @@ export const updates = [
 			'Enhanced offline indicators and interaction feedback'
 		]
 	},
-	{
-		category: 'Feature Integrations',
-		items: [
-			'Introduced utilities like copyToClipboard and dynamic password generation',
-			'Implemented new APIs for social links, QR codes, and advanced authentication'
-		]
-	}
+
 ];

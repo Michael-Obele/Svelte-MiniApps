@@ -49,30 +49,30 @@
 	];
 </script>
 
-<section id="highlights" class="container max-w-4xl py-10">
-	<h2 class="mb-10 text-center text-3xl font-bold">Key Changes</h2>
-	<div class="grid gap-6 md:grid-cols-2">
-		{#each highlights as item}
-			<Card>
+<section id="highlights" class="py-10 lg:max-w-6xl">
+	<h2 class="mb-10 text-center text-3xl font-bold lg:text-4xl">Key Changes</h2>
+	<div class="flex flex-col gap-6 md:flex-row md:flex-wrap md:justify-between md:gap-8">
+		{#each highlights as item, index}
+			<Card class={index === 2 ? 'md:flex-1 md:min-w-[calc(50%-1rem)] lg:min-w-0' : 'md:flex-1 md:min-w-[calc(50%-1rem)] lg:min-w-0'}>
 				<CardHeader>
-					<CardTitle>{item.title}</CardTitle>
-					<CardDescription>{item.description}</CardDescription>
+					<CardTitle class="lg:text-xl">{item.title}</CardTitle>
+					<CardDescription class="lg:text-base">{item.description}</CardDescription>
 				</CardHeader>
 				<CardContent>
 					{#each item.examples as example}
-						<div class="space-y-4">
+						<div class="space-y-4 lg:space-y-6">
 							<Alert variant="destructive">
-								<CircleXIcon class="h-4 w-4" />
-								<AlertTitle>Before (Svelte 4)</AlertTitle>
+								<CircleXIcon class="h-4 w-4 lg:h-5 lg:w-5" />
+								<AlertTitle class="lg:text-lg">Before (Svelte 4)</AlertTitle>
 								<AlertDescription>
-									<code class="rounded bg-destructive/10 px-1">{example.before}</code>
+									<code class="rounded bg-destructive/10 px-1 lg:text-base">{example.before}</code>
 								</AlertDescription>
 							</Alert>
 							<Alert>
-								<CircleCheckBigIcon class="h-4 w-4" />
-								<AlertTitle>After (Svelte 5)</AlertTitle>
+								<CircleCheckBigIcon class="h-4 w-4 lg:h-5 lg:w-5" />
+								<AlertTitle class="lg:text-lg">After (Svelte 5)</AlertTitle>
 								<AlertDescription>
-									<code class="rounded bg-primary/10 px-1">{example.after}</code>
+									<code class="rounded bg-primary/10 px-1 lg:text-base">{example.after}</code>
 								</AlertDescription>
 							</Alert>
 						</div>
