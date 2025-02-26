@@ -11,6 +11,17 @@
 
 	// Sort projects alphabetically by title
 	let sortedProjects = projects.sort((a, b) => a.title.localeCompare(b.title));
+
+	let filteredProjects = $derived(
+		filteredBy 
+			? projects.filter(project => 
+				project.title.toLowerCase().includes(filteredBy.toLowerCase()) ||
+				project.details.toLowerCase().includes(filteredBy.toLowerCase()) ||
+				project.tag.toLowerCase().includes(filteredBy.toLowerCase()) ||
+				project.link.toLowerCase().includes(filteredBy.toLowerCase())
+			)
+			: projects
+	);
 </script>
 
 {#if filteredBy === 'all'}
@@ -19,6 +30,6 @@
 	<ProjectsGrid items={projects.filter((item) => done.includes(item.link))} />
 {:else}
 	<ProjectsGrid
-		items={projects.filter((item) => item.title.toLowerCase().includes(filteredBy.toLowerCase()))}
+		items={filteredProjects}
 	/>
 {/if}
