@@ -1,23 +1,80 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
-
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
-
+	import { Badge } from '$lib/components/ui/badge';
 	import { projects, done, truncateText } from '$lib';
+	import { Calendar, Zap, Code, Sparkles, Clock } from 'lucide-svelte';
+	
+	// Filter projects that are not yet completed
+	let upcomingProjects = $state(
+		projects
+			.filter((project) => !done.includes(project.link))
+			.slice(0, 5) // Only show first 5 upcoming apps
+	);
+	
+	// Calculate estimated release dates (mock data)
+	const releaseDates = $state([
+		'Next week',
+		'In 2 weeks',
+		'This month',
+		'Next month',
+		'Q1 2026'
+	]);
 </script>
 
 <!--
 @component
-## Svelte Component: Favorite App List
-This component is intended to display a list of a user's favorite mini-apps. Currently, it serves as a placeholder indicating that this feature is not yet implemented.
+## Svelte Component: Upcoming Apps List
+This component displays a list of upcoming mini-apps that are planned for future implementation.
 
-## Key Features (Future)
-- **Display Favorite Apps**: Show a list of apps that the user has marked as favorites.
-- **Visual Indication**: Use a visual indicator, such as a star icon, to denote favorite apps.
-- **Interactive List**: Allow users to add or remove apps from their favorites list.
+## Key Features
+- **App Preview**: Shows a preview of upcoming mini-apps.
+- **Release Timeline**: Indicates the estimated release timeframe for each app.
+- **Difficulty Level**: Displays the difficulty level of each upcoming app.
 
-## Current State
-As of now, the component displays a "None Yet" message, indicating that the favorite app functionality is not yet implemented.
+## Data Source
+Uses the `projects` and `done` arrays from the `$lib` to determine which projects are upcoming.
 -->
+
+<ScrollArea class="h-[300px] pr-4">
+	<div class="space-y-4">
+		{#each upcomingProjects as project, i}
+			<div class="flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50">
+				<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+					{#if project.difficulty === 'easy'}
+						<Zap class="h-5 w-5 text-primary" />
+					{:else if project.difficulty === 'medium'}
+						<Code class="h-5 w-5 text-primary" />
+					{:else}
+						<Sparkles class="h-5 w-5 text-primary" />
+					{/if}
+				</div>
+				
+				<div class="flex-1">
+					<div class="flex items-center justify-between">
+						<h4 class="font-medium">{project.title}</h4>
+						<Badge variant={project.difficulty === 'easy' ? 'outline' : project.difficulty === 'medium' ? 'secondary' : 'default'}>
+							{project.difficulty}
+						</Badge>
+					</div>
+					
+					<p class="mt-1 text-sm text-muted-foreground">
+						{truncateText(project.details, 100)}
+					</p>
+					
+					<div class="mt-2 flex items-center text-xs text-muted-foreground">
+						<Clock class="mr-1 h-3 w-3" />
+						<span>Estimated release: {releaseDates[i]}</span>
+					</div>
+				</div>
+			</div>
+		{/each}
+		
+		{#if upcomingProjects.length === 0}
+			<div class="flex h-[200px] items-center justify-center">
+				<p class="text-muted-foreground">All projects are completed!</p>
+			</div>
+		{/if}
+	</div>
+</ScrollArea>

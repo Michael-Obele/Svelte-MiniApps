@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Separator } from '$lib/components/ui/separator';
 	import type { ActionData } from './$types.js';
 	import { buttonVariants } from '$lib/components/ui/button';
@@ -11,8 +11,7 @@
 	import { enhance } from '$app/forms';
 	import { formatDistance } from 'date-fns';
 
-	let userData = $page.data.user?.userData;
-	const userId = $page.data.user.userData.id;
+
 </script>
 
 <!--

@@ -3,22 +3,17 @@
 	import type { ActionData } from './$types.js';
 
 	let { data, form }: { data: PageData, form: ActionData } = $props();
-
-
-	import UpcomingFeaturesList from './UpcomingFeaturesList.svelte';
-
-	import FavoriteAppList from './FavoriteAppList.svelte';
-
-	import LatestUpdatesList from './LatestUpdatesList.svelte';
-
-	import AccountSettingsList from './AccountSettingsList.svelte';
-
-	import MiniAppList from './MiniAppList.svelte';
-
-	import UserProfileCard from './UserProfileCard.svelte';
-
-	import PwdComponent from './PwdComponent.svelte';
-
+	
+	// Tab components
+	import OverviewTab from './OverviewTab.svelte';
+	import ProjectsTab from './ProjectsTab.svelte';
+	import LearningTab from './LearningTab.svelte';
+	import SettingsTab from './SettingsTab.svelte';
+	
+	// UI components
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from "$lib/components/ui/tabs";
+	import { Button } from "$lib/components/ui/button";
+	import { TrendingUp } from "lucide-svelte";
 </script>
 
 <svelte:head>
@@ -29,26 +24,37 @@
 	/>
 </svelte:head>
 
-<section class="min-h-screen space-y-3 bg-gray-100 p-6 py-4 dark:bg-gray-900">
-	<h1 class="text-lg font-semibold md:text-2xl lg:text-3xl">Profile Page</h1>
-	<main class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-		<!-- User Profile Card  -->
-		<UserProfileCard />
-		<!-- Mini App List  -->
-		<!-- <MiniAppList /> -->
-		<!-- Account Settings  -->
-		<!-- <AccountSettingsList {form} /> -->
-		<!-- Updates List  -->
-		<!-- <LatestUpdatesList /> -->
-		<!-- Favorite Apps  -->
-		<!-- <FavoriteAppList /> -->
-		<!-- Saved Passwords  -->
-		<!-- <PwdComponent {form} /> -->
-		<!-- Upcoming Features  -->
-		<div class="col-span-1 grid gap-4 md:col-span-2 lg:col-span-3 lg:grid-cols-subgrid">
-			<div class="col-start-1 lg:col-start-2">
-				<UpcomingFeaturesList />
-			</div>
-		</div>
-	</main>
+<section class="min-h-screen space-y-6 bg-gray-100 p-6 py-4 dark:bg-gray-900">
+	<div class="flex items-center justify-between">
+		<h1 class="text-2xl font-semibold md:text-3xl lg:text-4xl">Developer Dashboard</h1>
+		<Button variant="outline" class="gap-2">
+			<TrendingUp class="h-4 w-4" />
+			<span>Your Progress</span>
+		</Button>
+	</div>
+	
+	<Tabs value="overview" class="w-full">
+		<TabsList class="grid w-full grid-cols-4 lg:w-[600px]">
+			<TabsTrigger value="overview">Overview</TabsTrigger>
+			<TabsTrigger value="projects">Projects</TabsTrigger>
+			<TabsTrigger value="learning">Learning</TabsTrigger>
+			<TabsTrigger value="settings">Settings</TabsTrigger>
+		</TabsList>
+		
+		<TabsContent value="overview">
+			<OverviewTab />
+		</TabsContent>
+		
+		<TabsContent value="projects">
+			<ProjectsTab />
+		</TabsContent>
+		
+		<TabsContent value="learning">
+			<LearningTab />
+		</TabsContent>
+		
+		<TabsContent value="settings">
+			<SettingsTab />
+		</TabsContent>
+	</Tabs>
 </section>
