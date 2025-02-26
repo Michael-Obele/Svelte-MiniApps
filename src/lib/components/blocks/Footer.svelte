@@ -14,6 +14,7 @@
 		Download
 	} from 'lucide-svelte';
 
+	import Bluesky from "$lib/assets/bluesky-outline-light.svelte"
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
@@ -57,7 +58,7 @@
 							trigger="loop"
 							stroke="thick"
 							state="hover-draw"
-							class="size-5 text-muted-foreground transition-colors hover:text-primary dark:hidden"
+							class="size-5 text-white transition-colors hover:text-primary dark:hidden"
 							colors="primary:black,secondary:green"
 							aria-label="Twitter"
 						></lord-icon>
@@ -69,7 +70,16 @@
 						class="text-muted-foreground transition-colors hover:text-primary"
 						aria-label="GitHub"
 					>
-						<Github class="size-5" strokeWidth={1.5} />
+						<Github class="size-5 text-white" strokeWidth={1.5} />
+					</a>
+					<a
+						href="https://bsky.app/profile/svelte-apps.me"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground transition-colors hover:text-primary"
+						aria-label="GitHub"
+					>
+						<Bluesky class='size-5' fill="white" />
 					</a>
 					<a
 						href="https://www.linkedin.com/in/michael-amachree-263841325/"
