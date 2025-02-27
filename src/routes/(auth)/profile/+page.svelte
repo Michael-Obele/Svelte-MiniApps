@@ -9,6 +9,7 @@
 	import ProjectsTab from './ProjectsTab.svelte';
 	import LearningTab from './LearningTab.svelte';
 	import SettingsTab from './SettingsTab.svelte';
+	import AppUsageStats from './AppUsageStats.svelte';
 	
 	// UI components
 	import { Tabs, TabsContent, TabsList, TabsTrigger } from "$lib/components/ui/tabs";
@@ -34,9 +35,10 @@
 	</div>
 	
 	<Tabs value="overview" class="w-full">
-		<TabsList class="grid w-full grid-cols-4 lg:w-[600px]">
+		<TabsList class="grid w-full grid-cols-5 lg:w-[750px]">
 			<TabsTrigger value="overview">Overview</TabsTrigger>
 			<TabsTrigger value="projects">Projects</TabsTrigger>
+			<TabsTrigger value="usage">Usage Stats</TabsTrigger>
 			<TabsTrigger value="learning">Learning</TabsTrigger>
 			<TabsTrigger value="settings">Settings</TabsTrigger>
 		</TabsList>
@@ -47,6 +49,10 @@
 		
 		<TabsContent value="projects">
 			<ProjectsTab />
+		</TabsContent>
+		
+		<TabsContent value="usage">
+			<AppUsageStats />
 		</TabsContent>
 		
 		<TabsContent value="learning">

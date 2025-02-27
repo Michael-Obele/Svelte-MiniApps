@@ -9,7 +9,6 @@
 	import '@cartamd/plugin-slash/default.css';
 	import { browser } from '$app/environment';
 	import { site } from '$lib/index';
-	import AppTracker from '$lib/components/AppTracker.svelte';
 
 	const carta = new Carta({
 		sanitizer: false, // Use a sanitizer in production to prevent XSS
@@ -138,8 +137,6 @@ console.log("Hello, Markdown!")
 		</div>
 	</div>
 </div>
-
-<AppTracker appLink="markdown-editor" />
 
 <style global>
 	/* Editor dark mode */

@@ -15,7 +15,6 @@
 	import type { ActionData, PageData } from './$types';
 	import { Skeleton } from '@/components/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
-	import AppTracker from '$lib/components/AppTracker.svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -245,5 +244,3 @@
 		</div>
 	</div>
 </div>
-
-<AppTracker appLink="random-password-generator" />

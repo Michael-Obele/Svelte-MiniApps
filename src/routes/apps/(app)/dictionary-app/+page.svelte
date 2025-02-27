@@ -11,7 +11,6 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { site } from '$lib';
-	import AppTracker from '$lib/components/AppTracker.svelte';
 
 	interface Props {
 		//
@@ -124,8 +123,6 @@
         }
 	</script>
 </svelte:head>
-
-<AppTracker appLink="dictionary-app" />
 
 <form
 	use:enhance={handleSubmit}
