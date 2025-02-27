@@ -5,6 +5,7 @@
 	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '$lib/components/ui/tabs';
 	import QRCodeDisplay from './QRCodeDisplay.svelte';
+	import AppTracker from '$lib/components/AppTracker.svelte';
 
 	let inputText = $state('');
 	let selectedTab = $state('text');
@@ -121,3 +122,4 @@
 		</div>
 	</div>
 </section>
+<AppTracker appLink="qr-code-generator" />

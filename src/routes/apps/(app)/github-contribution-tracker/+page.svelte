@@ -4,6 +4,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
 	import { toast } from 'svelte-sonner';
+	import AppTracker from '$lib/components/AppTracker.svelte';
 
 	let username = $state('');
 	let year = $state(new Date().getFullYear().toString());
