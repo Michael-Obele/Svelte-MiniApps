@@ -10,17 +10,11 @@
 	let upcomingProjects = $state(
 		projects
 			.filter((project) => !done.includes(project.link))
-			.slice(0, 5) // Only show first 5 upcoming apps
+			
 	);
 	
-	// Calculate estimated release dates (mock data)
-	const releaseDates = $state([
-		'Next week',
-		'In 2 weeks',
-		'This month',
-		'Next month',
-		'Q1 2026'
-	]);
+	// Calculate total upcoming apps
+	const totalUpcoming = $state(projects.filter(p => !done.includes(p.link)).length);
 </script>
 
 <!--
@@ -30,7 +24,6 @@ This component displays a list of upcoming mini-apps that are planned for future
 
 ## Key Features
 - **App Preview**: Shows a preview of upcoming mini-apps.
-- **Release Timeline**: Indicates the estimated release timeframe for each app.
 - **Difficulty Level**: Displays the difficulty level of each upcoming app.
 
 ## Data Source
@@ -62,11 +55,6 @@ Uses the `projects` and `done` arrays from the `$lib` to determine which project
 					<p class="mt-1 text-sm text-muted-foreground">
 						{truncateText(project.details, 100)}
 					</p>
-					
-					<div class="mt-2 flex items-center text-xs text-muted-foreground">
-						<Clock class="mr-1 h-3 w-3" />
-						<span>Estimated release: {releaseDates[i]}</span>
-					</div>
 				</div>
 			</div>
 		{/each}

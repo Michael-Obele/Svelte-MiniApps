@@ -6,12 +6,7 @@
 	import { BarChart3, Activity, Clock, Calendar } from "lucide-svelte";
 	import { onMount } from 'svelte';
 	
-	// Define the structure of your app usage data here
-	interface AppUsageData {
-		appId: string;
-		lastUsed: Date;
-		usageDuration: number;
-	}
+
 	
 	// Define the type for app usage stats
 	type AppUsage = {
