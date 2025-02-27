@@ -4,6 +4,8 @@
 	import { page } from '$app/state';
 	import { CodeXml } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
+	import AppTracker from '$lib/components/AppTracker.svelte';
+	
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -43,6 +45,10 @@
 	<meta name="twitter:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
 	<link rel="canonical" href="https://svelte-apps.me/apps" />
 </svelte:head>
+
+{#if currentRoute && currentRoute !== 'apps'}
+	<AppTracker appLink={currentRoute} />
+{/if}
 
 <div class="relative mb-5 mt-2 flex place-items-center justify-center">
 	<Breadcrumb.Root>

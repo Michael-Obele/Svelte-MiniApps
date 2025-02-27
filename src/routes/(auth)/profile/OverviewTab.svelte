@@ -10,6 +10,8 @@
 	import { persisted } from 'svelte-persisted-store';
 	import { onMount } from 'svelte';
 	import { PersistedState } from "runed";
+	import { appUsageTracker, appLastUsed } from '$lib/states.svelte';
+	import { getFavoriteApps, getRecentActivity } from '$lib/utils';
 	
 	// Persisted stores for user activity and favorites
 	interface Activity {
@@ -49,96 +51,119 @@
 		today.setHours(0, 0, 0, 0);
 		
 		// Check if there's activity today
-		const latestActivity = new Date(sortedActivities[0]?.date);
-		latestActivity.setHours(0, 0, 0, 0);
+		const latestActivityDate = new Date(sortedActivities[0].date);
+		latestActivityDate.setHours(0, 0, 0, 0);
 		
-		// If no activity today, streak is broken
-		if (latestActivity.getTime() !== today.getTime()) {
-			const yesterday = new Date(today);
-			yesterday.setDate(yesterday.getDate() - 1);
-			
-			// Check if there was activity yesterday
-			if (latestActivity.getTime() !== yesterday.getTime()) {
-				return 0; // Streak broken
-			}
+		// If no activity today, no streak
+		if (latestActivityDate.getTime() !== today.getTime()) {
+			return 0;
 		}
 		
 		// Count consecutive days
 		let streak = 1;
-		let currentDate = new Date(today);
-		currentDate.setDate(currentDate.getDate() - 1); // Start checking from yesterday
+		let currentDate = today;
 		
 		for (let i = 1; i < sortedActivities.length; i++) {
 			const activityDate = new Date(sortedActivities[i].date);
 			activityDate.setHours(0, 0, 0, 0);
 			
-			if (activityDate.getTime() === currentDate.getTime()) {
+			// Check if this activity was the day before
+			const prevDate = new Date(currentDate);
+			prevDate.setDate(prevDate.getDate() - 1);
+			
+			if (activityDate.getTime() === prevDate.getTime()) {
 				streak++;
-				currentDate.setDate(currentDate.getDate() - 1);
-			} else if (activityDate.getTime() < currentDate.getTime()) {
-				// Found a gap, continue checking
-				currentDate = new Date(activityDate);
-				currentDate.setDate(currentDate.getDate() - 1);
+				currentDate = prevDate;
+			} else if (activityDate.getTime() === currentDate.getTime()) {
+				// Same day activity, continue checking
+				continue;
+			} else {
+				// Break in streak
+				break;
 			}
 		}
 		
 		return streak;
 	}
 	
-	// Calculate level and points based on completed apps
-	function calculateLevelAndPoints() {
-		// Base points per app completion
-		const basePoints = 50;
-		
-		// Calculate total points
-		const totalPoints = done.length * basePoints;
-		
-		// Calculate level (1 level per 100 points)
-		const level = Math.floor(totalPoints / 100) + 1;
-		
-		return { level, points: totalPoints };
+	// Calculate level based on completed apps
+	function calculateLevel() {
+		return Math.floor(done.length / 2) + 1;
 	}
 	
-	// Initialize data on mount
+	// Calculate points based on completed apps and streak
+	function calculatePoints() {
+		return done.length * 100 + stats.streak * 50;
+	}
+	
+	// Store projects in localStorage for utility functions to access
+	function storeProjectsData() {
+		localStorage.setItem('projects', JSON.stringify(projects));
+	}
+	
 	onMount(() => {
+		// Store projects data for utility functions
+		storeProjectsData();
+		
 		// Initialize recent activity if empty
 		if (!recentActivity.current || recentActivity.current.length === 0) {
-			// Mock data for initial setup
-			recentActivity.current = [
-				{ app: 'QR Code Generator', date: new Date().toISOString() },
-				{ app: 'Budget Tracker', date: new Date(Date.now() - 86400000).toISOString() }, // Yesterday
-				{ app: 'Markdown Editor', date: new Date(Date.now() - 86400000 * 3).toISOString() } // 3 days ago
-			];
+			// Get recent activity data
+			const recentActivityData = getRecentActivity(5);
+			
+			if (recentActivityData.length > 0) {
+				recentActivity.current = recentActivityData.map(activity => ({
+					app: activity.appName,
+					date: activity.date
+				}));
+			} else {
+				// Default data if no activity yet
+				recentActivity.current = [
+					{ app: 'QR Code Generator', date: new Date().toISOString() },
+					{ app: 'Budget Tracker', date: new Date(Date.now() - 86400000).toISOString() }, // Yesterday
+					{ app: 'Markdown Editor', date: new Date(Date.now() - 86400000 * 3).toISOString() } // 3 days ago
+				];
+			}
 		}
 		
 		// Initialize favorite apps if empty
 		if (!favoriteApps.current || favoriteApps.current.length === 0) {
-			// Default favorites based on completed apps
-			favoriteApps.current = done.slice(0, 3).map(appLink => {
-				const appInfo = projects.find(p => p.link === appLink);
-				if (appInfo) {
-					return {
-						title: appInfo.title,
-						description: appInfo.details,
-						link: appInfo.link,
-						usageCount: Math.floor(Math.random() * 30) + 1 // Random usage count for demo
-					};
-				} else {
-					return {
-						title: 'Unknown App',
-						description: 'No description available',
-						link: '',
-						usageCount: 0
-					};
-				}
-			});
+			// Get favorite apps data
+			const favoriteAppsData = getFavoriteApps(3);
+			
+			if (favoriteAppsData.length > 0) {
+				favoriteApps.current = favoriteAppsData.map(app => ({
+					title: app.appName,
+					description: app.appDescription,
+					link: app.appLink,
+					usageCount: app.usageCount
+				}));
+			} else {
+				// Default favorites based on completed apps if no usage data yet
+				favoriteApps.current = done.slice(0, 3).map(appLink => {
+					const appInfo = projects.find(p => p.link === appLink);
+					if (appInfo) {
+						return {
+							title: appInfo.title,
+							description: appInfo.details,
+							link: appInfo.link,
+							usageCount: 1 // Initial usage count
+						};
+					} else {
+						return {
+							title: 'Unknown App',
+							description: 'No description available',
+							link: '',
+							usageCount: 0
+						};
+					}
+				});
+			}
 		}
 		
 		// Update stats
 		stats.streak = calculateStreak();
-		const levelInfo = calculateLevelAndPoints();
-		stats.level = levelInfo.level;
-		stats.points = levelInfo.points;
+		stats.level = calculateLevel();
+		stats.points = calculatePoints();
 	});
 </script>
 

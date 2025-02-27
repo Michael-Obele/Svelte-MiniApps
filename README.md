@@ -13,6 +13,7 @@ Svelte MiniApps is a collection of small, single-purpose applications designed f
 - [Contributing](#contributing) 🤝
 - [License](#license) 📄
 - [Old Version](#old-version) 🔙
+- [App Usage Tracking](#app-usage-tracking) 📊
 
 ## About
 
@@ -120,6 +121,38 @@ Access the live version at: [Svelte MiniApps](https://svelte-apps.me/)
 ## List of Apps
 
 Explore the full list of mini-apps designed to boost your productivity. Visit [svelte-apps.me/#apps](https://svelte-apps.me/#apps) for details.
+
+## App Usage Tracking
+
+Svelte MiniApps now includes an app usage tracking feature that:
+
+- Automatically tracks which apps you use most frequently
+- Records when you last used each app
+- Displays your favorite apps in your profile based on usage
+- Calculates a streak based on your daily app usage
+
+### How to Implement Usage Tracking in Your App
+
+To add usage tracking to your app, simply include the `AppTracker` component in your app's layout:
+
+```svelte
+<script lang="ts">
+  import AppTracker from '$lib/components/AppTracker.svelte';
+  
+  // Replace with your app's link/identifier
+  const appLink = 'your-app-link';
+</script>
+
+<!-- Include this component to track app usage -->
+<AppTracker appLink={appLink} />
+
+<!-- Your app content -->
+<div>
+  <!-- App content here -->
+</div>
+```
+
+This will automatically increment the usage count for your app each time a user visits it.
 
 ## Contributing
 
