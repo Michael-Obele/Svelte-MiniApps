@@ -87,12 +87,12 @@
 										<span class="capitalize">{$userContext.username}</span>
 									</DropdownMenu.Item>
 								</a>
-								<DropdownMenu.Item>
+								<DropdownMenu.Item class='cursor-not-allowed'>
 									<Settings class="mr-2 size-4" />
 									<span>Settings</span>
 								</DropdownMenu.Item>
 								<DropdownMenu.Separator />
-								<DropdownMenu.Item>
+								<DropdownMenu.Item class='cursor-not-allowed'>
 									<LifeBuoy class="mr-2 size-4" />
 									<span>Support</span>
 								</DropdownMenu.Item>
