@@ -9,51 +9,26 @@
 	import '@cartamd/plugin-slash/default.css';
 	import { browser } from '$app/environment';
 	import { site } from '$lib/index';
+	import { markdownDemo } from './data';
+	import {PersistedState} from 'runed';
 
 	const carta = new Carta({
 		sanitizer: false, // Use a sanitizer in production to prevent XSS
 		extensions: [code(), slash()]
 	});
 
-	let markdownDemo = `# Welcome to Markdown Magic!
 
-## Unleash the Power of Simple Formatting
-- **Bold text** is as easy as **this**.  
-- *Italicized*? Just use *this*.  
-- Want a strikethrough? Try ~~this~~.  
 
----
+	
 
-## Links? No Problem!
-Check out [Markdown's official site](https://www.markdownguide.org) for the full scoop.
+	let value = new PersistedState('markdownContent', markdownDemo);
 
----
+	if(value.current == null|| value.current == ''){
+		value.current = markdownDemo;
+	}
+	
 
-## Lists? Check!
-### Here's what you can do:
-1. Ordered lists for step-by-step guides.  
-
-- Unordered lists for quick notes.  
-
----
-
-## Images? Here's How:
-![Svelte Logo](https://i.ibb.co/64rLRDY/svelte-96x96.png)  
-
----
-
-## Code Blocks? Absolutely!
-\`\`\`js
-console.log("Hello, Markdown!")
-\`\`\`
-`;
-
-	let value: string = $state(markdownDemo);
-	if (browser) value = localStorage.getItem('markdownContent') || markdownDemo;
-
-	$effect(() => {
-		if (browser) localStorage.setItem('markdownContent', value || markdownDemo);
-	});
+	
 </script>
 
 <svelte:head>
@@ -132,7 +107,7 @@ console.log("Hello, Markdown!")
 				</div>
 			</div>
 			<section class="mt-6">
-				<MarkdownEditor {carta} mode="tabs" bind:value />
+				<MarkdownEditor {carta} mode="tabs" bind:value={value.current} />
 			</section>
 		</div>
 	</div>
