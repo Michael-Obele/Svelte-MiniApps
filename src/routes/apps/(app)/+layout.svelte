@@ -4,7 +4,7 @@
 	import { page } from '$app/state';
 	import { CodeXml } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
-	import AppTracker from '$lib/components/AppTracker.svelte';
+	import AppTracker from '@/components/blocks/AppTracker.svelte';
 	
 	interface Props {
 		children?: import('svelte').Snippet;

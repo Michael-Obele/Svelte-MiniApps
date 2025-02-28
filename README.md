@@ -137,7 +137,7 @@ To add usage tracking to your app, simply include the `AppTracker` component in 
 
 ```svelte
 <script lang="ts">
-  import AppTracker from '$lib/components/AppTracker.svelte';
+  import AppTracker from '$lib/components/blocks/AppTracker.svelte';
   
   // Replace with your app's link/identifier
   const appLink = 'your-app-link';
