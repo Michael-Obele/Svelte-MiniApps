@@ -81,12 +81,12 @@
 							<DropdownMenu.Group>
 								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
 								<DropdownMenu.Separator />
+								<a href="./profile">
 								<DropdownMenu.Item>
-									<a href="./profile">
 										<User class="mr-2 size-4" />
 										<span class="capitalize">{$userContext.username}</span>
-									</a>
-								</DropdownMenu.Item>
+									</DropdownMenu.Item>
+								</a>
 								<DropdownMenu.Item>
 									<Settings class="mr-2 size-4" />
 									<span>Settings</span>
