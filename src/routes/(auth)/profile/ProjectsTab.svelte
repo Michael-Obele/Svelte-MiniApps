@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "$lib/components/ui/card";
+	import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/ui/card";
 	import MiniAppList from './MiniAppList.svelte';
 </script>
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
+	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
+	import { Button } from '@/ui/button';
 	import { projects, done, truncateText } from '$lib';
 
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
 </script>
 
 <!--

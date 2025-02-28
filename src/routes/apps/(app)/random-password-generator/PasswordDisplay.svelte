@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Input } from "@/components/ui/input";
+	import { Input } from "@/ui/input";
 	import { Star } from "lucide-svelte";
 
     let {password} = $props();

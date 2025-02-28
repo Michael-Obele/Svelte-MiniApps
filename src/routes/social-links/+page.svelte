@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { Button } from "$lib/components/ui/button";
-    import { Card } from "$lib/components/ui/card";
+    import { Button } from "@/ui/button";
+    import { Card } from "@/ui/card";
 
 
 </script>

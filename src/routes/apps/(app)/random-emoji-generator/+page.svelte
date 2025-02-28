@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as emoji from 'node-emoji';
 	import { Clipboard, RefreshCcw } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { copyToClipboard } from '@/utils';
+	import { Button } from '@/ui/button/index.js';
+	import { copyToClipboard } from '$lib/utils';
 
 	let randomEmoji = emoji.random();
 

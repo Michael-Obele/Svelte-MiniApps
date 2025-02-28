@@ -2,15 +2,15 @@
 	import { site } from '$lib';
 	import * as emoji from 'node-emoji';
 	import { toast } from 'svelte-sonner';
-	import * as Card from '$lib/components/ui/card';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Separator } from '$lib/components/ui/separator';
-	import * as ContextMenu from '$lib/components/ui/context-menu/index.js';
-	import { copyToClipboard } from '@/utils';
+	import * as Card from '@/ui/card';
+	import * as Tabs from '@/ui/tabs';
+	import { Button } from '@/ui/button';
+	import { Input } from '@/ui/input';
+	import { Textarea } from '@/ui/textarea';
+	import { Badge } from '@/ui/badge';
+	import { Separator } from '@/ui/separator';
+	import * as ContextMenu from '@/ui/context-menu/index.js';
+	import { copyToClipboard } from '$lib/utils';
 	import { fade, fly } from 'svelte/transition';
 
 	interface EmojiResult {

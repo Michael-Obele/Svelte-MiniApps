@@ -1,12 +1,12 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
 	import { page } from '$app/state';
-	import * as Avatar from '$lib/components/ui/avatar';
+	import * as Avatar from '@/ui/avatar';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { Button, buttonVariants } from '@/ui/button';
+	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
 	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy, X } from 'lucide-svelte';
-	import { userContext } from '@/utils';
+	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 

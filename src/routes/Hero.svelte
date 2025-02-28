@@ -2,8 +2,8 @@
 
 	import type { PageServerData } from './$types';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import { getGreeting, getMillisecondsUntilNextPeriod } from '@/utility/greetings';
-	import BlurInText from '@/components/blocks/BlurInText.svelte';
+	import { getGreeting, getMillisecondsUntilNextPeriod } from '$lib/utility/greetings';
+	import BlurInText from '@/blocks/BlurInText.svelte';
 	
 	const arrow = '/lottie/trending-flat.json';
 

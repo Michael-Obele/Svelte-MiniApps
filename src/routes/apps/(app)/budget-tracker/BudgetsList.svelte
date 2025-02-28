@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Card } from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Progress } from '$lib/components/ui/progress/index.js';
+	import { Card } from '@/ui/card';
+	import { Button } from '@/ui/button';
+	import { Progress } from '@/ui/progress/index.js';
 	import { Pencil, Trash2 } from 'lucide-svelte';
 	import type { Budget, Expense } from '$lib/stores/budgetStore';
 	import { budgetStore } from '$lib/stores/budgetStore';

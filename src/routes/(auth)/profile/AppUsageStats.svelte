@@ -6,14 +6,14 @@
 		CardFooter,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Progress } from '$lib/components/ui/progress';
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
-	import { Button } from '$lib/components/ui/button';
+	} from '@/ui/card';
+	import { Progress } from '@/ui/progress';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
+	import { Button } from '@/ui/button';
 	import { ChartColumn, Activity, Clock, Calendar } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import { appUsageTracker } from '@/states.svelte';
-	import { projects } from '@/index';
+	import { appUsageTracker } from '$lib/states.svelte';
+	import { projects } from '$lib/index';
 
 	// Define the type for app usage stats
 	type AppUsage = {

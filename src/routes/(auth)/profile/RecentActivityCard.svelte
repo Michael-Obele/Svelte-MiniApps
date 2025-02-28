@@ -6,10 +6,10 @@
 		CardFooter,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
+	} from '@/ui/card';
+	import { Button } from '@/ui/button';
 	import { Clock } from 'lucide-svelte';
-	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as Sheet from '@/ui/sheet/index.js';
 
 	// Type definition for recent activity array
 	interface RecentActivity {

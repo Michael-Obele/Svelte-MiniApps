@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TaskCard from './TaskCard.svelte';
-	import { done, type Project } from '@/index';
+	import { done, type Project } from '$lib/index';
 
 	interface Props {
 		items: Project[];

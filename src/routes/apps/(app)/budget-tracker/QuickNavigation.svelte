@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { budgetStore } from '$lib/stores/budgetStore';
-	import { Button } from '$lib/components/ui/button';
-	import { Card } from '$lib/components/ui/card';
-	import { Progress } from '$lib/components/ui/progress/index.js';
+	import { Button } from '@/ui/button';
+	import { Card } from '@/ui/card';
+	import { Progress } from '@/ui/progress/index.js';
 	import { tick } from 'svelte';
 
 	let { getProgressBarColor } = $props();

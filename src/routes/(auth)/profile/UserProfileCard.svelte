@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Card, CardHeader, CardContent, CardTitle, CardFooter, CardDescription } from '$lib/components/ui/card';
-	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Separator } from '$lib/components/ui/separator';
+	import { Card, CardHeader, CardContent, CardTitle, CardFooter, CardDescription } from '@/ui/card';
+	import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';
+	import { Badge } from '@/ui/badge';
+	import { Button } from '@/ui/button';
+	import { Separator } from '@/ui/separator';
 	import { StarIcon, Edit2, Settings, LogOut, Github, Mail, Calendar } from 'lucide-svelte';
 	
 	// Get user data from page store

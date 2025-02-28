@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "$lib/components/ui/card";
+	import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/ui/card";
 	import AccountSettingsList from './AccountSettingsList.svelte';
 	import PwdComponent from './PwdComponent.svelte';
 </script>

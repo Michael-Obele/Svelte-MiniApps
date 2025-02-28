@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-	import { Input } from '$lib/components/ui/input/index.js';
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Input } from '@/ui/input/index.js';
+	import { Button } from '@/ui/button/index.js';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 

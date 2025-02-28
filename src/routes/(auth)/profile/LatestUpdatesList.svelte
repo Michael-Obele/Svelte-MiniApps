@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
 
 	import { formatDistance } from 'date-fns';
 
@@ -16,9 +16,9 @@
 		return convertNewlinesToBr(originalText);
 	}
 	import { page } from '$app/state';
-	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
+	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
 
-	import { Separator } from '$lib/components/ui/separator';
+	import { Separator } from '@/ui/separator';
 	import { Github } from 'lucide-svelte';
 </script>
 

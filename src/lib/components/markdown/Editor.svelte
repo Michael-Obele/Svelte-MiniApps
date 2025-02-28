@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Textarea from '$lib/components/ui/textarea/textarea.svelte';
+	import Textarea from '@/ui/textarea/textarea.svelte';
 
 	interface Props {
 		value: string; // Make value a prop

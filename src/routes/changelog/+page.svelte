@@ -9,14 +9,14 @@
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Dialog from '$lib/components/ui/dialog/index.js';
-	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
-	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
+	} from '@/ui/card';
+	import { Badge } from '@/ui/badge';
+	import * as Dialog from '@/ui/dialog/index.js';
+	import { Button, buttonVariants } from '@/ui/button/index.js';
+	import { Alert, AlertTitle, AlertDescription } from '@/ui/alert';
 	import { ArrowRightIcon } from 'lucide-svelte';
 	import Highlight from './Highlight.svelte';
-	import { once, preventDefault, scrollToID } from '@/utils';
+	import { once, preventDefault, scrollToID } from '$lib/utils';
 
 	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>

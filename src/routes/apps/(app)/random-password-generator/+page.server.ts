@@ -1,4 +1,4 @@
-import { prisma } from '@/server/db';
+import { prisma } from '$lib/server/db';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import bcrypt from 'bcryptjs';

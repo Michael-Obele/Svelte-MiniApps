@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import * as Select from '$lib/components/ui/select';
-	import { Button } from '$lib/components/ui/button';
+	import * as Dialog from '@/ui/dialog';
+	import { Input } from '@/ui/input';
+	import * as Select from '@/ui/select';
+	import { Button } from '@/ui/button';
 
 	interface Props {
 		editingBudget: { id: string; name: string; amount: number; currency: string } | null;

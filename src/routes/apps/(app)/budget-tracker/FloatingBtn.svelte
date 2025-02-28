@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ArrowUp } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '@/ui/button';
 	import { fade } from 'svelte/transition';
-	import { scrollToTop } from '@/utils';
+	import { scrollToTop } from '$lib/utils';
 </script>
 
 <span class="md:hidden" transition:fade={{ duration: 300 }}>

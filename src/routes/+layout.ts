@@ -1,4 +1,4 @@
-import { registerServiceWorker } from '@/utility/serviceWorker';
+import { registerServiceWorker } from '$lib/utility/serviceWorker';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {

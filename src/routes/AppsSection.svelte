@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { projects, done, site } from '@/index';
+	import { projects, done, site } from '$lib/index';
 	import { CheckCircle2 } from 'lucide-svelte';
 
 	let sortedProjects: any[] = [];

@@ -10,8 +10,8 @@
 	import AppsSection from './AppsSection.svelte';
 
 	import type { PageProps } from './$types';
-	import { site } from '@/index';
-	import { userContext } from '@/utils';
+	import { site } from '$lib/index';
+	import { userContext } from '$lib/utils';
 	//
 	let websiteTitle = 'Svelte MiniApps';
 	let websiteDescription =

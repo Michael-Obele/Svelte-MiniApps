@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
+	import { Button } from '@/ui/button';
+	import { Input } from '@/ui/input';
+	import { Label } from '@/ui/label';
+	import { Alert, AlertDescription } from '@/ui/alert';
 	import { AlertCircle, Eye, EyeOff } from 'lucide-svelte';
-	import Loading from '@/components/blocks/Loading.svelte';
+	import Loading from '@/blocks/Loading.svelte';
 	import { invalidate, invalidateAll } from '$app/navigation';
-	import { Switch } from '$lib/components/ui/switch/index.js';
+	import { Switch } from '@/ui/switch/index.js';
 
 	$effect(() => {
 		invalidateAll();

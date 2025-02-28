@@ -13,7 +13,7 @@
 		Image
 	} from 'lucide-svelte';
 
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '@/ui/button';
 
 	interface Props {
 		value: string; // Make value a prop

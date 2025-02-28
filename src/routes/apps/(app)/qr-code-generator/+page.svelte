@@ -3,7 +3,7 @@
 	import TextInput from './TextInput.svelte';
 	import ContactInput from './ContactInput.svelte';
 	import SocialLinks from './SocialLinks.svelte';
-	import * as Tabs from '$lib/components/ui/tabs';
+	import * as Tabs from '@/ui/tabs';
 	import QRCodeDisplay from './QRCodeDisplay.svelte';
 
 	let inputText = $state('');

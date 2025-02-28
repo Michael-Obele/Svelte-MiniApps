@@ -12,8 +12,8 @@
 	import AppUsageStats from './AppUsageStats.svelte';
 	
 	// UI components
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from "$lib/components/ui/tabs";
-	import { Button } from "$lib/components/ui/button";
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
+	import { Button } from "@/ui/button";
 	import { TrendingUp } from "lucide-svelte";
 </script>
 

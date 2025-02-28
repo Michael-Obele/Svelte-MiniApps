@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AppTracker from '@/components/blocks/AppTracker.svelte';
+  import AppTracker from '@/blocks/AppTracker.svelte';
   
   // The current app link/identifier
   const appLink = 'example-app-usage';

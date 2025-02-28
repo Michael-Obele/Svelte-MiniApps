@@ -7,7 +7,7 @@
 
 	import { ChevronsRight } from 'lucide-svelte';
 
-	import BlurInText from '@/components/blocks/BlurInText.svelte';
+	import BlurInText from '@/blocks/BlurInText.svelte';
 
 	const Ids = ['Features', 'DataManagement', 'Tools', 'Philosophy', 'Vision'];
 	let activeId: string[] = $state([]);

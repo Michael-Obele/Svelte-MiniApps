@@ -1,9 +1,9 @@
 <script lang="ts">
-	import * as Select from '$lib/components/ui/select';
+	import * as Select from '@/ui/select';
 	import { budgetStore } from '$lib/stores/budgetStore';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Card } from '$lib/components/ui/card';
+	import { Button } from '@/ui/button';
+	import { Input } from '@/ui/input';
+	import { Card } from '@/ui/card';
 	import { PlusCircle, Trash2 } from 'lucide-svelte';
 
 	let {

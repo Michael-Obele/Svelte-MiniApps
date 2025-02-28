@@ -2,14 +2,14 @@
 	import { site } from '$lib'; // Import site-related variables
 	import { enhance } from '$app/forms';
 	import type { ActionData, SubmitFunction, PageData } from './$types';
-	import * as Alert from '$lib/components/ui/alert/index.js';
+	import * as Alert from '@/ui/alert/index.js';
 	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';
-	import Input from '$lib/components/ui/input/input.svelte';
+	import Input from '@/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
-	import Switch from '$lib/components/ui/switch/switch.svelte';
-	import Label from '@/components/ui/label/label.svelte';
-	import { Button } from '@/components/ui/button';
-	import Loading from '@/components/blocks/Loading.svelte';
+	import Switch from '@/ui/switch/switch.svelte';
+	import Label from '@/ui/label/label.svelte';
+	import { Button } from '@/ui/button';
+	import Loading from '@/blocks/Loading.svelte';
 
 	interface Props {
 		data: PageData;

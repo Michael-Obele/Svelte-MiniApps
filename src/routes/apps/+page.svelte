@@ -1,12 +1,12 @@
 <script lang="ts">
 	import List from './List.svelte';
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from '@/ui/button/index.js';
 	import { filter } from '$lib/states.svelte';
-	import Input from '$lib/components/ui/input/input.svelte';
-	import BlurInText from '@/components/blocks/BlurInText.svelte';
+	import Input from '@/ui/input/input.svelte';
+	import BlurInText from '@/blocks/BlurInText.svelte';
 	import { Command, Search, CheckCircle2 } from 'lucide-svelte';
-	import * as Cmd from '$lib/components/ui/command/index.js';
-	import * as Dialog from "$lib/components/ui/dialog/index.js";
+	import * as Cmd from '@/ui/command/index.js';
+	import * as Dialog from "@/ui/dialog/index.js";
 	import { done, projects } from '$lib/index';
 
 	function setFilterValue(filterValue: string): () => void {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import Input from '$lib/components/ui/input/input.svelte';
+	import { Button } from '@/ui/button/index.js';
+	import Input from '@/ui/input/input.svelte';
 
 	import { AudioLines } from 'lucide-svelte';
 

@@ -2,15 +2,15 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import type { ActionData } from './$types.js';
-	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
-	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Separator } from '$lib/components/ui/separator';
+	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
+	import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';
+	import { Badge } from '@/ui/badge';
+	import { Button } from '@/ui/button';
+	import { Separator } from '@/ui/separator';
 	import { StarIcon } from 'lucide-svelte';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Label } from '$lib/components/ui/label/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
+	import * as Dialog from '@/ui/dialog';
+	import { Label } from '@/ui/label/index.js';
+	import { Input } from '@/ui/input/index.js';
 
 	let showPassword = false;
 	$: password = showPassword ? 'text' : 'password';

@@ -1,17 +1,17 @@
 <script lang="ts">
-	import Loading from '@/components/blocks/Loading.svelte';
+	import Loading from '@/blocks/Loading.svelte';
 
 	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
+	import { Button } from '@/ui/button';
+	import { Input } from '@/ui/input';
+	import { Label } from '@/ui/label';
+	import { Alert, AlertDescription } from '@/ui/alert';
 	import { AlertCircle, Eye, EyeOff, Github } from 'lucide-svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
 	import { invalidate, invalidateAll } from '$app/navigation';
-	import { userContext } from '@/utils';
+	import { userContext } from '$lib/utils';
 	$effect(() => {
 		invalidateAll();
 		if (document.referrer.includes('/logout')) {

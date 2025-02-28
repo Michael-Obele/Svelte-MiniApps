@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Separator } from '$lib/components/ui/separator';
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
-	import { Badge } from '$lib/components/ui/badge';
+	import { Separator } from '@/ui/separator';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
+	import { Badge } from '@/ui/badge';
 	import { projects, done, truncateText } from '$lib';
 	import { Calendar, Zap, Code, Sparkles, Clock } from 'lucide-svelte';
 	

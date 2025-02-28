@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { ModeWatcher } from 'mode-watcher';
-	import { Toaster } from '$lib/components/ui/sonner';
+	import { Toaster } from '@/ui/sonner';
 	import '../app.css';
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';

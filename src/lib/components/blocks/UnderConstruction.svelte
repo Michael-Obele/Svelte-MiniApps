@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Construction from '@/assets/Construction.svelte';
+	import Construction from '$lib/assets/Construction.svelte';
 	import { page } from '$app/state';
 	import { fade } from 'svelte/transition';
 

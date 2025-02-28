@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "$lib/components/ui/card";
-	import { Badge } from "$lib/components/ui/badge";
-	import { Button } from "$lib/components/ui/button";
+	import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/ui/card";
+	import { Badge } from "@/ui/badge";
+	import { Button } from "@/ui/button";
 	import { BookOpen } from "lucide-svelte";
 </script>
 

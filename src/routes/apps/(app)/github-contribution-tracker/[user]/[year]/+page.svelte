@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from 'lucide-svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Drawer from '$lib/components/ui/drawer';
+	import { Button, buttonVariants } from '@/ui/button';
+	import * as Drawer from '@/ui/drawer';
 	import { Chart, Bars, Calendar, Axis, Group, Text, Svg, Tooltip, Highlight } from 'layerchart';
 	import { scaleBand, scaleThreshold } from 'd3-scale';
 	import { format as formatDate } from 'date-fns';
@@ -16,7 +16,7 @@
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
+	} from '@/ui/card';
 	import GitGraph from './GitGraph.svelte';
 	import { toast } from 'svelte-sonner';
 

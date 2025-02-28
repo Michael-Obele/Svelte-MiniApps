@@ -1,8 +1,8 @@
 <script>
-	import { Button } from "@/components/ui/button";
+	import { Button } from "@/ui/button";
   let { socialLinks = $bindable([]), addSocialLink, removeSocialLink } = $props();
-  import { Input } from "@/components/ui/input";
-	import { Label } from "@/components/ui/label";
+  import { Input } from "@/ui/input";
+	import { Label } from "@/ui/label";
 </script>
 
 <div class="space-y-4">

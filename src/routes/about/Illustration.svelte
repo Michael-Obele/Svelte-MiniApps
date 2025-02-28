@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { image, alt, class: className = '' } = $props();
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 </script>
 
 <div

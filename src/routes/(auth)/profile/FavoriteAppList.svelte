@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
-	import { Button } from '$lib/components/ui/button';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
+	import { Button } from '@/ui/button';
 	import { done, projects } from '$lib';
 	import { Star, ExternalLink, Heart, Activity } from 'lucide-svelte';
 	import { onMount } from 'svelte';

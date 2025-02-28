@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Bomb } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import { buttonVariants } from '$lib/components/ui/button/index.js';
+	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
+	import { buttonVariants } from '@/ui/button/index.js';
 
 	let props = $props();
 

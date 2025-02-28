@@ -6,9 +6,9 @@
 	import { site } from '$lib';
 	import { page } from '$app/state';
 	import { X } from 'lucide-svelte';
-	import { Button } from '@/components/ui/button';
-	import Input from '@/components/ui/input/input.svelte';
-	import { Checkbox } from '@/components/ui/checkbox';
+	import { Button } from '@/ui/button';
+	import Input from '@/ui/input/input.svelte';
+	import { Checkbox } from '@/ui/checkbox';
 
 	interface Todo {
 		id: number;

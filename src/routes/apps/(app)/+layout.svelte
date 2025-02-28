@@ -1,10 +1,10 @@
 <script lang="ts">
-	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
-	import { Badge } from '$lib/components/ui/badge/index.js';
+	import * as Breadcrumb from '@/ui/breadcrumb/index.js';
+	import { Badge } from '@/ui/badge/index.js';
 	import { page } from '$app/state';
 	import { CodeXml } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
-	import AppTracker from '@/components/blocks/AppTracker.svelte';
+	import AppTracker from '@/blocks/AppTracker.svelte';
 	
 	interface Props {
 		children?: import('svelte').Snippet;

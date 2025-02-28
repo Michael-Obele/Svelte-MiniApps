@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Slider } from '$lib/components/ui/slider';
-	import { Switch } from '$lib/components/ui/switch';
-	import { Label } from '$lib/components/ui/label';
-	import { Progress } from '$lib/components/ui/progress';
+	import { Button } from '@/ui/button';
+	import { Input } from '@/ui/input';
+	import { Slider } from '@/ui/slider';
+	import { Switch } from '@/ui/switch';
+	import { Label } from '@/ui/label';
+	import { Progress } from '@/ui/progress';
 	import { toast } from 'svelte-sonner';
 	import { Copy, Star, StarOff } from 'lucide-svelte';
 	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
 	import { copyToClipboard } from '$lib/utils';
-	import { userContext } from '@/utils';
+	import { userContext } from '$lib/utils';
 	import type { ActionData, PageData } from './$types';
-	import { Skeleton } from '@/components/ui/skeleton';
+	import { Skeleton } from '@/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();

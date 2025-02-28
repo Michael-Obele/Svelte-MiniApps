@@ -6,9 +6,9 @@
 		CardFooter,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Progress } from '$lib/components/ui/progress';
-	import { Button } from '$lib/components/ui/button';
+	} from '@/ui/card';
+	import { Progress } from '@/ui/progress';
+	import { Button } from '@/ui/button';
 	import { Code, Zap, Award, Activity, Clock } from 'lucide-svelte';
 	import UserProfileCard from './UserProfileCard.svelte';
 	import UpcomingFeaturesList from './UpcomingFeaturesList.svelte';
@@ -19,7 +19,7 @@
 	import { PersistedState } from 'runed';
 	import { appUsageTracker, appLastUsed } from '$lib/states.svelte';
 	import { getFavoriteApps, getRecentActivity } from '$lib/utils';
-	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as Sheet from '@/ui/sheet/index.js';
 	import RecentActivityCard from './RecentActivityCard.svelte';
 
 	// Persisted stores for user activity and favorites

@@ -3,7 +3,7 @@
   import { fade } from 'svelte/transition';
   import NF from '$lib/assets/404.svelte';
   import Bad from '$lib/assets/Bad.svelte';
-  import { Button } from '$lib/components/ui/button';
+  import { Button } from '@/ui/button';
 
 
 

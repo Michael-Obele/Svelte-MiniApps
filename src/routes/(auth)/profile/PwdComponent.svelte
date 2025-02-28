@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle } from '$lib/components/ui/card';
+	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
 	import { page } from '$app/state';
-	import { Separator } from '$lib/components/ui/separator';
+	import { Separator } from '@/ui/separator';
 	import type { ActionData } from './$types.js';
-	import { buttonVariants } from '$lib/components/ui/button';
+	import { buttonVariants } from '@/ui/button';
 
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { ScrollArea } from '@/ui/scroll-area/index.js';
 
-	import Button from '$lib/components/ui/button/button.svelte';
+	import Button from '@/ui/button/button.svelte';
 	import { enhance } from '$app/forms';
 	import { formatDistance } from 'date-fns';
 

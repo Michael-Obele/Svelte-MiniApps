@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '@/ui/button';
 	import { LogOut } from 'lucide-svelte';
 	import { invalidate, invalidateAll } from '$app/navigation';
 	import { toast } from 'svelte-sonner';

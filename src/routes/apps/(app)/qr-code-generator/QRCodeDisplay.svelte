@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Button } from '@/components/ui/button';
-  import * as AlertDialog from '@/components/ui/alert-dialog';
+  import { Button } from '@/ui/button';
+  import * as AlertDialog from '@/ui/alert-dialog';
   import { QRCodeImage } from 'svelte-qrcode-image';
 
   interface Props {
