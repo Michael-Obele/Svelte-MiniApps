@@ -15,11 +15,11 @@ Svelte MiniApps is a collection of small, single-purpose applications designed f
 - [Old Version](#old-version) 🔙
 - [App Usage Tracking](#app-usage-tracking) 📊
 
-## About
+## About 📝
 
 Svelte MiniApps offers tools to streamline specific tasks. Whether converting units, generating passwords, or managing to-do lists, there's a mini-app to simplify your day.
 
-## Built for Efficiency
+## Built for Efficiency 🛠️
 
 Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of tools built for various web users. It enhances productivity and organization with the following features:
 
@@ -29,13 +29,13 @@ Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of 
 - **Installable:** Can be added to your device for quick access.
 - **Offline Capability:** Works offline once accessed.
 
-**Tech Stack:**
+### Tech Stack:
 
 - Built with Svelte 5
 - Uses Shadcn-Svelte components
 - Uses Lucide-Svelte icons
 
-## Getting Started
+## Getting Started 🏁
 
 **Prerequisites:**
 
@@ -43,57 +43,59 @@ Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of 
 - PostgreSQL database (for production)
 
 **Explore the Mini-Apps:**
-Fork the repository, clone your fork, and run the development server to explore the mini-apps.
 
-1. Fork the repository on GitHub.
-2. Clone your fork:
+To explore the Mini-Apps, fork the repository, clone your fork, and run the development server.
 
-```bash
-git clone https://github.com/your-username/Svelte-MiniApps.git
-cd Svelte-MiniApps
-```
+1.  **Fork the repository** on GitHub.
+2.  **Clone your fork:**
 
-3. Install dependencies:
+    ```bash
+    git clone https://github.com/your-username/Svelte-MiniApps.git
+    cd Svelte-MiniApps
+    ```
 
-```bash
-bun install
-```
+3.  **Install dependencies:**
 
-4. Create a new branch for your contribution:
+    ```bash
+    bun install
+    ```
 
-```bash
-git checkout -b feature/your-feature-name
-```
+4.  **Create a new branch** for your contribution:
 
-5. Run the development server:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 
-```bash
-bun run dev
-```
+5.  **Run the development server:**
 
-**Note:** The Vite development server runs on port **5178** instead of the traditional **5173**. Make sure to access your app at `http://localhost:5178`.
+    ```bash
+    bun run dev
+    ```
 
-**Database Setup:**
+**Note:** The Vite development server runs on port **5178** instead of the traditional **5173**. Access your app at `http://localhost:5178`.
+
+### Database Setup:
+
 The project uses Prisma ORM for database management. Follow these steps to set up your database:
 
-1. Copy the example environment file:
+1.  **Copy the example environment file:**
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
-2. Update the DATABASE_URL in your .env file:
+2.  **Update the DATABASE_URL** in your `.env` file:
 
-```env
-DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
-```
+    ```env
+    DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
+    ```
 
-3. Initialize your database:
+3.  **Initialize your database:**
 
-```bash
-npx prisma generate  # Generate Prisma Client
-npx prisma db push   # Push schema changes to database
-```
+    ```bash
+    npx prisma generate  # Generate Prisma Client
+    npx prisma db push   # Push schema changes to database
+    ```
 
 For development, you can use Prisma Studio to manage your data:
 
@@ -101,7 +103,7 @@ For development, you can use Prisma Studio to manage your data:
 npm run db:studio
 ```
 
-###### **Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
+**Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
 
 <details>
     <summary>Database ORM</summary>
@@ -116,19 +118,19 @@ This will launch a local server and open the mini-apps in your browser.
 
 Install Svelte MiniApps as standalone applications for quick access:
 
-1. Open the mini-app in your browser.
-2. Click on the browser's menu (three dots).
-3. Select "Install" or "Add to Home Screen."
+1.  Open the mini-app in your browser.
+2.  Click on the browser's menu (three dots).
+3.  Select "Install" or "Add to Home Screen."
 
 ### Live Version
 
 Access the live version at: [Svelte MiniApps](https://svelte-apps.me/)
 
-## List of Apps
+## List of Apps 📋
 
 Explore the full list of mini-apps designed to boost your productivity. Visit [svelte-apps.me/#apps](https://svelte-apps.me/#apps) for details.
 
-### App Usage Tracking
+### App Usage Tracking 📊
 
 Svelte MiniApps now includes an app usage tracking feature that:
 
@@ -137,27 +139,27 @@ Svelte MiniApps now includes an app usage tracking feature that:
 - Displays your favorite apps in your profile based on usage
 - Calculates a streak based on your daily app usage
 
-This will automatically increment the usage count for your app each time a user visits it. Just sign in and visit the profile page to see your usage statistics.
+This feature automatically increments the usage count for your app each time a user visits it. Sign in and visit your profile page to see your usage statistics.
 
-## Contributing
+## Contributing 🤝
 
-We welcome contributions! Fork the repository, make your changes, and submit a pull request.
+Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
 
 **Guidelines:**
 
 - **Single-purpose tools:** Each mini-app should focus on a specific task.
-- **User-friendly:** Ensure the mini-app is easy to use with clear instructions.
+- **User-friendly:** Ensure each mini-app is easy to use with clear instructions.
 - **Clean code:** Follow Svelte best practices and keep code organized.
 
-## Old Version
+## Old Version 🔙
 
 For those interested in the previous version of Svelte MiniApps, it is available at the following repository:
 
 - **Svelte MiniApps v4**: [Svelte-MiniApps-sv4](https://github.com/Michael-Obele/Svelte-MiniApps-sv4)
 
-This version is located at `sv4.svelte-apps` and contains the earlier implementations of the mini-apps, built with Svelte 4. Users may explore this version for reference or migration purposes.
+This version is located in the `sv4.svelte-apps` branch and contains the earlier implementations of the mini-apps, built with Svelte 4. Users may explore this version for reference or migration purposes.
 
-## License
+## License 📄
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/mit).
 
