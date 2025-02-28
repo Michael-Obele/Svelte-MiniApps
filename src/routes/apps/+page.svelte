@@ -117,7 +117,7 @@
 						onchange={() => {
 							app = searchQuery;
 						}}
-						placeholder="Search by name, tag, or description..."
+						placeholder="Search by name, or description..."
 						class="flex-1 border-green-200 focus-visible:ring-green-500 dark:border-green-800 dark:focus-visible:ring-green-700"
 						autofocus
 					/>
