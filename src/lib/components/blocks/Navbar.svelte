@@ -30,9 +30,6 @@
 
 	$effect(() => {
 		console.log('user on navbar', $userContext);
-
-		// Invalidate the session to check for user state changes
-		invalidate('app:user');
 	});
 
 	// Reactive statement to determine if the current route matches the item
@@ -81,7 +78,7 @@
 							<DropdownMenu.Group>
 								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
 								<DropdownMenu.Separator />
-								<a href="./profile">
+								<a href="/profile">
 								<DropdownMenu.Item>
 										<User class="mr-2 size-4" />
 										<span class="capitalize">{$userContext.username}</span>

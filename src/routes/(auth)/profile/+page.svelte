@@ -24,8 +24,9 @@
 		content="Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte."
 	/>
 </svelte:head>
+<main class="bg-gray-100 dark:bg-gray-900">
 
-<section class="min-h-screen space-y-6 bg-gray-100 p-6 py-4 dark:bg-gray-900">
+<section class="container min-h-screen space-y-6 p-6 py-4">
 	<div class="flex items-center justify-between">
 		<h1 class="text-2xl font-semibold md:text-3xl lg:text-4xl">Developer Dashboard</h1>
 		<Button variant="outline" class="gap-2">
@@ -64,3 +65,4 @@
 		</TabsContent>
 	</Tabs>
 </section>
+</main>

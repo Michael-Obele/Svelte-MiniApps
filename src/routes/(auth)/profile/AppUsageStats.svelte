@@ -1,13 +1,20 @@
 <script lang="ts">
-	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card";
-	import { Progress } from "$lib/components/ui/progress";
+	import {
+		Card,
+		CardContent,
+		CardDescription,
+		CardFooter,
+		CardHeader,
+		CardTitle
+	} from '$lib/components/ui/card';
+	import { Progress } from '$lib/components/ui/progress';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
-	import { Button } from "$lib/components/ui/button";
-	import { BarChart3, Activity, Clock, Calendar } from "lucide-svelte";
+	import { Button } from '$lib/components/ui/button';
+	import { ChartColumn, Activity, Clock, Calendar } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	
+	import { appUsageTracker } from '@/states.svelte';
+	import { projects } from '@/index';
 
-	
 	// Define the type for app usage stats
 	type AppUsage = {
 		appName: string;
@@ -15,19 +22,16 @@
 		percentage: number;
 		lastUsed: Date | null;
 	};
-	
+
 	// State for app usage data
 	let appUsageData: AppUsage[] = $state([]);
 	let totalUsage = $state(0);
 	let lastActiveDate = $state('');
 	let mostActiveDay = $state({ day: '', count: 0 });
 	let appLastUsedStore = $state<Record<string, string>>({});
-	
-	onMount(() => {
-		// Get app usage data from localStorage
-		let appUsageStore: Record<string, number> = JSON.parse(localStorage.getItem('app-usage-tracker') || '{}');
-		const projects = JSON.parse(localStorage.getItem('projects') || '[]');
-		
+	let appUsageStore: Record<string, number> = appUsageTracker.current;
+
+
 		// Calculate total usage
 		totalUsage = Object.values(appUsageStore).reduce((sum, count) => {
 			if (typeof count !== 'number') {
@@ -35,83 +39,87 @@
 			}
 			return sum + count;
 		}, 0);
-		
+
 		// Get last active date
 		if (Object.keys(appLastUsedStore).length > 0) {
 			const dates = Object.values(appLastUsedStore)
-				.map(dateStr => new Date(dateStr as string))
+				.map((dateStr) => new Date(dateStr as string))
 				.sort((a, b) => b.getTime() - a.getTime());
-			
+
 			lastActiveDate = dates[0].toISOString();
 		}
-		
+
 		// Process app usage data
 		appUsageData = Object.entries(appUsageStore)
 			.map(([appLink, count]) => {
 				const appInfo = projects.find((p: any) => p.link === appLink);
 				const lastUsed = appLastUsedStore[appLink]?.toString() || null;
-				
+
 				return {
 					appName: appInfo?.title || 'Unknown App',
 					usageCount: count as number,
 					percentage: Math.round(((count as number) / totalUsage) * 100) || 0,
-					lastUsed: lastUsed ? new Date(lastUsed) : null,
+					lastUsed: lastUsed ? new Date(lastUsed) : null
 				};
 			})
 			.sort((a, b) => b.usageCount - a.usageCount);
-		
+
 		// Calculate most active day
 		calculateMostActiveDay(appLastUsedStore);
-	});
-	
+
+
 	// Calculate the day of the week with most activity
 	function calculateMostActiveDay(appLastUsedStore: Record<string, string>) {
 		if (Object.keys(appLastUsedStore).length === 0) return;
-		
+
 		const dayCount = [0, 0, 0, 0, 0, 0, 0]; // Sun, Mon, Tue, Wed, Thu, Fri, Sat
 		const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-		
+
 		// Count activity by day of week
-		Object.values(appLastUsedStore).forEach(dateStr => {
+		Object.values(appLastUsedStore).forEach((dateStr) => {
 			const date = new Date(dateStr as string);
 			const day = date.getDay(); // 0 = Sunday, 6 = Saturday
 			dayCount[day]++;
 		});
-		
+
 		// Find the most active day
 		let maxCount = 0;
 		let maxDay = 0;
-		
+
 		dayCount.forEach((count, day) => {
 			if (count > maxCount) {
 				maxCount = count;
 				maxDay = day;
 			}
 		});
-		
+
 		mostActiveDay = {
 			day: dayNames[maxDay],
 			count: maxCount
 		};
 	}
-	
+
 	// Format date for display
 	function formatDate(date: Date) {
 		if (!date) return 'Never';
-		
+
 		const now = new Date();
 		const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 		const yesterday = new Date(today);
 		yesterday.setDate(yesterday.getDate() - 1);
-		
+
 		const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-		
+
 		if (dateOnly.getTime() === today.getTime()) {
 			return `Today at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 		} else if (dateOnly.getTime() === yesterday.getTime()) {
 			return `Yesterday at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 		} else {
-			return date.toLocaleDateString() + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+			return (
+				date.toLocaleDateString() +
+				' at ' +
+				date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+			);
 		}
 	}
 </script>
@@ -128,10 +136,12 @@
 					<div class="text-2xl font-bold">{totalUsage}</div>
 					<Activity class="h-5 w-5 text-blue-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">Across {appUsageData.length} different apps</p>
+				<p class="mt-2 text-xs text-muted-foreground">
+					Across {appUsageData.length} different apps
+				</p>
 			</CardContent>
 		</Card>
-		
+
 		<Card>
 			<CardHeader class="pb-2">
 				<CardTitle class="text-sm font-medium">Last Active</CardTitle>
@@ -144,12 +154,15 @@
 					<Clock class="h-5 w-5 text-green-500" />
 				</div>
 				<p class="mt-2 text-xs text-muted-foreground">
-					{lastActiveDate ? formatDate(new Date(lastActiveDate)).includes('at') ? 
-						'at ' + formatDate(new Date(lastActiveDate)).split('at ')[1] : '' : 'No activity recorded'}
+					{lastActiveDate
+						? formatDate(new Date(lastActiveDate)).includes('at')
+							? 'at ' + formatDate(new Date(lastActiveDate)).split('at ')[1]
+							: ''
+						: 'No activity recorded'}
 				</p>
 			</CardContent>
 		</Card>
-		
+
 		<Card>
 			<CardHeader class="pb-2">
 				<CardTitle class="text-sm font-medium">Most Active Day</CardTitle>
@@ -165,7 +178,7 @@
 			</CardContent>
 		</Card>
 	</div>
-	
+
 	<!-- App Usage Breakdown -->
 	<Card>
 		<CardHeader>
@@ -204,7 +217,7 @@
 		<CardFooter>
 			<div class="flex w-full items-center justify-between">
 				<div class="flex items-center gap-2 text-sm text-muted-foreground">
-					<BarChart3 class="h-4 w-4" />
+					<ChartColumn class="h-4 w-4" />
 					<span>Usage statistics are updated in real-time</span>
 				</div>
 				<Button variant="outline" size="sm">Export Data</Button>

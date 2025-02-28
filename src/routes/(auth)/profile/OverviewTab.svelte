@@ -237,9 +237,12 @@
 			<UserProfileCard />
 		</div>
 		
-		<RecentActivityCard />
+		<RecentActivityCard {recentActivities} />
+	</div>
+	
+	<div class="mx-auto flex w-full flex-row justify-around space-x-20">
 		<!-- Upcoming Apps -->
-		<Card class="md:col-span-2">
+		<Card class="">
 			<CardHeader>
 				<CardTitle>Upcoming Apps</CardTitle>
 				<CardDescription>New apps coming soon</CardDescription>
@@ -248,60 +251,60 @@
 				<UpcomingFeaturesList />
 			</CardContent>
 		</Card>
-	</div>
-
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 		<!-- Favorite Apps -->
-		<Card>
-			<CardHeader>
-				<CardTitle>Favorite Apps</CardTitle>
-				<CardDescription>Apps you use the most</CardDescription>
-			</CardHeader>
-			<CardContent>
-				{#if favoriteApps.length > 0}
-					<div class="space-y-4">
-						{#each favoriteApps as app}
-							<div
-								class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50"
-							>
+		<div class="">
+			<Card>
+				<CardHeader>
+					<CardTitle>Favorite Apps</CardTitle>
+					<CardDescription>Apps you use the most</CardDescription>
+				</CardHeader>
+				<CardContent>
+					{#if favoriteApps.length > 0}
+						<div class="space-y-4">
+							{#each favoriteApps as app}
 								<div
-									class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
+									class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50"
 								>
-									<Award class="h-5 w-5" />
-								</div>
-
-								<div class="flex-1">
-									<div class="flex items-center justify-between">
-										<h4 class="font-medium">{app.appName}</h4>
-										<div class="text-sm text-muted-foreground">
-											<span>{app.usageCount} uses</span>
+									<div
+										class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
+									>
+										<Award class="h-5 w-5" />
+									</div>
+	
+									<div class="flex-1">
+										<div class="flex items-center justify-between">
+											<h4 class="font-medium">{app.appName}</h4>
+											<div class="text-sm text-muted-foreground">
+												<span>{app.usageCount} uses</span>
+											</div>
+										</div>
+	
+										<p class="mt-1 text-sm text-muted-foreground">
+											{app.appDescription}
+										</p>
+	
+										<div class="mt-3 flex items-center justify-end">
+											<Button
+												variant="outline"
+												size="sm"
+												class="h-8 gap-1 opacity-0 transition-opacity group-hover:opacity-100"
+												href="/apps/{app.appLink}"
+											>
+												Open App
+											</Button>
 										</div>
 									</div>
-
-									<p class="mt-1 text-sm text-muted-foreground">
-										{app.appDescription}
-									</p>
-
-									<div class="mt-3 flex items-center justify-end">
-										<Button
-											variant="outline"
-											size="sm"
-											class="h-8 gap-1 opacity-0 transition-opacity group-hover:opacity-100"
-											href="/apps/{app.appLink}"
-										>
-											Open App
-										</Button>
-									</div>
 								</div>
-							</div>
-						{/each}
-					</div>
-				{:else}
-					<div class="flex items-center justify-center p-4 text-muted-foreground">
-						No favorite apps yet
-					</div>
-				{/if}
-			</CardContent>
-		</Card>
+							{/each}
+						</div>
+					{:else}
+						<div class="flex items-center justify-center p-4 text-muted-foreground">
+							No favorite apps yet
+						</div>
+					{/if}
+				</CardContent>
+			</Card>
+		</div>
 	</div>
+
 </div>
