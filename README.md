@@ -32,8 +32,9 @@ Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of 
 ### Tech Stack:
 
 - Built with Svelte 5
-- Uses Shadcn-Svelte components
+- Uses Shadcn-Svelte components by Shadcn
 - Uses Lucide-Svelte icons
+- Uses Lordicon for animated icons
 
 ## Getting Started 🏁
 
