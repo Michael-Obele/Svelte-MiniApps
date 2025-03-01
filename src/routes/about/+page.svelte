@@ -1,15 +1,17 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	import Vision from './Vision.svelte';
 	import Philosophy from './Philosophy.svelte';
 	import Tools from './Tools.svelte';
 	import DataManagement from './DataManagement.svelte';
 	import Features from './Features.svelte';
+	import Attributions from './Attributions.svelte';
 
 	import { ChevronsRight } from 'lucide-svelte';
 
 	import BlurInText from '@/blocks/BlurInText.svelte';
 
-	const Ids = ['Features', 'DataManagement', 'Tools', 'Philosophy', 'Vision'];
+	const Ids = ['Features', 'DataManagement', 'Tools', 'Philosophy', 'Vision', 'Attributions'];
 	let activeId: string[] = $state([]);
 	let visibleSections = $state(new Set<string>());
 
@@ -27,7 +29,7 @@
 						visibleSections.add(entry.target.id);
 					} else {
 						visibleSections.delete(entry.target.id);
-						// Only update lastActiveIndex if we're scrolling up past it
+			//Only update lastActiveIndex if we're scrolling up past it
 						if (currentIndex === lastActiveIndex) {
 							// Find the highest visible section
 							const visibleIndices = Array.from(visibleSections).map((id) => Ids.indexOf(id));
@@ -105,32 +107,13 @@
 	});
 </script>
 
-<svelte:head>
-	<title>About Page | Svelte MiniApps</title>
-	<meta
-		name="description"
-		content="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-	/>
-	<meta
-		name="keywords"
-		content="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
-	/>
-	<meta property="og:title" content="About Page | Svelte MiniApps" />
-	<meta
-		property="og:description"
-		content="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-	/>
-	<meta property="og:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<meta property="og:url" content="https://svelte-apps.me/about" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="About Page | Svelte MiniApps" />
-	<meta
-		name="twitter:description"
-		content="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-	/>
-	<meta name="twitter:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<link rel="canonical" href="https://svelte-apps.me/about" />
-</svelte:head>
+<RouteHead
+    title="About Page | Svelte MiniApps"
+    description="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
+    keywords="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
+    route="/about"
+    image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
+  />
 
 <div class="m-2 px-2 py-3 lg:px-10">
 	<BlurInText>
@@ -210,12 +193,13 @@
 	</div>
 
 	<main class="space-x-6 px-1 md:px-16">
-		<Features id="Features"></Features>
-		<DataManagement id="DataManagement"></DataManagement>
-		<Tools id="Tools"></Tools>
-		<Philosophy id="Philosophy"></Philosophy>
-		<Vision id="Vision"></Vision>
+		<Features id="Features"/>
+		<DataManagement id="DataManagement"/>
+		<Tools id="Tools"/>
+		<Philosophy id="Philosophy"/>
+		<Vision id="Vision"/>
+		<!-- Attributions Section -->
+		<Attributions id="Attributions" />	
 	</main>
 </div>
 
-<!-- Add Attribution to shadcn and lordicon and anyother service used -->

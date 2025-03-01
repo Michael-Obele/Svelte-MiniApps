@@ -1,5 +1,6 @@
 <!-- Handle Protocol Page -->
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
   import { page } from '$app/state';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
@@ -76,6 +77,13 @@
     }
   }
 </script>
+
+<RouteHead
+  title="Handle Protocol | Svelte MiniApps"
+  description="Handle custom protocol URLs to open Svelte MiniApps."
+  keywords="svelte, mini apps, protocol, url"
+  route="/handle-protocol"
+/>
 
 <div class="protocol-handler">
   {#if error}

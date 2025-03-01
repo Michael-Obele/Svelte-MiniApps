@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	import DOMPurify from 'isomorphic-dompurify';
 	import { Carta, MarkdownEditor, Markdown } from 'carta-md';
 	import { code } from '@cartamd/plugin-code';
@@ -31,33 +32,12 @@
 	
 </script>
 
-<svelte:head>
-	<title>Markdown Editor - Write and Preview Markdown with Ease</title>
-	<meta
-		name="description"
-		content="Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
-	/>
-	<meta
-		name="keywords"
-		content="markdown editor, svelte, carta-md, markdown preview, markdown writing, text editor"
-	/>
-	<meta name="author" content="Michael Obele" />
-	<meta property="og:title" content="Markdown Editor - Svelte & Carta-MD" />
-	<meta
-		property="og:description"
-		content="A user-friendly Markdown Editor for writing and previewing markdown text."
-	/>
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="{site.url}/apps/markdown-editor" />
-	<meta property="og:image" content={site.image} />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Markdown Editor - Svelte & Carta-MD" />
-	<meta
-		name="twitter:description"
-		content="A user-friendly Markdown Editor for writing and previewing markdown text."
-	/>
-	<meta name="twitter:image" content={site.image} />
-</svelte:head>
+<RouteHead
+    title="Markdown Editor - Write and Preview Markdown with Ease"
+    description="Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
+    keywords="markdown editor, svelte, carta-md, markdown preview, markdown writing, text editor"
+    route="/apps/markdown-editor"
+  />
 
 <div class="container mx-auto min-h-screen bg-gray-100 px-4 py-6 dark:bg-black">
 	<div class="mx-auto max-w-4xl space-y-6">

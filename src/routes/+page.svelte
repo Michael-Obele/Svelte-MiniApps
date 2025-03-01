@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	import Welcome from './Welcome.svelte';
 
 	import Hero from './Hero.svelte';
@@ -45,31 +46,13 @@
 	</p>
 </div>
 
-<svelte:head>
-	<title>{websiteTitle} - Smart Tools for Modern Life</title>
-	<meta name="description" content={websiteDescription} />
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content={websiteTitle} />
-	<meta property="og:description" content={websiteDescription} />
-	<meta property="og:image" content={site.image} />
-	<meta property="og:url" content={site.url} />
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={twitterTitle} />
-	<meta name="twitter:description" content={twitterDescription} />
-	<meta name="twitter:image" content={site.image} />
-
-	<!-- Additional Meta Tags -->
-	<meta
-		name="keywords"
-		content="svelte apps, web tools, productivity tools, mini applications, svelte toolkit"
-	/>
-	<meta name="author" content={site.name} />
-	<link rel="canonical" href={site.url} />
-</svelte:head>
+<RouteHead
+    title="{websiteTitle} - Smart Tools for Modern Life"
+    description={websiteDescription}
+    keywords="svelte apps, web tools, productivity tools, mini applications, svelte toolkit"
+    route="/"
+    author={site.name}
+  />
 
 <!-- Welcome Section -->
 <Welcome {data} {form} />

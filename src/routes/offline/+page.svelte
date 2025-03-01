@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	let retryCount = $state(0);
 	let isChecking = $state(false);
 	let isOnline = $state(false);
@@ -54,6 +55,13 @@
 		};
 	});
 </script>
+
+<RouteHead
+  title="Offline | Svelte MiniApps"
+  description="Check your internet connection status and access cached content while offline."
+  keywords="svelte, mini apps, offline, connection, cached content"
+  route="/offline"
+/>
 
 <div
 	class="flex min-h-screen items-center justify-center bg-gradient-to-br from-red-50 to-red-100 p-8 dark:from-gray-800 dark:to-gray-700"

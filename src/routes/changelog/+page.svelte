@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
 	import { items, timeline, updates, getTypeStyles } from './data';
@@ -20,7 +21,12 @@
 
 	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>
-
+<RouteHead
+  title="Changelog | Svelte MiniApps"
+  description="Explore the latest updates and improvements to Svelte MiniApps. Stay informed about new features, bug fixes, and performance enhancements."
+  keywords="svelte, mini apps, changelog, updates, features, bug fixes, performance"
+  route="/changelog"
+/>
 <div class="min-h-screen bg-gradient-to-b from-background to-background/95">
 	<div class="container mx-auto px-4 py-16 lg:max-w-7xl">
 		<div class="relative mb-16">

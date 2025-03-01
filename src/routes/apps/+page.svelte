@@ -1,4 +1,5 @@
 <script lang="ts">
+  import RouteHead from '$lib/components/RouteHead.svelte';
 	import List from './List.svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { filter } from '$lib/states.svelte';
@@ -53,6 +54,12 @@
 	}
 </script>
 
+<RouteHead
+  title="Apps | Svelte MiniApps"
+  description="Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
+  keywords="svelte, mini apps, applications, tools, productivity, entertainment"
+  route="/apps"
+/>
 <BlurInText>
 	<h1 class="my-8 text-center text-4xl font-bold">Explore Our Mini Applications</h1>
 </BlurInText>

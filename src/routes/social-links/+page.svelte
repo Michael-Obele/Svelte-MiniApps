@@ -1,14 +1,15 @@
 <script lang="ts">
+    import RouteHead from '$lib/components/RouteHead.svelte';
     import { Button } from "@/ui/button";
     import { Card } from "@/ui/card";
-
-
 </script>
 
-<svelte:head>
-    <title>Social Links - Svelte MiniApps</title>
-    <meta name="description" content="Share your social media links with a QR code" />
-</svelte:head>
+<RouteHead
+    title="Social Links - Svelte MiniApps"
+    description="Share your social media links with a QR code"
+    keywords="social links, QR code, share, profile"
+    route="/social-links"
+/>
 
 <div class="container mx-auto px-4 py-8">
     <Card class="mx-auto max-w-2xl">
@@ -48,5 +49,3 @@
         </div>
     </Card>
 </div>
-
-

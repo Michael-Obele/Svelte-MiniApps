@@ -1,5 +1,6 @@
 <!-- src/routes/social-links/[id]/+page.svelte -->
 <script lang="ts">
+    import RouteHead from '$lib/components/RouteHead.svelte';
     import type { PageData } from './$types';
     
     export let data: PageData;
@@ -7,10 +8,12 @@
     $: ({ urls } = data);
 </script>
 
-<svelte:head>
-    <title>Social Links</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</svelte:head>
+<RouteHead
+    title="Social Links"
+    description="Access all your social media profiles in one place"
+    keywords="social links, profile"
+    route="/social-links/[id]"
+/>
 
 <div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 px-4 py-8 dark:from-gray-900 dark:to-gray-800">
     <div class="mx-auto max-w-md space-y-8">
@@ -43,5 +46,3 @@
         </div>
     </div>
 </div>
-
-
