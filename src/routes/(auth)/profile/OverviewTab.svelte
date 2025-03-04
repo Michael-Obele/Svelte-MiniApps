@@ -1,12 +1,5 @@
 <script lang="ts">
-	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardFooter,
-		CardHeader,
-		CardTitle
-	} from '@/ui/card';
+	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/ui/card';
 	import { Progress } from '@/ui/progress';
 	import { Button } from '@/ui/button';
 	import { Code, Zap, Award, Activity, Clock } from 'lucide-svelte';
@@ -175,15 +168,16 @@
 	});
 </script>
 
-<div class="space-y-6">
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-		<!-- Stats Cards -->
-		<Card>
-			<CardHeader class="pb-2">
-				<CardTitle class="text-sm font-medium">Completed Apps</CardTitle>
+<!-- Container with improved responsive spacing -->
+<div class="space-y-8 px-2 sm:px-6 lg:px-8">
+	<!-- Stats Cards with better spacing and alignment -->
+	<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+		<Card class="overflow-hidden">
+			<CardHeader class="p-3 pb-0 sm:p-4 sm:pb-2">
+				<CardTitle class="text-xs font-medium sm:text-sm">Completed Apps</CardTitle>
 			</CardHeader>
-			<CardContent>
-				<div class="text-2xl font-bold">{stats.completedApps}/{stats.totalApps}</div>
+			<CardContent class="p-3 pt-2 sm:p-4 sm:pt-2">
+				<div class="text-base font-bold sm:text-2xl">{stats.completedApps}/{stats.totalApps}</div>
 				<Progress value={stats.progress} class="mt-2" />
 				<p class="mt-2 text-xs text-muted-foreground">{stats.progress}% of total projects</p>
 			</CardContent>
@@ -231,80 +225,79 @@
 		</Card>
 	</div>
 
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-		<!-- User Profile Card -->
-		<div class="md:col-span-1">
+	<!-- Profile and Activity section with improved responsive layout -->
+	<div class="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
+		<!-- User Profile Card with full width on mobile -->
+		<div class="lg:col-span-1">
 			<UserProfileCard />
 		</div>
-		
-		<RecentActivityCard {recentActivities} />
-	</div>
-	
-	<div class="mx-auto flex w-full flex-row justify-around space-x-20">
-		<!-- Upcoming Apps -->
-		<Card class="">
-			<CardHeader>
-				<CardTitle>Upcoming Apps</CardTitle>
-				<CardDescription>New apps coming soon</CardDescription>
-			</CardHeader>
-			<CardContent>
-				<UpcomingFeaturesList />
-			</CardContent>
-		</Card>
-		<!-- Favorite Apps -->
-		<div class="">
-			<Card>
-				<CardHeader>
-					<CardTitle>Favorite Apps</CardTitle>
-					<CardDescription>Apps you use the most</CardDescription>
-				</CardHeader>
-				<CardContent>
-					{#if favoriteApps.length > 0}
-						<div class="space-y-4">
-							{#each favoriteApps as app}
-								<div
-									class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50"
-								>
-									<div
-										class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
-									>
-										<Award class="h-5 w-5" />
-									</div>
-	
-									<div class="flex-1">
-										<div class="flex items-center justify-between">
-											<h4 class="font-medium">{app.appName}</h4>
-											<div class="text-sm text-muted-foreground">
-												<span>{app.usageCount} uses</span>
-											</div>
-										</div>
-	
-										<p class="mt-1 text-sm text-muted-foreground">
-											{app.appDescription}
-										</p>
-	
-										<div class="mt-3 flex items-center justify-end">
-											<Button
-												variant="outline"
-												size="sm"
-												class="h-8 gap-1 opacity-0 transition-opacity group-hover:opacity-100"
-												href="/apps/{app.appLink}"
-											>
-												Open App
-											</Button>
-										</div>
-									</div>
-								</div>
-							{/each}
-						</div>
-					{:else}
-						<div class="flex items-center justify-center p-4 text-muted-foreground">
-							No favorite apps yet
-						</div>
-					{/if}
-				</CardContent>
-			</Card>
+		<!-- Activity card that spans two columns on larger screens -->
+		<div class="lg:col-span-2">
+			<RecentActivityCard {recentActivities} />
 		</div>
 	</div>
 
+	<!-- Bottom section with better alignment and spacing -->
+	<div class="mx-auto flex flex-col gap-6 md:flex-row md:gap-6 lg:gap-10">
+		<!-- Upcoming Apps with equal flex distribution -->
+		<Card class="flex-1">
+			<CardHeader class="p-4">
+				<CardTitle class="text-lg sm:text-xl">Upcoming Apps</CardTitle>
+				<CardDescription>New apps coming soon</CardDescription>
+			</CardHeader>
+			<CardContent class="max-h-[400px] overflow-y-auto p-4">
+				<UpcomingFeaturesList />
+			</CardContent>
+		</Card>
+
+		<!-- Favorite Apps with equal flex distribution -->
+		<Card class="flex-1">
+			<CardHeader class="p-4">
+				<CardTitle class="text-lg sm:text-xl">Favorite Apps</CardTitle>
+				<CardDescription>Apps you use the most</CardDescription>
+			</CardHeader>
+			<CardContent class="p-4">
+				{#if favoriteApps.length > 0}
+					<div class="space-y-3 sm:space-y-4">
+						{#each favoriteApps as app}
+							<div
+								class="group flex flex-row items-start gap-3 rounded-lg border p-3 transition-all hover:bg-muted/50 sm:p-4"
+							>
+								<div
+									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500 sm:h-10 sm:w-10"
+								>
+									<Award class="h-4 w-4 sm:h-5 sm:w-5" />
+								</div>
+								<div class="flex-1">
+									<div
+										class="flex flex-col items-start justify-between sm:flex-row sm:items-center"
+									>
+										<h4 class="font-medium">{app.appName}</h4>
+										<div class="text-xs text-muted-foreground sm:text-sm">
+											<span>{app.usageCount} uses</span>
+										</div>
+									</div>
+									<p class="mt-1 text-xs text-muted-foreground sm:text-sm">{app.appDescription}</p>
+									<div class="mt-2 flex items-center justify-end sm:mt-3">
+										<Button
+											variant="outline"
+											size="sm"
+											class="h-7 gap-1 text-xs opacity-100 sm:h-8 sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100"
+											href="/apps/{app.appLink}"
+										>
+											Open App
+										</Button>
+									</div>
+								</div>
+							</div>
+						{/each}
+					</div>
+				{:else}
+					<div class="flex items-center justify-center p-4 text-muted-foreground">
+						No favorite apps yet
+					</div>
+				{/if}
+			</CardContent>
+		</Card>
+	</div>
 </div>

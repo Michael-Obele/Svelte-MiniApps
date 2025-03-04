@@ -43,7 +43,8 @@ export async function validateSession(sessionId: string) {
 				select: {
 					id: true,
 					username: true,
-					role: true // Include the user role
+					role: true, // Include the user role
+					createdAt: true
 				}
 			}
 		}
