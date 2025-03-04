@@ -1,5 +1,4 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
 	import { items, timeline, updates, getTypeStyles } from './data';
@@ -10,25 +9,20 @@
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '@/ui/card';
-	import { Badge } from '@/ui/badge';
-	import * as Dialog from '@/ui/dialog/index.js';
-	import { Button, buttonVariants } from '@/ui/button/index.js';
-	import { Alert, AlertTitle, AlertDescription } from '@/ui/alert';
+	} from '$lib/components/ui/card';
+	import { Badge } from '$lib/components/ui/badge';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
+	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
 	import { ArrowRightIcon } from 'lucide-svelte';
 	import Highlight from './Highlight.svelte';
 	import { once, preventDefault, scrollToID } from '$lib/utils';
 
 	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>
-<RouteHead
-  title="Changelog | Svelte MiniApps"
-  description="Explore the latest updates and improvements to Svelte MiniApps. Stay informed about new features, bug fixes, and performance enhancements."
-  keywords="svelte, mini apps, changelog, updates, features, bug fixes, performance"
-  route="/changelog"
-/>
+
 <div class="min-h-screen bg-gradient-to-b from-background to-background/95">
-	<div class="container mx-auto px-4 py-16 lg:max-w-7xl">
+	<div class="container mx-auto px-4 py-16">
 		<div class="relative mb-16">
 			<div class="absolute inset-0 flex items-center">
 				<div class="w-full border-t border-white/10"></div>
@@ -56,7 +50,7 @@
 		</p>
 
 		<!-- Bento Grid -->
-		<div class="mx-auto mb-16 grid gap-6 px-4 md:auto-rows-[22rem] md:grid-cols-3 lg:gap-8">
+		<div class="mx-auto mb-16 grid max-w-5xl gap-4 px-4 md:auto-rows-[20rem] md:grid-cols-3">
 			{#each items as item}
 				<Motion
 					initial={{ opacity: 0, y: 20 }}
@@ -68,9 +62,9 @@
 					>
 						<div class="relative z-10">
 							<div class="mb-4">
-								<item.icon size="36" class="lg:h-10 lg:w-10" />
+								<item.icon size="32" />
 							</div>
-							<h3 class="mb-2 text-xl font-semibold text-white lg:text-2xl">{item.title}</h3>
+							<h3 class="mb-2 text-xl font-semibold text-white">{item.title}</h3>
 							<p class="text-white/60">{item.description}</p>
 						</div>
 					</div>
@@ -83,12 +77,12 @@
 		<section id="timeline" class="py-10">
 			<!-- Updated timeline header using shadcn-svelte Badge component -->
 			<div class="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-				<h2 class="text-3xl font-bold lg:text-4xl">Migration Timeline</h2>
-				<a href="#updates" onclick={preventDefault(() => scrollToID('updates'))}>
-					<Badge class="cursor-pointer text-xs lg:text-sm">TL;DR Summary</Badge>
+				<h2 class="text-3xl font-bold">Migration Timeline</h2>
+				<a href="#updates" onclick={once(preventDefault(() => scrollToID('updates')))}>
+					<Badge class="cursor-pointer text-xs">TL;DR Summary</Badge>
 				</a>
 			</div>
-			<div class="relative mx-auto max-w-3xl lg:max-w-5xl">
+			<div class="relative mx-auto max-w-3xl">
 				<!-- Timeline line -->
 				<div class="absolute left-4 top-0 hidden h-full w-0.5 bg-border sm:left-1/2 sm:block"></div>
 				<!-- Timeline items -->
@@ -115,9 +109,9 @@
 								<item.icon class={`h-4 w-4 ${getTypeStyles(item.type)}`} />
 							</div>
 							<!-- Content -->
-							<Card class="flex-1 p-4 lg:p-6">
-								<h3 class="mb-2 font-semibold lg:text-lg">{item.title}</h3>
-								<p class="text-sm text-muted-foreground lg:text-base">{item.description}</p>
+							<Card class="flex-1 p-4">
+								<h3 class="mb-2 font-semibold">{item.title}</h3>
+								<p class="text-sm text-muted-foreground">{item.description}</p>
 							</Card>
 						</div>
 					</a>
@@ -171,16 +165,16 @@
 
 		<!-- Detailed Updates (replaced section) -->
 		<section id="updates" class="py-10">
-			<h2 class="mb-2 text-center text-3xl font-bold lg:text-4xl">TL;DR: Key Summaries</h2>
-			<p class="mb-10 text-center text-sm text-white/60 lg:text-base">
+			<h2 class="mb-2 text-center text-3xl font-bold">TL;DR: Key Summaries</h2>
+			<p class="mb-10 text-center text-sm text-white/60">
 				Click on any timeline item above for full details.
 			</p>
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+			<div class="grid gap-6 md:grid-cols-2">
 				{#each updates as section}
 					<Card>
 						<CardHeader>
-							<CardTitle class='my-3'>{section.category}</CardTitle>
-							<!-- <CardDescription>Highlights</CardDescription> -->
+							<CardTitle>{section.category}</CardTitle>
+							<CardDescription>Highlights</CardDescription>
 						</CardHeader>
 						<CardContent class="space-y-4">
 							{#each section.items as item}
@@ -195,7 +189,7 @@
 			</div>
 		</section>
 
-		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8 lg:max-w-4xl">
+		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8">
 			<Card>
 				<CardHeader>
 					<CardTitle>Need Svelte 4?</CardTitle>

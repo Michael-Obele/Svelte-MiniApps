@@ -1,12 +1,6 @@
 <script lang="ts">
 	import { Alert, AlertTitle, AlertDescription } from '@/ui/alert';
-	import {
-		Card,
-		CardHeader,
-		CardTitle,
-		CardDescription,
-		CardContent
-	} from '@/ui/card';
+	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
 	import { ArrowRightIcon, CircleCheckBigIcon, CircleXIcon } from 'lucide-svelte';
 
 	type HighlightItem = {
@@ -53,7 +47,11 @@
 	<h2 class="mb-10 text-center text-3xl font-bold lg:text-4xl">Key Changes</h2>
 	<div class="flex flex-col gap-6 md:flex-row md:flex-wrap md:justify-between md:gap-8">
 		{#each highlights as item, index}
-			<Card class={index === 2 ? 'md:flex-1 md:min-w-[calc(50%-1rem)] lg:min-w-0' : 'md:flex-1 md:min-w-[calc(50%-1rem)] lg:min-w-0'}>
+			<Card
+				class={index === 2
+					? 'md:min-w-[calc(50%-1rem)] md:flex-1 lg:min-w-0'
+					: 'md:min-w-[calc(50%-1rem)] md:flex-1 lg:min-w-0'}
+			>
 				<CardHeader>
 					<CardTitle class="lg:text-xl">{item.title}</CardTitle>
 					<CardDescription class="lg:text-base">{item.description}</CardDescription>

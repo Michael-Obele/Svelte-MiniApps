@@ -34,7 +34,7 @@
 
 <header>
 	<h2
-		class="bold mx-auto my-5 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		class="bold mx-auto my-5 mt-20 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
 	>
 		<a onclick={(event) => scrollToSection(event)} href="#{id}">
 			{@render children?.()}
