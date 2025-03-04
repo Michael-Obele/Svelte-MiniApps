@@ -1,11 +1,16 @@
 <script lang="ts">
 	import * as Breadcrumb from '@/ui/breadcrumb/index.js';
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Badge } from '@/ui/badge/index.js';
 	import { page } from '$app/state';
 	import { CodeXml } from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
+	import { PanelRightOpen, Keyboard } from 'lucide-svelte';
 	import AppTracker from '@/blocks/AppTracker.svelte';
-	
+	import { done } from '$lib/index';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -16,6 +21,41 @@
 	let currentRoute = $derived(route[route.length - 1]);
 
 	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps/tree/master/src/routes/apps/(app)';
+	let isSheetOpen = $state(false);
+
+	// Function to toggle the sheet
+	function toggleSheet() {
+		isSheetOpen = !isSheetOpen;
+	}
+
+	// Handle keyboard shortcut (Alt+A for "Apps")
+	function handleKeyDown(event: KeyboardEvent) {
+		if (event.altKey && event.key === 'a') {
+			event.preventDefault();
+			toggleSheet();
+		}
+	}
+
+	// Function to navigate to an app and close the sheet
+	function navigateToApp(appPath: string) {
+		// Close the sheet
+		isSheetOpen = false;
+
+		// Use a small timeout to ensure the sheet starts closing before navigation
+		setTimeout(() => {
+			goto(`/apps/${appPath}`);
+		}, 100);
+	}
+
+	onMount(() => {
+		// Add keyboard event listener when component mounts
+		window.addEventListener('keydown', handleKeyDown);
+
+		// Cleanup when component unmounts
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
+	});
 </script>
 
 <svelte:head>
@@ -76,6 +116,64 @@
 			</Breadcrumb.Item>
 		</Breadcrumb.List>
 	</Breadcrumb.Root>
+	<Sheet.Root bind:open={isSheetOpen}>
+		<Sheet.Trigger class="absolute left-3 top-0 rounded-md p-1.5 transition-colors hover:bg-muted">
+			<div class="flex items-center gap-1">
+				<PanelRightOpen class="h-5 w-5" />
+				<span class="sr-only">Open apps menu</span>
+				<div class="hidden items-center text-xs text-muted-foreground sm:flex">
+					<Keyboard class="mr-1 h-3 w-3" />
+					<span>Alt+A</span>
+				</div>
+			</div>
+		</Sheet.Trigger>
+		<Sheet.Content class="w-[300px] sm:w-[400px]">
+			<Sheet.Header class="pb-4">
+				<Sheet.Title class="text-xl font-semibold">Available Apps</Sheet.Title>
+				<Sheet.Description class="text-sm text-muted-foreground">
+					Explore our collection of interactive mini applications built with Svelte.
+					<div class="mt-2 space-y-1.5 rounded-md border border-muted bg-muted/30 p-2 text-xs">
+						<div class="flex items-center gap-1">
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
+							<span>+</span>
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">A</kbd>
+							<span class="ml-1.5 text-muted-foreground">Toggle this menu</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
+							<span class="ml-1.5 text-muted-foreground">Navigate forward</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Shift</kbd>
+							<span>+</span>
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
+							<span class="ml-1.5 text-muted-foreground">Navigate backwards</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Enter</kbd>
+							<span class="ml-1.5 text-muted-foreground">Open selected app</span>
+						</div>
+					</div>
+				</Sheet.Description>
+			</Sheet.Header>
+			<div class="grid gap-2 py-4">
+				{#each done as app}
+					<Sheet.Description>
+						<!-- Updated to use the navigateToApp function -->
+						<button
+							class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left hover:bg-muted"
+							onclick={() => navigateToApp(app)}
+						>
+							<div class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
+								<span class="text-xs font-medium text-primary">{app.charAt(0).toUpperCase()}</span>
+							</div>
+							<span class="capitalize">{app.replace(/-/g, ' ')}</span>
+						</button>
+					</Sheet.Description>
+				{/each}
+			</div>
+		</Sheet.Content>
+	</Sheet.Root>
 </div>
 
 <div class="relative mt-6 min-h-screen" transition:fade={{ duration: 150 }}>
