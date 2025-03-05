@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib'; // Import site-related variables
 	import { enhance } from '$app/forms';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import type { ActionData, SubmitFunction, PageData } from './$types';
 	import * as Alert from '@/ui/alert/index.js';
 	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';
@@ -96,50 +97,13 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Currency Converter - {site.name}</title>
-	<meta
-		name="description"
-		content="Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
-	/>
-	<meta
-		name="keywords"
-		content="currency converter, exchange rates, currency exchange, money converter, convert money"
-	/>
-
-	<!-- Open Graph Meta Tags -->
-	<meta property="og:title" content="Currency Converter - {site.name}" />
-	<meta
-		property="og:description"
-		content="Convert currencies easily and quickly with our free online tool."
-	/>
-	<meta property="og:image" content={site.image} />
-	<meta property="og:url" content="{site.url}apps/currency-converter" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content={site.name} />
-	<meta property="og:locale" content="en_US" />
-
-	<!-- Twitter Card Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Currency Converter - {site.name}" />
-	<meta
-		name="twitter:description"
-		content="Convert currencies easily and quickly with our free online tool."
-	/>
-	<meta name="twitter:image" content={site.image} />
-	<meta name="twitter:site" content="@yourtwitterhandle" />
-	<!-- Optional -->
-	<meta name="twitter:creator" content="@yourtwitterhandle" />
-	<!-- Optional -->
-
-	<!-- Canonical URL -->
-	<link rel="canonical" href="{site.url}apps/currency-converter" />
-
-	<!-- Other optional meta tags -->
-	<meta name="robots" content="index, follow" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta charSet="UTF-8" />
-</svelte:head>
+<RouteHead
+	title="Currency Converter - {site.name}"
+	description="Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
+	keywords="currency converter, exchange rates, currency exchange, money converter, convert money"
+	route="/apps/currency-converter"
+	image={site.image}
+/>
 
 <main class="w-full py-5 md:py-8 lg:py-10">
 	<div class="px-4 xl:container md:px-6">

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib';
 	import * as emoji from 'node-emoji';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Card from '@/ui/card';
 	import * as Tabs from '@/ui/tabs';
@@ -124,24 +125,13 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Advanced Emoji Tools</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta
-		name="description"
-		content="An advanced toolset for working with emojis. Convert text to emojis, search for emojis, and more."
-	/>
-	<link rel="canonical" href="{site.url}apps/advanced-emoji-tools" />
-
-	<!-- Social Media / Open Graph Meta Tags -->
-	<meta property="og:title" content="Advanced Emoji Tools" />
-	<meta property="og:description" content="Convert text to emojis, search for emojis, and more." />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="{site.url}apps/advanced-emoji-tools" />
-	<meta property="og:image" content={site.image} />
-	<meta property="og:site_name" content={site.name} />
-</svelte:head>
+<RouteHead
+	title="Advanced Emoji Tools"
+	description="An advanced toolset for working with emojis. Convert text to emojis, search for emojis, and more."
+	keywords="emoji tools, emoji converter, emoji search, text to emoji, emoji generator"
+	route="/apps/advanced-emoji-tools"
+	image={site.image}
+/>
 
 <div class="container mx-auto space-y-8 px-4 py-8">
 	<div class="space-y-4 text-center">

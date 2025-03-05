@@ -7,6 +7,7 @@
 	import { toast } from 'svelte-sonner';
 	import ExpenseDialog from './ExpenseDialog.svelte';
 	import FormSection from './FormSection.svelte';
+	import RouteHead from '@/RouteHead.svelte';
 
 	let budgetName = $state('');
 	let budgetAmount = $state('');
@@ -233,6 +234,27 @@
 		return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
 	}
 </script>
+
+<RouteHead
+	title="Budget Tracker | Svelte MiniApps"
+	description="Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
+	keywords="budget tracker, expense tracker, personal finance, money management, financial planning, spending tracker"
+	route="/apps/budget-tracker"
+	type="website"
+	structuredData={{
+		'@context': 'https://schema.org',
+		'@type': 'WebApplication',
+		name: 'Budget Tracker',
+		applicationCategory: 'FinanceApplication',
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD'
+		},
+		featureList: 'Create budgets, Track expenses, Visualize spending, Multiple currency support',
+		operatingSystem: 'Any'
+	}}
+/>
 
 <div class="container mx-auto max-w-4xl space-y-8 p-4">
 	<div class="space-y-4">

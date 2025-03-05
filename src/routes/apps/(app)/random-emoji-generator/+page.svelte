@@ -3,6 +3,7 @@
 	import { Clipboard, RefreshCcw } from 'lucide-svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { copyToClipboard } from '$lib/utils';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 
 	let randomEmoji = emoji.random();
 
@@ -11,41 +12,13 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Random Emoji Generator - Svelte MiniApps</title>
-	<meta
-		name="description"
-		content="Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
-	/>
-	<meta property="og:title" content="Random Emoji Generator - Svelte MiniApps" />
-	<meta
-		property="og:description"
-		content="Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
-	/>
-	<meta property="og:url" content="https://svelte-apps.me/apps/random-emoji-generator" />
-	<meta property="og:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<link rel="canonical" href="https://svelte-apps.me/apps/random-emoji-generator" />
-	<meta name="twitter:title" content="Random Emoji Generator - Svelte MiniApps" />
-	<meta name="keywords" content="Random Emoji, Emoji Generator, Fun, Productivity, Svelte Apps" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
-		name="twitter:description"
-		content="Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
-	/>
-	<meta name="twitter:image" content="https://i.ibb.co/ZhhhnCz/svelte-badge.png" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta charset="UTF-8" />
-	<meta name="robots" content="index, follow" />
-	<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "WebApplication",
-			"name": "Random Emoji Generator",
-			"url": "https://svelte-apps.me/apps/random-emoji-generator",
-			"description": "Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
-		}
-	</script>
-</svelte:head>
+<RouteHead
+	title="Random Emoji Generator - Svelte MiniApps"
+	description="Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
+	keywords="Random Emoji, Emoji Generator, Fun, Productivity, Svelte Apps"
+	route="/apps/random-emoji-generator"
+	image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
+/>
 
 <div class="container flex min-h-screen flex-col items-center justify-center">
 	<h1 class="mb-4 text-4xl font-bold tracking-tighter text-gray-900 dark:text-white">

@@ -5,6 +5,7 @@
 
 	import { site } from '$lib';
 	import { page } from '$app/state';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import { X } from 'lucide-svelte';
 	import { Button } from '@/ui/button';
 	import Input from '@/ui/input/input.svelte';
@@ -133,41 +134,12 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Todo List | {site.name}</title>
-	<meta
-		name="description"
-		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
-	/>
-
-	<!-- SEO -->
-	<meta name="robots" content="index, follow" />
-	<meta
-		name="keywords"
-		content="todo list, task management, svelte, sveltekit, typescript, web application"
-	/>
-	<link rel="canonical" href={`${site.url}${page.url.pathname}`} />
-
-	<!-- Open Graph -->
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content={site.name} />
-	<meta property="og:title" content="Todo List" />
-	<meta
-		property="og:description"
-		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
-	/>
-	<meta property="og:image" content={site.image} />
-	<meta property="og:url" content={`${site.url}${page.url.pathname}`} />
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Todo List" />
-	<meta
-		name="twitter:description"
-		content="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
-	/>
-	<meta name="twitter:image" content={site.image} />
-</svelte:head>
+<RouteHead
+	title="Todo List | {site.name}"
+	description="A persistent todo list application that helps you manage and track your tasks. Built with SvelteKit and TypeScript."
+	keywords="todo list, task management, svelte, sveltekit, typescript, web application"
+	route={page.url.pathname}
+/>
 
 <div class="container mx-auto p-6 dark:bg-gray-900">
 	<h1 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">To-Do List with Persistence</h1>

@@ -10,6 +10,7 @@
 	import { Copy, Star, StarOff } from 'lucide-svelte';
 	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import { copyToClipboard } from '$lib/utils';
 	import { userContext } from '$lib/utils';
 	import type { ActionData, PageData } from './$types';
@@ -99,44 +100,13 @@
 	};
 </script>
 
-<svelte:head>
-	<title>{site.name} - Password Generator</title>
-	<meta
-		name="description"
-		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
-	/>
-	<meta property="og:title" content="{site.name} - Password Generator" />
-	<meta
-		property="og:description"
-		content="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
-	/>
-	<meta property="og:url" content="{site.url}apps/password-generator" />
-	<meta property="og:image" content={site.image} />
-	<meta property="og:type" content="website" />
-	<meta property="og:locale" content="en_US" />
-
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="{site.name} - Password Generator - Secure Your Accounts" />
-	<meta
-		name="twitter:description"
-		content="Generate strong, random passwords with ease using the {site.name} Random Password Generator."
-	/>
-	<meta name="twitter:image" content={site.image} />
-
-	<link rel="canonical" href="{site.url}apps/password-generator" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta charset="UTF-8" />
-	<meta name="robots" content="index, follow" />
-	<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "WebApplication",
-			"name": "Svelte MiniApps - Password Generator",
-			"url": "https://svelte-apps.me/apps/password-generator",
-			"description": "Generates random passwords with configurable length and complexity. Secure your accounts with ease."
-		}
-	</script>
-</svelte:head>
+<RouteHead
+	title="{site.name} - Password Generator"
+	description="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
+	keywords="password generator, secure passwords, random passwords, password security, svelte apps"
+	route="/apps/password-generator"
+	image={site.image}
+/>
 
 <div class="container mx-auto max-w-2xl px-4 py-8">
 	<div class="space-y-6">

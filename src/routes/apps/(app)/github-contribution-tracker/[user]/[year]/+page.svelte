@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from 'lucide-svelte';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as Drawer from '@/ui/drawer';
 	import { Chart, Bars, Calendar, Axis, Group, Text, Svg, Tooltip, Highlight } from 'layerchart';
@@ -10,13 +11,7 @@
 	import { startOfYear, parseISO, endOfYear } from 'date-fns';
 	import { flatGroup } from 'd3-array';
 	import { scrollToID, scrollToTop } from '$lib/utils';
-	import {
-		Card,
-		CardHeader,
-		CardTitle,
-		CardDescription,
-		CardContent
-	} from '@/ui/card';
+	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
 	import GitGraph from './GitGraph.svelte';
 	import { toast } from 'svelte-sonner';
 
@@ -71,13 +66,12 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{user} - GitHub Contributions in {year}</title>
-	<meta
-		name="description"
-		content="Visualize {user}'s GitHub contributions for {year} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
-	/>
-</svelte:head>
+<RouteHead
+	title="{user} - GitHub Contributions in {year}"
+	description="Visualize {user}'s GitHub contributions for {year} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
+	keywords="github contributions, contribution tracking, activity heatmap, developer stats"
+	route="/apps/github-contribution-tracker/{user}/{year}"
+/>
 
 <div class="mx-auto my-8 max-w-3xl space-y-6 text-center">
 	<div class="space-y-4">

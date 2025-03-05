@@ -11,6 +11,7 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { site } from '$lib';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 
 	interface Props {
 		//
@@ -74,55 +75,13 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Svelte MiniApps - English Dictionary App</title>
-	<meta
-		name="description"
-		content="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
-	/>
-	<meta
-		name="keywords"
-		content="English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
-	/>
-	<meta property="og:title" content="Svelte MiniApps - English Dictionary App" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={site.url + 'apps/english-dictionary-app'} />
-	<meta
-		property="og:description"
-		content="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more."
-	/>
-	<meta property="og:image" content={site.image} />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Svelte MiniApps - English Dictionary App" />
-	<meta
-		name="twitter:description"
-		content="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more."
-	/>
-	<meta name="twitter:image" content={site.image} />
-	<link rel="canonical" href={site.url + 'apps/english-dictionary-app'} />
-
-	<script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "WebApplication",
-            "name": "English Dictionary App",
-            "url": site.url + 'apps/english-dictionary-app', // Use imported site.url directly
-            "description": "An interactive tool for looking up English words and their meanings, including definitions, synonyms, and antonyms.",
-            "applicationCategory": "reference",
-            "operatingSystem": "Web",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.5", // Replace with your actual rating
-                "reviewCount": "100" // Replace with your actual review count
-            }
-        }
-	</script>
-</svelte:head>
+<RouteHead
+	title="Svelte MiniApps - English Dictionary App"
+	description="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
+	keywords="English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
+	route="/apps/english-dictionary-app"
+	image={site.image}
+/>
 
 <form
 	use:enhance={handleSubmit}

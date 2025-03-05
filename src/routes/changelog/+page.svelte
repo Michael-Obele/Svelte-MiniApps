@@ -17,9 +17,33 @@
 	import { ArrowRightIcon } from 'lucide-svelte';
 	import Highlight from './Highlight.svelte';
 	import { once, preventDefault, scrollToID } from '$lib/utils';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 
 	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>
+
+<RouteHead
+	title="Changelog: Svelte 4 to Svelte 5 Migration"
+	description="Track our journey from Svelte 4 to Svelte 5, featuring offline-first architecture, enhanced performance, and progressive web app capabilities."
+	keywords="svelte, svelte5, migration, changelog, offline-first, pwa, web development"
+	route="/changelog"
+	type="article"
+	publishedTime="2024-11-23T00:00:00.000Z"
+	modifiedTime="2025-02-10T00:00:00.000Z"
+	structuredData={{
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: 'Changelog: Svelte 4 to Svelte 5 Migration',
+		description:
+			'Track our journey from Svelte 4 to Svelte 5, featuring offline-first architecture, enhanced performance, and progressive web app capabilities.',
+		datePublished: '2024-11-23T00:00:00.000Z',
+		dateModified: '2025-02-10T00:00:00.000Z',
+		author: {
+			'@type': 'Person',
+			name: 'Michael Obele'
+		}
+	}}
+/>
 
 <div class="min-h-screen bg-gradient-to-b from-background to-background/95">
 	<div class="container mx-auto px-4 py-16">

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as htmlToImage from 'html-to-image';
 	import TextInput from './TextInput.svelte';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import ContactInput from './ContactInput.svelte';
 	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '@/ui/tabs';
@@ -14,9 +15,7 @@
 		email: '',
 		website: ''
 	});
-	let socialLinks = $state([
-		{ label: '', url: '' }
-	]);
+	let socialLinks = $state([{ label: '', url: '' }]);
 
 	function addSocialLink() {
 		socialLinks = [...socialLinks, { label: '', url: '' }];
@@ -27,11 +26,11 @@
 	}
 
 	function generateSocialLinks() {
-		const validLinks = socialLinks.filter(link => link.label && link.url);
+		const validLinks = socialLinks.filter((link) => link.label && link.url);
 		if (validLinks.length === 0) return '';
 
 		let text = 'My Social Links:\n\n';
-		validLinks.forEach(link => {
+		validLinks.forEach((link) => {
 			const safeUrl = link.url.startsWith('http') ? link.url : `https://${link.url}`;
 			text += `${link.label}: ${safeUrl}\n`;
 		});
@@ -47,8 +46,9 @@
 	});
 
 	function generateVCard() {
-		if (!contactInfo.name && !contactInfo.phone && !contactInfo.email && !contactInfo.website) return '';
-		
+		if (!contactInfo.name && !contactInfo.phone && !contactInfo.email && !contactInfo.website)
+			return '';
+
 		let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
 		if (contactInfo.name) vcard += `FN:${contactInfo.name}\n`;
 		if (contactInfo.phone) vcard += `TEL:${contactInfo.phone}\n`;
@@ -75,14 +75,12 @@
 	}
 </script>
 
-<svelte:head>
-	<title>QR Code Generator</title>
-	<meta
-		name="description"
-		content="Generate and download QR codes for links, contact info, or any data you want to embed."
-	/>
-	<meta name="keywords" content="QR Code, QR Code Generator, Encode QR, Save QR" />
-</svelte:head>
+<RouteHead
+	title="QR Code Generator"
+	description="Generate and download QR codes for links, contact info, or any data you want to embed."
+	keywords="QR Code, QR Code Generator, Encode QR, Save QR"
+	route="/apps/qr-code-generator"
+/>
 
 <section class="container mx-auto py-8">
 	<div class="mx-auto max-w-4xl space-y-8">
@@ -94,7 +92,7 @@
 		</div>
 
 		<div class="rounded-lg border bg-card p-6 shadow-sm">
-			<Tabs.Root value={selectedTab} onValueChange={(v) => selectedTab = v} class="w-full">
+			<Tabs.Root value={selectedTab} onValueChange={(v) => (selectedTab = v)} class="w-full">
 				<Tabs.List class="grid w-full grid-cols-3">
 					<Tabs.Trigger value="text">Text/URL</Tabs.Trigger>
 					<Tabs.Trigger value="contact">Contact Card</Tabs.Trigger>
@@ -102,13 +100,13 @@
 				</Tabs.List>
 				<div class="mt-6 space-y-4">
 					<Tabs.Content value="text">
-						<TextInput bind:inputText={inputText} />
+						<TextInput bind:inputText />
 					</Tabs.Content>
 					<Tabs.Content value="contact">
-						<ContactInput bind:contactInfo={contactInfo} />
+						<ContactInput bind:contactInfo />
 					</Tabs.Content>
 					<Tabs.Content value="social">
-						<SocialLinks bind:socialLinks={socialLinks} {addSocialLink} {removeSocialLink}  />
+						<SocialLinks bind:socialLinks {addSocialLink} {removeSocialLink} />
 					</Tabs.Content>
 				</div>
 			</Tabs.Root>

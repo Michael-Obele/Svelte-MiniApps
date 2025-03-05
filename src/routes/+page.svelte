@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/RouteHead.svelte';
 	import Welcome from './Welcome.svelte';
 
 	import Hero from './Hero.svelte';
@@ -47,12 +47,30 @@
 </div>
 
 <RouteHead
-    title="{websiteTitle} - Smart Tools for Modern Life"
-    description={websiteDescription}
-    keywords="svelte apps, web tools, productivity tools, mini applications, svelte toolkit"
-    route="/"
-    author={site.name}
-  />
+	title="{websiteTitle} - Smart Tools for Modern Life"
+	description={websiteDescription}
+	keywords="svelte apps, web tools, productivity tools, mini applications, svelte toolkit, svelte5, offline-first, pwa"
+	route="/"
+	type="website"
+	themeColor="#1e293b"
+	structuredData={{
+		'@context': 'https://schema.org',
+		'@type': 'WebApplication',
+		name: websiteTitle,
+		description: websiteDescription,
+		applicationCategory: 'Productivity',
+		operatingSystem: 'Any',
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD'
+		},
+		author: {
+			'@type': 'Person',
+			name: site.author
+		}
+	}}
+/>
 
 <!-- Welcome Section -->
 <Welcome {data} {form} />
