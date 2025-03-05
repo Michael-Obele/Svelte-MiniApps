@@ -2,8 +2,14 @@
 
 export const site = {
 	name: 'Svelte MiniApps',
-	url: 'https://svelte-apps.me/',
-	image: 'https://i.ibb.co/1XyZZKZ/svelte-dark.png'
+	url: 'https://svelte-apps.me',
+	image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png',
+	author: 'Michael Obele',
+	description: 'A collection of mini applications built with Svelte',
+	twitterUsername: 'Dev_Obele', // Add your Twitter handle if you have one
+	githubUsername: 'Michael-Obele',
+	repository: 'https://github.com/Michael-Obele/Svelte-MiniApps',
+	themeColor: '#1e293b'
 };
 
 export const done = [
