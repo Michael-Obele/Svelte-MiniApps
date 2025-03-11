@@ -143,7 +143,7 @@
 					</div>
 				</Sheet.Description>
 			</Sheet.Header>
-			<div class="grid gap-2 py-4">
+			<div class="flex flex-col gap-2 overflow-y-auto py-4" style="max-height: calc(80vh - 150px);">
 				{#each done as app}
 					<Sheet.Description>
 						<!-- Updated to use the navigateToApp function -->
