@@ -31,7 +31,7 @@
 
 	// Handle keyboard shortcut (Alt+A for "Apps")
 	function handleKeyDown(event: KeyboardEvent) {
-		if (event.altKey && event.key === 'x') {
+		if (event.altKey && event.key === 'd') {
 			event.preventDefault();
 			toggleSheet();
 		}
@@ -71,7 +71,7 @@
 	<AppTracker appLink={currentRoute} />
 {/if}
 
-<div class="flex items-start justify-between">
+<div class="flex items-start justify-between p-1">
 	<div class="relative mb-5 mt-2 flex place-items-center justify-center">
 		<Breadcrumb.Root>
 			<Breadcrumb.List>
@@ -104,7 +104,7 @@
 	</div>
 
 	<Sheet.Root bind:open={isSheetOpen}>
-		<Sheet.Trigger class="order-first mt-2 rounded-md px-1.5 transition-colors hover:bg-muted">
+		<Sheet.Trigger class="order-first mt-2 rounded-md transition-colors hover:bg-muted">
 			<div class="flex items-center gap-1">
 				<PanelRightOpen class="size-5" />
 				<span class="sr-only">Open apps menu</span>
