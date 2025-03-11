@@ -31,7 +31,7 @@
 
 	// Handle keyboard shortcut (Alt+A for "Apps")
 	function handleKeyDown(event: KeyboardEvent) {
-		if (event.altKey && event.key === 'a') {
+		if (event.altKey && event.key === 'x') {
 			event.preventDefault();
 			toggleSheet();
 		}
@@ -71,40 +71,46 @@
 	<AppTracker appLink={currentRoute} />
 {/if}
 
-<div class="relative mb-5 mt-2 flex place-items-center justify-center">
-	<Breadcrumb.Root>
-		<Breadcrumb.List>
-			<Breadcrumb.Item>
-				<Breadcrumb.Link href="/">Home</Breadcrumb.Link>
-			</Breadcrumb.Item>
-			<Breadcrumb.Separator />
-			<Breadcrumb.Item>
-				<Breadcrumb.Link href="/apps">Apps</Breadcrumb.Link>
-			</Breadcrumb.Item>
-			<Breadcrumb.Separator />
-			<Breadcrumb.Item>
-				{#if routeId == currentRoute}
-					<Breadcrumb.Page class="capitalize">{routeId}</Breadcrumb.Page>
-				{:else}
-					<Breadcrumb.Link class="capitalize" href="/apps/{routeId.toLowerCase()}"
-						>{routeId.toLowerCase()}</Breadcrumb.Link
-					>
-				{/if}
-				<Badge variant="secondary" href="{link}/{routeId.toLowerCase()}" target="_blank" class="">
-					<span class="hidden sm:inline"> View Source Code </span>
-					<CodeXml size="16" class="sm:mx-1" />
-				</Badge>
-			</Breadcrumb.Item>
-		</Breadcrumb.List>
-	</Breadcrumb.Root>
+<div class="flex items-start justify-between">
+	<div class="relative mb-5 mt-2 flex place-items-center justify-center">
+		<Breadcrumb.Root>
+			<Breadcrumb.List>
+				<Breadcrumb.Item>
+					<Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+				</Breadcrumb.Item>
+				<Breadcrumb.Separator />
+				<Breadcrumb.Item>
+					<Breadcrumb.Link href="/apps">Apps</Breadcrumb.Link>
+				</Breadcrumb.Item>
+				<Breadcrumb.Separator />
+				<Breadcrumb.Item>
+					{#if routeId == currentRoute}
+						<Breadcrumb.Page class="capitalize">{routeId}</Breadcrumb.Page>
+					{:else}
+						<Breadcrumb.Link class="capitalize" href="/apps/{routeId.toLowerCase()}"
+							>{routeId.toLowerCase()}</Breadcrumb.Link
+						>
+					{/if}
+					<Badge variant="secondary" href="{link}/{routeId.toLowerCase()}" target="_blank" class="">
+						<span class="hidden sm:inline"> View Source Code </span>
+						<CodeXml size="16" class="sm:mx-1" />
+					</Badge>
+				</Breadcrumb.Item>
+			</Breadcrumb.List>
+		</Breadcrumb.Root>
+	</div>
+	<div>
+		<!-- Empty for layout -->
+	</div>
+
 	<Sheet.Root bind:open={isSheetOpen}>
-		<Sheet.Trigger class="absolute left-3 top-0 rounded-md p-1.5 transition-colors hover:bg-muted">
+		<Sheet.Trigger class="order-first mt-2 rounded-md px-1.5 transition-colors hover:bg-muted">
 			<div class="flex items-center gap-1">
-				<PanelRightOpen class="h-5 w-5" />
+				<PanelRightOpen class="size-5" />
 				<span class="sr-only">Open apps menu</span>
-				<div class="hidden items-center text-xs text-muted-foreground sm:flex">
+				<div class="hidden items-center text-xs text-muted-foreground md:flex">
 					<Keyboard class="mr-1 h-3 w-3" />
-					<span>Alt+A</span>
+					<span>Alt+X</span>
 				</div>
 			</div>
 		</Sheet.Trigger>
@@ -117,7 +123,7 @@
 						<div class="flex items-center gap-1">
 							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
 							<span>+</span>
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">A</kbd>
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">X</kbd>
 							<span class="ml-1.5 text-muted-foreground">Toggle this menu</span>
 						</div>
 						<div class="flex items-center gap-1">
