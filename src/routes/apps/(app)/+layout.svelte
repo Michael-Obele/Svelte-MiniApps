@@ -110,7 +110,7 @@
 				<span class="sr-only">Open apps menu</span>
 				<div class="hidden items-center text-xs text-muted-foreground md:flex">
 					<Keyboard class="mr-1 h-3 w-3" />
-					<span>Alt+X</span>
+					<span>Alt+D</span>
 				</div>
 			</div>
 		</Sheet.Trigger>
@@ -123,7 +123,7 @@
 						<div class="flex items-center gap-1">
 							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
 							<span>+</span>
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">X</kbd>
+							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">D</kbd>
 							<span class="ml-1.5 text-muted-foreground">Toggle this menu</span>
 						</div>
 						<div class="flex items-center gap-1">
