@@ -17,8 +17,6 @@
 	let websiteTitle = 'Svelte MiniApps';
 	let websiteDescription =
 		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
-	let twitterTitle = `${websiteTitle} - Smart Tools for Modern Life`;
-	let twitterDescription = `Discover your new favorite productivity toolkit! Beautifully designed, lightning-fast mini-apps that make everyday tasks a breeze.`;
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from 'lucide-svelte';
