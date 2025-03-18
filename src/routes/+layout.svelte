@@ -6,7 +6,7 @@
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';
 	import type { LayoutProps } from './$types';
-	import lottie from 'lottie-web';
+	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
@@ -19,6 +19,7 @@
 			registerServiceWorker();
 		}
 
+		const lottie = (await import('lottie-web')).default;
 		const { defineElement } = await import('@lordicon/element');
 		defineElement(lottie.loadAnimation);
 	});

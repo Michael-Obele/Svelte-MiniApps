@@ -1,392 +1,383 @@
 <script lang="ts">
-	import { site } from '$lib';
-	import { page } from '$app/state';
-	import RouteHead from '$lib/components/RouteHead.svelte';
-	import { X, Pencil } from 'lucide-svelte';
-	import { Button } from '@/ui/button';
-	import Input from '@/ui/input/input.svelte';
-	import { Checkbox } from '@/ui/checkbox';
-	import { flip } from 'svelte/animate';
-	import type { DndEvent } from 'svelte-dnd-action';
-	import { dndzone } from 'svelte-dnd-action';
+	import {
+		FlexiBoard,
+		FlexiTarget,
+		FlexiWidget,
+		type FlexiBoardController,
+		type FlexiTargetController,
+		type FlexiWidgetController,
+		type FlexiWidgetChildrenSnippetParameters
+	} from 'svelte-flexiboards';
 
+	// Type definitions
 	interface Todo {
-		id: number;
+		id: string;
 		text: string;
 		completed: boolean;
-		columnId: string;
-		order: number;
-		[key: string]: string | number | boolean;
+		columnId?: string;
 	}
 
 	interface Column {
 		id: string;
 		title: string;
 		color: string;
+		todos: Todo[];
 	}
 
-	let todos: Todo[] = $state([]);
+	// Generate a unique ID
+	function generateId(): string {
+		return Math.random().toString(36).substring(2, 12);
+	}
+
+	// State for board and columns
+	let board: FlexiBoardController | undefined = $state();
+	
+	// Initial columns data
 	let columns: Column[] = $state([
-		{ id: 'todo', title: 'To Do', color: 'bg-blue-500' },
-		{ id: 'in-progress', title: 'In Progress', color: 'bg-yellow-500' },
-		{ id: 'done', title: 'Done', color: 'bg-green-500' }
+		{
+			id: 'todo',
+			title: 'To Do',
+			color: 'bg-blue-300',
+			todos: [
+				{ id: generateId(), text: 'Learn Svelte 5', completed: false },
+				{ id: generateId(), text: 'Build a Todo App', completed: false }
+			]
+		},
+		{
+			id: 'in-progress',
+			title: 'In Progress',
+			color: 'bg-amber-300',
+			todos: [
+				{ id: generateId(), text: 'Implement drag and drop', completed: false }
+			]
+		},
+		{
+			id: 'done',
+			title: 'Done',
+			color: 'bg-green-300',
+			todos: [
+				{ id: generateId(), text: 'Setup project', completed: true }
+			]
+		}
 	]);
-	let newTodo = $state('');
-	let newColumnTitle = $state('');
-	let editingColumnId: string = $state('');
-	let newColumnName = $state('');
-	let selectedColumnForTodo = $state('todo'); // Default column for new todos
 
-	// Configuration for dnd
-	const flipDurationMs = 300;
-
-	// Load data from local storage on component mount
-	if (typeof localStorage !== 'undefined') {
-		const storedTodos = localStorage.getItem('kanban-todos');
-		const storedColumns = localStorage.getItem('kanban-columns');
-		if (storedTodos) {
-			todos = JSON.parse(storedTodos);
-		}
-		if (storedColumns) {
-			columns = JSON.parse(storedColumns);
-		}
-	}
-
-	// Get todos for a specific column
-	function getColumnTodos(columnId: string): Todo[] {
-		return todos.filter((todo) => todo.columnId === columnId);
-	}
-
-	function addTodo() {
-		if (newTodo.trim() === '') return;
-		const newTodoObj: Todo = {
-			id: Date.now(),
-			text: newTodo,
-			completed: false,
-			columnId: selectedColumnForTodo,
-			order: getColumnTodos(selectedColumnForTodo).length
-		};
-		todos = [...todos, newTodoObj];
-		newTodo = '';
-		saveTodos();
-	}
-
-	function toggleTodo(id: number) {
-		todos = todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
-		saveTodos();
-	}
-
-	function deleteTodo(id: number) {
-		todos = todos.filter((todo) => todo.id !== id);
-		saveTodos();
-	}
-
+	// Function to add a new column
 	function addColumn() {
-		if (newColumnTitle.trim() === '') return;
-		const randomColor = getRandomColor();
-		const newColumnId = newColumnTitle.toLowerCase().replace(/\s+/g, '-');
-
-		columns = [
-			...columns,
-			{
-				id: newColumnId,
-				title: newColumnTitle,
-				color: randomColor
-			}
-		];
-
-		newColumnTitle = '';
-		saveColumns();
+		const newColumn: Column = {
+			id: generateId(),
+			title: 'New Column',
+			color: 'bg-gray-300',
+			todos: []
+		};
+		
+		columns = [...columns, newColumn];
 	}
 
-	function getRandomColor(): string {
-		const colors = [
-			'bg-blue-500',
-			'bg-green-500',
-			'bg-yellow-500',
-			'bg-purple-500',
-			'bg-pink-500',
-			'bg-indigo-500',
-			'bg-red-500',
-			'bg-orange-500',
-			'bg-teal-500'
-		];
-		return colors[Math.floor(Math.random() * colors.length)];
-	}
-
+	// Function to remove a column
 	function removeColumn(columnId: string) {
-		if (
-			confirm(
-				`Are you sure you want to remove this column? All tasks in the column will be deleted.`
-			)
-		) {
-			columns = columns.filter((col) => col.id !== columnId);
-			// Remove todos in this column
-			todos = todos.filter((todo) => todo.columnId !== columnId);
-			saveColumns();
-			saveTodos();
-		}
+		columns = columns.filter(col => col.id !== columnId);
 	}
 
-	function saveTodos() {
-		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem('kanban-todos', JSON.stringify(todos));
-		}
-	}
-
-	function saveColumns() {
-		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem('kanban-columns', JSON.stringify(columns));
-		}
-	}
-
-	// Function to start editing a column name
-	function editColumnName(column: Column) {
-		editingColumnId = column.id;
-		newColumnName = column.title;
-	}
-
-	// Function to save the edited column name
-	function saveColumnName() {
-		if (newColumnName.trim() === '') return;
-		columns = columns.map((column) =>
-			column.id === editingColumnId ? { ...column, title: newColumnName } : column
-		);
-		editingColumnId = '';
-		newColumnName = '';
-		saveColumns();
-	}
-
-	// DND event handlers for column reordering
-	function handleColumnDndConsider(e: CustomEvent<DndEvent>) {
-		columns = e.detail.items as Column[];
-	}
-
-	function handleColumnDndFinalize(e: CustomEvent<DndEvent>) {
-		columns = e.detail.items as Column[];
-		saveColumns();
-	}
-
-	// DND event handlers for todo items within a column
-	function handleTodoDndConsider(e: CustomEvent<DndEvent>, columnId: string) {
-		const { items } = e.detail;
-		todos = todos.map((todo) =>
-			todo.columnId === columnId
-				? (items.find((item) => item.id === todo.id) as Todo) || todo
-				: todo
+	// Function to update a column title
+	function updateColumnTitle(columnId: string, newTitle: string) {
+		columns = columns.map(col => 
+			col.id === columnId ? {...col, title: newTitle} : col
 		);
 	}
 
-	// DND handlers for moving todos between columns
-	function handleCrossColumnDrop(e: CustomEvent<DndEvent>, targetColumnId: string) {
-		const { items: newItems, info } = e.detail;
+	// Function to add a todo to a column
+	function addTodo(columnId: string, text: string) {
+		if (!text.trim()) return;
+		
+		columns = columns.map(col => {
+			if (col.id === columnId) {
+				return {
+					...col,
+					todos: [...col.todos, {
+						id: generateId(),
+						text,
+						completed: false,
+						columnId
+					}]
+				};
+			}
+			return col;
+		});
+	}
 
-		// Type guard to ensure info.source exists and has columnId property
-		if (
-			info?.source &&
-			typeof info.source === 'object' &&
-			info.source !== null &&
-			'columnId' in info.source &&
-			(info.source as { columnId: string }).columnId !== targetColumnId
-		) {
-			// Item is coming from another column
-			const draggedItemId = Number(info.id);
+	// Function to toggle todo completion status
+	function toggleTodoCompleted(columnId: string, todoId: string) {
+		columns = columns.map(col => {
+			if (col.id === columnId) {
+				return {
+					...col,
+					todos: col.todos.map(todo => 
+						todo.id === todoId ? {...todo, completed: !todo.completed} : todo
+					)
+				};
+			}
+			return col;
+		});
+	}
 
-			todos = todos.map((todo) => {
-				if (todo.id === draggedItemId) {
-					return { ...todo, columnId: targetColumnId };
-				}
-				return todo;
-			});
+	// Function to remove a todo
+	function removeTodo(columnId: string, todoId: string) {
+		columns = columns.map(col => {
+			if (col.id === columnId) {
+				return {
+					...col,
+					todos: col.todos.filter(todo => todo.id !== todoId)
+				};
+			}
+			return col;
+		});
+	}
+
+	// Function to update a todo text
+	function updateTodoText(columnId: string, todoId: string, newText: string) {
+		columns = columns.map(col => {
+			if (col.id === columnId) {
+				return {
+					...col,
+					todos: col.todos.map(todo => 
+						todo.id === todoId ? {...todo, text: newText} : todo
+					)
+				};
+			}
+			return col;
+		});
+	}
+
+	// Theme classes
+	const themeClasses = {
+		target: "flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-2 min-w-[280px] min-h-[200px] shadow-md",
+		widget: "w-full p-3 my-2 bg-white dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing",
+		widgetActive: "opacity-50 animate-pulse",
+		widgetShadow: "opacity-30"
+	};
+
+	// Global state variables (shared across all components)
+	let titleEditing = $state(false);
+	let newTitle = $state('');
+	let addingTodo = $state(false);
+	let newTodoText = $state('');
+	let target = $state<FlexiTargetController>();
+	let todoInputRef = $state<HTMLInputElement>();
+	let inputRef = $state<HTMLInputElement>();
+	let editing = $state(false);
+	let editText = $state('');
+	let editInputRef = $state<HTMLInputElement>();
+
+	// Functions for KanbanColumn component
+	function startEditingTitle(column: Column | null | undefined) {
+		if (!column) return;
+		titleEditing = true;
+		newTitle = column.title || '';
+	}
+
+	function saveTitle(column: Column | null | undefined) {
+		if (!column) return;
+		if (newTitle.trim()) {
+			updateColumnTitle(column.id, newTitle);
 		}
+		titleEditing = false;
+	}
 
-		// Update the order within the target column
-		const updatedColumnTodos = (newItems as Todo[]).map((item, index) => ({
-			...item,
-			order: index
-		}));
+	function startAddingTodo(column: Column | null | undefined) {
+		if (!column) return;
+		addingTodo = true;
+		newTodoText = '';
+	}
 
-		todos = [...todos.filter((todo) => todo.columnId !== targetColumnId), ...updatedColumnTodos];
+	function saveTodo(column: Column | null | undefined) {
+		if (!column) return;
+		if (newTodoText.trim()) {
+			addTodo(column.id, newTodoText);
+			newTodoText = '';
+		}
+		addingTodo = false;
+	}
 
-		saveTodos();
+	function cancelTodo(column: Column | null | undefined) {
+		if (!column) return;
+		addingTodo = false;
+		newTodoText = '';
+	}
+
+	// Functions for TodoItem component
+	function startEditingTodo(todo: Todo) {
+		editing = true;
+		editText = todo.text;
+	}
+
+	function saveTodoText(todo: Todo) {
+		if (!todo.columnId) return;
+		
+		if (editText.trim()) {
+			updateTodoText(todo.columnId, todo.id, editText);
+		}
+		editing = false;
 	}
 </script>
 
-<RouteHead
-	title="Kanban Todo Board | {site.name}"
-	description="A drag-and-drop Kanban board for task management. Built with SvelteKit and TypeScript."
-	keywords="kanban, todo list, task management, drag-and-drop, svelte, sveltekit, typescript"
-	route={page.url.pathname}
-/>
-
-<div class="container mx-auto p-6 dark:bg-gray-900">
-	<h1 class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Kanban Task Board</h1>
-
-	<!-- Add new task form -->
-	<div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-		<div class="md:col-span-2">
-			<Input
-				type="text"
-				placeholder="Add a new task"
-				bind:value={newTodo}
-				onkeydown={(e) => {
-					if (e.key === 'Enter') addTodo();
-				}}
-				class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-			/>
-		</div>
-		<div class="flex items-center gap-2">
-			<select
-				bind:value={selectedColumnForTodo}
-				class="h-10 w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-			>
-				{#each columns as column}
-					<option value={column.id}>{column.title}</option>
-				{/each}
-			</select>
-			<Button
-				onclick={addTodo}
-				class="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white shadow-md hover:bg-blue-700"
-			>
-				Add Task
-			</Button>
-		</div>
-	</div>
-
-	<!-- Add new column form -->
-	<div class="mb-6 flex items-center space-x-4">
-		<Input
-			type="text"
-			placeholder="Add new column"
-			bind:value={newColumnTitle}
-			onkeydown={(e) => {
-				if (e.key === 'Enter') addColumn();
-			}}
-			class="flex-grow rounded-lg border border-gray-300 px-4 py-2 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-		/>
-		<Button
+<div class="flex h-screen flex-col">
+	<header class="flex items-center justify-between border-b bg-gray-100 p-4 dark:bg-gray-900">
+		<h1 class="text-2xl font-bold">Kanban Todo List</h1>
+		<button 
+			class="rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
 			onclick={addColumn}
-			class="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white shadow-md hover:bg-indigo-700"
 		>
 			Add Column
-		</Button>
-	</div>
+		</button>
+	</header>
 
-	<!-- Kanban Board -->
-	<div
-		class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-		use:dndzone={{ items: columns, flipDurationMs, type: 'column' }}
-		onconsider={handleColumnDndConsider}
-		onfinalize={handleColumnDndFinalize}
-	>
-		{#each columns as column (column.id)}
-			<div
-				animate:flip={{ duration: flipDurationMs }}
-				class="flex flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
-			>
-				<!-- Column Header -->
-				<div
-					class={`flex items-center justify-between rounded-t-lg p-3 ${column.color} bg-opacity-90 text-white`}
-				>
-					{#if editingColumnId === column.id}
-						<Input
-							type="text"
-							value={newColumnName}
-							oninput={(e) => {
-								const target = e.target as HTMLInputElement;
-								newColumnName = target.value;
-							}}
-							onblur={saveColumnName}
-							onkeydown={(e) => {
-								if (e.key === 'Enter') {
-									saveColumnName();
-								}
-							}}
-							class="w-full rounded-lg border border-gray-300 bg-white px-2 py-1 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-						/>
-					{:else}
-						<h2 class="text-lg font-bold">{column.title}</h2>
-						<div class="flex items-center space-x-2">
-							<button
-								class="rounded-full p-1 hover:bg-white hover:bg-opacity-20"
-								onclick={() => editColumnName(column)}
-								aria-label="Edit column name"
-							>
-								<Pencil size={16} />
-							</button>
-							<button
-								class="rounded-full p-1 hover:bg-white hover:bg-opacity-20"
-								onclick={() => removeColumn(column.id)}
-								aria-label="Remove column"
-							>
-								<X size={16} />
-							</button>
-						</div>
-					{/if}
-				</div>
-
-				<!-- Todo List -->
-				<div
-					class="flex-1 overflow-y-auto p-3"
-					style="min-height: 200px; max-height: 70vh;"
-					use:dndzone={{
-						items: getColumnTodos(column.id),
-						flipDurationMs,
-						dropFromOthersDisabled: false,
-						type: 'task',
-						dropTargetStyle: {
-							outline: '2px dashed #4299e1',
-							backgroundColor: 'rgba(66, 153, 225, 0.1)'
-						}
-					}}
-					onconsider={(e) => handleTodoDndConsider(e, column.id)}
-					onfinalize={(e) => handleCrossColumnDrop(e, column.id)}
-					data-column-id={column.id}
-				>
-					{#each getColumnTodos(column.id) as todo (todo.id)}
-						<div
-							animate:flip={{ duration: flipDurationMs }}
-							class="mb-3 cursor-move rounded-lg bg-white p-3 shadow hover:shadow-md dark:bg-gray-700"
-						>
-							<div class="flex items-start justify-between">
-								<div class="flex flex-1 items-center">
-									<Checkbox
-										bind:checked={todo.completed}
-										onchange={() => toggleTodo(todo.id)}
-										class="mr-2"
-									/>
-									<p
-										class={`flex-1 text-gray-900 dark:text-white ${todo.completed ? 'line-through opacity-70' : ''}`}
-									>
-										{todo.text}
-									</p>
-								</div>
-								<button
-									onclick={() => deleteTodo(todo.id)}
-									class="ml-2 rounded-full p-1 text-red-500 hover:bg-red-100 hover:text-red-700 dark:hover:bg-red-900"
-									aria-label="Delete task"
+	<main class="flex-1 overflow-auto p-4">
+		<FlexiBoard
+			config={{
+				targetDefaults: {
+					layout: {
+						type: 'flow',
+						flowAxis: 'row',
+						placementStrategy: 'append'
+					}
+				},
+				widgetDefaults: {
+					draggable: true
+				}
+			}}
+			class="flex h-full gap-4 p-2"
+			bind:controller={board}
+		>
+			{#each columns as column (column.id)}
+				<div class={themeClasses.target}>
+					<div class="mb-2 flex items-center justify-between">
+						{#if !titleEditing}
+							<div class="flex items-center">
+								<h3 class="flex-1 truncate text-lg font-semibold">{column?.title || 'Untitled'}</h3>
+								<span class="ml-2 text-sm text-gray-500">{column?.todos?.length || 0}</span>
+							</div>
+							<div class="flex gap-1">
+								<button 
+									class="rounded p-1 text-gray-500 hover:text-gray-700"
+									onclick={() => startEditingTitle(column)}
+									aria-label="Edit column title"
 								>
-									<X size={14} />
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>
+								</button>
+								<button 
+									class="rounded p-1 text-gray-500 hover:text-red-600"
+									onclick={() => removeColumn(column.id)}
+									aria-label="Remove column"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
 								</button>
 							</div>
-						</div>
-					{:else}
-						<div class="flex h-20 items-center justify-center text-gray-500 dark:text-gray-400">
-							<p>No tasks in this column</p>
-						</div>
-					{/each}
+						{:else}
+							<input
+								type="text"
+								bind:value={newTitle}
+								class="flex-1 rounded border px-2 py-1"
+								onkeydown={(e) => {
+									if (e.key === 'Enter') saveTitle(column);
+									if (e.key === 'Escape') titleEditing = false;
+								}}
+								onblur={() => saveTitle(column)}
+							/>
+						{/if}
+					</div>
+
+					<FlexiTarget 
+						key={column.id || 'empty-column'} 
+						class="min-h-[100px] flex-1 overflow-y-auto" 
+						bind:controller={target}
+					>
+						{#each column.todos as todo (todo.id)}
+							<FlexiWidget
+								class={(widget: FlexiWidgetController) => {
+									return `${themeClasses.widget} ${widget.isGrabbed ? themeClasses.widgetActive : ''} ${widget.isShadow ? themeClasses.widgetShadow : ''}`;
+								}}
+							>
+								<div class="flex items-start">
+									{#if !editing}
+										<input 
+											type="checkbox" 
+											checked={todo.completed}
+											onchange={() => toggleTodoCompleted(column.id, todo.id)}
+											class="mr-3 mt-1"
+										/>
+										<span class={todo.completed ? 'line-through text-gray-500 flex-1' : 'flex-1'}>
+											{todo.text}
+										</span>
+										<div class="ml-2 flex gap-1">
+											<button 
+												class="rounded p-1 text-gray-500 hover:text-gray-700"
+												onclick={() => startEditingTodo({...todo, columnId: column.id})}
+												aria-label="Edit todo"
+											>
+												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>
+											</button>
+											<button 
+												class="rounded p-1 text-gray-500 hover:text-red-600"
+												onclick={() => removeTodo(column.id, todo.id)}
+												aria-label="Remove todo"
+											>
+												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+											</button>
+										</div>
+									{:else}
+										<input
+											type="text"
+											bind:value={editText}
+											class="w-full rounded border px-2 py-1"
+											onkeydown={(e) => {
+												if (e.key === 'Enter') saveTodoText({...todo, columnId: column.id});
+												if (e.key === 'Escape') editing = false;
+											}}
+											onblur={() => saveTodoText({...todo, columnId: column.id})}
+										/>
+									{/if}
+								</div>
+							</FlexiWidget>
+						{/each}
+
+						{#if addingTodo}
+							<div class="my-2 flex flex-col rounded-lg bg-white p-3 shadow-sm dark:bg-gray-700">
+								<input
+									type="text"
+									bind:value={newTodoText}
+									placeholder="Enter a task..."
+									class="mb-2 w-full rounded border px-2 py-1"
+									onkeydown={(e) => {
+										if (e.key === 'Enter') saveTodo(column);
+										if (e.key === 'Escape') cancelTodo(column);
+									}}
+								/>
+								<div class="flex justify-end gap-2">
+									<button 
+										class="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500"
+										onclick={() => cancelTodo(column)}
+									>
+										Cancel
+									</button>
+									<button 
+										class="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600"
+										onclick={() => saveTodo(column)}
+									>
+										Add
+									</button>
+								</div>
+							</div>
+						{:else}
+							<button 
+								class="mt-2 w-full rounded-lg p-2 text-center text-gray-500 hover:bg-gray-100 hover:text-blue-600 dark:hover:bg-gray-700"
+								onclick={() => startAddingTodo(column)}
+							>
+								+ Add Task
+							</button>
+						{/if}
+					</FlexiTarget>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</FlexiBoard>
+	</main>
 </div>
-
-<style>
-	:global(.sortable-ghost) {
-		opacity: 0.4;
-	}
-
-	:global(.task-drag-active) {
-		cursor: grabbing !important;
-	}
-</style>
