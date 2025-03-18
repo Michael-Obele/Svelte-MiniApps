@@ -147,9 +147,9 @@
 	// Theme classes
 	const themeClasses = {
 		target:
-			'flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-2 min-w-[280px] w-full max-w-[500px] min-h-[200px] shadow-md',
+			'flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-2 min-w-[280px] w-full max-w-[500px] min-h-[200px] shadow-md mx-5',
 		widget:
-			'w-full p-3 my-2 bg-white dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing',
+			'w-full p-3 my-2 bg-white dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow',
 		widgetActive: 'opacity-50 animate-pulse',
 		widgetShadow: 'opacity-30'
 	};
@@ -298,28 +298,55 @@
 										return `${themeClasses.widget} ${widget.isGrabbed ? themeClasses.widgetActive : ''} ${widget.isShadow ? themeClasses.widgetShadow : ''}`;
 									}}
 								>
-									<div class="flex items-start">
+									<div class="relative flex items-start">
+										<div
+											class="drag-handle absolute left-0 top-0 flex h-full w-6 cursor-grab items-center justify-center"
+											style="touchAction: none;"
+										>
+											<div class="mx-0.5 h-6 w-1 rounded-full bg-gray-300"></div>
+											<div class="mx-0.5 h-6 w-1 rounded-full bg-gray-300"></div>
+										</div>
 										{#if !editing}
 											<input
 												type="checkbox"
 												checked={todo.completed}
-												onchange={() => toggleTodoCompleted(column.id, todo.id)}
-												class="mr-3 mt-1"
+												onchange={(e) => {
+													e.stopPropagation();
+													toggleTodoCompleted(column.id, todo.id);
+												}}
+												class="pointer-events-auto relative z-10 ml-6 mr-3 mt-1 cursor-pointer"
+												onclick={(e) => e.stopPropagation()}
+												onmousedown={(e) => e.stopPropagation()}
 											/>
-											<span class={todo.completed ? 'flex-1 text-gray-500 line-through' : 'flex-1'}>
+											<span
+												class={todo.completed ? 'flex-1 text-gray-500 line-through' : 'flex-1'}
+												onclick={(e) => e.stopPropagation()}
+												onmousedown={(e) => e.stopPropagation()}
+												onkeydown={(e) => e.stopPropagation()}
+												role="textbox"
+												tabindex="0"
+											>
 												{todo.text}
 											</span>
 											<div class="ml-2 flex gap-1">
 												<button
 													class="rounded p-1 text-gray-500 hover:text-gray-700"
-													onclick={() => startEditingTodo({ ...todo, columnId: column.id })}
+													onclick={(e) => {
+														e.stopPropagation();
+														startEditingTodo({ ...todo, columnId: column.id });
+													}}
+													onmousedown={(e) => e.stopPropagation()}
 													aria-label="Edit todo"
 												>
 													<Pencil class="size-4" />
 												</button>
 												<button
 													class="rounded p-1 text-gray-500 hover:text-red-600"
-													onclick={() => removeTodo(column.id, todo.id)}
+													onclick={(e) => {
+														e.stopPropagation();
+														removeTodo(column.id, todo.id);
+													}}
+													onmousedown={(e) => e.stopPropagation()}
 													aria-label="Remove todo"
 												>
 													<X class="size-4" />
