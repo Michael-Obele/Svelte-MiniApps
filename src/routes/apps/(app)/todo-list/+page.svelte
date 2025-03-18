@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Pencil, X } from 'lucide-svelte';
 	import {
 		FlexiBoard,
 		FlexiTarget,
@@ -31,7 +32,7 @@
 
 	// State for board and columns
 	let board: FlexiBoardController | undefined = $state();
-	
+
 	// Initial columns data
 	let columns: Column[] = $state([
 		{
@@ -47,17 +48,13 @@
 			id: 'in-progress',
 			title: 'In Progress',
 			color: 'bg-amber-300',
-			todos: [
-				{ id: generateId(), text: 'Implement drag and drop', completed: false }
-			]
+			todos: [{ id: generateId(), text: 'Implement drag and drop', completed: false }]
 		},
 		{
 			id: 'done',
 			title: 'Done',
 			color: 'bg-green-300',
-			todos: [
-				{ id: generateId(), text: 'Setup project', completed: true }
-			]
+			todos: [{ id: generateId(), text: 'Setup project', completed: true }]
 		}
 	]);
 
@@ -69,36 +66,37 @@
 			color: 'bg-gray-300',
 			todos: []
 		};
-		
+
 		columns = [...columns, newColumn];
 	}
 
 	// Function to remove a column
 	function removeColumn(columnId: string) {
-		columns = columns.filter(col => col.id !== columnId);
+		columns = columns.filter((col) => col.id !== columnId);
 	}
 
 	// Function to update a column title
 	function updateColumnTitle(columnId: string, newTitle: string) {
-		columns = columns.map(col => 
-			col.id === columnId ? {...col, title: newTitle} : col
-		);
+		columns = columns.map((col) => (col.id === columnId ? { ...col, title: newTitle } : col));
 	}
 
 	// Function to add a todo to a column
 	function addTodo(columnId: string, text: string) {
 		if (!text.trim()) return;
-		
-		columns = columns.map(col => {
+
+		columns = columns.map((col) => {
 			if (col.id === columnId) {
 				return {
 					...col,
-					todos: [...col.todos, {
-						id: generateId(),
-						text,
-						completed: false,
-						columnId
-					}]
+					todos: [
+						...col.todos,
+						{
+							id: generateId(),
+							text,
+							completed: false,
+							columnId
+						}
+					]
 				};
 			}
 			return col;
@@ -107,12 +105,12 @@
 
 	// Function to toggle todo completion status
 	function toggleTodoCompleted(columnId: string, todoId: string) {
-		columns = columns.map(col => {
+		columns = columns.map((col) => {
 			if (col.id === columnId) {
 				return {
 					...col,
-					todos: col.todos.map(todo => 
-						todo.id === todoId ? {...todo, completed: !todo.completed} : todo
+					todos: col.todos.map((todo) =>
+						todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
 					)
 				};
 			}
@@ -122,11 +120,11 @@
 
 	// Function to remove a todo
 	function removeTodo(columnId: string, todoId: string) {
-		columns = columns.map(col => {
+		columns = columns.map((col) => {
 			if (col.id === columnId) {
 				return {
 					...col,
-					todos: col.todos.filter(todo => todo.id !== todoId)
+					todos: col.todos.filter((todo) => todo.id !== todoId)
 				};
 			}
 			return col;
@@ -135,13 +133,11 @@
 
 	// Function to update a todo text
 	function updateTodoText(columnId: string, todoId: string, newText: string) {
-		columns = columns.map(col => {
+		columns = columns.map((col) => {
 			if (col.id === columnId) {
 				return {
 					...col,
-					todos: col.todos.map(todo => 
-						todo.id === todoId ? {...todo, text: newText} : todo
-					)
+					todos: col.todos.map((todo) => (todo.id === todoId ? { ...todo, text: newText } : todo))
 				};
 			}
 			return col;
@@ -150,10 +146,12 @@
 
 	// Theme classes
 	const themeClasses = {
-		target: "flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-2 min-w-[280px] min-h-[200px] shadow-md",
-		widget: "w-full p-3 my-2 bg-white dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing",
-		widgetActive: "opacity-50 animate-pulse",
-		widgetShadow: "opacity-30"
+		target:
+			'flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-2 min-w-[280px] w-full max-w-[500px] min-h-[200px] shadow-md',
+		widget:
+			'w-full p-3 my-2 bg-white dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing',
+		widgetActive: 'opacity-50 animate-pulse',
+		widgetShadow: 'opacity-30'
 	};
 
 	// Global state variables (shared across all components)
@@ -212,7 +210,7 @@
 
 	function saveTodoText(todo: Todo) {
 		if (!todo.columnId) return;
-		
+
 		if (editText.trim()) {
 			updateTodoText(todo.columnId, todo.id, editText);
 		}
@@ -223,7 +221,7 @@
 <div class="flex h-screen flex-col">
 	<header class="flex items-center justify-between border-b bg-gray-100 p-4 dark:bg-gray-900">
 		<h1 class="text-2xl font-bold">Kanban Todo List</h1>
-		<button 
+		<button
 			class="rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
 			onclick={addColumn}
 		>
@@ -232,152 +230,156 @@
 	</header>
 
 	<main class="flex-1 overflow-auto p-4">
-		<FlexiBoard
-			config={{
-				targetDefaults: {
-					layout: {
-						type: 'flow',
-						flowAxis: 'row',
-						placementStrategy: 'append'
+		<div class="mx-auto flex max-w-[1600px] flex-wrap items-start justify-start gap-6">
+			<FlexiBoard
+				config={{
+					targetDefaults: {
+						layout: {
+							type: 'flow',
+							flowAxis: 'row',
+							placementStrategy: 'append'
+						}
+					},
+					widgetDefaults: {
+						draggable: true
 					}
-				},
-				widgetDefaults: {
-					draggable: true
-				}
-			}}
-			class="flex h-full gap-4 p-2"
-			bind:controller={board}
-		>
-			{#each columns as column (column.id)}
-				<div class={themeClasses.target}>
-					<div class="mb-2 flex items-center justify-between">
-						{#if !titleEditing}
-							<div class="flex items-center">
-								<h3 class="flex-1 truncate text-lg font-semibold">{column?.title || 'Untitled'}</h3>
-								<span class="ml-2 text-sm text-gray-500">{column?.todos?.length || 0}</span>
-							</div>
-							<div class="flex gap-1">
-								<button 
-									class="rounded p-1 text-gray-500 hover:text-gray-700"
-									onclick={() => startEditingTitle(column)}
-									aria-label="Edit column title"
-								>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>
-								</button>
-								<button 
-									class="rounded p-1 text-gray-500 hover:text-red-600"
-									onclick={() => removeColumn(column.id)}
-									aria-label="Remove column"
-								>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-								</button>
-							</div>
-						{:else}
-							<input
-								type="text"
-								bind:value={newTitle}
-								class="flex-1 rounded border px-2 py-1"
-								onkeydown={(e) => {
-									if (e.key === 'Enter') saveTitle(column);
-									if (e.key === 'Escape') titleEditing = false;
-								}}
-								onblur={() => saveTitle(column)}
-							/>
-						{/if}
-					</div>
-
-					<FlexiTarget 
-						key={column.id || 'empty-column'} 
-						class="min-h-[100px] flex-1 overflow-y-auto" 
-						bind:controller={target}
-					>
-						{#each column.todos as todo (todo.id)}
-							<FlexiWidget
-								class={(widget: FlexiWidgetController) => {
-									return `${themeClasses.widget} ${widget.isGrabbed ? themeClasses.widgetActive : ''} ${widget.isShadow ? themeClasses.widgetShadow : ''}`;
-								}}
-							>
-								<div class="flex items-start">
-									{#if !editing}
-										<input 
-											type="checkbox" 
-											checked={todo.completed}
-											onchange={() => toggleTodoCompleted(column.id, todo.id)}
-											class="mr-3 mt-1"
-										/>
-										<span class={todo.completed ? 'line-through text-gray-500 flex-1' : 'flex-1'}>
-											{todo.text}
-										</span>
-										<div class="ml-2 flex gap-1">
-											<button 
-												class="rounded p-1 text-gray-500 hover:text-gray-700"
-												onclick={() => startEditingTodo({...todo, columnId: column.id})}
-												aria-label="Edit todo"
-											>
-												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>
-											</button>
-											<button 
-												class="rounded p-1 text-gray-500 hover:text-red-600"
-												onclick={() => removeTodo(column.id, todo.id)}
-												aria-label="Remove todo"
-											>
-												<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-											</button>
-										</div>
-									{:else}
-										<input
-											type="text"
-											bind:value={editText}
-											class="w-full rounded border px-2 py-1"
-											onkeydown={(e) => {
-												if (e.key === 'Enter') saveTodoText({...todo, columnId: column.id});
-												if (e.key === 'Escape') editing = false;
-											}}
-											onblur={() => saveTodoText({...todo, columnId: column.id})}
-										/>
-									{/if}
+				}}
+				class="flex h-full w-full"
+				bind:controller={board}
+			>
+				{#each columns as column (column.id)}
+					<div class={themeClasses.target}>
+						<div class="mb-2 flex items-center justify-between">
+							{#if !titleEditing}
+								<div class="flex items-center">
+									<h3 class="flex-1 truncate text-lg font-semibold">
+										{column?.title || 'Untitled'}
+									</h3>
+									<span class="ml-2 text-sm text-gray-500">{column?.todos?.length || 0}</span>
 								</div>
-							</FlexiWidget>
-						{/each}
-
-						{#if addingTodo}
-							<div class="my-2 flex flex-col rounded-lg bg-white p-3 shadow-sm dark:bg-gray-700">
+								<div class="flex gap-1">
+									<button
+										class="rounded p-1 text-gray-500 hover:text-gray-700"
+										onclick={() => startEditingTitle(column)}
+										aria-label="Edit column title"
+									>
+										<Pencil class="size-4" />
+									</button>
+									<button
+										class="rounded p-1 text-gray-500 hover:text-red-600"
+										onclick={() => removeColumn(column.id)}
+										aria-label="Remove column"
+									>
+										<X class="size-4" />
+									</button>
+								</div>
+							{:else}
 								<input
 									type="text"
-									bind:value={newTodoText}
-									placeholder="Enter a task..."
-									class="mb-2 w-full rounded border px-2 py-1"
+									bind:value={newTitle}
+									class="flex-1 rounded border px-2 py-1"
 									onkeydown={(e) => {
-										if (e.key === 'Enter') saveTodo(column);
-										if (e.key === 'Escape') cancelTodo(column);
+										if (e.key === 'Enter') saveTitle(column);
+										if (e.key === 'Escape') titleEditing = false;
 									}}
+									onblur={() => saveTitle(column)}
 								/>
-								<div class="flex justify-end gap-2">
-									<button 
-										class="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500"
-										onclick={() => cancelTodo(column)}
-									>
-										Cancel
-									</button>
-									<button 
-										class="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600"
-										onclick={() => saveTodo(column)}
-									>
-										Add
-									</button>
+							{/if}
+						</div>
+
+						<FlexiTarget
+							key={column.id || 'empty-column'}
+							class="min-h-[100px] flex-1 overflow-y-auto"
+							bind:controller={target}
+						>
+							{#each column.todos as todo (todo.id)}
+								<FlexiWidget
+									class={(widget: FlexiWidgetController) => {
+										return `${themeClasses.widget} ${widget.isGrabbed ? themeClasses.widgetActive : ''} ${widget.isShadow ? themeClasses.widgetShadow : ''}`;
+									}}
+								>
+									<div class="flex items-start">
+										{#if !editing}
+											<input
+												type="checkbox"
+												checked={todo.completed}
+												onchange={() => toggleTodoCompleted(column.id, todo.id)}
+												class="mr-3 mt-1"
+											/>
+											<span class={todo.completed ? 'flex-1 text-gray-500 line-through' : 'flex-1'}>
+												{todo.text}
+											</span>
+											<div class="ml-2 flex gap-1">
+												<button
+													class="rounded p-1 text-gray-500 hover:text-gray-700"
+													onclick={() => startEditingTodo({ ...todo, columnId: column.id })}
+													aria-label="Edit todo"
+												>
+													<Pencil class="size-4" />
+												</button>
+												<button
+													class="rounded p-1 text-gray-500 hover:text-red-600"
+													onclick={() => removeTodo(column.id, todo.id)}
+													aria-label="Remove todo"
+												>
+													<X class="size-4" />
+												</button>
+											</div>
+										{:else}
+											<input
+												type="text"
+												bind:value={editText}
+												class="w-full rounded border px-2 py-1"
+												onkeydown={(e) => {
+													if (e.key === 'Enter') saveTodoText({ ...todo, columnId: column.id });
+													if (e.key === 'Escape') editing = false;
+												}}
+												onblur={() => saveTodoText({ ...todo, columnId: column.id })}
+											/>
+										{/if}
+									</div>
+								</FlexiWidget>
+							{/each}
+
+							{#if addingTodo}
+								<div class="my-2 flex flex-col rounded-lg bg-white p-3 shadow-sm dark:bg-gray-700">
+									<input
+										type="text"
+										bind:value={newTodoText}
+										placeholder="Enter a task..."
+										class="mb-2 w-full rounded border px-2 py-1"
+										onkeydown={(e) => {
+											if (e.key === 'Enter') saveTodo(column);
+											if (e.key === 'Escape') cancelTodo(column);
+										}}
+									/>
+									<div class="flex justify-end gap-2">
+										<button
+											class="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500"
+											onclick={() => cancelTodo(column)}
+										>
+											Cancel
+										</button>
+										<button
+											class="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600"
+											onclick={() => saveTodo(column)}
+										>
+											Add
+										</button>
+									</div>
 								</div>
-							</div>
-						{:else}
-							<button 
-								class="mt-2 w-full rounded-lg p-2 text-center text-gray-500 hover:bg-gray-100 hover:text-blue-600 dark:hover:bg-gray-700"
-								onclick={() => startAddingTodo(column)}
-							>
-								+ Add Task
-							</button>
-						{/if}
-					</FlexiTarget>
-				</div>
-			{/each}
-		</FlexiBoard>
+							{:else}
+								<button
+									class="mt-2 w-full rounded-lg p-2 text-center text-gray-500 hover:bg-gray-100 hover:text-blue-600 dark:hover:bg-gray-700"
+									onclick={() => startAddingTodo(column)}
+								>
+									+ Add Task
+								</button>
+							{/if}
+						</FlexiTarget>
+					</div>
+				{/each}
+			</FlexiBoard>
+		</div>
 	</main>
 </div>
