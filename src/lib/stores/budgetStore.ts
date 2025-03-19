@@ -1,5 +1,4 @@
 // src/lib/stores/budgetStore.ts
-import { writable } from 'svelte/store';
 import { persisted } from 'svelte-persisted-store';
 
 // src/lib/types/budget.ts
