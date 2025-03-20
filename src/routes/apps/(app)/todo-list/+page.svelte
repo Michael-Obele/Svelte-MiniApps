@@ -1,3 +1,26 @@
+<script module lang="ts">
+	// Type definitions
+	export interface Todo {
+		id: string;
+		text: string;
+		completed: boolean;
+		columnId?: string;
+	}
+
+	export interface Column {
+		id: string;
+		title: string;
+		color: string;
+		todos: Todo[];
+	}
+
+	// Define slot item maps for better type safety
+	export type SlotItemMap = {
+		column: Column;
+		todo: Todo;
+	};
+</script>
+
 <script lang="ts">
 	import { Pencil, X } from 'lucide-svelte';
 	import {
@@ -7,23 +30,10 @@
 		type FlexiBoardController,
 		type FlexiTargetController,
 		type FlexiWidgetController,
-		type FlexiWidgetChildrenSnippetParameters
+		type FlexiBoardConfiguration
 	} from 'svelte-flexiboards';
-
-	// Type definitions
-	interface Todo {
-		id: string;
-		text: string;
-		completed: boolean;
-		columnId?: string;
-	}
-
-	interface Column {
-		id: string;
-		title: string;
-		color: string;
-		todos: Todo[];
-	}
+	import TodoItem from '$lib/components/todo/todo-item.svelte';
+	import Grabber from '$lib/components/common/grabber.svelte';
 
 	// Generate a unique ID
 	function generateId(): string {
@@ -57,6 +67,21 @@
 			todos: [{ id: generateId(), text: 'Setup project', completed: true }]
 		}
 	]);
+
+	// Configuration for the FlexiBoard
+	let boardConfig: FlexiBoardConfiguration = $state({
+		targetDefaults: {
+			layout: {
+				type: 'flow' as const,
+				flowAxis: 'row' as const,
+				placementStrategy: 'append' as const
+			}
+		},
+		widgetDefaults: {
+			draggable: true,
+			grabFromDescendantsOnly: true // This ensures widgets are only draggable from grab handles
+		}
+	});
 
 	// Function to add a new column
 	function addColumn() {
@@ -154,68 +179,107 @@
 		widgetShadow: 'opacity-30'
 	};
 
-	// Global state variables (shared across all components)
-	let titleEditing = $state(false);
-	let newTitle = $state('');
-	let addingTodo = $state(false);
-	let newTodoText = $state('');
-	let target = $state<FlexiTargetController>();
-	let todoInputRef = $state<HTMLInputElement>();
-	let inputRef = $state<HTMLInputElement>();
-	let editing = $state(false);
-	let editText = $state('');
-	let editInputRef = $state<HTMLInputElement>();
+	// Column editing state
+	let titleEditing: boolean = $state(false);
+	let newTitle: string = $state('');
+	let editingColumnId: string | null = $state(null);
+
+	// Todo editing state
+	let addingTodo: boolean = $state(false);
+	let newTodoText: string = $state('');
+	let addingToColumnId: string | null = $state(null);
+	let editing: boolean = $state(false);
+	let editText: string = $state('');
+	let editingTodoId: string | null = $state(null);
+	let editingTodoColumnId: string | null = $state(null);
 
 	// Functions for KanbanColumn component
-	function startEditingTitle(column: Column | null | undefined) {
+	function startEditingTitle(column: Column) {
 		if (!column) return;
 		titleEditing = true;
+		editingColumnId = column.id;
 		newTitle = column.title || '';
 	}
 
-	function saveTitle(column: Column | null | undefined) {
-		if (!column) return;
+	function saveTitle() {
+		if (!editingColumnId) return;
 		if (newTitle.trim()) {
-			updateColumnTitle(column.id, newTitle);
+			updateColumnTitle(editingColumnId, newTitle);
 		}
 		titleEditing = false;
+		editingColumnId = null;
 	}
 
-	function startAddingTodo(column: Column | null | undefined) {
+	function startAddingTodo(column: Column) {
 		if (!column) return;
 		addingTodo = true;
+		addingToColumnId = column.id;
 		newTodoText = '';
 	}
 
-	function saveTodo(column: Column | null | undefined) {
-		if (!column) return;
+	function saveTodo() {
+		if (!addingToColumnId) return;
 		if (newTodoText.trim()) {
-			addTodo(column.id, newTodoText);
+			addTodo(addingToColumnId, newTodoText);
 			newTodoText = '';
 		}
 		addingTodo = false;
+		addingToColumnId = null;
 	}
 
-	function cancelTodo(column: Column | null | undefined) {
-		if (!column) return;
+	function cancelTodo() {
 		addingTodo = false;
+		addingToColumnId = null;
 		newTodoText = '';
 	}
 
 	// Functions for TodoItem component
-	function startEditingTodo(todo: Todo) {
+	function startEditingTodo(todo: Todo, columnId: string) {
 		editing = true;
+		editingTodoId = todo.id;
+		editingTodoColumnId = columnId;
 		editText = todo.text;
 	}
 
-	function saveTodoText(todo: Todo) {
-		if (!todo.columnId) return;
+	function saveTodoText() {
+		if (!editingTodoId || !editingTodoColumnId) return;
 
 		if (editText.trim()) {
-			updateTodoText(todo.columnId, todo.id, editText);
+			updateTodoText(editingTodoColumnId, editingTodoId, editText);
 		}
 		editing = false;
+		editingTodoId = null;
+		editingTodoColumnId = null;
 	}
+
+	function cancelEditingTodo() {
+		editing = false;
+		editingTodoId = null;
+		editingTodoColumnId = null;
+	}
+
+	function handleTodoCheckboxClick(e: Event, columnId: string, todoId: string) {
+		e.stopPropagation();
+		toggleTodoCompleted(columnId, todoId);
+	}
+
+	function deleteTodo(todoId: string, columnId: string) {
+		removeTodo(columnId, todoId);
+	}
+
+	// Set up event listener for todo completion toggle
+	$effect(() => {
+		const handleToggleComplete = (e: CustomEvent) => {
+			const { todoId, columnId } = e.detail;
+			toggleTodoCompleted(columnId, todoId);
+		};
+
+		document.addEventListener('toggleComplete', handleToggleComplete as EventListener);
+
+		return () => {
+			document.removeEventListener('toggleComplete', handleToggleComplete as EventListener);
+		};
+	});
 </script>
 
 <div class="flex h-screen flex-col">
@@ -232,30 +296,33 @@
 	<main class="flex-1 overflow-auto p-4">
 		<div class="mx-auto flex max-w-[1600px] flex-wrap items-start justify-start gap-6">
 			<FlexiBoard
-				config={{
-					targetDefaults: {
-						layout: {
-							type: 'flow',
-							flowAxis: 'row',
-							placementStrategy: 'append'
-						}
-					},
-					widgetDefaults: {
-						draggable: true
-					}
-				}}
+				config={boardConfig}
 				class="flex h-full w-full"
 				bind:controller={board}
 			>
 				{#each columns as column (column.id)}
 					<div class={themeClasses.target}>
 						<div class="mb-2 flex items-center justify-between">
-							{#if !titleEditing}
+							{#if titleEditing && editingColumnId === column.id}
+								<input
+									type="text"
+									bind:value={newTitle}
+									class="flex-1 rounded border px-2 py-1"
+									onkeydown={(e) => {
+										if (e.key === 'Enter') saveTitle();
+										if (e.key === 'Escape') {
+											titleEditing = false;
+											editingColumnId = null;
+										}
+									}}
+									onblur={saveTitle}
+								/>
+							{:else}
 								<div class="flex items-center">
 									<h3 class="flex-1 truncate text-lg font-semibold">
-										{column?.title || 'Untitled'}
+										{column.title || 'Untitled'}
 									</h3>
-									<span class="ml-2 text-sm text-gray-500">{column?.todos?.length || 0}</span>
+									<span class="ml-2 text-sm text-gray-500">{column.todos?.length || 0}</span>
 								</div>
 								<div class="flex gap-1">
 									<button
@@ -273,102 +340,23 @@
 										<X class="size-4" />
 									</button>
 								</div>
-							{:else}
-								<input
-									type="text"
-									bind:value={newTitle}
-									class="flex-1 rounded border px-2 py-1"
-									onkeydown={(e) => {
-										if (e.key === 'Enter') saveTitle(column);
-										if (e.key === 'Escape') titleEditing = false;
-									}}
-									onblur={() => saveTitle(column)}
-								/>
 							{/if}
 						</div>
 
 						<FlexiTarget
 							key={column.id || 'empty-column'}
 							class="min-h-[100px] flex-1 overflow-y-auto"
-							bind:controller={target}
 						>
 							{#each column.todos as todo (todo.id)}
-								<FlexiWidget
-									class={(widget: FlexiWidgetController) => {
-										return `${themeClasses.widget} ${widget.isGrabbed ? themeClasses.widgetActive : ''} ${widget.isShadow ? themeClasses.widgetShadow : ''}`;
-									}}
-								>
-									<div class="relative flex items-start">
-										<div
-											class="drag-handle absolute left-0 top-0 flex h-full w-6 cursor-grab items-center justify-center"
-											style="touchAction: none;"
-										>
-											<div class="mx-0.5 h-6 w-1 rounded-full bg-gray-300"></div>
-											<div class="mx-0.5 h-6 w-1 rounded-full bg-gray-300"></div>
-										</div>
-										{#if !editing}
-											<input
-												type="checkbox"
-												checked={todo.completed}
-												onchange={(e) => {
-													e.stopPropagation();
-													toggleTodoCompleted(column.id, todo.id);
-												}}
-												class="pointer-events-auto relative z-10 ml-6 mr-3 mt-1 cursor-pointer"
-												onclick={(e) => e.stopPropagation()}
-												onmousedown={(e) => e.stopPropagation()}
-											/>
-											<span
-												class={todo.completed ? 'flex-1 text-gray-500 line-through' : 'flex-1'}
-												onclick={(e) => e.stopPropagation()}
-												onmousedown={(e) => e.stopPropagation()}
-												onkeydown={(e) => e.stopPropagation()}
-												role="textbox"
-												tabindex="0"
-											>
-												{todo.text}
-											</span>
-											<div class="ml-2 flex gap-1">
-												<button
-													class="rounded p-1 text-gray-500 hover:text-gray-700"
-													onclick={(e) => {
-														e.stopPropagation();
-														startEditingTodo({ ...todo, columnId: column.id });
-													}}
-													onmousedown={(e) => e.stopPropagation()}
-													aria-label="Edit todo"
-												>
-													<Pencil class="size-4" />
-												</button>
-												<button
-													class="rounded p-1 text-gray-500 hover:text-red-600"
-													onclick={(e) => {
-														e.stopPropagation();
-														removeTodo(column.id, todo.id);
-													}}
-													onmousedown={(e) => e.stopPropagation()}
-													aria-label="Remove todo"
-												>
-													<X class="size-4" />
-												</button>
-											</div>
-										{:else}
-											<input
-												type="text"
-												bind:value={editText}
-												class="w-full rounded border px-2 py-1"
-												onkeydown={(e) => {
-													if (e.key === 'Enter') saveTodoText({ ...todo, columnId: column.id });
-													if (e.key === 'Escape') editing = false;
-												}}
-												onblur={() => saveTodoText({ ...todo, columnId: column.id })}
-											/>
-										{/if}
-									</div>
-								</FlexiWidget>
+								<TodoItem 
+									todo={todo}
+									columnId={column.id}
+									onEdit={startEditingTodo}
+									onDelete={(todoId) => deleteTodo(todoId, column.id)}
+								/>
 							{/each}
 
-							{#if addingTodo}
+							{#if addingTodo && addingToColumnId === column.id}
 								<div class="my-2 flex flex-col rounded-lg bg-white p-3 shadow-sm dark:bg-gray-700">
 									<input
 										type="text"
@@ -376,20 +364,20 @@
 										placeholder="Enter a task..."
 										class="mb-2 w-full rounded border px-2 py-1"
 										onkeydown={(e) => {
-											if (e.key === 'Enter') saveTodo(column);
-											if (e.key === 'Escape') cancelTodo(column);
+											if (e.key === 'Enter') saveTodo();
+											if (e.key === 'Escape') cancelTodo();
 										}}
 									/>
 									<div class="flex justify-end gap-2">
 										<button
 											class="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500"
-											onclick={() => cancelTodo(column)}
+											onclick={cancelTodo}
 										>
 											Cancel
 										</button>
 										<button
 											class="rounded bg-blue-500 px-3 py-1 text-sm text-white hover:bg-blue-600"
-											onclick={() => saveTodo(column)}
+											onclick={saveTodo}
 										>
 											Add
 										</button>
