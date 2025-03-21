@@ -110,22 +110,22 @@ export const load = (async ({ params, setHeaders }) => {
 	}
 }) satisfies PageServerLoad;
 
-export const actions = {
-	default: async ({ request }) => {
-		const formData = await request.formData();
-		const user = String(formData.get('user'));
-		const year = Number(formData.get('year'));
+// export const actions = {
+// 	default: async ({ request }) => {
+// 		const formData = await request.formData();
+// 		const user = String(formData.get('user'));
+// 		const year = Number(formData.get('year'));
 
-		try {
-			const response = await fetchGitHubData(user, year.toString());
-			return {
-				props: { user, year },
-				success: true
-			};
-		} catch (err) {
-			const errorMessage = err instanceof Error ? err.message : String(err);
-			console.error(`Error fetching data: ${errorMessage}`);
-			throw error(500, 'Failed to fetch GitHub data');
-		}
-	}
-} satisfies Actions;
+// 		try {
+// 			const response = await fetchGitHubData(user, year.toString());
+// 			return {
+// 				props: { user, year },
+// 				success: true
+// 			};
+// 		} catch (err) {
+// 			const errorMessage = err instanceof Error ? err.message : String(err);
+// 			console.error(`Error fetching data: ${errorMessage}`);
+// 			throw error(500, 'Failed to fetch GitHub data');
+// 		}
+// 	}
+// } satisfies Actions;
