@@ -14,11 +14,13 @@
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
 	import GitGraph from './GitGraph.svelte';
 	import { toast } from 'svelte-sonner';
+	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
 
 	let { data } = $props();
 
 	const year = $state(data.props.year);
 	const user = $state(data.props.user);
+	let isNavigating = $state(false);
 
 	interface ContributionItem {
 		date: string;
@@ -63,6 +65,11 @@
 	function reloadPage() {
 		toast.message('Reloading page...');
 		location.reload();
+	}
+
+	async function navigateBackToForm() {
+		isNavigating = true;
+		await goto('/apps/github-contribution-tracker');
 	}
 </script>
 
@@ -332,7 +339,7 @@
 	<Button
 		variant="outline"
 		class="group relative transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-lg"
-		onclick={() => goto('/apps/github-contribution-tracker')}
+		onclick={() => navigateBackToForm()}
 	>
 		<ArrowLeft
 			class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1 md:mr-2"
@@ -358,3 +365,5 @@
 		<span class="hidden md:inline">Reload Page</span>
 	</Button>
 </div>
+
+<NavigationProgressIndicator active={isNavigating} />

@@ -5,14 +5,18 @@
 	import { Button } from '@/ui/button/index.js';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
+	import { Loader2 } from 'lucide-svelte';
+	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
 
 	let username = $state('');
 	let year = $state(new Date().getFullYear().toString());
 	let isLoading = $state(false);
+	let isNavigating = $state(false);
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
 		isLoading = true;
+		isNavigating = false; // Reset navigation state
 
 		const formData = new FormData(event.target as HTMLFormElement);
 
@@ -26,8 +30,13 @@
 				throw new Error('Failed to fetch data');
 			}
 
+			// Start navigation progress indicator before navigation starts
+			isNavigating = true;
+			
+			// Navigate to the results page
 			await goto(`/apps/github-contribution-tracker/${username}/${year}`);
 		} catch (error) {
+			isNavigating = false;
 			toast.error('Failed to fetch GitHub data. Please try again.');
 		} finally {
 			isLoading = false;
@@ -36,6 +45,8 @@
 </script>
 
 <div class="container mx-auto px-4 py-8">
+	<NavigationProgressIndicator active={isNavigating} />
+	
 	<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
 
 	<div class="mx-auto max-w-md">
@@ -65,7 +76,12 @@
 			</div>
 
 			<Button type="submit" disabled={isLoading} class="w-full">
-				{isLoading ? 'Loading...' : 'Track Contributions'}
+				{#if isLoading}
+					<Loader2 class="size-4 mr-2 animate-spin" />
+					Loading...
+				{:else}
+					Track Contributions
+				{/if}
 			</Button>
 		</form>
 	</div>
