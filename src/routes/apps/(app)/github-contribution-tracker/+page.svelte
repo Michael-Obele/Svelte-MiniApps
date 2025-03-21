@@ -7,46 +7,39 @@
 	import { onMount } from 'svelte';
 	import { Loader2 } from 'lucide-svelte';
 	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
+	import { navigating } from '$app/state';
 
 	let username = $state('');
 	let year = $state(new Date().getFullYear().toString());
-	let isLoading = $state(false);
-	let isNavigating = $state(false);
+	let isSubmitting = $state(false);
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		isLoading = true;
-		isNavigating = false; // Reset navigation state
-
-		const formData = new FormData(event.target as HTMLFormElement);
+		isSubmitting = true;
 
 		try {
-			const response = await fetch(`/apps/github-contribution-tracker/${username}/${year}`, {
-				method: 'POST',
-				body: formData
-			});
-
-			if (!response.ok) {
-				throw new Error('Failed to fetch data');
-			}
-
-			// Start navigation progress indicator before navigation starts
-			isNavigating = true;
-			
-			// Navigate to the results page
+			// Navigate directly to the results page
 			await goto(`/apps/github-contribution-tracker/${username}/${year}`);
 		} catch (error) {
-			isNavigating = false;
-			toast.error('Failed to fetch GitHub data. Please try again.');
-		} finally {
-			isLoading = false;
+			toast.error('Navigation failed. Please try again.');
+			isSubmitting = false;
 		}
+		// Note: We don't set isSubmitting to false here because we want the indicator
+		// to continue showing during navigation and data loading on the next page
 	}
+	
+	// Reset isSubmitting when navigation is complete
+	$effect(() => {
+		if (!navigating || !navigating.to) {
+			isSubmitting = false;
+		}
+	});
 </script>
 
+<!-- The NavigationProgressIndicator will automatically show during navigation -->
+<NavigationProgressIndicator active={isSubmitting} />
+
 <div class="container mx-auto px-4 py-8">
-	<NavigationProgressIndicator active={isNavigating} />
-	
 	<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
 
 	<div class="mx-auto max-w-md">
@@ -75,8 +68,8 @@
 				/>
 			</div>
 
-			<Button type="submit" disabled={isLoading} class="w-full">
-				{#if isLoading}
+			<Button type="submit" disabled={isSubmitting} class="w-full">
+				{#if isSubmitting}
 					<Loader2 class="size-4 mr-2 animate-spin" />
 					Loading...
 				{:else}

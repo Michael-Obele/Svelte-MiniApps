@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { navigating } from '$app/state';
 	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from 'lucide-svelte';
 	import RouteHead from '$lib/components/RouteHead.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
@@ -15,17 +16,13 @@
 	import GitGraph from './GitGraph.svelte';
 	import { toast } from 'svelte-sonner';
 	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
 	const year = $state(data.props.year);
 	const user = $state(data.props.user);
-	let isNavigating = $state(false);
-
-	interface ContributionItem {
-		date: string;
-		contributionCount: number;
-	}
+	let isNavigating = $state(false); // For navigation back to form
 
 	// Data processing functions
 	const arrangeDataByMonth = (data: ContributionItem[]): ContributionItem[][] => {
@@ -51,6 +48,11 @@
 	};
 
 	// Reactive declarations
+	interface ContributionItem {
+		date: string;
+		contributionCount: number;
+	}
+
 	let contributionsByMonth = $state(arrangeDataByMonth(data.gitContributions));
 	let monthlyContributionData = $state(calculateMonthlyContributions(contributionsByMonth));
 	let calendarData = $state(
@@ -71,7 +73,17 @@
 		isNavigating = true;
 		await goto('/apps/github-contribution-tracker');
 	}
+
+	// Reset isNavigating when navigation is complete
+	$effect(() => {
+		if (!navigating || !navigating.to) {
+			isNavigating = false;
+		}
+	});
 </script>
+
+<!-- Navigation indicator for going back to form -->
+<NavigationProgressIndicator active={isNavigating} />
 
 <RouteHead
 	title="{user} - GitHub Contributions in {year}"
@@ -365,5 +377,3 @@
 		<span class="hidden md:inline">Reload Page</span>
 	</Button>
 </div>
-
-<NavigationProgressIndicator active={isNavigating} />

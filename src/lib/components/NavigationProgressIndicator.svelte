@@ -6,8 +6,9 @@
 
 	// Progress configuration
 	const initialValue = 10; // Initial progress percentage
-	const incrementInterval = 350; // ms between progress increments
-	const randomIncrement = 15; // Max random increment per step
+	const incrementInterval = 300; // ms between progress increments
+	const randomIncrement = 10; // Max random increment per step
+	const minProgressTime = 800; // Minimum time to show progress (ms)
 	
 	// Custom prop to manually trigger the progress bar
 	let { active = false } = $props<{ active?: boolean }>();
@@ -15,27 +16,35 @@
 	let progressValue = $state(0);
 	let visible = $state(false);
 	let incrementTimer: ReturnType<typeof setInterval> | null = null;
+	let completeTimer: ReturnType<typeof setTimeout> | null = null;
+	let startTime = 0;
 	
 	// Handle both navigation and manual trigger
 	$effect(() => {
-		if (navigating || active) {
+		// Check if we're navigating to a new page or if manually activated
+		if ((navigating && navigating.to) || active) {
 			// Navigation started or manually triggered
 			startProgress();
-		} else if (!navigating && !active && visible) {
+		} else if ((!navigating || !navigating.to) && !active && visible) {
 			// Navigation completed and not manually active
 			completeProgress();
 		}
 	});
 
 	function startProgress() {
+		// Reset timers if they exist
+		if (incrementTimer) clearInterval(incrementTimer);
+		if (completeTimer) clearTimeout(completeTimer);
+		
+		// Record start time
+		startTime = Date.now();
+		
 		// Reset progress
 		progressValue = 0;
 		visible = true;
 		progressValue = initialValue;
 		
 		// Start incrementing progress
-		if (incrementTimer) clearInterval(incrementTimer);
-		
 		incrementTimer = setInterval(() => {
 			// Add a random increment but keep progress under 90%
 			const increment = Math.random() * randomIncrement;
@@ -50,19 +59,27 @@
 			incrementTimer = null;
 		}
 		
-		// Complete the progress and hide after animation
-		progressValue = 100;
-		setTimeout(() => {
-			visible = false;
-		}, 500); // Delay hiding to show the completion
+		// Calculate elapsed time
+		const elapsedTime = Date.now() - startTime;
+		const remainingTime = Math.max(0, minProgressTime - elapsedTime);
+		
+		// Complete the progress after ensuring minimum display time
+		completeTimer = setTimeout(() => {
+			// Complete the progress
+			progressValue = 100;
+			
+			// Hide after completion animation
+			setTimeout(() => {
+				visible = false;
+			}, 300);
+		}, remainingTime);
 	}
 
 	// Clean up on component unmount
 	onMount(() => {
 		return () => {
-			if (incrementTimer) {
-				clearInterval(incrementTimer);
-			}
+			if (incrementTimer) clearInterval(incrementTimer);
+			if (completeTimer) clearTimeout(completeTimer);
 		};
 	});
 </script>

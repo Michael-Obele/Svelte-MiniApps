@@ -5,7 +5,7 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
-	import { Github, Menu, LogIn, LogOut, User, Settings, LifeBuoy, X } from 'lucide-svelte';
+	import { Github, LogIn, LogOut, User, Settings, LifeBuoy } from 'lucide-svelte';
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
@@ -79,17 +79,17 @@
 								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
 								<DropdownMenu.Separator />
 								<a href="/profile">
-								<DropdownMenu.Item>
+									<DropdownMenu.Item>
 										<User class="mr-2 size-4" />
 										<span class="capitalize">{$userContext.username}</span>
 									</DropdownMenu.Item>
 								</a>
-								<DropdownMenu.Item class='cursor-not-allowed'>
+								<DropdownMenu.Item class="cursor-not-allowed">
 									<Settings class="mr-2 size-4" />
 									<span>Settings</span>
 								</DropdownMenu.Item>
 								<DropdownMenu.Separator />
-								<DropdownMenu.Item class='cursor-not-allowed'>
+								<DropdownMenu.Item class="cursor-not-allowed">
 									<LifeBuoy class="mr-2 size-4" />
 									<span>Support</span>
 								</DropdownMenu.Item>
