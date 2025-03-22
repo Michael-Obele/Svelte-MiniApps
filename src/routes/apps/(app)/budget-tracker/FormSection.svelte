@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Select from '@/ui/select';
 	import { budgetStore } from '$lib/stores/budgetStore';
+	import * as budgetState from './states.svelte';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Card } from '@/ui/card';
@@ -21,6 +22,7 @@
 		formsSection = $bindable()
 	} = $props();
 
+	// Legacy code for transition period
 	$effect(() => {
 		budgetStore.loadBudgets();
 	});

@@ -5,6 +5,7 @@
 	import { Pencil, Trash2 } from 'lucide-svelte';
 	import type { Budget, Expense } from '$lib/stores/budgetStore';
 	import { budgetStore } from '$lib/stores/budgetStore';
+	import * as budgetState from './states.svelte';
 	import { AlertCircle, AlertTriangle, CheckCircle2 } from 'lucide-svelte';
 
 	interface Props {
@@ -55,7 +56,7 @@
 						<Button variant="ghost" size="icon" onclick={() => openEditDialog(budget)}>
 							<Pencil class="h-4 w-4" />
 						</Button>
-						<Button variant="ghost" size="icon" onclick={() => budgetStore.deleteBudget(budget.id)}>
+						<Button variant="ghost" size="icon" onclick={() => budgetState.deleteBudget(budget.id)}>
 							<Trash2 class="h-4 w-4" />
 						</Button>
 					</div>
@@ -119,7 +120,7 @@
 										<Button
 											variant="ghost"
 											size="icon"
-											onclick={() => budgetStore.deleteExpense(budget.id, expense.id)}
+											onclick={() => budgetState.deleteExpense(budget.id, expense.id)}
 										>
 											<Trash2 class="h-4 w-4" />
 										</Button>

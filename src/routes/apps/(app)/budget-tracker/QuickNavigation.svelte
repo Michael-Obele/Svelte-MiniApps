@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { budgetStore } from '$lib/stores/budgetStore';
+	import * as budgetState from './states.svelte';
 	import { Button } from '@/ui/button';
 	import { Card } from '@/ui/card';
 	import { Progress } from '@/ui/progress/index.js';
@@ -7,6 +8,7 @@
 
 	let { getProgressBarColor } = $props();
 
+	// Legacy code for transition period
 	$effect(() => {
 		budgetStore.loadBudgets();
 	});
@@ -15,7 +17,6 @@
 		return expenses.reduce((total, expense) => total + expense.amount, 0);
 	}
 
-	// Add function to scroll to budget
 	async function scrollToBudget(budgetId: string) {
 		await tick();
 		const element = document.getElementById(`budget-${budgetId}`);
@@ -24,7 +25,6 @@
 		}
 	}
 
-	// Add function to get progress percentage
 	function getProgressPercentage(budget: any): number {
 		const spent = calculateTotalExpenses(budget.expenses);
 		return Math.min((spent / budget.amount) * 100, 100);

@@ -1,4 +1,6 @@
 // src/lib/stores/budgetStore.ts
+// DEPRECATED: This implementation uses svelte-persisted-store, which is being phased out.
+// Please use the new PersistedState implementation in src/routes/apps/(app)/budget-tracker/states.svelte.ts instead.
 import { persisted } from 'svelte-persisted-store';
 
 // src/lib/types/budget.ts
@@ -18,6 +20,9 @@ export interface Expense {
 	createdAt: string;
 }
 
+/**
+ * @deprecated Use the new PersistedState implementation in src/routes/apps/(app)/budget-tracker/states.svelte.ts instead
+ */
 function createBudgetStore() {
 	const { subscribe, set, update } = persisted<Budget[]>('budgets', []);
 
@@ -125,4 +130,7 @@ function createBudgetStore() {
 	};
 }
 
+/**
+ * @deprecated Use the new PersistedState implementation in src/routes/apps/(app)/budget-tracker/states.svelte.ts instead
+ */
 export const budgetStore = createBudgetStore();
