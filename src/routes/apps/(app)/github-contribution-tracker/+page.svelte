@@ -6,7 +6,6 @@
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
 	import { Loader2 } from 'lucide-svelte';
-	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
 	import { navigating } from '$app/state';
 
 	let username = $state('');
@@ -24,10 +23,8 @@
 			toast.error('Navigation failed. Please try again.');
 			isSubmitting = false;
 		}
-		// Note: We don't set isSubmitting to false here because we want the indicator
-		// to continue showing during navigation and data loading on the next page
 	}
-	
+
 	// Reset isSubmitting when navigation is complete
 	$effect(() => {
 		if (!navigating || !navigating.to) {
@@ -35,9 +32,6 @@
 		}
 	});
 </script>
-
-<!-- The NavigationProgressIndicator will automatically show during navigation -->
-<NavigationProgressIndicator active={isSubmitting} />
 
 <div class="container mx-auto px-4 py-8">
 	<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
@@ -70,7 +64,7 @@
 
 			<Button type="submit" disabled={isSubmitting} class="w-full">
 				{#if isSubmitting}
-					<Loader2 class="size-4 mr-2 animate-spin" />
+					<Loader2 class="mr-2 size-4 animate-spin" />
 					Loading...
 				{:else}
 					Track Contributions

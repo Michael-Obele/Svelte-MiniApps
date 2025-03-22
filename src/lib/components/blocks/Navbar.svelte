@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
 	import { page } from '$app/state';
+	import { navigating } from '$app/state';
 	import * as Avatar from '@/ui/avatar';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
@@ -9,6 +10,7 @@
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
+	import NavigationProgressIndicator from '@/NavigationProgressIndicator.svelte';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -43,6 +45,9 @@
 		}
 	};
 </script>
+
+<!-- Global navigation progress indicator -->
+<NavigationProgressIndicator />
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
 	<div class="flex flex-wrap items-center justify-around p-4">

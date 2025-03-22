@@ -10,7 +10,7 @@
 	const randomIncrement = 10; // Max random increment per step
 	const minProgressTime = 800; // Minimum time to show progress (ms)
 	
-	// Custom prop to manually trigger the progress bar
+	// Optional prop to manually trigger the progress bar (for non-navigation loading)
 	let { active = false } = $props<{ active?: boolean }>();
 
 	let progressValue = $state(0);

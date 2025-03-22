@@ -15,7 +15,6 @@
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
 	import GitGraph from './GitGraph.svelte';
 	import { toast } from 'svelte-sonner';
-	import NavigationProgressIndicator from '$lib/components/NavigationProgressIndicator.svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
@@ -81,9 +80,6 @@
 		}
 	});
 </script>
-
-<!-- Navigation indicator for going back to form -->
-<NavigationProgressIndicator active={isNavigating} />
 
 <RouteHead
 	title="{user} - GitHub Contributions in {year}"
