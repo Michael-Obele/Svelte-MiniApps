@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Select from '@/ui/select';
-	import { budgetStore } from '$lib/stores/budgetStore';
 	import * as budgetState from './states.svelte';
+	import type { Budget } from './states.svelte';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Card } from '@/ui/card';
@@ -19,13 +19,9 @@
 		addBudget,
 		formatNumberInput,
 		addExpense,
-		formsSection = $bindable()
+		formsSection = $bindable(),
+		budgets = $bindable<Budget[]>([])
 	} = $props();
-
-	// Legacy code for transition period
-	$effect(() => {
-		budgetStore.loadBudgets();
-	});
 </script>
 
 <section bind:this={formsSection}>
@@ -54,48 +50,59 @@
 					</Select.Group>
 				</Select.Content>
 			</Select.Root>
-
-			<Button onclick={addBudget}>
-				<PlusCircle class="mr-2 h-4 w-4" />
+		</div>
+		<div class="mt-4">
+			<Button onclick={addBudget} size="sm" class="gap-2">
+				<PlusCircle class="h-4 w-4" />
 				Add Budget
 			</Button>
 		</div>
 	</Card>
 
 	<!-- Add Expense Form -->
-	<Card class="p-6">
-		<h2 class="mb-4 text-xl font-semibold">Add Expense</h2>
-		<div class="flex flex-col gap-4 sm:flex-row">
-			<Select.Root
-				type="single"
-				bind:value={selectedBudgetId}
-				onValueChange={(value) => {
-					const budget = $budgetStore.find((b) => b.id === value);
-					console.log('budget:', budget);
-					selectedBudgetName = budget ? budget.name : 'Select Budget';
-				}}
-			>
-				<Select.Trigger class="flex-1">{selectedBudgetName}</Select.Trigger>
-				<Select.Content>
-					{#each $budgetStore as budget}
-						<Select.Item value={budget.id}>
-							{budget.name}
-						</Select.Item>
-					{/each}
-				</Select.Content>
-			</Select.Root>
-			<Input bind:value={expenseDescription} placeholder="Description" class="flex-1" />
-			<Input
-				bind:value={expenseAmount}
-				type="text"
-				placeholder="Amount"
-				class="w-32"
-				oninput={formatNumberInput}
-			/>
-			<Button onclick={addExpense}>
-				<PlusCircle class="mr-2 h-4 w-4" />
-				Add Expense
-			</Button>
+	{#if budgets.length > 0}
+		<div class="mt-4">
+			<Card class="p-6">
+				<h2 class="mb-4 text-xl font-semibold">Add New Expense</h2>
+				<div class="flex flex-col gap-4 sm:flex-row">
+					<Select.Root
+						type="single"
+						bind:value={selectedBudgetId}
+						onValueChange={(value) => {
+							const budget = budgetState.findBudget(value);
+							console.log('budget:', budget);
+							selectedBudgetName = budget ? budget.name : 'Select Budget';
+						}}
+					>
+						<Select.Trigger class="flex-1">{selectedBudgetName}</Select.Trigger>
+						<Select.Content>
+							{#each budgets as budget}
+								<Select.Item value={budget.id}>
+									{budget.name}
+								</Select.Item>
+							{/each}
+						</Select.Content>
+					</Select.Root>
+					<Input
+						bind:value={expenseDescription}
+						placeholder="Expense Description"
+						class="flex-1"
+					/>
+					<Input
+						bind:value={expenseAmount}
+						type="text"
+						placeholder="Amount"
+						class="w-32"
+						oninput={formatNumberInput}
+					/>
+				</div>
+				<div class="mt-4">
+					<Button onclick={addExpense} size="sm" class="gap-2">
+						<PlusCircle class="h-4 w-4" />
+						Add Expense
+					</Button>
+				</div>
+			</Card>
 		</div>
-	</Card>
+	{/if}
 </section>

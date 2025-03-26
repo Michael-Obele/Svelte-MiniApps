@@ -3,12 +3,28 @@
 	import FloatingBtn from './FloatingBtn.svelte';
 	import BudgetDialog from './BudgetDialog.svelte';
 	import QuickNavigation from './QuickNavigation.svelte';
-	import { budgetStore, type Budget, type Expense } from '$lib/stores/budgetStore';
+	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
 	import { toast } from 'svelte-sonner';
 	import ExpenseDialog from './ExpenseDialog.svelte';
 	import FormSection from './FormSection.svelte';
 	import RouteHead from '@/RouteHead.svelte';
+	import { Button } from '@/ui/button';
+
+	// Reactive store reference for budgets
+	let budgets = $state<Budget[]>([]);
+
+	// Subscribe to the budget state
+	let unsubscribe: () => void;
+	$effect.root(() => {
+		unsubscribe = budgetState.budgets.subscribe((value) => {
+			budgets = value;
+		});
+
+		return () => {
+			if (unsubscribe) unsubscribe();
+		};
+	});
 
 	let budgetName = $state('');
 	let budgetAmount = $state('');
@@ -20,9 +36,6 @@
 	let editExpenseDescription = $state('');
 	let editExpenseAmount = $state('');
 
-	$effect(() => {
-		budgetStore.loadBudgets();
-	});
 	let isSticky = $state(false);
 	let formsSection: HTMLElement | null = $state(null);
 
@@ -237,7 +250,7 @@
 	<div class="space-y-4">
 		<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
 
-		{#if $budgetStore.length > 0}
+		{#if budgets.length > 0}
 			<QuickNavigation {getProgressBarColor} />
 		{/if}
 
@@ -256,15 +269,36 @@
 			{formatNumberInput}
 		/>
 
-		<BudgetsList
-			{openEditDialog}
-			{openEditExpenseDialog}
-			{getProgressPercentage}
-			{getProgressBarColor}
-			{getCurrencySymbol}
-			{formatNumberWithCommas}
-			{calculateTotalExpenses}
-		/>
+		<div class="grid gap-6">
+			<!-- Empty state message when no budgets -->
+			{#if budgets.length === 0}
+				<div
+					class="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center text-muted-foreground"
+				>
+					<h2 class="text-xl font-semibold">No Budgets Yet</h2>
+					<p class="mb-6 mt-2 max-w-md text-sm">
+						Create your first budget to get started tracking your expenses.
+					</p>
+					<Button
+						onclick={() =>
+							document.querySelector('#budget-form')?.scrollIntoView({ behavior: 'smooth' })}
+					>
+						Create Budget
+					</Button>
+				</div>
+			{:else}
+				<BudgetsList
+					{openEditDialog}
+					{openEditExpenseDialog}
+					{getProgressBarColor}
+					{getProgressPercentage}
+					{getCurrencySymbol}
+					{formatNumberWithCommas}
+					{calculateTotalExpenses}
+					{budgets}
+				/>
+			{/if}
+		</div>
 	</div>
 </div>
 

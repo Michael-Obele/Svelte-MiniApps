@@ -3,12 +3,12 @@
 	import { Button } from '@/ui/button';
 	import { Progress } from '@/ui/progress/index.js';
 	import { Pencil, Trash2 } from 'lucide-svelte';
-	import type { Budget, Expense } from '$lib/stores/budgetStore';
-	import { budgetStore } from '$lib/stores/budgetStore';
+	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
 	import { AlertCircle, AlertTriangle, CheckCircle2 } from 'lucide-svelte';
 
 	interface Props {
+		budgets: Budget[];
 		openEditDialog: (budget: Budget) => void;
 		openEditExpenseDialog: (budgetId: string, expense: Expense) => void;
 		getProgressPercentage: (budget: Budget) => number;
@@ -19,6 +19,7 @@
 	}
 
 	let {
+		budgets,
 		openEditDialog,
 		openEditExpenseDialog,
 		getProgressPercentage,
@@ -41,7 +42,7 @@
 </script>
 
 <div id="budgets-list" class="grid gap-4 md:grid-cols-2">
-	{#each $budgetStore as budget}
+	{#each budgets as budget}
 		<Card id="budget-{budget.id}" class="p-6 transition-all hover:shadow-md">
 			{#if budget.expenses}
 				{@const percentage = getProgressPercentage(budget)}
