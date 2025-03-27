@@ -2,7 +2,7 @@
 	import * as Dialog from '@/ui/dialog';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
-	import type { Expense } from '$lib/stores/budgetStore';
+	import type { Expense } from './states.svelte';
 
 	interface Props {
 		editingExpense: { budgetId: string; expense: Expense } | null;

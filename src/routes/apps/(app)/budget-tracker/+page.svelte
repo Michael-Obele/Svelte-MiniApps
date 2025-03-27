@@ -7,9 +7,12 @@
 	import * as budgetState from './states.svelte';
 	import { toast } from 'svelte-sonner';
 	import ExpenseDialog from './ExpenseDialog.svelte';
-	import FormSection from './FormSection.svelte';
+	import BudgetSection from './BudgetSection.svelte';
+	import ExpenseSection from './ExpenseSection.svelte';
+	import ExpensesList from './ExpensesList.svelte';
 	import RouteHead from '@/RouteHead.svelte';
 	import { Button } from '@/ui/button';
+	import { scrollToID } from '$lib/utils';
 
 	// Reactive store reference for budgets
 	let budgets = $state<Budget[]>([]);
@@ -254,18 +257,23 @@
 			<QuickNavigation {getProgressBarColor} />
 		{/if}
 
-		<FormSection
+		<BudgetSection
 			bind:budgetName
 			bind:budgetAmount
-			bind:selectedBudgetId
-			bind:selectedBudgetName
-			bind:expenseDescription
-			bind:expenseAmount
 			bind:selectedCurrency
 			bind:formsSection
 			{currencies}
 			{addBudget}
-			{addExpense}
+			{formatNumberInput}
+			{budgets}
+		/>
+
+		<ExpenseSection
+			bind:selectedBudgetId
+			bind:selectedBudgetName
+			bind:expenseDescription
+			bind:expenseAmount
+			{budgets}
 			{formatNumberInput}
 		/>
 
@@ -279,12 +287,7 @@
 					<p class="mb-6 mt-2 max-w-md text-sm">
 						Create your first budget to get started tracking your expenses.
 					</p>
-					<Button
-						onclick={() =>
-							document.querySelector('#budget-form')?.scrollIntoView({ behavior: 'smooth' })}
-					>
-						Create Budget
-					</Button>
+					<Button onclick={() => scrollToID('budget-form')}>Create Budget</Button>
 				</div>
 			{:else}
 				<BudgetsList
@@ -296,6 +299,14 @@
 					{formatNumberWithCommas}
 					{calculateTotalExpenses}
 					{budgets}
+				/>
+
+				<!-- Add the new ExpensesList component -->
+				<ExpensesList
+					{budgets}
+					{openEditExpenseDialog}
+					{getCurrencySymbol}
+					{formatNumberWithCommas}
 				/>
 			{/if}
 		</div>
