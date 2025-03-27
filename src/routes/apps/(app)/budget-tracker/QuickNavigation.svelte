@@ -1,16 +1,26 @@
 <script lang="ts">
-	import { budgetStore } from '$lib/stores/budgetStore';
 	import * as budgetState from './states.svelte';
+	import type { Budget } from './states.svelte';
 	import { Button } from '@/ui/button';
 	import { Card } from '@/ui/card';
 	import { Progress } from '@/ui/progress/index.js';
 	import { tick } from 'svelte';
 
 	let { getProgressBarColor } = $props();
+	
+	// Reactive store reference for budgets
+	let budgets = $state<Budget[]>([]);
 
-	// Legacy code for transition period
-	$effect(() => {
-		budgetStore.loadBudgets();
+	// Subscribe to the budget state
+	let unsubscribe: () => void;
+	$effect.root(() => {
+		unsubscribe = budgetState.budgets.subscribe((value) => {
+			budgets = value;
+		});
+
+		return () => {
+			if (unsubscribe) unsubscribe();
+		};
 	});
 
 	function calculateTotalExpenses(expenses: any[]): number {
@@ -25,7 +35,7 @@
 		}
 	}
 
-	function getProgressPercentage(budget: any): number {
+	function getProgressPercentage(budget: Budget): number {
 		const spent = calculateTotalExpenses(budget.expenses);
 		return Math.min((spent / budget.amount) * 100, 100);
 	}
@@ -35,7 +45,7 @@
 	<div class="p-4">
 		<h2 class="mb-2 text-sm font-semibold text-muted-foreground">Quick Navigation</h2>
 		<div class="flex flex-wrap gap-2">
-			{#each $budgetStore as budget}
+			{#each budgets as budget}
 				<Button
 					variant="outline"
 					size="sm"
