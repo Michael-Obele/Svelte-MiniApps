@@ -623,3 +623,256 @@ describe('Budget State Subscription System', () => {
     unsub3();
   });
 });
+
+describe('Budget State Helper Functions', () => {
+  /**
+   * Setup before each test
+   */
+  beforeEach(() => {
+    localStorage.clear();
+    vi.clearAllMocks();
+    mockBudgets = [];
+    mockSubscribers = [];
+  });
+
+  /**
+   * Test: Finding a budget by ID
+   */
+  it('should correctly find a budget by ID', () => {
+    // Setup: Add multiple budgets
+    budgetState.addBudget('Groceries', 200, 'USD');
+    budgetState.addBudget('Entertainment', 100, 'EUR');
+    const targetBudgetId = budgetState.budgets.current[1].id;
+    
+    // Act: Find the budget
+    const foundBudget = budgetState.findBudget(targetBudgetId);
+    
+    // Assert: Verify the correct budget was found
+    expect(foundBudget, 'Budget should be found').toBeDefined();
+    expect(foundBudget?.id).toBe(targetBudgetId);
+    expect(foundBudget?.name).toBe('Entertainment');
+    expect(foundBudget?.currency).toBe('EUR');
+    
+    // Test finding non-existent budget
+    const nonExistentBudget = budgetState.findBudget('non-existent-id');
+    expect(nonExistentBudget, 'Non-existent budget should not be found').toBeUndefined();
+  });
+
+  /**
+   * Test: Getting budget expenses
+   */
+  it('should correctly retrieve expenses for a specific budget', () => {
+    // Setup: Add a budget with expenses
+    budgetState.addBudget('Groceries', 200, 'USD');
+    const budgetId = budgetState.budgets.current[0].id;
+    budgetState.addExpense(budgetId, 'Milk', 5);
+    budgetState.addExpense(budgetId, 'Bread', 3);
+    
+    // Act: Get expenses for the budget
+    const expenses = budgetState.getBudgetExpenses(budgetId);
+    
+    // Assert: Verify expenses were retrieved correctly
+    expect(expenses.length, 'Should retrieve 2 expenses').toBe(2);
+    expect(expenses[0].description).toBe('Milk');
+    expect(expenses[1].description).toBe('Bread');
+    
+    // Test getting expenses for non-existent budget
+    const noExpenses = budgetState.getBudgetExpenses('non-existent-id');
+    expect(noExpenses, 'Should return empty array for non-existent budget').toEqual([]);
+  });
+
+  /**
+   * Test: Getting all expenses across all budgets
+   */
+  it('should correctly retrieve all expenses across all budgets', () => {
+    // Setup: Add multiple budgets with expenses
+    budgetState.addBudget('Groceries', 200, 'USD');
+    const groceriesBudgetId = budgetState.budgets.current[0].id;
+    
+    budgetState.addBudget('Entertainment', 100, 'EUR');
+    const entertainmentBudgetId = budgetState.budgets.current[1].id;
+    
+    // Add expenses to both budgets
+    budgetState.addExpense(groceriesBudgetId, 'Milk', 5);
+    budgetState.addExpense(groceriesBudgetId, 'Bread', 3);
+    budgetState.addExpense(entertainmentBudgetId, 'Movie', 15);
+    
+    // Act: Get all expenses
+    const allExpenses = budgetState.getAllExpenses();
+    
+    // Assert: Verify all expenses were retrieved
+    expect(allExpenses.length, 'Should retrieve all 3 expenses').toBe(3);
+    
+    // Verify each expense has the correct budget information
+    const groceriesExpenses = allExpenses.filter(e => e.budgetName === 'Groceries');
+    const entertainmentExpenses = allExpenses.filter(e => e.budgetName === 'Entertainment');
+    
+    expect(groceriesExpenses.length).toBe(2);
+    expect(entertainmentExpenses.length).toBe(1);
+    
+    expect(groceriesExpenses[0].expense.description).toBe('Milk');
+    expect(groceriesExpenses[1].expense.description).toBe('Bread');
+    expect(entertainmentExpenses[0].expense.description).toBe('Movie');
+    
+    // Test with no budgets
+    mockBudgets = [];
+    const emptyExpenses = budgetState.getAllExpenses();
+    expect(emptyExpenses, 'Should return empty array when no budgets exist').toEqual([]);
+  });
+
+  /**
+   * Test: Getting total expenses
+   */
+  it('should correctly calculate total expenses across all budgets', () => {
+    // Setup: Add multiple budgets with expenses
+    budgetState.addBudget('Groceries', 200, 'USD');
+    const groceriesBudgetId = budgetState.budgets.current[0].id;
+    
+    budgetState.addBudget('Entertainment', 100, 'EUR');
+    const entertainmentBudgetId = budgetState.budgets.current[1].id;
+    
+    // Add expenses with different amounts
+    budgetState.addExpense(groceriesBudgetId, 'Milk', 5);
+    budgetState.addExpense(groceriesBudgetId, 'Bread', 3);
+    budgetState.addExpense(entertainmentBudgetId, 'Movie', 15);
+    
+    // Act: Calculate total expenses
+    const totalExpenses = budgetState.getTotalExpenses();
+    
+    // Assert: Verify the total is correct (5 + 3 + 15 = 23)
+    expect(totalExpenses, 'Total should be sum of all expense amounts').toBe(23);
+    
+    // Test with no expenses
+    mockBudgets = [{ id: 'test', name: 'Test', amount: 100, currency: 'USD', expenses: [], createdAt: new Date().toISOString() }];
+    const zeroExpenses = budgetState.getTotalExpenses();
+    expect(zeroExpenses, 'Should return 0 when no expenses exist').toBe(0);
+  });
+
+  /**
+   * Test: Date handling in budget creation
+   */
+  it('should correctly set and format dates for new budgets and expenses', () => {
+    // Setup: Mock date
+    const mockDate = new Date('2025-03-27T12:00:00Z');
+    const originalDate = global.Date;
+    global.Date = class extends Date {
+      constructor(...args: ConstructorParameters<typeof Date>) {
+        super(...args);
+        return mockDate;
+      }
+    } as DateConstructor;
+    
+    // Act: Add a budget and expense
+    budgetState.addBudget('Test Budget', 100, 'USD');
+    const budgetId = budgetState.budgets.current[0].id;
+    budgetState.addExpense(budgetId, 'Test Expense', 50);
+    
+    // Assert: Verify dates are set correctly
+    const budget = budgetState.budgets.current[0];
+    expect(budget.createdAt).toBe(mockDate.toISOString());
+    expect(budget.expenses[0].createdAt).toBe(mockDate.toISOString());
+    
+    // Cleanup: Restore original Date
+    global.Date = originalDate;
+  });
+
+  /**
+   * Test: Budget validation
+   */
+  it('should handle invalid budget data gracefully', () => {
+    // Test with invalid budget amount (negative)
+    budgetState.addBudget('Invalid Budget', -100, 'USD');
+    expect(budgetState.budgets.current.length, 'Should not add budget with negative amount').toBe(0);
+    
+    // Test with empty budget name
+    budgetState.addBudget('', 100, 'USD');
+    expect(budgetState.budgets.current.length, 'Should not add budget with empty name').toBe(0);
+    
+    // Test with invalid currency
+    budgetState.addBudget('Test Budget', 100, '');
+    expect(budgetState.budgets.current.length, 'Should not add budget with empty currency').toBe(0);
+  });
+
+  /**
+   * Test: Expense validation
+   */
+  it('should handle invalid expense data gracefully', () => {
+    // Setup: Add a valid budget
+    budgetState.addBudget('Test Budget', 100, 'USD');
+    const budgetId = budgetState.budgets.current[0].id;
+    
+    // Test with invalid expense amount (negative)
+    budgetState.addExpense(budgetId, 'Invalid Expense', -50);
+    expect(budgetState.budgets.current[0].expenses.length, 'Should not add expense with negative amount').toBe(0);
+    
+    // Test with empty expense description
+    budgetState.addExpense(budgetId, '', 50);
+    expect(budgetState.budgets.current[0].expenses.length, 'Should not add expense with empty description').toBe(0);
+  });
+
+  /**
+   * Test: Concurrent operations
+   */
+  it('should handle concurrent operations correctly', () => {
+    // Setup: Add multiple budgets simultaneously
+    const operations = [
+      budgetState.addBudget('Budget 1', 100, 'USD'),
+      budgetState.addBudget('Budget 2', 200, 'EUR'),
+      budgetState.addBudget('Budget 3', 300, 'GBP')
+    ];
+    
+    // Assert: All budgets should be added correctly
+    expect(budgetState.budgets.current.length, 'All budgets should be added').toBe(3);
+    
+    // Verify budget names
+    const budgetNames = budgetState.budgets.current.map(b => b.name);
+    expect(budgetNames).toContain('Budget 1');
+    expect(budgetNames).toContain('Budget 2');
+    expect(budgetNames).toContain('Budget 3');
+  });
+});
+
+describe('Budget State Event System', () => {
+  /**
+   * Setup before each test
+   */
+  beforeEach(() => {
+    localStorage.clear();
+    vi.clearAllMocks();
+    mockBudgets = [];
+    mockSubscribers = [];
+    
+    // Setup event listener spy
+    window.addEventListener = vi.fn();
+    window.removeEventListener = vi.fn();
+  });
+  
+  /**
+   * Test: Event dispatching on state changes
+   */
+  it('should dispatch events when state changes', () => {
+    // Act: Perform various state changes
+    budgetState.addBudget('Test Budget', 100, 'USD');
+    
+    // Assert: Verify event was dispatched
+    expect(global.dispatchEvent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'budgetState-updated'
+      })
+    );
+    
+    // Reset mock
+    vi.clearAllMocks();
+    
+    // Update a budget
+    const budgetId = budgetState.budgets.current[0].id;
+    budgetState.updateBudget(budgetId, 'Updated Budget', 200, 'EUR');
+    
+    // Verify event was dispatched again
+    expect(global.dispatchEvent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'budgetState-updated'
+      })
+    );
+  });
+});
