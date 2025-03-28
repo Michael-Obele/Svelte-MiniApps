@@ -1,16 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  // provider  = "postgresql"
-  provider  = "sqlite"
+  provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
@@ -21,14 +14,15 @@ model User {
   username       String           @unique
   passwordHash   String           @map("password_hash")
   role           String           @default("user")
-  sessions       Session[]
   createdAt      DateTime         @default(now()) @map("created_at")
   updatedAt      DateTime         @updatedAt @map("updated_at")
-  SocialLinkPage SocialLinkPage[]
   githubId       String?          @unique
   googleId       String?          @unique
-  UserPassword   UserPassword[]
   mantras        Mantra[]
+  sessions       Session[]
+  SocialLinkPage SocialLinkPage[]
+  UserPassword   UserPassword[]
+  budgets        Budget[]
 
   @@index([username])
   @@map("user")
@@ -37,9 +31,9 @@ model User {
 model Session {
   id        String   @id @default(uuid())
   userId    String   @map("user_id")
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   expiresAt DateTime @map("expires_at")
   createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@map("session")
@@ -50,10 +44,10 @@ model SocialLinkPage {
   createdAt DateTime     @default(now()) @map("created_at")
   updatedAt DateTime     @updatedAt @map("updated_at")
   userId    String       @map("user_id")
-  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  links     SocialLink[]
   title     String?
   isPublic  Boolean      @default(true) @map("is_public")
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  links     SocialLink[]
 
   @@map("social_link_pages")
 }
@@ -65,8 +59,8 @@ model SocialLink {
   label     String
   url       String
   pageId    String         @map("page_id")
-  page      SocialLinkPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
   order     Int            @default(0)
+  page      SocialLinkPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
 
   @@map("social_links")
 }
@@ -74,11 +68,11 @@ model SocialLink {
 model UserPassword {
   id           String   @id @default(uuid())
   userId       String   @map("user_id")
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   details      String?
   passwordHash String   @map("password_hash")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt @map("updated_at")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("user_passwords")
 }
@@ -88,9 +82,35 @@ model Mantra {
   content   String   @unique
   like      Boolean  @default(false)
   userId    String   @map("user_id")
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("mantras")
+}
+
+model Budget {
+  id        String    @id @default(uuid())
+  name      String
+  amount    Float
+  currency  String
+  userId    String?   @map("user_id")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  expenses  Expense[]
+  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("budgets")
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  description String
+  amount      Float
+  budgetId    String   @map("budget_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  budget      Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+
+  @@map("expenses")
 }
