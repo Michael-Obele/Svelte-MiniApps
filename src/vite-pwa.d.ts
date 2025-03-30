@@ -1,36 +1,38 @@
-// Type definitions for virtual:pwa-info module
+/// <reference types="vite/client" />
+
+// Define the pwa info module
 declare module 'virtual:pwa-info' {
   export interface PWAInfo {
+    pwaInDevEnvironment: boolean;
     webManifest: {
-      linkTag: string;
       href: string;
       useCredentials: boolean;
+      linkTag: string;
     };
-    registerSW: (options?: {
-      immediate?: boolean;
-      onNeedRefresh?: () => void;
-      onOfflineReady?: () => void;
-      onRegistered?: (registration: ServiceWorkerRegistration) => void;
-      onRegisterError?: (error: Error) => void;
-    }) => Promise<{
-      updateServiceWorker: () => Promise<void>;
-    } | undefined>;
+    registerSW?: (options?: RegisterSWOptions) => Promise<RegisterSWResult>;
   }
-
   export const pwaInfo: PWAInfo | undefined;
 }
 
-// Type definition for RegisterSW
+// Define register svelte module
 declare module 'virtual:pwa-register/svelte' {
+  // Type for registration options
   export interface RegisterSWOptions {
     immediate?: boolean;
     onNeedRefresh?: () => void;
     onOfflineReady?: () => void;
-    onRegistered?: (registration: ServiceWorkerRegistration) => void;
+    onRegistered?: (registration: ServiceWorkerRegistration | undefined) => void;
+    onRegisteredSW?: (swScriptUrl: string, registration: ServiceWorkerRegistration | undefined) => void;
     onRegisterError?: (error: Error) => void;
   }
 
-  export function registerSW(options?: RegisterSWOptions): Promise<{
-    updateServiceWorker: () => Promise<void>;
-  } | undefined>;
+  // Type for registration result
+  export interface RegisterSWResult {
+    needRefresh: boolean;
+    offlineReady: boolean;
+    updateServiceWorker: (reloadPage?: boolean) => Promise<void>;
+  }
+
+  // Main function exposed by the module
+  export function useRegisterSW(options?: RegisterSWOptions): RegisterSWResult;
 }

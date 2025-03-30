@@ -1,10 +1,9 @@
 <script module>
-	// Define types for PWA Info
-	interface PWAInfo {
-		webManifest: {
-			linkTag: string;
-		};
-		registerSW: (options?: any) => Promise<any>;
+	// Define type for PWA web manifest
+	interface WebManifest {
+		linkTag: string;
+		href: string;
+		useCredentials: boolean;
 	}
 </script>
 
@@ -16,39 +15,31 @@
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';
 	import type { LayoutProps } from './$types';
-	// import lottie from 'lottie-web';
-	import { onMount, type Snippet } from 'svelte';
+	import { onMount } from 'svelte';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 	import PWA from '$lib/components/PWA.svelte';
 
 	let { data, children }: LayoutProps = $props();
 	
-	// Initialize as empty strings for SSR
+	// For PWA web manifest
 	let webManifestLink = $state('');
-	let pwaInfoModule = $state<any>(null);
 	
-	// Only load PWA info in the browser
 	onMount(async () => {
 		if (browser) {
 			try {
-				// Dynamically import the virtual module
-				const pwaInfo = await import('virtual:pwa-info');
-				pwaInfoModule = pwaInfo;
+				// Dynamically import the PWA virtual module
+				const pwaInfoModule = await import('virtual:pwa-info');
 				
-				if (pwaInfo && pwaInfo.pwaInfo) {
-					// Update web manifest link
-					webManifestLink = pwaInfo.pwaInfo.webManifest.linkTag || '';
-					
-					// Register service worker if available
-					if (pwaInfo.pwaInfo.registerSW) {
-						pwaInfo.pwaInfo.registerSW();
-					}
+				if (pwaInfoModule.pwaInfo) {
+					// Set the web manifest link for the head
+					webManifestLink = pwaInfoModule.pwaInfo.webManifest.linkTag || '';
 				}
 			} catch (error) {
 				console.error('Failed to load PWA info:', error);
 			}
 		}
 
+		// Load Lordicon element
 		const lottie = (await import('lottie-web')).default;
 		const { defineElement } = await import('@lordicon/element');
 		defineElement(lottie.loadAnimation);
@@ -58,9 +49,11 @@
 <svelte:head>
 	<title>Svelte MiniApps</title>
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
+	<meta name="theme-color" content="#0A0A0A" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	
-	<!-- PWA web manifest link (auto-injected by vite-pwa) -->
-	{@html webManifestLink || ''}
+	<!-- PWA web manifest -->
+	{@html webManifestLink}
 
 	<script>
 		// Forward the necessary functions to the web worker layer
@@ -104,6 +97,8 @@
 	{@render children()}
 </div>
 <Footer />
+
+<!-- Only load PWA component in the browser -->
 {#if browser}
 	<PWA />
 {/if}
