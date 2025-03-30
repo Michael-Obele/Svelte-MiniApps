@@ -104,14 +104,25 @@ For development, you can use Prisma Studio to manage your data:
 npm run db:studio
 ```
 
-**Important**: For production environments, it's recommended to switch your Prisma data source provider from SQLite to PostgreSQL or MySQL.
+**Important**: The project has moved from SQLite to PostgreSQL for improved scalability and performance. Ensure you have PostgreSQL installed and configured locally.
 
 <details>
-    <summary>Database ORM</summary>
-   <p style="background-color: #000; border-left: 5px solid #ccc; font-color:#fff; padding: 10px; margin: 20px 0;">
-     The project uses Prisma ORM for database management. Prisma provides type-safe database access with great developer experience.
-   </p>
- </details>
+    <summary>How to Set Up a Local PostgreSQL Database</summary>
+    <ol>
+        <li>Download and install PostgreSQL from the <a href="https://www.postgresql.org/download/">official website</a>.</li>
+        <li>During installation, set a username and password for the PostgreSQL superuser (e.g., <code>postgres</code>).</li>
+        <li>Once installed, open the PostgreSQL shell or a GUI tool like pgAdmin.</li>
+        <li>Create a new database:
+            <pre><code>CREATE DATABASE mydatabase;</code></pre>
+        </li>
+        <li>Update your <code>.env</code> file with the connection string:
+            <pre><code>DATABASE_URL="postgresql://<username>:<password>@localhost:5432/mydatabase"</code></pre>
+        </li>
+        <li>Test the connection by running:
+            <pre><code>npx prisma db pull</code></pre>
+        </li>
+    </ol>
+</details>
 
 This will launch a local server and open the mini-apps in your browser.
 
