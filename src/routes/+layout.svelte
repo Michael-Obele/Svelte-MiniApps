@@ -1,3 +1,13 @@
+<script module>
+	// Define types for PWA Info
+	interface PWAInfo {
+		webManifest: {
+			linkTag: string;
+		};
+		registerSW: (options?: any) => Promise<any>;
+	}
+</script>
+
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { ModeWatcher } from 'mode-watcher';
@@ -8,15 +18,35 @@
 	import type { LayoutProps } from './$types';
 	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
-	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
+	import PWA from '$lib/components/PWA.svelte';
 
 	let { data, children }: LayoutProps = $props();
-
+	
+	// Initialize as empty strings for SSR
+	let webManifestLink = $state('');
+	let pwaInfoModule = $state<any>(null);
+	
+	// Only load PWA info in the browser
 	onMount(async () => {
-		// Dynamically import @lordicon/element *inside* onMount
 		if (browser) {
-			registerServiceWorker();
+			try {
+				// Dynamically import the virtual module
+				const pwaInfo = await import('virtual:pwa-info');
+				pwaInfoModule = pwaInfo;
+				
+				if (pwaInfo && pwaInfo.pwaInfo) {
+					// Update web manifest link
+					webManifestLink = pwaInfo.pwaInfo.webManifest.linkTag || '';
+					
+					// Register service worker if available
+					if (pwaInfo.pwaInfo.registerSW) {
+						pwaInfo.pwaInfo.registerSW();
+					}
+				}
+			} catch (error) {
+				console.error('Failed to load PWA info:', error);
+			}
 		}
 
 		const lottie = (await import('lottie-web')).default;
@@ -28,6 +58,9 @@
 <svelte:head>
 	<title>Svelte MiniApps</title>
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
+	
+	<!-- PWA web manifest link (auto-injected by vite-pwa) -->
+	{@html webManifestLink || ''}
 
 	<script>
 		// Forward the necessary functions to the web worker layer
@@ -71,3 +104,6 @@
 	{@render children()}
 </div>
 <Footer />
+{#if browser}
+	<PWA />
+{/if}
