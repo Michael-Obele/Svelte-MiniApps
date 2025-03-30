@@ -2,6 +2,8 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Remember to add back the url and directUrl before deploying to production
+
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
