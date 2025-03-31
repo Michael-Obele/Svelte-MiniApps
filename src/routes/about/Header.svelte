@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let { children, id } = $props();
+	let { children, id, class: className = '' } = $props();
 	let stepperHeight = 0;
 
 	onMount(() => {
@@ -34,7 +34,10 @@
 
 <header>
 	<h2
-		class="bold mx-auto my-5 mt-20 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
+		class={[
+			'bold mx-auto my-5 mt-20 w-fit cursor-pointer text-3xl font-bold tracking-tight text-gray-900 dark:text-white',
+			className
+		]}
 	>
 		<a onclick={(event) => scrollToSection(event)} href="#{id}">
 			{@render children?.()}
