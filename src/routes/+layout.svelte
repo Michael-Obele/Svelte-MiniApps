@@ -1,4 +1,4 @@
-<script module>
+<script module lang="ts">
 	// Define type for PWA web manifest
 	interface WebManifest {
 		linkTag: string;
