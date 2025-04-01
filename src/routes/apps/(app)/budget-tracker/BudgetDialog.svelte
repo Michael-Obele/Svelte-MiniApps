@@ -34,7 +34,7 @@
 			</Dialog.Description>
 		</Dialog.Header>
 		<div class="grid gap-4 py-4">
-			<Input bind:value={editBudgetName} placeholder="Budget Name" />
+			<Input type="text" bind:value={editBudgetName} placeholder="Budget Name" />
 			<Input
 				bind:value={editBudgetAmount}
 				type="number"
