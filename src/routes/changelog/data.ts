@@ -1,10 +1,19 @@
 import {
-	CodeIcon,
-	RocketIcon,
-	UserIcon,
-	SearchIcon,
-	WrenchIcon,
-	CircleSlashIcon
+	CircleSlash,
+	Code,
+	Rocket,
+	Search,
+	User,
+	Wrench,
+	DatabaseZap,
+	FileText,
+	Wallet,
+	Navigation,
+	Kanban,
+	Accessibility,
+	ChartArea,
+	Trophy,
+	Award
 } from 'lucide-svelte';
 
 export const items = [
@@ -14,35 +23,35 @@ export const items = [
 			'Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app.',
 		className: 'md:col-span-2',
 		color: 'from-blue-500/20 via-transparent',
-		icon: CodeIcon
+		icon: Code
 	},
 	{
 		title: 'Enhanced Performance',
 		description: 'Optimized load times and responsiveness through local data management.',
 		className: 'md:col-span-1',
 		color: 'from-purple-500/20 via-transparent',
-		icon: RocketIcon
+		icon: Rocket
 	},
 	{
 		title: 'Svelte 5 Migration',
 		description: 'Complete upgrade to Svelte 5 with modern features and optimizations.',
 		className: 'md:col-span-1',
 		color: 'from-green-500/20 via-transparent',
-		icon: SearchIcon
+		icon: Search
 	},
 	{
 		title: 'Local Data Persistence',
 		description: 'Robust local storage implementation with IndexedDB and background sync.',
 		className: 'md:col-span-1',
 		color: 'from-yellow-500/20 via-transparent',
-		icon: WrenchIcon
+		icon: Wrench
 	},
 	{
 		title: 'PWA Support',
 		description: 'Full Progressive Web App capabilities with offline support and installability.',
 		className: 'md:col-span-1',
 		color: 'from-red-500/20 via-transparent',
-		icon: CircleSlashIcon
+		icon: CircleSlash
 	}
 ];
 
@@ -68,15 +77,148 @@ export type TimelineItem = {
 	description: string;
 	items: string[];
 	type: 'breaking' | 'feature' | 'improvement' | 'deprecation';
-	icon: typeof RocketIcon; // one of the lucide-svelte icons
+	icon: typeof Rocket; // one of the lucide-svelte icons
 	color: string;
 };
 
 export const timeline: TimelineItem[] = [
 	{
+		date: 'March 29, 2025',
+		title: 'Database Migration to PostgreSQL',
+		description: 'Switched from SQLite to PostgreSQL for improved scalability and performance',
+		items: [
+			'Migrated database from SQLite to PostgreSQL for better scalability',
+			'Updated Prisma schema and models to support PostgreSQL',
+			'Added instructions for local PostgreSQL setup in README',
+			'Created dedicated db.ts file for Prisma client instance',
+			'Removed obsolete drizzle config files'
+		],
+		type: 'breaking',
+		icon: DatabaseZap,
+		color: 'from-red-500 to-orange-500'
+	},
+	{
+		date: 'March 27, 2025',
+		title: 'Budget Tracker Database Migration Planning',
+		description: 'Prepared for migrating budget tracker from localStorage to SQLite/Prisma',
+		items: [
+			'Created detailed migration plan document',
+			'Outlined database schema updates and server-side implementation',
+			'Planned client-side integration strategy',
+			'Prepared for future authentication integration'
+		],
+		type: 'improvement',
+		icon: FileText,
+		color: 'from-blue-500 to-cyan-500'
+	},
+	{
+		date: 'March 22-27, 2025',
+		title: 'Budget Tracker State Management Overhaul',
+		description: 'Completely refactored budget and expense state management',
+		items: [
+			'Replaced legacy budgetStore with reactive stores',
+			'Implemented comprehensive test suite for budget operations',
+			'Added cross-tab synchronization for consistent data',
+			'Enhanced form data binding and empty state handling',
+			'Migrated to custom PersistedState from svelte-persisted-store',
+			'Added currency symbol localization'
+		],
+		type: 'improvement',
+		icon: Wallet,
+		color: 'from-green-500 to-lime-500'
+	},
+	{
+		date: 'March 21-22, 2025',
+		title: 'Navigation Progress Indicator',
+		description: 'Implemented visual feedback for page navigation',
+		items: [
+			'Created NavigationProgressIndicator component',
+			'Integrated progress bar in Navbar and GitHub tracker pages',
+			'Optimized progress timing logic for smoother transitions',
+			'Improved navigation state handling across the app'
+		],
+		type: 'feature',
+		icon: Navigation,
+		color: 'from-blue-500 to-indigo-500'
+	},
+	{
+		date: 'March 18-20, 2025',
+		title: 'Todo List Kanban Board Enhancements',
+		description: 'Transformed todo list into full-featured Kanban board',
+		items: [
+			'Implemented drag-and-drop functionality with svelte-dnd-action',
+			'Added dynamic column management',
+			'Improved UI with grabber handles and resizer components',
+			'Enhanced task editing with icon buttons',
+			'Optimized state management structure'
+		],
+		type: 'feature',
+		icon: Kanban,
+		color: 'from-purple-500 to-pink-500'
+	},
+	{
+		date: 'March 5-11, 2025',
+		title: 'UI and Accessibility Improvements',
+		description: 'Various enhancements to user interface and navigation',
+		items: [
+			'Updated keyboard shortcuts for better accessibility',
+			'Improved app list layout and responsiveness',
+			'Added toggleable sheet menu for app navigation',
+			'Refactored route metadata management',
+			'Cleaned up unused components and imports'
+		],
+		type: 'improvement',
+		icon: Accessibility,
+		color: 'from-yellow-500 to-amber-500'
+	},
+	{
+		date: 'March 1-4, 2025',
+		title: 'SEO and Metadata Management',
+		description: 'Implemented comprehensive SEO improvements',
+		items: [
+			'Created RouteHead component for centralized metadata',
+			'Added Open Graph and Twitter meta tags',
+			'Integrated structured data for better search visibility',
+			'Applied RouteHead across all major pages',
+			'Enhanced About page with Attributions section'
+		],
+		type: 'feature',
+		icon: Search,
+		color: 'from-blue-500 to-cyan-500'
+	},
+	{
+		date: 'February 26-28, 2025',
+		title: 'App Usage Tracking System',
+		description: 'Implemented comprehensive usage analytics',
+		items: [
+			'Created AppTracker component for monitoring app usage',
+			'Added favorite apps and recent activity to user profile',
+			'Implemented streak tracking based on daily usage',
+			'Enhanced profile page with usage statistics tabs',
+			'Added example app to demonstrate tracking functionality'
+		],
+		type: 'feature',
+		icon: ChartArea,
+		color: 'from-violet-500 to-fuchsia-500'
+	},
+	{
+		date: 'February 22, 2025',
+		title: 'Svelte Hack 2024 Celebration',
+		description: 'Added visual elements to celebrate competition achievement',
+		items: [
+			'Added trophy icon to highlight 4th place win',
+			'Updated welcome message with competition results',
+			'Linked to detailed changelog entry about migration features'
+		],
+		type: 'feature',
+		icon: Trophy,
+		color: 'from-yellow-500 to-amber-500'
+	},
+	{
 		date: 'February 10, 2025',
 		title: 'Svelte Hack 2024 - 4th Place Winner!',
-		description: 'Recognized for excellence in Svelte 5 migration with our Migration Magician entry',
+		description:
+			'Recognized for excellence in Svelte 5 migration with our Migration Magician entry',
 		items: [
 			'Earned 4th place in the prestigious Svelte Hack 2024 competition',
 			'Recognized for our innovative approach to Svelte 4 to Svelte 5 migration',
@@ -85,7 +227,23 @@ export const timeline: TimelineItem[] = [
 			'Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Award,
+		color: 'from-purple-500 to-pink-500'
+	},
+	{
+		date: 'February 10, 2025',
+		title: 'Svelte Hack 2024 - 4th Place Winner!',
+		description:
+			'Recognized for excellence in Svelte 5 migration with our Migration Magician entry',
+		items: [
+			'Earned 4th place in the prestigious Svelte Hack 2024 competition',
+			'Recognized for our innovative approach to Svelte 4 to Svelte 5 migration',
+			'Implemented comprehensive runes adoption across the codebase',
+			'Showcased offline-first architecture with robust local data persistence',
+			'Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components'
+		],
+		type: 'feature',
+		icon: Rocket,
 		color: 'from-purple-500 to-pink-500'
 	},
 	{
@@ -103,7 +261,7 @@ export const timeline: TimelineItem[] = [
 			'Updated dependencies, including Svelte and TypeScript libraries'
 		],
 		type: 'improvement',
-		icon: CodeIcon,
+		icon: Code,
 		color: 'from-blue-500 to-cyan-500'
 	},
 	{
@@ -122,7 +280,7 @@ export const timeline: TimelineItem[] = [
 			'Refined feature flag logic to include privileged user roles'
 		],
 		type: 'feature',
-		icon: UserIcon,
+		icon: User,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -141,7 +299,7 @@ export const timeline: TimelineItem[] = [
 			'Updated dependencies and improved UI with new command shortcut component'
 		],
 		type: 'deprecation',
-		icon: CircleSlashIcon,
+		icon: CircleSlash,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -160,7 +318,7 @@ export const timeline: TimelineItem[] = [
 			'Refined state management in reactive declarations for better app performance'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Rocket,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -177,7 +335,7 @@ export const timeline: TimelineItem[] = [
 			'Added advanced emoji tools with new context menu and keyboard interactions'
 		],
 		type: 'feature',
-		icon: SearchIcon,
+		icon: Search,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -195,7 +353,7 @@ export const timeline: TimelineItem[] = [
 			'Updated service worker hash output path for deployment consistency'
 		],
 		type: 'improvement',
-		icon: WrenchIcon,
+		icon: Wrench,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -211,7 +369,7 @@ export const timeline: TimelineItem[] = [
 			'Updated service worker hash file path for consistency'
 		],
 		type: 'breaking',
-		icon: CircleSlashIcon,
+		icon: CircleSlash,
 		color: 'from-blue-500 to-indigo-500'
 	},
 	{
@@ -228,7 +386,7 @@ export const timeline: TimelineItem[] = [
 			'Added password generation button to the random password generator'
 		],
 		type: 'improvement',
-		icon: WrenchIcon,
+		icon: Wrench,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -242,7 +400,7 @@ export const timeline: TimelineItem[] = [
 			'Added user guidance for troubleshooting app issues'
 		],
 		type: 'breaking',
-		icon: CircleSlashIcon,
+		icon: CircleSlash,
 		color: 'from-red-500 to-orange-500'
 	},
 	{
@@ -257,7 +415,7 @@ export const timeline: TimelineItem[] = [
 			'Refactored emoji and password generators to use the new clipboard utility'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Rocket,
 		color: 'from-violet-500 to-fuchsia-500'
 	},
 	{
@@ -271,7 +429,7 @@ export const timeline: TimelineItem[] = [
 			'Enhanced QR code generator with text and social links input'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Rocket,
 		color: 'from-blue-500 to-cyan-500'
 	},
 	{
@@ -285,7 +443,7 @@ export const timeline: TimelineItem[] = [
 			'Added pattern validation for currency amounts'
 		],
 		type: 'improvement',
-		icon: WrenchIcon,
+		icon: Wrench,
 		color: 'from-orange-500 to-yellow-500'
 	},
 	{
@@ -299,7 +457,7 @@ export const timeline: TimelineItem[] = [
 			'Switched from drizzle-orm to Prisma for better database management'
 		],
 		type: 'improvement',
-		icon: WrenchIcon,
+		icon: Wrench,
 		color: 'from-green-500 to-lime-500'
 	},
 	{
@@ -313,7 +471,7 @@ export const timeline: TimelineItem[] = [
 			'Enhanced navbar with user context'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Rocket,
 		color: 'from-yellow-500 to-amber-500'
 	},
 	{
@@ -327,7 +485,7 @@ export const timeline: TimelineItem[] = [
 			'Added alert component with description support'
 		],
 		type: 'feature',
-		icon: RocketIcon,
+		icon: Rocket,
 		color: 'from-red-500 to-pink-500'
 	}
 ];
@@ -353,6 +511,5 @@ export const updates = [
 			'Streamlined UI design and navigation for an intuitive experience',
 			'Enhanced offline indicators and interaction feedback'
 		]
-	},
-
+	}
 ];
