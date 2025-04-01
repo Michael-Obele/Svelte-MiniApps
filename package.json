@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "bun vite dev",
-		"build": "node scripts/generateServiceWorkerHash.js && vite build",
+		"dev": "bun run scripts/generateServiceWorkerHash.js && bun vite dev",
+		"build": "bun run scripts/generateServiceWorkerHash.js && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -17,7 +17,8 @@
 		"db:push": "prisma db push",
 		"db:migrate": "prisma migrate dev",
 		"db:studio": "prisma studio",
-		"watch:hash": "node --watch-path=./src scripts/generateServiceWorkerHash.js"
+		"watch:hash": "bun run scripts/watchServiceWorkerHash.js",
+		"dev:with-sw": "concurrently \"bun run dev\" \"bun run watch:hash\""
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.45.3",

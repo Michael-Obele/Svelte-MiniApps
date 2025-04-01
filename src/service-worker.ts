@@ -1,11 +1,16 @@
 /// <reference types="@sveltejs/kit" />
 /// <reference lib="webworker" />
+/// <reference no-default-lib="true"/>
+/// <reference lib="esnext" />
 
 import { build, files, version } from '$service-worker';
 
-declare const self: ServiceWorkerGlobalScope;
+// Type-safe service worker global scope
+const sw = self as unknown as ServiceWorkerGlobalScope;
 
-const IS_DEV = import.meta.env.DEV;
+// Determine if we're in development mode based on version
+// In development, SvelteKit sets version to a timestamp that changes frequently
+const IS_DEV = version.includes('.') === false && !isNaN(Number(version));
 const CACHE_NAME = `app-cache-v${version}`; // Include version in cache name
 const ASSETS = [...build, ...files];
 const OFFLINE_URL = '/offline';
@@ -16,15 +21,30 @@ const MAX_AGE = IS_DEV
 	? 5 * 60 * 1000 // 5 minutes in dev
 	: 24 * 60 * 60 * 1000; // 1 day in production
 
+// Cache strategies
+const STRATEGIES = {
+	CACHE_FIRST: 'cache-first',
+	NETWORK_FIRST: 'network-first',
+	STALE_WHILE_REVALIDATE: 'stale-while-revalidate'
+};
+
+// Define caching strategies for different types of requests
+const ROUTE_STRATEGIES = [
+	{ pattern: /\/(api|auth)\//, strategy: STRATEGIES.NETWORK_FIRST },
+	{ pattern: /\.(js|css|woff2|woff|ttf|svg|png|jpg|jpeg|webp|avif)$/, strategy: STRATEGIES.CACHE_FIRST },
+	{ pattern: /\/manifest\.json$/, strategy: STRATEGIES.STALE_WHILE_REVALIDATE },
+	{ pattern: /\/favicon\//, strategy: STRATEGIES.CACHE_FIRST }
+];
+
 // Handle messages
-self.addEventListener('message', async (event) => {
+sw.addEventListener('message', async (event) => {
 	if (event.data?.type === 'DEBUG') {
 		console.log('[Service Worker Debug]', event.data);
 	}
 
 	if (event.data?.type === 'SKIP_WAITING') {
 		if (IS_DEV) {
-			self.skipWaiting();
+			sw.skipWaiting();
 			return;
 		}
 
@@ -35,11 +55,10 @@ self.addEventListener('message', async (event) => {
 				const cache = await caches.open(CACHE_NAME);
 				const storedHashResponse = await cache.match('app-hash');
 				const storedHash = storedHashResponse ? await storedHashResponse.text() : null;
-				const clientStoredHash = localStorage.getItem('serviceWorkerHash');
 
-				if (storedHash !== hashData.hash && clientStoredHash !== hashData.hash) {
+				if (storedHash !== hashData.hash) {
 					console.log('[Service Worker] Hash changed, notifying clients');
-					const clients = await self.clients.matchAll();
+					const clients = await sw.clients.matchAll();
 					clients.forEach((client) => {
 						client.postMessage({
 							type: 'NEW_VERSION_AVAILABLE',
@@ -55,7 +74,7 @@ self.addEventListener('message', async (event) => {
 });
 
 // Installation
-self.addEventListener('install', (event: ExtendableEvent) => {
+sw.addEventListener('install', (event: ExtendableEvent) => {
 	console.log('[Service Worker] Installing...');
 
 	event.waitUntil(
@@ -81,33 +100,35 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 					console.warn('[Service Worker] Hash fetch failed:', error);
 				}
 
+				// Cache core assets first
 				const assetsToCache = [...ASSETS, OFFLINE_URL];
-				const cachePromises = assetsToCache.map(async (asset) => {
-					try {
-						const response = await fetch(asset, {
-							cache: 'reload',
-							credentials: 'same-origin'
-						});
-
-						if (response.ok) {
-							const cacheResponse = response.clone();
-							const headers = new Headers(cacheResponse.headers);
-							headers.set('Cache-Control', `max-age=${MAX_AGE}`); // Fixed syntax
-
-							const modifiedResponse = new Response(await cacheResponse.blob(), {
-								status: cacheResponse.status,
-								statusText: cacheResponse.statusText,
-								headers
+				await Promise.all(
+					assetsToCache.map(async (asset) => {
+						try {
+							const response = await fetch(asset, {
+								cache: 'reload',
+								credentials: 'same-origin'
 							});
 
-							await cache.put(asset, modifiedResponse);
-						}
-					} catch (error) {
-						console.warn(`Failed to cache asset: ${asset}`, error); // Fixed syntax
-					}
-				});
+							if (response.ok) {
+								const cacheResponse = response.clone();
+								const headers = new Headers(cacheResponse.headers);
+								headers.set('Cache-Control', `max-age=${MAX_AGE}`);
 
-				await Promise.all(cachePromises);
+								const modifiedResponse = new Response(await cacheResponse.blob(), {
+									status: cacheResponse.status,
+									statusText: cacheResponse.statusText,
+									headers
+								});
+
+								await cache.put(asset, modifiedResponse);
+							}
+						} catch (error) {
+							console.warn(`Failed to cache asset: ${asset}`, error);
+						}
+					})
+				);
+				
 				console.log('[Service Worker] Installation complete');
 			} catch (error) {
 				console.error('[Service Worker] Installation failed:', error);
@@ -117,15 +138,16 @@ self.addEventListener('install', (event: ExtendableEvent) => {
 });
 
 // Activation
-self.addEventListener('activate', (event: ExtendableEvent) => {
+sw.addEventListener('activate', (event: ExtendableEvent) => {
 	event.waitUntil(
 		(async () => {
 			try {
 				if (IS_DEV) {
-					await self.clients.claim();
+					await sw.clients.claim();
 					return;
 				}
 
+				// Clean up old caches
 				const keys = await caches.keys();
 				await Promise.all(
 					keys.map((key) => {
@@ -135,6 +157,7 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 					})
 				);
 
+				// Check for hash changes and notify clients
 				try {
 					const hashResponse = await fetch(HASH_FILE);
 					if (hashResponse.ok) {
@@ -145,7 +168,7 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 
 						if (storedHash !== hashData.hash) {
 							console.log('[Service Worker] Hash changed, notifying clients');
-							const clients = await self.clients.matchAll();
+							const clients = await sw.clients.matchAll();
 							clients.forEach((client) => {
 								client.postMessage({
 									type: 'NEW_VERSION_AVAILABLE',
@@ -158,7 +181,7 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 					console.warn('[Service Worker] Hash check failed:', error);
 				}
 
-				await self.clients.claim();
+				await sw.clients.claim();
 				console.log('[Service Worker] Activation complete');
 			} catch (error) {
 				console.error('[Service Worker] Activation failed:', error);
@@ -168,12 +191,13 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
 });
 
 // Fetch handling
-self.addEventListener('fetch', (event: FetchEvent) => {
+sw.addEventListener('fetch', (event: FetchEvent) => {
 	const request = event.request;
 
 	if (request.method !== 'GET') return;
 
-	if (isPageRequest(request)) {
+	// Handle page requests (navigation)
+	if (isHtmlPageRequest(request)) {
 		event.respondWith(
 			(async () => {
 				try {
@@ -181,6 +205,7 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 						return await fetch(request);
 					}
 
+					// Try network first for page requests
 					const networkResponse = await fetch(request);
 					if (networkResponse.ok) {
 						const cache = await caches.open(CACHE_NAME);
@@ -191,17 +216,20 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 					console.log('[Service Worker] Network request failed, falling back to cache');
 				}
 
+				// Try to get from cache
 				const cachedResponse = await caches.match(request);
 				if (cachedResponse && cachedResponse.ok) {
 					return cachedResponse;
 				}
 
+				// If not in cache, serve the offline page
 				return (await caches.match(OFFLINE_URL)) || new Response('Offline', { status: 503 });
 			})()
 		);
 		return;
 	}
 
+	// Handle API requests
 	if (isApiRequest(request)) {
 		event.respondWith(
 			(async () => {
@@ -209,50 +237,67 @@ self.addEventListener('fetch', (event: FetchEvent) => {
 					return await fetchWithRetry(request); // Use fetchWithRetry for API requests
 				} catch (error) {
 					console.error('[Service Worker] Network request failed:', error);
-					return new Response('Network error', { status: 503, statusText: 'Network error' });
+					return new Response(JSON.stringify({ error: 'Network error', offline: true }), { 
+						status: 503, 
+						statusText: 'Network error',
+						headers: { 'Content-Type': 'application/json' }
+					});
 				}
 			})()
 		);
 		return;
 	}
 
+	// Handle static assets
 	if (isStaticAsset(request)) {
 		event.respondWith(
-			caches.match(request).then((cachedResponse) => {
-				return (
-					cachedResponse ||
-					fetchWithRetry(request).then((networkResponse) => {
-						// Use fetchWithRetry for static assets
-						return caches.open(CACHE_NAME).then((cache) => {
-							cache.put(request, networkResponse.clone());
-							return networkResponse;
-						});
-					})
-				);
-			})
+			(async () => {
+				// Check cache first for static assets
+				const cachedResponse = await caches.match(request);
+				if (cachedResponse && cachedResponse.ok) {
+					// Revalidate in the background
+					fetchAndCache(request, CACHE_NAME).catch(() => {});
+					return cachedResponse;
+				}
+
+				// If not in cache, fetch from network and cache
+				try {
+					const networkResponse = await fetchWithRetry(request);
+					if (networkResponse.ok) {
+						const cache = await caches.open(CACHE_NAME);
+						cache.put(request, networkResponse.clone());
+					}
+					return networkResponse;
+				} catch (error) {
+					console.error('[Service Worker] Failed to fetch static asset:', error);
+					return new Response('Network error', { status: 503 });
+				}
+			})()
 		);
 		return;
 	}
 
+	// For all other requests, determine strategy based on URL patterns
+	const strategy = getStrategyForUrl(request.url);
+	
 	event.respondWith(
 		(async () => {
-			const cache = await caches.open(CACHE_NAME);
-			const cachedResponse = await cache.match(request);
-
-			const networkFetch = fetch(request).then(async (networkResponse) => {
-				if (networkResponse.ok) {
-					await cache.put(request, networkResponse.clone());
-				}
-				return networkResponse;
-			});
-
-			return cachedResponse && cachedResponse.ok ? cachedResponse : networkFetch;
+			switch (strategy) {
+				case STRATEGIES.CACHE_FIRST:
+					return await handleCacheFirst(request);
+				case STRATEGIES.NETWORK_FIRST:
+					return await handleNetworkFirst(request);
+				case STRATEGIES.STALE_WHILE_REVALIDATE:
+					return await handleStaleWhileRevalidate(request);
+				default:
+					return await handleNetworkFirst(request);
+			}
 		})()
 	);
 });
 
 // Utility functions
-function isPageRequest(request: Request): boolean {
+function isHtmlPageRequest(request: Request): boolean {
 	const url = new URL(request.url);
 	return (
 		request.mode === 'navigate' ||
@@ -265,7 +310,7 @@ function isApiRequest(request: Request): boolean {
 }
 
 function isStaticAsset(request: Request): boolean {
-	return /\.(png|jpg|jpeg|svg|gif|webp|js|css)$/i.test(request.url);
+	return /\.(png|jpg|jpeg|svg|gif|webp|avif|js|css|woff2|woff|ttf)$/i.test(request.url);
 }
 
 // Utility function for retrying network requests with exponential backoff
@@ -276,12 +321,106 @@ async function fetchWithRetry(request: Request, retries = 3): Promise<Response> 
 			return response;
 		} catch (error) {
 			if (i === retries - 1) {
-				// If it's the last retry, return a fallback Response
-				return new Response('Network error', { status: 503, statusText: 'Network error' });
+				throw error;
 			}
 			await new Promise((res) => setTimeout(res, Math.pow(2, i) * 1000)); // Exponential backoff
 		}
 	}
 	// This line should never be reached, but TypeScript needs it
 	throw new Error('Unreachable code');
+}
+
+// Fetch and cache a resource
+async function fetchAndCache(request: Request, cacheName: string): Promise<Response> {
+	const response = await fetch(request);
+	if (response.ok) {
+		const cache = await caches.open(cacheName);
+		await cache.put(request, response.clone());
+	}
+	return response;
+}
+
+// Get the appropriate caching strategy for a URL
+function getStrategyForUrl(url: string): string {
+	for (const route of ROUTE_STRATEGIES) {
+		if (route.pattern.test(url)) {
+			return route.strategy;
+		}
+	}
+	return STRATEGIES.NETWORK_FIRST; // Default strategy
+}
+
+// Cache-first strategy handler
+async function handleCacheFirst(request: Request): Promise<Response> {
+	const cache = await caches.open(CACHE_NAME);
+	const cachedResponse = await cache.match(request);
+	
+	if (cachedResponse && cachedResponse.ok) {
+		// Revalidate in the background
+		fetchAndCache(request, CACHE_NAME).catch(() => {});
+		return cachedResponse;
+	}
+	
+	try {
+		const networkResponse = await fetch(request);
+		if (networkResponse.ok) {
+			await cache.put(request, networkResponse.clone());
+		}
+		return networkResponse;
+	} catch (error) {
+		console.error('[Service Worker] Network request failed:', error);
+		return new Response('Network error', { status: 503 });
+	}
+}
+
+// Network-first strategy handler
+async function handleNetworkFirst(request: Request): Promise<Response> {
+	try {
+		const networkResponse = await fetch(request);
+		if (networkResponse.ok) {
+			const cache = await caches.open(CACHE_NAME);
+			await cache.put(request, networkResponse.clone());
+		}
+		return networkResponse;
+	} catch (error) {
+		const cache = await caches.open(CACHE_NAME);
+		const cachedResponse = await cache.match(request);
+		
+		if (cachedResponse && cachedResponse.ok) {
+			return cachedResponse;
+		}
+		
+		console.error('[Service Worker] Network request failed and no cache available:', error);
+		return new Response('Network error', { status: 503 });
+	}
+}
+
+// Stale-while-revalidate strategy handler
+async function handleStaleWhileRevalidate(request: Request): Promise<Response> {
+	const cache = await caches.open(CACHE_NAME);
+	const cachedResponse = await cache.match(request);
+	
+	const networkResponsePromise = fetch(request).then(response => {
+		if (response.ok) {
+			cache.put(request, response.clone());
+		}
+		return response;
+	}).catch(error => {
+		console.error('[Service Worker] Network request failed:', error);
+		return null;
+	});
+	
+	// Return the cached response immediately if available
+	if (cachedResponse && cachedResponse.ok) {
+		networkResponsePromise.catch(() => {}); // Handle in background
+		return cachedResponse;
+	}
+	
+	// Otherwise wait for the network response
+	const networkResponse = await networkResponsePromise;
+	if (networkResponse) {
+		return networkResponse;
+	}
+	
+	return new Response('Network error', { status: 503 });
 }
