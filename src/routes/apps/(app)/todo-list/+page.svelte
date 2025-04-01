@@ -7,6 +7,7 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
+	import BetaBanner from '$lib/components/BetaBanner.svelte';
 	import {
 		todoStore,
 		addColumn,
@@ -99,11 +100,11 @@
 	function handleDrop(e: CustomEvent) {
 		const { fromTarget, toTarget, widget } = e.detail;
 		if (!fromTarget || !toTarget || !widget || !widget.element) return;
-		
+
 		// Find the parent div with the data-todo-id attribute
 		const todoElement = widget.element.closest('[data-todo-id]');
 		if (!todoElement) return;
-		
+
 		const todoId = todoElement.getAttribute('data-todo-id');
 		const fromColumnId = fromTarget.id;
 		const toColumnId = toTarget.id;
@@ -131,9 +132,12 @@
 
 	// Theme classes for styling
 	const themeClasses = {
-		target: 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm w-80 h-full flex flex-col'
+		target:
+			'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm w-80 h-full flex flex-col'
 	};
 </script>
+
+<BetaBanner />
 
 <div class="flex h-full w-full flex-col p-4">
 	<div class="mb-6 flex items-center justify-between">
@@ -145,9 +149,7 @@
 	</div>
 
 	<div class="flex-1 overflow-x-auto">
-		<FlexiBoard
-			class="flex min-h-[calc(100vh-200px)] gap-4 p-4"
-		>
+		<FlexiBoard class="flex min-h-[calc(100vh-200px)] gap-4 p-4">
 			{#each columns as column (column?.id)}
 				<div>
 					<Card.Root class={themeClasses.target}>
@@ -223,11 +225,9 @@
 						>
 							{#each column?.todos || [] as todo (todo.id)}
 								<div data-todo-id={todo.id}>
-									<FlexiWidget
-										metadata={{ todo, columnId: column?.id }}
-									>
+									<FlexiWidget metadata={{ todo, columnId: column?.id }}>
 										<TodoItem
-											todo={todo}
+											{todo}
 											columnId={column?.id || ''}
 											onEdit={handleEditTodo}
 											onDelete={handleDeleteTodo}
