@@ -1,11 +1,7 @@
 <script lang="ts">
-	//@ts-expect-error
 	import CalHeatmap from 'cal-heatmap';
-	//@ts-expect-error
 	import Legend from 'cal-heatmap/plugins/Legend';
-	//@ts-expect-error
 	import Tooltip from 'cal-heatmap/plugins/Tooltip';
-	//@ts-expect-error
 	import CalendarLabel from 'cal-heatmap/plugins/CalendarLabel';
 	import 'cal-heatmap/cal-heatmap.css';
 	import dayjs from 'dayjs';
@@ -44,6 +40,32 @@
 		verticalOrientation?: boolean;
 		theme?: 'light' | 'dark';
 		[key: string]: any;
+	}
+
+	// Define base plugin options interface
+	interface PluginOptions {
+		position?: 'top' | 'right' | 'bottom' | 'left';
+		dimensions?: { width: number; height: number };
+		key?: string;
+	}
+
+	// Define plugin option interfaces
+	interface TooltipOptions extends PluginOptions {
+		text?: (date: any, value: number) => string;
+	}
+
+	interface LegendOptions extends PluginOptions {
+		tickSize?: number;
+		width?: number;
+		itemSelector?: string;
+		label?: string;
+	}
+
+	interface CalendarLabelOptions extends PluginOptions {
+		width?: number;
+		textAlign?: string;
+		text?: () => string[];
+		padding?: number[];
 	}
 
 	const small = new MediaQuery('max-width: 25rem');
@@ -100,7 +122,7 @@
 				},
 				[
 					[
-						Tooltip,
+						Tooltip as any,
 						{
 							text: (date: any, value: number) => {
 								console.log('Date in milliseconds:', date);
@@ -124,19 +146,19 @@
 									'EEEE, MMMM d, yyyy'
 								)}`;
 							}
-						}
+						} as TooltipOptions
 					],
 					[
-						Legend,
+						Legend as any,
 						{
 							tickSize: 0,
 							width: 150,
 							itemSelector: '#contribution-legend',
 							label: 'Contributions'
-						}
+						} as LegendOptions
 					],
 					[
-						CalendarLabel,
+						CalendarLabel as any,
 						{
 							width: 30,
 							textAlign: 'start',
@@ -148,7 +170,7 @@
 								return weekdays.map((d, i) => (i % 2 !== 0 ? '' : d));
 							},
 							padding: [25, 0, 0, 0]
-						}
+						} as CalendarLabelOptions
 					]
 				]
 			);
