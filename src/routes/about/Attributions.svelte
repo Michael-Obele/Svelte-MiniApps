@@ -70,7 +70,8 @@
 		},
 		{
 			name: 'Carta',
-			description: 'Carta is a lightweight, fast and extensible Svelte Markdown editor and viewer. It is powered by unified, remark and rehype. Check out the examples to see it in action. Differently from most editors, Carta does not include a code editor, but it is just a textarea with syntax highlighting, shortcuts and more.',
+			description:
+				'Carta is a lightweight, fast and extensible Svelte Markdown editor and viewer. It is powered by unified, remark and rehype. Check out the examples to see it in action. Differently from most editors, Carta does not include a code editor, but it is just a textarea with syntax highlighting, shortcuts and more.',
 			url: 'https://beartocode.github.io/carta/introduction',
 			color: 'text-red-500 dark:text-red-700',
 			icon: Palette
@@ -85,18 +86,9 @@
 	];
 </script>
 
-<section
-	{id}
-	class="mx-auto mt-16 flex w-full flex-col justify-center p-8 transition-all"
->
-	<Header {id}>
-		<span
-			class="inline-block bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent dark:from-red-700 dark:to-green-400"
-			>Attributions</span
-		></Header
-	>
+<section {id} class="mx-auto mt-16 flex w-full flex-col justify-center p-8 transition-all">
+	<Header {id}>Attributions</Header>
 	<div class="mb-8 text-center">
-	
 		<p class="mx-auto max-w-2xl text-gray-700 dark:text-gray-300">
 			Svelte MiniApps is built with the help of these amazing open-source projects:
 		</p>
@@ -105,7 +97,9 @@
 	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{#each attributions as { name, description, url, color, icon }}
 			{@const Icon = icon}
-			{@const iconBg = color.includes('red') ? 'bg-red-100/30 dark:bg-red-900/30' : 'bg-green-100/30 dark:bg-green-900/30'}
+			{@const iconBg = color.includes('red')
+				? 'bg-red-100/30 dark:bg-red-900/30'
+				: 'bg-green-100/30 dark:bg-green-900/30'}
 			{@const headingColor = color.includes('red') ? 'text-red-600' : 'text-green-600'}
 			<div
 				class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
@@ -115,9 +109,7 @@
 				></div>
 
 				<div class="flex items-start gap-3">
-					<div
-						class={`flex h-10 w-10 items-center justify-center rounded-lg ${iconBg}`}
-					>
+					<div class={`flex h-10 w-10 items-center justify-center rounded-lg ${iconBg}`}>
 						<Icon class="{color} h-5 w-5" />
 					</div>
 
