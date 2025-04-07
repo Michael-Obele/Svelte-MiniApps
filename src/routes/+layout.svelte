@@ -10,8 +10,10 @@
 	import { onMount, type Snippet } from 'svelte';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
+	import { Runatics } from 'runatics';
 
-	let { data, children }: LayoutProps = $props();
+	let { children, data }: LayoutProps = $props();
+	const analyticsId = data.ANALYTICS_ID;
 
 	onMount(async () => {
 		// Dynamically import @lordicon/element *inside* onMount
