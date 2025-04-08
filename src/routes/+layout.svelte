@@ -12,7 +12,7 @@
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 	import { Runatics } from 'runatics';
 
-	let { children, data }: LayoutProps = $props();
+	let { children, data } = $props<{ data: { ANALYTICS_ID: string; user?: any } }>();
 	const analyticsId = data.ANALYTICS_ID;
 
 	onMount(async () => {
@@ -67,7 +67,7 @@
 			'background-color: var(--background); color: var(--foreground); border: 1px solid var(--border);'
 	}}
 />
-
+<Runatics {analyticsId} />
 <Navbar />
 <div class="min-h-screen">
 	{@render children()}
