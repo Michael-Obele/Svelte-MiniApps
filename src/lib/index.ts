@@ -6,7 +6,7 @@ export const site = {
 	image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png',
 	author: 'Michael Obele',
 	description: 'A collection of mini applications built with Svelte',
-	twitterUsername: 'Dev_Obele', // Add your Twitter handle if you have one
+	twitterUsername: 'Dev_Obele',
 	githubUsername: 'Michael-Obele',
 	repository: 'https://github.com/Michael-Obele/Svelte-MiniApps',
 	themeColor: '#1e293b'

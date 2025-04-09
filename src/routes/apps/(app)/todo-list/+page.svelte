@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
-	import { Plus, X, Edit, Check } from 'lucide-svelte';
+	import { Plus, X, Edit, Check, AlertTriangle } from 'lucide-svelte';
 	import TodoItem from '$lib/components/todo/todo-item.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
+	import * as Alert from '$lib/components/ui/alert/index.js';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
-	import BetaBanner from '$lib/components/BetaBanner.svelte';
 	import {
 		todoStore,
 		addColumn,
@@ -137,7 +137,13 @@
 	};
 </script>
 
-<BetaBanner />
+<Alert.Root variant="default" class="mb-4">
+	<AlertTriangle class="h-4 w-4" />
+	<Alert.Title>Beta Version</Alert.Title>
+	<Alert.Description>
+		This app is in beta. Features may be unstable or incomplete.
+	</Alert.Description>
+</Alert.Root>
 
 <div class="flex h-full w-full flex-col p-4">
 	<div class="mb-6 flex items-center justify-between">
