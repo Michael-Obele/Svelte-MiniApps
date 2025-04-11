@@ -11,15 +11,31 @@
 		type Icon as IconType
 	} from 'lucide-svelte';
 	import Header from './Header.svelte';
+	import { fade, fly, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
 	let { id } = $props();
+
+	// Theme configuration for consistent styling
+	const theme = {
+		red: {
+			text: 'text-red-600 dark:text-red-500',
+			bg: 'bg-red-100/30 dark:bg-red-900/30',
+			accent: 'text-red-500 dark:text-red-400'
+		},
+		green: {
+			text: 'text-green-600 dark:text-green-500',
+			bg: 'bg-green-100/30 dark:bg-green-900/30',
+			accent: 'text-green-500 dark:text-green-400'
+		}
+	};
 
 	// Attribution data structure
 	interface Attribution {
 		name: string;
 		description: string;
 		url: string;
-		color: string;
+		theme: 'red' | 'green';
 		icon: typeof IconType;
 	}
 
@@ -30,57 +46,57 @@
 			description:
 				'The framework powering this application, providing routing, server-side rendering, and more.',
 			url: 'https://kit.svelte.dev/',
-			color: 'text-red-500 dark:text-red-700',
+			theme: 'red',
 			icon: Package
 		},
 		{
 			name: 'Shadcn UI',
 			description: 'Beautiful, accessible, and customizable UI components for Svelte applications.',
 			url: 'https://www.shadcn-svelte.com/',
-			color: 'text-green-500 dark:text-green-400',
+			theme: 'green',
 			icon: Code
 		},
 		{
 			name: 'Lordicon',
-			description: `Powerful animated icons library that brings life to the user interface. <span class="text-red-500 dark:text-red-700">Note:</span> Lordicon is <span class="font-semibold text-green-500 dark:text-green-400">not open source</span>, but offers <span class="text-green-800 dark:text-green-400">free usage with attribution</span>.`,
+			description: `Powerful animated icons library that brings life to the user interface. <span class="${theme.red.accent}">Note:</span> Lordicon is <span class="font-semibold ${theme.green.accent}">not open source</span>, but offers <span class="${theme.green.text}">free usage with attribution</span>.`,
 			url: 'https://lordicon.com/',
-			color: 'text-red-500 dark:text-red-700',
+			theme: 'red',
 			icon: Film
 		},
 		{
 			name: 'Lucide Icons',
 			description: 'Beautiful & consistent icon toolkit made for designers and developers.',
 			url: 'https://lucide.dev/',
-			color: 'text-red-500 dark:text-red-700',
+			theme: 'red',
 			icon: ExternalLink
 		},
 		{
 			name: 'Tailwind CSS',
 			description: 'A utility-first CSS framework for rapidly building custom user interfaces.',
 			url: 'https://tailwindcss.com/',
-			color: 'text-green-500 dark:text-green-400',
+			theme: 'green',
 			icon: Palette
 		},
 		{
 			name: 'Bits UI',
 			description: 'Accessible, unstyled components for building high-quality Svelte applications.',
 			url: 'https://www.bits-ui.com/',
-			color: 'text-green-500 dark:text-green-400',
+			theme: 'green',
 			icon: Accessibility
 		},
 		{
 			name: 'Carta',
 			description:
-				'Carta is a lightweight, fast and extensible Svelte Markdown editor and viewer. It is powered by unified, remark and rehype. Check out the examples to see it in action. Differently from most editors, Carta does not include a code editor, but it is just a textarea with syntax highlighting, shortcuts and more.',
+				'A lightweight Markdown editor and viewer for Svelte with syntax highlighting and rich features. Provides textarea functionality without a full code editor.',
 			url: 'https://beartocode.github.io/carta/introduction',
-			color: 'text-red-500 dark:text-red-700',
+			theme: 'red',
 			icon: Palette
 		},
 		{
 			name: 'Lottie Web',
 			description: 'Render After Effects animations natively on the web.',
 			url: 'https://github.com/airbnb/lottie-web',
-			color: 'text-red-500 dark:text-red-700',
+			theme: 'red',
 			icon: Film
 		}
 	];
@@ -88,33 +104,28 @@
 
 <section {id} class="mx-auto mt-16 flex w-full flex-col justify-center p-8 transition-all">
 	<Header {id}>Attributions</Header>
-	<div class="mb-8 text-center">
+	<div class="mb-8 text-center" in:fade={{ duration: 400, delay: 200 }}>
 		<p class="mx-auto max-w-2xl text-gray-700 dark:text-gray-300">
 			Svelte MiniApps is built with the help of these amazing open-source projects:
 		</p>
 	</div>
 
 	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-		{#each attributions as { name, description, url, color, icon }}
+		{#each attributions as { name, description, url, theme: themeKey, icon }, i}
 			{@const Icon = icon}
-			{@const iconBg = color.includes('red')
-				? 'bg-red-100/30 dark:bg-red-900/30'
-				: 'bg-green-100/30 dark:bg-green-900/30'}
-			{@const headingColor = color.includes('red') ? 'text-red-600' : 'text-green-600'}
-			<div
-				class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
-			>
-				<div
-					class="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-gray-100 opacity-20 transition-transform group-hover:scale-150 dark:bg-gray-800"
-				></div>
+			{@const currentTheme = theme[themeKey]}
 
+			<div
+				in:fly={{ y: 20, duration: 300, delay: 150 * i, easing: quintOut }}
+				class="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+			>
 				<div class="flex items-start gap-3">
-					<div class={`flex h-10 w-10 items-center justify-center rounded-lg ${iconBg}`}>
-						<Icon class="{color} h-5 w-5" />
+					<div class="flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 group-hover:scale-110 {currentTheme.bg}">
+						<Icon class="{currentTheme.accent} h-5 w-5" />
 					</div>
 
 					<div class="flex-1">
-						<h3 class={`mb-2 text-lg font-semibold ${headingColor}`}>{name}</h3>
+						<h3 class="{currentTheme.text} mb-2 text-lg font-semibold">{name}</h3>
 						<p class="mb-3 text-sm text-gray-700 dark:text-gray-300">
 							{@html description}
 						</p>
@@ -122,10 +133,12 @@
 							href={url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+							class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-all duration-300 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
 						>
-							Visit Website
-							<ExternalLink class="h-3.5 w-3.5" />
+							<span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full">Visit Website</span>
+							<div in:scale={{ duration: 200, delay: 300 + 150 * i, easing: quintOut }} class="transition-transform duration-300 ease-in-out group-hover:translate-x-0.5">
+								<ExternalLink class="h-3.5 w-3.5" />
+							</div>
 						</a>
 					</div>
 				</div>
@@ -133,7 +146,10 @@
 		{/each}
 	</div>
 
-	<div class="mt-8 flex items-center justify-center gap-2 text-center">
+	<div
+		class="mt-8 flex items-center justify-center gap-2 text-center"
+		in:fade={{ duration: 400, delay: 800 }}
+	>
 		<Heart class="h-4 w-4 text-red-500 dark:text-red-700" />
 		<p class="text-sm text-gray-600 dark:text-gray-400">
 			We are grateful to all the open-source contributors who make these tools available to the
@@ -141,17 +157,3 @@
 		</p>
 	</div>
 </section>
-
-<!-- 
-  Suggested icon options:
-  - SvelteKit: Package, Box, Code2
-  - Shadcn UI: Layout, Components, Layers
-  - Lordicon: Animation, Sparkles, Wand2
-  - Lucide Icons: Icons, Shapes, Palette
-  - Tailwind CSS: Wind, Brush, CSSIcon
-  - Bits UI: Puzzle, Component, Blocks
-  - Carta: Palette, Pencil, Book
-  - Lottie Web: Film, Video, Play
-  
-  You can import more icons from lucide-svelte as needed.
--->
