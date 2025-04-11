@@ -9,7 +9,6 @@
 	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
-	import { partytownSnippet } from '@builder.io/partytown/integration';
 	import { Runatics } from 'runatics';
 
 	let { children, data }: LayoutProps = $props();
