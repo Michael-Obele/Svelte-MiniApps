@@ -6,6 +6,7 @@ export const load: LayoutServerLoad = async (event) => {
 	if (event.url.hostname === 'next.svelte-apps.me') {
 		throw redirect(302, 'https://svelte-apps.me');
 	}
+	console.log(ANALYTICS_ID);
 	return {
 		user: event.locals.user,
 		ANALYTICS_ID

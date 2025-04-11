@@ -12,7 +12,7 @@
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 	import { Runatics } from 'runatics';
 
-	let { children, data } = $props<{ data: { ANALYTICS_ID: string; user?: any } }>();
+	let { children, data }: LayoutProps = $props();
 	const analyticsId = data.ANALYTICS_ID;
 
 	onMount(async () => {
@@ -30,30 +30,9 @@
 <svelte:head>
 	<title>Svelte MiniApps</title>
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
-
-	<script>
-		// Forward the necessary functions to the web worker layer
-		partytown = {
-			forward: ['dataLayer.push', 'gtag']
-		};
-	</script>
-
-	{@html '<script>' + partytownSnippet() + '</script>'}
-	<!-- Google tag (gtag.js) -->
-	<script
-		type="text/partytown"
-		src="https://www.googletagmanager.com/gtag/js?id=G-Q6RH7QGJDV"
-	></script>
-	<script type="text/partytown">
-		window.dataLayer = window.dataLayer || [];
-		window.gtag = function () {
-			dataLayer.push(arguments);
-		};
-		gtag('js', new Date());
-		gtag('config', 'G-Q6RH7QGJDV');
-	</script>
 </svelte:head>
 
+<Runatics {analyticsId} />
 <ModeWatcher />
 <Toaster
 	expand={true}
@@ -67,7 +46,7 @@
 			'background-color: var(--background); color: var(--foreground); border: 1px solid var(--border);'
 	}}
 />
-<Runatics {analyticsId} />
+
 <Navbar />
 <div class="min-h-screen">
 	{@render children()}
