@@ -14,7 +14,7 @@
 		Download
 	} from 'lucide-svelte';
 
-	import Bluesky from "$lib/assets/bluesky-outline-light.svelte"
+	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
@@ -79,7 +79,7 @@
 						class="text-muted-foreground transition-colors hover:text-primary"
 						aria-label="GitHub"
 					>
-						<Bluesky class='size-5' fill="white" />
+						<Bluesky class="size-5" fill="white" />
 					</a>
 					<a
 						href="https://www.linkedin.com/in/michael-amachree-263841325/"
@@ -121,7 +121,7 @@
 						<ArrowUp class="ml-2 size-4" strokeWidth={1.5} />
 					</button>
 					<ThemeSwitch />
-					<NukeButton class="opacity-40 transition-opacity hover:opacity-100" />
+					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>
 				<div class="flex items-center space-x-2">
 					<span class="flex items-center text-sm text-muted-foreground">
