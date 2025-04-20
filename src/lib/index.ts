@@ -22,7 +22,8 @@ export const done = [
 	'advanced-emoji-tools',
 	'budget-tracker',
 	'todo-list',
-	'markdown-editor'
+	'markdown-editor',
+	'text-summarizer'
 ];
 //
 export type Project = {
