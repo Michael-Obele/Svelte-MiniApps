@@ -19,13 +19,10 @@
 	type LocaleType = `${string}-${string}`; // e.g., 'en-US', 'es-ES'
 
 	interface Props {
-		// Core metadata
 		title: string;
 		description: string;
 		keywords?: string;
 		route: string;
-
-		// Optional metadata
 		image?: string;
 		author?: string;
 		canonical?: string;
@@ -37,18 +34,13 @@
 		themeColor?: string;
 		noindex?: boolean;
 		nofollow?: boolean;
-
-		// Structured data
 		structuredData?: Record<string, any> | null;
 	}
 
 	let {
-		// Required props with defaults
 		title,
 		description,
 		route,
-
-		// Optional props with defaults
 		keywords = '',
 		image = site.image,
 		author = site.author || 'Michael Obele',
@@ -58,18 +50,16 @@
 		type = 'website',
 		locale = 'en-US',
 		twitterCard = 'summary_large_image',
-		themeColor = site.themeColor, // Default to site theme color
+		themeColor = site.themeColor,
 		noindex = false,
 		nofollow = false,
 		structuredData = null
 	}: Props = $props();
 
-	// Derived values
 	let ogTitle = $derived(title);
 	let ogDescription = $derived(description);
 	let ogUrl = $derived(canonical);
 
-	// Robots directive
 	let robotsContent = (() => {
 		const directives: string[] = [];
 		if (noindex) directives.push('noindex');
@@ -77,12 +67,24 @@
 		return directives.length ? directives.join(', ') : 'index, follow';
 	})();
 
-	// Structured data as JSON
-	let structuredDataJson = $derived(structuredData ? JSON.stringify(structuredData) : undefined);
+	// Enrich structuredData with site-wide info if not already present
+	let fullStructuredData = $derived(() => {
+		if (!structuredData) return undefined;
+		return {
+			...structuredData,
+			url: structuredData.url ?? site.url,
+			image: structuredData.image ?? image,
+			publisher: structuredData.publisher ?? {
+				'@type': 'Organization',
+				name: site.name,
+				logo: { '@type': 'ImageObject', url: site.image }
+			}
+		};
+	});
+	let structuredDataJson = $derived(fullStructuredData ? JSON.stringify(fullStructuredData) : undefined);
 </script>
 
 <svelte:head>
-	<!-- Basic Meta Tags -->
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	{#if keywords}
@@ -90,13 +92,12 @@
 	{/if}
 	<meta name="author" content={author} />
 	<meta name="robots" content={robotsContent} />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	{#if themeColor}
 		<meta name="theme-color" content={themeColor} />
 	{/if}
 	<link rel="canonical" href={canonical} />
 
-	<!-- Open Graph / Facebook -->
+	<!-- Open Graph -->
 	<meta property="og:title" content={ogTitle} />
 	<meta property="og:description" content={ogDescription} />
 	<meta property="og:type" content={type} />
@@ -105,7 +106,6 @@
 	<meta property="og:locale" content={locale} />
 	{#if image}
 		<meta property="og:image" content={image} />
-		<meta property="og:image:alt" content={ogTitle} />
 	{/if}
 	{#if publishedTime && type === 'article'}
 		<meta property="article:published_time" content={publishedTime} />
@@ -124,13 +124,12 @@
 	{/if}
 	{#if image}
 		<meta name="twitter:image" content={image} />
-		<meta name="twitter:image:alt" content={ogTitle} />
 	{/if}
 
 	<!-- JSON-LD Structured Data -->
 	{#if structuredDataJson}
 		<script type="application/ld+json">
-      {@html structuredDataJson}
+			{@html structuredDataJson}
 		</script>
 	{/if}
 </svelte:head>
