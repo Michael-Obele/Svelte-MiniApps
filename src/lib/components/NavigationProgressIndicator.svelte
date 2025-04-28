@@ -9,6 +9,7 @@
 	const incrementInterval = 300; // ms between progress increments
 	const randomIncrement = 10; // Max random increment per step
 	const minProgressTime = 800; // Minimum time to show progress (ms)
+	const minimumVisibleDelay = 200; // Minimum load time before showing bar (ms)
 	
 	// Optional prop to manually trigger the progress bar (for non-navigation loading)
 	let { active = false } = $props<{ active?: boolean }>();
@@ -17,6 +18,7 @@
 	let visible = $state(false);
 	let incrementTimer: ReturnType<typeof setInterval> | null = null;
 	let completeTimer: ReturnType<typeof setTimeout> | null = null;
+	let showDelayTimer: ReturnType<typeof setTimeout> | null = null;
 	let startTime = 0;
 	
 	// Handle both navigation and manual trigger
@@ -25,7 +27,7 @@
 		if ((navigating && navigating.to) || active) {
 			// Navigation started or manually triggered
 			startProgress();
-		} else if ((!navigating || !navigating.to) && !active && visible) {
+		} else if ((!navigating || !navigating.to) && !active && (visible || showDelayTimer)) {
 			// Navigation completed and not manually active
 			completeProgress();
 		}
@@ -35,21 +37,26 @@
 		// Reset timers if they exist
 		if (incrementTimer) clearInterval(incrementTimer);
 		if (completeTimer) clearTimeout(completeTimer);
+		if (showDelayTimer) clearTimeout(showDelayTimer);
 		
 		// Record start time
 		startTime = Date.now();
 		
 		// Reset progress
 		progressValue = 0;
-		visible = true;
-		progressValue = initialValue;
+		visible = false;
 		
-		// Start incrementing progress
-		incrementTimer = setInterval(() => {
-			// Add a random increment but keep progress under 90%
-			const increment = Math.random() * randomIncrement;
-			progressValue = Math.min(90, progressValue + increment);
-		}, incrementInterval);
+		// Only show the bar if loading lasts longer than minimumVisibleDelay
+		showDelayTimer = setTimeout(() => {
+			visible = true;
+			progressValue = initialValue;
+			// Start incrementing progress
+			incrementTimer = setInterval(() => {
+				// Add a random increment but keep progress under 90%
+				const increment = Math.random() * randomIncrement;
+				progressValue = Math.min(90, progressValue + increment);
+			}, incrementInterval);
+		}, minimumVisibleDelay);
 	}
 
 	function completeProgress() {
@@ -58,10 +65,20 @@
 			clearInterval(incrementTimer);
 			incrementTimer = null;
 		}
+		if (showDelayTimer) {
+			clearTimeout(showDelayTimer);
+			showDelayTimer = null;
+		}
 		
 		// Calculate elapsed time
 		const elapsedTime = Date.now() - startTime;
 		const remainingTime = Math.max(0, minProgressTime - elapsedTime);
+		
+		// If the bar was never shown (very fast load), skip animation
+		if (!visible) {
+			progressValue = 0;
+			return;
+		}
 		
 		// Complete the progress after ensuring minimum display time
 		completeTimer = setTimeout(() => {
@@ -80,6 +97,7 @@
 		return () => {
 			if (incrementTimer) clearInterval(incrementTimer);
 			if (completeTimer) clearTimeout(completeTimer);
+			if (showDelayTimer) clearTimeout(showDelayTimer);
 		};
 	});
 </script>
