@@ -3,7 +3,7 @@
 	import { Clipboard, RefreshCcw } from 'lucide-svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { copyToClipboard } from '$lib/utils';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	let randomEmoji = emoji.random();
 

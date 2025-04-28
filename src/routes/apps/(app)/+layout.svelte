@@ -10,7 +10,7 @@
 	import { done } from '$lib/index';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;

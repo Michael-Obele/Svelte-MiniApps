@@ -11,7 +11,7 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { site } from '$lib';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	interface Props {
 		//

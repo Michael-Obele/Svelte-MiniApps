@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;

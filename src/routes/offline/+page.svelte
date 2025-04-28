@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	let retryCount = $state(0);
 	let isChecking = $state(false);
 	let isOnline = $state(false);
@@ -57,10 +57,10 @@
 </script>
 
 <RouteHead
-  title="Offline | Svelte MiniApps"
-  description="Check your internet connection status and access cached content while offline."
-  keywords="svelte, mini apps, offline, connection, cached content"
-  route="/offline"
+	title="Offline | Svelte MiniApps"
+	description="Check your internet connection status and access cached content while offline."
+	keywords="svelte, mini apps, offline, connection, cached content"
+	route="/offline"
 />
 
 <div

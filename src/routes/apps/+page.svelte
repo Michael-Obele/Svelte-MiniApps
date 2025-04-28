@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import List from './List.svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { filter } from '$lib/states.svelte';
@@ -7,7 +7,7 @@
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import { Command, Search, CheckCircle2 } from 'lucide-svelte';
 	import * as Cmd from '@/ui/command/index.js';
-	import * as Dialog from "@/ui/dialog/index.js";
+	import * as Dialog from '@/ui/dialog/index.js';
 	import { done, projects } from '$lib/index';
 
 	function setFilterValue(filterValue: string): () => void {
@@ -19,19 +19,20 @@
 	let app = $state('');
 	let searchQuery = $state('');
 	let filteredProjects = $derived(
-		searchQuery 
-			? projects.filter(project => 
-				project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				project.details.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				project.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				project.link.toLowerCase().includes(searchQuery.toLowerCase())
-			)
+		searchQuery
+			? projects.filter(
+					(project) =>
+						project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+						project.details.toLowerCase().includes(searchQuery.toLowerCase()) ||
+						project.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||
+						project.link.toLowerCase().includes(searchQuery.toLowerCase())
+				)
 			: projects
 	);
 
 	// Dialog state
 	let dialogOpen = $state(false);
-	
+
 	// Function to handle keyboard shortcut
 	function handleKeydown(event: KeyboardEvent) {
 		if (event.ctrlKey && event.key === 'k') {
@@ -39,7 +40,7 @@
 			dialogOpen = true;
 		}
 	}
-	
+
 	// Add event listener for keydown
 	$effect(() => {
 		window.addEventListener('keydown', handleKeydown);
@@ -55,16 +56,18 @@
 </script>
 
 <RouteHead
-  title="Apps | Svelte MiniApps"
-  description="Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
-  keywords="svelte, mini apps, applications, tools, productivity, entertainment"
-  route="/apps"
+	title="Apps | Svelte MiniApps"
+	description="Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
+	keywords="svelte, mini apps, applications, tools, productivity, entertainment"
+	route="/apps"
 />
 <BlurInText>
 	<h1 class="my-8 text-center text-4xl font-bold">Explore Our Mini Applications</h1>
 </BlurInText>
 
-<div class="container mx-auto flex w-full flex-wrap items-center justify-center gap-3 py-6 md:py-8 lg:max-w-5xl">
+<div
+	class="container mx-auto flex w-full flex-wrap items-center justify-center gap-3 py-6 md:py-8 lg:max-w-5xl"
+>
 	<Button
 		onclick={setFilterValue('all')}
 		class={`rounded-md px-5 py-2.5 text-base font-medium focus:outline-none focus:ring-4 ${
@@ -75,7 +78,7 @@
 	>
 		All
 	</Button>
-	
+
 	<Button
 		onclick={setFilterValue('done')}
 		class="rounded-md px-5 py-2.5 text-base font-medium focus:outline-none focus:ring-4 {filter.current ===
@@ -85,13 +88,13 @@
 	>
 		Done
 	</Button>
-	
+
 	<Dialog.Root bind:open={dialogOpen}>
 		<Dialog.Trigger>
-			<div 
-				class="relative mx-auto mt-4 w-full max-w-md cursor-pointer sm:mt-0"
-			>
-				<div class="flex items-center rounded-lg border border-green-300 bg-white/5 px-4 py-2 shadow-md backdrop-blur-sm hover:border-green-500 hover:bg-white/10 dark:border-green-800 dark:bg-gray-900/50 dark:hover:border-green-700">
+			<div class="relative mx-auto mt-4 w-full max-w-md cursor-pointer sm:mt-0">
+				<div
+					class="flex items-center rounded-lg border border-green-300 bg-white/5 px-4 py-2 shadow-md backdrop-blur-sm hover:border-green-500 hover:bg-white/10 dark:border-green-800 dark:bg-gray-900/50 dark:hover:border-green-700"
+				>
 					<Search class="mr-2 h-5 w-5 text-green-500 dark:text-green-400" />
 					<div class="flex-1 px-2 py-1 text-base text-green-700 dark:text-green-400">
 						Find App...
@@ -109,9 +112,7 @@
 		<Dialog.Content class="sm:max-w-[425px]">
 			<Dialog.Header>
 				<Dialog.Title>Search Apps</Dialog.Title>
-				<Dialog.Description>
-					Find the mini application you're looking for
-				</Dialog.Description>
+				<Dialog.Description>Find the mini application you're looking for</Dialog.Description>
 			</Dialog.Header>
 			<div class="mt-4 space-y-4">
 				<div class="flex items-center space-x-2">
@@ -129,7 +130,7 @@
 						autofocus
 					/>
 				</div>
-				
+
 				<div class="max-h-[300px] overflow-y-auto">
 					{#if filteredProjects.length === 0}
 						<div class="py-4 text-center text-gray-500 dark:text-gray-400">
@@ -138,17 +139,21 @@
 					{:else}
 						{#each filteredProjects as project}
 							{#if isCompleted(project.link)}
-								<a 
+								<a
 									href={'/apps/' + project.link}
 									class="group flex w-full cursor-pointer items-center justify-between rounded-md px-3 py-2 text-left hover:bg-green-100 dark:hover:bg-green-900/30"
 								>
 									<div>
-										<div class="flex items-center gap-2 font-medium text-green-800 dark:text-green-300">
+										<div
+											class="flex items-center gap-2 font-medium text-green-800 dark:text-green-300"
+										>
 											{project.title}
 											<CheckCircle2 class="h-4 w-4 text-green-600 dark:text-green-400" />
 										</div>
 										<div class="text-sm text-gray-600 dark:text-gray-400">{project.details}</div>
-										<div class="mt-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/50 dark:text-green-300">
+										<div
+											class="mt-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/50 dark:text-green-300"
+										>
 											{project.tag}
 										</div>
 									</div>
@@ -157,7 +162,7 @@
 									</div>
 								</a>
 							{:else}
-								<div 
+								<div
 									class="group flex w-full cursor-not-allowed items-center justify-between rounded-md px-3 py-2 text-left opacity-60"
 								>
 									<div>
@@ -165,7 +170,9 @@
 											{project.title} <span class="text-xs">(Coming Soon)</span>
 										</div>
 										<div class="text-sm text-gray-500 dark:text-gray-500">{project.details}</div>
-										<div class="mt-1 inline-block rounded-full bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+										<div
+											class="mt-1 inline-block rounded-full bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400"
+										>
 											{project.tag}
 										</div>
 									</div>
@@ -179,8 +186,8 @@
 				</div>
 			</div>
 			<Dialog.Footer>
-				<Button 
-					variant="outline" 
+				<Button
+					variant="outline"
 					onclick={() => {
 						searchQuery = '';
 						dialogOpen = false;

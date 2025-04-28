@@ -137,8 +137,8 @@
 	};
 </script>
 
-<Alert.Root variant="default" class="mb-4">
-	<AlertTriangle class="h-4 w-4" />
+<Alert.Root variant="default" class="mx-auto mb-4 max-w-3xl">
+	<AlertTriangle color="#f97316" class="h-4 w-4" />
 	<Alert.Title>Beta Version</Alert.Title>
 	<Alert.Description>
 		This app is in beta. Features may be unstable or incomplete.

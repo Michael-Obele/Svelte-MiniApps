@@ -10,7 +10,7 @@
 	import BudgetSection from './BudgetSection.svelte';
 	import ExpenseSection from './ExpenseSection.svelte';
 	import ExpensesList from './ExpensesList.svelte';
-	import RouteHead from '@/RouteHead.svelte';
+	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
 	import { scrollToID } from '$lib/utils';
 

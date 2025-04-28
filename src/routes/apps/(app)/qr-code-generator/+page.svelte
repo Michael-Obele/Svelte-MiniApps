@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as htmlToImage from 'html-to-image';
 	import TextInput from './TextInput.svelte';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import ContactInput from './ContactInput.svelte';
 	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '@/ui/tabs';

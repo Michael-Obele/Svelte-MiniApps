@@ -17,7 +17,7 @@
 	import { ArrowRightIcon } from 'lucide-svelte';
 	import Highlight from './Highlight.svelte';
 	import { once, preventDefault, scrollToID } from '$lib/utils';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	let selectedItem: (typeof timeline)[0] | null = $state(null);
 </script>

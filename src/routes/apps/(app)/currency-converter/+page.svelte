@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib'; // Import site-related variables
 	import { enhance } from '$app/forms';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import type { ActionData, SubmitFunction, PageData } from './$types';
 	import * as Alert from '@/ui/alert/index.js';
 	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';

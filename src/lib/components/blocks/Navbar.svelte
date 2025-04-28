@@ -10,7 +10,7 @@
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
-	import NavigationProgressIndicator from '@/NavigationProgressIndicator.svelte';
+	import NavigationProgressIndicator from '@/blocks/NavigationProgressIndicator.svelte';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },

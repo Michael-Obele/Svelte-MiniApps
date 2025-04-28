@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { Textarea } from '@/ui/textarea/index.js';
 	import { Slider } from '@/ui/slider';

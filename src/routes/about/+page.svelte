@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import Vision from './Vision.svelte';
 	import Philosophy from './Philosophy.svelte';
 	import Tools from './Tools.svelte';
@@ -29,7 +29,7 @@
 						visibleSections.add(entry.target.id);
 					} else {
 						visibleSections.delete(entry.target.id);
-			//Only update lastActiveIndex if we're scrolling up past it
+						//Only update lastActiveIndex if we're scrolling up past it
 						if (currentIndex === lastActiveIndex) {
 							// Find the highest visible section
 							const visibleIndices = Array.from(visibleSections).map((id) => Ids.indexOf(id));
@@ -108,12 +108,12 @@
 </script>
 
 <RouteHead
-    title="About Page | Svelte MiniApps"
-    description="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-    keywords="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
-    route="/about"
-    image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
-  />
+	title="About Page | Svelte MiniApps"
+	description="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
+	keywords="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
+	route="/about"
+	image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
+/>
 
 <div class="m-2 px-2 py-3 lg:px-10">
 	<BlurInText>
@@ -193,13 +193,12 @@
 	</div>
 
 	<main class="space-x-6 px-1 md:px-16">
-		<Features id="Features"/>
-		<DataManagement id="DataManagement"/>
-		<Tools id="Tools"/>
-		<Philosophy id="Philosophy"/>
-		<Vision id="Vision"/>
+		<Features id="Features" />
+		<DataManagement id="DataManagement" />
+		<Tools id="Tools" />
+		<Philosophy id="Philosophy" />
+		<Vision id="Vision" />
 		<!-- Attributions Section -->
-		<Attributions id="Attributions" />	
+		<Attributions id="Attributions" />
 	</main>
 </div>
-

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import DOMPurify from 'isomorphic-dompurify';
 	import { Carta, MarkdownEditor, Markdown } from 'carta-md';
 	import { code } from '@cartamd/plugin-code';
@@ -11,33 +11,26 @@
 	import { browser } from '$app/environment';
 	import { site } from '$lib/index';
 	import { markdownDemo } from './data';
-	import {PersistedState} from 'runed';
+	import { PersistedState } from 'runed';
 
 	const carta = new Carta({
 		sanitizer: false, // Use a sanitizer in production to prevent XSS
 		extensions: [code(), slash()]
 	});
 
-
-
-	
-
 	let value = new PersistedState('markdownContent', markdownDemo);
 
-	if(value.current == null|| value.current == ''){
+	if (value.current == null || value.current == '') {
 		value.current = markdownDemo;
 	}
-	
-
-	
 </script>
 
 <RouteHead
-    title="Markdown Editor - Write and Preview Markdown with Ease"
-    description="Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
-    keywords="markdown editor, svelte, carta-md, markdown preview, markdown writing, text editor"
-    route="/apps/markdown-editor"
-  />
+	title="Markdown Editor - Write and Preview Markdown with Ease"
+	description="Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
+	keywords="markdown editor, svelte, carta-md, markdown preview, markdown writing, text editor"
+	route="/apps/markdown-editor"
+/>
 
 <div class="container mx-auto min-h-screen bg-gray-100 px-4 py-6 dark:bg-black">
 	<div class="mx-auto max-w-4xl space-y-6">

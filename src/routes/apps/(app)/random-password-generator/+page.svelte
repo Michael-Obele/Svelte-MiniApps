@@ -10,7 +10,7 @@
 	import { Copy, Star, StarOff } from 'lucide-svelte';
 	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { copyToClipboard } from '$lib/utils';
 	import { userContext } from '$lib/utils';
 	import type { ActionData, PageData } from './$types';

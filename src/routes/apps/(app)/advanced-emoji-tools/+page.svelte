@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { site } from '$lib';
 	import * as emoji from 'node-emoji';
-	import RouteHead from '$lib/components/RouteHead.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Card from '@/ui/card';
 	import * as Tabs from '@/ui/tabs';
