@@ -12,7 +12,7 @@
 		selectedCurrency = $bindable('USD'),
 		currencies,
 		addBudget,
-		formatNumberInput,
+		formatNumber,
 		formsSection = $bindable(),
 		budgets = $bindable<Budget[]>([])
 	} = $props();
@@ -24,13 +24,18 @@
 		<h2 class="mb-4 text-xl font-semibold">Add New Budget</h2>
 		<div class="flex flex-col gap-4 sm:flex-row">
 			<Input bind:value={budgetName} placeholder="Budget Name" class="flex-1" />
+
+			<Input bind:value={budgetAmount} type="number" placeholder="Amount" class="w-40" />
 			<Input
-				bind:value={budgetAmount}
+				value={formatNumber(Number(budgetAmount))}
 				type="text"
-				placeholder="Amount"
-				class="w-32"
-				oninput={formatNumberInput}
+				placeholder="Formated Budget Amount"
+				inputmode="decimal"
+				pattern="[0-9,]*"
+				disabled
+				class="w-40"
 			/>
+
 			<Select.Root type="single" bind:value={selectedCurrency}>
 				<Select.Trigger class="w-[180px]">{selectedCurrency}</Select.Trigger>
 				<Select.Content>

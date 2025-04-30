@@ -30,11 +30,11 @@
 	});
 
 	let budgetName = $state('');
-	let budgetAmount = $state('');
+	let budgetAmount: number | undefined = $state(undefined);
 	let selectedBudgetId = $state('');
 	let selectedBudgetName = $state('Select Budget');
 	let expenseDescription = $state('');
-	let expenseAmount = $state('');
+	let expenseAmount: number | undefined = $state(undefined);
 	let editingExpense = $state<{ budgetId: string; expense: Expense } | null>(null);
 	let editExpenseDescription = $state('');
 	let editExpenseAmount = $state('');
@@ -72,15 +72,20 @@
 	};
 
 	function addBudget() {
-		if (!budgetName || budgetAmount === undefined || budgetAmount === '' || !selectedCurrency) {
+		if (
+			!budgetName ||
+			budgetAmount === undefined ||
+			budgetAmount === undefined ||
+			!selectedCurrency
+		) {
 			toast.error('Please fill in all fields');
 			return;
 		}
 
-		budgetState.addBudget(budgetName, formatFigure(budgetAmount), selectedCurrency);
+		budgetState.addBudget(budgetName, budgetAmount, selectedCurrency);
 		toast.success('Budget added successfully');
 		budgetName = '';
-		budgetAmount = '';
+		budgetAmount = undefined;
 		selectedCurrency = 'USD';
 	}
 
@@ -90,10 +95,10 @@
 			return;
 		}
 
-		budgetState.addExpense(selectedBudgetId, expenseDescription, formatFigure(expenseAmount));
+		budgetState.addExpense(selectedBudgetId, expenseDescription, expenseAmount);
 		toast.success('Expense added successfully');
 		expenseDescription = '';
-		expenseAmount = '';
+		expenseAmount = undefined;
 		selectedBudgetId = '';
 		selectedBudgetName = 'Select Budget'; // Reset the name
 	}
@@ -264,7 +269,7 @@
 			bind:formsSection
 			{currencies}
 			{addBudget}
-			{formatNumberInput}
+			{formatNumber}
 			{budgets}
 		/>
 
@@ -274,7 +279,8 @@
 			bind:expenseDescription
 			bind:expenseAmount
 			{budgets}
-			{formatNumberInput}
+			{addExpense}
+			{formatNumber}
 		/>
 
 		<div class="grid gap-6">

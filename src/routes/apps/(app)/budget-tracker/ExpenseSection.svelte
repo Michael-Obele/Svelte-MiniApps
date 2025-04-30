@@ -13,41 +13,43 @@
 		selectedBudgetId: string;
 		selectedBudgetName: string;
 		expenseDescription: string;
-		expenseAmount: string;
+		expenseAmount: number | undefined;
 		budgets: Budget[];
-		formatNumberInput: (event: Event) => void;
+		addExpense: () => void;
+		formatNumber: (value: number) => string;
 	}
 
 	let {
 		selectedBudgetId = $bindable(''),
 		selectedBudgetName = $bindable('Select Budget'),
 		expenseDescription = $bindable(''),
-		expenseAmount = $bindable(''),
+		expenseAmount = $bindable(),
 		budgets = $bindable<Budget[]>([]),
-		formatNumberInput
+		addExpense,
+		formatNumber
 	}: Props = $props();
 
 	// Add expense function
-	function addExpense() {
-		if (!selectedBudgetId || !expenseDescription || !expenseAmount) {
-			toast.error('Please fill in all fields');
-			return;
-		}
+	// function addExpense() {
+	// 	if (!selectedBudgetId || !expenseDescription || !expenseAmount) {
+	// 		toast.error('Please fill in all fields');
+	// 		return;
+	// 	}
 
-		const formattedAmount = Number(expenseAmount.replace(/,/g, ''));
+	// 	const formattedAmount = Number(expenseAmount.replace(/,/g, ''));
 
-		// Update the state using our simplified state management
-		budgetState.addExpense(selectedBudgetId, expenseDescription, formattedAmount);
+	// 	// Update the state using our simplified state management
+	// 	budgetState.addExpense(selectedBudgetId, expenseDescription, formattedAmount);
 
-		// Show success message
-		toast.success('Expense added successfully');
+	// 	// Show success message
+	// 	toast.success('Expense added successfully');
 
-		// Reset form
-		expenseDescription = '';
-		expenseAmount = '';
-		selectedBudgetId = '';
-		selectedBudgetName = 'Select Budget';
-	}
+	// 	// Reset form
+	// 	expenseDescription = '';
+	// 	expenseAmount = '';
+	// 	selectedBudgetId = '';
+	// 	selectedBudgetName = 'Select Budget';
+	// }
 </script>
 
 <!-- Add Expense Form -->
@@ -74,12 +76,15 @@
 					</Select.Content>
 				</Select.Root>
 				<Input bind:value={expenseDescription} placeholder="Expense Description" class="flex-1" />
+				<Input bind:value={expenseAmount} type="number" placeholder="Amount" class="w-40" />
 				<Input
-					bind:value={expenseAmount}
+					value={formatNumber(Number(expenseAmount))}
 					type="text"
-					placeholder="Amount"
-					class="w-32"
-					oninput={formatNumberInput}
+					placeholder="Formated Expense Amount"
+					inputmode="decimal"
+					pattern="[0-9,]*"
+					disabled
+					class="w-40"
 				/>
 			</div>
 			<div class="mt-4">
