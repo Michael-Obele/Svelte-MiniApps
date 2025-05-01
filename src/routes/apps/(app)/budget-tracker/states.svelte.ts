@@ -24,9 +24,9 @@ const budgetState = new PersistedState<Budget[]>('budgets', [], {
 });
 
 // Budget store functions
-export function addBudget(name: string, amount: number, currency: string) {
+export function addBudget(name: string, amount: number, currency: string, id?: string): string {
 	const newBudget: Budget = {
-		id: crypto.randomUUID(),
+		id: id || crypto.randomUUID(),
 		name,
 		amount,
 		currency,
@@ -36,6 +36,8 @@ export function addBudget(name: string, amount: number, currency: string) {
 
 	// Update the persisted state
 	budgetState.current = [...budgetState.current, newBudget];
+	
+	return newBudget.id;
 }
 
 export function updateBudget(id: string, name: string, amount: number, currency: string) {
@@ -47,9 +49,9 @@ export function updateBudget(id: string, name: string, amount: number, currency:
 	budgetState.current = updatedBudgets;
 }
 
-export function addExpense(budgetId: string, description: string, amount: number) {
+export function addExpense(budgetId: string, description: string, amount: number, id?: string): string {
 	const newExpense: Expense = {
-		id: crypto.randomUUID(),
+		id: id || crypto.randomUUID(),
 		description,
 		amount,
 		createdAt: new Date().toISOString()
@@ -61,6 +63,8 @@ export function addExpense(budgetId: string, description: string, amount: number
 
 	// Update the persisted state
 	budgetState.current = updatedBudgets;
+	
+	return newExpense.id;
 }
 
 export function updateExpense(

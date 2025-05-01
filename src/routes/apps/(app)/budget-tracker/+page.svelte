@@ -1,11 +1,15 @@
 <script lang="ts">
+	// Import migration utilities
+	import { migrateLocalDataToServer, isDataMigrated, loadBudgetsFromServer } from './migration';
+	import { onMount } from 'svelte';
+	import { Loader2 } from 'lucide-svelte';
+
 	import BudgetsList from './BudgetsList.svelte';
 	import FloatingBtn from './FloatingBtn.svelte';
 	import BudgetDialog from './BudgetDialog.svelte';
 	import QuickNavigation from './QuickNavigation.svelte';
 	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
-	import { toast } from 'svelte-sonner';
 	import ExpenseDialog from './ExpenseDialog.svelte';
 	import BudgetSection from './BudgetSection.svelte';
 	import ExpenseSection from './ExpenseSection.svelte';
@@ -13,6 +17,9 @@
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
 	import { scrollToID } from '$lib/utils';
+	import * as AlertDialog from '@/ui/alert-dialog';
+	import { enhance } from '$app/forms';
+	import { toast } from 'svelte-sonner';
 
 	// Reactive store reference for budgets
 	let budgets = $state<Budget[]>([]);
@@ -52,6 +59,114 @@
 
 	let selectedCurrency = $state('USD');
 
+	// Check if data has been migrated to server on mount
+	let isMigrated = $state(false);
+	let isBackingUp = $state(false);
+	let isLoading = $state(false);
+
+	// Get data from the page load
+	let { data, form } = $props();
+
+	// Check if user is authenticated
+	let isAuthenticated = $state(!!data.user);
+
+	$effect(() => {
+		// Update authentication status when data changes
+		isAuthenticated = !!data.user;
+	});
+
+	onMount(() => {
+		// Check if data has been migrated to server
+		isMigrated = isDataMigrated();
+
+		// If we have server budgets, initialize them
+		if (data.budgets && Array.isArray(data.budgets) && data.budgets.length > 0) {
+			console.log('📊 Initializing budgets from server data:', data.budgets);
+			// Clear existing budgets first
+			const currentBudgets = budgetState.budgets.current;
+			currentBudgets.forEach((budget) => {
+				budgetState.deleteBudget(budget.id);
+			});
+
+			// Then add each server budget - convert Prisma types to local state types
+			data.budgets.forEach((serverBudget: any) => {
+				// Convert Prisma budget to local Budget type
+				const budget: Budget = {
+					id: serverBudget.id,
+					name: serverBudget.name,
+					amount: serverBudget.amount,
+					currency: serverBudget.currency,
+					createdAt: serverBudget.createdAt.toISOString(),
+					expenses: []
+				};
+
+				// Add budget to state with its existing ID
+				budgetState.addBudget(budget.name, budget.amount, budget.currency, budget.id);
+
+				// Add expenses if any, ensuring we don't add duplicates
+				if (serverBudget.expenses && serverBudget.expenses.length > 0) {
+					// Track processed expense IDs to prevent duplicates
+					const processedExpenseIds = new Set<string>();
+
+					serverBudget.expenses.forEach(
+						(serverExpense: {
+							id: string;
+							description: string;
+							amount: number;
+							createdAt: Date;
+						}) => {
+							// Skip if we've already processed this expense ID
+							if (processedExpenseIds.has(serverExpense.id)) {
+								console.log(`⚠️ Skipping duplicate expense: ${serverExpense.id}`);
+								return;
+							}
+
+							// Convert Prisma expense to local Expense type
+							const expense = {
+								id: serverExpense.id,
+								description: serverExpense.description,
+								amount: serverExpense.amount,
+								createdAt: serverExpense.createdAt.toISOString()
+							};
+
+							// Add to state with existing ID
+							budgetState.addExpense(budget.id, expense.description, expense.amount, expense.id);
+
+							// Mark as processed
+							processedExpenseIds.add(serverExpense.id);
+						}
+					);
+				}
+			});
+
+			// Mark as migrated since we loaded from server
+			localStorage.setItem('budgets_migrated', 'true');
+			isMigrated = true;
+		}
+	});
+
+	let alertOpen = $state(false);
+	let alertTitle = $state('');
+	let alertDescription = $state('');
+
+	$effect(() => {
+		if (form && typeof form.success !== 'undefined') {
+			if ('migrated' in form) {
+				alertTitle = form.success ? 'Backup Successful' : 'Backup Failed';
+				alertDescription = form.success
+					? `Successfully backed up ${form.migrated ?? 0} budgets to server.`
+					: form.error || 'Unknown error during backup.';
+				alertOpen = true;
+			} else if ('budgets' in form) {
+				alertTitle = form.success ? 'Load Successful' : 'Load Failed';
+				alertDescription = form.success
+					? `Loaded ${form.budgets?.length} budgets from server.`
+					: form.error || 'Unknown error during load.';
+				alertOpen = true;
+			}
+		}
+	});
+
 	$effect(() => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -72,16 +187,11 @@
 	};
 
 	function addBudget() {
-		if (
-			!budgetName ||
-			budgetAmount === undefined ||
-			budgetAmount === undefined ||
-			!selectedCurrency
-		) {
+		// Accept 0 as valid for budgetAmount
+		if (!budgetName || budgetAmount === undefined || budgetAmount === null || !selectedCurrency) {
 			toast.error('Please fill in all fields');
 			return;
 		}
-
 		budgetState.addBudget(budgetName, budgetAmount, selectedCurrency);
 		toast.success('Budget added successfully');
 		budgetName = '';
@@ -90,17 +200,17 @@
 	}
 
 	function addExpense() {
-		if (!selectedBudgetId || !expenseDescription || !expenseAmount) {
+		// Accept 0 and negative numbers for expenseAmount
+		if (!selectedBudgetId || !expenseDescription || expenseAmount === undefined || expenseAmount === null) {
 			toast.error('Please fill in all fields');
 			return;
 		}
-
 		budgetState.addExpense(selectedBudgetId, expenseDescription, expenseAmount);
 		toast.success('Expense added successfully');
 		expenseDescription = '';
 		expenseAmount = undefined;
 		selectedBudgetId = '';
-		selectedBudgetName = 'Select Budget'; // Reset the name
+		selectedBudgetName = 'Select Budget';
 	}
 
 	function formatCurrency(amount: number, currency: string): string {
@@ -119,12 +229,10 @@
 			toast.error('No expense selected for editing');
 			return;
 		}
-
-		if (!editExpenseDescription || !editExpenseAmount) {
+		if (!editExpenseDescription || editExpenseAmount === undefined || editExpenseAmount === null) {
 			toast.error('Please fill in all fields');
 			return;
 		}
-
 		budgetState.updateExpense(
 			editingExpense.budgetId,
 			editingExpense.expense.id,
@@ -163,17 +271,10 @@
 			toast.error('No budget selected for editing');
 			return;
 		}
-
-		if (
-			!editBudgetName ||
-			editBudgetAmount === undefined ||
-			editBudgetAmount === '' ||
-			!editBudgetCurrency
-		) {
+		if (!editBudgetName || editBudgetAmount === undefined || editBudgetAmount === null || !editBudgetCurrency) {
 			toast.error('Please fill in all fields');
 			return;
 		}
-
 		budgetState.updateBudget(
 			editingBudget.id,
 			editBudgetName,
@@ -256,7 +357,21 @@
 
 <div class="container mx-auto max-w-4xl space-y-8 p-4">
 	<div class="space-y-4">
-		<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
+		<div class="flex items-center justify-between">
+			<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
+			{#if isAuthenticated}
+				<!-- Server Backup Controls -->
+				<div class="flex gap-2">
+					<form method="POST" action="?/backupToServer" use:enhance style="display:inline">
+						<input type="hidden" name="budgets" value={JSON.stringify(budgets)} />
+						<Button type="submit" disabled={isBackingUp}>Backup to Server</Button>
+					</form>
+					<form method="POST" action="?/loadBudgets" use:enhance style="display:inline">
+						<Button type="submit" disabled={isLoading}>Load from Server</Button>
+					</form>
+				</div>
+			{/if}
+		</div>
 
 		{#if budgets.length > 0}
 			<QuickNavigation {getProgressBarColor} />
@@ -340,3 +455,15 @@
 	{updateExpense}
 	{formatNumber}
 />
+
+<AlertDialog.Root open={alertOpen} onOpenChange={(v) => (alertOpen = v)}>
+	<AlertDialog.Content>
+		<AlertDialog.Header>
+			<AlertDialog.Title>{alertTitle}</AlertDialog.Title>
+			<AlertDialog.Description>{alertDescription}</AlertDialog.Description>
+		</AlertDialog.Header>
+		<AlertDialog.Footer>
+			<AlertDialog.Cancel>OK</AlertDialog.Cancel>
+		</AlertDialog.Footer>
+	</AlertDialog.Content>
+</AlertDialog.Root>
