@@ -1,7 +1,8 @@
 <script lang="ts">
 	// Import migration utilities
 	import { migrateLocalDataToServer, isDataMigrated, loadBudgetsFromServer } from './migration';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
 	import { Loader2 } from 'lucide-svelte';
 
 	import BudgetsList from './BudgetsList.svelte';
@@ -22,19 +23,21 @@
 	import { toast } from 'svelte-sonner';
 
 	// Reactive store reference for budgets
-	let budgets = $state<Budget[]>([]);
+	// let budgets = $state<Budget[]>([]);
 
 	// Subscribe to the budget state
-	let unsubscribe: () => void;
-	$effect.root(() => {
-		unsubscribe = budgetState.budgets.subscribe((value) => {
-			budgets = value;
-		});
+	// let unsubscribe: () => void;
+	// $effect.root(() => {
+	// 	unsubscribe = budgetState.budgets.subscribe((value) => {
+	// 		budgets = value;
+	// 	});
 
-		return () => {
-			if (unsubscribe) unsubscribe();
-		};
-	});
+	// 	return () => {
+	// 		if (unsubscribe) unsubscribe();
+	// 	};
+	// });
+
+	console.log('Budget Tracker component initialized', budgetState.budgets.current);
 
 	let budgetName = $state('');
 	let budgetAmount: number | undefined = $state(undefined);
@@ -45,6 +48,8 @@
 	let editingExpense = $state<{ budgetId: string; expense: Expense } | null>(null);
 	let editExpenseDescription = $state('');
 	let editExpenseAmount = $state('');
+
+	let hasUnsavedChanges = $state(false);
 
 	let isSticky = $state(false);
 	let formsSection: HTMLElement | null = $state(null);
@@ -78,6 +83,32 @@
 	onMount(() => {
 		// Check if data has been migrated to server
 		isMigrated = isDataMigrated();
+
+		const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+			if (hasUnsavedChanges) {
+				event.preventDefault();
+				event.returnValue = ''; // Required for Chrome
+			}
+		};
+
+		window.addEventListener('beforeunload', handleBeforeUnload);
+
+		beforeNavigate(({ cancel }) => {
+			if (hasUnsavedChanges) {
+				const confirmNavigation = window.confirm(
+					'You have unsaved changes. Do you want to leave without saving?'
+				);
+				if (!confirmNavigation) {
+					cancel();
+				} else {
+					hasUnsavedChanges = false; // User chose to discard changes
+				}
+			}
+		});
+
+		onDestroy(() => {
+			window.removeEventListener('beforeunload', handleBeforeUnload);
+		});
 
 		// If we have server budgets, initialize them
 		if (data.budgets && Array.isArray(data.budgets) && data.budgets.length > 0) {
@@ -142,6 +173,7 @@
 			// Mark as migrated since we loaded from server
 			localStorage.setItem('budgets_migrated', 'true');
 			isMigrated = true;
+			hasUnsavedChanges = false; // Reset unsaved changes after loading from server
 		}
 	});
 
@@ -157,12 +189,18 @@
 					? `Successfully backed up ${form.migrated ?? 0} budgets to server.`
 					: form.error || 'Unknown error during backup.';
 				alertOpen = true;
+				if (form.success) {
+					hasUnsavedChanges = false; // Reset unsaved changes after successful backup
+				}
 			} else if ('budgets' in form) {
 				alertTitle = form.success ? 'Load Successful' : 'Load Failed';
 				alertDescription = form.success
 					? `Loaded ${form.budgets?.length} budgets from server.`
 					: form.error || 'Unknown error during load.';
 				alertOpen = true;
+				if (form.success) {
+					hasUnsavedChanges = false; // Reset unsaved changes after successful load
+				}
 			}
 		}
 	});
@@ -197,11 +235,17 @@
 		budgetName = '';
 		budgetAmount = undefined;
 		selectedCurrency = 'USD';
+		hasUnsavedChanges = true; // Mark as unsaved changes
 	}
 
 	function addExpense() {
 		// Accept 0 and negative numbers for expenseAmount
-		if (!selectedBudgetId || !expenseDescription || expenseAmount === undefined || expenseAmount === null) {
+		if (
+			!selectedBudgetId ||
+			!expenseDescription ||
+			expenseAmount === undefined ||
+			expenseAmount === null
+		) {
 			toast.error('Please fill in all fields');
 			return;
 		}
@@ -211,6 +255,7 @@
 		expenseAmount = undefined;
 		selectedBudgetId = '';
 		selectedBudgetName = 'Select Budget';
+		hasUnsavedChanges = true; // Mark as unsaved changes
 	}
 
 	function formatCurrency(amount: number, currency: string): string {
@@ -241,6 +286,7 @@
 		);
 		toast.success('Expense updated successfully');
 		editingExpense = null;
+		hasUnsavedChanges = true; // Mark as unsaved changes
 	}
 
 	function getProgressPercentage(budget: Budget): number {
@@ -271,7 +317,12 @@
 			toast.error('No budget selected for editing');
 			return;
 		}
-		if (!editBudgetName || editBudgetAmount === undefined || editBudgetAmount === null || !editBudgetCurrency) {
+		if (
+			!editBudgetName ||
+			editBudgetAmount === undefined ||
+			editBudgetAmount === null ||
+			!editBudgetCurrency
+		) {
 			toast.error('Please fill in all fields');
 			return;
 		}
@@ -283,6 +334,7 @@
 		);
 		toast.success('Budget updated successfully');
 		editingBudget = null;
+		hasUnsavedChanges = true; // Mark as unsaved changes
 	}
 
 	function openEditDialog(budget: Budget) {
@@ -361,19 +413,94 @@
 			<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
 			{#if isAuthenticated}
 				<!-- Server Backup Controls -->
-				<div class="flex gap-2">
-					<form method="POST" action="?/backupToServer" use:enhance style="display:inline">
-						<input type="hidden" name="budgets" value={JSON.stringify(budgets)} />
-						<Button type="submit" disabled={isBackingUp}>Backup to Server</Button>
+				<div class="flex flex-col gap-2 sm:flex-row">
+					<form
+						method="POST"
+						action="?/backupToServer"
+						use:enhance={() => {
+							isBackingUp = true;
+							isLoading = true;
+							toast.loading('Backing up budgets...', {
+								duration: Infinity,
+								id: 'backup-toast'
+							});
+							return async ({ result }) => {
+								isBackingUp = false;
+								isLoading = false;
+								if (result.type === 'success') {
+									toast.success('Budgets backed up successfully!');
+									toast.dismiss('backup-toast');
+									hasUnsavedChanges = false;
+								} else {
+									toast.error('Failed to backup budgets.');
+								}
+							};
+						}}
+						class="w-full sm:w-auto"
+					>
+						<input
+							type="hidden"
+							name="budgets"
+							value={JSON.stringify(budgetState.budgets.current)}
+						/>
+						<Button
+							type="submit"
+							disabled={isBackingUp || isLoading}
+							class="w-full disabled:bg-opacity-20 {isBackingUp ? 'disabled:bg-transparent' : ''}"
+							size="sm"
+						>
+							{#if isBackingUp}
+								<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+								Backing up...
+							{:else}
+								Backup to Server
+							{/if}
+						</Button>
 					</form>
-					<form method="POST" action="?/loadBudgets" use:enhance style="display:inline">
-						<Button type="submit" disabled={isLoading}>Load from Server</Button>
+					<form
+						method="POST"
+						action="?/loadBudgets"
+						use:enhance={() => {
+							isLoading = true;
+							isBackingUp = true;
+							toast.loading('Loading budgets from server...', {
+								duration: Infinity,
+								id: 'load-toast'
+							});
+							// Load budgets from server and update state
+							return async ({ result }) => {
+								isLoading = false;
+								isBackingUp = false;
+								if (result.type === 'success') {
+									toast.success('Budgets loaded successfully!');
+									toast.dismiss('load-toast');
+									hasUnsavedChanges = false;
+								} else {
+									toast.error('Failed to load budgets.');
+								}
+							};
+						}}
+						class="w-full sm:w-auto"
+					>
+						<Button
+							type="submit"
+							disabled={isLoading || isBackingUp}
+							class="w-full {isLoading ? 'loading' : ''}"
+							size="sm"
+						>
+							{#if isLoading}
+								<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+								Loading...
+							{:else}
+								Load from Server
+							{/if}
+						</Button>
 					</form>
 				</div>
 			{/if}
 		</div>
 
-		{#if budgets.length > 0}
+		{#if budgetState.budgets.current.length > 0}
 			<QuickNavigation {getProgressBarColor} />
 		{/if}
 
@@ -385,7 +512,7 @@
 			{currencies}
 			{addBudget}
 			{formatNumber}
-			{budgets}
+			budgets={budgetState.budgets.current}
 		/>
 
 		<ExpenseSection
@@ -393,14 +520,14 @@
 			bind:selectedBudgetName
 			bind:expenseDescription
 			bind:expenseAmount
-			{budgets}
+			budgets={budgetState.budgets.current}
 			{addExpense}
 			{formatNumber}
 		/>
 
 		<div class="grid gap-6">
 			<!-- Empty state message when no budgets -->
-			{#if budgets.length === 0}
+			{#if budgetState.budgets.current.length === 0}
 				<div
 					class="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center text-muted-foreground"
 				>
@@ -419,12 +546,12 @@
 					{getCurrencySymbol}
 					{formatNumberWithCommas}
 					{calculateTotalExpenses}
-					{budgets}
+					budgets={budgetState.budgets.current}
 				/>
 
 				<!-- Add the new ExpensesList component -->
 				<ExpensesList
-					{budgets}
+					budgets={budgetState.budgets.current}
 					{openEditExpenseDialog}
 					{getCurrencySymbol}
 					{formatNumberWithCommas}
