@@ -66,14 +66,14 @@
 			month: 'short',
 			day: 'numeric'
 		});
-		
+
 		// Add time in a concise format (12-hour with AM/PM)
 		const formattedTime = date.toLocaleTimeString('en-US', {
 			hour: 'numeric',
 			minute: '2-digit',
 			hour12: true
 		});
-		
+
 		return `${formattedDate}, ${formattedTime}`;
 	}
 </script>
@@ -91,14 +91,16 @@
 			<p>No expenses yet. Add your first expense to get started.</p>
 		</div>
 	{:else}
-		<div class="space-y-3">
-			{#each getSortedExpenses().slice(0, 10) as { budgetId, budgetName, expense }, i}
+		<div class="w-full space-y-3">
+			{#each getSortedExpenses().slice(0, 10) as { budgetId, budgetName, expense }}
 				{@const currency = getBudgetCurrency(budgetId)}
 				<Card class="p-4 transition-shadow hover:shadow-sm">
 					<div class="flex items-center justify-between">
 						<div>
 							<div class="flex items-center gap-2">
-								<span class="font-medium">{expense.description}</span>
+								<span class="inline-block max-w-[200px] truncate align-bottom font-medium"
+									>{expense.description}</span
+								>
 								<span class="text-xs text-muted-foreground">({budgetName})</span>
 							</div>
 							<div class="text-sm text-muted-foreground">

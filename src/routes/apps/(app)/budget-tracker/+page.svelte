@@ -407,7 +407,7 @@
 	}}
 />
 
-<div class="container mx-auto max-w-4xl space-y-8 p-4">
+<div class=" mx-auto space-y-8 p-4">
 	<div class="space-y-4">
 		<div class="flex items-center justify-between">
 			<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
@@ -500,30 +500,31 @@
 			{/if}
 		</div>
 
-		{#if budgetState.budgets.current.length > 0}
-			<QuickNavigation {getProgressBarColor} />
-		{/if}
+		<div class="mx-auto max-w-4xl space-y-8 p-4">
+			{#if budgetState.budgets.current.length > 0}
+				<QuickNavigation {getProgressBarColor} />
+			{/if}
+			<BudgetSection
+				bind:budgetName
+				bind:budgetAmount
+				bind:selectedCurrency
+				bind:formsSection
+				{currencies}
+				{addBudget}
+				{formatNumber}
+				budgets={budgetState.budgets.current}
+			/>
 
-		<BudgetSection
-			bind:budgetName
-			bind:budgetAmount
-			bind:selectedCurrency
-			bind:formsSection
-			{currencies}
-			{addBudget}
-			{formatNumber}
-			budgets={budgetState.budgets.current}
-		/>
-
-		<ExpenseSection
-			bind:selectedBudgetId
-			bind:selectedBudgetName
-			bind:expenseDescription
-			bind:expenseAmount
-			budgets={budgetState.budgets.current}
-			{addExpense}
-			{formatNumber}
-		/>
+			<ExpenseSection
+				bind:selectedBudgetId
+				bind:selectedBudgetName
+				bind:expenseDescription
+				bind:expenseAmount
+				budgets={budgetState.budgets.current}
+				{addExpense}
+				{formatNumber}
+			/>
+		</div>
 
 		<div class="grid gap-6">
 			<!-- Empty state message when no budgets -->
@@ -549,13 +550,15 @@
 					budgets={budgetState.budgets.current}
 				/>
 
-				<!-- Add the new ExpensesList component -->
-				<ExpensesList
-					budgets={budgetState.budgets.current}
-					{openEditExpenseDialog}
-					{getCurrencySymbol}
-					{formatNumberWithCommas}
-				/>
+				<div class=" mx-auto w-11/12 md:w-1/2">
+					<!-- Add the new ExpensesList component -->
+					<ExpensesList
+						budgets={budgetState.budgets.current}
+						{openEditExpenseDialog}
+						{getCurrencySymbol}
+						{formatNumberWithCommas}
+					/>
+				</div>
 			{/if}
 		</div>
 	</div>

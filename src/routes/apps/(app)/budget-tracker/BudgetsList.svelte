@@ -6,6 +6,8 @@
 	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
 	import { AlertCircle, AlertTriangle, CheckCircle2 } from 'lucide-svelte';
+	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import { Separator } from '$lib/components/ui/separator/index.js';
 
 	interface Props {
 		budgets: Budget[];
@@ -41,7 +43,7 @@
 	}
 </script>
 
-<div id="budgets-list" class="grid gap-4 md:grid-cols-2">
+<div id="budgets-list" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 	{#each budgets as budget}
 		<Card id="budget-{budget.id}" class="p-6 transition-all hover:shadow-md">
 			{#if budget.expenses}
@@ -103,31 +105,42 @@
 					<div class="mt-4">
 						<h4 class="mb-2 font-semibold">Expenses</h4>
 						<div class="space-y-2">
-							{#each budget.expenses as expense}
-								<div class="flex items-center justify-between text-sm">
-									<span>{expense.description}</span>
-									<div class="flex items-center gap-2">
-										<span>
-											{getCurrencySymbol(budget.currency)}
-											{formatNumberWithCommas(expense.amount)}</span
-										>
-										<Button
-											variant="ghost"
-											size="icon"
-											onclick={() => openEditExpenseDialog(budget.id, expense)}
-										>
-											<Pencil class="h-4 w-4" />
-										</Button>
-										<Button
-											variant="ghost"
-											size="icon"
-											onclick={() => budgetState.deleteExpense(budget.id, expense.id)}
-										>
-											<Trash2 class="h-4 w-4" />
-										</Button>
+							<ScrollArea class="h-[22rem] rounded-md border p-4 md:h-[18rem]">
+								{#each budget.expenses as expense, i}
+									<div class="flex items-center justify-between text-sm">
+										<div class="flex min-w-0 flex-1 flex-col">
+											<span class="mb-1 break-words font-medium text-muted-foreground"
+												>{expense.description}</span
+											>
+											<span class="font-bold text-green-600">
+												{getCurrencySymbol(budget.currency)}
+												{formatNumberWithCommas(expense.amount)}
+											</span>
+										</div>
+										<div class="flex flex-shrink-0 items-center gap-2">
+											<Button
+												variant="ghost"
+												size="icon"
+												onclick={() => openEditExpenseDialog(budget.id, expense)}
+											>
+												<Pencil class="size-2" />
+											</Button>
+											<Button
+												variant="ghost"
+												size="icon"
+												onclick={() => budgetState.deleteExpense(budget.id, expense.id)}
+											>
+												<Trash2 class="size-2" />
+											</Button>
+										</div>
 									</div>
-								</div>
-							{/each}
+									<Separator
+										class="my-2  bg-primary-foreground{i + 1 == budget.expenses.length
+											? 'hidden'
+											: ''}"
+									/>
+								{/each}
+							</ScrollArea>
 						</div>
 					</div>
 				{/if}
