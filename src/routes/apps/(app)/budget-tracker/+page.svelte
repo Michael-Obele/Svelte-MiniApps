@@ -2,8 +2,10 @@
 	// Import migration utilities
 	import { migrateLocalDataToServer, isDataMigrated, loadBudgetsFromServer } from './migration';
 	import { onMount, onDestroy } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
 	import { Loader2 } from 'lucide-svelte';
+	import { PersistedState } from 'runed';
 
 	import BudgetsList from './BudgetsList.svelte';
 	import FloatingBtn from './FloatingBtn.svelte';
@@ -50,6 +52,7 @@
 	let editExpenseAmount = $state('');
 
 	let hasUnsavedChanges = $state(false);
+	let showSavedStatus = $state(false);
 
 	let isSticky = $state(false);
 	let formsSection: HTMLElement | null = $state(null);
@@ -69,6 +72,18 @@
 	let isBackingUp = $state(false);
 	let isLoading = $state(false);
 
+	// Auto-backup configuration
+	const AUTO_BACKUP_DELAY = 3000; // 3 seconds
+	let autoBackupTimer: ReturnType<typeof setTimeout> | null = $state(null);
+	let autoBackupCountdown = $state(0);
+	let countdownTimer: ReturnType<typeof setInterval> | null = $state(null);
+	const autoBackupEnabled = new PersistedState('autoBackupEnabled', true, {
+		storage: 'local',
+		syncTabs: true
+	});
+	let autoBackupRetryCount = $state(0);
+	const MAX_RETRY_ATTEMPTS = 3;
+
 	// Get data from the page load
 	let { data, form } = $props();
 
@@ -80,18 +95,46 @@
 		isAuthenticated = !!data.user;
 	});
 
+	// Auto-backup effect - triggers when hasUnsavedChanges becomes true
+	$effect(() => {
+		$effect.pre(() => {
+			if (autoBackupTimer) {
+				clearTimeout(autoBackupTimer);
+				autoBackupTimer = null;
+			}
+			if (countdownTimer) {
+				clearInterval(countdownTimer);
+				countdownTimer = null;
+			}
+		});
+
+		if (
+			hasUnsavedChanges &&
+			isAuthenticated &&
+			!isBackingUp &&
+			!isLoading &&
+			autoBackupEnabled.current
+		) {
+			autoBackupCountdown = AUTO_BACKUP_DELAY / 1000;
+			countdownTimer = setInterval(() => {
+				autoBackupCountdown--;
+				if (autoBackupCountdown <= 0) {
+					if (countdownTimer) {
+						clearInterval(countdownTimer);
+						countdownTimer = null;
+					}
+				}
+			}, 1000);
+
+			autoBackupTimer = setTimeout(performAutoBackup, AUTO_BACKUP_DELAY);
+		} else {
+			autoBackupCountdown = 0;
+		}
+	});
+
 	onMount(() => {
 		// Check if data has been migrated to server
 		isMigrated = isDataMigrated();
-
-		const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-			if (hasUnsavedChanges) {
-				event.preventDefault();
-				event.returnValue = ''; // Required for Chrome
-			}
-		};
-
-		window.addEventListener('beforeunload', handleBeforeUnload);
 
 		beforeNavigate(({ cancel }) => {
 			if (hasUnsavedChanges) {
@@ -107,7 +150,7 @@
 		});
 
 		onDestroy(() => {
-			window.removeEventListener('beforeunload', handleBeforeUnload);
+			// Timer cleanup is now handled by the $effect cleanup function
 		});
 
 		// If we have server budgets, initialize them
@@ -177,6 +220,79 @@
 		}
 	});
 
+	// Auto-backup function with retry mechanism
+	async function performAutoBackup() {
+		if (!isAuthenticated || isBackingUp || isLoading || !hasUnsavedChanges) {
+			return;
+		}
+
+		isBackingUp = true;
+		isLoading = true;
+		const backupToast = `auto-backup-toast-${Date.now()}`;
+		try {
+			const retryMessage =
+				autoBackupRetryCount > 0 ? `(retry ${autoBackupRetryCount}/${MAX_RETRY_ATTEMPTS})` : '';
+			toast.loading(`Auto-backing up... ${retryMessage}`, {
+				id: backupToast,
+				duration: autoBackupRetryCount > 0 ? 10000 : 5000
+			});
+
+			const formData = new FormData();
+			formData.append('budgets', JSON.stringify(budgetState.budgets.current));
+
+			const response = await fetch('?/backupToServer', {
+				method: 'POST',
+				body: formData
+			});
+			console.info('Auto-backup response:', response);
+			console.info('Auto-backup response for ok', response.ok);
+
+			if (response.ok) {
+				const result = await response.json();
+				toast.success('Auto-backup successful!', { id: backupToast });
+				hasUnsavedChanges = false;
+				autoBackupRetryCount = 0;
+				showSavedStatus = true;
+				setTimeout(() => (showSavedStatus = false), 2000);
+			} else {
+				throw new Error(`Server error: ${response.statusText}`);
+			}
+		} catch (error) {
+			console.error('Auto-backup error:', error);
+			if (autoBackupRetryCount < MAX_RETRY_ATTEMPTS) {
+				autoBackupRetryCount++;
+				toast.error(`Auto-backup failed, retrying in 10s...`, {
+					id: backupToast,
+					duration: 10000
+				});
+				setTimeout(performAutoBackup, 10000); // Retry after 10 seconds
+			} else {
+				toast.error(`Auto-backup failed after ${MAX_RETRY_ATTEMPTS} attempts.`, {
+					id: backupToast,
+					duration: 10000
+				});
+				autoBackupRetryCount = 0; // Reset after max attempts
+			}
+		} finally {
+			isBackingUp = false;
+			isLoading = false;
+		}
+	}
+
+	// Cancel auto-backup function
+	function cancelAutoBackup() {
+		if (autoBackupTimer) {
+			clearTimeout(autoBackupTimer);
+			autoBackupTimer = null;
+		}
+		if (countdownTimer) {
+			clearInterval(countdownTimer);
+			countdownTimer = null;
+		}
+		autoBackupCountdown = 0;
+		toast.success('Auto-backup cancelled');
+	}
+
 	let alertOpen = $state(false);
 	let alertTitle = $state('');
 	let alertDescription = $state('');
@@ -235,7 +351,10 @@
 		budgetName = '';
 		budgetAmount = undefined;
 		selectedCurrency = 'USD';
-		hasUnsavedChanges = true; // Mark as unsaved changes
+		hasUnsavedChanges = true;
+		if (autoBackupEnabled.current) {
+			performAutoBackup();
+		}
 	}
 
 	function addExpense() {
@@ -255,7 +374,10 @@
 		expenseAmount = undefined;
 		selectedBudgetId = '';
 		selectedBudgetName = 'Select Budget';
-		hasUnsavedChanges = true; // Mark as unsaved changes
+		hasUnsavedChanges = true;
+		if (autoBackupEnabled.current) {
+			performAutoBackup();
+		}
 	}
 
 	function formatCurrency(amount: number, currency: string): string {
@@ -286,7 +408,10 @@
 		);
 		toast.success('Expense updated successfully');
 		editingExpense = null;
-		hasUnsavedChanges = true; // Mark as unsaved changes
+		hasUnsavedChanges = true;
+		if (autoBackupEnabled.current) {
+			performAutoBackup();
+		}
 	}
 
 	function getProgressPercentage(budget: Budget): number {
@@ -334,7 +459,10 @@
 		);
 		toast.success('Budget updated successfully');
 		editingBudget = null;
-		hasUnsavedChanges = true; // Mark as unsaved changes
+		hasUnsavedChanges = true;
+		if (autoBackupEnabled.current) {
+			performAutoBackup();
+		}
 	}
 
 	function openEditDialog(budget: Budget) {
@@ -407,95 +535,150 @@
 	}}
 />
 
-<div class=" mx-auto space-y-8 p-4">
+<div class="mx-auto space-y-8 p-4">
 	<div class="space-y-4">
-		<div class="flex items-center justify-between">
-			<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
+		<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+			<div class="flex items-center gap-4">
+				<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
+				{#if isAuthenticated && autoBackupCountdown > 0}
+					<div
+						class="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"
+					>
+						<span>Auto-backup in {autoBackupCountdown}s</span>
+						<Button
+							variant="ghost"
+							size="sm"
+							onclick={cancelAutoBackup}
+							class="h-6 px-2 text-blue-700 hover:bg-blue-100 dark:text-blue-300 dark:hover:bg-blue-800"
+						>
+							Cancel
+						</Button>
+					</div>
+				{/if}
+				{#if isAuthenticated && !autoBackupEnabled.current && hasUnsavedChanges}
+					<div
+						class="flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700 dark:bg-amber-900/20 dark:text-amber-300"
+					>
+						<span>Auto-backup disabled - unsaved changes</span>
+						<Button
+							variant="ghost"
+							size="sm"
+							onclick={() => (autoBackupEnabled.current = true)}
+							class="h-6 px-2 text-amber-700 hover:bg-amber-100 dark:text-amber-300 dark:hover:bg-amber-800"
+						>
+							Enable
+						</Button>
+					</div>
+				{/if}
+			</div>
 			{#if isAuthenticated}
-				<!-- Server Backup Controls -->
-				<div class="flex flex-col gap-2 sm:flex-row">
-					<form
-						method="POST"
-						action="?/backupToServer"
-						use:enhance={() => {
-							isBackingUp = true;
-							isLoading = true;
-							toast.loading('Backing up budgets...', {
-								duration: Infinity,
-								id: 'backup-toast'
-							});
-							return async ({ result }) => {
-								isBackingUp = false;
-								isLoading = false;
-								if (result.type === 'success') {
-									toast.success('Budgets backed up successfully!');
-									toast.dismiss('backup-toast');
-									hasUnsavedChanges = false;
-								} else {
-									toast.error('Failed to backup budgets.');
-								}
-							};
-						}}
-						class="w-full sm:w-auto"
-					>
-						<input
-							type="hidden"
-							name="budgets"
-							value={JSON.stringify(budgetState.budgets.current)}
-						/>
-						<Button
-							type="submit"
-							disabled={isBackingUp || isLoading}
-							class="w-full disabled:bg-opacity-20 {isBackingUp ? 'disabled:bg-transparent' : ''}"
-							size="sm"
+				<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+					<!-- Auto-backup Toggle -->
+					<div class="flex items-center gap-2 text-sm text-muted-foreground">
+						<label class="flex cursor-pointer items-center gap-2">
+							<input
+								type="checkbox"
+								bind:checked={autoBackupEnabled.current}
+								class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+							/>
+							<span>Auto-backup ({AUTO_BACKUP_DELAY / 1000}s)</span>
+						</label>
+						{#if showSavedStatus}
+							<span
+								class="text-sm text-green-600 transition-opacity duration-500"
+								in:fade={{ duration: 200 }}
+								out:fade={{ duration: 1000 }}
+							>
+								Saved
+							</span>
+						{/if}
+					</div>
+
+					<!-- Server Backup Controls -->
+					<div class="flex flex-col gap-2 sm:flex-row">
+						<form
+							method="POST"
+							action="?/backupToServer"
+							use:enhance={() => {
+								isBackingUp = true;
+								isLoading = true;
+								toast.loading('Backing up budgets...', {
+									duration: Infinity,
+									id: 'backup-toast'
+								});
+								return async ({ result }) => {
+									isBackingUp = false;
+									isLoading = false;
+									if (result.type === 'success') {
+										toast.success('Budgets backed up successfully!');
+										toast.dismiss('backup-toast');
+										hasUnsavedChanges = false;
+									} else {
+										toast.error('Failed to backup budgets.');
+									}
+								};
+							}}
+							class="w-full sm:w-auto"
 						>
-							{#if isBackingUp}
-								<Loader2 class="mr-2 h-4 w-4 animate-spin" />
-								Backing up...
-							{:else}
-								Backup to Server
-							{/if}
-						</Button>
-					</form>
-					<form
-						method="POST"
-						action="?/loadBudgets"
-						use:enhance={() => {
-							isLoading = true;
-							isBackingUp = true;
-							toast.loading('Loading budgets from server...', {
-								duration: Infinity,
-								id: 'load-toast'
-							});
-							// Load budgets from server and update state
-							return async ({ result }) => {
-								isLoading = false;
-								isBackingUp = false;
-								if (result.type === 'success') {
-									toast.success('Budgets loaded successfully!');
-									toast.dismiss('load-toast');
-									hasUnsavedChanges = false;
-								} else {
-									toast.error('Failed to load budgets.');
-								}
-							};
-						}}
-						class="w-full sm:w-auto"
-					>
-						<Button
-							type="submit"
-							disabled={isLoading || isBackingUp}
-							class="w-full {isLoading ? 'loading' : ''}"
-							size="sm"
+							<input
+								type="hidden"
+								name="budgets"
+								value={JSON.stringify(budgetState.budgets.current)}
+							/>
+							<Button
+								type="submit"
+								disabled={isBackingUp || isLoading}
+								class="w-full disabled:bg-opacity-20 {isBackingUp ? 'disabled:bg-transparent' : ''}"
+								size="sm"
+							>
+								{#if isBackingUp}
+									<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+									Backing up...
+								{:else}
+									Backup to Server
+								{/if}
+							</Button>
+						</form>
+						<form
+							method="POST"
+							action="?/loadBudgets"
+							use:enhance={() => {
+								isLoading = true;
+								isBackingUp = true;
+								toast.loading('Loading budgets from server...', {
+									duration: Infinity,
+									id: 'load-toast'
+								});
+								// Load budgets from server and update state
+								return async ({ result }) => {
+									isLoading = false;
+									isBackingUp = false;
+									if (result.type === 'success') {
+										toast.success('Budgets loaded successfully!');
+										toast.dismiss('load-toast');
+										hasUnsavedChanges = false;
+									} else {
+										toast.error('Failed to load budgets.');
+									}
+								};
+							}}
+							class="w-full sm:w-auto"
 						>
-							{#if isLoading}
-								<Loader2 class="mr-2 h-4 w-4 animate-spin" />
-								Loading...
-							{:else}
-								Load from Server
-							{/if}
-						</Button>
-					</form>
+							<Button
+								type="submit"
+								disabled={isLoading || isBackingUp}
+								class="w-full {isLoading ? 'loading' : ''}"
+								size="sm"
+							>
+								{#if isLoading}
+									<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+									Loading...
+								{:else}
+									Load from Server
+								{/if}
+							</Button>
+						</form>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -550,7 +733,7 @@
 					budgets={budgetState.budgets.current}
 				/>
 
-				<div class=" mx-auto w-11/12 md:w-1/2">
+				<div class="mx-auto w-11/12 md:w-1/2">
 					<!-- Add the new ExpensesList component -->
 					<ExpensesList
 						budgets={budgetState.budgets.current}

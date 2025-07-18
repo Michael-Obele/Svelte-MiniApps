@@ -257,5 +257,51 @@ export const actions = {
 			console.error('❌ Backup error:', error);
 			return { success: false, error: String(error) };
 		}
+	},
+
+	// Delete a budget
+	deleteBudget: async ({ request, locals }) => {
+		console.log('🗑️ Delete budget action triggered');
+		const userId = locals.user?.id;
+
+		if (!userId) {
+			console.log('❌ Authentication required - no user ID found');
+			return { success: false, error: 'Authentication required' };
+		}
+
+		try {
+			const data = await request.formData();
+			const budgetId = data.get('budgetId')?.toString();
+
+			if (!budgetId) {
+				return { success: false, error: 'Budget ID not provided' };
+			}
+
+			// Ensure the budget belongs to the current user before deleting
+			const budget = await prisma.budget.findFirst({
+				where: {
+					id: budgetId,
+					userId: userId
+				}
+			});
+
+			if (!budget) {
+				return {
+					success: false,
+					error: 'Budget not found or you do not have permission to delete it'
+				};
+			}
+
+			await prisma.budget.delete({
+				where: {
+					id: budgetId
+				}
+			});
+
+			return { success: true, budgetId };
+		} catch (error) {
+			console.error('❌ Error deleting budget:', error);
+			return { success: false, error: String(error) };
+		}
 	}
 } satisfies Actions;

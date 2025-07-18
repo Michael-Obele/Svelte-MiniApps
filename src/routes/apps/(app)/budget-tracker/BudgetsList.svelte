@@ -8,6 +8,7 @@
 	import { AlertCircle, AlertTriangle, CheckCircle2 } from 'lucide-svelte';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { toast } from 'svelte-sonner';
 
 	interface Props {
 		budgets: Budget[];
@@ -30,6 +31,30 @@
 		getCurrencySymbol,
 		formatNumberWithCommas
 	}: Props = $props();
+
+	async function handleDeleteBudget(budgetId: string) {
+		const deleteToast = toast.loading('Deleting budget...');
+		try {
+			const formData = new FormData();
+			formData.append('budgetId', budgetId);
+
+			const response = await fetch('?/deleteBudget', {
+				method: 'POST',
+				body: formData
+			});
+
+			if (response.ok) {
+				budgetState.deleteBudget(budgetId);
+				toast.success('Budget deleted successfully', { id: deleteToast });
+			} else {
+				const result = await response.json();
+				throw new Error(result.error || 'Failed to delete budget');
+			}
+		} catch (error) {
+			console.error('Error deleting budget:', error);
+			toast.error(String(error), { id: deleteToast });
+		}
+	}
 
 	function getBudgetStatusIconAndColor(percentage: number): { icon: any; color: string } {
 		// Returns an object
@@ -59,7 +84,7 @@
 						<Button variant="ghost" size="icon" onclick={() => openEditDialog(budget)}>
 							<Pencil class="h-4 w-4" />
 						</Button>
-						<Button variant="ghost" size="icon" onclick={() => budgetState.deleteBudget(budget.id)}>
+						<Button variant="ghost" size="icon" onclick={() => handleDeleteBudget(budget.id)}>
 							<Trash2 class="h-4 w-4" />
 						</Button>
 					</div>
