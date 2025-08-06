@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Import migration utilities
-	import { migrateLocalDataToServer, isDataMigrated, loadBudgetsFromServer } from './migration';
+	import { isDataMigrated } from './migration';
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
