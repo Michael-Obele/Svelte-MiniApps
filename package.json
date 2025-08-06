@@ -21,6 +21,7 @@
 		"dev:with-sw": "concurrently \"bun run dev\" \"bun run watch:hash\""
 	},
 	"devDependencies": {
+		"@lucide/svelte": "^0.482.0",
 		"@playwright/test": "^1.45.3",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
