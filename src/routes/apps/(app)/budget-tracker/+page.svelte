@@ -512,6 +512,9 @@
 	function formatNumber(value: number) {
 		return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
 	}
+
+	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
+	import { Label } from '@/ui/label';
 </script>
 
 <RouteHead
@@ -575,14 +578,14 @@
 				<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
 					<!-- Auto-backup Toggle -->
 					<div class="flex items-center gap-2 text-sm text-muted-foreground">
-						<label class="flex cursor-pointer items-center gap-2">
-							<input
-								type="checkbox"
-								bind:checked={autoBackupEnabled.current}
-								class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-							/>
-							<span>Auto-backup ({AUTO_BACKUP_DELAY / 1000}s)</span>
-						</label>
+						<Label for="autobackup" class="flex cursor-pointer items-center gap-2">
+							Auto-backup ({AUTO_BACKUP_DELAY / 1000}s)
+						</Label>
+						<Checkbox
+							id="autobackup"
+							bind:checked={autoBackupEnabled.current}
+							class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+						/>
 						{#if showSavedStatus}
 							<span
 								class="text-sm text-green-600 transition-opacity duration-500"
@@ -595,7 +598,7 @@
 					</div>
 
 					<!-- Server Backup Controls -->
-					<div class="flex flex-col gap-2 sm:flex-row">
+					<div class="flex flex-col gap-2 md:flex-row">
 						<form
 							method="POST"
 							action="?/backupToServer"
