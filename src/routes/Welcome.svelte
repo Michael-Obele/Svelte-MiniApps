@@ -11,10 +11,10 @@
 
 	let greeting = $state(getGreetingAndNextPeriod().greeting);
 
-	let mantra = $state(generateMantra(''));
+	let mantra = $state(generateMantra());
 
 	function handleGenerate() {
-		mantra = generateMantra(mantra);
+		mantra = generateMantra();
 	}
 
 	// Update greeting when time period changes

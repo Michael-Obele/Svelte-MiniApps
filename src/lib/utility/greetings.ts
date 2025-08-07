@@ -220,6 +220,9 @@ import nlp from 'compromise';
 // Initialize Chance.js
 const chance = new Chance();
 
+// Track recent mantras to avoid duplicates
+let recentMantras: string[] = [];
+
 /**
  * Generates a random, quirky, and uplifting mantra.
  *
@@ -232,9 +235,9 @@ const chance = new Chance();
  *                   If the generated mantra is not within the 4-6 word count range,
  *                   it returns a fallback mantra from a predefined list.
  */
-export function generateMantra(recent: string): string {
-	const recentMantras: string[] = [];
-	recentMantras.push(recent);
+export function generateMantra(): string {
+	// const recentMantras: string[] = [];
+	// recentMantras.push(recent);
 	const chance = new Chance();
 
 	// Action words from your prompt
