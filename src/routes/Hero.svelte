@@ -1,17 +1,21 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import { getGreeting, getMillisecondsUntilNextPeriod } from '$lib/utility/greetings';
+	import {
+		generateMantra,
+		getGreeting,
+		getMillisecondsUntilNextPeriod
+	} from '$lib/utility/greetings';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 
 	const arrow = '/lottie/trending-flat.json';
 
-	let greeting = $state(getGreeting());
+	let greeting = $state(generateMantra());
 
 	// Update greeting when time period changes
 	$effect(() => {
 		const timeoutId = setTimeout(() => {
-			greeting = getGreeting();
+			greeting = generateMantra();
 			// Recursively set the next timeout
 			timeoutId.refresh();
 		}, getMillisecondsUntilNextPeriod());

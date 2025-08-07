@@ -20,6 +20,7 @@
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from 'lucide-svelte';
+	import Quote from './Quote.svelte';
 
 	$effect(() => {
 		userContext.set(data?.user ?? null);
@@ -29,53 +30,6 @@
 			window.location.reload();
 		}
 	});
-
-	// Future Plans
-	// import { onMount } from 'svelte';
-	// import { pipeline } from '@huggingface/transformers';
-	// let quote = $state('');
-	// let loading = $state(false);
-
-	// let generator = null;
-	// onMount(async () => {
-	// 	console.log('onMount');
-	// 	const poet = await pipeline(
-	// 		'text2text-generation',
-	// 		'Xenova/distilbert-base-uncased-finetuned-sst-2-english'
-	// 	);
-	// 	generator = await pipeline(
-	// 		'text-generation',
-	// 		'Xenova/distilbert-base-uncased-finetuned-sst-2-english'
-	// 	);
-	// 	await generateQuote();
-	// 	const result = await poet('Write me a love poem about cheese.', {
-	// 		max_new_tokens: 200,
-	// 		temperature: 0.9,
-	// 		repetition_penalty: 2.0,
-	// 		no_repeat_ngram_size: 3
-	// 	});
-	// 	console.log(result);
-	// });
-
-	// async function generateQuote() {
-	// 	if (!generator) return;
-	// 	try {
-	// 		loading = true;
-	// 		const output = await generator('Generate a quirky greeting: ', {
-	// 			max_length: 30,
-	// 			do_sample: true,
-	// 			top_k: 50,
-	// 			top_p: 0.95
-	// 		});
-	// 		quote = output[0].generated_text.replace('Generate a quirky greeting: ', '');
-	// 		console.log(quote);
-	// 	} catch (error) {
-	// 		console.error('Error:', error);
-	// 		quote = 'Failed to generate quote';
-	// 	} finally {
-	// 		loading = false;
-	// 	}
-	// }
 </script>
 
 <div

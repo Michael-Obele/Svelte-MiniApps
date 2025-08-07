@@ -1,14 +1,21 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
-	import { getGreetingAndNextPeriod } from '$lib/utility/greetings';
+	import { generateMantra, getGreetingAndNextPeriod } from '$lib/utility/greetings';
 	import { RefreshCw, Star, StarOff } from 'lucide-svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { enhance } from '$app/forms';
 	import { Skeleton } from '@/ui/skeleton';
 	import { invalidate } from '$app/navigation';
+	import { Button } from '@/ui/button';
 
 	let greeting = $state(getGreetingAndNextPeriod().greeting);
+
+	let mantra = $state(generateMantra(''));
+
+	function handleGenerate() {
+		mantra = generateMantra(mantra);
+	}
 
 	// Update greeting when time period changes
 	$effect(() => {
@@ -90,10 +97,22 @@
 						<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
 					{/if}
 				</form>
-				<span class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none">
-					{data.mantra}
-				</span>
-				<form action="?/generatemantra" use:enhance={handleSubmit} method="POST">
+				<Button
+					variant="link"
+					onclick={handleGenerate}
+					class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none"
+				>
+					<!-- {data.mantra} -->
+					{mantra}
+				</Button>
+				<button
+					class="inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8"
+					onclick={() => handleGenerate()}
+					title="Get a new mantra"
+				>
+					<RefreshCw class="h-4 w-4" />
+				</button>
+				<!-- <form action="?/generatemantra" use:enhance={handleSubmit} method="POST">
 					<div class="flex items-center">
 						<button
 							class="inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8"
@@ -103,7 +122,7 @@
 							<RefreshCw class="h-4 w-4" />
 						</button>
 					</div>
-				</form>
+				</form> -->
 			</h3>
 		{:else}
 			<Skeleton class="mx-auto h-10 w-[35vw] rounded-md text-center" />

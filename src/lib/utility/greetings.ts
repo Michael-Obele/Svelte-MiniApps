@@ -1,4 +1,4 @@
-interface Mantra {
+export interface Mantra {
 	phrase: string;
 }
 
@@ -212,4 +212,189 @@ export function getGreetingAndNextPeriod(): { greeting: string; millisecondsUnti
 export function getRandomMantra(): Mantra {
 	const index = Math.floor(Math.random() * mantras.length);
 	return mantras[index];
+}
+
+import Chance from 'chance';
+import nlp from 'compromise';
+
+// Initialize Chance.js
+const chance = new Chance();
+
+/**
+ * Generates a random, quirky, and uplifting mantra.
+ *
+ * This function combines action words, vivid adjectives, meaningful nouns, and abstract concepts
+ * using a set of templates. It leverages Chance.js for random selection and Compromise.js
+ * to occasionally swap words with synonyms for variety, ensuring the final mantra is
+ * between 4 and 6 words long.
+ *
+ * @returns {string} A randomly generated mantra, capitalized and formatted.
+ *                   If the generated mantra is not within the 4-6 word count range,
+ *                   it returns a fallback mantra from a predefined list.
+ */
+export function generateMantra(recent: string): string {
+	const recentMantras: string[] = [];
+	recentMantras.push(recent);
+	const chance = new Chance();
+
+	// Action words from your prompt
+	const actionWords = [
+		'dance',
+		'breathe',
+		'explore',
+		'embrace',
+		'create',
+		'dream',
+		'grow',
+		'shine',
+		'flow',
+		'spark'
+	];
+
+	// Expanded vivid words inspired by your mantras and prompt
+	const adjectives = [
+		'quirky',
+		'radiant',
+		'wild',
+		'cosmic',
+		'vibrant',
+		'whimsical',
+		'dazzling',
+		'playful',
+		'bold',
+		'serendipitous',
+		'zesty',
+		'gleeful',
+		'luminous',
+		'sprightly',
+		'effervescent'
+	];
+	const nouns = [
+		'magic',
+		'journey',
+		'spark',
+		'heart',
+		'soul',
+		'dream',
+		'light',
+		'vibe',
+		'rhythm',
+		'essence',
+		'whirl',
+		'gleam',
+		'spirit',
+		'muse',
+		'blaze'
+	];
+	const concepts = [
+		'chaos',
+		'wonder',
+		'bliss',
+		'growth',
+		'freedom',
+		'mystery',
+		'gleam',
+		'whimsy',
+		'sparkle',
+		'adventure',
+		'serenity',
+		'possibility',
+		'frolic',
+		'radiance',
+		'delight'
+	];
+
+	// Expanded templates for 4-6 word mantras
+	const templates = [
+		'{action} your {adj} {noun}', // e.g., "Dance your quirky soul"
+		'{action} the {adj} {noun}', // e.g., "Explore the radiant journey"
+		'{action} with {adj} {concept}', // e.g., "Shine with vibrant whimsy"
+		'{action} in {adj} {concept}', // e.g., "Flow in whimsical wonder"
+		'{action} your {noun} with {concept}', // e.g., "Spark your heart with bliss"
+		'{action} a {adj} {noun}', // e.g., "Create a dazzling spark"
+		'{action} {adj} {concept} daily', // e.g., "Breathe zesty freedom daily"
+		'{action} your {concept} with {noun}', // e.g., "Embrace your wonder with spirit"
+		'{action} through {adj} {noun}', // e.g., "Grow through luminous essence"
+		'{action} the {concept} within' // e.g., "Spark the radiance within"
+	];
+
+	// Step 1: Randomly select template and action word
+	const template = chance.weighted(templates, [15, 15, 10, 10, 10, 10, 10, 10, 10, 10]);
+	const action = chance.weighted(actionWords, [15, 10, 15, 15, 10, 10, 10, 10, 10, 10]);
+
+	// Step 2: Select words with weighted randomization
+	let adj = chance.weighted(adjectives, [20, 20, 15, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5]);
+	let noun = chance.weighted(nouns, [15, 15, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5]);
+	let concept = chance.weighted(concepts, [15, 15, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5]);
+
+	// Step 3: Use Compromise for synonym variety (adjectives and concepts only)
+	const adjDoc = nlp(adj);
+	const conceptDoc = nlp(concept);
+
+	// Type assertion to handle missing TypeScript definitions
+	interface ConjugateResult {
+		synonyms?: string[];
+	}
+
+	if (chance.bool({ likelihood: 50 })) {
+		const adjConjugate = adjDoc.adjectives().data()[0] as ConjugateResult | undefined;
+		const synonyms = adjConjugate?.synonyms || [];
+		if (synonyms.length > 0) {
+			const validSynonyms = synonyms.filter(
+				(s: string) => (adjectives.includes(s) || s.length > 4) && s !== adj
+			);
+			if (validSynonyms.length > 0) {
+				adj = chance.pickone(validSynonyms);
+			}
+		}
+	}
+	if (chance.bool({ likelihood: 50 })) {
+		const conceptConjugate = conceptDoc.nouns().data()[0] as ConjugateResult | undefined;
+		const synonyms = conceptConjugate?.synonyms || [];
+		if (synonyms.length > 0) {
+			const validSynonyms = synonyms.filter(
+				(s: string) => (concepts.includes(s) || s.length > 4) && s !== concept
+			);
+			if (validSynonyms.length > 0) {
+				concept = chance.pickone(validSynonyms);
+			}
+		}
+	}
+
+	// Step 4: Build the mantra
+	let mantra = template
+		.replace('{action}', action)
+		.replace('{adj}', adj)
+		.replace('{noun}', noun)
+		.replace('{concept}', concept || '');
+
+	// Step 5: Use Compromise to adjust articles for grammatical correctness
+	const doc = nlp(mantra);
+	if (doc.has('the {adj} {noun}')) {
+		const firstLetter = adj[0].toLowerCase();
+		const article = 'aeiou'.includes(firstLetter) ? 'an' : 'a';
+		mantra = doc.replace('the {adj}', `${article} ${adj}`).text('normal');
+	}
+
+	// Step 6: Format (capitalize, normalize spacing)
+	mantra = doc.text('normal');
+	mantra = mantra.charAt(0).toUpperCase() + mantra.slice(1);
+
+	// Step 7: Ensure 4-6 words and uniqueness
+	const wordCount = mantra.split(' ').length;
+	if (wordCount < 4 || wordCount > 6 || recentMantras.includes(mantra)) {
+		const validMantras = mantras.filter(
+			(m) => m.phrase.split(' ').length >= 4 && m.phrase.split(' ').length <= 6
+		);
+		const fallback = chance.pickone(validMantras).phrase;
+		recentMantras.push(fallback);
+		if (recentMantras.length > 10) recentMantras.shift();
+		return fallback;
+	}
+
+	// Step 8: Store mantra to avoid duplicates
+	recentMantras.push(mantra);
+	if (recentMantras.length > 10) recentMantras.shift();
+
+	return mantra;
 }
