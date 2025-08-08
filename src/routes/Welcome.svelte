@@ -76,11 +76,11 @@
 		</BlurInText>
 	</BlurFade>
 	<BlurFade class="px-1" delay={0.25 * 2}>
-		{#if !isLoading && data.mantra}
+		{#if !isLoading && mantra}
 			<h3 class="my-2 flex items-center justify-center gap-2 text-center">
 				<!-- Use a modal and this form to submit feedback -->
 				<form action="?/likeMantra" use:enhance={handleLike} method="POST">
-					<input type="hidden" name="mantra" value={data.mantra} />
+					<input type="hidden" name="mantra" value={mantra} />
 					<input type="hidden" name="like" value={form?.like ?? 'like'} />
 					{#if !isLiked && data.user?.username}
 						<div class="flex items-center">
