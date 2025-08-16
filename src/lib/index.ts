@@ -23,7 +23,8 @@ export const done = [
 	'budget-tracker',
 	'todo-list',
 	'markdown-editor',
-	'text-summarizer','unit-converter'
+	'text-summarizer',
+	'unit-converter'
 ];
 //
 export type Project = {
