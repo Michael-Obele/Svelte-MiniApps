@@ -20,7 +20,6 @@
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from 'lucide-svelte';
-	import Quote from './Quote.svelte';
 
 	$effect(() => {
 		userContext.set(data?.user ?? null);

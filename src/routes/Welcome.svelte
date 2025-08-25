@@ -33,13 +33,7 @@
 	let isLoading = $state(false);
 	let isLiked = $state(false);
 
-	function handleSubmit() {
-		isLoading = true;
-		return async ({ update }: { update: () => Promise<void> }) => {
-			await update();
-			isLoading = false;
-		};
-	}
+
 
 	$effect(() => {
 		invalidate('mantra');
@@ -112,17 +106,6 @@
 				>
 					<RefreshCw class="h-4 w-4" />
 				</button>
-				<!-- <form action="?/generatemantra" use:enhance={handleSubmit} method="POST">
-					<div class="flex items-center">
-						<button
-							class="inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8"
-							type="submit"
-							title="Get a new mantra"
-						>
-							<RefreshCw class="h-4 w-4" />
-						</button>
-					</div>
-				</form> -->
 			</h3>
 		{:else}
 			<Skeleton class="mx-auto h-10 w-[35vw] rounded-md text-center" />
