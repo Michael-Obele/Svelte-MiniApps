@@ -53,6 +53,41 @@ function getLastProcessedCommit(): string | null {
 	}
 }
 
+// Get existing generated timeline items
+function getExistingGeneratedData(): TimelineItem[] {
+	// Try to read from a JSON file first
+	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
+	if (existsSync(jsonPath)) {
+		try {
+			const content = readFileSync(jsonPath, 'utf-8');
+			const data = JSON.parse(content);
+			return data.timeline || [];
+		} catch (error) {
+			console.warn('Failed to parse JSON data file:', error);
+		}
+	}
+
+	// Fallback: try to parse the TypeScript file (basic approach)
+	const dataPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
+	if (!existsSync(dataPath)) return [];
+
+	try {
+		const content = readFileSync(dataPath, 'utf-8');
+
+		// Simple approach: look for the last processed commit to determine if we have existing data
+		const commitMatch = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/);
+		if (commitMatch) {
+			// If we have a processed commit but can't parse, start fresh to avoid corruption
+			console.log('📝 Existing data found but unable to parse - will start fresh');
+		}
+
+		return [];
+	} catch (error) {
+		console.warn('Failed to read existing data:', error);
+		return [];
+	}
+}
+
 // Get commits since last processed commit
 function getCommits(since?: string): CommitInfo[] {
 	const sinceFlag = since ? `${since}..HEAD` : '--max-count=50';
@@ -231,31 +266,78 @@ export const lastUpdated = '${new Date().toISOString()}';
 async function main() {
 	console.log('🔍 Generating changelog from git commits...');
 
-	const lastProcessed = getLastProcessedCommit();
-	console.log(
-		lastProcessed
-			? `📅 Last processed commit: ${lastProcessed}`
-			: '📅 Processing all recent commits'
-	);
+	// Check for command line arguments
+	const args = process.argv.slice(2);
+	const forceFullRebuild = args.includes('--full') || args.includes('-f');
+
+	const lastProcessed = forceFullRebuild ? null : getLastProcessedCommit();
+
+	if (forceFullRebuild) {
+		console.log('🔄 Force full rebuild requested - processing last 50 commits');
+	} else {
+		console.log(
+			lastProcessed
+				? `📅 Last processed commit: ${lastProcessed}`
+				: '📅 Processing all recent commits'
+		);
+	}
 
 	const commits = getCommits(lastProcessed || undefined);
-	console.log(`📝 Found ${commits.length} new commits`);
+	console.log(`📝 Found ${commits.length} commits to process`);
 
 	if (commits.length === 0) {
 		console.log('✅ No new commits to process');
 		return;
 	}
 
-	const timelineItems = groupCommits(commits);
-	console.log(`📊 Generated ${timelineItems.length} changelog entries`);
+	const newTimelineItems = groupCommits(commits);
+	console.log(`📊 Generated ${newTimelineItems.length} changelog entries`);
+
+	// Get existing data and merge with new data (unless doing full rebuild)
+	const existingData = forceFullRebuild ? [] : getExistingGeneratedData();
+	console.log(
+		`📚 Found ${existingData.length} existing entries ${forceFullRebuild ? '(ignored for full rebuild)' : ''}`
+	);
+
+	// Merge and sort all timeline items by date
+	const allTimelineItems = [...existingData, ...newTimelineItems].sort(
+		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+	);
+
+	// Remove duplicates based on date and title
+	const uniqueItems = allTimelineItems.filter((item, index, arr) => {
+		return !arr
+			.slice(0, index)
+			.some((existing) => existing.date === item.date && existing.title === item.title);
+	});
+
+	console.log(
+		`📋 Total entries after ${forceFullRebuild ? 'full rebuild' : 'merge'}: ${uniqueItems.length}`
+	);
 
 	const latestCommit = commits[0]?.hash;
-	const fileContent = generateDataFile(timelineItems, latestCommit);
+	const fileContent = generateDataFile(uniqueItems, latestCommit);
 
 	const outputPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
+	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
+
+	// Save both TypeScript and JSON versions
 	writeFileSync(outputPath, fileContent);
+	writeFileSync(
+		jsonPath,
+		JSON.stringify(
+			{
+				lastProcessedCommit: latestCommit,
+				generatedAt: new Date().toISOString(),
+				timeline: uniqueItems
+			},
+			null,
+			2
+		)
+	);
 
 	console.log(`✅ Changelog data written to ${outputPath}`);
+	console.log(`✅ JSON backup saved to ${jsonPath}`);
 	console.log('🎉 Changelog generation complete!');
 }
 

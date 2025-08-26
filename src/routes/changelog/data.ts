@@ -295,7 +295,7 @@ export const timeline: TimelineItem[] = [
 		color: 'from-green-500 to-lime-500'
 	},
 	{
-		date: 'December 29, 2024 - January 1, 2025',
+		date: 'December 29-31, 2024',
 		title: 'Codebase Refactoring and UX Improvements',
 		description:
 			'Refactoring for code clarity, adding documentation, and enhancing user experience',
@@ -534,11 +534,68 @@ function convertGeneratedItem(item: GeneratedTimelineItem): TimelineItem {
 	};
 }
 
+// Helper function to parse dates consistently
+function parseDate(dateString: string): Date {
+	// Handle date ranges like "March 22-27, 2025" by using the end date
+	if (dateString.includes('-')) {
+		// Extract the end date from ranges like "March 22-27, 2025" or "November 29-30, 2024"
+		const parts = dateString.split('-');
+		if (parts.length === 2) {
+			const [start, endPart] = parts;
+			// Check if it's a range within the same month
+			if (/^\d+,\s*\d{4}$/.test(endPart.trim())) {
+				// Format: "March 22-27, 2025" -> use "March 27, 2025"
+				const monthMatch = start.match(/^(.+?)\s+\d+$/);
+				if (monthMatch) {
+					const month = monthMatch[1];
+					const endDate = `${month} ${endPart.trim()}`;
+					const parsed = new Date(endDate);
+					if (!isNaN(parsed.getTime())) {
+						return parsed;
+					}
+				}
+			} else {
+				// Format: "November 29-30, 2024" -> extract year and use end date
+				const yearMatch = dateString.match(/(\d{4})$/);
+				const endDayMatch = endPart.match(/(\d+)/);
+				const monthMatch = start.match(/^(.+?)\s+\d+$/);
+
+				if (yearMatch && endDayMatch && monthMatch) {
+					const year = yearMatch[1];
+					const endDay = endDayMatch[1];
+					const month = monthMatch[1];
+					const endDate = `${month} ${endDay}, ${year}`;
+					const parsed = new Date(endDate);
+					if (!isNaN(parsed.getTime())) {
+						return parsed;
+					}
+				}
+			}
+		}
+	}
+
+	// Handle standard "Month DD, YYYY" format
+	const date = new Date(dateString);
+	if (isNaN(date.getTime())) {
+		// Fallback to current date if parsing fails
+		console.warn(`Failed to parse date: ${dateString}`);
+		return new Date();
+	}
+	return date;
+}
+
 // Merge manual timeline with generated timeline, sorted by date
 export const allTimeline = [
-	...timeline.map((item) => ({ ...item, source: 'manual' })),
-	...generatedTimeline.map((item) => ({ ...convertGeneratedItem(item), source: 'generated' }))
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+	...timeline.map((item) => ({ ...item, source: 'manual' as const })),
+	...generatedTimeline.map((item) => ({
+		...convertGeneratedItem(item),
+		source: 'generated' as const
+	}))
+].sort((a, b) => {
+	const dateA = parseDate(a.date);
+	const dateB = parseDate(b.date);
+	return dateB.getTime() - dateA.getTime(); // Most recent first
+});
 
 export const updates = [
 	{

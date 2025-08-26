@@ -21,12 +21,21 @@ The system includes a GitHub Action that automatically:
 You can also run the changelog generation locally:
 
 ```bash
-# Generate changelog from recent commits
+# Generate changelog from new commits since last run
 bun run changelog:generate
 
-# Or run the script directly
-bun run scripts/generate-changelog.ts
+# Generate full changelog from last 50 commits (rebuild)
+bun run changelog:full
+
+# Or run the script directly with options
+bun run scripts/generate-changelog.ts        # incremental
+bun run scripts/generate-changelog.ts --full # full rebuild
 ```
+
+**Options:**
+
+- **Incremental** (default): Only processes commits since last run
+- **Full rebuild** (`--full` or `-f`): Processes last 50 commits, rebuilds entire generated timeline
 
 ## Commit Message Format
 

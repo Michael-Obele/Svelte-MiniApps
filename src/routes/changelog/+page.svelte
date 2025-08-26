@@ -18,6 +18,9 @@
 	import Highlight from './Highlight.svelte';
 	import { once, preventDefault, scrollToID } from '$lib/utils';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { Bot, SquarePen } from '@lucide/svelte';
+	import DebugOrder from './DebugOrder.svelte';
+	import ChangelogStats from './ChangelogStats.svelte';
 
 	let selectedItem: (typeof allTimeline)[0] | null = $state(null);
 	let showGenerated = $state(true);
@@ -122,6 +125,8 @@
 			</div>
 
 			<!-- Filter Controls -->
+			<ChangelogStats />
+			<DebugOrder />
 			<div class="mb-8 flex flex-wrap items-center justify-center gap-4">
 				<div class="flex items-center gap-2">
 					<label class="flex cursor-pointer items-center gap-2">
@@ -186,12 +191,18 @@
 									{#if 'source' in item}
 										<Badge
 											variant={item.source === 'manual' ? 'secondary' : 'outline'}
-											class="text-xs"
+											class=" text-xs"
 										>
-											{item.source === 'manual' ? '📝' : '🤖'}
+											{#if item.source === 'generated'}
+												<Bot class="size-4" />
+											{:else}
+												<SquarePen class="size-4" />
+											{/if}
 										</Badge>
 									{:else}
-										<Badge variant="secondary" class="text-xs">📝</Badge>
+										<Badge variant="secondary" class="text-xs">
+											<SquarePen class="size-4" />
+										</Badge>
 									{/if}
 								</div>
 								<p class="text-sm text-muted-foreground">{item.description}</p>
