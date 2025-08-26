@@ -215,10 +215,7 @@
 								<div class="mb-2 flex items-start justify-between gap-2">
 									<h3 class="flex-1 font-semibold">{item.title}</h3>
 									{#if 'source' in item}
-										<Badge
-											variant={item.source === 'manual' ? 'secondary' : 'outline'}
-											class=" text-xs"
-										>
+										<Badge variant="outline" class=" text-xs">
 											{#if item.source === 'generated'}
 												<Bot class="size-4" />
 											{:else}
@@ -226,7 +223,7 @@
 											{/if}
 										</Badge>
 									{:else}
-										<Badge variant="secondary" class="text-xs">
+										<Badge variant="outline" class="text-xs">
 											<SquarePen class="size-4" />
 										</Badge>
 									{/if}
