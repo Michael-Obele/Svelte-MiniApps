@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: 7f46113dcb7e609f81bae250739606b871b46d39
-// Generated at: 2025-08-26T23:32:39.023Z
+// Last processed commit: d8322992e6b8d6c3556378c71921208382834edd
+// Generated at: 2025-08-26T23:55:54.125Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -15,15 +15,10 @@ export interface GeneratedTimelineItem {
 export const generatedTimeline: GeneratedTimelineItem[] = [
   {
     "date": "August 26, 2025",
-    "title": "Updates",
-    "description": "Multiple updates across 77 files",
+    "title": "🌐 i18n(data): add detailed changelog entries",
+    "description": "Updated src/routes/changelog/data.ts",
     "items": [
-      "✨ feat: add component documentation for AppsSection, Content, Hero, InfoBlocks, and Welcome (7f46113)",
-      "💄 style(changelog): simplify Badge component usage (cd5f52b)",
-      "✨ feat(changelog): enhance changelog insights and UI (9e74a03)",
-      "Refactor icon imports from 'lucide-svelte' to '@lucide/svelte' across multiple components for consistency and to align with updated package structure. (2c6313c)",
-      "✨ feat(changelog): add conditional rendering for dev mode (97a62b8)",
-      "feat(changelog): enhance changelog page with statistics and debug order (465f6f3)"
+      "🌐 i18n(data): add detailed changelog entries (d832299)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -31,4 +26,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-08-26T23:32:39.023Z';
+export const lastUpdated = '2025-08-26T23:55:54.125Z';
