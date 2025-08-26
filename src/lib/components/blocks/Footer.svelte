@@ -159,7 +159,7 @@
 		>
 			<p class="flex items-center text-center text-sm text-muted-foreground md:text-left">
 				<Copyright class="me-1 size-4" strokeWidth={1.5} /> 2024-
-				{currentYear} Michael Obele. All rights reserved.
+				{currentYear} Svelte Apps. All rights reserved.
 			</p>
 			<p class="flex items-center text-center text-sm text-muted-foreground md:text-right">
 				<Download class="me-1 size-4 text-primary" strokeWidth={1.5} />
