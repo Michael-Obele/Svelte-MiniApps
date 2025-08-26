@@ -1,90 +1,57 @@
-import { MISTRAL_API_KEY } from '$env/static/private';
 import { prisma } from '$lib/server/db';
 import type { PageServerLoad } from './$types';
-import { getRandomMantra } from '$lib/utility/greetings';
-import { Mistral } from '@mistralai/mistralai';
 import { fail } from '@sveltejs/kit';
 
-// Initialize Mistral client
-const mistralClient = new Mistral({ apiKey: MISTRAL_API_KEY });
-
-async function generateDailyMantra(): Promise<string> {
+async function updateMantraLikeState(mantra: string, userId: string | undefined): Promise<boolean> {
 	try {
-		const prompt = `Generate a unique and unexpected life mantra in 4-6 words. 
-Rules:
-1. Start with one of these action words (randomly choose): dance, breathe, explore, embrace, create, dream, grow, shine, flow, spark.
-2. Make it feel fresh and unconventional, avoiding common phrases or repetitions.
-3. Focus on joy, growth, self-discovery, humor, or playfulness.
-4. Use vivid, specific words instead of generic ones.
-5. Keep the tone casual and conversational.
-6. Each generation should feel distinctly different from previous ones, be as unique as possible.
-7. IMPORTANT: Each word must be separated by a single space.
-8. Do not combine words together - keep them as separate words.
-9. Format example: "Spark Your Inner Light" (correct) vs "SparkYourInnerLight" (incorrect).
-10. Do not return a mantra longer than 8 words.
+		// Use a transaction to ensure atomicity
+		return await prisma.$transaction(async (tx) => {
+			const existingMantra = await tx.mantra.findUnique({
+				where: { content: mantra }
+			});
 
-Return only a single mantra text with its words separated by spaces, no additional formatting or punctuation.`;
+			if (existingMantra) {
+				const newLikeState = !existingMantra.like;
 
-		const response = await mistralClient.chat.complete({
-			model: 'mistral-small-latest',
-			messages: [{ role: 'user', content: prompt }],
-			stop: ['.']
-		});
+				await tx.mantra.update({
+					where: { id: existingMantra.id },
+					data: { like: newLikeState }
+				});
 
-		if (!response.choices || response.choices.length === 0) {
-			throw new Error('No response from Mistral');
-		}
-		const content = response.choices[0]?.message?.content;
-		const mantra = typeof content === 'string' ? content.trim() : getRandomMantra().phrase;
-		console.log('Generated mantra:', mantra);
-		return mantra;
-	} catch (error: any) {
-		console.error('Error generating mantra:', error);
-
-		// If we hit rate limit or any other error, use a random mantra from our collection
-		if (error.status === 429) {
-			console.error('Rate limit reached, using fallback mantra');
-		}
-
-		// Get a random mantra from our collection
-		const fallbackMantra = getRandomMantra().phrase;
-		console.info('Using fallback mantra:', fallbackMantra);
-		return fallbackMantra;
-	}
-}
-
-async function updateMantraLikeState(mantra: string, userId: string | undefined) {
-	const existingMantra = await prisma.mantra.findUnique({
-		where: {
-			content: mantra
-		}
-	});
-
-	if (existingMantra) {
-		const newLikeState = !existingMantra.like;
-		await prisma.mantra.update({
-			where: {
-				id: existingMantra.id
-			},
-			data: {
-				like: newLikeState
+				console.log(`Mantra ${newLikeState ? 'liked' : 'unliked'}: "${mantra}"`);
+				return newLikeState;
 			}
-		});
-		console.log(newLikeState ? 'Liked' : 'Unliked', mantra);
-		return newLikeState;
-	}
 
-	const newLikeState = true;
-	await prisma.mantra.create({
-		data: {
-			content: mantra,
-			like: newLikeState,
-			user: {
-				connect: { id: userId }
+			// Create new mantra with like state true
+			if (!userId) {
+				// Provide explicit error so upstream can surface a meaningful message
+				throw new Error('User ID is required to create a new mantra');
 			}
-		}
-	});
-	return newLikeState;
+
+			await tx.mantra.create({
+				data: {
+					content: mantra,
+					like: true,
+					user: { connect: { id: userId } }
+				}
+			});
+
+			console.log(`Created and liked new mantra: "${mantra}"`);
+			return true;
+		});
+	} catch (error: unknown) {
+		// Log the error safely
+		console.error(
+			'Error updating mantra like state:',
+			error instanceof Error ? error.message : String(error)
+		);
+
+		// Re-throw with more context for proper error handling upstream.
+		type ErrorWithCause = Error & { cause?: unknown };
+		const e = new Error(`Failed to update like state for mantra: ${mantra}`) as ErrorWithCause;
+		e.cause = error;
+		throw e;
+	}
 }
 
 interface MantraData {
@@ -95,68 +62,80 @@ interface MantraData {
 // Note: Svelte Load function
 
 export const load: PageServerLoad = async (event) => {
-	let mantraData: MantraData;
-	const storedMantraData = event.cookies.get('mantra_data');
-
-	// Generate new mantra if:
-	// 1. No stored mantra data exists
-	// 2. The stored mantra data is from a previous day
-	if (!storedMantraData) {
-		const mantra = await generateDailyMantra();
-		mantraData = { mantra, like: false };
-
-		// Store the new mantra data in cookies
-		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
-			path: '/',
-			maxAge: 60 * 60 * 24 // 1 day
-		});
-	} else {
-		mantraData = JSON.parse(storedMantraData) as MantraData;
-	}
-
 	return {
-		user: event.locals.user,
-		mantra: mantraData.mantra,
-		like: mantraData.like
+		user: event.locals.user
 	};
 };
 
 export const actions = {
-	generatemantra: async (event) => {
-		const mantra = await generateDailyMantra();
-		const mantraData = { mantra, like: false };
-
-		// Update the stored mantra data
-		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
-			path: '/',
-			maxAge: 60 * 60 * 24 // 1 day
-		});
-
-		return { mantra, like: false };
-	},
-
 	likeMantra: async (event) => {
-		const formData = await event.request.formData();
-		const mantra = formData.get('mantra') as string;
+		try {
+			const formData = await event.request.formData();
+			const mantraValue = formData.get('mantra');
 
-		if (!mantra) {
-			return fail(400, {
-				message: 'Mantra is required',
-				mantra: mantra
+			// Basic validation: ensure form value exists and is a string
+			if (typeof mantraValue !== 'string' || !mantraValue.trim()) {
+				return fail(400, {
+					message: 'Mantra is required',
+					mantra: typeof mantraValue === 'string' ? mantraValue : ''
+				});
+			}
+
+			// Validate mantra length to prevent abuse
+			const trimmedMantra = mantraValue.trim();
+			if (trimmedMantra.length > 100) {
+				return fail(400, {
+					message: 'Mantra must be less than 100 characters',
+					mantra: trimmedMantra
+				});
+			}
+
+			const newLikeState = await updateMantraLikeState(trimmedMantra, event.locals.user?.id);
+
+			// Update the mantra data in cookies
+			const storedMantraData = event.cookies.get('mantra_data');
+			let mantraData: MantraData;
+			if (storedMantraData) {
+				try {
+					const parsed = JSON.parse(storedMantraData) as Partial<MantraData> | null;
+					mantraData = {
+						mantra: typeof parsed?.mantra === 'string' ? parsed.mantra : trimmedMantra,
+						like: !!parsed?.like
+					};
+				} catch {
+					mantraData = { mantra: trimmedMantra, like: false };
+				}
+			} else {
+				mantraData = { mantra: trimmedMantra, like: false };
+			}
+
+			const updatedMantraData = { ...mantraData, like: newLikeState };
+			event.cookies.set('mantra_data', JSON.stringify(updatedMantraData), {
+				path: '/',
+				maxAge: 60 * 60 * 24 // 1 day
+			});
+
+			return { like: newLikeState };
+		} catch (error: unknown) {
+			console.error(
+				'Error in likeMantra action:',
+				error instanceof Error ? error.message : String(error)
+			);
+
+			// If it's a known user-id missing case, surface a 403
+			if (
+				typeof error === 'object' &&
+				error !== null &&
+				(error as { message?: string }).message === 'User ID is required to create a new mantra'
+			) {
+				return fail(403, {
+					message: 'You must be signed in to like a new mantra.'
+				});
+			}
+
+			return fail(500, {
+				message: 'Failed to update like status. Please try again.'
 			});
 		}
-
-		const newLikeState = await updateMantraLikeState(String(mantra), event.locals.user?.id);
-
-		// Update the mantra data in cookies
-		const storedMantraData = event.cookies.get('mantra_data');
-		let mantraData = storedMantraData ? JSON.parse(storedMantraData) : { mantra, like: false };
-		mantraData.like = newLikeState;
-		event.cookies.set('mantra_data', JSON.stringify(mantraData), {
-			path: '/',
-			maxAge: 60 * 60 * 24 // 1 day
-		});
-
-		return { like: newLikeState };
 	}
 };
