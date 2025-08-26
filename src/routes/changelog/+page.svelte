@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
-	import { items, timeline, updates, getTypeStyles } from './data';
+	import { items, allTimeline, timeline, updates, getTypeStyles } from './data';
 	import { slide } from 'svelte/transition';
 	import {
 		Card,
@@ -19,7 +19,21 @@
 	import { once, preventDefault, scrollToID } from '$lib/utils';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
-	let selectedItem: (typeof timeline)[0] | null = $state(null);
+	let selectedItem: (typeof allTimeline)[0] | null = $state(null);
+	let showGenerated = $state(true);
+	let showManual = $state(true);
+
+	// Filter timeline based on selected filters
+	const filteredTimeline = $derived(
+		allTimeline.filter((item) => {
+			if ('source' in item) {
+				return (
+					(item.source === 'manual' && showManual) || (item.source === 'generated' && showGenerated)
+				);
+			}
+			return showManual; // Original timeline items are considered manual
+		})
+	);
 </script>
 
 <RouteHead
@@ -106,11 +120,44 @@
 					<Badge class="cursor-pointer text-xs">TL;DR Summary</Badge>
 				</a>
 			</div>
+
+			<!-- Filter Controls -->
+			<div class="mb-8 flex flex-wrap items-center justify-center gap-4">
+				<div class="flex items-center gap-2">
+					<label class="flex cursor-pointer items-center gap-2">
+						<input type="checkbox" bind:checked={showManual} class="rounded border-border" />
+						<span class="text-sm">Manual Entries</span>
+						<Badge variant="secondary" class="text-xs">
+							{allTimeline.filter((item) => !('source' in item) || item.source === 'manual').length}
+						</Badge>
+					</label>
+				</div>
+				<div class="flex items-center gap-2">
+					<label class="flex cursor-pointer items-center gap-2">
+						<input type="checkbox" bind:checked={showGenerated} class="rounded border-border" />
+						<span class="text-sm">Auto-Generated</span>
+						<Badge variant="outline" class="text-xs">
+							{allTimeline.filter((item) => 'source' in item && item.source === 'generated').length}
+						</Badge>
+					</label>
+				</div>
+				<Button
+					variant="outline"
+					size="sm"
+					onclick={() => {
+						showManual = true;
+						showGenerated = true;
+					}}
+				>
+					Show All
+				</Button>
+			</div>
+
 			<div class="relative mx-auto max-w-3xl">
 				<!-- Timeline line -->
 				<div class="absolute left-4 top-0 hidden h-full w-0.5 bg-border sm:left-1/2 sm:block"></div>
 				<!-- Timeline items -->
-				{#each timeline as item, index}
+				{#each filteredTimeline as item, index}
 					<a
 						href="#{index}"
 						class="mb-8 flex flex-col transition-transform duration-300 hover:scale-105 sm:mb-12"
@@ -134,7 +181,19 @@
 							</div>
 							<!-- Content -->
 							<Card class="flex-1 p-4">
-								<h3 class="mb-2 font-semibold">{item.title}</h3>
+								<div class="mb-2 flex items-start justify-between gap-2">
+									<h3 class="flex-1 font-semibold">{item.title}</h3>
+									{#if 'source' in item}
+										<Badge
+											variant={item.source === 'manual' ? 'secondary' : 'outline'}
+											class="text-xs"
+										>
+											{item.source === 'manual' ? '📝' : '🤖'}
+										</Badge>
+									{:else}
+										<Badge variant="secondary" class="text-xs">📝</Badge>
+									{/if}
+								</div>
 								<p class="text-sm text-muted-foreground">{item.description}</p>
 							</Card>
 						</div>

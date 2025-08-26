@@ -13,8 +13,17 @@ import {
 	Accessibility,
 	ChartArea,
 	Trophy,
-	Award
+	Award,
+	Zap,
+	Palette,
+	TestTube,
+	Package,
+	Settings,
+	Cog,
+	Undo,
+	AlertTriangle
 } from 'lucide-svelte';
+import { generatedTimeline, type GeneratedTimelineItem } from './generated-data';
 
 export const items = [
 	{
@@ -64,6 +73,8 @@ export const getTypeStyles = (type: string) => {
 			return 'text-green-500';
 		case 'improvement':
 			return 'text-blue-500';
+		case 'fix':
+			return 'text-cyan-500';
 		case 'deprecation':
 			return 'text-yellow-500';
 		default:
@@ -76,7 +87,7 @@ export type TimelineItem = {
 	title: string;
 	description: string;
 	items: string[];
-	type: 'breaking' | 'feature' | 'improvement' | 'deprecation';
+	type: 'breaking' | 'feature' | 'improvement' | 'deprecation' | 'fix';
 	icon: typeof Rocket; // one of the lucide-svelte icons
 	color: string;
 };
@@ -489,6 +500,45 @@ export const timeline: TimelineItem[] = [
 		color: 'from-red-500 to-pink-500'
 	}
 ];
+
+// Icon mapping for generated timeline items
+const iconMap = {
+	Rocket,
+	Wrench,
+	Zap,
+	Code,
+	Palette,
+	FileText,
+	TestTube,
+	Package,
+	Settings,
+	Cog,
+	Undo,
+	AlertTriangle,
+	DatabaseZap,
+	Search,
+	User
+};
+
+// Convert generated timeline items to match our TimelineItem type
+function convertGeneratedItem(item: GeneratedTimelineItem): TimelineItem {
+	const IconComponent = iconMap[item.icon as keyof typeof iconMap] || Code;
+	return {
+		date: item.date,
+		title: item.title,
+		description: item.description,
+		items: item.items,
+		type: item.type,
+		icon: IconComponent,
+		color: item.color
+	};
+}
+
+// Merge manual timeline with generated timeline, sorted by date
+export const allTimeline = [
+	...timeline.map((item) => ({ ...item, source: 'manual' })),
+	...generatedTimeline.map((item) => ({ ...convertGeneratedItem(item), source: 'generated' }))
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const updates = [
 	{

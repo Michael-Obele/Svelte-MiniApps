@@ -17,6 +17,7 @@
 		"db:push": "prisma db push",
 		"db:migrate": "prisma migrate dev",
 		"db:studio": "prisma studio",
+		"changelog:generate": "bun run scripts/generate-changelog.ts",
 		"watch:hash": "bun run scripts/watchServiceWorkerHash.js",
 		"dev:with-sw": "concurrently \"bun run dev\" \"bun run watch:hash\""
 	},
