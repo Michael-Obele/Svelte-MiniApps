@@ -1,9 +1,11 @@
 <!-- Changelog Statistics Component -->
 <script lang="ts">
+	import { Button } from '@/ui/button';
 	import { allTimeline } from './data';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Bot, SquarePen, TrendingUp, Calendar, Code } from 'lucide-svelte';
+	import { dev } from '$app/environment';
 
 	const stats = $derived.by(() => {
 		const manual = allTimeline.filter((item) => !('source' in item) || item.source === 'manual');
@@ -110,10 +112,10 @@
 	</Card>
 {/if}
 
-<button
+<Button
 	class="mb-4 flex items-center gap-1 rounded bg-blue-100 px-3 py-1 text-xs text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:hover:bg-blue-900/50"
 	onclick={() => (showStats = !showStats)}
 >
 	<TrendingUp class="h-3 w-3" />
 	{showStats ? 'Hide' : 'Show'} Statistics
-</button>
+</Button>

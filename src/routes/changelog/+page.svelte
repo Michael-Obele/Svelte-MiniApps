@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
 	import { items, allTimeline, timeline, updates, getTypeStyles } from './data';
@@ -125,9 +126,11 @@
 			</div>
 
 			<!-- Filter Controls -->
-			<ChangelogStats />
-			<DebugOrder />
-			<div class="mb-8 flex flex-wrap items-center justify-center gap-4">
+			<div class:hidden={!dev}>
+				<ChangelogStats />
+				<DebugOrder />
+			</div>
+			<div class:hidden={!dev} class="mb-8 flex flex-wrap items-center justify-center gap-4">
 				<div class="flex items-center gap-2">
 					<label class="flex cursor-pointer items-center gap-2">
 						<input type="checkbox" bind:checked={showManual} class="rounded border-border" />
