@@ -14,7 +14,7 @@
 		Copyright,
 		Sparkles,
 		Download
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 
 	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
 	const logoX = '/lottie/logo-x.json';

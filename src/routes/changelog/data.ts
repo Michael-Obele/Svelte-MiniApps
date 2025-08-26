@@ -82,6 +82,24 @@ export const getTypeStyles = (type: string) => {
 	}
 };
 
+// Helper to provide a background accent class for a given timeline type
+export const getTypeAccent = (type: string) => {
+	switch (type) {
+		case 'feature':
+			return 'bg-green-500/50';
+		case 'fix':
+			return 'bg-red-500/50';
+		case 'improvement':
+			return 'bg-blue-500/50';
+		case 'breaking':
+			return 'bg-orange-500/50';
+		case 'deprecation':
+			return 'bg-purple-500/50';
+		default:
+			return 'bg-purple-500/50';
+	}
+};
+
 export type TimelineItem = {
 	date: string;
 	title: string;

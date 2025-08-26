@@ -7,7 +7,7 @@
 </script>
 
 <Button
-	class="mb-4 rounded bg-gray-200 px-3 py-1 text-xs transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+	class="mb-4 rounded bg-gray-200 px-3 py-1 text-xs text-black transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
 	onclick={() => (showDebug = !showDebug)}
 >
 	{showDebug ? 'Hide' : 'Show'} Debug Order

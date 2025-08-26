@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { Label } from '@/ui/label';
 	import { dev } from '$app/environment';
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
-	import { items, allTimeline, timeline, updates, getTypeStyles } from './data';
+	import { items, allTimeline, timeline, updates, getTypeStyles, getTypeAccent } from './data';
 	import { slide } from 'svelte/transition';
 	import {
 		Card,
@@ -15,13 +16,14 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
-	import { ArrowRightIcon } from 'lucide-svelte';
+	import { ArrowRightIcon } from '@lucide/svelte';
 	import Highlight from './Highlight.svelte';
 	import { once, preventDefault, scrollToID } from '$lib/utils';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { Bot, SquarePen } from '@lucide/svelte';
 	import DebugOrder from './DebugOrder.svelte';
 	import ChangelogStats from './ChangelogStats.svelte';
+	import Checkbox from '@/ui/checkbox/checkbox.svelte';
 
 	let selectedItem: (typeof allTimeline)[0] | null = $state(null);
 	let showGenerated = $state(true);
@@ -38,6 +40,39 @@
 			return showManual; // Original timeline items are considered manual
 		})
 	);
+
+	// Calculate dynamic statistics for insights
+	const typeStats = $derived.by(() => {
+		const sevenDaysAgo = new Date();
+		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+		const stats: Record<string, { count: number; recent: typeof allTimeline }> = {};
+
+		// Initialize stats for all types
+		['feature', 'fix', 'improvement', 'breaking', 'deprecation'].forEach((type) => {
+			stats[type] = { count: 0, recent: [] };
+		});
+
+		allTimeline.forEach((item) => {
+			const type = item.type;
+			if (stats[type]) {
+				stats[type].count++;
+
+				// Check if item is recent (simplified date check)
+				const itemDate = new Date(item.date + ', 2025'); // Assuming 2025 for now
+				if (itemDate >= sevenDaysAgo) {
+					stats[type].recent.push(item);
+				}
+			}
+		});
+
+		// Sort by count and return only types with data
+		return Object.fromEntries(
+			Object.entries(stats)
+				.filter(([_, stat]) => stat.count > 0)
+				.sort(([, a], [, b]) => b.count - a.count)
+		);
+	});
 </script>
 
 <RouteHead
@@ -63,32 +98,20 @@
 	}}
 />
 
-<div class="min-h-screen bg-gradient-to-b from-background to-background/95">
+<div class="via-background/98 min-h-screen bg-gradient-to-b from-background to-background/95">
 	<div class="container mx-auto px-4 py-16">
-		<div class="relative mb-16">
-			<div class="absolute inset-0 flex items-center">
-				<div class="w-full border-t border-white/10"></div>
-			</div>
-			<div class="relative flex justify-center">
-				<span
-					class="bg-background px-4 text-sm font-semibold uppercase tracking-wider text-white/60"
-				>
-					Latest Updates
-				</span>
-			</div>
-		</div>
-
 		<BlurInText>
 			<h1
-				class="mb-4 bg-gradient-to-r from-white to-white/80 bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
+				class="mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
 			>
-				Changelog: Svelte 4 to Svelte 5
+				Changelog
 			</h1>
 		</BlurInText>
 
-		<p class="mx-auto mb-16 mt-6 max-w-2xl text-center text-lg text-white/60">
-			Transforming into a powerful offline-first platform while upgrading to the latest Svelte
-			technologies
+		<p class="mx-auto mb-16 mt-6 max-w-2xl text-center text-lg text-muted-foreground">
+			Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,
+			faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer
+			experience across the app.
 		</p>
 
 		<!-- Bento Grid -->
@@ -100,14 +123,14 @@
 					transition={{ duration: 0.5 }}
 				>
 					<div
-						class={`group relative overflow-hidden rounded-xl bg-white/5 p-8 ${item.className} transition-transform duration-300 hover:scale-105`}
+						class={`group relative overflow-hidden rounded-xl bg-black/5 p-8 dark:bg-white/5 ${item.className} transition-transform duration-300 hover:scale-105`}
 					>
 						<div class="relative z-10">
 							<div class="mb-4">
 								<item.icon size="32" />
 							</div>
-							<h3 class="mb-2 text-xl font-semibold text-white">{item.title}</h3>
-							<p class="text-white/60">{item.description}</p>
+							<h3 class="mb-2 text-xl font-semibold text-foreground">{item.title}</h3>
+							<p class="text-muted-foreground">{item.description}</p>
 						</div>
 					</div>
 				</Motion>
@@ -119,9 +142,9 @@
 		<section id="timeline" class="py-10">
 			<!-- Updated timeline header using shadcn-svelte Badge component -->
 			<div class="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-				<h2 class="text-3xl font-bold">Migration Timeline</h2>
+				<h2 class="text-3xl font-bold text-foreground">Migration Timeline</h2>
 				<a href="#updates" onclick={once(preventDefault(() => scrollToID('updates')))}>
-					<Badge class="cursor-pointer text-xs">TL;DR Summary</Badge>
+					<Badge class="cursor-pointer rounded-md text-xs dark:text-black">TL;DR Summary</Badge>
 				</a>
 			</div>
 
@@ -130,24 +153,24 @@
 				<ChangelogStats />
 				<DebugOrder />
 			</div>
-			<div class:hidden={!dev} class="mb-8 flex flex-wrap items-center justify-center gap-4">
+			<div class="mb-8 flex flex-wrap items-center justify-center gap-4">
 				<div class="flex items-center gap-2">
-					<label class="flex cursor-pointer items-center gap-2">
-						<input type="checkbox" bind:checked={showManual} class="rounded border-border" />
+					<Label class="flex cursor-pointer items-center gap-2">
+						<Checkbox bind:checked={showManual} class="h-4 w-4" />
 						<span class="text-sm">Manual Entries</span>
 						<Badge variant="secondary" class="text-xs">
 							{allTimeline.filter((item) => !('source' in item) || item.source === 'manual').length}
 						</Badge>
-					</label>
+					</Label>
 				</div>
 				<div class="flex items-center gap-2">
-					<label class="flex cursor-pointer items-center gap-2">
-						<input type="checkbox" bind:checked={showGenerated} class="rounded border-border" />
+					<Label class="flex cursor-pointer items-center gap-2">
+						<Checkbox bind:checked={showGenerated} class="h-4 w-4" />
 						<span class="text-sm">Auto-Generated</span>
 						<Badge variant="outline" class="text-xs">
 							{allTimeline.filter((item) => 'source' in item && item.source === 'generated').length}
 						</Badge>
-					</label>
+					</Label>
 				</div>
 				<Button
 					variant="outline"
@@ -260,13 +283,63 @@
 			</Dialog.Content>
 		</Dialog.Root>
 
-		<!-- Detailed Updates (replaced section) -->
+		<!-- Enhanced Updates Section with Dynamic Insights -->
 		<section id="updates" class="py-10">
-			<h2 class="mb-2 text-center text-3xl font-bold">TL;DR: Key Summaries</h2>
-			<p class="mb-10 text-center text-sm text-white/60">
-				Click on any timeline item above for full details.
+			<h2 class="mb-2 text-center text-3xl font-bold text-foreground">
+				TL;DR: Development Insights
+			</h2>
+			<p class="mb-10 text-center text-sm text-muted-foreground">
+				Real-time insights from our automated changelog system.
 			</p>
-			<div class="grid gap-6 md:grid-cols-2">
+
+			<!-- Dynamic Category Insights -->
+			<div class="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each Object.entries(typeStats) as [type, stats]}
+					<Card class="relative overflow-hidden border-border/50 bg-card/50 backdrop-blur">
+						<CardHeader class="pb-2">
+							<div class="flex items-center justify-between">
+								<CardTitle class="text-lg capitalize">{type}s</CardTitle>
+								<Badge variant="secondary" class="text-xs">
+									{stats.count}
+								</Badge>
+							</div>
+							<CardDescription class="text-xs">
+								{#if stats.recent.length > 0}
+									{stats.recent.length} recent update{stats.recent.length === 1 ? '' : 's'}
+								{:else}
+									No recent activity
+								{/if}
+							</CardDescription>
+						</CardHeader>
+						<CardContent class="space-y-2">
+							{#if stats.recent.length > 0}
+								{#each stats.recent.slice(0, 2) as item}
+									<div class="text-sm text-muted-foreground">
+										<div class="flex items-center gap-2">
+											<div class="h-1.5 w-1.5 rounded-full bg-primary/60"></div>
+											<span class="truncate" title={item.description}>{item.title}</span>
+										</div>
+									</div>
+								{/each}
+								{#if stats.recent.length > 2}
+									<div class="text-xs text-muted-foreground/60">
+										+{stats.recent.length - 2} more...
+									</div>
+								{/if}
+							{:else}
+								<div class="text-xs italic text-muted-foreground/40">
+									All {type}s are from earlier periods
+								</div>
+							{/if}
+						</CardContent>
+						<!-- Visual accent based on type -->
+						<div class={`absolute bottom-0 left-0 h-1 w-full ${getTypeAccent(type)}`}></div>
+					</Card>
+				{/each}
+			</div>
+
+			<!-- Manual Highlights (preserved) -->
+			<div class="grid gap-6 md:grid-cols-3">
 				{#each updates as section}
 					<Card>
 						<CardHeader>
@@ -299,14 +372,14 @@
 					<p>
 						<a
 							href="https://old.svelte-apps.me"
-							class="font-semibold text-blue-500 underline hover:text-blue-300"
+							class="font-semibold text-primary underline transition-colors hover:text-primary/80"
 						>
 							old.svelte-apps.me
 						</a>
 						or
 						<a
 							href="https://sv4.svelte-apps.me"
-							class="font-semibold text-blue-500 underline hover:text-blue-300"
+							class="font-semibold text-primary underline transition-colors hover:text-primary/80"
 						>
 							sv4.svelte-apps.me
 						</a>.
