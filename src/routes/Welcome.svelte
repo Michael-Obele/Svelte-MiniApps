@@ -1,3 +1,18 @@
+<!--
+@component
+
+Welcome — header section showing a time-based greeting and a mantra with controls to like or regenerate it.
+
+Usage:
+```svelte
+<Welcome {data} {form} />
+```
+
+Props:
+- data — page data with optional user and mantra.
+- form — action form data for likes.
+
+-->
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
 	import { generateMantra, getGreetingAndNextPeriod } from '$lib/utility/greetings';
@@ -49,10 +64,7 @@
 
 	// Assuming `data` contains the response from the server
 	$effect(() => {
-		$inspect('Form', form?.like);
-		$inspect('Data', data.like);
-		$inspect('Like State', likeState);
-		likeState = (form?.like ?? data.like) ? 'unlike' : 'like';
+		likeState = form?.like ? 'unlike' : 'like';
 	});
 </script>
 

@@ -1,3 +1,14 @@
+<!--
+@component
+
+AppsSection — lists available apps from projects, marking completed ones and linking to /apps/{link}.
+
+Usage:
+```svelte
+<AppsSection />
+```
+
+-->
 <script lang="ts">
 	import { projects, done, site } from '$lib/index';
 	import { CheckCircle2 } from '@lucide/svelte';

@@ -1,3 +1,18 @@
+<!--
+@component
+
+Hero — displays a time-aware greeting, short intro text, and a CTA button linking to /apps.
+
+Usage:
+```svelte
+<Hero {data} />
+```
+
+Props:
+- data — server page data (optional, used for username).
+
+-->
+
 <script lang="ts">
 	import type { PageServerData } from './$types';
 	import Svelte from '$lib/assets/svelte.svelte';

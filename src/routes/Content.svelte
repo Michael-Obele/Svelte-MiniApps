@@ -1,3 +1,14 @@
+<!--
+@component
+
+Content — main content area that composes ContentBlock, InfoBlock, and other content pieces.
+
+Usage:
+```svelte
+<Content />
+```
+
+-->
 <script lang="ts">
 	import LordIcon from './LordIcon.svelte';
 	import InfoBlock from './InfoBlock.svelte';
