@@ -1,8 +1,14 @@
+<script lang="ts">
+	// Your TypeScript code goes here
+	let { class: className = '' } = $props();
+</script>
+
 <svg
 	width="100%"
 	height="100%"
 	viewBox="-26 0 308 308"
 	version="1.1"
+	class={className}
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	preserveAspectRatio="xMidYMid"

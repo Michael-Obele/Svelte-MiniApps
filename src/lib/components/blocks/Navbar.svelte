@@ -49,8 +49,8 @@
 <!-- Global navigation progress indicator -->
 <NavigationProgressIndicator />
 
-<nav class="border-gray-200 bg-white dark:bg-gray-900">
-	<div class="flex flex-wrap items-center justify-around p-4">
+<nav class=" border-gray-200 bg-white dark:bg-gray-900">
+	<div class="container flex flex-wrap items-center justify-between">
 		<!-- Logo -->
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<div class="flex text-2xl font-semibold dark:text-white">

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import ThemeSwitch from '@/blocks/ThemeSwitch.svelte';
 	import NukeButton from '@/blocks/NukeButton.svelte';
+	import Svelte from '$lib/assets/svelte.svelte';
+
 	import { scrollToTop } from '$lib/utils';
 	import {
 		Heart,
@@ -29,7 +31,9 @@
 			<!-- Left Column -->
 			<div class="flex flex-col items-center justify-center space-y-4 md:items-start">
 				<div class="flex items-center space-x-2">
-					<Globe class="size-6 text-primary" strokeWidth={1.5} />
+					<span class="m-1 size-6 self-center whitespace-nowrap">
+						<Svelte />
+					</span>
 					<span class="text-xl font-bold">MiniApps</span>
 				</div>
 				<p class="text-center text-sm text-muted-foreground md:text-left">
