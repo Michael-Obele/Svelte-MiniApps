@@ -3,7 +3,7 @@
 	import { Button } from '@/ui/button/index.js';
 	import Input from '@/ui/input/input.svelte';
 
-	import { AudioLines } from 'lucide-svelte';
+	import { AudioLines } from '@lucide/svelte';
 
 	import NoWord from '$lib/assets/not-found.svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';

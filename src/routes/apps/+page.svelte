@@ -5,7 +5,7 @@
 	import { filter } from '$lib/states.svelte';
 	import Input from '@/ui/input/input.svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
-	import { Command, Search, CheckCircle2 } from 'lucide-svelte';
+	import { Command, Search, CheckCircle2 } from '@lucide/svelte';
 	import * as Cmd from '@/ui/command/index.js';
 	import * as Dialog from '@/ui/dialog/index.js';
 	import { done, projects } from '$lib/index';

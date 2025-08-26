@@ -5,7 +5,7 @@
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Card } from '@/ui/card';
-	import { PlusCircle } from 'lucide-svelte';
+	import { PlusCircle } from '@lucide/svelte';
 	import { toast } from 'svelte-sonner';
 
 	// Props with proper typing

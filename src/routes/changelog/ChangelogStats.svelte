@@ -4,7 +4,7 @@
 	import { allTimeline } from './data';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Bot, SquarePen, TrendingUp, Calendar, Code } from 'lucide-svelte';
+	import { Bot, SquarePen, TrendingUp, Calendar, Code } from '@lucide/svelte';
 	import { dev } from '$app/environment';
 
 	const stats = $derived.by(() => {

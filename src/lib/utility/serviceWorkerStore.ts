@@ -1,6 +1,6 @@
 import { writable, derived, type Writable, type Readable } from 'svelte/store';
 import { toast } from 'svelte-sonner';
-import { RefreshCw } from 'lucide-svelte';
+import { RefreshCw } from '@lucide/svelte';
 
 // Create reactive state using Svelte stores
 const updateAvailable: Writable<boolean> = writable(false);
@@ -32,12 +32,12 @@ export function notifyUpdateAvailable(registration: ServiceWorkerRegistration, n
 
 	// Store the new hash
 	localStorage.setItem('serviceWorkerHash', newHash);
-	
+
 	// Show a toast notification to the user with a custom component
-	toast("A new version of the app is available", {
-		description: "Refresh to update to the latest version",
+	toast('A new version of the app is available', {
+		description: 'Refresh to update to the latest version',
 		action: {
-			label: "Update Now",
+			label: 'Update Now',
 			onClick: () => applyUpdate()
 		},
 		duration: 0,
@@ -54,13 +54,13 @@ export async function applyUpdate() {
 	if (swRegistration && swRegistration.waiting) {
 		// Update state
 		updateReady.set(false);
-		
+
 		// Send message to the waiting service worker
 		swRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
-		
+
 		// Set a flag to prevent multiple reloads
 		window.isReloading = true;
-		
+
 		// Reload after a short delay to allow the service worker to activate
 		setTimeout(() => {
 			window.location.reload();

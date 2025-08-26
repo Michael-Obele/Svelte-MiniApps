@@ -2,10 +2,10 @@
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 	import { Button } from '@/ui/button';
 	import { done, projects } from '$lib';
-	import { Star, ExternalLink, Heart, Activity } from 'lucide-svelte';
+	import { Star, ExternalLink, Heart, Activity } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { getFavoriteApps } from '$lib/utils';
-	
+
 	// Define the type for favorite app items
 	type FavoriteApp = {
 		appLink: string;
@@ -13,10 +13,10 @@
 		appName: string;
 		appDescription: string;
 	};
-	
+
 	// State for favorite apps
 	let favoriteApps: FavoriteApp[] = [];
-	
+
 	onMount(() => {
 		// Get favorite apps data from our utility function
 		favoriteApps = getFavoriteApps(5);
@@ -42,11 +42,15 @@ Uses app usage tracking data to determine favorite apps based on usage count.
 	<div class="space-y-4">
 		{#if favoriteApps.length > 0}
 			{#each favoriteApps as app}
-				<div class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50">
-					<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500">
+				<div
+					class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50"
+				>
+					<div
+						class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
+					>
 						<Star class="h-5 w-5" />
 					</div>
-					
+
 					<div class="flex-1">
 						<div class="flex items-center justify-between">
 							<h4 class="font-medium">{app.appName}</h4>
@@ -55,13 +59,18 @@ Uses app usage tracking data to determine favorite apps based on usage count.
 								<span>{app.usageCount} uses</span>
 							</div>
 						</div>
-						
+
 						<p class="mt-1 text-sm text-muted-foreground">
 							{app.appDescription}
 						</p>
-						
+
 						<div class="mt-3 flex items-center justify-end">
-							<Button variant="outline" size="sm" class="h-8 gap-1 opacity-0 transition-opacity group-hover:opacity-100" href="/apps/{app.appLink}">
+							<Button
+								variant="outline"
+								size="sm"
+								class="h-8 gap-1 opacity-0 transition-opacity group-hover:opacity-100"
+								href="/apps/{app.appLink}"
+							>
 								<ExternalLink class="h-3 w-3" />
 								<span>Open App</span>
 							</Button>

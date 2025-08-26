@@ -9,7 +9,7 @@
 		Sun,
 		Film,
 		type Icon as IconType
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 	import Header from './Header.svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -120,7 +120,9 @@
 				class="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
 			>
 				<div class="flex items-start gap-3">
-					<div class="flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 group-hover:scale-110 {currentTheme.bg}">
+					<div
+						class="flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 group-hover:scale-110 {currentTheme.bg}"
+					>
 						<Icon class="{currentTheme.accent} h-5 w-5" />
 					</div>
 
@@ -135,8 +137,14 @@
 							rel="noopener noreferrer"
 							class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-all duration-300 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
 						>
-							<span class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full">Visit Website</span>
-							<div in:scale={{ duration: 200, delay: 300 + 150 * i, easing: quintOut }} class="transition-transform duration-300 ease-in-out group-hover:translate-x-0.5">
+							<span
+								class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full"
+								>Visit Website</span
+							>
+							<div
+								in:scale={{ duration: 200, delay: 300 + 150 * i, easing: quintOut }}
+								class="transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"
+							>
 								<ExternalLink class="h-3.5 w-3.5" />
 							</div>
 						</a>

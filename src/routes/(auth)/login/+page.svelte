@@ -7,7 +7,7 @@
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
 	import { Alert, AlertDescription } from '@/ui/alert';
-	import { AlertCircle, Eye, EyeOff, Github } from 'lucide-svelte';
+	import { AlertCircle, Eye, EyeOff, Github } from '@lucide/svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
 	import { invalidate, invalidateAll } from '$app/navigation';

@@ -5,7 +5,7 @@
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
 	import { Alert, AlertDescription } from '@/ui/alert';
-	import { AlertCircle, Eye, EyeOff } from 'lucide-svelte';
+	import { AlertCircle, Eye, EyeOff } from '@lucide/svelte';
 	import Loading from '@/blocks/Loading.svelte';
 	import { invalidate, invalidateAll } from '$app/navigation';
 	import { Switch } from '@/ui/switch/index.js';

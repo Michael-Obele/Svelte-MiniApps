@@ -1,14 +1,7 @@
 <script lang="ts">
-	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardFooter,
-		CardHeader,
-		CardTitle
-	} from '@/ui/card';
+	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/ui/card';
 	import { Button } from '@/ui/button';
-	import { Clock } from 'lucide-svelte';
+	import { Clock } from '@lucide/svelte';
 	import * as Sheet from '@/ui/sheet/index.js';
 
 	// Type definition for recent activity array

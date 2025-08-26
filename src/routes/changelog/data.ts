@@ -22,7 +22,7 @@ import {
 	Cog,
 	Undo,
 	AlertTriangle
-} from 'lucide-svelte';
+} from '@lucide/svelte';
 import { generatedTimeline, type GeneratedTimelineItem } from './generated-data';
 
 export const items = [
@@ -88,7 +88,7 @@ export type TimelineItem = {
 	description: string;
 	items: string[];
 	type: 'breaking' | 'feature' | 'improvement' | 'deprecation' | 'fix';
-	icon: typeof Rocket; // one of the lucide-svelte icons
+	icon: typeof Rocket; // one of the @lucide/svelte icons
 	color: string;
 };
 

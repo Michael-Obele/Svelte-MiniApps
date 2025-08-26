@@ -1,16 +1,9 @@
 <script lang="ts">
-	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardFooter,
-		CardHeader,
-		CardTitle
-	} from '@/ui/card';
+	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/ui/card';
 	import { Progress } from '@/ui/progress';
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 	import { Button } from '@/ui/button';
-	import { ChartColumn, Activity, Clock, Calendar } from 'lucide-svelte';
+	import { ChartColumn, Activity, Clock, Calendar } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { appUsageTracker } from '$lib/states.svelte';
 	import { projects } from '$lib/index';
@@ -31,42 +24,40 @@
 	let appLastUsedStore = $state<Record<string, string>>({});
 	let appUsageStore: Record<string, number> = appUsageTracker.current;
 
-
-		// Calculate total usage
-		totalUsage = Object.values(appUsageStore).reduce((sum, count) => {
-			if (typeof count !== 'number') {
-				throw new Error('Expected all values in appUsageStore to be numbers');
-			}
-			return sum + count;
-		}, 0);
-
-		// Get last active date
-		if (Object.keys(appLastUsedStore).length > 0) {
-			const dates = Object.values(appLastUsedStore)
-				.map((dateStr) => new Date(dateStr as string))
-				.sort((a, b) => b.getTime() - a.getTime());
-
-			lastActiveDate = dates[0].toISOString();
+	// Calculate total usage
+	totalUsage = Object.values(appUsageStore).reduce((sum, count) => {
+		if (typeof count !== 'number') {
+			throw new Error('Expected all values in appUsageStore to be numbers');
 		}
+		return sum + count;
+	}, 0);
 
-		// Process app usage data
-		appUsageData = Object.entries(appUsageStore)
-			.map(([appLink, count]) => {
-				const appInfo = projects.find((p: any) => p.link === appLink);
-				const lastUsed = appLastUsedStore[appLink]?.toString() || null;
+	// Get last active date
+	if (Object.keys(appLastUsedStore).length > 0) {
+		const dates = Object.values(appLastUsedStore)
+			.map((dateStr) => new Date(dateStr as string))
+			.sort((a, b) => b.getTime() - a.getTime());
 
-				return {
-					appName: appInfo?.title || 'Unknown App',
-					usageCount: count as number,
-					percentage: Math.round(((count as number) / totalUsage) * 100) || 0,
-					lastUsed: lastUsed ? new Date(lastUsed) : null
-				};
-			})
-			.sort((a, b) => b.usageCount - a.usageCount);
+		lastActiveDate = dates[0].toISOString();
+	}
 
-		// Calculate most active day
-		calculateMostActiveDay(appLastUsedStore);
+	// Process app usage data
+	appUsageData = Object.entries(appUsageStore)
+		.map(([appLink, count]) => {
+			const appInfo = projects.find((p: any) => p.link === appLink);
+			const lastUsed = appLastUsedStore[appLink]?.toString() || null;
 
+			return {
+				appName: appInfo?.title || 'Unknown App',
+				usageCount: count as number,
+				percentage: Math.round(((count as number) / totalUsage) * 100) || 0,
+				lastUsed: lastUsed ? new Date(lastUsed) : null
+			};
+		})
+		.sort((a, b) => b.usageCount - a.usageCount);
+
+	// Calculate most active day
+	calculateMostActiveDay(appLastUsedStore);
 
 	// Calculate the day of the week with most activity
 	function calculateMostActiveDay(appLastUsedStore: Record<string, string>) {

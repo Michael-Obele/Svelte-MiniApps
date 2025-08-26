@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FlexiWidget } from 'svelte-flexiboards';
-	import { Pencil, X, CheckCircle2 } from 'lucide-svelte';
+	import { Pencil, X, CheckCircle2 } from '@lucide/svelte';
 	import Grabber from '../common/grabber.svelte';
 	import { toggleTodoCompleted } from '$lib/stores/todo-store.svelte';
 	import type { Todo } from '$lib/types';
@@ -20,12 +20,12 @@
 	let { todo, columnId, onEdit, onDelete, ...props }: Props = $props();
 	let showCompletionIcon: boolean = $state(false);
 	let isCompleted: boolean = $state(todo.completed);
-	
+
 	// Update isCompleted when todo.completed changes
 	$effect(() => {
 		isCompleted = todo.completed;
 	});
-	
+
 	// Show completion icon briefly when item is checked
 	$effect(() => {
 		if (isCompleted) {
@@ -33,15 +33,15 @@
 			const timer = setTimeout(() => {
 				showCompletionIcon = false;
 			}, 1500);
-			
+
 			return () => clearTimeout(timer);
 		}
 	});
-	
+
 	function handleCheckboxChange() {
 		// Immediately update local state for instant visual feedback
 		isCompleted = !isCompleted;
-		
+
 		// Update the centralized state
 		toggleTodoCompleted(columnId, todo.id);
 	}
@@ -50,15 +50,15 @@
 <FlexiWidget
 	{...props}
 	class={(widget) => [
-		'flex items-center p-2 rounded-md bg-white dark:bg-gray-800 shadow-sm transition-all duration-300',
-		isCompleted && 'bg-gray-50 border-l-4 border-green-500 dark:bg-gray-900',
+		'flex items-center rounded-md bg-white p-2 shadow-sm transition-all duration-300 dark:bg-gray-800',
+		isCompleted && 'border-l-4 border-green-500 bg-gray-50 dark:bg-gray-900',
 		widget.isGrabbed && 'animate-pulse opacity-50',
 		widget.isShadow && 'opacity-50'
 	]}
 >
 	{#snippet children({ widget })}
 		<div class="flex w-full items-center justify-between">
-			<div class="flex items-center gap-2 relative">
+			<div class="relative flex items-center gap-2">
 				{#if widget.draggable}
 					<Grabber size={16} class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
 				{/if}
@@ -74,9 +74,11 @@
 						<CheckCircle2 size={16} />
 					</div>
 				{/if}
-				<span class={isCompleted 
-					? 'flex-1 text-gray-500 line-through font-medium transition-all duration-300' 
-					: 'flex-1 truncate transition-all duration-300'}>
+				<span
+					class={isCompleted
+						? 'flex-1 font-medium text-gray-500 line-through transition-all duration-300'
+						: 'flex-1 truncate transition-all duration-300'}
+				>
 					{todo.text}
 				</span>
 			</div>

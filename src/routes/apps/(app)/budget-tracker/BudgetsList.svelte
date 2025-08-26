@@ -2,10 +2,10 @@
 	import { Card } from '@/ui/card';
 	import { Button } from '@/ui/button';
 	import { Progress } from '@/ui/progress/index.js';
-	import { Pencil, Trash2 } from 'lucide-svelte';
+	import { Pencil, Trash2 } from '@lucide/svelte';
 	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
-	import { AlertCircle, AlertTriangle, CheckCircle2 } from 'lucide-svelte';
+	import { AlertCircle, AlertTriangle, CheckCircle2 } from '@lucide/svelte';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { toast } from 'svelte-sonner';

@@ -3,9 +3,9 @@
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Badge } from '@/ui/badge/index.js';
 	import { page } from '$app/state';
-	import { CodeXml } from 'lucide-svelte';
+	import { CodeXml } from '@lucide/svelte';
 	import { fade } from 'svelte/transition';
-	import { PanelRightOpen, Keyboard } from 'lucide-svelte';
+	import { PanelRightOpen, Keyboard } from '@lucide/svelte';
 	import AppTracker from '@/blocks/AppTracker.svelte';
 	import { done } from '$lib/index';
 	import { onMount } from 'svelte';

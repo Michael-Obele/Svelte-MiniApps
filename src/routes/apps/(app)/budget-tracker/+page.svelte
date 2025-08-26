@@ -4,7 +4,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
-	import { Loader2 } from 'lucide-svelte';
+	import { Loader2 } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
 
 	import BudgetsList from './BudgetsList.svelte';

@@ -5,7 +5,7 @@
 	import { Badge } from '@/ui/badge';
 	import { Button } from '@/ui/button';
 	import { Separator } from '@/ui/separator';
-	import { StarIcon, Edit2, Settings, LogOut, Github, Mail, Calendar } from 'lucide-svelte';
+	import { StarIcon, Edit2, Settings, LogOut, Github, Mail, Calendar } from '@lucide/svelte';
 
 	// Get user data from page store
 	let userData = page.data.user;

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
 	import { generateMantra, getGreetingAndNextPeriod } from '$lib/utility/greetings';
-	import { RefreshCw, Star, StarOff } from 'lucide-svelte';
+	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { enhance } from '$app/forms';
@@ -32,8 +32,6 @@
 
 	let isLoading = $state(false);
 	let isLiked = $state(false);
-
-
 
 	$effect(() => {
 		invalidate('mantra');

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Alert, AlertTitle, AlertDescription } from '@/ui/alert';
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
-	import { ArrowRightIcon, CircleCheckBigIcon, CircleXIcon } from 'lucide-svelte';
+	import { ArrowRightIcon, CircleCheckBigIcon, CircleXIcon } from '@lucide/svelte';
 
 	type HighlightItem = {
 		title: string;

@@ -7,7 +7,7 @@
 	import { Label } from '@/ui/label';
 	import { Progress } from '@/ui/progress';
 	import { toast } from 'svelte-sonner';
-	import { Copy, Star, StarOff } from 'lucide-svelte';
+	import { Copy, Star, StarOff } from '@lucide/svelte';
 	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';

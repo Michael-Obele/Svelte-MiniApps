@@ -6,7 +6,7 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
-	import { Github, LogIn, LogOut, User, Settings, LifeBuoy } from 'lucide-svelte';
+	import { Github, LogIn, LogOut, User, Settings, LifeBuoy } from '@lucide/svelte';
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
@@ -49,7 +49,7 @@
 <!-- Global navigation progress indicator -->
 <NavigationProgressIndicator />
 
-<nav class=" border-gray-200 bg-white dark:bg-gray-900">
+<nav class=" border-gray-200 bg-white py-4 dark:bg-gray-900">
 	<div class="container flex flex-wrap items-center justify-between">
 		<!-- Logo -->
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Tags from './Tags.svelte';
-	import { BadgeCheck, HardHat, ArrowRight, Info } from 'lucide-svelte';
+	import { BadgeCheck, HardHat, ArrowRight, Info } from '@lucide/svelte';
 	import { done, type Project } from '$lib/index';
 
 	export let item: Project;

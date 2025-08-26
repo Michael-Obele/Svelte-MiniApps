@@ -19,7 +19,7 @@
 		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
 
 	let { data, form }: PageProps = $props();
-	import { Trophy } from 'lucide-svelte';
+	import { Trophy } from '@lucide/svelte';
 
 	$effect(() => {
 		userContext.set(data?.user ?? null);

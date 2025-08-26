@@ -5,7 +5,7 @@
 	import { Button } from '@/ui/button/index.js';
 	import { toast } from 'svelte-sonner';
 	import { onMount } from 'svelte';
-	import { Loader2 } from 'lucide-svelte';
+	import { Loader2 } from '@lucide/svelte';
 	import { navigating } from '$app/state';
 
 	let username = $state('');

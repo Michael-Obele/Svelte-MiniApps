@@ -2,7 +2,7 @@
 	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/ui/card';
 	import { Progress } from '@/ui/progress';
 	import { Button } from '@/ui/button';
-	import { Code, Zap, Award, Activity, Clock } from 'lucide-svelte';
+	import { Code, Zap, Award, Activity, Clock } from '@lucide/svelte';
 	import UserProfileCard from './UserProfileCard.svelte';
 	import UpcomingFeaturesList from './UpcomingFeaturesList.svelte';
 	import FavoriteAppList from './FavoriteAppList.svelte';

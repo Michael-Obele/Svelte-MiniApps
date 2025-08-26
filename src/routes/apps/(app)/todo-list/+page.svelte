@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
-	import { Plus, X, Edit, Check, AlertTriangle } from 'lucide-svelte';
+	import { Plus, X, Edit, Check, AlertTriangle } from '@lucide/svelte';
 	import TodoItem from '$lib/components/todo/todo-item.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';

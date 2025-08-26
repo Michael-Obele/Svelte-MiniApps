@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { navigating } from '$app/state';
-	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from 'lucide-svelte';
+	import { ArrowUp, ArrowLeft, ArrowDown, RotateCw } from '@lucide/svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as Drawer from '@/ui/drawer';

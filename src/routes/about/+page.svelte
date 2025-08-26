@@ -7,7 +7,7 @@
 	import Features from './Features.svelte';
 	import Attributions from './Attributions.svelte';
 
-	import { ChevronsRight } from 'lucide-svelte';
+	import { ChevronsRight } from '@lucide/svelte';
 
 	import BlurInText from '@/blocks/BlurInText.svelte';
 

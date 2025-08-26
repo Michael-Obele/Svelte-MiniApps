@@ -11,7 +11,7 @@
 		SeparatorHorizontal,
 		Link,
 		Image
-	} from 'lucide-svelte';
+	} from '@lucide/svelte';
 
 	import { Button } from '@/ui/button';
 

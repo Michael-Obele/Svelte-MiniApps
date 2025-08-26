@@ -19,7 +19,7 @@
 	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
 
 	import { Separator } from '@/ui/separator';
-	import { Github } from 'lucide-svelte';
+	import { Github } from '@lucide/svelte';
 </script>
 
 <!--

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowUp } from 'lucide-svelte';
+	import { ArrowUp } from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 	import { fade } from 'svelte/transition';
 	import { scrollToTop } from '$lib/utils';

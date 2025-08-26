@@ -4,7 +4,7 @@
 	import { Textarea } from '@/ui/textarea/index.js';
 	import { Slider } from '@/ui/slider';
 	import * as Card from '@/ui/card';
-	import { AlertCircle, Copy, Info } from 'lucide-svelte';
+	import { AlertCircle, Copy, Info } from '@lucide/svelte';
 	import * as Alert from '@/ui/alert/index.js';
 	import { PersistedState } from 'runed';
 	import DOMPurify from 'isomorphic-dompurify';

@@ -7,7 +7,7 @@
 	import { Badge } from '@/ui/badge';
 	import { Button } from '@/ui/button';
 	import { Separator } from '@/ui/separator';
-	import { StarIcon } from 'lucide-svelte';
+	import { StarIcon } from '@lucide/svelte';
 	import * as Dialog from '@/ui/dialog';
 	import { Label } from '@/ui/label/index.js';
 	import { Input } from '@/ui/input/index.js';

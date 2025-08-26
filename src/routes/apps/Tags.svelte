@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { PiggyBank, Heart, Speaker, Code } from 'lucide-svelte';
-	import { Box, Lock, Pen, CheckSquare, Book } from 'lucide-svelte';
-	import { PartyPopper, Diff, Gamepad2 } from 'lucide-svelte';
+	import { PiggyBank, Heart, Speaker, Code } from '@lucide/svelte';
+	import { Box, Lock, Pen, CheckSquare, Book } from '@lucide/svelte';
+	import { PartyPopper, Diff, Gamepad2 } from '@lucide/svelte';
 
 	let { item } = $props();
 </script>

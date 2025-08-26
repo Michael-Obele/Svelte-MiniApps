@@ -4,7 +4,7 @@
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import type { ActionData, SubmitFunction, PageData } from './$types';
 	import * as Alert from '@/ui/alert/index.js';
-	import { AlertCircle, ArrowLeftRight } from 'lucide-svelte';
+	import { AlertCircle, ArrowLeftRight } from '@lucide/svelte';
 	import Input from '@/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
 	import Switch from '@/ui/switch/switch.svelte';

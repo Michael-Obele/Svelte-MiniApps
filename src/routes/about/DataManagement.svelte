@@ -6,7 +6,7 @@
 	// Use the direct path to the JSON file instead of importing it
 	const bookmark = '/lottie/bookmark.json';
 
-	import { Bomb } from 'lucide-svelte';
+	import { Bomb } from '@lucide/svelte';
 	import { dataManagement } from './data';
 	import Data from '$lib/assets/Bomb.png?enhanced';
 	let { id } = $props();

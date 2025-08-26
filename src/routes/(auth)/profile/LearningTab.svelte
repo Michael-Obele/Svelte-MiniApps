@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/ui/card";
-	import { Badge } from "@/ui/badge";
-	import { Button } from "@/ui/button";
-	import { BookOpen } from "lucide-svelte";
+	import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from '@/ui/card';
+	import { Badge } from '@/ui/badge';
+	import { Button } from '@/ui/button';
+	import { BookOpen } from '@lucide/svelte';
 </script>
 
 <div class="space-y-6">
@@ -19,7 +19,9 @@
 					</div>
 					<div>
 						<p class="font-medium">Svelte 5 Documentation</p>
-						<p class="mb-2 text-sm text-muted-foreground">Learn about Svelte's reactive state management and component model</p>
+						<p class="mb-2 text-sm text-muted-foreground">
+							Learn about Svelte's reactive state management and component model
+						</p>
 						<Badge variant="outline">Recommended</Badge>
 					</div>
 				</div>
@@ -29,7 +31,9 @@
 					</div>
 					<div>
 						<p class="font-medium">SvelteKit Routing</p>
-						<p class="mb-2 text-sm text-muted-foreground">Master file-based routing and server-side rendering</p>
+						<p class="mb-2 text-sm text-muted-foreground">
+							Master file-based routing and server-side rendering
+						</p>
 						<Badge variant="outline">Intermediate</Badge>
 					</div>
 				</div>
@@ -39,7 +43,9 @@
 					</div>
 					<div>
 						<p class="font-medium">Tailwind CSS with Svelte</p>
-						<p class="mb-2 text-sm text-muted-foreground">Build beautiful UIs with utility-first CSS</p>
+						<p class="mb-2 text-sm text-muted-foreground">
+							Build beautiful UIs with utility-first CSS
+						</p>
 						<Badge variant="outline">Beginner</Badge>
 					</div>
 				</div>
