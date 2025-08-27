@@ -11,7 +11,7 @@ Usage:
 -->
 <script lang="ts">
 	import { projects, done, site } from '$lib/index';
-	import { CheckCircle2 } from '@lucide/svelte';
+	import { CheckCircle2, CircleX } from '@lucide/svelte';
 
 	let sortedProjects: any[] = [];
 	let doneProjects: any[] = [];
@@ -57,6 +57,7 @@ Usage:
 					{#each doneProjects as project}
 						<li class="flex items-center">
 							<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
+
 							<a
 								class="text-green-700 after:content-['_↗'] dark:text-green-300"
 								href={'/apps/' + project.link}>{project.title}</a
@@ -78,7 +79,7 @@ Usage:
 						>
 							{#each comingSoon as project}
 								<li class="flex items-center">
-									<CheckCircle2 class="mr-2 h-5 w-5 opacity-40" />
+									<CircleX class="mr-2 h-5 w-5 opacity-40" />
 									<span class="opacity-80">{project.title}</span>
 								</li>
 							{/each}
