@@ -14,9 +14,13 @@ Usage:
 	import { CheckCircle2 } from '@lucide/svelte';
 
 	let sortedProjects: any[] = [];
+	let doneProjects: any[] = [];
+	let comingSoon: any[] = [];
 
-	// Sort projects alphabetically by title
+	// Sort projects alphabetically by title and split into done vs coming soon
 	sortedProjects = projects.sort((a, b) => a.title.localeCompare(b.title));
+	doneProjects = sortedProjects.filter((p) => done.includes(p.link));
+	comingSoon = sortedProjects.filter((p) => !done.includes(p.link));
 </script>
 
 <main class="w-full py-5 md:py-8 lg:py-10">
@@ -50,23 +54,37 @@ Usage:
 				<ul
 					class="mt-10 grid w-full list-inside grid-cols-1 gap-6 space-y-1 text-gray-900 dark:text-gray-400 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
 				>
-					{#each sortedProjects as project}
-						{#if done.includes(project.link)}
-							<li class="flex items-center">
-								<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
-								<a
-									class="text-green-700 after:content-['_↗'] dark:text-green-300"
-									href={'/apps/' + project.link}>{project.title}</a
-								>
-							</li>
-						{:else}
-							<li class="flex items-center">
-								<CheckCircle2 class="mr-2 h-5 w-5" />
-								{project.title}
-							</li>
-						{/if}
+					{#each doneProjects as project}
+						<li class="flex items-center">
+							<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
+							<a
+								class="text-green-700 after:content-['_↗'] dark:text-green-300"
+								href={'/apps/' + project.link}>{project.title}</a
+							>
+						</li>
 					{/each}
 				</ul>
+
+				<!-- Collapsible list for upcoming apps (coming soon) - not a section tag -->
+				{#if comingSoon.length}
+					<details
+						class="mt-6 rounded-md border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900"
+					>
+						<summary class="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300"
+							>Coming soon</summary
+						>
+						<ul
+							class="mt-3 flex flex-row flex-wrap gap-6 space-y-2 text-gray-700 dark:text-gray-400"
+						>
+							{#each comingSoon as project}
+								<li class="flex items-center">
+									<CheckCircle2 class="mr-2 h-5 w-5 opacity-40" />
+									<span class="opacity-80">{project.title}</span>
+								</li>
+							{/each}
+						</ul>
+					</details>
+				{/if}
 			</section>
 		</section>
 	</div>
