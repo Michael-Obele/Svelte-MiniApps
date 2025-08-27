@@ -136,23 +136,6 @@
 		// Check if data has been migrated to server
 		isMigrated = isDataMigrated();
 
-		beforeNavigate(({ cancel }) => {
-			if (hasUnsavedChanges) {
-				const confirmNavigation = window.confirm(
-					'You have unsaved changes. Do you want to leave without saving?'
-				);
-				if (!confirmNavigation) {
-					cancel();
-				} else {
-					hasUnsavedChanges = false; // User chose to discard changes
-				}
-			}
-		});
-
-		onDestroy(() => {
-			// Timer cleanup is now handled by the $effect cleanup function
-		});
-
 		// If we have server budgets, initialize them
 		if (data.budgets && Array.isArray(data.budgets) && data.budgets.length > 0) {
 			console.log('📊 Initializing budgets from server data:', data.budgets);
@@ -408,6 +391,15 @@
 		);
 		toast.success('Expense updated successfully');
 		editingExpense = null;
+		hasUnsavedChanges = true;
+		if (autoBackupEnabled.current) {
+			performAutoBackup();
+		}
+	}
+
+	function deleteExpense(budgetId: string, expenseId: string) {
+		budgetState.deleteExpense(budgetId, expenseId);
+		toast.success('Expense deleted');
 		hasUnsavedChanges = true;
 		if (autoBackupEnabled.current) {
 			performAutoBackup();
@@ -769,6 +761,7 @@
 	bind:editExpenseDescription
 	bind:editExpenseAmount
 	{updateExpense}
+	{deleteExpense}
 	{formatNumber}
 />
 
