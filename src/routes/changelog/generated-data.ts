@@ -1,6 +1,6 @@
 // Auto-generated changelog data
 // Last processed commit: 1cd44a28d499d413e9393b576742281f1b4b976b
-// Generated at: 2025-08-27T17:41:23.632Z
+// Generated at: 2025-08-27T17:52:53.215Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -23,39 +23,6 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
       "✨ feat: add component documentation for AppsSection, Content, Hero, InfoBlocks, and Welcome (7f46113)",
       "💄 style(changelog): simplify Badge component usage (cd5f52b)",
       "✨ feat(changelog): enhance changelog insights and UI (9e74a03)"
-    ],
-    "type": "feature",
-    "icon": "Rocket",
-    "color": "from-green-500 to-emerald-500"
-  },
-  {
-    "date": "August 27, 2025",
-    "title": "📝 docs(changelog): update generated changelog data",
-    "description": "Updated scripts/generate-changelog.ts, src/routes/changelog/generated-data.ts",
-    "items": [
-      "📝 docs(changelog): update generated changelog data (416dcfd)"
-    ],
-    "type": "improvement",
-    "icon": "Code",
-    "color": "from-purple-500 to-violet-500"
-  },
-  {
-    "date": "August 27, 2025",
-    "title": "🔧 chore(changelog): remove outdated changelog entries",
-    "description": "Updated src/routes/changelog/data.ts",
-    "items": [
-      "🔧 chore(changelog): remove outdated changelog entries (386f165)"
-    ],
-    "type": "improvement",
-    "icon": "Code",
-    "color": "from-purple-500 to-violet-500"
-  },
-  {
-    "date": "August 27, 2025",
-    "title": "✨ feat(AppsSection): add support for done and coming soon projects",
-    "description": "Updated src/routes/AppsSection.svelte",
-    "items": [
-      "✨ feat(AppsSection): add support for done and coming soon projects (1cd44a2)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -393,4 +360,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-08-27T17:41:23.632Z';
+export const lastUpdated = '2025-08-27T17:52:53.215Z';

@@ -7,6 +7,8 @@ import { join } from 'path';
 interface CommitInfo {
 	hash: string;
 	date: string;
+	isoDate?: string;
+	timestamp?: number;
 	message: string;
 	author: string;
 	files: string[];
@@ -135,13 +137,16 @@ function getCommits(since?: string): CommitInfo[] {
 			// Skip merge commits and generated commits
 			if (message.startsWith('Merge') || message.includes('[skip ci]')) continue;
 
+			const parsedDate = new Date(date);
 			commits.push({
 				hash: hash.trim(),
-				date: new Date(date).toLocaleDateString('en-US', {
+				date: parsedDate.toLocaleDateString('en-US', {
 					year: 'numeric',
 					month: 'long',
 					day: 'numeric'
 				}),
+				isoDate: parsedDate.toISOString(),
+				timestamp: parsedDate.getTime(),
 				message: message.trim(),
 				author: author.trim(),
 				files
@@ -206,6 +211,8 @@ function groupCommits(commits: CommitInfo[]): TimelineItem[] {
 	const timelineItems: TimelineItem[] = [];
 
 	for (const [date, { commits, types }] of grouped) {
+		// Ensure commits for the same date are newest-first
+		commits.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 		// Determine the primary type for this date
 		let primaryType = 'improvement';
 		if (types.has('breaking')) primaryType = 'breaking';
