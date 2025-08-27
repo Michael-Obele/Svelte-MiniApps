@@ -1,0 +1,8 @@
+[[plugins]]
+  package = "netlify-plugin-cache"
+  [plugins.inputs]
+    paths = [".svelte-kit", "node_modules/.vite", "node_modules/.cache"]
+
+[images]
+  # Optional: If you ever test CDN as fallback
+  # remote_images = ["https://example-external-domain.com/.*"]
