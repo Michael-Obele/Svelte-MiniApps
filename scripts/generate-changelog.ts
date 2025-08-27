@@ -41,46 +41,71 @@ const COMMIT_TYPE_MAP = {
 
 // Get the last processed commit hash
 function getLastProcessedCommit(): string | null {
+	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
+	// Prefer the JSON backup which contains an explicit lastProcessedCommit field
+	if (existsSync(jsonPath)) {
+		try {
+			const content = readFileSync(jsonPath, 'utf-8');
+			const data = JSON.parse(content);
+			return data.lastProcessedCommit || null;
+		} catch (err) {
+			// fallthrough to try TS parse
+			console.warn('Failed to parse generated JSON for last processed commit:', err);
+		}
+	}
+
 	const dataPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
 	if (!existsSync(dataPath)) return null;
 
 	try {
 		const content = readFileSync(dataPath, 'utf-8');
-		const match = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/);
+		const match = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/i);
 		return match ? match[1] : null;
-	} catch {
+	} catch (err) {
+		console.warn('Failed to read generated-data.ts for last processed commit:', err);
 		return null;
 	}
 }
 
 // Get existing generated timeline items
 function getExistingGeneratedData(): TimelineItem[] {
-	// Try to read from a JSON file first
+	// Try to read from a JSON file first (preferred)
 	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
 	if (existsSync(jsonPath)) {
 		try {
 			const content = readFileSync(jsonPath, 'utf-8');
 			const data = JSON.parse(content);
-			return data.timeline || [];
+			if (Array.isArray(data.timeline)) return data.timeline as TimelineItem[];
 		} catch (error) {
 			console.warn('Failed to parse JSON data file:', error);
 		}
 	}
 
-	// Fallback: try to parse the TypeScript file (basic approach)
+	// Fallback: try to parse the TypeScript file and extract the exported generatedTimeline array
 	const dataPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
 	if (!existsSync(dataPath)) return [];
 
 	try {
 		const content = readFileSync(dataPath, 'utf-8');
 
-		// Simple approach: look for the last processed commit to determine if we have existing data
-		const commitMatch = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/);
-		if (commitMatch) {
-			// If we have a processed commit but can't parse, start fresh to avoid corruption
-			console.log('📝 Existing data found but unable to parse - will start fresh');
+		// Try to locate the exported generatedTimeline assignment and parse the JSON block
+		const match = content.match(/export const generatedTimeline[\s\S]*?=\s*(\[[\s\S]*?\]);/m);
+		if (match && match[1]) {
+			try {
+				const parsed = JSON.parse(match[1]);
+				if (Array.isArray(parsed)) return parsed as TimelineItem[];
+			} catch (err) {
+				console.warn('Failed to parse generatedTimeline JSON from TS file:', err);
+			}
 		}
 
+		// As a last resort, if the file contains the last processed commit but we couldn't parse, log and return empty
+		const commitMatch = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/i);
+		if (commitMatch) {
+			console.log(
+				'📝 Found existing generated-data.ts but could not extract timeline; continuing with fresh data'
+			);
+		}
 		return [];
 	} catch (error) {
 		console.warn('Failed to read existing data:', error);
