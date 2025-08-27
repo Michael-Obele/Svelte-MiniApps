@@ -728,8 +728,7 @@
 					budgets={budgetState.budgets.current}
 				/>
 
-				<div class="mx-auto w-11/12 md:w-1/2">
-					<!-- Add the new ExpensesList component -->
+				<div class="mx-auto">
 					<ExpensesList
 						budgets={budgetState.budgets.current}
 						{openEditExpenseDialog}
