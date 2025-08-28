@@ -196,7 +196,7 @@
 					<div class="mt-4">
 						<h4 class="mb-2 font-semibold">Expenses</h4>
 						<div class="space-y-2">
-							<ScrollArea class="h-32 rounded-md border p-2 sm:h-40 sm:p-3 lg:h-48 lg:p-4">
+							<ScrollArea class=" h-64 rounded-md border p-2 sm:p-3">
 								{#each budget.expenses as expense, i}
 									{@const isCompleted = expense.isCompleted ?? false}
 									{@const isSelected = selectedExpenses.includes(expense.id)}
