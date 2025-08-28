@@ -138,7 +138,7 @@
 							class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-all duration-300 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
 						>
 							<span
-								class="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full"
+								class="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full"
 								>Visit Website</span
 							>
 							<div

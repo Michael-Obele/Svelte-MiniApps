@@ -64,7 +64,7 @@
 />
 
 <div
-	class="flex min-h-screen items-center justify-center bg-gradient-to-br from-red-50 to-red-100 p-8 dark:from-gray-800 dark:to-gray-700"
+	class="flex min-h-screen items-center justify-center bg-linear-to-br from-red-50 to-red-100 p-8 dark:from-gray-800 dark:to-gray-700"
 >
 	<div class="w-full max-w-2xl rounded-2xl bg-white p-8 text-center shadow-lg dark:bg-gray-900">
 		<div class="mb-6">

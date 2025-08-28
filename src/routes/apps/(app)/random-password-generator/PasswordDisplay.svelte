@@ -9,7 +9,7 @@
 	class="flex items-center justify-between rounded-lg bg-gray-50 p-4 shadow-md transition-colors duration-200 hover:bg-gray-100"
 >
 	<div class="flex items-center space-x-2">
-		<div class="flex-shrink-0">
+		<div class="shrink-0">
 			<div
 				class="flex h-10 w-10 items-center justify-center rounded-full bg-red-700 text-white shadow-lg"
 			>

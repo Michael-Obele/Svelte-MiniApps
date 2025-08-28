@@ -352,7 +352,7 @@ export {};
 
 <section id="clients" class="mx-auto max-w-7xl px-6 text-center md:px-8">
 	<div class="py-14">
-		<div class="mx-auto max-w-screen-xl px-4 md:px-8">
+		<div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
 			<h2 class="text-center text-sm font-semibold text-gray-600">
 				TRUSTED BY TEAMS FROM AROUND THE WORLD
 			</h2>
@@ -476,27 +476,27 @@ export {};
 	let tiles: { icon: any; bg: string }[] = [
 		{
 			icon: HeartHandshake,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px]'
 		},
 		{
 			icon: Globe,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-70 blur-[20px]'
 		},
 		{
 			icon: File,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-green-500 via-teal-500 to-emerald-600 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-green-500 via-teal-500 to-emerald-600 opacity-70 blur-[20px]'
 		},
 		{
 			icon: Shield,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-yellow-600 opacity-70 blur-[20px]'
 		},
 		{
 			icon: Rss,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px]'
 		},
 		{
 			icon: BarChart,
-			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px]'
+			bg: 'pointer-events-none absolute left-1/2 top-1/2 size-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-linear-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px]'
 		}
 	];
 	function shuffleArray(array: any[]) {
@@ -572,14 +572,14 @@ export {};
 				</Marquee>
 				<div class="absolute z-10">
 					<div
-						class="mx-auto size-24 rounded-[2rem] border bg-white/10 p-3 shadow-2xl backdrop-blur-md dark:bg-black/10 lg:size-32"
+						class="mx-auto size-24 rounded-4xl border bg-white/10 p-3 shadow-2xl backdrop-blur-md dark:bg-black/10 lg:size-32"
 					>
 						<HeartHandshake class="mx-auto size-16 text-black dark:text-white lg:size-24" />
 					</div>
 					<div class="z-10 mt-4 flex flex-col items-center text-center text-primary">
 						<h1 class="text-3xl font-bold lg:text-4xl">Stop wasting time on design.</h1>
 						<p class="mt-2">Start your 7-day free trial. No credit card required.</p>
-						<Button size="lg" variant="outline" href="#" class="group mt-4 rounded-[2rem] px-6">
+						<Button size="lg" variant="outline" href="#" class="group mt-4 rounded-4xl px-6">
 							Get Started
 							<ChevronRight
 								class="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1"
@@ -591,7 +591,7 @@ export {};
 					/>
 				</div>
 				<div
-					class="to-backtround absolute inset-x-0 bottom-0 h-full bg-gradient-to-b from-transparent to-70% dark:to-background"
+					class="to-backtround absolute inset-x-0 bottom-0 h-full bg-linear-to-b from-transparent to-70% dark:to-background"
 				/>
 			</div>
 		</div>
@@ -634,7 +634,7 @@ export {};
 		</AnimatedShinyText>
 	</div>
 	<h1
-		class="-translate-y-4 animate-fade-in text-balance bg-gradient-to-br from-black from-30% to-black/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent opacity-0 [--animation-delay:200ms] dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-8xl"
+		class="-translate-y-4 animate-fade-in text-balance bg-linear-to-br from-black from-30% to-black/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent opacity-0 [--animation-delay:200ms] dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-8xl"
 	>
 		Svee UI is the new way
 		<br class="hidden md:block" />
@@ -664,10 +664,10 @@ export {};
 			rootMargin: '-100px'
 		}}
 		on:inview_change={handleChange}
-		class="relative mt-32 animate-fade-up opacity-0 [--animation-delay:400ms] [perspective:2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]"
+		class="relative mt-32 animate-fade-up opacity-0 [--animation-delay:400ms] perspective-[2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]"
 	>
 		<div
-			class="rounded-xl border border-white/10 bg-white bg-opacity-[0.01] before:absolute before:bottom-1/2 before:left-0 before:top-0 before:size-full before:opacity-0 before:[background-image:linear-gradient(to_bottom,var(--color-one),var(--color-one),transparent_40%)] before:[filter:blur(180px)] {inView
+			class="rounded-xl border border-white/10 bg-white bg-opacity-[0.01] before:absolute before:bottom-1/2 before:left-0 before:top-0 before:size-full before:opacity-0 before:bg-[linear-gradient(to_bottom,var(--color-one),var(--color-one),transparent_40%)] before:filter-[blur(180px)] {inView
 				? 'before:animate-image-glow'
 				: ''}"
 		>
@@ -791,7 +791,7 @@ export {};
 </script>
 
 <section id="pricing">
-	<div class="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
+	<div class="mx-auto flex max-w-(--breakpoint-xl) flex-col gap-8 px-4 py-14 md:px-8">
 		<div class="mx-auto max-w-5xl text-center">
 			<h4 class="text-xl font-bold tracking-tight text-black dark:text-white">Pricing</h4>
 
@@ -830,7 +830,7 @@ export {};
 					class={cn(
 						'relative flex max-w-[400px] flex-col gap-8 overflow-hidden rounded-2xl border p-4 text-black dark:text-white',
 						{
-							'border-2 border-[var(--color-one)] dark:border-[var(--color-one)]':
+							'border-2 border-(--color-one) dark:border-(--color-one)':
 								price.isMostPopular
 						}
 					)}
@@ -879,7 +879,7 @@ export {};
 					</Button>
 
 					<hr
-						class="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-500/30 to-neutral-200/0"
+						class="m-0 h-px w-full border-none bg-linear-to-r from-neutral-200/0 via-neutral-500/30 to-neutral-200/0"
 					/>
 					{#if price.features && price.features.length > 0}
 						<ul class="flex flex-col gap-2 font-normal">
@@ -918,10 +918,10 @@ export {};
 		'mx-auto max-w-md text-neutral-600/50 dark:text-neutral-400/50 ',
 
 		// Shimmer effect
-		'animate-shimmer bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]',
+		'animate-shimmer bg-clip-text bg-no-repeat bg-position-[0_0] bg-size-[var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]',
 
 		// Shimmer gradient
-		'bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80',
+		'bg-linear-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80',
 
 		className
 	)}
@@ -962,7 +962,7 @@ export {};
       "pointer-events-none absolute inset-[0] rounded-[inherit] [border:calc(var(--border-width)*1px)_solid_transparent]",
   
       // mask styles
-      "![mask-clip:padding-box,border-box] ![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)]",
+      "[mask-clip:padding-box,border-box]! mask-intersect! [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)]",
   
       // pseudo styles
       "after:absolute after:aspect-square after:w-[calc(var(--size)*1px)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:calc(var(--anchor)*1%)_50%] after:[offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))]",
@@ -988,7 +988,7 @@ export {};
   
   <div
     class={cn(
-      "group flex overflow-hidden p-2 [--duration:2s] [--gap:1rem] [gap:var(--gap)]",
+      "group flex overflow-hidden p-2 [--duration:2s] [--gap:1rem] gap-(--gap)",
       {
         "flex-row": !vertical,
         "flex-col": vertical,
@@ -998,7 +998,7 @@ export {};
   >
     {#each { length: repeat } as _, i (i)}
       <div
-        class={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+        class={cn("flex shrink-0 justify-around gap-(--gap)", {
           "animate-marquee flex-row": !vertical,
           "animate-marquee-vertical flex-col": vertical,
           "group-hover:[animation-play-state:paused]": pauseOnHover,
@@ -1024,16 +1024,16 @@ export {};
 	class={cn(
 		// color
 		'[--color:var(--color-one)]',
-		'pointer-events-none relative  mx-auto h-[50rem] overflow-hidden',
+		'pointer-events-none relative  mx-auto h-200 overflow-hidden',
 
 		// sphere mask
-		'[mask-image:radial-gradient(ellipse_at_center_center,#000,transparent_50%)]',
+		'mask-[radial-gradient(ellipse_at_center_center,#000,transparent_50%)]',
 
 		// reverse
-		reverse ? 'my-[-22rem] rotate-180 md:mt-[-30rem]' : 'my-[-18.8rem]',
+		reverse ? '-my-88 rotate-180 md:-mt-120' : 'my-[-18.8rem]',
 
 		// before
-		'before:absolute before:inset-0 before:size-full before:opacity-40 before:[background-image:radial-gradient(circle_at_bottom_center,var(--color),transparent_70%)]',
+		'before:absolute before:inset-0 before:size-full before:opacity-40 before:bg-[radial-gradient(circle_at_bottom_center,var(--color),transparent_70%)]',
 
 		// after
 		'after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[50%] after:border-t after:border-[hsl(var(--border))] after:bg-background'
@@ -1717,7 +1717,7 @@ export let seo = {
 </script>
 
 <footer>
-	<div class="mx-auto w-full max-w-screen-xl xl:pb-2">
+	<div class="mx-auto w-full max-w-(--breakpoint-xl) xl:pb-2">
 		<div class="gap-4 p-4 px-8 py-16 sm:pb-16 md:flex md:justify-between">
 			<div class="mb-12 flex flex-col gap-4">
 				<a href="https://animation-svelte.vercel.app" class="flex items-center gap-2">
@@ -1901,7 +1901,7 @@ export let seo = {
 			{#each menuItem as item, i}
 				<li class="border-grey-dark border-b py-0.5 pl-6 md:border-none">
 					<a
-						class="hover:text-grey flex h-[var(--navigation-height)] w-full items-center text-xl transition-[color,transform] duration-300 md:translate-y-0 md:text-sm md:transition-colors {hamburgerMenuIsOpen
+						class="hover:text-grey flex h-(--navigation-height) w-full items-center text-xl transition-[color,transform] duration-300 md:translate-y-0 md:text-sm md:transition-colors {hamburgerMenuIsOpen
 							? '[&_a]:translate-y-0'
 							: ''}"
 						href={item.href}

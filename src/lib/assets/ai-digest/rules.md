@@ -69,7 +69,7 @@
 
 ## Layout Patterns
 
-- Container width: `max-w-screen-xl`, `xl:container`
+- Container width: `max-w-(--breakpoint-xl)`, `xl:container`
 - Spacing:
   - Padding: `px-4 py-8` (base), `md:px-6` (responsive)
   - Margins: `space-y-4`, `gap-4`

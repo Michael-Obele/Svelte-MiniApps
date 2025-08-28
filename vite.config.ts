@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { partytownVite } from '@builder.io/partytown/utils';
 import { join } from 'path';
+import tailwindcss from '@tailwindcss/vite';
 
 // export default defineConfig({
 // 	plugins: [sveltekit(), enhancedImages()],
@@ -20,11 +21,12 @@ export default defineConfig({
 		// 		project: 'javascript-sveltekit'
 		// 	}
 		// }),
-		sveltekit(),
+		tailwindcss(),
 		enhancedImages(),
 		partytownVite({
 			dest: join(__dirname, 'static', '~partytown')
-		})
+		}),
+		sveltekit()
 	],
 	server: {
 		port: 5178,

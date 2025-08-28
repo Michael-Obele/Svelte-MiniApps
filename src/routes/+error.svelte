@@ -48,7 +48,7 @@
 	class="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-8 dark:bg-gray-900 md:px-8"
 	in:fade={{ duration: 200 }}
 >
-	<div class="relative w-full max-w-screen-xl">
+	<div class="relative w-full max-w-(--breakpoint-xl)">
 		<div class="relative flex flex-col items-center">
 			<div class="mb-5 flex justify-center">
 				<div

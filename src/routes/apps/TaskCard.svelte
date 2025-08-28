@@ -7,13 +7,13 @@
 </script>
 
 <div
-	class="group relative h-full rounded-lg border border-gray-200 bg-gray-50 px-6 pb-20 pt-8 dark:border-gray-700 dark:bg-gray-800 md:px-6 md:pb-20 md:pt-5"
+	class="group relative h-full rounded-lg border border-gray-200 bg-gray-50 px-6 pt-8 pb-20 md:px-6 md:pt-5 md:pb-20 dark:border-gray-700 dark:bg-gray-800"
 >
 	<!-- Done check -->
 	<span
 		class:opacity-100={done.includes(item.link)}
 		class:opacity-20={!done.includes(item.link)}
-		class="absolute right-5 top-5"
+		class="absolute top-5 right-5"
 	>
 		<BadgeCheck class="size-16 text-green-800 dark:text-green-400" />
 	</span>

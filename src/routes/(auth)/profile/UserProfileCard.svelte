@@ -64,7 +64,7 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 
 		<div class="mt-2 flex justify-center gap-2">
 			{#if userData?.isAdmin}
-				<Badge variant="default" class="bg-gradient-to-r from-indigo-500 to-purple-500">Admin</Badge
+				<Badge variant="default" class="bg-linear-to-r from-indigo-500 to-purple-500">Admin</Badge
 				>
 			{/if}
 			<Badge variant="outline" class="gap-1">

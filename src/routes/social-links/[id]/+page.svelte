@@ -16,7 +16,7 @@
 />
 
 <div
-	class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 px-4 py-8 dark:from-gray-900 dark:to-gray-800"
+	class="min-h-screen bg-linear-to-b from-gray-50 to-gray-100 px-4 py-8 dark:from-gray-900 dark:to-gray-800"
 >
 	<div class="mx-auto max-w-md space-y-8">
 		<div class="space-y-2 text-center">

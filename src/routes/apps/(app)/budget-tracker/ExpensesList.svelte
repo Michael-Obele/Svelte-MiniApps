@@ -108,7 +108,7 @@
 							<div class="truncate text-sm text-muted-foreground">
 								{budgetName}
 							</div>
-							<div class="flex-shrink-0 font-semibold">
+							<div class="shrink-0 font-semibold">
 								{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
 							</div>
 						</div>

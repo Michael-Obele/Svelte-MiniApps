@@ -91,7 +91,7 @@
 <div class="mx-auto my-8 max-w-3xl space-y-6 text-center">
 	<div class="space-y-4">
 		<h1
-			class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-white/70 sm:text-5xl"
+			class="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-white/70 sm:text-5xl"
 		>
 			GitHub Contributions
 		</h1>
@@ -214,7 +214,7 @@
 							Total Contributions: {month.reduce((a, b) => a + b.contributionCount, 0)}
 						</CardDescription>
 					</CardHeader>
-					<CardContent class="flex-grow">
+					<CardContent class="grow">
 						<Drawer.Root>
 							<Drawer.Trigger class={buttonVariants({ variant: 'secondary', class: 'w-full' })}>
 								View Chart
@@ -280,7 +280,7 @@
 	<div class="relative flex justify-center text-2xl font-medium">
 		<span class="bg-background px-6 text-gray-900 transition-colors dark:text-white">
 			<span
-				class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent dark:from-white dark:to-white/70"
+				class="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent dark:from-white dark:to-white/70"
 			>
 				Heat Map
 			</span>

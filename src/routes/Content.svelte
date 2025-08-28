@@ -18,7 +18,7 @@ Usage:
 
 <section class="w-full px-4 py-5 xl:container md:px-6 md:py-8 lg:py-10">
 	<div
-		class="mx-auto max-w-screen-xl justify-center bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
+		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
 	>
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<ContentBlock iconId={'xyboiuok'}>

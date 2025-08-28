@@ -26,7 +26,7 @@ Usage:
 <main class="w-full py-5 md:py-8 lg:py-10">
 	<div class="px-4 xl:container md:px-6">
 		<section
-			class="mx-auto max-w-screen-xl justify-center bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
+			class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
 		>
 			<div class="flex flex-col items-center justify-center space-y-4 text-center">
 				<div class="space-y-2">
@@ -46,7 +46,7 @@ Usage:
 
 			<section
 				id="apps"
-				class="mx-auto mt-10 max-w-screen-xl bg-white px-4 py-12 dark:bg-gray-900 lg:py-16"
+				class="mx-auto mt-10 max-w-(--breakpoint-xl) bg-white px-4 py-12 dark:bg-gray-900 lg:py-16"
 			>
 				<h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 					What's in the Toolbox:

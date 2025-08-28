@@ -108,7 +108,7 @@
 <main class="w-full py-5 md:py-8 lg:py-10">
 	<div class="px-4 xl:container md:px-6">
 		<section
-			class="mx-auto max-w-screen-xl justify-center rounded-md bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
+			class="mx-auto max-w-(--breakpoint-xl) justify-center rounded-md bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
 		>
 			<div class="mx-auto max-w-2xl">
 				<div class="flex flex-col items-center justify-center space-y-4 text-center">

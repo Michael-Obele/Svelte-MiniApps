@@ -191,7 +191,7 @@
 								</div>
 								<div class="flex items-center gap-4">
 									<Progress value={app.percentage} class="h-2 w-full" />
-									<div class="min-w-[3rem] text-right text-xs text-muted-foreground">
+									<div class="min-w-12 text-right text-xs text-muted-foreground">
 										Last: {app.lastUsed ? formatDate(app.lastUsed).split(' at ')[0] : 'Never'}
 									</div>
 								</div>

@@ -51,13 +51,13 @@
 	>
 		<div class="pointer-events-none">
 			<div
-				class="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"
+				class="absolute inset-0 rounded-2xl mask-[linear-gradient(white,transparent)] group-hover/card:opacity-50"
 			></div>
 			<Motion let:motion {style}>
 				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<div
 					use:motion
-					class="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-blue-700 opacity-0 backdrop-blur-xl transition duration-500 group-hover/card:opacity-100"
+					class="absolute inset-0 rounded-2xl bg-linear-to-r from-green-500 to-blue-700 opacity-0 backdrop-blur-xl transition duration-500 group-hover/card:opacity-100"
 				/>
 			</Motion>
 			<Motion let:motion {style}>
@@ -79,7 +79,7 @@
 			>
 				<!-- svelte-ignore element_invalid_self_closing_tag -->
 				<div
-					class="absolute h-full w-full rounded-full bg-white/[0.8] blur-sm dark:bg-black/[0.8]"
+					class="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80"
 				/>
 				{#if text}
 					<span class="z-20 text-black dark:text-white">{text}</span>

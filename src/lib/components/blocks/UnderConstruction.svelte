@@ -35,7 +35,7 @@
 		{#if visible}
 			<div class="relative mx-auto mt-8 h-[400px] w-full max-w-xl" transition:fade>
 				<div
-					class="absolute inset-0 bg-gradient-to-b from-blue-500/20 via-transparent to-transparent opacity-50"
+					class="absolute inset-0 bg-linear-to-b from-blue-500/20 via-transparent to-transparent opacity-50"
 				></div>
 				<Construction />
 			</div>

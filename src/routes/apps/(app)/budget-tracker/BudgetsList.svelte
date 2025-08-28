@@ -107,7 +107,7 @@
 
 <div
 	id="budgets-list"
-	class="mx-auto grid w-full min-w-[10rem] max-w-7xl flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
+	class="mx-auto grid w-full min-w-40 max-w-7xl flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
 >
 	{#each budgets as budget}
 		{@const budgetStrikethroughEnabled = budgetStrikethroughModes[budget.id] ?? false}
@@ -135,7 +135,7 @@
 				<div class="mb-3 flex items-center justify-between sm:mb-4">
 					<div class="flex items-center gap-2">
 						<h3 class="truncate text-base font-semibold sm:text-lg">{budget.name}</h3>
-						<Icon class="h-4 w-4 {color} flex-shrink-0" />
+						<Icon class="h-4 w-4 {color} shrink-0" />
 					</div>
 					<div class="flex gap-1 sm:gap-2">
 						<Button

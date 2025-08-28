@@ -48,7 +48,7 @@
 >
 	<svelte:element
 		this={as}
-		class={cn(' tracking-[-0.02em] drop-shadow-sm md:leading-[5rem]', className)}
+		class={cn(' tracking-[-0.02em] drop-shadow-sm md:leading-20', className)}
 		use:motion
 	>
 		{#if children}

@@ -183,7 +183,7 @@
 		</Card.Header>
 		<Card.Content>
 			<div class="flex min-w-0 flex-col gap-6 md:flex-row md:items-end md:gap-4">
-				<div class="min-w-0 md:flex-[2]">
+				<div class="min-w-0 md:flex-2">
 					<Label for="inputValue" class="mb-2 block text-sm font-medium">Value</Label>
 					<div class="flex items-center gap-2">
 						<Input

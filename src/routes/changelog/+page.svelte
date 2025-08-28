@@ -98,11 +98,11 @@
 	}}
 />
 
-<div class="via-background/98 min-h-screen bg-gradient-to-b from-background to-background/95">
+<div class="via-background/98 min-h-screen bg-linear-to-b from-background to-background/95">
 	<div class="container mx-auto px-4 py-16">
 		<BlurInText>
 			<h1
-				class="mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
+				class="mb-4 bg-linear-to-r from-foreground to-foreground/80 bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
 			>
 				Changelog
 			</h1>
