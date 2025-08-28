@@ -8,6 +8,13 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type WithoutChild<T> = T extends { child?: any } ? Omit<T, 'child'> : T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type WithoutChildren<T> = T extends { children?: any } ? Omit<T, 'children'> : T;
+export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
+export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?: U | null };
+
 /**
  * Scrolls the page smoothly to the element with the specified ID.
  *
@@ -159,7 +166,7 @@ export function preventDefault<T extends Event>(fn: (event: T) => void): (event:
 
 /**
  * Increments the usage count for a specific app and updates the last used timestamp
- * 
+ *
  * @param appLink - The link identifier for the app
  * @returns The new usage count for the app
  */
@@ -167,32 +174,32 @@ export function incrementAppUsage(appLink: string): number {
 	// Get current usage data from localStorage
 	const appUsageStore = JSON.parse(localStorage.getItem('app-usage-tracker') || '{}');
 	const appLastUsedStore = JSON.parse(localStorage.getItem('app-last-used') || '{}');
-	
+
 	// Update usage count
 	const currentCount = appUsageStore[appLink] || 0;
 	const newCount = currentCount + 1;
 	appUsageStore[appLink] = newCount;
-	
+
 	// Update last used timestamp
 	appLastUsedStore[appLink] = new Date().toISOString();
-	
+
 	// Save back to localStorage
 	localStorage.setItem('app-usage-tracker', JSON.stringify(appUsageStore));
 	localStorage.setItem('app-last-used', JSON.stringify(appLastUsedStore));
-	
+
 	return newCount;
 }
 
 /**
  * Gets the top most used apps based on usage count
- * 
+ *
  * @param limit - Maximum number of apps to return
  * @returns Array of favorite apps with usage data
  */
 export function getFavoriteApps(limit = 3) {
 	const appUsageStore = JSON.parse(localStorage.getItem('app-usage-tracker') || '{}');
 	const projects = JSON.parse(localStorage.getItem('projects') || '[]');
-	
+
 	// Convert to array and sort by usage count
 	const appEntries = Object.entries(appUsageStore)
 		.map(([appLink, count]) => {
@@ -206,20 +213,20 @@ export function getFavoriteApps(limit = 3) {
 		})
 		.sort((a, b) => b.usageCount - a.usageCount)
 		.slice(0, limit);
-	
+
 	return appEntries;
 }
 
 /**
  * Gets recent app activity based on last used timestamps
- * 
+ *
  * @param limit - Maximum number of activities to return
  * @returns Array of recent app activities
  */
 export function getRecentActivity(limit = 5) {
 	const appLastUsedStore = JSON.parse(localStorage.getItem('app-last-used') || '{}');
 	const projects = JSON.parse(localStorage.getItem('projects') || '[]');
-	
+
 	// Convert to array and sort by date
 	const activities = Object.entries(appLastUsedStore)
 		.map(([appLink, dateStr]) => {
@@ -232,6 +239,6 @@ export function getRecentActivity(limit = 5) {
 		})
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 		.slice(0, limit);
-	
+
 	return activities;
 }
