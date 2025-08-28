@@ -78,7 +78,7 @@
 	}
 </script>
 
-<div class="mx-auto mt-8 flex min-w-[10rem] max-w-7xl flex-col justify-center">
+<div class=" mx-auto mt-8 flex max-w-7xl flex-col justify-center">
 	<h2 class="mx-auto mb-4 text-xl font-semibold">
 		Latest Transactions <span class="text-xs font-normal text-muted-foreground"
 			>(showing 12 most recent)</span
@@ -91,26 +91,52 @@
 			<p>No expenses yet. Add your first expense to get started.</p>
 		</div>
 	{:else}
-		<div class="flex grow flex-row flex-wrap justify-center gap-3">
+		<div
+			class="grid w-full max-w-full grow grid-cols-1 place-items-stretch gap-3 md:grid-cols-2 lg:grid-cols-3"
+		>
 			{#each getSortedExpenses().slice(0, 12) as { budgetId, budgetName, expense }}
 				{@const currency = getBudgetCurrency(budgetId)}
-				<Card class="w-40 flex-initial p-4 transition-shadow hover:shadow-sm sm:w-1/4">
-					<div class="flex items-center justify-between gap-4">
-						<!-- Left: content that can truncate -->
-						<div class="min-w-0 flex-1">
-							<div class="flex items-center gap-2">
-								<span class="block truncate font-medium" title={expense.description}
-									>{expense.description}</span
-								>
-								<span class="text-xs text-muted-foreground">({budgetName})</span>
+				<Card class="w-full p-4 transition-shadow hover:shadow-sm">
+					<!-- Mobile layout: Stack everything vertically -->
+					<div class="flex w-full flex-col gap-2 sm:hidden">
+						<!-- Row 1: Description -->
+						<div class="truncate font-medium" title={expense.description}>
+							{expense.description}
+						</div>
+						<!-- Row 2: Budget name and Amount on same line -->
+						<div class="flex items-center justify-between gap-2">
+							<div class="truncate text-sm text-muted-foreground">
+								{budgetName}
 							</div>
-							<div class="mt-1 text-sm text-muted-foreground">{formatDate(expense.createdAt)}</div>
+							<div class="flex-shrink-0 font-semibold">
+								{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
+							</div>
+						</div>
+						<!-- Row 3: Date -->
+						<div class="text-[11px] text-muted-foreground">
+							{formatDate(expense.createdAt)}
+						</div>
+					</div>
+
+					<!-- Desktop layout: Side by side -->
+					<div class="hidden w-full items-center justify-between gap-2 sm:flex">
+						<!-- Col 1: Description (takes remaining space) with budget name under it -->
+						<div class="min-w-0 flex-1">
+							<div class="truncate font-medium" title={expense.description}>
+								{expense.description}
+							</div>
+							<div class="mt-1 truncate text-sm text-muted-foreground">
+								{budgetName}
+							</div>
 						</div>
 
-						<!-- Right: amount (no-wrap) -->
-						<div class="ml-4 flex flex-col items-end">
+						<!-- Col 2: Amount and then Date (date in the smallest font) -->
+						<div class="flex flex-none flex-col items-end">
 							<div class="whitespace-nowrap font-semibold">
 								{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
+							</div>
+							<div class="mt-1 whitespace-nowrap text-[11px] text-muted-foreground">
+								{formatDate(expense.createdAt)}
 							</div>
 						</div>
 					</div>
