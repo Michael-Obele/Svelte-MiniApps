@@ -73,15 +73,15 @@
 	class="mx-auto grid w-full min-w-[10rem] max-w-7xl flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
 >
 	{#each budgets as budget}
-		<Card id="budget-{budget.id}" class=" min-w-0 p-3 transition-all hover:shadow-md sm:p-4 lg:p-6">
+		<Card id="budget-{budget.id}" class="min-w-0 p-3 transition-all hover:shadow-md sm:p-4 lg:p-6">
 			{#if budget.expenses}
 				{@const percentage = getProgressPercentage(budget)}
-				{@const { icon: SvelteComponent, color } = getBudgetStatusIconAndColor(percentage)}
+				{@const { icon: Icon, color } = getBudgetStatusIconAndColor(percentage)}
 
 				<div class="mb-3 flex items-center justify-between sm:mb-4">
 					<div class="flex items-center gap-2">
 						<h3 class="truncate text-base font-semibold sm:text-lg">{budget.name}</h3>
-						<SvelteComponent class="h-4 w-4 {color} flex-shrink-0" />
+						<Icon class="h-4 w-4 {color} flex-shrink-0" />
 					</div>
 					<div class="flex gap-1 sm:gap-2">
 						<Button
