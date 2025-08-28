@@ -68,24 +68,37 @@
 	}
 </script>
 
-<div id="budgets-list" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+<div
+	id="budgets-list"
+	class="mx-auto grid w-full min-w-[10rem] max-w-7xl flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
+>
 	{#each budgets as budget}
-		<Card id="budget-{budget.id}" class="p-6 transition-all hover:shadow-md">
+		<Card id="budget-{budget.id}" class=" min-w-0 p-3 transition-all hover:shadow-md sm:p-4 lg:p-6">
 			{#if budget.expenses}
 				{@const percentage = getProgressPercentage(budget)}
 				{@const { icon: SvelteComponent, color } = getBudgetStatusIconAndColor(percentage)}
 
-				<div class="mb-4 flex items-center justify-between">
+				<div class="mb-3 flex items-center justify-between sm:mb-4">
 					<div class="flex items-center gap-2">
-						<h3 class="text-lg font-semibold">{budget.name}</h3>
-						<SvelteComponent class="h-4 w-4 {color}" />
+						<h3 class="truncate text-base font-semibold sm:text-lg">{budget.name}</h3>
+						<SvelteComponent class="h-4 w-4 {color} flex-shrink-0" />
 					</div>
-					<div class="flex gap-2">
-						<Button variant="ghost" size="icon" onclick={() => openEditDialog(budget)}>
-							<Pencil class="h-4 w-4" />
+					<div class="flex gap-1 sm:gap-2">
+						<Button
+							variant="ghost"
+							size="icon"
+							class="h-8 w-8 sm:h-9 sm:w-9"
+							onclick={() => openEditDialog(budget)}
+						>
+							<Pencil class="h-3 w-3 sm:h-4 sm:w-4" />
 						</Button>
-						<Button variant="ghost" size="icon" onclick={() => handleDeleteBudget(budget.id)}>
-							<Trash2 class="h-4 w-4" />
+						<Button
+							variant="ghost"
+							size="icon"
+							class="h-8 w-8 sm:h-9 sm:w-9"
+							onclick={() => handleDeleteBudget(budget.id)}
+						>
+							<Trash2 class="h-3 w-3 sm:h-4 sm:w-4" />
 						</Button>
 					</div>
 				</div>
@@ -130,14 +143,14 @@
 					<div class="mt-4">
 						<h4 class="mb-2 font-semibold">Expenses</h4>
 						<div class="space-y-2">
-							<ScrollArea class="h-[22rem] rounded-md border p-4 md:h-[18rem]">
+							<ScrollArea class="h-32 rounded-md border p-2 sm:h-40 sm:p-3 lg:h-48 lg:p-4">
 								{#each budget.expenses as expense, i}
 									<Card
-										class="cursor-pointer p-3"
+										class="cursor-pointer p-2 sm:p-3"
 										onclick={() => openEditExpenseDialog(budget.id, expense)}
 									>
 										<div class="flex items-center justify-between">
-											<div class="min-w-0">
+											<div class="min-w-0 flex-1">
 												<div class="truncate break-words text-sm font-medium">
 													{expense.description}
 												</div>
@@ -145,14 +158,14 @@
 													{new Date(expense.createdAt).toLocaleDateString()}
 												</div>
 											</div>
-											<div class="ml-4 flex items-center gap-2">
-												<div class="font-bold text-green-600">
+											<div class="ml-2 flex items-center gap-1 sm:gap-2">
+												<div class="text-right text-xs font-bold text-green-600 sm:text-sm">
 													{getCurrencySymbol(budget.currency)}{formatNumberWithCommas(
 														expense.amount
 													)}
 												</div>
-												<Button variant="ghost" size="icon" class="h-4 w-4">
-													<SquareArrowOutUpRight class="size-2" />
+												<Button variant="ghost" size="icon" class="h-6 w-6 sm:h-8 sm:w-8">
+													<SquareArrowOutUpRight class="h-3 w-3 sm:h-4 sm:w-4" />
 												</Button>
 											</div>
 										</div>

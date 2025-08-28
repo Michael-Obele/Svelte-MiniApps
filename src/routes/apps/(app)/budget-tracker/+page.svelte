@@ -534,7 +534,7 @@
 	<div class="space-y-4">
 		<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex items-center gap-4">
-				<h1 class="text-3xl font-bold tracking-tight">Budget Tracker</h1>
+				<h1 class="mx-auto text-3xl font-bold tracking-tight">Budget Tracker</h1>
 				{#if isAuthenticated && autoBackupCountdown > 0}
 					<div
 						class="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"

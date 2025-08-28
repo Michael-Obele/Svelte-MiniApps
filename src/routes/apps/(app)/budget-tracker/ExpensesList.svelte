@@ -78,10 +78,10 @@
 	}
 </script>
 
-<div class="mt-8">
+<div class="mx-auto mt-8 flex min-w-[10rem] max-w-7xl flex-col justify-center">
 	<h2 class="mx-auto mb-4 text-xl font-semibold">
 		Latest Transactions <span class="text-xs font-normal text-muted-foreground"
-			>(showing 10 most recent)</span
+			>(showing 12 most recent)</span
 		>
 	</h2>
 	<!-- <p class="mb-4 text-sm text-muted-foreground">{allExpenses.length} expenses</p> -->
@@ -91,10 +91,10 @@
 			<p>No expenses yet. Add your first expense to get started.</p>
 		</div>
 	{:else}
-		<div class="flex w-full flex-row flex-wrap gap-3">
-			{#each getSortedExpenses().slice(0, 10) as { budgetId, budgetName, expense }}
+		<div class="flex grow flex-row flex-wrap justify-center gap-3">
+			{#each getSortedExpenses().slice(0, 12) as { budgetId, budgetName, expense }}
 				{@const currency = getBudgetCurrency(budgetId)}
-				<Card class="w-full flex-auto p-4 transition-shadow hover:shadow-sm sm:w-1/2 md:w-1/3">
+				<Card class="w-40 flex-initial p-4 transition-shadow hover:shadow-sm sm:w-1/4">
 					<div class="flex items-center justify-between gap-4">
 						<!-- Left: content that can truncate -->
 						<div class="min-w-0 flex-1">
