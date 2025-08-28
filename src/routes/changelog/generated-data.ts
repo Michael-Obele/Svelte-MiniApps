@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: dd726505e20f537b0be4e4c6baeefa3cbde895a9
-// Generated at: 2025-08-28T02:06:06.641Z
+// Last processed commit: 303e77c2c1a403cdceaf08f38e78819743728232
+// Generated at: 2025-08-28T17:19:32.305Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -35,6 +35,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
     "type": "improvement",
     "icon": "Code",
     "color": "from-purple-500 to-violet-500"
+  },
+  {
+    "date": "August 28, 2025",
+    "title": "✨ feat(budget-tracker): add strikethrough feature for expenses",
+    "description": "Updated src/routes/apps/(app)/budget-tracker/BudgetsList.svelte, src/routes/apps/(app)/budget-tracker/states.svelte.ts",
+    "items": [
+      "✨ feat(budget-tracker): add strikethrough feature for expenses (303e77c)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
   },
   {
     "date": "August 27, 2025",
@@ -405,4 +416,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-08-28T02:06:06.642Z';
+export const lastUpdated = '2025-08-28T17:19:32.305Z';
