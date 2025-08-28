@@ -88,7 +88,7 @@
 			name: 'Carta',
 			description:
 				'A lightweight Markdown editor and viewer for Svelte with syntax highlighting and rich features. Provides textarea functionality without a full code editor.',
-			url: 'https://beartocode.github.io/carta/introduction',
+			url: 'https://beartocode.github.io/carta/',
 			theme: 'red',
 			icon: Palette
 		},
@@ -121,7 +121,7 @@
 			>
 				<div class="flex items-start gap-3">
 					<div
-						class="flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 ease-in-out hover:scale-110 group-hover:scale-110 {currentTheme.bg}"
+						class="flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110 hover:scale-110 {currentTheme.bg}"
 					>
 						<Icon class="{currentTheme.accent} h-5 w-5" />
 					</div>
