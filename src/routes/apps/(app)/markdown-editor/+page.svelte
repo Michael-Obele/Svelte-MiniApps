@@ -37,12 +37,12 @@
 		<div class="container mx-auto min-h-screen px-4 py-12">
 			<div class="mx-auto flex max-w-4xl flex-col items-center space-y-8">
 				<h1
-					class="text-center text-5xl font-extrabold tracking-tight text-black dark:text-gray-100 sm:text-6xl"
+					class="text-center text-5xl font-extrabold tracking-tight text-black sm:text-6xl dark:text-gray-100"
 				>
 					Markdown Editor
 				</h1>
 				<div
-					class="max-w-3xl space-y-3 text-center text-lg leading-relaxed text-gray-600 dark:text-gray-400 sm:text-xl"
+					class="max-w-3xl space-y-3 text-center text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-400"
 				>
 					<p>
 						Welcome to my <strong class="text-red-600 dark:text-green-400">Markdown Editor</strong>!
@@ -80,7 +80,9 @@
 				</div>
 			</div>
 			<section class="mt-6">
-				<MarkdownEditor {carta} mode="tabs" bind:value={value.current} />
+				{#key value.current}
+					<MarkdownEditor {carta} mode="tabs" bind:value={value.current} />
+				{/key}
 			</section>
 		</div>
 	</div>
