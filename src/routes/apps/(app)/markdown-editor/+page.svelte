@@ -10,18 +10,25 @@
 	import '@cartamd/plugin-slash/default.css';
 	import { browser } from '$app/environment';
 	import { site } from '$lib/index';
-	import { markdownDemo } from './data';
+	import { markdownDemo } from './data.svelte';
 	import { PersistedState } from 'runed';
 
 	const carta = new Carta({
 		sanitizer: false, // Use a sanitizer in production to prevent XSS
-		extensions: [code(), slash()]
+		extensions: [code({ theme: 'github-light' }), slash()],
+		shikiOptions: {
+			themes: ['github-light', 'github-dark']
+		}
 	});
+	// Create Carta only in the browser and preload Shiki themes so code backgrounds
+	// can switch between light/dark without showing a fixed black background.
 
 	let value = new PersistedState('markdownContent', markdownDemo);
 
+	let markdown = $state(value.current);
+
 	if (value.current == null || value.current == '') {
-		value.current = markdownDemo;
+		markdown = markdownDemo;
 	}
 </script>
 
@@ -45,44 +52,29 @@
 					class="max-w-3xl space-y-3 text-center text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-400"
 				>
 					<p>
-						Welcome to my <strong class="text-red-600 dark:text-green-400">Markdown Editor</strong>!
-						Here, you can easily write, preview, and edit your
-						<a
+						Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content
+						is automatically saved to localStorage so you won't lose changes.
+					</p>
+					<p>
+						New to Markdown? See the <a
 							href="https://www.markdownguide.org/basic-syntax/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-blue-600 hover:underline dark:text-blue-400">Markdown</a
-						>. For those new to Markdown, it's a lightweight markup language with plain-text
-						formatting syntax, making it simple to create rich text using just regular keyboard
-						characters.
-					</p>
-					<p>
-						Whether you're jotting down notes, blogging, or organizing ideas, this tool is designed
-						to make your writing life simpler and more productive. All your work is automatically
-						saved to your browser's localStorage, ensuring you never lose what you've written.
-					</p>
-					<p>
-						Curious to learn more about Markdown? Check out the <a
-							href="https://daringfireball.net/projects/markdown/"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-blue-600 hover:underline dark:text-blue-400">official Markdown site</a
-						>
-						for syntax details, or visit
-						<a
-							href="https://commonmark.org/"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-blue-600 hover:underline dark:text-blue-400">CommonMark</a
-						> for a standardized version of Markdown syntax. Enjoy the blend of simplicity and power
-						in this little project of mine!
+							class="text-blue-600 hover:underline dark:text-blue-400">Markdown guide</a
+						> for quick syntax tips.
 					</p>
 				</div>
 			</div>
 			<section class="mt-6">
-				{#key value.current}
-					<MarkdownEditor {carta} mode="tabs" bind:value={value.current} />
-				{/key}
+				{#if browser}
+					{#key value.current}
+						<MarkdownEditor {carta} mode="tabs" bind:value={markdown} />
+					{/key}
+				{:else}
+					<div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+						Loading editor…
+					</div>
+				{/if}
 			</section>
 		</div>
 	</div>
@@ -102,8 +94,23 @@
 
 	/* Code dark mode */
 	/* Only if you didn't specify a custom code theme */
-	:global(html.dark .shiki, html.dark .shiki span) {
-		color: var(--shiki-dark) !important;
+	/* Shiki / Carta can include highly-specific CSS; provide a fallback so pre/code
+	   and shiki elements follow the app theme variables (background/text). */
+	:global(.shiki),
+	:global(.shiki span),
+	:global(pre[class*='language-']),
+	:global(code[class*='language-']),
+	:global(.carta-renderer pre),
+	:global(.carta-renderer code) {
+		background-color: var(--color-background) !important;
+		color: var(--text-color) !important;
+	}
+
+	/* Ensure tables inside the renderer use the theme colors */
+	:global(.carta-renderer table),
+	:global(.markdown-body table) {
+		background-color: var(--color-background) !important;
+		color: var(--color-foreground) !important;
 	}
 
 	:global(.markdown-body) {
@@ -112,6 +119,7 @@
 		max-width: 980px;
 		margin: 0 auto;
 		padding: 45px;
+		background-color: var(--color-background);
 
 		@media (max-width: 767px) {
 			padding: 15px;
@@ -126,8 +134,51 @@
 			overflow: auto;
 		}
 		.carta-renderer {
-			background-color: var(--background-color);
+			background-color: var(--color-background);
 			color: var(--text-color);
 		}
+	}
+
+	/* Strong overrides to prevent vendor @media(prefers-color-scheme: dark) styles
+   from forcing a dark palette inside the preview. We map common GitHub/Shiki
+   variables to our app variables and force background/color so the preview
+   follows the site theme (html .dark) rather than OS media queries. */
+	:global(.markdown-body),
+	:global(.carta-renderer) {
+		/* Force the app theme colors for the preview */
+		background-color: var(--color-background) !important;
+		color: var(--color-foreground) !important;
+
+		/* Map commonly-used vendor variables to our app vars so token CSS resolves
+	   to the correct colors regardless of media queries. */
+		--fgColor-default: var(--color-foreground) !important;
+		--fgColor-muted: var(--color-foreground) !important;
+		--shiki-dark: var(--color-foreground) !important;
+		--shiki-dark-bg: var(--color-background) !important;
+		--shiki-light: var(--color-foreground) !important;
+		--shiki-light-bg: var(--color-background) !important;
+		--bgColor-default: var(--color-background) !important;
+		--bgColor-muted: var(--color-background) !important;
+		--borderColor-default: var(--border-color, rgba(0, 0, 0, 0.12)) !important;
+	}
+
+	/* Respect site-driven theme switch (html.dark). These selectors ensure the
+   preview's color-scheme hint and variables follow the site class, not OS. */
+	html.dark :global(.markdown-body),
+	html.dark :global(.carta-renderer),
+	[data-theme='dark'] :global(.markdown-body),
+	[data-theme='dark'] :global(.carta-renderer) {
+		color-scheme: dark !important;
+		background-color: var(--color-background) !important;
+		color: var(--color-foreground) !important;
+	}
+
+	html:not(.dark) :global(.markdown-body),
+	html:not(.dark) :global(.carta-renderer),
+	:not([data-theme='dark']) :global(.markdown-body),
+	:not([data-theme='dark']) :global(.carta-renderer) {
+		color-scheme: light !important;
+		background-color: var(--color-background) !important;
+		color: var(--color-foreground) !important;
 	}
 </style>

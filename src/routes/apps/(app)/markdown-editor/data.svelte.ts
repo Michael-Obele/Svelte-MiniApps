@@ -1,3 +1,5 @@
+import { PersistedState } from 'runed';
+
 export let markdownDemo = `# Welcome to Markdown Magic!
 
 ## Unleash the Power of Simple Formatting
@@ -21,7 +23,7 @@ Check out [Markdown's official site](https://www.markdownguide.org) for the full
 ---
 
 ## Images? Here's How:
-![Svelte Logo](https://i.ibb.co/64rLRDY/svelte-96x96.png)  
+![Svelte Logo](https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg)  
 
 ---
 
