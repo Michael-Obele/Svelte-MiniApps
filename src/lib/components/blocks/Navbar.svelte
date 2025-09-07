@@ -54,19 +54,21 @@
 	<div class="container flex flex-wrap items-center justify-between">
 		<!-- Logo -->
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-			<div class="flex text-2xl font-semibold dark:text-white">
+			<div class="flex text-lg font-semibold sm:text-2xl dark:text-white">
 				<span class="m-1 h-6 w-6 self-center whitespace-nowrap">
 					<Svelte />
 				</span>
-				MiniApps
+				<span>MiniApps</span>
 			</div>
 		</a>
 		<!-- End of Logo -->
 		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:space-x-0">
 			<div class="flex items-center space-x-2 px-2">
+				<!-- Theme toggle - visible on all screen sizes -->
+				<ThemeSwitch />
+
 				<!-- On mobile hide these (they will be available in the hamburger menu) -->
 				<div class="hidden items-center space-x-2 md:flex">
-					<ThemeSwitch />
 					<Button variant="outline" type="button" size="icon">
 						<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
 							<span class="sr-only">See GitHub Repo</span>
@@ -201,7 +203,7 @@
 						href="https://github.com/Michael-Obele/Svelte-MiniApps"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center space-x-2 px-3 py-2"
+						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center space-x-2 rounded px-3 py-2 transition-colors"
 					>
 						<Github class="size-4" />
 						<span>GitHub</span>
@@ -212,7 +214,7 @@
 						href="https://bsky.app/profile/svelte-apps.me"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center space-x-2 px-3 py-2"
+						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center space-x-2 rounded px-3 py-2 transition-colors"
 					>
 						<Bluesky class="size-4" />
 						<span>Bluesky</span>
