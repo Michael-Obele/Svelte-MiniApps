@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: 487f559306880ddb108f1e680328c209eec559f5
-// Generated at: 2025-09-07T18:27:33.842Z
+// Last processed commit: 034d1fe2aa85bddedf6c8d7db3e9af3a99947fe2
+// Generated at: 2025-09-07T18:42:35.350Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -24,6 +24,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
     "type": "feature",
     "icon": "Rocket",
     "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "September 7, 2025",
+    "title": "fix: resolve navbar visibility toggle issue",
+    "description": "Updated src/lib/components/blocks/Navbar.svelte",
+    "items": [
+      "fix: resolve navbar visibility toggle issue (034d1fe)"
+    ],
+    "type": "fix",
+    "icon": "Wrench",
+    "color": "from-blue-500 to-cyan-500"
   },
   {
     "date": "September 6, 2025",
@@ -487,4 +498,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-09-07T18:27:33.842Z';
+export const lastUpdated = '2025-09-07T18:42:35.350Z';
