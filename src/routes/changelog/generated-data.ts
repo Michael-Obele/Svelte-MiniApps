@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: e4426d8dfa521c95a9cd059f50969acffce9fe37
-// Generated at: 2025-08-29T10:35:14.059Z
+// Last processed commit: 98a1e4af82f977d2abe81a6095efd9b4489ad1ca
+// Generated at: 2025-09-07T07:20:27.983Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -13,6 +13,17 @@ export interface GeneratedTimelineItem {
 }
 
 export const generatedTimeline: GeneratedTimelineItem[] = [
+  {
+    "date": "September 6, 2025",
+    "title": "feat: add planning documents for Svelte-MiniApps project, including timeline, announcements, playground design, and walkthrough guidelines",
+    "description": "Updated plan/README.md, plan/announcements.md, plan/playground.md and more",
+    "items": [
+      "feat: add planning documents for Svelte-MiniApps project, including timeline, announcements, playground design, and walkthrough guidelines (98a1e4a)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
   {
     "date": "August 29, 2025",
     "title": "💄 style(markdown-editor): improve class order for consistency",
@@ -464,4 +475,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-08-29T10:35:14.060Z';
+export const lastUpdated = '2025-09-07T07:20:27.983Z';
