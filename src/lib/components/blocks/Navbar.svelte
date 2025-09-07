@@ -7,6 +7,7 @@
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
 	import { Github, LogIn, LogOut, User, Settings, LifeBuoy } from '@lucide/svelte';
+	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
@@ -62,14 +63,28 @@
 		</a>
 		<!-- End of Logo -->
 		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:space-x-0">
-			<div class="px-2">
-				<ThemeSwitch />
-				<Button variant="outline" type="button" size="icon">
-					<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
-						<span class="sr-only">See GitHub Repo</span>
-						<Github class="h-[1.2rem] w-[1.2rem]" />
-					</a>
-				</Button>
+			<div class="flex items-center space-x-2 px-2">
+				<!-- On mobile hide these (they will be available in the hamburger menu) -->
+				<div class="hidden items-center space-x-2 md:flex">
+					<ThemeSwitch />
+					<Button variant="outline" type="button" size="icon">
+						<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
+							<span class="sr-only">See GitHub Repo</span>
+							<Github class="h-[1.2rem] w-[1.2rem]" />
+						</a>
+					</Button>
+					<!-- Bluesky icon (desktop only) -->
+					<Button variant="outline" type="button" size="icon">
+						<a
+							target="_blank"
+							href="https://bsky.app/profile/svelte-apps.me"
+							rel="noopener noreferrer"
+						>
+							<span class="sr-only">Bluesky</span>
+							<Bluesky />
+						</a>
+					</Button>
+				</div>
 				{#if $userContext?.username}
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
@@ -109,11 +124,12 @@
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				{:else}
+					<!-- Keep login visible on mobile (avatar area) -->
 					<a href="/login">
 						<Button variant="outline" type="button" size="sm">
 							<span class="flex items-center space-x-2">
 								<LogIn class="h-4 w-4" />
-								<span>Login</span>
+								<span class="hidden sm:inline">Login</span>
 							</span>
 						</Button>
 					</a>
@@ -139,12 +155,12 @@
 				variant="outline"
 				type="button"
 				size="icon"
-				class="inline-flex h-10 w-10 items-center justify-center rounded-lg px-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-lg px-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 				onclick={() => open()}
 			>
 				<div class="relative size-6 rounded p-3 focus:outline-none">
 					<div
-						class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
+						class="absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
 					>
 						<span
 							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
@@ -167,17 +183,41 @@
 			id="navbar-user"
 		>
 			<ul
-				class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900 rtl:space-x-reverse"
+				class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
 			>
 				{#each menuItems as item}
 					<li>
 						<a
 							href={item.href}
-							class={`${isActive(item.name) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-red-700 md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
+							class={`${isActive(item.name) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-red-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
 							aria-current={isActive(item.name) ? 'page' : undefined}>{item.name}</a
 						>
 					</li>
 				{/each}
+
+				<!-- Add social/menu items inside collapsed menu for mobile -->
+				<li class="md:hidden">
+					<a
+						href="https://github.com/Michael-Obele/Svelte-MiniApps"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center space-x-2 px-3 py-2"
+					>
+						<Github class="size-4" />
+						<span>GitHub</span>
+					</a>
+				</li>
+				<li class="md:hidden">
+					<a
+						href="https://bsky.app/profile/svelte-apps.me"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center space-x-2 px-3 py-2"
+					>
+						<Bluesky class="size-4" />
+						<span>Bluesky</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
