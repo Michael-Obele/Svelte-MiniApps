@@ -21,16 +21,46 @@
 
 	let { data }: PageProps = $props();
 
-	// Skills and technologies
+	// Skills and technologies (revamped: initials avatars + level pill)
 	const skills = [
-		{ name: 'Svelte/SvelteKit', level: 'Expert', icon: '⚡' },
-		{ name: 'TypeScript', level: 'Expert', icon: '🔷' },
-		{ name: 'React/Next.js', level: 'Advanced', icon: '⚛️' },
-		{ name: 'Node.js', level: 'Advanced', icon: '🟢' },
-		{ name: 'Python', level: 'Intermediate', icon: '🐍' },
-		{ name: 'Database Design', level: 'Advanced', icon: '🗄️' },
-		{ name: 'UI/UX Design', level: 'Intermediate', icon: '🎨' },
-		{ name: 'DevOps/CI/CD', level: 'Intermediate', icon: '🚀' }
+		{
+			name: 'Svelte/SvelteKit',
+			level: 'Expert',
+			initials: 'SM',
+			color: 'bg-primary/10 text-primary'
+		},
+		{ name: 'TypeScript', level: 'Expert', initials: 'TS', color: 'bg-sky-100 text-sky-600' },
+		{
+			name: 'React/Next.js',
+			level: 'Advanced',
+			initials: 'R',
+			color: 'bg-violet-100 text-violet-600'
+		},
+		{
+			name: 'Node.js',
+			level: 'Advanced',
+			initials: 'ND',
+			color: 'bg-emerald-100 text-emerald-600'
+		},
+		{ name: 'Python', level: 'Intermediate', initials: 'PY', color: 'bg-amber-100 text-amber-600' },
+		{
+			name: 'Database Design',
+			level: 'Advanced',
+			initials: 'DB',
+			color: 'bg-rose-100 text-rose-600'
+		},
+		{
+			name: 'UI/UX Design',
+			level: 'Intermediate',
+			initials: 'UX',
+			color: 'bg-pink-100 text-pink-600'
+		},
+		{
+			name: 'DevOps/CI/CD',
+			level: 'Intermediate',
+			initials: 'DO',
+			color: 'bg-slate-100 text-slate-600'
+		}
 	];
 
 	const projects = [
@@ -79,7 +109,7 @@
 	<title>Hire Michael - Full-Stack Developer | Svelte MiniApps</title>
 	<meta
 		name="description"
-		content="Hire Michael Obele, a skilled full-stack developer specializing in Svelte, SvelteKit, TypeScript, and modern web technologies. Available for freelance and contract work."
+		content="Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."
 	/>
 	<meta
 		name="keywords"
@@ -100,11 +130,12 @@
 
 		<div class="text-center">
 			<h1 class="mb-4 text-4xl font-bold tracking-tight md:text-6xl">
-				Hire the <span class="text-primary">Developer</span>
+				Hire <span class="text-primary">Michael</span>
 			</h1>
 			<p class="text-muted-foreground mx-auto max-w-2xl text-lg md:text-xl">
-				I'm Michael Obele, a passionate full-stack developer specializing in modern web
-				technologies. Let's build something amazing together.
+				I'm Michael — a full‑stack developer and open source contributor. I build delightful web
+				apps with SvelteKit, TypeScript and Node. Available for freelance, contract, and
+				collaboration.
 			</p>
 		</div>
 	</div>
@@ -117,13 +148,14 @@
 				<div class="bg-card rounded-lg border p-6 shadow-sm">
 					<h2 class="mb-4 text-2xl font-semibold">About Me</h2>
 					<p class="text-muted-foreground mb-4">
-						I'm a dedicated full-stack developer with a passion for creating exceptional user
-						experiences. With expertise in the Svelte ecosystem and modern web technologies, I build
-						fast, scalable, and maintainable applications.
+						Full‑stack developer and open source enthusiast. I focus on building fast, maintainable
+						web applications using SvelteKit, TypeScript, and Node. I also contribute to Svelte
+						projects and enjoy mentoring and collaborating with other developers.
 					</p>
 					<p class="text-muted-foreground">
-						When I'm not coding, you'll find me exploring new technologies, contributing to open
-						source, and sharing knowledge with the developer community.
+						If you'd like to work together, tell me a little about your project and what success
+						looks like — mentioning the project or area (for example: "Svelte MiniApps") helps me
+						prioritize messages.
 					</p>
 				</div>
 
@@ -134,10 +166,17 @@
 						{#each skills as skill}
 							<div class="flex items-center justify-between rounded-md border p-3">
 								<div class="flex items-center space-x-3">
-									<span class="text-lg">{skill.icon}</span>
+									<div
+										class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${skill.color ?? 'bg-primary/10 text-primary'}`}
+									>
+										<span class="text-sm font-medium">{skill.initials}</span>
+									</div>
 									<span class="font-medium">{skill.name}</span>
 								</div>
-								<span class="text-muted-foreground text-sm">{skill.level}</span>
+								<span
+									class="bg-muted/5 text-muted-foreground rounded-full px-2 py-0.5 text-xs font-medium"
+									>{skill.level}</span
+								>
 							</div>
 						{/each}
 					</div>
@@ -167,13 +206,13 @@
 					<h2 class="mb-4 text-2xl font-semibold">Get In Touch</h2>
 					<div class="space-y-4">
 						<a
-							href="mailto:michaelobele.dev@gmail.com"
+							href="mailto:admin@svelte-apps.me"
 							class="hover:bg-accent flex items-center space-x-3 rounded-md border p-3 transition-colors"
 						>
 							<Mail class="text-primary size-5" />
 							<div>
 								<p class="font-medium">Email</p>
-								<p class="text-muted-foreground text-sm">michaelobele.dev@gmail.com</p>
+								<p class="text-muted-foreground text-sm">admin@svelte-apps.me</p>
 							</div>
 						</a>
 
@@ -201,7 +240,7 @@
 							</a>
 
 							<a
-								href="https://www.linkedin.com/in/michael-amachree-263841325/"
+								href="https://www.linkedin.com/in/dev-obele"
 								target="_blank"
 								rel="noopener noreferrer"
 								class="hover:bg-accent flex items-center space-x-2 rounded-md border p-3 transition-colors"
@@ -260,17 +299,17 @@
 				<!-- Call to Action -->
 				<div class="bg-primary/5 rounded-lg border p-6 text-center shadow-sm">
 					<Briefcase class="text-primary mx-auto mb-4 size-12" />
-					<h2 class="mb-2 text-xl font-semibold">Ready to Work Together?</h2>
+					<h2 class="mb-2 text-xl font-semibold">Ready to chat?</h2>
 					<p class="text-muted-foreground mb-4">
-						I'm currently available for freelance projects and consulting work. Let's discuss how we
-						can bring your ideas to life.
+						I'm open to freelance and consulting work, as well as collaboration on OSS and
+						mentoring. Share a brief note about the project and timeline and I'll get back to you.
 					</p>
 					<a
-						href="mailto:michaelobele.dev@gmail.com?subject=Hiring Inquiry"
+						href="mailto:admin@svelte-apps.me?subject=Hiring Inquiry"
 						class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center rounded-md px-6 py-3 font-medium transition-colors"
 					>
 						<Mail class="mr-2 size-4" />
-						Start a Conversation
+						Email Michael
 					</a>
 				</div>
 			</div>

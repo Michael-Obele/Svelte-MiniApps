@@ -94,7 +94,7 @@
 						<Bluesky class="size-5" fill="white" />
 					</a>
 					<a
-						href="https://www.linkedin.com/in/michael-amachree-263841325/"
+						href="https://www.linkedin.com/in/dev-obele"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-primary transition-colors"
@@ -136,21 +136,7 @@
 					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>
 				<div class="flex items-center space-x-2">
-					<span class="text-muted-foreground flex items-center text-sm">
-						Made with <Heart
-							class="mx-1 size-4 text-red-500"
-							fill="currentColor"
-							strokeWidth={1.5}
-						/> by
-					</span>
-					<a
-						href="https://github.com/Michael-Obele"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-primary font-medium hover:underline"
-					>
-						Michael
-					</a>
+					<a href="/hire" class="text-primary font-medium hover:underline"> Work with Michael </a>
 				</div>
 				<iframe
 					src="https://github.com/sponsors/Michael-Obele/button"
