@@ -17,6 +17,7 @@
 		{ name: 'Home', href: '/' },
 		{ name: 'Apps', href: '/apps' },
 		{ name: 'About', href: '/about' },
+		{ name: 'Hire', href: '/hire' },
 		{ name: 'Changelog', href: '/changelog' }
 	];
 
