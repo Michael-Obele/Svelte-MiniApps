@@ -70,14 +70,37 @@
 				'A collection of productivity mini-apps built with SvelteKit and modern web technologies',
 			tech: ['Svelte 5', 'SvelteKit', 'TypeScript', 'Tailwind CSS', 'Prisma'],
 			link: 'https://github.com/Michael-Obele/Svelte-MiniApps',
-			stars: 'Featured'
+			stars: 'Featured Project'
+		},
+		{
+			name: 'VaultNote',
+			description:
+				'A modern, secure, and open-source desktop application designed to be a productivity hub for professionals, developers, and power users. VaultNote integrates essential tools into a single, focused, and trustworthy environment.',
+			tech: ['Svelte 5', 'SvelteKit', 'Rust', 'Tauri', 'TypeScript', 'Tailwind CSS'],
+			link: 'https://github.com/Michael-Obele/VaultNote',
+			stars: 'Active Development'
+		},
+		{
+			name: 'Myth Buster',
+			description:
+				'An interactive web application transforming myth verification into a profound, user-guided research journey. Leveraging the Perplexity Sonar API, it acts as a dynamic AI research assistant empowering users to uncover layers of information, critically examine evidence, explore diverse contexts, and synthesize knowledge into coherent understanding.',
+			tech: [
+				'SvelteKit',
+				'TypeScript',
+				'Tailwind CSS',
+				'Prisma',
+				'Perplexity Sonar API',
+				'PostgreSQL'
+			],
+			link: 'https://github.com/Michael-Obele/myth-buster',
+			stars: 'Hackathon Project'
 		},
 		{
 			name: 'Various Open Source',
 			description: 'Contributions to open source projects and community development',
 			tech: ['JavaScript', 'TypeScript', 'React', 'Node.js'],
 			link: 'https://github.com/Michael-Obele',
-			stars: 'Active'
+			stars: 'Community Contributions'
 		}
 	];
 
