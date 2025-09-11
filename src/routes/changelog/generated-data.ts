@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: e102da3a5a6696659f0ef0584efb46b098ef8e8e
-// Generated at: 2025-09-08T22:52:28.935Z
+// Last processed commit: e432268ada001ab8960cea1c5df89ac221bbe488
+// Generated at: 2025-09-11T14:24:53.986Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -13,6 +13,17 @@ export interface GeneratedTimelineItem {
 }
 
 export const generatedTimeline: GeneratedTimelineItem[] = [
+  {
+    "date": "September 10, 2025",
+    "title": "Remove Hire link from navbar",
+    "description": "Updated src/lib/components/blocks/Navbar.svelte",
+    "items": [
+      "Remove Hire link from navbar (e432268)"
+    ],
+    "type": "improvement",
+    "icon": "Code",
+    "color": "from-purple-500 to-violet-500"
+  },
   {
     "date": "September 8, 2025",
     "title": "Updates",
@@ -524,4 +535,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-09-08T22:52:28.935Z';
+export const lastUpdated = '2025-09-11T14:24:53.986Z';
