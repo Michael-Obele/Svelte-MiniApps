@@ -12,7 +12,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
-	import { ArrowRightIcon } from '@lucide/svelte';
+	import { ArrowRightIcon, ExternalLink } from '@lucide/svelte';
 	import Highlight from './Highlight.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
@@ -209,81 +209,7 @@
 			</Card>
 		</div>
 
-		<!-- Enhanced Updates Section with Dynamic Insights -->
-		<section id="updates" class="py-10">
-			<h2 class="text-foreground mb-2 text-center text-3xl font-bold">
-				TL;DR: Development Insights
-			</h2>
-			<p class="text-muted-foreground mb-10 text-center text-sm">
-				Real-time insights from our automated changelog system.
-			</p>
-
-			<!-- Dynamic Category Insights -->
-			<div class="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each Object.entries(typeStats) as [type, stats]}
-					<Card class="border-border/50 bg-card/50 relative overflow-hidden backdrop-blur">
-						<CardHeader class="pb-2">
-							<div class="flex items-center justify-between">
-								<CardTitle class="text-lg capitalize">{type}s</CardTitle>
-								<Badge variant="secondary" class="text-xs">
-									{stats.count}
-								</Badge>
-							</div>
-							<CardDescription class="text-xs">
-								{#if stats.recent.length > 0}
-									{stats.recent.length} recent update{stats.recent.length === 1 ? '' : 's'}
-								{:else}
-									No recent activity
-								{/if}
-							</CardDescription>
-						</CardHeader>
-						<CardContent class="space-y-2">
-							{#if stats.recent.length > 0}
-								{#each stats.recent.slice(0, 2) as item}
-									<div class="text-muted-foreground text-sm">
-										<div class="flex items-center gap-2">
-											<div class="bg-primary/60 h-1.5 w-1.5 rounded-full"></div>
-											<span class="truncate" title={item.description}>{item.title}</span>
-										</div>
-									</div>
-								{/each}
-								{#if stats.recent.length > 2}
-									<div class="text-muted-foreground/60 text-xs">
-										+{stats.recent.length - 2} more...
-									</div>
-								{/if}
-							{:else}
-								<div class="text-muted-foreground/40 text-xs italic">
-									All {type}s are from earlier periods
-								</div>
-							{/if}
-						</CardContent>
-						<!-- Visual accent based on type -->
-						<div class={`absolute bottom-0 left-0 h-1 w-full ${getTypeAccent(type)}`}></div>
-					</Card>
-				{/each}
-			</div>
-
-			<!-- Manual Highlights (preserved) -->
-			<div class="grid gap-6 md:grid-cols-3">
-				{#each updates as section}
-					<Card>
-						<CardHeader>
-							<CardTitle>{section.category}</CardTitle>
-							<CardDescription>Highlights</CardDescription>
-						</CardHeader>
-						<CardContent class="space-y-4">
-							{#each section.items as item}
-								<Alert class="flex items-start gap-2">
-									<ArrowRightIcon class="mt-1 h-4 w-4" />
-									<AlertTitle class="leading-relaxed">{item}</AlertTitle>
-								</Alert>
-							{/each}
-						</CardContent>
-					</Card>
-				{/each}
-			</div>
-		</section>
+		<!-- Duplicate TL;DR section removed -->
 		<!-- Enhanced Updates Section with Dynamic Insights -->
 		<section id="updates" class="py-10">
 			<h2 class="text-foreground mb-2 text-center text-3xl font-bold">
@@ -361,29 +287,34 @@
 		</section>
 
 		<section class="container mx-auto mt-16 max-w-3xl px-4 py-8">
-			<Card>
-				<CardHeader>
-					<CardTitle>Need Svelte 4?</CardTitle>
-					<CardDescription>Access the older version</CardDescription>
+			<Card class="border-primary/20 overflow-visible border-t-2">
+				<CardHeader class="flex items-start justify-between gap-4">
+					<div class="flex items-start gap-3">
+						<!-- <div class="text-primary pt-1">
+							<ExternalLink class="h-5 w-5" />
+						</div> -->
+						<div>
+							<CardTitle>Need Svelte 4?</CardTitle>
+							<CardDescription>Legacy version access and migration resources</CardDescription>
+						</div>
+					</div>
+					<Badge variant="secondary" class="tracking-wider uppercase">Legacy</Badge>
 				</CardHeader>
 				<CardContent class="text-center text-sm sm:text-base">
-					<p class="mb-4">
-						For those who wish to use the Svelte 4 version of the app, you can visit:
+					<p class="text-muted-foreground mb-6">
+						If you depend on the Svelte 4 release, open the legacy app. The new app focuses on
+						performance and PWA features; review your integration before upgrading.
 					</p>
-					<p>
-						<a
-							href="https://old.svelte-apps.me"
-							class="text-primary hover:text-primary/80 font-semibold underline transition-colors"
-						>
-							old.svelte-apps.me
-						</a>
-						or
-						<a
-							href="https://sv4.svelte-apps.me"
-							class="text-primary hover:text-primary/80 font-semibold underline transition-colors"
-						>
-							sv4.svelte-apps.me
-						</a>.
+					<div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+						<Button class="w-full sm:w-auto" variant="secondary">
+							<a href="https://old.svelte-apps.me" target="_blank" rel="noopener noreferrer">
+								Open Legacy App
+							</a>
+							<ExternalLink />
+						</Button>
+					</div>
+					<p class="text-muted-foreground/70 mt-4 text-xs">
+						Note: Legacy builds may not include the latest security or PWA improvements.
 					</p>
 				</CardContent>
 			</Card>
