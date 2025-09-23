@@ -1,4 +1,44 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+
+// Mock PersistedState to avoid localStorage issues
+vi.mock('runed', () => ({
+	PersistedState: class MockPersistedState {
+		current: any;
+		constructor(initial: any) {
+			this.current = initial;
+		}
+	}
+}));
+
+// Mock Date to ensure different timestamps
+const originalDate = global.Date;
+let mockTime = Date.now();
+
+class MockDate extends originalDate {
+	constructor(value?: any) {
+		if (value === undefined) {
+			super(mockTime);
+		} else {
+			super(value);
+		}
+	}
+
+	static now() {
+		return mockTime;
+	}
+
+	toISOString() {
+		return new originalDate(mockTime).toISOString();
+	}
+}
+
+global.Date = MockDate as any;
+
+// Helper to advance mock time
+function advanceTime(ms: number = 1) {
+	mockTime += ms;
+}
+
 import * as purchaseState from './states.svelte';
 
 describe('Purchase Tracker State Management', () => {
@@ -47,6 +87,9 @@ describe('Purchase Tracker State Management', () => {
 	it('should update an item', () => {
 		const id = purchaseState.addItem('Test Gas', 'fuel', 'Regular gasoline', 'gallons', 'USD');
 		const item = purchaseState.items.current[0];
+
+		// Advance time to ensure different timestamp
+		advanceTime(1000);
 
 		purchaseState.updateItem(id, {
 			name: 'Updated Gas',
