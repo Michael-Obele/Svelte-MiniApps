@@ -24,7 +24,8 @@ export const done = [
 	'todo-list',
 	'markdown-editor',
 	'text-summarizer',
-	'unit-converter'
+	'unit-converter',
+	'purchase-tracker'
 ];
 //
 export type Project = {
@@ -49,6 +50,14 @@ export const projects: Project[] = [
 		tag: 'finance',
 		difficulty: 'medium',
 		link: 'budget-tracker'
+	},
+	{
+		title: 'Purchase Tracker',
+		details:
+			'Track your purchases over time with detailed records including costs, quantities, and automatic timestamps for better expense management.',
+		tag: 'finance',
+		difficulty: 'medium',
+		link: 'purchase-tracker'
 	},
 	{
 		title: 'Random Password Generator',

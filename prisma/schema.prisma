@@ -8,20 +8,23 @@ datasource db {
 }
 
 model User {
-  id             String           @id @default(uuid())
-  age            Int?
-  username       String           @unique
-  passwordHash   String           @map("password_hash")
-  role           String           @default("user")
-  createdAt      DateTime         @default(now()) @map("created_at")
-  updatedAt      DateTime         @updatedAt @map("updated_at")
-  githubId       String?          @unique
-  googleId       String?          @unique
-  mantras        Mantra[]
-  sessions       Session[]
-  SocialLinkPage SocialLinkPage[]
-  UserPassword   UserPassword[]
-  budgets        Budget[]
+  id              String           @id @default(uuid())
+  age             Int?
+  username        String           @unique
+  passwordHash    String           @map("password_hash")
+  role            String           @default("user")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  githubId        String?          @unique
+  googleId        String?          @unique
+  mantras         Mantra[]
+  sessions        Session[]
+  SocialLinkPage  SocialLinkPage[]
+  UserPassword    UserPassword[]
+  budgets         Budget[]
+  purchases       Purchase[]
+  items           Item[]
+  purchaseRecords PurchaseRecord[]
 
   @@index([username])
   @@map("user")
@@ -112,4 +115,57 @@ model Expense {
   budget      Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
 
   @@map("expenses")
+}
+
+model Purchase {
+  id            String   @id @default(uuid())
+  name          String
+  category      String
+  cost          Float
+  quantity      Float?
+  quantityUnit  String?
+  notes         String?
+  location      String?
+  paymentMethod String?
+  userId        String?  @map("user_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  user          User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("purchases")
+}
+
+model Item {
+  id              String           @id @default(uuid())
+  name            String
+  category        String
+  description     String?
+  defaultUnit     String?
+  defaultCurrency String           @default("USD")
+  userId          String?          @map("user_id")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purchases       PurchaseRecord[]
+
+  @@map("items")
+}
+
+model PurchaseRecord {
+  id            String   @id @default(uuid())
+  itemId        String   @map("item_id")
+  quantity      Float
+  cost          Float
+  currency      String   @default("USD")
+  date          DateTime
+  location      String?
+  paymentMethod String?
+  notes         String?
+  createdAt     DateTime @default(now()) @map("created_at")
+  item          Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  userId        String?  @map("user_id")
+  user          User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([itemId])
+  @@map("purchase_records")
 }
