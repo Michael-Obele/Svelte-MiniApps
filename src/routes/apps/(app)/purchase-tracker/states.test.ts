@@ -3,8 +3,10 @@ import * as purchaseState from './states.svelte';
 
 describe('Purchase Tracker State Management', () => {
 	beforeEach(() => {
-		// Clear localStorage for persisted state
-		localStorage.clear();
+		// Clear state for each test
+		purchaseState.items.current = [];
+		purchaseState.purchases.current = [];
+		purchaseState.customCategories.current = [];
 	});
 
 	it('should add an item', () => {
@@ -21,12 +23,12 @@ describe('Purchase Tracker State Management', () => {
 
 	it('should add a purchase record', () => {
 		const itemId = purchaseState.addItem('Test Gas', 'fuel', 'Regular gasoline', 'gallons', 'USD');
-		const purchaseId = purchaseState.addPurchaseRecord(
+		const id = purchaseState.addPurchaseRecord(
 			itemId,
 			10,
 			50.0,
 			'USD',
-			new Date().toISOString(),
+			'2024-01-01',
 			'Shell Station',
 			'credit',
 			'Regular gas purchase'
@@ -42,7 +44,6 @@ describe('Purchase Tracker State Management', () => {
 		expect(purchaseState.purchases.current[0].notes).toBe('Regular gas purchase');
 		expect(purchaseState.purchases.current[0]).toHaveProperty('createdAt');
 	});
-
 	it('should update an item', () => {
 		const id = purchaseState.addItem('Test Gas', 'fuel', 'Regular gasoline', 'gallons', 'USD');
 		const item = purchaseState.items.current[0];
@@ -79,9 +80,11 @@ describe('Purchase Tracker State Management', () => {
 
 	it('should delete an item', () => {
 		const id = purchaseState.addItem('Test Gas', 'fuel', 'Regular gasoline', 'gallons', 'USD');
+
 		expect(purchaseState.items.current).toHaveLength(1);
 
 		purchaseState.deleteItem(id);
+
 		expect(purchaseState.items.current).toHaveLength(0);
 	});
 

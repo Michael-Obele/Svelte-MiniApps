@@ -42,6 +42,11 @@ const budgetStrikethroughState = new PersistedState<Record<string, boolean>>(
 
 // Budget store functions
 export function addBudget(name: string, amount: number, currency: string, id?: string): string {
+	// Validate input
+	if (!name.trim() || amount < 0 || !currency.trim()) {
+		return '';
+	}
+
 	const newBudget: Budget = {
 		id: id || crypto.randomUUID(),
 		name,
@@ -106,6 +111,11 @@ export function addExpense(
 	amount: number,
 	id?: string
 ): string {
+	// Validate input
+	if (!description.trim() || amount < 0) {
+		return '';
+	}
+
 	const newExpense: Expense = {
 		id: id || crypto.randomUUID(),
 		description,

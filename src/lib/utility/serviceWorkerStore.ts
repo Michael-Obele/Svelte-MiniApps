@@ -1,6 +1,6 @@
 import { writable, derived, type Writable, type Readable } from 'svelte/store';
 import { toast } from 'svelte-sonner';
-import { RefreshCw } from '@lucide/svelte';
+import { type Icon, RefreshCw } from '@lucide/svelte';
 
 // Create reactive state using Svelte stores
 const updateAvailable: Writable<boolean> = writable(false);
@@ -41,7 +41,6 @@ export function notifyUpdateAvailable(registration: ServiceWorkerRegistration, n
 			onClick: () => applyUpdate()
 		},
 		duration: 0,
-		icon: RefreshCw,
 		id: 'sw-update',
 		position: 'top-right'
 	});

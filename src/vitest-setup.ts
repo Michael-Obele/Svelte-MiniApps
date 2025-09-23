@@ -14,8 +14,19 @@ afterEach(() => {
 class LocalStorageMock {
 	private store: Record<string, string> = {};
 
+	constructor() {
+		// Initialize with empty arrays for purchase tracker tests
+		this.store['purchase-items'] = '[]';
+		this.store['purchase-records'] = '[]';
+		this.store['purchase-categories'] = '[]';
+	}
+
 	clear() {
 		this.store = {};
+		// Re-initialize after clear
+		this.store['purchase-items'] = '[]';
+		this.store['purchase-records'] = '[]';
+		this.store['purchase-categories'] = '[]';
 	}
 
 	getItem(key: string) {
@@ -38,16 +49,9 @@ class LocalStorageMock {
 	get length() {
 		return Object.keys(this.store).length;
 	}
-}
-
-// Setup localStorage and sessionStorage mocks
+} // Setup localStorage and sessionStorage mocks
 global.localStorage = new LocalStorageMock();
 global.sessionStorage = new LocalStorageMock();
-
-// Initialize localStorage with empty arrays for purchase tracker tests
-global.localStorage.setItem('purchase-items', '[]');
-global.localStorage.setItem('purchase-records', '[]');
-global.localStorage.setItem('purchase-categories', '[]');
 
 // Add event listener and dispatch event for storage events
 const originalSetItem = global.localStorage.setItem;
