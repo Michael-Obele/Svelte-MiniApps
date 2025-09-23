@@ -42,11 +42,17 @@
 		onSave,
 		onCancel
 	}: Props = $props();
+
+	// Format number with commas for display
+	function formatNumberWithCommas(num: number | undefined): string {
+		if (num === undefined || num === null) return '';
+		return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+	}
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
+	<Dialog.Content class="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+		<Dialog.Header class="space-y-3 pb-4">
 			<Dialog.Title>
 				{editingPurchase ? 'Edit Purchase Record' : 'Add Purchase Record'}
 			</Dialog.Title>
@@ -56,7 +62,7 @@
 					: `Record a new purchase for "${selectedItemForPurchase?.name}".`}
 			</Dialog.Description>
 		</Dialog.Header>
-		<div class="grid gap-4 py-4">
+		<div class="grid gap-6 py-6">
 			{#if !editingPurchase && selectedItemForPurchase}
 				<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
 					<div class="font-medium">{selectedItemForPurchase!.name}</div>
@@ -89,6 +95,14 @@
 						bind:value={purchaseCost}
 						placeholder="0.00"
 					/>
+					{#if purchaseCost !== undefined && purchaseCost !== null}
+						<Input
+							value={formatNumberWithCommas(purchaseCost)}
+							readonly
+							class="text-muted-foreground"
+							placeholder="Formatted cost will appear here"
+						/>
+					{/if}
 				</div>
 			</div>
 

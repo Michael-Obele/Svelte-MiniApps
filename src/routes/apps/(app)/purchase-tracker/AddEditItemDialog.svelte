@@ -39,14 +39,14 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
+	<Dialog.Content class="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+		<Dialog.Header class="space-y-3 pb-4">
 			<Dialog.Title>{editingItem ? 'Edit Item' : 'Add New Item'}</Dialog.Title>
 			<Dialog.Description>
 				{editingItem ? 'Update the item details.' : 'Create a new item to track purchases for.'}
 			</Dialog.Description>
 		</Dialog.Header>
-		<div class="grid gap-4 py-4">
+		<div class="grid gap-6 py-6">
 			<div class="grid gap-2">
 				<Label for="item-name">Name *</Label>
 				<Input id="item-name" bind:value={itemName} placeholder="e.g., Regular Gasoline" />
