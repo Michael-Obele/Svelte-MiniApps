@@ -7,54 +7,63 @@ expect.extend(matchers);
 
 // Automatically cleanup after each test
 afterEach(() => {
-  cleanup();
+	cleanup();
 });
 
 // Mock localStorage and sessionStorage for testing
 class LocalStorageMock {
-  private store: Record<string, string> = {};
+	private store: Record<string, string> = {};
 
-  clear() {
-    this.store = {};
-  }
+	clear() {
+		this.store = {};
+	}
 
-  getItem(key: string) {
-    return this.store[key] || null;
-  }
+	getItem(key: string) {
+		const value = this.store[key];
+		return value === undefined ? null : value;
+	}
 
-  setItem(key: string, value: string) {
-    this.store[key] = String(value);
-  }
+	setItem(key: string, value: string) {
+		this.store[key] = String(value);
+	}
 
-  removeItem(key: string) {
-    delete this.store[key];
-  }
+	removeItem(key: string) {
+		delete this.store[key];
+	}
 
-  key(index: number) {
-    return Object.keys(this.store)[index] || null;
-  }
+	key(index: number) {
+		return Object.keys(this.store)[index] || null;
+	}
 
-  get length() {
-    return Object.keys(this.store).length;
-  }
+	get length() {
+		return Object.keys(this.store).length;
+	}
 }
 
 // Setup localStorage and sessionStorage mocks
 global.localStorage = new LocalStorageMock();
 global.sessionStorage = new LocalStorageMock();
 
+// Initialize localStorage with empty arrays for purchase tracker tests
+global.localStorage.setItem('purchase-items', '[]');
+global.localStorage.setItem('purchase-records', '[]');
+global.localStorage.setItem('purchase-categories', '[]');
+
 // Add event listener and dispatch event for storage events
 const originalSetItem = global.localStorage.setItem;
 global.localStorage.setItem = function (key, value) {
-  const oldValue = this.getItem(key);
-  originalSetItem.call(this, key, value);
-  
-  const storageEvent = new StorageEvent('storage', {
-    key,
-    oldValue,
-    newValue: value,
-    storageArea: global.localStorage
-  });
-  
-  window.dispatchEvent(storageEvent);
+	const oldValue = this.getItem(key);
+	originalSetItem.call(this, key, value);
+
+	// Create a custom storage event since StorageEvent constructor has issues in jsdom
+	const storageEvent = new CustomEvent('storage', {
+		detail: {
+			key,
+			oldValue,
+			newValue: value,
+			storageArea: global.localStorage
+		}
+	});
+
+	window.dispatchEvent(storageEvent);
 };

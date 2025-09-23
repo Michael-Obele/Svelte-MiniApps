@@ -10,7 +10,7 @@
 		budgetName = $bindable(),
 		budgetAmount = $bindable(),
 		selectedCurrency = $bindable('USD'),
-		currencies,
+		currencies = $bindable<{ value: string; label: string; symbol: string; icon?: string }[]>(),
 		addBudget,
 		formatNumber,
 		formsSection = $bindable(),
@@ -42,9 +42,12 @@
 					<Select.Group>
 						<Select.GroupHeading>Currency</Select.GroupHeading>
 						{#each currencies as currency}
-							<Select.Item value={currency.value} label={currency.label}
-								>{currency.label}</Select.Item
-							>
+							<Select.Item value={currency.value} label={currency.label}>
+								{#if currency.icon}
+									<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
+								{/if}
+								{currency.label}
+							</Select.Item>
 						{/each}
 					</Select.Group>
 				</Select.Content>

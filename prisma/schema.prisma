@@ -22,7 +22,6 @@ model User {
   SocialLinkPage  SocialLinkPage[]
   UserPassword    UserPassword[]
   budgets         Budget[]
-  purchases       Purchase[]
   items           Item[]
   purchaseRecords PurchaseRecord[]
 
@@ -115,24 +114,6 @@ model Expense {
   budget      Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
 
   @@map("expenses")
-}
-
-model Purchase {
-  id            String   @id @default(uuid())
-  name          String
-  category      String
-  cost          Float
-  quantity      Float?
-  quantityUnit  String?
-  notes         String?
-  location      String?
-  paymentMethod String?
-  userId        String?  @map("user_id")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
-  user          User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("purchases")
 }
 
 model Item {

@@ -3,15 +3,8 @@ import * as purchaseState from './states.svelte';
 
 describe('Purchase Tracker State Management', () => {
 	beforeEach(() => {
-		// Clear localStorage for persisted state and initialize with empty arrays
+		// Clear localStorage for persisted state
 		localStorage.clear();
-		localStorage.setItem('purchase-items', '[]');
-		localStorage.setItem('purchase-records', '[]');
-		localStorage.setItem('purchase-categories', '[]');
-
-		// Reset state arrays
-		purchaseState.items.current = [];
-		purchaseState.purchases.current = [];
 	});
 
 	it('should add an item', () => {
@@ -22,6 +15,8 @@ describe('Purchase Tracker State Management', () => {
 		expect(purchaseState.items.current[0].category).toBe('fuel');
 		expect(purchaseState.items.current[0].defaultUnit).toBe('gallons');
 		expect(purchaseState.items.current[0].defaultCurrency).toBe('USD');
+		expect(purchaseState.items.current[0]).toHaveProperty('createdAt');
+		expect(purchaseState.items.current[0]).toHaveProperty('updatedAt');
 	});
 
 	it('should add a purchase record', () => {
@@ -42,6 +37,10 @@ describe('Purchase Tracker State Management', () => {
 		expect(purchaseState.purchases.current[0].quantity).toBe(10);
 		expect(purchaseState.purchases.current[0].cost).toBe(50.0);
 		expect(purchaseState.purchases.current[0].currency).toBe('USD');
+		expect(purchaseState.purchases.current[0].location).toBe('Shell Station');
+		expect(purchaseState.purchases.current[0].paymentMethod).toBe('credit');
+		expect(purchaseState.purchases.current[0].notes).toBe('Regular gas purchase');
+		expect(purchaseState.purchases.current[0]).toHaveProperty('createdAt');
 	});
 
 	it('should update an item', () => {
@@ -55,6 +54,7 @@ describe('Purchase Tracker State Management', () => {
 
 		expect(purchaseState.items.current[0].name).toBe('Updated Gas');
 		expect(purchaseState.items.current[0].category).toBe('automotive');
+		expect(purchaseState.items.current[0].updatedAt).not.toBe(item.updatedAt);
 	});
 
 	it('should update a purchase record', () => {
@@ -126,5 +126,98 @@ describe('Purchase Tracker State Management', () => {
 		expect(stats.totalQuantity).toBe(18);
 		expect(stats.totalSpent).toBe(90.0);
 		expect(stats.averageCost).toBe(45.0);
+	});
+
+	it('should have supported currencies with proper structure', () => {
+		expect(purchaseState.supportedCurrencies).toBeDefined();
+		expect(Array.isArray(purchaseState.supportedCurrencies)).toBe(true);
+		expect(purchaseState.supportedCurrencies.length).toBeGreaterThan(0);
+
+		const usdCurrency = purchaseState.supportedCurrencies.find((c) => c.code === 'USD');
+		expect(usdCurrency).toBeDefined();
+		expect(usdCurrency?.code).toBe('USD');
+		expect(usdCurrency?.symbol).toBe('$');
+		expect(usdCurrency?.name).toBe('United States dollar');
+		expect(usdCurrency).toHaveProperty('icon');
+	});
+
+	it('should get currency info', () => {
+		const usdInfo = purchaseState.getCurrencyInfo('USD');
+		expect(usdInfo).toBeDefined();
+		expect(usdInfo?.code).toBe('USD');
+		expect(usdInfo?.symbol).toBe('$');
+
+		const invalidInfo = purchaseState.getCurrencyInfo('INVALID');
+		expect(invalidInfo).toBeUndefined();
+	});
+
+	it('should manage custom categories', () => {
+		const categoryId = purchaseState.addCustomCategory('Test Category', '#ff0000', '🔥');
+
+		expect(purchaseState.customCategories.current).toHaveLength(1);
+		expect(purchaseState.customCategories.current[0].name).toBe('Test Category');
+		expect(purchaseState.customCategories.current[0].color).toBe('#ff0000');
+		expect(purchaseState.customCategories.current[0].icon).toBe('🔥');
+
+		purchaseState.updateCustomCategory(categoryId, {
+			name: 'Updated Category',
+			color: '#00ff00'
+		});
+
+		expect(purchaseState.customCategories.current[0].name).toBe('Updated Category');
+		expect(purchaseState.customCategories.current[0].color).toBe('#00ff00');
+
+		purchaseState.deleteCustomCategory(categoryId);
+		expect(purchaseState.customCategories.current).toHaveLength(0);
+	});
+
+	it('should get all categories including defaults and custom', () => {
+		const customCategoryId = purchaseState.addCustomCategory('Custom Category', '#ff0000', '🔥');
+
+		const allCategories = purchaseState.getAllCategories();
+		expect(allCategories.length).toBeGreaterThan(purchaseState.defaultCategories.length);
+
+		const customCategory = allCategories.find((c) => c.id === customCategoryId);
+		expect(customCategory).toBeDefined();
+		expect(customCategory?.name).toBe('Custom Category');
+
+		// Clean up
+		purchaseState.deleteCustomCategory(customCategoryId);
+	});
+
+	it('should get purchases with items', () => {
+		const itemId = purchaseState.addItem('Test Item', 'fuel', 'Test description', 'gallons', 'USD');
+		const purchaseId = purchaseState.addPurchaseRecord(
+			itemId,
+			10,
+			50.0,
+			'USD',
+			new Date().toISOString()
+		);
+
+		const purchasesWithItems = purchaseState.getPurchasesWithItems();
+		expect(purchasesWithItems).toHaveLength(1);
+		expect(purchasesWithItems[0].itemId).toBe(itemId);
+		expect(purchasesWithItems[0].item.name).toBe('Test Item');
+		expect(purchasesWithItems[0].item.category).toBe('fuel');
+	});
+
+	it('should delete item and associated purchases', () => {
+		const itemId = purchaseState.addItem('Test Item', 'fuel', 'Test description', 'gallons', 'USD');
+		const purchaseId = purchaseState.addPurchaseRecord(
+			itemId,
+			10,
+			50.0,
+			'USD',
+			new Date().toISOString()
+		);
+
+		expect(purchaseState.items.current).toHaveLength(1);
+		expect(purchaseState.purchases.current).toHaveLength(1);
+
+		purchaseState.deleteItem(itemId);
+
+		expect(purchaseState.items.current).toHaveLength(0);
+		expect(purchaseState.purchases.current).toHaveLength(0);
 	});
 });

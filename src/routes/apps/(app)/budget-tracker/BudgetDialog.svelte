@@ -11,7 +11,7 @@
 		editBudgetCurrency: string;
 		updateBudget: () => void;
 		formatNumber: (value: number) => string;
-		currencies: { value: string; label: string; symbol: string }[];
+		currencies: { value: string; label: string; symbol: string; icon?: string }[];
 	}
 
 	let {
@@ -56,7 +56,12 @@
 					<Select.Group>
 						<Select.GroupHeading>Currency</Select.GroupHeading>
 						{#each currencies as currency}
-							<Select.Item value={currency.value}>{currency.label}</Select.Item>
+							<Select.Item value={currency.value}>
+								{#if currency.icon}
+									<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
+								{/if}
+								{currency.label}
+							</Select.Item>
 						{/each}
 					</Select.Group>
 				</Select.Content>

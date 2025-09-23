@@ -6,6 +6,7 @@
 	import { beforeNavigate } from '$app/navigation';
 	import { Loader2 } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
+	import icons from 'currency-icons';
 
 	import BudgetsList from './BudgetsList.svelte';
 	import FloatingBtn from './FloatingBtn.svelte';
@@ -58,12 +59,23 @@
 	let formsSection: HTMLElement | null = $state(null);
 
 	const currencies = [
-		{ value: 'USD', label: 'US Dollar ($)', symbol: '$' },
-		{ value: 'EUR', label: 'Euro (€)', symbol: '€' },
-		{ value: 'GBP', label: 'British Pound (£)', symbol: '£' },
-		{ value: 'JPY', label: 'Japanese Yen (¥)', symbol: '¥' },
-		{ value: 'NGN', label: 'Nigerian Naira (₦)', symbol: '₦' }
-	];
+		'USD',
+		'EUR',
+		'GBP',
+		'JPY',
+		'CAD',
+		'AUD',
+		'CHF',
+		'CNY',
+		'INR',
+		'BRL',
+		'NGN'
+	].map((code) => ({
+		value: code,
+		label: `${icons[code]?.name || code} (${icons[code]?.symbol || code})`,
+		symbol: icons[code]?.symbol || code,
+		icon: icons[code]?.icon || ''
+	}));
 
 	let selectedCurrency = $state('USD');
 
@@ -569,7 +581,7 @@
 			{#if isAuthenticated}
 				<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
 					<!-- Auto-backup Toggle -->
-					<div class="flex items-center gap-2 text-sm text-muted-foreground">
+					<div class="text-muted-foreground flex items-center gap-2 text-sm">
 						<Label for="autobackup" class="flex cursor-pointer items-center gap-2">
 							Auto-backup ({AUTO_BACKUP_DELAY / 1000}s)
 						</Label>
@@ -623,7 +635,7 @@
 							<Button
 								type="submit"
 								disabled={isBackingUp || isLoading}
-								class="w-full disabled:bg-opacity-20 {isBackingUp ? 'disabled:bg-transparent' : ''}"
+								class="disabled:bg-opacity-20 w-full {isBackingUp ? 'disabled:bg-transparent' : ''}"
 								size="sm"
 							>
 								{#if isBackingUp}
@@ -708,10 +720,10 @@
 			<!-- Empty state message when no budgets -->
 			{#if budgetState.budgets.current.length === 0}
 				<div
-					class="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center text-muted-foreground"
+					class="text-muted-foreground flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center"
 				>
 					<h2 class="text-xl font-semibold">No Budgets Yet</h2>
-					<p class="mb-6 mt-2 max-w-md text-sm">
+					<p class="mt-2 mb-6 max-w-md text-sm">
 						Create your first budget to get started tracking your expenses.
 					</p>
 					<Button onclick={() => scrollToID('budget-form')}>Create Budget</Button>

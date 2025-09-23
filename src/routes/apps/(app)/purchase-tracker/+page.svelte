@@ -812,7 +812,11 @@
 						<DropdownMenu.Content>
 							{#each currencyOptions as currency}
 								<DropdownMenu.Item onclick={() => (itemDefaultCurrency = currency.code)}>
-									{currency.symbol}
+									{#if currency.icon}
+										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
+									{:else}
+										{currency.symbol}
+									{/if}
 									{currency.name}
 								</DropdownMenu.Item>
 							{/each}
@@ -902,7 +906,11 @@
 						<DropdownMenu.Content>
 							{#each currencyOptions as currency}
 								<DropdownMenu.Item onclick={() => (purchaseCurrency = currency.code)}>
-									{currency.symbol}
+									{#if currency.icon}
+										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
+									{:else}
+										{currency.symbol}
+									{/if}
 									{currency.name}
 								</DropdownMenu.Item>
 							{/each}
