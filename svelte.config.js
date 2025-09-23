@@ -7,6 +7,13 @@ const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
 	preprocess: [vitePreprocess(), mdsvex()],
+	vitePlugin: {
+		inspector: {
+			toggleKeyCombo: 'alt-x',
+			showToggleButton: 'always',
+			toggleButtonPos: 'bottom-right'
+		}
+	},
 
 	kit: {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
