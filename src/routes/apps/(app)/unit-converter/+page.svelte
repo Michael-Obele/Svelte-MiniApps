@@ -12,7 +12,7 @@
 		getDefaultUnits,
 		type UnitType
 	} from './unit-data.js';
-	import { ArrowRightLeft, X } from '@lucide/svelte';
+	import { ArrowRightLeft, X, Eraser } from '@lucide/svelte';
 
 	let inputValue: string = $state('');
 	let fromUnit: string = $state('meter');
@@ -97,6 +97,7 @@
 				return;
 			}
 		}
+		
 
 		convertedValue = formatResult(result);
 	};
@@ -200,7 +201,7 @@
 							class="h-10 w-10 shrink-0 border-red-500 bg-red-500 text-white shadow-md hover:border-red-700 hover:bg-red-700"
 							title="Clear input"
 						>
-							<X class="h-4 w-4" />
+							<Eraser class="h-4 w-4" />
 						</Button>
 					</div>
 				</div>

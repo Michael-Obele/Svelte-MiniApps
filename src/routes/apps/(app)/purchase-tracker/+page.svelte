@@ -15,7 +15,9 @@
 		Trash2,
 		History,
 		ShoppingCart,
-		Cloud
+		Cloud,
+		HelpCircle,
+		Settings
 	} from '@lucide/svelte';
 	import { PersistedState } from 'runed';
 
@@ -35,6 +37,15 @@
 	import type { Item, PurchaseRecord } from './states.svelte';
 	import * as purchaseState from './states.svelte';
 	import type { PageData } from './$types.js';
+
+	// Component imports
+	import PurchaseTrackerHeader from './PurchaseTrackerHeader.svelte';
+	import ItemsView from './ItemsView.svelte';
+	import PurchasesView from './PurchasesView.svelte';
+	import HelpDialog from './HelpDialog.svelte';
+	import AddEditItemDialog from './AddEditItemDialog.svelte';
+	import AddEditPurchaseDialog from './AddEditPurchaseDialog.svelte';
+	import PurchaseHistoryDialog from './PurchaseHistoryDialog.svelte';
 
 	// Props from load function
 	let { data }: { data: PageData } = $props();
@@ -62,6 +73,7 @@
 	let showAddItemDialog = $state(false);
 	let showAddPurchaseDialog = $state(false);
 	let showPurchaseHistoryDialog = $state(false);
+	let showHelpDialog = $state(false);
 	let editingItem = $state<Item | null>(null);
 	let editingPurchase = $state<PurchaseRecord | null>(null);
 	let selectedItemForPurchase = $state<Item | null>(null);
@@ -129,28 +141,15 @@
 			autoBackupTimer = setTimeout(async () => {
 				await performAutoBackup();
 			}, AUTO_BACKUP_DELAY);
+
+			// Cleanup function to clear timer if effect re-runs or component unmounts
+			return () => {
+				if (autoBackupTimer) {
+					clearTimeout(autoBackupTimer);
+					autoBackupTimer = null;
+				}
+			};
 		}
-	});
-
-	// Filtered items
-	let filteredItems = $derived.by(() => {
-		let items = purchaseState.items.current;
-
-		// Filter by search query
-		if (searchQuery) {
-			items = items.filter(
-				(item) =>
-					item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-					item.description?.toLowerCase().includes(searchQuery.toLowerCase())
-			);
-		}
-
-		// Filter by category
-		if (selectedCategory !== 'all') {
-			items = items.filter((item) => item.category === selectedCategory);
-		}
-
-		return items;
 	});
 
 	// Get available categories
@@ -350,15 +349,13 @@
 			isBackingUp = true;
 			autoBackupRetryCount = 0;
 
-			const response = await fetch('?/backupToServer', {
+			const formData = new FormData();
+			formData.append('items', JSON.stringify(purchaseState.items.current));
+			formData.append('purchases', JSON.stringify(purchaseState.purchases.current));
+
+			const response = await fetch('?/saveData', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					items: purchaseState.items.current,
-					purchases: purchaseState.purchases.current
-				})
+				body: formData
 			});
 
 			const result = await response.json();
@@ -393,15 +390,13 @@
 			isBackingUp = true;
 			showBackupDialog = true;
 
-			const response = await fetch('?/backupToServer', {
+			const formData = new FormData();
+			formData.append('items', JSON.stringify(purchaseState.items.current));
+			formData.append('purchases', JSON.stringify(purchaseState.purchases.current));
+
+			const response = await fetch('?/saveData', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					items: purchaseState.items.current,
-					purchases: purchaseState.purchases.current
-				})
+				body: formData
 			});
 
 			const result = await response.json();
@@ -409,7 +404,7 @@
 			if (result.success) {
 				hasUnsavedChanges = false;
 				toast.success(
-					`Backup successful! Saved ${result.itemsCount} items and ${result.purchasesCount} purchases.`
+					`Backup successful! Saved ${purchaseState.items.current.length} items and ${purchaseState.purchases.current.length} purchases.`
 				);
 			} else {
 				throw new Error(result.error || 'Backup failed');
@@ -499,570 +494,374 @@
 />
 
 <div class="container mx-auto max-w-6xl px-4 py-8">
-	<!-- Header -->
-	<div class="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-		<div>
-			<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Purchase Tracker</h1>
-			<p class="mt-1 text-gray-600 dark:text-gray-400">
-				Track items and record purchases over time
-			</p>
-		</div>
-		<div class="flex gap-2">
-			<Button
-				variant={activeTab === 'items' ? 'default' : 'outline'}
-				onclick={() => (activeTab = 'items')}
-			>
-				<Package class="mr-2 h-4 w-4" />
-				Items
-			</Button>
-			<Button
-				variant={activeTab === 'purchases' ? 'default' : 'outline'}
-				onclick={() => (activeTab = 'purchases')}
-			>
-				<History class="mr-2 h-4 w-4" />
-				Purchase History
-			</Button>
-			{#if isAuthenticated}
-				<Button variant="outline" onclick={backupToServer} disabled={isBackingUp} class="ml-4">
-					{#if isBackingUp}
-						<Loader2 class="mr-2 h-4 w-4 animate-spin" />
-						Backing up...
-					{:else}
-						<Cloud class="mr-2 h-4 w-4" />
-						Backup
-					{/if}
-				</Button>
-			{/if}
-		</div>
-	</div>
+	<PurchaseTrackerHeader
+		bind:activeTab
+		{isAuthenticated}
+		{isBackingUp}
+		onHelpClick={() => showHelpDialog = true}
+		onBackupClick={backupToServer}
+	/>
 
 	{#if isLoading}
 		<div class="flex items-center justify-center py-12">
 			<Loader2 class="h-8 w-8 animate-spin" />
 		</div>
 	{:else}
-		<!-- Search and Filter -->
-		<div class="mb-6 flex flex-col gap-4 sm:flex-row">
-			<div class="flex-1">
-				<Input placeholder="Search items..." bind:value={searchQuery} class="w-full" />
-			</div>
-			<DropdownMenu.Root>
-				<DropdownMenu.Trigger>
-					<Button variant="outline" class="min-w-[140px]">
-						{selectedCategory === 'all'
-							? 'All Categories'
-							: availableCategories.find((c) => c.id === selectedCategory)?.name ||
-								'All Categories'}
-						<ChevronDown class="ml-2 h-4 w-4" />
-					</Button>
-				</DropdownMenu.Trigger>
-				<DropdownMenu.Content>
-					<DropdownMenu.Item onclick={() => (selectedCategory = 'all')}>
-						All Categories
-					</DropdownMenu.Item>
-					{#each availableCategories as category}
-						<DropdownMenu.Item onclick={() => (selectedCategory = category.id)}>
-							{category.icon}
-							{category.name}
-						</DropdownMenu.Item>
-					{/each}
-				</DropdownMenu.Content>
-			</DropdownMenu.Root>
-			<Button
-				onclick={() => {
+		{#if activeTab === 'items'}
+			<ItemsView
+				items={purchaseState.items.current}
+				bind:searchQuery
+				bind:selectedCategory
+				onSearchChange={(query) => searchQuery = query}
+				onCategoryChange={(category) => selectedCategory = category}
+				onAddItem={() => {
 					showAddItemDialog = true;
 					editingItem = null;
 					resetItemForm();
 				}}
-			>
-				<Plus class="mr-2 h-4 w-4" />
-				Add Item
-			</Button>
-		</div>
-
-		{#if activeTab === 'items'}
-			<!-- Items Grid -->
-			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each filteredItems as item (item.id)}
-					{@const stats = getItemStats(item)}
-					<Card class="transition-shadow hover:shadow-lg">
-						<CardHeader class="pb-3">
-							<div class="flex items-start justify-between">
-								<div class="flex-1">
-									<CardTitle class="text-lg">{item.name}</CardTitle>
-									<div class="mt-1 flex items-center gap-2">
-										<Badge variant="secondary" class="text-xs">
-											{purchaseState.getAllCategories().find((c) => c.id === item.category)?.icon}
-											{purchaseState.getAllCategories().find((c) => c.id === item.category)?.name}
-										</Badge>
-									</div>
-								</div>
-								<DropdownMenu.Root>
-									<DropdownMenu.Trigger>
-										<Button variant="ghost" size="sm">
-											<ChevronDown class="h-4 w-4" />
-										</Button>
-									</DropdownMenu.Trigger>
-									<DropdownMenu.Content>
-										<DropdownMenu.Item onclick={() => openEditItemDialog(item)}>
-											<Edit class="mr-2 h-4 w-4" />
-											Edit Item
-										</DropdownMenu.Item>
-										<DropdownMenu.Item onclick={() => openAddPurchaseDialog(item)}>
-											<ShoppingCart class="mr-2 h-4 w-4" />
-											Add Purchase
-										</DropdownMenu.Item>
-										<DropdownMenu.Item onclick={() => openPurchaseHistoryDialog(item)}>
-											<History class="mr-2 h-4 w-4" />
-											View History
-										</DropdownMenu.Item>
-										<DropdownMenu.Separator />
-										<DropdownMenu.Item onclick={() => handleDeleteItem(item)} class="text-red-600">
-											<Trash2 class="mr-2 h-4 w-4" />
-											Delete Item
-										</DropdownMenu.Item>
-									</DropdownMenu.Content>
-								</DropdownMenu.Root>
-							</div>
-						</CardHeader>
-						<CardContent>
-							{#if item.description}
-								<p class="mb-3 text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
-							{/if}
-
-							<div class="space-y-2 text-sm">
-								{#if item.defaultUnit}
-									<div class="flex justify-between">
-										<span class="text-gray-500">Unit:</span>
-										<span>{item.defaultUnit}</span>
-									</div>
-								{/if}
-								<div class="flex justify-between">
-									<span class="text-gray-500">Currency:</span>
-									<span>{item.defaultCurrency}</span>
-								</div>
-								<div class="space-y-2 text-sm">
-									<div class="flex justify-between">
-										<span class="text-gray-500">Total Purchases:</span>
-										<span class="font-medium">{stats.totalPurchases}</span>
-									</div>
-									{#if stats.totalSpent > 0}
-										<div class="flex justify-between">
-											<span class="text-gray-500">Total Spent:</span>
-											<span class="font-medium"
-												>{formatCurrency(stats.totalSpent, item.defaultCurrency || 'USD')}</span
-											>
-										</div>
-									{/if}
-								</div>
-							</div>
-						</CardContent>
-					</Card>
-				{/each}
-			</div>
-
-			{#if filteredItems.length === 0}
-				<div class="py-12 text-center">
-					<Package class="mx-auto mb-4 h-12 w-12 text-gray-400" />
-					<h3 class="mb-2 text-lg font-medium text-gray-900 dark:text-white">No items found</h3>
-					<p class="mb-4 text-gray-600 dark:text-gray-400">
-						{searchQuery || selectedCategory !== 'all'
-							? 'Try adjusting your search or filters.'
-							: 'Get started by adding your first item.'}
-					</p>
-					<Button
-						onclick={() => {
-							showAddItemDialog = true;
-							resetItemForm();
-						}}
-					>
-						<Plus class="mr-2 h-4 w-4" />
-						Add Your First Item
-					</Button>
-				</div>
-			{/if}
+				onEditItem={openEditItemDialog}
+				onAddPurchase={openAddPurchaseDialog}
+				onViewHistory={openPurchaseHistoryDialog}
+				onDeleteItem={handleDeleteItem}
+			/>
 		{:else}
-			<!-- Purchase History View -->
-			<div class="space-y-6">
-				{#each purchaseState.getPurchasesWithItems() as purchase (purchase.id)}
-					<Card>
-						<CardContent class="pt-6">
-							<div class="flex items-start justify-between">
-								<div class="flex-1">
-									<div class="mb-2 flex items-center gap-3">
-										<h3 class="font-medium">{purchase.item.name}</h3>
-										<Badge variant="secondary" class="text-xs">
-											{purchaseState.getAllCategories().find((c) => c.id === purchase.item.category)
-												?.icon}
-											{purchaseState.getAllCategories().find((c) => c.id === purchase.item.category)
-												?.name}
-										</Badge>
-									</div>
-									<div class="grid grid-cols-2 gap-4 text-sm md:grid-cols-4">
-										<div>
-											<span class="text-gray-500">Quantity:</span>
-											<div class="font-medium">
-												{purchase.quantity}
-												{purchase.item.defaultUnit || 'units'}
-											</div>
-										</div>
-										<div>
-											<span class="text-gray-500">Cost:</span>
-											<div class="font-medium">
-												{formatCurrency(purchase.cost, purchase.currency)}
-											</div>
-										</div>
-										<div>
-											<span class="text-gray-500">Date:</span>
-											<div class="font-medium">{formatDate(purchase.date)}</div>
-										</div>
-										<div>
-											<span class="text-gray-500">Location:</span>
-											<div class="font-medium">{purchase.location || 'N/A'}</div>
-										</div>
-									</div>
-									{#if purchase.notes}
-										<div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-											<span class="text-gray-500">Notes:</span>
-											{purchase.notes}
-										</div>
-									{/if}
-								</div>
-								<Button variant="ghost" size="sm" onclick={() => openEditPurchaseDialog(purchase)}>
-									<Edit class="h-4 w-4" />
-								</Button>
-							</div>
-						</CardContent>
-					</Card>
-				{/each}
-			</div>
-
-			{#if purchaseState.getPurchasesWithItems().length === 0}
-				<div class="py-12 text-center">
-					<History class="mx-auto mb-4 h-12 w-12 text-gray-400" />
-					<h3 class="mb-2 text-lg font-medium text-gray-900 dark:text-white">
-						No purchase records
-					</h3>
-					<p class="text-gray-600 dark:text-gray-400">
-						Add some purchases to your items to see the history here.
-					</p>
-				</div>
-			{/if}
+			<PurchasesView onEditPurchase={openEditPurchaseDialog} />
 		{/if}
 	{/if}
 </div>
 
-<!-- Add/Edit Item Dialog -->
-<Dialog.Root bind:open={showAddItemDialog}>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
-			<Dialog.Title>{editingItem ? 'Edit Item' : 'Add New Item'}</Dialog.Title>
-			<Dialog.Description>
-				{editingItem ? 'Update the item details.' : 'Create a new item to track purchases for.'}
-			</Dialog.Description>
-		</Dialog.Header>
-		<div class="grid gap-4 py-4">
-			<div class="grid gap-2">
-				<Label for="item-name">Name *</Label>
-				<Input id="item-name" bind:value={itemName} placeholder="e.g., Regular Gasoline" />
-			</div>
-			<div class="grid gap-2">
-				<Label for="item-category">Category *</Label>
-				<DropdownMenu.Root>
-					<DropdownMenu.Trigger>
-						<Button variant="outline" class="w-full justify-between">
-							{itemCategory
-								? availableCategories.find((c) => c.id === itemCategory)?.name || 'Select category'
-								: 'Select category'}
-							<ChevronDown class="h-4 w-4" />
-						</Button>
-					</DropdownMenu.Trigger>
-					<DropdownMenu.Content class="w-full">
-						{#each availableCategories as category}
-							<DropdownMenu.Item onclick={() => (itemCategory = category.id)}>
-								{category.icon}
-								{category.name}
-							</DropdownMenu.Item>
-						{/each}
-					</DropdownMenu.Content>
-				</DropdownMenu.Root>
-			</div>
-			<div class="grid gap-2">
-				<Label for="item-description">Description</Label>
-				<Textarea
-					id="item-description"
-					bind:value={itemDescription}
-					placeholder="Optional description..."
-				/>
-			</div>
-			<div class="grid grid-cols-2 gap-4">
-				<div class="grid gap-2">
-					<Label for="item-unit">Default Unit</Label>
-					<Input id="item-unit" bind:value={itemDefaultUnit} placeholder="e.g., gallons, liters" />
-				</div>
-				<div class="grid gap-2">
-					<Label for="item-currency">Default Currency</Label>
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger>
-							<Button variant="outline" class="w-full justify-between">
-								{itemDefaultCurrency}
-								<ChevronDown class="h-4 w-4" />
-							</Button>
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content>
-							{#each currencyOptions as currency}
-								<DropdownMenu.Item onclick={() => (itemDefaultCurrency = currency.code)}>
-									{#if currency.icon}
-										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
-									{:else}
-										{currency.symbol}
-									{/if}
-									{currency.name}
-								</DropdownMenu.Item>
-							{/each}
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
-				</div>
-			</div>
-		</div>
-		<Dialog.Footer>
-			<Button
-				variant="outline"
-				onclick={() => {
-					showAddItemDialog = false;
-					editingItem = null;
-				}}
-			>
-				Cancel
-			</Button>
-			<Button onclick={editingItem ? handleEditItem : handleAddItem}>
-				{editingItem ? 'Update Item' : 'Add Item'}
-			</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
+<HelpDialog bind:open={showHelpDialog} />
 
-<!-- Add/Edit Purchase Dialog -->
-<Dialog.Root bind:open={showAddPurchaseDialog}>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
-			<Dialog.Title>
-				{editingPurchase ? 'Edit Purchase Record' : 'Add Purchase Record'}
-			</Dialog.Title>
-			<Dialog.Description>
-				{editingPurchase
-					? 'Update the purchase details.'
-					: `Record a new purchase for "${selectedItemForPurchase?.name}".`}
-			</Dialog.Description>
-		</Dialog.Header>
-		<div class="grid gap-4 py-4">
-			{#if !editingPurchase && selectedItemForPurchase}
-				<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
-					<div class="font-medium">{selectedItemForPurchase!.name}</div>
-					<div class="text-sm text-gray-600 dark:text-gray-400">
-						{purchaseState
-							.getAllCategories()
-							.find((c) => c.id === selectedItemForPurchase!.category)?.name}
-						{#if selectedItemForPurchase!.defaultUnit}
-							• {selectedItemForPurchase!.defaultUnit}
-						{/if}
-					</div>
-				</div>
-			{/if}
+<AddEditItemDialog
+	bind:open={showAddItemDialog}
+	{editingItem}
+	bind:itemName
+	bind:itemCategory
+	bind:itemDescription
+	bind:itemDefaultUnit
+	bind:itemDefaultCurrency
+	{availableCategories}
+	{currencyOptions}
+	onSave={editingItem ? handleEditItem : handleAddItem}
+	onCancel={() => {
+		showAddItemDialog = false;
+		editingItem = null;
+	}}
+/>
 
-			<div class="grid grid-cols-2 gap-4">
-				<div class="grid gap-2">
-					<Label for="purchase-quantity">Quantity *</Label>
-					<Input
-						id="purchase-quantity"
-						type="number"
-						step="0.01"
-						bind:value={purchaseQuantity}
-						placeholder="0.00"
-					/>
-				</div>
-				<div class="grid gap-2">
-					<Label for="purchase-cost">Cost *</Label>
-					<Input
-						id="purchase-cost"
-						type="number"
-						step="0.01"
-						bind:value={purchaseCost}
-						placeholder="0.00"
-					/>
-				</div>
-			</div>
+<AddEditPurchaseDialog
+	bind:open={showAddPurchaseDialog}
+	{editingPurchase}
+	{selectedItemForPurchase}
+	bind:purchaseQuantity
+	bind:purchaseCost
+	bind:purchaseCurrency
+	bind:purchaseDate
+	bind:purchaseLocation
+	bind:purchasePaymentMethod
+	bind:purchaseNotes
+	{currencyOptions}
+	{availableCategories}
+	onSave={editingPurchase ? handleEditPurchase : handleAddPurchase}
+	onCancel={() => {
+		showAddPurchaseDialog = false;
+		editingPurchase = null;
+		selectedItemForPurchase = null;
+	}}
+/>
 
-			<div class="grid grid-cols-2 gap-4">
-				<div class="grid gap-2">
-					<Label for="purchase-currency">Currency</Label>
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger>
-							<Button variant="outline" class="w-full justify-between">
-								{purchaseCurrency}
-								<ChevronDown class="h-4 w-4" />
-							</Button>
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content>
-							{#each currencyOptions as currency}
-								<DropdownMenu.Item onclick={() => (purchaseCurrency = currency.code)}>
-									{#if currency.icon}
-										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
-									{:else}
-										{currency.symbol}
-									{/if}
-									{currency.name}
-								</DropdownMenu.Item>
-							{/each}
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
-				</div>
-				<div class="grid gap-2">
-					<Label for="purchase-date">Date *</Label>
-					<Input id="purchase-date" type="date" bind:value={purchaseDate} />
-				</div>
-			</div>
+<PurchaseHistoryDialog
+	bind:open={showPurchaseHistoryDialog}
+	{selectedItemForHistory}
+	purchases={selectedItemPurchases}
+	stats={selectedItemForHistory ? purchaseState.getItemStats(selectedItemForHistory.id) : { totalPurchases: 0, totalQuantity: 0, totalSpent: 0, averageCost: 0 }}
+	onEditPurchase={openEditPurchaseDialog}
+	onDeletePurchase={handleDeletePurchase}
+	onAddFirstPurchase={() => {
+		showPurchaseHistoryDialog = false;
+		if (selectedItemForHistory) openAddPurchaseDialog(selectedItemForHistory);
+	}}
+	onClose={() => showPurchaseHistoryDialog = false}
+/>
 
-			<div class="grid gap-2">
-				<Label for="purchase-location">Location</Label>
-				<Input
-					id="purchase-location"
-					bind:value={purchaseLocation}
-					placeholder="e.g., Shell Station"
-				/>
-			</div>
-
-			<div class="grid gap-2">
-				<Label for="purchase-payment">Payment Method</Label>
-				<Input
-					id="purchase-payment"
-					bind:value={purchasePaymentMethod}
-					placeholder="e.g., Credit Card"
-				/>
-			</div>
-
-			<div class="grid gap-2">
-				<Label for="purchase-notes">Notes</Label>
-				<Textarea id="purchase-notes" bind:value={purchaseNotes} placeholder="Optional notes..." />
-			</div>
-		</div>
-		<Dialog.Footer>
-			<Button
-				variant="outline"
-				onclick={() => {
-					showAddPurchaseDialog = false;
-					editingPurchase = null;
-					selectedItemForPurchase = null;
-				}}
-			>
-				Cancel
-			</Button>
-			<Button onclick={editingPurchase ? handleEditPurchase : handleAddPurchase}>
-				{editingPurchase ? 'Update Purchase' : 'Add Purchase'}
-			</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
-
-<!-- Purchase History Dialog -->
-<Dialog.Root bind:open={showPurchaseHistoryDialog}>
+<!-- How to Use Dialog -->
+<Dialog.Root bind:open={showHelpDialog}>
 	<Dialog.Content class="max-h-[80vh] overflow-y-auto sm:max-w-[600px]">
 		<Dialog.Header>
-			<Dialog.Title>Purchase History</Dialog.Title>
+			<Dialog.Title class="flex items-center gap-2">
+				<HelpCircle class="h-5 w-5" />
+				How to Use Purchase Tracker
+			</Dialog.Title>
 			<Dialog.Description>
-				All purchase records for "{selectedItemForHistory?.name}"
+				Learn how to track your purchases effectively with step-by-step guidance.
 			</Dialog.Description>
 		</Dialog.Header>
 
-		{#if selectedItemForHistory}
-			{@const purchases = purchaseState.getPurchasesForItem(selectedItemForHistory.id)}
-			{@const stats = purchaseState.getItemStats(selectedItemForHistory.id)}
-
-			<div class="py-4">
-				<!-- Stats -->
-				<div
-					class="mb-6 grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4 md:grid-cols-4 dark:bg-gray-800"
+		<div class="space-y-6 py-4">
+			<!-- Getting Started -->
+			<div>
+				<h3
+					class="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white"
 				>
-					<div class="text-center">
-						<div class="text-2xl font-bold">{stats.totalPurchases}</div>
-						<div class="text-sm text-gray-600 dark:text-gray-400">Total Purchases</div>
-					</div>
-					<div class="text-center">
-						<div class="text-2xl font-bold">{stats.totalQuantity.toFixed(2)}</div>
-						<div class="text-sm text-gray-600 dark:text-gray-400">Total Quantity</div>
-					</div>
-					<div class="text-center">
-						<div class="text-2xl font-bold">
-							{formatCurrency(stats.totalSpent, selectedItemForHistory.defaultCurrency || 'USD')}
-						</div>
-						<div class="text-sm text-gray-600 dark:text-gray-400">Total Spent</div>
-					</div>
-					<div class="text-center">
-						<div class="text-2xl font-bold">
-							{stats.averageCost > 0
-								? formatCurrency(stats.averageCost, selectedItemForHistory.defaultCurrency || 'USD')
-								: 'N/A'}
-						</div>
-						<div class="text-sm text-gray-600 dark:text-gray-400">Avg Cost</div>
-					</div>
-				</div>
-
-				<!-- Purchase List -->
-				<div class="space-y-3">
-					{#each purchases as purchase (purchase.id)}
-						<div class="flex items-center justify-between rounded-lg border p-3">
-							<div class="flex-1">
-								<div class="flex items-center gap-4 text-sm">
-									<div class="font-medium">{formatDate(purchase.date)}</div>
-									<div>{purchase.quantity} {selectedItemForHistory.defaultUnit || 'units'}</div>
-									<div class="font-medium">{formatCurrency(purchase.cost, purchase.currency)}</div>
-									{#if purchase.location}
-										<div class="text-gray-600 dark:text-gray-400">{purchase.location}</div>
-									{/if}
-								</div>
-								{#if purchase.notes}
-									<div class="mt-1 text-xs text-gray-600 dark:text-gray-400">{purchase.notes}</div>
-								{/if}
-							</div>
-							<div class="flex gap-2">
-								<Button variant="ghost" size="sm" onclick={() => openEditPurchaseDialog(purchase)}>
-									<Edit class="h-4 w-4" />
-								</Button>
-								<Button
-									variant="ghost"
-									size="sm"
-									onclick={() => handleDeletePurchase(purchase)}
-									class="text-red-600 hover:text-red-700"
-								>
-									<Trash2 class="h-4 w-4" />
-								</Button>
-							</div>
-						</div>
-					{/each}
-				</div>
-
-				{#if purchases.length === 0}
-					<div class="py-8 text-center">
-						<History class="mx-auto mb-2 h-8 w-8 text-gray-400" />
-						<p class="text-gray-600 dark:text-gray-400">No purchase records yet</p>
-						<Button
-							variant="outline"
-							size="sm"
-							class="mt-2"
-							onclick={() => {
-								showPurchaseHistoryDialog = false;
-								if (selectedItemForHistory) openAddPurchaseDialog(selectedItemForHistory);
-							}}
+					<Package class="h-5 w-5" />
+					Getting Started
+				</h3>
+				<div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-blue-400"
 						>
-							Add First Purchase
-						</Button>
+							1
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Add Your First Item</strong>
+							<p>
+								Click the "Add Item" button to create items you want to track purchases for, like
+								"Regular Gasoline", "Weekly Groceries", or "Coffee Beans".
+							</p>
+						</div>
 					</div>
-				{/if}
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-blue-400"
+						>
+							2
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Choose a Category</strong>
+							<p>
+								Select from predefined categories like Fuel, Groceries, Dining, or create custom
+								categories that fit your spending habits.
+							</p>
+						</div>
+					</div>
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-blue-400"
+						>
+							3
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Set Default Preferences</strong>
+							<p>
+								Configure default units (gallons, pounds, etc.) and currency for each item to make
+								data entry faster.
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		{/if}
+
+			<!-- Recording Purchases -->
+			<div>
+				<h3
+					class="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white"
+				>
+					<ShoppingCart class="h-5 w-5" />
+					Recording Purchases
+				</h3>
+				<div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-medium text-green-600 dark:bg-green-900 dark:text-green-400"
+						>
+							1
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Select an Item</strong>
+							<p>
+								From the Items tab, click the dropdown button <ChevronDown
+									class="mx-1 inline h-3 w-3"
+								/> on any item card and choose "Add Purchase" to record a new transaction.
+							</p>
+						</div>
+					</div>
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-medium text-green-600 dark:bg-green-900 dark:text-green-400"
+						>
+							2
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Enter Purchase Details</strong>
+							<p>
+								Fill in quantity, cost, date, and optionally add location, payment method, and notes
+								for better tracking.
+							</p>
+						</div>
+					</div>
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-medium text-green-600 dark:bg-green-900 dark:text-green-400"
+						>
+							3
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Track Over Time</strong>
+							<p>
+								Regularly add purchases to build a comprehensive history of your spending patterns
+								and costs.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Viewing Data -->
+			<div>
+				<h3
+					class="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white"
+				>
+					<History class="h-5 w-5" />
+					Viewing Your Data
+				</h3>
+				<div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600 dark:bg-purple-900 dark:text-purple-400"
+						>
+							1
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Items Overview</strong>
+							<p>
+								The Items tab shows all your tracked items with purchase statistics including total
+								spent and number of purchases.
+							</p>
+						</div>
+					</div>
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600 dark:bg-purple-900 dark:text-purple-400"
+						>
+							2
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Purchase History</strong>
+							<p>
+								Switch to the "Purchase History" tab to see a chronological list of all your
+								recorded purchases across all items.
+							</p>
+						</div>
+					</div>
+					<div class="flex gap-3">
+						<div
+							class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 text-xs font-medium text-purple-600 dark:bg-purple-900 dark:text-purple-400"
+						>
+							3
+						</div>
+						<div>
+							<strong class="text-gray-900 dark:text-white">Item-Specific History</strong>
+							<p>
+								Click "View History" from an item's dropdown menu to see detailed purchase records
+								just for that specific item.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tips & Best Practices -->
+			<div>
+				<h3
+					class="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white"
+				>
+					<HelpCircle class="h-5 w-5" />
+					Tips & Best Practices
+				</h3>
+				<div class="rounded-lg bg-blue-50 p-4 dark:bg-blue-950/50">
+					<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+						<li class="flex items-start gap-2">
+							<span class="mt-1 text-blue-500">•</span>
+							<span
+								><strong>Be Consistent:</strong> Use the same categories and units for similar items
+								to make analysis easier.</span
+							>
+						</li>
+						<li class="flex items-start gap-2">
+							<span class="mt-1 text-blue-500">•</span>
+							<span
+								><strong>Add Details:</strong> Include location and payment method information for better
+								expense tracking.</span
+							>
+						</li>
+						<li class="flex items-start gap-2">
+							<span class="mt-1 text-blue-500">•</span>
+							<span
+								><strong>Regular Updates:</strong> Record purchases soon after they happen while details
+								are fresh in your memory.</span
+							>
+						</li>
+						<li class="flex items-start gap-2">
+							<span class="mt-1 text-blue-500">•</span>
+							<span
+								><strong>Review Patterns:</strong> Use the statistics shown on item cards to identify
+								spending trends and optimize purchases.</span
+							>
+						</li>
+						<li class="flex items-start gap-2">
+							<span class="mt-1 text-blue-500">•</span>
+							<span
+								><strong>Backup Data:</strong> If you're logged in, use the <Cloud
+									class="mx-1 inline h-3 w-3"
+								/> Backup button to save your data to the cloud.</span
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Features Overview -->
+			<div>
+				<h3
+					class="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white"
+				>
+					<Settings class="h-5 w-5" />
+					Key Features
+				</h3>
+				<div class="grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
+					<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+						<div class="mb-1 flex items-center gap-2 font-medium text-gray-900 dark:text-white">
+							<Cloud class="h-4 w-4" />
+							Offline-First
+						</div>
+						<div class="text-gray-600 dark:text-gray-400">
+							Works without internet connection, data syncs when online.
+						</div>
+					</div>
+					<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+						<div class="mb-1 flex items-center gap-2 font-medium text-gray-900 dark:text-white">
+							<Edit class="h-4 w-4" />
+							Auto-Save
+						</div>
+						<div class="text-gray-600 dark:text-gray-400">
+							Changes are automatically saved to your browser's local storage.
+						</div>
+					</div>
+					<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+						<div class="mb-1 flex items-center gap-2 font-medium text-gray-900 dark:text-white">
+							<History class="h-4 w-4" />
+							Multi-Tab Sync
+						</div>
+						<div class="text-gray-600 dark:text-gray-400">
+							Data stays synchronized across multiple browser tabs.
+						</div>
+					</div>
+					<div class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+						<div class="mb-1 flex items-center gap-2 font-medium text-gray-900 dark:text-white">
+							<DollarSign class="h-4 w-4" />
+							Multi-Currency
+						</div>
+						<div class="text-gray-600 dark:text-gray-400">
+							Support for USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, INR, BRL, NGN.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showPurchaseHistoryDialog = false)}>Close</Button>
+			<Button variant="outline" onclick={() => (showHelpDialog = false)}>Close</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
