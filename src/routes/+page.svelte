@@ -12,7 +12,6 @@
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from '@lucide/svelte';
-	import AuthStatus from '@/AuthStatus.svelte';
 
 	// $effect(() => {
 	// 	userContext.set(data?.user ?? null);
@@ -59,7 +58,6 @@
 <!-- Welcome Section -->
 <Welcome {data} {form} />
 
-<AuthStatus />
 
 <div class="pb-5 xl:px-10">
 	<!-- Hero -->

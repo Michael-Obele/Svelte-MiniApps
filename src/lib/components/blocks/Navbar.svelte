@@ -8,10 +8,11 @@
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
 	import { Github, LogIn, LogOut, User, Settings, LifeBuoy, ExternalLink } from '@lucide/svelte';
 	import { google, bluesky, X } from '$lib/components/blocks/Icons.svelte';
-	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
 	import NavigationProgressIndicator from '@/blocks/NavigationProgressIndicator.svelte';
+
+	import { getCurrentUser } from '$lib/remote/auth.remote';
 
 	const menuItems = [
 		{ name: 'Home', href: '/' },
@@ -29,10 +30,6 @@
 	// Reset `show` when navigating
 	beforeNavigate(() => {
 		show = false;
-	});
-
-	$effect(() => {
-		console.log('user on navbar', $userContext);
 	});
 
 	// Reactive statement to determine if the current route matches the item
@@ -87,55 +84,69 @@
 						</a>
 					</Button>
 				</div>
-				{#if $userContext?.username}
-					<DropdownMenu.Root>
-						<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
-							<Avatar.Root class="size-8">
-								<Avatar.Fallback class="capitalize">
-									{$userContext.username.charAt(0)}
-								</Avatar.Fallback>
-							</Avatar.Root>
-						</DropdownMenu.Trigger>
-						<DropdownMenu.Content class="w-56">
-							<DropdownMenu.Group>
-								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
-								<DropdownMenu.Separator />
-								<a href="/profile">
-									<DropdownMenu.Item>
-										<User class="mr-2 size-4" />
-										<span class="capitalize">{$userContext.username}</span>
-									</DropdownMenu.Item>
-								</a>
-								<DropdownMenu.Item class="cursor-not-allowed">
-									<Settings class="mr-2 size-4" />
-									<span>Settings</span>
-								</DropdownMenu.Item>
-								<DropdownMenu.Separator />
-								<DropdownMenu.Item class="cursor-not-allowed">
-									<LifeBuoy class="mr-2 size-4" />
-									<span>Support</span>
-								</DropdownMenu.Item>
-								<DropdownMenu.Separator />
-								<DropdownMenu.Item>
-									<a href="/logout" class="flex w-full items-center">
-										<LogOut class="mr-2 size-4" />
-										<span>Log out</span>
+				<svelte:boundary>
+					{@const user = await getCurrentUser()}
+					{#if user?.username}
+						<DropdownMenu.Root>
+							<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+								<Avatar.Root class="size-8">
+									<Avatar.Fallback class="capitalize">
+										{user.username.charAt(0)}
+									</Avatar.Fallback>
+								</Avatar.Root>
+							</DropdownMenu.Trigger>
+							<DropdownMenu.Content class="w-56">
+								<DropdownMenu.Group>
+									<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
+									<DropdownMenu.Separator />
+									<a href="/profile">
+										<DropdownMenu.Item>
+											<User class="mr-2 size-4" />
+											<span class="capitalize">{user.username}</span>
+										</DropdownMenu.Item>
 									</a>
-								</DropdownMenu.Item>
-							</DropdownMenu.Group>
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
-				{:else}
-					<!-- Keep login visible on mobile (avatar area) -->
-					<a href="/login">
-						<Button variant="outline" type="button" size="sm">
-							<span class="flex items-center space-x-2">
-								<LogIn class="h-4 w-4" />
-								<span class="hidden sm:inline">Login</span>
-							</span>
-						</Button>
-					</a>
-				{/if}
+									<DropdownMenu.Item class="cursor-not-allowed">
+										<Settings class="mr-2 size-4" />
+										<span>Settings</span>
+									</DropdownMenu.Item>
+									<DropdownMenu.Separator />
+									<DropdownMenu.Item class="cursor-not-allowed">
+										<LifeBuoy class="mr-2 size-4" />
+										<span>Support</span>
+									</DropdownMenu.Item>
+									<DropdownMenu.Separator />
+									<DropdownMenu.Item>
+										<a href="/logout" class="flex w-full items-center">
+											<LogOut class="mr-2 size-4" />
+											<span>Log out</span>
+										</a>
+									</DropdownMenu.Item>
+								</DropdownMenu.Group>
+							</DropdownMenu.Content>
+						</DropdownMenu.Root>
+					{:else}
+						<!-- Keep login visible on mobile (avatar area) -->
+						<a href="/login">
+							<Button variant="outline" type="button" size="sm">
+								<span class="flex items-center space-x-2">
+									<LogIn class="h-4 w-4" />
+									<span class="hidden sm:inline">Login</span>
+								</span>
+							</Button>
+						</a>
+					{/if}
+					{#snippet pending()}
+						<!-- Keep login visible on mobile (avatar area) -->
+						<a href="/login">
+							<Button variant="outline" type="button" size="sm" disabled>
+								<span class="flex items-center space-x-2">
+									<LogIn class="h-4 w-4" />
+									<span class="hidden sm:inline">Checking...</span>
+								</span>
+							</Button>
+						</a>
+					{/snippet}
+				</svelte:boundary>
 			</div>
 			<!-- <Button
 				data-collapse-toggle="navbar-user"
