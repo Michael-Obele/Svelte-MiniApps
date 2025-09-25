@@ -6,8 +6,8 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
-	import { Github, LogIn, LogOut, User, Settings, LifeBuoy } from '@lucide/svelte';
-	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
+	import { Github, LogIn, LogOut, User, Settings, LifeBuoy, ExternalLink } from '@lucide/svelte';
+	import { google, bluesky, X } from '$lib/components/blocks/Icons.svelte';
 	import { userContext } from '$lib/utils';
 	import { beforeNavigate, goto } from '$app/navigation';
 	import { invalidate } from '$app/navigation';
@@ -83,7 +83,7 @@
 							rel="noopener noreferrer"
 						>
 							<span class="sr-only">Bluesky</span>
-							<Bluesky />
+							{@render bluesky('w-6 h-6')}
 						</a>
 					</Button>
 				</div>
@@ -203,10 +203,13 @@
 						href="https://github.com/Michael-Obele/Svelte-MiniApps"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center space-x-2 rounded px-3 py-2 transition-colors"
+						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center justify-between space-x-2 rounded px-3 py-2 transition-colors"
 					>
-						<Github class="size-4" />
-						<span>GitHub</span>
+						<span class="flex items-center space-x-2">
+							<Github class="size-4" />
+							<span>GitHub</span>
+						</span>
+						<ExternalLink class="size-4" />
 					</a>
 				</li>
 				<li class="md:hidden">
@@ -214,10 +217,14 @@
 						href="https://bsky.app/profile/svelte-apps.me"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center space-x-2 rounded px-3 py-2 transition-colors"
+						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center justify-between space-x-2 rounded px-3 py-2 transition-colors"
 					>
-						<Bluesky class="size-4" />
-						<span>Bluesky</span>
+						<span class="flex items-center space-x-2">
+							{@render bluesky('size-4')}
+							<span>Bluesky</span>
+						</span>
+
+						<ExternalLink class="size-4" />
 					</a>
 				</li>
 			</ul>
