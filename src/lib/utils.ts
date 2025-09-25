@@ -52,6 +52,7 @@ export const copyToClipboard = async (
 		await navigator.clipboard.writeText(text);
 		toast.success(msg);
 		if (onSuccess) onSuccess(); // Execute the success callback if provided
+
 		return true; // Indicate success
 	} catch (err) {
 		toast.error(errorMsg);

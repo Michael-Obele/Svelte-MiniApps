@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Input } from '@/ui/input';
 	import { Button } from '@/ui/button';
-	import { Eye, EyeOff, Copy, Trash2 } from '@lucide/svelte';
+	import { Eye, EyeOff, Copy, Trash2, Check } from '@lucide/svelte';
 	import { copyToClipboard } from '$lib/utils';
 	import { toast } from 'svelte-sonner';
 
@@ -23,10 +23,21 @@
 	} = $props();
 
 	let showPassword = $state(false);
+	let copySuccess = $state(false);
 
 	async function copyPassword() {
-		await copyToClipboard(password.passwordHash);
-		toast.success('Password copied to clipboard');
+		await copyToClipboard(
+			password.passwordHash,
+			'Password copied to clipboard',
+			'Failed to copy password',
+			() => {
+				// Success callback - show check icon
+				copySuccess = true;
+				setTimeout(() => {
+					copySuccess = false;
+				}, 2000); // Hide check icon after 2 seconds
+			}
+		);
 	}
 </script>
 
@@ -53,8 +64,17 @@
 					<Eye class="h-4 w-4" />
 				{/if}
 			</Button>
-			<Button onclick={copyPassword} variant="ghost" size="sm" class="h-8 w-8 p-0">
-				<Copy class="h-4 w-4" />
+			<Button
+				onclick={copyPassword}
+				variant="ghost"
+				size="sm"
+				class="h-8 w-8 p-0 {copySuccess ? 'text-green-600' : ''}"
+			>
+				{#if copySuccess}
+					<Check class="h-4 w-4" />
+				{:else}
+					<Copy class="h-4 w-4" />
+				{/if}
 			</Button>
 			{#if showDelete && onDelete}
 				<Button

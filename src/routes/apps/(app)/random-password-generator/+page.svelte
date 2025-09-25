@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Slider } from '@/ui/slider';
@@ -7,7 +6,7 @@
 	import { Label } from '@/ui/label';
 	import { Progress } from '@/ui/progress';
 	import { toast } from 'svelte-sonner';
-	import { Copy, Star, StarOff } from '@lucide/svelte';
+	import { Copy, Star, StarOff, Check } from '@lucide/svelte';
 	import { site } from '$lib';
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
@@ -45,6 +44,7 @@
 	let viewing = $state(false);
 	let saving = $state(false);
 	let deletingId = $state<string | null>(null);
+	let copySuccess = $state(false);
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
 
 	const generatePassword = () => {
@@ -97,6 +97,21 @@
 	$effect(() => {
 		if (password) calculateStrength();
 	});
+
+	async function handleCopy() {
+		await copyToClipboard(
+			password,
+			'Password copied to clipboard',
+			'Failed to copy password',
+			() => {
+				// Success callback - show check icon
+				copySuccess = true;
+				setTimeout(() => {
+					copySuccess = false;
+				}, 2000); // Hide check icon after 2 seconds
+			}
+		);
+	}
 
 	async function handleSave() {
 		if (saving || !currentUser || !password) return;
@@ -200,10 +215,15 @@
 					<Button
 						variant="outline"
 						size="icon"
-						onclick={() => copyToClipboard(password, 'Password copied to clipboard')}
+						onclick={handleCopy}
 						disabled={!password}
+						class={copySuccess ? 'border-green-500 bg-green-50 text-green-600' : ''}
 					>
-						<Copy class="h-4 w-4" />
+						{#if copySuccess}
+							<Check class="h-4 w-4" />
+						{:else}
+							<Copy class="h-4 w-4" />
+						{/if}
 					</Button>
 				</div>
 
@@ -222,9 +242,17 @@
 			</div>
 
 			<div class="space-y-4">
-				<div class="space-y-2">
-					<Label>Password Length: {passwordLength}</Label>
-					<Slider bind:value={passwordLength} min={8} max={32} step={1} type="single" />
+				<div class="space-y-4">
+					<Label for="passwordLength">Password Length: {passwordLength}</Label>
+					<Slider
+						id="passwordLength"
+						bind:value={passwordLength}
+						min={8}
+						max={32}
+						step={1}
+						type="single"
+						class="my-5"
+					/>
 				</div>
 
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
