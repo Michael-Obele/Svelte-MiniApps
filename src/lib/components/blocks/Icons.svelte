@@ -1,8 +1,15 @@
-<script lang="ts">
+<script module lang="ts">
+	export { google, bluesky, X };
 </script>
 
-{#snippet google()}
-	<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+{#snippet google(className: string = '')}
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="48"
+		height="48"
+		viewBox="0 0 48 48"
+		class={className}
+	>
 		<path
 			fill="#ffc107"
 			d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
@@ -22,13 +29,32 @@
 	</svg>
 {/snippet}
 
-{#snippet X()}
-	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5">
+{#snippet bluesky(className: string = '')}
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="16"
+		height="16"
+		viewBox="0 0 16 16"
+		class={className}
+	>
+		<path
+			fill="currentColor"
+			d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692c-.572 2.04-2.653 2.561-4.504 2.246c3.236.551 4.06 2.375 2.281 4.2c-3.376 3.464-4.852-.87-5.23-1.98c-.07-.204-.103-.3-.103-.218c0-.081-.033.014-.102.218c-.379 1.11-1.855 5.444-5.231 1.98c-1.778-1.825-.955-3.65 2.28-4.2c-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632C0 .186 2.145.955 3.468 1.948"
+		/>
+	</svg>
+{/snippet}
+
+{#snippet X(className: string = '')}
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		class={className}
+	>
 		<path
 			fill="currentColor"
 			d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"
 		/>
 	</svg>
 {/snippet}
-
-<!-- Render the appropriate icon based on props -->
