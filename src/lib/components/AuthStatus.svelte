@@ -7,16 +7,16 @@
 
 <div class="border-border bg-card text-card-foreground my-4 rounded-lg border p-4">
 	<svelte:boundary>
-	{@const result = await getCurrentUser()}
-	<div class="bg-accent text-accent-foreground rounded-md p-4">
-		<p>Welcome back, {result.username}!</p>
-		<p>Role: {result.role}</p>
-		<p>Member since: {result.createdAt.toLocaleDateString()}</p>
-	</div>
-	{#snippet pending()}
-		<p>Checking authentication...</p>
-	{/snippet}
-</svelte:boundary>
+		{@const result = await getCurrentUser()}
+		{#if result}
+			<div class="bg-accent text-accent-foreground rounded-md p-4">
+				<p>Welcome back, {result.username}!</p>
+				<p>Role: {result.role}</p>
+				<p>Member since: {result.createdAt.toLocaleDateString()}</p>
+			</div>
+		{/if}
+		{#snippet pending()}
+			<p>Checking authentication...</p>
+		{/snippet}
+	</svelte:boundary>
 </div>
-
-

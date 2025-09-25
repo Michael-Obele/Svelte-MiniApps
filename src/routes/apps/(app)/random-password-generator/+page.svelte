@@ -12,12 +12,20 @@
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { copyToClipboard } from '$lib/utils';
-	import type { ActionData, PageData } from './$types';
+	import type { PageProps } from './$types';
 	import { Skeleton } from '@/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
-	import { getCurrentUser } from '$lib/remote/auth.remote';
+	import { getSavedPasswords, savePassword, deletePassword, getCurrentUser } from '$lib/remote';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	// Define User type inline to match what getCurrentUser returns
+	type User = {
+		id: string;
+		username: string;
+		role: string;
+		createdAt: Date;
+	};
+
+	let { data }: PageProps = $props();
 
 	let password = $state('');
 	let passwordLength = $state(12);
@@ -29,7 +37,10 @@
 	let isSaved = $state(false);
 	let viewing = $state(false);
 	let saving = $state(false);
-	let isPasswordVisible = $state(false);
+	let deletingId = $state<string | null>(null);
+	let savedPasswords = $state<
+		{ id: string; createdAt: Date; passwordHash: string; details: string | null }[] | null
+	>(null);
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -71,33 +82,80 @@
 		passwordStrength = strength;
 	};
 
+	const getStrengthColor = (strength: number): string => {
+		if (strength <= 25) return 'bg-red-500';
+		if (strength <= 50) return 'bg-orange-500';
+		if (strength <= 75) return 'bg-yellow-500';
+		return 'bg-green-500';
+	};
+
 	$effect(() => {
 		if (password) calculateStrength();
 	});
 
-	function handleSubmit() {
-		saving = true;
-		return async ({ update }: { update: () => Promise<void> }) => {
-			await update();
+	async function handleSave() {
+		if (saving || !currentUser || !password) return;
+
+		try {
+			saving = true;
+			await savePassword({ password, details: null });
 			isSaved = true;
+			await getSavedPasswords().refresh();
+			savedPasswords = await getSavedPasswords();
+			toast.success('Password saved successfully!');
+		} catch (error) {
+			console.error('Error saving password:', error);
+			toast.error('Failed to save password');
+		} finally {
 			saving = false;
-		};
+		}
 	}
 
-	function handleView() {
-		viewing = true;
-		// Add your form submission logic here
-		return async ({ update }: { update: () => Promise<void> }) => {
-			await update();
-			viewing = false;
-		};
+	async function handleView() {
+		if (viewing) return;
+
+		try {
+			viewing = true;
+			if (!savedPasswords) {
+				savedPasswords = await getSavedPasswords();
+			}
+		} catch (error) {
+			console.error('Error viewing passwords:', error);
+			toast.error('Failed to load saved passwords');
+		}
+	}
+
+	async function handleDelete(passwordId: string) {
+		if (deletingId) return; // Prevent multiple simultaneous deletes
+
+		try {
+			deletingId = passwordId;
+			await deletePassword(passwordId);
+			toast.success('Password deleted successfully!');
+			await getSavedPasswords().refresh();
+			savedPasswords = await getSavedPasswords();
+		} catch (error) {
+			console.error('Error deleting password:', error);
+			toast.error('Failed to delete password');
+		} finally {
+			deletingId = null;
+		}
 	}
 
 	type PasswordRecord = {
+		id: string;
 		passwordHash: string;
 		createdAt: string;
 		details: null | string;
 	};
+
+	// Use effect to get current user asynchronously
+	let currentUser = $state<User | null>(null);
+	$effect(() => {
+		getCurrentUser().then((user) => {
+			currentUser = user;
+		});
+	});
 </script>
 
 <RouteHead
@@ -115,30 +173,25 @@
 			<p class="text-muted-foreground">Generate secure, random passwords instantly</p>
 		</div>
 
-		<div class="space-y-4 rounded-lg border bg-card p-6">
+		<div class="bg-card space-y-4 rounded-lg border p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					<svelte:boundary>
-						{@const user = await getCurrentUser()}
-						<form action="?/save" use:enhance={handleSubmit} method="POST">
-							{#if user}
-								<input type="hidden" name="id" value={user.id} />
-							{/if}
-							<input type="hidden" name="password" value={password} />
-							{#if !saving}
-								<Button
-									type="submit"
-									variant="outline"
-									size="icon"
-									disabled={!user || !password}
-								>
-									<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
-								</Button>
-							{:else}
-								<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-							{/if}
-						</form>
-					</svelte:boundary>
+					{#if !saving}
+						<Button
+							onclick={handleSave}
+							variant="outline"
+							size="icon"
+							disabled={!currentUser || !password}
+						>
+							<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
+						</Button>
+					{:else}
+						<div class="flex size-10 items-center justify-center rounded-md border">
+							<div
+								class="size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
+							></div>
+						</div>
+					{/if}
 					<Input
 						type="text"
 						value={password}
@@ -158,9 +211,13 @@
 
 				{#if password}
 					<div transition:fade>
-						<Progress value={passwordStrength} class="h-2" />
-						<p class="mt-1 text-sm text-muted-foreground">
-							Password Strength: {passwordStrength}%
+						<Progress
+							value={passwordStrength}
+							class="h-2 transition-all duration-300 ease-out"
+							classInner={getStrengthColor(passwordStrength)}
+						/>
+						<p class="text-muted-foreground my-4 text-sm">
+							Password Strength: {Math.round(passwordStrength)}%
 						</p>
 					</div>
 				{/if}
@@ -194,29 +251,52 @@
 				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
 
 				<svelte:boundary>
-					{@const user = await getCurrentUser()}
-					{#if user?.username}
-						<form action="?/view" use:enhance={handleView} method="POST">
-							<input type="hidden" name="id" value={user.id} />
-							<Button
-								type="submit"
-								variant="secondary"
-								class="w-full"
-								formaction={form?.displayPassword?.length === 0 ? undefined : '?/hide'}
-							>
-								{#if form?.displayPassword || isPasswordVisible}
-									Hide Saved Password
-								{:else if viewing}
-									<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-								{:else}
-									View Saved Password
-								{/if}
+					{#if currentUser?.username}
+						{#await getSavedPasswords()}
+							<!-- Pending state handled by boundary -->
+						{:then savedPasswords}
+							<Button onclick={handleView} variant="secondary" class="w-full" disabled={viewing}>
+								View Saved Passwords ({savedPasswords?.length || 0})
 							</Button>
-						</form>
-						{#each form?.displayPassword ?? [] as password}
-							<PasswordDisplay {password} />
-						{/each}
+						{:catch error}
+							<Button variant="destructive" class="w-full" disabled>
+								Error loading saved passwords
+							</Button>
+						{/await}
+
+						<Button
+							onclick={() => (viewing = false)}
+							variant="secondary"
+							class="w-full {!viewing ? 'hidden' : ''}"
+							disabled={!viewing}
+						>
+							Hide Saved Passwords
+						</Button>
+
+						{#if viewing && savedPasswords}
+							<div class="mt-4 space-y-2">
+								<h3 class="text-lg font-semibold">Saved Passwords</h3>
+								{#each savedPasswords as savedPassword}
+									<PasswordDisplay
+										password={savedPassword}
+										showDelete={true}
+										onDelete={handleDelete}
+										{deletingId}
+									/>
+								{/each}
+								{#if savedPasswords.length === 0}
+									<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
+								{/if}
+							</div>
+						{/if}
 					{/if}
+
+					{#snippet pending()}
+						<div class="space-y-2">
+							<Skeleton class="h-10 w-full rounded-md" />
+							<Skeleton class="h-10 w-full rounded-md" />
+						</div>
+					{/snippet}
 				</svelte:boundary>
 			</div>
 		</div>

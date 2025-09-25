@@ -1,35 +1,83 @@
 <script lang="ts">
 	import { Input } from '@/ui/input';
-	import { Star } from '@lucide/svelte';
+	import { Button } from '@/ui/button';
+	import { Eye, EyeOff, Copy, Trash2 } from '@lucide/svelte';
+	import { copyToClipboard } from '$lib/utils';
+	import { toast } from 'svelte-sonner';
 
-	let { password } = $props();
+	let {
+		password,
+		showDelete = false,
+		onDelete,
+		deletingId
+	}: {
+		password: {
+			id: string;
+			passwordHash: string;
+			createdAt: Date | string;
+			details: string | null;
+		};
+		showDelete?: boolean;
+		onDelete?: (id: string) => void;
+		deletingId?: string | null;
+	} = $props();
+
+	let showPassword = $state(false);
+
+	async function copyPassword() {
+		await copyToClipboard(password.passwordHash);
+		toast.success('Password copied to clipboard');
+	}
 </script>
 
 <div
-	class="flex items-center justify-between rounded-lg bg-gray-50 p-4 shadow-md transition-colors duration-200 hover:bg-gray-100"
+	class="bg-card hover:bg-muted/50 flex items-center justify-between rounded-lg border p-4 transition-colors"
 >
-	<div class="flex items-center space-x-2">
-		<div class="shrink-0">
-			<div
-				class="flex h-10 w-10 items-center justify-center rounded-full bg-red-700 text-white shadow-lg"
+	<div class="flex-1 space-y-2">
+		<div class="flex items-center gap-2">
+			<Input
+				type={showPassword ? 'text' : 'password'}
+				value={password.passwordHash}
+				readonly
+				class="h-auto border-none bg-transparent p-0 font-mono text-sm focus-visible:ring-0"
+			/>
+			<Button
+				onclick={() => (showPassword = !showPassword)}
+				variant="ghost"
+				size="sm"
+				class="h-8 w-8 p-0"
 			>
-				<Star class="h-4 w-4" />
-			</div>
+				{#if showPassword}
+					<EyeOff class="h-4 w-4" />
+				{:else}
+					<Eye class="h-4 w-4" />
+				{/if}
+			</Button>
+			<Button onclick={copyPassword} variant="ghost" size="sm" class="h-8 w-8 p-0">
+				<Copy class="h-4 w-4" />
+			</Button>
+			{#if showDelete && onDelete}
+				<Button
+					onclick={() => onDelete(password.id)}
+					variant="ghost"
+					size="sm"
+					class="text-destructive hover:text-destructive h-8 w-8 p-0"
+					disabled={deletingId === password.id}
+				>
+					{#if deletingId === password.id}
+						<div
+							class="size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
+						></div>
+					{:else}
+						<Trash2 class="h-4 w-4" />
+					{/if}
+				</Button>
+			{/if}
 		</div>
-
-		<!-- Display the password -->
-
-		<Input
-			type="text"
-			value={password.passwordHash}
-			placeholder="Your password will appear here"
-			readonly
-			class="font-mono text-lg"
-		/>
-	</div>
-
-	<!-- Display the creation date -->
-	<div class="text-sm text-gray-500">
-		{new Date(password.createdAt).toLocaleDateString()}
+		<p class="text-muted-foreground text-xs">
+			Saved on {new Date(password.createdAt).toLocaleDateString()} at {new Date(
+				password.createdAt
+			).toLocaleTimeString()}
+		</p>
 	</div>
 </div>
