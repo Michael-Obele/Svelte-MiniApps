@@ -20,12 +20,6 @@ export interface UserSessionData {
 	data: UserData;
 }
 
-export interface UserContext {
-	currentUser: UserSessionData | null;
-	userUsername: string;
-	role: string; // Add the role property
-}
-
 export interface UserDB {
 	id: string;
 	username: string;

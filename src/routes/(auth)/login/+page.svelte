@@ -11,14 +11,12 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
 	import { invalidate, invalidateAll } from '$app/navigation';
-	import { userContext } from '$lib/utils';
 	$effect(() => {
 		invalidateAll();
 		if (document.referrer.includes('/logout')) {
 			console.log('Reloading page');
 			window.location.reload();
 		}
-		userContext.set(data?.user ?? null);
 	});
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();

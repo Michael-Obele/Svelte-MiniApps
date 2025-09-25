@@ -4,7 +4,6 @@
 
 	import type { PageProps } from './$types';
 	import { site } from '$lib/index';
-	import { userContext } from '$lib/utils';
 	//
 	let websiteTitle = 'Svelte MiniApps';
 	let websiteDescription =
@@ -12,15 +11,6 @@
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from '@lucide/svelte';
-
-	// $effect(() => {
-	// 	userContext.set(data?.user ?? null);
-	// 	// Reload the page once when coming from the login page or register page
-	// 	if (document.referrer.includes('/login') || document.referrer.includes('/register')) {
-	// 		console.log('Reloading page');
-	// 		window.location.reload();
-	// 	}
-	// });
 </script>
 
 <div

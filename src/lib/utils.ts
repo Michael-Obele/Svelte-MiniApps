@@ -86,14 +86,6 @@ export const seenNewAppAlert = persisted<boolean>('seen-new-app-alert', false);
 // A writable store that represents a filter state, initially set to false
 export let filter = persisted('filter', 'done');
 
-interface User {
-	id: string;
-	username: string;
-	role: string; // Add the role property
-}
-
-export const userContext = persisted<User | null>('user', null);
-
 /**
  * Scrolls the window to the top of the page with a smooth scrolling effect.
  */

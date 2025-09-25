@@ -12,10 +12,10 @@
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { copyToClipboard } from '$lib/utils';
-	import { userContext } from '$lib/utils';
 	import type { ActionData, PageData } from './$types';
 	import { Skeleton } from '@/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
+	import { getCurrentUser } from '$lib/remote/auth.remote';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 
@@ -118,22 +118,27 @@
 		<div class="space-y-4 rounded-lg border bg-card p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					<form action="?/save" use:enhance={handleSubmit} method="POST">
-						<input type="hidden" name="id" value={$userContext?.id} />
-						<input type="hidden" name="password" value={password} />
-						{#if !saving}
-							<Button
-								type="submit"
-								variant="outline"
-								size="icon"
-								disabled={!$userContext || !password}
-							>
-								<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
-							</Button>
-						{:else}
-							<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-						{/if}
-					</form>
+					<svelte:boundary>
+						{@const user = await getCurrentUser()}
+						<form action="?/save" use:enhance={handleSubmit} method="POST">
+							{#if user}
+								<input type="hidden" name="id" value={user.id} />
+							{/if}
+							<input type="hidden" name="password" value={password} />
+							{#if !saving}
+								<Button
+									type="submit"
+									variant="outline"
+									size="icon"
+									disabled={!user || !password}
+								>
+									<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
+								</Button>
+							{:else}
+								<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+							{/if}
+						</form>
+					</svelte:boundary>
 					<Input
 						type="text"
 						value={password}
@@ -188,28 +193,31 @@
 
 				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
 
-				{#if $userContext?.username}
-					<form action="?/view" use:enhance={handleView} method="POST">
-						<input type="hidden" name="id" value={$userContext?.id} />
-						<Button
-							type="submit"
-							variant="secondary"
-							class="w-full"
-							formaction={form?.displayPassword?.length === 0 ? undefined : '?/hide'}
-						>
-							{#if form?.displayPassword || isPasswordVisible}
-								Hide Saved Password
-							{:else if viewing}
-								<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-							{:else}
-								View Saved Password
-							{/if}
-						</Button>
-					</form>
-					{#each form?.displayPassword ?? [] as password}
-						<PasswordDisplay {password} />
-					{/each}
-				{/if}
+				<svelte:boundary>
+					{@const user = await getCurrentUser()}
+					{#if user?.username}
+						<form action="?/view" use:enhance={handleView} method="POST">
+							<input type="hidden" name="id" value={user.id} />
+							<Button
+								type="submit"
+								variant="secondary"
+								class="w-full"
+								formaction={form?.displayPassword?.length === 0 ? undefined : '?/hide'}
+							>
+								{#if form?.displayPassword || isPasswordVisible}
+									Hide Saved Password
+								{:else if viewing}
+									<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+								{:else}
+									View Saved Password
+								{/if}
+							</Button>
+						</form>
+						{#each form?.displayPassword ?? [] as password}
+							<PasswordDisplay {password} />
+						{/each}
+					{/if}
+				</svelte:boundary>
 			</div>
 		</div>
 	</div>
