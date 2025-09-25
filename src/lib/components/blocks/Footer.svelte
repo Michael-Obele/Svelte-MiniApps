@@ -18,6 +18,7 @@
 	} from '@lucide/svelte';
 
 	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
+	import { bluesky } from './Icons.svelte';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
@@ -82,7 +83,7 @@
 						class="text-muted-foreground hover:text-primary transition-colors"
 						aria-label="GitHub"
 					>
-						<Github class="size-5 text-white" strokeWidth={1.5} />
+						<Github class="size-5 " strokeWidth={1.5} />
 					</a>
 					<a
 						href="https://bsky.app/profile/svelte-apps.me"
@@ -91,7 +92,7 @@
 						class="text-muted-foreground hover:text-primary transition-colors"
 						aria-label="GitHub"
 					>
-						<Bluesky class="size-5" fill="white" />
+						{@render bluesky('size-5')}
 					</a>
 					<a
 						href="https://www.linkedin.com/in/dev-obele"
