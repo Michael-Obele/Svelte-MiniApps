@@ -1,7 +1,7 @@
 <!--
 @component
 
-InfoBlocks — renders multiple ContentBlock components using contentBlocksData.
+InfoBlocks — displays promotional content about Svelte MiniApps features and benefits.
 
 Usage:
 ```svelte
@@ -10,12 +10,12 @@ Usage:
 
 -->
 <script lang="ts">
-	import ContentBlock from './ContentBlock.svelte';
+	import { ContentBlock } from './index';
 	import { contentBlocksData } from './data';
 </script>
 
 <section class="w-full md:py-24 lg:py-32">
-	<div class="px-4 xl:container md:px-6">
+	<div class="px-4 md:px-6 xl:container">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			{#each contentBlocksData as block}
 				<ContentBlock iconId={block.iconId}>

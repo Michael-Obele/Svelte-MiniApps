@@ -14,7 +14,6 @@ Props:
 -->
 
 <script lang="ts">
-	import type { PageServerData } from './$types';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import {
 		generateMantra,
@@ -38,27 +37,23 @@ Props:
 		return () => clearTimeout(timeoutId);
 	});
 
-	interface Props {
-		data: PageServerData;
-	}
-
-	let { data }: Props = $props();
+	let { data } = $props();
 </script>
 
 <section id="hero" class="w-full py-8 md:py-14 lg:py-24">
-	<div class="px-4 xl:container md:px-6">
+	<div class="px-4 md:px-6 xl:container">
 		<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<div class="flex flex-col justify-center space-y-4">
 				<div class="flex flex-col">
 					<BlurInText
 						as="h2"
-						class="text-2xl font-bold text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+						class="text-2xl font-bold text-red-700 sm:text-4xl xl:text-5xl/none dark:text-white"
 					>
 						Welcome
 						{#if data?.user?.username}
 							{@const username = data.user.username}
 							Back,
-							<span class="capitalize text-green-700 dark:text-green-300">
+							<span class="text-green-700 capitalize dark:text-green-300">
 								{username}!
 							</span>
 						{/if}
@@ -67,17 +62,17 @@ Props:
 					<BlurInText
 						as="h2"
 						word="Svelte Mini Apps"
-						class="text-2xl font-bold text-red-700 dark:text-white sm:text-4xl xl:text-5xl/none"
+						class="text-2xl font-bold text-red-700 sm:text-4xl xl:text-5xl/none dark:text-white"
 					/>
 					<BlurInText
 						as="p"
 						word="Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
-						class="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl"
+						class="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400"
 					/>
 				</div>
 				<a
 					href="/apps"
-					class="flex h-10 items-center justify-center rounded-md bg-red-700 px-3 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
+					class="flex h-10 items-center justify-center rounded-md bg-red-700 px-3 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
 				>
 					<BlurInText as="span" class="inline-flex items-center">
 						Start Exploring

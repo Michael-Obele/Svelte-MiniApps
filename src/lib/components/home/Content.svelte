@@ -1,7 +1,7 @@
 <!--
 @component
 
-Content — main content area that composes ContentBlock, InfoBlock, and other content pieces.
+Content — displays community engagement section with feedback info blocks and call-to-action.
 
 Usage:
 ```svelte
@@ -10,15 +10,13 @@ Usage:
 
 -->
 <script lang="ts">
-	import LordIcon from './LordIcon.svelte';
-	import InfoBlock from './InfoBlock.svelte';
-	import ContentBlock from './ContentBlock.svelte';
+	import { LordIcon, InfoBlock, ContentBlock } from './index';
 	import { infoBlocksData } from './data';
 </script>
 
-<section class="w-full px-4 py-5 xl:container md:px-6 md:py-8 lg:py-10">
+<section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
 	<div
-		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 dark:bg-gray-900 lg:py-16 xl:rounded-lg"
+		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 lg:py-16 xl:rounded-lg dark:bg-gray-900"
 	>
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<ContentBlock iconId={'xyboiuok'}>

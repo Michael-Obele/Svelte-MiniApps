@@ -14,7 +14,6 @@ Props:
 
 -->
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
 	import { generateMantra, getGreetingAndNextPeriod } from '$lib/utility/greetings';
 	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
@@ -43,7 +42,7 @@ Props:
 		return () => clearTimeout(timeoutId);
 	});
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form } = $props();
 
 	let isLoading = $state(false);
 	let isLiked = $state(false);
@@ -72,9 +71,9 @@ Props:
 	<BlurFade delay={0.25}>
 		<BlurInText
 			as="h1"
-			class="text-center text-3xl font-bold tracking-tighter text-red-700 dark:text-white sm:text-5xl xl:text-6xl/none"
+			class="text-center text-3xl font-bold tracking-tighter text-red-700 sm:text-5xl xl:text-6xl/none dark:text-white"
 		>
-			<span class="capitalize text-green-700 dark:text-green-300">
+			<span class="text-green-700 capitalize dark:text-green-300">
 				{`${greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
 			</span>
 		</BlurInText>
@@ -104,13 +103,13 @@ Props:
 				<Button
 					variant="link"
 					onclick={handleGenerate}
-					class="text-2xl font-medium text-muted-foreground sm:text-3xl xl:text-4xl/none"
+					class="text-muted-foreground text-2xl font-medium sm:text-3xl xl:text-4xl/none"
 				>
 					<!-- {data.mantra} -->
 					{mantra}
 				</Button>
 				<button
-					class="inline-flex size-3 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 sm:size-8"
+					class="text-muted-foreground inline-flex size-3 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900 sm:size-8 dark:hover:bg-gray-800 dark:hover:text-gray-50"
 					onclick={() => handleGenerate()}
 					title="Get a new mantra"
 				>

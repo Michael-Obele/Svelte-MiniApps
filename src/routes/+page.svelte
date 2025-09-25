@@ -1,14 +1,6 @@
 <script lang="ts">
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import Welcome from './Welcome.svelte';
-
-	import Hero from './Hero.svelte';
-
-	import Content from './Content.svelte';
-
-	import InfoBlocks from './InfoBlocks.svelte';
-
-	import AppsSection from './AppsSection.svelte';
+	import { Welcome, Hero, Content, InfoBlocks, AppsSection } from '$lib/components/home';
 
 	import type { PageProps } from './$types';
 	import { site } from '$lib/index';
@@ -20,15 +12,16 @@
 
 	let { data, form }: PageProps = $props();
 	import { Trophy } from '@lucide/svelte';
+	import AuthStatus from '@/AuthStatus.svelte';
 
-	$effect(() => {
-		userContext.set(data?.user ?? null);
-		// Reload the page once when coming from the login page or register page
-		if (document.referrer.includes('/login') || document.referrer.includes('/register')) {
-			console.log('Reloading page');
-			window.location.reload();
-		}
-	});
+	// $effect(() => {
+	// 	userContext.set(data?.user ?? null);
+	// 	// Reload the page once when coming from the login page or register page
+	// 	if (document.referrer.includes('/login') || document.referrer.includes('/register')) {
+	// 		console.log('Reloading page');
+	// 		window.location.reload();
+	// 	}
+	// });
 </script>
 
 <div
@@ -65,6 +58,8 @@
 
 <!-- Welcome Section -->
 <Welcome {data} {form} />
+
+<AuthStatus />
 
 <div class="pb-5 xl:px-10">
 	<!-- Hero -->
