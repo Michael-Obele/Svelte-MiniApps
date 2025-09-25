@@ -25,6 +25,13 @@
 		createdAt: Date;
 	};
 
+	type PasswordRecord = {
+		id: string;
+		createdAt: Date;
+		passwordHash: string;
+		details: string | null;
+	};
+
 	let { data }: PageProps = $props();
 
 	let password = $state('');
@@ -38,9 +45,7 @@
 	let viewing = $state(false);
 	let saving = $state(false);
 	let deletingId = $state<string | null>(null);
-	let savedPasswords = $state<
-		{ id: string; createdAt: Date; passwordHash: string; details: string | null }[] | null
-	>(null);
+	let savedPasswords = $state<PasswordRecord[] | null>(null);
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -141,13 +146,6 @@
 			deletingId = null;
 		}
 	}
-
-	type PasswordRecord = {
-		id: string;
-		passwordHash: string;
-		createdAt: string;
-		details: null | string;
-	};
 
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
