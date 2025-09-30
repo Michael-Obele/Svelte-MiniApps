@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
+	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { slide } from 'svelte/transition';
 	import {
@@ -35,6 +37,24 @@
 			return showManual; // Original timeline items are considered manual
 		})
 	);
+
+	// Handle URL parameters to highlight specific timeline items on mount
+	onMount(() => {
+		const url = new URL(page.url);
+		const highlightParam = url.searchParams.get('highlight');
+		
+		if (highlightParam) {
+			// Find the timeline item that matches the highlight parameter
+			const itemToHighlight = allTimeline.find(item => 
+				item.title.toLowerCase().includes(highlightParam.toLowerCase()) ||
+				item.date === highlightParam
+			);
+			
+			if (itemToHighlight) {
+				selectedItem = itemToHighlight;
+			}
+		}
+	});
 </script>
 
 <RouteHead

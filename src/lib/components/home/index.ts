@@ -1,5 +1,6 @@
 // Barrel file for home page components
 export { default as AppsSection } from './AppsSection.svelte';
+export { default as Banner } from './Banner.svelte';
 export { default as Content } from './Content.svelte';
 export { default as ContentBlock } from './ContentBlock.svelte';
 export { default as Hero } from './Hero.svelte';
