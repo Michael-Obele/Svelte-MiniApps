@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import {
-		Loader2,
-		Plus,
-		TrendingUp,
-		Calendar
-	} from '@lucide/svelte';
+	import { Loader2, Plus, TrendingUp, Calendar } from '@lucide/svelte';
 
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
@@ -24,6 +19,15 @@
 	import type { Item, PurchaseRecord } from './states.svelte';
 	import * as purchaseState from './states.svelte';
 	import type { PageData } from './$types.js';
+
+	// Remote functions import
+	import {
+		backupPurchaseData,
+		loadPurchaseData,
+		deletePurchaseItem,
+		deletePurchaseRecordById,
+		syncPurchaseData
+	} from '$lib/remote';
 
 	// Component imports
 	import PurchaseTrackerHeader from './PurchaseTrackerHeader.svelte';
@@ -310,7 +314,7 @@
 		hasUnsavedChanges = true;
 	}
 
-	// Manual backup to server
+	// Manual backup to server using remote function
 	async function backupToServer() {
 		if (!isAuthenticated) {
 			toast.error('Please log in to backup your data');
@@ -321,25 +325,16 @@
 			isBackingUp = true;
 			showBackupDialog = true;
 
-			const formData = new FormData();
-			formData.append('items', JSON.stringify(purchaseState.items.current));
-			formData.append('purchases', JSON.stringify(purchaseState.purchases.current));
-
-			const response = await fetch('?/saveData', {
-				method: 'POST',
-				body: formData
+			// Use remote function to backup data
+			const result = await backupPurchaseData({
+				items: purchaseState.items.current,
+				purchases: purchaseState.purchases.current
 			});
 
-			const result = await response.json();
-
-			if (result.success) {
-				hasUnsavedChanges = false;
-				toast.success(
-					`Backup successful! Saved ${purchaseState.items.current.length} items and ${purchaseState.purchases.current.length} purchases.`
-				);
-			} else {
-				throw new Error(result.error || 'Backup failed');
-			}
+			hasUnsavedChanges = false;
+			toast.success(
+				`Backup successful! Saved ${result.itemsCount} items and ${result.purchasesCount} purchases.`
+			);
 		} catch (error) {
 			console.error('❌ Backup failed:', error);
 			toast.error(`Backup failed: ${error instanceof Error ? error.message : String(error)}`);
@@ -349,7 +344,7 @@
 		}
 	}
 
-	// Handle deleting item with server sync
+	// Handle deleting item with server sync using remote function
 	async function handleDeleteItem(item: Item) {
 		if (!confirm(`Are you sure you want to delete "${item.name}" and all its purchase records?`)) {
 			return;
@@ -357,20 +352,8 @@
 
 		try {
 			if (isAuthenticated) {
-				// Delete from server
-				const formData = new FormData();
-				formData.append('itemId', item.id);
-
-				const response = await fetch('?/deleteItem', {
-					method: 'POST',
-					body: formData
-				});
-
-				const result = await response.json();
-
-				if (!result.success) {
-					throw new Error(result.error || 'Failed to delete item');
-				}
+				// Delete from server using remote function
+				await deletePurchaseItem(item.id);
 			}
 
 			// Delete from local state
@@ -383,7 +366,7 @@
 		}
 	}
 
-	// Handle deleting purchase record with server sync
+	// Handle deleting purchase record with server sync using remote function
 	async function handleDeletePurchaseRecord(purchase: PurchaseRecord) {
 		if (!confirm('Are you sure you want to delete this purchase record?')) {
 			return;
@@ -391,20 +374,8 @@
 
 		try {
 			if (isAuthenticated) {
-				// Delete from server
-				const formData = new FormData();
-				formData.append('purchaseId', purchase.id);
-
-				const response = await fetch('?/deletePurchaseRecord', {
-					method: 'POST',
-					body: formData
-				});
-
-				const result = await response.json();
-
-				if (!result.success) {
-					throw new Error(result.error || 'Failed to delete purchase record');
-				}
+				// Delete from server using remote function
+				await deletePurchaseRecordById(purchase.id);
 			}
 
 			// Delete from local state
@@ -429,7 +400,7 @@
 		bind:activeTab
 		{isAuthenticated}
 		{isBackingUp}
-		onHelpClick={() => showHelpDialog = true}
+		onHelpClick={() => (showHelpDialog = true)}
 		onBackupClick={backupToServer}
 	/>
 
@@ -437,27 +408,25 @@
 		<div class="flex items-center justify-center py-12">
 			<Loader2 class="h-8 w-8 animate-spin" />
 		</div>
+	{:else if activeTab === 'items'}
+		<ItemsView
+			items={purchaseState.items.current}
+			bind:searchQuery
+			bind:selectedCategory
+			onSearchChange={(query) => (searchQuery = query)}
+			onCategoryChange={(category) => (selectedCategory = category)}
+			onAddItem={() => {
+				showAddItemDialog = true;
+				editingItem = null;
+				resetItemForm();
+			}}
+			onEditItem={openEditItemDialog}
+			onAddPurchase={openAddPurchaseDialog}
+			onViewHistory={openPurchaseHistoryDialog}
+			onDeleteItem={handleDeleteItem}
+		/>
 	{:else}
-		{#if activeTab === 'items'}
-			<ItemsView
-				items={purchaseState.items.current}
-				bind:searchQuery
-				bind:selectedCategory
-				onSearchChange={(query) => searchQuery = query}
-				onCategoryChange={(category) => selectedCategory = category}
-				onAddItem={() => {
-					showAddItemDialog = true;
-					editingItem = null;
-					resetItemForm();
-				}}
-				onEditItem={openEditItemDialog}
-				onAddPurchase={openAddPurchaseDialog}
-				onViewHistory={openPurchaseHistoryDialog}
-				onDeleteItem={handleDeleteItem}
-			/>
-		{:else}
-			<PurchasesView onEditPurchase={openEditPurchaseDialog} />
-		{/if}
+		<PurchasesView onEditPurchase={openEditPurchaseDialog} />
 	{/if}
 </div>
 
@@ -469,14 +438,16 @@
 	bind:open={showPurchaseHistoryDialog}
 	{selectedItemForHistory}
 	purchases={selectedItemPurchases}
-	stats={selectedItemForHistory ? purchaseState.getItemStats(selectedItemForHistory.id) : { totalPurchases: 0, totalQuantity: 0, totalSpent: 0, averageCost: 0 }}
+	stats={selectedItemForHistory
+		? purchaseState.getItemStats(selectedItemForHistory.id)
+		: { totalPurchases: 0, totalQuantity: 0, totalSpent: 0, averageCost: 0 }}
 	onEditPurchase={openEditPurchaseDialog}
 	onDeletePurchase={handleDeletePurchase}
 	onAddFirstPurchase={() => {
 		showPurchaseHistoryDialog = false;
 		if (selectedItemForHistory) openAddPurchaseDialog(selectedItemForHistory);
 	}}
-	onClose={() => showPurchaseHistoryDialog = false}
+	onClose={() => (showPurchaseHistoryDialog = false)}
 />
 
 <AddEditItemDialog
