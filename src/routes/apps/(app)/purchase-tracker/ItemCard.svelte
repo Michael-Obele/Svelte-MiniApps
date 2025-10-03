@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronDown, Edit, ShoppingCart, History, Trash2 } from '@lucide/svelte';
+	import { EllipsisVertical, Edit, ShoppingCart, History, Trash2 } from '@lucide/svelte';
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import { Button } from '@/ui/button';
@@ -45,7 +45,7 @@
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger>
 					<Button variant="ghost" size="sm">
-						<ChevronDown class="h-4 w-4" />
+						<EllipsisVertical class="h-4 w-4" />
 					</Button>
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Content>
@@ -94,7 +94,9 @@
 				{#if stats.totalSpent > 0}
 					<div class="flex justify-between">
 						<span class="text-gray-500">Total Spent:</span>
-						<span class="font-medium">{formatCurrency(stats.totalSpent, item.defaultCurrency || 'USD')}</span>
+						<span class="font-medium"
+							>{formatCurrency(stats.totalSpent, item.defaultCurrency || 'USD')}</span
+						>
 					</div>
 				{/if}
 			</div>

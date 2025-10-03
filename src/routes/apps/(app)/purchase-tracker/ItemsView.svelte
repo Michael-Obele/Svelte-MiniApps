@@ -79,12 +79,11 @@
 			</Button>
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content>
-			<DropdownMenu.Item onclick={() => onCategoryChange('all')}>
-				All Categories
-			</DropdownMenu.Item>
+			<DropdownMenu.Item onclick={() => onCategoryChange('all')}>All Categories</DropdownMenu.Item>
 			{#each availableCategories as category}
 				<DropdownMenu.Item onclick={() => onCategoryChange(category.id)}>
-					{category.icon} {category.name}
+					{category.icon}
+					{category.name}
 				</DropdownMenu.Item>
 			{/each}
 		</DropdownMenu.Content>
@@ -102,8 +101,8 @@
 			<ItemCard
 				{item}
 				onEdit={onEditItem}
-				onAddPurchase={onAddPurchase}
-				onViewHistory={onViewHistory}
+				{onAddPurchase}
+				{onViewHistory}
 				onDelete={onDeleteItem}
 			/>
 		{/each}

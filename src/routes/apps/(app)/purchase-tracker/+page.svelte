@@ -33,11 +33,11 @@
 	import PurchaseTrackerHeader from './PurchaseTrackerHeader.svelte';
 	import ItemsView from './ItemsView.svelte';
 	import PurchasesView from './PurchasesView.svelte';
-	import HelpDialog from './HelpDialog.svelte';
 	import HowToUseDialog from './HowToUseDialog.svelte';
 	import AddEditItemDialog from './AddEditItemDialog.svelte';
 	import AddEditPurchaseDialog from './AddEditPurchaseDialog.svelte';
 	import PurchaseHistoryDialog from './PurchaseHistoryDialog.svelte';
+	import HelpDialog from './HelpDialog.svelte';
 
 	// Props from load function
 	let { data }: { data: PageData } = $props();
@@ -430,8 +430,6 @@
 	{/if}
 </div>
 
-<HelpDialog bind:open={showHelpDialog} />
-
 <HowToUseDialog bind:open={showHelpDialog} />
 
 <PurchaseHistoryDialog
@@ -488,5 +486,4 @@
 	}}
 />
 
-<!-- How to Use Dialog -->
 <HowToUseDialog bind:open={showHelpDialog} />
