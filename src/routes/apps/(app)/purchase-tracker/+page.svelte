@@ -38,6 +38,7 @@
 	import AddEditPurchaseDialog from './AddEditPurchaseDialog.svelte';
 	import PurchaseHistoryDialog from './PurchaseHistoryDialog.svelte';
 	import HelpDialog from './HelpDialog.svelte';
+	import ConfirmDeleteDialog from './ConfirmDeleteDialog.svelte';
 
 	// Props from load function
 	let { data }: { data: PageData } = $props();
@@ -54,6 +55,11 @@
 	let showAddPurchaseDialog = $state(false);
 	let showPurchaseHistoryDialog = $state(false);
 	let showHelpDialog = $state(false);
+	let showDeleteItemDialog = $state(false);
+	let showDeletePurchaseDialog = $state(false);
+	let itemToDelete = $state<Item | null>(null);
+	let purchaseToDelete = $state<PurchaseRecord | null>(null);
+	let isDeleting = $state(false);
 	let editingItem = $state<Item | null>(null);
 	let editingPurchase = $state<PurchaseRecord | null>(null);
 	let selectedItemForPurchase = $state<Item | null>(null);
@@ -345,47 +351,83 @@
 	}
 
 	// Handle deleting item with server sync using remote function
-	async function handleDeleteItem(item: Item) {
-		if (!confirm(`Are you sure you want to delete "${item.name}" and all its purchase records?`)) {
-			return;
-		}
+	function handleDeleteItem(item: Item) {
+		itemToDelete = item;
+		showDeleteItemDialog = true;
+	}
 
+	async function confirmDeleteItem() {
+		if (!itemToDelete) return;
+
+		isDeleting = true;
 		try {
+			// Try to delete from server if authenticated
 			if (isAuthenticated) {
-				// Delete from server using remote function
-				await deletePurchaseItem(item.id);
+				try {
+					await deletePurchaseItem(itemToDelete.id);
+				} catch (error) {
+					console.warn('⚠️ Server delete failed, proceeding with local delete:', error);
+					// Continue with local delete even if server delete fails
+				}
 			}
 
-			// Delete from local state
-			purchaseState.deleteItem(item.id);
+			// Delete from local state (always execute this)
+			purchaseState.deleteItem(itemToDelete.id);
 			toast.success('Item and all purchase records deleted');
 			markUnsavedChanges();
+			showDeleteItemDialog = false;
+			itemToDelete = null;
 		} catch (error) {
 			console.error('❌ Delete failed:', error);
 			toast.error(`Delete failed: ${error instanceof Error ? error.message : String(error)}`);
+		} finally {
+			isDeleting = false;
 		}
 	}
 
-	// Handle deleting purchase record with server sync using remote function
-	async function handleDeletePurchaseRecord(purchase: PurchaseRecord) {
-		if (!confirm('Are you sure you want to delete this purchase record?')) {
-			return;
-		}
+	function cancelDeleteItem() {
+		showDeleteItemDialog = false;
+		itemToDelete = null;
+	}
 
+	// Handle deleting purchase record with server sync using remote function
+	function handleDeletePurchaseRecord(purchase: PurchaseRecord) {
+		purchaseToDelete = purchase;
+		showDeletePurchaseDialog = true;
+	}
+
+	async function confirmDeletePurchase() {
+		if (!purchaseToDelete) return;
+
+		isDeleting = true;
 		try {
+			// Try to delete from server if authenticated
 			if (isAuthenticated) {
-				// Delete from server using remote function
-				await deletePurchaseRecordById(purchase.id);
+				try {
+					await deletePurchaseRecordById(purchaseToDelete.id);
+				} catch (error) {
+					console.warn('⚠️ Server delete failed, proceeding with local delete:', error);
+					// Continue with local delete even if server delete fails
+				}
 			}
 
-			// Delete from local state
-			purchaseState.deletePurchaseRecord(purchase.id);
+			// Delete from local state (always execute this)
+			purchaseState.deletePurchaseRecord(purchaseToDelete.id);
 			toast.success('Purchase record deleted');
 			markUnsavedChanges();
+			showDeletePurchaseDialog = false;
+			purchaseToDelete = null;
 		} catch (error) {
 			console.error('❌ Delete failed:', error);
 			toast.error(`Delete failed: ${error instanceof Error ? error.message : String(error)}`);
+		} finally {
+			isDeleting = false;
 		}
+	}
+
+	function cancelDeletePurchase() {
+		showDeletePurchaseDialog = false;
+		purchaseToDelete = null;
 	}
 </script>
 
@@ -431,7 +473,6 @@
 </div>
 
 <HowToUseDialog bind:open={showHelpDialog} />
-
 <PurchaseHistoryDialog
 	bind:open={showPurchaseHistoryDialog}
 	{selectedItemForHistory}
@@ -446,6 +487,25 @@
 		if (selectedItemForHistory) openAddPurchaseDialog(selectedItemForHistory);
 	}}
 	onClose={() => (showPurchaseHistoryDialog = false)}
+/>
+
+<ConfirmDeleteDialog
+	bind:open={showDeleteItemDialog}
+	title="Delete Item"
+	description="Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
+	itemName={itemToDelete?.name}
+	onConfirm={confirmDeleteItem}
+	onCancel={cancelDeleteItem}
+	{isDeleting}
+/>
+
+<ConfirmDeleteDialog
+	bind:open={showDeletePurchaseDialog}
+	title="Delete Purchase Record"
+	description="Are you sure you want to delete this purchase record? This action cannot be undone."
+	onConfirm={confirmDeletePurchase}
+	onCancel={cancelDeletePurchase}
+	{isDeleting}
 />
 
 <AddEditItemDialog
