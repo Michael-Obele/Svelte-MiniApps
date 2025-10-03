@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { History, CalendarRange, List } from '@lucide/svelte';
+	import { History, CalendarRange, List, Calendar } from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 	import { Badge } from '@/ui/badge';
 	import * as purchaseState from './states.svelte';
@@ -11,7 +11,8 @@
 
 	let { onEditPurchase }: Props = $props();
 
-	let groupByDate = $state(true);
+	type GroupingMode = 'month' | 'year' | 'all';
+	let groupingMode = $state<GroupingMode>('month');
 
 	// Get all purchases with item information
 	let purchasesWithItems = $derived(purchaseState.getPurchasesWithItems());
@@ -21,6 +22,11 @@
 		return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
 	}
 
+	function formatYear(dateString: string) {
+		const date = new Date(dateString);
+		return date.getFullYear().toString();
+	}
+
 	function formatCurrency(amount: number, currency: string) {
 		return new Intl.NumberFormat('en-US', {
 			style: 'currency',
@@ -28,17 +34,20 @@
 		}).format(amount);
 	}
 
-	// Group purchases by month and year
+	// Group purchases by month, year, or show all
 	let groupedPurchases = $derived.by(() => {
-		if (!groupByDate) return { 'All Purchases': purchasesWithItems };
+		if (groupingMode === 'all') return { 'All Purchases': purchasesWithItems };
 
 		const grouped: Record<string, typeof purchasesWithItems> = {};
 		purchasesWithItems.forEach((purchase) => {
-			const monthYear = formatMonthYear(purchase.date);
-			if (!grouped[monthYear]) {
-				grouped[monthYear] = [];
+			const groupKey = groupingMode === 'month' 
+				? formatMonthYear(purchase.date)
+				: formatYear(purchase.date);
+			
+			if (!grouped[groupKey]) {
+				grouped[groupKey] = [];
 			}
-			grouped[monthYear].push(purchase);
+			grouped[groupKey].push(purchase);
 		});
 
 		// Sort groups by date (most recent first)
@@ -69,18 +78,27 @@
 		<h3 class="text-lg font-semibold text-gray-900 dark:text-white">All Purchase Records</h3>
 		<div class="flex items-center gap-2">
 			<Button
-				variant={groupByDate ? 'default' : 'outline'}
+				variant={groupingMode === 'month' ? 'default' : 'outline'}
 				size="sm"
-				onclick={() => (groupByDate = true)}
+				onclick={() => (groupingMode = 'month')}
 				class="h-9"
 			>
 				<CalendarRange class="mr-1.5 h-4 w-4" />
 				By Month
 			</Button>
 			<Button
-				variant={!groupByDate ? 'default' : 'outline'}
+				variant={groupingMode === 'year' ? 'default' : 'outline'}
 				size="sm"
-				onclick={() => (groupByDate = false)}
+				onclick={() => (groupingMode = 'year')}
+				class="h-9"
+			>
+				<Calendar class="mr-1.5 h-4 w-4" />
+				By Year
+			</Button>
+			<Button
+				variant={groupingMode === 'all' ? 'default' : 'outline'}
+				size="sm"
+				onclick={() => (groupingMode = 'all')}
 				class="h-9"
 			>
 				<List class="mr-1.5 h-4 w-4" />
@@ -94,14 +112,18 @@
 
 	<div class="space-y-6">
 		{#each Object.entries(groupedPurchases) as [groupName, groupPurchases]}
-			{#if groupByDate}
+			{#if groupingMode !== 'all'}
 				{@const groupStats = getGroupStats(groupPurchases)}
 				<div class="space-y-4">
 					<div
 						class="sticky top-0 z-10 flex items-center justify-between rounded-lg bg-gray-100 px-4 py-3 backdrop-blur-sm dark:bg-gray-800"
 					>
 						<div class="flex items-center gap-2">
-							<CalendarRange class="h-5 w-5 text-gray-600 dark:text-gray-400" />
+							{#if groupingMode === 'month'}
+								<CalendarRange class="h-5 w-5 text-gray-600 dark:text-gray-400" />
+							{:else}
+								<Calendar class="h-5 w-5 text-gray-600 dark:text-gray-400" />
+							{/if}
 							<h4 class="text-lg font-semibold text-gray-900 dark:text-white">{groupName}</h4>
 							<Badge variant="outline">
 								{groupPurchases.length} purchase{groupPurchases.length !== 1 ? 's' : ''}
