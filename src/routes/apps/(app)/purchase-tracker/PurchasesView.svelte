@@ -24,7 +24,13 @@
 
 	function formatYear(dateString: string) {
 		const date = new Date(dateString);
-		return date.getFullYear().toString();
+		const year = date.getFullYear();
+		// Handle invalid dates or unreasonable years
+		if (isNaN(year) || year < 2000 || year > 2030) {
+			console.warn('Invalid or unreasonable year for date:', dateString, 'Year:', year);
+			return 'Invalid Date';
+		}
+		return year.toString();
 	}
 
 	function formatCurrency(amount: number, currency: string) {
@@ -40,27 +46,50 @@
 
 		const grouped: Record<string, typeof purchasesWithItems> = {};
 		purchasesWithItems.forEach((purchase) => {
-			const groupKey = groupingMode === 'month' 
-				? formatMonthYear(purchase.date)
-				: formatYear(purchase.date);
-			
+			const groupKey =
+				groupingMode === 'month' ? formatMonthYear(purchase.date) : formatYear(purchase.date);
+
 			if (!grouped[groupKey]) {
 				grouped[groupKey] = [];
 			}
 			grouped[groupKey].push(purchase);
 		});
 
-		// Sort groups by date (most recent first)
-		const sortedGroups: Record<string, typeof purchasesWithItems> = {};
-		Object.keys(grouped)
-			.sort((a, b) => {
-				const dateA = new Date(grouped[a][0].date);
-				const dateB = new Date(grouped[b][0].date);
+		// First sort purchases within each group by date (most recent first)
+		Object.keys(grouped).forEach((key) => {
+			grouped[key].sort((a, b) => {
+				const dateA = new Date(a.date);
+				const dateB = new Date(b.date);
 				return dateB.getTime() - dateA.getTime();
-			})
-			.forEach((key) => {
-				sortedGroups[key] = grouped[key];
 			});
+		});
+
+		// Then sort groups by their most recent purchase date (most recent first)
+		const sortedGroups: Record<string, typeof purchasesWithItems> = {};
+		const sortedKeys = Object.keys(grouped).sort((a, b) => {
+			// For year grouping, sort by year number (most recent first)
+			if (groupingMode === 'year') {
+				const yearA = parseInt(a);
+				const yearB = parseInt(b);
+				// Handle invalid years - push them to the end
+				if (isNaN(yearA)) return 1;
+				if (isNaN(yearB)) return -1;
+				// Sort descending: 2025, 2024, 2023...
+				const result = yearB - yearA;
+				console.log(`Comparing years: ${a} (${yearA}) vs ${b} (${yearB}) = ${result}`);
+				return result;
+			}
+			// For month grouping, sort by the most recent purchase in each group
+			const dateA = new Date(grouped[a][0].date);
+			const dateB = new Date(grouped[b][0].date);
+			return dateB.getTime() - dateA.getTime();
+		});
+
+		console.log('Sorted year keys:', sortedKeys);
+
+		sortedKeys.forEach((key) => {
+			sortedGroups[key] = grouped[key];
+		});
 
 		return sortedGroups;
 	});
@@ -124,7 +153,9 @@
 							{:else}
 								<Calendar class="h-5 w-5 text-gray-600 dark:text-gray-400" />
 							{/if}
-							<h4 class="text-lg font-semibold text-gray-900 dark:text-white">{groupName}</h4>
+							<h4 class="min-w-0 flex-shrink-0 text-lg font-semibold text-gray-900 dark:text-white">
+								{groupName}
+							</h4>
 							<Badge variant="outline">
 								{groupPurchases.length} purchase{groupPurchases.length !== 1 ? 's' : ''}
 							</Badge>
