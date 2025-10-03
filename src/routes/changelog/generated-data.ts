@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: 0b7ab479a8efb487b1379b128a007a08e2f4a2f4
-// Generated at: 2025-10-03T22:51:12.843Z
+// Last processed commit: b845dd1c75139cde673b533026d0c4c91178afad
+// Generated at: 2025-10-03T23:02:46.336Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -22,6 +22,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
       "feat: implement grouping functionality for purchases by month, year, or all (019b671)",
       "feat: enhance PurchasesView with grouping functionality and improved UI elements (8dad439)",
       "refactor: Update HowToUseDialog with tabs and improved content structure (afd972d)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "October 3, 2025",
+    "title": "feat: add ConfirmDeleteDialog component for item deletion confirmation",
+    "description": "Updated src/routes/apps/(app)/purchase-tracker/+page.svelte, src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte",
+    "items": [
+      "feat: add ConfirmDeleteDialog component for item deletion confirmation (b845dd1)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -687,4 +698,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-03T22:51:12.843Z';
+export const lastUpdated = '2025-10-03T23:02:46.336Z';
