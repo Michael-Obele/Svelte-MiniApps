@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: bb905decd200b81255168873df966ba194cf663b
-// Generated at: 2025-10-03T21:29:20.904Z
+// Last processed commit: 0b7ab479a8efb487b1379b128a007a08e2f4a2f4
+// Generated at: 2025-10-03T22:51:12.843Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -13,6 +13,20 @@ export interface GeneratedTimelineItem {
 }
 
 export const generatedTimeline: GeneratedTimelineItem[] = [
+  {
+    "date": "October 3, 2025",
+    "title": "Updates",
+    "description": "Multiple updates across 8 files",
+    "items": [
+      "refactor: optimize grouping logic for purchases in PurchasesView (0b7ab47)",
+      "feat: implement grouping functionality for purchases by month, year, or all (019b671)",
+      "feat: enhance PurchasesView with grouping functionality and improved UI elements (8dad439)",
+      "refactor: Update HowToUseDialog with tabs and improved content structure (afd972d)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
   {
     "date": "October 2, 2025",
     "title": "feat: implement remote functions for Purchase Tracker and refactor component to use them",
@@ -673,4 +687,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-03T21:29:20.904Z';
+export const lastUpdated = '2025-10-03T22:51:12.843Z';
