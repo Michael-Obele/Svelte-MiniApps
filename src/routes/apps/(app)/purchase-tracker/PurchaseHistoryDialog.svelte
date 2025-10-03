@@ -48,16 +48,18 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content class="max-h-[90vh] overflow-y-auto w-[90vw] md:w-[60vw] lg:w-[50vw]">
+	<Dialog.Content class="max-h-[90vh] w-[90vw] overflow-y-auto md:w-[60vw] lg:w-[50vw]">
 		<Dialog.Header class="space-y-3">
 			<div class="flex items-center gap-3">
-				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-					<History class="h-5 w-5 text-primary" />
+				<div class="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+					<History class="text-primary h-5 w-5" />
 				</div>
 				<div>
 					<Dialog.Title class="text-xl font-semibold">Purchase History</Dialog.Title>
 					<Dialog.Description class="text-muted-foreground">
-						Complete purchase records for <span class="font-medium text-foreground">{selectedItemForHistory?.name}</span>
+						Complete purchase records for <span class="text-foreground font-medium"
+							>{selectedItemForHistory?.name}</span
+						>
 					</Dialog.Description>
 				</div>
 			</div>
@@ -67,63 +69,69 @@
 			<div class="space-y-6 py-6">
 				<!-- Stats Cards -->
 				<div class="flex flex-wrap gap-4">
-					<Card class="flex-1 min-w-[200px]">
+					<Card class="min-w-[200px] flex-1">
 						<CardContent class="p-4">
 							<div class="flex items-center gap-3">
-								<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
-									<Package class="h-4 w-4 text-muted-foreground" />
+								<div class="bg-muted flex h-8 w-8 items-center justify-center rounded-lg">
+									<Package class="text-muted-foreground h-4 w-4" />
 								</div>
 								<div>
 									<div class="text-2xl font-bold">{stats.totalPurchases}</div>
-									<div class="text-xs text-muted-foreground">Total Purchases</div>
+									<div class="text-muted-foreground text-xs">Total Purchases</div>
 								</div>
 							</div>
 						</CardContent>
 					</Card>
 
-					<Card class="flex-1 min-w-[200px]">
+					<Card class="min-w-[200px] flex-1">
 						<CardContent class="p-4">
 							<div class="flex items-center gap-3">
-								<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
-									<TrendingUp class="h-4 w-4 text-muted-foreground" />
+								<div class="bg-muted flex h-8 w-8 items-center justify-center rounded-lg">
+									<TrendingUp class="text-muted-foreground h-4 w-4" />
 								</div>
 								<div>
 									<div class="text-2xl font-bold">{stats.totalQuantity.toFixed(1)}</div>
-									<div class="text-xs text-muted-foreground">Total Quantity</div>
+									<div class="text-muted-foreground text-xs">Total Quantity</div>
 								</div>
 							</div>
 						</CardContent>
 					</Card>
 
-					<Card class="flex-1 min-w-[200px]">
+					<Card class="min-w-[200px] flex-1">
 						<CardContent class="p-4">
 							<div class="flex items-center gap-3">
-								<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
-									<TrendingUp class="h-4 w-4 text-muted-foreground" />
+								<div class="bg-muted flex h-8 w-8 items-center justify-center rounded-lg">
+									<TrendingUp class="text-muted-foreground h-4 w-4" />
 								</div>
 								<div>
-									<div class="text-lg font-bold leading-tight">
-										{formatCurrency(stats.totalSpent, selectedItemForHistory.defaultCurrency || 'USD')}
+									<div class="text-lg leading-tight font-bold">
+										{formatCurrency(
+											stats.totalSpent,
+											selectedItemForHistory.defaultCurrency || 'USD'
+										)}
 									</div>
-									<div class="text-xs text-muted-foreground">Total Spent</div>
+									<div class="text-muted-foreground text-xs">Total Spent</div>
 								</div>
 							</div>
 						</CardContent>
 					</Card>
 
-					<Card class="flex-1 min-w-[200px]">
+					<Card class="min-w-[200px] flex-1">
 						<CardContent class="p-4">
 							<div class="flex items-center gap-3">
-								<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
-									<Calendar class="h-4 w-4 text-muted-foreground" />
+								<div class="bg-muted flex h-8 w-8 items-center justify-center rounded-lg">
+									<Calendar class="text-muted-foreground h-4 w-4" />
 								</div>
 								<div>
-									<div class="text-lg font-bold leading-tight">
+									<div class="text-lg leading-tight font-bold">
 										{stats.averageCost > 0
-											? formatCurrency(stats.averageCost, selectedItemForHistory.defaultCurrency || 'USD')
+											? formatCurrency(
+													stats.averageCost,
+													selectedItemForHistory.defaultCurrency || 'USD'
+												)
 											: 'N/A'}
 									</div>
-									<div class="text-xs text-muted-foreground">Avg Cost</div>
+									<div class="text-muted-foreground text-xs">Avg Cost</div>
 								</div>
 							</div>
 						</CardContent>
@@ -133,7 +141,7 @@
 				<!-- Enhanced Purchase Records -->
 				<div class="space-y-3">
 					<div class="flex items-center justify-between">
-						<h3 class="text-lg font-semibold text-foreground">Purchase Records</h3>
+						<h3 class="text-foreground text-lg font-semibold">Purchase Records</h3>
 						<Badge variant="secondary" class="text-xs">
 							{purchases.length} record{purchases.length !== 1 ? 's' : ''}
 						</Badge>
@@ -143,14 +151,15 @@
 						<Card class="transition-all duration-200 hover:shadow-sm">
 							<CardContent class="p-4">
 								<div class="flex items-start justify-between gap-4">
-									<div class="flex-1 min-w-0 space-y-2">
+									<div class="min-w-0 flex-1 space-y-2">
 										<div class="flex flex-wrap items-center gap-3 text-sm">
 											<div class="flex items-center gap-2">
-												<Calendar class="h-4 w-4 text-muted-foreground" />
+												<Calendar class="text-muted-foreground h-4 w-4" />
 												<span class="font-medium">{formatDate(purchase.date)}</span>
 											</div>
 											<Badge variant="outline" class="text-xs">
-												{purchase.quantity} {selectedItemForHistory.defaultUnit || 'units'}
+												{purchase.quantity}
+												{selectedItemForHistory.defaultUnit || 'units'}
 											</Badge>
 											<div class="flex items-center gap-1">
 												<span class="font-semibold">
@@ -160,7 +169,7 @@
 										</div>
 
 										{#if purchase.location || purchase.paymentMethod}
-											<div class="flex flex-wrap gap-4 text-xs text-muted-foreground">
+											<div class="text-muted-foreground flex flex-wrap gap-4 text-xs">
 												{#if purchase.location}
 													<span>📍 {purchase.location}</span>
 												{/if}
@@ -171,8 +180,8 @@
 										{/if}
 
 										{#if purchase.notes}
-											<div class="rounded-md bg-muted/50 p-2">
-												<p class="text-sm text-muted-foreground italic">"{purchase.notes}"</p>
+											<div class="bg-muted/50 rounded-md p-2">
+												<p class="text-muted-foreground text-sm italic">"{purchase.notes}"</p>
 											</div>
 										{/if}
 									</div>
@@ -204,20 +213,20 @@
 				{#if purchases.length === 0}
 					<Card class="border-dashed">
 						<CardContent class="py-12">
-							<div class="text-center space-y-4">
-								<div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-									<History class="h-8 w-8 text-muted-foreground" />
+							<div class="space-y-4 text-center">
+								<div
+									class="bg-muted mx-auto flex h-16 w-16 items-center justify-center rounded-full"
+								>
+									<History class="text-muted-foreground h-8 w-8" />
 								</div>
 								<div class="space-y-2">
-									<h3 class="text-lg font-semibold text-foreground">No purchases yet</h3>
-									<p class="text-sm text-muted-foreground max-w-sm mx-auto">
-										Start tracking your purchases for {selectedItemForHistory.name} to see detailed history and analytics here.
+									<h3 class="text-foreground text-lg font-semibold">No purchases yet</h3>
+									<p class="text-muted-foreground mx-auto max-w-sm text-sm">
+										Start tracking your purchases for {selectedItemForHistory.name} to see detailed history
+										and analytics here.
 									</p>
 								</div>
-								<Button
-									onclick={onAddFirstPurchase}
-									class="mt-4"
-								>
+								<Button onclick={onAddFirstPurchase} class="mt-4">
 									<Package class="mr-2 h-4 w-4" />
 									Add First Purchase
 								</Button>
@@ -228,10 +237,8 @@
 			</div>
 		{/if}
 
-		<Dialog.Footer >
-			<Button variant="outline" onclick={onClose}>
-				Close
-			</Button>
+		<Dialog.Footer>
+			<Button variant="outline" onclick={onClose}>Close</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
