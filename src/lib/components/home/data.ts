@@ -13,11 +13,11 @@ export const contentBlocksData = [
 		header: {
 			text: [
 				{ type: 'span', content: 'Why' },
-				{ type: 'strong', content: 'Svelte MiniApps' }
+				{ type: 'strong', content: 'Svelte' }
 			]
 		},
 		paragraph:
-			'Ever noticed how some apps just feel smoother and more responsive? That\'s the magic of Svelte at work! We\'ve chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless.',
+			"Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless.",
 		iconId: 'axteoudt'
 	},
 	{
@@ -51,7 +51,7 @@ export const infoBlocksData = [
 		iconDir: 'right',
 		header: 'Share the Joy:',
 		paragraph:
-			'<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, colleagues, or your social media circle. Whether it\'s a productivity breakthrough or a clever solution you discovered, your experience could be exactly what someone else needs to hear. Every share helps our community grow stronger!'
+			"<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, colleagues, or your social media circle. Whether it's a productivity breakthrough or a clever solution you discovered, your experience could be exactly what someone else needs to hear. Every share helps our community grow stronger!"
 	},
 	{
 		dir: 'right',

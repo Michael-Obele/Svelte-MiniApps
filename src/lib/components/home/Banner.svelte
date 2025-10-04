@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Trophy } from '@lucide/svelte';
+	import { Trophy, Link } from '@lucide/svelte';
 </script>
 
 <div
@@ -10,10 +10,11 @@
 	>
 		<Trophy class="h-5 w-5 text-yellow-500" />
 		<span
-			>We won 4th place at Svelte Hack 2024! Check out our <a
+			>4th place at Svelte Hack 2024! See our <a
 				href="/changelog/timeline?highlight=svelte%20hack"
-				class="underline">project timeline</a
-			> for the full story.</span
+				class="underline">Svelte Hack timeline</a
+			>
+			<Link class="inline h-3 w-3" />.</span
 		>
 	</p>
 </div>
