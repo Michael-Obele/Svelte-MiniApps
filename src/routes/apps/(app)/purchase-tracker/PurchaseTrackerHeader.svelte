@@ -1,23 +1,27 @@
 <script lang="ts">
-	import { Package, History, Cloud, Loader2, HelpCircle } from '@lucide/svelte';
+	import { Package, History, Cloud, Loader2, HelpCircle, RefreshCw } from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 
 	interface Props {
 		activeTab: 'items' | 'purchases';
 		isAuthenticated: boolean;
 		isBackingUp: boolean;
+		isRefreshing?: boolean;
 		onTabChange?: (tab: 'items' | 'purchases') => void;
 		onHelpClick?: () => void;
 		onBackupClick?: () => void;
+		onRefreshClick?: () => void;
 	}
 
 	let {
 		activeTab = $bindable('items'),
 		isAuthenticated,
 		isBackingUp,
+		isRefreshing = false,
 		onTabChange,
 		onHelpClick,
-		onBackupClick
+		onBackupClick,
+		onRefreshClick
 	}: Props = $props();
 
 	function handleTabChange(tab: 'items' | 'purchases') {
@@ -55,9 +59,24 @@
 		{#if isAuthenticated}
 			<Button
 				variant="outline"
+				onclick={onRefreshClick}
+				disabled={isRefreshing}
+				class="sm:min-w-0 sm:flex-1 md:flex-none"
+				title="Refresh data from server"
+			>
+				{#if isRefreshing}
+					<Loader2 class="mr-2 h-4 w-4 flex-shrink-0 animate-spin" />
+					<span class="truncate">Refreshing...</span>
+				{:else}
+					<RefreshCw class="mr-2 h-4 w-4 flex-shrink-0" />
+					<span class="truncate">Refresh</span>
+				{/if}
+			</Button>
+			<Button
+				variant="outline"
 				onclick={onBackupClick}
 				disabled={isBackingUp}
-				class="sm:min-w-0 sm:flex-1 md:ml-4 md:flex-none"
+				class="sm:min-w-0 sm:flex-1 md:flex-none"
 			>
 				{#if isBackingUp}
 					<Loader2 class="mr-2 h-4 w-4 flex-shrink-0 animate-spin" />

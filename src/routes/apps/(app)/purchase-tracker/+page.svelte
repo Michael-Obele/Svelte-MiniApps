@@ -48,6 +48,7 @@
 	let hasUnsavedChanges = $state(false);
 	let isBackingUp = $state(false);
 	let showBackupDialog = $state(false);
+	let isRefreshing = $state(false);
 	// Reactive state
 	let isLoading = $state(true);
 	let activeTab = $state<'items' | 'purchases'>('items');
@@ -84,36 +85,79 @@
 	let purchaseNotes = $state('');
 
 	// Sync with server data on mount
-	$effect(() => {
-		if (data?.items && data.items.length > 0 && purchaseState.items.current.length === 0) {
-			purchaseState.items.current = data.items.map((item) => ({
-				id: item.id,
-				name: item.name,
-				category: item.category,
-				description: item.description || undefined,
-				defaultUnit: item.defaultUnit || undefined,
-				defaultCurrency: item.defaultCurrency,
-				createdAt: item.createdAt.toISOString(),
-				updatedAt: item.updatedAt.toISOString()
-			}));
-		}
-		if (
-			data?.purchases &&
-			data.purchases.length > 0 &&
-			purchaseState.purchases.current.length === 0
-		) {
-			purchaseState.purchases.current = data.purchases.map((purchase) => ({
-				id: purchase.id,
-				itemId: purchase.itemId,
-				quantity: purchase.quantity,
-				cost: purchase.cost,
-				currency: purchase.currency,
-				date: purchase.date.toISOString(),
-				location: purchase.location || undefined,
-				paymentMethod: purchase.paymentMethod || undefined,
-				notes: purchase.notes || undefined,
-				createdAt: purchase.createdAt.toISOString()
-			}));
+	onMount(() => {
+		// For authenticated users, always sync with server data on mount
+		if (isAuthenticated && data?.items && data.items.length > 0) {
+			const localItemsCount = purchaseState.items.current.length;
+			const serverItemsCount = data.items.length;
+
+			// If local storage is empty or server has data, sync from server
+			if (localItemsCount === 0 || serverItemsCount > 0) {
+				console.log(
+					`🔄 Syncing data from server: ${serverItemsCount} items, ${data.purchases?.length || 0} purchases`
+				);
+
+				purchaseState.items.current = data.items.map((item) => ({
+					id: item.id,
+					name: item.name,
+					category: item.category,
+					description: item.description || undefined,
+					defaultUnit: item.defaultUnit || undefined,
+					defaultCurrency: item.defaultCurrency,
+					createdAt: item.createdAt.toISOString(),
+					updatedAt: item.updatedAt.toISOString()
+				}));
+
+				if (data?.purchases && data.purchases.length > 0) {
+					purchaseState.purchases.current = data.purchases.map((purchase) => ({
+						id: purchase.id,
+						itemId: purchase.itemId,
+						quantity: purchase.quantity,
+						cost: purchase.cost,
+						currency: purchase.currency,
+						date: purchase.date.toISOString(),
+						location: purchase.location || undefined,
+						paymentMethod: purchase.paymentMethod || undefined,
+						notes: purchase.notes || undefined,
+						createdAt: purchase.createdAt.toISOString()
+					}));
+				}
+
+				// Reset unsaved changes flag since we just synced
+				hasUnsavedChanges = false;
+			}
+		} else if (!isAuthenticated) {
+			// For unauthenticated users, only initialize if local storage is empty
+			if (data?.items && data.items.length > 0 && purchaseState.items.current.length === 0) {
+				purchaseState.items.current = data.items.map((item) => ({
+					id: item.id,
+					name: item.name,
+					category: item.category,
+					description: item.description || undefined,
+					defaultUnit: item.defaultUnit || undefined,
+					defaultCurrency: item.defaultCurrency,
+					createdAt: item.createdAt.toISOString(),
+					updatedAt: item.updatedAt.toISOString()
+				}));
+			}
+			if (
+				data?.purchases &&
+				data.purchases.length > 0 &&
+				purchaseState.purchases.current.length === 0
+			) {
+				purchaseState.purchases.current = data.purchases.map((purchase) => ({
+					id: purchase.id,
+					itemId: purchase.itemId,
+					quantity: purchase.quantity,
+					cost: purchase.cost,
+					currency: purchase.currency,
+					date: purchase.date.toISOString(),
+					location: purchase.location || undefined,
+					paymentMethod: purchase.paymentMethod || undefined,
+					notes: purchase.notes || undefined,
+					createdAt: purchase.createdAt.toISOString()
+				}));
+			}
 		}
 		isLoading = false;
 	});
@@ -429,6 +473,51 @@
 		showDeletePurchaseDialog = false;
 		purchaseToDelete = null;
 	}
+
+	// Refresh data from server using remote function
+	async function refreshFromServer() {
+		if (!isAuthenticated) {
+			toast.error('Please log in to refresh data from server');
+			return;
+		}
+
+		// Warn if there are unsaved changes
+		if (hasUnsavedChanges) {
+			const confirmRefresh = confirm(
+				'You have unsaved changes. Refreshing will override your local changes with server data. Continue?'
+			);
+			if (!confirmRefresh) {
+				return;
+			}
+		}
+
+		try {
+			isRefreshing = true;
+			console.log('🔄 Fetching latest data from server...');
+
+			// Use remote function to load data
+			const result = await loadPurchaseData();
+
+			// Update local state with server data
+			purchaseState.items.current = result.items;
+			purchaseState.purchases.current = result.purchases;
+
+			// Reset unsaved changes flag
+			hasUnsavedChanges = false;
+
+			toast.success(
+				`Data refreshed! Loaded ${result.items.length} items and ${result.purchases.length} purchases.`
+			);
+			console.log(
+				`✅ Successfully refreshed: ${result.items.length} items, ${result.purchases.length} purchases`
+			);
+		} catch (error) {
+			console.error('❌ Refresh failed:', error);
+			toast.error(`Refresh failed: ${error instanceof Error ? error.message : String(error)}`);
+		} finally {
+			isRefreshing = false;
+		}
+	}
 </script>
 
 <RouteHead
@@ -442,8 +531,10 @@
 		bind:activeTab
 		{isAuthenticated}
 		{isBackingUp}
+		{isRefreshing}
 		onHelpClick={() => (showHelpDialog = true)}
 		onBackupClick={backupToServer}
+		onRefreshClick={refreshFromServer}
 	/>
 
 	{#if isLoading}
