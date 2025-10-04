@@ -239,6 +239,12 @@ export function deleteLog(logId: string): void {
 	medicationLogs.current = medicationLogs.current.filter((log) => log.id !== logId);
 }
 
+export function deletePendingLogsForMedication(medicationId: string): void {
+	medicationLogs.current = medicationLogs.current.filter(
+		(log) => !(log.medicationId === medicationId && log.status === 'pending')
+	);
+}
+
 export function getActiveSession(): TreatmentSession | undefined {
 	return treatmentSessions.current.find((s) => s.isActive);
 }

@@ -163,6 +163,9 @@
 			return;
 		}
 
+		// Clear existing pending logs for this medication to prevent duplicates
+		medState.deletePendingLogsForMedication(schedulingMedication.id);
+
 		// Create a temporary medication with updated dates for schedule generation
 		const tempMed: Medication = {
 			...schedulingMedication,
