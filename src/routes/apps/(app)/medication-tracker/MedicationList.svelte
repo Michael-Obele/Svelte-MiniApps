@@ -14,6 +14,7 @@
 
 	import * as medState from './states.svelte';
 	import type { TreatmentSession, Medication } from './states.svelte';
+	import ScheduleViewer from './ScheduleViewer.svelte';
 
 	// Props
 	let { session, onAddMedication } = $props<{
@@ -42,6 +43,30 @@
 	let scheduleStartDate = $state(new Date().toISOString().split('T')[0]);
 	let scheduleEndDate = $state('');
 	let scheduleTimes = $state<string[]>(['09:00']);
+	let useAutoSchedule = $state(true);
+
+	// Calculate expected doses on-the-fly
+	let expectedDoses = $derived(
+		medicationEndDate && medicationStartDate && medicationFrequency
+			? medState.calculateExpectedDoses(medicationStartDate, medicationEndDate, medicationFrequency)
+			: 0
+	);
+
+	// Get suggested times based on frequency
+	let suggestedTimes = $derived(
+		medicationFrequency ? medState.parseFrequency(medicationFrequency).suggestedTimes : ['09:00']
+	);
+
+	// Update schedule times when frequency changes in schedule dialog
+	let scheduleExpectedDoses = $derived(
+		schedulingMedication && scheduleStartDate
+			? medState.calculateExpectedDoses(
+					scheduleStartDate,
+					scheduleEndDate || undefined,
+					schedulingMedication.frequency
+				)
+			: 0
+	);
 
 	// Add new medication
 	function addMedication() {
@@ -115,9 +140,12 @@
 	// Schedule doses
 	function openSchedule(med: Medication) {
 		schedulingMedication = med;
-		scheduleStartDate = new Date().toISOString().split('T')[0];
-		scheduleEndDate = '';
-		scheduleTimes = ['09:00'];
+		scheduleStartDate = med.startDate.split('T')[0];
+		scheduleEndDate = med.endDate ? med.endDate.split('T')[0] : '';
+		// Auto-populate times based on frequency
+		const { suggestedTimes } = medState.parseFrequency(med.frequency);
+		scheduleTimes = suggestedTimes;
+		useAutoSchedule = true;
 		showScheduleDialog = true;
 	}
 
@@ -135,34 +163,23 @@
 			return;
 		}
 
-		const startDate = new Date(scheduleStartDate);
-		const endDate = scheduleEndDate ? new Date(scheduleEndDate) : new Date(startDate);
-		endDate.setDate(endDate.getDate() + 30); // Default 30 days if no end date
+		// Create a temporary medication with updated dates for schedule generation
+		const tempMed: Medication = {
+			...schedulingMedication,
+			startDate: new Date(scheduleStartDate).toISOString(),
+			endDate: scheduleEndDate ? new Date(scheduleEndDate).toISOString() : undefined
+		};
 
-		let logsCreated = 0;
-		const currentDate = new Date(startDate);
-		const medId = schedulingMedication.id; // Store to satisfy TypeScript
+		const logs = medState.autoGenerateSchedule(
+			session.id,
+			tempMed,
+			useAutoSchedule ? undefined : scheduleTimes
+		);
 
-		while (currentDate <= endDate) {
-			scheduleTimes.forEach((time) => {
-				const [hours, minutes] = time.split(':');
-				const scheduleDateTime = new Date(currentDate);
-				scheduleDateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+		// Add all logs
+		logs.forEach((log) => medState.addLog(log));
 
-				const log = medState.createLog(
-					session.id,
-					medId,
-					scheduleDateTime.toISOString(),
-					'pending'
-				);
-				medState.addLog(log);
-				logsCreated++;
-			});
-
-			currentDate.setDate(currentDate.getDate() + 1);
-		}
-
-		toast.success(`Created ${logsCreated} scheduled doses`);
+		toast.success(`Created ${logs.length} scheduled doses`);
 		showScheduleDialog = false;
 		schedulingMedication = null;
 	}
@@ -236,9 +253,10 @@
 							</div>
 
 							<div class="flex gap-2">
+								<ScheduleViewer {session} medication={med} />
 								<Button variant="outline" size="sm" onclick={() => openSchedule(med)}>
 									<Clock class="mr-1 size-4" />
-									Schedule
+									Add Schedule
 								</Button>
 								<Button variant="ghost" size="sm" onclick={() => startEdit(med)}>
 									<Edit class="size-4" />
@@ -313,6 +331,17 @@
 					<Input id="med-end" type="date" bind:value={medicationEndDate} />
 				</div>
 			</div>
+
+			{#if expectedDoses > 0}
+				<div class="rounded-lg bg-blue-50 p-3 dark:bg-blue-950">
+					<p class="text-sm text-blue-800 dark:text-blue-200">
+						📊 Expected total doses: <strong>{expectedDoses}</strong>
+						{#if suggestedTimes.length > 0}
+							• Suggested times: {suggestedTimes.join(', ')}
+						{/if}
+					</p>
+				</div>
+			{/if}
 		</div>
 
 		<Dialog.Footer>
@@ -343,7 +372,18 @@
 
 				<div class="space-y-2">
 					<Label for="edit-frequency">Frequency *</Label>
-					<Input id="edit-frequency" bind:value={medicationFrequency} />
+					<Select.Root type="single" bind:value={medicationFrequency} name="frequency">
+						<Select.Trigger class="w-full">
+							{medicationFrequency || 'Select frequency'}
+						</Select.Trigger>
+						<Select.Content>
+							{#each medState.frequencyPresets as preset (preset)}
+								<Select.Item value={preset} label={preset}>
+									{preset}
+								</Select.Item>
+							{/each}
+						</Select.Content>
+					</Select.Root>
 				</div>
 			</div>
 
@@ -395,19 +435,53 @@
 				</div>
 			</div>
 
+			<!-- Schedule Type Toggle -->
+			<div class="space-y-2">
+				<Label>Schedule Type</Label>
+				<div class="flex gap-2">
+					<Button
+						variant={useAutoSchedule ? 'default' : 'outline'}
+						size="sm"
+						onclick={() => {
+							useAutoSchedule = true;
+							if (schedulingMedication) {
+								const { suggestedTimes } = medState.parseFrequency(schedulingMedication.frequency);
+								scheduleTimes = suggestedTimes;
+							}
+						}}
+					>
+						Auto (Based on Frequency)
+					</Button>
+					<Button
+						variant={!useAutoSchedule ? 'default' : 'outline'}
+						size="sm"
+						onclick={() => (useAutoSchedule = false)}
+					>
+						Custom Times
+					</Button>
+				</div>
+			</div>
+
 			<div class="space-y-2">
 				<div class="flex items-center justify-between">
 					<Label>Daily Times</Label>
-					<Button size="sm" variant="outline" onclick={addScheduleTime}>
-						<Plus class="mr-1 size-3" />
-						Add Time
-					</Button>
+					{#if !useAutoSchedule}
+						<Button size="sm" variant="outline" onclick={addScheduleTime}>
+							<Plus class="mr-1 size-3" />
+							Add Time
+						</Button>
+					{/if}
 				</div>
 				<div class="space-y-2">
 					{#each scheduleTimes as time, index}
 						<div class="flex gap-2">
-							<Input type="time" bind:value={scheduleTimes[index]} class="flex-1" />
-							{#if scheduleTimes.length > 1}
+							<Input
+								type="time"
+								bind:value={scheduleTimes[index]}
+								class="flex-1"
+								disabled={useAutoSchedule}
+							/>
+							{#if scheduleTimes.length > 1 && !useAutoSchedule}
 								<Button variant="ghost" size="sm" onclick={() => removeScheduleTime(index)}>
 									<Trash2 class="size-4 text-red-500" />
 								</Button>
@@ -416,6 +490,15 @@
 					{/each}
 				</div>
 			</div>
+
+			{#if scheduleExpectedDoses > 0}
+				<div class="rounded-lg bg-green-50 p-3 dark:bg-green-950">
+					<p class="text-sm text-green-800 dark:text-green-200">
+						✅ Will create <strong>{scheduleExpectedDoses}</strong> scheduled doses ({scheduleTimes.length}x
+						per day)
+					</p>
+				</div>
+			{/if}
 		</div>
 
 		<Dialog.Footer>

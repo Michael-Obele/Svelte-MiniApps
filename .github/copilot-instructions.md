@@ -95,20 +95,34 @@ let { title, description, children }: Props = $props();
 **Computed Values:**
 
 ```svelte
-// ✅ Use $derived() for computed values let doubled = $derived(count * 2); let fullName =
-$derived(`${firstName} ${lastName}`); // ❌ Don't use legacy reactive statements // $: doubled =
-count * 2;
-```
+// ✅ Use $derived() for computed values
+let doubled = $derived(count * 2);
+let fullName = $derived(`${firstName} ${lastName}`);
 
-**Side Effects:**
-
-```svelte
-// ✅ Use $effect() for side effects
-$effect(() => {
-  console.log('Count changed:', count);
+// ✅ Use $derived.by() for complex computations
+let expensiveCalculation = $derived.by(() => {
+  // Complex logic here
+  return items.filter(i => i.active).reduce((sum, i) => sum + i.value, 0);
 });
 
-// ✅ With cleanup
+// ❌ Don't use legacy reactive statements
+// $: doubled = count * 2;
+```
+
+**Side Effects (Use Sparingly!):**
+
+```svelte
+// ⚠️ IMPORTANT: Prefer $derived() over $effect() whenever possible
+// Only use $effect() for TRUE side effects (not for computing values)
+
+// ✅ Use $effect() ONLY for side effects like logging, analytics, DOM manipulation
+$effect(() => {
+  console.log('Count changed:', count);
+  // Or: trackAnalytics(count);
+  // Or: updateExternalDOM(element, count);
+});
+
+// ✅ With cleanup for subscriptions, timers, listeners
 $effect(() => {
   const interval = setInterval(() => {
     count++;
@@ -116,7 +130,18 @@ $effect(() => {
 
   return () => clearInterval(interval);
 });
+
+// ❌ NEVER assign to reactive state inside $effect() without guards
+// This creates infinite loops!
+$effect(() => {
+  derived = count * 2; // ❌ WRONG - use $derived() instead
+});
 ```
+
+**Reactive State Priority:**
+1. **First choice**: `$state()` for mutable values
+2. **Second choice**: `$derived()` or `$derived.by()` for computed values
+3. **Last resort**: `$effect()` only for true side effects (logging, DOM, external APIs)
 
 **Event Handling:**
 
@@ -205,6 +230,7 @@ mount(() => {
 - Utilities: `src/lib/utility/`
 - Server code: `src/lib/server/`
 - Types: `src/types/`
+- **AI-generated documentation**: Always place AI-generated markdown files (technical docs, implementation guides, fix explanations) in the `ai-generated/` folder at project root, NOT in feature folders
 
 ## Development Workflow
 

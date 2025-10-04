@@ -313,3 +313,92 @@ export function getTodayLogs(sessionId: string): MedicationLog[] {
 		(a, b) => new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime()
 	);
 }
+
+// Parse frequency string and return times per day
+export function parseFrequency(frequency: string): {
+	timesPerDay: number;
+	suggestedTimes: string[];
+} {
+	const lower = frequency.toLowerCase();
+
+	// Match patterns like "once daily", "twice daily", "3 times daily", "every X hours"
+	if (lower.includes('once') || lower.includes('1')) {
+		return { timesPerDay: 1, suggestedTimes: ['09:00'] };
+	}
+	if (lower.includes('twice') || lower.includes('2')) {
+		return { timesPerDay: 2, suggestedTimes: ['09:00', '21:00'] };
+	}
+	if (lower.includes('three') || lower.includes('3')) {
+		return { timesPerDay: 3, suggestedTimes: ['08:00', '14:00', '20:00'] };
+	}
+	if (lower.includes('four') || lower.includes('4')) {
+		return { timesPerDay: 4, suggestedTimes: ['08:00', '12:00', '16:00', '20:00'] };
+	}
+
+	// Every X hours patterns
+	if (lower.includes('every')) {
+		const match = lower.match(/every\s+(\d+)\s+hours?/);
+		if (match) {
+			const hours = parseInt(match[1]);
+			const timesPerDay = Math.floor(24 / hours);
+			const suggestedTimes: string[] = [];
+
+			for (let i = 0; i < timesPerDay; i++) {
+				const hour = (8 + i * hours) % 24;
+				suggestedTimes.push(`${hour.toString().padStart(2, '0')}:00`);
+			}
+
+			return { timesPerDay, suggestedTimes };
+		}
+	}
+
+	// Default: once daily
+	return { timesPerDay: 1, suggestedTimes: ['09:00'] };
+}
+
+// Calculate expected total doses based on frequency and date range
+export function calculateExpectedDoses(
+	startDate: string,
+	endDate: string | undefined,
+	frequency: string
+): number {
+	const start = new Date(startDate);
+	const end = endDate ? new Date(endDate) : new Date(start.getTime() + 30 * 24 * 60 * 60 * 1000); // Default 30 days
+
+	const days = Math.ceil((end.getTime() - start.getTime()) / (24 * 60 * 60 * 1000)) + 1;
+	const { timesPerDay } = parseFrequency(frequency);
+
+	return days * timesPerDay;
+}
+
+// Auto-generate schedule logs based on medication details
+export function autoGenerateSchedule(
+	sessionId: string,
+	medication: Medication,
+	customTimes?: string[]
+): MedicationLog[] {
+	const logs: MedicationLog[] = [];
+	const { suggestedTimes } = parseFrequency(medication.frequency);
+	const times = customTimes && customTimes.length > 0 ? customTimes : suggestedTimes;
+
+	const startDate = new Date(medication.startDate);
+	const endDate = medication.endDate
+		? new Date(medication.endDate)
+		: new Date(startDate.getTime() + 30 * 24 * 60 * 60 * 1000); // Default 30 days
+
+	const currentDate = new Date(startDate);
+
+	while (currentDate <= endDate) {
+		times.forEach((time) => {
+			const [hours, minutes] = time.split(':');
+			const scheduleDateTime = new Date(currentDate);
+			scheduleDateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+			logs.push(createLog(sessionId, medication.id, scheduleDateTime.toISOString(), 'pending'));
+		});
+
+		currentDate.setDate(currentDate.getDate() + 1);
+	}
+
+	return logs;
+}
