@@ -12,3 +12,13 @@ export {
 	deletePurchaseRecordById,
 	syncPurchaseData
 } from './purchase-tracker.remote';
+
+// Remote functions for medication tracker
+export {
+	loadMedicationData,
+	backupMedicationData,
+	syncMedicationData,
+	deleteMedicationSession,
+	deleteMedication,
+	deleteMedicationLog
+} from './medication-tracker.remote';

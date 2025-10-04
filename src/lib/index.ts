@@ -25,7 +25,8 @@ export const done = [
 	'markdown-editor',
 	'text-summarizer',
 	'unit-converter',
-	'purchase-tracker'
+	'purchase-tracker',
+	'medication-tracker'
 ];
 //
 export type Project = {
@@ -58,6 +59,14 @@ export const projects: Project[] = [
 		tag: 'finance',
 		difficulty: 'medium',
 		link: 'purchase-tracker'
+	},
+	{
+		title: 'Medication Tracker',
+		details:
+			'Track your medications during treatment sessions. Manage multiple medications, schedule doses, monitor adherence, and never miss a dose.',
+		tag: 'health',
+		difficulty: 'medium',
+		link: 'medication-tracker'
 	},
 	{
 		title: 'Random Password Generator',

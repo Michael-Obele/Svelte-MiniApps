@@ -232,7 +232,8 @@ mount(() => {
 
 - Always check `user_preferences` from memory MCP at session start
 - Use Context7 for Svelte 5/SvelteKit docs when uncertain about APIs
-- Don't auto-run build commands - user will handle dev server
+- **NEVER run `bun dev`** - the dev server is always running or the user will start it themselves
+- **ALWAYS run `bun check`** after making changes to verify TypeScript errors are fixed
 - Prefer `bun check` over `npx tsc` for TypeScript checking
 
 ## Common Issues & Solutions

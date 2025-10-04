@@ -8,22 +8,23 @@ datasource db {
 }
 
 model User {
-  id              String           @id @default(uuid())
-  age             Int?
-  username        String           @unique
-  passwordHash    String           @map("password_hash")
-  role            String           @default("user")
-  createdAt       DateTime         @default(now()) @map("created_at")
-  updatedAt       DateTime         @updatedAt @map("updated_at")
-  githubId        String?          @unique
-  googleId        String?          @unique
-  mantras         Mantra[]
-  sessions        Session[]
-  SocialLinkPage  SocialLinkPage[]
-  UserPassword    UserPassword[]
-  budgets         Budget[]
-  items           Item[]
-  purchaseRecords PurchaseRecord[]
+  id                 String              @id @default(uuid())
+  age                Int?
+  username           String              @unique
+  passwordHash       String              @map("password_hash")
+  role               String              @default("user")
+  createdAt          DateTime            @default(now()) @map("created_at")
+  updatedAt          DateTime            @updatedAt @map("updated_at")
+  githubId           String?             @unique
+  googleId           String?             @unique
+  mantras            Mantra[]
+  sessions           Session[]
+  SocialLinkPage     SocialLinkPage[]
+  UserPassword       UserPassword[]
+  budgets            Budget[]
+  items              Item[]
+  purchaseRecords    PurchaseRecord[]
+  medicationSessions MedicationSession[]
 
   @@index([username])
   @@map("user")
@@ -149,4 +150,61 @@ model PurchaseRecord {
 
   @@index([itemId])
   @@map("purchase_records")
+}
+
+model MedicationSession {
+  id          String          @id @default(uuid())
+  name        String
+  description String?
+  startDate   DateTime        @map("start_date")
+  endDate     DateTime?       @map("end_date")
+  isActive    Boolean         @default(true) @map("is_active")
+  userId      String          @map("user_id")
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  medications Medication[]
+  logs        MedicationLog[]
+
+  @@index([userId])
+  @@index([isActive])
+  @@map("medication_sessions")
+}
+
+model Medication {
+  id           String            @id @default(uuid())
+  name         String
+  dosage       String
+  frequency    String
+  instructions String?
+  startDate    DateTime          @map("start_date")
+  endDate      DateTime?         @map("end_date")
+  color        String
+  sessionId    String            @map("session_id")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+  session      MedicationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  logs         MedicationLog[]
+
+  @@index([sessionId])
+  @@map("medications")
+}
+
+model MedicationLog {
+  id            String            @id @default(uuid())
+  sessionId     String            @map("session_id")
+  medicationId  String            @map("medication_id")
+  scheduledTime DateTime          @map("scheduled_time")
+  actualTime    DateTime?         @map("actual_time")
+  status        String            @default("pending")
+  notes         String?
+  createdAt     DateTime          @default(now()) @map("created_at")
+  session       MedicationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  medication    Medication        @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([medicationId])
+  @@index([scheduledTime])
+  @@index([status])
+  @@map("medication_logs")
 }
