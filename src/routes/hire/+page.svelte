@@ -229,16 +229,15 @@
 					<h2 class="mb-4 text-2xl font-semibold">Get In Touch</h2>
 					<div class="space-y-4">
 						<a
-							href="mailto:admin@svelte-apps.me"
+							href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
 							class="hover:bg-accent flex items-center space-x-3 rounded-md border p-3 transition-colors"
 						>
 							<Mail class="text-primary size-5" />
 							<div>
 								<p class="font-medium">Email</p>
-								<p class="text-muted-foreground text-sm">admin@svelte-apps.me</p>
+								<p class="text-muted-foreground text-sm">hire@svelte-apps.me</p>
 							</div>
 						</a>
-
 						<div class="flex space-x-2">
 							<a
 								href="https://github.com/Michael-Obele"
@@ -328,7 +327,7 @@
 						mentoring. Share a brief note about the project and timeline and I'll get back to you.
 					</p>
 					<a
-						href="mailto:admin@svelte-apps.me?subject=Hiring Inquiry"
+						href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
 						class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center rounded-md px-6 py-3 font-medium transition-colors"
 					>
 						<Mail class="mr-2 size-4" />

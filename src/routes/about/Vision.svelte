@@ -76,4 +76,22 @@
 			{/each}
 		</ul>
 	</div>
+
+	<div
+		class="mx-auto my-8 max-w-2xl rounded-lg border border-green-500/30 bg-green-50 p-6 text-center dark:bg-green-900/10"
+	>
+		<p class="mb-3 text-lg font-semibold text-green-800 dark:text-green-400">
+			Have ideas or feedback?
+		</p>
+		<p class="text-muted-foreground mb-4 text-sm">
+			Your input shapes the future of Svelte MiniApps. Share your thoughts, feature requests, or
+			suggestions with us.
+		</p>
+		<a
+			href="mailto:feedback@svelte-apps.me?subject=Feature Request / Feedback"
+			class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md px-6 py-2 text-sm font-medium transition-colors"
+		>
+			Send Feedback
+		</a>
+	</div>
 </section>

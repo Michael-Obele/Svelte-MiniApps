@@ -143,6 +143,7 @@ This project uses Svelte 5 with runes. Key things to remember:
 
 - Create a discussion on GitHub
 - Read the [documentation](/docs)
+- Email us at [contrib@svelte-apps.me](mailto:contrib@svelte-apps.me) for contribution-related questions
 
 ## License
 

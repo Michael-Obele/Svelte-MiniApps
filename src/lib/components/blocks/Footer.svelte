@@ -136,8 +136,25 @@
 					<ThemeSwitch />
 					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>
-				<div class="flex items-center space-x-2">
-					<a href="/hire" class="text-primary font-medium hover:underline"> Work with Michael </a>
+				<div class="flex flex-col items-center space-y-2 md:items-end">
+					<div class="flex items-center space-x-2">
+						<a href="/hire" class="text-primary font-medium hover:underline"> Work with Michael </a>
+					</div>
+					<div
+						class="text-muted-foreground flex flex-wrap items-center justify-center gap-3 text-sm md:justify-end"
+					>
+						<a href="mailto:support@svelte-apps.me" class="hover:text-primary transition-colors">
+							Support
+						</a>
+						<span>•</span>
+						<a href="mailto:feedback@svelte-apps.me" class="hover:text-primary transition-colors">
+							Feedback
+						</a>
+						<span>•</span>
+						<a href="mailto:info@svelte-apps.me" class="hover:text-primary transition-colors">
+							Contact
+						</a>
+					</div>
 				</div>
 				<iframe
 					src="https://github.com/sponsors/Michael-Obele/button"
