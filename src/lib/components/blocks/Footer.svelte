@@ -90,9 +90,19 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-primary transition-colors"
-						aria-label="GitHub"
+						aria-label="Bluesky"
 					>
 						{@render bluesky('size-5')}
+					</a>
+					<a
+						href="https://discord.com/users/michael_obele"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground hover:text-primary transition-colors"
+						aria-label="Discord"
+						title="Discord: michael_obele"
+					>
+						<span class="icon-[ic--baseline-discord] size-6"></span>
 					</a>
 					<a
 						href="https://www.linkedin.com/in/dev-obele"

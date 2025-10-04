@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @config '../tailwind.config.ts';
+@plugin "@iconify/tailwind4";
 
 @custom-variant dark (&:is(.dark *));
 
