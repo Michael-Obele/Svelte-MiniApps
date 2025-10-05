@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import {
 		Plus,
@@ -56,6 +56,7 @@
 	let showBackupDialog = $state(false);
 	let isRefreshing = $state(false);
 	let isSyncing = $state(false);
+	let autoBackupTimer: ReturnType<typeof setTimeout> | null = null;
 
 	// Reactive state
 	// Note: activeSession, todayLogs, upcomingLogs, and stats are now $derived below
@@ -85,9 +86,41 @@
 				medState.medicationLogs.current = data.logs || [];
 
 				toast.success('Data synced from server');
+				needsBackup = false; // Data just loaded from server
 			}
 		}
-	}); // Load active session and related data - use $derived for computed values
+	});
+
+	// Auto-backup functionality
+	function scheduleAutoBackup() {
+		// Clear existing timer
+		if (autoBackupTimer) {
+			clearTimeout(autoBackupTimer);
+		}
+
+		// Only schedule if authenticated and needs backup
+		if (isAuthenticated && needsBackup && !isBackingUp) {
+			autoBackupTimer = setTimeout(() => {
+				handleBackup();
+			}, 15000); // 15 seconds
+		}
+	}
+
+	// Watch for changes to trigger auto-backup
+	$effect(() => {
+		if (needsBackup) {
+			scheduleAutoBackup();
+		}
+	});
+
+	// Cleanup on component unmount
+	onDestroy(() => {
+		if (autoBackupTimer) {
+			clearTimeout(autoBackupTimer);
+		}
+	});
+
+	// Load active session and related data - use $derived for computed values
 	let activeSession = $derived(medState.getActiveSession());
 	let todayLogs = $derived(activeSession ? medState.getTodayLogs(activeSession.id) : []);
 	let upcomingLogs = $derived(activeSession ? medState.getUpcomingLogs(activeSession.id, 24) : []);
@@ -113,6 +146,11 @@
 
 			hasUnsavedChanges = false;
 			needsBackup = false;
+			// Clear auto-backup timer since we just backed up
+			if (autoBackupTimer) {
+				clearTimeout(autoBackupTimer);
+				autoBackupTimer = null;
+			}
 			toast.success('Data backed up successfully');
 		} catch (error) {
 			console.error('Backup failed:', error);
@@ -518,6 +556,8 @@
 					logs={medState.getLogsForSession(activeSession.id)}
 					{getMedication}
 					onDataChanged={() => (needsBackup = true)}
+					onMarkTaken={markAsTaken}
+					onMarkSkipped={markAsSkipped}
 				/>
 			</Tabs.Content>
 

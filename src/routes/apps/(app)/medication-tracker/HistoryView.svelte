@@ -4,6 +4,10 @@
 	import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import { Button } from '@/ui/button';
+	import * as Dialog from '@/ui/dialog';
+	import { Textarea } from '@/ui/textarea';
+	import { Input } from '@/ui/input';
+	import { Label } from '@/ui/label';
 	import { toast } from 'svelte-sonner';
 	import type { TreatmentSession, MedicationLog, Medication } from './states.svelte';
 	import { updateLog } from './states.svelte';
@@ -13,13 +17,80 @@
 		session,
 		logs,
 		getMedication,
-		onDataChanged
+		onDataChanged,
+		onMarkTaken,
+		onMarkSkipped
 	}: {
 		session: TreatmentSession;
 		logs: MedicationLog[];
 		getMedication: (id: string) => Medication | undefined;
 		onDataChanged?: () => void;
+		onMarkTaken?: (logId: string) => void;
+		onMarkSkipped?: (logId: string, notes?: string) => void;
 	} = $props();
+
+	// State for skip dialog
+	let showSkipDialog = $state(false);
+	let skipNotes = $state('');
+	let currentLog = $state<MedicationLog | null>(null);
+
+	// State for edit time dialog
+	let showEditTimeDialog = $state(false);
+	let editTimeLog = $state<MedicationLog | null>(null);
+	let editedTime = $state('');
+	let editedDate = $state('');
+
+	function openSkipDialog(log: MedicationLog) {
+		currentLog = log;
+		skipNotes = '';
+		showSkipDialog = true;
+	}
+
+	function confirmSkip() {
+		if (currentLog && onMarkSkipped) {
+			onMarkSkipped(currentLog.id, skipNotes.trim() || undefined);
+			showSkipDialog = false;
+			currentLog = null;
+			skipNotes = '';
+		}
+	}
+
+	// Edit time dialog functions
+	function openEditTimeDialog(log: MedicationLog) {
+		editTimeLog = log;
+		// Get current time or use scheduled time
+		const timeToEdit = log.actualTime || log.scheduledTime;
+		const date = new Date(timeToEdit);
+
+		// Set date (YYYY-MM-DD format)
+		editedDate = date.toISOString().split('T')[0];
+
+		// Set time (HH:MM format)
+		editedTime = date.toTimeString().slice(0, 5);
+
+		showEditTimeDialog = true;
+	}
+
+	function saveEditedTime() {
+		if (!editTimeLog || !editedTime || !editedDate) return;
+
+		// Parse the date and time
+		const [hours, minutes] = editedTime.split(':');
+		const dateTime = new Date(editedDate);
+		dateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+		// Update the log
+		updateLog(editTimeLog.id, {
+			actualTime: dateTime.toISOString()
+		});
+
+		onDataChanged?.();
+		toast.success('Time updated successfully');
+		showEditTimeDialog = false;
+		editTimeLog = null;
+		editedTime = '';
+		editedDate = '';
+	}
 
 	// Format date for display (e.g., "Mon, Jan 15, 2024")
 	function formatDate(isoString: string): string {
@@ -264,6 +335,15 @@
 												<Button
 													size="sm"
 													variant="ghost"
+													onclick={() => openEditTimeDialog(log)}
+													class="ml-2 h-6 px-2 text-xs"
+												>
+													<Clock class="mr-1 size-3" />
+													<span class="hidden sm:inline">Edit Time</span>
+												</Button>
+												<Button
+													size="sm"
+													variant="ghost"
 													onclick={() => undoLog(log.id)}
 													class="ml-2 h-6 px-2 text-xs"
 												>
@@ -294,6 +374,26 @@
 													<Clock class="mr-1 size-3" />
 													<span class="hidden sm:inline">Pending</span>
 												</Badge>
+												{#if onMarkTaken && onMarkSkipped}
+													<Button
+														size="sm"
+														variant="outline"
+														onclick={() => onMarkTaken(log.id)}
+														class="ml-2 h-6 px-2 text-xs"
+													>
+														<CheckCircle2 class="mr-1 size-3" />
+														<span class="hidden sm:inline">Taken</span>
+													</Button>
+													<Button
+														size="sm"
+														variant="outline"
+														onclick={() => openSkipDialog(log)}
+														class="ml-2 h-6 px-2 text-xs"
+													>
+														<XCircle class="mr-1 size-3" />
+														<span class="hidden sm:inline">Skip</span>
+													</Button>
+												{/if}
 											{/if}
 										</div>
 									</div>
@@ -306,3 +406,48 @@
 		{/if}
 	</CardContent>
 </Card>
+
+<!-- Skip Dialog -->
+<Dialog.Root bind:open={showSkipDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Skip Medication</Dialog.Title>
+			<Dialog.Description>
+				Optionally add a note explaining why you're skipping this medication.
+			</Dialog.Description>
+		</Dialog.Header>
+		<div class="space-y-4 py-4">
+			<Textarea bind:value={skipNotes} placeholder="Reason for skipping (optional)..." rows={3} />
+		</div>
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showSkipDialog = false)}>Cancel</Button>
+			<Button onclick={confirmSkip}>Skip Medication</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<!-- Edit Time Dialog -->
+<Dialog.Root bind:open={showEditTimeDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Edit Medication Time</Dialog.Title>
+			<Dialog.Description>
+				Update the date and time when this medication was taken.
+			</Dialog.Description>
+		</Dialog.Header>
+		<div class="space-y-4 py-4">
+			<div class="space-y-2">
+				<Label for="edit-date">Date</Label>
+				<Input id="edit-date" type="date" bind:value={editedDate} class="w-full" />
+			</div>
+			<div class="space-y-2">
+				<Label for="edit-time">Time</Label>
+				<Input id="edit-time" type="time" bind:value={editedTime} class="w-full" />
+			</div>
+		</div>
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
+			<Button onclick={saveEditedTime}>Save Time</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
