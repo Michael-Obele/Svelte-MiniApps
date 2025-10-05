@@ -10,8 +10,99 @@
 		onClose?: () => void;
 	}
 
+	interface Step {
+		number: number;
+		title: string;
+		description: string;
+		color: string;
+	}
+
+	interface ManagementFeature {
+		icon: typeof Package;
+		title: string;
+		description: string;
+	}
+
+	interface Tip {
+		text: string;
+	}
+
 	let { open = $bindable(false), onClose }: Props = $props();
 	let activeTab = $state('start');
+
+	// Getting Started Steps
+	const gettingStartedSteps: Step[] = [
+		{
+			number: 1,
+			title: 'Add an Item',
+			description:
+				'Click <strong>"Add Item"</strong> button. Name it something like "Coffee" or "Gas".',
+			color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
+		},
+		{
+			number: 2,
+			title: 'Pick a Category',
+			description: 'Choose from Groceries, Fuel, Dining, etc. or create your own.',
+			color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
+		},
+		{
+			number: 3,
+			title: "That's It!",
+			description: "You're ready to track purchases. Set units and currency if you want.",
+			color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
+		}
+	];
+
+	// Recording Purchase Steps
+	const recordingSteps: Step[] = [
+		{
+			number: 1,
+			title: 'Find Your Item',
+			description: 'On the Items tab, click the <strong>⋮</strong> menu on any item card.',
+			color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
+		},
+		{
+			number: 2,
+			title: 'Add Purchase',
+			description:
+				'Enter how much you bought and what it cost. Date is set to today automatically.',
+			color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
+		},
+		{
+			number: 3,
+			title: 'Save It',
+			description: 'Click Save. Your purchase is recorded and statistics update instantly!',
+			color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
+		}
+	];
+
+	// Management Features
+	const managementFeatures: ManagementFeature[] = [
+		{
+			icon: History,
+			title: 'View Your Data',
+			description:
+				'Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see different views.'
+		},
+		{
+			icon: Sparkles,
+			title: 'Check Statistics',
+			description: 'Each item card shows total spent and number of purchases at a glance.'
+		},
+		{
+			icon: Package,
+			title: 'Edit Anytime',
+			description: 'Click the <strong>⋮</strong> menu to edit items or view detailed history.'
+		}
+	];
+
+	// Quick Tips
+	const quickTips: Tip[] = [
+		{ text: 'Record purchases regularly for accurate tracking' },
+		{ text: 'Use consistent categories for easier analysis' },
+		{ text: 'Backup your data if logged in (cloud icon in header)' },
+		{ text: 'Works offline - no internet needed!' }
+	];
 </script>
 
 <Dialog.Root bind:open>
@@ -43,47 +134,21 @@
 			<!-- Getting Started Tab -->
 			<Tabs.Content value="start" class="space-y-4 pt-4">
 				<div class="space-y-4">
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 font-semibold text-blue-600 dark:bg-blue-900 dark:text-blue-400"
-						>
-							1
+					{#each gettingStartedSteps as step}
+						<div class="flex gap-3">
+							<div
+								class="flex size-8 flex-shrink-0 items-center justify-center rounded-full font-semibold {step.color}"
+							>
+								{step.number}
+							</div>
+							<div class="flex-1">
+								<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">{step.title}</h4>
+								<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+									{@html step.description}
+								</p>
+							</div>
 						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">Add an Item</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								Click <strong>"Add Item"</strong> button. Name it something like "Coffee" or "Gas".
-							</p>
-						</div>
-					</div>
-
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 font-semibold text-blue-600 dark:bg-blue-900 dark:text-blue-400"
-						>
-							2
-						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">Pick a Category</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								Choose from Groceries, Fuel, Dining, etc. or create your own.
-							</p>
-						</div>
-					</div>
-
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 font-semibold text-blue-600 dark:bg-blue-900 dark:text-blue-400"
-						>
-							3
-						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">That's It!</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								You're ready to track purchases. Set units and currency if you want.
-							</p>
-						</div>
-					</div>
+					{/each}
 				</div>
 
 				<div class="rounded-lg bg-blue-50 p-4 dark:bg-blue-950/50">
@@ -97,47 +162,21 @@
 			<!-- Recording Purchases Tab -->
 			<Tabs.Content value="record" class="space-y-4 pt-4">
 				<div class="space-y-4">
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 font-semibold text-green-600 dark:bg-green-900 dark:text-green-400"
-						>
-							1
+					{#each recordingSteps as step}
+						<div class="flex gap-3">
+							<div
+								class="flex size-8 flex-shrink-0 items-center justify-center rounded-full font-semibold {step.color}"
+							>
+								{step.number}
+							</div>
+							<div class="flex-1">
+								<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">{step.title}</h4>
+								<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+									{@html step.description}
+								</p>
+							</div>
 						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">Find Your Item</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								On the Items tab, click the <strong>⋮</strong> menu on any item card.
-							</p>
-						</div>
-					</div>
-
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 font-semibold text-green-600 dark:bg-green-900 dark:text-green-400"
-						>
-							2
-						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">Add Purchase</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								Enter how much you bought and what it cost. Date is set to today automatically.
-							</p>
-						</div>
-					</div>
-
-					<div class="flex gap-3">
-						<div
-							class="flex size-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100 font-semibold text-green-600 dark:bg-green-900 dark:text-green-400"
-						>
-							3
-						</div>
-						<div class="flex-1">
-							<h4 class="mb-1 font-semibold text-gray-900 dark:text-white">Save It</h4>
-							<p class="text-sm text-gray-600 dark:text-gray-400">
-								Click Save. Your purchase is recorded and statistics update instantly!
-							</p>
-						</div>
-					</div>
+					{/each}
 				</div>
 
 				<div class="space-y-2">
@@ -162,57 +201,30 @@
 			<!-- Tips Tab -->
 			<Tabs.Content value="tips" class="space-y-4 pt-4">
 				<div class="space-y-3">
-					<div class="rounded-lg border p-3">
-						<h4 class="mb-1 flex items-center gap-2 font-semibold text-gray-900 dark:text-white">
-							<History class="h-4 w-4" />
-							View Your Data
-						</h4>
-						<p class="text-sm text-gray-600 dark:text-gray-400">
-							Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see
-							different views.
-						</p>
-					</div>
-
-					<div class="rounded-lg border p-3">
-						<h4 class="mb-1 flex items-center gap-2 font-semibold text-gray-900 dark:text-white">
-							<Sparkles class="h-4 w-4" />
-							Check Statistics
-						</h4>
-						<p class="text-sm text-gray-600 dark:text-gray-400">
-							Each item card shows total spent and number of purchases at a glance.
-						</p>
-					</div>
-
-					<div class="rounded-lg border p-3">
-						<h4 class="mb-1 flex items-center gap-2 font-semibold text-gray-900 dark:text-white">
-							<Package class="h-4 w-4" />
-							Edit Anytime
-						</h4>
-						<p class="text-sm text-gray-600 dark:text-gray-400">
-							Click the <strong>⋮</strong> menu to edit items or view detailed history.
-						</p>
-					</div>
+					{#each managementFeatures as feature}
+						<div
+							class="rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800/30 dark:hover:border-gray-600 dark:hover:bg-gray-800/50"
+						>
+							<h4 class="mb-2 flex items-center gap-2 font-semibold text-gray-900 dark:text-white">
+								<feature.icon class="h-4 w-4 text-blue-600 dark:text-blue-400" />
+								{feature.title}
+							</h4>
+							<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+								{@html feature.description}
+							</p>
+						</div>
+					{/each}
 				</div>
 
 				<div class="rounded-lg bg-purple-50 p-4 dark:bg-purple-950/50">
 					<h4 class="mb-2 font-semibold text-purple-900 dark:text-purple-300">Quick Tips:</h4>
-					<ul class="space-y-1.5 text-sm text-purple-800 dark:text-purple-200">
-						<li class="flex items-start gap-2">
-							<span>•</span>
-							<span>Record purchases regularly for accurate tracking</span>
-						</li>
-						<li class="flex items-start gap-2">
-							<span>•</span>
-							<span>Use consistent categories for easier analysis</span>
-						</li>
-						<li class="flex items-start gap-2">
-							<span>•</span>
-							<span>Backup your data if logged in (cloud icon in header)</span>
-						</li>
-						<li class="flex items-start gap-2">
-							<span>•</span>
-							<span>Works offline - no internet needed!</span>
-						</li>
+					<ul class="space-y-1.5">
+						{#each quickTips as tip}
+							<li class="flex items-start gap-2 text-sm text-purple-800 dark:text-purple-200">
+								<span class="mt-0.5 flex-shrink-0 text-purple-600 dark:text-purple-400">•</span>
+								<span class="leading-relaxed">{tip.text}</span>
+							</li>
+						{/each}
 					</ul>
 				</div>
 			</Tabs.Content>
