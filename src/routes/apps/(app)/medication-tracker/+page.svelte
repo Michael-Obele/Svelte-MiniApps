@@ -597,5 +597,5 @@
 	<SessionManager bind:open={showSessionDialog} />
 
 	<!-- How to Use Dialog -->
-	<HowToUseDialog bind:open={showHowToUseDialog} />
+	<HowToUseDialog bind:open={showHowToUseDialog} onClose={() => (hasSeenGuide.current = true)} />
 </main>

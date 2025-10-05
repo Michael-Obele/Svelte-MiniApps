@@ -46,7 +46,7 @@
 		text: string;
 	}
 
-	let { open = $bindable(false) }: Props = $props();
+	let { open = $bindable(false), onClose }: Props = $props();
 	let activeTab = $state('start');
 
 	// Getting Started Steps
@@ -313,7 +313,13 @@
 				<HelpCircle class="h-3 w-3" />
 				<span>Need help? Reopen this guide anytime from the header</span>
 			</div>
-			<Button onclick={() => (open = false)} class="ml-auto">
+			<Button
+				onclick={() => {
+					open = false;
+					onClose?.();
+				}}
+				class="ml-auto"
+			>
 				<CheckCircle2 class="mr-2 h-4 w-4" />
 				Got It!
 			</Button>

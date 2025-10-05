@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { PersistedState } from 'runed';
 	import { Loader2, Plus, TrendingUp, Calendar } from '@lucide/svelte';
 
 	import RouteHead from '@/blocks/RouteHead.svelte';
@@ -58,6 +59,11 @@
 	let showHelpDialog = $state(false);
 	let showDeleteItemDialog = $state(false);
 	let showDeletePurchaseDialog = $state(false);
+
+	// Track if user has seen the how-to guide
+	let hasSeenGuide = new PersistedState<boolean>('purchase-tracker-has-seen-guide', false, {
+		storage: 'local'
+	});
 	let itemToDelete = $state<Item | null>(null);
 	let purchaseToDelete = $state<PurchaseRecord | null>(null);
 	let isDeleting = $state(false);
@@ -160,6 +166,11 @@
 			}
 		}
 		isLoading = false;
+
+		// Show how-to guide for new users
+		if (!hasSeenGuide.current) {
+			showHelpDialog = true;
+		}
 	});
 
 	// Toast notification for unsaved changes - shows when user is logged in and has unsaved content
@@ -637,4 +648,4 @@
 	}}
 />
 
-<HowToUseDialog bind:open={showHelpDialog} />
+<HowToUseDialog bind:open={showHelpDialog} onClose={() => (hasSeenGuide.current = true)} />

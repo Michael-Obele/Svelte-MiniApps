@@ -7,9 +7,10 @@
 
 	interface Props {
 		open: boolean;
+		onClose?: () => void;
 	}
 
-	let { open = $bindable(false) }: Props = $props();
+	let { open = $bindable(false), onClose }: Props = $props();
 	let activeTab = $state('start');
 </script>
 
@@ -218,7 +219,13 @@
 		</Tabs.Root>
 
 		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (open = false)}>Got It!</Button>
+			<Button
+				variant="outline"
+				onclick={() => {
+					open = false;
+					onClose?.();
+				}}>Got It!</Button
+			>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
