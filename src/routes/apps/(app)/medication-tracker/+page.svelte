@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
+	import { PersistedState } from 'runed';
 	import {
 		Plus,
 		Pill,
@@ -18,7 +19,8 @@
 		Cloud,
 		CloudOff,
 		RefreshCw,
-		RefreshCcwDot
+		RefreshCcwDot,
+		HelpCircle
 	} from '@lucide/svelte';
 
 	import RouteHead from '@/blocks/RouteHead.svelte';
@@ -44,6 +46,7 @@
 	import TodayTracker from './TodayTracker.svelte';
 	import StatsView from './StatsView.svelte';
 	import HistoryView from './HistoryView.svelte';
+	import HowToUseDialog from './HowToUseDialog.svelte';
 
 	// Props from load function
 	let { data } = $props<{ data: any }>();
@@ -64,6 +67,12 @@
 	let showSessionDialog = $state(false);
 	let showMedicationDialog = $state(false);
 	let activeTab = $state('today');
+	let showHowToUseDialog = $state(false);
+
+	// Track if user has seen the how-to guide
+	let hasSeenGuide = new PersistedState<boolean>('medication-tracker-has-seen-guide', false, {
+		storage: 'local'
+	});
 
 	// Sync with server data on mount
 	onMount(() => {
@@ -88,6 +97,11 @@
 				toast.success('Data synced from server');
 				needsBackup = false; // Data just loaded from server
 			}
+		}
+
+		// Show how-to guide for new users
+		if (!hasSeenGuide.current) {
+			showHowToUseDialog = true;
 		}
 	});
 
@@ -373,6 +387,17 @@
 					</div>
 				{/if}
 
+				<Button
+					onclick={() => (showHowToUseDialog = true)}
+					variant="outline"
+					size="sm"
+					class="w-full sm:w-auto"
+				>
+					<HelpCircle class="mr-2 size-4" />
+					<span class="hidden sm:inline">How to Use</span>
+					<span class="sm:hidden">Help</span>
+				</Button>
+
 				<Button onclick={() => (showSessionDialog = true)} size="sm" class="w-full sm:w-auto">
 					<Plus class="mr-2 size-4" />
 					<span class="hidden sm:inline">New Session</span>
@@ -570,4 +595,7 @@
 
 	<!-- Session Manager Dialog -->
 	<SessionManager bind:open={showSessionDialog} />
+
+	<!-- How to Use Dialog -->
+	<HowToUseDialog bind:open={showHowToUseDialog} />
 </main>
