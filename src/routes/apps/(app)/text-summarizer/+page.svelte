@@ -10,6 +10,9 @@
 	import DOMPurify from 'isomorphic-dompurify';
 	import { marked } from 'marked';
 	import { sampleText, sampleIntroduction } from './data';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { textSummarizerHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
 
 	// Define states with persistence for content
 	let inputText = new PersistedState('summarizer-input-text', sampleText);
@@ -41,6 +44,8 @@
 	// Error states
 	let error = $state('');
 	let copied = $state(false);
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('text-summarizer-has-seen-how-to-use', false);
 
 	// Function to count words in text
 	function countWords(text: string): number {
@@ -194,13 +199,23 @@
 	<div class="mx-auto max-w-4xl space-y-6">
 		<div class="container mx-auto min-h-screen px-4 py-8">
 			<div class="mx-auto flex max-w-4xl flex-col items-center space-y-8">
-				<h1
-					class="text-center text-5xl font-extrabold tracking-tight text-black dark:text-gray-100 sm:text-6xl"
-				>
-					Text Summarizer
-				</h1>
+				<div class="flex items-center gap-4">
+					<h1
+						class="text-center text-5xl font-extrabold tracking-tight text-black sm:text-6xl dark:text-gray-100"
+					>
+						Text Summarizer
+					</h1>
+					<Button
+						variant="outline"
+						size="icon"
+						onclick={() => (showHowToUse = true)}
+						class="shrink-0"
+					>
+						<HelpCircle class="h-4 w-4" />
+					</Button>
+				</div>
 				<div
-					class="flex w-full flex-col space-y-3 text-center text-lg leading-relaxed text-gray-600 dark:text-gray-400 sm:text-xl"
+					class="flex w-full flex-col space-y-3 text-center text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-400"
 				>
 					<p class=" block max-w-md justify-start rounded-lg p-6">
 						Welcome to the <strong class="text-red-600 dark:text-green-400">Text Summarizer</strong
@@ -215,7 +230,7 @@
 			</div>
 
 			{#if error}
-				<Alert.Root class="mb-6 mt-4" variant="destructive">
+				<Alert.Root class="mt-4 mb-6" variant="destructive">
 					<div class="flex items-center gap-2">
 						<AlertCircle class="h-4 w-4" />
 						<Alert.Title>Error</Alert.Title>
@@ -421,7 +436,7 @@
 							<li>The highest-scoring sentences are selected to form a coherent summary.</li>
 							<li>The summary length is adjusted based on your settings.</li>
 						</ol>
-						<p class="italic text-gray-600 dark:text-gray-400">
+						<p class="text-gray-600 italic dark:text-gray-400">
 							Note: For best results, use well-structured text with clear paragraphs. This
 							summarizer works best with informational or educational content rather than creative
 							writing.
@@ -437,6 +452,15 @@
 		</div>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={textSummarizerHowToUse.title}
+	description={textSummarizerHowToUse.description}
+	tabs={textSummarizerHowToUse.tabs}
+	showFooterHelpText={textSummarizerHowToUse.showFooterHelpText}
+/>
 
 <style>
 	:global(.markdown-preview h1) {

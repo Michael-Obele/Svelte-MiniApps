@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { PersistedState } from 'runed';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
-	import { Plus, X, Edit, Check, AlertTriangle } from '@lucide/svelte';
+	import { Plus, X, Edit, Check, AlertTriangle, HelpCircle } from '@lucide/svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { todoListHowToUse } from './how-to-use-config';
 	import TodoItem from '$lib/components/todo/todo-item.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
@@ -26,9 +29,15 @@
 	import type { Column, Todo, SlotItemMap } from '$lib/types';
 
 	// Reactive reference to the store's current value
-	let state = $derived(todoStore.current);
-	let columns = $derived(state.columns);
-	let ui = $derived(state.ui);
+	let todoState = $derived(todoStore.current);
+	let columns = $derived(todoState.columns);
+	let ui = $derived(todoState.ui);
+
+	// How-to guide state
+	let showHowToUseDialog = $state(false);
+	let hasSeenGuide = new PersistedState<boolean>(todoListHowToUse.storageKey, false, {
+		storage: 'local'
+	});
 
 	// Keyboard event handlers for the edit modal
 	function handleEditKeydown(e: KeyboardEvent) {
@@ -125,6 +134,11 @@
 
 		document.addEventListener('toggleComplete', handleToggleComplete as EventListener);
 
+		// Show how-to guide for new users
+		if (!hasSeenGuide.current) {
+			showHowToUseDialog = true;
+		}
+
 		return () => {
 			document.removeEventListener('toggleComplete', handleToggleComplete as EventListener);
 		};
@@ -148,10 +162,17 @@
 <div class="flex h-full w-full flex-col p-4">
 	<div class="mb-6 flex items-center justify-between">
 		<h1 class="text-2xl font-bold dark:text-white">Todo List</h1>
-		<Button onclick={() => addColumn()}>
-			<Plus class="mr-2" size={16} />
-			Add Column
-		</Button>
+		<div class="flex gap-2">
+			<Button variant="outline" onclick={() => (showHowToUseDialog = true)} size="sm">
+				<HelpCircle class="mr-2 size-4" />
+				<span class="hidden sm:inline">How to Use</span>
+				<span class="sm:hidden">Help</span>
+			</Button>
+			<Button onclick={() => addColumn()}>
+				<Plus class="mr-2" size={16} />
+				Add Column
+			</Button>
+		</div>
 	</div>
 
 	<div class="flex-1 overflow-x-auto">
@@ -322,3 +343,12 @@
 		</AlertDialog.Content>
 	</AlertDialog.Root>
 {/if}
+
+<HowToUseDialog
+	bind:open={showHowToUseDialog}
+	onClose={() => (hasSeenGuide.current = true)}
+	title={todoListHowToUse.title}
+	description={todoListHowToUse.description}
+	tabs={todoListHowToUse.tabs}
+	showFooterHelpText={todoListHowToUse.showFooterHelpText}
+/>

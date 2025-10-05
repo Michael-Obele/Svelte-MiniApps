@@ -12,6 +12,10 @@
 	import type { ActionData } from './$types';
 	import { site } from '$lib';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { dictionaryAppHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
 	interface Props {
 		//
@@ -40,6 +44,8 @@
 	let Meaning = form?.data;
 
 	let searchTerm = '';
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('dictionary-app-has-seen-how-to-use', false);
 
 	// let fetchMeaning = async () => {
 	// 	let response: any = await _fetchDictionaryEntry(searchTerm);
@@ -89,7 +95,12 @@
 	class="mx-auto flex max-w-2xl flex-col justify-center px-4"
 >
 	<div class="mb-8 text-center">
-		<h1 class="mb-2 text-3xl font-bold text-gray-800 dark:text-white">English Dictionary</h1>
+		<div class="mb-2 flex items-center justify-center gap-4">
+			<h1 class="text-3xl font-bold text-gray-800 dark:text-white">English Dictionary</h1>
+			<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
+				<HelpCircle class="h-4 w-4" />
+			</Button>
+		</div>
 		<p class="text-lg text-gray-600 dark:text-gray-300">Explore the world of words together.</p>
 	</div>
 
@@ -104,7 +115,7 @@
 		<Button
 			type="submit"
 			disabled={isLoading}
-			class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+			class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-600"
 		>
 			{isLoading ? 'Searching...' : 'Find Meaning'}
 		</Button>
@@ -185,7 +196,7 @@
 													{definition.definition}
 												</p>
 												{#if definition.example}
-													<p class="mt-2 text-sm italic text-gray-600 dark:text-gray-400">
+													<p class="mt-2 text-sm text-gray-600 italic dark:text-gray-400">
 														"<span>{definition.example}</span>"
 													</p>
 												{/if}
@@ -259,3 +270,12 @@
 		{/each}
 	{/if}
 </section>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={dictionaryAppHowToUse.title}
+	description={dictionaryAppHowToUse.description}
+	tabs={dictionaryAppHowToUse.tabs}
+	showFooterHelpText={dictionaryAppHowToUse.showFooterHelpText}
+/>

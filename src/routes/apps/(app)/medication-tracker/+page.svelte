@@ -46,7 +46,8 @@
 	import TodayTracker from './TodayTracker.svelte';
 	import StatsView from './StatsView.svelte';
 	import HistoryView from './HistoryView.svelte';
-	import HowToUseDialog from './HowToUseDialog.svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { medicationTrackerHowToUse } from './how-to-use-config';
 
 	// Props from load function
 	let { data } = $props<{ data: any }>();
@@ -597,5 +598,12 @@
 	<SessionManager bind:open={showSessionDialog} />
 
 	<!-- How to Use Dialog -->
-	<HowToUseDialog bind:open={showHowToUseDialog} onClose={() => (hasSeenGuide.current = true)} />
+	<HowToUseDialog
+		bind:open={showHowToUseDialog}
+		onClose={() => (hasSeenGuide.current = true)}
+		title={medicationTrackerHowToUse.title}
+		description={medicationTrackerHowToUse.description}
+		tabs={medicationTrackerHowToUse.tabs}
+		showFooterHelpText={medicationTrackerHowToUse.showFooterHelpText}
+	/>
 </main>

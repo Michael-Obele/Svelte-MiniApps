@@ -13,12 +13,18 @@
 		type UnitType
 	} from './unit-data.js';
 	import { ArrowRightLeft, X, Eraser } from '@lucide/svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { unitConverterHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
 	let inputValue: string = $state('');
 	let fromUnit: string = $state('meter');
 	let toUnit: string = $state('foot');
 	let convertedValue: number | string = $state('');
 	let unitType: string = $state('length');
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('unit-converter-has-seen-how-to-use', false);
 
 	// Derived values for select trigger content
 	let unitTypeLabel = $derived(
@@ -97,7 +103,6 @@
 				return;
 			}
 		}
-		
 
 		convertedValue = formatResult(result);
 	};
@@ -151,8 +156,13 @@
 
 <div class="container mx-auto max-w-4xl p-4">
 	<div class="mb-8 text-center">
-		<h1 class="mb-4 text-4xl font-bold tracking-tight">Unit Converter</h1>
-		<p class="text-lg text-muted-foreground">
+		<div class="mb-4 flex items-center justify-center gap-4">
+			<h1 class="text-4xl font-bold tracking-tight">Unit Converter</h1>
+			<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
+				<HelpCircle class="h-4 w-4" />
+			</Button>
+		</div>
+		<p class="text-muted-foreground text-lg">
 			Convert between various units of measurement with ease
 		</p>
 	</div>
@@ -259,17 +269,17 @@
 			<Card.Title>Result</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<div class="rounded-lg bg-muted/50 p-6 text-center">
+			<div class="bg-muted/50 rounded-lg p-6 text-center">
 				{#if inputValue && convertedValue}
 					<div class="space-y-2">
-						<p class="text-sm text-muted-foreground">
+						<p class="text-muted-foreground text-sm">
 							{formattedInputValue}
 							{formattedFromUnitLabel} equals
 						</p>
-						<p class="text-3xl font-bold text-primary">
+						<p class="text-primary text-3xl font-bold">
 							{convertedValue}
 						</p>
-						<p class="text-sm text-muted-foreground">
+						<p class="text-muted-foreground text-sm">
 							{formattedToUnitLabel}
 						</p>
 					</div>
@@ -282,7 +292,16 @@
 		</Card.Content>
 	</Card.Root>
 
-	<div class="mt-8 text-center text-sm text-muted-foreground">
+	<div class="text-muted-foreground mt-8 text-center text-sm">
 		<p>Supports conversion between length, temperature, volume, mass, area, and time units.</p>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={unitConverterHowToUse.title}
+	description={unitConverterHowToUse.description}
+	tabs={unitConverterHowToUse.tabs}
+	showFooterHelpText={unitConverterHowToUse.showFooterHelpText}
+/>

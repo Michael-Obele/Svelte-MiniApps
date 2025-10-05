@@ -13,6 +13,10 @@
 	import * as ContextMenu from '@/ui/context-menu/index.js';
 	import { copyToClipboard } from '$lib/utils';
 	import { fade, fly } from 'svelte/transition';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { advancedEmojiToolsHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
 	interface EmojiResult {
 		emoji: string;
@@ -29,6 +33,8 @@
 	let emojiCheckInput = $state<string>('');
 	let emojiCheckResult = $state<{ exists: boolean; found?: { emoji: string; key: string } }>();
 	let activeTab = $state<string>('random');
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('advanced-emoji-tools-has-seen-how-to-use', false);
 
 	function emojify(): void {
 		// First unemojify to convert any existing emojis to shortcodes
@@ -135,9 +141,14 @@
 
 <div class="container mx-auto space-y-8 px-4 py-8">
 	<div class="space-y-4 text-center">
-		<h1 class="text-4xl font-bold tracking-tight">Advanced Emoji Tools ✨</h1>
+		<div class="flex items-center justify-center gap-4">
+			<h1 class="text-4xl font-bold tracking-tight">Advanced Emoji Tools ✨</h1>
+			<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
+				<HelpCircle class="h-4 w-4" />
+			</Button>
+		</div>
 		<p class="text-muted-foreground">Transform, search, and explore the world of emojis</p>
-		<p class="text-sm text-muted-foreground">Tap any emoji to copy it to your clipboard 📋</p>
+		<p class="text-muted-foreground text-sm">Tap any emoji to copy it to your clipboard 📋</p>
 	</div>
 
 	<Tabs.Root value={activeTab} class="w-full" onValueChange={(val) => (activeTab = val)}>
@@ -174,7 +185,7 @@
 						{#if outputText}
 							<div class="relative">
 								<Separator class="my-4" />
-								<div class="rounded-lg bg-muted p-4">
+								<div class="bg-muted rounded-lg p-4">
 									<div class="flex items-center justify-between">
 										<p class="font-mono text-lg">{outputText}</p>
 										<Button variant="ghost" size="sm" onclick={() => copyToClipboard(outputText)}>
@@ -210,7 +221,7 @@
 							>
 						</div>
 						{#if emojiCheckResult}
-							<div class="rounded-lg bg-muted p-4">
+							<div class="bg-muted rounded-lg p-4">
 								{#if emojiCheckResult.exists}
 									<div class="text-success flex items-center gap-2">
 										<span class="text-2xl">✓</span>
@@ -225,7 +236,7 @@
 										</div>
 									</div>
 								{:else}
-									<div class="flex items-center gap-2 text-destructive">
+									<div class="text-destructive flex items-center gap-2">
 										<span class="text-2xl">✗</span>
 										<p class="font-semibold">No emoji found</p>
 									</div>
@@ -334,7 +345,7 @@
 												class="flex h-auto min-w-32 flex-col p-4 transition-transform hover:scale-105"
 											>
 												<span class="mb-2 text-3xl">{result.emoji}</span>
-												<span class="w-full truncate text-xs text-muted-foreground">
+												<span class="text-muted-foreground w-full truncate text-xs">
 													{result.name}
 												</span>
 											</Button>
@@ -374,3 +385,12 @@
 		</div>
 	</Tabs.Root>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={advancedEmojiToolsHowToUse.title}
+	description={advancedEmojiToolsHowToUse.description}
+	tabs={advancedEmojiToolsHowToUse.tabs}
+	showFooterHelpText={advancedEmojiToolsHowToUse.showFooterHelpText}
+/>

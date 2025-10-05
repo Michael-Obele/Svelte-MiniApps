@@ -4,7 +4,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
-	import { Loader2 } from '@lucide/svelte';
+	import { Loader2, HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
 	import icons from 'currency-icons';
 
@@ -24,6 +24,8 @@
 	import * as AlertDialog from '@/ui/alert-dialog';
 	import { enhance } from '$app/forms';
 	import { toast } from 'svelte-sonner';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { budgetTrackerHowToUse } from './how-to-use-config';
 
 	// Reactive store reference for budgets
 	// let budgets = $state<Budget[]>([]);
@@ -213,6 +215,11 @@
 			isMigrated = true;
 			hasUnsavedChanges = false; // Reset unsaved changes after loading from server
 		}
+
+		// Show how-to guide for new users
+		if (!hasSeenGuide.current) {
+			showHowToUseDialog = true;
+		}
 	});
 
 	// Auto-backup function with retry mechanism
@@ -291,6 +298,12 @@
 	let alertOpen = $state(false);
 	let alertTitle = $state('');
 	let alertDescription = $state('');
+
+	// How-to guide state
+	let showHowToUseDialog = $state(false);
+	let hasSeenGuide = new PersistedState<boolean>(budgetTrackerHowToUse.storageKey, false, {
+		storage: 'local'
+	});
 
 	$effect(() => {
 		if (form && typeof form.success !== 'undefined') {
@@ -547,6 +560,16 @@
 		<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex items-center gap-4">
 				<h1 class="mx-auto text-3xl font-bold tracking-tight">Budget Tracker</h1>
+				<Button
+					variant="outline"
+					size="sm"
+					onclick={() => (showHowToUseDialog = true)}
+					class="w-full sm:w-auto"
+				>
+					<HelpCircle class="mr-2 size-4" />
+					<span class="hidden sm:inline">How to Use</span>
+					<span class="sm:hidden">Help</span>
+				</Button>
 				{#if isAuthenticated && autoBackupCountdown > 0}
 					<div
 						class="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"
@@ -787,3 +810,12 @@
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>
+
+<HowToUseDialog
+	bind:open={showHowToUseDialog}
+	onClose={() => (hasSeenGuide.current = true)}
+	title={budgetTrackerHowToUse.title}
+	description={budgetTrackerHowToUse.description}
+	tabs={budgetTrackerHowToUse.tabs}
+	showFooterHelpText={budgetTrackerHowToUse.showFooterHelpText}
+/>

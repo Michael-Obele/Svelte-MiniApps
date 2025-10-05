@@ -7,10 +7,19 @@
 	import { onMount } from 'svelte';
 	import { Loader2 } from '@lucide/svelte';
 	import { navigating } from '$app/state';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { githubContributionTrackerHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
 	let username = $state('');
 	let year = $state(new Date().getFullYear().toString());
 	let isSubmitting = $state(false);
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState(
+		'github-contribution-tracker-has-seen-how-to-use',
+		false
+	);
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
@@ -34,7 +43,12 @@
 </script>
 
 <div class="container mx-auto px-4 py-8">
-	<h1 class="mb-8 text-center text-3xl font-bold">GitHub Contribution Tracker</h1>
+	<div class="mb-8 flex items-center justify-center gap-4">
+		<h1 class="text-3xl font-bold">GitHub Contribution Tracker</h1>
+		<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
+			<HelpCircle class="h-4 w-4" />
+		</Button>
+	</div>
 
 	<div class="mx-auto max-w-md">
 		<form onsubmit={handleSubmit} class="space-y-6">
@@ -73,3 +87,12 @@
 		</form>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={githubContributionTrackerHowToUse.title}
+	description={githubContributionTrackerHowToUse.description}
+	tabs={githubContributionTrackerHowToUse.tabs}
+	showFooterHelpText={githubContributionTrackerHowToUse.showFooterHelpText}
+/>

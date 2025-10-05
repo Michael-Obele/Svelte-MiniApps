@@ -34,7 +34,8 @@
 	import PurchaseTrackerHeader from './PurchaseTrackerHeader.svelte';
 	import ItemsView from './ItemsView.svelte';
 	import PurchasesView from './PurchasesView.svelte';
-	import HowToUseDialog from './HowToUseDialog.svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { purchaseTrackerHowToUse } from './how-to-use-config';
 	import AddEditItemDialog from './AddEditItemDialog.svelte';
 	import AddEditPurchaseDialog from './AddEditPurchaseDialog.svelte';
 	import PurchaseHistoryDialog from './PurchaseHistoryDialog.svelte';
@@ -574,7 +575,6 @@
 	{/if}
 </div>
 
-<HowToUseDialog bind:open={showHelpDialog} />
 <PurchaseHistoryDialog
 	bind:open={showPurchaseHistoryDialog}
 	{selectedItemForHistory}
@@ -648,4 +648,11 @@
 	}}
 />
 
-<HowToUseDialog bind:open={showHelpDialog} onClose={() => (hasSeenGuide.current = true)} />
+<HowToUseDialog
+	bind:open={showHelpDialog}
+	onClose={() => (hasSeenGuide.current = true)}
+	title={purchaseTrackerHowToUse.title}
+	description={purchaseTrackerHowToUse.description}
+	tabs={purchaseTrackerHowToUse.tabs}
+	showFooterHelpText={purchaseTrackerHowToUse.showFooterHelpText}
+/>

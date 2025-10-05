@@ -15,6 +15,10 @@
 	import { Skeleton } from '@/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
 	import { getSavedPasswords, savePassword, deletePassword, getCurrentUser } from '$lib/remote';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
 	// Define User type inline to match what getCurrentUser returns
 	type User = {
@@ -46,6 +50,8 @@
 	let deletingId = $state<string | null>(null);
 	let copySuccess = $state(false);
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('random-password-generator-has-seen-how-to-use', false);
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -182,7 +188,17 @@
 <div class="container mx-auto max-w-2xl px-4 py-8">
 	<div class="space-y-6">
 		<div class="space-y-2 text-center">
-			<h1 class="text-3xl font-bold">Password Generator</h1>
+			<div class="flex items-center justify-center gap-4">
+				<h1 class="text-3xl font-bold">Password Generator</h1>
+				<Button
+					variant="outline"
+					size="icon"
+					onclick={() => (showHowToUse = true)}
+					class="shrink-0"
+				>
+					<HelpCircle class="h-4 w-4" />
+				</Button>
+			</div>
 			<p class="text-muted-foreground">Generate secure, random passwords instantly</p>
 		</div>
 
@@ -328,3 +344,12 @@
 		</div>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={randomPasswordGeneratorHowToUse.title}
+	description={randomPasswordGeneratorHowToUse.description}
+	tabs={randomPasswordGeneratorHowToUse.tabs}
+	showFooterHelpText={randomPasswordGeneratorHowToUse.showFooterHelpText}
+/>

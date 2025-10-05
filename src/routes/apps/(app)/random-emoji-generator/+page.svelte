@@ -4,8 +4,14 @@
 	import { Button } from '@/ui/button/index.js';
 	import { copyToClipboard } from '$lib/utils';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { randomEmojiGeneratorHowToUse } from './how-to-use-config';
+	import { HelpCircle } from '@lucide/svelte';
+	import { PersistedState } from 'runed';
 
-	let randomEmoji = emoji.random();
+	let randomEmoji = $state(emoji.random());
+	let showHowToUse = $state(false);
+	let hasSeenHowToUse = new PersistedState('random-emoji-generator-has-seen-how-to-use', false);
 
 	function generateRandomEmoji(): void {
 		randomEmoji = emoji.random();
@@ -21,9 +27,14 @@
 />
 
 <div class="container flex min-h-screen flex-col items-center justify-center">
-	<h1 class="mb-4 text-4xl font-bold tracking-tighter text-gray-900 dark:text-white">
-		Random Emoji Generator
-	</h1>
+	<div class="mb-4 flex items-center gap-4">
+		<h1 class="text-4xl font-bold tracking-tighter text-gray-900 dark:text-white">
+			Random Emoji Generator
+		</h1>
+		<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
+			<HelpCircle class="h-4 w-4" />
+		</Button>
+	</div>
 
 	<div class="flex items-center space-x-4">
 		<Button variant="default" onclick={generateRandomEmoji} class="flex items-center">
@@ -48,3 +59,12 @@
 		</p>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUse}
+	onClose={() => (hasSeenHowToUse.current = true)}
+	title={randomEmojiGeneratorHowToUse.title}
+	description={randomEmojiGeneratorHowToUse.description}
+	tabs={randomEmojiGeneratorHowToUse.tabs}
+	showFooterHelpText={randomEmojiGeneratorHowToUse.showFooterHelpText}
+/>
