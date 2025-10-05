@@ -5,11 +5,13 @@
 	import { Badge } from '@/ui/badge';
 	import * as Dialog from '@/ui/dialog';
 	import { Textarea } from '@/ui/textarea';
+	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
 
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
+	import { updateLog } from './states.svelte';
 
 	// Props
 	let { todayLogs, activeSession, onMarkTaken, onMarkSkipped, getMedication, formatTime, isPast } =
@@ -27,6 +29,9 @@
 	let showSkipDialog = $state(false);
 	let skipNotes = $state('');
 	let currentLog = $state<MedicationLog | null>(null);
+	let showEditTimeDialog = $state(false);
+	let editTimeLog = $state<MedicationLog | null>(null);
+	let editedTime = $state('');
 
 	function openSkipDialog(log: MedicationLog) {
 		currentLog = log;
@@ -41,6 +46,34 @@
 			currentLog = null;
 			skipNotes = '';
 		}
+	}
+
+	function openEditTimeDialog(log: MedicationLog) {
+		editTimeLog = log;
+		// Get current time or use scheduled time
+		const timeToEdit = log.actualTime || log.scheduledTime;
+		const date = new Date(timeToEdit);
+		editedTime = date.toTimeString().slice(0, 5); // HH:MM format
+		showEditTimeDialog = true;
+	}
+
+	function saveEditedTime() {
+		if (!editTimeLog || !editedTime) return;
+
+		// Parse the time and create a new date with today's date
+		const [hours, minutes] = editedTime.split(':');
+		const now = new Date(editTimeLog.scheduledTime);
+		now.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+		// Update local state directly
+		updateLog(editTimeLog.id, {
+			actualTime: now.toISOString()
+		});
+
+		toast.success('Time updated successfully');
+		showEditTimeDialog = false;
+		editTimeLog = null;
+		editedTime = '';
 	}
 
 	// Group logs by time
@@ -84,7 +117,7 @@
 							{@const med = getMedication(log.medicationId)}
 							{#if med}
 								<div
-									class="flex items-center justify-between rounded-lg border p-4 {log.status ===
+									class="flex flex-col gap-3 rounded-lg border p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 {log.status ===
 									'pending'
 										? 'border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'
 										: log.status === 'taken'
@@ -93,7 +126,7 @@
 												? 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-900/20'
 												: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20'}"
 								>
-									<div class="flex flex-1 items-center gap-4">
+									<div class="flex flex-1 items-center gap-3 sm:gap-4">
 										<div class="size-3 rounded-full" style="background-color: {med.color}"></div>
 										<div class="flex-1">
 											<p class="font-semibold text-gray-900 dark:text-white">{med.name}</p>
@@ -133,6 +166,10 @@
 													at {formatTime(log.actualTime)}
 												{/if}
 											</Badge>
+											<Button size="sm" variant="ghost" onclick={() => openEditTimeDialog(log)}>
+												<Clock class="mr-2 size-4" />
+												<span class="hidden sm:inline">Edit Time</span>
+											</Button>
 										{:else if log.status === 'skipped'}
 											<Badge variant="secondary">
 												<XCircle class="mr-1 size-3" />
@@ -180,6 +217,55 @@
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showSkipDialog = false)}>Cancel</Button>
 			<Button onclick={confirmSkip}>Confirm Skip</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<!-- Edit Time Dialog -->
+<Dialog.Root bind:open={showEditTimeDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Edit Time Taken</Dialog.Title>
+			<Dialog.Description>Adjust the time when this dose was actually taken.</Dialog.Description>
+		</Dialog.Header>
+
+		<div class="space-y-4">
+			<div class="space-y-2">
+				<Label for="edit-time">Time Taken</Label>
+				<Input id="edit-time" type="time" bind:value={editedTime} />
+			</div>
+		</div>
+
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
+			<Button onclick={saveEditedTime}>Save Time</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<!-- Edit Time Dialog -->
+<Dialog.Root bind:open={showEditTimeDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Edit Time Taken</Dialog.Title>
+			<Dialog.Description>
+				Adjust the time when this medication was actually taken.
+			</Dialog.Description>
+		</Dialog.Header>
+
+		<div class="space-y-4">
+			<div class="space-y-2">
+				<Label for="edit-time">Time Taken</Label>
+				<Input id="edit-time" type="time" bind:value={editedTime} class="w-full" />
+				<p class="text-xs text-gray-500 dark:text-gray-400">
+					Scheduled time: {editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''}
+				</p>
+			</div>
+		</div>
+
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
+			<Button onclick={saveEditedTime}>Save Time</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

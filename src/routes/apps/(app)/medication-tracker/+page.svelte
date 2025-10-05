@@ -27,6 +27,7 @@
 	import * as Dialog from '@/ui/dialog';
 	import * as Tabs from '@/ui/tabs';
 	import * as AlertDialog from '@/ui/alert-dialog';
+	import * as Tooltip from '@/ui/tooltip';
 	import { toast } from 'svelte-sonner';
 
 	// Import state management
@@ -232,78 +233,120 @@
 	route="/apps/medication-tracker"
 />
 
-<main class="container mx-auto max-w-7xl px-4 py-8">
+<main class="container mx-auto max-w-7xl px-2 py-4 sm:px-4 sm:py-8">
 	<!-- Header -->
-	<div class="mb-8">
-		<div class="flex items-center justify-between">
+	<div class="mb-4 sm:mb-8">
+		<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 			<div>
-				<h1 class="flex items-center gap-2 text-3xl font-bold text-gray-900 dark:text-white">
-					<Pill class="size-8" />
+				<h1
+					class="flex items-center gap-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
+				>
+					<Pill class="size-6 sm:size-8" />
 					Medication Tracker
 				</h1>
-				<p class="mt-2 text-gray-600 dark:text-gray-400">
+				<p class="mt-1 text-sm text-gray-600 sm:mt-2 sm:text-base dark:text-gray-400">
 					Track your treatment sessions and medication adherence
 				</p>
 			</div>
 
-			<div class="flex gap-2">
+			<div class="flex flex-wrap gap-2">
 				{#if isAuthenticated}
-					<div class="flex items-center gap-2">
+					<div class="flex flex-wrap items-center gap-2">
 						{#if hasUnsavedChanges}
 							<Badge variant="outline" class="text-yellow-600 dark:text-yellow-400">
 								<CloudOff class="mr-1 size-3" />
-								Unsaved
+								<span class="hidden sm:inline">Unsaved</span>
 							</Badge>
 						{:else}
 							<Badge variant="outline" class="text-green-600 dark:text-green-400">
 								<Cloud class="mr-1 size-3" />
-								Synced
+								<span class="hidden sm:inline">Synced</span>
 							</Badge>
 						{/if}
 
-						<Button variant="outline" size="sm" onclick={handleRefresh} disabled={isRefreshing}>
-							<RefreshCw class="size-4 {isRefreshing ? 'animate-spin' : ''}" />
-						</Button>
+						<Tooltip.Provider>
+							<Tooltip.Root>
+								<Tooltip.Trigger>
+									<Button
+										variant="outline"
+										size="sm"
+										onclick={handleRefresh}
+										disabled={isRefreshing}
+									>
+										<RefreshCw class="size-4 {isRefreshing ? 'animate-spin' : ''}" />
+									</Button>
+								</Tooltip.Trigger>
+								<Tooltip.Content>
+									<p class="text-sm">Refresh: Load latest data from server</p>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						</Tooltip.Provider>
 
-						<Button variant="outline" size="sm" onclick={handleSync} disabled={isSyncing}>
-							{#if isSyncing}
-								<RefreshCw class="mr-2 size-4 animate-spin" />
-								Syncing...
-							{:else}
-								Sync
-							{/if}
-						</Button>
+						<Tooltip.Provider>
+							<Tooltip.Root>
+								<Tooltip.Trigger>
+									<Button variant="outline" size="sm" onclick={handleSync} disabled={isSyncing}>
+										{#if isSyncing}
+											<RefreshCw class="mr-1 size-4 animate-spin sm:mr-2" />
+											<span class="hidden sm:inline">Syncing...</span>
+										{:else}
+											<span class="hidden sm:inline">Sync</span>
+											<RefreshCw class="size-4 sm:hidden" />
+										{/if}
+									</Button>
+								</Tooltip.Trigger>
+								<Tooltip.Content>
+									<p class="max-w-xs text-sm">
+										<strong>Sync:</strong> Merge your local data with the server. Use this when working
+										across multiple devices.
+									</p>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						</Tooltip.Provider>
 
-						<Button variant="outline" size="sm" onclick={handleBackup} disabled={isBackingUp}>
-							{#if isBackingUp}
-								<RefreshCw class="mr-2 size-4 animate-spin" />
-								Backing up...
-							{:else}
-								<Cloud class="mr-2 size-4" />
-								Backup
-							{/if}
-						</Button>
+						<Tooltip.Provider>
+							<Tooltip.Root>
+								<Tooltip.Trigger>
+									<Button variant="outline" size="sm" onclick={handleBackup} disabled={isBackingUp}>
+										{#if isBackingUp}
+											<RefreshCw class="mr-1 size-4 animate-spin sm:mr-2" />
+											<span class="hidden sm:inline">Backing up...</span>
+										{:else}
+											<Cloud class="mr-1 size-4 sm:mr-2" />
+											<span class="hidden sm:inline">Backup</span>
+										{/if}
+									</Button>
+								</Tooltip.Trigger>
+								<Tooltip.Content>
+									<p class="max-w-xs text-sm">
+										<strong>Backup:</strong> Save your current local data to the server. Use this to
+										prevent data loss.
+									</p>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						</Tooltip.Provider>
 					</div>
 				{/if}
 
-				<Button onclick={() => (showSessionDialog = true)} size="lg">
+				<Button onclick={() => (showSessionDialog = true)} size="sm" class="w-full sm:w-auto">
 					<Plus class="mr-2 size-4" />
-					New Session
+					<span class="hidden sm:inline">New Session</span>
+					<span class="sm:hidden">New</span>
 				</Button>
 			</div>
 		</div>
 
 		<!-- Active Session Info -->
 		{#if activeSession}
-			<Card class="mt-6 py-5">
+			<Card class="mt-6 py-3 sm:py-5">
 				<CardHeader>
-					<div class="flex items-center justify-between">
-						<div>
+					<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+						<div class="flex-1">
 							<CardTitle class="flex items-center gap-2">
 								<Activity class="size-5" />
-								{activeSession.name}
+								<span class="text-lg sm:text-xl">{activeSession.name}</span>
 							</CardTitle>
-							<CardDescription>
+							<CardDescription class="text-sm">
 								Started {formatDate(activeSession.startDate)}
 								{#if activeSession.endDate}
 									- Ended {formatDate(activeSession.endDate)}
@@ -313,11 +356,13 @@
 							</CardDescription>
 						</div>
 						{#if stats}
-							<div class="text-right">
-								<div class="text-2xl font-bold {getAdherenceColor(stats.adherenceRate)}">
+							<div class="text-left sm:text-right">
+								<div class="text-xl font-bold sm:text-2xl {getAdherenceColor(stats.adherenceRate)}">
 									{stats.adherenceRate.toFixed(1)}%
 								</div>
-								<div class="text-sm text-gray-500 dark:text-gray-400">Adherence Rate</div>
+								<div class="text-xs text-gray-500 sm:text-sm dark:text-gray-400">
+									Adherence Rate
+								</div>
 							</div>
 						{/if}
 					</div>
@@ -354,19 +399,19 @@
 		<Tabs.Root bind:value={activeTab} class="w-full">
 			<Tabs.List class="grid w-full grid-cols-4">
 				<Tabs.Trigger value="today">
-					<CalendarDays class="mr-2 size-4" />
+					<CalendarDays class="mr-2 hidden size-4 sm:block" />
 					Today
 				</Tabs.Trigger>
 				<Tabs.Trigger value="medications">
-					<Pill class="mr-2 size-4" />
+					<Pill class="mr-2 hidden size-4 sm:block" />
 					Medications
 				</Tabs.Trigger>
 				<Tabs.Trigger value="history">
-					<ListChecks class="mr-2 size-4" />
+					<ListChecks class="mr-2 hidden size-4 sm:block" />
 					History
 				</Tabs.Trigger>
 				<Tabs.Trigger value="stats">
-					<TrendingUp class="mr-2 size-4" />
+					<TrendingUp class="mr-2 hidden size-4 sm:block" />
 					Statistics
 				</Tabs.Trigger>
 			</Tabs.List>
@@ -376,7 +421,7 @@
 				<div class="mt-6 grid gap-6">
 					<!-- Quick Stats -->
 					{#if stats}
-						<div class="grid gap-4 md:grid-cols-4" transition:fade>
+						<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" transition:fade>
 							<Card>
 								<CardContent class="pt-6">
 									<div class="flex items-center justify-between">

@@ -208,11 +208,12 @@
 <div class="mt-6">
 	<Card>
 		<CardHeader>
-			<div class="flex items-center justify-between">
+			<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 				<CardTitle>Medications</CardTitle>
-				<Button onclick={() => (showAddDialog = true)}>
+				<Button onclick={() => (showAddDialog = true)} class="w-full sm:w-auto">
 					<Plus class="mr-2 size-4" />
-					Add Medication
+					<span class="xs:inline hidden">Add Medication</span>
+					<span class="xs:hidden">Add</span>
 				</Button>
 			</div>
 		</CardHeader>
@@ -220,21 +221,29 @@
 			{#if session.medications.length === 0}
 				<div class="py-8 text-center text-gray-500 dark:text-gray-400">
 					<p>No medications added yet.</p>
-					<Button onclick={() => (showAddDialog = true)} class="mt-4" variant="outline">
+					<Button
+						onclick={() => (showAddDialog = true)}
+						class="mt-4 w-full sm:w-auto"
+						variant="outline"
+					>
 						<Plus class="mr-2 size-4" />
-						Add Your First Medication
+						<span class="xs:inline hidden">Add Your First Medication</span>
+						<span class="xs:hidden">Add First Med</span>
 					</Button>
 				</div>
 			{:else}
 				<div class="space-y-4">
 					{#each session.medications as med (med.id)}
 						<div
-							class="flex items-start justify-between rounded-lg border border-gray-200 p-4 dark:border-gray-700"
+							class="flex w-full flex-col gap-3 rounded-lg border border-gray-200 p-3 sm:flex-row sm:items-start sm:justify-between sm:p-4 dark:border-gray-700"
 							transition:slide
 						>
-							<div class="flex flex-1 items-start gap-4">
-								<div class="mt-1 size-4 rounded-full" style="background-color: {med.color}"></div>
-								<div class="flex-1">
+							<div class="flex flex-1 items-start gap-3 sm:gap-4">
+								<div
+									class="mt-1 size-4 flex-shrink-0 rounded-full"
+									style="background-color: {med.color}"
+								></div>
+								<div class="min-w-0 flex-1">
 									<h4 class="font-semibold text-gray-900 dark:text-white">{med.name}</h4>
 									<div class="mt-1 space-y-1 text-sm text-gray-600 dark:text-gray-400">
 										<p><span class="font-medium">Dosage:</span> {med.dosage}</p>
@@ -242,7 +251,7 @@
 										{#if med.instructions}
 											<p><span class="font-medium">Instructions:</span> {med.instructions}</p>
 										{/if}
-										<div class="flex gap-3 pt-1">
+										<div class="flex flex-wrap gap-3 pt-1">
 											<span class="flex items-center gap-1">
 												<Calendar class="size-3" />
 												{formatDate(med.startDate)}
@@ -255,18 +264,42 @@
 								</div>
 							</div>
 
-							<div class="flex gap-2">
-								<ScheduleViewer {session} medication={med} />
-								<Button variant="outline" size="sm" onclick={() => openSchedule(med)}>
-									<Clock class="mr-1 size-4" />
-									Add Schedule
-								</Button>
-								<Button variant="ghost" size="sm" onclick={() => startEdit(med)}>
-									<Edit class="size-4" />
-								</Button>
-								<Button variant="ghost" size="sm" onclick={() => confirmDelete(med)}>
-									<Trash2 class="size-4 text-red-500" />
-								</Button>
+							<div class="flex w-full flex-col gap-2 sm:w-auto sm:min-w-fit">
+								<!-- View Schedule button gets its own row -->
+								<div class="flex w-full">
+									<ScheduleViewer {session} medication={med} />
+								</div>
+
+								<!-- Action buttons in a grid layout for mobile, flex for desktop -->
+								<div class="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap">
+									<Button
+										variant="outline"
+										size="sm"
+										onclick={() => openSchedule(med)}
+										class="flex flex-col items-center justify-center gap-1 px-2 py-3 sm:flex-row sm:gap-2 sm:px-3 sm:py-2"
+									>
+										<Clock class="size-4 sm:mr-0" />
+										<span class="text-xs sm:text-sm">Schedule</span>
+									</Button>
+									<Button
+										variant="ghost"
+										size="sm"
+										onclick={() => startEdit(med)}
+										class="flex flex-col items-center justify-center gap-1 px-2 py-3 sm:flex-row sm:gap-2 sm:px-3 sm:py-2"
+									>
+										<Edit class="size-4" />
+										<span class="text-xs sm:text-sm">Edit</span>
+									</Button>
+									<Button
+										variant="ghost"
+										size="sm"
+										onclick={() => confirmDelete(med)}
+										class="flex flex-col items-center justify-center gap-1 px-2 py-3 sm:flex-row sm:gap-2 sm:px-3 sm:py-2"
+									>
+										<Trash2 class="size-4 text-red-500" />
+										<span class="text-xs sm:text-sm">Delete</span>
+									</Button>
+								</div>
 							</div>
 						</div>
 					{/each}
@@ -441,7 +474,7 @@
 			<!-- Schedule Type Toggle -->
 			<div class="space-y-2">
 				<Label>Schedule Type</Label>
-				<div class="flex gap-2">
+				<div class="flex flex-wrap gap-2 sm:flex-row sm:gap-2">
 					<Button
 						variant={useAutoSchedule ? 'default' : 'outline'}
 						size="sm"
@@ -452,26 +485,31 @@
 								scheduleTimes = suggestedTimes;
 							}
 						}}
+						class="flex-1 sm:flex-none"
 					>
-						Auto (Based on Frequency)
+						<span class="hidden sm:inline">Auto (Based on Frequency)</span>
+						<span class="sm:hidden">Auto Schedule</span>
 					</Button>
 					<Button
 						variant={!useAutoSchedule ? 'default' : 'outline'}
 						size="sm"
 						onclick={() => (useAutoSchedule = false)}
+						class="flex-1 sm:flex-none"
 					>
-						Custom Times
+						<span class="hidden sm:inline">Custom Times</span>
+						<span class="sm:hidden">Custom</span>
 					</Button>
 				</div>
 			</div>
 
 			<div class="space-y-2">
-				<div class="flex items-center justify-between">
+				<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 					<Label>Daily Times</Label>
 					{#if !useAutoSchedule}
-						<Button size="sm" variant="outline" onclick={addScheduleTime}>
+						<Button size="sm" variant="outline" onclick={addScheduleTime} class="w-full sm:w-auto">
 							<Plus class="mr-1 size-3" />
-							Add Time
+							<span class="xs:inline hidden">Add Time</span>
+							<span class="xs:hidden">Add</span>
 						</Button>
 					{/if}
 				</div>

@@ -158,7 +158,7 @@
 								transition:slide"
 							>
 								<CardContent class="pt-6">
-									<div class="flex items-start justify-between">
+									<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 										<div class="flex-1">
 											<div class="mb-2 flex items-center gap-2">
 												{#if session.isActive}
@@ -177,7 +177,9 @@
 												</p>
 											{/if}
 
-											<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+											<div
+												class="flex flex-col gap-1 text-sm text-gray-500 sm:flex-row sm:items-center sm:gap-4 dark:text-gray-400"
+											>
 												<span>Started: {formatDate(session.startDate)}</span>
 												{#if session.endDate}
 													<span>Ended: {formatDate(session.endDate)}</span>
@@ -188,7 +190,7 @@
 											</div>
 										</div>
 
-										<div class="flex gap-2">
+										<div class="flex flex-wrap gap-2">
 											{#if !session.isActive && !session.endDate}
 												<Button variant="outline" size="sm" onclick={() => setActive(session.id)}>
 													Set Active

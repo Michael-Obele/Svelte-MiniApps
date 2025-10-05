@@ -118,7 +118,7 @@
 </script>
 
 <Button variant="outline" size="sm" onclick={() => (showViewer = true)}>
-	<Calendar class="mr-1 size-4" />
+	<Calendar class="mr-2 size-4" />
 	View Schedule ({totalLogs})
 </Button>
 
@@ -174,7 +174,7 @@
 								{#each logs as log (log.id)}
 									{@const StatusIcon = getStatusIcon(log.status)}
 									<div
-										class="flex items-center justify-between rounded-lg border border-gray-200 p-3 dark:border-gray-700"
+										class="flex flex-col gap-2 rounded-lg border border-gray-200 p-3 sm:flex-row sm:items-center sm:justify-between dark:border-gray-700"
 										transition:slide
 									>
 										<div class="flex items-center gap-3">
@@ -187,7 +187,7 @@
 															? 'text-red-600'
 															: 'text-blue-600'}"
 											/>
-											<div>
+											<div class="flex-1">
 												<p class="text-sm font-medium text-gray-900 dark:text-white">
 													{formatTime(log.scheduledTime)}
 												</p>
@@ -197,7 +197,7 @@
 											</div>
 										</div>
 
-										<div class="flex items-center gap-2">
+										<div class="flex items-center gap-2 self-end sm:self-auto">
 											<Badge class={getStatusColor(log.status)}>
 												{log.status}
 											</Badge>
@@ -218,11 +218,14 @@
 
 		<Dialog.Footer class="flex-col gap-2 sm:flex-row">
 			{#if pendingCount > 0}
-				<Button variant="destructive" size="sm" onclick={deleteAllPending}>
-					Delete All Pending ({pendingCount})
+				<Button variant="destructive" size="sm" onclick={deleteAllPending} class="w-full sm:w-auto">
+					<span class="hidden sm:inline">Delete All Pending ({pendingCount})</span>
+					<span class="sm:hidden">Delete All ({pendingCount})</span>
 				</Button>
 			{/if}
-			<Button variant="outline" onclick={() => (showViewer = false)}>Close</Button>
+			<Button variant="outline" onclick={() => (showViewer = false)} class="w-full sm:w-auto"
+				>Close</Button
+			>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

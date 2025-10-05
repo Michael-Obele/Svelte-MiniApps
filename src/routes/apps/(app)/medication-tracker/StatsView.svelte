@@ -130,8 +130,8 @@
 			{:else}
 				<div class="space-y-4">
 					{#each medicationStats as { medication, stats }}
-						<div class="rounded-lg border p-4 {getAdherenceBg(stats.adherenceRate)}">
-							<div class="flex items-start justify-between">
+						<div class="rounded-lg border p-3 sm:p-4 {getAdherenceBg(stats.adherenceRate)}">
+							<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 								<div class="flex flex-1 items-start gap-3">
 									<div
 										class="mt-1 size-4 rounded-full"
@@ -146,7 +146,7 @@
 										</p>
 
 										<!-- Mini stats -->
-										<div class="mt-3 flex gap-4 text-sm">
+										<div class="mt-3 flex flex-wrap gap-3 text-sm sm:gap-4">
 											<div class="flex items-center gap-1">
 												<CheckCircle2 class="size-4 text-green-600 dark:text-green-400" />
 												<span class="text-gray-700 dark:text-gray-300">{stats.takenDoses}</span>
@@ -163,8 +163,10 @@
 									</div>
 								</div>
 
-								<div class="text-right">
-									<div class="text-2xl font-bold {getAdherenceColor(stats.adherenceRate)}">
+								<div class="text-left sm:text-right">
+									<div
+										class="text-xl font-bold sm:text-2xl {getAdherenceColor(stats.adherenceRate)}"
+									>
 										{stats.adherenceRate.toFixed(1)}%
 									</div>
 									<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
