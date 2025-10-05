@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: eb578ad4095b0220772cd723023e0b70c74e1ea6
-// Generated at: 2025-10-05T14:48:52.742Z
+// Last processed commit: 819a92c84d38476dc4c44e318768981521ab1a41
+// Generated at: 2025-10-05T15:19:45.682Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -44,6 +44,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
     "description": "Updated ai-generated/MEDICATION_TRACKER_HISTORY_ACTIONS_AND_AUTO_BACKUP.md, src/routes/apps/(app)/medication-tracker/+page.svelte, src/routes/apps/(app)/medication-tracker/HistoryView.svelte",
     "items": [
       "feat: add history actions for marking medications and implement auto-backup functionality (eb578ad)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "October 5, 2025",
+    "title": "feat: Implement single dose reschedule feature with conflict detection",
+    "description": "Updated ai-generated/MEDICATION_TRACKER_EDGE_CASES.md, ai-generated/MEDICATION_TRACKER_RESCHEDULE_QUICK_GUIDE.md, ai-generated/MEDICATION_TRACKER_SCHEDULE_EDITING_FIX.md and more",
+    "items": [
+      "feat: Implement single dose reschedule feature with conflict detection (819a92c)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -769,4 +780,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-05T14:48:52.743Z';
+export const lastUpdated = '2025-10-05T15:19:45.682Z';
