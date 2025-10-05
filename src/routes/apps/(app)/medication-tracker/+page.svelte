@@ -42,6 +42,7 @@
 	import MedicationList from './MedicationList.svelte';
 	import TodayTracker from './TodayTracker.svelte';
 	import StatsView from './StatsView.svelte';
+	import HistoryView from './HistoryView.svelte';
 
 	// Props from load function
 	let { data } = $props<{ data: any }>();
@@ -505,58 +506,11 @@
 
 			<!-- History View -->
 			<Tabs.Content value="history">
-				<Card class="mt-6">
-					<CardHeader>
-						<CardTitle>Medication History</CardTitle>
-						<CardDescription>View your complete medication log</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<div class="space-y-4">
-							{#each medState.getLogsForSession(activeSession.id).slice(0, 50) as log}
-								{@const med = getMedication(log.medicationId)}
-								{#if med}
-									<div
-										class="flex items-center justify-between rounded-lg border border-gray-200 p-4 dark:border-gray-700"
-										transition:slide
-									>
-										<div class="flex items-center gap-4">
-											<div class="size-3 rounded-full" style="background-color: {med.color}"></div>
-											<div>
-												<p class="font-medium text-gray-900 dark:text-white">{med.name}</p>
-												<p class="text-sm text-gray-600 dark:text-gray-400">
-													{formatDate(log.scheduledTime)} at {formatTime(log.scheduledTime)}
-												</p>
-											</div>
-										</div>
-										<div class="flex items-center gap-2">
-											{#if log.status === 'taken'}
-												<Badge variant="default" class="bg-green-500">
-													<CheckCircle2 class="mr-1 size-3" />
-													Taken
-												</Badge>
-											{:else if log.status === 'skipped'}
-												<Badge variant="secondary">
-													<XCircle class="mr-1 size-3" />
-													Skipped
-												</Badge>
-											{:else if log.status === 'missed'}
-												<Badge variant="destructive">
-													<AlertCircle class="mr-1 size-3" />
-													Missed
-												</Badge>
-											{:else}
-												<Badge variant="outline">
-													<Clock class="mr-1 size-3" />
-													Pending
-												</Badge>
-											{/if}
-										</div>
-									</div>
-								{/if}
-							{/each}
-						</div>
-					</CardContent>
-				</Card>
+				<HistoryView
+					session={activeSession}
+					logs={medState.getLogsForSession(activeSession.id)}
+					{getMedication}
+				/>
 			</Tabs.Content>
 
 			<!-- Stats View -->
