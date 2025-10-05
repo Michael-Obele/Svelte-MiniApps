@@ -295,7 +295,7 @@
 
 		<!-- Active Session Info -->
 		{#if activeSession}
-			<Card class="mt-6">
+			<Card class="mt-6 py-5">
 				<CardHeader>
 					<div class="flex items-center justify-between">
 						<div>
