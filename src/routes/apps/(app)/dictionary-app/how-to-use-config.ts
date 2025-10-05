@@ -99,9 +99,18 @@ export const dictionaryAppHowToUse: HowToUseConfig = {
 			icon: Volume2,
 			steps: audioSteps,
 			optionalDetails: [
-				{ label: 'Phonetic Spelling', description: 'Shows pronunciation using the International Phonetic Alphabet' },
-				{ label: 'Audio Quality', description: 'High-quality audio recordings from native speakers' },
-				{ label: 'Multiple Accents', description: 'Includes both American and British English pronunciations' }
+				{
+					label: 'Phonetic Spelling',
+					description: 'Shows pronunciation using the International Phonetic Alphabet'
+				},
+				{
+					label: 'Audio Quality',
+					description: 'High-quality audio recordings from native speakers'
+				},
+				{
+					label: 'Multiple Accents',
+					description: 'Includes both American and British English pronunciations'
+				}
 			]
 		},
 		{
