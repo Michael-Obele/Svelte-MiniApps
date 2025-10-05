@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { CheckCircle2, XCircle, AlertCircle, Clock, Calendar } from '@lucide/svelte';
+	import { CheckCircle2, XCircle, AlertCircle, Clock, Calendar, RotateCcw } from '@lucide/svelte';
 	import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
+	import { Button } from '@/ui/button';
+	import { toast } from 'svelte-sonner';
 	import type { TreatmentSession, MedicationLog, Medication } from './states.svelte';
+	import { updateLog } from './states.svelte';
 
 	// Props
 	let {
@@ -107,6 +110,16 @@
 		if (isToday(dateKey)) return 'Today';
 		if (isYesterday(dateKey)) return 'Yesterday';
 		return formatDate(dateKey);
+	}
+
+	// Undo a medication log (reset to pending)
+	function undoLog(logId: string) {
+		updateLog(logId, {
+			status: 'pending',
+			actualTime: undefined,
+			notes: undefined
+		});
+		toast.success('Medication status reset to pending');
 	}
 </script>
 
@@ -245,11 +258,29 @@
 														at {formatTime(log.actualTime)}
 													</span>
 												{/if}
+												<Button
+													size="sm"
+													variant="ghost"
+													onclick={() => undoLog(log.id)}
+													class="ml-2 h-6 px-2 text-xs"
+												>
+													<RotateCcw class="mr-1 size-3" />
+													<span class="hidden sm:inline">Undo</span>
+												</Button>
 											{:else if log.status === 'skipped'}
 												<Badge variant="secondary">
 													<XCircle class="mr-1 size-3" />
 													<span class="hidden sm:inline">Skipped</span>
 												</Badge>
+												<Button
+													size="sm"
+													variant="ghost"
+													onclick={() => undoLog(log.id)}
+													class="ml-2 h-6 px-2 text-xs"
+												>
+													<RotateCcw class="mr-1 size-3" />
+													<span class="hidden sm:inline">Undo</span>
+												</Button>
 											{:else if log.status === 'missed'}
 												<Badge variant="destructive">
 													<AlertCircle class="mr-1 size-3" />

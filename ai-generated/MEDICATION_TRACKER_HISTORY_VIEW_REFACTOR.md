@@ -4,7 +4,13 @@
 
 ## Summary
 
-Extracted the medication history view from the main medication tracker page into its own component (`HistoryView.svelte`) and enhanced it to group medications by date with daily statistics.
+Extracted the medication### 6. Undo Functionality
+
+- **Added undo buttons** for "Taken" and "Skipped" medication logs
+- **Reset to pending**: Clicking undo resets the log status back to "pending"
+- **Clears metadata**: Also clears actualTime and notes when undoing
+- **Visual feedback**: Shows success toast when undo is performed
+- **Limited scope**: Only available for taken/skipped logs (missed logs remain as-is for accuracy)ory view from the main medication tracker page into its own component (`HistoryView.svelte`) and enhanced it to group medications by date with daily statistics.
 
 ## Changes Made
 
@@ -94,6 +100,7 @@ A dedicated component for displaying medication history with the following featu
 - **Daily Context**: See what medications are scheduled for each day
 - **Quick Stats**: At-a-glance adherence rate for each day
 - **Visual Clarity**: Color-coded status and daily summaries
+- **Error Recovery**: Undo functionality for accidental status changes
 
 ### Data Structure
 
