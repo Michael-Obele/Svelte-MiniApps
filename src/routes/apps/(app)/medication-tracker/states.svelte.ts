@@ -235,14 +235,59 @@ export function updateLog(logId: string, updates: Partial<MedicationLog>): void 
 	);
 }
 
+export function rescheduleLog(
+	logId: string,
+	newScheduledTime: string
+): { success: boolean; message: string; conflictingLog?: MedicationLog } {
+	// Find the log to reschedule
+	const logToReschedule = medicationLogs.current.find((log) => log.id === logId);
+	if (!logToReschedule) {
+		return { success: false, message: 'Log not found' };
+	}
+
+	// Check if there's already a log at the new time for the same medication
+	const conflictingLog = medicationLogs.current.find(
+		(log) =>
+			log.medicationId === logToReschedule.medicationId &&
+			log.id !== logId &&
+			log.scheduledTime === newScheduledTime
+	);
+
+	if (conflictingLog) {
+		return {
+			success: false,
+			message: 'A dose is already scheduled at this time',
+			conflictingLog
+		};
+	}
+
+	// Reschedule the log
+	medicationLogs.current = medicationLogs.current.map((log) =>
+		log.id === logId ? { ...log, scheduledTime: newScheduledTime } : log
+	);
+
+	return { success: true, message: 'Dose rescheduled successfully' };
+}
+
 export function deleteLog(logId: string): void {
 	medicationLogs.current = medicationLogs.current.filter((log) => log.id !== logId);
 }
 
-export function deletePendingLogsForMedication(medicationId: string): void {
-	medicationLogs.current = medicationLogs.current.filter(
-		(log) => !(log.medicationId === medicationId && log.status === 'pending')
-	);
+export function deletePendingLogsForMedication(medicationId: string, fromDate?: string): void {
+	medicationLogs.current = medicationLogs.current.filter((log) => {
+		if (log.medicationId !== medicationId || log.status !== 'pending') return true;
+
+		// If fromDate is specified, only delete logs on or after that date
+		if (fromDate) {
+			const logDate = new Date(log.scheduledTime);
+			const cutoffDate = new Date(fromDate);
+			cutoffDate.setHours(0, 0, 0, 0);
+			return logDate < cutoffDate;
+		}
+
+		// If no fromDate, delete all pending logs (original behavior)
+		return false;
+	});
 }
 
 export function getActiveSession(): TreatmentSession | undefined {
@@ -394,13 +439,23 @@ export function autoGenerateSchedule(
 
 	const currentDate = new Date(startDate);
 
+	// Get existing logs for this medication to check for duplicates
+	const existingLogs = medicationLogs.current.filter((log) => log.medicationId === medication.id);
+
 	while (currentDate <= endDate) {
 		times.forEach((time) => {
 			const [hours, minutes] = time.split(':');
 			const scheduleDateTime = new Date(currentDate);
 			scheduleDateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+			const scheduleISOString = scheduleDateTime.toISOString();
 
-			logs.push(createLog(sessionId, medication.id, scheduleDateTime.toISOString(), 'pending'));
+			// Check if a log already exists for this exact time
+			const logExists = existingLogs.some((log) => log.scheduledTime === scheduleISOString);
+
+			// Only create the log if it doesn't already exist
+			if (!logExists) {
+				logs.push(createLog(sessionId, medication.id, scheduleISOString, 'pending'));
+			}
 		});
 
 		currentDate.setDate(currentDate.getDate() + 1);

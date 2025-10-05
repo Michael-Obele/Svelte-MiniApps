@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { CheckCircle2, XCircle, Clock, AlertCircle, StickyNote } from '@lucide/svelte';
+	import {
+		CheckCircle2,
+		XCircle,
+		Clock,
+		AlertCircle,
+		StickyNote,
+		CalendarClock
+	} from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
@@ -11,7 +18,7 @@
 	import { slide } from 'svelte/transition';
 
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
-	import { updateLog } from './states.svelte';
+	import { updateLog, rescheduleLog } from './states.svelte';
 
 	// Props
 	let {
@@ -41,6 +48,12 @@
 	let showEditTimeDialog = $state(false);
 	let editTimeLog = $state<MedicationLog | null>(null);
 	let editedTime = $state('');
+
+	// Reschedule state
+	let showRescheduleDialog = $state(false);
+	let rescheduleLog_local = $state<MedicationLog | null>(null);
+	let rescheduledTime = $state('');
+	let rescheduledDate = $state('');
 
 	function openSkipDialog(log: MedicationLog) {
 		currentLog = log;
@@ -84,6 +97,43 @@
 		showEditTimeDialog = false;
 		editTimeLog = null;
 		editedTime = '';
+	}
+
+	// Reschedule dialog functions
+	function openRescheduleDialog(log: MedicationLog) {
+		rescheduleLog_local = log;
+		const date = new Date(log.scheduledTime);
+
+		// Set date (YYYY-MM-DD format)
+		rescheduledDate = date.toISOString().split('T')[0];
+
+		// Set time (HH:MM format)
+		rescheduledTime = date.toTimeString().slice(0, 5);
+
+		showRescheduleDialog = true;
+	}
+
+	function saveRescheduledTime() {
+		if (!rescheduleLog_local || !rescheduledTime || !rescheduledDate) return;
+
+		// Parse the date and time
+		const [hours, minutes] = rescheduledTime.split(':');
+		const dateTime = new Date(rescheduledDate);
+		dateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+		// Reschedule the log
+		const result = rescheduleLog(rescheduleLog_local.id, dateTime.toISOString());
+
+		if (result.success) {
+			onDataChanged?.();
+			toast.success(result.message);
+			showRescheduleDialog = false;
+			rescheduleLog_local = null;
+			rescheduledTime = '';
+			rescheduledDate = '';
+		} else {
+			toast.error(result.message);
+		}
 	}
 
 	// Group logs by time
@@ -152,7 +202,7 @@
 										</div>
 									</div>
 
-									<div class="flex items-center gap-2">
+									<div class="flex flex-wrap items-center gap-2">
 										{#if log.status === 'pending'}
 											{#if isPast(log.scheduledTime)}
 												<Badge variant="destructive" class="mr-2">
@@ -160,6 +210,10 @@
 													Overdue
 												</Badge>
 											{/if}
+											<Button size="sm" variant="ghost" onclick={() => openRescheduleDialog(log)}>
+												<CalendarClock class="mr-1 size-4" />
+												<span class="hidden sm:inline">Reschedule</span>
+											</Button>
 											<Button size="sm" onclick={() => onMarkTaken(log.id)}>
 												<CheckCircle2 class="mr-1 size-4" />
 												Taken
@@ -169,7 +223,7 @@
 												Skip
 											</Button>
 										{:else if log.status === 'taken'}
-											<Badge variant="default" class="bg-green-500">
+											<Badge variant="secondary" class="bg-green-500 text-black hover:bg-green-600">
 												<CheckCircle2 class="mr-1 size-3" />
 												Taken
 												{#if log.actualTime}
@@ -236,28 +290,6 @@
 	<Dialog.Content>
 		<Dialog.Header>
 			<Dialog.Title>Edit Time Taken</Dialog.Title>
-			<Dialog.Description>Adjust the time when this dose was actually taken.</Dialog.Description>
-		</Dialog.Header>
-
-		<div class="space-y-4">
-			<div class="space-y-2">
-				<Label for="edit-time">Time Taken</Label>
-				<Input id="edit-time" type="time" bind:value={editedTime} />
-			</div>
-		</div>
-
-		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
-			<Button onclick={saveEditedTime}>Save Time</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
-
-<!-- Edit Time Dialog -->
-<Dialog.Root bind:open={showEditTimeDialog}>
-	<Dialog.Content>
-		<Dialog.Header>
-			<Dialog.Title>Edit Time Taken</Dialog.Title>
 			<Dialog.Description>
 				Adjust the time when this medication was actually taken.
 			</Dialog.Description>
@@ -276,6 +308,39 @@
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
 			<Button onclick={saveEditedTime}>Save Time</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<!-- Reschedule Dialog -->
+<Dialog.Root bind:open={showRescheduleDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Reschedule Medication</Dialog.Title>
+			<Dialog.Description>
+				Change when this dose is scheduled to be taken. This updates the planned time, not the
+				actual time taken.
+			</Dialog.Description>
+		</Dialog.Header>
+		<div class="space-y-4 py-4">
+			<div class="rounded-lg bg-blue-50 p-3 dark:bg-blue-950">
+				<p class="text-sm text-blue-800 dark:text-blue-200">
+					💡 This reschedules only this single dose. To change the entire medication schedule, use
+					the Schedule button in the Medications list.
+				</p>
+			</div>
+			<div class="space-y-2">
+				<Label for="reschedule-date">New Date</Label>
+				<Input id="reschedule-date" type="date" bind:value={rescheduledDate} class="w-full" />
+			</div>
+			<div class="space-y-2">
+				<Label for="reschedule-time">New Time</Label>
+				<Input id="reschedule-time" type="time" bind:value={rescheduledTime} class="w-full" />
+			</div>
+		</div>
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showRescheduleDialog = false)}>Cancel</Button>
+			<Button onclick={saveRescheduledTime}>Reschedule</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

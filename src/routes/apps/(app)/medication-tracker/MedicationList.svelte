@@ -163,8 +163,12 @@
 			return;
 		}
 
-		// Clear existing pending logs for this medication to prevent duplicates
-		medState.deletePendingLogsForMedication(schedulingMedication.id);
+		// Clear ONLY future pending logs from the schedule start date onwards
+		// This preserves past/present logs that haven't been taken yet
+		medState.deletePendingLogsForMedication(
+			schedulingMedication.id,
+			new Date(scheduleStartDate).toISOString()
+		);
 
 		// Create a temporary medication with updated dates for schedule generation
 		const tempMed: Medication = {
@@ -179,10 +183,14 @@
 			useAutoSchedule ? undefined : scheduleTimes
 		);
 
-		// Add all logs
+		// Add all logs (autoGenerateSchedule now checks for duplicates)
 		logs.forEach((log) => medState.addLog(log));
 
-		toast.success(`Created ${logs.length} scheduled doses`);
+		const message =
+			logs.length > 0
+				? `Created ${logs.length} scheduled doses`
+				: 'Schedule updated (no new doses needed)';
+		toast.success(message);
 		showScheduleDialog = false;
 		schedulingMedication = null;
 	}
