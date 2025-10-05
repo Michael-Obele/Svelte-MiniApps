@@ -12,11 +12,13 @@
 	let {
 		session,
 		logs,
-		getMedication
+		getMedication,
+		onDataChanged
 	}: {
 		session: TreatmentSession;
 		logs: MedicationLog[];
 		getMedication: (id: string) => Medication | undefined;
+		onDataChanged?: () => void;
 	} = $props();
 
 	// Format date for display (e.g., "Mon, Jan 15, 2024")
@@ -119,6 +121,7 @@
 			actualTime: undefined,
 			notes: undefined
 		});
+		onDataChanged?.();
 		toast.success('Medication status reset to pending');
 	}
 </script>

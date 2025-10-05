@@ -14,16 +14,25 @@
 	import { updateLog } from './states.svelte';
 
 	// Props
-	let { todayLogs, activeSession, onMarkTaken, onMarkSkipped, getMedication, formatTime, isPast } =
-		$props<{
-			todayLogs: MedicationLog[];
-			activeSession: TreatmentSession;
-			onMarkTaken: (logId: string) => void;
-			onMarkSkipped: (logId: string, notes?: string) => void;
-			getMedication: (medicationId: string) => Medication | undefined;
-			formatTime: (isoString: string) => string;
-			isPast: (isoString: string) => boolean;
-		}>();
+	let {
+		todayLogs,
+		activeSession,
+		onMarkTaken,
+		onMarkSkipped,
+		getMedication,
+		formatTime,
+		isPast,
+		onDataChanged
+	} = $props<{
+		todayLogs: MedicationLog[];
+		activeSession: TreatmentSession;
+		onMarkTaken: (logId: string) => void;
+		onMarkSkipped: (logId: string, notes?: string) => void;
+		getMedication: (medicationId: string) => Medication | undefined;
+		formatTime: (isoString: string) => string;
+		isPast: (isoString: string) => boolean;
+		onDataChanged?: () => void;
+	}>();
 
 	// State
 	let showSkipDialog = $state(false);
@@ -70,6 +79,7 @@
 			actualTime: now.toISOString()
 		});
 
+		onDataChanged?.();
 		toast.success('Time updated successfully');
 		showEditTimeDialog = false;
 		editTimeLog = null;

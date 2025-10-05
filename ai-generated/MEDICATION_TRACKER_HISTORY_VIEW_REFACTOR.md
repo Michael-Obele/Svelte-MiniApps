@@ -10,7 +10,15 @@ Extracted the medication### 6. Undo Functionality
 - **Reset to pending**: Clicking undo resets the log status back to "pending"
 - **Clears metadata**: Also clears actualTime and notes when undoing
 - **Visual feedback**: Shows success toast when undo is performed
-- **Limited scope**: Only available for taken/skipped logs (missed logs remain as-is for accuracy)ory view from the main medication tracker page into its own component (`HistoryView.svelte`) and enhanced it to group medications by date with daily statistics.
+- **Limited scope**: Only available for taken/skipped logs (missed logs remain as-is for accuracy)
+
+### 7. Backup Status Indicator
+
+- **New state variable**: `needsBackup` to track backup status specifically
+- **Visual indicator**: Badge shows "Not Backed Up" (orange) vs "Backed Up" (green)
+- **Triggers backup needed**: Set to `true` when data is modified (marking medications, editing times, undoing logs)
+- **Reset on backup**: Set to `false` when backup operation succeeds
+- **Independent of sync**: Backup status is separate from sync status for clarity
 
 ## Changes Made
 

@@ -17,7 +17,8 @@
 		ListChecks,
 		Cloud,
 		CloudOff,
-		RefreshCw
+		RefreshCw,
+		RefreshCcwDot
 	} from '@lucide/svelte';
 
 	import RouteHead from '@/blocks/RouteHead.svelte';
@@ -50,6 +51,7 @@
 	// Authentication and backup state
 	let isAuthenticated = $state(!!data.user);
 	let hasUnsavedChanges = $state(false);
+	let needsBackup = $state(true); // Track if data needs to be backed up
 	let isBackingUp = $state(false);
 	let showBackupDialog = $state(false);
 	let isRefreshing = $state(false);
@@ -110,6 +112,7 @@
 			});
 
 			hasUnsavedChanges = false;
+			needsBackup = false;
 			toast.success('Data backed up successfully');
 		} catch (error) {
 			console.error('Backup failed:', error);
@@ -178,6 +181,7 @@
 			status: 'taken',
 			actualTime: new Date().toISOString()
 		});
+		needsBackup = true;
 		toast.success('Medication marked as taken');
 	}
 
@@ -187,6 +191,7 @@
 			status: 'skipped',
 			notes
 		});
+		needsBackup = true;
 		toast.info('Medication marked as skipped');
 	}
 
@@ -253,15 +258,15 @@
 			<div class="flex flex-wrap gap-2">
 				{#if isAuthenticated}
 					<div class="flex flex-wrap items-center gap-2">
-						{#if hasUnsavedChanges}
-							<Badge variant="outline" class="text-yellow-600 dark:text-yellow-400">
+						{#if needsBackup}
+							<Badge variant="outline" class="text-orange-600 dark:text-orange-400">
 								<CloudOff class="mr-1 size-3" />
-								<span class="hidden sm:inline">Unsaved</span>
+								<span class="inline">Not Backed Up</span>
 							</Badge>
 						{:else}
 							<Badge variant="outline" class="text-green-600 dark:text-green-400">
 								<Cloud class="mr-1 size-3" />
-								<span class="hidden sm:inline">Synced</span>
+								<span class="inline">Backed Up</span>
 							</Badge>
 						{/if}
 
@@ -288,11 +293,12 @@
 								<Tooltip.Trigger>
 									<Button variant="outline" size="sm" onclick={handleSync} disabled={isSyncing}>
 										{#if isSyncing}
-											<RefreshCw class="mr-1 size-4 animate-spin sm:mr-2" />
-											<span class="hidden sm:inline">Syncing...</span>
+											<RefreshCcwDot class="mr-1 size-4 animate-spin sm:mr-2" />
+
+											<span class=" inline">Syncing...</span>
 										{:else}
-											<span class="hidden sm:inline">Sync</span>
-											<RefreshCw class="size-4 sm:hidden" />
+											<span class=" inline">Sync</span>
+											<RefreshCcwDot class="size-4 sm:hidden" />
 										{/if}
 									</Button>
 								</Tooltip.Trigger>
@@ -311,10 +317,10 @@
 									<Button variant="outline" size="sm" onclick={handleBackup} disabled={isBackingUp}>
 										{#if isBackingUp}
 											<RefreshCw class="mr-1 size-4 animate-spin sm:mr-2" />
-											<span class="hidden sm:inline">Backing up...</span>
+											<span class=" inline">Backing up...</span>
 										{:else}
 											<Cloud class="mr-1 size-4 sm:mr-2" />
-											<span class="hidden sm:inline">Backup</span>
+											<span class=" inline">Backup</span>
 										{/if}
 									</Button>
 								</Tooltip.Trigger>
@@ -492,6 +498,7 @@
 						{getMedication}
 						{formatTime}
 						{isPast}
+						onDataChanged={() => (needsBackup = true)}
 					/>
 				</div>
 			</Tabs.Content>
@@ -510,6 +517,7 @@
 					session={activeSession}
 					logs={medState.getLogsForSession(activeSession.id)}
 					{getMedication}
+					onDataChanged={() => (needsBackup = true)}
 				/>
 			</Tabs.Content>
 
