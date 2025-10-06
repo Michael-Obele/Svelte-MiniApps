@@ -12,6 +12,10 @@
 	import { site } from '$lib/index';
 	import { markdownDemo } from './data.svelte';
 	import { PersistedState } from 'runed';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { markdownEditorHowToUse } from './how-to-use-config';
+	import { Button } from '@/ui/button';
+	import { HelpCircle } from '@lucide/svelte';
 
 	const carta = new Carta({
 		sanitizer: false, // Use a sanitizer in production to prevent XSS
@@ -26,6 +30,7 @@
 	let value = new PersistedState('markdownContent', markdownDemo);
 
 	let markdown = $state(value.current);
+	let showHowToUseDialog = $state(false);
 
 	if (value.current == null || value.current == '') {
 		markdown = markdownDemo;
@@ -64,6 +69,10 @@
 						> for quick syntax tips.
 					</p>
 				</div>
+				<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>
+					<HelpCircle class="mr-2 size-4" />
+					How to Use
+				</Button>
 			</div>
 			<section class="mt-6">
 				{#if browser}
@@ -79,6 +88,14 @@
 		</div>
 	</div>
 </div>
+
+<HowToUseDialog
+	bind:open={showHowToUseDialog}
+	title={markdownEditorHowToUse.title}
+	description={markdownEditorHowToUse.description}
+	tabs={markdownEditorHowToUse.tabs}
+	showFooterHelpText={markdownEditorHowToUse.showFooterHelpText}
+/>
 
 <style global>
 	/* Editor dark mode */

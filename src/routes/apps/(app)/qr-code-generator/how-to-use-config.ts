@@ -13,49 +13,49 @@ import type { HowToUseConfig, Step, Feature, Tip } from '$lib/types/how-to-use';
 const gettingStartedSteps: Step[] = [
 	{
 		number: 1,
-		title: 'Enter Your Content',
+		title: 'Choose Content Type',
 		description:
-			'Type or paste any text, URL, phone number, or message into the input field. The QR code generates instantly!',
+			'Select from three tabs: <strong>Text/URL</strong> for links and text, <strong>Contact Card</strong> for vCard info, or <strong>Social Links</strong> for multiple social media profiles.',
 		color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
 	},
 	{
 		number: 2,
-		title: 'Customize (Optional)',
+		title: 'Enter Your Information',
 		description:
-			'Adjust the size, colors, and error correction level to match your needs. See changes in real-time.',
+			'Fill in the fields for your chosen content type. The QR code generates automatically as you type!',
 		color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
 	},
 	{
 		number: 3,
-		title: 'Download or Share',
+		title: 'Download Your QR Code',
 		description:
-			'Click <strong>Download</strong> to save your QR code as an image, or use share options to distribute it.',
+			'Click <strong>Download QR Code</strong> to save as a PNG image, or click the QR code itself for a larger preview.',
 		color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
 	}
 ];
 
-// Customization Steps
-const customizationSteps: Step[] = [
+// Content Types Steps
+const contentTypesSteps: Step[] = [
 	{
 		number: 1,
-		title: 'Adjust Size',
+		title: 'Text/URL Tab',
 		description:
-			'Use the size slider to make your QR code larger or smaller based on where you plan to use it.',
-		color: 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400'
+			'Perfect for website links, plain text messages, phone numbers, or any text content you want to encode.',
+		color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
 	},
 	{
 		number: 2,
-		title: 'Change Colors',
+		title: 'Contact Card Tab',
 		description:
-			'Pick foreground and background colors to match your brand or design. High contrast works best for scanning.',
-		color: 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400'
+			'Create a digital business card with name, phone, email, and website. Generates a vCard format that adds contacts to phones.',
+		color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
 	},
 	{
 		number: 3,
-		title: 'Error Correction',
+		title: 'Social Links Tab',
 		description:
-			'Choose error correction level: Higher levels allow scanning even if the QR code is partially damaged.',
-		color: 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400'
+			'Add multiple social media profiles with labels and URLs. Creates a formatted text block with all your links.',
+		color: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400'
 	}
 ];
 
@@ -68,13 +68,13 @@ const features: Feature[] = [
 	},
 	{
 		icon: Download,
-		title: 'Multiple Formats',
-		description: 'Download your QR code as PNG, SVG, or other formats for different use cases.'
+		title: 'PNG Download',
+		description: 'Download your QR code as a high-quality PNG image for printing or digital use.'
 	},
 	{
 		icon: Share2,
-		title: 'Easy Sharing',
-		description: 'Share QR codes directly via social media, email, or messaging apps.'
+		title: 'Multiple Content Types',
+		description: 'Support for text, URLs, contact cards (vCard), and social media link collections.'
 	}
 ];
 
@@ -83,8 +83,9 @@ const quickTips: Tip[] = [
 	{ text: 'Use high contrast colors (dark on light) for best scanning reliability' },
 	{ text: 'Test your QR code with multiple devices before printing' },
 	{ text: 'Keep URLs short for simpler, easier-to-scan QR codes' },
-	{ text: 'Higher error correction is better for outdoor or damaged surfaces' },
-	{ text: 'QR codes work best when printed at least 2cm × 2cm in size' }
+	{ text: 'Contact cards automatically add to phone contacts when scanned' },
+	{ text: 'QR codes work best when printed at least 2cm × 2cm in size' },
+	{ text: 'Social links create a formatted text block with all your profiles' }
 ];
 
 export const qrCodeGeneratorHowToUse: HowToUseConfig = {
@@ -104,10 +105,10 @@ export const qrCodeGeneratorHowToUse: HowToUseConfig = {
 			}
 		},
 		{
-			value: 'customize',
-			label: 'Customize',
+			value: 'content',
+			label: 'Content Types',
 			icon: Image,
-			steps: customizationSteps
+			steps: contentTypesSteps
 		},
 		{
 			value: 'tips',

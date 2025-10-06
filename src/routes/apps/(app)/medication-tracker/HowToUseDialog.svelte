@@ -134,7 +134,7 @@
 			icon: Calendar,
 			title: 'View History',
 			description:
-				'The <strong>"History"</strong> tab shows all past medication logs grouped by date. Edit times, undo actions, or add notes to any entry.'
+				'The <strong>"History"</strong> tab shows all past medication logs grouped by date. Edit times, undo actions, or add notes to any entry. You can also change the status of missed doses (mark as taken or skipped).'
 		},
 		{
 			icon: TrendingUp,
@@ -147,6 +147,12 @@
 			title: 'Manage Schedules',
 			description:
 				'Edit medication details, adjust dosages, modify schedules, or reschedule individual doses from the <strong>"Medications"</strong> tab.'
+		},
+		{
+			icon: Clock,
+			title: 'Reschedule Doses',
+			description:
+				'Need to take a medication at a different time? Click <strong>"Reschedule"</strong> on any pending dose in the Today tab to move it to a new date and time. This only affects that single dose.'
 		}
 	];
 
@@ -155,8 +161,16 @@
 		{ text: 'Set reminders on your phone for critical medications' },
 		{ text: 'Review your adherence statistics weekly to identify patterns' },
 		{ text: 'Use the notes field to track side effects or effectiveness' },
-		{ text: 'Backup your data regularly if logged in (cloud icon in header)' },
-		{ text: 'The app works offline - perfect for travel and areas with poor connectivity' }
+		{
+			text: 'Backup your data: Click the cloud icon to manually backup, or changes auto-backup after 15 seconds if logged in'
+		},
+		{
+			text: 'Sync across devices: Use the sync button (refresh icon) to merge data from the server with your local data'
+		},
+		{ text: 'The app works offline - perfect for travel and areas with poor connectivity' },
+		{
+			text: 'Missed doses auto-mark when time passes, but you can still edit them in History to mark as taken or skipped'
+		}
 	];
 </script>
 

@@ -6,9 +6,14 @@
 	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '@/ui/tabs';
 	import QRCodeDisplay from './QRCodeDisplay.svelte';
+	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import { qrCodeGeneratorHowToUse } from './how-to-use-config';
+	import { Button } from '@/ui/button';
+	import { HelpCircle } from '@lucide/svelte';
 
 	let inputText = $state('');
 	let selectedTab = $state('text');
+	let showHowToUseDialog = $state(false);
 	let contactInfo = $state({
 		name: '',
 		phone: '',
@@ -86,12 +91,18 @@
 	<div class="mx-auto max-w-4xl space-y-8">
 		<div class="text-center">
 			<h1 class="mb-4 text-4xl font-bold tracking-tight">QR Code Generator</h1>
-			<p class="text-lg text-muted-foreground">
+			<p class="text-muted-foreground text-lg">
 				Create QR codes for text, URLs, contact information, and more. Download instantly.
 			</p>
+			<div class="mt-4">
+				<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>
+					<HelpCircle class="mr-2 size-4" />
+					How to Use
+				</Button>
+			</div>
 		</div>
 
-		<div class="rounded-lg border bg-card p-6 shadow-sm">
+		<div class="bg-card rounded-lg border p-6 shadow-sm">
 			<Tabs.Root value={selectedTab} onValueChange={(v) => (selectedTab = v)} class="w-full">
 				<Tabs.List class="grid w-full grid-cols-3">
 					<Tabs.Trigger value="text">Text/URL</Tabs.Trigger>
@@ -119,3 +130,11 @@
 		</div>
 	</div>
 </section>
+
+<HowToUseDialog
+	bind:open={showHowToUseDialog}
+	title={qrCodeGeneratorHowToUse.title}
+	description={qrCodeGeneratorHowToUse.description}
+	tabs={qrCodeGeneratorHowToUse.tabs}
+	showFooterHelpText={qrCodeGeneratorHowToUse.showFooterHelpText}
+/>

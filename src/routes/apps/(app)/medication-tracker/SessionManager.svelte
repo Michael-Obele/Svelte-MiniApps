@@ -22,6 +22,10 @@
 	let sessionStartDate = $state(new Date().toISOString().split('T')[0]);
 	let showDeleteDialog = $state(false);
 	let sessionToDelete = $state<TreatmentSession | null>(null);
+	let showEditDialog = $state(false);
+	let editingSession = $state<TreatmentSession | null>(null);
+	let editName = $state('');
+	let editDescription = $state('');
 
 	// Load sessions - use $derived for computed values
 	let allSessions = $derived(medState.treatmentSessions.current);
@@ -62,6 +66,42 @@
 			isActive: false
 		});
 		toast.info('Treatment session ended');
+	}
+
+	// Restart ended session
+	function restartSession(sessionId: string) {
+		medState.updateSession(sessionId, {
+			endDate: undefined,
+			isActive: true
+		});
+		toast.success('Treatment session restarted');
+	}
+
+	// Open edit dialog
+	function openEditDialog(session: TreatmentSession) {
+		editingSession = session;
+		editName = session.name;
+		editDescription = session.description || '';
+		showEditDialog = true;
+	}
+
+	// Save edited session
+	function saveEditedSession() {
+		if (!editingSession || !editName.trim()) {
+			toast.error('Please enter a session name');
+			return;
+		}
+
+		medState.updateSession(editingSession.id, {
+			name: editName.trim(),
+			description: editDescription.trim()
+		});
+
+		toast.success('Session updated successfully');
+		showEditDialog = false;
+		editingSession = null;
+		editName = '';
+		editDescription = '';
 	}
 
 	// Confirm delete
@@ -203,6 +243,20 @@
 												</Button>
 											{/if}
 
+											{#if session.endDate}
+												<Button
+													variant="outline"
+													size="sm"
+													onclick={() => restartSession(session.id)}
+												>
+													Restart Session
+												</Button>
+											{/if}
+
+											<Button variant="ghost" size="sm" onclick={() => openEditDialog(session)}>
+												Edit
+											</Button>
+
 											<Button variant="ghost" size="sm" onclick={() => confirmDelete(session)}>
 												<Trash2 class="size-4 text-red-500" />
 											</Button>
@@ -234,3 +288,41 @@
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>
+
+<!-- Edit Session Dialog -->
+<Dialog.Root bind:open={showEditDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Edit Treatment Session</Dialog.Title>
+			<Dialog.Description>
+				Update the name and description of your treatment session.
+			</Dialog.Description>
+		</Dialog.Header>
+
+		<div class="space-y-4">
+			<div class="space-y-2">
+				<Label for="edit-session-name">Session Name *</Label>
+				<Input
+					id="edit-session-name"
+					bind:value={editName}
+					placeholder="e.g., Flu Treatment - January 2024"
+				/>
+			</div>
+
+			<div class="space-y-2">
+				<Label for="edit-session-description">Description (optional)</Label>
+				<Textarea
+					id="edit-session-description"
+					bind:value={editDescription}
+					placeholder="Brief description of this treatment period..."
+					rows={3}
+				/>
+			</div>
+		</div>
+
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showEditDialog = false)}>Cancel</Button>
+			<Button onclick={saveEditedSession}>Save Changes</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>

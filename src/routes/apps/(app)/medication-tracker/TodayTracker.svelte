@@ -244,6 +244,14 @@
 												<AlertCircle class="mr-1 size-3" />
 												Missed
 											</Badge>
+											<Button size="sm" variant="outline" onclick={() => onMarkTaken(log.id)}>
+												<CheckCircle2 class="mr-1 size-4" />
+												<span class="hidden sm:inline">Mark Taken</span>
+											</Button>
+											<Button size="sm" variant="outline" onclick={() => openSkipDialog(log)}>
+												<XCircle class="mr-1 size-4" />
+												<span class="hidden sm:inline">Mark Skipped</span>
+											</Button>
 										{/if}
 									</div>
 								</div>

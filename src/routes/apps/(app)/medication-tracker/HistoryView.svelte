@@ -420,6 +420,26 @@
 													<AlertCircle class="mr-1 size-3" />
 													<span class="hidden sm:inline">Missed</span>
 												</Badge>
+												{#if onMarkTaken && onMarkSkipped}
+													<Button
+														size="sm"
+														variant="outline"
+														onclick={() => onMarkTaken(log.id)}
+														class="ml-2 h-6 px-2 text-xs"
+													>
+														<CheckCircle2 class="mr-1 size-3" />
+														<span class="hidden sm:inline">Mark Taken</span>
+													</Button>
+													<Button
+														size="sm"
+														variant="outline"
+														onclick={() => openSkipDialog(log)}
+														class="ml-2 h-6 px-2 text-xs"
+													>
+														<XCircle class="mr-1 size-3" />
+														<span class="hidden sm:inline">Mark Skipped</span>
+													</Button>
+												{/if}
 											{:else}
 												<Badge variant="outline">
 													<Clock class="mr-1 size-3" />

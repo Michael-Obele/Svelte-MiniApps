@@ -77,6 +77,8 @@
 
 	// Sync with server data on mount
 	onMount(() => {
+		let didSync = false;
+
 		// For authenticated users, sync with server data on mount
 		if (isAuthenticated && data?.sessions && data.sessions.length > 0) {
 			const localSessionsCount = medState.treatmentSessions.current.length;
@@ -97,12 +99,21 @@
 
 				toast.success('Data synced from server');
 				needsBackup = false; // Data just loaded from server
+				didSync = true;
 			}
 		}
 
-		// Show how-to guide for new users
+		// Show how-to guide for new users, but delay slightly if we just synced
+		// This prevents the guide from showing during the sync process
 		if (!hasSeenGuide.current) {
-			showHowToUseDialog = true;
+			if (didSync) {
+				// Delay showing the guide if we just synced to prevent UI conflicts
+				setTimeout(() => {
+					showHowToUseDialog = true;
+				}, 500);
+			} else {
+				showHowToUseDialog = true;
+			}
 		}
 	});
 
@@ -128,10 +139,46 @@
 		}
 	});
 
+	// Auto-mark overdue pending logs as missed
+	let missedCheckTimer: ReturnType<typeof setInterval> | null = null;
+
+	function checkAndMarkMissedLogs() {
+		const now = new Date();
+		let hasChanges = false;
+
+		medState.medicationLogs.current.forEach((log) => {
+			// Only check pending logs
+			if (log.status === 'pending') {
+				const scheduledTime = new Date(log.scheduledTime);
+				// Mark as missed if the scheduled time has passed
+				if (scheduledTime < now) {
+					medState.updateLog(log.id, { status: 'missed' });
+					hasChanges = true;
+				}
+			}
+		});
+
+		if (hasChanges) {
+			needsBackup = true;
+		}
+	}
+
+	// Run missed check on mount and every minute
+	onMount(() => {
+		checkAndMarkMissedLogs(); // Initial check
+
+		missedCheckTimer = setInterval(() => {
+			checkAndMarkMissedLogs();
+		}, 60000); // Check every minute
+	});
+
 	// Cleanup on component unmount
 	onDestroy(() => {
 		if (autoBackupTimer) {
 			clearTimeout(autoBackupTimer);
+		}
+		if (missedCheckTimer) {
+			clearInterval(missedCheckTimer);
 		}
 	});
 
@@ -308,7 +355,7 @@
 				</p>
 			</div>
 
-			<div class="flex flex-wrap gap-2">
+			<div class="flex flex-col flex-wrap gap-2">
 				{#if isAuthenticated}
 					<div class="flex flex-wrap items-center gap-2">
 						{#if needsBackup}
@@ -333,6 +380,7 @@
 										disabled={isRefreshing}
 									>
 										<RefreshCw class="size-4 {isRefreshing ? 'animate-spin' : ''}" />
+										<span class="inline">Refresh from server</span>
 									</Button>
 								</Tooltip.Trigger>
 								<Tooltip.Content>
@@ -387,23 +435,24 @@
 						</Tooltip.Provider>
 					</div>
 				{/if}
+				<div>
+					<Button
+						onclick={() => (showHowToUseDialog = true)}
+						variant="outline"
+						size="sm"
+						class="w-full sm:w-auto"
+					>
+						<HelpCircle class="mr-2 size-4" />
+						<span class="hidden sm:inline">How to Use</span>
+						<span class="sm:hidden">Help</span>
+					</Button>
 
-				<Button
-					onclick={() => (showHowToUseDialog = true)}
-					variant="outline"
-					size="sm"
-					class="w-full sm:w-auto"
-				>
-					<HelpCircle class="mr-2 size-4" />
-					<span class="hidden sm:inline">How to Use</span>
-					<span class="sm:hidden">Help</span>
-				</Button>
-
-				<Button onclick={() => (showSessionDialog = true)} size="sm" class="w-full sm:w-auto">
-					<Plus class="mr-2 size-4" />
-					<span class="hidden sm:inline">New Session</span>
-					<span class="sm:hidden">New</span>
-				</Button>
+					<Button onclick={() => (showSessionDialog = true)} size="sm" class="w-full sm:w-auto">
+						<Plus class="mr-2 size-4" />
+						<span class="hidden sm:inline">New Session</span>
+						<span class="sm:hidden">New</span>
+					</Button>
+				</div>
 			</div>
 		</div>
 
