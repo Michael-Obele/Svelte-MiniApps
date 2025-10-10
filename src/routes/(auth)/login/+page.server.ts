@@ -1,4 +1,3 @@
-import { verify } from '@node-rs/argon2';
 import { fail, redirect } from '@sveltejs/kit';
 import * as auth from '$lib/server/auth';
 import { prisma } from '$lib/server/db';
@@ -46,7 +45,6 @@ export const actions: Actions = {
 				username: username as string
 			});
 		}
-
 		const existingUser = await prisma.user.findUnique({
 			where: { username: username as string }
 		});
@@ -58,12 +56,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const validPassword = await verify(existingUser.passwordHash, password, {
-			memoryCost: 19456,
-			timeCost: 2,
-			outputLen: 32,
-			parallelism: 1
-		});
+		const validPassword = await auth.verifyPassword(password as string, existingUser.passwordHash);
 
 		if (!validPassword) {
 			return fail(400, {
@@ -76,7 +69,6 @@ export const actions: Actions = {
 		event.cookies.set(auth.sessionCookieName, session.id, {
 			path: '/',
 			sameSite: 'lax',
-			httpOnly: true,
 			secure: !dev,
 			maxAge: 60 * 60 * 24 * 30 // 30 days
 		});

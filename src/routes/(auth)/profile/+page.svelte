@@ -1,8 +1,12 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import type { ActionData } from './$types.js';
+	import { getUserProfile } from '$lib/remote';
+	import { setContext } from 'svelte';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	// Fetch user profile data using remote function
+	const profileQuery = getUserProfile();
+
+	// Set context for child components to access without prop drilling
+	setContext('profileQuery', profileQuery);
 
 	// Tab components
 	import OverviewTab from './OverviewTab.svelte';
@@ -14,7 +18,15 @@
 	// UI components
 	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
 	import { Button } from '@/ui/button';
-	import { TrendingUp } from '@lucide/svelte';
+	import { TrendingUp, User, RefreshCw } from '@lucide/svelte';
+
+	// Active tab state
+	let activeTab = $state('overview');
+
+	// Refresh profile data
+	function refreshProfile() {
+		getUserProfile().refresh();
+	}
 </script>
 
 <svelte:head>
@@ -28,13 +40,18 @@
 	<section class="container min-h-screen space-y-6 p-6 py-4">
 		<div class="flex items-center justify-between">
 			<h1 class="text-2xl font-semibold md:text-3xl lg:text-4xl">Developer Dashboard</h1>
-			<Button variant="outline" class="gap-2">
-				<TrendingUp class="h-4 w-4" />
-				<span>Your Progress</span>
-			</Button>
+			<div class="flex items-center gap-2">
+				<Button variant="outline" class="gap-2" onclick={refreshProfile}>
+					<RefreshCw class="h-4 w-4" />
+					<span class="hidden sm:inline">Refresh</span>
+				</Button>
+				<Button variant="ghost" size="icon" class="sm:hidden">
+					<User class="h-4 w-4" />
+				</Button>
+			</div>
 		</div>
 
-		<Tabs value="overview" class="w-full">
+		<Tabs bind:value={activeTab} class="w-full">
 			<TabsList class="grid w-full grid-cols-5 lg:w-[750px]">
 				<TabsTrigger value="overview">Overview</TabsTrigger>
 				<TabsTrigger value="projects">Projects</TabsTrigger>

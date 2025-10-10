@@ -15,13 +15,5 @@
 		</CardContent>
 	</Card>
 	
-	<Card>
-		<CardHeader>
-			<CardTitle>Password Manager</CardTitle>
-			<CardDescription>Update your password and security settings</CardDescription>
-		</CardHeader>
-		<CardContent>
-			<PwdComponent />
-		</CardContent>
-	</Card>
+	<PwdComponent />
 </div>

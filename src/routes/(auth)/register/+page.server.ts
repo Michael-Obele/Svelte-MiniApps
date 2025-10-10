@@ -1,4 +1,3 @@
-import { hash } from '@node-rs/argon2';
 import { fail, redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import * as auth from '$lib/server/auth';
@@ -51,7 +50,6 @@ export const actions: Actions = {
 			});
 		}
 
-		// Check if username is taken
 		const existingUser = await prisma.user.findUnique({
 			where: { username: username as string }
 		});
@@ -65,14 +63,7 @@ export const actions: Actions = {
 
 		// Create the user
 		const userId = generateUserId();
-		const passwordHash = await hash(password as string, {
-			memoryCost: 19456,
-			timeCost: 2,
-			outputLen: 32,
-			parallelism: 1
-		});
-
-		console.log('Creating user with ID:', userId);
+		const passwordHash = await auth.generatePasswordHash(password as string);
 
 		await prisma.user.create({
 			data: {

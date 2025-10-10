@@ -22,3 +22,12 @@ export {
 	deleteMedication,
 	deleteMedicationLog
 } from './medication-tracker.remote';
+
+// Remote functions for profile management
+export {
+	getUserProfile,
+	getUserPasswords,
+	updateProfile,
+	updatePassword,
+	deleteAccount
+} from './profile.remote';

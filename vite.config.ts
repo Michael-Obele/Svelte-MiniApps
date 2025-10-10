@@ -31,5 +31,11 @@ export default defineConfig({
 	server: {
 		port: 5178,
 		strictPort: false
+	},
+	ssr: {
+		noExternal: []
+	},
+	optimizeDeps: {
+		exclude: ['@node-rs/argon2']
 	}
 });

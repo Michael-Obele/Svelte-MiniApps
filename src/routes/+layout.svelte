@@ -19,10 +19,8 @@
 		if (browser) {
 			registerServiceWorker();
 		}
-
-		const lottie = (await import('lottie-web')).default;
 		const { defineElement } = await import('@lordicon/element');
-		defineElement(lottie.loadAnimation);
+		defineElement();
 	});
 </script>
 
