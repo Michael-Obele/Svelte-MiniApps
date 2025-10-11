@@ -1,14 +1,18 @@
 // routes/login/github/callback/+server.ts
-import { generateSessionToken, createSession, setSessionTokenCookie, SESSION_COOKIE_NAME } from "$lib/server/session";
-import { github } from "$lib/server/oauth";
+import {
+	generateSessionToken,
+	createSession,
+	setSessionTokenCookie,
+	SESSION_COOKIE_NAME
+} from '$lib/server/session';
+import { github } from '$lib/server/oauth';
 import { prisma } from '$lib/server/db';
-import { redirect } from "@sveltejs/kit";
-import { encodeHexLowerCase } from "@oslojs/encoding";
-import { sha256 } from "@oslojs/crypto/sha2";
+import { redirect } from '@sveltejs/kit';
+import { encodeHexLowerCase } from '@oslojs/encoding';
+import { sha256 } from '@oslojs/crypto/sha2';
 
-import type { RequestEvent } from "@sveltejs/kit";
-import type { OAuth2Tokens } from "arctic";
-
+import type { RequestEvent } from '@sveltejs/kit';
+import type { OAuth2Tokens } from 'arctic';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	console.log(' GitHub OAuth Callback Started');
@@ -16,12 +20,12 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	// Check if user already has a session
 	if (event.cookies.get(SESSION_COOKIE_NAME)) {
 		console.log(' User already has session, redirecting to home');
-		redirect(303, "/");
+		redirect(303, '/');
 	}
 
-	const code = event.url.searchParams.get("code");
-	const state = event.url.searchParams.get("state");
-	const storedState = event.cookies.get("github_oauth_state");
+	const code = event.url.searchParams.get('code');
+	const state = event.url.searchParams.get('state');
+	const storedState = event.cookies.get('github_oauth_state');
 
 	console.log(' OAuth Parameters:', {
 		code: code ? ' Present' : ' Missing',
@@ -32,7 +36,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 	if (!code || !state || !storedState) {
 		console.error(' Missing required OAuth parameters:', { code, state, storedState });
 		// Use 303 for redirects after POST-like operations
-		redirect(303, "/login?error=missing_params");
+		redirect(303, '/login?error=missing_params');
 	}
 
 	if (state !== storedState) {
@@ -40,12 +44,12 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			receivedState: state,
 			storedState: storedState
 		});
-		redirect(303, "/login?error=invalid_state");
+		redirect(303, '/login?error=invalid_state');
 	}
 
 	console.log(' State validation passed');
 	// Clear the state cookie immediately after validation
-	event.cookies.delete("github_oauth_state", { path: "/" });
+	event.cookies.delete('github_oauth_state', { path: '/' });
 
 	let tokens: OAuth2Tokens;
 	try {
@@ -54,11 +58,11 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		console.log(' Authorization code validated successfully');
 	} catch (e) {
 		console.error(' Failed to validate authorization code:', e);
-		redirect(303, "/login?error=invalid_code");
+		redirect(303, '/login?error=invalid_code');
 	}
 
 	console.log(' Fetching GitHub user data...');
-	const githubUserResponse = await fetch("https://api.github.com/user", {
+	const githubUserResponse = await fetch('https://api.github.com/user', {
 		headers: {
 			Authorization: `Bearer ${tokens.accessToken()}`
 		}
@@ -69,7 +73,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			status: githubUserResponse.status,
 			statusText: githubUserResponse.statusText
 		});
-		redirect(303, "/login?error=github_api_error");
+		redirect(303, '/login?error=github_api_error');
 	}
 
 	const githubUser = await githubUserResponse.json();
@@ -118,16 +122,25 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 	// Set the session ID (not token) as the cookie value
 	event.cookies.set(SESSION_COOKIE_NAME, session.id, {
-		path: "/",
+		path: '/',
 		secure: import.meta.env.PROD,
 		httpOnly: true,
-		sameSite: "lax",
+		sameSite: 'lax',
 		expires: session.expiresAt
 	});
 
 	console.log(' Session created successfully');
 
-	console.log(' OAuth flow completed successfully, redirecting to home page');
+	// Get redirect URL from cookie
+	const redirectTo = event.cookies.get('oauth_redirect') || '/';
+	// Validate redirect URL to prevent open redirect attacks
+	const isValidRedirect = redirectTo.startsWith('/') && !redirectTo.includes('://');
+	const finalRedirect = isValidRedirect ? redirectTo : '/';
+
+	// Clear the redirect cookie
+	event.cookies.delete('oauth_redirect', { path: '/' });
+
+	console.log(' OAuth flow completed successfully, redirecting to:', finalRedirect);
 	// Use 303 See Other for the final redirect
-	redirect(303, "/");
+	redirect(303, finalRedirect);
 }

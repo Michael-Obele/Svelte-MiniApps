@@ -11,11 +11,23 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
 	import { invalidate, invalidateAll } from '$app/navigation';
+	import { page } from '$app/state';
 	$effect(() => {
 		invalidateAll();
 		if (document.referrer.includes('/logout')) {
 			console.log('Reloading page');
 			window.location.reload();
+		}
+
+		// If no redirect parameter is set, use document.referrer
+		if (!page.url.searchParams.has('redirect') && document.referrer) {
+			const referrerUrl = new URL(document.referrer);
+			// Only use referrer if it's from the same origin
+			if (referrerUrl.origin === window.location.origin) {
+				const newUrl = new URL(window.location.href);
+				newUrl.searchParams.set('redirect', document.referrer);
+				window.history.replaceState(null, '', newUrl.toString());
+			}
 		}
 	});
 
@@ -23,6 +35,10 @@
 
 	let isLoading = $state(false);
 	let showPassword = $state(false);
+
+	let githubUrl = $derived(
+		`/login/github?redirect=${encodeURIComponent(page.url.searchParams.get('redirect') || '/')}`
+	);
 
 	function handleSubmit() {
 		isLoading = true;
@@ -42,7 +58,7 @@
 	<meta name="description" content="Login to access your Svelte MiniApps account" />
 </svelte:head>
 
-<section class="min-h-screen bg-background py-3">
+<section class="bg-background min-h-screen py-3">
 	<div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
 		<!-- Logo -->
 		<a href="/" class="my-5 flex items-center space-x-3 rtl:space-x-reverse">
@@ -54,8 +70,8 @@
 			</div>
 		</a>
 
-		<div class="w-full rounded-lg bg-card p-6 shadow sm:max-w-md sm:p-8 md:mt-0">
-			<h2 class="mb-1 text-xl font-bold leading-tight tracking-tight md:text-2xl">
+		<div class="bg-card w-full rounded-lg p-6 shadow sm:max-w-md sm:p-8 md:mt-0">
+			<h2 class="mb-1 text-xl leading-tight font-bold tracking-tight md:text-2xl">
 				Sign in to your account
 			</h2>
 			<div class="mb-4 flex flex-col gap-3">
@@ -82,7 +98,7 @@
 						required
 						placeholder="e.g., john_doe123"
 					/>
-					<p class="text-xs text-muted-foreground">
+					<p class="text-muted-foreground text-xs">
 						3-31 characters: lowercase letters, numbers, underscores, and hyphens
 					</p>
 				</div>
@@ -102,7 +118,7 @@
 							type="button"
 							variant="ghost"
 							size="icon"
-							class="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+							class="absolute top-0 right-0 h-full px-3 py-2 hover:bg-transparent"
 							onclick={togglePassword}
 						>
 							{#if showPassword}
@@ -112,7 +128,7 @@
 							{/if}
 						</Button>
 					</div>
-					<p class="text-xs text-muted-foreground">Minimum 6 characters</p>
+					<p class="text-muted-foreground text-xs">Minimum 6 characters</p>
 				</div>
 
 				<div class="space-y-2">
@@ -121,12 +137,12 @@
 							<span class="w-full border-t"></span>
 						</div>
 						<div class="relative flex justify-center text-xs uppercase">
-							<span class="bg-background px-2 text-muted-foreground">Or continue with</span>
+							<span class="bg-background text-muted-foreground px-2">Or continue with</span>
 						</div>
 					</div>
 
 					<div class="grid grid-cols-2 gap-3">
-						<a href="/login/github">
+						<a href={githubUrl}>
 							<Button variant="outline" class="group w-full" disabled={isLoading}>
 								<Github class="mr-2 size-4" />
 								Github
@@ -150,9 +166,9 @@
 					Sign in with Username
 				</Button>
 
-				<p class="px-8 text-center text-sm text-muted-foreground">
+				<p class="text-muted-foreground px-8 text-center text-sm">
 					Don't have an account?
-					<a href="/register" class="underline underline-offset-4 hover:text-primary">Sign up</a>
+					<a href="/register" class="hover:text-primary underline underline-offset-4">Sign up</a>
 				</p>
 			</form>
 		</div>

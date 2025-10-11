@@ -75,7 +75,12 @@ export const actions: Actions = {
 
 		console.info('User logged in');
 
-		redirect(301, '/');
+		const redirectTo = event.url.searchParams.get('redirect') || '/';
+		// Validate redirect URL to prevent open redirect attacks
+		const isValidRedirect = redirectTo.startsWith('/') && !redirectTo.includes('://');
+		const finalRedirect = isValidRedirect ? redirectTo : '/';
+
+		redirect(301, finalRedirect);
 	}
 };
 

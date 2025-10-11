@@ -28,6 +28,10 @@
 
 	let show = $state(false);
 
+	let loginUrl = $derived(
+		`/login?redirect=${encodeURIComponent(page.url.pathname + page.url.search)}`
+	);
+
 	// Reset `show` when navigating
 	beforeNavigate(() => {
 		show = false;
@@ -127,7 +131,7 @@
 						</DropdownMenu.Root>
 					{:else}
 						<!-- Keep login visible on mobile (avatar area) -->
-						<a href="/login">
+						<a href={loginUrl}>
 							<Button variant="outline" type="button" size="sm">
 								<span class="flex items-center space-x-2">
 									<LogIn class="h-4 w-4" />
@@ -138,14 +142,13 @@
 					{/if}
 					{#snippet pending()}
 						<!-- Keep login visible on mobile (avatar area) -->
-						<a href="/login">
-							<Button variant="outline" type="button" size="sm" disabled>
-								<span class="flex items-center space-x-2">
-									<LogIn class="h-4 w-4" />
-									<span class="hidden sm:inline">Checking...</span>
-								</span>
-							</Button>
-						</a>
+
+						<Button variant="outline" type="button" size="sm" disabled>
+							<span class="flex items-center space-x-2">
+								<LogIn class="h-4 w-4" />
+								<span class="hidden sm:inline">Checking...</span>
+							</span>
+						</Button>
 					{/snippet}
 				</svelte:boundary>
 			</div>
