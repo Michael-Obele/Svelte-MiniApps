@@ -20,7 +20,11 @@ export {
 	syncMedicationData,
 	deleteMedicationSession,
 	deleteMedication,
-	deleteMedicationLog
+	deleteMedicationLog,
+	updateMedicationLog,
+	createMedicationLog,
+	updateMedicationSession,
+	createMedicationSession
 } from './medication-tracker.remote';
 
 // Remote functions for profile management

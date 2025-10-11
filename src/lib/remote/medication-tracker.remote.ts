@@ -359,3 +359,255 @@ export const deleteMedicationLog = command(v.object({ logId: v.string() }), asyn
 
 	return { success: true };
 });
+
+// Command to update a single log (for granular updates)
+export const updateMedicationLog = command(
+	v.object({
+		logId: v.string(),
+		status: v.optional(
+			v.union([v.literal('taken'), v.literal('skipped'), v.literal('missed'), v.literal('pending')])
+		),
+		actualTime: v.optional(v.string()),
+		notes: v.optional(v.string()),
+		scheduledTime: v.optional(v.string())
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		console.log(`📝 Updating medication log ${data.logId} for user ${user.id}`);
+
+		// Verify ownership and update
+		const updatedLog = await prisma.medicationLog.update({
+			where: {
+				id: data.logId,
+				session: { userId: user.id }
+			},
+			data: {
+				...(data.status && { status: data.status }),
+				...(data.actualTime && { actualTime: new Date(data.actualTime) }),
+				...(data.notes !== undefined && { notes: data.notes }),
+				...(data.scheduledTime && { scheduledTime: new Date(data.scheduledTime) })
+			}
+		});
+
+		console.log(`✅ Successfully updated log ${data.logId}`);
+
+		return {
+			success: true,
+			log: {
+				id: updatedLog.id,
+				sessionId: updatedLog.sessionId,
+				medicationId: updatedLog.medicationId,
+				scheduledTime: updatedLog.scheduledTime.toISOString(),
+				status: updatedLog.status as 'taken' | 'skipped' | 'missed' | 'pending',
+				actualTime: updatedLog.actualTime ? updatedLog.actualTime.toISOString() : undefined,
+				notes: updatedLog.notes || undefined,
+				createdAt: updatedLog.createdAt.toISOString()
+			}
+		};
+	}
+);
+
+// Command to create a new log
+export const createMedicationLog = command(MedicationLogSchema, async (data) => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	console.log(`➕ Creating medication log for user ${user.id}`);
+
+	// Verify the session belongs to the user
+	const session = await prisma.medicationSession.findFirst({
+		where: {
+			id: data.sessionId,
+			userId: user.id
+		}
+	});
+
+	if (!session) {
+		throw new Error('Session not found or unauthorized');
+	}
+
+	// Create the log
+	const createdLog = await prisma.medicationLog.create({
+		data: {
+			id: data.id,
+			sessionId: data.sessionId,
+			medicationId: data.medicationId,
+			scheduledTime: new Date(data.scheduledTime),
+			actualTime: data.actualTime ? new Date(data.actualTime) : null,
+			status: data.status,
+			notes: data.notes,
+			createdAt: new Date(data.createdAt)
+		}
+	});
+
+	console.log(`✅ Successfully created log ${createdLog.id}`);
+
+	return {
+		success: true,
+		log: {
+			id: createdLog.id,
+			sessionId: createdLog.sessionId,
+			medicationId: createdLog.medicationId,
+			scheduledTime: createdLog.scheduledTime.toISOString(),
+			status: createdLog.status as 'taken' | 'skipped' | 'missed' | 'pending',
+			actualTime: createdLog.actualTime ? createdLog.actualTime.toISOString() : undefined,
+			notes: createdLog.notes || undefined,
+			createdAt: createdLog.createdAt.toISOString()
+		}
+	};
+});
+
+// Command to update a session
+export const updateMedicationSession = command(
+	v.object({
+		sessionId: v.string(),
+		name: v.optional(v.string()),
+		description: v.optional(v.string()),
+		startDate: v.optional(v.string()),
+		endDate: v.optional(v.string()),
+		isActive: v.optional(v.boolean())
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		console.log(`📝 Updating medication session ${data.sessionId} for user ${user.id}`);
+
+		// If setting to active, deactivate all other sessions first
+		if (data.isActive === true) {
+			await prisma.medicationSession.updateMany({
+				where: {
+					userId: user.id,
+					id: { not: data.sessionId }
+				},
+				data: { isActive: false }
+			});
+		}
+
+		const updatedSession = await prisma.medicationSession.update({
+			where: {
+				id: data.sessionId,
+				userId: user.id
+			},
+			data: {
+				...(data.name && { name: data.name }),
+				...(data.description !== undefined && { description: data.description }),
+				...(data.startDate && { startDate: new Date(data.startDate) }),
+				...(data.endDate !== undefined && {
+					endDate: data.endDate ? new Date(data.endDate) : null
+				}),
+				...(data.isActive !== undefined && { isActive: data.isActive })
+			},
+			include: { medications: true }
+		});
+
+		console.log(`✅ Successfully updated session ${data.sessionId}`);
+
+		return {
+			success: true,
+			session: {
+				id: updatedSession.id,
+				name: updatedSession.name,
+				description: updatedSession.description || undefined,
+				startDate: updatedSession.startDate.toISOString(),
+				endDate: updatedSession.endDate ? updatedSession.endDate.toISOString() : undefined,
+				medications: updatedSession.medications.map((med) => ({
+					id: med.id,
+					name: med.name,
+					dosage: med.dosage,
+					frequency: med.frequency,
+					instructions: med.instructions || undefined,
+					startDate: med.startDate.toISOString(),
+					endDate: med.endDate ? med.endDate.toISOString() : undefined,
+					color: med.color,
+					createdAt: med.createdAt.toISOString()
+				})),
+				isActive: updatedSession.isActive,
+				createdAt: updatedSession.createdAt.toISOString()
+			}
+		};
+	}
+);
+
+// Command to create a session
+export const createMedicationSession = command(MedicationSessionSchema, async (data) => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	console.log(`➕ Creating medication session for user ${user.id}`);
+
+	// If setting to active, deactivate all other sessions first
+	if (data.isActive) {
+		await prisma.medicationSession.updateMany({
+			where: { userId: user.id },
+			data: { isActive: false }
+		});
+	}
+
+	const createdSession = await prisma.medicationSession.create({
+		data: {
+			id: data.id,
+			name: data.name,
+			description: data.description,
+			startDate: new Date(data.startDate),
+			endDate: data.endDate ? new Date(data.endDate) : null,
+			isActive: data.isActive,
+			userId: user.id,
+			createdAt: new Date(data.createdAt),
+			medications: {
+				create: data.medications.map((med) => ({
+					id: med.id,
+					name: med.name,
+					dosage: med.dosage,
+					frequency: med.frequency,
+					instructions: med.instructions,
+					startDate: new Date(med.startDate),
+					endDate: med.endDate ? new Date(med.endDate) : null,
+					color: med.color,
+					createdAt: new Date(med.createdAt)
+				}))
+			}
+		},
+		include: { medications: true }
+	});
+
+	console.log(`✅ Successfully created session ${createdSession.id}`);
+
+	return {
+		success: true,
+		session: {
+			id: createdSession.id,
+			name: createdSession.name,
+			description: createdSession.description || undefined,
+			startDate: createdSession.startDate.toISOString(),
+			endDate: createdSession.endDate ? createdSession.endDate.toISOString() : undefined,
+			medications: createdSession.medications.map((med) => ({
+				id: med.id,
+				name: med.name,
+				dosage: med.dosage,
+				frequency: med.frequency,
+				instructions: med.instructions || undefined,
+				startDate: med.startDate.toISOString(),
+				endDate: med.endDate ? med.endDate.toISOString() : undefined,
+				color: med.color,
+				createdAt: med.createdAt.toISOString()
+			})),
+			isActive: createdSession.isActive,
+			createdAt: createdSession.createdAt.toISOString()
+		}
+	};
+});
