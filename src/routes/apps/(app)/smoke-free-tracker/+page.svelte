@@ -88,24 +88,76 @@
 		activeAttempt = smokeState.getActiveAttempt() ?? null;
 
 		// For authenticated users, sync with server data on mount
-		if (browser && isAuthenticated && data?.attempts && data.attempts.length > 0) {
+		if (browser && isAuthenticated && data?.attempts) {
 			const localAttempts = smokeState.smokingAttempts.current;
 			const serverAttempts = data.attempts;
 
 			console.log(
-				`🔄 Syncing smoke-free data from server: ${serverAttempts.length} attempts, ${data.cravings?.length || 0} cravings`
+				`🔄 Syncing smoke-free data: ${localAttempts.length} local attempts, ${serverAttempts.length} server attempts, ${data.cravings?.length || 0} server cravings`
 			);
 
-			// Simple merge strategy: if server has data and local doesn't, use server data
-			if (localAttempts.length === 0 && serverAttempts.length > 0) {
-				smokeState.smokingAttempts.current = serverAttempts;
-				smokeState.cravingLogs.current = data.cravings || [];
-				activeAttempt = smokeState.getActiveAttempt() ?? null;
-				needsBackup = false; // Data just loaded from server
-			}
-		}
+			// Improved merge strategy
+			if (serverAttempts.length > 0) {
+				// Create a map of existing attempts by ID for quick lookup
+				const localAttemptMap = new Map(localAttempts.map((a) => [a.id, a]));
 
-		// Update time every second for live countdown
+				// Merge server attempts with local attempts
+				const mergedAttempts = [...localAttempts]; // Start with local attempts
+
+				for (const serverAttempt of serverAttempts) {
+					const existingAttempt = localAttemptMap.get(serverAttempt.id);
+					if (!existingAttempt) {
+						// Server has an attempt that local doesn't have
+						mergedAttempts.push(serverAttempt);
+					} else {
+						// Both have the attempt, keep the more recent one
+						const localTime = new Date(existingAttempt.lastSmokeDate).getTime();
+						const serverTime = new Date(serverAttempt.lastSmokeDate).getTime();
+						if (serverTime > localTime) {
+							// Server version is more recent, replace local
+							const index = mergedAttempts.findIndex((a) => a.id === serverAttempt.id);
+							mergedAttempts[index] = serverAttempt;
+						}
+					}
+				}
+
+				smokeState.smokingAttempts.current = mergedAttempts;
+				console.log(`✅ Merged to ${mergedAttempts.length} total attempts`);
+			}
+
+			// Handle cravings similarly
+			if (data.cravings && data.cravings.length > 0) {
+				const localCravings = smokeState.cravingLogs.current;
+				const serverCravings = data.cravings;
+
+				// Simple merge: add server cravings that don't exist locally
+				const localCravingIds = new Set(localCravings.map((c: smokeState.CravingLog) => c.id));
+				const newCravings = serverCravings.filter(
+					(c: smokeState.CravingLog) => !localCravingIds.has(c.id)
+				);
+
+				if (newCravings.length > 0) {
+					smokeState.cravingLogs.current = [...localCravings, ...newCravings];
+					console.log(`✅ Added ${newCravings.length} new cravings from server`);
+				}
+			}
+
+			// Handle settings
+			if (data.settings) {
+				// Update local settings with server settings if they differ
+				const currentSettings = smokeState.userSettings.current;
+				const serverSettings = data.settings;
+
+				// Simple check: if server settings are different, update local
+				if (JSON.stringify(currentSettings) !== JSON.stringify(serverSettings)) {
+					smokeState.userSettings.current = serverSettings;
+					console.log(`✅ Updated settings from server`);
+				}
+			}
+
+			activeAttempt = smokeState.getActiveAttempt() ?? null;
+			needsBackup = false; // Data just synced
+		} // Update time every second for live countdown
 		timeInterval = setInterval(() => {
 			currentTime = new Date();
 		}, 1000);
@@ -133,10 +185,10 @@
 	function handleReset() {
 		if (!activeAttempt) return;
 
-		smokeState.resetAttempt(activeAttempt.id);
-		activeAttempt = smokeState.getActiveAttempt() ?? null;
+		const newAttempt = smokeState.resetAttempt(activeAttempt.id);
+		activeAttempt = newAttempt ?? null;
 		showResetDialog = false;
-		toast.info('Streak reset. Keep going, you can do this! 💪');
+		toast.info('Previous attempt saved to history. Starting fresh! 💪');
 		needsBackup = true;
 		scheduleAutoBackup();
 	}
@@ -181,7 +233,8 @@
 		try {
 			const result = await backupSmokeFreeData({
 				attempts: smokeState.smokingAttempts.current,
-				cravings: smokeState.cravingLogs.current
+				cravings: smokeState.cravingLogs.current,
+				settings: smokeState.userSettings.current
 			});
 
 			if (result.success) {
@@ -216,7 +269,8 @@
 		try {
 			const result = await syncSmokeFreeData({
 				attempts: smokeState.smokingAttempts.current,
-				cravings: smokeState.cravingLogs.current
+				cravings: smokeState.cravingLogs.current,
+				settings: smokeState.userSettings.current
 			});
 
 			if (result.action === 'backed_up') {

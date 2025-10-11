@@ -15,7 +15,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 					username: user.username
 				},
 				attempts: data.attempts,
-				cravings: data.cravings
+				cravings: data.cravings,
+				settings: data.settings
 			};
 		} catch (error) {
 			console.error('Error loading smoke-free data:', error);

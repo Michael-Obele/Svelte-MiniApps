@@ -25,6 +25,14 @@ interface CravingLog {
 	success: boolean;
 }
 
+interface UserSettings {
+	cigarettesPerDay: number;
+	pricePerPack: number;
+	cigarettesPerPack: number;
+	currency: string;
+	motivationalGoals: string[];
+}
+
 // Valibot schemas for validation
 const SmokingAttemptSchema = v.object({
 	id: v.string(),
@@ -47,9 +55,18 @@ const CravingLogSchema = v.object({
 	success: v.boolean()
 });
 
+const UserSettingsSchema = v.object({
+	cigarettesPerDay: v.number(),
+	pricePerPack: v.number(),
+	cigarettesPerPack: v.number(),
+	currency: v.string(),
+	motivationalGoals: v.array(v.string())
+});
+
 const BackupDataSchema = v.object({
 	attempts: v.array(SmokingAttemptSchema),
-	cravings: v.array(CravingLogSchema)
+	cravings: v.array(CravingLogSchema),
+	settings: UserSettingsSchema
 });
 
 // Query to load data from server
@@ -62,7 +79,7 @@ export const loadSmokeFreeData = query(async () => {
 
 	console.log(`🔍 Loading smoke-free tracker data for user: ${user.id}`);
 
-	const [attempts, cravings] = await Promise.all([
+	const [attempts, cravings, settings] = await Promise.all([
 		prisma.smokingAttempt.findMany({
 			where: { userId: user.id },
 			orderBy: { createdAt: 'desc' }
@@ -70,11 +87,14 @@ export const loadSmokeFreeData = query(async () => {
 		prisma.cravingLog.findMany({
 			where: { attempt: { userId: user.id } },
 			orderBy: { timestamp: 'desc' }
+		}),
+		prisma.smokeFreeSettings.findUnique({
+			where: { userId: user.id }
 		})
 	]);
 
 	console.log(
-		`📊 Loaded ${attempts.length} attempts and ${cravings.length} craving logs for user ${user.id}`
+		`📊 Loaded ${attempts.length} attempts, ${cravings.length} craving logs, and settings for user ${user.id}`
 	);
 
 	return {
@@ -96,7 +116,22 @@ export const loadSmokeFreeData = query(async () => {
 			copingStrategy: craving.copingStrategy || undefined,
 			notes: craving.notes || undefined,
 			success: craving.success
-		}))
+		})),
+		settings: settings
+			? {
+					cigarettesPerDay: settings.cigarettesPerDay,
+					pricePerPack: settings.pricePerPack,
+					cigarettesPerPack: settings.cigarettesPerPack,
+					currency: settings.currency,
+					motivationalGoals: settings.motivationalGoals
+				}
+			: {
+					cigarettesPerDay: 20,
+					pricePerPack: 10,
+					cigarettesPerPack: 20,
+					currency: '$',
+					motivationalGoals: []
+				}
 	};
 });
 
@@ -104,7 +139,8 @@ export const loadSmokeFreeData = query(async () => {
 export const backupSmokeFreeData = command(
 	v.object({
 		attempts: v.array(SmokingAttemptSchema),
-		cravings: v.array(CravingLogSchema)
+		cravings: v.array(CravingLogSchema),
+		settings: UserSettingsSchema
 	}),
 	async (data) => {
 		const user = await getCurrentUser();
@@ -114,7 +150,7 @@ export const backupSmokeFreeData = command(
 		}
 
 		console.log(
-			`💾 Backing up ${data.attempts.length} attempts and ${data.cravings.length} cravings for user ${user.id}`
+			`💾 Backing up ${data.attempts.length} attempts, ${data.cravings.length} cravings, and settings for user ${user.id}`
 		);
 
 		// Start transaction
@@ -125,6 +161,26 @@ export const backupSmokeFreeData = command(
 			});
 			await tx.smokingAttempt.deleteMany({
 				where: { userId: user.id }
+			});
+
+			// Upsert settings
+			await tx.smokeFreeSettings.upsert({
+				where: { userId: user.id },
+				update: {
+					cigarettesPerDay: data.settings.cigarettesPerDay,
+					pricePerPack: data.settings.pricePerPack,
+					cigarettesPerPack: data.settings.cigarettesPerPack,
+					currency: data.settings.currency,
+					motivationalGoals: data.settings.motivationalGoals
+				},
+				create: {
+					userId: user.id,
+					cigarettesPerDay: data.settings.cigarettesPerDay,
+					pricePerPack: data.settings.pricePerPack,
+					cigarettesPerPack: data.settings.cigarettesPerPack,
+					currency: data.settings.currency,
+					motivationalGoals: data.settings.motivationalGoals
+				}
 			});
 
 			// Insert attempts
@@ -170,7 +226,8 @@ export const backupSmokeFreeData = command(
 export const syncSmokeFreeData = command(
 	v.object({
 		attempts: v.array(SmokingAttemptSchema),
-		cravings: v.array(CravingLogSchema)
+		cravings: v.array(CravingLogSchema),
+		settings: UserSettingsSchema
 	}),
 	async (localData) => {
 		const user = await getCurrentUser();
@@ -190,12 +247,20 @@ export const syncSmokeFreeData = command(
 
 		const localLatest =
 			localData.attempts.length > 0
-				? new Date(Math.max(...localData.attempts.map((a) => new Date(a.startDate).getTime())))
+				? new Date(
+						Math.max(
+							...localData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
+						)
+					)
 				: new Date(0);
 
 		const serverLatest =
 			serverData.attempts.length > 0
-				? new Date(Math.max(...serverData.attempts.map((a) => new Date(a.startDate).getTime())))
+				? new Date(
+						Math.max(
+							...serverData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
+						)
+					)
 				: new Date(0);
 
 		if (localLatest > serverLatest) {

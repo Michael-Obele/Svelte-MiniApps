@@ -220,6 +220,24 @@ export function formatDuration(minutes: number): string {
 	}
 }
 
+export function getAttemptDuration(attempt: SmokingAttempt): number {
+	if (attempt.isActive || !attempt.endDate) return 0;
+
+	const start = new Date(attempt.startDate).getTime();
+	const end = new Date(attempt.endDate).getTime();
+	const durationMs = end - start;
+
+	return Math.floor(durationMs / (1000 * 60)); // Convert to minutes
+}
+
+export function getOverallLongestStreak(): number {
+	if (!browser) return 0;
+
+	const attempts = smokingAttempts.current;
+	if (attempts.length === 0) return 0;
+
+	return Math.max(...attempts.map((attempt) => attempt.longestStreak));
+}
 export function getStreakMinutes(attempt: SmokingAttempt): number {
 	if (!browser) return 0;
 	const lastSmokeTime = new Date(attempt.lastSmokeDate).getTime();
@@ -254,25 +272,39 @@ export function addAttempt(): SmokingAttempt | undefined {
 	return newAttempt;
 }
 
-export function resetAttempt(attemptId: string): void {
-	if (!browser) return;
+export function resetAttempt(attemptId: string): SmokingAttempt | undefined {
+	if (!browser) return undefined;
 
 	const attempt = smokingAttempts.current.find((a) => a.id === attemptId);
-	if (!attempt) return;
+	if (!attempt) return undefined;
 
 	const currentStreak = getStreakMinutes(attempt);
 	const newLongestStreak = Math.max(attempt.longestStreak, currentStreak);
 
+	// Mark the current attempt as completed
 	smokingAttempts.current = smokingAttempts.current.map((a) =>
 		a.id === attemptId
 			? {
 					...a,
-					lastSmokeDate: new Date().toISOString(),
-					longestStreak: newLongestStreak,
-					resetCount: a.resetCount + 1
+					isActive: false,
+					endDate: new Date().toISOString(),
+					longestStreak: newLongestStreak
 				}
 			: a
 	);
+
+	// Create a new attempt with incremented resetCount
+	const newAttempt: SmokingAttempt = {
+		id: generateId(),
+		startDate: new Date().toISOString(),
+		lastSmokeDate: new Date().toISOString(),
+		isActive: true,
+		longestStreak: 0,
+		resetCount: attempt.resetCount + 1
+	};
+
+	smokingAttempts.current = [...smokingAttempts.current, newAttempt];
+	return newAttempt;
 }
 
 export function addCravingLog(
