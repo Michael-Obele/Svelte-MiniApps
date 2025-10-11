@@ -22,7 +22,7 @@
 	let showDeleteDialog = $state(false);
 	let logToDelete = $state<MedicationLog | null>(null);
 
-	// Get logs for this medication using $derived
+	// Get logs for this medication - use derived state with PersistedState
 	let medicationLogs = $derived(
 		medState
 			.getLogsForMedication(medication.id)
@@ -51,7 +51,7 @@
 	});
 
 	// Confirm delete
-	function confirmDelete(log: MedicationLog) {
+	function confirmDeleteLog(log: MedicationLog) {
 		logToDelete = log;
 		showDeleteDialog = true;
 	}
@@ -202,7 +202,7 @@
 												{log.status}
 											</Badge>
 											{#if log.status === 'pending'}
-												<Button variant="ghost" size="sm" onclick={() => confirmDelete(log)}>
+												<Button variant="ghost" size="sm" onclick={() => confirmDeleteLog(log)}>
 													<Trash2 class="size-4 text-red-500" />
 												</Button>
 											{/if}

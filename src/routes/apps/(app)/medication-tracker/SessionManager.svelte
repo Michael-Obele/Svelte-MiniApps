@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Plus, Trash2, CheckCircle2, Circle } from '@lucide/svelte';
+	import { Plus, Trash2, CheckCircle2, Circle, Calendar, XCircle, Pill } from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
@@ -9,6 +9,7 @@
 	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/ui/card';
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
+	import { browser } from '$app/environment';
 
 	import * as medState from './states.svelte';
 	import type { TreatmentSession } from './states.svelte';
@@ -27,8 +28,8 @@
 	let editName = $state('');
 	let editDescription = $state('');
 
-	// Load sessions - use $derived for computed values
-	let allSessions = $derived(medState.treatmentSessions.current);
+	// Load sessions using reactive state
+	let allSessions = $derived(browser ? medState.treatmentSessions.current : []);
 
 	// Create new session
 	function createSession() {
@@ -65,7 +66,7 @@
 			endDate: new Date().toISOString(),
 			isActive: false
 		});
-		toast.info('Treatment session ended');
+		toast.success('Session ended');
 	}
 
 	// Restart ended session
@@ -78,6 +79,7 @@
 	}
 
 	// Open edit dialog
+	// Edit session
 	function openEditDialog(session: TreatmentSession) {
 		editingSession = session;
 		editName = session.name;
@@ -85,8 +87,7 @@
 		showEditDialog = true;
 	}
 
-	// Save edited session
-	function saveEditedSession() {
+	function saveEdits() {
 		if (!editingSession || !editName.trim()) {
 			toast.error('Please enter a session name');
 			return;
@@ -100,8 +101,6 @@
 		toast.success('Session updated successfully');
 		showEditDialog = false;
 		editingSession = null;
-		editName = '';
-		editDescription = '';
 	}
 
 	// Confirm delete
@@ -180,9 +179,14 @@
 
 			<!-- Existing Sessions -->
 			<div class="space-y-3">
-				<h3 class="font-semibold text-gray-900 dark:text-white">Your Sessions</h3>
+				<div class="flex items-center justify-between">
+					<h3 class="font-semibold text-gray-900 dark:text-white">Your Sessions</h3>
+					<span class="text-sm text-gray-500 dark:text-gray-400">
+						{allSessions?.length || 0} total
+					</span>
+				</div>
 
-				{#if allSessions.length === 0}
+				{#if allSessions && allSessions.length === 0}
 					<Card class="border-dashed">
 						<CardContent class="pt-6 pb-6 text-center text-gray-500 dark:text-gray-400">
 							No treatment sessions yet. Create one above to get started.
@@ -190,80 +194,132 @@
 					</Card>
 				{:else}
 					<div class="space-y-3">
-						{#each allSessions as session (session.id)}
-							<Card
-								class="relative {session.isActive
-									? 'border-primary'
-									: 'border-gray-200 dark:border-gray-700'}
-								transition:slide"
+						{#each allSessions || [] as session (session.id)}
+							<div
+								class="cursor-pointer"
+								onclick={() => !session.isActive && setActive(session.id)}
+								role="button"
+								tabindex="0"
+								onkeydown={(e) => {
+									if ((e.key === 'Enter' || e.key === ' ') && !session.isActive) {
+										setActive(session.id);
+									}
+								}}
+								transition:slide
 							>
-								<CardContent class="pt-6">
-									<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-										<div class="flex-1">
-											<div class="mb-2 flex items-center gap-2">
-												{#if session.isActive}
-													<CheckCircle2 class="text-primary size-5" />
-												{:else}
-													<Circle class="size-5 text-gray-400" />
-												{/if}
-												<h4 class="font-semibold text-gray-900 dark:text-white">
-													{session.name}
-												</h4>
-											</div>
-
-											{#if session.description}
-												<p class="mb-2 text-sm text-gray-600 dark:text-gray-400">
-													{session.description}
-												</p>
-											{/if}
-
+								<Card
+									class="relative transition-all hover:shadow-md {session.isActive
+										? 'border-primary bg-primary/5 border-l-4'
+										: 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
+								>
+									<CardContent class="py-4">
+										{#if session.isActive}
 											<div
-												class="flex flex-col gap-1 text-sm text-gray-500 sm:flex-row sm:items-center sm:gap-4 dark:text-gray-400"
+												class="bg-primary/10 text-primary absolute top-2 right-2 rounded-full px-2 py-1 text-xs font-medium"
 											>
-												<span>Started: {formatDate(session.startDate)}</span>
-												{#if session.endDate}
-													<span>Ended: {formatDate(session.endDate)}</span>
-												{:else}
-													<span class="text-green-600 dark:text-green-400">Ongoing</span>
+												Active
+											</div>
+										{/if}
+										<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+											<div class="flex-1 pr-16 sm:pr-0">
+												<div class="mb-2 flex items-center gap-2">
+													{#if session.isActive}
+														<CheckCircle2 class="text-primary size-5 flex-shrink-0" />
+													{:else}
+														<Circle class="size-5 flex-shrink-0 text-gray-400" />
+													{/if}
+													<h4 class="font-semibold text-gray-900 dark:text-white">
+														{session.name}
+													</h4>
+												</div>
+
+												{#if session.description}
+													<p class="mb-2 text-sm text-gray-600 dark:text-gray-400">
+														{session.description}
+													</p>
 												{/if}
-												<span>{session.medications.length} medications</span>
+
+												<div
+													class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 dark:text-gray-400"
+												>
+													<span class="flex items-center gap-1">
+														<Calendar class="size-3" />
+														{formatDate(session.startDate)}
+													</span>
+													{#if session.endDate}
+														<span class="flex items-center gap-1 text-red-600 dark:text-red-400">
+															<XCircle class="size-3" />
+															Ended {formatDate(session.endDate)}
+														</span>
+													{:else}
+														<span
+															class="flex items-center gap-1 text-green-600 dark:text-green-400"
+														>
+															<CheckCircle2 class="size-3" />
+															Ongoing
+														</span>
+													{/if}
+													<span class="flex items-center gap-1">
+														<Pill class="size-3" />
+														{session.medications.length} med{session.medications.length !== 1
+															? 's'
+															: ''}
+													</span>
+												</div>
+											</div>
+
+											<div class="flex flex-wrap gap-2" onclick={(e) => e.stopPropagation()}>
+												{#if !session.isActive && !session.endDate}
+													<Button
+														variant="default"
+														size="sm"
+														onclick={() => setActive(session.id)}
+														class="bg-primary hover:bg-primary/90"
+													>
+														<CheckCircle2 class="mr-1 size-4" />
+														Activate
+													</Button>
+												{/if}
+
+												{#if session.isActive && !session.endDate}
+													<Button
+														variant="outline"
+														size="sm"
+														onclick={() => endSession(session.id)}
+													>
+														<XCircle class="mr-1 size-4" />
+														End
+													</Button>
+												{/if}
+
+												{#if session.endDate}
+													<Button
+														variant="outline"
+														size="sm"
+														onclick={() => restartSession(session.id)}
+													>
+														<CheckCircle2 class="mr-1 size-4" />
+														Restart
+													</Button>
+												{/if}
+
+												<Button variant="ghost" size="sm" onclick={() => openEditDialog(session)}>
+													Edit
+												</Button>
+
+												<Button
+													variant="ghost"
+													size="sm"
+													onclick={() => confirmDelete(session)}
+													class="text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950"
+												>
+													<Trash2 class="size-4" />
+												</Button>
 											</div>
 										</div>
-
-										<div class="flex flex-wrap gap-2">
-											{#if !session.isActive && !session.endDate}
-												<Button variant="outline" size="sm" onclick={() => setActive(session.id)}>
-													Set Active
-												</Button>
-											{/if}
-
-											{#if session.isActive && !session.endDate}
-												<Button variant="outline" size="sm" onclick={() => endSession(session.id)}>
-													End Session
-												</Button>
-											{/if}
-
-											{#if session.endDate}
-												<Button
-													variant="outline"
-													size="sm"
-													onclick={() => restartSession(session.id)}
-												>
-													Restart Session
-												</Button>
-											{/if}
-
-											<Button variant="ghost" size="sm" onclick={() => openEditDialog(session)}>
-												Edit
-											</Button>
-
-											<Button variant="ghost" size="sm" onclick={() => confirmDelete(session)}>
-												<Trash2 class="size-4 text-red-500" />
-											</Button>
-										</div>
-									</div>
-								</CardContent>
-							</Card>
+									</CardContent>
+								</Card>
+							</div>
 						{/each}
 					</div>
 				{/if}
@@ -322,7 +378,7 @@
 
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showEditDialog = false)}>Cancel</Button>
-			<Button onclick={saveEditedSession}>Save Changes</Button>
+			<Button onclick={saveEdits}>Save Changes</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

@@ -1,4 +1,5 @@
 import { PersistedState } from 'runed';
+import { browser } from '$app/environment';
 
 // Types
 export interface Medication {
@@ -22,6 +23,7 @@ export interface TreatmentSession {
 	medications: Medication[];
 	isActive: boolean;
 	createdAt: string;
+	updatedAt: string; // ISO date string - last modification time
 }
 
 export interface MedicationLog {
@@ -33,6 +35,7 @@ export interface MedicationLog {
 	actualTime?: string; // ISO datetime string - when actually taken
 	notes?: string;
 	createdAt: string;
+	updatedAt: string; // ISO date string - last modification time
 }
 
 export interface MedicationStats {
@@ -94,6 +97,7 @@ export function createSession(
 	description: string = '',
 	startDate: string = new Date().toISOString()
 ): TreatmentSession {
+	const now = new Date().toISOString();
 	return {
 		id: crypto.randomUUID(),
 		name,
@@ -102,24 +106,28 @@ export function createSession(
 		endDate: undefined,
 		medications: [],
 		isActive: true,
-		createdAt: new Date().toISOString()
+		createdAt: now,
+		updatedAt: now
 	};
 }
 
 export function addSession(session: TreatmentSession): void {
+	const now = new Date().toISOString();
 	// Deactivate all other sessions
 	treatmentSessions.current = treatmentSessions.current.map((s) => ({
 		...s,
-		isActive: false
+		isActive: false,
+		updatedAt: now
 	}));
 
-	// Add new session as active
-	treatmentSessions.current = [...treatmentSessions.current, session];
+	// Add new session as active with updatedAt
+	treatmentSessions.current = [...treatmentSessions.current, { ...session, updatedAt: now }];
 }
 
 export function updateSession(sessionId: string, updates: Partial<TreatmentSession>): void {
+	const now = new Date().toISOString();
 	treatmentSessions.current = treatmentSessions.current.map((s) =>
-		s.id === sessionId ? { ...s, ...updates } : s
+		s.id === sessionId ? { ...s, ...updates, updatedAt: now } : s
 	);
 }
 
@@ -130,9 +138,11 @@ export function deleteSession(sessionId: string): void {
 }
 
 export function setActiveSession(sessionId: string): void {
+	const now = new Date().toISOString();
 	treatmentSessions.current = treatmentSessions.current.map((s) => ({
 		...s,
-		isActive: s.id === sessionId
+		isActive: s.id === sessionId,
+		updatedAt: now
 	}));
 }
 
@@ -162,11 +172,13 @@ export function createMedication(
 }
 
 export function addMedicationToSession(sessionId: string, medication: Medication): void {
+	const now = new Date().toISOString();
 	treatmentSessions.current = treatmentSessions.current.map((s) => {
 		if (s.id === sessionId) {
 			return {
 				...s,
-				medications: [...s.medications, medication]
+				medications: [...s.medications, medication],
+				updatedAt: now
 			};
 		}
 		return s;
@@ -178,11 +190,13 @@ export function updateMedication(
 	medicationId: string,
 	updates: Partial<Medication>
 ): void {
+	const now = new Date().toISOString();
 	treatmentSessions.current = treatmentSessions.current.map((s) => {
 		if (s.id === sessionId) {
 			return {
 				...s,
-				medications: s.medications.map((m) => (m.id === medicationId ? { ...m, ...updates } : m))
+				medications: s.medications.map((m) => (m.id === medicationId ? { ...m, ...updates } : m)),
+				updatedAt: now
 			};
 		}
 		return s;
@@ -190,11 +204,13 @@ export function updateMedication(
 }
 
 export function deleteMedication(sessionId: string, medicationId: string): void {
+	const now = new Date().toISOString();
 	treatmentSessions.current = treatmentSessions.current.map((s) => {
 		if (s.id === sessionId) {
 			return {
 				...s,
-				medications: s.medications.filter((m) => m.id !== medicationId)
+				medications: s.medications.filter((m) => m.id !== medicationId),
+				updatedAt: now
 			};
 		}
 		return s;
@@ -213,6 +229,7 @@ export function createLog(
 	actualTime?: string,
 	notes?: string
 ): MedicationLog {
+	const now = new Date().toISOString();
 	return {
 		id: crypto.randomUUID(),
 		sessionId,
@@ -221,7 +238,8 @@ export function createLog(
 		status,
 		actualTime,
 		notes,
-		createdAt: new Date().toISOString()
+		createdAt: now,
+		updatedAt: now
 	};
 }
 
@@ -230,8 +248,9 @@ export function addLog(log: MedicationLog): void {
 }
 
 export function updateLog(logId: string, updates: Partial<MedicationLog>): void {
+	const now = new Date().toISOString();
 	medicationLogs.current = medicationLogs.current.map((log) =>
-		log.id === logId ? { ...log, ...updates } : log
+		log.id === logId ? { ...log, ...updates, updatedAt: now } : log
 	);
 }
 
@@ -262,8 +281,9 @@ export function rescheduleLog(
 	}
 
 	// Reschedule the log
+	const now = new Date().toISOString();
 	medicationLogs.current = medicationLogs.current.map((log) =>
-		log.id === logId ? { ...log, scheduledTime: newScheduledTime } : log
+		log.id === logId ? { ...log, scheduledTime: newScheduledTime, updatedAt: now } : log
 	);
 
 	return { success: true, message: 'Dose rescheduled successfully' };
@@ -291,18 +311,22 @@ export function deletePendingLogsForMedication(medicationId: string, fromDate?: 
 }
 
 export function getActiveSession(): TreatmentSession | undefined {
+	if (!browser) return undefined;
 	return treatmentSessions.current.find((s) => s.isActive);
 }
 
 export function getSessionById(sessionId: string): TreatmentSession | undefined {
+	if (!browser) return undefined;
 	return treatmentSessions.current.find((s) => s.id === sessionId);
 }
 
 export function getLogsForSession(sessionId: string): MedicationLog[] {
+	if (!browser) return [];
 	return medicationLogs.current.filter((log) => log.sessionId === sessionId);
 }
 
 export function getLogsForMedication(medicationId: string): MedicationLog[] {
+	if (!browser) return [];
 	return medicationLogs.current.filter((log) => log.medicationId === medicationId);
 }
 
@@ -311,6 +335,7 @@ export function getLogsForDateRange(
 	startDate: Date,
 	endDate: Date
 ): MedicationLog[] {
+	if (!browser) return [];
 	return medicationLogs.current.filter((log) => {
 		if (log.sessionId !== sessionId) return false;
 		const logDate = new Date(log.scheduledTime);
@@ -341,6 +366,7 @@ export function calculateStats(sessionId: string, medicationId?: string): Medica
 }
 
 export function getUpcomingLogs(sessionId: string, hours: number = 24): MedicationLog[] {
+	if (!browser) return [];
 	const now = new Date();
 	const futureTime = new Date(now.getTime() + hours * 60 * 60 * 1000);
 
@@ -355,6 +381,7 @@ export function getUpcomingLogs(sessionId: string, hours: number = 24): Medicati
 }
 
 export function getTodayLogs(sessionId: string): MedicationLog[] {
+	if (!browser) return [];
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 	const tomorrow = new Date(today);
@@ -440,7 +467,9 @@ export function autoGenerateSchedule(
 	const currentDate = new Date(startDate);
 
 	// Get existing logs for this medication to check for duplicates
-	const existingLogs = medicationLogs.current.filter((log) => log.medicationId === medication.id);
+	const existingLogs = browser
+		? medicationLogs.current.filter((log) => log.medicationId === medication.id)
+		: [];
 
 	while (currentDate <= endDate) {
 		times.forEach((time) => {

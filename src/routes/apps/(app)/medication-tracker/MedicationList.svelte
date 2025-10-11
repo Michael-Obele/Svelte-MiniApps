@@ -70,12 +70,12 @@
 
 	// Add new medication
 	function addMedication() {
-		if (!medicationName.trim() || !medicationDosage.trim() || !medicationFrequency.trim()) {
-			toast.error('Please fill in all required fields');
+		if (!medicationName.trim()) {
+			toast.error('Please enter medication name');
 			return;
 		}
 
-		const newMed = medState.createMedication(
+		const medication = medState.createMedication(
 			medicationName.trim(),
 			medicationDosage.trim(),
 			medicationFrequency.trim(),
@@ -84,10 +84,9 @@
 			medicationEndDate ? new Date(medicationEndDate).toISOString() : undefined
 		);
 
-		medState.addMedicationToSession(session.id, newMed);
+		medState.addMedicationToSession(session.id, medication);
 		toast.success('Medication added successfully');
 
-		// Reset form
 		resetForm();
 		showAddDialog = false;
 	}
@@ -170,7 +169,6 @@
 			new Date(scheduleStartDate).toISOString()
 		);
 
-		// Create a temporary medication with updated dates for schedule generation
 		const tempMed: Medication = {
 			...schedulingMedication,
 			startDate: new Date(scheduleStartDate).toISOString(),
