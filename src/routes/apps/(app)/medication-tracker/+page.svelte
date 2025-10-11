@@ -199,7 +199,7 @@
 		if (isAuthenticated && needsBackup && !isBackingUp) {
 			autoBackupTimer = setTimeout(() => {
 				handleBackup();
-			}, 15000); // 15 seconds
+			}, 5000); // 5 seconds
 		}
 	}
 
@@ -365,18 +365,29 @@
 		isSyncing = true;
 
 		try {
-			// Load server data
-			const serverData = await loadMedicationData();
+			// Step 1: Ensure local data is synchronized across tabs
+			console.log('🔄 Ensuring local data is synchronized...');
+			await new Promise((resolve) => setTimeout(resolve, 100)); // Small delay for cross-tab sync
 
-			// Merge logic using updatedAt timestamps for conflict resolution
+			// Step 2: Get fresh local data after potential cross-tab sync
+			const localSessions = medState.treatmentSessions.current;
+			const localLogs = medState.medicationLogs.current;
+			console.log(`📊 Local data: ${localSessions.length} sessions, ${localLogs.length} logs`);
+
+			// Step 3: Load server data
+			console.log('📡 Loading server data...');
+			const serverData = await loadMedicationData();
+			console.log(
+				`☁️ Server data: ${serverData.sessions.length} sessions, ${serverData.logs.length} logs`
+			);
+
+			// Step 4: Merge logic using updatedAt timestamps for conflict resolution
 			const mergedSessions: TreatmentSession[] = [];
 			const processedServerIds = new Set<string>();
 
 			// Process server sessions
 			for (const serverSession of serverData.sessions) {
-				const localSession = medState.treatmentSessions.current.find(
-					(s: TreatmentSession) => s.id === serverSession.id
-				);
+				const localSession = localSessions.find((s: TreatmentSession) => s.id === serverSession.id);
 
 				if (!localSession) {
 					// Server session doesn't exist locally, add it
@@ -400,7 +411,7 @@
 			}
 
 			// Add local sessions not on server
-			for (const localSession of medState.treatmentSessions.current) {
+			for (const localSession of localSessions) {
 				if (!processedServerIds.has(localSession.id)) {
 					mergedSessions.push(localSession);
 				}
@@ -411,9 +422,7 @@
 			const processedLogIds = new Set<string>();
 
 			for (const serverLog of serverData.logs) {
-				const localLog = medState.medicationLogs.current.find(
-					(l: MedicationLog) => l.id === serverLog.id
-				);
+				const localLog = localLogs.find((l: MedicationLog) => l.id === serverLog.id);
 
 				if (!localLog) {
 					// Server log doesn't exist locally, add it
@@ -437,13 +446,16 @@
 			}
 
 			// Add local logs not on server
-			for (const localLog of medState.medicationLogs.current) {
+			for (const localLog of localLogs) {
 				if (!processedLogIds.has(localLog.id)) {
 					mergedLogs.push(localLog);
 				}
 			}
 
-			// Update local state with merged data
+			// Step 5: Update local state with merged data
+			console.log(
+				`💾 Updating local state: ${mergedSessions.length} sessions, ${mergedLogs.length} logs`
+			);
 			medState.treatmentSessions.current = mergedSessions;
 			medState.medicationLogs.current = mergedLogs;
 
@@ -615,8 +627,8 @@
 								</Tooltip.Trigger>
 								<Tooltip.Content>
 									<p class="max-w-xs text-sm">
-										<strong>Sync from server:</strong> Download and merge server data with local data
-										using timestamps for conflict resolution.
+										<strong>Sync from server:</strong> Ensures local data is synchronized, then downloads
+										and merges server data using timestamps for conflict resolution.
 									</p>
 								</Tooltip.Content>
 							</Tooltip.Root>

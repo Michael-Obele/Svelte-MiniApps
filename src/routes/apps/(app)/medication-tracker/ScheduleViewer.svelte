@@ -11,6 +11,9 @@
 	import * as medState from './states.svelte';
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
 
+	// Import remote functions
+	import { deleteMedicationLog } from '$lib/remote';
+
 	// Props
 	let { session, medication } = $props<{
 		session: TreatmentSession;
@@ -57,20 +60,39 @@
 	}
 
 	// Delete log
-	function deleteScheduledLog() {
+	async function deleteScheduledLog() {
 		if (!logToDelete) return;
 
-		medState.deleteLog(logToDelete.id);
-		toast.success('Scheduled dose deleted');
-		logToDelete = null;
-		showDeleteDialog = false;
+		try {
+			// Delete from server first
+			await deleteMedicationLog({ logId: logToDelete.id });
+
+			// Then delete from local state
+			medState.deleteLog(logToDelete.id);
+			toast.success('Scheduled dose deleted');
+			logToDelete = null;
+			showDeleteDialog = false;
+		} catch (error) {
+			console.error('Failed to delete scheduled dose:', error);
+			toast.error('Failed to delete scheduled dose. Please try again.');
+		}
 	}
 
 	// Delete all logs for this medication
-	function deleteAllLogs() {
-		medicationLogs.forEach((log) => medState.deleteLog(log.id));
-		toast.success(`Deleted all ${medicationLogs.length} scheduled doses`);
-		showViewer = false;
+	async function deleteAllLogs() {
+		try {
+			// Delete from server first
+			const deletePromises = medicationLogs.map((log) => deleteMedicationLog({ logId: log.id }));
+			await Promise.all(deletePromises);
+
+			// Then delete from local state
+			medicationLogs.forEach((log) => medState.deleteLog(log.id));
+			toast.success(`Deleted all ${medicationLogs.length} scheduled doses`);
+			showViewer = false;
+		} catch (error) {
+			console.error('Failed to delete scheduled doses:', error);
+			toast.error('Failed to delete some scheduled doses. Please try again.');
+		}
 	}
 
 	// Format time

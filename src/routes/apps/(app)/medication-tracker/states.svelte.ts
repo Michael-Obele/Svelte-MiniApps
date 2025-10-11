@@ -1,5 +1,6 @@
 import { PersistedState } from 'runed';
 import { browser } from '$app/environment';
+import { deleteMedicationLog } from '$lib/remote';
 
 // Types
 export interface Medication {
@@ -290,10 +291,49 @@ export function rescheduleLog(
 }
 
 export function deleteLog(logId: string): void {
+	// Find the log before deleting to potentially track deletion time
+	const logToDelete = medicationLogs.current.find((log) => log.id === logId);
+	if (logToDelete) {
+		console.log(`🗑️ Deleting medication log ${logId} (scheduled: ${logToDelete.scheduledTime})`);
+	}
+
 	medicationLogs.current = medicationLogs.current.filter((log) => log.id !== logId);
 }
 
-export function deletePendingLogsForMedication(medicationId: string, fromDate?: string): void {
+export async function deletePendingLogsForMedication(
+	medicationId: string,
+	fromDate?: string
+): Promise<void> {
+	// First, identify which logs will be deleted
+	const logsToDelete = medicationLogs.current.filter((log) => {
+		if (log.medicationId !== medicationId || log.status !== 'pending') return false;
+
+		// If fromDate is specified, only delete logs on or after that date
+		if (fromDate) {
+			const logDate = new Date(log.scheduledTime);
+			const cutoffDate = new Date(fromDate);
+			cutoffDate.setHours(0, 0, 0, 0);
+			return logDate >= cutoffDate;
+		}
+
+		// If no fromDate, delete all pending logs (original behavior)
+		return true;
+	});
+
+	// Delete from server first
+	if (logsToDelete.length > 0) {
+		console.log(`🗑️ Deleting ${logsToDelete.length} pending logs for medication ${medicationId}`);
+
+		try {
+			// Delete all logs from server
+			await Promise.all(logsToDelete.map((log) => deleteMedicationLog({ logId: log.id })));
+		} catch (error) {
+			console.error('Failed to delete logs from server:', error);
+			throw error; // Re-throw so caller can handle
+		}
+	}
+
+	// Then delete from local state
 	medicationLogs.current = medicationLogs.current.filter((log) => {
 		if (log.medicationId !== medicationId || log.status !== 'pending') return true;
 

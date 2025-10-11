@@ -14,6 +14,9 @@
 	import * as medState from './states.svelte';
 	import type { TreatmentSession } from './states.svelte';
 
+	// Import remote functions
+	import { deleteMedicationSession } from '$lib/remote';
+
 	// Props
 	let { open = $bindable(false) } = $props();
 
@@ -110,12 +113,21 @@
 	}
 
 	// Delete session
-	function deleteSession() {
+	async function deleteSession() {
 		if (sessionToDelete) {
-			medState.deleteSession(sessionToDelete.id);
-			toast.success('Session deleted');
-			sessionToDelete = null;
-			showDeleteDialog = false;
+			try {
+				// Delete from server first
+				await deleteMedicationSession({ sessionId: sessionToDelete.id });
+
+				// Then delete from local state
+				medState.deleteSession(sessionToDelete.id);
+				toast.success('Session deleted');
+				sessionToDelete = null;
+				showDeleteDialog = false;
+			} catch (error) {
+				console.error('Failed to delete session:', error);
+				toast.error('Failed to delete session. Please try again.');
+			}
 		}
 	}
 

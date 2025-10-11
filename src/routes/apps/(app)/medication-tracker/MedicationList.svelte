@@ -16,6 +16,9 @@
 	import type { TreatmentSession, Medication } from './states.svelte';
 	import ScheduleViewer from './ScheduleViewer.svelte';
 
+	// Import remote functions
+	import { deleteMedication } from '$lib/remote';
+
 	// Props
 	let { session, onAddMedication } = $props<{
 		session: TreatmentSession;
@@ -127,13 +130,22 @@
 		showDeleteDialog = true;
 	}
 
-	function deleteMed() {
+	async function deleteMed() {
 		if (!deletingMedication) return;
 
-		medState.deleteMedication(session.id, deletingMedication.id);
-		toast.success('Medication deleted');
-		deletingMedication = null;
-		showDeleteDialog = false;
+		try {
+			// Delete from server first
+			await deleteMedication({ medicationId: deletingMedication.id });
+
+			// Then delete from local state
+			medState.deleteMedication(session.id, deletingMedication.id);
+			toast.success('Medication deleted');
+			deletingMedication = null;
+			showDeleteDialog = false;
+		} catch (error) {
+			console.error('Failed to delete medication:', error);
+			toast.error('Failed to delete medication. Please try again.');
+		}
 	}
 
 	// Schedule doses
@@ -156,41 +168,46 @@
 		scheduleTimes = scheduleTimes.filter((_, i) => i !== index);
 	}
 
-	function generateSchedule() {
+	async function generateSchedule() {
 		if (!schedulingMedication || scheduleTimes.length === 0) {
 			toast.error('Please add at least one time');
 			return;
 		}
 
-		// Clear ONLY future pending logs from the schedule start date onwards
-		// This preserves past/present logs that haven't been taken yet
-		medState.deletePendingLogsForMedication(
-			schedulingMedication.id,
-			dateToISOString(scheduleStartDate)
-		);
+		try {
+			// Clear ONLY future pending logs from the schedule start date onwards
+			// This preserves past/present logs that haven't been taken yet
+			await medState.deletePendingLogsForMedication(
+				schedulingMedication.id,
+				dateToISOString(scheduleStartDate)
+			);
 
-		const tempMed: Medication = {
-			...schedulingMedication,
-			startDate: dateToISOString(scheduleStartDate),
-			endDate: scheduleEndDate ? dateToISOString(scheduleEndDate) : undefined
-		};
+			const tempMed: Medication = {
+				...schedulingMedication,
+				startDate: dateToISOString(scheduleStartDate),
+				endDate: scheduleEndDate ? dateToISOString(scheduleEndDate) : undefined
+			};
 
-		const logs = medState.autoGenerateSchedule(
-			session.id,
-			tempMed,
-			useAutoSchedule ? undefined : scheduleTimes
-		);
+			const logs = medState.autoGenerateSchedule(
+				session.id,
+				tempMed,
+				useAutoSchedule ? undefined : scheduleTimes
+			);
 
-		// Add all logs (autoGenerateSchedule now checks for duplicates)
-		logs.forEach((log) => medState.addLog(log));
+			// Add all logs (autoGenerateSchedule now checks for duplicates)
+			logs.forEach((log) => medState.addLog(log));
 
-		const message =
-			logs.length > 0
-				? `Created ${logs.length} scheduled doses`
-				: 'Schedule updated (no new doses needed)';
-		toast.success(message);
-		showScheduleDialog = false;
-		schedulingMedication = null;
+			const message =
+				logs.length > 0
+					? `Created ${logs.length} scheduled doses`
+					: 'Schedule updated (no new doses needed)';
+			toast.success(message);
+			showScheduleDialog = false;
+			schedulingMedication = null;
+		} catch (error) {
+			console.error('Failed to generate schedule:', error);
+			toast.error('Failed to update schedule. Please try again.');
+		}
 	}
 
 	function resetForm() {
