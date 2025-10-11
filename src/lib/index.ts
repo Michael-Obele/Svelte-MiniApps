@@ -26,7 +26,8 @@ export const done = [
 	'text-summarizer',
 	'unit-converter',
 	'purchase-tracker',
-	'medication-tracker'
+	'medication-tracker',
+	'smoke-free-tracker'
 ];
 //
 export type Project = {
@@ -67,6 +68,14 @@ export const projects: Project[] = [
 		tag: 'health',
 		difficulty: 'medium',
 		link: 'medication-tracker'
+	},
+	{
+		title: 'Smoke-Free Tracker',
+		details:
+			'Track your smoke-free journey with real-time streak counting, health milestones, craving management, and motivational support to help you quit smoking.',
+		tag: 'health',
+		difficulty: 'medium',
+		link: 'smoke-free-tracker'
 	},
 	{
 		title: 'Random Password Generator',

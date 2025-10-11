@@ -1,0 +1,383 @@
+import { PersistedState } from 'runed';
+import { browser } from '$app/environment';
+
+// ===========================
+// TYPES & INTERFACES
+// ===========================
+
+export interface SmokingAttempt {
+	id: string;
+	startDate: string;
+	lastSmokeDate: string;
+	isActive: boolean;
+	longestStreak: number; // in minutes
+	resetCount: number;
+	endDate?: string;
+}
+
+export interface CravingLog {
+	id: string;
+	attemptId: string;
+	timestamp: string;
+	intensity: number; // 1-5
+	trigger?: string;
+	copingStrategy?: string;
+	notes?: string;
+	success: boolean; // Did they resist?
+}
+
+export interface UserSettings {
+	cigarettesPerDay: number;
+	pricePerPack: number;
+	cigarettesPerPack: number;
+	currency: string;
+	motivationalGoals: string[];
+}
+
+export interface Milestone {
+	id: string;
+	name: string;
+	description: string;
+	duration: number; // in minutes
+	icon: string;
+}
+
+// ===========================
+// PERSISTED STATE
+// ===========================
+
+// Smoking attempts history
+export const smokingAttempts = new PersistedState<SmokingAttempt[]>(
+	'smoke-free-tracker:attempts',
+	[]
+);
+
+// Craving logs
+export const cravingLogs = new PersistedState<CravingLog[]>('smoke-free-tracker:cravings', []);
+
+// User settings
+export const userSettings = new PersistedState<UserSettings>('smoke-free-tracker:settings', {
+	cigarettesPerDay: 20,
+	pricePerPack: 10,
+	cigarettesPerPack: 20,
+	currency: '$',
+	motivationalGoals: []
+});
+
+// ===========================
+// MILESTONES (Health benefits timeline)
+// ===========================
+
+export const defaultMilestones: Milestone[] = [
+	{
+		id: '20min',
+		name: '20 Minutes',
+		description: 'Heart rate and blood pressure drop to normal levels',
+		duration: 20,
+		icon: '💓'
+	},
+	{
+		id: '2hours',
+		name: '2 Hours',
+		description: 'Nicotine cravings peak but will decrease over time',
+		duration: 120,
+		icon: '🧘'
+	},
+	{
+		id: '12hours',
+		name: '12 Hours',
+		description: 'Carbon monoxide level in blood drops to normal',
+		duration: 720,
+		icon: '🫁'
+	},
+	{
+		id: '24hours',
+		name: '24 Hours',
+		description: 'Anxiety peaks but will improve. Risk of heart attack begins to drop',
+		duration: 1440,
+		icon: '❤️'
+	},
+	{
+		id: '48hours',
+		name: '48 Hours',
+		description: 'Nerve endings start regrowing. Smell and taste improve',
+		duration: 2880,
+		icon: '👃'
+	},
+	{
+		id: '3days',
+		name: '3 Days',
+		description: 'Breathing becomes easier. Bronchial tubes begin to relax',
+		duration: 4320,
+		icon: '🌬️'
+	},
+	{
+		id: '1week',
+		name: '1 Week',
+		description: "You've made it through the hardest part! Cravings are less intense",
+		duration: 10080,
+		icon: '🎉'
+	},
+	{
+		id: '2weeks',
+		name: '2 Weeks',
+		description: 'Circulation improves. Walking and exercise become easier',
+		duration: 20160,
+		icon: '🚶'
+	},
+	{
+		id: '1month',
+		name: '1 Month',
+		description: 'Lung function begins to improve. Coughing and shortness of breath decrease',
+		duration: 43200,
+		icon: '🏆'
+	},
+	{
+		id: '3months',
+		name: '3 Months',
+		description: 'Circulation and lung function continue to improve',
+		duration: 129600,
+		icon: '💪'
+	},
+	{
+		id: '6months',
+		name: '6 Months',
+		description: 'Stress levels normalize. Breathing problems continue to decrease',
+		duration: 259200,
+		icon: '🌟'
+	},
+	{
+		id: '1year',
+		name: '1 Year',
+		description: 'Risk of coronary heart disease is half that of a smoker!',
+		duration: 525600,
+		icon: '🎊'
+	}
+];
+
+// ===========================
+// MOTIVATIONAL DATA
+// ===========================
+
+export const motivationalQuotes = [
+	'Every minute smoke-free is a victory! 🏆',
+	"You're stronger than your cravings! 💪",
+	'Think of how much healthier your body is becoming! ❤️',
+	'Your lungs are thanking you right now! 🫁',
+	"You're saving money and your life! 💰",
+	'Cravings are temporary, but your health is forever! ⏳',
+	"Look how far you've come! Keep going! 🚀",
+	"You're proving to yourself that you can do hard things! 🌟",
+	'Every day smoke-free is a gift to your future self! 🎁',
+	"You're inspiring others by your commitment! 👏"
+];
+
+export const commonTriggers = [
+	'Stress',
+	'After meals',
+	'With coffee',
+	'Social situations',
+	'Boredom',
+	'Alcohol',
+	'Driving',
+	'Work break',
+	'Seeing others smoke',
+	'Morning routine'
+];
+
+export const copingStrategies = [
+	'Deep breathing',
+	'Drink water',
+	'Chew gum',
+	'Go for a walk',
+	'Call a friend',
+	'Exercise',
+	'Meditation',
+	'Distract yourself',
+	'Eat healthy snack',
+	'Review your goals'
+];
+
+// ===========================
+// HELPER FUNCTIONS
+// ===========================
+
+export function generateId(): string {
+	return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+}
+
+export function formatDuration(minutes: number): string {
+	if (minutes < 60) {
+		return `${Math.floor(minutes)} minute${Math.floor(minutes) !== 1 ? 's' : ''}`;
+	} else if (minutes < 1440) {
+		const hours = Math.floor(minutes / 60);
+		const mins = Math.floor(minutes % 60);
+		return `${hours} hour${hours !== 1 ? 's' : ''}${mins > 0 ? ` ${mins} min${mins !== 1 ? 's' : ''}` : ''}`;
+	} else {
+		const days = Math.floor(minutes / 1440);
+		const hours = Math.floor((minutes % 1440) / 60);
+		return `${days} day${days !== 1 ? 's' : ''}${hours > 0 ? ` ${hours} hour${hours !== 1 ? 's' : ''}` : ''}`;
+	}
+}
+
+export function getStreakMinutes(attempt: SmokingAttempt): number {
+	if (!browser) return 0;
+	const lastSmokeTime = new Date(attempt.lastSmokeDate).getTime();
+	const now = Date.now();
+	return Math.floor((now - lastSmokeTime) / (1000 * 60));
+}
+
+export function getActiveAttempt(): SmokingAttempt | undefined {
+	return smokingAttempts.current.find((a) => a.isActive);
+}
+
+export function addAttempt(): SmokingAttempt | undefined {
+	if (!browser) return undefined;
+
+	// Deactivate any existing active attempts
+	smokingAttempts.current = smokingAttempts.current.map((a) => ({
+		...a,
+		isActive: false,
+		endDate: a.isActive ? new Date().toISOString() : a.endDate
+	}));
+
+	const newAttempt: SmokingAttempt = {
+		id: generateId(),
+		startDate: new Date().toISOString(),
+		lastSmokeDate: new Date().toISOString(),
+		isActive: true,
+		longestStreak: 0,
+		resetCount: 0
+	};
+
+	smokingAttempts.current = [...smokingAttempts.current, newAttempt];
+	return newAttempt;
+}
+
+export function resetAttempt(attemptId: string): void {
+	if (!browser) return;
+
+	const attempt = smokingAttempts.current.find((a) => a.id === attemptId);
+	if (!attempt) return;
+
+	const currentStreak = getStreakMinutes(attempt);
+	const newLongestStreak = Math.max(attempt.longestStreak, currentStreak);
+
+	smokingAttempts.current = smokingAttempts.current.map((a) =>
+		a.id === attemptId
+			? {
+					...a,
+					lastSmokeDate: new Date().toISOString(),
+					longestStreak: newLongestStreak,
+					resetCount: a.resetCount + 1
+				}
+			: a
+	);
+}
+
+export function addCravingLog(
+	attemptId: string,
+	intensity: number,
+	trigger: string | undefined,
+	copingStrategy: string | undefined,
+	notes: string | undefined,
+	success: boolean
+): CravingLog | undefined {
+	if (!browser) return undefined;
+
+	const newLog: CravingLog = {
+		id: generateId(),
+		attemptId,
+		timestamp: new Date().toISOString(),
+		intensity,
+		trigger,
+		copingStrategy,
+		notes,
+		success
+	};
+
+	cravingLogs.current = [...cravingLogs.current, newLog];
+	return newLog;
+}
+
+// Alias for addCravingLog (used by CravingLogger component)
+export function logCraving(
+	attemptId: string,
+	intensity: number,
+	trigger: string | undefined,
+	copingStrategy: string | undefined,
+	notes: string | undefined,
+	success: boolean
+): CravingLog | undefined {
+	return addCravingLog(attemptId, intensity, trigger, copingStrategy, notes, success);
+}
+
+export function getAttemptCravings(attemptId: string): CravingLog[] {
+	return cravingLogs.current.filter((log) => log.attemptId === attemptId);
+}
+
+// Alias for getAttemptCravings (used by CravingLogger component)
+export function getCravingsForAttempt(attemptId: string): CravingLog[] {
+	return getAttemptCravings(attemptId);
+}
+
+export function deleteCravingLog(logId: string): void {
+	if (!browser) return;
+	cravingLogs.current = cravingLogs.current.filter((log) => log.id !== logId);
+}
+
+export function updateSettings(newSettings: Partial<UserSettings>): void {
+	if (!browser) return;
+	userSettings.current = {
+		...userSettings.current,
+		...newSettings
+	};
+}
+
+// ===========================
+// STATISTICS CALCULATIONS
+// ===========================
+
+export interface Statistics {
+	streakMinutes: number;
+	streakFormatted: string;
+	longestStreak: string;
+	moneySaved: number;
+	cigarettesAvoided: number;
+	totalCravings: number;
+	successfulCravings: number;
+	cravingSuccessRate: number;
+	achievedMilestones: Milestone[];
+	nextMilestone: Milestone | null;
+	resetCount: number;
+}
+
+export function getStatistics(attempt: SmokingAttempt, settings: UserSettings): Statistics {
+	const streakMinutes = getStreakMinutes(attempt);
+	const cravings = getAttemptCravings(attempt.id);
+
+	const cigarettesAvoided = Math.floor((streakMinutes / 1440) * settings.cigarettesPerDay);
+	const packsAvoided = cigarettesAvoided / settings.cigarettesPerPack;
+	const moneySaved = packsAvoided * settings.pricePerPack;
+
+	const successfulCravings = cravings.filter((c) => c.success).length;
+	const cravingSuccessRate =
+		cravings.length > 0 ? Math.round((successfulCravings / cravings.length) * 100) : 0;
+
+	const achievedMilestones = defaultMilestones.filter((m) => streakMinutes >= m.duration);
+	const nextMilestone = defaultMilestones.find((m) => streakMinutes < m.duration) || null;
+
+	return {
+		streakMinutes,
+		streakFormatted: formatDuration(streakMinutes),
+		longestStreak: formatDuration(attempt.longestStreak),
+		moneySaved,
+		cigarettesAvoided,
+		totalCravings: cravings.length,
+		successfulCravings,
+		cravingSuccessRate,
+		achievedMilestones,
+		nextMilestone,
+		resetCount: attempt.resetCount
+	};
+}

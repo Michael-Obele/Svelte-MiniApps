@@ -27,6 +27,13 @@ export {
 	createMedicationSession
 } from './medication-tracker.remote';
 
+// Remote functions for smoke-free tracker
+export {
+	loadSmokeFreeData,
+	backupSmokeFreeData,
+	syncSmokeFreeData
+} from './smoke-free-tracker.remote';
+
 // Remote functions for profile management
 export {
 	getUserProfile,

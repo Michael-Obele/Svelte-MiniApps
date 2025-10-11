@@ -25,6 +25,7 @@ model User {
   items              Item[]
   purchaseRecords    PurchaseRecord[]
   medicationSessions MedicationSession[]
+  smokingAttempts    SmokingAttempt[]
 
   @@index([username])
   @@map("user")
@@ -207,4 +208,41 @@ model MedicationLog {
   @@index([scheduledTime])
   @@index([status])
   @@map("medication_logs")
+}
+
+model SmokingAttempt {
+  id            String       @id @default(uuid())
+  userId        String       @map("user_id")
+  startDate     DateTime     @map("start_date")
+  lastSmokeDate DateTime     @map("last_smoke_date")
+  isActive      Boolean      @default(true) @map("is_active")
+  longestStreak Int          @default(0) @map("longest_streak")
+  resetCount    Int          @default(0) @map("reset_count")
+  endDate       DateTime?    @map("end_date")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cravings      CravingLog[]
+
+  @@index([userId])
+  @@index([isActive])
+  @@map("smoking_attempts")
+}
+
+model CravingLog {
+  id             String         @id @default(uuid())
+  attemptId      String         @map("attempt_id")
+  timestamp      DateTime
+  intensity      Int
+  trigger        String?
+  copingStrategy String?        @map("coping_strategy")
+  notes          String?
+  success        Boolean        @default(false)
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+  attempt        SmokingAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@index([attemptId])
+  @@index([timestamp])
+  @@map("craving_logs")
 }

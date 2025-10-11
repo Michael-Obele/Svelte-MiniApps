@@ -139,6 +139,7 @@ $effect(() => {
 ```
 
 **Reactive State Priority:**
+
 1. **First choice**: `$state()` for mutable values
 2. **Second choice**: `$derived()` or `$derived.by()` for computed values
 3. **Last resort**: `$effect()` only for true side effects (logging, DOM, external APIs)
@@ -240,7 +241,6 @@ mount(() => {
 2. Add `+page.svelte` with the app interface
 3. Add `+page.server.ts` if server-side logic needed
 4. Update app listing in appropriate places
-5. Add tests in `e2e/` and unit tests as needed
 
 ### Database Changes
 
@@ -281,3 +281,5 @@ mount(() => {
 - Lazy load heavy components with `await import()`
 - Use Svelte's built-in optimization features
 - Minimize bundle size with proper tree-shaking
+- Use svelte mcp to get svelte and sveltekit docs
+- Also get info from the code-practices folder
