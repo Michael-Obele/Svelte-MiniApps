@@ -615,7 +615,8 @@
 								</Tooltip.Trigger>
 								<Tooltip.Content>
 									<p class="max-w-xs text-sm">
-										<strong>Sync from server:</strong> Download and merge server data with local data using timestamps for conflict resolution.
+										<strong>Sync from server:</strong> Download and merge server data with local data
+										using timestamps for conflict resolution.
 									</p>
 								</Tooltip.Content>
 							</Tooltip.Root>
