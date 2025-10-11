@@ -63,7 +63,6 @@
 	let needsBackup = $state(true); // Track if data needs to be backed up
 	let isBackingUp = $state(false);
 	let showBackupDialog = $state(false);
-	let isRefreshing = $state(false);
 	let isSyncing = $state(false);
 	let autoBackupTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -259,12 +258,30 @@
 	});
 
 	// Load active session and related data - use reactive state with PersistedState
-	let activeSession = $derived(browser ? medState.getActiveSession() : undefined);
+	let activeSession = $derived.by(() => {
+		if (!browser) return undefined;
+		// Use $derived.by to ensure reactivity when treatmentSessions.current changes
+		// This includes changes to medications within sessions
+		const sessions = medState.treatmentSessions.current;
+		return sessions.find((s) => s.isActive);
+	});
 	let allSessions = $derived(browser ? medState.treatmentSessions.current : []);
-	let todayLogs = $derived(activeSession ? medState.getTodayLogs(activeSession.id) : []);
-	let upcomingLogs = $derived(activeSession ? medState.getUpcomingLogs(activeSession.id, 24) : []);
-	let allSessionLogs = $derived(activeSession ? medState.getLogsForSession(activeSession.id) : []);
-	let stats = $derived(activeSession ? medState.calculateStats(activeSession.id) : null);
+	let todayLogs = $derived.by(() => {
+		const session = activeSession;
+		return session ? medState.getTodayLogs(session.id) : [];
+	});
+	let upcomingLogs = $derived.by(() => {
+		const session = activeSession;
+		return session ? medState.getUpcomingLogs(session.id, 24) : [];
+	});
+	let allSessionLogs = $derived.by(() => {
+		const session = activeSession;
+		return session ? medState.getLogsForSession(session.id) : [];
+	});
+	let stats = $derived.by(() => {
+		const session = activeSession;
+		return session ? medState.calculateStats(session.id) : null;
+	});
 
 	// Session selector state
 	let selectedSessionValue = $state('');
@@ -338,7 +355,7 @@
 		}
 	}
 
-	// Sync with server
+	// Sync from server (downloads and merges with conflict resolution)
 	async function handleSync() {
 		if (!isAuthenticated) {
 			toast.error('You must be logged in to sync data');
@@ -348,32 +365,31 @@
 		isSyncing = true;
 
 		try {
-			const syncedData = await syncMedicationData({
-				sessions: medState.treatmentSessions.current,
-				logs: medState.medicationLogs.current
-			});
+			// Load server data
+			const serverData = await loadMedicationData();
 
-			// Merge synced data using timestamp-based conflict resolution
+			// Merge logic using updatedAt timestamps for conflict resolution
 			const mergedSessions: TreatmentSession[] = [];
 			const processedServerIds = new Set<string>();
 
 			// Process server sessions
-			for (const serverSession of syncedData.sessions) {
+			for (const serverSession of serverData.sessions) {
 				const localSession = medState.treatmentSessions.current.find(
 					(s: TreatmentSession) => s.id === serverSession.id
 				);
 
 				if (!localSession) {
-					const sessionWithTimestamp = {
+					// Server session doesn't exist locally, add it
+					mergedSessions.push({
 						...serverSession,
 						updatedAt: (serverSession as any).updatedAt || serverSession.createdAt
-					};
-					mergedSessions.push(sessionWithTimestamp);
+					});
 				} else {
+					// Both exist, use the newer one based on updatedAt
 					const serverTime = new Date(
 						(serverSession as any).updatedAt || serverSession.createdAt
 					).getTime();
-					const localTime = new Date(localSession.updatedAt || localSession.createdAt).getTime();
+					const localTime = new Date(localSession.updatedAt).getTime();
 					const newerSession = serverTime >= localTime ? serverSession : localSession;
 					mergedSessions.push({
 						...newerSession,
@@ -390,26 +406,27 @@
 				}
 			}
 
-			// Merge logs
+			// Merge logs using updatedAt
 			const mergedLogs: MedicationLog[] = [];
 			const processedLogIds = new Set<string>();
 
-			for (const serverLog of syncedData.logs) {
+			for (const serverLog of serverData.logs) {
 				const localLog = medState.medicationLogs.current.find(
 					(l: MedicationLog) => l.id === serverLog.id
 				);
 
 				if (!localLog) {
-					const logWithTimestamp = {
+					// Server log doesn't exist locally, add it
+					mergedLogs.push({
 						...serverLog,
 						updatedAt: (serverLog as any).updatedAt || serverLog.createdAt
-					};
-					mergedLogs.push(logWithTimestamp);
+					});
 				} else {
+					// Both exist, use the newer one based on updatedAt
 					const serverTime = new Date(
 						(serverLog as any).updatedAt || serverLog.createdAt
 					).getTime();
-					const localTime = new Date(localLog.updatedAt || localLog.createdAt).getTime();
+					const localTime = new Date(localLog.updatedAt).getTime();
 					const newerLog = serverTime >= localTime ? serverLog : localLog;
 					mergedLogs.push({
 						...newerLog,
@@ -419,57 +436,25 @@
 				processedLogIds.add(serverLog.id);
 			}
 
+			// Add local logs not on server
 			for (const localLog of medState.medicationLogs.current) {
 				if (!processedLogIds.has(localLog.id)) {
 					mergedLogs.push(localLog);
 				}
 			}
 
-			// Update local state
+			// Update local state with merged data
 			medState.treatmentSessions.current = mergedSessions;
 			medState.medicationLogs.current = mergedLogs;
 
 			hasUnsavedChanges = false;
 			needsBackup = false;
-			toast.success('Data synced successfully');
+			toast.success('Data synced from server successfully');
 		} catch (error) {
 			console.error('Sync failed:', error);
-			toast.error('Failed to sync data');
+			toast.error('Failed to sync data from server');
 		} finally {
 			isSyncing = false;
-		}
-	}
-
-	// Refresh from server (overwrites local data)
-	async function handleRefresh() {
-		if (!isAuthenticated) {
-			toast.error('You must be logged in to refresh data');
-			return;
-		}
-
-		isRefreshing = true;
-
-		try {
-			const serverData = await loadMedicationData();
-
-			// Replace local data with server data - add updatedAt timestamps if missing
-			medState.treatmentSessions.current = serverData.sessions.map((session: any) => ({
-				...session,
-				updatedAt: (session as any).updatedAt || session.createdAt
-			}));
-			medState.medicationLogs.current = serverData.logs.map((log: any) => ({
-				...log,
-				updatedAt: (log as any).updatedAt || log.createdAt
-			}));
-
-			hasUnsavedChanges = false;
-			needsBackup = false;
-			toast.success('Data refreshed successfully');
-		} catch (error) {
-			console.error('Refresh failed:', error);
-			toast.error('Failed to refresh data');
-		} finally {
-			isRefreshing = false;
 		}
 	}
 
@@ -617,40 +602,20 @@
 						<Tooltip.Provider>
 							<Tooltip.Root>
 								<Tooltip.Trigger>
-									<Button
-										variant="outline"
-										size="sm"
-										onclick={handleRefresh}
-										disabled={isRefreshing}
-									>
-										<RefreshCw class="size-4 {isRefreshing ? 'animate-spin' : ''}" />
-										<span class="inline">Refresh from server</span>
-									</Button>
-								</Tooltip.Trigger>
-								<Tooltip.Content>
-									<p class="text-sm">Refresh: Load latest data from server</p>
-								</Tooltip.Content>
-							</Tooltip.Root>
-						</Tooltip.Provider>
-
-						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger>
 									<Button variant="outline" size="sm" onclick={handleSync} disabled={isSyncing}>
 										{#if isSyncing}
 											<RefreshCcwDot class="mr-1 size-4 animate-spin sm:mr-2" />
 
 											<span class=" inline">Syncing...</span>
 										{:else}
-											<span class=" inline">Sync</span>
+											<span class=" inline">Sync from server</span>
 											<RefreshCcwDot class="size-4 sm:hidden" />
 										{/if}
 									</Button>
 								</Tooltip.Trigger>
 								<Tooltip.Content>
 									<p class="max-w-xs text-sm">
-										<strong>Sync:</strong> Merge your local data with the server. Use this when working
-										across multiple devices.
+										<strong>Sync from server:</strong> Download and merge server data with local data using timestamps for conflict resolution.
 									</p>
 								</Tooltip.Content>
 							</Tooltip.Root>

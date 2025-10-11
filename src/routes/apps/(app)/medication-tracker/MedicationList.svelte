@@ -80,8 +80,8 @@
 			medicationDosage.trim(),
 			medicationFrequency.trim(),
 			medicationInstructions.trim(),
-			new Date(medicationStartDate).toISOString(),
-			medicationEndDate ? new Date(medicationEndDate).toISOString() : undefined
+			dateToISOString(medicationStartDate),
+			medicationEndDate ? dateToISOString(medicationEndDate) : undefined
 		);
 
 		medState.addMedicationToSession(session.id, medication);
@@ -98,8 +98,8 @@
 		medicationDosage = med.dosage;
 		medicationFrequency = med.frequency;
 		medicationInstructions = med.instructions || '';
-		medicationStartDate = med.startDate.split('T')[0];
-		medicationEndDate = med.endDate ? med.endDate.split('T')[0] : '';
+		medicationStartDate = isoToDateString(med.startDate);
+		medicationEndDate = isoToDateString(med.endDate);
 		showEditDialog = true;
 	}
 
@@ -111,8 +111,8 @@
 			dosage: medicationDosage.trim(),
 			frequency: medicationFrequency.trim(),
 			instructions: medicationInstructions.trim(),
-			startDate: new Date(medicationStartDate).toISOString(),
-			endDate: medicationEndDate ? new Date(medicationEndDate).toISOString() : undefined
+			startDate: dateToISOString(medicationStartDate),
+			endDate: medicationEndDate ? dateToISOString(medicationEndDate) : undefined
 		});
 
 		toast.success('Medication updated');
@@ -139,8 +139,8 @@
 	// Schedule doses
 	function openSchedule(med: Medication) {
 		schedulingMedication = med;
-		scheduleStartDate = med.startDate.split('T')[0];
-		scheduleEndDate = med.endDate ? med.endDate.split('T')[0] : '';
+		scheduleStartDate = isoToDateString(med.startDate);
+		scheduleEndDate = isoToDateString(med.endDate);
 		// Auto-populate times based on frequency
 		const { suggestedTimes } = medState.parseFrequency(med.frequency);
 		scheduleTimes = suggestedTimes;
@@ -166,13 +166,13 @@
 		// This preserves past/present logs that haven't been taken yet
 		medState.deletePendingLogsForMedication(
 			schedulingMedication.id,
-			new Date(scheduleStartDate).toISOString()
+			dateToISOString(scheduleStartDate)
 		);
 
 		const tempMed: Medication = {
 			...schedulingMedication,
-			startDate: new Date(scheduleStartDate).toISOString(),
-			endDate: scheduleEndDate ? new Date(scheduleEndDate).toISOString() : undefined
+			startDate: dateToISOString(scheduleStartDate),
+			endDate: scheduleEndDate ? dateToISOString(scheduleEndDate) : undefined
 		};
 
 		const logs = medState.autoGenerateSchedule(
@@ -208,6 +208,19 @@
 			day: 'numeric',
 			year: 'numeric'
 		});
+	}
+
+	// Helper function to convert date string to ISO without timezone issues
+	function dateToISOString(dateString: string): string {
+		// Create date at noon local time to avoid timezone shifts
+		const date = new Date(dateString + 'T12:00:00');
+		return date.toISOString();
+	}
+
+	// Helper function to extract date part from ISO string
+	function isoToDateString(isoString: string | undefined): string {
+		if (!isoString) return '';
+		return isoString.split('T')[0];
 	}
 </script>
 
@@ -263,7 +276,16 @@
 												{formatDate(med.startDate)}
 											</span>
 											{#if med.endDate}
-												<span>→ {formatDate(med.endDate)}</span>
+												<span
+													class="flex items-center gap-1 font-medium text-orange-600 dark:text-orange-400"
+												>
+													<Clock class="size-3" />
+													Ends: {formatDate(med.endDate)}
+												</span>
+											{:else}
+												<span class="text-sm font-medium text-green-600 dark:text-green-400">
+													Ongoing
+												</span>
 											{/if}
 										</div>
 									</div>
@@ -364,13 +386,23 @@
 
 			<div class="grid grid-cols-2 gap-4">
 				<div class="space-y-2">
-					<Label for="med-start">Start Date</Label>
+					<Label for="med-start">Start Date *</Label>
 					<Input id="med-start" type="date" bind:value={medicationStartDate} />
 				</div>
 
 				<div class="space-y-2">
-					<Label for="med-end">End Date (optional)</Label>
-					<Input id="med-end" type="date" bind:value={medicationEndDate} />
+					<Label for="med-end" class="flex items-center gap-2">
+						End Date
+						<span class="text-xs text-gray-500 dark:text-gray-400"
+							>(optional - leave empty for ongoing)</span
+						>
+					</Label>
+					<Input
+						id="med-end"
+						type="date"
+						bind:value={medicationEndDate}
+						placeholder="Leave empty for ongoing medication"
+					/>
 				</div>
 			</div>
 
@@ -436,13 +468,23 @@
 
 			<div class="grid grid-cols-2 gap-4">
 				<div class="space-y-2">
-					<Label for="edit-start">Start Date</Label>
+					<Label for="edit-start">Start Date *</Label>
 					<Input id="edit-start" type="date" bind:value={medicationStartDate} />
 				</div>
 
 				<div class="space-y-2">
-					<Label for="edit-end">End Date</Label>
-					<Input id="edit-end" type="date" bind:value={medicationEndDate} />
+					<Label for="edit-end" class="flex items-center gap-2">
+						End Date
+						<span class="text-xs text-gray-500 dark:text-gray-400"
+							>(optional - leave empty for ongoing)</span
+						>
+					</Label>
+					<Input
+						id="edit-end"
+						type="date"
+						bind:value={medicationEndDate}
+						placeholder="Leave empty for ongoing medication"
+					/>
 				</div>
 			</div>
 		</div>
@@ -467,13 +509,23 @@
 		<div class="space-y-4">
 			<div class="grid grid-cols-2 gap-4">
 				<div class="space-y-2">
-					<Label for="schedule-start">Start Date</Label>
+					<Label for="schedule-start">Start Date *</Label>
 					<Input id="schedule-start" type="date" bind:value={scheduleStartDate} />
 				</div>
 
 				<div class="space-y-2">
-					<Label for="schedule-end">End Date (optional)</Label>
-					<Input id="schedule-end" type="date" bind:value={scheduleEndDate} />
+					<Label for="schedule-end" class="flex items-center gap-2">
+						End Date
+						<span class="text-xs text-gray-500 dark:text-gray-400"
+							>(optional - leave empty for ongoing)</span
+						>
+					</Label>
+					<Input
+						id="schedule-end"
+						type="date"
+						bind:value={scheduleEndDate}
+						placeholder="Leave empty for ongoing medication"
+					/>
 				</div>
 			</div>
 

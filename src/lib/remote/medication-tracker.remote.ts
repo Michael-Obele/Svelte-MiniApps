@@ -25,6 +25,7 @@ interface MedicationSession {
 	medications: Medication[];
 	isActive: boolean;
 	createdAt: string;
+	updatedAt: string;
 }
 
 interface MedicationLog {
@@ -36,6 +37,7 @@ interface MedicationLog {
 	actualTime?: string;
 	notes?: string;
 	createdAt: string;
+	updatedAt: string;
 }
 
 // Valibot schemas for validation
@@ -59,7 +61,8 @@ const MedicationSessionSchema = v.object({
 	endDate: v.optional(v.string()),
 	medications: v.array(MedicationSchema),
 	isActive: v.boolean(),
-	createdAt: v.string()
+	createdAt: v.string(),
+	updatedAt: v.string()
 });
 
 const MedicationLogSchema = v.object({
@@ -75,7 +78,8 @@ const MedicationLogSchema = v.object({
 	]),
 	actualTime: v.optional(v.string()),
 	notes: v.optional(v.string()),
-	createdAt: v.string()
+	createdAt: v.string(),
+	updatedAt: v.string()
 });
 
 const BackupDataSchema = v.object({
@@ -251,26 +255,32 @@ export const syncMedicationData = command(
 
 		// Add server sessions
 		serverData.sessions.forEach((session) => {
-			mergedSessions.set(session.id, session);
+			mergedSessions.set(session.id, {
+				...session,
+				updatedAt: (session as any).updatedAt || session.createdAt
+			});
 		});
 
 		// Add or update with local sessions
 		localData.sessions.forEach((session) => {
 			const existing = mergedSessions.get(session.id);
-			if (!existing || new Date(session.createdAt) > new Date(existing.createdAt)) {
+			if (!existing || new Date(session.updatedAt) > new Date(existing.updatedAt)) {
 				mergedSessions.set(session.id, session);
 			}
 		});
 
 		// Add server logs
 		serverData.logs.forEach((log) => {
-			mergedLogs.set(log.id, log);
+			mergedLogs.set(log.id, {
+				...log,
+				updatedAt: (log as any).updatedAt || log.createdAt
+			});
 		});
 
 		// Add or update with local logs
 		localData.logs.forEach((log) => {
 			const existing = mergedLogs.get(log.id);
-			if (!existing || new Date(log.createdAt) > new Date(existing.createdAt)) {
+			if (!existing || new Date(log.updatedAt) > new Date(existing.updatedAt)) {
 				mergedLogs.set(log.id, log);
 			}
 		});

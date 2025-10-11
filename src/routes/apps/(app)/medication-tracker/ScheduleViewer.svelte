@@ -66,11 +66,10 @@
 		showDeleteDialog = false;
 	}
 
-	// Delete all pending logs for this medication
-	function deleteAllPending() {
-		const pendingLogs = medicationLogs.filter((log) => log.status === 'pending');
-		pendingLogs.forEach((log) => medState.deleteLog(log.id));
-		toast.success(`Deleted ${pendingLogs.length} pending doses`);
+	// Delete all logs for this medication
+	function deleteAllLogs() {
+		medicationLogs.forEach((log) => medState.deleteLog(log.id));
+		toast.success(`Deleted all ${medicationLogs.length} scheduled doses`);
 		showViewer = false;
 	}
 
@@ -201,11 +200,9 @@
 											<Badge class={getStatusColor(log.status)}>
 												{log.status}
 											</Badge>
-											{#if log.status === 'pending'}
-												<Button variant="ghost" size="sm" onclick={() => confirmDeleteLog(log)}>
-													<Trash2 class="size-4 text-red-500" />
-												</Button>
-											{/if}
+											<Button variant="ghost" size="sm" onclick={() => confirmDeleteLog(log)}>
+												<Trash2 class="size-4 text-red-500" />
+											</Button>
 										</div>
 									</div>
 								{/each}
@@ -217,10 +214,10 @@
 		</div>
 
 		<Dialog.Footer class="flex-col gap-2 sm:flex-row">
-			{#if pendingCount > 0}
-				<Button variant="destructive" size="sm" onclick={deleteAllPending} class="w-full sm:w-auto">
-					<span class="hidden sm:inline">Delete All Pending ({pendingCount})</span>
-					<span class="sm:hidden">Delete All ({pendingCount})</span>
+			{#if totalLogs > 0}
+				<Button variant="destructive" size="sm" onclick={deleteAllLogs} class="w-full sm:w-auto">
+					<span class="hidden sm:inline">Delete All ({totalLogs})</span>
+					<span class="sm:hidden">Delete All ({totalLogs})</span>
 				</Button>
 			{/if}
 			<Button variant="outline" onclick={() => (showViewer = false)} class="w-full sm:w-auto"
