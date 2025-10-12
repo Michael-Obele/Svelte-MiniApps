@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: 0df5fd1ca926fce1b6ca7edb4198cfe8ab83f36e
-// Generated at: 2025-10-12T15:33:58.573Z
+// Last processed commit: 29de39741355f178226a4e5d5b5b4e374dd5d378
+// Generated at: 2025-10-12T16:29:05.867Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -63,6 +63,18 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
     "description": "Updated src/routes/apps/(app)/smoke-free-tracker/+page.svelte, src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte",
     "items": [
       "feat: Improve date formatting in StreakTimer component for better readability (0df5fd1)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "October 12, 2025",
+    "title": "Updates",
+    "description": "Multiple updates across 4 files",
+    "items": [
+      "feat: Enhance smoking attempt management and user settings handling (29de397)",
+      "feat: Add reset confirmation dialog and improve settings dialog overflow handling (850c364)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -884,4 +896,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-12T15:33:58.573Z';
+export const lastUpdated = '2025-10-12T16:29:05.867Z';
