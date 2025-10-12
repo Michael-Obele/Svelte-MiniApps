@@ -29,12 +29,13 @@
 
 	// Custom start date for existing streaks
 	let customStartDate = $state('');
-	let customStartDateEnabled = $state(false);
+	let customStartDateEnabled = $state(userSettings.current.customStartDateEnabled || false);
 	let activeAttempt = $derived(getActiveAttempt());
 
 	// Initialize settings when dialog opens
 	$effect(() => {
 		if (open) {
+			console.log('🔧 Loading settings into dialog:', userSettings.current);
 			customStartDateEnabled = userSettings.current.customStartDateEnabled;
 			cigarettesPerDay = userSettings.current.cigarettesPerDay;
 			pricePerPack = userSettings.current.pricePerPack;
@@ -47,6 +48,14 @@
 	const currencies = ['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY', 'INR', 'NGN'];
 
 	function handleSave() {
+		console.log('💾 Saving settings:', {
+			cigarettesPerDay,
+			pricePerPack,
+			cigarettesPerPack,
+			currency,
+			motivationalGoals,
+			customStartDateEnabled
+		});
 		updateSettings({
 			cigarettesPerDay,
 			pricePerPack,

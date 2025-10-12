@@ -136,6 +136,25 @@
 
 				smokeState.smokingAttempts.current = mergedAttempts;
 				console.log(`✅ Merged to ${mergedAttempts.length} total attempts`);
+
+				// Ensure only one attempt is active - keep the most recent active one
+				const activeAttempts = mergedAttempts.filter((a) => a.isActive);
+				if (activeAttempts.length > 1) {
+					console.log(
+						`🔧 Found ${activeAttempts.length} active attempts, keeping only the most recent`
+					);
+					// Sort by start date descending (most recent first)
+					activeAttempts.sort(
+						(a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+					);
+					// Keep the most recent active, deactivate the others
+					const mostRecentActive = activeAttempts[0];
+					smokeState.smokingAttempts.current = mergedAttempts.map((a) =>
+						a.id === mostRecentActive.id
+							? a
+							: { ...a, isActive: false, endDate: a.endDate || new Date().toISOString() }
+					);
+				}
 			}
 
 			// Handle cravings similarly
@@ -155,16 +174,26 @@
 				}
 			}
 
-			// Handle settings
+			// Handle settings - prioritize local settings over server settings
 			if (data.settings) {
-				// Update local settings with server settings if they differ
 				const currentSettings = smokeState.userSettings.current;
 				const serverSettings = data.settings;
 
-				// Simple check: if server settings are different, update local
-				if (JSON.stringify(currentSettings) !== JSON.stringify(serverSettings)) {
+				// Only update from server if local settings are empty/default
+				// This preserves user preferences and prevents server from overriding local changes
+				const isUsingDefaults =
+					currentSettings.cigarettesPerDay === 20 &&
+					currentSettings.pricePerPack === 10 &&
+					currentSettings.cigarettesPerPack === 20 &&
+					currentSettings.currency === '$' &&
+					currentSettings.motivationalGoals.length === 0 &&
+					currentSettings.customStartDateEnabled === false;
+
+				if (isUsingDefaults && JSON.stringify(currentSettings) !== JSON.stringify(serverSettings)) {
 					smokeState.userSettings.current = serverSettings;
-					console.log(`✅ Updated settings from server`);
+					console.log(`✅ Loaded settings from server (local settings were defaults)`);
+				} else {
+					console.log(`✅ Kept local user settings (server settings not applied)`);
 				}
 			}
 

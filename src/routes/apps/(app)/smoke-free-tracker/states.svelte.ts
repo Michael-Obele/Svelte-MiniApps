@@ -68,7 +68,10 @@ export const userSettings = new PersistedState<UserSettings>('smoke-free-tracker
 });
 
 // Last backup time
-export const lastBackupTime = new PersistedState<string | null>('smoke-free-tracker:last-backup-time', null);
+export const lastBackupTime = new PersistedState<string | null>(
+	'smoke-free-tracker:last-backup-time',
+	null
+);
 
 // ===========================
 // MILESTONES (Health benefits timeline)
@@ -246,13 +249,37 @@ export function getOverallLongestStreak(): number {
 }
 
 export function getActiveAttempt(): SmokingAttempt | undefined {
-	return smokingAttempts.current.find((a) => a.isActive);
+	const activeAttempts = smokingAttempts.current.filter((a) => a.isActive);
+	if (activeAttempts.length === 0) return undefined;
+	if (activeAttempts.length === 1) return activeAttempts[0];
+
+	// Multiple active attempts found - this shouldn't happen, but handle it gracefully
+	console.warn(`⚠️ Found ${activeAttempts.length} active attempts, keeping only the most recent`);
+	// Sort by start date descending (most recent first)
+	activeAttempts.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+	const mostRecent = activeAttempts[0];
+
+	// Deactivate all others
+	smokingAttempts.current = smokingAttempts.current.map((a) =>
+		a.id === mostRecent.id
+			? a
+			: { ...a, isActive: false, endDate: a.endDate || new Date().toISOString() }
+	);
+
+	return mostRecent;
 }
 export function getStreakMinutes(attempt: SmokingAttempt): number {
 	if (!browser) return 0;
 	const lastSmokeTime = new Date(attempt.lastSmokeDate).getTime();
 	const now = Date.now();
 	return Math.floor((now - lastSmokeTime) / (1000 * 60));
+}
+
+export function getDisplayStreakMinutes(attempt: SmokingAttempt): number {
+	if (!browser) return 0;
+	const displayStartTime = new Date(getDisplayStartDate(attempt)).getTime();
+	const now = Date.now();
+	return Math.floor((now - displayStartTime) / (1000 * 60));
 }
 
 export function getDisplayStartDate(attempt: SmokingAttempt): string {
@@ -288,6 +315,10 @@ export function addAttempt(): SmokingAttempt | undefined {
 	if (!browser) return undefined;
 
 	// Deactivate any existing active attempts
+	const previouslyActive = smokingAttempts.current.filter((a) => a.isActive);
+	if (previouslyActive.length > 0) {
+		console.log(`🔄 Deactivating ${previouslyActive.length} previously active attempts`);
+	}
 	smokingAttempts.current = smokingAttempts.current.map((a) => ({
 		...a,
 		isActive: false,
@@ -304,6 +335,7 @@ export function addAttempt(): SmokingAttempt | undefined {
 	};
 
 	smokingAttempts.current = [...smokingAttempts.current, newAttempt];
+	console.log(`✅ Created new attempt: ${newAttempt.id}`);
 	return newAttempt;
 }
 
@@ -315,6 +347,10 @@ export function resetAttempt(attemptId: string): SmokingAttempt | undefined {
 
 	const currentStreak = getStreakMinutes(attempt);
 	const newLongestStreak = Math.max(attempt.longestStreak, currentStreak);
+
+	console.log(
+		`🔄 Resetting attempt ${attemptId} (streak: ${currentStreak}min, longest: ${newLongestStreak}min)`
+	);
 
 	// Mark the current attempt as completed
 	smokingAttempts.current = smokingAttempts.current.map((a) =>
@@ -339,6 +375,7 @@ export function resetAttempt(attemptId: string): SmokingAttempt | undefined {
 	};
 
 	smokingAttempts.current = [...smokingAttempts.current, newAttempt];
+	console.log(`✅ Created reset attempt: ${newAttempt.id} (reset count: ${newAttempt.resetCount})`);
 	return newAttempt;
 }
 
@@ -395,10 +432,16 @@ export function deleteCravingLog(logId: string): void {
 
 export function updateSettings(newSettings: Partial<UserSettings>): void {
 	if (!browser) return;
+	const oldSettings = { ...userSettings.current };
 	userSettings.current = {
 		...userSettings.current,
 		...newSettings
 	};
+	console.log('🔧 Settings updated:', {
+		old: oldSettings,
+		new: newSettings,
+		result: userSettings.current
+	});
 }
 
 // ===========================
@@ -420,7 +463,9 @@ export interface Statistics {
 }
 
 export function getStatistics(attempt: SmokingAttempt, settings: UserSettings): Statistics {
-	const streakMinutes = getStreakMinutes(attempt);
+	const streakMinutes = settings.customStartDateEnabled
+		? getDisplayStreakMinutes(attempt)
+		: getStreakMinutes(attempt);
 	const cravings = getAttemptCravings(attempt.id);
 
 	const cigarettesAvoided = Math.floor((streakMinutes / 1440) * settings.cigarettesPerDay);
