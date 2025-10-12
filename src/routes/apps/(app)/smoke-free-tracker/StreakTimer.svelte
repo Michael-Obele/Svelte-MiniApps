@@ -69,7 +69,11 @@
 			<div>
 				<p class="text-muted-foreground text-sm">Started</p>
 				<p class="font-medium">
-					{new Date(getDisplayStartDate(attempt)).toLocaleDateString()}
+					{new Date(getDisplayStartDate(attempt)).toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric'
+					})}
 				</p>
 			</div>
 			{#if attempt.longestStreak > 0}

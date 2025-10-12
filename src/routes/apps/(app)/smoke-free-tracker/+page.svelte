@@ -195,7 +195,10 @@
 	}
 
 	// Helper function to determine which attempt to keep when merging
-	function resolveAttemptConflict(localAttempt: smokeState.SmokingAttempt, serverAttempt: smokeState.SmokingAttempt): smokeState.SmokingAttempt {
+	function resolveAttemptConflict(
+		localAttempt: smokeState.SmokingAttempt,
+		serverAttempt: smokeState.SmokingAttempt
+	): smokeState.SmokingAttempt {
 		// If local is active and server is not, keep local active attempt
 		if (localAttempt.isActive && !serverAttempt.isActive) {
 			return localAttempt;
@@ -318,12 +321,12 @@
 				needsBackup = false;
 			} else if (result.action === 'use_server') {
 				// Update local state with server data, but preserve local active attempts
-				const localActiveAttempts = smokeState.smokingAttempts.current.filter(a => a.isActive);
+				const localActiveAttempts = smokeState.smokingAttempts.current.filter((a) => a.isActive);
 				const serverAttempts = result.data.attempts;
 
 				// Keep local active attempts, merge in server completed attempts
 				const mergedAttempts = [...localActiveAttempts];
-				const localActiveIds = new Set(localActiveAttempts.map(a => a.id));
+				const localActiveIds = new Set(localActiveAttempts.map((a) => a.id));
 
 				for (const serverAttempt of serverAttempts) {
 					if (!localActiveIds.has(serverAttempt.id)) {
@@ -353,17 +356,28 @@
 
 <div class="container mx-auto max-w-7xl space-y-6 p-4">
 	<!-- Header -->
-	<div class="flex items-center justify-between">
-		<div>
-			<h1 class="text-3xl font-bold tracking-tight">Smoke-Free Tracker</h1>
-			<p class="text-muted-foreground">Your journey to a healthier life</p>
+	<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+		<div class="min-w-0 flex-1">
+			<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">Smoke-Free Tracker</h1>
+			<p class="text-muted-foreground text-sm sm:text-base">Your journey to a healthier life</p>
 		</div>
-		<div class="flex gap-2">
-			<Button variant="outline" size="sm" onclick={() => (showSettingsDialog = true)}>
+		<div class="flex flex-wrap gap-1 sm:gap-2">
+			<Button
+				variant="outline"
+				size="sm"
+				onclick={() => (showSettingsDialog = true)}
+				class="shrink-0"
+			>
 				<SettingsIcon class="size-4" />
 			</Button>
 			{#if isAuthenticated}
-				<Button variant="outline" size="sm" onclick={handleSync} disabled={isSyncing}>
+				<Button
+					variant="outline"
+					size="sm"
+					onclick={handleSync}
+					disabled={isSyncing}
+					class="shrink-0"
+				>
 					{#if isSyncing}
 						Syncing...
 					{:else}
@@ -374,25 +388,34 @@
 					variant="outline"
 					size="sm"
 					onclick={handleBackup}
-					disabled={isBackingUp || !needsBackup}
+					disabled={isBackingUp}
+					class="shrink-0"
 				>
 					{#if isBackingUp}
 						Backing up...
-					{:else if needsBackup}
-						☁️ Backup
 					{:else}
-						✅ Backed up
+						☁️ Backup
 					{/if}
 				</Button>
 			{/if}
 			{#if activeAttempt}
-				<Button variant="outline" size="sm" onclick={() => (showCravingDialog = true)}>
-					<Plus class="mr-2 size-4" />
-					Log Craving
+				<Button
+					variant="outline"
+					size="sm"
+					onclick={() => (showCravingDialog = true)}
+					class="shrink-0"
+				>
+					<Plus class="mr-1 size-3 sm:mr-2 sm:size-4" />
+					<span class="hidden sm:inline">Log Craving</span>
 				</Button>
-				<Button variant="destructive" size="sm" onclick={() => (showResetDialog = true)}>
-					<RotateCcw class="mr-2 size-4" />
-					I Smoked
+				<Button
+					variant="destructive"
+					size="sm"
+					onclick={() => (showResetDialog = true)}
+					class="shrink-0"
+				>
+					<RotateCcw class="mr-1 size-3 sm:mr-2 sm:size-4" />
+					<span class="hidden sm:inline">I Smoked</span>
 				</Button>
 			{/if}
 		</div>
