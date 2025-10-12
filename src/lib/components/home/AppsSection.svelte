@@ -11,7 +11,7 @@ Usage:
 -->
 <script lang="ts">
 	import { projects, done, site, isNewApp } from '$lib/index';
-	import { CheckCircle2, CircleX } from '@lucide/svelte';
+	import { CheckCircle2, CircleHelp, CircleX } from '@lucide/svelte';
 
 	let sortedProjects: any[] = [];
 	let doneProjects: any[] = [];
@@ -90,6 +90,10 @@ Usage:
 									<span class="opacity-80">{project.title}</span>
 								</li>
 							{/each}
+							<li class="flex items-center">
+								<CircleHelp class="mr-2 h-5 w-5 opacity-40" />
+								<span class="opacity-80">And many more</span>
+							</li>
 						</ul>
 					</details>
 				{/if}
