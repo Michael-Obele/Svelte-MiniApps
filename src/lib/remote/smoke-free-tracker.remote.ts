@@ -241,35 +241,49 @@ export const syncSmokeFreeData = command(
 		// Load server data
 		const serverData = await loadSmokeFreeData();
 
-		// For now, we'll use a simple strategy: if local data is newer than server data,
-		// backup local data. Otherwise, return server data for client to merge.
-		// A more sophisticated merge strategy could be implemented later.
+		// Improved sync strategy:
+		// - If local data has active attempts, prefer local (user is actively using the app)
+		// - If local has no active attempts but server does, use server
+		// - Otherwise, compare modification times
 
-		const localLatest =
-			localData.attempts.length > 0
-				? new Date(
-						Math.max(
-							...localData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
-						)
-					)
-				: new Date(0);
+		const localHasActiveAttempts = localData.attempts.some((a: SmokingAttempt) => a.isActive);
+		const serverHasActiveAttempts = serverData.attempts.some((a: SmokingAttempt) => a.isActive);
 
-		const serverLatest =
-			serverData.attempts.length > 0
-				? new Date(
-						Math.max(
-							...serverData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
-						)
-					)
-				: new Date(0);
-
-		if (localLatest > serverLatest) {
-			// Local data is newer, backup it
+		if (localHasActiveAttempts && !serverHasActiveAttempts) {
+			// Local has active attempts, server doesn't - backup local
 			await backupSmokeFreeData(localData);
 			return { action: 'backed_up', data: localData };
-		} else {
-			// Server data is newer or equal, return it for client to use
+		} else if (!localHasActiveAttempts && serverHasActiveAttempts) {
+			// Server has active attempts, local doesn't - use server
 			return { action: 'use_server', data: serverData };
+		} else {
+			// Both have similar attempt states, compare by latest modification
+			const localLatest =
+				localData.attempts.length > 0
+					? new Date(
+							Math.max(
+								...localData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
+							)
+						)
+					: new Date(0);
+
+			const serverLatest =
+				serverData.attempts.length > 0
+					? new Date(
+							Math.max(
+								...serverData.attempts.map((a: SmokingAttempt) => new Date(a.startDate).getTime())
+							)
+						)
+					: new Date(0);
+
+			if (localLatest > serverLatest) {
+				// Local data is newer, backup it
+				await backupSmokeFreeData(localData);
+				return { action: 'backed_up', data: localData };
+			} else {
+				// Server data is newer or equal, return it for client to use
+				return { action: 'use_server', data: serverData };
+			}
 		}
 	}
 );

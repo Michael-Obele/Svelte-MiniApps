@@ -3,7 +3,7 @@
 	import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import type { SmokingAttempt } from './states.svelte';
-	import { getStreakMinutes, formatDuration } from './states.svelte';
+	import { getStreakMinutes, formatDuration, getDisplayStartDate } from './states.svelte';
 
 	interface Props {
 		attempt: SmokingAttempt;
@@ -65,7 +65,7 @@
 			<div>
 				<p class="text-sm text-muted-foreground">Started</p>
 				<p class="font-medium">
-					{new Date(attempt.startDate).toLocaleDateString()}
+					{new Date(getDisplayStartDate(attempt)).toLocaleDateString()}
 				</p>
 			</div>
 			{#if attempt.longestStreak > 0}

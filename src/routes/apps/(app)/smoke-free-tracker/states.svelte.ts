@@ -13,6 +13,7 @@ export interface SmokingAttempt {
 	longestStreak: number; // in minutes
 	resetCount: number;
 	endDate?: string;
+	customStartDate?: string; // For users who started before using the app
 }
 
 export interface CravingLog {
@@ -32,6 +33,7 @@ export interface UserSettings {
 	cigarettesPerPack: number;
 	currency: string;
 	motivationalGoals: string[];
+	customStartDateEnabled: boolean;
 }
 
 export interface Milestone {
@@ -61,8 +63,12 @@ export const userSettings = new PersistedState<UserSettings>('smoke-free-tracker
 	pricePerPack: 10,
 	cigarettesPerPack: 20,
 	currency: '$',
-	motivationalGoals: []
+	motivationalGoals: [],
+	customStartDateEnabled: false
 });
+
+// Last backup time
+export const lastBackupTime = new PersistedState<string | null>('smoke-free-tracker:last-backup-time', null);
 
 // ===========================
 // MILESTONES (Health benefits timeline)
@@ -238,6 +244,10 @@ export function getOverallLongestStreak(): number {
 
 	return Math.max(...attempts.map((attempt) => attempt.longestStreak));
 }
+
+export function getActiveAttempt(): SmokingAttempt | undefined {
+	return smokingAttempts.current.find((a) => a.isActive);
+}
 export function getStreakMinutes(attempt: SmokingAttempt): number {
 	if (!browser) return 0;
 	const lastSmokeTime = new Date(attempt.lastSmokeDate).getTime();
@@ -245,8 +255,33 @@ export function getStreakMinutes(attempt: SmokingAttempt): number {
 	return Math.floor((now - lastSmokeTime) / (1000 * 60));
 }
 
-export function getActiveAttempt(): SmokingAttempt | undefined {
-	return smokingAttempts.current.find((a) => a.isActive);
+export function getDisplayStartDate(attempt: SmokingAttempt): string {
+	if (userSettings.current.customStartDateEnabled) {
+		return attempt.customStartDate || attempt.startDate;
+	}
+	return attempt.startDate;
+}
+
+export function setCustomStartDate(attemptId: string, customStartDate: string): boolean {
+	if (!browser) return false;
+
+	const attempt = smokingAttempts.current.find((a) => a.id === attemptId);
+	if (!attempt) return false;
+
+	// Validate that custom start date is not in the future
+	const customDate = new Date(customStartDate);
+	const now = new Date();
+	if (customDate > now) return false;
+
+	// Validate that custom start date is not after last smoke date
+	const lastSmokeDate = new Date(attempt.lastSmokeDate);
+	if (customDate > lastSmokeDate) return false;
+
+	smokingAttempts.current = smokingAttempts.current.map((a) =>
+		a.id === attemptId ? { ...a, customStartDate } : a
+	);
+
+	return true;
 }
 
 export function addAttempt(): SmokingAttempt | undefined {

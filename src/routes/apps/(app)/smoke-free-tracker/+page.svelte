@@ -84,6 +84,19 @@
 		// Set authentication state
 		isAuthenticated = !!data.user;
 
+		// Check if user has been away for a while and trigger backup if needed
+		if (browser && isAuthenticated) {
+			const lastBackupTime = smokeState.lastBackupTime.current;
+			const now = Date.now();
+			const timeSinceLastBackup = lastBackupTime ? now - parseInt(lastBackupTime) : Infinity;
+
+			// If more than 30 minutes since last backup, trigger a backup
+			if (timeSinceLastBackup > 30 * 60 * 1000) {
+				console.log('🔄 User returned after extended absence, triggering backup');
+				needsBackup = true;
+			}
+		}
+
 		// Load active attempt from local state
 		activeAttempt = smokeState.getActiveAttempt() ?? null;
 
@@ -110,14 +123,13 @@
 						// Server has an attempt that local doesn't have
 						mergedAttempts.push(serverAttempt);
 					} else {
-						// Both have the attempt, keep the more recent one
-						const localTime = new Date(existingAttempt.lastSmokeDate).getTime();
-						const serverTime = new Date(serverAttempt.lastSmokeDate).getTime();
-						if (serverTime > localTime) {
-							// Server version is more recent, replace local
+						// Both have the attempt, decide which version to keep
+						const winner = resolveAttemptConflict(existingAttempt, serverAttempt);
+						if (winner !== existingAttempt) {
 							const index = mergedAttempts.findIndex((a) => a.id === serverAttempt.id);
 							mergedAttempts[index] = serverAttempt;
 						}
+						// If winner is existingAttempt, keep local version (already in array)
 					}
 				}
 
@@ -182,6 +194,31 @@
 		scheduleAutoBackup();
 	}
 
+	// Helper function to determine which attempt to keep when merging
+	function resolveAttemptConflict(localAttempt: smokeState.SmokingAttempt, serverAttempt: smokeState.SmokingAttempt): smokeState.SmokingAttempt {
+		// If local is active and server is not, keep local active attempt
+		if (localAttempt.isActive && !serverAttempt.isActive) {
+			return localAttempt;
+		}
+
+		// If local is not active and server is, keep server active attempt
+		if (!localAttempt.isActive && serverAttempt.isActive) {
+			return serverAttempt;
+		}
+
+		// If both are active, keep the one with more recent start date
+		if (localAttempt.isActive && serverAttempt.isActive) {
+			const localStart = new Date(localAttempt.startDate).getTime();
+			const serverStart = new Date(serverAttempt.startDate).getTime();
+			return serverStart > localStart ? serverAttempt : localAttempt;
+		}
+
+		// Both are completed - keep the one with more recent end date
+		const localEnd = localAttempt.endDate ? new Date(localAttempt.endDate).getTime() : 0;
+		const serverEnd = serverAttempt.endDate ? new Date(serverAttempt.endDate).getTime() : 0;
+		return serverEnd > localEnd ? serverAttempt : localAttempt;
+	}
+
 	function handleReset() {
 		if (!activeAttempt) return;
 
@@ -210,7 +247,7 @@
 		if (isAuthenticated && needsBackup && !isBackingUp) {
 			autoBackupTimer = setTimeout(() => {
 				handleBackup();
-			}, 15000); // 15 seconds delay
+			}, 300000); // 5 minutes delay
 		}
 	}
 
@@ -240,6 +277,9 @@
 			if (result.success) {
 				toast.success('Data backed up successfully');
 				needsBackup = false;
+
+				// Store last backup time
+				smokeState.lastBackupTime.current = Date.now().toString();
 
 				// Clear auto-backup timer
 				if (autoBackupTimer) {
@@ -277,8 +317,21 @@
 				toast.success('Local data synced to cloud');
 				needsBackup = false;
 			} else if (result.action === 'use_server') {
-				// Update local state with server data
-				smokeState.smokingAttempts.current = result.data.attempts;
+				// Update local state with server data, but preserve local active attempts
+				const localActiveAttempts = smokeState.smokingAttempts.current.filter(a => a.isActive);
+				const serverAttempts = result.data.attempts;
+
+				// Keep local active attempts, merge in server completed attempts
+				const mergedAttempts = [...localActiveAttempts];
+				const localActiveIds = new Set(localActiveAttempts.map(a => a.id));
+
+				for (const serverAttempt of serverAttempts) {
+					if (!localActiveIds.has(serverAttempt.id)) {
+						mergedAttempts.push(serverAttempt);
+					}
+				}
+
+				smokeState.smokingAttempts.current = mergedAttempts;
 				smokeState.cravingLogs.current = result.data.cravings;
 				toast.success('Data synced from cloud');
 				needsBackup = false;
