@@ -55,6 +55,7 @@
 	let timeInterval: ReturnType<typeof setInterval> | null = null;
 
 	let showResetDialog = $state(false);
+	let showResetConfirmationDialog = $state(false);
 	let showStartDialog = $state(false);
 	let showCravingDialog = $state(false);
 	let showSettingsDialog = $state(false);
@@ -411,7 +412,7 @@
 				<Button
 					variant="destructive"
 					size="sm"
-					onclick={() => (showResetDialog = true)}
+					onclick={() => (showResetConfirmationDialog = true)}
 					class="shrink-0"
 				>
 					<RotateCcw class="mr-1 size-3 sm:mr-2 sm:size-4" />
@@ -596,6 +597,59 @@
 			<Button onclick={startNewAttempt}>
 				<Target class="mr-2 size-4" />
 				Start Journey
+			</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
+
+<!-- Reset Confirmation Dialog -->
+<Dialog.Root bind:open={showResetConfirmationDialog}>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Confirm You Smoked</Dialog.Title>
+			<Dialog.Description>
+				Before we reset your streak, please confirm that you actually had a cigarette. This helps
+				ensure accurate tracking.
+			</Dialog.Description>
+		</Dialog.Header>
+
+		<div class="space-y-4 py-4">
+			<div
+				class="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950"
+			>
+				<AlertCircle class="mb-2 size-6 text-amber-600 dark:text-amber-400" />
+				<h4 class="font-semibold text-amber-800 dark:text-amber-200">
+					What happens when you reset?
+				</h4>
+				<ul class="mt-2 space-y-1 text-sm text-amber-700 dark:text-amber-300">
+					<li>• Your current streak timer will stop</li>
+					<li>• This attempt will be saved to your history</li>
+					<li>• A new streak will begin immediately</li>
+					<li>• Your longest streak record remains intact</li>
+				</ul>
+			</div>
+
+			<div class="space-y-2">
+				<h4 class="font-semibold">Are you sure you smoked?</h4>
+				<p class="text-muted-foreground text-sm">
+					Only proceed if you actually had a cigarette. If this was a craving you resisted, consider
+					logging it instead.
+				</p>
+			</div>
+		</div>
+
+		<Dialog.Footer>
+			<Button variant="outline" onclick={() => (showResetConfirmationDialog = false)}>
+				Cancel
+			</Button>
+			<Button
+				variant="destructive"
+				onclick={() => {
+					showResetConfirmationDialog = false;
+					showResetDialog = true;
+				}}
+			>
+				Yes, I Smoked - Reset Streak
 			</Button>
 		</Dialog.Footer>
 	</Dialog.Content>

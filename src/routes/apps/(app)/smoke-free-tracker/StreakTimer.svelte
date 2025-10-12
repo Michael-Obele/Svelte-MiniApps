@@ -12,9 +12,9 @@
 
 	let { attempt, currentTime }: Props = $props();
 
-	// Calculate total seconds elapsed since last smoke
+	// Calculate total seconds elapsed since start date (using display start date for custom dates)
 	let totalSecondsElapsed = $derived(
-		(currentTime.getTime() - new Date(attempt.lastSmokeDate).getTime()) / 1000
+		(currentTime.getTime() - new Date(getDisplayStartDate(attempt)).getTime()) / 1000
 	);
 
 	// Calculate streak in minutes (consistent with totalSecondsElapsed)
