@@ -51,7 +51,7 @@
 
 	// Check if a project is completed
 	function isCompleted(link: string): boolean {
-		return done.includes(link);
+		return done.some((d) => d.name === link);
 	}
 </script>
 
@@ -71,7 +71,7 @@
 	<div class="flex space-x-4">
 		<Button
 			onclick={setFilterValue('all')}
-			class={`rounded-md px-5 py-2.5 text-base font-medium focus:outline-none focus:ring-4 ${
+			class={`rounded-md px-5 py-2.5 text-base font-medium focus:ring-4 focus:outline-none ${
 				filter.current === 'all'
 					? 'border border-white bg-green-300 text-green-900 hover:border-green-200 hover:bg-green-700 focus:ring-green-300 dark:border-green-900 dark:bg-green-900 dark:text-white dark:hover:border-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800'
 					: 'border border-green-600 bg-white text-green-700 hover:bg-green-700 hover:text-white focus:ring-green-300 dark:border-green-500 dark:bg-gray-900 dark:text-green-500 dark:hover:bg-green-500 dark:hover:text-white dark:focus:ring-green-800'
@@ -82,7 +82,7 @@
 
 		<Button
 			onclick={setFilterValue('done')}
-			class="rounded-md px-5 py-2.5 text-base font-medium focus:outline-none focus:ring-4 {filter.current ===
+			class="rounded-md px-5 py-2.5 text-base font-medium focus:ring-4 focus:outline-none {filter.current ===
 			'done'
 				? 'border border-white bg-green-300 text-green-900 hover:border-green-200 hover:bg-green-700 focus:ring-green-300 dark:border-green-900 dark:bg-green-900 dark:text-white dark:hover:border-green-600 dark:hover:bg-green-500 dark:focus:ring-green-800'
 				: 'border border-green-600 bg-white text-green-700 hover:bg-green-700 hover:text-white focus:ring-green-300 dark:border-green-500 dark:bg-gray-900 dark:text-green-500 dark:hover:bg-green-500 dark:hover:text-white dark:focus:ring-green-800'}"

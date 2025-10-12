@@ -13,13 +13,14 @@
 	let sortedProjects = projects.sort((a, b) => a.title.localeCompare(b.title));
 
 	let filteredProjects = $derived(
-		filteredBy 
-			? projects.filter(project => 
-				project.title.toLowerCase().includes(filteredBy.toLowerCase()) ||
-				project.details.toLowerCase().includes(filteredBy.toLowerCase()) ||
-				project.tag.toLowerCase().includes(filteredBy.toLowerCase()) ||
-				project.link.toLowerCase().includes(filteredBy.toLowerCase())
-			)
+		filteredBy
+			? projects.filter(
+					(project) =>
+						project.title.toLowerCase().includes(filteredBy.toLowerCase()) ||
+						project.details.toLowerCase().includes(filteredBy.toLowerCase()) ||
+						project.tag.toLowerCase().includes(filteredBy.toLowerCase()) ||
+						project.link.toLowerCase().includes(filteredBy.toLowerCase())
+				)
 			: projects
 	);
 </script>
@@ -27,9 +28,7 @@
 {#if filteredBy === 'all'}
 	<ProjectsGrid items={sortedProjects} />
 {:else if filteredBy === 'done'}
-	<ProjectsGrid items={projects.filter((item) => done.includes(item.link))} />
+	<ProjectsGrid items={projects.filter((item) => done.some((d) => d.name === item.link))} />
 {:else}
-	<ProjectsGrid
-		items={filteredProjects}
-	/>
+	<ProjectsGrid items={filteredProjects} />
 {/if}

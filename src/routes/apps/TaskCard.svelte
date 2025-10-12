@@ -11,8 +11,8 @@
 >
 	<!-- Done check -->
 	<span
-		class:opacity-100={done.includes(item.link)}
-		class:opacity-20={!done.includes(item.link)}
+		class:opacity-100={done.some((d) => d.name === item.link)}
+		class:opacity-20={!done.some((d) => d.name === item.link)}
 		class="absolute top-5 right-5"
 	>
 		<BadgeCheck class="size-16 text-green-800 dark:text-green-400" />
@@ -20,12 +20,14 @@
 
 	<!-- End of Done check -->
 	<div class="flex w-fit flex-col">
-		<span
-			class={`mb-2 inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-sm font-medium ${item.difficulty}`}
-		>
-			<HardHat size="16" class="mx-1" />
-			{item.difficulty}
-		</span>
+		<div class="mb-2 flex flex-wrap items-center gap-2">
+			<span
+				class={`inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-sm font-medium ${item.difficulty}`}
+			>
+				<HardHat size="16" class="mx-1" />
+				{item.difficulty}
+			</span>
+		</div>
 
 		<Tags {item} />
 	</div>
@@ -36,7 +38,7 @@
 	<p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
 		{item.details}
 	</p>
-	{#if done.includes(item.link)}
+	{#if done.some((d) => d.name === item.link)}
 		<span
 			class="absolute bottom-5 inline-flex items-center text-lg font-medium text-red-600 group-hover:underline dark:text-red-500"
 			>Try now

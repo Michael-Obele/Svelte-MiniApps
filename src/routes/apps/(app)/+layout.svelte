@@ -72,7 +72,7 @@
 {/if}
 
 <div class="flex items-start justify-between p-1">
-	<div class="relative mb-5 mt-2 flex place-items-center justify-center">
+	<div class="relative mt-2 mb-5 flex place-items-center justify-center">
 		<Breadcrumb.Root>
 			<Breadcrumb.List>
 				<Breadcrumb.Item>
@@ -104,11 +104,11 @@
 	</div>
 
 	<Sheet.Root bind:open={isSheetOpen}>
-		<Sheet.Trigger class="order-first mt-2 rounded-md transition-colors hover:bg-muted">
+		<Sheet.Trigger class="hover:bg-muted order-first mt-2 rounded-md transition-colors">
 			<div class="flex items-center gap-1">
 				<PanelRightOpen class="size-5" />
 				<span class="sr-only">Open apps menu</span>
-				<div class="hidden items-center text-xs text-muted-foreground md:flex">
+				<div class="text-muted-foreground hidden items-center text-xs md:flex">
 					<Keyboard class="mr-1 h-3 w-3" />
 					<span>Alt+D</span>
 				</div>
@@ -117,28 +117,28 @@
 		<Sheet.Content class="w-[300px] sm:w-[400px]">
 			<Sheet.Header class="pb-4">
 				<Sheet.Title class="text-xl font-semibold">Available Apps</Sheet.Title>
-				<Sheet.Description class="text-sm text-muted-foreground">
+				<Sheet.Description class="text-muted-foreground text-sm">
 					Explore our collection of interactive mini applications built with Svelte.
-					<div class="mt-2 space-y-1.5 rounded-md border border-muted bg-muted/30 p-2 text-xs">
+					<div class="border-muted bg-muted/30 mt-2 space-y-1.5 rounded-md border p-2 text-xs">
 						<div class="flex items-center gap-1">
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
 							<span>+</span>
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">D</kbd>
-							<span class="ml-1.5 text-muted-foreground">Toggle this menu</span>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">D</kbd>
+							<span class="text-muted-foreground ml-1.5">Toggle this menu</span>
 						</div>
 						<div class="flex items-center gap-1">
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
-							<span class="ml-1.5 text-muted-foreground">Navigate forward</span>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
+							<span class="text-muted-foreground ml-1.5">Navigate forward</span>
 						</div>
 						<div class="flex items-center gap-1">
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Shift</kbd>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Shift</kbd>
 							<span>+</span>
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
-							<span class="ml-1.5 text-muted-foreground">Navigate backwards</span>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
+							<span class="text-muted-foreground ml-1.5">Navigate backwards</span>
 						</div>
 						<div class="flex items-center gap-1">
-							<kbd class="rounded bg-background px-1.5 py-0.5 text-xs font-medium">Enter</kbd>
-							<span class="ml-1.5 text-muted-foreground">Open selected app</span>
+							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Enter</kbd>
+							<span class="text-muted-foreground ml-1.5">Open selected app</span>
 						</div>
 					</div>
 				</Sheet.Description>
@@ -148,13 +148,15 @@
 					<Sheet.Description>
 						<!-- Updated to use the navigateToApp function -->
 						<button
-							class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left hover:bg-muted"
-							onclick={() => navigateToApp(app)}
+							class="hover:bg-muted flex w-full items-center gap-2 rounded-md px-3 py-2 text-left"
+							onclick={() => navigateToApp(app.name)}
 						>
-							<div class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
-								<span class="text-xs font-medium text-primary">{app.charAt(0).toUpperCase()}</span>
+							<div class="bg-primary/10 flex h-6 w-6 items-center justify-center rounded-full">
+								<span class="text-primary text-xs font-medium"
+									>{app.name.charAt(0).toUpperCase()}</span
+								>
 							</div>
-							<span class="capitalize">{app.replace(/-/g, ' ')}</span>
+							<span class="capitalize">{app.name.replace(/-/g, ' ')}</span>
 						</button>
 					</Sheet.Description>
 				{/each}

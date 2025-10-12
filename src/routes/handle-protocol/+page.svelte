@@ -16,12 +16,13 @@
 
 	// Check if the app exists in our list
 	function isValidApp(appName: string): boolean {
-		return done.some((app) => normalizeAppName(app) === appName.toLowerCase());
+		return done.some((app) => normalizeAppName(app.name) === appName.toLowerCase());
 	}
 
 	// Get the original app name from normalized version
 	function getOriginalAppName(normalizedName: string): string | null {
-		return done.find((app) => normalizeAppName(app) === normalizedName.toLowerCase()) || null;
+		const app = done.find((app) => normalizeAppName(app.name) === normalizedName.toLowerCase());
+		return app ? app.name : null;
 	}
 
 	onMount(() => {

@@ -13,21 +13,21 @@ export const site = {
 };
 
 export const done = [
-	'random-password-generator',
-	'github-contribution-tracker',
-	'qr-code-generator',
-	'dictionary-app',
-	'random-emoji-generator',
-	'currency-converter',
-	'advanced-emoji-tools',
-	'budget-tracker',
-	'todo-list',
-	'markdown-editor',
-	'text-summarizer',
-	'unit-converter',
-	'purchase-tracker',
-	'medication-tracker',
-	'smoke-free-tracker'
+	{ name: 'random-password-generator', time: '2025-07-15T00:00:00.000Z' },
+	{ name: 'github-contribution-tracker', time: '2025-08-20T00:00:00.000Z' },
+	{ name: 'qr-code-generator', time: '2025-07-10T00:00:00.000Z' },
+	{ name: 'dictionary-app', time: '2025-09-05T00:00:00.000Z' },
+	{ name: 'random-emoji-generator', time: '2025-08-01T00:00:00.000Z' },
+	{ name: 'currency-converter', time: '2025-07-25T00:00:00.000Z' },
+	{ name: 'advanced-emoji-tools', time: '2025-09-15T00:00:00.000Z' },
+	{ name: 'budget-tracker', time: '2025-08-10T00:00:00.000Z' },
+	{ name: 'todo-list', time: '2025-07-05T00:00:00.000Z' },
+	{ name: 'markdown-editor', time: '2025-09-20T00:00:00.000Z' },
+	{ name: 'text-summarizer', time: '2025-08-15T00:00:00.000Z' },
+	{ name: 'unit-converter', time: '2025-07-20T00:00:00.000Z' },
+	{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
+	{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
+	{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' }
 ];
 //
 export type Project = {
@@ -323,4 +323,23 @@ export function truncateText(text: string, maxLength: number): string {
 		return originalText.slice(0, maxLength - 3) + '...';
 	}
 	return originalText;
+}
+
+/**
+ * Checks if an app is considered "new" (completed within the last 2-3 weeks).
+ *
+ * @param {string} appName - The name of the app to check.
+ * @returns {boolean} True if the app is new, false otherwise.
+ */
+export function isNewApp(appName: string): boolean {
+	const app = done.find((d) => d.name === appName);
+	if (!app) return false;
+
+	const completionDate = new Date(app.time);
+	const now = new Date();
+	const diffTime = now.getTime() - completionDate.getTime();
+	const diffDays = diffTime / (1000 * 3600 * 24);
+
+	// Consider an app "new" if it was completed within the last 21 days (3 weeks)
+	return diffDays <= 21;
 }

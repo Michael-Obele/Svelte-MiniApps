@@ -7,10 +7,12 @@
 	import { Calendar, Zap, Code, Sparkles, Clock } from '@lucide/svelte';
 
 	// Filter projects that are not yet completed
-	let upcomingProjects = $state(projects.filter((project) => !done.includes(project.link)));
+	let upcomingProjects = $state(
+		projects.filter((project) => !done.some((d) => d.name === project.link))
+	);
 
 	// Calculate total upcoming apps
-	const totalUpcoming = $state(projects.filter((p) => !done.includes(p.link)).length);
+	const totalUpcoming = $state(projects.filter((p) => !done.some((d) => d.name === p.link)).length);
 </script>
 
 <!--
@@ -29,14 +31,14 @@ Uses the `projects` and `done` arrays from the `$lib` to determine which project
 <ScrollArea class="h-[300px] pr-4">
 	<div class="space-y-4">
 		{#each upcomingProjects as project, i}
-			<div class="flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50">
-				<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+			<div class="hover:bg-muted/50 flex items-start gap-4 rounded-lg border p-4 transition-all">
+				<div class="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
 					{#if project.difficulty === 'easy'}
-						<Zap class="h-5 w-5 text-primary" />
+						<Zap class="text-primary h-5 w-5" />
 					{:else if project.difficulty === 'medium'}
-						<Code class="h-5 w-5 text-primary" />
+						<Code class="text-primary h-5 w-5" />
 					{:else}
-						<Sparkles class="h-5 w-5 text-primary" />
+						<Sparkles class="text-primary h-5 w-5" />
 					{/if}
 				</div>
 
@@ -54,7 +56,7 @@ Uses the `projects` and `done` arrays from the `$lib` to determine which project
 						</Badge>
 					</div>
 
-					<p class="mt-1 text-sm text-muted-foreground">
+					<p class="text-muted-foreground mt-1 text-sm">
 						{truncateText(project.details, 100)}
 					</p>
 				</div>
