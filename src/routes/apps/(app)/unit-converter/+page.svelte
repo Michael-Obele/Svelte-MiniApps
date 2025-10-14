@@ -7,11 +7,11 @@
 	import {
 		unitTypes,
 		units,
-		conversionFactors,
+		convertUnits,
 		formatResult,
 		getDefaultUnits,
 		type UnitType
-	} from './unit-data.js';
+	} from './unit-data-convert.js';
 	import { ArrowRightLeft, X, Eraser } from '@lucide/svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { unitConverterHowToUse } from './how-to-use-config';
@@ -73,38 +73,13 @@
 			return;
 		}
 
-		const typeConversions = conversionFactors[unitType as UnitType];
-		if (!typeConversions) {
-			convertedValue = 'Unsupported unit type';
-			return;
+		try {
+			const result = convertUnits(value, fromUnit, toUnit);
+			convertedValue = formatResult(result);
+		} catch (error) {
+			convertedValue = 'Unsupported conversion';
+			console.error('Conversion error:', error);
 		}
-
-		const fromConversions = typeConversions[fromUnit];
-		if (!fromConversions) {
-			convertedValue = 'Unsupported from unit';
-			return;
-		}
-
-		let result;
-		if (unitType === 'temperature') {
-			const conversionFn = fromConversions[toUnit];
-			if (typeof conversionFn === 'function') {
-				result = conversionFn(value);
-			} else {
-				convertedValue = 'Unsupported temperature conversion';
-				return;
-			}
-		} else {
-			const factor = fromConversions[toUnit];
-			if (typeof factor === 'number') {
-				result = value * factor;
-			} else {
-				convertedValue = 'Unsupported conversion';
-				return;
-			}
-		}
-
-		convertedValue = formatResult(result);
 	};
 
 	$effect(() => {
