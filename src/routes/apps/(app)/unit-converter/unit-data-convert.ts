@@ -251,11 +251,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'millitorr', label: 'Millitorr (mTorr)' },
 		{ value: 'pound per square inch', label: 'Pounds per Square Inch (psi)' },
 		{ value: 'inch of water', label: 'Inch of Water (inH₂O)' },
-		{ value: 'inch of mercury', label: 'Inch of Mercury (inHg)' },
-		{ value: 'millimeter of water', label: 'Millimeter of Water (mmH₂O)' },
-		{ value: 'millimeter of mercury', label: 'Millimeter of Mercury (mmHg)' },
-		{ value: 'centimeter of water', label: 'Centimeter of Water (cmH₂O)' },
-		{ value: 'centimeter of mercury', label: 'Centimeter of Mercury (cmHg)' }
+		{ value: 'inch of mercury', label: 'Inch of Mercury (inHg)' }
 	]
 };
 
