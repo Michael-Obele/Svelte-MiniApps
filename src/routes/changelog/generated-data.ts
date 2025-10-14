@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: fec20b58ede6735a8c95796300ec2e4179683983
-// Generated at: 2025-10-14T23:43:44.086Z
+// Last processed commit: 1cbe1e6c326e7bff8aec3fdf40164ceffa19be20
+// Generated at: 2025-10-14T23:59:34.570Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -45,6 +45,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
       "feat: Add comprehensive unit tests for unit conversion functionality (2f03532)",
       "feat: Update unit options for improved consistency and readability (dee2500)",
       "feat: Refactor unit conversion logic and add unit-data-convert module (752d737)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "October 14, 2025",
+    "title": "feat: Update unit conversion interfaces and types for improved clarity and extensibility",
+    "description": "Updated bun.lockb, package.json, src/routes/apps/(app)/unit-converter/+page.svelte and more",
+    "items": [
+      "feat: Update unit conversion interfaces and types for improved clarity and extensibility (1cbe1e6)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -933,4 +944,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-14T23:43:44.087Z';
+export const lastUpdated = '2025-10-14T23:59:34.570Z';
