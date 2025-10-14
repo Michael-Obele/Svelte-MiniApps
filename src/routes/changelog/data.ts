@@ -113,6 +113,19 @@ export type TimelineItem = {
 
 export const timeline: TimelineItem[] = [
 	{
+		date: 'October 14, 2025',
+		title: 'Featured on MadeWithSvelte',
+		description: 'Svelte MiniApps featured on the official MadeWithSvelte showcase',
+		items: [
+			'Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps',
+			'Recognized for our Svelte 5 implementation and modern PWA architecture',
+			'Highlighting our comprehensive suite of tools including budget tracker, todo list, and more'
+		],
+		type: 'feature',
+		icon: Award,
+		color: 'from-purple-500 to-pink-500'
+	},
+	{
 		date: 'March 29, 2025',
 		title: 'Database Migration to PostgreSQL',
 		description: 'Switched from SQLite to PostgreSQL for improved scalability and performance',
