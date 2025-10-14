@@ -53,7 +53,9 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'micrometer', label: 'Micrometer (μm)' },
 		{ value: 'nanometer', label: 'Nanometer (nm)' },
 		{ value: 'picometer', label: 'Picometer (pm)' },
-		{ value: 'femtometer', label: 'Femtometer (fm)' }
+		{ value: 'femtometer', label: 'Femtometer (fm)' },
+		{ value: 'nautical mile', label: 'Nautical Mile (nmi)' },
+		{ value: 'light-year', label: 'Light-Year (ly)' }
 	],
 	temperature: [
 		{ value: 'celsius', label: 'Celsius (°C)' },
@@ -65,7 +67,14 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'liter', label: 'Liter (L)' },
 		{ value: 'milliliter', label: 'Milliliter (mL)' },
 		{ value: 'gallon', label: 'Gallon (gal)' },
-		{ value: 'quart', label: 'Quart (qt)' }
+		{ value: 'quart', label: 'Quart (qt)' },
+		{ value: 'pint', label: 'Pint (pt)' },
+		{ value: 'cup', label: 'Cup (c)' },
+		{ value: 'tablespoon', label: 'Tablespoon (tbsp)' },
+		{ value: 'teaspoon', label: 'Teaspoon (tsp)' },
+		{ value: 'cubic meter', label: 'Cubic Meter (m³)' },
+		{ value: 'cubic foot', label: 'Cubic Foot (ft³)' },
+		{ value: 'cubic inch', label: 'Cubic Inch (in³)' }
 	],
 	mass: [
 		{ value: 'kilogram', label: 'Kilogram (kg)' },
@@ -76,7 +85,8 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'microgram', label: 'Microgram (μg)' },
 		{ value: 'nanogram', label: 'Nanogram (ng)' },
 		{ value: 'picogram', label: 'Picogram (pg)' },
-		{ value: 'grain', label: 'Grain (gr)' }
+		{ value: 'grain', label: 'Grain (gr)' },
+		{ value: 'tonne', label: 'Tonne (t)' }
 	],
 	area: [
 		{ value: 'm2', label: 'Square Meter (m²)' },
@@ -93,6 +103,9 @@ export const units: Record<UnitType, UnitOption[]> = {
 	],
 	time: [
 		{ value: 'second', label: 'Second (s)' },
+		{ value: 'millisecond', label: 'Millisecond (ms)' },
+		{ value: 'microsecond', label: 'Microsecond (μs)' },
+		{ value: 'nanosecond', label: 'Nanosecond (ns)' },
 		{ value: 'minute', label: 'Minute (min)' },
 		{ value: 'hour', label: 'Hour (h)' },
 		{ value: 'day', label: 'Day' },
@@ -139,11 +152,17 @@ export const units: Record<UnitType, UnitOption[]> = {
 	],
 	energy: [
 		{ value: 'J', label: 'Joule (J)' },
+		{ value: 'joule', label: 'Joule (J)' },
 		{ value: 'kJ', label: 'Kilojoule (kJ)' },
+		{ value: 'kilojoule', label: 'Kilojoule (kJ)' },
 		{ value: 'Wh', label: 'Watt Hour (Wh)' },
+		{ value: 'watt-hour', label: 'Watt Hour (Wh)' },
 		{ value: 'kWh', label: 'Kilowatt Hour (kWh)' },
+		{ value: 'kilowatt-hour', label: 'Kilowatt Hour (kWh)' },
 		{ value: 'MWh', label: 'Megawatt Hour (MWh)' },
+		{ value: 'megawatt-hour', label: 'Megawatt Hour (MWh)' },
 		{ value: 'GWh', label: 'Gigawatt Hour (GWh)' },
+		{ value: 'gigawatt-hour', label: 'Gigawatt Hour (GWh)' },
 		{ value: 'TWh', label: 'Terawatt Hour (TWh)' },
 		{ value: 'PWh', label: 'Petawatt Hour (PWh)' }
 	],
@@ -152,6 +171,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'kilonewton', label: 'Kilonewton (kN)' },
 		{ value: 'dyne', label: 'Dyne (dyn)' },
 		{ value: 'pound-force', label: 'Pound Force (lbf)' },
+		{ value: 'pound of force', label: 'Pound Force (lbf)' },
 		{ value: 'kip', label: 'Kip' },
 		{ value: 'poundal', label: 'Poundal (pdl)' },
 		{ value: 'kilogram-force', label: 'Kilogram Force (kgf)' },
