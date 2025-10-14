@@ -125,7 +125,7 @@
 	<title>Unit Converter - Svelte MiniApps</title>
 	<meta
 		name="description"
-		content="Convert between various units of measurement including length, temperature, volume, mass, area, and time."
+		content="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
 	/>
 </svelte:head>
 
@@ -268,7 +268,10 @@
 	</Card.Root>
 
 	<div class="text-muted-foreground mt-8 text-center text-sm">
-		<p>Supports conversion between length, temperature, volume, mass, area, and time units.</p>
+		<p>
+			Supports conversion between length, temperature, volume, mass, area, time, angle, data,
+			energy, force, power, and pressure units.
+		</p>
 	</div>
 </div>
 

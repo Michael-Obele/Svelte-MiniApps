@@ -171,7 +171,6 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'kilonewton', label: 'Kilonewton (kN)' },
 		{ value: 'dyne', label: 'Dyne (dyn)' },
 		{ value: 'pound-force', label: 'Pound Force (lbf)' },
-		{ value: 'pound of force', label: 'Pound Force (lbf)' },
 		{ value: 'kip', label: 'Kip' },
 		{ value: 'poundal', label: 'Poundal (pdl)' },
 		{ value: 'kilogram-force', label: 'Kilogram Force (kgf)' },
@@ -219,12 +218,8 @@ export function formatResult(result: number): string {
 	}
 
 	if ((result < 0.001 && result > 0) || result > 1000000) {
-		// Use Intl.NumberFormat for exponential notation with commas for very small or very large numbers
-		return new Intl.NumberFormat('en-US', {
-			minimumFractionDigits: 4,
-			maximumFractionDigits: 4,
-			notation: 'scientific'
-		}).format(result);
+		// Use custom scientific notation with superscript exponents for very small or very large numbers
+		return formatScientificNotation(result);
 	} else {
 		// Round to 6 decimal places, remove trailing zeros, and add comma formatting
 		const formatted = result.toFixed(6).replace(/\.?0+$/, '');
@@ -233,6 +228,52 @@ export function formatResult(result: number): string {
 			maximumFractionDigits: 6 // Allow up to 6 decimal places for non-exponential numbers
 		}).format(parseFloat(formatted)); // Parse back to number for Intl.NumberFormat
 	}
+}
+
+/**
+ * Formats a number in scientific notation with superscript exponents
+ * Example: 3.6576e10 -> "3.658 × 10¹⁰"
+ */
+function formatScientificNotation(num: number): string {
+	if (num === 0) return '0';
+
+	const exponent = Math.floor(Math.log10(Math.abs(num)));
+	const coefficient = num / Math.pow(10, exponent);
+
+	// Round coefficient to 4 significant digits
+	const roundedCoeff = Math.round(coefficient * 10000) / 10000;
+
+	// Format coefficient with proper decimal places
+	let coeffStr: string;
+	if (roundedCoeff % 1 === 0) {
+		coeffStr = roundedCoeff.toString();
+	} else {
+		// Remove trailing zeros after decimal
+		coeffStr = roundedCoeff.toFixed(4).replace(/\.?0+$/, '');
+	}
+
+	// Convert exponent to superscript
+	const superscriptDigits: { [key: string]: string } = {
+		'0': '⁰',
+		'1': '¹',
+		'2': '²',
+		'3': '³',
+		'4': '⁴',
+		'5': '⁵',
+		'6': '⁶',
+		'7': '⁷',
+		'8': '⁸',
+		'9': '⁹',
+		'-': '⁻'
+	};
+
+	const expStr = exponent
+		.toString()
+		.split('')
+		.map((digit) => superscriptDigits[digit] || digit)
+		.join('');
+
+	return `${coeffStr} × 10${expStr}`;
 }
 
 /**
