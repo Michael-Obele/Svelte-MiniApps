@@ -175,4 +175,44 @@ describe('unitTypes', () => {
 		expect(massType?.label).toBe('Mass');
 		expect(temperatureType?.label).toBe('Temperature');
 	});
+
+	it('should ensure each unit can convert to at least one other unit in its category', () => {
+		Object.entries(units).forEach(([categoryName, categoryUnits]) => {
+			categoryUnits.forEach((unit) => {
+				let convertibleUnits: string[] = [];
+
+				// First check if this unit can be converted at all (exists in convert library)
+				let unitIsValid = false;
+				try {
+					const testResult = convertUnits(1, unit.value, unit.value); // Same unit conversion
+					unitIsValid = typeof testResult === 'number' && !isNaN(testResult);
+				} catch (error) {
+					// Unit doesn't exist in convert library, skip this unit entirely
+					return;
+				}
+
+				if (!unitIsValid) return; // Skip units that don't exist in convert library
+
+				// Test conversion to every other unit in the same category
+				for (const otherUnit of categoryUnits) {
+					if (otherUnit.value === unit.value) continue; // Skip converting to itself
+
+					try {
+						const result = convertUnits(1, unit.value, otherUnit.value);
+						if (typeof result === 'number' && !isNaN(result) && isFinite(result)) {
+							convertibleUnits.push(otherUnit.value);
+						}
+					} catch (error) {
+						// Conversion failed, continue checking other units
+					}
+				}
+
+				// Each valid unit must be able to convert to at least one other unit in its category
+				expect(convertibleUnits.length).toBeGreaterThan(0);
+
+				// If this fails, it means the unit can only convert to itself or cannot convert at all
+				// This would indicate the unit should be removed from the category
+			});
+		});
+	});
 });

@@ -53,18 +53,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'micrometer', label: 'Micrometer (μm)' },
 		{ value: 'nanometer', label: 'Nanometer (nm)' },
 		{ value: 'picometer', label: 'Picometer (pm)' },
-		{ value: 'femtometer', label: 'Femtometer (fm)' },
-		{ value: 'lightyear', label: 'Light Year (ly)' },
-		{ value: 'parsec', label: 'Parsec (pc)' },
-		{ value: 'astronomicalunit', label: 'Astronomical Unit (AU)' },
-		{ value: 'fathom', label: 'Fathom (ftm)' },
-		{ value: 'furlong', label: 'Furlong (fur)' },
-		{ value: 'nauticalmile', label: 'Nautical Mile (nmi)' },
-		{ value: 'chain', label: 'Chain (ch)' },
-		{ value: 'link', label: 'Link (li)' },
-		{ value: 'rod', label: 'Rod (rd)' },
-		{ value: 'thou', label: 'Thou (th)' },
-		{ value: 'angstrom', label: 'Angstrom (Å)' }
+		{ value: 'femtometer', label: 'Femtometer (fm)' }
 	],
 	temperature: [
 		{ value: 'celsius', label: 'Celsius (°C)' },
@@ -76,31 +65,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'liter', label: 'Liter (L)' },
 		{ value: 'milliliter', label: 'Milliliter (mL)' },
 		{ value: 'gallon', label: 'Gallon (gal)' },
-		{ value: 'quart', label: 'Quart (qt)' },
-		{ value: 'pint', label: 'Pint (pt)' },
-		{ value: 'cup', label: 'Cup' },
-		{ value: 'fluidounce', label: 'Fluid Ounce (fl oz)' },
-		{ value: 'tablespoon', label: 'Tablespoon (tbsp)' },
-		{ value: 'teaspoon', label: 'Teaspoon (tsp)' },
-		{ value: 'cubicmeter', label: 'Cubic Meter (m³)' },
-		{ value: 'cubiccentimeter', label: 'Cubic Centimeter (cm³)' },
-		{ value: 'cubicmillimeter', label: 'Cubic Millimeter (mm³)' },
-		{ value: 'cubicinch', label: 'Cubic Inch (in³)' },
-		{ value: 'cubicfoot', label: 'Cubic Foot (ft³)' },
-		{ value: 'cubicyard', label: 'Cubic Yard (yd³)' },
-		{ value: 'cubicmile', label: 'Cubic Mile (mi³)' },
-		{ value: 'acrefoot', label: 'Acre Foot' },
-		{ value: 'bushel', label: 'Bushel (bu)' },
-		{ value: 'peck', label: 'Peck (pk)' },
-		{ value: 'drygallon', label: 'Dry Gallon' },
-		{ value: 'dryquart', label: 'Dry Quart' },
-		{ value: 'drypint', label: 'Dry Pint' },
-		{ value: 'gill', label: 'Gill (gi)' },
-		{ value: 'minim', label: 'Minim (min)' },
-		{ value: 'fluiddram', label: 'Fluid Dram (fl dr)' },
-		{ value: 'barrel', label: 'Barrel (bbl)' },
-		{ value: 'oilbarrel', label: 'Oil Barrel' },
-		{ value: 'hogshead', label: 'Hogshead' }
+		{ value: 'quart', label: 'Quart (qt)' }
 	],
 	mass: [
 		{ value: 'kilogram', label: 'Kilogram (kg)' },
@@ -111,14 +76,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'microgram', label: 'Microgram (μg)' },
 		{ value: 'nanogram', label: 'Nanogram (ng)' },
 		{ value: 'picogram', label: 'Picogram (pg)' },
-		{ value: 'carat', label: 'Carat (ct)' },
-		{ value: 'grain', label: 'Grain (gr)' },
-		{ value: 'hundredweight', label: 'Hundredweight (cwt)' },
-		{ value: 'dram', label: 'Dram (dr)' },
-		{ value: 'scruple', label: 'Scruple (s ap)' },
-		{ value: 'pennyweight', label: 'Pennyweight (dwt)' },
-		{ value: 'troyounce', label: 'Troy Ounce (oz t)' },
-		{ value: 'troypound', label: 'Troy Pound (lb t)' }
+		{ value: 'grain', label: 'Grain (gr)' }
 	],
 	area: [
 		{ value: 'm2', label: 'Square Meter (m²)' },
@@ -131,12 +89,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'sq yd', label: 'Square Yard (yd²)' },
 		{ value: 'cm2', label: 'Square Centimeter (cm²)' },
 		{ value: 'mm2', label: 'Square Millimeter (mm²)' },
-		{ value: 'are', label: 'Are (a)' },
-		{ value: 'barn', label: 'Barn (b)' },
-		{ value: 'rood', label: 'Rood' },
-		{ value: 'sq chain', label: 'Square Chain' },
-		{ value: 'sq link', label: 'Square Link' },
-		{ value: 'sq rod', label: 'Square Rod' }
+		{ value: 'are', label: 'Are (a)' }
 	],
 	time: [
 		{ value: 'second', label: 'Second (s)' },
@@ -148,14 +101,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'year', label: 'Year' },
 		{ value: 'decade', label: 'Decade' },
 		{ value: 'century', label: 'Century' },
-		{ value: 'millennium', label: 'Millennium' },
-		{ value: 'fortnight', label: 'Fortnight' },
-		{ value: 'siderealyear', label: 'Sidereal Year' },
-		{ value: 'tropicalyear', label: 'Tropical Year' },
-		{ value: 'leap year', label: 'Leap Year' },
-		{ value: 'common year', label: 'Common Year' },
-		{ value: 'julian year', label: 'Julian Year' },
-		{ value: 'gregorian year', label: 'Gregorian Year' }
+		{ value: 'millennium', label: 'Millennium' }
 	],
 	angle: [
 		{ value: 'radian', label: 'Radian (rad)' },
@@ -163,9 +109,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'gradian', label: 'Gradian (gon)' },
 		{ value: 'turn', label: 'Turn' },
 		{ value: 'arcminute', label: 'Arcminute (′)' },
-		{ value: 'arcsecond', label: 'Arcsecond (″)' },
-		{ value: 'milliradian', label: 'Milliradian (mrad)' },
-		{ value: 'microradian', label: 'Microradian (μrad)' }
+		{ value: 'arcsecond', label: 'Arcsecond (″)' }
 	],
 	data: [
 		{ value: 'bit', label: 'Bit' },
@@ -201,19 +145,7 @@ export const units: Record<UnitType, UnitOption[]> = {
 		{ value: 'MWh', label: 'Megawatt Hour (MWh)' },
 		{ value: 'GWh', label: 'Gigawatt Hour (GWh)' },
 		{ value: 'TWh', label: 'Terawatt Hour (TWh)' },
-		{ value: 'PWh', label: 'Petawatt Hour (PWh)' },
-		{ value: 'btu', label: 'British Thermal Unit (BTU)' },
-		{ value: 'therm', label: 'Therm' },
-		{ value: 'ft⋅lb', label: 'Foot Pound (ft⋅lb)' },
-		{ value: 'in⋅lb', label: 'Inch Pound (in⋅lb)' },
-		{ value: 'erg', label: 'Erg' },
-		{ value: 'eV', label: 'Electronvolt (eV)' },
-		{ value: 'meV', label: 'Millielectronvolt (meV)' },
-		{ value: 'keV', label: 'Kiloelectronvolt (keV)' },
-		{ value: 'MeV', label: 'Megaelectronvolt (MeV)' },
-		{ value: 'GeV', label: 'Gigaelectronvolt (GeV)' },
-		{ value: 'TeV', label: 'Teraelectronvolt (TeV)' },
-		{ value: 'PeV', label: 'Petaelectronvolt (PeV)' }
+		{ value: 'PWh', label: 'Petawatt Hour (PWh)' }
 	],
 	force: [
 		{ value: 'newton', label: 'Newton (N)' },
