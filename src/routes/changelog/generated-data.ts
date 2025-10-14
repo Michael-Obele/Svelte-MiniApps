@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: 29de39741355f178226a4e5d5b5b4e374dd5d378
-// Generated at: 2025-10-12T16:29:05.867Z
+// Last processed commit: ece7ee232e812640cbad74db1a0a963aa2faecd0
+// Generated at: 2025-10-14T22:11:40.176Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -13,6 +13,17 @@ export interface GeneratedTimelineItem {
 }
 
 export const generatedTimeline: GeneratedTimelineItem[] = [
+  {
+    "date": "October 14, 2025",
+    "title": "feat: Add timeline entry for Svelte MiniApps feature on MadeWithSvelte showcase",
+    "description": "Updated src/routes/changelog/data.ts",
+    "items": [
+      "feat: Add timeline entry for Svelte MiniApps feature on MadeWithSvelte showcase (ece7ee2)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
   {
     "date": "October 12, 2025",
     "title": "feat: Enhance app management by updating project completion checks, adding new app indicators, and improving sitemap routes",
@@ -896,4 +907,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-12T16:29:05.867Z';
+export const lastUpdated = '2025-10-14T22:11:40.177Z';
