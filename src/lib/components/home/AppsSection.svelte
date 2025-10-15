@@ -10,7 +10,7 @@ Usage:
 
 -->
 <script lang="ts">
-	import { projects, done, site, isNewApp } from '$lib/index';
+	import { projects, done, site, isNewApp, isRecentlyUpdated } from '$lib/index';
 	import { CheckCircle2, CircleHelp, CircleX } from '@lucide/svelte';
 
 	let sortedProjects: any[] = [];
@@ -67,6 +67,14 @@ Usage:
 									class="ml-2 inline-flex items-center rounded-md bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
 								>
 									NEW
+								</span>
+							{/if}
+
+							{#if isRecentlyUpdated(project.link)}
+								<span
+									class="ml-2 inline-flex items-center rounded-md bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+								>
+									UPDATED
 								</span>
 							{/if}
 						</li>

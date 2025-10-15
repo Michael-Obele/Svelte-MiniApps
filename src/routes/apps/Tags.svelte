@@ -2,7 +2,7 @@
 	import { PiggyBank, Heart, Speaker, Code } from '@lucide/svelte';
 	import { Box, Lock, Pen, CheckSquare, Book } from '@lucide/svelte';
 	import { PartyPopper, Diff, Gamepad2 } from '@lucide/svelte';
-	import { done, isNewApp } from '$lib/index';
+	import { done, isNewApp, isRecentlyUpdated } from '$lib/index';
 
 	let { item } = $props();
 </script>
@@ -44,6 +44,14 @@
 			class="inline-flex items-center rounded-md bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
 		>
 			NEW
+		</span>
+	{/if}
+
+	{#if done.some((d) => d.name === item.link) && isRecentlyUpdated(item.link)}
+		<span
+			class="inline-flex items-center rounded-md bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+		>
+			UPDATED
 		</span>
 	{/if}
 </div>

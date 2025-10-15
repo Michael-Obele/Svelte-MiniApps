@@ -12,6 +12,10 @@ export const site = {
 	themeColor: '#1e293b'
 };
 
+/**
+ * An array of completed mini-apps, each represented by an object containing the app's name,
+ * its completion time as an ISO 8601 date string, and optionally an update time.
+ */
 export const done = [
 	{ name: 'random-password-generator', time: '2025-07-15T00:00:00.000Z' },
 	{ name: 'github-contribution-tracker', time: '2025-08-20T00:00:00.000Z' },
@@ -24,7 +28,7 @@ export const done = [
 	{ name: 'todo-list', time: '2025-07-05T00:00:00.000Z' },
 	{ name: 'markdown-editor', time: '2025-09-20T00:00:00.000Z' },
 	{ name: 'text-summarizer', time: '2025-08-15T00:00:00.000Z' },
-	{ name: 'unit-converter', time: '2025-07-20T00:00:00.000Z' },
+	{ name: 'unit-converter', time: '2025-07-20T00:00:00.000Z', update: '2025-10-15T00:00:00.000Z' },
 	{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
 	{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
 	{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' }
@@ -342,4 +346,23 @@ export function isNewApp(appName: string): boolean {
 
 	// Consider an app "new" if it was completed within the last 21 days (3 weeks)
 	return diffDays <= 21;
+}
+
+/**
+ * Checks if an app was recently updated (updated within the last 7 days).
+ *
+ * @param {string} appName - The name of the app to check.
+ * @returns {boolean} True if the app was recently updated, false otherwise.
+ */
+export function isRecentlyUpdated(appName: string): boolean {
+	const app = done.find((d) => d.name === appName);
+	if (!app || !app.update) return false;
+
+	const updateDate = new Date(app.update);
+	const now = new Date();
+	const diffTime = now.getTime() - updateDate.getTime();
+	const diffDays = diffTime / (1000 * 3600 * 24);
+
+	// Consider an app "recently updated" if it was updated within the last 7 days
+	return diffDays <= 7;
 }
