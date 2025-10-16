@@ -21,7 +21,26 @@
 	let inputValue: string = $state('');
 	let fromUnit: string = $state('meter');
 	let toUnit: string = $state('foot');
-	let convertedValue: number | string = $state('');
+	let convertedValue = $derived.by(() => {
+		if (inputValue === '') return '';
+
+		const value = parseFloat(inputValue);
+		if (isNaN(value)) {
+			return 'Invalid input';
+		}
+
+		if (fromUnit === toUnit) {
+			return value;
+		}
+
+		try {
+			const result = convertUnits(value, fromUnit, toUnit);
+			return formatResult(result);
+		} catch (error) {
+			console.error('Conversion error:', error);
+			return 'Unsupported conversion';
+		}
+	});
 	let unitType: string = $state('length');
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('unit-converter-has-seen-how-to-use', false);
@@ -61,63 +80,29 @@
 	const formattedFromUnitLabel = $derived(getPluralUnitLabel(fromUnitLabel, inputValue));
 	const formattedToUnitLabel = $derived(getPluralUnitLabel(toUnitLabel, convertedValue));
 
-	const convert = () => {
-		const value = parseFloat(inputValue);
-		if (isNaN(value)) {
-			convertedValue = 'Invalid input';
-			return;
-		}
-
-		if (fromUnit === toUnit) {
-			convertedValue = value;
-			return;
-		}
-
-		try {
-			const result = convertUnits(value, fromUnit, toUnit);
-			convertedValue = formatResult(result);
-		} catch (error) {
-			convertedValue = 'Unsupported conversion';
-			console.error('Conversion error:', error);
-		}
-	};
-
-	$effect(() => {
-		if (inputValue && inputValue !== '') {
-			convert();
-		} else {
-			convertedValue = '';
-		}
-	});
-
 	const handleUnitTypeChange = (newType: string) => {
 		unitType = newType;
 		const defaultUnits = getDefaultUnits(unitType as UnitType);
 		fromUnit = defaultUnits.from;
 		toUnit = defaultUnits.to;
-		if (inputValue && inputValue !== '') convert();
 	};
 
 	const handleFromUnitChange = (newUnit: string) => {
 		fromUnit = newUnit;
-		if (inputValue && inputValue !== '') convert();
 	};
 
 	const handleToUnitChange = (newUnit: string) => {
 		toUnit = newUnit;
-		if (inputValue && inputValue !== '') convert();
 	};
 
 	const swapUnits = () => {
 		const temp = fromUnit;
 		fromUnit = toUnit;
 		toUnit = temp;
-		if (inputValue && inputValue !== '') convert();
 	};
 
 	const clearInput = () => {
 		inputValue = '';
-		convertedValue = '';
 	};
 </script>
 
@@ -149,7 +134,7 @@
 		</Card.Header>
 		<Card.Content>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-				{#each unitTypes as type}
+				{#each unitTypes as type (type.value)}
 					<Button
 						variant={unitType === type.value ? 'default' : 'outline'}
 						class="h-12"
@@ -199,7 +184,7 @@
 						</Select.Trigger>
 
 						<Select.Content>
-							{#each units[unitType as UnitType] as unit}
+							{#each units[unitType as UnitType] as unit (unit.value)}
 								<Select.Item value={unit.value} label={unit.label}>
 									{unit.label}
 								</Select.Item>
@@ -227,7 +212,7 @@
 							<span class="block truncate">{toUnitLabel}</span>
 						</Select.Trigger>
 						<Select.Content>
-							{#each units[unitType as UnitType] as unit}
+							{#each units[unitType as UnitType] as unit (unit.value)}
 								<Select.Item value={unit.value} label={unit.label}>
 									{unit.label}
 								</Select.Item>
@@ -245,7 +230,7 @@
 		</Card.Header>
 		<Card.Content>
 			<div class="bg-muted/50 rounded-lg p-6 text-center">
-				{#if inputValue && convertedValue}
+				{#if inputValue !== '' && convertedValue !== ''}
 					<div class="space-y-2">
 						<p class="text-muted-foreground text-sm">
 							{formattedInputValue}
@@ -258,7 +243,7 @@
 							{formattedToUnitLabel}
 						</p>
 					</div>
-				{:else if inputValue && !convertedValue}
+				{:else if inputValue !== '' && convertedValue === ''}
 					<p class="text-muted-foreground">Converting...</p>
 				{:else}
 					<p class="text-muted-foreground">Enter a value to see the conversion result</p>
