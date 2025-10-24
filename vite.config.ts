@@ -4,6 +4,7 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { partytownVite } from '@builder.io/partytown/utils';
 import { join } from 'path';
 import tailwindcss from '@tailwindcss/vite';
+import { wuchale } from '@wuchale/vite-plugin';
 
 // export default defineConfig({
 // 	plugins: [sveltekit(), enhancedImages()],
@@ -26,6 +27,7 @@ export default defineConfig({
 		partytownVite({
 			dest: join(__dirname, 'static', '~partytown')
 		}),
+		wuchale(),
 		sveltekit()
 	],
 	server: {

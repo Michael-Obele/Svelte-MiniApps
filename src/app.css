@@ -2,6 +2,7 @@
 @import 'tw-animate-css';
 @config '../tailwind.config.ts';
 @plugin "@iconify/tailwind4";
+@source not "../locales/";
 
 @custom-variant dark (&:is(.dark *));
 
