@@ -2,11 +2,11 @@
 import { adapter as svelte } from '@wuchale/svelte';
 import { adapter as js } from 'wuchale/adapter-vanilla';
 import { defineConfig } from 'wuchale';
-import { gemini } from 'wuchale';
+import OpenAI from 'openai';
 
 export default defineConfig({
 	// sourceLocale is en by default
-	otherLocales: ['es'],
+	otherLocales: ['es', 'fr', 'de', 'zh', 'ja', 'pt'],
 	// otherLocales: ['es', 'fr', 'de', 'zh', 'ja', 'pt', 'ar'],
 	adapters: {
 		main: svelte(),
@@ -14,8 +14,31 @@ export default defineConfig({
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
 	},
-	ai: gemini({
-		batchSize: 40,
-		parallel: 5
-	})
+	ai: {
+		name: 'openai',
+		translate: async (messages, instruction) => {
+			const openai = new OpenAI({
+				apiKey: process.env.OPENAI_API_KEY // Use export OPENAI_API_KEY=sk-... in your terminal
+			});
+
+			try {
+				const response = await openai.responses.create({
+					model: 'gpt-5-nano',
+					input: [
+						{ role: 'system', content: instruction },
+						{ role: 'user', content: messages }
+					]
+				});
+
+				return response.output_text;
+			} catch (error) {
+				console.error('OpenAI translation error:', error);
+				// Return original messages as fallback
+				return messages;
+			}
+		},
+
+		batchSize: 45, // Adjust for rate limits/cost
+		parallel: 8 // Parallel batches
+	}
 });
