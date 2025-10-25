@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: fc8475f4328f6eb82c0214a8fc1df282ba565ef1
-// Generated at: 2025-10-25T18:39:48.673Z
+// Last processed commit: b780b485449bb1dc531bdcc92739dce843d66bdd
+// Generated at: 2025-10-25T21:07:32.574Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -27,6 +27,17 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
       "Added translated (0476045)",
       "feat: add Wuchale i18n integration guide and language switcher migration documentation (038f377)",
       "feat: add OpenAI integration and update localization settings (26bbbed)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
+  {
+    "date": "October 25, 2025",
+    "title": "✨ feat(language): implement language switching functionality and initialize language settings",
+    "description": "Updated src/lib/components/LanguageSwitcher.svelte, src/lib/components/blocks/Footer.svelte, src/lib/components/blocks/Navbar.svelte and more",
+    "items": [
+      "✨ feat(language): implement language switching functionality and initialize language settings (b780b48)"
     ],
     "type": "feature",
     "icon": "Rocket",
@@ -997,4 +1008,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-25T18:39:48.673Z';
+export const lastUpdated = '2025-10-25T21:07:32.575Z';
