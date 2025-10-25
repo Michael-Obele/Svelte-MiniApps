@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-25T15:14:13.000Z\n"
+"PO-Revision-Date: 2025-10-25T17:48:45.505Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -162,24 +162,10 @@ msgstr "Avant (Svelte 4)"
 msgid "After (Svelte 5)"
 msgstr "Après (Svelte 5)"
 
-#: src/routes/handle-protocol/+page.svelte
-msgid "Handle Protocol | Svelte MiniApps"
-msgstr "Protocole de gestion | Svelte MiniApps"
-
-#: src/routes/handle-protocol/+page.svelte
-msgid "Handle custom protocol URLs to open Svelte MiniApps."
-msgstr "Gérez les URL de protocole personnalisé pour ouvrir Svelte MiniApps."
-
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-#: src/routes/handle-protocol/+page.svelte
 msgid "Error"
 msgstr "Erreur"
-
-#. placeholder {0}: protocolUrl
-#: src/routes/handle-protocol/+page.svelte
-msgid "Handling protocol: {0}"
-msgstr "Gestion du protocole : {0}"
 
 #: src/routes/hire/+page.svelte
 msgid "Svelte/SvelteKit"
@@ -638,11 +624,13 @@ msgstr "Mettez à jour vos liens à tout moment sans changer le code QR"
 msgid "This app is in beta. Features may be unstable or incomplete."
 msgstr "Cette application est en bêta. Les fonctionnalités peuvent être instables ou incomplètes."
 
-#~ msgid "Blur In"
-#~ msgstr "Flou d'entrée"
+#: src/lib/components/blocks/BlurInText.svelte
+msgid "Blur In"
+msgstr "Flou d'entrée"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/home/data.ts
 msgid "MiniApps"
 msgstr "MiniApps"
 
@@ -720,41 +708,53 @@ msgstr "Svelte MiniApps"
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "Une collection de mini-applications construites avec SvelteKit"
 
-#~ msgid "Page Not Found"
-#~ msgstr "Page non trouvée"
+#: src/routes/+error.svelte
+msgid "Page Not Found"
+msgstr "Page non trouvée"
 
-#~ msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-#~ msgstr "La page que vous recherchez a peut-être été supprimée, renommée ou est temporairement indisponible."
+#: src/routes/+error.svelte
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "La page que vous recherchez a peut-être été supprimée, renommée ou est temporairement indisponible."
 
-#~ msgid "Please check the URL or try navigating from the home page."
-#~ msgstr "Veuillez vérifier l'URL ou essayer de naviguer depuis la page d'accueil."
+#: src/routes/+error.svelte
+msgid "Please check the URL or try navigating from the home page."
+msgstr "Veuillez vérifier l'URL ou essayer de naviguer depuis la page d'accueil."
 
-#~ msgid "Server Error"
-#~ msgstr "Erreur du serveur"
+#: src/routes/+error.svelte
+msgid "Server Error"
+msgstr "Erreur du serveur"
 
-#~ msgid "Our servers encountered an error while processing your request."
-#~ msgstr "Nos serveurs ont rencontré une erreur lors du traitement de votre demande."
+#: src/routes/+error.svelte
+msgid "Our servers encountered an error while processing your request."
+msgstr "Nos serveurs ont rencontré une erreur lors du traitement de votre demande."
 
-#~ msgid "Please try again later or contact support if the problem persists."
-#~ msgstr "Veuillez réessayer plus tard ou contactez le support si le problème persiste."
+#: src/routes/+error.svelte
+msgid "Please try again later or contact support if the problem persists."
+msgstr "Veuillez réessayer plus tard ou contactez le support si le problème persiste."
 
-#~ msgid "Access Denied"
-#~ msgstr "Accès refusé"
+#: src/routes/+error.svelte
+msgid "Access Denied"
+msgstr "Accès refusé"
 
-#~ msgid "You don't have permission to access this resource."
-#~ msgstr "Vous n'avez pas la permission d'accéder à cette ressource."
+#: src/routes/+error.svelte
+msgid "You don't have permission to access this resource."
+msgstr "Vous n'avez pas la permission d'accéder à cette ressource."
 
-#~ msgid "Please log in or contact your administrator for access."
-#~ msgstr "Veuillez vous connecter ou contactez votre administrateur pour accéder."
+#: src/routes/+error.svelte
+msgid "Please log in or contact your administrator for access."
+msgstr "Veuillez vous connecter ou contactez votre administrateur pour accéder."
 
-#~ msgid "Unexpected Error"
-#~ msgstr "Erreur inattendue"
+#: src/routes/+error.svelte
+msgid "Unexpected Error"
+msgstr "Erreur inattendue"
 
-#~ msgid "An unexpected error occurred while processing your request."
-#~ msgstr "Une erreur inattendue s'est produite lors du traitement de votre demande."
+#: src/routes/+error.svelte
+msgid "An unexpected error occurred while processing your request."
+msgstr "Une erreur inattendue s'est produite lors du traitement de votre demande."
 
-#~ msgid "Please try again or contact support if the problem persists."
-#~ msgstr "Veuillez réessayer ou contactez le support si le problème persiste."
+#: src/routes/+error.svelte
+msgid "Please try again or contact support if the problem persists."
+msgstr "Veuillez réessayer ou contactez le support si le problème persiste."
 
 #. placeholder {0}: currentError.title
 #. placeholder {1}: page.status
@@ -817,6 +817,8 @@ msgid "React"
 msgstr "React"
 
 #: src/lib/assets/svelte-badge.svelte
+#: src/lib/components/home/data.ts
+#: src/lib/components/home/data.ts
 msgid "Svelte"
 msgstr "Svelte"
 
@@ -1257,6 +1259,7 @@ msgstr "Essayer maintenant <0/>"
 msgid "Coming Soon!"
 msgstr "À venir !"
 
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
@@ -1277,6 +1280,7 @@ msgstr "Suivez notre parcours de Svelte 4 à Svelte 5, avec une architecture off
 msgid "Article"
 msgstr "Article"
 
+#: src/lib/components/blocks/RouteHead.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -1394,19 +1398,23 @@ msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
 msgstr "Accueil"
 
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Apps"
 msgstr "Applications"
 
-#~ msgid "About"
-#~ msgstr "À propos"
+#: src/lib/components/blocks/Navbar.svelte
+msgid "About"
+msgstr "À propos"
 
-#~ msgid "Hire"
-#~ msgstr "Embaucher"
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Hire"
+msgstr "Embaucher"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "See GitHub Repo"
@@ -6928,6 +6936,7 @@ msgstr "Une erreur inattendue est survenue lors de la récupération des donnée
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "Veuillez réessayer plus tard. Si le problème persiste, contactez le support."
 
+#: src/lib/index.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6935,6 +6944,7 @@ msgstr "Veuillez réessayer plus tard. Si le problème persiste, contactez le su
 msgid "Good morning"
 msgstr "Bonjour"
 
+#: src/lib/index.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6942,6 +6952,7 @@ msgstr "Bonjour"
 msgid "Good afternoon"
 msgstr "Bon après-midi"
 
+#: src/lib/index.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6949,6 +6960,7 @@ msgstr "Bon après-midi"
 msgid "Good evening"
 msgstr "Bonsoir```"
 
+#: src/lib/index.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 msgid "Good night"
@@ -6957,3 +6969,55 @@ msgstr "Bonne nuit"
 #: src/lib/components/home/Welcome.svelte
 msgid "Embrace your cosmic journey"
 msgstr "Embrassez votre voyage cosmique```"
+
+#: src/lib/components/home/data.ts
+msgid "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
+msgstr "Bienvenue dans votre nouvelle boîte à outils préférée ! Nos MiniApps sont des compagnons soigneusement conçus pour votre parcours numérique quotidien. Chaque application est conçue pour vous - rapide à charger, facile à utiliser et prête à relever vos défis quotidiens. Que vous planifiiez votre budget, que vous développiez des habitudes saines ou que vous restiez organisé, nous avons l'outil qu'il vous faut."
+
+#: src/lib/components/home/data.ts
+msgid "Why"
+msgstr "Pourquoi"
+
+#: src/lib/components/home/data.ts
+msgid "Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless."
+msgstr "Avez-vous déjà remarqué à quel point certaines applications sont plus fluides et réactives ? C'est la magie de Svelte à l'œuvre ! Nous avons choisi cette technologie de pointe parce que nous pensons que vous méritez des outils non seulement puissants, mais aussi agréables à utiliser. Nos applications répondent instantanément à vos interactions, ce qui rend chaque clic et chaque frappe naturels et sans effort."
+
+#: src/lib/components/home/data.ts
+msgid "Simple"
+msgstr "Simple"
+
+#: src/lib/components/home/data.ts
+msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
+msgstr "La vie est déjà assez compliquée - vos outils ne devraient pas l'être. Nous avons éliminé le superflu pour nous concentrer sur ce qui compte le plus : vous aider à faire avancer les choses. Chaque MiniApp est soigneusement conçue pour être intuitive et simple, tout en intégrant toutes les fonctionnalités dont vous avez besoin. Pas de courbes d'apprentissage abruptes, juste une productivité pure dès le départ."
+
+#: src/lib/components/home/data.ts
+msgid "Versatile and"
+msgstr "Polyvalent et"
+
+#: src/lib/components/home/data.ts
+msgid "Scalable"
+msgstr "Évolutif"
+
+#: src/lib/components/home/data.ts
+msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our MiniApps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
+msgstr "Que vous soyez un étudiant gérant ses devoirs, un professionnel suivant des projets ou n'importe qui entre les deux, nos MiniApps s'adaptent à vos besoins. Commencez petit avec des fonctionnalités de base et découvrez des capacités plus puissantes au fur et à mesure de votre croissance. De plus, ils fonctionnent de manière transparente sur tous vos appareils, de sorte que vos outils sont toujours là où vous en avez besoin."
+
+#: src/lib/components/home/data.ts
+msgid "Share the Joy:"
+msgstr "Partagez la joie :"
+
+#: src/lib/components/home/data.ts
+msgid "Help Us Improve:"
+msgstr "Aidez-nous à améliorer :"
+
+#: src/lib/components/home/data.ts
+msgid "Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
+msgstr "Vous avez repéré un <strong>bug</strong> ? Nous sommes tout ouïe ! Vos commentaires sont précieux pour rendre ces outils encore plus incroyables. Qu'il s'agisse d'un petit problème ou d'une idée brillante, rendez-vous sur notre page GitHub et faites-le nous savoir. Vous n'êtes pas un expert en technologie ? Pas de problème ! Décrivez simplement ce que vous avez vécu - les captures d'écran sont toujours les bienvenues. Chaque rapport de bug nous rapproche de la perfection."
+
+#: src/lib/components/home/data.ts
+msgid "Join the Creation:"
+msgstr "Rejoignez la création :"
+
+#: src/lib/components/home/data.ts
+msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
+msgstr "Vous avez une idée qui pourrait rendre ces applications encore meilleures ? Nous aimerions l'entendre ! Que vous soyez un magicien du codage prêt à plonger dans le code, ou quelqu'un avec une nouvelle perspective sur la façon dont les choses pourraient fonctionner, votre contribution est en or. Il y a toute une liste de souhaits d'applications qui attendent d'être construites, et d'innombrables façons d'améliorer celles qui existent déjà. Prêt à laisser votre marque sur quelque chose de spécial ?```"
