@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-25T14:29:51.227Z\n"
+"PO-Revision-Date: 2025-10-25T15:14:13.133Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -22,53 +22,41 @@ msgstr "Svelteミニアプリ"
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "SvelteKitで構築されたミニアプリのコレクション"
 
-#: src/routes/+error.svelte
-msgid "Page Not Found"
-msgstr "ページが見つかりません"
+#~ msgid "Page Not Found"
+#~ msgstr "ページが見つかりません"
 
-#: src/routes/+error.svelte
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "お探しのページは、削除されたか、名前が変更されたか、一時的に利用できなくなっている可能性があります。"
+#~ msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+#~ msgstr "お探しのページは、削除されたか、名前が変更されたか、一時的に利用できなくなっている可能性があります。"
 
-#: src/routes/+error.svelte
-msgid "Please check the URL or try navigating from the home page."
-msgstr "URLを確認するか、ホームページから移動してみてください。"
+#~ msgid "Please check the URL or try navigating from the home page."
+#~ msgstr "URLを確認するか、ホームページから移動してみてください。"
 
-#: src/routes/+error.svelte
-msgid "Server Error"
-msgstr "サーバーエラー"
+#~ msgid "Server Error"
+#~ msgstr "サーバーエラー"
 
-#: src/routes/+error.svelte
-msgid "Our servers encountered an error while processing your request."
-msgstr "リクエストの処理中にサーバーでエラーが発生しました。"
+#~ msgid "Our servers encountered an error while processing your request."
+#~ msgstr "リクエストの処理中にサーバーでエラーが発生しました。"
 
-#: src/routes/+error.svelte
-msgid "Please try again later or contact support if the problem persists."
-msgstr "後でもう一度試すか、問題が解決しない場合はサポートにお問い合わせください。"
+#~ msgid "Please try again later or contact support if the problem persists."
+#~ msgstr "後でもう一度試すか、問題が解決しない場合はサポートにお問い合わせください。"
 
-#: src/routes/+error.svelte
-msgid "Access Denied"
-msgstr "アクセスが拒否されました"
+#~ msgid "Access Denied"
+#~ msgstr "アクセスが拒否されました"
 
-#: src/routes/+error.svelte
-msgid "You don't have permission to access this resource."
-msgstr "このリソースにアクセスする権限がありません。"
+#~ msgid "You don't have permission to access this resource."
+#~ msgstr "このリソースにアクセスする権限がありません。"
 
-#: src/routes/+error.svelte
-msgid "Please log in or contact your administrator for access."
-msgstr "ログインするか、管理者にアクセスを依頼してください。"
+#~ msgid "Please log in or contact your administrator for access."
+#~ msgstr "ログインするか、管理者にアクセスを依頼してください。"
 
-#: src/routes/+error.svelte
-msgid "Unexpected Error"
-msgstr "予期せぬエラー"
+#~ msgid "Unexpected Error"
+#~ msgstr "予期せぬエラー"
 
-#: src/routes/+error.svelte
-msgid "An unexpected error occurred while processing your request."
-msgstr "リクエストの処理中に予期せぬエラーが発生しました。"
+#~ msgid "An unexpected error occurred while processing your request."
+#~ msgstr "リクエストの処理中に予期せぬエラーが発生しました。"
 
-#: src/routes/+error.svelte
-msgid "Please try again or contact support if the problem persists."
-msgstr "後でもう一度試すか、問題が解決しない場合はサポートにお問い合わせください。"
+#~ msgid "Please try again or contact support if the problem persists."
+#~ msgstr "後でもう一度試すか、問題が解決しない場合はサポートにお問い合わせください。"
 
 #. placeholder {0}: currentError.title
 #. placeholder {1}: page.status
@@ -554,7 +542,6 @@ msgstr "今すぐ試す <0/>"
 msgid "Coming Soon!"
 msgstr "近日公開予定！"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
@@ -575,7 +562,6 @@ msgstr "Svelte 4 から Svelte 5 への移行の軌跡。オフラインファ�
 msgid "Article"
 msgstr "記事"
 
-#: src/lib/components/blocks/RouteHead.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "マイケル・オベレ"
@@ -1278,9 +1264,8 @@ msgstr "QRコードを変更せずに、いつでもリンクを更新"
 msgid "This app is in beta. Features may be unstable or incomplete."
 msgstr "このアプリはベータ版です。機能は不安定または未完成の可能性があります。"
 
-#: src/lib/components/blocks/BlurInText.svelte
-msgid "Blur In"
-msgstr "ブラーイン"
+#~ msgid "Blur In"
+#~ msgstr "ブラーイン"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -1380,23 +1365,19 @@ msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
 #: src/lib/components/blocks/Navbar.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
 msgstr "ホーム"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Apps"
 msgstr "アプリ"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "About"
-msgstr "このサイトについて"
+#~ msgid "About"
+#~ msgstr "このサイトについて"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Hire"
-msgstr "採用"
+#~ msgid "Hire"
+#~ msgstr "採用"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "See GitHub Repo"
@@ -6898,21 +6879,32 @@ msgstr "辞書データの取得中に予期しないエラーが発生しまし
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "後でもう一度お試しください。問題が解決しない場合はサポートに連絡してください。"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good morning"
 msgstr "おはよう"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good afternoon"
 msgstr "こんにちは"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good evening"
 msgstr "こんばんは"
 
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 msgid "Good night"
 msgstr "おやすみなさい"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Embrace your cosmic journey"
+msgstr "宇宙の旅を受け入れよう"

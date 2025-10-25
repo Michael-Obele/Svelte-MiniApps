@@ -1,16 +1,15 @@
 import type { Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import * as auth from '$lib/server/auth.js';
-import * as main from './locales/loader.server.svelte.js';
-import * as js from './locales/loader.svelte.js';
-import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
-import { locales } from 'virtual:wuchale/locales';
+// import * as main from './locales/loader.server.svelte.js';
+// import * as js from './locales/loader.server.js';
+// import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
+// import { locales } from 'virtual:wuchale/locales';
 import { sequence } from '@sveltejs/kit/hooks';
 
-// load at server startup
-loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);
-// @ts-expect-error
-loadLocales(js.key, js.loadIDs, js.loadCatalog, locales);
+// load at server startup (only server-side loader)
+// loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);
+// loadLocales(js.key, js.loadIDs, js.loadCatalog, locales);
 
 const handleAuth: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(auth.sessionCookieName);
@@ -39,10 +38,10 @@ const handleAuth: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handleLang: Handle = async ({ event, resolve }) => {
-	const locale = event.url.searchParams.get('locale') ?? 'en';
-	return await runWithLocale(locale, () => resolve(event));
-};
+// export const handleLang: Handle = async ({ event, resolve }) => {
+// 	const locale = event.url.searchParams.get('locale') ?? 'en';
+// 	return await runWithLocale(locale, () => resolve(event));
+// };
 
 // export const handle: Handle = handleAuth;
-export const handle = sequence(handleAuth, handleLang);
+export const handle = sequence(handleAuth);

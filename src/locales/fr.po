@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-25T14:29:51.148Z\n"
+"PO-Revision-Date: 2025-10-25T15:14:13.000Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -638,9 +638,8 @@ msgstr "Mettez à jour vos liens à tout moment sans changer le code QR"
 msgid "This app is in beta. Features may be unstable or incomplete."
 msgstr "Cette application est en bêta. Les fonctionnalités peuvent être instables ou incomplètes."
 
-#: src/lib/components/blocks/BlurInText.svelte
-msgid "Blur In"
-msgstr "Flou d'entrée"
+#~ msgid "Blur In"
+#~ msgstr "Flou d'entrée"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -721,53 +720,41 @@ msgstr "Svelte MiniApps"
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "Une collection de mini-applications construites avec SvelteKit"
 
-#: src/routes/+error.svelte
-msgid "Page Not Found"
-msgstr "Page non trouvée"
+#~ msgid "Page Not Found"
+#~ msgstr "Page non trouvée"
 
-#: src/routes/+error.svelte
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "La page que vous recherchez a peut-être été supprimée, renommée ou est temporairement indisponible."
+#~ msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+#~ msgstr "La page que vous recherchez a peut-être été supprimée, renommée ou est temporairement indisponible."
 
-#: src/routes/+error.svelte
-msgid "Please check the URL or try navigating from the home page."
-msgstr "Veuillez vérifier l'URL ou essayer de naviguer depuis la page d'accueil."
+#~ msgid "Please check the URL or try navigating from the home page."
+#~ msgstr "Veuillez vérifier l'URL ou essayer de naviguer depuis la page d'accueil."
 
-#: src/routes/+error.svelte
-msgid "Server Error"
-msgstr "Erreur du serveur"
+#~ msgid "Server Error"
+#~ msgstr "Erreur du serveur"
 
-#: src/routes/+error.svelte
-msgid "Our servers encountered an error while processing your request."
-msgstr "Nos serveurs ont rencontré une erreur lors du traitement de votre demande."
+#~ msgid "Our servers encountered an error while processing your request."
+#~ msgstr "Nos serveurs ont rencontré une erreur lors du traitement de votre demande."
 
-#: src/routes/+error.svelte
-msgid "Please try again later or contact support if the problem persists."
-msgstr "Veuillez réessayer plus tard ou contactez le support si le problème persiste."
+#~ msgid "Please try again later or contact support if the problem persists."
+#~ msgstr "Veuillez réessayer plus tard ou contactez le support si le problème persiste."
 
-#: src/routes/+error.svelte
-msgid "Access Denied"
-msgstr "Accès refusé"
+#~ msgid "Access Denied"
+#~ msgstr "Accès refusé"
 
-#: src/routes/+error.svelte
-msgid "You don't have permission to access this resource."
-msgstr "Vous n'avez pas la permission d'accéder à cette ressource."
+#~ msgid "You don't have permission to access this resource."
+#~ msgstr "Vous n'avez pas la permission d'accéder à cette ressource."
 
-#: src/routes/+error.svelte
-msgid "Please log in or contact your administrator for access."
-msgstr "Veuillez vous connecter ou contactez votre administrateur pour accéder."
+#~ msgid "Please log in or contact your administrator for access."
+#~ msgstr "Veuillez vous connecter ou contactez votre administrateur pour accéder."
 
-#: src/routes/+error.svelte
-msgid "Unexpected Error"
-msgstr "Erreur inattendue"
+#~ msgid "Unexpected Error"
+#~ msgstr "Erreur inattendue"
 
-#: src/routes/+error.svelte
-msgid "An unexpected error occurred while processing your request."
-msgstr "Une erreur inattendue s'est produite lors du traitement de votre demande."
+#~ msgid "An unexpected error occurred while processing your request."
+#~ msgstr "Une erreur inattendue s'est produite lors du traitement de votre demande."
 
-#: src/routes/+error.svelte
-msgid "Please try again or contact support if the problem persists."
-msgstr "Veuillez réessayer ou contactez le support si le problème persiste."
+#~ msgid "Please try again or contact support if the problem persists."
+#~ msgstr "Veuillez réessayer ou contactez le support si le problème persiste."
 
 #. placeholder {0}: currentError.title
 #. placeholder {1}: page.status
@@ -1270,7 +1257,6 @@ msgstr "Essayer maintenant <0/>"
 msgid "Coming Soon!"
 msgstr "À venir !"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
@@ -1291,7 +1277,6 @@ msgstr "Suivez notre parcours de Svelte 4 à Svelte 5, avec une architecture off
 msgid "Article"
 msgstr "Article"
 
-#: src/lib/components/blocks/RouteHead.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -1409,23 +1394,19 @@ msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
 #: src/lib/components/blocks/Navbar.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
 msgstr "Accueil"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Apps"
 msgstr "Applications"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "About"
-msgstr "À propos"
+#~ msgid "About"
+#~ msgstr "À propos"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Hire"
-msgstr "Embaucher"
+#~ msgid "Hire"
+#~ msgstr "Embaucher"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "See GitHub Repo"
@@ -6947,21 +6928,32 @@ msgstr "Une erreur inattendue est survenue lors de la récupération des donnée
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "Veuillez réessayer plus tard. Si le problème persiste, contactez le support."
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good morning"
 msgstr "Bonjour"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good afternoon"
 msgstr "Bon après-midi"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good evening"
 msgstr "Bonsoir```"
 
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 msgid "Good night"
 msgstr "Bonne nuit"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Embrace your cosmic journey"
+msgstr "Embrassez votre voyage cosmique```"

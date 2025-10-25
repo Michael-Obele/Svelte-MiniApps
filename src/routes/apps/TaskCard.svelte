@@ -3,7 +3,7 @@
 	import { BadgeCheck, HardHat, ArrowRight, Info } from '@lucide/svelte';
 	import { done, type Project } from '$lib/index';
 
-	export let item: Project;
+	let {item} = $props();
 </script>
 
 <div

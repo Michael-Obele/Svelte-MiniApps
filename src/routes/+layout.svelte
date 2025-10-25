@@ -12,7 +12,6 @@
 	import { Runatics } from 'runatics';
 
 	let { children, data }: LayoutProps = $props();
-	const analyticsId = data.ANALYTICS_ID;
 
 	onMount(async () => {
 		// Dynamically import @lordicon/element *inside* onMount
@@ -29,7 +28,7 @@
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
 </svelte:head>
 
-<Runatics {analyticsId} />
+<!-- <Runatics {analyticsId} /> -->
 <ModeWatcher />
 <Toaster
 	expand={true}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.121Z\n"
-"PO-Revision-Date: 2025-10-25T14:29:51.194Z\n"
+"PO-Revision-Date: 2025-10-25T15:14:13.096Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -22,53 +22,41 @@ msgstr "Svelte 小程序"
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "使用 SvelteKit 构建的小程序集合"
 
-#: src/routes/+error.svelte
-msgid "Page Not Found"
-msgstr "页面未找到"
+#~ msgid "Page Not Found"
+#~ msgstr "页面未找到"
 
-#: src/routes/+error.svelte
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "您查找的页面可能已被删除、更改名称或暂时不可用。"
+#~ msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+#~ msgstr "您查找的页面可能已被删除、更改名称或暂时不可用。"
 
-#: src/routes/+error.svelte
-msgid "Please check the URL or try navigating from the home page."
-msgstr "请检查网址或尝试从主页导航。"
+#~ msgid "Please check the URL or try navigating from the home page."
+#~ msgstr "请检查网址或尝试从主页导航。"
 
-#: src/routes/+error.svelte
-msgid "Server Error"
-msgstr "服务器错误"
+#~ msgid "Server Error"
+#~ msgstr "服务器错误"
 
-#: src/routes/+error.svelte
-msgid "Our servers encountered an error while processing your request."
-msgstr "我们的服务器在处理您的请求时遇到错误。"
+#~ msgid "Our servers encountered an error while processing your request."
+#~ msgstr "我们的服务器在处理您的请求时遇到错误。"
 
-#: src/routes/+error.svelte
-msgid "Please try again later or contact support if the problem persists."
-msgstr "请稍后重试，如果问题仍然存在，请联系支持。"
+#~ msgid "Please try again later or contact support if the problem persists."
+#~ msgstr "请稍后重试，如果问题仍然存在，请联系支持。"
 
-#: src/routes/+error.svelte
-msgid "Access Denied"
-msgstr "访问被拒绝"
+#~ msgid "Access Denied"
+#~ msgstr "访问被拒绝"
 
-#: src/routes/+error.svelte
-msgid "You don't have permission to access this resource."
-msgstr "您没有权限访问此资源。"
+#~ msgid "You don't have permission to access this resource."
+#~ msgstr "您没有权限访问此资源。"
 
-#: src/routes/+error.svelte
-msgid "Please log in or contact your administrator for access."
-msgstr "请登录或联系您的管理员以获得访问权限。"
+#~ msgid "Please log in or contact your administrator for access."
+#~ msgstr "请登录或联系您的管理员以获得访问权限。"
 
-#: src/routes/+error.svelte
-msgid "Unexpected Error"
-msgstr "意外错误"
+#~ msgid "Unexpected Error"
+#~ msgstr "意外错误"
 
-#: src/routes/+error.svelte
-msgid "An unexpected error occurred while processing your request."
-msgstr "处理您的请求时发生意外错误。"
+#~ msgid "An unexpected error occurred while processing your request."
+#~ msgstr "处理您的请求时发生意外错误。"
 
-#: src/routes/+error.svelte
-msgid "Please try again or contact support if the problem persists."
-msgstr "请重试，如果问题仍然存在，请联系支持。"
+#~ msgid "Please try again or contact support if the problem persists."
+#~ msgstr "请重试，如果问题仍然存在，请联系支持。"
 
 #. placeholder {0}: currentError.title
 #. placeholder {1}: page.status
@@ -555,7 +543,6 @@ msgstr "立即试用 <0/>"
 msgid "Coming Soon!"
 msgstr "即将推出！"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
@@ -576,7 +563,6 @@ msgstr "追踪我们从Svelte 4到Svelte 5的旅程，包含离线优先架构�
 msgid "Article"
 msgstr "文章"
 
-#: src/lib/components/blocks/RouteHead.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -1279,9 +1265,8 @@ msgstr "随时更新您的链接而不改变二维码"
 msgid "This app is in beta. Features may be unstable or incomplete."
 msgstr "此应用处于测试版。功能可能不稳定或不完整。"
 
-#: src/lib/components/blocks/BlurInText.svelte
-msgid "Blur In"
-msgstr "模糊进入"
+#~ msgid "Blur In"
+#~ msgstr "模糊进入"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -1381,23 +1366,19 @@ msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
 #: src/lib/components/blocks/Navbar.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
 msgstr "主页"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Apps"
 msgstr "应用"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "About"
-msgstr "关于"
+#~ msgid "About"
+#~ msgstr "关于"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Hire"
-msgstr "聘请"
+#~ msgid "Hire"
+#~ msgstr "聘请"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "See GitHub Repo"
@@ -6879,21 +6860,32 @@ msgstr "获取字典数据时发生意外错误。"
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "请稍后重试。如果问题仍然存在，请联系支持。"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good morning"
 msgstr "早上好"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good afternoon"
 msgstr "下午好"
 
+#: src/lib/utility/greetings.client.ts
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good evening"
 msgstr "晚上好"
 
+#: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 msgid "Good night"
 msgstr "晚安"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Embrace your cosmic journey"
+msgstr "拥抱你的宇宙之旅```"

@@ -366,3 +366,5 @@ export function isRecentlyUpdated(appName: string): boolean {
 	// Consider an app "recently updated" if it was updated within the last 7 days
 	return diffDays <= 7;
 }
+
+export const lang = ['es', 'fr', 'de', 'zh', 'ja', 'pt'];

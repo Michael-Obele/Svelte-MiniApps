@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
+	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import { page } from '$app/state';
 	import { navigating } from '$app/state';
 	import * as Avatar from '@/ui/avatar';
@@ -66,6 +67,9 @@
 		<!-- End of Logo -->
 		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:space-x-0">
 			<div class="flex items-center space-x-2 px-2">
+				<!-- Language switcher - visible on all screen sizes -->
+				<LanguageSwitcher />
+
 				<!-- Theme toggle - visible on all screen sizes -->
 				<ThemeSwitch />
 

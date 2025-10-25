@@ -1,6 +1,7 @@
 import { prisma } from '$lib/server/db';
 import type { PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
+import { generateMantra } from '$lib/utility/greetings.server';
 
 async function updateMantraLikeState(mantra: string, userId: string | undefined): Promise<boolean> {
 	try {
@@ -63,7 +64,8 @@ interface MantraData {
 
 export const load: PageServerLoad = async (event) => {
 	return {
-		user: event.locals.user
+		user: event.locals.user,
+		mantra: generateMantra()
 	};
 };
 

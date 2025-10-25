@@ -14,7 +14,7 @@ Props:
 
 -->
 <script lang="ts">
-	import { generateMantra, getGreetingAndNextPeriod } from '$lib/utility/greetings';
+	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client';
 	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
@@ -23,26 +23,30 @@ Props:
 	import { invalidate } from '$app/navigation';
 	import { Button } from '@/ui/button';
 
+	let { data, form } = $props();
+
+	// Get current greeting based on time of day
 	let greeting = $state(getGreetingAndNextPeriod().greeting);
 
-	let mantra = $state(generateMantra());
+	// Mantra is generated server-side and passed via data prop
+	let mantra = $state(data.mantra || 'Embrace your cosmic journey');
 
 	function handleGenerate() {
-		mantra = generateMantra();
+		// Trigger server action to regenerate mantra
+		invalidate('mantra');
 	}
 
 	// Update greeting when time period changes
 	$effect(() => {
 		const timeoutId = setTimeout(() => {
-			greeting = getGreetingAndNextPeriod().greeting;
+			const { greeting: newGreeting } = getGreetingAndNextPeriod();
+			greeting = newGreeting;
 			// Recursively set the next timeout
 			timeoutId.refresh();
 		}, getGreetingAndNextPeriod().millisecondsUntilNext);
 
 		return () => clearTimeout(timeoutId);
 	});
-
-	let { data, form } = $props();
 
 	let isLoading = $state(false);
 	let isLiked = $state(false);

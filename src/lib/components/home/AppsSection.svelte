@@ -13,14 +13,10 @@ Usage:
 	import { projects, done, site, isNewApp, isRecentlyUpdated } from '$lib/index';
 	import { CheckCircle2, CircleHelp, CircleX } from '@lucide/svelte';
 
-	let sortedProjects: any[] = [];
-	let doneProjects: any[] = [];
-	let comingSoon: any[] = [];
-
 	// Sort projects alphabetically by title and split into done vs coming soon
-	sortedProjects = projects.sort((a, b) => a.title.localeCompare(b.title));
-	doneProjects = sortedProjects.filter((p) => done.some((d) => d.name === p.link));
-	comingSoon = sortedProjects.filter((p) => !done.some((d) => d.name === p.link));
+	let sortedProjects = $derived(projects.sort((a, b) => a.title.localeCompare(b.title)));
+	let doneProjects = $derived(sortedProjects.filter((p) => done.some((d) => d.name === p.link)));
+	let comingSoon = $derived(sortedProjects.filter((p) => !done.some((d) => d.name === p.link)));
 </script>
 
 <main class="w-full py-5 md:py-8 lg:py-10">
@@ -54,7 +50,7 @@ Usage:
 				<ul
 					class="mt-10 grid w-full list-inside grid-cols-1 gap-6 space-y-1 text-gray-900 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 dark:text-gray-400"
 				>
-					{#each doneProjects as project}
+					{#each doneProjects as project (project.link)}
 						<li class="flex items-center">
 							<CheckCircle2 class="mr-2 h-5 w-5 text-green-700 dark:text-green-300" />
 
@@ -92,7 +88,7 @@ Usage:
 						<ul
 							class="mt-3 flex flex-row flex-wrap gap-6 space-y-2 text-gray-700 dark:text-gray-400"
 						>
-							{#each comingSoon as project}
+							{#each comingSoon as project (project.link)}
 								<li class="flex items-center">
 									<CircleX class="mr-2 h-5 w-5 opacity-40" />
 									<span class="opacity-80">{project.title}</span>
