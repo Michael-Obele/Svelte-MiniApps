@@ -6,7 +6,6 @@ import { defineConfig } from 'wuchale';
 export default defineConfig({
 	// sourceLocale is en by default
 	otherLocales: ['es', 'fr', 'de', 'zh', 'ja', 'pt'],
-	// otherLocales: ['es', 'fr', 'de', 'zh', 'ja', 'pt', 'ar'],
 	adapters: {
 		main: svelte({
 			files: {

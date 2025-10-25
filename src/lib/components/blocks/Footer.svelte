@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from '@/blocks/ThemeSwitch.svelte';
+	import LanguageSwitcher from '@/LanguageSwitcher.svelte';
 	import NukeButton from '@/blocks/NukeButton.svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 
@@ -28,7 +29,7 @@
 <footer
 	class="bg-background text-foreground w-full border-t border-slate-600 py-6 shadow-lg md:py-8"
 >
-	<div class="container mx-auto px-4 md:px-6">
+	<div class=" mx-auto px-4 md:px-6">
 		<div class="grid gap-8 md:grid-cols-2">
 			<!-- Left Column -->
 			<div class="flex flex-col items-center justify-center space-y-4 md:items-start">
@@ -143,6 +144,7 @@
 						Back to top
 						<ArrowUp class="ml-2 size-4" strokeWidth={1.5} />
 					</button>
+					<LanguageSwitcher />
 					<ThemeSwitch />
 					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>

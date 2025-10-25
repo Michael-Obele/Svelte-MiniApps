@@ -14,12 +14,17 @@
 	// Import wuchale locale loader - CRITICAL for translations to work
 	import t from '../locales/loader.svelte.js';
 
+	// Import language store initialization
+	import { initLanguage } from '$lib/stores/language-store.svelte';
+
 	let { children, data }: LayoutProps = $props();
 
 	onMount(async () => {
 		// Dynamically import @lordicon/element *inside* onMount
 		if (browser) {
 			registerServiceWorker();
+			// Initialize language settings
+			initLanguage();
 		}
 		const { defineElement } = await import('@lordicon/element');
 		defineElement();

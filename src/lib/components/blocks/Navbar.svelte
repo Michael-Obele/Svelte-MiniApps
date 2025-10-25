@@ -54,7 +54,7 @@
 <NavigationProgressIndicator />
 
 <nav class=" border-gray-200 bg-white py-4 dark:bg-gray-900">
-	<div class="container flex flex-wrap items-center justify-between">
+	<div class="flex flex-wrap items-center justify-between px-5">
 		<!-- Logo -->
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<div class="flex text-lg font-semibold sm:text-2xl dark:text-white">
