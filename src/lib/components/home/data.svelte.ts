@@ -81,7 +81,3 @@ export function getInfoBlocksData() {
 		}
 	];
 }
-
-// Backwards compatibility - export constants that call the functions
-export const contentBlocksData = getContentBlocksData();
-export const infoBlocksData = getInfoBlocksData();

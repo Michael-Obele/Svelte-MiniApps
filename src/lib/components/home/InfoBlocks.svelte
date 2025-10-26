@@ -11,10 +11,11 @@ Usage:
 -->
 <script lang="ts">
 	import { ContentBlock } from './index';
-	import { contentBlocksData } from './data';
-</script>
-
-<section class="w-full md:py-24 lg:py-32">
+	import { getContentBlocksData } from './data.svelte';
+	
+	// ✅ Call the function to get reactive translated data
+	let contentBlocksData = $derived(getContentBlocksData());
+</script><section class="w-full md:py-24 lg:py-32">
 	<div class="px-4 md:px-6 xl:container">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			{#each contentBlocksData as block}

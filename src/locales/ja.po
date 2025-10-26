@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-25T17:48:45.570Z\n"
+"PO-Revision-Date: 2025-10-25T21:37:27.631Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -131,6 +131,8 @@ msgid "React"
 msgstr "React"
 
 #: src/lib/assets/svelte-badge.svelte
+#: src/lib/components/home/data.svelte.ts
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 #: src/lib/components/home/data.ts
 msgid "Svelte"
@@ -1272,6 +1274,7 @@ msgstr "ブラーイン"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "MiniApps"
 msgstr "ミニアプリ"
@@ -6921,54 +6924,67 @@ msgstr "おやすみなさい"
 msgid "Embrace your cosmic journey"
 msgstr "宇宙の旅を受け入れよう"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 msgstr "お気に入りのツールキットへようこそ！MiniAppは、あなたのデジタルライフをサポートするために丁寧に作られた仲間です。各アプリは、あなたのことを考えて設計されており、素早くロードでき、使いやすく、日々の課題に取り組む準備ができています。予算を立てたり、健康的な習慣を身につけたり、整理整頓をしたりと、あらゆるニーズに対応できるツールが揃っています。"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Why"
 msgstr "理由"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless."
 msgstr "一部のアプリが非常にスムーズで応答性が高いことに気づいたことはありませんか？それはSvelteの魔法です！私たちは、パワフルであるだけでなく、使うのが楽しいツールこそがあなたにふさわしいと信じているため、この最先端技術を選びました。私たちのアプリはあなたの操作に即座に反応し、クリックやキー操作が自然で楽に感じられます。"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Simple"
 msgstr "シンプル"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
 msgstr "人生は十分に複雑です。ツールはそうあるべきではありません。私たちは、最も重要なこと、つまり物事を成し遂げるのに役立つことに焦点を当てるために、不要なものを排除しました。各MiniAppは、直感的でわかりやすいように考え抜かれて設計されており、必要なすべての機能が搭載されています。急な学習曲線はなく、使い始めた瞬間から純粋な生産性が得られます。"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Versatile and"
 msgstr "多用途かつ"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Scalable"
 msgstr "スケーラブル"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our MiniApps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
 msgstr "課題を管理する学生、プロジェクトを追跡する専門家、またはその中間の人であっても、私たちのMiniAppはあなたのニーズに適応します。基本的な機能から始めて、成長するにつれてより強力な機能を発見してください。さらに、すべてのデバイスでシームレスに動作するため、必要なときにいつでもツールを利用できます。"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Share the Joy:"
 msgstr "喜びを分かち合う:"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Help Us Improve:"
 msgstr "改善にご協力ください:"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
 msgstr "<strong>バグ</strong>を見つけましたか？ぜひお聞かせください！皆様からのフィードバックは、これらのツールをさらに素晴らしいものにするために非常に貴重です。小さな不具合でも素晴らしいアイデアでも、GitHubページにアクセスしてお知らせください。技術に詳しくなくても大丈夫です！経験したことを説明するだけで構いません。スクリーンショットも大歓迎です。バグ報告は、私たちを完璧に近づけます。"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Join the Creation:"
 msgstr "創造に参加する:"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "これらのアプリをさらに良くするためのアイデアはありますか？ぜひお聞かせください！コーディングの達人でコードに飛び込む準備ができている人でも、物事の進め方について新鮮な視点を持っている人でも、あなたの意見は貴重です。構築を待っているアプリのウィッシュリスト全体と、既存のアプリを強化する方法が無数にあります。特別なものに足跡を残す準備はできていますか？```"

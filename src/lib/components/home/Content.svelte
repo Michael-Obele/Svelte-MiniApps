@@ -11,10 +11,11 @@ Usage:
 -->
 <script lang="ts">
 	import { LordIcon, InfoBlock, ContentBlock } from './index';
-	import { infoBlocksData } from './data';
-</script>
-
-<section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
+	import { getInfoBlocksData } from './data.svelte';
+	
+	// ✅ Call the function to get reactive translated data
+	let infoBlocksData = $derived(getInfoBlocksData());
+</script><section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
 	<div
 		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 lg:py-16 xl:rounded-lg dark:bg-gray-900"
 	>
