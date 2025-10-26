@@ -45,7 +45,7 @@
 </svelte:head>
 
 <section
-	class="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-8 dark:bg-gray-900 md:px-8"
+	class="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-8 md:px-8 dark:bg-gray-900"
 	in:fade={{ duration: 200 }}
 >
 	<div class="relative w-full max-w-(--breakpoint-xl)">
@@ -63,7 +63,7 @@
 			</div>
 
 			<div class="max-w-2xl space-y-6 px-4 text-center md:px-6">
-				<h1 class="text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
+				<h1 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
 					{currentError.title}
 				</h1>
 

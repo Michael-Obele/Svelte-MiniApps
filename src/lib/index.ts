@@ -1,5 +1,6 @@
-// place files you want to import through the `$lib` alias in this folder.
+import { LucideTable, LucideBookmarkCheck } from '@lucide/svelte';
 
+// place files you want to import through the `$lib` alias in this folder.
 export const site = {
 	name: 'Svelte MiniApps',
 	url: 'https://svelte-apps.me',
