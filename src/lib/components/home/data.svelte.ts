@@ -53,29 +53,29 @@ export function getInfoBlocksData() {
 	return [
 		{
 			dir: 'left',
-			// @wc-ignore
-			iconId: 'ercyvufy',
 			iconDir: 'right',
 			header: 'Share the Joy:',
-			paragraph:
-				"<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, colleagues, or your social media circle. Whether it's a productivity breakthrough or a clever solution you discovered, your experience could be exactly what someone else needs to hear. Every share helps our community grow stronger!"
+			// @wc-context: Community engagement section - encouraging users to share positive experiences with MiniApps
+			// @wc-include
+			paragraph: "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine.",
+			iconId: 'ercyvufy' // @wc-ignore
 		},
 		{
 			dir: 'right',
-			// @wc-ignore
-			iconId: 'rpgflpkp',
+			iconId: 'rpgflpkp', // @wc-ignore
 			iconDir: 'left',
 			header: 'Help Us Improve:',
-			paragraph:
-				"Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
+			// @wc-context: Community engagement section - inviting users to provide feedback and report issues
+			// @wc-include
+			paragraph: "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
 		},
 		{
 			dir: 'left',
-
 			iconDir: 'right',
 			header: 'Join the Creation:',
-			paragraph:
-				"Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?",
+			// @wc-context: Community engagement section - inviting developers to contribute to the open source project
+			// @wc-include
+			paragraph: "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
 			// @wc-ignore
 			iconId: 'kndkiwmf'
 		}

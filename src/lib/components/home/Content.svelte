@@ -12,10 +12,12 @@ Usage:
 <script lang="ts">
 	import { LordIcon, InfoBlock, ContentBlock } from './index';
 	import { getInfoBlocksData } from './data.svelte';
-	
+
 	// ✅ Call the function to get reactive translated data
 	let infoBlocksData = $derived(getInfoBlocksData());
-</script><section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
+</script>
+
+<section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
 	<div
 		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 lg:py-16 xl:rounded-lg dark:bg-gray-900"
 	>
@@ -52,7 +54,6 @@ Usage:
 							<span>{block.header}</span>
 						{/snippet}
 						{#snippet paragraph()}
-							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 							<span>{@html block.paragraph}</span>
 						{/snippet}
 					</InfoBlock>
