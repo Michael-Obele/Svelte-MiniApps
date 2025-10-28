@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-10-25T21:37:27.662Z\n"
+"PO-Revision-Date: 2025-10-28T06:38:46.924Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -3041,6 +3041,7 @@ msgstr "Alternar a barra lateral"
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
+#: src/routes/changelog/timeline/+page.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -3232,65 +3233,54 @@ msgstr "Selecionar Orçamento"
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "USD"
 msgstr "USD"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "EUR"
 msgstr "EUR"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "GBP"
 msgstr "GBP"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "JPY"
 msgstr "JPY"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "CAD"
 msgstr "CAD"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "AUD"
 msgstr "AUD"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 msgid "CHF"
 msgstr "CHF"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 msgid "CNY"
 msgstr "CNY"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "INR"
 msgstr "INR"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 msgid "BRL"
 msgstr "BRL"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "NGN"
 msgstr "NGN"
@@ -5532,39 +5522,6 @@ msgstr "Texto/URL"
 msgid "Contact Card"
 msgstr "Cartão de Contato"
 
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Fuel"
-msgstr "Combustível"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Groceries"
-msgstr "Mercadorias"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Dining Out"
-msgstr "Refeições fora de casa"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Utilities"
-msgstr "Utilidades"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Entertainment"
-msgstr "Entretenimento"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Shopping"
-msgstr "Compras"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Healthcare"
-msgstr "Saúde"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
-msgid "Transportation"
-msgstr "Transporte"
-
-#: src/routes/apps/(app)/purchase-tracker/states.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Other"
