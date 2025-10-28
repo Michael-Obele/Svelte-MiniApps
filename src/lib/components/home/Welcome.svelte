@@ -14,7 +14,7 @@ Props:
 
 -->
 <script lang="ts">
-	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client';
+	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client.svelte';
 	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';

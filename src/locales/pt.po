@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-10-28T11:16:56.897Z\n"
+"PO-Revision-Date: 2025-10-28T14:46:15.668Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -139,21 +139,24 @@ msgid "Svelte"
 msgstr "Svelte"
 
 #. placeholder {0}: result.username
-#: src/lib/components/AuthStatus.svelte
+#. placeholder {0}: result.username
+#: src/lib/components/blocks/AuthStatus.svelte
 msgid "Welcome back, {0}!"
 msgstr "Bem-vindo de volta, {0}!"
 
 #. placeholder {0}: result.role
-#: src/lib/components/AuthStatus.svelte
+#. placeholder {0}: result.role
+#: src/lib/components/blocks/AuthStatus.svelte
 msgid "Role: {0}"
 msgstr "Função: {0}"
 
 #. placeholder {0}: result.createdAt.toLocaleDateString()
-#: src/lib/components/AuthStatus.svelte
+#. placeholder {0}: result.createdAt.toLocaleDateString()
+#: src/lib/components/blocks/AuthStatus.svelte
 msgid "Member since: {0}"
 msgstr "Membro desde: {0}"
 
-#: src/lib/components/AuthStatus.svelte
+#: src/lib/components/blocks/AuthStatus.svelte
 msgid "Checking authentication..."
 msgstr "Verificando autenticação..."
 
@@ -6886,6 +6889,8 @@ msgid "Please try again later. If the problem persists, contact support."
 msgstr "Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato com o suporte."
 
 #: src/lib/index.ts
+#: src/lib/utility/greetings.client.svelte.ts
+#: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6894,6 +6899,8 @@ msgid "Good morning"
 msgstr "Bom dia"
 
 #: src/lib/index.ts
+#: src/lib/utility/greetings.client.svelte.ts
+#: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6902,6 +6909,8 @@ msgid "Good afternoon"
 msgstr "Boa tarde"
 
 #: src/lib/index.ts
+#: src/lib/utility/greetings.client.svelte.ts
+#: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
@@ -6910,6 +6919,7 @@ msgid "Good evening"
 msgstr "Boa noite"
 
 #: src/lib/index.ts
+#: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.ts
 #: src/lib/utility/greetings.ts
 msgid "Good night"

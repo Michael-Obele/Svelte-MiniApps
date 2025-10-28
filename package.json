@@ -23,6 +23,7 @@
 		"dev:with-sw": "concurrently \"bun run dev\" \"bun run watch:hash\"",
 		"extract": "bunx wuchale",
 		"extract:clean": "bunx wuchale --clean",
+		"extract:sync": "bunx wuchale --sync",
 		"extract:watch": "bunx wuchale --watch",
 		"extract:stat": "bunx wuchale status",
 		"extract:init": "bunx wuchale init"

@@ -9,7 +9,7 @@ export default defineConfig({
 	adapters: {
 		main: svelte({
 			files: {
-				include: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}', 'src/**/*.client.{js,ts}'],
+				include: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}', 'src/**/*.client.svelte.{js,ts}'],
 				ignore: ['src/lib/assets/**']
 			}
 		}),
