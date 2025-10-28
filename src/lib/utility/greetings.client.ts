@@ -62,12 +62,14 @@ export function getGreetingAndNextPeriod(): { greeting: string; millisecondsUnti
 	let nextHour: number;
 
 	if (hour >= 0 && hour < 5) {
+		// @wc-include
 		greeting = 'Good night';
 		nextHour = 5;
 	} else if (hour >= 5 && hour < 12) {
 		greeting = 'Good morning';
 		nextHour = 12;
 	} else if (hour >= 12 && hour < 18) {
+		// @wc-include
 		greeting = 'Good afternoon';
 		nextHour = 18;
 	} else {

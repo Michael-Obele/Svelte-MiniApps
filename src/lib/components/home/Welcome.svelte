@@ -26,10 +26,10 @@ Props:
 	let { data, form } = $props();
 
 	// Get current greeting based on time of day
-	let greeting = $state(getGreetingAndNextPeriod().greeting);
+	let greeting = $derived(getGreetingAndNextPeriod());
 
 	// Mantra is generated server-side and passed via data prop
-	let mantra = $state(data.mantra || 'Embrace your cosmic journey');
+	let mantra = $derived(data.mantra || 'Embrace your cosmic journey');
 
 	function handleGenerate() {
 		// Trigger server action to regenerate mantra
@@ -40,7 +40,7 @@ Props:
 	$effect(() => {
 		const timeoutId = setTimeout(() => {
 			const { greeting: newGreeting } = getGreetingAndNextPeriod();
-			greeting = newGreeting;
+			greeting.greeting = newGreeting;
 			// Recursively set the next timeout
 			timeoutId.refresh();
 		}, getGreetingAndNextPeriod().millisecondsUntilNext);
@@ -78,7 +78,7 @@ Props:
 			class="text-center text-3xl font-bold tracking-tighter text-red-700 sm:text-5xl xl:text-6xl/none dark:text-white"
 		>
 			<span class="text-green-700 capitalize dark:text-green-300">
-				{`${greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
+				{`${greeting.greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
 			</span>
 		</BlurInText>
 	</BlurFade>
