@@ -39,7 +39,7 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content class="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+	<Dialog.Content class="max-h-[90vh] overflow-y-auto sm:max-w-[500px]">
 		<Dialog.Header class="space-y-3 pb-4">
 			<Dialog.Title>{editingItem ? 'Edit Item' : 'Add New Item'}</Dialog.Title>
 			<Dialog.Description>
@@ -64,7 +64,7 @@
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content class="w-full">
 						{#each availableCategories as category}
-					<DropdownMenu.Item onclick={() => itemCategory = category.id}>
+							<DropdownMenu.Item onclick={() => (itemCategory = category.id)}>
 								{category.icon}
 								{category.name}
 							</DropdownMenu.Item>
@@ -96,7 +96,7 @@
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content>
 							{#each currencyOptions as currency}
-								<DropdownMenu.Item onclick={() => itemDefaultCurrency = currency.code}>
+								<DropdownMenu.Item onclick={() => (itemDefaultCurrency = currency.code)}>
 									{#if currency.icon}
 										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
 									{:else}
@@ -111,9 +111,7 @@
 			</div>
 		</div>
 		<Dialog.Footer>
-			<Button variant="outline" onclick={onCancel}>
-				Cancel
-			</Button>
+			<Button variant="outline" onclick={onCancel}>Cancel</Button>
 			<Button onclick={onSave}>
 				{editingItem ? 'Update Item' : 'Add Item'}
 			</Button>

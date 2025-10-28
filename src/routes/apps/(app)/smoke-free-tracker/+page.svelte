@@ -77,7 +77,9 @@
 	);
 
 	let randomQuote = $derived(
-		smokeState.motivationalQuotes[Math.floor(Math.random() * smokeState.motivationalQuotes.length)]
+		smokeState.getMotivationalQuotes()[
+			Math.floor(Math.random() * smokeState.getMotivationalQuotes().length)
+		]
 	);
 
 	// Initialize

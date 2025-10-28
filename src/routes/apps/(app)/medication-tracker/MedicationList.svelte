@@ -381,7 +381,7 @@
 							{medicationFrequency || 'Select frequency'}
 						</Select.Trigger>
 						<Select.Content>
-							{#each medState.frequencyPresets as preset (preset)}
+							{#each medState.getFrequencyPresets() as preset (preset)}
 								<Select.Item value={preset} label={preset}>
 									{preset}
 								</Select.Item>
@@ -468,7 +468,7 @@
 							{medicationFrequency || 'Select frequency'}
 						</Select.Trigger>
 						<Select.Content>
-							{#each medState.frequencyPresets as preset (preset)}
+							{#each medState.getFrequencyPresets() as preset (preset)}
 								<Select.Item value={preset} label={preset}>
 									{preset}
 								</Select.Item>

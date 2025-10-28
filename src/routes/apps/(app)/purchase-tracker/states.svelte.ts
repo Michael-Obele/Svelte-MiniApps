@@ -1,3 +1,4 @@
+// @wc-ignore-file
 import { PersistedState } from 'runed';
 import icons from 'currency-icons';
 
@@ -34,37 +35,31 @@ export interface PurchaseCategory {
 }
 
 // Default categories
-export const defaultCategories: PurchaseCategory[] = [
-	{ id: 'fuel', name: 'Fuel', color: '#ef4444', icon: '⛽' },
-	{ id: 'groceries', name: 'Groceries', color: '#22c55e', icon: '🛒' },
-	{ id: 'dining', name: 'Dining Out', color: '#f59e0b', icon: '🍽️' },
-	{ id: 'utilities', name: 'Utilities', color: '#3b82f6', icon: '⚡' },
-	{ id: 'entertainment', name: 'Entertainment', color: '#8b5cf6', icon: '🎬' },
-	{ id: 'shopping', name: 'Shopping', color: '#ec4899', icon: '🛍️' },
-	{ id: 'healthcare', name: 'Healthcare', color: '#06b6d4', icon: '🏥' },
-	{ id: 'transportation', name: 'Transportation', color: '#84cc16', icon: '🚗' },
-	{ id: 'other', name: 'Other', color: '#6b7280', icon: '📦' }
-];
+export function getDefaultCategories(): PurchaseCategory[] {
+	return [
+		{ id: 'fuel', name: 'Fuel', color: '#ef4444', icon: '⛽' },
+		{ id: 'groceries', name: 'Groceries', color: '#22c55e', icon: '🛒' },
+		{ id: 'dining', name: 'Dining Out', color: '#f59e0b', icon: '🍽️' },
+		{ id: 'utilities', name: 'Utilities', color: '#3b82f6', icon: '⚡' },
+		{ id: 'entertainment', name: 'Entertainment', color: '#8b5cf6', icon: '🎬' },
+		{ id: 'shopping', name: 'Shopping', color: '#ec4899', icon: '🛍️' },
+		{ id: 'healthcare', name: 'Healthcare', color: '#06b6d4', icon: '🏥' },
+		{ id: 'transportation', name: 'Transportation', color: '#84cc16', icon: '🚗' },
+		{ id: 'other', name: 'Other', color: '#6b7280', icon: '📦' }
+	];
+}
 
 // Supported currencies - using currency-icons package
-export const supportedCurrencies = [
-	'USD',
-	'EUR',
-	'GBP',
-	'JPY',
-	'CAD',
-	'AUD',
-	'CHF',
-	'CNY',
-	'INR',
-	'BRL',
-	'NGN'
-].map((code) => ({
-	code,
-	symbol: icons[code]?.symbol || code,
-	name: icons[code]?.name || code,
-	icon: icons[code]?.icon || ''
-}));
+export function getSupportedCurrencies() {
+	return ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CHF', 'CNY', 'INR', 'BRL', 'NGN'].map(
+		(code) => ({
+			code,
+			symbol: icons[code]?.symbol || code,
+			name: icons[code]?.name || code,
+			icon: icons[code]?.icon || ''
+		})
+	);
+}
 
 // Create persisted states
 const itemsState = new PersistedState<Item[]>('purchase-items', [], {
@@ -230,12 +225,12 @@ export function deleteCustomCategory(id: string) {
 
 // Get all categories (default + custom)
 export function getAllCategories(): PurchaseCategory[] {
-	return [...defaultCategories, ...customCategoriesState.current];
+	return [...getDefaultCategories(), ...customCategoriesState.current];
 }
 
 // Get currency info
 export function getCurrencyInfo(code: string) {
-	return supportedCurrencies.find((c) => c.code === code);
+	return getSupportedCurrencies().find((c) => c.code === code);
 }
 
 // Calculate statistics

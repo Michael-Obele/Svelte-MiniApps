@@ -62,19 +62,21 @@ export const medicationColors = [
 ];
 
 // Frequency presets
-export const frequencyPresets = [
-	'Once daily',
-	'Twice daily',
-	'Three times daily',
-	'Four times daily',
-	'Every 4 hours',
-	'Every 6 hours',
-	'Every 8 hours',
-	'Every 12 hours',
-	'As needed',
-	'Weekly',
-	'Custom'
-];
+export function getFrequencyPresets() {
+	return [
+		'Once daily',
+		'Twice daily',
+		'Three times daily',
+		'Four times daily',
+		'Every 4 hours',
+		'Every 6 hours',
+		'Every 8 hours',
+		'Every 12 hours',
+		'As needed',
+		'Weekly',
+		'Custom'
+	];
+}
 
 // Persisted state for treatment sessions
 export const treatmentSessions = new PersistedState<TreatmentSession[]>(

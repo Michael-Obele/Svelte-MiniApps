@@ -51,7 +51,7 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content class="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+	<Dialog.Content class="max-h-[90vh] overflow-y-auto sm:max-w-[500px]">
 		<Dialog.Header class="space-y-3 pb-4">
 			<Dialog.Title>
 				{editingPurchase ? 'Edit Purchase Record' : 'Add Purchase Record'}
@@ -118,7 +118,7 @@
 						</DropdownMenu.Trigger>
 						<DropdownMenu.Content>
 							{#each currencyOptions as currency}
-								<DropdownMenu.Item onclick={() => purchaseCurrency = currency.code}>
+								<DropdownMenu.Item onclick={() => (purchaseCurrency = currency.code)}>
 									{#if currency.icon}
 										<img src={currency.icon} alt={currency.symbol} class="mr-2 inline h-4 w-4" />
 									{:else}
@@ -160,9 +160,7 @@
 			</div>
 		</div>
 		<Dialog.Footer>
-			<Button variant="outline" onclick={onCancel}>
-				Cancel
-			</Button>
+			<Button variant="outline" onclick={onCancel}>Cancel</Button>
 			<Button onclick={onSave}>
 				{editingPurchase ? 'Update Purchase' : 'Add Purchase'}
 			</Button>

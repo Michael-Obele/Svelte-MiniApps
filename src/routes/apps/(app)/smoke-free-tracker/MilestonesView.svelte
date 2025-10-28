@@ -4,7 +4,7 @@
 	import { Badge } from '@/ui/badge';
 	import { Progress } from '@/ui/progress';
 	import type { SmokingAttempt } from './states.svelte';
-	import { defaultMilestones, getStreakMinutes } from './states.svelte';
+	import { getDefaultMilestones, getStreakMinutes } from './states.svelte';
 
 	interface Props {
 		statistics: {
@@ -18,7 +18,7 @@
 	let { statistics, attempt }: Props = $props();
 
 	let allMilestones = $derived(
-		defaultMilestones.map((m) => {
+		getDefaultMilestones().map((m) => {
 			const achieved = statistics.achievedMilestones.some((am) => am.id === m.id);
 			const isNext = statistics.nextMilestone?.id === m.id;
 			const progress =
@@ -78,12 +78,12 @@
 								{/if}
 							</div>
 
-							<p class="text-sm text-muted-foreground">{milestone.description}</p>
+							<p class="text-muted-foreground text-sm">{milestone.description}</p>
 
 							{#if !milestone.achieved && milestone.isNext}
 								<div class="mt-3">
 									<Progress value={milestone.progress} class="h-2" />
-									<p class="mt-1 text-xs text-muted-foreground">
+									<p class="text-muted-foreground mt-1 text-xs">
 										{milestone.progress.toFixed(0)}% complete
 									</p>
 								</div>

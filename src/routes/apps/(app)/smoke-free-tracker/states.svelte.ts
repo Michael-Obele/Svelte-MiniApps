@@ -77,135 +77,143 @@ export const lastBackupTime = new PersistedState<string | null>(
 // MILESTONES (Health benefits timeline)
 // ===========================
 
-export const defaultMilestones: Milestone[] = [
-	{
-		id: '20min',
-		name: '20 Minutes',
-		description: 'Heart rate and blood pressure drop to normal levels',
-		duration: 20,
-		icon: '💓'
-	},
-	{
-		id: '2hours',
-		name: '2 Hours',
-		description: 'Nicotine cravings peak but will decrease over time',
-		duration: 120,
-		icon: '🧘'
-	},
-	{
-		id: '12hours',
-		name: '12 Hours',
-		description: 'Carbon monoxide level in blood drops to normal',
-		duration: 720,
-		icon: '🫁'
-	},
-	{
-		id: '24hours',
-		name: '24 Hours',
-		description: 'Anxiety peaks but will improve. Risk of heart attack begins to drop',
-		duration: 1440,
-		icon: '❤️'
-	},
-	{
-		id: '48hours',
-		name: '48 Hours',
-		description: 'Nerve endings start regrowing. Smell and taste improve',
-		duration: 2880,
-		icon: '👃'
-	},
-	{
-		id: '3days',
-		name: '3 Days',
-		description: 'Breathing becomes easier. Bronchial tubes begin to relax',
-		duration: 4320,
-		icon: '🌬️'
-	},
-	{
-		id: '1week',
-		name: '1 Week',
-		description: "You've made it through the hardest part! Cravings are less intense",
-		duration: 10080,
-		icon: '🎉'
-	},
-	{
-		id: '2weeks',
-		name: '2 Weeks',
-		description: 'Circulation improves. Walking and exercise become easier',
-		duration: 20160,
-		icon: '🚶'
-	},
-	{
-		id: '1month',
-		name: '1 Month',
-		description: 'Lung function begins to improve. Coughing and shortness of breath decrease',
-		duration: 43200,
-		icon: '🏆'
-	},
-	{
-		id: '3months',
-		name: '3 Months',
-		description: 'Circulation and lung function continue to improve',
-		duration: 129600,
-		icon: '💪'
-	},
-	{
-		id: '6months',
-		name: '6 Months',
-		description: 'Stress levels normalize. Breathing problems continue to decrease',
-		duration: 259200,
-		icon: '🌟'
-	},
-	{
-		id: '1year',
-		name: '1 Year',
-		description: 'Risk of coronary heart disease is half that of a smoker!',
-		duration: 525600,
-		icon: '🎊'
-	}
-];
+export function getDefaultMilestones(): Milestone[] {
+	return [
+		{
+			id: '20min',
+			name: '20 Minutes',
+			description: 'Heart rate and blood pressure drop to normal levels',
+			duration: 20,
+			icon: '💓'
+		},
+		{
+			id: '2hours',
+			name: '2 Hours',
+			description: 'Nicotine cravings peak but will decrease over time',
+			duration: 120,
+			icon: '🧘'
+		},
+		{
+			id: '12hours',
+			name: '12 Hours',
+			description: 'Carbon monoxide level in blood drops to normal',
+			duration: 720,
+			icon: '🫁'
+		},
+		{
+			id: '24hours',
+			name: '24 Hours',
+			description: 'Anxiety peaks but will improve. Risk of heart attack begins to drop',
+			duration: 1440,
+			icon: '❤️'
+		},
+		{
+			id: '48hours',
+			name: '48 Hours',
+			description: 'Nerve endings start regrowing. Smell and taste improve',
+			duration: 2880,
+			icon: '👃'
+		},
+		{
+			id: '3days',
+			name: '3 Days',
+			description: 'Breathing becomes easier. Bronchial tubes begin to relax',
+			duration: 4320,
+			icon: '🌬️'
+		},
+		{
+			id: '1week',
+			name: '1 Week',
+			description: "You've made it through the hardest part! Cravings are less intense",
+			duration: 10080,
+			icon: '🎉'
+		},
+		{
+			id: '2weeks',
+			name: '2 Weeks',
+			description: 'Circulation improves. Walking and exercise become easier',
+			duration: 20160,
+			icon: '🚶'
+		},
+		{
+			id: '1month',
+			name: '1 Month',
+			description: 'Lung function begins to improve. Coughing and shortness of breath decrease',
+			duration: 43200,
+			icon: '🏆'
+		},
+		{
+			id: '3months',
+			name: '3 Months',
+			description: 'Circulation and lung function continue to improve',
+			duration: 129600,
+			icon: '💪'
+		},
+		{
+			id: '6months',
+			name: '6 Months',
+			description: 'Stress levels normalize. Breathing problems continue to decrease',
+			duration: 259200,
+			icon: '🌟'
+		},
+		{
+			id: '1year',
+			name: '1 Year',
+			description: 'Risk of coronary heart disease is half that of a smoker!',
+			duration: 525600,
+			icon: '🎊'
+		}
+	];
+}
 
 // ===========================
 // MOTIVATIONAL DATA
 // ===========================
 
-export const motivationalQuotes = [
-	'Every minute smoke-free is a victory! 🏆',
-	"You're stronger than your cravings! 💪",
-	'Think of how much healthier your body is becoming! ❤️',
-	'Your lungs are thanking you right now! 🫁',
-	"You're saving money and your life! 💰",
-	'Cravings are temporary, but your health is forever! ⏳',
-	"Look how far you've come! Keep going! 🚀",
-	"You're proving to yourself that you can do hard things! 🌟",
-	'Every day smoke-free is a gift to your future self! 🎁',
-	"You're inspiring others by your commitment! 👏"
-];
+export function getMotivationalQuotes() {
+	return [
+		'Every minute smoke-free is a victory! 🏆',
+		"You're stronger than your cravings! 💪",
+		'Think of how much healthier your body is becoming! ❤️',
+		'Your lungs are thanking you right now! 🫁',
+		"You're saving money and your life! 💰",
+		'Cravings are temporary, but your health is forever! ⏳',
+		"Look how far you've come! Keep going! 🚀",
+		"You're proving to yourself that you can do hard things! 🌟",
+		'Every day smoke-free is a gift to your future self! 🎁',
+		"You're inspiring others by your commitment! 👏"
+	];
+}
 
-export const commonTriggers = [
-	'Stress',
-	'After meals',
-	'With coffee',
-	'Social situations',
-	'Boredom',
-	'Alcohol',
-	'Driving',
-	'Work break',
-	'Seeing others smoke',
-	'Morning routine'
-];
+export function getCommonTriggers() {
+	return [
+		'Stress',
+		'After meals',
+		'With coffee',
+		'Social situations',
+		'Boredom',
+		'Alcohol',
+		'Driving',
+		'Work break',
+		'Seeing others smoke',
+		'Morning routine'
+	];
+}
 
-export const copingStrategies = [
-	'Deep breathing',
-	'Drink water',
-	'Chew gum',
-	'Go for a walk',
-	'Call a friend',
-	'Exercise',
-	'Meditation',
-	'Distract yourself',
-	'Eat healthy snack',
-	'Review your goals'
-];
+export function getCopingStrategies() {
+	return [
+		'Deep breathing',
+		'Drink water',
+		'Chew gum',
+		'Go for a walk',
+		'Call a friend',
+		'Exercise',
+		'Meditation',
+		'Distract yourself',
+		'Eat healthy snack',
+		'Review your goals'
+	];
+}
 
 // ===========================
 // HELPER FUNCTIONS
@@ -476,8 +484,8 @@ export function getStatistics(attempt: SmokingAttempt, settings: UserSettings): 
 	const cravingSuccessRate =
 		cravings.length > 0 ? Math.round((successfulCravings / cravings.length) * 100) : 0;
 
-	const achievedMilestones = defaultMilestones.filter((m) => streakMinutes >= m.duration);
-	const nextMilestone = defaultMilestones.find((m) => streakMinutes < m.duration) || null;
+	const achievedMilestones = getDefaultMilestones().filter((m) => streakMinutes >= m.duration);
+	const nextMilestone = getDefaultMilestones().find((m) => streakMinutes < m.duration) || null;
 
 	return {
 		streakMinutes,

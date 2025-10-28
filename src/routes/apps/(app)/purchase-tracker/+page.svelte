@@ -191,7 +191,7 @@
 	let availableCategories = $derived(purchaseState.getAllCategories());
 
 	// Get currency options
-	let currencyOptions = $derived(purchaseState.supportedCurrencies);
+	let currencyOptions = $derived(purchaseState.getSupportedCurrencies());
 
 	// Handle adding new item
 	function handleAddItem() {

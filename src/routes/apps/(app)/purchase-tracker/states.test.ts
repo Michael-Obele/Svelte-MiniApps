@@ -175,11 +175,11 @@ describe('Purchase Tracker State Management', () => {
 	});
 
 	it('should have supported currencies with proper structure', () => {
-		expect(purchaseState.supportedCurrencies).toBeDefined();
-		expect(Array.isArray(purchaseState.supportedCurrencies)).toBe(true);
-		expect(purchaseState.supportedCurrencies.length).toBeGreaterThan(0);
+		expect(purchaseState.getSupportedCurrencies()).toBeDefined();
+		expect(Array.isArray(purchaseState.getSupportedCurrencies())).toBe(true);
+		expect(purchaseState.getSupportedCurrencies().length).toBeGreaterThan(0);
 
-		const usdCurrency = purchaseState.supportedCurrencies.find((c) => c.code === 'USD');
+		const usdCurrency = purchaseState.getSupportedCurrencies().find((c) => c.code === 'USD');
 		expect(usdCurrency).toBeDefined();
 		expect(usdCurrency?.code).toBe('USD');
 		expect(usdCurrency?.symbol).toBe('$');
@@ -221,7 +221,7 @@ describe('Purchase Tracker State Management', () => {
 		const customCategoryId = purchaseState.addCustomCategory('Custom Category', '#ff0000', '🔥');
 
 		const allCategories = purchaseState.getAllCategories();
-		expect(allCategories.length).toBeGreaterThan(purchaseState.defaultCategories.length);
+		expect(allCategories.length).toBeGreaterThan(purchaseState.getDefaultCategories().length);
 
 		const customCategory = allCategories.find((c) => c.id === customCategoryId);
 		expect(customCategory).toBeDefined();
