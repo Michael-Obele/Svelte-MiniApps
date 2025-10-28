@@ -14,11 +14,7 @@ export default defineConfig({
 			}
 		}),
 		js: js({
-			files: [
-				'src/**/+{page,layout}.{js,ts}',
-				'src/**/+{page,layout}.server.{js,ts}',
-				'src/lib/components/home/data.svelte.ts'
-			]
+			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
 	}
 	// ai: {
