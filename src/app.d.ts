@@ -9,6 +9,11 @@ declare global {
 			user: import('$lib/server/auth').SessionValidationResult['user'];
 			session: import('$lib/server/auth').SessionValidationResult['session'];
 		}
+
+		interface LayoutData {
+			user: import('$lib/server/auth').SessionValidationResult['user'];
+			ANALYTICS_ID: string;
+		}
 	}
 }
 

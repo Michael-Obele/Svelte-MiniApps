@@ -2,17 +2,31 @@
 <html lang="en">
 
 <head>
+	<!-- Document character encoding -->
 	<meta charset="utf-8" />
-	<!-- Favicon -->
-	<!-- <link rel="icon" type="image/x-icon" href="%sveltekit.assets%/favicon/favicon.ico" /> -->
+
+	<!-- Favicon (SVG) - modern browsers can use the vector icon -->
 	<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon/favicon.svg" />
+
+	<!-- PNG favicon (96x96) - raster fallback for browsers that don't support SVG -->
 	<link rel="icon" type="image/png" sizes="96x96" href="%sveltekit.assets%/favicon/favicon-96x96.png" />
-	<!-- Apple Touch Icon -->
+
+	<!-- Apple Touch Icon - used when users add the site to iOS home screen -->
 	<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/favicon/apple-touch-icon.png" />
-	<!-- Web Manifest -->
+
+	<!-- Web App Manifest - PWA metadata (icons, name, theme, start_url, etc.) -->
 	<link rel="manifest" href="%sveltekit.assets%/favicon/site.webmanifest" />
-	<link rel="shortcut icon" href="%sveltekit.assets%/favicon//favicon.ico" />
-	<meta name="google-site-verification" content="10ATAx6uImjU99YXvI91DB-E9h-MAgI6jsUkLfJlRwY" />	
+
+	<!-- Shortcut icon (ICO) - legacy fallback used by some browsers/OSes -->
+	<link rel="shortcut icon" href="%sveltekit.assets%/favicon/favicon.ico" />
+
+	<!-- Apple mobile web app title (displayed on iOS when saved to home screen) -->
+	<meta name="apple-mobile-web-app-title" content="MiniApps" />
+
+	<!-- Google Search Console verification token -->
+	<meta name="google-site-verification" content="10ATAx6uImjU99YXvI91DB-E9h-MAgI6jsUkLfJlRwY" />
+
+	<!-- Responsive viewport for proper mobile scaling -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	%sveltekit.head%
 </head>
