@@ -39,14 +39,17 @@
 	});
 
 	// Reactive statement to determine if the current route matches the item
-	let isActive = (item: string) => {
+	let isActive = (item: { name: string; href: string }) => {
 		const routeId = page.url.pathname;
 
-		if (item === 'Home' && routeId == '/') {
-			return true;
-		} else {
-			return routeId && (`/${item}` === routeId || routeId.includes(item.toLowerCase()));
+		// For home page, exact match
+		if (item.href === '/') {
+			return routeId === '/';
 		}
+
+		// For other routes, check if the current path matches or starts with the item's href
+		// This ensures sub-routes are also highlighted (e.g., /apps/unit-converter highlights "Apps")
+		return routeId === item.href || routeId.startsWith(item.href + '/');
 	};
 </script>
 
@@ -210,8 +213,8 @@
 					<li>
 						<a
 							href={item.href}
-							class={`${isActive(item.name) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-red-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
-							aria-current={isActive(item.name) ? 'page' : undefined}>{item.name}</a
+							class={`${isActive(item) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-red-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
+							aria-current={isActive(item) ? 'page' : undefined}>{item.name}</a
 						>
 					</li>
 				{/each}
