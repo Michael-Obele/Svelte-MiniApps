@@ -3,9 +3,9 @@
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	let { data }: { data: PageData } = $props();
 
-	$: ({ urls } = data);
+	let urls = data.urls;
 </script>
 
 <RouteHead
@@ -27,7 +27,7 @@
 		</div>
 
 		<div class="space-y-4">
-			{#each urls as url}
+			{#each urls as url (url)}
 				<a
 					href={url}
 					class="block rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"

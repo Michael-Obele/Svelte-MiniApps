@@ -3,9 +3,9 @@ import { PersistedState } from 'runed';
 export let markdownDemo = `# Welcome to Markdown Magic!
 
 ## Unleash the Power of Simple Formatting
-- **Bold text** is as easy as **this**.  
-- *Italicized*? Just use *this*.  
-- Want a strikethrough? Try ~~this~~.  
+- **Bold text** is as easy as **this**.
+- *Italicized*? Just use *this*.
+- Want a strikethrough? Try ~~this~~.
 
 ---
 
@@ -16,14 +16,14 @@ Check out [Markdown's official site](https://www.markdownguide.org) for the full
 
 ## Lists? Check!
 ### Here's what you can do:
-1. Ordered lists for step-by-step guides.  
+1. Ordered lists for step-by-step guides.
 
-- Unordered lists for quick notes.  
+- Unordered lists for quick notes.
 
 ---
 
 ## Images? Here's How:
-![Svelte Logo](https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg)  
+![Svelte Logo](https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg)
 
 ---
 
@@ -31,4 +31,15 @@ Check out [Markdown's official site](https://www.markdownguide.org) for the full
 \`\`\`js
 console.log("Hello, Markdown!")
 \`\`\`
+
+---
+
+## Tables? Easy Peasy!
+
+| Feature | Syntax | Example |
+|---------|--------|---------|
+| Bold | \`**text**\` | **bold** |
+| Italic | \`*text*\` | *italic* |
+| Code | \`\` \`code\` \`\` | \`code\` |
+| Link | \`[text](url)\` | [link](https://example.com) |
 `;

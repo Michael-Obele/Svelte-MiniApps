@@ -280,12 +280,15 @@
 												</div>
 											</div>
 
-											<div class="flex flex-wrap gap-2" onclick={(e) => e.stopPropagation()}>
+											<div class="flex flex-wrap gap-2">
 												{#if !session.isActive && !session.endDate}
 													<Button
 														variant="default"
 														size="sm"
-														onclick={() => setActive(session.id)}
+														onclick={(e) => {
+															e.stopPropagation();
+															setActive(session.id);
+														}}
 														class="bg-primary hover:bg-primary/90"
 													>
 														<CheckCircle2 class="mr-1 size-4" />
@@ -297,7 +300,10 @@
 													<Button
 														variant="outline"
 														size="sm"
-														onclick={() => endSession(session.id)}
+														onclick={(e) => {
+															e.stopPropagation();
+															endSession(session.id);
+														}}
 													>
 														<XCircle class="mr-1 size-4" />
 														End
@@ -308,21 +314,34 @@
 													<Button
 														variant="outline"
 														size="sm"
-														onclick={() => restartSession(session.id)}
+														onclick={(e) => {
+															e.stopPropagation();
+															restartSession(session.id);
+														}}
 													>
 														<CheckCircle2 class="mr-1 size-4" />
 														Restart
 													</Button>
 												{/if}
 
-												<Button variant="ghost" size="sm" onclick={() => openEditDialog(session)}>
+												<Button
+													variant="ghost"
+													size="sm"
+													onclick={(e) => {
+														e.stopPropagation();
+														openEditDialog(session);
+													}}
+												>
 													Edit
 												</Button>
 
 												<Button
 													variant="ghost"
 													size="sm"
-													onclick={() => confirmDelete(session)}
+													onclick={(e) => {
+														e.stopPropagation();
+														confirmDelete(session);
+													}}
 													class="text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950"
 												>
 													<Trash2 class="size-4" />

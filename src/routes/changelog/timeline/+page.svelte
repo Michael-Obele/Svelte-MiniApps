@@ -42,14 +42,15 @@
 	onMount(() => {
 		const url = new URL(page.url);
 		const highlightParam = url.searchParams.get('highlight');
-		
+
 		if (highlightParam) {
 			// Find the timeline item that matches the highlight parameter
-			const itemToHighlight = allTimeline.find(item => 
-				item.title.toLowerCase().includes(highlightParam.toLowerCase()) ||
-				item.date === highlightParam
+			const itemToHighlight = allTimeline.find(
+				(item) =>
+					item.title.toLowerCase().includes(highlightParam.toLowerCase()) ||
+					item.date === highlightParam
 			);
-			
+
 			if (itemToHighlight) {
 				selectedItem = itemToHighlight;
 			}
@@ -120,11 +121,18 @@
 			<!-- Timeline line -->
 			<div class="bg-border absolute top-0 left-4 hidden h-full w-0.5 sm:left-1/2 sm:block"></div>
 			<!-- Timeline items -->
-			{#each filteredTimeline as item, index}
+			{#each filteredTimeline as item, index (item)}
 				<div
 					class="mb-8 flex flex-col transition-transform duration-300 hover:scale-105 sm:mb-12"
 					transition:slide
 					onclick={() => (selectedItem = item)}
+					role="button"
+					tabindex="0"
+					onkeydown={(e) => {
+						if (e.key === 'Enter' || e.key === ' ') {
+							selectedItem = item;
+						}
+					}}
 					style="cursor: pointer;"
 				>
 					<div
@@ -199,7 +207,7 @@
 		<!-- Details List -->
 		{#if selectedItem}
 			<ul class="my-4 ml-6 list-disc space-y-2">
-				{#each selectedItem.items as detail}
+				{#each selectedItem.items as detail (detail)}
 					<li class="text-sm">{detail}</li>
 				{/each}
 			</ul>

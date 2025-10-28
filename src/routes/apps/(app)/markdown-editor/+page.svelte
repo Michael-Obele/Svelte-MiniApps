@@ -181,21 +181,4 @@
 
 	/* Respect site-driven theme switch (html.dark). These selectors ensure the
    preview's color-scheme hint and variables follow the site class, not OS. */
-	html.dark :global(.markdown-body),
-	html.dark :global(.carta-renderer),
-	[data-theme='dark'] :global(.markdown-body),
-	[data-theme='dark'] :global(.carta-renderer) {
-		color-scheme: dark !important;
-		background-color: var(--color-background) !important;
-		color: var(--color-foreground) !important;
-	}
-
-	html:not(.dark) :global(.markdown-body),
-	html:not(.dark) :global(.carta-renderer),
-	:not([data-theme='dark']) :global(.markdown-body),
-	:not([data-theme='dark']) :global(.carta-renderer) {
-		color-scheme: light !important;
-		background-color: var(--color-background) !important;
-		color: var(--color-foreground) !important;
-	}
 </style>
