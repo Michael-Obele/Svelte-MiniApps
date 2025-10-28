@@ -1,3 +1,9 @@
+[build]
+  command = "bunx prisma db push && bun run build"
+
+[build.environment]
+  NODE_OPTIONS = "--max-old-space-size=4096"
+  
 [[plugins]]
   package = "netlify-plugin-cache"
   [plugins.inputs]
