@@ -26,6 +26,7 @@ export function getContentBlocksData() {
 			header: {
 				text: [
 					{ type: 'strong', content: 'Simple' },
+					// @wc-include
 					{ type: 'span', content: 'and Efficient' }
 				]
 			},
@@ -57,7 +58,8 @@ export function getInfoBlocksData() {
 			header: 'Share the Joy:',
 			// @wc-context: Community engagement section - encouraging users to share positive experiences with MiniApps
 			// @wc-include
-			paragraph: "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine.",
+			paragraph:
+				'<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine.',
 			iconId: 'ercyvufy' // @wc-ignore
 		},
 		{
@@ -67,7 +69,8 @@ export function getInfoBlocksData() {
 			header: 'Help Us Improve:',
 			// @wc-context: Community engagement section - inviting users to provide feedback and report issues
 			// @wc-include
-			paragraph: "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
+			paragraph:
+				"<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
 		},
 		{
 			dir: 'left',
@@ -75,7 +78,8 @@ export function getInfoBlocksData() {
 			header: 'Join the Creation:',
 			// @wc-context: Community engagement section - inviting developers to contribute to the open source project
 			// @wc-include
-			paragraph: "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
+			paragraph:
+				"<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
 			// @wc-ignore
 			iconId: 'kndkiwmf'
 		}
