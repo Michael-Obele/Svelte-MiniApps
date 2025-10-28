@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-28T10:28:11.493Z\n"
+"PO-Revision-Date: 2025-10-28T11:16:56.782Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -3803,6 +3803,7 @@ msgid "Dive into the code and learn from the examples to build your own mini-app
 msgstr "深入研究代码并从示例中学习以构建您自己的迷你应用程序```"
 
 #: src/routes/about/DataManagement.svelte
+#: src/routes/about/data.svelte.ts
 msgid "Data Management & Troubleshooting"
 msgstr "数据管理与问题排查"
 
@@ -6880,3 +6881,107 @@ msgstr "<strong>您的声音很重要！</strong> 无论您有绝妙的想法、
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
 msgstr "<strong>喜欢编码吗？</strong> 您可能成为下一个贡献者，使这些MiniApp更加出色！ 我们的项目是<strong>开源</strong>的，这意味着我们邀请您深入研究，探索代码并将您的想法变为现实。 无论您是经验丰富的开发人员还是刚开始，我们的社区都有您的位置。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Install When You Want"
+msgstr "随时安装"
+
+#: src/routes/about/data.svelte.ts
+msgid "While they work great in the browser, you can also install them as PWAs. It's like having native apps that don't eat up your system resources - the best of both worlds."
+msgstr "虽然它们在浏览器中运行良好，但您也可以将它们安装为 PWA。这就像拥有不占用系统资源的本地应用程序一样——两全其美。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Svelte-Powered Speed"
+msgstr "Svelte 驱动的速度"
+
+#: src/routes/about/data.svelte.ts
+msgid "We chose SvelteKit because it's blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless."
+msgstr "我们选择 SvelteKit 是因为它速度极快且易于使用。结果呢？工具可以立即加载并平稳运行，让您的工作流程感觉毫不费力。"
+
+#: src/routes/about/data.svelte.ts
+msgid "The SvelteKit Advantage"
+msgstr "SvelteKit 的优势"
+
+#: src/routes/about/data.svelte.ts
+msgid "When I discovered SvelteKit, it was love at first sight. Its elegant simplicity and powerful features made it perfect for building these focused tools."
+msgstr "当我发现 SvelteKit 时，我一见钟情。它优雅的简洁性和强大的功能使其非常适合构建这些专注的工具。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Less is More"
+msgstr "少即是多"
+
+#: src/routes/about/data.svelte.ts
+msgid "Each app solves one problem really well. No feature bloat, no confusing interfaces - just clean, effective tools that respect your time and attention."
+msgstr "每个应用程序都能很好地解决一个问题。没有功能臃肿，没有令人困惑的界面——只有干净、有效的工具，尊重您的时间和注意力。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Growing Together"
+msgstr "共同成长"
+
+#: src/routes/about/data.svelte.ts
+msgid "Every mini-app taught me something new about Svelte. Now, I'm sharing these lessons through code, hoping others can learn and build upon them."
+msgstr "每个迷你应用程序都教会了我关于 Svelte 的新知识。现在，我通过代码分享这些经验，希望其他人可以学习并在其基础上构建。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Your Ideas Matter"
+msgstr "您的想法很重要"
+
+#: src/routes/about/data.svelte.ts
+msgid "This project grows with your needs. Have an idea for a tool that would make your life easier? Let's build it together!"
+msgstr "这个项目随着您的需求而增长。您是否有任何可以使您的生活更轻松的工具的想法？让我们一起构建它！"
+
+#: src/routes/about/data.svelte.ts
+msgid "Building Bridges"
+msgstr "搭建桥梁"
+
+#: src/routes/about/data.svelte.ts
+msgid "Imagine a community where developers share their mini-tools, learn from each other, and collectively make development more enjoyable."
+msgstr "想象一下这样一个社区：开发者分享他们的迷你工具，互相学习，并共同使开发更加愉快。"
+
+#: src/routes/about/data.svelte.ts
+msgid "More Tools Coming"
+msgstr "更多工具即将推出"
+
+#: src/routes/about/data.svelte.ts
+msgid "The toolbox is always expanding! I'm constantly working on new mini-apps based on real-world needs and community suggestions."
+msgstr "工具箱总是在不断扩展！我一直在根据实际需求和社区建议开发新的迷你应用程序。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Join the Journey"
+msgstr "加入旅程"
+
+#: src/routes/about/data.svelte.ts
+msgid "Whether you're a Svelte enthusiast or just getting started, your perspective is valuable. Let's collaborate and make these tools even better!"
+msgstr "无论您是 Svelte 爱好者还是刚开始，您的观点都很有价值。让我们合作，使这些工具变得更好！"
+
+#: src/routes/about/data.svelte.ts
+msgid "Our app includes a powerful \"Nuke Button\" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
+msgstr "我们的应用程序包含一个强大的“核弹按钮”，可让您清除所有缓存的数据，包括 service worker 缓存和本地存储。如果您遇到任何缓存问题或需要将应用程序重置为其默认状态，这将特别有用。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Clear all cached data, including service worker caches and local storage"
+msgstr "清除所有缓存的数据，包括 service worker 缓存和本地存储"
+
+#: src/routes/about/data.svelte.ts
+msgid "Reset the app to its initial state when experiencing issues"
+msgstr "在遇到问题时将应用程序重置为其初始状态"
+
+#: src/routes/about/data.svelte.ts
+msgid "Unregister service workers for a fresh start"
+msgstr "注销 service worker 以获得全新的开始"
+
+#: src/routes/about/data.svelte.ts
+msgid "Automatically reload the app after clearing data"
+msgstr "清除数据后自动重新加载应用程序"
+
+#: src/routes/about/data.svelte.ts
+msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
+msgstr "如果您遇到任何缓存问题或需要将应用程序重置为其默认状态，请使用此功能。```"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "span"
+msgstr "跨度"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "and Efficient"
+msgstr "且高效"

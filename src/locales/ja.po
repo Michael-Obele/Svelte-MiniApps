@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-28T10:28:11.535Z\n"
+"PO-Revision-Date: 2025-10-28T11:16:56.856Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -369,6 +369,7 @@ msgid ""
 msgstr "これらのツールを利用可能にしてくださったすべてのオープンソース貢献者の皆様に感謝します。コミュニティのために。"
 
 #: src/routes/about/DataManagement.svelte
+#: src/routes/about/data.svelte.ts
 msgid "Data Management & Troubleshooting"
 msgstr "データ管理とトラブルシューティング"
 
@@ -449,7 +450,7 @@ msgstr "Svelte MiniAppsの未来"
 
 #: src/routes/about/Vision.svelte
 msgid "Svelte MiniApps is an <0>ever-evolving project, <0>and <0>you</0> hold the reins!</0></0>"
-msgstr "<0>Svelte MiniAppsは<0>絶えず進化するプロジェクト、<0>そして<0>あなた</0>が舵を握る！</0></0>"
+msgstr "Svelte MiniAppsは<0>絶えず進化するプロジェクト、<0>そして<0>あなた</0>が舵を握る！</0></0>"
 
 #: src/routes/about/Vision.svelte
 msgid "Have ideas or feedback?"
@@ -1580,7 +1581,7 @@ msgid ""
 "Your insights and experiences help shape these tools into something truly useful. Whether\n"
 "it's sharing ideas, reporting issues, or just letting me know how you use the apps, every\n"
 "bit of feedback counts. Want to learn more about the project? Check out our <0>story</0>."
-msgstr "あなたの洞察と経験は、これらのツールを本当に役立つものへと形づくる手助けになります。アイデアを共有したり、問題を報告したり、アプリの使い方を教えてくれるだけでも、すべてのフィードバックが重要です。プロジェクトの詳細を知りたいですか？<0>story</0> をご覧ください。"
+msgstr "あなたの洞察と経験は、これらのツールを本当に役立つものへと形づくる手助けになります。アイデアを共有したり、問題を報告したり、アプリの使い方を教えてくれるだけでも、すべてのフィードバックが重要です。プロジェクトの詳細を知りたいですか？<0>ストーリー</0> をご覧ください。"
 
 #: src/lib/components/home/Hero.svelte
 msgid "Back, <0>{0}!</0>"
@@ -6957,3 +6958,107 @@ msgstr "<strong>あなたの声が重要です！</strong> 素晴らしいアイ
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
 msgstr "<strong>コーディングが好きですか？</strong> あなたもMiniAppをさらに素晴らしいものにする貢献者になれるかもしれません！ 私たちのプロジェクトは<strong>オープンソース</strong>なので、自由にコードを調べて、あなたのアイデアを実現できます。 ベテランの開発者でも、初心者でも、私たちのコミュニティにはあなたの居場所があります。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Install When You Want"
+msgstr "好きな時にインストール"
+
+#: src/routes/about/data.svelte.ts
+msgid "While they work great in the browser, you can also install them as PWAs. It's like having native apps that don't eat up your system resources - the best of both worlds."
+msgstr "ブラウザでの動作も素晴らしいですが、PWAとしてインストールすることも可能です。まるでシステムリソースを消費しないネイティブアプリのようで、両方の良いとこ取りです。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Svelte-Powered Speed"
+msgstr "Svelteによる高速化"
+
+#: src/routes/about/data.svelte.ts
+msgid "We chose SvelteKit because it's blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless."
+msgstr "SvelteKitを選んだのは、その驚異的な速さと使いやすさからです。その結果、ツールは瞬時にロードされ、スムーズに動作し、ワークフローが楽になります。"
+
+#: src/routes/about/data.svelte.ts
+msgid "The SvelteKit Advantage"
+msgstr "SvelteKitの利点"
+
+#: src/routes/about/data.svelte.ts
+msgid "When I discovered SvelteKit, it was love at first sight. Its elegant simplicity and powerful features made it perfect for building these focused tools."
+msgstr "SvelteKitを発見したとき、一目惚れでした。そのエレガントなシンプルさと強力な機能は、これらの特化型ツールを構築するのに最適でした。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Less is More"
+msgstr "少ないほど豊か"
+
+#: src/routes/about/data.svelte.ts
+msgid "Each app solves one problem really well. No feature bloat, no confusing interfaces - just clean, effective tools that respect your time and attention."
+msgstr "各アプリは1つの問題を非常にうまく解決します。機能の肥大化や紛らわしいインターフェースはなく、あなたの時間と注意を尊重する、クリーンで効果的なツールです。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Growing Together"
+msgstr "共に成長"
+
+#: src/routes/about/data.svelte.ts
+msgid "Every mini-app taught me something new about Svelte. Now, I'm sharing these lessons through code, hoping others can learn and build upon them."
+msgstr "ミニアプリを作るたびに、Svelteについて新しいことを学びました。今、これらの教訓をコードを通じて共有し、他の人が学び、それを基に構築できることを願っています。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Your Ideas Matter"
+msgstr "あなたのアイデアが重要です"
+
+#: src/routes/about/data.svelte.ts
+msgid "This project grows with your needs. Have an idea for a tool that would make your life easier? Let's build it together!"
+msgstr "このプロジェクトはあなたのニーズと共に成長します。あなたの生活を楽にするツールのアイデアはありますか？一緒に作りましょう！"
+
+#: src/routes/about/data.svelte.ts
+msgid "Building Bridges"
+msgstr "架け橋を築く"
+
+#: src/routes/about/data.svelte.ts
+msgid "Imagine a community where developers share their mini-tools, learn from each other, and collectively make development more enjoyable."
+msgstr "開発者がミニツールを共有し、互いに学び、開発をより楽しくするコミュニティを想像してみてください。"
+
+#: src/routes/about/data.svelte.ts
+msgid "More Tools Coming"
+msgstr "さらに多くのツールが登場予定"
+
+#: src/routes/about/data.svelte.ts
+msgid "The toolbox is always expanding! I'm constantly working on new mini-apps based on real-world needs and community suggestions."
+msgstr "ツールボックスは常に拡張しています！私は常に、現実世界のニーズとコミュニティの提案に基づいて、新しいミニアプリに取り組んでいます。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Join the Journey"
+msgstr "旅に参加する"
+
+#: src/routes/about/data.svelte.ts
+msgid "Whether you're a Svelte enthusiast or just getting started, your perspective is valuable. Let's collaborate and make these tools even better!"
+msgstr "あなたがSvelte愛好家であろうと、始めたばかりであろうと、あなたの視点は貴重です。協力して、これらのツールをさらに良くしましょう！"
+
+#: src/routes/about/data.svelte.ts
+msgid "Our app includes a powerful \"Nuke Button\" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
+msgstr "このアプリには、サービスワーカーのキャッシュやローカルストレージを含む、キャッシュされたすべてのデータをクリアできる強力な「Nukeボタン」が含まれています。これは、キャッシュの問題が発生した場合や、アプリをデフォルト状態にリセットする必要がある場合に特に役立ちます。"
+
+#: src/routes/about/data.svelte.ts
+msgid "Clear all cached data, including service worker caches and local storage"
+msgstr "サービスワーカーのキャッシュやローカルストレージを含む、キャッシュされたすべてのデータをクリアします"
+
+#: src/routes/about/data.svelte.ts
+msgid "Reset the app to its initial state when experiencing issues"
+msgstr "問題が発生した場合、アプリを初期状態にリセットします"
+
+#: src/routes/about/data.svelte.ts
+msgid "Unregister service workers for a fresh start"
+msgstr "新たに始めるために、サービスワーカーを登録解除します"
+
+#: src/routes/about/data.svelte.ts
+msgid "Automatically reload the app after clearing data"
+msgstr "データ消去後、アプリを自動的にリロードします"
+
+#: src/routes/about/data.svelte.ts
+msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
+msgstr "キャッシュの問題が発生した場合や、アプリをデフォルト状態にリセットする必要がある場合は、この機能を使用してください。```"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "span"
+msgstr "スパン"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "and Efficient"
+msgstr "そして効率的"
