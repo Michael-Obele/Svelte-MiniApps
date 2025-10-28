@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '$lib/languages';
-	import { buttonVariants } from './ui/button';
+	import { buttonVariants } from '../ui/button';
 	import { persistedLocale, changeLanguage } from '$lib/stores/language-store.svelte';
 
 	// Derive current language from shared persisted state

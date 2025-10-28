@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from '@/blocks/ThemeSwitch.svelte';
-	import LanguageSwitcher from '@/LanguageSwitcher.svelte';
+	import LanguageSwitcher from '@/blocks/LanguageSwitcher.svelte';
 	import NukeButton from '@/blocks/NukeButton.svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 

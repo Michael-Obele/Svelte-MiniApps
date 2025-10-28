@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from './ThemeSwitch.svelte';
-	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+	import LanguageSwitcher from '@/blocks/LanguageSwitcher.svelte';
 	import { page } from '$app/state';
 	import { navigating } from '$app/state';
 	import * as Avatar from '@/ui/avatar';
