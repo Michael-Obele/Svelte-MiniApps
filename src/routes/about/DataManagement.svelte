@@ -7,10 +7,13 @@
 	const bookmark = '/lottie/bookmark.json';
 
 	import { Bomb } from '@lucide/svelte';
-	import { dataManagement } from './data';
+	import { getDataManagement } from './data.svelte';
 	import Data from '$lib/assets/Bomb.png?enhanced';
 	let { id } = $props();
 	import Group from './Group.svelte';
+
+	// Call function to get data
+	let dataManagement = $derived(getDataManagement());
 </script>
 
 <section {id} class="mx-auto mt-8 text-center">
@@ -34,7 +37,7 @@
 	<ul class="my-8 space-y-4 text-left">
 		{#each dataManagement.features as feature}
 			<li
-				class="mx-auto flex flex-col items-start border-none border-gray-300 p-3 text-right transition duration-200 ease-in-out dark:border-gray-700 sm:w-fit sm:flex-row"
+				class="mx-auto flex flex-col items-start border-none border-gray-300 p-3 text-right transition duration-200 ease-in-out sm:w-fit sm:flex-row dark:border-gray-700"
 			>
 				<lord-icon
 					src={bookmark}
@@ -42,7 +45,7 @@
 					stroke="thick"
 					target="li"
 					state="hover-draw"
-					class="mb-2 size-8 text-muted-foreground transition-colors hover:text-primary sm:mx-2"
+					class="text-muted-foreground hover:text-primary mb-2 size-8 transition-colors sm:mx-2"
 					colors="primary:red,secondary:green"
 				></lord-icon>
 				<span>{feature}</span>

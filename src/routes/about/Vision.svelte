@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { future, next, splitDescription } from './data';
+	import { getFuture, getNext, splitDescription } from './data.svelte';
 	import Vision from '$lib/assets/Rocket Boy.png?enhanced';
 	import Group from './Group.svelte';
 	import Illustration from './Illustration.svelte';
 	import Header from './Header.svelte';
 	let { id } = $props();
+
+	// Call functions to get data
+	let future = $derived(getFuture());
+	let next = $derived(getNext());
 </script>
 
 <section {id}>

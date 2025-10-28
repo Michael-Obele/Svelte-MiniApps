@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { reasons, splitDescription } from './data';
+	import { getReasons, splitDescription } from './data.svelte';
 	import Aha from '$lib/assets/Problem Solving 4.png?enhanced';
 	import Group from './Group.svelte';
 	import Illustration from './Illustration.svelte';
 	import Header from './Header.svelte';
 	let { id } = $props();
+
+	let reasons = $derived(getReasons());
 </script>
 
 <section {id}>

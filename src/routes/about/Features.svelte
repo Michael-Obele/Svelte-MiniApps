@@ -1,10 +1,24 @@
 <script lang="ts">
 	import Illustration from './Illustration.svelte';
-	import { features, future, next, reasons, splitDescription, dataManagement } from './data';
+	import {
+		getFeatures,
+		getFuture,
+		getNext,
+		getReasons,
+		splitDescription,
+		getDataManagement
+	} from './data.svelte';
 	import Why from '$lib/assets/Question 7.png?enhanced';
 	import Group from './Group.svelte';
 	import Header from './Header.svelte';
 	let { id } = $props();
+
+	// Call functions to get data
+	let features = $derived(getFeatures());
+	let future = $derived(getFuture());
+	let next = $derived(getNext());
+	let reasons = $derived(getReasons());
+	let dataManagement = $derived(getDataManagement());
 </script>
 
 <section {id}>
@@ -20,7 +34,7 @@
 					{#each features as feature, i}
 						<li
 							id={feature.title.split(' ').join('-')}
-							class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out dark:border-gray-700 md:flex-row md:items-center"
+							class="items-start border-b border-gray-300 p-3 transition duration-200 ease-in-out md:flex-row md:items-center dark:border-gray-700"
 						>
 							<lord-icon
 								target="li"
