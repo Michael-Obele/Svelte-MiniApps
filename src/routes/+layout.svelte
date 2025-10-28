@@ -11,13 +11,11 @@
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
 	import { Runatics } from 'runatics';
 
-	// Import wuchale locale loader - CRITICAL for translations to work
-	import t from '../locales/loader.svelte.js';
-
 	// Import language store initialization
 	import { initLanguage } from '$lib/stores/language-store.svelte';
 
 	let { children, data }: LayoutProps = $props();
+	let { user, ANALYTICS_ID } = data;
 
 	onMount(async () => {
 		// Dynamically import @lordicon/element *inside* onMount

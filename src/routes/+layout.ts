@@ -5,9 +5,9 @@ import { loadLocale } from 'wuchale/load-utils';
 import '../locales/loader.svelte.js';
 import type { LayoutLoad } from './$types.js';
 
-export const load: LayoutLoad = async ({ parent }) => {
-	// Get data from parent layout server load
-	const parentData = await parent();
+export const load: LayoutLoad = async ({ data }) => {
+	// Get data from layout server load
+	const serverData = data;
 
 	// Client-side: Read locale from localStorage and load catalogs
 	// Note: LanguageSwitcher keeps localStorage and cookie in sync
@@ -27,8 +27,8 @@ export const load: LayoutLoad = async ({ parent }) => {
 		await loadLocale(locale);
 	}
 
-	// Return parent data along with any additional data
+	// Return server data along with any additional data
 	return {
-		...parentData
+		...serverData
 	};
 };
