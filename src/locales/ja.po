@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-28T07:26:34.475Z\n"
+"PO-Revision-Date: 2025-10-28T10:28:11.535Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -6930,7 +6930,6 @@ msgstr "喜びを分かち合う:"
 msgid "Help Us Improve:"
 msgstr "改善にご協力ください:"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
 msgstr "<strong>バグ</strong>を見つけましたか？ぜひお聞かせください！皆様からのフィードバックは、これらのツールをさらに素晴らしいものにするために非常に貴重です。小さな不具合でも素晴らしいアイデアでも、GitHubページにアクセスしてお知らせください。技術に詳しくなくても大丈夫です！経験したことを説明するだけで構いません。スクリーンショットも大歓迎です。バグ報告は、私たちを完璧に近づけます。"
@@ -6940,7 +6939,21 @@ msgstr "<strong>バグ</strong>を見つけましたか？ぜひお聞かせく�
 msgid "Join the Creation:"
 msgstr "創造に参加する:"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "これらのアプリをさらに良くするためのアイデアはありますか？ぜひお聞かせください！コーディングの達人でコードに飛び込む準備ができている人でも、物事の進め方について新鮮な視点を持っている人でも、あなたの意見は貴重です。構築を待っているアプリのウィッシュリスト全体と、既存のアプリを強化する方法が無数にあります。特別なものに足跡を残す準備はできていますか？```"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
+msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+msgstr "<strong>MiniAppを使って、日々の作業が楽になった経験はありませんか？</strong> ぜひ、その体験を共有してください！友人、家族、同僚など、同じようにMiniAppの恩恵を受けられる人がいるかもしれません。あなたのオススメが、誰かの日々のルーチンを簡素化するのに役立つかもしれません。"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting users to provide feedback and report issues"
+msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
+msgstr "<strong>あなたの声が重要です！</strong> 素晴らしいアイデアをお持ちの方も、バグを見つけた方も、単に体験を共有したい方も、ぜひお聞かせください。<strong>GitHubリポジトリ</strong>にアクセスして、issueを開いたり、議論を始めたりしてください。皆様からのフィードバックは、より良いツールを構築する上で役立ちます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+msgstr "<strong>コーディングが好きですか？</strong> あなたもMiniAppをさらに素晴らしいものにする貢献者になれるかもしれません！ 私たちのプロジェクトは<strong>オープンソース</strong>なので、自由にコードを調べて、あなたのアイデアを実現できます。 ベテランの開発者でも、初心者でも、私たちのコミュニティにはあなたの居場所があります。"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-28T07:26:34.326Z\n"
+"PO-Revision-Date: 2025-10-28T10:28:11.493Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -6029,16 +6029,8 @@ msgid "Help Us Improve:"
 msgstr "帮助我们改进：```"
 
 #: src/lib/components/home/data.svelte.ts
-msgid "Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
-msgstr "发现了一个 <strong>错误</strong>？我们非常乐意倾听！您的反馈对于使这些工具更加出色至关重要。无论是小小的故障还是绝妙的想法，请访问我们的 GitHub 页面并告知我们。不精通技术？没问题！只需描述您遇到的情况 - 始终欢迎提供屏幕截图。每一个错误报告都使我们离完美更近一步。"
-
-#: src/lib/components/home/data.svelte.ts
 msgid "Join the Creation:"
 msgstr "加入创作："
-
-#: src/lib/components/home/data.svelte.ts
-msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
-msgstr "有能让这些应用变得更好的想法吗？我们很乐意倾听！无论您是准备深入研究代码的编码向导，还是对事物运作方式有全新视角的人，您的投入都非常宝贵。这里有一个完整的应用愿望清单等待构建，以及无数种增强现有应用的方式。准备好在特别的事情上留下您的印记了吗？"
 
 #: src/lib/components/blocks/ThemeSwitch.svelte
 msgid "Toggle theme"
@@ -6873,3 +6865,18 @@ msgstr "本季度"
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 msgid "Quick Filters"
 msgstr "快速筛选```"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
+msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+msgstr "<strong>发现一款让您生活更轻松的MiniApp了吗？</strong> 为什么不与他人分享呢？将您的成功故事分享给可能受益的朋友、家人或同事！您的推荐可以帮助他人发现简化日常生活的完美工具。"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting users to provide feedback and report issues"
+msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
+msgstr "<strong>您的声音很重要！</strong> 无论您有绝妙的想法、发现了错误，还是只想分享您的体验，我们都在倾听。前往我们的<strong>GitHub存储库</strong>以提交问题或发起讨论。每一条反馈都有助于我们为您构建更好的工具。"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+msgstr "<strong>喜欢编码吗？</strong> 您可能成为下一个贡献者，使这些MiniApp更加出色！ 我们的项目是<strong>开源</strong>的，这意味着我们邀请您深入研究，探索代码并将您的想法变为现实。 无论您是经验丰富的开发人员还是刚开始，我们的社区都有您的位置。"

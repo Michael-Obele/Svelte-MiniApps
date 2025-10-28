@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-28T07:25:45.329Z\n"
+"PO-Revision-Date: 2025-10-28T10:28:11.408Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -6979,7 +6979,6 @@ msgstr "Partagez la joie :"
 msgid "Help Us Improve:"
 msgstr "Aidez-nous à améliorer :"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Spotted a <strong>bug</strong>? We're all ears! Your feedback is invaluable in making these tools even more amazing. Whether it's a tiny glitch or a bright idea, hop over to our GitHub page and let us know. Not tech-savvy? No problem! Just describe what you experienced - screenshots are always welcome. Every bug report brings us closer to perfection."
 msgstr "Vous avez repéré un <strong>bug</strong> ? Nous sommes tout ouïe ! Vos commentaires sont précieux pour rendre ces outils encore plus incroyables. Qu'il s'agisse d'un petit problème ou d'une idée brillante, rendez-vous sur notre page GitHub et faites-le nous savoir. Vous n'êtes pas un expert en technologie ? Pas de problème ! Décrivez simplement ce que vous avez vécu - les captures d'écran sont toujours les bienvenues. Chaque rapport de bug nous rapproche de la perfection."
@@ -6989,7 +6988,21 @@ msgstr "Vous avez repéré un <strong>bug</strong> ? Nous sommes tout ouïe ! Vo
 msgid "Join the Creation:"
 msgstr "Rejoignez la création :"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "Vous avez une idée qui pourrait rendre ces applications encore meilleures ? Nous aimerions l'entendre ! Que vous soyez un magicien du codage prêt à plonger dans le code, ou quelqu'un avec une nouvelle perspective sur la façon dont les choses pourraient fonctionner, votre contribution est en or. Il y a toute une liste de souhaits d'applications qui attendent d'être construites, et d'innombrables façons d'améliorer celles qui existent déjà. Prêt à laisser votre marque sur quelque chose de spécial ?```"
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
+msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+msgstr "<strong>Vous avez trouvé une MiniApp qui a simplifié votre journée ?</strong> Pourquoi garder cela pour vous ? Partagez votre expérience avec vos amis, votre famille ou vos collègues qui pourraient également en bénéficier ! Votre recommandation pourrait aider quelqu'un à découvrir l'outil parfait pour simplifier sa routine quotidienne."
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting users to provide feedback and report issues"
+msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
+msgstr "<strong>Votre voix compte !</strong> Que vous ayez une idée géniale, que vous ayez repéré un bug ou que vous souhaitiez simplement partager votre expérience, nous vous écoutons. Rendez-vous sur notre <strong>répertoire GitHub</strong> pour ouvrir un problème ou lancer une discussion. Chaque commentaire nous aide à créer de meilleurs outils pour vous."
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces MiniApps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté.```"
