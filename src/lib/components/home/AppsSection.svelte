@@ -33,7 +33,7 @@ Usage:
 						class="mb-6 max-w-[900px] text-lg font-normal text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
 					>
 						From managing your budget to boosting productivity, each app here is designed with one
-						goal: to help you get things done(). Built with <strong class="text-[#F03E3E]"
+						goal: to help you get things done. Built with <strong class="text-[#F03E3E]"
 							>Svelte</strong
 						>, these tools are fast, responsive, and a joy to use.
 					</p>

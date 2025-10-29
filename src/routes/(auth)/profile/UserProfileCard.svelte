@@ -95,131 +95,125 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 -->
 
 {#if userData && userStats}
-<Card class="h-full">
-	<CardHeader class="pb-2 text-center">
-		<div class="mx-auto mb-4">
-			<Avatar class="h-24 w-24 border-4 border-primary/10">
-				<AvatarFallback class="text-2xl"
-					>{userData.username[0]?.toUpperCase() || 'U'}</AvatarFallback
-				>
-			</Avatar>
-		</div>
-		<CardTitle class="text-xl">{userData.username}</CardTitle>
-		<CardDescription class="text-sm text-muted-foreground">
-			@{userData.username.toLowerCase()}
-		</CardDescription>
+	<Card class="h-full">
+		<CardHeader class="pb-2 text-center">
+			<div class="mx-auto mb-4">
+				<Avatar class="border-primary/10 h-24 w-24 border-4">
+					<AvatarFallback class="text-2xl"
+						>{userData.username[0]?.toUpperCase() || 'U'}</AvatarFallback
+					>
+				</Avatar>
+			</div>
+			<CardTitle class="text-xl">{userData.username}</CardTitle>
+			<CardDescription class="text-muted-foreground text-sm">
+				@{userData.username.toLowerCase()}
+			</CardDescription>
 
-		<div class="mt-2 flex justify-center gap-2">
-			{#if userData.isAdmin}
-				<Badge variant="default" class="gap-1 bg-gradient-to-r from-indigo-500 to-purple-500">
-					<Shield class="h-3 w-3" />
-					<span>Admin</span>
+			<div class="mt-2 flex justify-center gap-2">
+				{#if userData.isAdmin}
+					<Badge variant="default" class="gap-1 bg-gradient-to-r from-indigo-500 to-purple-500">
+						<Shield class="h-3 w-3" />
+						<span>Admin</span>
+					</Badge>
+				{/if}
+				{#if userData.hasGithub}
+					<Badge variant="outline" class="gap-1">
+						<Github class="h-3 w-3" />
+						<span>GitHub</span>
+					</Badge>
+				{/if}
+				<Badge variant="secondary" class="gap-1">
+					<Calendar class="h-3 w-3" />
+					<span>Member</span>
 				</Badge>
-			{/if}
-			{#if userData.hasGithub}
-				<Badge variant="outline" class="gap-1">
-					<Github class="h-3 w-3" />
-					<span>GitHub</span>
-				</Badge>
-			{/if}
-			<Badge variant="secondary" class="gap-1">
-				<Calendar class="h-3 w-3" />
-				<span>Member</span>
-			</Badge>
-		</div>
-	</CardHeader>
+			</div>
+		</CardHeader>
 
-	<CardContent>
-		<div class="grid grid-cols-2 gap-4 py-2 text-center">
-			<div>
-				<p class="text-sm text-muted-foreground">Account Age</p>
-				<p class="text-lg font-bold">{formatAccountAge(userStats.accountAge)}</p>
-			</div>
-			<div>
-				<p class="text-sm text-muted-foreground">Joined</p>
-				<p class="text-xs font-medium">{formatJoinDate(userData.createdAt)}</p>
-			</div>
-			<div>
-				<p class="text-sm text-muted-foreground">Budgets</p>
-				<p class="text-lg font-bold">{userStats.totalBudgets}</p>
-			</div>
-			<div>
-				<p class="text-sm text-muted-foreground">Mantras</p>
-				<p class="text-lg font-bold">{userStats.totalMantras}</p>
-			</div>
-		</div>
-
-		<Separator class="my-4" />
-
-		<div class="space-y-2 text-sm">
-			<div class="flex items-center justify-between">
-				<span class="text-muted-foreground">Saved Passwords</span>
-				<span class="font-medium">{userStats.totalPasswords}</span>
-			</div>
-			<div class="flex items-center justify-between">
-				<span class="text-muted-foreground">Social Pages</span>
-				<span class="font-medium">{userStats.totalSocialPages}</span>
-			</div>
-		</div>
-	</CardContent>
-
-	<CardFooter class="flex justify-between gap-2">
-		<Button
-			variant="outline"
-			size="sm"
-			class="w-full gap-1"
-			onclick={() => (showEditDialog = true)}
-		>
-			<Edit2 class="h-4 w-4" />
-			<span>Edit Profile</span>
-		</Button>
-	</CardFooter>
-</Card>
-
-<!-- Edit Profile Dialog -->
-<Dialog.Root bind:open={showEditDialog}>
-	<Dialog.Content class="sm:max-w-[425px]">
-		<Dialog.Header>
-			<Dialog.Title>Edit Profile</Dialog.Title>
-			<Dialog.Description>
-				Make changes to your profile here. Click save when you're done().
-			</Dialog.Description>
-		</Dialog.Header>
-		<form onsubmit={handleUpdateProfile}>
-			<div class="grid gap-4 py-4">
-				<div class="grid gap-2">
-					<Label for="username">Username</Label>
-					<Input
-						type="text"
-						name="username"
-						id="username"
-						bind:value={editUsername}
-						placeholder="Enter username"
-						required
-					/>
+		<CardContent>
+			<div class="grid grid-cols-2 gap-4 py-2 text-center">
+				<div>
+					<p class="text-muted-foreground text-sm">Account Age</p>
+					<p class="text-lg font-bold">{formatAccountAge(userStats.accountAge)}</p>
 				</div>
-				<div class="grid gap-2">
-					<Label for="age">Age (optional)</Label>
-					<Input
-						type="number"
-						name="age"
-						id="age"
-						bind:value={editAge}
-						placeholder="Enter age"
-					/>
+				<div>
+					<p class="text-muted-foreground text-sm">Joined</p>
+					<p class="text-xs font-medium">{formatJoinDate(userData.createdAt)}</p>
+				</div>
+				<div>
+					<p class="text-muted-foreground text-sm">Budgets</p>
+					<p class="text-lg font-bold">{userStats.totalBudgets}</p>
+				</div>
+				<div>
+					<p class="text-muted-foreground text-sm">Mantras</p>
+					<p class="text-lg font-bold">{userStats.totalMantras}</p>
 				</div>
 			</div>
-			<Dialog.Footer>
-				<Button type="button" variant="outline" onclick={() => (showEditDialog = false)}>
-					Cancel
-				</Button>
-				<Button type="submit" disabled={isSubmitting}>
-					{isSubmitting ? 'Saving...' : 'Save changes'}
-				</Button>
-			</Dialog.Footer>
-		</form>
-	</Dialog.Content>
-</Dialog.Root>
+
+			<Separator class="my-4" />
+
+			<div class="space-y-2 text-sm">
+				<div class="flex items-center justify-between">
+					<span class="text-muted-foreground">Saved Passwords</span>
+					<span class="font-medium">{userStats.totalPasswords}</span>
+				</div>
+				<div class="flex items-center justify-between">
+					<span class="text-muted-foreground">Social Pages</span>
+					<span class="font-medium">{userStats.totalSocialPages}</span>
+				</div>
+			</div>
+		</CardContent>
+
+		<CardFooter class="flex justify-between gap-2">
+			<Button
+				variant="outline"
+				size="sm"
+				class="w-full gap-1"
+				onclick={() => (showEditDialog = true)}
+			>
+				<Edit2 class="h-4 w-4" />
+				<span>Edit Profile</span>
+			</Button>
+		</CardFooter>
+	</Card>
+
+	<!-- Edit Profile Dialog -->
+	<Dialog.Root bind:open={showEditDialog}>
+		<Dialog.Content class="sm:max-w-[425px]">
+			<Dialog.Header>
+				<Dialog.Title>Edit Profile</Dialog.Title>
+				<Dialog.Description>
+					Make changes to your profile here. Click save when you're done.
+				</Dialog.Description>
+			</Dialog.Header>
+			<form onsubmit={handleUpdateProfile}>
+				<div class="grid gap-4 py-4">
+					<div class="grid gap-2">
+						<Label for="username">Username</Label>
+						<Input
+							type="text"
+							name="username"
+							id="username"
+							bind:value={editUsername}
+							placeholder="Enter username"
+							required
+						/>
+					</div>
+					<div class="grid gap-2">
+						<Label for="age">Age (optional)</Label>
+						<Input type="number" name="age" id="age" bind:value={editAge} placeholder="Enter age" />
+					</div>
+				</div>
+				<Dialog.Footer>
+					<Button type="button" variant="outline" onclick={() => (showEditDialog = false)}>
+						Cancel
+					</Button>
+					<Button type="submit" disabled={isSubmitting}>
+						{isSubmitting ? 'Saving...' : 'Save changes'}
+					</Button>
+				</Dialog.Footer>
+			</form>
+		</Dialog.Content>
+	</Dialog.Root>
 {:else}
 	<Card class="h-full">
 		<CardContent class="flex items-center justify-center p-8">
