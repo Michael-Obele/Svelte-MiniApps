@@ -5,37 +5,38 @@
 	import { done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 
 	let { item } = $props();
+
+	// Map of tag classes to their corresponding icons
+	const tagIcons = {
+		utility: Box,
+		game: Gamepad2,
+		math: Diff,
+		fun: PartyPopper,
+		security: Lock,
+		design: Pen,
+		productivity: CheckSquare,
+		education: Book,
+		finance: PiggyBank,
+		health: Heart,
+		multimedia: Speaker,
+		'developer-tools': Code
+	} as const;
+
+	type TagClass = keyof typeof tagIcons;
 </script>
+
+{#snippet icon(tagClass: string)}
+	{#if tagClass in tagIcons}
+		{@const IconComponent = tagIcons[tagClass as TagClass]}
+		<IconComponent size="16" class="mx-1" />
+	{/if}
+{/snippet}
 
 <div class="flex flex-wrap items-center gap-2">
 	<span
-		class={`inline-flex items-center rounded-md px-2.5 py-0.5 text-sm font-medium text-green-800 ${item.tag}`}
+		class={`inline-flex items-center rounded-md px-2.5 py-0.5 text-sm font-medium text-green-800 ${item.tagClass}`}
 	>
-		{#if item.tag === 'utility'}
-			<Box size="16" class="mx-1" />
-		{:else if item.tag === 'game'}
-			<Gamepad2 size="16" class="mx-1" />
-		{:else if item.tag === 'math'}
-			<Diff size="16" class="mx-1" />
-		{:else if item.tag === 'fun'}
-			<PartyPopper size="16" class="mx-1" />
-		{:else if item.tag === 'security'}
-			<Lock size="16" class="mx-1" />
-		{:else if item.tag === 'design'}
-			<Pen size="16" class="mx-1" />
-		{:else if item.tag === 'productivity'}
-			<CheckSquare size="16" class="mx-1" />
-		{:else if item.tag === 'education'}
-			<Book size="16" class="mx-1" />
-		{:else if item.tag === 'finance'}
-			<PiggyBank size="16" class="mx-1" />
-		{:else if item.tag === 'health'}
-			<Heart size="16" class="mx-1" />
-		{:else if item.tag === 'multimedia'}
-			<Speaker size="16" class="mx-1" />
-		{:else if item.tag === 'developer-tools'}
-			<Code size="16" class="mx-1" />
-		{/if}
+		{@render icon(item.tagClass)}
 		{item.tag.split('-').join(' ')}
 	</span>
 

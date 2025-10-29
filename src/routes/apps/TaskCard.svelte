@@ -22,7 +22,7 @@
 	<div class="flex w-fit flex-col">
 		<div class="mb-2 flex flex-wrap items-center gap-2">
 			<span
-				class={`inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-sm font-medium ${item.difficulty}`}
+				class={`inline-flex w-fit items-center rounded-md px-2.5 py-0.5 text-sm font-medium ${item.class}`}
 			>
 				<HardHat size="16" class="mx-1" />
 				{item.difficulty}
