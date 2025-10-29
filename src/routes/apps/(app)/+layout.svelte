@@ -157,7 +157,7 @@
 								>
 							</div>
 							<span class="capitalize">{app.name.replace(/-/g, ' ')}</span>
-		</button>
+						</button>
 					</Sheet.Description>
 				{/each}
 			</div>
