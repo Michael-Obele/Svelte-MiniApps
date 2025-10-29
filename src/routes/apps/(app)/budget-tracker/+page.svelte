@@ -535,7 +535,7 @@
 </script>
 
 <RouteHead
-	title="Budget Tracker | Svelte MiniApps"
+	title="Budget Tracker | Svelte Mini Apps"
 	description="Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
 	keywords="budget tracker, expense tracker, personal finance, money management, financial planning, spending tracker"
 	route="/apps/budget-tracker"

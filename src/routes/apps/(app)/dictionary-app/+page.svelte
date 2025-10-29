@@ -82,7 +82,7 @@
 </script>
 
 <RouteHead
-	title="Svelte MiniApps - English Dictionary App"
+	title="Svelte Mini Apps - English Dictionary App"
 	description="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
 	keywords="English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
 	route="/apps/english-dictionary-app"

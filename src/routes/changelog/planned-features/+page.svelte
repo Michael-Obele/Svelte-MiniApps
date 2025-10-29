@@ -105,7 +105,7 @@
 </script>
 
 <RouteHead
-	title="Planned Features | Svelte MiniApps Changelog"
+	title="Planned Features | Svelte Mini Apps Changelog"
 	description="Explore upcoming features and planned enhancements for Svelte-MiniApps, including mobile apps, desktop companions, and new functionality."
 	keywords="svelte, planned features, roadmap, mobile apps, desktop apps, announcements, playground"
 	route="/changelog/planned-features"

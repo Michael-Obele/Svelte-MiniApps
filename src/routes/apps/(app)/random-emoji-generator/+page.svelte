@@ -19,7 +19,7 @@
 </script>
 
 <RouteHead
-	title="Random Emoji Generator - Svelte MiniApps"
+	title="Random Emoji Generator - Svelte Mini Apps"
 	description="Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
 	keywords="Random Emoji, Emoji Generator, Fun, Productivity, Svelte Apps"
 	route="/apps/random-emoji-generator"

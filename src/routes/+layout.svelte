@@ -30,7 +30,7 @@
 </script>
 
 <svelte:head>
-	<title>Svelte MiniApps</title>
+	<title>Svelte Mini Apps</title>
 	<meta name="description" content="A collection of mini apps built with SvelteKit" />
 </svelte:head>
 

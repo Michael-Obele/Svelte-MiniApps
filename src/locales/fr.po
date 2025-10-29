@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-29T07:44:24.138Z\n"
+"PO-Revision-Date: 2025-10-29T09:51:28.073Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -361,8 +361,8 @@ msgid "Improving application speed, accessibility, and user experience"
 msgstr "Améliorer la vitesse de l'application, l'accessibilité et l'expérience utilisateur"
 
 #: src/routes/hire/+page.svelte
-msgid "Hire Michael - Full-Stack Developer | Svelte MiniApps"
-msgstr "Embaucher Michael - Développeur full-stack | Svelte MiniApps"
+msgid "Hire Michael - Full-Stack Developer | Svelte Mini Apps"
+msgstr "Embaucher Michael - Développeur full-stack | Svelte Mini Apps"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Back to Home"
@@ -502,8 +502,8 @@ msgid "<0/> Start a Conversation <1/>"
 msgstr "<0/> Commencer une conversation <1/>"
 
 #: src/routes/offline/+page.svelte
-msgid "Offline | Svelte MiniApps"
-msgstr "Hors ligne | Svelte MiniApps"
+msgid "Offline | Svelte Mini Apps"
+msgstr "Hors ligne | Svelte Mini Apps"
 
 #: src/routes/offline/+page.svelte
 msgid "Check your internet connection status and access cached content while offline."
@@ -573,8 +573,8 @@ msgid "Use tools that don't require internet"
 msgstr "Utiliser les outils qui ne nécessitent pas Internet"
 
 #: src/routes/social-links/+page.svelte
-msgid "Social Links - Svelte MiniApps"
-msgstr "Liens sociaux - Svelte MiniApps"
+msgid "Social Links - Svelte Mini Apps"
+msgstr "Liens sociaux - Svelte Mini Apps"
 
 #: src/routes/social-links/+page.svelte
 msgid "Share your social media links with a QR code"
@@ -628,7 +628,6 @@ msgstr "Cette application est en bêta. Les fonctionnalités peuvent être insta
 msgid "Blur In"
 msgstr "Flou d'entrée"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "MiniApps"
 msgstr "MiniApps"
@@ -697,11 +696,12 @@ msgstr "M 40,40 Q 160,40 160,160"
 msgid "M 160,40 Q 100,100 40,160"
 msgstr "M 160,40 Q 100,100 40,160"
 
+#: src/lib/components/home/Hero.svelte
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/hire/+page.svelte
-msgid "Svelte MiniApps"
-msgstr "Svelte MiniApps"
+msgid "Svelte Mini Apps"
+msgstr "Mini-applications Svelte"
 
 #: src/routes/+layout.svelte
 msgid "A collection of mini apps built with SvelteKit"
@@ -924,27 +924,27 @@ msgid "Attributions"
 msgstr "Attributions"
 
 #: src/routes/about/+page.svelte
-msgid "About Page | Svelte MiniApps"
-msgstr "À propos | Svelte MiniApps"
+msgid "About Page | Svelte Mini Apps"
+msgstr "À propos | Svelte Mini Apps"
 
 #: src/routes/about/+page.svelte
-msgid "Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-msgstr "Découvrez-en plus sur Svelte MiniApps. Apprenez-en davantage sur nos outils innovants, nos applications Svelte uniques et comment nous révolutionnons l'écosystème Svelte."
+msgid "Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
+msgstr "Découvrez-en plus sur Svelte Mini Apps. Apprenez-en davantage sur nos outils innovants, nos applications Svelte uniques et comment nous révolutionnons l'écosystème Svelte."
 
 #: src/routes/about/+page.svelte
 msgid "Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, MiniApps, À propos, Outils, Applications, Écosystème, Innovant, Unique"
 
 #: src/routes/about/+page.svelte
-msgid "Svelte MiniApps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
-msgstr "Svelte MiniApps : Des outils minuscules puissants construits avec <0>SvelteKit <0/></0>"
+msgid "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
+msgstr "Svelte Mini Apps : Des outils minuscules puissants construits avec <0>SvelteKit <0/></0>"
 
 #: src/routes/about/+page.svelte
 msgid ""
-"<0>Supercharge your workflow!</0> Svelte MiniApps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
+"<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
 "everyday tasks with ease."
 msgstr ""
-"<0>Boostez votre flux de travail !</0> Svelte MiniApps sont des outils minuscules et ciblés construits avec <1>SvelteKit</1> pour une vitesse éclair. Maîtrisez\n"
+"<0>Boostez votre flux de travail !</0> Svelte Mini Apps sont des outils minuscules et ciblés construits avec <1>SvelteKit</1> pour une vitesse éclair. Maîtrisez\n"
 "les tâches quotidiennes facilement."
 
 #: src/routes/about/+page.svelte
@@ -1049,8 +1049,8 @@ msgid "Render After Effects animations natively on the web."
 msgstr "Rendez les animations After Effects nativement sur le web."
 
 #: src/routes/about/Attributions.svelte
-msgid "Svelte MiniApps is built with the help of these amazing open-source projects:"
-msgstr "Svelte MiniApps est construit avec l'aide de ces incroyables projets open-source :"
+msgid "Svelte Mini Apps is built with the help of these amazing open-source projects:"
+msgstr "Svelte Mini Apps est construit avec l'aide de ces incroyables projets open-source :"
 
 #: src/routes/about/Attributions.svelte
 msgid "Visit Website"
@@ -1080,31 +1080,31 @@ msgstr ""
 "son état par défaut."
 
 #: src/routes/about/Features.svelte
-msgid "Why Choose Svelte MiniApps?"
-msgstr "Pourquoi choisir Svelte MiniApps ?"
+msgid "Why Choose Svelte Mini Apps?"
+msgstr "Pourquoi choisir Svelte Mini Apps ?"
 
 #: src/routes/about/Features.svelte
-msgid "Why  Choose Svelte MiniApps?"
-msgstr "Pourquoi choisir Svelte MiniApps ?"
+msgid "Why  Choose Svelte Mini Apps?"
+msgstr "Pourquoi choisir Svelte Mini Apps ?"
 
 #: src/routes/about/Features.svelte
 msgid "Features-list"
 msgstr "Liste des caractéristiques"
 
 #: src/routes/about/Philosophy.svelte
-msgid "The <0>\"Aha Moment\"</0> Behind Svelte MiniApps:"
-msgstr "Le <0>\"moment eurêka\"</0> derrière Svelte MiniApps :"
+msgid "The <0>\"Aha Moment\"</0> Behind Svelte Mini Apps:"
+msgstr "Le <0>\"moment eurêka\"</0> derrière Svelte Mini Apps :"
 
 #: src/routes/about/Philosophy.svelte
-msgid "The reason behind Svelte MiniApps"
-msgstr "La raison derrière Svelte MiniApps"
+msgid "The reason behind Svelte Mini Apps"
+msgstr "La raison derrière Svelte Mini Apps"
 
 #: src/routes/about/Philosophy.svelte
 msgid ""
-"We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte MiniApps were born from the frustration of heavyweight solutions for lightweight\n"
+"We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
 "problems.</1>"
 msgstr ""
-"Nous avons tous été là - <0>luttant contre un framework complexe pour une tâche simple.</0> <1>Svelte MiniApps est né de la frustration face à des solutions lourdes pour des\n"
+"Nous avons tous été là - <0>luttant contre un framework complexe pour une tâche simple.</0> <1>Svelte Mini Apps est né de la frustration face à des solutions lourdes pour des\n"
 "problèmes légers.</1>"
 
 #: src/routes/about/Philosophy.svelte
@@ -1116,8 +1116,8 @@ msgid "Explore a Range of Tools:"
 msgstr "Explorez une gamme d'outils :"
 
 #: src/routes/about/Tools.svelte
-msgid "Tools for Svelte MiniApps"
-msgstr "Outils pour Svelte MiniApps"
+msgid "Tools for Svelte Mini Apps"
+msgstr "Outils pour Svelte Mini Apps"
 
 #: src/routes/about/Tools.svelte
 msgid ""
@@ -1144,16 +1144,16 @@ msgid "Dive into the code and learn from the examples to build your own mini-app
 msgstr "Plongez dans le code et apprenez des exemples pour construire vos propres mini-applications"
 
 #: src/routes/about/Vision.svelte
-msgid "The Future of Svelte MiniApps: What's Next?"
-msgstr "L'avenir de Svelte MiniApps : Qu'y a-t-il ensuite ?"
+msgid "The Future of Svelte Mini Apps: What's Next?"
+msgstr "L'avenir de Svelte Mini Apps : Qu'y a-t-il ensuite ?"
 
 #: src/routes/about/Vision.svelte
-msgid "The Future of Svelte MiniApps"
-msgstr "L'avenir de Svelte MiniApps"
+msgid "The Future of Svelte Mini Apps"
+msgstr "L'avenir de Svelte Mini Apps"
 
 #: src/routes/about/Vision.svelte
-msgid "Svelte MiniApps is an <0>ever-evolving project, <0>and <0>you</0> hold the reins!</0></0>"
-msgstr "Svelte MiniApps est un projet <0>en constante évolution, <0>et <0>vous</0> tenez les rênes !</0></0>"
+msgid "Svelte Mini Apps is an <0>ever-evolving project, <0>and <0>you</0> hold the reins!</0></0>"
+msgstr "Svelte Mini Apps est un projet <0>en constante évolution, <0>et <0>vous</0> tenez les rênes !</0></0>"
 
 #: src/routes/about/Vision.svelte
 msgid "Have ideas or feedback?"
@@ -1161,10 +1161,10 @@ msgstr "Avez-vous des idées ou des commentaires ?"
 
 #: src/routes/about/Vision.svelte
 msgid ""
-"Your input shapes the future of Svelte MiniApps. Share your thoughts, feature requests, or\n"
+"Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
 "suggestions with us."
 msgstr ""
-"Vos contributions façonnent l'avenir de Svelte MiniApps. Partagez vos idées, demandes de fonctionnalités ou\n"
+"Vos contributions façonnent l'avenir de Svelte Mini Apps. Partagez vos idées, demandes de fonctionnalités ou\n"
 "suggestions avec nous."
 
 #: src/routes/about/Vision.svelte
@@ -1172,20 +1172,20 @@ msgid "Send Feedback"
 msgstr "Envoyer des commentaires"
 
 #: src/routes/apps/+layout.svelte
-msgid "Apps Page | Svelte MiniApps"
-msgstr "Page des applications | Svelte MiniApps"
+msgid "Apps Page | Svelte Mini Apps"
+msgstr "Page des applications | Svelte Mini Apps"
 
 #: src/routes/apps/+layout.svelte
-msgid "Explore our collection of unique Svelte MiniApps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
-msgstr "Explorez notre collection unique de Svelte MiniApps. Découvrez de nouveaux outils, des applications innovantes et voyez comment nous améliorons l'écosystème Svelte."
+msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
+msgstr "Explorez notre collection unique de Svelte Mini Apps. Découvrez de nouveaux outils, des applications innovantes et voyez comment nous améliorons l'écosystème Svelte."
 
 #: src/routes/apps/+layout.svelte
 msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, MiniApps, Applications, Outils, Applications, Écosystème, Innovant, Unique"
 
 #: src/routes/apps/+page.svelte
-msgid "Apps | Svelte MiniApps"
-msgstr "Applications | Svelte MiniApps"
+msgid "Apps | Svelte Mini Apps"
+msgstr "Applications | Svelte Mini Apps"
 
 #: src/routes/apps/+page.svelte
 msgid "Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
@@ -1621,10 +1621,6 @@ msgid "Welcome <0/> to..."
 msgstr "Bienvenue <0/> à..."
 
 #: src/lib/components/home/Hero.svelte
-msgid "Svelte Mini Apps"
-msgstr "Mini-applications Svelte"
-
-#: src/lib/components/home/Hero.svelte
 msgid "Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
 msgstr "Découvrez notre collection soigneusement sélectionnée d'applications Svelte élégantes, conçues avec soin pour améliorer votre flux de travail numérique grâce à des solutions modernes et efficaces."
 
@@ -1691,12 +1687,12 @@ msgid "Got It!"
 msgstr "Compris !"
 
 #: src/routes/(auth)/login/+page.svelte
-msgid "Login | Svelte MiniApps"
-msgstr "Connexion | Svelte MiniApps"
+msgid "Login | Svelte Mini Apps"
+msgstr "Connexion | Svelte Mini Apps"
 
 #: src/routes/(auth)/login/+page.svelte
-msgid "Login to access your Svelte MiniApps account"
-msgstr "Connectez-vous pour accéder à votre compte Svelte MiniApps"
+msgid "Login to access your Svelte Mini Apps account"
+msgstr "Connectez-vous pour accéder à votre compte Svelte Mini Apps"
 
 #: src/routes/(auth)/login/+page.svelte
 msgid "<0/> MiniApps"
@@ -1753,8 +1749,8 @@ msgid "Don't have an account? <0>Sign up</0>"
 msgstr "Vous n'avez pas de compte ? <0>Inscrivez-vous</0>"
 
 #: src/routes/(auth)/logout/+page.svelte
-msgid "Logout | Svelte MiniApps"
-msgstr "Déconnexion | Svelte MiniApps"
+msgid "Logout | Svelte Mini Apps"
+msgstr "Déconnexion | Svelte Mini Apps"
 
 #: src/routes/(auth)/logout/+page.svelte
 msgid "Sign Out"
@@ -2280,8 +2276,8 @@ msgid "Recent Activity"
 msgstr "Activité récente"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
-msgid "Your latest interactions with Svelte MiniApps"
-msgstr "Vos dernières interactions avec Svelte MiniApps"
+msgid "Your latest interactions with Svelte Mini Apps"
+msgstr "Vos dernières interactions avec Svelte Mini Apps"
 
 #. placeholder {0}: activity.appName
 #. placeholder {0}: activity.appName
@@ -2404,12 +2400,12 @@ msgid "Loading profile..."
 msgstr "Chargement du profil..."
 
 #: src/routes/(auth)/register/+page.svelte
-msgid "Sign Up | Svelte MiniApps"
-msgstr "S'inscrire | Svelte MiniApps"
+msgid "Sign Up | Svelte Mini Apps"
+msgstr "S'inscrire | Svelte Mini Apps"
 
 #: src/routes/(auth)/register/+page.svelte
-msgid "Create your Svelte MiniApps account"
-msgstr "Créez votre compte Svelte MiniApps"
+msgid "Create your Svelte Mini Apps account"
+msgstr "Créez votre compte Svelte Mini Apps"
 
 #: src/routes/(auth)/register/+page.svelte
 msgid "Create an account"
@@ -2541,11 +2537,11 @@ msgid "Join Testing"
 msgstr "Participer aux tests"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid "Announcements - Changelog - Svelte MiniApps"
+msgid "Announcements - Changelog - Svelte Mini Apps"
 msgstr "Annonces - Journal des modifications - Svelte-MiniApps"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte MiniApps"
+msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
 msgstr "Restez informé des dernières annonces et des plans futurs pour Svelte-MiniApps."
 
 #: src/routes/changelog/announcements/+page.svelte
@@ -2553,7 +2549,7 @@ msgid "Announcements - Changelog"
 msgstr "Annonces - Journal des modifications"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte MiniApps including mobile and desktop companion apps"
+msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps including mobile and desktop companion apps"
 msgstr "Restez informé des dernières annonces et des plans futurs pour Svelte-MiniApps, y compris les applications compagnon mobiles et de bureau."
 
 #: src/routes/changelog/announcements/+page.svelte
@@ -2589,12 +2585,12 @@ msgid "No Announcements Yet"
 msgstr "Aucune annonce pour le moment."
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid "Check back soon for exciting updates and announcements about Svelte MiniApps!"
+msgid "Check back soon for exciting updates and announcements about Svelte Mini Apps!"
 msgstr "Revenez bientôt pour des mises à jour et des annonces concernant Svelte-MiniApps !"
 
 #: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline | Svelte MiniApps Changelog"
-msgstr "Chronologie de la migration | Journal des modifications des Svelte MiniApps"
+msgid "Migration Timeline | Svelte Mini Apps Changelog"
+msgstr "Chronologie de la migration | Journal des modifications des Svelte Mini Apps"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
@@ -2857,7 +2853,7 @@ msgid "Client-side export with html2canvas + jsPDF"
 msgstr "Export côté client avec html2canvas + jsPDF"
 
 #: src/routes/changelog/planned-features/+page.svelte
-msgid "Planned Features | Svelte MiniApps Changelog"
+msgid "Planned Features | Svelte Mini Apps Changelog"
 msgstr "Fonctionnalités prévues | Journal des modifications de Svelte-MiniApps"
 
 #: src/routes/changelog/planned-features/+page.svelte
@@ -3002,8 +2998,8 @@ msgid "Your Social Links"
 msgstr "Vos liens sociaux"
 
 #: src/routes/social-links/[id]/+page.svelte
-msgid "Created with Svelte MiniApps"
-msgstr "Créé avec Svelte MiniApps"
+msgid "Created with Svelte Mini Apps"
+msgstr "Créé avec Svelte Mini Apps"
 
 #: src/lib/components/ui/EvervaultCard/EvervaultCard.svelte
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -3338,8 +3334,8 @@ msgid "Budget updated successfully"
 msgstr "Budget mis à jour avec succès"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-msgid "Budget Tracker | Svelte MiniApps"
-msgstr "Suivi budgétaire | Svelte MiniApps"
+msgid "Budget Tracker | Svelte Mini Apps"
+msgstr "Suivi budgétaire | Svelte Mini Apps"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
@@ -3726,8 +3722,8 @@ msgid "Success"
 msgstr "Succès"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
-msgid "Svelte MiniApps - English Dictionary App"
-msgstr "Svelte MiniApps - Dictionnaire anglais"
+msgid "Svelte Mini Apps - English Dictionary App"
+msgstr "Svelte Mini Apps - Dictionnaire anglais"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
@@ -3783,8 +3779,8 @@ msgid "License: {0} <0/>"
 msgstr "Licence : {0} <0/>"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
-msgid "Svelte MiniApps - GitHub Contribution Tracker"
-msgstr "Svelte MiniApps - Suivi des contributions GitHub"
+msgid "Svelte Mini Apps - GitHub Contribution Tracker"
+msgstr "Svelte Mini Apps - Suivi des contributions GitHub"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
 msgid "Visualize your GitHub contributions in a clear and engaging way. Track streaks, identify patterns, and stay motivated."
@@ -5609,8 +5605,8 @@ msgid "Enter text or paste a URL"
 msgstr "Entrez du texte ou collez une URL"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
-msgid "Random Emoji Generator - Svelte MiniApps"
-msgstr "Générateur d'émojis aléatoires - Svelte MiniApps"
+msgid "Random Emoji Generator - Svelte Mini Apps"
+msgstr "Générateur d'émojis aléatoires - Svelte Mini Apps"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
 msgid "Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
@@ -6656,8 +6652,8 @@ msgid "Select to unit"
 msgstr "Unité cible"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
-msgid "Unit Converter - Svelte MiniApps"
-msgstr "Convertisseur d'unités - Svelte MiniApps"
+msgid "Unit Converter - Svelte Mini Apps"
+msgstr "Convertisseur d'unités - Svelte Mini Apps"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
@@ -6937,7 +6933,6 @@ msgstr "Bonne nuit"
 #~ msgid "Embrace your cosmic journey"
 #~ msgstr "Embrassez votre voyage cosmique"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 msgstr "Bienvenue dans votre nouvelle boîte à outils préférée ! Nos MiniApps sont des compagnons soigneusement conçus pour votre parcours numérique quotidien. Chaque application est conçue pour vous - rapide à charger, facile à utiliser et prête à relever vos défis quotidiens. Que vous planifiiez votre budget, que vous développiez des habitudes saines ou que vous restiez organisé, nous avons l'outil qu'il vous faut."
@@ -6972,7 +6967,6 @@ msgstr "Polyvalent et"
 msgid "Scalable"
 msgstr "Évolutif"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our MiniApps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
 msgstr "Que vous soyez un étudiant gérant ses devoirs, un professionnel suivant des projets ou n'importe qui entre les deux, nos MiniApps s'adaptent à vos besoins. Commencez petit avec des fonctionnalités de base et découvrez des capacités plus puissantes au fur et à mesure de votre croissance. De plus, ils fonctionnent de manière transparente sur tous vos appareils, de sorte que vos outils sont toujours là où vous en avez besoin."
@@ -7000,20 +6994,18 @@ msgstr "Rejoignez la création :"
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "Vous avez une idée qui pourrait rendre ces applications encore meilleures ? Nous aimerions l'entendre ! Que vous soyez un magicien du codage prêt à plonger dans le code, ou quelqu'un avec une nouvelle perspective sur la façon dont les choses pourraient fonctionner, votre contribution est en or. Il y a toute une liste de souhaits d'applications qui attendent d'être construites, et d'innombrables façons d'améliorer celles qui existent déjà. Prêt à laisser votre marque sur quelque chose de spécial ?"
 
-#: src/lib/components/home/data.svelte.ts
-msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
-msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
-msgstr "<strong>Vous avez trouvé une MiniApp qui a simplifié votre journée ?</strong> Pourquoi garder cela pour vous ? Partagez votre expérience avec vos amis, votre famille ou vos collègues qui pourraient également en bénéficier ! Votre recommandation pourrait aider quelqu'un à découvrir l'outil parfait pour simplifier sa routine quotidienne."
+#~ msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
+#~ msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+#~ msgstr "<strong>Vous avez trouvé une MiniApp qui a simplifié votre journée ?</strong> Pourquoi garder cela pour vous ? Partagez votre expérience avec vos amis, votre famille ou vos collègues qui pourraient également en bénéficier ! Votre recommandation pourrait aider quelqu'un à découvrir l'outil parfait pour simplifier sa routine quotidienne."
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting users to provide feedback and report issues"
 msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
 msgstr "<strong>Votre voix compte !</strong> Que vous ayez une idée géniale, que vous ayez repéré un bug ou que vous souhaitiez simplement partager votre expérience, nous vous écoutons. Rendez-vous sur notre <strong>répertoire GitHub</strong> pour ouvrir un problème ou lancer une discussion. Chaque commentaire nous aide à créer de meilleurs outils pour vous."
 
-#: src/lib/components/home/data.svelte.ts
-msgctxt "Community engagement section - inviting developers to contribute to the open source project"
-msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces MiniApps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté."
+#~ msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+#~ msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+#~ msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces MiniApps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté."
 
 #: src/routes/about/data.svelte.ts
 msgid "Install When You Want"
@@ -7121,5 +7113,24 @@ msgstr "et Efficace"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/home/data.svelte.ts
 msgid "Mini Apps"
 msgstr "Mini Applications"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
+msgstr "Bienvenue dans votre nouvelle boîte à outils préférée ! Nos Mini Apps sont des compagnons soigneusement conçus pour votre parcours numérique quotidien. Chaque application est conçue pour vous : rapide à charger, facile à utiliser et prête à relever vos défis quotidiens. Que vous planifiiez votre budget, preniez de bonnes habitudes ou restiez organisé, nous avons l'outil idéal pour vous."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
+msgstr "Que vous soyez un étudiant gérant ses devoirs, un professionnel suivant ses projets, ou n'importe qui entre les deux, nos Mini Apps s'adaptent à vos besoins. Commencez petit avec des fonctionnalités de base et découvrez des capacités plus puissantes au fur et à mesure de votre progression. De plus, elles fonctionnent de manière transparente sur tous vos appareils, de sorte que vos outils sont toujours là où vous en avez besoin."
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - encouraging users to share positive experiences with Mini Apps"
+msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+msgstr "<strong>Vous avez trouvé une MiniApp qui a facilité votre journée ?</strong> Pourquoi garder cela pour vous ? Partagez votre réussite avec vos amis, votre famille ou vos collègues qui pourraient également en bénéficier ! Votre recommandation pourrait aider quelqu'un à découvrir l'outil parfait pour simplifier sa routine quotidienne."
+
+#: src/lib/components/home/data.svelte.ts
+msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+msgid "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces Mini Apps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté."

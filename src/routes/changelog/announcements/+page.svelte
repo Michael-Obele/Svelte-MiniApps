@@ -60,18 +60,18 @@
 </script>
 
 <svelte:head>
-	<title>Announcements - Changelog - Svelte MiniApps</title>
+	<title>Announcements - Changelog - Svelte Mini Apps</title>
 	<meta
 		name="description"
-		content="Stay updated with the latest announcements and future plans for Svelte MiniApps"
+		content="Stay updated with the latest announcements and future plans for Svelte Mini Apps"
 	/>
 </svelte:head>
 
 <RouteHead
 	title="Announcements - Changelog"
-	description="Stay updated with the latest announcements and future plans for Svelte MiniApps including mobile and desktop companion apps"
+	description="Stay updated with the latest announcements and future plans for Svelte Mini Apps including mobile and desktop companion apps"
 	route="/changelog/announcements"
-	keywords="announcements, updates, mobile apps, desktop apps, svelte miniapps, roadmap"
+	keywords="announcements, updates, mobile apps, desktop apps, Svelte Mini Apps, roadmap"
 />
 
 <div class="container mx-auto px-4 py-8">
@@ -165,7 +165,7 @@
 			<div class="mb-4 text-6xl">📢</div>
 			<h2 class="mb-2 text-2xl font-semibold">No Announcements Yet</h2>
 			<p class="text-muted-foreground">
-				Check back soon for exciting updates and announcements about Svelte MiniApps!
+				Check back soon for exciting updates and announcements about Svelte Mini Apps!
 			</p>
 		</div>
 	{/if}

@@ -50,8 +50,8 @@
 </script>
 
 <svelte:head>
-	<title>Sign Up | Svelte MiniApps</title>
-	<meta name="description" content="Create your Svelte MiniApps account" />
+	<title>Sign Up | Svelte Mini Apps</title>
+	<meta name="description" content="Create your Svelte Mini Apps account" />
 </svelte:head>
 
 <div
@@ -60,7 +60,7 @@
 	<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 		<div class="flex flex-col space-y-2 text-center">
 			<h1 class="text-2xl font-semibold tracking-tight">Create an account</h1>
-			<p class="text-sm text-muted-foreground">Enter your details to get started</p>
+			<p class="text-muted-foreground text-sm">Enter your details to get started</p>
 		</div>
 
 		<div class="grid gap-6">
@@ -85,7 +85,7 @@
 						required
 						placeholder="e.g., john_doe123"
 					/>
-					<div class="space-y-1 text-xs text-muted-foreground">
+					<div class="text-muted-foreground space-y-1 text-xs">
 						<p>Username requirements:</p>
 						<ul class="list-disc pl-4">
 							<li>3-31 characters long</li>
@@ -113,7 +113,7 @@
 							type="button"
 							variant="ghost"
 							size="icon"
-							class="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+							class="absolute top-0 right-0 h-full px-3 py-2 hover:bg-transparent"
 							onclick={togglePassword}
 						>
 							{#if showPassword}
@@ -123,7 +123,7 @@
 							{/if}
 						</Button>
 					</div>
-					<div class="space-y-1 text-xs text-muted-foreground">
+					<div class="text-muted-foreground space-y-1 text-xs">
 						<p>Password requirements:</p>
 						<ul class="list-disc pl-4">
 							<li>Minimum 6 characters</li>
@@ -151,7 +151,7 @@
 							type="button"
 							variant="ghost"
 							size="icon"
-							class="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+							class="absolute top-0 right-0 h-full px-3 py-2 hover:bg-transparent"
 							onclick={toggleConfirmPassword}
 						>
 							{#if showConfirmPassword}
@@ -181,7 +181,7 @@
 			</form>
 		</div>
 
-		<p class="px-8 text-center text-sm text-muted-foreground">
+		<p class="text-muted-foreground px-8 text-center text-sm">
 			<a href="/login" class="hover:text-brand underline underline-offset-4">
 				Already have an account? Sign In
 			</a>

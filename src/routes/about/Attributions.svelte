@@ -106,7 +106,7 @@
 	<Header {id}>Attributions</Header>
 	<div class="mb-8 text-center" in:fade={{ duration: 400, delay: 200 }}>
 		<p class="mx-auto max-w-2xl text-gray-700 dark:text-gray-300">
-			Svelte MiniApps is built with the help of these amazing open-source projects:
+			Svelte Mini Apps is built with the help of these amazing open-source projects:
 		</p>
 	</div>
 

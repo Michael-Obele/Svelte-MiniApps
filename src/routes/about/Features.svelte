@@ -22,10 +22,10 @@
 </script>
 
 <section {id}>
-	<Header {id}>Why Choose Svelte MiniApps?</Header>
+	<Header {id}>Why Choose Svelte Mini Apps?</Header>
 	<Group dir="left">
 		{#snippet image()}
-			<Illustration image={Why} alt="Why  Choose Svelte MiniApps?" />
+			<Illustration image={Why} alt="Why  Choose Svelte Mini Apps?" />
 		{/snippet}
 
 		{#snippet content()}

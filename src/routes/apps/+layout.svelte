@@ -9,8 +9,8 @@
 </script>
 
 <RouteHead
-	title="Apps Page | Svelte MiniApps"
-	description="Explore our collection of unique Svelte MiniApps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
+	title="Apps Page | Svelte Mini Apps"
+	description="Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
 	keywords="Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
 	route="/apps"
 />

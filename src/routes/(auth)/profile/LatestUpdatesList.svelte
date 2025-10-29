@@ -25,7 +25,7 @@
 <!--
 @component
 ## Svelte Component: Latest Updates List
-This component fetches and displays a list of the latest updates (commits) from the Svelte MiniApps repository on GitHub. It presents each update with its commit message, shortened SHA hash, and the time elapsed since the update. The component also provides a link to view the latest commit on GitHub.
+This component fetches and displays a list of the latest updates (commits) from the Svelte Mini Apps repository on GitHub. It presents each update with its commit message, shortened SHA hash, and the time elapsed since the update. The component also provides a link to view the latest commit on GitHub.
 
 ## Key Features
 - **Real-time Updates**: Fetches and displays the latest commit data from GitHub.

@@ -69,7 +69,7 @@
 
 	const projects = [
 		{
-			name: 'Svelte MiniApps',
+			name: 'Svelte Mini Apps',
 			description:
 				'A collection of productivity mini-apps built with SvelteKit and modern web technologies',
 			tech: ['Svelte 5', 'SvelteKit', 'TypeScript', 'Tailwind CSS', 'Prisma'],
@@ -133,7 +133,7 @@
 </script>
 
 <svelte:head>
-	<title>Hire Michael - Full-Stack Developer | Svelte MiniApps</title>
+	<title>Hire Michael - Full-Stack Developer | Svelte Mini Apps</title>
 	<meta
 		name="description"
 		content="Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."

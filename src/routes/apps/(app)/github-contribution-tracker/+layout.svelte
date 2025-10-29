@@ -10,7 +10,7 @@
 </script>
 
 <RouteHead
-	title="Svelte MiniApps - GitHub Contribution Tracker"
+	title="Svelte Mini Apps - GitHub Contribution Tracker"
 	description="Visualize your GitHub contributions in a clear and engaging way. Track streaks, identify patterns, and stay motivated."
 	keywords="GitHub, Contribution Tracker, Developer Tools, Svelte Apps"
 	route="/apps/github-contribution-tracker"

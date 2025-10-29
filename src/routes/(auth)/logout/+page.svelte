@@ -10,14 +10,14 @@
 </script>
 
 <svelte:head>
-	<title>Logout | Svelte MiniApps</title>
+	<title>Logout | Svelte Mini Apps</title>
 </svelte:head>
 
-<div class="min-w-screen container flex min-h-screen flex-col items-center justify-center">
+<div class="container flex min-h-screen min-w-screen flex-col items-center justify-center">
 	<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 		<div class="flex flex-col space-y-2 text-center">
 			<h1 class="text-2xl font-semibold tracking-tight">Sign Out</h1>
-			<p class="text-sm text-muted-foreground">Click below to sign out of your account</p>
+			<p class="text-muted-foreground text-sm">Click below to sign out of your account</p>
 		</div>
 
 		<form

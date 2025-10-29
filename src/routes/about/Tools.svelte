@@ -11,7 +11,7 @@
 
 	<Group dir="left">
 		{#snippet image()}
-			<Illustration image={Tools} alt=" Tools for Svelte MiniApps" />
+			<Illustration image={Tools} alt=" Tools for Svelte Mini Apps" />
 		{/snippet}
 
 		{#snippet content()}

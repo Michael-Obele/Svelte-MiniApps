@@ -107,7 +107,7 @@
 </script>
 
 <svelte:head>
-	<title>Unit Converter - Svelte MiniApps</title>
+	<title>Unit Converter - Svelte Mini Apps</title>
 	<meta
 		name="description"
 		content="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."

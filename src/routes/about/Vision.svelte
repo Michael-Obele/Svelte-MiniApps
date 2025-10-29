@@ -12,14 +12,14 @@
 </script>
 
 <section {id}>
-	<Header {id}>The Future of Svelte MiniApps: What's Next?</Header>
+	<Header {id}>The Future of Svelte Mini Apps: What's Next?</Header>
 	<Group dir="left">
 		{#snippet image()}
-			<Illustration image={Vision} alt="The Future of Svelte MiniApps" />
+			<Illustration image={Vision} alt="The Future of Svelte Mini Apps" />
 		{/snippet}
 		{#snippet content()}
 			<p class="my-8 text-center text-base leading-relaxed">
-				Svelte MiniApps is an
+				Svelte Mini Apps is an
 				<span class="font-bold text-green-800 dark:text-green-400">
 					ever-evolving project,
 					<span class="font-normal text-white">
@@ -88,7 +88,7 @@
 			Have ideas or feedback?
 		</p>
 		<p class="text-muted-foreground mb-4 text-sm">
-			Your input shapes the future of Svelte MiniApps. Share your thoughts, feature requests, or
+			Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or
 			suggestions with us.
 		</p>
 		<a

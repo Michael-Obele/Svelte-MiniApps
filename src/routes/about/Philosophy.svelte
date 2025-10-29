@@ -11,12 +11,12 @@
 
 <section {id}>
 	<Header {id}>
-		The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte MiniApps:
+		The <span class="text-green-500 dark:text-green-400">"Aha Moment"</span> Behind Svelte Mini Apps:
 	</Header>
 
 	<Group dir="right">
 		{#snippet image()}
-			<Illustration image={Aha} alt="The reason behind Svelte MiniApps" />
+			<Illustration image={Aha} alt="The reason behind Svelte Mini Apps" />
 		{/snippet}
 
 		{#snippet content()}
@@ -26,7 +26,7 @@
 					wrestling with a complex framework for a simple task.
 				</span>
 				<span>
-					Svelte MiniApps were born from the frustration of heavyweight solutions for lightweight
+					Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight
 					problems.
 				</span>
 			</p>

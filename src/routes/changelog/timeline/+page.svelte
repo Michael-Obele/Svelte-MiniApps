@@ -59,7 +59,7 @@
 </script>
 
 <RouteHead
-	title="Migration Timeline | Svelte MiniApps Changelog"
+	title="Migration Timeline | Svelte Mini Apps Changelog"
 	description="Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
 	keywords="svelte, svelte5, migration, timeline, changelog, development, milestones"
 	route="/changelog/timeline"

@@ -54,8 +54,8 @@
 </script>
 
 <svelte:head>
-	<title>Login | Svelte MiniApps</title>
-	<meta name="description" content="Login to access your Svelte MiniApps account" />
+	<title>Login | Svelte Mini Apps</title>
+	<meta name="description" content="Login to access your Svelte Mini Apps account" />
 </svelte:head>
 
 <section class="bg-background min-h-screen py-3">

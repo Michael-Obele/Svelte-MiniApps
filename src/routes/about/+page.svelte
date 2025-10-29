@@ -108,8 +108,8 @@
 </script>
 
 <RouteHead
-	title="About Page | Svelte MiniApps"
-	description="Discover more about Svelte MiniApps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
+	title="About Page | Svelte Mini Apps"
+	description="Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
 	keywords="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 	route="/about"
 	image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
@@ -120,7 +120,7 @@
 		<h1
 			class="mt-5 mb-10 cursor-pointer text-center text-3xl leading-loose font-medium text-gray-900 underline decoration-green-400 decoration-wavy decoration-4 underline-offset-8 transition-all dark:text-white dark:decoration-green-600"
 		>
-			Svelte MiniApps: Powerful Tiny Tools Built with
+			Svelte Mini Apps: Powerful Tiny Tools Built with
 			<span class="text-nowrap text-red-500 dark:text-red-700">
 				SvelteKit
 
@@ -176,7 +176,7 @@
 		<div class="block max-w-md rounded-lg p-6">
 			<p class="justify-start text-left text-base text-gray-900 md:text-xl dark:text-white">
 				<span class="font-bold text-green-800 dark:text-green-400">Supercharge your workflow!</span>
-				Svelte MiniApps are tiny, focused tools built with
+				Svelte Mini Apps are tiny, focused tools built with
 				<strong class="text-red-500 dark:text-red-700">SvelteKit</strong> for lightning speed. Conquer
 				everyday tasks with ease.
 			</p>

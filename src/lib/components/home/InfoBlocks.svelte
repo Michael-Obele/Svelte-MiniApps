@@ -1,7 +1,7 @@
 <!--
 @component
 
-InfoBlocks — displays promotional content about Svelte MiniApps features and benefits.
+InfoBlocks — displays promotional content about Svelte Mini Apps features and benefits.
 
 Usage:
 ```svelte

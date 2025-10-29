@@ -115,7 +115,7 @@ export const timeline: TimelineItem[] = [
 	{
 		date: 'October 14, 2025',
 		title: 'Featured on MadeWithSvelte',
-		description: 'Svelte MiniApps featured on the official MadeWithSvelte showcase',
+		description: 'Svelte Mini Apps featured on the official MadeWithSvelte showcase',
 		items: [
 			'Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps',
 			'Recognized for our Svelte 5 implementation and modern PWA architecture',

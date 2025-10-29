@@ -56,7 +56,7 @@
 </script>
 
 <RouteHead
-	title="Apps | Svelte MiniApps"
+	title="Apps | Svelte Mini Apps"
 	description="Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
 	keywords="svelte, mini apps, applications, tools, productivity, entertainment"
 	route="/apps"

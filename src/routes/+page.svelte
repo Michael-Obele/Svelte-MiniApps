@@ -5,7 +5,7 @@
 	import type { PageProps } from './$types';
 	import { site } from '$lib/index';
 	//
-	let websiteTitle = 'Svelte MiniApps';
+	let websiteTitle = 'Svelte Mini Apps';
 	let websiteDescription =
 		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
 

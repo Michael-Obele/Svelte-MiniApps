@@ -57,7 +57,7 @@
 </script>
 
 <RouteHead
-	title="Offline | Svelte MiniApps"
+	title="Offline | Svelte Mini Apps"
 	description="Check your internet connection status and access cached content while offline."
 	keywords="svelte, mini apps, offline, connection, cached content"
 	route="/offline"
