@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-28T14:46:15.577Z\n"
+"PO-Revision-Date: 2025-10-29T07:44:24.138Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -628,8 +628,6 @@ msgstr "Cette application est en bêta. Les fonctionnalités peuvent être insta
 msgid "Blur In"
 msgstr "Flou d'entrée"
 
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "MiniApps"
@@ -6927,7 +6925,7 @@ msgstr "Bon après-midi"
 #: src/lib/utility/greetings.ts
 #: src/lib/utility/greetings.ts
 msgid "Good evening"
-msgstr "Bonsoir```"
+msgstr "Bonsoir"
 
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
@@ -6936,9 +6934,8 @@ msgstr "Bonsoir```"
 msgid "Good night"
 msgstr "Bonne nuit"
 
-#: src/lib/components/home/Welcome.svelte
-msgid "Embrace your cosmic journey"
-msgstr "Embrassez votre voyage cosmique```"
+#~ msgid "Embrace your cosmic journey"
+#~ msgstr "Embrassez votre voyage cosmique"
 
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
@@ -7001,7 +6998,7 @@ msgstr "Rejoignez la création :"
 
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
-msgstr "Vous avez une idée qui pourrait rendre ces applications encore meilleures ? Nous aimerions l'entendre ! Que vous soyez un magicien du codage prêt à plonger dans le code, ou quelqu'un avec une nouvelle perspective sur la façon dont les choses pourraient fonctionner, votre contribution est en or. Il y a toute une liste de souhaits d'applications qui attendent d'être construites, et d'innombrables façons d'améliorer celles qui existent déjà. Prêt à laisser votre marque sur quelque chose de spécial ?```"
+msgstr "Vous avez une idée qui pourrait rendre ces applications encore meilleures ? Nous aimerions l'entendre ! Que vous soyez un magicien du codage prêt à plonger dans le code, ou quelqu'un avec une nouvelle perspective sur la façon dont les choses pourraient fonctionner, votre contribution est en or. Il y a toute une liste de souhaits d'applications qui attendent d'être construites, et d'innombrables façons d'améliorer celles qui existent déjà. Prêt à laisser votre marque sur quelque chose de spécial ?"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
@@ -7016,7 +7013,7 @@ msgstr "<strong>Votre voix compte !</strong> Que vous ayez une idée géniale, q
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces MiniApps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté.```"
+msgstr "<strong>Vous aimez coder ?</strong> Vous pourriez être le prochain contributeur à rendre ces MiniApps encore plus géniales ! Notre projet est <strong>open source</strong>, ce qui signifie que vous êtes invité à plonger dedans, à explorer le code et à donner vie à vos idées. Que vous soyez un développeur chevronné ou que vous débutiez, il y a une place pour vous dans notre communauté."
 
 #: src/routes/about/data.svelte.ts
 msgid "Install When You Want"
@@ -7112,7 +7109,7 @@ msgstr "Recharger automatiquement l'application après avoir effacé les donnée
 
 #: src/routes/about/data.svelte.ts
 msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
-msgstr "Utilisez cette fonctionnalité si vous rencontrez des problèmes de mise en cache ou si vous devez réinitialiser l'application à son état par défaut.```"
+msgstr "Utilisez cette fonctionnalité si vous rencontrez des problèmes de mise en cache ou si vous devez réinitialiser l'application à son état par défaut."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "span"
@@ -7121,3 +7118,8 @@ msgstr "durée"
 #: src/lib/components/home/data.svelte.ts
 msgid "and Efficient"
 msgstr "et Efficace"
+
+#: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mini Apps"
+msgstr "Mini Applications"

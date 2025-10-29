@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-10-28T14:46:15.668Z\n"
+"PO-Revision-Date: 2025-10-29T07:44:24.727Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -1298,8 +1298,6 @@ msgstr "Este aplicativo está em beta. Os recursos podem estar instáveis ou inc
 msgid "Blur In"
 msgstr "Desfoque ao entrar"
 
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "MiniApps"
@@ -5181,7 +5179,7 @@ msgstr "⚠️ Esta ação não pode ser desfeita."
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
-msgstr "<0/> Excluindo...```"
+msgstr "<0/> Excluindo..."
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
@@ -5405,7 +5403,7 @@ msgstr "<0/> Tudo"
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 msgid "{0} purchase{1}"
-msgstr "{0} compra{1}```"
+msgstr "{0} compra{1}"
 
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
@@ -6925,9 +6923,8 @@ msgstr "Boa noite"
 msgid "Good night"
 msgstr "Boa noite"
 
-#: src/lib/components/home/Welcome.svelte
-msgid "Embrace your cosmic journey"
-msgstr "Abrace sua jornada cósmica```"
+#~ msgid "Embrace your cosmic journey"
+#~ msgstr "Abrace sua jornada cósmica"
 
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
@@ -6990,7 +6987,7 @@ msgstr "Junte-se à criação:"
 
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
-msgstr "Tem uma ideia que poderia tornar esses aplicativos ainda melhores? Adoraríamos ouvi-la! Seja você um mago da codificação pronto para mergulhar no código, ou alguém com uma nova perspectiva sobre como as coisas poderiam funcionar, sua contribuição é ouro. Há uma lista de desejos inteira de aplicativos esperando para serem construídos e inúmeras maneiras de aprimorar os existentes. Pronto para deixar sua marca em algo especial?```"
+msgstr "Tem uma ideia que poderia tornar esses aplicativos ainda melhores? Adoraríamos ouvi-la! Seja você um mago da codificação pronto para mergulhar no código, ou alguém com uma nova perspectiva sobre como as coisas poderiam funcionar, sua contribuição é ouro. Há uma lista de desejos inteira de aplicativos esperando para serem construídos e inúmeras maneiras de aprimorar os existentes. Pronto para deixar sua marca em algo especial?"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
@@ -7101,7 +7098,7 @@ msgstr "Recarregar automaticamente o aplicativo após limpar os dados"
 
 #: src/routes/about/data.svelte.ts
 msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
-msgstr "Use este recurso se você encontrar algum problema de cache ou precisar redefinir o aplicativo para seu estado padrão.```"
+msgstr "Use este recurso se você encontrar algum problema de cache ou precisar redefinir o aplicativo para seu estado padrão."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "span"
@@ -7110,3 +7107,8 @@ msgstr "extensão"
 #: src/lib/components/home/data.svelte.ts
 msgid "and Efficient"
 msgstr "e Eficiente"
+
+#: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mini Apps"
+msgstr "Mini Aplicações"

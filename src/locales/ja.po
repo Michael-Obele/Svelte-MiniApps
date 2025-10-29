@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-28T14:46:15.645Z\n"
+"PO-Revision-Date: 2025-10-29T07:44:24.697Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1276,8 +1276,6 @@ msgstr "このアプリはベータ版です。機能は不安定または未完
 msgid "Blur In"
 msgstr "ブラーイン"
 
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "MiniApps"
@@ -6616,7 +6614,7 @@ msgstr "ユニットコンバーター - Svelte ミニアプリ"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
-msgstr "長さ、温度、体積、質量、面積、時間、角度、データ、エネルギー、力、電力、圧力など、さまざまな測定単位を変換します。```"
+msgstr "長さ、温度、体積、質量、面積、時間、角度、データ、エネルギー、力、電力、圧力など、さまざまな測定単位を変換します。"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Unit Converter"
@@ -6887,9 +6885,8 @@ msgstr "こんばんは"
 msgid "Good night"
 msgstr "おやすみなさい"
 
-#: src/lib/components/home/Welcome.svelte
-msgid "Embrace your cosmic journey"
-msgstr "宇宙の旅を受け入れよう"
+#~ msgid "Embrace your cosmic journey"
+#~ msgstr "宇宙の旅を受け入れよう"
 
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
@@ -6952,7 +6949,7 @@ msgstr "創造に参加する:"
 
 #: src/lib/components/home/data.ts
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
-msgstr "これらのアプリをさらに良くするためのアイデアはありますか？ぜひお聞かせください！コーディングの達人でコードに飛び込む準備ができている人でも、物事の進め方について新鮮な視点を持っている人でも、あなたの意見は貴重です。構築を待っているアプリのウィッシュリスト全体と、既存のアプリを強化する方法が無数にあります。特別なものに足跡を残す準備はできていますか？```"
+msgstr "これらのアプリをさらに良くするためのアイデアはありますか？ぜひお聞かせください！コーディングの達人でコードに飛び込む準備ができている人でも、物事の進め方について新鮮な視点を持っている人でも、あなたの意見は貴重です。構築を待っているアプリのウィッシュリスト全体と、既存のアプリを強化する方法が無数にあります。特別なものに足跡を残す準備はできていますか？"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
@@ -7063,7 +7060,7 @@ msgstr "データ消去後、アプリを自動的にリロードします"
 
 #: src/routes/about/data.svelte.ts
 msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
-msgstr "キャッシュの問題が発生した場合や、アプリをデフォルト状態にリセットする必要がある場合は、この機能を使用してください。```"
+msgstr "キャッシュの問題が発生した場合や、アプリをデフォルト状態にリセットする必要がある場合は、この機能を使用してください。"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "span"
@@ -7072,3 +7069,8 @@ msgstr "スパン"
 #: src/lib/components/home/data.svelte.ts
 msgid "and Efficient"
 msgstr "そして効率的"
+
+#: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mini Apps"
+msgstr "ミニアプリ"
