@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.103Z\n"
-"PO-Revision-Date: 2025-10-29T10:20:06.955Z\n"
+"PO-Revision-Date: 2025-10-29T10:53:46.288Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -1247,52 +1247,13 @@ msgstr "Bereits geladene Inhalte anzeigen"
 msgid "Use tools that don't require internet"
 msgstr "Verwende Tools, die keine Internetverbindung benötigen"
 
-#: src/routes/social-links/+page.svelte
-msgid "Social Links - Svelte Mini Apps"
-msgstr "Soziale Links - Svelte Mini Apps"
-
-#: src/routes/social-links/+page.svelte
-msgid "Share your social media links with a QR code"
-msgstr "Teile deine Social-Media-Links mit einem QR-Code"
-
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
-#: src/routes/social-links/+page.svelte
-#: src/routes/social-links/[id]/+page.svelte
 msgid "Social Links"
 msgstr "Soziale Links"
 
-#: src/routes/social-links/+page.svelte
-msgid "Share all your social media profiles with a single QR code"
-msgstr "Teile alle deine Social-Media-Profile mit einem einzigen QR-Code"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create your social links page using our <0>QR Code Generator</0>"
-msgstr "Erstelle deine Social-Links-Seite mit unserem <0>QR-Code-Generator</0>"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create Your Links Page"
-msgstr "Erstelle deine Link-Seite"
-
 #: src/routes/changelog/planned-features/+page.svelte
-#: src/routes/social-links/+page.svelte
 msgid "Features:"
 msgstr "Funktionen:"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create a custom page with all your social media links"
-msgstr "Erstelle eine benutzerdefinierte Seite mit all deinen Social-Media-Links"
-
-#: src/routes/social-links/+page.svelte
-msgid "Generate a QR code that links to your social media hub"
-msgstr "Generiere einen QR-Code, der zu deinem Social-Media-Hub führt."
-
-#: src/routes/social-links/+page.svelte
-msgid "Share your QR code anywhere - business cards, presentations, or social media"
-msgstr "Teile deinen QR-Code überall – Visitenkarten, Präsentationen oder Soziale Medien."
-
-#: src/routes/social-links/+page.svelte
-msgid "Update your links anytime without changing the QR code"
-msgstr "Aktualisiere deine Links jederzeit, ohne den QR-Code zu ändern."
 
 #: src/lib/components/blocks/BetaBanner.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -1562,13 +1523,6 @@ msgstr "Schreibe hier deinen Markdown."
 #: src/lib/components/home/AppsSection.svelte
 msgid "Tools That Make a Difference"
 msgstr "Werkzeuge, die einen Unterschied machen"
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
-#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-#~ msgstr ""
-#~ "Von der Budgetverwaltung bis zur Steigerung der Produktivität,\n"
-#~ "jede hier gezeigte App ist darauf ausgelegt, ein Ziel zu verfolgen: dir zu helfen, Dinge zu erledigen. Entwickelt mit <0>Svelte</0>, sind diese Tools schnell, reaktionsschnell und eine Freude bei der Benutzung."
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "What's in the Toolbox:"
@@ -2362,10 +2316,6 @@ msgid "Edit Profile"
 msgstr "Profil bearbeiten"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-msgid "Make changes to your profile here. Click save when you're done."
-msgstr "Nehmen Sie hier Änderungen an Ihrem Profil vor. Klicken Sie auf Speichern, wenn Sie fertig sind."
-
-#: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Enter username"
 msgstr "Benutzername eingeben"
 
@@ -2978,19 +2928,6 @@ msgstr "Inhaltsverzeichnis aktualisieren, wenn Überschriften hinzugefügt werde
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "<0/> Create Issue"
 msgstr "<0/> Issue erstellen"
-
-#: src/routes/social-links/[id]/+page.svelte
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Access all your social media profiles in one place"
-msgstr "Greifen Sie auf alle Ihre Social-Media-Profile an einem Ort zu"
-
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Your Social Links"
-msgstr "Ihre Social Links"
-
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Created with Svelte Mini Apps"
-msgstr "Erstellt mit Svelte Mini Apps"
 
 #: src/lib/components/ui/EvervaultCard/EvervaultCard.svelte
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -3632,7 +3569,7 @@ msgstr "Währungen werden umgerechnet..."
 msgid "Successfully converted currencies"
 msgstr "Währungen erfolgreich umgerechnet"
 
-#. placeholder {0}: site.name
+#. placeholder {0}: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
 msgstr "Währungsumrechner - {0}"
@@ -6952,9 +6889,6 @@ msgstr "Guten Abend"
 msgid "Good night"
 msgstr "Gute Nacht"
 
-#~ msgid "Embrace your cosmic journey"
-#~ msgstr "Umarme deine kosmische Reise"
-
 #: src/lib/components/home/data.ts
 msgid "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 msgstr "Willkommen zu Ihrem neuen Lieblings-Toolkit! Unsere MiniApps sind sorgfältig gestaltete Begleiter für Ihre tägliche digitale Reise. Jede App ist auf Sie zugeschnitten - schnell zu laden, einfach zu bedienen und bereit, Ihre alltäglichen Herausforderungen zu meistern. Egal, ob Sie Ihr Budget planen, gesunde Gewohnheiten aufbauen oder organisiert bleiben möchten, wir haben das richtige Werkzeug für Sie."
@@ -6974,6 +6908,7 @@ msgstr "Haben Sie jemals bemerkt, wie sich manche Apps einfach flüssiger und re
 msgid "Simple"
 msgstr "Einfach"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
 msgstr "Das Leben ist kompliziert genug - Ihre Werkzeuge sollten es nicht sein. Wir haben den Ballast abgeworfen, um uns auf das zu konzentrieren, was am wichtigsten ist: Ihnen zu helfen, Dinge zu erledigen. Jede MiniApp ist durchdacht gestaltet, um intuitiv und unkompliziert zu sein, während sie alle Funktionen bietet, die Sie benötigen. Keine steilen Lernkurven, sondern pure Produktivität vom ersten Moment an."
@@ -7015,18 +6950,10 @@ msgstr "Mach mit bei der Gestaltung:"
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "Haben Sie eine Idee, die diese Apps noch besser machen könnte? Wir würden uns freuen, davon zu hören! Egal, ob Sie ein Programmier-Ass sind, der bereit ist, in den Code einzutauchen, oder jemand mit einer neuen Perspektive auf die Funktionsweise der Dinge, Ihr Input ist Gold wert. Es gibt eine ganze Wunschliste von Apps, die darauf warten, gebaut zu werden, und unzählige Möglichkeiten, bestehende zu verbessern. Sind Sie bereit, etwas Besonderes zu prägen?"
 
-#~ msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
-#~ msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
-#~ msgstr "<strong>Haben Sie eine MiniApp gefunden, die Ihren Tag erleichtert hat?</strong> Warum behalten Sie sie für sich? Teilen Sie Ihre Erfolgsgeschichte mit Freunden, Familie oder Kollegen, die ebenfalls davon profitieren könnten! Ihre Empfehlung könnte jemandem helfen, das perfekte Werkzeug zu finden, um seinen Alltag zu vereinfachen."
-
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting users to provide feedback and report issues"
 msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
 msgstr "<strong>Ihre Stimme zählt!</strong> Ob Sie eine brillante Idee haben, einen Fehler entdeckt haben oder einfach nur Ihre Erfahrungen teilen möchten - wir hören zu. Besuchen Sie unser <strong>GitHub-Repository</strong>, um ein Problem zu eröffnen oder eine Diskussion zu starten. Jedes Feedback hilft uns, bessere Werkzeuge für Sie zu entwickeln."
-
-#~ msgctxt "Community engagement section - inviting developers to contribute to the open source project"
-#~ msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-#~ msgstr "<strong>Lieben Sie das Programmieren?</strong> Sie könnten der nächste Mitwirkende sein, der diese MiniApps noch großartiger macht! Unser Projekt ist <strong>Open Source</strong>, was bedeutet, dass Sie eingeladen sind, einzutauchen, den Code zu erkunden und Ihre Ideen zum Leben zu erwecken. Egal, ob Sie ein erfahrener Entwickler sind oder gerade erst anfangen, in unserer Community ist Platz für Sie."
 
 #: src/routes/about/data.svelte.ts
 msgid "Install When You Want"
@@ -7412,12 +7339,14 @@ msgstr "Meditations-Timer"
 msgid "A timer specifically for meditation sessions with options for different intervals."
 msgstr "Ein Timer speziell für Meditationssitzungen mit Optionen für verschiedene Intervalle.```"
 
+#: src/routes/(auth)/profile/UserProfileCard.svelte
+msgid "Make changes to your profile here. Click save when you're done."
+msgstr "Hier kannst du dein Profil bearbeiten. Klicke auf Speichern, wenn du fertig bist."
+
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
 "From managing your budget to boosting productivity, each app here is designed with one\n"
-"goal: to help you get things done(). Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-msgstr "Von der Budgetverwaltung bis zur Steigerung der Produktivität ist jede App hier mit einem Ziel konzipiert: Ihnen zu helfen, Dinge zu erledigen. Diese mit <0>Svelte</0> erstellten Tools sind schnell, reaktionsschnell und eine Freude in der Anwendung."
-
-#: src/lib/components/home/data.svelte.ts
-msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
-msgstr "Das Leben ist kompliziert genug - Ihre Werkzeuge sollten es nicht sein. Wir haben den Ballast entfernt, um uns auf das zu konzentrieren, was am wichtigsten ist: Ihnen zu helfen, Dinge zu erledigen. Jede MiniApp ist durchdacht, intuitiv und unkompliziert gestaltet und bietet alle Funktionen, die Sie benötigen. Keine steilen Lernkurven, sondern pure Produktivität vom ersten Moment an."
+"goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+msgstr ""
+"Von der Budgetverwaltung bis zur Steigerung der Produktivität wurde jede App hier mit einem Ziel entwickelt:\n"
+"Ihnen zu helfen, Dinge zu erledigen. Diese mit <0>Svelte</0> erstellten Tools sind schnell, reaktionsschnell und eine Freude in der Anwendung."

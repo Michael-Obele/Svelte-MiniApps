@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.009Z\n"
-"PO-Revision-Date: 2025-10-29T10:19:49.975Z\n"
+"PO-Revision-Date: 2025-10-29T10:53:22.524Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -1256,52 +1256,13 @@ msgstr "View previously loaded content"
 msgid "Use tools that don't require internet"
 msgstr "Use tools that don't require internet"
 
-#: src/routes/social-links/+page.svelte
-msgid "Social Links - Svelte Mini Apps"
-msgstr "Social Links - Svelte Mini Apps"
-
-#: src/routes/social-links/+page.svelte
-msgid "Share your social media links with a QR code"
-msgstr "Share your social media links with a QR code"
-
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
-#: src/routes/social-links/+page.svelte
-#: src/routes/social-links/[id]/+page.svelte
 msgid "Social Links"
 msgstr "Social Links"
 
-#: src/routes/social-links/+page.svelte
-msgid "Share all your social media profiles with a single QR code"
-msgstr "Share all your social media profiles with a single QR code"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create your social links page using our <0>QR Code Generator</0>"
-msgstr "Create your social links page using our <0>QR Code Generator</0>"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create Your Links Page"
-msgstr "Create Your Links Page"
-
 #: src/routes/changelog/planned-features/+page.svelte
-#: src/routes/social-links/+page.svelte
 msgid "Features:"
 msgstr "Features:"
-
-#: src/routes/social-links/+page.svelte
-msgid "Create a custom page with all your social media links"
-msgstr "Create a custom page with all your social media links"
-
-#: src/routes/social-links/+page.svelte
-msgid "Generate a QR code that links to your social media hub"
-msgstr "Generate a QR code that links to your social media hub"
-
-#: src/routes/social-links/+page.svelte
-msgid "Share your QR code anywhere - business cards, presentations, or social media"
-msgstr "Share your QR code anywhere - business cards, presentations, or social media"
-
-#: src/routes/social-links/+page.svelte
-msgid "Update your links anytime without changing the QR code"
-msgstr "Update your links anytime without changing the QR code"
 
 #: src/lib/components/blocks/BetaBanner.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -1571,13 +1532,6 @@ msgstr "Write your markdown here..."
 #: src/lib/components/home/AppsSection.svelte
 msgid "Tools That Make a Difference"
 msgstr "Tools That Make a Difference"
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
-#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-#~ msgstr ""
-#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
-#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "What's in the Toolbox:"
@@ -2376,10 +2330,6 @@ msgid "Edit Profile"
 msgstr "Edit Profile"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-msgid "Make changes to your profile here. Click save when you're done."
-msgstr "Make changes to your profile here. Click save when you're done."
-
-#: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Enter username"
 msgstr "Enter username"
 
@@ -2992,19 +2942,6 @@ msgstr "Update Table of Contents when adding headings"
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "<0/> Create Issue"
 msgstr "<0/> Create Issue"
-
-#: src/routes/social-links/[id]/+page.svelte
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Access all your social media profiles in one place"
-msgstr "Access all your social media profiles in one place"
-
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Your Social Links"
-msgstr "Your Social Links"
-
-#: src/routes/social-links/[id]/+page.svelte
-msgid "Created with Svelte Mini Apps"
-msgstr "Created with Svelte Mini Apps"
 
 #: src/lib/components/ui/EvervaultCard/EvervaultCard.svelte
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -3646,7 +3583,7 @@ msgstr "Converting currencies..."
 msgid "Successfully converted currencies"
 msgstr "Successfully converted currencies"
 
-#. placeholder {0}: site.name
+#. placeholder {0}: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
 msgstr "Currency Converter - {0}"
@@ -6975,9 +6912,6 @@ msgstr "Good evening"
 msgid "Good night"
 msgstr "Good night"
 
-#~ msgid "Embrace your cosmic journey"
-#~ msgstr "Embrace your cosmic journey"
-
 #: src/lib/components/home/data.ts
 msgid "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 msgstr "Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
@@ -6997,6 +6931,7 @@ msgstr "Ever noticed how some apps just feel smoother and more responsive? That'
 msgid "Simple"
 msgstr "Simple"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
 msgstr "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
@@ -7038,18 +6973,10 @@ msgstr "Join the Creation:"
 msgid "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 msgstr "Got an idea that could make these apps even better? We'd love to hear it! Whether you're a coding wizard ready to dive into the code, or someone with a fresh perspective on how things could work, your input is gold. There's a whole wishlist of apps waiting to be built, and countless ways to enhance existing ones. Ready to leave your mark on something special?"
 
-#~ msgctxt "Community engagement section - encouraging users to share positive experiences with MiniApps"
-#~ msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
-#~ msgstr "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
-
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting users to provide feedback and report issues"
 msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
 msgstr "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
-
-#~ msgctxt "Community engagement section - inviting developers to contribute to the open source project"
-#~ msgid "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-#~ msgstr "<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
 
 #: src/routes/about/data.svelte.ts
 msgid "Install When You Want"
@@ -7435,14 +7362,14 @@ msgstr "Meditation Timer"
 msgid "A timer specifically for meditation sessions with options for different intervals."
 msgstr "A timer specifically for meditation sessions with options for different intervals."
 
+#: src/routes/(auth)/profile/UserProfileCard.svelte
+msgid "Make changes to your profile here. Click save when you're done."
+msgstr "Make changes to your profile here. Click save when you're done."
+
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
 "From managing your budget to boosting productivity, each app here is designed with one\n"
-"goal: to help you get things done(). Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+"goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
 msgstr ""
 "From managing your budget to boosting productivity, each app here is designed with one\n"
-"goal: to help you get things done(). Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-
-#: src/lib/components/home/data.svelte.ts
-msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
-msgstr "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
+"goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
