@@ -57,18 +57,18 @@
 <NavigationProgressIndicator />
 
 <nav class=" border-gray-200 bg-white py-4 dark:bg-gray-900">
-	<div class="flex flex-wrap items-center justify-between px-5">
+	<div class="flex flex-wrap items-center justify-between px-5 md:justify-start md:gap-8">
 		<!-- Logo -->
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<div class="flex text-lg font-semibold sm:text-2xl dark:text-white">
 				<span class="m-1 h-6 w-6 self-center whitespace-nowrap">
 					<Svelte />
 				</span>
-				<span>MiniApps</span>
+				<span>Mini Apps</span>
 			</div>
 		</a>
 		<!-- End of Logo -->
-		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:space-x-0">
+		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:ml-auto md:space-x-0">
 			<div class="flex items-center space-x-2 px-2">
 				<!-- Language switcher - visible on all screen sizes -->
 				<LanguageSwitcher />

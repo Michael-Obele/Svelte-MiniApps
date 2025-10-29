@@ -37,7 +37,7 @@
 					<span class="m-1 size-6 self-center whitespace-nowrap">
 						<Svelte />
 					</span>
-					<span class="text-xl font-bold">MiniApps</span>
+					<span class="text-xl font-bold">Mini Apps</span>
 				</div>
 				<p class="text-muted-foreground text-center text-sm md:text-left">
 					<Sparkles class="text-primary me-1 inline-block size-4" strokeWidth={1.5} />
