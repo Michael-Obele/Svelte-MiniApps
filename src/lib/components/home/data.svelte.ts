@@ -4,11 +4,11 @@ export function getContentBlocksData() {
 			header: {
 				text: [
 					{ type: 'strong', content: 'Svelte' },
-					{ type: 'span', content: 'MiniApps' }
+					{ type: 'span', content: 'Mini Apps' }
 				]
 			},
 			paragraph:
-				"Welcome to your new favorite toolkit! Our MiniApps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
+				"Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
 		},
 		{
 			header: {
@@ -43,7 +43,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our MiniApps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them.",
+				"Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them.",
 			// @wc-ignore
 			iconId: 'yxyampao'
 		}
@@ -56,7 +56,7 @@ export function getInfoBlocksData() {
 			dir: 'left',
 			iconDir: 'right',
 			header: 'Share the Joy:',
-			// @wc-context: Community engagement section - encouraging users to share positive experiences with MiniApps
+			// @wc-context: Community engagement section - encouraging users to share positive experiences with Mini Apps
 			// @wc-include
 			paragraph:
 				'<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine.',
@@ -79,7 +79,7 @@ export function getInfoBlocksData() {
 			// @wc-context: Community engagement section - inviting developers to contribute to the open source project
 			// @wc-include
 			paragraph:
-				"<strong>Love coding?</strong> You could be the next contributor to make these MiniApps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
+				"<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
 			// @wc-ignore
 			iconId: 'kndkiwmf'
 		}

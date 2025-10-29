@@ -5,12 +5,11 @@ Welcome — header section showing a time-based greeting and a mantra with contr
 
 Usage:
 ```svelte
-<Welcome {data} {form} />
+<Welcome {data} />
 ```
 
 Props:
 - data — page data with optional user and mantra.
-- form — action form data for likes.
 
 -->
 <script lang="ts">
@@ -18,22 +17,23 @@ Props:
 	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
-	import { enhance } from '$app/forms';
 	import { Skeleton } from '@/ui/skeleton';
-	import { invalidate } from '$app/navigation';
 	import { Button } from '@/ui/button';
+	import { getMantra, likeMantra } from '$lib/remote/mantra.remote';
+	import { tick } from 'svelte';
+	import { generateMantra } from '$lib/utility/greetings';
 
-	let { data, form } = $props();
+	let { data } = $props();
 
 	// Get current greeting based on time of day
 	let greeting = $derived(getGreetingAndNextPeriod());
 
-	// Mantra is generated server-side and passed via data prop
-	let mantra = $derived(data.mantra || 'Embrace your cosmic journey');
+	// Access the current value from the query
+	let mantra = $derived(await getMantra());
 
 	function handleGenerate() {
-		// Trigger server action to regenerate mantra
-		invalidate('mantra');
+		// Call refresh on the cached query instance
+		getMantra().refresh();
 	}
 
 	// Update greeting when time period changes
@@ -46,28 +46,6 @@ Props:
 		}, getGreetingAndNextPeriod().millisecondsUntilNext);
 
 		return () => clearTimeout(timeoutId);
-	});
-
-	let isLoading = $state(false);
-	let isLiked = $state(false);
-
-	$effect(() => {
-		invalidate('mantra');
-	});
-
-	const handleLike = () => {
-		isLiked = true;
-		return async ({ update }: any) => {
-			await update();
-			isLiked = false;
-		};
-	};
-
-	let likeState = $state(''); // Initialize a reactive variable for like state
-
-	// Assuming `data` contains the response from the server
-	$effect(() => {
-		likeState = form?.like ? 'unlike' : 'like';
 	});
 </script>
 
@@ -83,43 +61,50 @@ Props:
 		</BlurInText>
 	</BlurFade>
 	<BlurFade class="px-1" delay={0.25 * 2}>
-		{#if !isLoading && mantra}
-			<h3 class="my-2 flex items-center justify-center gap-2 text-center">
-				<!-- Use a modal and this form to submit feedback -->
-				<form action="?/likeMantra" use:enhance={handleLike} method="POST">
-					<input type="hidden" name="mantra" value={mantra} />
-					<input type="hidden" name="like" value={form?.like ?? 'like'} />
-					{#if !isLiked && data.user?.username}
-						<div class="flex items-center">
+		{#if mantra}
+			<div class="my-2 flex flex-wrap items-center justify-center gap-2 text-center">
+				{#if data.user?.username}
+					<!-- Use remote form for like functionality -->
+					{@const form = likeMantra.for(mantra)}
+					<form
+						{...form.enhance(async ({ submit }) => {
+							// Submit without refreshing other queries
+							await submit();
+						})}
+					>
+						<!-- Hidden input to bind the mantra value to the form field -->
+						<input type="hidden" name="mantra" value={mantra} />
+
+						{#if !form.pending}
 							<button type="submit">
-								<Star
-									class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'unlike' ? 'hidden' : ''}"
-								/>
-								<StarOff
-									class="h-4 w-4 peer-hover:text-gray-600 {likeState === 'like' ? 'hidden' : ''}"
-								/>
+								{#if form.result?.like}
+									<StarOff class="h-4 w-4 peer-hover:text-gray-600" />
+								{:else}
+									<Star class="h-4 w-4 peer-hover:text-gray-600" />
+								{/if}
 							</button>
-						</div>
-					{:else if isLiked}
-						<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
-					{/if}
-				</form>
+						{:else}
+							<Skeleton class="mx-auto h-5 w-[1.3rem] rounded-md text-center" />
+						{/if}
+					</form>
+				{/if}
+
+				<button
+					onclick={handleGenerate}
+					class="text-muted-foreground max-w-full cursor-pointer text-2xl font-medium break-words underline-offset-4 hover:underline sm:text-3xl xl:text-4xl/none"
+				>
+					{mantra}
+				</button>
+
 				<Button
 					variant="link"
+					class="text-muted-foreground inline-flex size-3 flex-shrink-0 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900 sm:size-8 dark:hover:bg-gray-800 dark:hover:text-gray-50"
 					onclick={handleGenerate}
-					class="text-muted-foreground text-2xl font-medium sm:text-3xl xl:text-4xl/none"
-				>
-					<!-- {data.mantra} -->
-					{mantra}
-				</Button>
-				<button
-					class="text-muted-foreground inline-flex size-3 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900 sm:size-8 dark:hover:bg-gray-800 dark:hover:text-gray-50"
-					onclick={() => handleGenerate()}
 					title="Get a new mantra"
 				>
-					<RefreshCw class="h-4 w-4" />
-				</button>
-			</h3>
+					<RefreshCw class="h-4 w-4 {getMantra().loading ? 'animate-spin' : ''}" />
+				</Button>
+			</div>
 		{:else}
 			<Skeleton class="mx-auto h-10 w-[35vw] rounded-md text-center" />
 		{/if}

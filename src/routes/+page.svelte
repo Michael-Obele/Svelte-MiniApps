@@ -9,8 +9,7 @@
 	let websiteDescription =
 		'Your everyday digital companion - a collection of beautifully crafted tools to simplify your life.';
 
-	let { data, form }: PageProps = $props();
-	import { Trophy } from '@lucide/svelte';
+	let { data }: PageProps = $props();
 </script>
 
 <Banner />
@@ -35,7 +34,7 @@
 />
 
 <!-- Welcome Section -->
-<Welcome {data} {form} />
+<Welcome {data} />
 
 <div class="pb-5 xl:px-10">
 	<!-- Hero -->
