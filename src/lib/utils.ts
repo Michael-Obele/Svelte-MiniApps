@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { persisted } from 'svelte-persisted-store';
 import { writable } from 'svelte/store';
 import { toast } from 'svelte-sonner';
+import { projects } from '$lib/index.svelte';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -196,7 +197,7 @@ export function getFavoriteApps(limit = 3) {
 	// Convert to array and sort by usage count
 	const appEntries = Object.entries(appUsageStore)
 		.map(([appLink, count]) => {
-			const appInfo = projects.find((p: any) => p.link === appLink);
+			const appInfo = projects().find((p: any) => p.link === appLink);
 			return {
 				appLink,
 				usageCount: count as number,
@@ -218,12 +219,12 @@ export function getFavoriteApps(limit = 3) {
  */
 export function getRecentActivity(limit = 5) {
 	const appLastUsedStore = JSON.parse(localStorage.getItem('app-last-used') || '{}');
-	const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+	const projectsData = projects();
 
 	// Convert to array and sort by date
 	const activities = Object.entries(appLastUsedStore)
 		.map(([appLink, dateStr]) => {
-			const appInfo = projects.find((p: any) => p.link === appLink);
+			const appInfo = projectsData.find((p: any) => p.link === appLink);
 			return {
 				appLink,
 				date: dateStr as string,

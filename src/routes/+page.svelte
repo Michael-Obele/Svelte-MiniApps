@@ -3,7 +3,7 @@
 	import { Welcome, Hero, Content, InfoBlocks, AppsSection, Banner } from '$lib/components/home';
 
 	import type { PageProps } from './$types';
-	import { site } from '$lib/index';
+	import { site } from '$lib/index.svelte';
 	//
 	let websiteTitle = 'Svelte Mini Apps';
 	let websiteDescription =
@@ -28,7 +28,7 @@
 		operatingSystem: 'Any',
 		author: {
 			'@type': 'Person',
-			name: site.author
+			name: site().author
 		}
 	}}
 />

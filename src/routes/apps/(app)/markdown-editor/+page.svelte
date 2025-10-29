@@ -9,7 +9,6 @@
 	import '@cartamd/plugin-code/default.css';
 	import '@cartamd/plugin-slash/default.css';
 	import { browser } from '$app/environment';
-	import { site } from '$lib/index';
 	import { markdownDemo } from './data.svelte';
 	import { PersistedState } from 'runed';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';

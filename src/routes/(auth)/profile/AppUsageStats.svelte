@@ -6,7 +6,7 @@
 	import { ChartColumn, Activity, Clock, Calendar } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { appUsageTracker } from '$lib/states.svelte';
-	import { projects } from '$lib/index';
+	import { projects } from '$lib/index.svelte';
 
 	// Define the type for app usage stats
 	type AppUsage = {
@@ -44,7 +44,7 @@
 	// Process app usage data
 	appUsageData = Object.entries(appUsageStore)
 		.map(([appLink, count]) => {
-			const appInfo = projects.find((p: any) => p.link === appLink);
+			const appInfo = projects().find((p: any) => p.link === appLink);
 			const lastUsed = appLastUsedStore[appLink]?.toString() || null;
 
 			return {
@@ -127,7 +127,7 @@
 					<div class="text-2xl font-bold">{totalUsage}</div>
 					<Activity class="h-5 w-5 text-blue-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					Across {appUsageData.length} different apps
 				</p>
 			</CardContent>
@@ -144,7 +144,7 @@
 					</div>
 					<Clock class="h-5 w-5 text-green-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{lastActiveDate
 						? formatDate(new Date(lastActiveDate)).includes('at')
 							? 'at ' + formatDate(new Date(lastActiveDate)).split('at ')[1]
@@ -163,7 +163,7 @@
 					<div class="text-2xl font-bold">{mostActiveDay.day || 'None'}</div>
 					<Calendar class="h-5 w-5 text-purple-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{mostActiveDay.count} activities on this day
 				</p>
 			</CardContent>
@@ -185,13 +185,13 @@
 								<div class="mb-1 flex items-center justify-between">
 									<div>
 										<span class="text-sm font-medium">{app.appName}</span>
-										<span class="ml-2 text-xs text-muted-foreground">({app.usageCount} uses)</span>
+										<span class="text-muted-foreground ml-2 text-xs">({app.usageCount} uses)</span>
 									</div>
 									<span class="text-xs font-medium">{app.percentage}%</span>
 								</div>
 								<div class="flex items-center gap-4">
 									<Progress value={app.percentage} class="h-2 w-full" />
-									<div class="min-w-12 text-right text-xs text-muted-foreground">
+									<div class="text-muted-foreground min-w-12 text-right text-xs">
 										Last: {app.lastUsed ? formatDate(app.lastUsed).split(' at ')[0] : 'Never'}
 									</div>
 								</div>
@@ -200,14 +200,14 @@
 					</div>
 				</ScrollArea>
 			{:else}
-				<div class="flex items-center justify-center py-8 text-muted-foreground">
+				<div class="text-muted-foreground flex items-center justify-center py-8">
 					<p>No app usage data yet. Start using apps to see statistics here!</p>
 				</div>
 			{/if}
 		</CardContent>
 		<CardFooter>
 			<div class="flex w-full items-center justify-between">
-				<div class="flex items-center gap-2 text-sm text-muted-foreground">
+				<div class="text-muted-foreground flex items-center gap-2 text-sm">
 					<ChartColumn class="h-4 w-4" />
 					<span>Usage statistics are updated in real-time</span>
 				</div>

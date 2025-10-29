@@ -77,22 +77,22 @@
 			{:else}
 				<div class="space-y-3 py-4">
 					<div>
-						<div class="text-sm text-muted-foreground">Description</div>
+						<div class="text-muted-foreground text-sm">Description</div>
 						<div class="text-base font-medium">{editingExpense.expense.description}</div>
 					</div>
 					<div>
-						<div class="text-sm text-muted-foreground">Amount</div>
+						<div class="text-muted-foreground text-sm">Amount</div>
 						<div class="text-base font-medium">
 							{formatNumber(editingExpense.expense.amount)}
 							{#if findBudget(editingExpense.budgetId)?.currency}
-								<span class="text-sm text-muted-foreground"
+								<span class="text-muted-foreground text-sm"
 									>&nbsp;({findBudget(editingExpense.budgetId)?.currency})</span
 								>
 							{/if}
 						</div>
 					</div>
 					<div>
-						<div class="text-sm text-muted-foreground">Date</div>
+						<div class="text-muted-foreground text-sm">Date</div>
 						<div class="text-xs">{new Date(editingExpense.expense.createdAt).toLocaleString()}</div>
 					</div>
 				</div>

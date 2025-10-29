@@ -7,7 +7,7 @@
 	import { Progress } from '@/ui/progress';
 	import { toast } from 'svelte-sonner';
 	import { Copy, Star, StarOff, Check } from '@lucide/svelte';
-	import { site } from '$lib';
+	import { site } from '$lib/index.svelte';
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { copyToClipboard } from '$lib/utils';
@@ -178,11 +178,11 @@
 </script>
 
 <RouteHead
-	title="{site.name} - Password Generator"
+	title="{site().name} - Password Generator"
 	description="Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 	keywords="password generator, secure passwords, random passwords, password security, svelte apps"
 	route="/apps/password-generator"
-	image={site.image}
+	image={site().image}
 />
 
 <div class="container mx-auto max-w-2xl px-4 py-8">

@@ -10,7 +10,7 @@
 	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import { site } from '$lib';
+	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { dictionaryAppHowToUse } from './how-to-use-config';
@@ -86,7 +86,7 @@
 	description="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
 	keywords="English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
 	route="/apps/english-dictionary-app"
-	image={site.image}
+	image={site().image}
 />
 
 <form

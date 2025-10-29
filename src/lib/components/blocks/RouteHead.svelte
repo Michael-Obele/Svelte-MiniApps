@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '$lib/index';
+	import { site } from '$lib/index.svelte';
 
 	type OpenGraphType =
 		| 'website'
@@ -42,15 +42,15 @@
 		description,
 		route,
 		keywords = '',
-		image = site.image,
-		author = site.author || 'Michael Obele',
-		canonical = `${site.url}${route}`,
+		image = site().image,
+		author = site().author || 'Michael Obele',
+		canonical = `${site().url}${route}`,
 		publishedTime,
 		modifiedTime,
 		type = 'website',
 		locale = 'en-US',
 		twitterCard = 'summary_large_image',
-		themeColor = site.themeColor,
+		themeColor = site().themeColor,
 		noindex = false,
 		nofollow = false,
 		structuredData = null
@@ -72,16 +72,18 @@
 		if (!structuredData) return undefined;
 		return {
 			...structuredData,
-			url: structuredData.url ?? site.url,
+			url: structuredData.url ?? site().url,
 			image: structuredData.image ?? image,
 			publisher: structuredData.publisher ?? {
 				'@type': 'Organization',
-				name: site.name,
-				logo: { '@type': 'ImageObject', url: site.image }
+				name: site().name,
+				logo: { '@type': 'ImageObject', url: site().image }
 			}
 		};
 	});
-	let structuredDataJson = $derived(fullStructuredData ? JSON.stringify(fullStructuredData) : undefined);
+	let structuredDataJson = $derived(
+		fullStructuredData ? JSON.stringify(fullStructuredData) : undefined
+	);
 </script>
 
 <svelte:head>
@@ -102,7 +104,7 @@
 	<meta property="og:description" content={ogDescription} />
 	<meta property="og:type" content={type} />
 	<meta property="og:url" content={ogUrl} />
-	<meta property="og:site_name" content={site.name} />
+	<meta property="og:site_name" content={site().name} />
 	<meta property="og:locale" content={locale} />
 	{#if image}
 		<meta property="og:image" content={image} />
@@ -118,9 +120,9 @@
 	<meta name="twitter:card" content={twitterCard} />
 	<meta name="twitter:title" content={ogTitle} />
 	<meta name="twitter:description" content={ogDescription} />
-	{#if site.twitterUsername}
-		<meta name="twitter:site" content={`@${site.twitterUsername}`} />
-		<meta name="twitter:creator" content={`@${site.twitterUsername}`} />
+	{#if site().twitterUsername}
+		<meta name="twitter:site" content={`@${site().twitterUsername}`} />
+		<meta name="twitter:creator" content={`@${site().twitterUsername}`} />
 	{/if}
 	{#if image}
 		<meta name="twitter:image" content={image} />

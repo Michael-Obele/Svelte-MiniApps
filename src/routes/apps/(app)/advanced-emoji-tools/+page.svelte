@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '$lib';
+	import { site } from '$lib/index.svelte';
 	import * as emoji from 'node-emoji';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { toast } from 'svelte-sonner';
@@ -136,7 +136,7 @@
 	description="An advanced toolset for working with emojis. Convert text to emojis, search for emojis, and more."
 	keywords="emoji tools, emoji converter, emoji search, text to emoji, emoji generator"
 	route="/apps/advanced-emoji-tools"
-	image={site.image}
+	image={site().image}
 />
 
 <div class="container mx-auto space-y-8 px-4 py-8">

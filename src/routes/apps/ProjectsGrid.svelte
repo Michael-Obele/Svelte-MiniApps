@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TaskCard from './TaskCard.svelte';
-	import { done, type Project } from '$lib/index';
+	import { done, type Project } from '$lib/index.svelte';
 
 	interface Props {
 		items: Project[];
@@ -13,7 +13,7 @@
 	class="mx-auto my-8 flex h-fit flex-col gap-5 px-16 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
 >
 	{#each items as item}
-		{#if done.some((d) => d.name === item.link)}
+		{#if done().some((d) => d.name === item.link)}
 			<a href={'/apps/' + item.link}>
 				<TaskCard {item} />
 			</a>

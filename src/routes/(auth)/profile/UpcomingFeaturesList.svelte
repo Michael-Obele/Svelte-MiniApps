@@ -3,16 +3,16 @@
 	import { Separator } from '@/ui/separator';
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 	import { Badge } from '@/ui/badge';
-	import { projects, done, truncateText } from '$lib';
+	import { projects, done, truncateText } from '$lib/index.svelte';
 	import { Calendar, Zap, Code, Sparkles, Clock } from '@lucide/svelte';
 
 	// Filter projects that are not yet completed
 	let upcomingProjects = $state(
-		projects.filter((project) => !done.some((d) => d.name === project.link))
+		projects().filter((project) => !done().some((d) => d.name === project.link))
 	);
 
 	// Calculate total upcoming apps
-	const totalUpcoming = $state(projects.filter((p) => !done.some((d) => d.name === p.link)).length);
+	const totalUpcoming = $state(projects().filter((p) => !done().some((d) => d.name === p.link)).length);
 </script>
 
 <!--

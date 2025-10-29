@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 	import { Button } from '@/ui/button';
-	import { done, projects } from '$lib';
+	import { done, projects } from '$lib/index.svelte';
 	import { Star, ExternalLink, Heart, Activity } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { getFavoriteApps } from '$lib/utils';
@@ -43,7 +43,7 @@ Uses app usage tracking data to determine favorite apps based on usage count.
 		{#if favoriteApps.length > 0}
 			{#each favoriteApps as app}
 				<div
-					class="group flex items-start gap-4 rounded-lg border p-4 transition-all hover:bg-muted/50"
+					class="group hover:bg-muted/50 flex items-start gap-4 rounded-lg border p-4 transition-all"
 				>
 					<div
 						class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
@@ -54,13 +54,13 @@ Uses app usage tracking data to determine favorite apps based on usage count.
 					<div class="flex-1">
 						<div class="flex items-center justify-between">
 							<h4 class="font-medium">{app.appName}</h4>
-							<div class="flex items-center gap-1 text-xs text-muted-foreground">
+							<div class="text-muted-foreground flex items-center gap-1 text-xs">
 								<Activity class="h-3 w-3 text-blue-500" />
 								<span>{app.usageCount} uses</span>
 							</div>
 						</div>
 
-						<p class="mt-1 text-sm text-muted-foreground">
+						<p class="text-muted-foreground mt-1 text-sm">
 							{app.appDescription}
 						</p>
 
@@ -79,7 +79,7 @@ Uses app usage tracking data to determine favorite apps based on usage count.
 				</div>
 			{/each}
 		{:else}
-			<div class="flex items-center justify-center py-8 text-muted-foreground">
+			<div class="text-muted-foreground flex items-center justify-center py-8">
 				<p>No favorite apps yet. Start using apps to see your favorites here!</p>
 			</div>
 		{/if}

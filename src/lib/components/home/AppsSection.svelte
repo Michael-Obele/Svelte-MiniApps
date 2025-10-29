@@ -10,13 +10,13 @@ Usage:
 
 -->
 <script lang="ts">
-	import { projects, done, site, isNewApp, isRecentlyUpdated } from '$lib/index';
+	import { projects, done, site, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 	import { CheckCircle2, CircleHelp, CircleX } from '@lucide/svelte';
 
 	// Sort projects alphabetically by title and split into done vs coming soon
-	let sortedProjects = $derived(projects.sort((a, b) => a.title.localeCompare(b.title)));
-	let doneProjects = $derived(sortedProjects.filter((p) => done.some((d) => d.name === p.link)));
-	let comingSoon = $derived(sortedProjects.filter((p) => !done.some((d) => d.name === p.link)));
+	let sortedProjects = $derived(projects().sort((a, b) => a.title.localeCompare(b.title)));
+	let doneProjects = $derived(sortedProjects.filter((p) => done().some((d) => d.name === p.link)));
+	let comingSoon = $derived(sortedProjects.filter((p) => !done().some((d) => d.name === p.link)));
 </script>
 
 <main class="w-full py-5 md:py-8 lg:py-10">
@@ -33,7 +33,7 @@ Usage:
 						class="mb-6 max-w-[900px] text-lg font-normal text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
 					>
 						From managing your budget to boosting productivity, each app here is designed with one
-						goal: to help you get things done. Built with <strong class="text-[#F03E3E]"
+						goal: to help you get things done(). Built with <strong class="text-[#F03E3E]"
 							>Svelte</strong
 						>, these tools are fast, responsive, and a joy to use.
 					</p>

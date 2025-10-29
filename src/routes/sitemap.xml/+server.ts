@@ -1,4 +1,4 @@
-import { done } from '$lib';
+import { done } from '$lib/index.svelte';
 
 // Your domain
 // const site = 'https://svelte-mini-apps.netlify.app'; // Netlify Domain
@@ -21,10 +21,10 @@ const staticPages: { url: string; priority?: number; changefreq?: string }[] = [
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function GET({ url }): Promise<Response> {
-	let appNames = done;
+	let appNames = done();
 
 	const dynamicRoutes = await Promise.all(
-		appNames.map(async (app) => ({
+		appNames.map(async (app: { name: string }) => ({
 			url: `/apps/${app.name}`,
 			lastmod: await getLastModified(slugify(app.name)), // Await the result
 			priority: 0.8,

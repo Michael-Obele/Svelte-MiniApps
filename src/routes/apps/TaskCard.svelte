@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Tags from './Tags.svelte';
 	import { BadgeCheck, HardHat, ArrowRight, Info } from '@lucide/svelte';
-	import { done, type Project } from '$lib/index';
+	import { done, type Project } from '$lib/index.svelte';
 
-	let {item} = $props();
+	let { item } = $props();
 </script>
 
 <div
@@ -11,8 +11,8 @@
 >
 	<!-- Done check -->
 	<span
-		class:opacity-100={done.some((d) => d.name === item.link)}
-		class:opacity-20={!done.some((d) => d.name === item.link)}
+		class:opacity-100={done().some((d) => d.name === item.link)}
+		class:opacity-20={!done().some((d) => d.name === item.link)}
 		class="absolute top-5 right-5"
 	>
 		<BadgeCheck class="size-16 text-green-800 dark:text-green-400" />
@@ -38,7 +38,7 @@
 	<p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
 		{item.details}
 	</p>
-	{#if done.some((d) => d.name === item.link)}
+	{#if done().some((d) => d.name === item.link)}
 		<span
 			class="absolute bottom-5 inline-flex items-center text-lg font-medium text-red-600 group-hover:underline dark:text-red-500"
 			>Try now

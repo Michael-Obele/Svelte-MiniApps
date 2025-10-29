@@ -6,7 +6,7 @@
 	import UserProfileCard from './UserProfileCard.svelte';
 	import UpcomingFeaturesList from './UpcomingFeaturesList.svelte';
 	import FavoriteAppList from './FavoriteAppList.svelte';
-	import { projects, done } from '$lib';
+	import { projects, done } from '$lib/index.svelte';
 	import { persisted } from 'svelte-persisted-store';
 	import { onMount } from 'svelte';
 	import { PersistedState } from 'runed';
@@ -43,9 +43,9 @@
 
 	// Stats for dashboard
 	const stats = $state({
-		completedApps: done.length,
-		totalApps: projects.length,
-		progress: Math.round((done.length / projects.length) * 100),
+		completedApps: done().length,
+		totalApps: projects().length,
+		progress: Math.round((done().length / projects().length) * 100),
 		streak: 0,
 		level: 0,
 		points: 0,
@@ -113,7 +113,7 @@
 
 	// Store projects data in localStorage for utility functions
 	function storeProjectsData() {
-		const projectsData = projects.map((project) => ({
+		const projectsData = projects().map((project) => ({
 			title: project.title,
 			details: project.details,
 			link: project.link
@@ -179,7 +179,7 @@
 			<CardContent class="p-3 pt-2 sm:p-4 sm:pt-2">
 				<div class="text-base font-bold sm:text-2xl">{stats.completedApps}/{stats.totalApps}</div>
 				<Progress value={stats.progress} class="mt-2" />
-				<p class="mt-2 text-xs text-muted-foreground">{stats.progress}% of total projects</p>
+				<p class="text-muted-foreground mt-2 text-xs">{stats.progress}% of total projects</p>
 			</CardContent>
 		</Card>
 
@@ -192,7 +192,7 @@
 					<div class="text-2xl font-bold">{stats.streak} days</div>
 					<Zap class="h-5 w-5 text-yellow-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">Keep it going!</p>
+				<p class="text-muted-foreground mt-2 text-xs">Keep it going!</p>
 			</CardContent>
 		</Card>
 
@@ -205,7 +205,7 @@
 					<div class="text-2xl font-bold">{stats.totalUsage}</div>
 					<Activity class="h-5 w-5 text-blue-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">{stats.uniqueAppsUsed} unique apps used</p>
+				<p class="text-muted-foreground mt-2 text-xs">{stats.uniqueAppsUsed} unique apps used</p>
 			</CardContent>
 		</Card>
 
@@ -218,7 +218,7 @@
 					<div class="text-2xl font-bold">Level {stats.level}</div>
 					<Award class="h-5 w-5 text-purple-500" />
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{stats.level * 50 - stats.totalUsage} more uses to next level
 				</p>
 			</CardContent>
@@ -261,10 +261,10 @@
 					<div class="space-y-3 sm:space-y-4">
 						{#each favoriteApps as app}
 							<div
-								class="group flex flex-row items-start gap-3 rounded-lg border p-3 transition-all hover:bg-muted/50 sm:p-4"
+								class="group hover:bg-muted/50 flex flex-row items-start gap-3 rounded-lg border p-3 transition-all sm:p-4"
 							>
 								<div
-									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500 sm:h-10 sm:w-10"
+									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 sm:h-10 sm:w-10 dark:bg-yellow-900/30 dark:text-yellow-500"
 								>
 									<Award class="h-4 w-4 sm:h-5 sm:w-5" />
 								</div>
@@ -273,11 +273,11 @@
 										class="flex flex-col items-start justify-between sm:flex-row sm:items-center"
 									>
 										<h4 class="font-medium">{app.appName}</h4>
-										<div class="text-xs text-muted-foreground sm:text-sm">
+										<div class="text-muted-foreground text-xs sm:text-sm">
 											<span>{app.usageCount} uses</span>
 										</div>
 									</div>
-									<p class="mt-1 text-xs text-muted-foreground sm:text-sm">{app.appDescription}</p>
+									<p class="text-muted-foreground mt-1 text-xs sm:text-sm">{app.appDescription}</p>
 									<div class="mt-2 flex items-center justify-end sm:mt-3">
 										<Button
 											variant="outline"
@@ -293,7 +293,7 @@
 						{/each}
 					</div>
 				{:else}
-					<div class="flex items-center justify-center p-4 text-muted-foreground">
+					<div class="text-muted-foreground flex items-center justify-center p-4">
 						No favorite apps yet
 					</div>
 				{/if}

@@ -7,7 +7,7 @@
 	import { fade } from 'svelte/transition';
 	import { PanelRightOpen, Keyboard } from '@lucide/svelte';
 	import AppTracker from '@/blocks/AppTracker.svelte';
-	import { done } from '$lib/index';
+	import { done } from '$lib/index.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
@@ -144,7 +144,7 @@
 				</Sheet.Description>
 			</Sheet.Header>
 			<div class="flex flex-col gap-2 overflow-y-auto py-4" style="max-height: calc(80vh - 150px);">
-				{#each done as app}
+				{#each done() as app}
 					<Sheet.Description>
 						<!-- Updated to use the navigateToApp function -->
 						<button
@@ -157,7 +157,7 @@
 								>
 							</div>
 							<span class="capitalize">{app.name.replace(/-/g, ' ')}</span>
-						</button>
+		</button>
 					</Sheet.Description>
 				{/each}
 			</div>

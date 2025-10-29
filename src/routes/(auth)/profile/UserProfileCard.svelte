@@ -182,7 +182,7 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 		<Dialog.Header>
 			<Dialog.Title>Edit Profile</Dialog.Title>
 			<Dialog.Description>
-				Make changes to your profile here. Click save when you're done.
+				Make changes to your profile here. Click save when you're done().
 			</Dialog.Description>
 		</Dialog.Header>
 		<form onsubmit={handleUpdateProfile}>

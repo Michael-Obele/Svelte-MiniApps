@@ -1,23 +1,30 @@
-import { LucideTable, LucideBookmarkCheck } from '@lucide/svelte';
-
 // place files you want to import through the `$lib` alias in this folder.
-export const site = {
-	name: 'Svelte Mini Apps',
-	url: 'https://svelte-apps.me',
-	image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png',
-	author: 'Michael Obele',
-	description: 'A collection of mini applications built with Svelte',
-	twitterUsername: 'Dev_Obele',
-	githubUsername: 'Michael-Obele',
-	repository: 'https://github.com/Michael-Obele/Svelte-MiniApps',
-	themeColor: '#1e293b'
-};
 
 /**
- * An array of completed mini-apps, each represented by an object containing the app's name,
- * its completion time as an ISO 8601 date string, and optionally an update time.
+ * Returns the site configuration object.
+ * @returns Site configuration with metadata and branding information
  */
-export const done = [
+export function site() {
+	return {
+		name: 'Svelte Mini Apps',
+		url: 'https://svelte-apps.me',
+		image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png',
+		author: 'Michael Obele',
+		description: 'A collection of mini applications built with Svelte',
+		twitterUsername: 'Dev_Obele',
+		githubUsername: 'Michael-Obele',
+		repository: 'https://github.com/Michael-Obele/Svelte-MiniApps',
+		themeColor: '#1e293b'
+	};
+}
+
+/**
+ * Returns an array of completed mini-apps, each represented by an object containing the app's name,
+ * its completion time as an ISO 8601 date string, and optionally an update time.
+ * @returns Array of completed apps with their completion dates
+ */
+export function done() {
+	return [
 	{ name: 'random-password-generator', time: '2025-07-15T00:00:00.000Z' },
 	{ name: 'github-contribution-tracker', time: '2025-08-20T00:00:00.000Z' },
 	{ name: 'qr-code-generator', time: '2025-07-10T00:00:00.000Z' },
@@ -33,8 +40,9 @@ export const done = [
 	{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
 	{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
 	{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' }
-];
-//
+	];
+}
+
 export type Project = {
 	title: string;
 	details: string;
@@ -43,7 +51,12 @@ export type Project = {
 	link: string;
 };
 
-export const projects: Project[] = [
+/**
+ * Returns an array of all available mini-app projects.
+ * @returns Array of Project objects with details, tags, and difficulty levels
+ */
+export function projects(): Project[] {
+	return [
 	{
 		title: 'Unit Converter',
 		details: 'Converts between various units (length, temperature, volume, etc.)',
@@ -306,7 +319,8 @@ export const projects: Project[] = [
 		difficulty: 'easy',
 		link: 'meditation-timer'
 	}
-];
+	];
+}
 
 /**
  * Truncates a given text to a specified maximum length.
@@ -337,7 +351,7 @@ export function truncateText(text: string, maxLength: number): string {
  * @returns {boolean} True if the app is new, false otherwise.
  */
 export function isNewApp(appName: string): boolean {
-	const app = done.find((d) => d.name === appName);
+	const app = done().find((d) => d.name === appName);
 	if (!app) return false;
 
 	const completionDate = new Date(app.time);
@@ -356,7 +370,7 @@ export function isNewApp(appName: string): boolean {
  * @returns {boolean} True if the app was recently updated, false otherwise.
  */
 export function isRecentlyUpdated(appName: string): boolean {
-	const app = done.find((d) => d.name === appName);
+	const app = done().find((d) => d.name === appName);
 	if (!app || !app.update) return false;
 
 	const updateDate = new Date(app.update);

@@ -8,7 +8,7 @@
 	import { Command, Search, CheckCircle2 } from '@lucide/svelte';
 	import * as Cmd from '@/ui/command/index.js';
 	import * as Dialog from '@/ui/dialog/index.js';
-	import { done, projects } from '$lib/index';
+	import { done, projects } from '$lib/index.svelte';
 
 	function setFilterValue(filterValue: string): () => void {
 		return () => {
@@ -20,14 +20,14 @@
 	let searchQuery = $state('');
 	let filteredProjects = $derived(
 		searchQuery
-			? projects.filter(
+			? projects().filter(
 					(project) =>
 						project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 						project.details.toLowerCase().includes(searchQuery.toLowerCase()) ||
 						project.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||
 						project.link.toLowerCase().includes(searchQuery.toLowerCase())
 				)
-			: projects
+			: projects()
 	);
 
 	// Dialog state
@@ -51,7 +51,7 @@
 
 	// Check if a project is completed
 	function isCompleted(link: string): boolean {
-		return done.some((d) => d.name === link);
+		return done().some((d) => d.name === link);
 	}
 </script>
 

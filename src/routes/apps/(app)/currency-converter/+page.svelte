@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '$lib'; // Import site-related variables
+	import { site } from '$lib/index.svelte'; // Import site-related variables
 	import { enhance } from '$app/forms';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import type { ActionData, SubmitFunction, PageData } from './$types';
@@ -108,11 +108,11 @@
 </script>
 
 <RouteHead
-	title="Currency Converter - {site.name}"
+	title="Currency Converter - {site().name}"
 	description="Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
 	keywords="currency converter, exchange rates, currency exchange, money converter, convert money"
 	route="/apps/currency-converter"
-	image={site.image}
+	image={site().image}
 />
 
 <div class="container mx-auto max-w-4xl px-4 py-8">

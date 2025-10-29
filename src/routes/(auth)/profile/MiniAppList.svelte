@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card, CardHeader, CardContent, CardTitle } from '@/ui/card';
 	import { Button } from '@/ui/button';
-	import { projects, done, truncateText } from '$lib';
+	import { projects, done, truncateText } from '$lib/index.svelte';
 
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 </script>

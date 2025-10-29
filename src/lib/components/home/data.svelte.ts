@@ -31,7 +31,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start.",
+				"Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start.",
 			// @wc-ignore
 			iconId: 'zguybvqs'
 		},
