@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.009Z\n"
-"PO-Revision-Date: 2025-10-29T09:51:28.033Z\n"
+"PO-Revision-Date: 2025-10-29T10:19:49.975Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -13,6 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/lib/components/home/Hero.svelte
+#: src/lib/index.svelte.ts
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/hire/+page.svelte
@@ -602,6 +603,7 @@ msgid "Article"
 msgstr "Article"
 
 #: src/lib/components/blocks/RouteHead.svelte
+#: src/lib/index.svelte.ts
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -1570,13 +1572,12 @@ msgstr "Write your markdown here..."
 msgid "Tools That Make a Difference"
 msgstr "Tools That Make a Difference"
 
-#: src/lib/components/home/AppsSection.svelte
-msgid ""
-"From managing your budget to boosting productivity, each app here is designed with one\n"
-"goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-msgstr ""
-"From managing your budget to boosting productivity, each app here is designed with one\n"
-"goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+#~ msgid ""
+#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
+#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+#~ msgstr ""
+#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
+#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "What's in the Toolbox:"
@@ -3058,6 +3059,7 @@ msgstr "Toggle Sidebar"
 msgid "Enter"
 msgstr "Enter"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Advanced Emoji Tools"
 msgstr "Advanced Emoji Tools"
@@ -3345,6 +3347,7 @@ msgstr "Budget Tracker | Svelte Mini Apps"
 msgid "Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
 msgstr "Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Budget Tracker"
@@ -3652,6 +3655,7 @@ msgstr "Currency Converter - {0}"
 msgid "Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
 msgstr "Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter"
 msgstr "Currency Converter"
@@ -3796,6 +3800,7 @@ msgstr "Visualize your GitHub contributions in a clear and engaging way. Track s
 msgid "GitHub, Contribution Tracker, Developer Tools, Svelte Apps"
 msgstr "GitHub, Contribution Tracker, Developer Tools, Svelte Apps"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "GitHub Contribution Tracker"
 msgstr "GitHub Contribution Tracker"
@@ -3824,6 +3829,7 @@ msgstr "Markdown Editor - Write and Preview Markdown with Ease"
 msgid "Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
 msgstr "Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid "Markdown Editor"
 msgstr "Markdown Editor"
@@ -4914,6 +4920,7 @@ msgstr "Please log in to refresh data from server"
 msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
 msgstr "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
@@ -5528,6 +5535,7 @@ msgstr ""
 msgid "END:VCARD"
 msgstr "END:VCARD"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid "QR Code Generator"
@@ -5630,6 +5638,7 @@ msgstr "Generate random emojis with our Random Emoji Generator. Click the button
 msgid "Random Emoji, Emoji Generator, Fun, Productivity, Svelte Apps"
 msgstr "Random Emoji, Emoji Generator, Fun, Productivity, Svelte Apps"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
 msgid "Random Emoji Generator"
 msgstr "Random Emoji Generator"
@@ -5674,6 +5683,7 @@ msgstr "Previous attempt saved to history. Starting fresh! 💪"
 msgid "Craving logged! Stay strong! 💪"
 msgstr "Craving logged! Stay strong! 💪"
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Smoke-Free Tracker"
@@ -6482,6 +6492,7 @@ msgstr "Text Summarizer - Create Concise Summaries Instantly"
 msgid "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
 msgstr "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text Summarizer"
 msgstr "Text Summarizer"
@@ -6688,6 +6699,7 @@ msgstr "Unit Converter - Svelte Mini Apps"
 msgid "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
 msgstr "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
 
+#: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Unit Converter"
 msgstr "Unit Converter"
@@ -6922,6 +6934,7 @@ msgstr "An unexpected error occurred while fetching the dictionary data."
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "Please try again later. If the problem persists, contact support."
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
@@ -6932,6 +6945,7 @@ msgstr "Please try again later. If the problem persists, contact support."
 msgid "Good morning"
 msgstr "Good morning"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
@@ -6942,6 +6956,7 @@ msgstr "Good morning"
 msgid "Good afternoon"
 msgstr "Good afternoon"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
@@ -6952,6 +6967,7 @@ msgstr "Good afternoon"
 msgid "Good evening"
 msgstr "Good evening"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.ts
@@ -6981,7 +6997,6 @@ msgstr "Ever noticed how some apps just feel smoother and more responsive? That'
 msgid "Simple"
 msgstr "Simple"
 
-#: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.ts
 msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
 msgstr "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
@@ -7163,3 +7178,271 @@ msgstr "<strong>Found a MiniApp that made your day easier?</strong> Why keep it 
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
 msgstr "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+
+#: src/lib/index.svelte.ts
+msgid "A collection of mini applications built with Svelte"
+msgstr "A collection of mini applications built with Svelte"
+
+#: src/lib/index.svelte.ts
+msgid "Dev_Obele"
+msgstr "Dev_Obele"
+
+#: src/lib/index.svelte.ts
+msgid "Michael-Obele"
+msgstr "Michael-Obele"
+
+#: src/lib/index.svelte.ts
+msgid "Converts between various units (length, temperature, volume, etc.)"
+msgstr "Converts between various units (length, temperature, volume, etc.)"
+
+#: src/lib/index.svelte.ts
+msgid "Create and manage budgets, track expenses, and monitor your remaining balance."
+msgstr "Create and manage budgets, track expenses, and monitor your remaining balance."
+
+#: src/lib/index.svelte.ts
+msgid "Track your purchases over time with detailed records including costs, quantities, and automatic timestamps for better expense management."
+msgstr "Track your purchases over time with detailed records including costs, quantities, and automatic timestamps for better expense management."
+
+#: src/lib/index.svelte.ts
+msgid "Medication Tracker"
+msgstr "Medication Tracker"
+
+#: src/lib/index.svelte.ts
+msgid "Track your medications during treatment sessions. Manage multiple medications, schedule doses, monitor adherence, and never miss a dose."
+msgstr "Track your medications during treatment sessions. Manage multiple medications, schedule doses, monitor adherence, and never miss a dose."
+
+#: src/lib/index.svelte.ts
+msgid "Track your smoke-free journey with real-time streak counting, health milestones, craving management, and motivational support to help you quit smoking."
+msgstr "Track your smoke-free journey with real-time streak counting, health milestones, craving management, and motivational support to help you quit smoking."
+
+#: src/lib/index.svelte.ts
+msgid "Random Password Generator"
+msgstr "Random Password Generator"
+
+#: src/lib/index.svelte.ts
+msgid "Generates secure passwords with customizable length and complexity."
+msgstr "Generates secure passwords with customizable length and complexity."
+
+#: src/lib/index.svelte.ts
+msgid "This mini-app offers advanced features for working with emojis."
+msgstr "This mini-app offers advanced features for working with emojis."
+
+#: src/lib/index.svelte.ts
+msgid "Color Picker"
+msgstr "Color Picker"
+
+#: src/lib/index.svelte.ts
+msgid "Lets you choose a color and shows its HEX code or RGB values."
+msgstr "Lets you choose a color and shows its HEX code or RGB values."
+
+#: src/lib/index.svelte.ts
+msgid "Checklist Maker"
+msgstr "Checklist Maker"
+
+#: src/lib/index.svelte.ts
+msgid "Allows you to create checklists and mark items as completed."
+msgstr "Allows you to create checklists and mark items as completed."
+
+#: src/lib/index.svelte.ts
+msgid "Creates a shorter version of a text by keeping within a word limit."
+msgstr "Creates a shorter version of a text by keeping within a word limit."
+
+#: src/lib/index.svelte.ts
+msgid "Morse Code Translator"
+msgstr "Morse Code Translator"
+
+#: src/lib/index.svelte.ts
+msgid "Translates between text and Morse code."
+msgstr "Translates between text and Morse code."
+
+#: src/lib/index.svelte.ts
+msgid "Countdown Timer"
+msgstr "Countdown Timer"
+
+#: src/lib/index.svelte.ts
+msgid "Sets a timer with a countdown and shows progress visually."
+msgstr "Sets a timer with a countdown and shows progress visually."
+
+#: src/lib/index.svelte.ts
+msgid "Gets live exchange rates and converts between different currencies."
+msgstr "Gets live exchange rates and converts between different currencies."
+
+#: src/lib/index.svelte.ts
+msgid "BMI Calculator"
+msgstr "BMI Calculator"
+
+#: src/lib/index.svelte.ts
+msgid "Calculates your Body Mass Index based on your height and weight."
+msgstr "Calculates your Body Mass Index based on your height and weight."
+
+#: src/lib/index.svelte.ts
+msgid "Music Player"
+msgstr "Music Player"
+
+#: src/lib/index.svelte.ts
+msgid "Plays audio files stored on your device and lets you browse them."
+msgstr "Plays audio files stored on your device and lets you browse them."
+
+#: src/lib/index.svelte.ts
+msgid "Creates QR codes that contain URLs, text, or vCards."
+msgstr "Creates QR codes that contain URLs, text, or vCards."
+
+#: src/lib/index.svelte.ts
+msgid "To-Do List with Persistence"
+msgstr "To-Do List with Persistence"
+
+#: src/lib/index.svelte.ts
+msgid "Lets you create and manage to-do items, and saves them for later use."
+msgstr "Lets you create and manage to-do items, and saves them for later use."
+
+#: src/lib/index.svelte.ts
+msgid "Habit Tracker"
+msgstr "Habit Tracker"
+
+#: src/lib/index.svelte.ts
+msgid "Tracks your daily habits and shows your progress over time."
+msgstr "Tracks your daily habits and shows your progress over time."
+
+#: src/lib/index.svelte.ts
+msgid "Photo Editor"
+msgstr "Photo Editor"
+
+#: src/lib/index.svelte.ts
+msgid "Provides basic tools like cropping, resizing, and applying filters to edit photos."
+msgstr "Provides basic tools like cropping, resizing, and applying filters to edit photos."
+
+#: src/lib/index.svelte.ts
+msgid "Wikipedia Article Explorer"
+msgstr "Wikipedia Article Explorer"
+
+#: src/lib/index.svelte.ts
+msgid "Lets you search Wikipedia and explore linked articles visually."
+msgstr "Lets you search Wikipedia and explore linked articles visually."
+
+#: src/lib/index.svelte.ts
+msgid "Simple Drawing App"
+msgstr "Simple Drawing App"
+
+#: src/lib/index.svelte.ts
+msgid "Lets you create basic drawings using lines, shapes, and colors."
+msgstr "Lets you create basic drawings using lines, shapes, and colors."
+
+#: src/lib/index.svelte.ts
+msgid "Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated."
+msgstr "Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated."
+
+#: src/lib/index.svelte.ts
+msgid "Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects."
+msgstr "Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects."
+
+#: src/lib/index.svelte.ts
+msgid "English Dictionary App"
+msgstr "English Dictionary App"
+
+#: src/lib/index.svelte.ts
+msgid "Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback."
+msgstr "Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback."
+
+#: src/lib/index.svelte.ts
+msgid "Pomodoro Timer"
+msgstr "Pomodoro Timer"
+
+#: src/lib/index.svelte.ts
+msgid "Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you."
+msgstr "Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you."
+
+#: src/lib/index.svelte.ts
+msgid "Generates a random emoji with a single click."
+msgstr "Generates a random emoji with a single click."
+
+#: src/lib/index.svelte.ts
+msgid "Age Calculator"
+msgstr "Age Calculator"
+
+#: src/lib/index.svelte.ts
+msgid "Calculates your age based on the date you were born."
+msgstr "Calculates your age based on the date you were born."
+
+#: src/lib/index.svelte.ts
+msgid "Rock Paper Scissors Game"
+msgstr "Rock Paper Scissors Game"
+
+#: src/lib/index.svelte.ts
+msgid "Lets you play the classic rock, paper, scissors game against the computer and shows the outcome."
+msgstr "Lets you play the classic rock, paper, scissors game against the computer and shows the outcome."
+
+#: src/lib/index.svelte.ts
+msgid "Dice Roll Simulator"
+msgstr "Dice Roll Simulator"
+
+#: src/lib/index.svelte.ts
+msgid "Simulates rolling dice and visually shows the result."
+msgstr "Simulates rolling dice and visually shows the result."
+
+#: src/lib/index.svelte.ts
+msgid "Recipe Book Organizer"
+msgstr "Recipe Book Organizer"
+
+#: src/lib/index.svelte.ts
+msgid "Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions."
+msgstr "Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions."
+
+#: src/lib/index.svelte.ts
+msgid "Weather App"
+msgstr "Weather App"
+
+#: src/lib/index.svelte.ts
+msgid "Displays current weather information based on user location or input city."
+msgstr "Displays current weather information based on user location or input city."
+
+#: src/lib/index.svelte.ts
+msgid "Expense Splitter"
+msgstr "Expense Splitter"
+
+#: src/lib/index.svelte.ts
+msgid "Helps users split expenses among friends or family and calculates who owes what."
+msgstr "Helps users split expenses among friends or family and calculates who owes what."
+
+#: src/lib/index.svelte.ts
+msgid "Flashcard Quizzer"
+msgstr "Flashcard Quizzer"
+
+#: src/lib/index.svelte.ts
+msgid "Allows users to create flashcards for studying and quizzes them on the content."
+msgstr "Allows users to create flashcards for studying and quizzes them on the content."
+
+#: src/lib/index.svelte.ts
+msgid "Recipe Finder"
+msgstr "Recipe Finder"
+
+#: src/lib/index.svelte.ts
+msgid "Lets users search for recipes based on ingredients they have at home."
+msgstr "Lets users search for recipes based on ingredients they have at home."
+
+#: src/lib/index.svelte.ts
+msgid "Fitness Tracker"
+msgstr "Fitness Tracker"
+
+#: src/lib/index.svelte.ts
+msgid "Tracks workouts, calories burned, and progress over time."
+msgstr "Tracks workouts, calories burned, and progress over time."
+
+#: src/lib/index.svelte.ts
+msgid "Meditation Timer"
+msgstr "Meditation Timer"
+
+#: src/lib/index.svelte.ts
+msgid "A timer specifically for meditation sessions with options for different intervals."
+msgstr "A timer specifically for meditation sessions with options for different intervals."
+
+#: src/lib/components/home/AppsSection.svelte
+msgid ""
+"From managing your budget to boosting productivity, each app here is designed with one\n"
+"goal: to help you get things done(). Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+msgstr ""
+"From managing your budget to boosting productivity, each app here is designed with one\n"
+"goal: to help you get things done(). Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
+msgstr "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done(). Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
