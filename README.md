@@ -1,8 +1,8 @@
-# Svelte MiniApps (Svelte 5 Edition)
+# Svelte Mini Apps (Svelte 5 Edition)
 
-**Boost your productivity with Svelte MiniApps - a collection of user-friendly tools rebuilt with Svelte 5 for enhanced speed and reliability!**
+**Boost your productivity with Svelte Mini Apps - a collection of user-friendly tools rebuilt with Svelte 5 for enhanced speed and reliability!**
 
-Svelte MiniApps is a collection of small, single-purpose applications designed for simplicity and efficiency. Originally a personal project to learn full-stack development, it has evolved into a repository of handy tools for various tasks. This version has been updated to Svelte 5 to fully leverage its speed and resolve build errors encountered during auto migration.
+Svelte Mini Apps is a collection of small, single-purpose applications designed for simplicity and efficiency. Originally a personal project to learn full-stack development, it has evolved into a repository of handy tools for various tasks. This version has been updated to Svelte 5 to fully leverage its speed and resolve build errors encountered during auto migration.
 
 ## Table of Contents
 
@@ -17,11 +17,11 @@ Svelte MiniApps is a collection of small, single-purpose applications designed f
 
 ## About 📝
 
-Svelte MiniApps offers tools to streamline specific tasks. Whether converting units, generating passwords, or managing to-do lists, there's a mini-app to simplify your day.
+Svelte Mini Apps offers tools to streamline specific tasks. Whether converting units, generating passwords, or managing to-do lists, there's a mini-app to simplify your day.
 
 ## Built for Efficiency 🛠️
 
-Svelte MiniApps is a single Progressive Web App (PWA) featuring a collection of tools built for various web users. It enhances productivity and organization with the following features:
+Svelte Mini Apps is a single Progressive Web App (PWA) featuring a collection of tools built for various web users. It enhances productivity and organization with the following features:
 
 - **Versatile Tools:** Designed for different needs and difficulty levels.
 - **Web-Based:** Built specifically for web users.
@@ -128,7 +128,7 @@ This will launch a local server and open the mini-apps in your browser.
 
 ### Installable
 
-Install Svelte MiniApps as standalone applications for quick access:
+Install Svelte Mini Apps as standalone applications for quick access:
 
 1.  Open the mini-app in your browser.
 2.  Click on the browser's menu (three dots).
@@ -136,7 +136,7 @@ Install Svelte MiniApps as standalone applications for quick access:
 
 ### Live Version
 
-Access the live version at: [Svelte MiniApps](https://svelte-apps.me/)
+Access the live version at: [Svelte Mini Apps](https://svelte-apps.me/)
 
 ## List of Apps 📋
 
@@ -144,7 +144,7 @@ Explore the full list of mini-apps designed to boost your productivity. Visit [s
 
 ### App Usage Tracking 📊
 
-Svelte MiniApps now includes an app usage tracking feature that:
+Svelte Mini Apps now includes an app usage tracking feature that:
 
 - Automatically tracks which apps you use most frequently
 - Records when you last used each app
@@ -165,9 +165,9 @@ Contributions are welcome! Fork the repository, make your changes, and submit a 
 
 ## Old Version 🔙
 
-For those interested in the previous version of Svelte MiniApps, it is available at the following repository:
+For those interested in the previous version of Svelte Mini Apps, it is available at the following repository:
 
-- **Svelte MiniApps v4**: [Svelte-MiniApps-sv4](https://github.com/Michael-Obele/Svelte-MiniApps-sv4)
+- **Svelte Mini Apps v4**: [Svelte-MiniApps-sv4](https://github.com/Michael-Obele/Svelte-MiniApps-sv4)
 
 This version is located in the `sv4.svelte-apps` branch and contains the earlier implementations of the mini-apps, built with Svelte 4. Users may explore this version for reference or migration purposes.
 
