@@ -15,7 +15,7 @@
 	const getPageTitle = (route: string) => {
 		switch (route) {
 			case 'timeline':
-				return 'Migration Timeline';
+				return 'Timeline';
 			case 'announcements':
 				return 'Announcements';
 			case 'planned-features':

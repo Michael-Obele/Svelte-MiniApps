@@ -113,7 +113,7 @@
 					<DropdownMenu.Item>
 						<a href="/changelog/timeline" class="flex items-center gap-2">
 							<ArrowRightIcon class="h-4 w-4" />
-							Migration Timeline
+							Timeline
 						</a>
 					</DropdownMenu.Item>
 					<DropdownMenu.Item>
@@ -160,7 +160,7 @@
 					>
 						<ArrowRightIcon class="text-primary h-6 w-6" />
 					</div>
-					<CardTitle class="text-lg">Migration Timeline</CardTitle>
+					<CardTitle class="text-lg">Timeline</CardTitle>
 					<CardDescription>Detailed timeline of our Svelte 5 migration journey</CardDescription>
 				</CardHeader>
 				<CardContent class="text-center">

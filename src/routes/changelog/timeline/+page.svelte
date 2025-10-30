@@ -59,7 +59,7 @@
 </script>
 
 <RouteHead
-	title="Migration Timeline | Svelte Mini Apps Changelog"
+	title="Timeline | Svelte Mini Apps Changelog"
 	description="Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
 	keywords="svelte, svelte5, migration, timeline, changelog, development, milestones"
 	route="/changelog/timeline"
@@ -72,7 +72,7 @@
 			<h1
 				class="from-foreground to-foreground/80 mb-4 bg-linear-to-r bg-clip-text py-6 text-center text-4xl font-bold text-transparent sm:text-5xl"
 			>
-				Migration Timeline
+				Timeline
 			</h1>
 		</BlurInText>
 
