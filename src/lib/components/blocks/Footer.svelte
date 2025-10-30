@@ -30,7 +30,84 @@
 	class="bg-background text-foreground w-full border-t border-slate-600 py-6 shadow-lg md:py-8"
 >
 	<div class=" mx-auto px-4 md:px-6">
-		<div class="grid gap-8 md:grid-cols-2">
+		<!-- Sitemap Section -->
+		<div class="grid gap-8 border-b border-slate-600/50 pb-8 md:grid-cols-3">
+			<!-- Explore -->
+			<div class="flex flex-col space-y-3">
+				<h3 class="text-sm font-semibold">Explore</h3>
+				<nav class="flex flex-col space-y-2">
+					<a
+						href="/apps"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						All Apps
+					</a>
+					<a href="/" class="text-muted-foreground hover:text-primary text-sm transition-colors">
+						Home
+					</a>
+					<a
+						href="https://github.com/Michael-Obele/Svelte-MiniApps"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						View Source
+					</a>
+				</nav>
+			</div>
+
+			<!-- Company -->
+			<div class="flex flex-col space-y-3">
+				<h3 class="text-sm font-semibold">Company</h3>
+				<nav class="flex flex-col space-y-2">
+					<a
+						href="/about"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						About Us
+					</a>
+					<a
+						href="/changelog"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						Changelog
+					</a>
+					<a
+						href="/hire"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						Work with Us
+					</a>
+				</nav>
+			</div>
+
+			<!-- Support -->
+			<div class="flex flex-col space-y-3">
+				<h3 class="text-sm font-semibold">Support</h3>
+				<nav class="flex flex-col space-y-2">
+					<a
+						href="mailto:support@svelte-apps.me"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						Get Support
+					</a>
+					<a
+						href="mailto:feedback@svelte-apps.me"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						Send Feedback
+					</a>
+					<a
+						href="mailto:info@svelte-apps.me"
+						class="text-muted-foreground hover:text-primary text-sm transition-colors"
+					>
+						Contact Us
+					</a>
+				</nav>
+			</div>
+		</div>
+
+		<div class="grid gap-8 pt-8 md:grid-cols-2">
 			<!-- Left Column -->
 			<div class="flex flex-col items-center justify-center space-y-4 md:items-start">
 				<div class="flex items-center space-x-2">
