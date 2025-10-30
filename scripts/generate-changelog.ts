@@ -117,7 +117,9 @@ function getExistingGeneratedData(): TimelineItem[] {
 
 // Get commits since last processed commit
 function getCommits(since?: string): CommitInfo[] {
-	const sinceFlag = since ? `${since}..HEAD` : '--max-count=50';
+	// When no since hash, get all commits instead of limiting to 50
+	// This prevents losing old commit history
+	const sinceFlag = since ? `${since}..HEAD` : '--all';
 
 	try {
 		const gitLog = execSync(`git log ${sinceFlag} --pretty=format:"%H|%ai|%s|%an" --name-only`, {
@@ -305,12 +307,13 @@ async function main() {
 	const lastProcessed = forceFullRebuild ? null : getLastProcessedCommit();
 
 	if (forceFullRebuild) {
-		console.log('🔄 Force full rebuild requested - processing last 50 commits');
+		console.log('🔄 Force full rebuild requested - reprocessing all commits');
+		console.log('ℹ️  Note: Existing entries will be preserved and merged with reprocessed data');
 	} else {
 		console.log(
 			lastProcessed
 				? `📅 Last processed commit: ${lastProcessed}`
-				: '📅 Processing all recent commits'
+				: '📅 No previous commit found - processing all commits'
 		);
 	}
 
@@ -325,27 +328,33 @@ async function main() {
 	const newTimelineItems = groupCommits(commits);
 	console.log(`📊 Generated ${newTimelineItems.length} changelog entries`);
 
-	// Get existing data and merge with new data (unless doing full rebuild)
-	const existingData = forceFullRebuild ? [] : getExistingGeneratedData();
-	console.log(
-		`📚 Found ${existingData.length} existing entries ${forceFullRebuild ? '(ignored for full rebuild)' : ''}`
-	);
+	// Always get existing data to preserve history
+	const existingData = getExistingGeneratedData();
+	console.log(`📚 Found ${existingData.length} existing entries`);
 
-	// Merge and sort all timeline items by date
-	const allTimelineItems = [...existingData, ...newTimelineItems].sort(
+	// Merge with NEW items first, so they appear at the top and take precedence in deduplication
+	// This ensures new commits are always added to the top without modifying old entries
+	const allTimelineItems = [...newTimelineItems, ...existingData].sort(
 		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 	);
 
 	// Remove duplicates based on date and title
+	// Since new items are first, deduplication keeps the new version if there's a conflict
 	const uniqueItems = allTimelineItems.filter((item, index, arr) => {
 		return !arr
 			.slice(0, index)
 			.some((existing) => existing.date === item.date && existing.title === item.title);
 	});
 
-	console.log(
-		`📋 Total entries after ${forceFullRebuild ? 'full rebuild' : 'merge'}: ${uniqueItems.length}`
-	);
+	console.log(`📋 Total entries after merge: ${uniqueItems.length}`);
+
+	// Safety check: ensure we're not losing entries
+	if (uniqueItems.length < existingData.length && !forceFullRebuild) {
+		console.warn(
+			`⚠️  WARNING: Entry count decreased from ${existingData.length} to ${uniqueItems.length}`
+		);
+		console.warn('⚠️  This may indicate data loss. Please verify the results.');
+	}
 
 	const latestCommit = commits[0]?.hash;
 	const fileContent = generateDataFile(uniqueItems, latestCommit);
