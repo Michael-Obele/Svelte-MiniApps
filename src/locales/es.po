@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-10-29T11:19:15.504Z\n"
+"PO-Revision-Date: 2025-10-29T17:40:51.942Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1893,6 +1893,7 @@ msgstr "Ingresa tu nombre de usuario"
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -7451,3 +7452,24 @@ msgstr "matemáticas"
 #: src/lib/index.svelte.ts
 msgid "game"
 msgstr "juego"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Save Password"
+msgstr "Guardar Contraseña"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Add an optional description to help you remember what this password is for."
+msgstr "Añade una descripción opcional para ayudarte a recordar para qué es esta contraseña."
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Description (Optional)"
+msgstr "Descripción (Opcional)"
+
+#. placeholder {0}: passwordDetails.length
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "{0}/200 characters"
+msgstr "{0}/200 caracteres"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "<0/> Save"
+msgstr "<0/> Guardar"

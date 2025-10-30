@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-10-29T12:10:53.219Z\n"
+"PO-Revision-Date: 2025-10-29T17:40:52.077Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -2578,6 +2578,7 @@ msgstr "Geben Sie Ihren Benutzernamen ein"
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -7405,3 +7406,24 @@ msgstr "Beim Abrufen der Wörterbuchdaten ist ein unerwarteter Fehler aufgetrete
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "Bitte versuchen Sie es später erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support.```"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Save Password"
+msgstr "Passwort speichern"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Add an optional description to help you remember what this password is for."
+msgstr "Fügen Sie eine optionale Beschreibung hinzu, die Ihnen hilft, sich zu merken, wofür dieses Passwort ist."
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Description (Optional)"
+msgstr "Beschreibung (Optional)"
+
+#. placeholder {0}: passwordDetails.length
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "{0}/200 characters"
+msgstr "{0}/200 Zeichen"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "<0/> Save"
+msgstr "<0/> Speichern```"
