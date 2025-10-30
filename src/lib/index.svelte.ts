@@ -9,11 +9,16 @@ export function site() {
 		name: 'Svelte Mini Apps',
 		url: 'https://svelte-apps.me',
 		image: 'https://i.ibb.co/ZhhhnCz/svelte-badge.png',
+		// @wc-ignore
 		author: 'Michael Obele',
 		description: 'A collection of mini applications built with Svelte',
+		// @wc-ignore
 		twitterUsername: 'Dev_Obele',
+		// @wc-ignore
 		githubUsername: 'Michael-Obele',
+		// @wc-ignore
 		repository: 'https://github.com/Michael-Obele/Svelte-MiniApps',
+		// @wc-ignore
 		themeColor: '#1e293b'
 	};
 }

@@ -24,33 +24,36 @@ export const getSavedPasswords = query(async () => {
 	return passwords;
 });
 
-// Form handler to save a password for a user
-// Command to save a password for a user
-export const savePassword = command('unchecked', async (data) => {
-	const user = await getCurrentUser();
+// Command to save a password for a user with Valibot validation
+export const savePassword = command(
+	v.object({
+		password: v.pipe(v.string(), v.nonEmpty('Password is required')),
+		details: v.optional(
+			v.nullable(v.pipe(v.string(), v.maxLength(200, 'Details must be 200 characters or less')))
+		)
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
 
-	if (!user) {
-		throw new Error('User not authenticated');
-	}
-
-	// Since we're using 'unchecked', data will be the raw argument passed
-	const { password, details } = data as { password: string; details: string | null };
-
-	if (!password) {
-		throw new Error('Password is required');
-	}
-
-	// Store password in plain text so users can retrieve and use it
-	await prisma.userPassword.create({
-		data: {
-			userId: user.id,
-			passwordHash: password, // Note: field name is passwordHash but we store plain text
-			details: details || null
+		if (!user) {
+			throw new Error('User not authenticated');
 		}
-	});
 
-	return { success: true };
-});
+		// Store password in plain text so users can retrieve and use it
+		const savedPassword = await prisma.userPassword.create({
+			data: {
+				userId: user.id,
+				passwordHash: data.password, // Note: field name is passwordHash but we store plain text
+				details: data.details ?? null
+			}
+		});
+
+		// Refresh the query to get the updated list
+		await getSavedPasswords().refresh();
+
+		return { success: true, passwordId: savedPassword.id };
+	}
+);
 
 // Command to delete a saved password
 export const deletePassword = command(v.string(), async (passwordId) => {

@@ -19,6 +19,8 @@
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
+	import * as Dialog from '@/ui/dialog';
+	import { onMount } from 'svelte';
 
 	// Define User type inline to match what getCurrentUser returns
 	type User = {
@@ -52,6 +54,8 @@
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('random-password-generator-has-seen-how-to-use', false);
+	let showSaveDialog = $state(false);
+	let passwordDetails = $state('');
 
 	const generatePassword = () => {
 		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -124,11 +128,13 @@
 
 		try {
 			saving = true;
-			await savePassword({ password, details: null });
+			await savePassword({ password, details: passwordDetails || null });
 			isSaved = true;
 			await getSavedPasswords().refresh();
 			savedPasswords = await getSavedPasswords();
 			toast.success('Password saved successfully!');
+			showSaveDialog = false;
+			passwordDetails = '';
 		} catch (error) {
 			console.error('Error saving password:', error);
 			toast.error('Failed to save password');
@@ -170,7 +176,7 @@
 
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
-	$effect(() => {
+	onMount(() => {
 		getCurrentUser().then((user) => {
 			currentUser = user;
 		});
@@ -207,7 +213,7 @@
 				<div class="flex items-center gap-2">
 					{#if !saving}
 						<Button
-							onclick={handleSave}
+							onclick={() => (showSaveDialog = true)}
 							variant="outline"
 							size="icon"
 							disabled={!currentUser || !password}
@@ -221,6 +227,7 @@
 							></div>
 						</div>
 					{/if}
+
 					<Input
 						type="text"
 						value={password}
@@ -318,7 +325,7 @@
 						{#if viewing && savedPasswords}
 							<div class="mt-4 space-y-2">
 								<h3 class="text-lg font-semibold">Saved Passwords</h3>
-								{#each savedPasswords as savedPassword}
+								{#each savedPasswords as savedPassword (savedPassword.id)}
 									<PasswordDisplay
 										password={savedPassword}
 										showDelete={true}
@@ -344,6 +351,44 @@
 		</div>
 	</div>
 </div>
+
+<Dialog.Root bind:open={showSaveDialog}>
+	<Dialog.Content class="sm:max-w-md">
+		<Dialog.Header>
+			<Dialog.Title>Save Password</Dialog.Title>
+			<Dialog.Description>
+				Add an optional description to help you remember what this password is for.
+			</Dialog.Description>
+		</Dialog.Header>
+
+		<div class="space-y-2">
+			<Label for="password-details">Description (Optional)</Label>
+			<Input
+				id="password-details"
+				bind:value={passwordDetails}
+				placeholder="e.g., My email account, Work laptop..."
+				maxlength={200}
+			/>
+			<p class="text-muted-foreground text-xs">{passwordDetails.length}/200 characters</p>
+		</div>
+
+		<Dialog.Footer class="flex gap-2">
+			<Dialog.Close>
+				<Button variant="outline" class="flex-1" onclick={() => (showSaveDialog = false)}
+					>Cancel</Button
+				>
+			</Dialog.Close>
+			<Button onclick={handleSave} disabled={saving} class="flex-1">
+				{#if saving}
+					<div
+						class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
+					></div>
+				{/if}
+				Save
+			</Button>
+		</Dialog.Footer>
+	</Dialog.Content>
+</Dialog.Root>
 
 <HowToUseDialog
 	bind:open={showHowToUse}

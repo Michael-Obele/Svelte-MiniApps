@@ -94,10 +94,15 @@
 				</Button>
 			{/if}
 		</div>
-		<p class="text-muted-foreground text-xs">
-			Saved on {new Date(password.createdAt).toLocaleDateString()} at {new Date(
-				password.createdAt
-			).toLocaleTimeString()}
-		</p>
+		<div class="space-y-1">
+			{#if password.details}
+				<p class="text-sm font-medium">{password.details}</p>
+			{/if}
+			<p class="text-muted-foreground text-xs">
+				Saved on {new Date(password.createdAt).toLocaleDateString()} at {new Date(
+					password.createdAt
+				).toLocaleTimeString()}
+			</p>
+		</div>
 	</div>
 </div>
