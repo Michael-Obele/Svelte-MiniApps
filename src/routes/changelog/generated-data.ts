@@ -1,6 +1,6 @@
 // Auto-generated changelog data
-// Last processed commit: cd3e91c960df83addef44abb3027fee18553e430
-// Generated at: 2025-10-30T14:01:01.624Z
+// Last processed commit: 92d36bd1e598dc499857fb14e17003cb7438fc5a
+// Generated at: 2025-10-30T14:06:11.172Z
 
 export interface GeneratedTimelineItem {
   date: string;
@@ -13,6 +13,17 @@ export interface GeneratedTimelineItem {
 }
 
 export const generatedTimeline: GeneratedTimelineItem[] = [
+  {
+    "date": "October 30, 2025",
+    "title": "feat: fix changelog generation script to preserve commit history and improve merge logic",
+    "description": "Updated ai-generated/changelog-append-fix.md, scripts/generate-changelog.ts, src/routes/changelog/generated-data.ts",
+    "items": [
+      "feat: fix changelog generation script to preserve commit history and improve merge logic (92d36bd)"
+    ],
+    "type": "feature",
+    "icon": "Rocket",
+    "color": "from-green-500 to-emerald-500"
+  },
   {
     "date": "October 30, 2025",
     "title": "Updates",
@@ -83,4 +94,4 @@ export const generatedTimeline: GeneratedTimelineItem[] = [
   }
 ];
 
-export const lastUpdated = '2025-10-30T14:01:01.624Z';
+export const lastUpdated = '2025-10-30T14:06:11.172Z';
