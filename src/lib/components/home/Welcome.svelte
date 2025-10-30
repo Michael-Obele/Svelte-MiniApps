@@ -20,8 +20,6 @@ Props:
 	import { Skeleton } from '@/ui/skeleton';
 	import { Button } from '@/ui/button';
 	import { getMantra, likeMantra } from '$lib/remote/mantra.remote';
-	import { tick } from 'svelte';
-	import { generateMantra } from '$lib/utility/greetings';
 
 	let { data } = $props();
 
@@ -29,7 +27,7 @@ Props:
 	let greeting = $derived(getGreetingAndNextPeriod());
 
 	// Access the current value from the query
-	let mantra = $derived(await getMantra());
+	let mantra = $derived(getMantra().current);
 
 	function handleGenerate() {
 		// Call refresh on the cached query instance

@@ -40,7 +40,7 @@ Props:
 	let { data } = $props();
 </script>
 
-<section id="hero" class="w-full py-8 md:py-14 lg:py-24">
+<section id="hero" class="w-full py-8 md:py-14 lg:py-20">
 	<div class="px-4 md:px-6 xl:container">
 		<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 			<div class="flex flex-col justify-center space-y-4">
@@ -91,7 +91,7 @@ Props:
 			<BlurInText
 				as="div"
 				word={Svelte}
-				class="justify-cente mx-auto hidden h-[60%] w-[60%] flex-row items-center md:flex md:w-full lg:h-full"
+				class="mx-auto hidden h-[60%] w-[60%] flex-row items-center justify-center md:flex md:w-full lg:h-full"
 			/>
 		</div>
 	</div>
