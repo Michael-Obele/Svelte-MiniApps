@@ -28,6 +28,7 @@ This is a collection of productivity mini-apps including:
 - **Watch Tests**: `npm run test:watch`
 - **Lint**: `npm run lint`
 - **Format**: `npm run format`
+- **Typecheck**: `bun check` (preferred over `npx tsc` and lint for code validation)
 
 ### Build & Deploy
 
@@ -176,11 +177,13 @@ mount(() => {
 ## Svelte Development Tools
 
 ### Svelte MCP for Documentation
+
 - When you need to look up Svelte or SvelteKit documentation, use the Svelte MCP tools.
 - Use `list_sections` to see all available documentation sections.
 - Use `get_documentation` with the section name to get the full documentation.
 
 ### Svelte Autofixer
+
 - After making any changes to Svelte files, you must run the `svelte_autofixer` tool.
 - This tool will check for errors and provide suggestions for fixing them.
 - Apply the suggestions to ensure the code is correct and follows best practices.
@@ -244,6 +247,7 @@ mount(() => {
 - Server code: `src/lib/server/`
 - Types: `src/types/`
 - **AI-generated documentation**: Always place AI-generated markdown files (technical docs, implementation guides, fix explanations) in the `ai-generated/` folder at project root, NOT in feature folders
+- **AI-generated code**: AI-generated JavaScript/TypeScript code may be placed in `src/lib/assets/ai-digest/` but may cause linting errors - these files are for reference only
 
 ## Development Workflow
 
@@ -268,10 +272,8 @@ mount(() => {
 
 ## Memory & Tools Integration
 
-
-
 - **NEVER run `bun dev`** - the dev server is always running or the user will start it themselves
-- **ALWAYS run `bun check`** after making changes to verify TypeScript errors are fixed
+- **ALWAYS run `bun check`** after making changes to verify TypeScript errors are fixed (preferred over lint)
 - Prefer `bun check` over `npx tsc` for TypeScript checking
 
 ## Common Issues & Solutions
@@ -293,4 +295,3 @@ mount(() => {
 - Lazy load heavy components with `await import()`
 - Use Svelte's built-in optimization features
 - Minimize bundle size with proper tree-shaking
-
