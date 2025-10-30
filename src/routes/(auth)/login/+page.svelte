@@ -1,8 +1,6 @@
 <script lang="ts">
 	import Loading from '@/blocks/Loading.svelte';
-
-	import { enhance } from '$app/forms';
-	import type { ActionData, PageData } from './$types';
+	import type { PageData } from './$types';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
@@ -10,8 +8,10 @@
 	import { AlertCircle, Eye, EyeOff, Github } from '@lucide/svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import google from '$lib/assets/google-logo.svg';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/state';
+	import { loginUser } from '$lib/remote';
+
 	$effect(() => {
 		invalidateAll();
 		if (document.referrer.includes('/logout')) {
@@ -31,22 +31,14 @@
 		}
 	});
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data }: { data: PageData } = $props();
 
-	let isLoading = $state(false);
+	const login = loginUser;
 	let showPassword = $state(false);
 
 	let githubUrl = $derived(
 		`/login/github?redirect=${encodeURIComponent(page.url.searchParams.get('redirect') || '/')}`
 	);
-
-	function handleSubmit() {
-		isLoading = true;
-		return async ({ update }: { update: () => Promise<void> }) => {
-			await update();
-			isLoading = false;
-		};
-	}
 
 	function togglePassword() {
 		showPassword = !showPassword;
@@ -75,29 +67,30 @@
 				Sign in to your account
 			</h2>
 			<div class="mb-4 flex flex-col gap-3">
-				{#if form?.message || data.error}
+				{#if data.error}
 					<Alert variant="destructive">
 						<AlertCircle class="h-4 w-4" />
 						<AlertDescription>
-							{form?.message || data.error}
+							{data.error}
 						</AlertDescription>
 					</Alert>
 				{/if}
 			</div>
-			<form method="POST" action="?/login" use:enhance={handleSubmit} class="space-y-4">
+			<form {...login} class="space-y-4">
 				<div class="grid gap-2">
 					<Label for="username">Username</Label>
 					<Input
+						{...login.fields.username.as('text')}
 						id="username"
-						name="username"
-						type="text"
-						value={form?.username ?? ''}
 						autocapitalize="none"
 						autocomplete="username"
 						autocorrect="off"
 						required
 						placeholder="e.g., john_doe123"
 					/>
+					{#each login.fields.username.issues() ?? [] as issue}
+						<p class="text-xs text-red-500">{issue.message}</p>
+					{/each}
 					<p class="text-muted-foreground text-xs">
 						3-31 characters: lowercase letters, numbers, underscores, and hyphens
 					</p>
@@ -107,8 +100,8 @@
 					<Label for="password">Password</Label>
 					<div class="relative">
 						<Input
+							{...login.fields.password.as('password')}
 							id="password"
-							name="password"
 							type={showPassword ? 'text' : 'password'}
 							autocomplete="current-password"
 							required
@@ -128,6 +121,9 @@
 							{/if}
 						</Button>
 					</div>
+					{#each login.fields.password.issues() ?? [] as issue}
+						<p class="text-xs text-red-500">{issue.message}</p>
+					{/each}
 					<p class="text-muted-foreground text-xs">Minimum 6 characters</p>
 				</div>
 
@@ -143,12 +139,12 @@
 
 					<div class="grid grid-cols-2 gap-3">
 						<a href={githubUrl}>
-							<Button variant="outline" class="group w-full" disabled={isLoading}>
+							<Button variant="outline" class="group w-full" disabled={!!login.pending}>
 								<Github class="mr-2 size-4" />
 								Github
 							</Button>
 						</a>
-						<Button variant="outline" class="group w-full" disabled={isLoading}>
+						<Button variant="outline" class="group w-full" disabled={!!login.pending}>
 							<img
 								src={google}
 								alt="Google"
@@ -159,8 +155,8 @@
 					</div>
 				</div>
 
-				<Button type="submit" class="w-full" disabled={isLoading}>
-					{#if isLoading}
+				<Button type="submit" class="w-full" disabled={!!login.pending}>
+					{#if login.pending}
 						<Loading class="fill-red-600/70 text-white dark:text-white" />
 					{/if}
 					Sign in with Username

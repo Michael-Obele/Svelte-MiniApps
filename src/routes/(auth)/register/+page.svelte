@@ -1,40 +1,31 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import type { ActionData, PageData } from './$types';
+	import type { PageData } from './$types';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
 	import { Alert, AlertDescription } from '@/ui/alert';
 	import { AlertCircle, Eye, EyeOff } from '@lucide/svelte';
 	import Loading from '@/blocks/Loading.svelte';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 	import { Switch } from '@/ui/switch/index.js';
+	import { registerUser } from '$lib/remote';
 
 	$effect(() => {
 		invalidateAll();
 	});
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data }: { data: PageData } = $props();
 
-	let isLoading = $state(false);
-	let password = $state('');
-	let confirmPassword = $state('');
-	let passwordMatch = $state(true);
+	const register = registerUser;
 	let showPassword = $state(false);
 	let showConfirmPassword = $state(false);
 	let isAdmin = $state(false); // Default to not admin
 
-	function handleSubmit() {
-		isLoading = true;
-		return async ({ update }: { update: () => Promise<void> }) => {
-			await update();
-			isLoading = false;
-		};
-	}
-
-	function checkPasswordMatch() {
-		passwordMatch = !password || !confirmPassword || password === confirmPassword;
-	}
+	let passwordMatch = $derived(
+		!register.fields.password.value() ||
+			!register.fields.confirmPassword.value() ||
+			register.fields.password.value() === register.fields.confirmPassword.value()
+	);
 
 	function togglePassword() {
 		showPassword = !showPassword;
@@ -44,8 +35,9 @@
 		showConfirmPassword = !showConfirmPassword;
 	}
 
+	// Update role field when switch changes
 	$effect(() => {
-		checkPasswordMatch();
+		register.fields.role.set(isAdmin ? 'tester' : 'user');
 	});
 </script>
 
@@ -64,27 +56,21 @@
 		</div>
 
 		<div class="grid gap-6">
-			<form method="POST" action="?/register" use:enhance={handleSubmit} class="space-y-4">
-				{#if form?.message}
-					<Alert variant="destructive">
-						<AlertCircle class="h-4 w-4" />
-						<AlertDescription>{form.message}</AlertDescription>
-					</Alert>
-				{/if}
-
+			<form {...register} class="space-y-4">
 				<div class="grid gap-2">
 					<Label for="username">Username</Label>
 					<Input
+						{...register.fields.username.as('text')}
 						id="username"
-						name="username"
-						type="text"
-						value={form?.username ?? ''}
 						autocapitalize="none"
 						autocomplete="username"
 						autocorrect="off"
 						required
 						placeholder="e.g., john_doe123"
 					/>
+					{#each register.fields.username.issues() ?? [] as issue}
+						<p class="text-xs text-red-500">{issue.message}</p>
+					{/each}
 					<div class="text-muted-foreground space-y-1 text-xs">
 						<p>Username requirements:</p>
 						<ul class="list-disc pl-4">
@@ -101,10 +87,9 @@
 					<Label for="password">Password</Label>
 					<div class="relative">
 						<Input
+							{...register.fields.password.as('password')}
 							id="password"
-							name="password"
 							type={showPassword ? 'text' : 'password'}
-							bind:value={password}
 							autocomplete="new-password"
 							required
 							placeholder="••••••••"
@@ -123,6 +108,9 @@
 							{/if}
 						</Button>
 					</div>
+					{#each register.fields.password.issues() ?? [] as issue}
+						<p class="text-xs text-red-500">{issue.message}</p>
+					{/each}
 					<div class="text-muted-foreground space-y-1 text-xs">
 						<p>Password requirements:</p>
 						<ul class="list-disc pl-4">
@@ -138,10 +126,9 @@
 					<Label for="confirmPassword">Confirm Password</Label>
 					<div class="relative">
 						<Input
+							{...register.fields.confirmPassword.as('password')}
 							id="confirmPassword"
-							name="confirmPassword"
 							type={showConfirmPassword ? 'text' : 'password'}
-							bind:value={confirmPassword}
 							autocomplete="new-password"
 							required
 							placeholder="••••••••"
@@ -161,19 +148,21 @@
 							{/if}
 						</Button>
 					</div>
-					{#if !passwordMatch}
+					{#each register.fields.confirmPassword.issues() ?? [] as issue}
+						<p class="text-xs text-red-500">{issue.message}</p>
+					{/each}
+					{#if !passwordMatch && !register.fields.confirmPassword.issues()?.length}
 						<p class="text-xs text-red-500">Passwords do not match</p>
 					{/if}
 				</div>
 
 				<div class="flex items-center space-x-2">
-					<input type="hidden" name="role" value={isAdmin ? 'tester' : 'user'} />
 					<Switch id="tester-mode" bind:checked={isAdmin} />
 					<Label for="tester-mode">Tester</Label>
 				</div>
 
-				<Button type="submit" class="w-full" disabled={isLoading || !passwordMatch}>
-					{#if isLoading}
+				<Button type="submit" class="w-full" disabled={!!register.pending || !passwordMatch}>
+					{#if register.pending}
 						<Loading class="fill-red-600/70 text-white dark:text-white" />
 					{/if}
 					Create Account

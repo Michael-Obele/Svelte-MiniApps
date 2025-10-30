@@ -1,5 +1,5 @@
 // Remote functions for authentication
-export { getCurrentUser } from './auth.remote';
+export { getCurrentUser, loginUser, registerUser } from './auth.remote';
 
 // Remote functions for mantra management
 export { getMantra, likeMantra } from './mantra.remote';
