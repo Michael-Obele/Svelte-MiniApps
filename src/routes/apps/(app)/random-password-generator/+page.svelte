@@ -6,7 +6,7 @@
 	import { Label } from '@/ui/label';
 	import { Progress } from '@/ui/progress';
 	import { toast } from 'svelte-sonner';
-	import { Copy, Star, StarOff, Check } from '@lucide/svelte';
+	import { Copy, Star, StarOff, Check, ExternalLink } from '@lucide/svelte';
 	import { site } from '$lib/index.svelte';
 	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
@@ -21,6 +21,7 @@
 	import { PersistedState } from 'runed';
 	import * as Popover from '@/ui/popover';
 	import { onMount } from 'svelte';
+	import { ScrollArea } from '@/ui/scroll-area';
 
 	// Define User type inline to match what getCurrentUser returns
 	type User = {
@@ -45,7 +46,6 @@
 	let includeLowercase = $state(true);
 	let includeNumbers = $state(true);
 	let includeSymbols = $state(true);
-	let passwordStrength = $state(0);
 	let isSaved = $state(false);
 	let viewing = $state(false);
 	let saving = $state(false);
@@ -78,24 +78,24 @@
 		for (let i = 0; i < passwordLength; i++) {
 			result += chars.charAt(Math.floor(Math.random() * chars.length));
 		}
-
 		password = result;
-		calculateStrength();
 
 		if (result) {
 			isSaved = false;
 		}
 	};
 
-	const calculateStrength = () => {
+	// Automatically calculate password strength when password or options change
+	let passwordStrength = $derived.by(() => {
+		if (!password) return 0;
 		let strength = 0;
 		if (password.length >= 12) strength += 25;
 		if (includeUppercase && /[A-Z]/.test(password)) strength += 25;
 		if (includeLowercase && /[a-z]/.test(password)) strength += 25;
 		if (includeNumbers && /\d/.test(password)) strength += 12.5;
 		if (includeSymbols && /[^A-Za-z0-9]/.test(password)) strength += 12.5;
-		passwordStrength = strength;
-	};
+		return strength;
+	});
 
 	const getStrengthColor = (strength: number): string => {
 		if (strength <= 25) return 'bg-red-500';
@@ -103,19 +103,6 @@
 		if (strength <= 75) return 'bg-yellow-500';
 		return 'bg-green-500';
 	};
-
-	// Use $derived to automatically calculate strength when password changes
-	$effect(() => {
-		if (password) {
-			let strength = 0;
-			if (password.length >= 12) strength += 25;
-			if (includeUppercase && /[A-Z]/.test(password)) strength += 25;
-			if (includeLowercase && /[a-z]/.test(password)) strength += 25;
-			if (includeNumbers && /\d/.test(password)) strength += 12.5;
-			if (includeSymbols && /[^A-Za-z0-9]/.test(password)) strength += 12.5;
-			passwordStrength = strength;
-		}
-	});
 
 	async function handleCopy() {
 		await copyToClipboard(
@@ -138,7 +125,6 @@
 		try {
 			saving = true;
 			await savePassword({ password, details: passwordDetails || null });
-			isSaved = true;
 			await getSavedPasswords().refresh();
 			savedPasswords = await getSavedPasswords();
 			toast.success('Password saved successfully!');
@@ -149,6 +135,7 @@
 			toast.error('Failed to save password');
 		} finally {
 			saving = false;
+			isSaved = true;
 		}
 	}
 
@@ -220,13 +207,13 @@
 		<div class="bg-card space-y-4 rounded-lg border p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					<Popover.Root>
+					<Popover.Root bind:open={showSavePopover}>
 						{#if !saving}
 							<Popover.Trigger
 								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-10 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
 								disabled={!currentUser || !password}
 							>
-								<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
+								<Star class="h-4 w-4 {isSaved ? 'fill-current' : ''}" />
 							</Popover.Trigger>
 						{:else}
 							<div class="flex size-10 items-center justify-center rounded-md border">
@@ -256,9 +243,13 @@
 									</p>
 								</div>
 								<div class="flex gap-2">
-									<Popover.Close class={buttonVariants({ variant: 'outline' })}
-										>Cancel</Popover.Close
+									<Button
+										variant="outline"
+										class="flex-1"
+										onclick={() => (showSavePopover = false)}
 									>
+										Cancel
+									</Button>
 									<Button onclick={handleSave} disabled={saving} class="flex-1">
 										{#if saving}
 											<div
@@ -348,9 +339,19 @@
 						{#await getSavedPasswords()}
 							<!-- Pending state handled by boundary -->
 						{:then savedPasswords}
-							<Button onclick={handleView} variant="secondary" class="w-full" disabled={viewing}>
-								View Saved Passwords ({savedPasswords?.length || 0})
-							</Button>
+							<div class="flex gap-2">
+								<Button onclick={handleView} variant="secondary" class="flex-1" disabled={viewing}>
+									View Saved Passwords ({savedPasswords?.length || 0})
+								</Button>
+								<Button
+									href="/apps/random-password-generator/passwords"
+									variant="outline"
+									size="icon"
+									title="View all passwords"
+								>
+									<ExternalLink class="h-4 w-4" />
+								</Button>
+							</div>
 						{:catch error}
 							<Button variant="destructive" class="w-full" disabled>
 								Error loading saved passwords
@@ -369,17 +370,21 @@
 						{#if viewing && savedPasswords}
 							<div class="mt-4 space-y-2">
 								<h3 class="text-lg font-semibold">Saved Passwords</h3>
-								{#each savedPasswords as savedPassword (savedPassword.id)}
-									<PasswordDisplay
-										password={savedPassword}
-										showDelete={true}
-										onDelete={handleDelete}
-										{deletingId}
-									/>
-								{/each}
-								{#if savedPasswords.length === 0}
-									<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
-								{/if}
+								<ScrollArea class="h-[480px] w-full rounded-md border p-4">
+									<div class="space-y-2">
+										{#each savedPasswords as savedPassword (savedPassword.id)}
+											<PasswordDisplay
+												password={savedPassword}
+												showDelete={true}
+												onDelete={handleDelete}
+												{deletingId}
+											/>
+										{/each}
+										{#if savedPasswords.length === 0}
+											<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
+										{/if}
+									</div>
+								</ScrollArea>
 							</div>
 						{/if}
 					{/if}

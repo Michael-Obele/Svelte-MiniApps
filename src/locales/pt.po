@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-10-30T12:09:00.464Z\n"
+"PO-Revision-Date: 2025-10-30T12:49:19.121Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -2298,6 +2298,7 @@ msgstr "Mantras"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "Senhas salvas"
 
@@ -7519,3 +7520,72 @@ msgstr "Ver Código Fonte"
 
 #~ msgid "Password must be at most 255 characters"
 #~ msgstr "A senha deve ter no máximo 255 caracteres"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View all passwords"
+msgstr "Ver todas as senhas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "View and manage your saved passwords securely."
+msgstr "Visualize e gerencie suas senhas salvas com segurança."
+
+#~ msgid "View and manage your saved passwords"
+#~ msgstr "Visualize e gerencie suas senhas salvas"
+
+#~ msgid "Please log in to view your saved passwords"
+#~ msgstr "Por favor, faça login para visualizar suas senhas salvas"
+
+#~ msgid "Log In"
+#~ msgstr "Entrar"
+
+#~ msgid "Generate Your First Password"
+#~ msgstr "Gere sua primeira senha"
+
+#~ msgid "Passwords"
+#~ msgstr "Senhas"
+
+#~ msgid "{0} Saved {1}"
+#~ msgstr "{0} Senhas Salvas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Securely manage and access your generated passwords"
+msgstr "Gerencie e acesse com segurança suas senhas geradas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Generate New Password"
+msgstr "Gerar Nova Senha"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "No Saved Passwords"
+msgstr "Nenhuma Senha Salva"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"Start generating secure passwords to keep track of them here. Your passwords are\n"
+"encrypted and stored safely."
+msgstr "Comece a gerar senhas seguras para controlá-las aqui. Suas senhas são criptografadas e armazenadas com segurança."
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Create Your First Password"
+msgstr "Crie Sua Primeira Senha"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Your Password Vault"
+msgstr "Seu Cofre de Senhas"
+
+#. placeholder {0}: savedPasswords.length
+#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "{0} {1} stored securely"
+msgstr "{0} {1} armazenada(s) com segurança"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Secure Storage"
+msgstr "Armazenamento Seguro"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+"passwords at any time. For maximum security, consider using a dedicated password\n"
+"manager for sensitive accounts."
+msgstr "Todas as senhas são criptografadas e armazenadas com segurança. Você pode visualizar, copiar e excluir suas senhas a qualquer momento. Para máxima segurança, considere usar um gerenciador de senhas dedicado para contas confidenciais.```"

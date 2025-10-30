@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-30T12:09:00.417Z\n"
+"PO-Revision-Date: 2025-10-30T12:49:07.618Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -1762,6 +1762,7 @@ msgstr "隐藏已保存的密码"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "已保存的密码"
 
@@ -7416,3 +7417,72 @@ msgstr "查看源代码"
 
 #~ msgid "Password must be at most 255 characters"
 #~ msgstr "密码最多包含 255 个字符"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View all passwords"
+msgstr "查看所有密码"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "View and manage your saved passwords securely."
+msgstr "安全地查看和管理您保存的密码。"
+
+#~ msgid "View and manage your saved passwords"
+#~ msgstr "查看和管理您保存的密码"
+
+#~ msgid "Please log in to view your saved passwords"
+#~ msgstr "请登录以查看您保存的密码"
+
+#~ msgid "Log In"
+#~ msgstr "登录"
+
+#~ msgid "Generate Your First Password"
+#~ msgstr "生成您的第一个密码"
+
+#~ msgid "Passwords"
+#~ msgstr "密码"
+
+#~ msgid "{0} Saved {1}"
+#~ msgstr "已保存 {0} 个{1}"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Securely manage and access your generated passwords"
+msgstr "安全地管理和访问您生成的密码"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Generate New Password"
+msgstr "生成新密码"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "No Saved Passwords"
+msgstr "没有保存的密码"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"Start generating secure passwords to keep track of them here. Your passwords are\n"
+"encrypted and stored safely."
+msgstr "开始生成安全密码，以便在此处进行跟踪。您的密码已加密并安全存储。"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Create Your First Password"
+msgstr "创建您的第一个密码"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Your Password Vault"
+msgstr "您的密码库"
+
+#. placeholder {0}: savedPasswords.length
+#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "{0} {1} stored securely"
+msgstr "已安全存储 {0} 个{1}"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Secure Storage"
+msgstr "安全存储"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+"passwords at any time. For maximum security, consider using a dedicated password\n"
+"manager for sensitive accounts."
+msgstr "所有密码均已加密并安全存储。您可以随时查看、复制和删除您的密码。为了获得最高的安全性，请考虑为敏感帐户使用专用的密码管理器。```"

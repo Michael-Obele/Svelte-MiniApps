@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-30T12:09:00.444Z\n"
+"PO-Revision-Date: 2025-10-30T12:49:13.285Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -2276,6 +2276,7 @@ msgstr "座右の銘"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "保存済みパスワード"
 
@@ -7481,3 +7482,72 @@ msgstr "ソースを表示"
 
 #~ msgid "Password must be at most 255 characters"
 #~ msgstr "パスワードは255文字以下である必要があります"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View all passwords"
+msgstr "すべてのパスワードを表示"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "View and manage your saved passwords securely."
+msgstr "保存されたパスワードを安全に表示および管理します。"
+
+#~ msgid "View and manage your saved passwords"
+#~ msgstr "保存されたパスワードを表示および管理"
+
+#~ msgid "Please log in to view your saved passwords"
+#~ msgstr "保存されたパスワードを表示するには、ログインしてください"
+
+#~ msgid "Log In"
+#~ msgstr "ログイン"
+
+#~ msgid "Generate Your First Password"
+#~ msgstr "最初のパスワードを生成する"
+
+#~ msgid "Passwords"
+#~ msgstr "パスワード"
+
+#~ msgid "{0} Saved {1}"
+#~ msgstr "{0}個のパスワードを保存しました"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Securely manage and access your generated passwords"
+msgstr "生成したパスワードを安全に管理およびアクセスします"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Generate New Password"
+msgstr "新しいパスワードを生成"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "No Saved Passwords"
+msgstr "保存されたパスワードはありません"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"Start generating secure passwords to keep track of them here. Your passwords are\n"
+"encrypted and stored safely."
+msgstr "ここに安全なパスワードの生成を開始して、追跡してください。あなたのパスワードは暗号化されて安全に保存されます。"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Create Your First Password"
+msgstr "最初のパスワードを作成"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Your Password Vault"
+msgstr "あなたのパスワード保管庫"
+
+#. placeholder {0}: savedPasswords.length
+#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "{0} {1} stored securely"
+msgstr "{0}個の{1}が安全に保管されています"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Secure Storage"
+msgstr "安全なストレージ"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+"passwords at any time. For maximum security, consider using a dedicated password\n"
+"manager for sensitive accounts."
+msgstr "すべてのパスワードは暗号化され、安全に保存されます。パスワードはいつでも表示、コピー、削除できます。最大限のセキュリティのために、機密性の高いアカウントには専用のパスワードマネージャーを使用することを検討してください。```"

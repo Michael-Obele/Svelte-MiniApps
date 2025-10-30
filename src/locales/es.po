@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-10-30T12:09:00.122Z\n"
+"PO-Revision-Date: 2025-10-30T12:48:50.255Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -2301,6 +2301,7 @@ msgstr "Mantras"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "Contraseñas guardadas"
 
@@ -7522,3 +7523,77 @@ msgstr "Ver Código Fuente"
 
 #~ msgid "Password must be at most 255 characters"
 #~ msgstr "La contraseña debe tener como máximo 255 caracteres```"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View all passwords"
+msgstr "Ver todas las contraseñas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "View and manage your saved passwords securely."
+msgstr "Visualiza y gestiona tus contraseñas guardadas de forma segura."
+
+#~ msgid "View and manage your saved passwords"
+#~ msgstr "Visualiza y gestiona tus contraseñas guardadas"
+
+#~ msgid "Please log in to view your saved passwords"
+#~ msgstr "Por favor, inicia sesión para ver tus contraseñas guardadas"
+
+#~ msgid "Log In"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "Generate Your First Password"
+#~ msgstr "Genera tu primera contraseña"
+
+#~ msgid "Passwords"
+#~ msgstr "Contraseñas"
+
+#~ msgid "{0} Saved {1}"
+#~ msgstr "{0} Contraseña{1} Guardada{1}"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Securely manage and access your generated passwords"
+msgstr "Gestiona y accede de forma segura a tus contraseñas generadas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Generate New Password"
+msgstr "Generar Nueva Contraseña"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "No Saved Passwords"
+msgstr "No Hay Contraseñas Guardadas"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"Start generating secure passwords to keep track of them here. Your passwords are\n"
+"encrypted and stored safely."
+msgstr ""
+"Comienza a generar contraseñas seguras para hacer un seguimiento de ellas aquí. Tus contraseñas están\n"
+"encriptadas y almacenadas de forma segura."
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Create Your First Password"
+msgstr "Crea Tu Primera Contraseña"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Your Password Vault"
+msgstr "Tu Bóveda de Contraseñas"
+
+#. placeholder {0}: savedPasswords.length
+#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "{0} {1} stored securely"
+msgstr "{0} {1} almacenada(s) de forma segura"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Secure Storage"
+msgstr "Almacenamiento Seguro"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid ""
+"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+"passwords at any time. For maximum security, consider using a dedicated password\n"
+"manager for sensitive accounts."
+msgstr ""
+"Todas las contraseñas están encriptadas y almacenadas de forma segura. Puedes ver, copiar y eliminar tus\n"
+"contraseñas en cualquier momento. Para máxima seguridad, considera usar un administrador de contraseñas dedicado\n"
+"para cuentas confidenciales.```"
