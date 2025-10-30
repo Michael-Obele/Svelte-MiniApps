@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-10-30T06:59:42.542Z\n"
+"PO-Revision-Date: 2025-10-30T09:29:40.884Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -7315,18 +7315,14 @@ msgstr "Fehler:"
 msgid "GitHub Contribution Graph"
 msgstr "GitHub-Beitragsdiagramm"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid username"
-msgstr "Ungültiger Benutzername"
+#~ msgid "Invalid username"
+#~ msgstr "Ungültiger Benutzername"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid password"
-msgstr "Ungültiges Passwort"
+#~ msgid "Invalid password"
+#~ msgstr "Ungültiges Passwort"
 
-#: src/routes/(auth)/login/+page.server.ts
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Incorrect username or password"
-msgstr "Falscher Benutzername oder falsches Passwort"
+#~ msgid "Incorrect username or password"
+#~ msgstr "Falscher Benutzername oder falsches Passwort"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -7465,3 +7461,18 @@ msgstr "Kontaktieren Sie uns"
 #: src/lib/components/blocks/Footer.svelte
 msgid "View Source"
 msgstr "Quellcode anzeigen"
+
+#~ msgid "Username must be at least 3 characters"
+#~ msgstr "Der Benutzername muss mindestens 3 Zeichen lang sein"
+
+#~ msgid "Username must be at most 31 characters"
+#~ msgstr "Der Benutzername darf höchstens 31 Zeichen lang sein"
+
+#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "Der Benutzername darf nur Kleinbuchstaben, Zahlen, Unterstriche und Bindestriche enthalten"
+
+#~ msgid "Password must be at least 6 characters"
+#~ msgstr "Das Passwort muss mindestens 6 Zeichen lang sein"
+
+#~ msgid "Password must be at most 255 characters"
+#~ msgstr "Das Passwort darf höchstens 255 Zeichen lang sein"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-30T06:59:43.451Z\n"
+"PO-Revision-Date: 2025-10-30T09:29:40.907Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -12,18 +12,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid username"
-msgstr "用户名无效"
+#~ msgid "Invalid username"
+#~ msgstr "用户名无效"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid password"
-msgstr "密码无效"
+#~ msgid "Invalid password"
+#~ msgstr "密码无效"
 
-#: src/routes/(auth)/login/+page.server.ts
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Incorrect username or password"
-msgstr "用户名或密码错误"
+#~ msgid "Incorrect username or password"
+#~ msgstr "用户名或密码错误"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -7405,3 +7401,18 @@ msgstr "联系我们"
 #: src/lib/components/blocks/Footer.svelte
 msgid "View Source"
 msgstr "查看源代码"
+
+#~ msgid "Username must be at least 3 characters"
+#~ msgstr "用户名必须至少包含 3 个字符"
+
+#~ msgid "Username must be at most 31 characters"
+#~ msgstr "用户名最多包含 31 个字符"
+
+#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "用户名只能包含小写字母、数字、下划线和连字符"
+
+#~ msgid "Password must be at least 6 characters"
+#~ msgstr "密码必须至少包含 6 个字符"
+
+#~ msgid "Password must be at most 255 characters"
+#~ msgstr "密码最多包含 255 个字符"

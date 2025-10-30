@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-10-30T06:59:40.781Z\n"
+"PO-Revision-Date: 2025-10-30T09:29:40.840Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -6750,18 +6750,14 @@ msgstr "Volver al inicio"
 msgid "Reload Page"
 msgstr "Recargar página"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid username"
-msgstr "Nombre de usuario inválido"
+#~ msgid "Invalid username"
+#~ msgstr "Nombre de usuario inválido"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid password"
-msgstr "Contraseña inválida"
+#~ msgid "Invalid password"
+#~ msgstr "Contraseña inválida"
 
-#: src/routes/(auth)/login/+page.server.ts
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Incorrect username or password"
-msgstr "Nombre de usuario o contraseña incorrectos"
+#~ msgid "Incorrect username or password"
+#~ msgstr "Nombre de usuario o contraseña incorrectos"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -7511,3 +7507,18 @@ msgstr "Contáctanos"
 #: src/lib/components/blocks/Footer.svelte
 msgid "View Source"
 msgstr "Ver Código Fuente"
+
+#~ msgid "Username must be at least 3 characters"
+#~ msgstr "El nombre de usuario debe tener al menos 3 caracteres"
+
+#~ msgid "Username must be at most 31 characters"
+#~ msgstr "El nombre de usuario debe tener como máximo 31 caracteres"
+
+#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "El nombre de usuario debe contener solo letras minúsculas, números, guiones bajos y guiones"
+
+#~ msgid "Password must be at least 6 characters"
+#~ msgstr "La contraseña debe tener al menos 6 caracteres"
+
+#~ msgid "Password must be at most 255 characters"
+#~ msgstr "La contraseña debe tener como máximo 255 caracteres```"

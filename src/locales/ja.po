@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-30T06:59:44.163Z\n"
+"PO-Revision-Date: 2025-10-30T09:29:40.928Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -6710,18 +6710,14 @@ msgstr "トップへ戻る"
 msgid "Reload Page"
 msgstr "ページを再読み込み"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid username"
-msgstr "ユーザー名が無効です"
+#~ msgid "Invalid username"
+#~ msgstr "ユーザー名が無効です"
 
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Invalid password"
-msgstr "パスワードが無効です"
+#~ msgid "Invalid password"
+#~ msgstr "パスワードが無効です"
 
-#: src/routes/(auth)/login/+page.server.ts
-#: src/routes/(auth)/login/+page.server.ts
-msgid "Incorrect username or password"
-msgstr "ユーザー名またはパスワードが正しくありません"
+#~ msgid "Incorrect username or password"
+#~ msgstr "ユーザー名またはパスワードが正しくありません"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -7470,3 +7466,18 @@ msgstr "お問い合わせ"
 #: src/lib/components/blocks/Footer.svelte
 msgid "View Source"
 msgstr "ソースを表示"
+
+#~ msgid "Username must be at least 3 characters"
+#~ msgstr "ユーザー名は3文字以上である必要があります"
+
+#~ msgid "Username must be at most 31 characters"
+#~ msgstr "ユーザー名は31文字以下である必要があります"
+
+#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "ユーザー名には小文字、数字、アンダースコア、ハイフンのみを含める必要があります"
+
+#~ msgid "Password must be at least 6 characters"
+#~ msgstr "パスワードは6文字以上である必要があります"
+
+#~ msgid "Password must be at most 255 characters"
+#~ msgstr "パスワードは255文字以下である必要があります"
