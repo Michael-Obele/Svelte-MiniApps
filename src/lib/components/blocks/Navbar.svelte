@@ -2,15 +2,13 @@
 	import ThemeSwitch from './ThemeSwitch.svelte';
 	import LanguageSwitcher from '@/blocks/LanguageSwitcher.svelte';
 	import { page } from '$app/state';
-	import { navigating } from '$app/state';
 	import * as Avatar from '@/ui/avatar';
 	import Svelte from '$lib/assets/svelte.svelte';
 	import { Button, buttonVariants } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu/index.js';
-	import { Github, LogIn, LogOut, User, Settings, LifeBuoy, ExternalLink } from '@lucide/svelte';
-	import { google, bluesky, X } from '$lib/components/blocks/Icons.svelte';
-	import { beforeNavigate, goto } from '$app/navigation';
-	import { invalidate } from '$app/navigation';
+	import { Github, LogIn, LogOut, User, Settings, LifeBuoy, MoreHorizontal } from '@lucide/svelte';
+	import { bluesky } from '$lib/components/blocks/Icons.svelte';
+	import { beforeNavigate } from '$app/navigation';
 	import NavigationProgressIndicator from '@/blocks/NavigationProgressIndicator.svelte';
 
 	import { getCurrentUser } from '$lib/remote/auth.remote';
@@ -22,10 +20,6 @@
 		{ name: 'Hire', href: '/hire' },
 		{ name: 'Changelog', href: '/changelog' }
 	];
-
-	let open = () => {
-		show = !show;
-	};
 
 	let show = $state(false);
 
@@ -56,200 +50,231 @@
 <!-- Global navigation progress indicator -->
 <NavigationProgressIndicator />
 
-<nav class=" border-gray-200 bg-white py-4 dark:bg-gray-900">
-	<div class="flex flex-wrap items-center justify-between px-5 md:justify-start md:gap-8">
+<nav class="border-gray-200 bg-white py-2 md:py-3 dark:bg-gray-900">
+	<div class="flex flex-nowrap items-center justify-between gap-2 px-3 md:gap-3 xl:gap-6 xl:px-5">
 		<!-- Logo -->
-		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-			<div class="flex text-lg font-semibold sm:text-2xl dark:text-white">
-				<span class="m-1 h-6 w-6 self-center whitespace-nowrap">
-					<Svelte />
-				</span>
-				<span>Mini Apps</span>
-			</div>
+		<a
+			href="/"
+			class="flex shrink-0 items-center space-x-1.5 md:flex-col md:space-y-0.5 md:space-x-0 lg:flex-row lg:space-y-0 lg:space-x-2 rtl:space-x-reverse"
+		>
+			<span class="size-4 shrink-0 sm:size-5 md:size-4 lg:size-5 xl:size-6">
+				<Svelte />
+			</span>
+			<span
+				class="hidden text-xs font-semibold whitespace-nowrap sm:inline sm:text-sm md:text-xs lg:text-base xl:text-xl dark:text-white"
+				>Mini Apps</span
+			>
 		</a>
 		<!-- End of Logo -->
-		<div class="flex items-center space-x-3 md:order-2 md:mx-0 md:ml-auto md:space-x-0">
-			<div class="flex items-center space-x-2 px-2">
-				<!-- Language switcher - visible on all screen sizes -->
-				<LanguageSwitcher />
 
-				<!-- Theme toggle - visible on all screen sizes -->
-				<ThemeSwitch />
-
-				<!-- On mobile hide these (they will be available in the hamburger menu) -->
-				<div class="hidden items-center space-x-2 md:flex">
-					<Button variant="outline" type="button" size="icon">
-						<a target="_blank" href="https://github.com/Michael-Obele/Svelte-MiniApps">
-							<span class="sr-only">See GitHub Repo</span>
-							<Github class="h-[1.2rem] w-[1.2rem]" />
-						</a>
-					</Button>
-					<!-- Bluesky icon (desktop only) -->
-					<Button variant="outline" type="button" size="icon">
-						<a
-							target="_blank"
-							href="https://bsky.app/profile/svelte-apps.me"
-							rel="noopener noreferrer"
-						>
-							<span class="sr-only">Bluesky</span>
-							{@render bluesky('w-6 h-6')}
-						</a>
-					</Button>
-				</div>
-				<svelte:boundary>
-					{@const user = await getCurrentUser()}
-					{#if user?.username}
-						<DropdownMenu.Root>
-							<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
-								<Avatar.Root class="size-8">
-									<Avatar.Fallback class="capitalize">
-										{user.username.charAt(0)}
-									</Avatar.Fallback>
-								</Avatar.Root>
-							</DropdownMenu.Trigger>
-							<DropdownMenu.Content class="w-56">
-								<DropdownMenu.Group>
-									<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
-									<DropdownMenu.Separator />
-									<a href="/profile">
-										<DropdownMenu.Item>
-											<User class="mr-2 size-4" />
-											<span class="capitalize">{user.username}</span>
-										</DropdownMenu.Item>
-									</a>
-									<DropdownMenu.Item class="cursor-not-allowed">
-										<Settings class="mr-2 size-4" />
-										<span>Settings</span>
-									</DropdownMenu.Item>
-									<DropdownMenu.Separator />
-									<DropdownMenu.Item class="cursor-not-allowed">
-										<LifeBuoy class="mr-2 size-4" />
-										<span>Support</span>
-									</DropdownMenu.Item>
-									<DropdownMenu.Separator />
-									<DropdownMenu.Item>
-										<a href="/logout" class="flex w-full items-center">
-											<LogOut class="mr-2 size-4" />
-											<span>Log out</span>
-										</a>
-									</DropdownMenu.Item>
-								</DropdownMenu.Group>
-							</DropdownMenu.Content>
-						</DropdownMenu.Root>
-					{:else}
-						<!-- Keep login visible on mobile (avatar area) -->
-						<a href={loginUrl}>
-							<Button variant="outline" type="button" size="sm">
-								<span class="flex items-center space-x-2">
-									<LogIn class="h-4 w-4" />
-									<span class="hidden sm:inline">Login</span>
-								</span>
-							</Button>
-						</a>
-					{/if}
-					{#snippet pending()}
-						<!-- Keep login visible on mobile (avatar area) -->
-
-						<Button variant="outline" type="button" size="sm" disabled>
-							<span class="flex items-center space-x-2">
-								<LogIn class="h-4 w-4" />
-								<span class="hidden sm:inline">Checking...</span>
-							</span>
-						</Button>
-					{/snippet}
-				</svelte:boundary>
-			</div>
-			<!-- <Button
-				data-collapse-toggle="navbar-user"
-				variant="outline"
-				type="button"
-				size="icon"
-				class="inline-flex h-10 w-10 items-center justify-center rounded-lg px-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-				aria-controls="navbar-user"
-				onclick={() => (show = !show)}
-				aria-expanded="false"
-			>
-				<span class="sr-only">Open/Close main menu</span>
-				<X class={show ? 'block' : 'hidden'} aria-hidden="true" />
-				<Menu class={show ? 'hidden' : 'block'} aria-hidden="true" />
-			</Button> -->
-
-			<Button
-				data-collapse-toggle="navbar-user"
-				variant="outline"
-				type="button"
-				size="icon"
-				class="inline-flex h-10 w-10 items-center justify-center rounded-lg px-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-				onclick={() => open()}
-			>
-				<div class="relative size-6 rounded p-3 focus:outline-none">
-					<div
-						class="absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
-					>
-						<span
-							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
-									{show ? 'translate-y-[.0125rem] rotate-45' : '-translate-y-1.5'}"
-						></span>
-						<span
-							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
-									{show ? 'opacity-0' : ''}"
-						></span>
-						<span
-							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white
-									{show ? '-translate-y-[.0125rem] -rotate-45' : 'translate-y-1.5'}"
-						></span>
-					</div>
-				</div>
-			</Button>
-		</div>
-		<div
-			class={` w-full items-center justify-between md:order-1 md:flex md:w-auto ${show ? 'block' : 'hidden'}`}
-			id="navbar-user"
-		>
+		<!-- Desktop Menu Items (hidden on mobile) -->
+		<div class="hidden grow items-center md:order-1 md:flex">
 			<ul
-				class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
+				class="flex flex-row items-center space-x-1 font-medium md:space-x-0.5 lg:space-x-2 xl:space-x-4"
 			>
 				{#each menuItems as item}
 					<li>
 						<a
 							href={item.href}
-							class={`${isActive(item) ? 'block rounded bg-red-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-red-700 md:dark:text-red-500' : 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-red-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-red-500'}`}
+							class={isActive(item)
+								? 'rounded bg-red-700 px-2 py-1.5 text-sm text-white md:bg-transparent md:p-0 md:text-red-700 xl:px-3 xl:py-2 xl:text-base md:dark:text-red-500'
+								: 'rounded px-2 py-1.5 text-sm text-gray-900 hover:bg-gray-100 md:p-0 md:px-1 md:hover:bg-transparent md:hover:text-red-700 xl:px-3 xl:py-2 xl:text-base dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-red-500'}
 							aria-current={isActive(item) ? 'page' : undefined}>{item.name}</a
 						>
 					</li>
 				{/each}
-
-				<!-- Add social/menu items inside collapsed menu for mobile -->
-				<li class="md:hidden">
-					<a
-						href="https://github.com/Michael-Obele/Svelte-MiniApps"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center justify-between space-x-2 rounded px-3 py-2 transition-colors"
-					>
-						<span class="flex items-center space-x-2">
-							<Github class="size-4" />
-							<span>GitHub</span>
-						</span>
-						<ExternalLink class="size-4" />
-					</a>
-				</li>
-				<li class="md:hidden">
-					<a
-						href="https://bsky.app/profile/svelte-apps.me"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:bg-muted dark:text-muted-foreground dark:hover:bg-accent dark:hover:text-accent-foreground flex items-center justify-between space-x-2 rounded px-3 py-2 transition-colors"
-					>
-						<span class="flex items-center space-x-2">
-							{@render bluesky('size-4')}
-							<span>Bluesky</span>
-						</span>
-
-						<ExternalLink class="size-4" />
-					</a>
-				</li>
 			</ul>
 		</div>
+
+		<!-- Right side controls -->
+		<div class="flex shrink-0 items-center gap-1 md:order-2 md:gap-1.5 xl:gap-2">
+			<!-- Language switcher - visible on all screen sizes -->
+			<LanguageSwitcher />
+
+			<!-- Theme toggle - visible on all screen sizes -->
+			<ThemeSwitch />
+
+			<!-- Social icons - hidden on mobile, visible on tablet+ -->
+			<div class="hidden items-center gap-1.5 lg:flex">
+				<Button variant="outline" type="button" size="icon" class="size-9 xl:size-10">
+					<a
+						target="_blank"
+						href="https://github.com/Michael-Obele/Svelte-MiniApps"
+						class="flex items-center justify-center"
+					>
+						<span class="sr-only">See GitHub Repo</span>
+						<Github class="size-4 lg:size-5" />
+					</a>
+				</Button>
+				<!-- Bluesky icon (tablet and desktop) -->
+				<Button variant="outline" type="button" size="icon" class="size-9 xl:size-10">
+					<a
+						target="_blank"
+						href="https://bsky.app/profile/svelte-apps.me"
+						rel="noopener noreferrer"
+						class="flex items-center justify-center"
+					>
+						<span class="sr-only">Bluesky</span>
+						{@render bluesky('size-4 xl:size-5')}
+					</a>
+				</Button>
+			</div>
+
+			<!-- More menu for mobile only -->
+			<div class="lg:hidden">
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger
+						class={`${buttonVariants({ variant: 'outline', size: 'icon' })} size-8 sm:size-9`}
+					>
+						<MoreHorizontal class="size-5" />
+						<span class="sr-only">More options</span>
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content align="end">
+						<DropdownMenu.Item>
+							<a
+								href="https://github.com/Michael-Obele/Svelte-MiniApps"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex w-full items-center"
+							>
+								<Github class="mr-2 size-4" />
+								<span>GitHub</span>
+							</a>
+						</DropdownMenu.Item>
+						<DropdownMenu.Item>
+							<a
+								href="https://bsky.app/profile/svelte-apps.me"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex w-full items-center"
+							>
+								{@render bluesky('mr-2 size-4')}
+								<span>Bluesky</span>
+							</a>
+						</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</div>
+
+			<!-- User Account / Login -->
+			<svelte:boundary>
+				{@const user = await getCurrentUser()}
+				{#if user?.username}
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger
+							class={`${buttonVariants({ variant: 'ghost', size: 'icon' })} size-8 sm:size-9 xl:size-10`}
+						>
+							<Avatar.Root class="size-6 sm:size-7 xl:size-8">
+								<Avatar.Fallback class="text-sm capitalize xl:text-base">
+									{user.username.charAt(0)}
+								</Avatar.Fallback>
+							</Avatar.Root>
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Content class="w-56">
+							<DropdownMenu.Group>
+								<DropdownMenu.GroupHeading>My Account</DropdownMenu.GroupHeading>
+								<DropdownMenu.Separator />
+								<a href="/profile">
+									<DropdownMenu.Item>
+										<User class="mr-2 size-4" />
+										<span class="capitalize">{user.username}</span>
+									</DropdownMenu.Item>
+								</a>
+								<DropdownMenu.Item class="cursor-not-allowed">
+									<Settings class="mr-2 size-4" />
+									<span>Settings</span>
+								</DropdownMenu.Item>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item class="cursor-not-allowed">
+									<LifeBuoy class="mr-2 size-4" />
+									<span>Support</span>
+								</DropdownMenu.Item>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									<a href="/logout" class="flex w-full items-center">
+										<LogOut class="mr-2 size-4" />
+										<span>Log out</span>
+									</a>
+								</DropdownMenu.Item>
+							</DropdownMenu.Group>
+						</DropdownMenu.Content>
+					</DropdownMenu.Root>
+				{:else}
+					<!-- Login button - compact on mobile, full on tablet+ -->
+					<a href={loginUrl}>
+						<Button variant="outline" type="button" size="sm" class="h-8 sm:h-9 xl:h-10">
+							<span class="flex items-center gap-1.5">
+								<LogIn class="size-4" />
+								<span class="hidden sm:inline">Login</span>
+							</span>
+						</Button>
+					</a>
+				{/if}
+				{#snippet pending()}
+					<!-- Loading state -->
+					<Button variant="outline" type="button" size="sm" disabled class="h-8 sm:h-9 xl:h-10">
+						<span class="flex items-center gap-1.5">
+							<LogIn class="size-4" />
+							<span class="hidden sm:inline">Checking...</span>
+						</span>
+					</Button>
+				{/snippet}
+			</svelte:boundary>
+
+			<!-- Mobile menu toggle (hamburger) -->
+			<Button
+				data-collapse-toggle="navbar-user"
+				variant="outline"
+				type="button"
+				size="icon"
+				class="inline-flex size-8 items-center justify-center rounded-lg text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none sm:size-9 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+				onclick={() => (show = !show)}
+			>
+				<div class="relative size-5 rounded focus:outline-none">
+					<div
+						class="absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2 transform"
+					>
+						<span
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white {show
+								? 'translate-y-[.0125rem] rotate-45'
+								: '-translate-y-1.5'}"
+						></span>
+						<span
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white {show
+								? 'opacity-0'
+								: ''}"
+						></span>
+						<span
+							class="absolute block h-0.5 w-full transform bg-gray-900 transition duration-300 ease-in-out dark:bg-white {show
+								? '-translate-y-[.0125rem] -rotate-45'
+								: 'translate-y-1.5'}"
+						></span>
+					</div>
+				</div>
+				<span class="sr-only">Toggle navigation menu</span>
+			</Button>
+		</div>
+	</div>
+
+	<!-- Mobile menu panel -->
+	<div
+		class={`w-full items-center justify-between px-3 md:hidden ${show ? 'block' : 'hidden'}`}
+		id="navbar-user"
+	>
+		<ul
+			class="mt-3 flex flex-col gap-1 rounded-lg border border-gray-100 bg-gray-50 p-3 font-medium dark:border-gray-700 dark:bg-gray-800"
+		>
+			{#each menuItems as item}
+				<li>
+					<a
+						href={item.href}
+						class={isActive(item)
+							? 'block rounded bg-red-700 px-3 py-2 text-white'
+							: 'block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white'}
+						aria-current={isActive(item) ? 'page' : undefined}>{item.name}</a
+					>
+				</li>
+			{/each}
+		</ul>
 	</div>
 </nav>
