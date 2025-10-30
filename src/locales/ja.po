@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.137Z\n"
-"PO-Revision-Date: 2025-10-30T12:49:13.285Z\n"
+"PO-Revision-Date: 2025-10-30T13:17:53.788Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1632,6 +1632,7 @@ msgstr "3〜31文字：小文字の英字、数字、アンダースコア、ハ
 
 #: src/routes/(auth)/login/+page.svelte
 #: src/routes/(auth)/register/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Password"
 msgstr "パスワード"
 
@@ -1863,6 +1864,7 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -2307,6 +2309,7 @@ msgstr "保存中..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "変更を保存"
 
@@ -7404,7 +7407,9 @@ msgid "Description (Optional)"
 msgstr "説明（任意）"
 
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200文字"
 
@@ -7535,8 +7540,8 @@ msgstr "最初のパスワードを作成"
 msgid "Your Password Vault"
 msgstr "あなたのパスワード保管庫"
 
-#. placeholder {0}: savedPasswords.length
-#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#. placeholder {0}: passwords.length
+#. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "{0}個の{1}が安全に保管されています"
@@ -7551,3 +7556,47 @@ msgid ""
 "passwords at any time. For maximum security, consider using a dedicated password\n"
 "manager for sensitive accounts."
 msgstr "すべてのパスワードは暗号化され、安全に保存されます。パスワードはいつでも表示、コピー、削除できます。最大限のセキュリティのために、機密性の高いアカウントには専用のパスワードマネージャーを使用することを検討してください。```"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Hide password"
+msgstr "パスワードを隠す"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Show password"
+msgstr "パスワードを表示"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Copy password"
+msgstr "パスワードをコピー"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit password"
+msgstr "パスワードを編集"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Delete password"
+msgstr "パスワードを削除"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit Password"
+msgstr "パスワードを編集"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Update your password and its details. Click save when you're done."
+msgstr "パスワードとその詳細を更新します。完了したら「保存」をクリックしてください。"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Enter password"
+msgstr "パスワードを入力"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Details (optional)"
+msgstr "詳細（任意）"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Add details about this password..."
+msgstr "このパスワードに関する詳細を追加..."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "<0/> Saving..."
+msgstr "<0/> 保存中...```"

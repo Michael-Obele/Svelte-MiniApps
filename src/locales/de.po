@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-10-30T12:49:01.290Z\n"
+"PO-Revision-Date: 2025-10-30T13:17:53.462Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -2256,6 +2256,7 @@ msgstr "3-31 Zeichen: Kleinbuchstaben, Zahlen, Unterstriche und Bindestriche"
 
 #: src/routes/(auth)/login/+page.svelte
 #: src/routes/(auth)/register/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Password"
 msgstr "Passwort"
 
@@ -2565,6 +2566,7 @@ msgstr "Geben Sie Ihren Benutzernamen ein"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -3007,6 +3009,7 @@ msgstr "Speichern..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -7399,7 +7402,9 @@ msgid "Description (Optional)"
 msgstr "Beschreibung (Optional)"
 
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 Zeichen"
 
@@ -7532,8 +7537,8 @@ msgstr "Erstellen Sie Ihr erstes Passwort"
 msgid "Your Password Vault"
 msgstr "Ihr Passwort-Tresor"
 
-#. placeholder {0}: savedPasswords.length
-#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#. placeholder {0}: passwords.length
+#. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "{0} {1} sicher gespeichert"
@@ -7551,3 +7556,47 @@ msgstr ""
 "Alle Passwörter werden verschlüsselt und sicher gespeichert. Sie können Ihre Passwörter\n"
 "jederzeit anzeigen, kopieren und löschen. Für maximale Sicherheit sollten Sie einen\n"
 "dedizierten Passwort-Manager für sensible Konten verwenden.```"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Hide password"
+msgstr "Passwort ausblenden"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Show password"
+msgstr "Passwort anzeigen"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Copy password"
+msgstr "Passwort kopieren"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit password"
+msgstr "Passwort bearbeiten"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Delete password"
+msgstr "Passwort löschen"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit Password"
+msgstr "Passwort bearbeiten"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Update your password and its details. Click save when you're done."
+msgstr "Aktualisieren Sie Ihr Passwort und dessen Details. Klicken Sie auf Speichern, wenn Sie fertig sind."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Enter password"
+msgstr "Passwort eingeben"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Details (optional)"
+msgstr "Details (optional)"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Add details about this password..."
+msgstr "Fügen Sie Details zu diesem Passwort hinzu..."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "<0/> Saving..."
+msgstr "<0/> Speichern...```"

@@ -72,3 +72,44 @@ export const deletePassword = command(v.string(), async (passwordId) => {
 
 	return { success: true };
 });
+
+// Command to edit a saved password
+export const editPassword = command(
+	v.object({
+		passwordId: v.pipe(v.string(), v.nonEmpty('Password ID is required')),
+		password: v.pipe(v.string(), v.nonEmpty('Password is required')),
+		details: v.optional(
+			v.nullable(v.pipe(v.string(), v.maxLength(200, 'Details must be 200 characters or less')))
+		)
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		// Update password - ensure user can only update their own passwords
+		const updatedPassword = await prisma.userPassword.updateMany({
+			where: {
+				id: data.passwordId,
+				userId: user.id
+			},
+			data: {
+				passwordHash: data.password, // Note: field name is passwordHash but we store plain text
+				details: data.details ?? null,
+				updatedAt: new Date()
+			}
+		});
+
+		// Check if any password was actually updated
+		if (updatedPassword.count === 0) {
+			throw new Error('Password not found or unauthorized');
+		}
+
+		// Refresh the query to get the updated list
+		await getSavedPasswords().refresh();
+
+		return { success: true, passwordId: data.passwordId };
+	}
+);

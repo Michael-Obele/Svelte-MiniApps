@@ -5,7 +5,7 @@ export { getCurrentUser, loginUser, registerUser } from './auth.remote';
 export { getMantra, likeMantra } from './mantra.remote';
 
 // Remote functions for password management
-export { getSavedPasswords, savePassword, deletePassword } from './password.remote';
+export { getSavedPasswords, savePassword, deletePassword, editPassword } from './password.remote';
 
 // Remote functions for purchase tracker
 export {

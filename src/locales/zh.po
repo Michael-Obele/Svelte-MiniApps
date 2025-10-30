@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-30T12:49:07.618Z\n"
+"PO-Revision-Date: 2025-10-30T13:17:53.674Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -292,6 +292,7 @@ msgstr "3-31 个字符：小写字母、数字、下划线和连字符"
 
 #: src/routes/(auth)/login/+page.svelte
 #: src/routes/(auth)/register/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Password"
 msgstr "密码"
 
@@ -958,6 +959,7 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -3904,6 +3906,7 @@ msgstr "货币"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "保存更改"
 
@@ -7339,7 +7342,9 @@ msgid "Description (Optional)"
 msgstr "描述（可选）"
 
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 个字符"
 
@@ -7470,8 +7475,8 @@ msgstr "创建您的第一个密码"
 msgid "Your Password Vault"
 msgstr "您的密码库"
 
-#. placeholder {0}: savedPasswords.length
-#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#. placeholder {0}: passwords.length
+#. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "已安全存储 {0} 个{1}"
@@ -7486,3 +7491,47 @@ msgid ""
 "passwords at any time. For maximum security, consider using a dedicated password\n"
 "manager for sensitive accounts."
 msgstr "所有密码均已加密并安全存储。您可以随时查看、复制和删除您的密码。为了获得最高的安全性，请考虑为敏感帐户使用专用的密码管理器。```"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Hide password"
+msgstr "隐藏密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Show password"
+msgstr "显示密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Copy password"
+msgstr "复制密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit password"
+msgstr "编辑密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Delete password"
+msgstr "删除密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit Password"
+msgstr "编辑密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Update your password and its details. Click save when you're done."
+msgstr "更新您的密码及其详细信息。完成后点击保存。"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Enter password"
+msgstr "输入密码"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Details (optional)"
+msgstr "详细信息（可选）"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Add details about this password..."
+msgstr "添加关于此密码的详细信息..."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "<0/> Saving..."
+msgstr "<0/> 保存中...```"

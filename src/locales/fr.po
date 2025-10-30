@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-30T12:48:54.807Z\n"
+"PO-Revision-Date: 2025-10-30T13:17:53.436Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -1664,6 +1664,7 @@ msgstr "3-31 caractères : lettres minuscules, chiffres, traits de soulignement 
 
 #: src/routes/(auth)/login/+page.svelte
 #: src/routes/(auth)/register/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -1895,6 +1896,7 @@ msgstr "Saisissez votre nom d’utilisateur"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -2339,6 +2341,7 @@ msgstr "Sauvegarde en cours..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
 
@@ -7455,7 +7458,9 @@ msgid "Description (Optional)"
 msgstr "Description (Facultatif)"
 
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 caractères"
 
@@ -7588,8 +7593,8 @@ msgstr "Créer votre premier mot de passe"
 msgid "Your Password Vault"
 msgstr "Votre coffre-fort de mots de passe"
 
-#. placeholder {0}: savedPasswords.length
-#. placeholder {1}: savedPasswords.length === 1 ? 'password' : 'passwords'
+#. placeholder {0}: passwords.length
+#. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "{0} {1} stockés en toute sécurité"
@@ -7604,3 +7609,47 @@ msgid ""
 "passwords at any time. For maximum security, consider using a dedicated password\n"
 "manager for sensitive accounts."
 msgstr "Tous les mots de passe sont chiffrés et stockés en toute sécurité. Vous pouvez afficher, copier et supprimer vos mots de passe à tout moment. Pour une sécurité maximale, pensez à utiliser un gestionnaire de mots de passe dédié pour les comptes sensibles.```"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Hide password"
+msgstr "Masquer le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Show password"
+msgstr "Afficher le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Copy password"
+msgstr "Copier le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit password"
+msgstr "Modifier le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Delete password"
+msgstr "Supprimer le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Edit Password"
+msgstr "Modifier le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Update your password and its details. Click save when you're done."
+msgstr "Mettez à jour votre mot de passe et ses détails. Cliquez sur enregistrer lorsque vous avez terminé."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Enter password"
+msgstr "Entrez le mot de passe"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Details (optional)"
+msgstr "Détails (facultatif)"
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "Add details about this password..."
+msgstr "Ajouter des détails sur ce mot de passe..."
+
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+msgid "<0/> Saving..."
+msgstr "<0/> Enregistrement...```"

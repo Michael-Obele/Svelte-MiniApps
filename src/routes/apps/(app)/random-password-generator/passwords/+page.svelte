@@ -1,43 +1,12 @@
 <script lang="ts">
 	import { Button } from '@/ui/button';
-	import { toast } from 'svelte-sonner';
 	import { ArrowLeft, Shield } from '@lucide/svelte';
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import PasswordDisplay from '../PasswordDisplay.svelte';
-	import { getSavedPasswords, deletePassword } from '$lib/remote';
+	import { getSavedPasswords } from '$lib/remote';
 	import * as Card from '@/ui/card';
 	import { Separator } from '@/ui/separator';
-	import type { PageProps } from './$types';
-
-	type PasswordRecord = {
-		id: string;
-		createdAt: Date;
-		passwordHash: string;
-		details: string | null;
-	};
-
-	let { data }: PageProps = $props();
-
-	let deletingId = $state<string | null>(null);
-	let savedPasswords = $state<PasswordRecord[]>(data.passwords);
-
-	async function handleDelete(passwordId: string) {
-		if (deletingId) return;
-
-		try {
-			deletingId = passwordId;
-			await deletePassword(passwordId);
-			toast.success('Password deleted successfully!');
-			await getSavedPasswords().refresh();
-			savedPasswords = await getSavedPasswords();
-		} catch (error) {
-			console.error('Error deleting password:', error);
-			toast.error('Failed to delete password');
-		} finally {
-			deletingId = null;
-		}
-	}
 </script>
 
 <RouteHead
@@ -82,59 +51,60 @@
 		<Separator />
 
 		<!-- Content Section -->
-		{#if savedPasswords.length === 0}
-			<Card.Root class="mx-auto max-w-2xl">
-				<Card.Content class="flex flex-col items-center justify-center py-12 text-center">
-					<div class="bg-muted mb-4 rounded-full p-4">
-						<Shield class="text-muted-foreground h-12 w-12" />
-					</div>
-					<Card.Title class="mb-2 text-xl">No Saved Passwords</Card.Title>
-					<Card.Description class="text-muted-foreground mb-6 max-w-sm">
-						Start generating secure passwords to keep track of them here. Your passwords are
-						encrypted and stored safely.
-					</Card.Description>
-					<Button href="/apps/random-password-generator" size="lg">
-						Create Your First Password
-					</Button>
-				</Card.Content>
-			</Card.Root>
-		{:else}
-			<div class="space-y-6">
-				<!-- Stats Card -->
-				<Card.Root>
-					<Card.Header class="flex flex-row items-center justify-between py-3">
-						<div>
-							<Card.Title class="text-lg sm:text-xl">Your Password Vault</Card.Title>
-							<Card.Description class="mt-1">
-								{savedPasswords.length}
-								{savedPasswords.length === 1 ? 'password' : 'passwords'} stored securely
-							</Card.Description>
-						</div>
-						<div
-							class="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold"
-						>
-							{savedPasswords.length}
-						</div>
-					</Card.Header>
-				</Card.Root>
-
-				<!-- Passwords Grid -->
-				<div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{#each savedPasswords as savedPassword (savedPassword.id)}
-						<div class="h-full">
-							<PasswordDisplay
-								password={savedPassword}
-								showDelete={true}
-								onDelete={handleDelete}
-								{deletingId}
-							/>
-						</div>
-					{/each}
-				</div>
+		<!-- Passwords Section with Reactive Query -->
+		{#await getSavedPasswords()}
+			<div class="flex items-center justify-center py-12">
+				<div class="size-8 animate-spin rounded-full border-4 border-gray-300 border-t-gray-600"></div>
 			</div>
-		{/if}
+		{:then passwords}
+			<!-- Empty State -->
+			{#if passwords.length === 0}
+				<Card.Root class="mx-auto max-w-2xl">
+					<Card.Content class="flex flex-col items-center justify-center py-12 text-center">
+						<div class="bg-muted mb-4 rounded-full p-4">
+							<Shield class="text-muted-foreground h-12 w-12" />
+						</div>
+						<Card.Title class="mb-2 text-xl">No Saved Passwords</Card.Title>
+						<Card.Description class="text-muted-foreground mb-6 max-w-sm">
+							Start generating secure passwords to keep track of them here. Your passwords are
+							encrypted and stored safely.
+						</Card.Description>
+						<Button href="/apps/random-password-generator" size="lg">
+							Create Your First Password
+						</Button>
+					</Card.Content>
+				</Card.Root>
+			{:else}
+				<div class="space-y-6">
+					<!-- Stats Card -->
+					<Card.Root>
+						<Card.Header class="flex flex-row items-center justify-between py-3">
+							<div>
+								<Card.Title class="text-lg sm:text-xl">Your Password Vault</Card.Title>
+								<Card.Description class="mt-1">
+									{passwords.length}
+									{passwords.length === 1 ? 'password' : 'passwords'} stored securely
+								</Card.Description>
+							</div>
+							<div
+								class="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold"
+							>
+								{passwords.length}
+							</div>
+						</Card.Header>
+					</Card.Root>
 
-		<!-- Info Section -->
+					<!-- Passwords Grid -->
+					<div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+						{#each passwords as savedPassword (savedPassword.id)}
+							<div class="h-full">
+								<PasswordDisplay password={savedPassword} />
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/if}
+		{/await}		<!-- Info Section -->
 		<Card.Root class="bg-muted/50 border-dashed">
 			<Card.Content class="py-6">
 				<div class="flex items-start gap-3">

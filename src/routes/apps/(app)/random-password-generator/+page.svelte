@@ -14,7 +14,7 @@
 	import type { PageProps } from './$types';
 	import { Skeleton } from '@/ui/skeleton';
 	import PasswordDisplay from './PasswordDisplay.svelte';
-	import { getSavedPasswords, savePassword, deletePassword, getCurrentUser } from '$lib/remote';
+	import { getSavedPasswords, savePassword, getCurrentUser } from '$lib/remote';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
@@ -49,7 +49,7 @@
 	let isSaved = $state(false);
 	let viewing = $state(false);
 	let saving = $state(false);
-	let deletingId = $state<string | null>(null);
+
 	let copySuccess = $state(false);
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
 	let showHowToUse = $state(false);
@@ -153,22 +153,7 @@
 		}
 	}
 
-	async function handleDelete(passwordId: string) {
-		if (deletingId) return; // Prevent multiple simultaneous deletes
 
-		try {
-			deletingId = passwordId;
-			await deletePassword(passwordId);
-			toast.success('Password deleted successfully!');
-			await getSavedPasswords().refresh();
-			savedPasswords = await getSavedPasswords();
-		} catch (error) {
-			console.error('Error deleting password:', error);
-			toast.error('Failed to delete password');
-		} finally {
-			deletingId = null;
-		}
-	}
 
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
@@ -371,18 +356,12 @@
 							<div class="mt-4 space-y-2">
 								<h3 class="text-lg font-semibold">Saved Passwords</h3>
 								<ScrollArea class="h-[480px] w-full rounded-md border p-4">
-									<div class="space-y-2">
-										{#each savedPasswords as savedPassword (savedPassword.id)}
-											<PasswordDisplay
-												password={savedPassword}
-												showDelete={true}
-												onDelete={handleDelete}
-												{deletingId}
-											/>
-										{/each}
-										{#if savedPasswords.length === 0}
+									<div class="grid gap-4">
+										{#each await getSavedPasswords() as savedPassword (savedPassword.id)}
+											<PasswordDisplay password={savedPassword} />
+										{:else}
 											<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
-										{/if}
+										{/each}
 									</div>
 								</ScrollArea>
 							</div>
