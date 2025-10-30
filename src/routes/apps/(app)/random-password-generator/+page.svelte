@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from '@/ui/button';
+	import { Button, buttonVariants } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Slider } from '@/ui/slider';
 	import { Switch } from '@/ui/switch';
@@ -19,7 +19,7 @@
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
-	import * as Dialog from '@/ui/dialog';
+	import * as Popover from '@/ui/popover';
 	import { onMount } from 'svelte';
 
 	// Define User type inline to match what getCurrentUser returns
@@ -54,7 +54,7 @@
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('random-password-generator-has-seen-how-to-use', false);
-	let showSaveDialog = $state(false);
+	let showSavePopover = $state(false);
 	let passwordDetails = $state('');
 
 	const generatePassword = () => {
@@ -104,8 +104,17 @@
 		return 'bg-green-500';
 	};
 
+	// Use $derived to automatically calculate strength when password changes
 	$effect(() => {
-		if (password) calculateStrength();
+		if (password) {
+			let strength = 0;
+			if (password.length >= 12) strength += 25;
+			if (includeUppercase && /[A-Z]/.test(password)) strength += 25;
+			if (includeLowercase && /[a-z]/.test(password)) strength += 25;
+			if (includeNumbers && /\d/.test(password)) strength += 12.5;
+			if (includeSymbols && /[^A-Za-z0-9]/.test(password)) strength += 12.5;
+			passwordStrength = strength;
+		}
 	});
 
 	async function handleCopy() {
@@ -133,7 +142,7 @@
 			await getSavedPasswords().refresh();
 			savedPasswords = await getSavedPasswords();
 			toast.success('Password saved successfully!');
-			showSaveDialog = false;
+			showSavePopover = false;
 			passwordDetails = '';
 		} catch (error) {
 			console.error('Error saving password:', error);
@@ -211,22 +220,57 @@
 		<div class="bg-card space-y-4 rounded-lg border p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					{#if !saving}
-						<Button
-							onclick={() => (showSaveDialog = true)}
-							variant="outline"
-							size="icon"
-							disabled={!currentUser || !password}
-						>
-							<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
-						</Button>
-					{:else}
-						<div class="flex size-10 items-center justify-center rounded-md border">
-							<div
-								class="size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
-							></div>
-						</div>
-					{/if}
+					<Popover.Root>
+						{#if !saving}
+							<Popover.Trigger
+								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-10 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+								disabled={!currentUser || !password}
+							>
+								<Star class="h-4 w-4 {isSaved ? 'fill-white' : ''}" />
+							</Popover.Trigger>
+						{:else}
+							<div class="flex size-10 items-center justify-center rounded-md border">
+								<div
+									class="size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
+								></div>
+							</div>
+						{/if}
+						<Popover.Content class="w-80">
+							<div class="grid gap-4">
+								<div class="space-y-2">
+									<h4 class="leading-none font-medium">Save Password</h4>
+									<p class="text-muted-foreground text-sm">
+										Add an optional description to help you remember what this password is for.
+									</p>
+								</div>
+								<div class="grid gap-2">
+									<Label for="password-details">Description (Optional)</Label>
+									<Input
+										id="password-details"
+										bind:value={passwordDetails}
+										placeholder="e.g., My email account, Work laptop..."
+										maxlength={200}
+									/>
+									<p class="text-muted-foreground text-xs">
+										{passwordDetails.length}/200 characters
+									</p>
+								</div>
+								<div class="flex gap-2">
+									<Popover.Close class={buttonVariants({ variant: 'outline' })}
+										>Cancel</Popover.Close
+									>
+									<Button onclick={handleSave} disabled={saving} class="flex-1">
+										{#if saving}
+											<div
+												class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
+											></div>
+										{/if}
+										Save
+									</Button>
+								</div>
+							</div>
+						</Popover.Content>
+					</Popover.Root>
 
 					<Input
 						type="text"
@@ -351,44 +395,6 @@
 		</div>
 	</div>
 </div>
-
-<Dialog.Root bind:open={showSaveDialog}>
-	<Dialog.Content class="sm:max-w-md">
-		<Dialog.Header>
-			<Dialog.Title>Save Password</Dialog.Title>
-			<Dialog.Description>
-				Add an optional description to help you remember what this password is for.
-			</Dialog.Description>
-		</Dialog.Header>
-
-		<div class="space-y-2">
-			<Label for="password-details">Description (Optional)</Label>
-			<Input
-				id="password-details"
-				bind:value={passwordDetails}
-				placeholder="e.g., My email account, Work laptop..."
-				maxlength={200}
-			/>
-			<p class="text-muted-foreground text-xs">{passwordDetails.length}/200 characters</p>
-		</div>
-
-		<Dialog.Footer class="flex gap-2">
-			<Dialog.Close>
-				<Button variant="outline" class="flex-1" onclick={() => (showSaveDialog = false)}
-					>Cancel</Button
-				>
-			</Dialog.Close>
-			<Button onclick={handleSave} disabled={saving} class="flex-1">
-				{#if saving}
-					<div
-						class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
-					></div>
-				{/if}
-				Save
-			</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
 
 <HowToUseDialog
 	bind:open={showHowToUse}
