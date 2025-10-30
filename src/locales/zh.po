@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-29T17:40:52.155Z\n"
+"PO-Revision-Date: 2025-10-30T06:59:43.451Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -193,6 +193,7 @@ msgstr "浏览我们独特的 Svelte Mini Apps 合集。 发现新工具、创�
 msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, MiniApps, 应用, 工具, 应用程序, 生态系统, 创新, 独特"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
@@ -235,6 +236,7 @@ msgstr "以清晰且引人入胜的方式可视化您的 GitHub 贡献。 跟踪
 msgid "GitHub, Contribution Tracker, Developer Tools, Svelte Apps"
 msgstr "GitHub, 贡献追踪器, 开发者工具, Svelte 应用"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
@@ -2271,7 +2273,6 @@ msgid "Article"
 msgstr "文章"
 
 #: src/lib/components/blocks/RouteHead.svelte
-#: src/lib/index.svelte.ts
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -2296,17 +2297,8 @@ msgid "<0/> Announcements"
 msgstr "<0/> 公告"
 
 #: src/routes/changelog/+page.svelte
-msgid "<0/> Migration Timeline"
-msgstr "<0/> 迁移时间线"
-
-#: src/routes/changelog/+page.svelte
 msgid "<0/> Planned Features"
 msgstr "<0/> 计划功能"
-
-#: src/routes/changelog/+page.svelte
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline"
-msgstr "迁移时间线"
 
 #: src/routes/changelog/+page.svelte
 msgid "Detailed timeline of our Svelte 5 migration journey"
@@ -2875,10 +2867,6 @@ msgstr "添加标题时更新目录"
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "<0/> Create Issue"
 msgstr "<0/> 创建问题"
-
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline | Svelte Mini Apps Changelog"
-msgstr "迁移时间线 | Svelte Mini Apps 更新日志"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
@@ -3713,6 +3701,7 @@ msgid ""
 "suggestions with us."
 msgstr "您的意见塑造了 Svelte Mini Apps 的未来。与我们分享您的想法、功能要求或建议。"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/routes/about/Vision.svelte
 msgid "Send Feedback"
 msgstr "发送反馈"
@@ -5329,6 +5318,7 @@ msgstr "返回顶部 <0/>"
 msgid "Work with Michael"
 msgstr "与 Michael 合作"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 msgid "Support"
@@ -6965,14 +6955,6 @@ msgid "A collection of mini applications built with Svelte"
 msgstr "一个用 Svelte 构建的迷你应用程序集合"
 
 #: src/lib/index.svelte.ts
-msgid "Dev_Obele"
-msgstr "Dev_Obele"
-
-#: src/lib/index.svelte.ts
-msgid "Michael-Obele"
-msgstr "Michael-Obele"
-
-#: src/lib/index.svelte.ts
 msgid "Converts between various units (length, temperature, volume, etc.)"
 msgstr "在各种单位（长度、温度、体积等）之间进行转换"
 
@@ -7367,3 +7349,59 @@ msgstr "{0}/200 个字符"
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
 msgstr "<0/> 保存"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "More options"
+msgstr "更多选项"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Toggle navigation menu"
+msgstr "切换导航菜单"
+
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline | Svelte Mini Apps Changelog"
+msgstr "时间线 | Svelte Mini Apps 更新日志"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline"
+msgstr "时间线"
+
+#: src/routes/changelog/+page.svelte
+msgid "<0/> Timeline"
+msgstr "<0/> 时间线"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Explore"
+msgstr "探索"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "All Apps"
+msgstr "所有应用"
+
+#~ msgid "Offline Mode"
+#~ msgstr "离线模式"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Company"
+msgstr "公司"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "About Us"
+msgstr "关于我们"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Work with Us"
+msgstr "与我们合作"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Get Support"
+msgstr "获取支持"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "View Source"
+msgstr "查看源代码"

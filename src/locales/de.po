@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-10-29T17:40:52.077Z\n"
+"PO-Revision-Date: 2025-10-30T06:59:42.542Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -31,7 +31,6 @@ msgid "Svelte Mini Apps"
 msgstr "Svelte Mini-Apps"
 
 #: src/lib/components/blocks/RouteHead.svelte
-#: src/lib/index.svelte.ts
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -39,14 +38,6 @@ msgstr "Michael Obele"
 #: src/lib/index.svelte.ts
 msgid "A collection of mini applications built with Svelte"
 msgstr "Eine Sammlung von Mini-Anwendungen, die mit Svelte erstellt wurden"
-
-#: src/lib/index.svelte.ts
-msgid "Dev_Obele"
-msgstr "Dev_Obele"
-
-#: src/lib/index.svelte.ts
-msgid "Michael-Obele"
-msgstr "Michael-Obele"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/unit-converter/+page.svelte
@@ -883,7 +874,7 @@ msgstr "Durchsuchen"
 
 #: src/routes/about/Tools.svelte
 msgid "Browse the available apps and discover ones that can enhance your workflow."
-msgstr "Durchsuchen Sie die verfügbaren Apps und entdecken Sie solche, die Ihren Workflow verbessern können.```"
+msgstr "Durchsuchen Sie die verfügbaren Apps und entdecken Sie solche, die Ihren Workflow verbessern können."
 
 #: src/routes/about/Tools.svelte
 msgid "Dive"
@@ -917,6 +908,7 @@ msgstr ""
 "Ihre Eingaben gestalten die Zukunft von Svelte Mini Apps. Teilen Sie uns Ihre Gedanken, Funktionswünsche oder\n"
 "Vorschläge mit."
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/routes/about/Vision.svelte
 msgid "Send Feedback"
 msgstr "Feedback senden"
@@ -1090,7 +1082,7 @@ msgstr "Leeren"
 #: src/routes/apps/+page.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
-msgstr "Schließen```"
+msgstr "Schließen"
 
 #: src/routes/apps/TaskCard.svelte
 msgid "Try now <0/>"
@@ -1100,6 +1092,7 @@ msgstr "Jetzt ausprobieren <0/>"
 msgid "Coming Soon!"
 msgstr "Kommt bald!"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
@@ -1144,17 +1137,8 @@ msgid "<0/> Announcements"
 msgstr "<0/> Ankündigungen"
 
 #: src/routes/changelog/+page.svelte
-msgid "<0/> Migration Timeline"
-msgstr "<0/> Migrations-Zeitachse"
-
-#: src/routes/changelog/+page.svelte
 msgid "<0/> Planned Features"
 msgstr "<0/> Geplante Funktionen"
-
-#: src/routes/changelog/+page.svelte
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline"
-msgstr "Migrations-Zeitachse"
 
 #: src/routes/changelog/+page.svelte
 msgid "Detailed timeline of our Svelte 5 migration journey"
@@ -1277,7 +1261,7 @@ msgstr "<0/> Nach Typ"
 #: src/routes/changelog/ChangelogStats.svelte
 #: src/routes/changelog/DebugOrder.svelte
 msgid "Hide"
-msgstr "Ausblenden```"
+msgstr "Ausblenden"
 
 #: src/routes/changelog/ChangelogStats.svelte
 #: src/routes/changelog/DebugOrder.svelte
@@ -1454,7 +1438,7 @@ msgstr "Eine moderne, sichere und quelloffene Desktop-Anwendung, die als Produkt
 
 #: src/routes/hire/+page.svelte
 msgid "Rust"
-msgstr "Rust```"
+msgstr "Rust"
 
 #: src/routes/hire/+page.svelte
 msgid "Tauri"
@@ -1686,7 +1670,7 @@ msgstr "Ich bin offen für freiberufliche Tätigkeiten und Beratungsarbeit sowie
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Start a Conversation <1/>"
-msgstr "<0/> Ein Gespräch beginnen <1/>```"
+msgstr "<0/> Ein Gespräch beginnen <1/>"
 
 #: src/routes/offline/+page.svelte
 msgid "Offline | Svelte Mini Apps"
@@ -1810,6 +1794,7 @@ msgid "Work with Michael"
 msgstr "Mit Michael zusammenarbeiten"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 msgid "Support"
 msgstr "Support"
@@ -1859,7 +1844,7 @@ msgstr "M 160,40 Q 100,100 40,160"
 
 #: src/lib/components/blocks/MorphSVG.svelte
 msgid "M 160,160 Q 100,160 40,160"
-msgstr "M 160,160 Q 100,160 40,160```"
+msgstr "M 160,160 Q 100,160 40,160"
 
 #: src/lib/components/blocks/MorphSVG.svelte
 msgid "M 160,40 Q 100,160 40,40"
@@ -1885,6 +1870,7 @@ msgstr "M15 12L3 6"
 msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
@@ -2205,7 +2191,7 @@ msgstr "Todo löschen"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Quick Guide"
-msgstr "Schnellanleitung```"
+msgstr "Schnellanleitung"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Simple steps to get started"
@@ -2407,7 +2393,7 @@ msgstr "Profilseite für Svelte Mini Apps, eine Sammlung kleiner, fokussierter W
 
 #: src/routes/(auth)/profile/+page.svelte
 msgid "Developer Dashboard"
-msgstr "Entwickler-Dashboard```"
+msgstr "Entwickler-Dashboard"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
@@ -2605,7 +2591,7 @@ msgstr "Montag"
 
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Tuesday"
-msgstr "Dienstag```"
+msgstr "Dienstag"
 
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Wednesday"
@@ -2808,7 +2794,7 @@ msgstr "Kommende Apps"
 
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "New apps coming soon"
-msgstr "Neue Apps folgen in Kürze```"
+msgstr "Neue Apps folgen in Kürze"
 
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "Favorite Apps"
@@ -2982,7 +2968,7 @@ msgstr "Budgets"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Mantras"
-msgstr "Mantras```"
+msgstr "Mantras"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
@@ -3170,7 +3156,7 @@ msgstr "Öffentliche Freigabe"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "WebView shell"
-msgstr "WebView-Shell```"
+msgstr "WebView-Shell"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Capacitor"
@@ -3518,11 +3504,7 @@ msgstr "Inhaltsverzeichnis aktualisieren, wenn Überschriften hinzugefügt werde
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "<0/> Create Issue"
-msgstr "<0/> Issue erstellen```"
-
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline | Svelte Mini Apps Changelog"
-msgstr "Migrations-Zeitachse | Svelte Mini Apps Changelog"
+msgstr "<0/> Issue erstellen"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
@@ -4067,7 +4049,7 @@ msgstr "<0/> Umwandlung..."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Conversion Result"
-msgstr "Umrechnungsergebnis```"
+msgstr "Umrechnungsergebnis"
 
 #. placeholder {0}: getCurrencyLabel(form?.currencyFrom)
 #. placeholder {1}: Number( form.body.rate ).toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })
@@ -4214,7 +4196,7 @@ msgstr "Budget nicht gefunden. Bitte speichern Sie zuerst das Budget."
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
 msgid "Budget Name:"
-msgstr "Budgetname:```"
+msgstr "Budgetname:"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
 msgid "Budget Amount:"
@@ -4403,7 +4385,7 @@ msgstr "Nicht gesichert"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "Backed Up"
-msgstr "Gesichert```"
+msgstr "Gesichert"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -4763,7 +4745,7 @@ msgstr "Die Registerkarte <strong>\"Verlauf\"</strong> zeigt alle vergangenen Me
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 msgid "Track Statistics"
-msgstr "Statistiken verfolgen```"
+msgstr "Statistiken verfolgen"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 msgid "The <strong>\"Stats\"</strong> tab displays adherence rates, current streaks, missed doses, and detailed medication patterns over time."
@@ -5338,7 +5320,7 @@ msgstr "E-Mail"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 msgid "Website"
-msgstr "Webseite```"
+msgstr "Webseite"
 
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Once daily"
@@ -5686,7 +5668,7 @@ msgstr "Kauf hinzufügen"
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 msgid "⚠️ This action cannot be undone."
-msgstr "⚠️ Diese Aktion kann nicht rückgängig gemacht werden.```"
+msgstr "⚠️ Diese Aktion kann nicht rückgängig gemacht werden."
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
@@ -5719,7 +5701,7 @@ msgstr "Klicken Sie auf die Schaltfläche <0>\"Artikel hinzufügen\"</0>. Nennen
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid "Pick a Category"
-msgstr "Eine Kategorie auswählen```"
+msgstr "Eine Kategorie auswählen"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
@@ -6114,7 +6096,7 @@ msgstr "Zufalls-Emoji, Emoji-Generator, Spaß, Produktivität, Svelte Apps"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
 msgid "<0/> Generate"
-msgstr "<0/> Generieren```"
+msgstr "<0/> Generieren"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
 msgid "Emoji copied to clipboard"
@@ -6310,7 +6292,7 @@ msgstr "Mittel"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Very Strong"
-msgstr "Sehr stark```"
+msgstr "Sehr stark"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Craving Log"
@@ -6472,7 +6454,7 @@ msgstr "🔄 Synchronisieren"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "☁️ Backup"
-msgstr "☁️ Sichern```"
+msgstr "☁️ Sichern"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Log Craving"
@@ -6663,7 +6645,7 @@ msgstr "Erreichte Meilensteine"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
-msgstr "Nicht gerauchte Zigaretten```"
+msgstr "Nicht gerauchte Zigaretten"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Days Smoke-Free"
@@ -6815,7 +6797,7 @@ msgstr "Herzfrequenz und Blutdruck sinken auf normale Werte"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Nicotine cravings peak but will decrease over time"
-msgstr "Das Verlangen nach Nikotin erreicht seinen Höhepunkt, wird aber mit der Zeit abnehmen```"
+msgstr "Das Verlangen nach Nikotin erreicht seinen Höhepunkt, wird aber mit der Zeit abnehmen"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Carbon monoxide level in blood drops to normal"
@@ -6977,7 +6959,7 @@ msgstr "Abbrechen"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Beta Version"
-msgstr "Beta-Version```"
+msgstr "Beta-Version"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Todo List"
@@ -7151,7 +7133,7 @@ msgstr ""
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Reset Everything"
-msgstr "Alles zurücksetzen```"
+msgstr "Alles zurücksetzen"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Invalid input"
@@ -7331,7 +7313,7 @@ msgstr "Fehler:"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/GitGraph.svelte
 msgid "GitHub Contribution Graph"
-msgstr "GitHub-Beitragsdiagramm```"
+msgstr "GitHub-Beitragsdiagramm"
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid username"
@@ -7405,7 +7387,7 @@ msgstr "Beim Abrufen der Wörterbuchdaten ist ein unerwarteter Fehler aufgetrete
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Please try again later. If the problem persists, contact support."
-msgstr "Bitte versuchen Sie es später erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support.```"
+msgstr "Bitte versuchen Sie es später erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support."
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Save Password"
@@ -7426,4 +7408,60 @@ msgstr "{0}/200 Zeichen"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
-msgstr "<0/> Speichern```"
+msgstr "<0/> Speichern"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "More options"
+msgstr "Mehr Optionen"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Toggle navigation menu"
+msgstr "Navigationsmenü umschalten"
+
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline | Svelte Mini Apps Changelog"
+msgstr "Zeitleiste | Svelte Mini Apps Changelog"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline"
+msgstr "Zeitleiste"
+
+#: src/routes/changelog/+page.svelte
+msgid "<0/> Timeline"
+msgstr "<0/> Zeitleiste"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Explore"
+msgstr "Entdecken"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "All Apps"
+msgstr "Alle Apps"
+
+#~ msgid "Offline Mode"
+#~ msgstr "Offline-Modus"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Company"
+msgstr "Unternehmen"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "About Us"
+msgstr "Über uns"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Work with Us"
+msgstr "Arbeiten Sie mit uns"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Get Support"
+msgstr "Support erhalten"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Contact Us"
+msgstr "Kontaktieren Sie uns"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "View Source"
+msgstr "Quellcode anzeigen"

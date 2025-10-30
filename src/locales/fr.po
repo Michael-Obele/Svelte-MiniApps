@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-10-29T17:40:52.023Z\n"
+"PO-Revision-Date: 2025-10-30T06:59:41.644Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -610,6 +610,7 @@ msgid "Work with Michael"
 msgstr "Travailler avec Michael"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 msgid "Support"
 msgstr "Support"
@@ -1129,6 +1130,7 @@ msgstr ""
 "Vos contributions façonnent l'avenir de Svelte Mini Apps. Partagez vos idées, demandes de fonctionnalités ou\n"
 "suggestions avec nous."
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/routes/about/Vision.svelte
 msgid "Send Feedback"
 msgstr "Envoyer des commentaires"
@@ -1226,6 +1228,7 @@ msgstr "Essayer maintenant <0/>"
 msgid "Coming Soon!"
 msgstr "À venir !"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
@@ -1248,7 +1251,6 @@ msgid "Article"
 msgstr "Article"
 
 #: src/lib/components/blocks/RouteHead.svelte
-#: src/lib/index.svelte.ts
 #: src/routes/changelog/+page.svelte
 msgid "Michael Obele"
 msgstr "Michael Obele"
@@ -1266,17 +1268,8 @@ msgid "<0/> Announcements"
 msgstr "<0/> Annonces"
 
 #: src/routes/changelog/+page.svelte
-msgid "<0/> Migration Timeline"
-msgstr "<0/> Calendrier de migration"
-
-#: src/routes/changelog/+page.svelte
 msgid "<0/> Planned Features"
 msgstr "<0/> Fonctionnalités prévues"
-
-#: src/routes/changelog/+page.svelte
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline"
-msgstr "Calendrier de migration"
 
 #: src/routes/changelog/+page.svelte
 msgid "Detailed timeline of our Svelte 5 migration journey"
@@ -1365,6 +1358,7 @@ msgstr "M15 12L3 6"
 msgid "M3 17L21 6"
 msgstr "M3 17L21 6"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Home"
@@ -2539,10 +2533,6 @@ msgstr "Aucune annonce pour le moment."
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Check back soon for exciting updates and announcements about Svelte Mini Apps!"
 msgstr "Revenez bientôt pour des mises à jour et des annonces concernant Svelte-MiniApps !"
-
-#: src/routes/changelog/timeline/+page.svelte
-msgid "Migration Timeline | Svelte Mini Apps Changelog"
-msgstr "Chronologie de la migration | Journal des modifications des Svelte Mini Apps"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
@@ -7083,14 +7073,6 @@ msgid "A collection of mini applications built with Svelte"
 msgstr "Une collection de mini-applications construites avec Svelte"
 
 #: src/lib/index.svelte.ts
-msgid "Dev_Obele"
-msgstr "Dev_Obele"
-
-#: src/lib/index.svelte.ts
-msgid "Michael-Obele"
-msgstr "Michael-Obele"
-
-#: src/lib/index.svelte.ts
 msgid "Converts between various units (length, temperature, volume, etc.)"
 msgstr "Convertit entre diverses unités (longueur, température, volume, etc.)"
 
@@ -7483,3 +7465,59 @@ msgstr "{0}/200 caractères"
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
 msgstr "<0/> Enregistrer"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "More options"
+msgstr "Plus d'options"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Toggle navigation menu"
+msgstr "Basculer le menu de navigation"
+
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline | Svelte Mini Apps Changelog"
+msgstr "Chronologie | Journal des modifications des mini-applications Svelte"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Timeline"
+msgstr "Chronologie"
+
+#: src/routes/changelog/+page.svelte
+msgid "<0/> Timeline"
+msgstr "<0/> Chronologie"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Explore"
+msgstr "Explorer"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "All Apps"
+msgstr "Toutes les applications"
+
+#~ msgid "Offline Mode"
+#~ msgstr "Mode hors ligne"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Company"
+msgstr "Société"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "About Us"
+msgstr "À propos de nous"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Work with Us"
+msgstr "Travailler avec nous"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Get Support"
+msgstr "Obtenir de l'aide"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Contact Us"
+msgstr "Nous contacter"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "View Source"
+msgstr "Voir la source"
