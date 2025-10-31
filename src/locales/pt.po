@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-10-30T13:17:53.911Z\n"
+"PO-Revision-Date: 2025-10-31T07:30:44.147Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -495,9 +495,8 @@ msgstr "Página de Aplicativos | MiniApps Svelte"
 msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
 msgstr "Explore nossa coleção de MiniApps Svelte únicos. Descubra novas ferramentas, aplicativos inovadores e veja como estamos aprimorando o ecossistema Svelte."
 
-#: src/routes/apps/+layout.svelte
-msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-msgstr "Svelte, MiniApps, Aplicativos, Ferramentas, Aplicações, Ecossistema, Inovador, Único"
+#~ msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
+#~ msgstr "Svelte, MiniApps, Aplicativos, Ferramentas, Aplicações, Ecossistema, Inovador, Único"
 
 #: src/routes/apps/+page.svelte
 msgid "Apps | Svelte Mini Apps"
@@ -666,39 +665,22 @@ msgstr "Explore o que vem a seguir"
 msgid "View Features"
 msgstr "Ver Recursos"
 
-#: src/routes/changelog/+page.svelte
-msgid "TL;DR: Development Insights"
-msgstr "TL;DR: Insights de Desenvolvimento"
+#~ msgid "TL;DR: Development Insights"
+#~ msgstr "TL;DR: Insights de Desenvolvimento"
+
+#~ msgid "Real-time insights from our automated changelog system."
+#~ msgstr "Insights em tempo real do nosso sistema de changelog automatizado."
+
+#~ msgid "{0} recent update{1}"
+#~ msgstr "{0} atualização recente{1}"
+
+#~ msgid "No recent activity"
+#~ msgstr "Nenhuma atividade recente"
+
+#~ msgid "+{0} more..."
+#~ msgstr "+{0} mais..."
 
 #: src/routes/changelog/+page.svelte
-msgid "Real-time insights from our automated changelog system."
-msgstr "Insights em tempo real do nosso sistema de changelog automatizado."
-
-#. placeholder {0}: type
-#: src/routes/changelog/+page.svelte
-msgid "{0}s"
-msgstr "{0}s"
-
-#. placeholder {0}: stats.recent.length
-#. placeholder {1}: stats.recent.length === 1 ? '' : 's'
-#: src/routes/changelog/+page.svelte
-msgid "{0} recent update{1}"
-msgstr "{0} atualização recente{1}"
-
-#: src/routes/changelog/+page.svelte
-msgid "No recent activity"
-msgstr "Nenhuma atividade recente"
-
-#. placeholder {0}: stats.recent.length - 2
-#: src/routes/changelog/+page.svelte
-msgid "+{0} more..."
-msgstr "+{0} mais..."
-
-#. placeholder {0}: type
-#: src/routes/changelog/+page.svelte
-msgid "All {0}s are from earlier periods"
-msgstr "Todos os {0}s são de períodos anteriores"
-
 #: src/routes/changelog/+page.svelte
 msgid "Highlights"
 msgstr "Destaques"
@@ -6752,14 +6734,18 @@ msgstr "Voltar ao topo"
 msgid "Reload Page"
 msgstr "Recarregar Página"
 
-#~ msgid "Invalid username"
-#~ msgstr "Nome de usuário inválido"
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Invalid username"
+msgstr "Nome de usuário inválido"
 
-#~ msgid "Invalid password"
-#~ msgstr "Senha inválida"
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Invalid password"
+msgstr "Senha inválida"
 
-#~ msgid "Incorrect username or password"
-#~ msgstr "Nome de usuário ou senha incorretos"
+#: src/routes/(auth)/login/+page.server.ts
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Incorrect username or password"
+msgstr "Nome de usuário ou senha incorretos"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -7484,9 +7470,6 @@ msgstr "Explorar"
 msgid "All Apps"
 msgstr "Todos os Apps"
 
-#~ msgid "Offline Mode"
-#~ msgstr "Modo Offline"
-
 #: src/lib/components/blocks/Footer.svelte
 msgid "Company"
 msgstr "Empresa"
@@ -7511,21 +7494,6 @@ msgstr "Contate-nos"
 msgid "View Source"
 msgstr "Ver Código Fonte"
 
-#~ msgid "Username must be at least 3 characters"
-#~ msgstr "O nome de usuário deve ter pelo menos 3 caracteres"
-
-#~ msgid "Username must be at most 31 characters"
-#~ msgstr "O nome de usuário deve ter no máximo 31 caracteres"
-
-#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
-#~ msgstr "O nome de usuário deve conter apenas letras minúsculas, números, underscores e hífens"
-
-#~ msgid "Password must be at least 6 characters"
-#~ msgstr "A senha deve ter pelo menos 6 caracteres"
-
-#~ msgid "Password must be at most 255 characters"
-#~ msgstr "A senha deve ter no máximo 255 caracteres"
-
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
 msgstr "Ver todas as senhas"
@@ -7533,24 +7501,6 @@ msgstr "Ver todas as senhas"
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "View and manage your saved passwords securely."
 msgstr "Visualize e gerencie suas senhas salvas com segurança."
-
-#~ msgid "View and manage your saved passwords"
-#~ msgstr "Visualize e gerencie suas senhas salvas"
-
-#~ msgid "Please log in to view your saved passwords"
-#~ msgstr "Por favor, faça login para visualizar suas senhas salvas"
-
-#~ msgid "Log In"
-#~ msgstr "Entrar"
-
-#~ msgid "Generate Your First Password"
-#~ msgstr "Gere sua primeira senha"
-
-#~ msgid "Passwords"
-#~ msgstr "Senhas"
-
-#~ msgid "{0} Saved {1}"
-#~ msgstr "{0} Senhas Salvas"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Securely manage and access your generated passwords"
@@ -7638,3 +7588,863 @@ msgstr "Adicione detalhes sobre esta senha..."
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> Salvando...```"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Offline-First Architecture"
+msgstr "Arquitetura Offline-First"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app."
+msgstr "Reconstrução completa focando em capacidades offline e gerenciamento de dados local-first. Os usuários podem usar o botão nuclear para limpar os dados em cache se notarem problemas com o aplicativo."
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced Performance"
+msgstr "Desempenho Aprimorado"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized load times and responsiveness through local data management."
+msgstr "Tempos de carregamento e capacidade de resposta otimizados através do gerenciamento de dados local."
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte 5 Migration"
+msgstr "Migração para Svelte 5"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete upgrade to Svelte 5 with modern features and optimizations."
+msgstr "Atualização completa para Svelte 5 com recursos e otimizações modernos."
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Local Data Persistence"
+msgstr "Persistência de Dados Local"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Robust local storage implementation with IndexedDB and background sync."
+msgstr "Implementação robusta de armazenamento local com IndexedDB e sincronização em segundo plano."
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "PWA Support"
+msgstr "Suporte a PWA"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Full Progressive Web App capabilities with offline support and installability."
+msgstr "Capacidades completas de Progressive Web App com suporte offline e instalabilidade."
+
+#: src/routes/changelog/data.svelte.ts
+msgid "October 14, 2025"
+msgstr "14 de outubro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte Mini Apps featured on the official MadeWithSvelte showcase"
+msgstr "Svelte Mini Apps em destaque na vitrine oficial do MadeWithSvelte"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps"
+msgstr "Em destaque no MadeWithSvelte.com mostrando nossa coleção de mini-aplicativos de produtividade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for our Svelte 5 implementation and modern PWA architecture"
+msgstr "Reconhecido por nossa implementação do Svelte 5 e arquitetura PWA moderna"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Highlighting our comprehensive suite of tools including budget tracker, todo list, and more"
+msgstr "Destacando nosso conjunto abrangente de ferramentas, incluindo rastreador de orçamento, lista de tarefas e muito mais"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 29, 2025"
+msgstr "29 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Switched from SQLite to PostgreSQL for improved scalability and performance"
+msgstr "Mudança de SQLite para PostgreSQL para escalabilidade e desempenho aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated database from SQLite to PostgreSQL for better scalability"
+msgstr "Banco de dados migrado de SQLite para PostgreSQL para melhor escalabilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated Prisma schema and models to support PostgreSQL"
+msgstr "Esquema e modelos do Prisma atualizados para suportar PostgreSQL"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added instructions for local PostgreSQL setup in README"
+msgstr "Adicionadas instruções para configuração local do PostgreSQL no README"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created dedicated db.ts file for Prisma client instance"
+msgstr "Criado arquivo db.ts dedicado para instância do cliente Prisma"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed obsolete drizzle config files"
+msgstr "Removidos arquivos de configuração do drizzle obsoletos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 27, 2025"
+msgstr "27 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Prepared for migrating budget tracker from localStorage to SQLite/Prisma"
+msgstr "Preparado para migrar o rastreador de orçamento do localStorage para SQLite/Prisma"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created detailed migration plan document"
+msgstr "Criado documento de plano de migração detalhado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Outlined database schema updates and server-side implementation"
+msgstr "Esboçadas atualizações do esquema do banco de dados e implementação do lado do servidor"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Planned client-side integration strategy"
+msgstr "Estratégia de integração do lado do cliente planejada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Prepared for future authentication integration"
+msgstr "Preparado para futura integração de autenticação"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 22-27, 2025"
+msgstr "22-27 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Completely refactored budget and expense state management"
+msgstr "Gestão de estado de orçamento e despesas completamente refatorada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Replaced legacy budgetStore with reactive stores"
+msgstr "Substituído o antigo budgetStore por stores reativos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive test suite for budget operations"
+msgstr "Implementada suíte de testes abrangente para operações de orçamento"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added cross-tab synchronization for consistent data"
+msgstr "Adicionada sincronização entre abas para dados consistentes"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced form data binding and empty state handling"
+msgstr "Vinculação de dados de formulário e tratamento de estado vazio aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated to custom PersistedState from svelte-persisted-store"
+msgstr "Migrado para PersistedState personalizado de svelte-persisted-store"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added currency symbol localization"
+msgstr "Adicionada localização de símbolo de moeda"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 21-22, 2025"
+msgstr "21-22 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented visual feedback for page navigation"
+msgstr "Implementado feedback visual para navegação de página"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created NavigationProgressIndicator component"
+msgstr "Criado componente NavigationProgressIndicator"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated progress bar in Navbar and GitHub tracker pages"
+msgstr "Barra de progresso integrada nas páginas Navbar e rastreador do GitHub"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized progress timing logic for smoother transitions"
+msgstr "Lógica de tempo de progresso otimizada para transições mais suaves"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved navigation state handling across the app"
+msgstr "Melhoria no tratamento do estado de navegação em todo o aplicativo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 18-20, 2025"
+msgstr "18-20 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Transformed todo list into full-featured Kanban board"
+msgstr "Lista de tarefas transformada em quadro Kanban completo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented drag-and-drop functionality with svelte-dnd-action"
+msgstr "Funcionalidade de arrastar e soltar implementada com svelte-dnd-action"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added dynamic column management"
+msgstr "Adicionado gerenciamento dinâmico de colunas"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved UI with grabber handles and resizer components"
+msgstr "IU aprimorada com alças de agarrar e componentes de redimensionamento"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced task editing with icon buttons"
+msgstr "Edição de tarefas aprimorada com botões de ícone"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized state management structure"
+msgstr "Estrutura de gerenciamento de estado otimizada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 5-11, 2025"
+msgstr "5-11 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Various enhancements to user interface and navigation"
+msgstr "Várias melhorias na interface do usuário e navegação"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated keyboard shortcuts for better accessibility"
+msgstr "Atalhos de teclado atualizados para melhor acessibilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved app list layout and responsiveness"
+msgstr "Layout da lista de aplicativos e capacidade de resposta aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added toggleable sheet menu for app navigation"
+msgstr "Adicionado menu de folha alternável para navegação de aplicativos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored route metadata management"
+msgstr "Gerenciamento de metadados de rota refatorado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Cleaned up unused components and imports"
+msgstr "Componentes e importações não utilizados limpos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 1-4, 2025"
+msgstr "1-4 de março de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive SEO improvements"
+msgstr "Implementadas melhorias abrangentes de SEO"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created RouteHead component for centralized metadata"
+msgstr "Criado componente RouteHead para metadados centralizados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added Open Graph and Twitter meta tags"
+msgstr "Adicionadas meta tags Open Graph e Twitter"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated structured data for better search visibility"
+msgstr "Dados estruturados integrados para melhor visibilidade na pesquisa"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Applied RouteHead across all major pages"
+msgstr "RouteHead aplicado em todas as páginas principais"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced About page with Attributions section"
+msgstr "Página Sobre aprimorada com seção de Atribuições"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "February 26-28, 2025"
+msgstr "26-28 de fevereiro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive usage analytics"
+msgstr "Análise de uso abrangente implementada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created AppTracker component for monitoring app usage"
+msgstr "Componente AppTracker criado para monitorar o uso de aplicativos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added favorite apps and recent activity to user profile"
+msgstr "Aplicativos favoritos e atividade recente adicionados ao perfil do usuário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented streak tracking based on daily usage"
+msgstr "Rastreamento de sequência implementado com base no uso diário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced profile page with usage statistics tabs"
+msgstr "Página de perfil aprimorada com guias de estatísticas de uso"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added example app to demonstrate tracking functionality"
+msgstr "Aplicativo de exemplo adicionado para demonstrar a funcionalidade de rastreamento"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "February 22, 2025"
+msgstr "22 de fevereiro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added visual elements to celebrate competition achievement"
+msgstr "Adicionados elementos visuais para celebrar a conquista na competição"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added trophy icon to highlight 4th place win"
+msgstr "Ícone de troféu adicionado para destacar a vitória do 4º lugar"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated welcome message with competition results"
+msgstr "Mensagem de boas-vindas atualizada com os resultados da competição"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Linked to detailed changelog entry about migration features"
+msgstr "Link para entrada detalhada do changelog sobre recursos de migração"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "February 10, 2025"
+msgstr "10 de fevereiro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for excellence in Svelte 5 migration with our Migration Magician entry"
+msgstr "Reconhecido pela excelência na migração para Svelte 5 com nossa entrada Migration Magician"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Earned 4th place in the prestigious Svelte Hack 2024 competition"
+msgstr "Conquistado o 4º lugar na prestigiosa competição Svelte Hack 2024"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for our innovative approach to Svelte 4 to Svelte 5 migration"
+msgstr "Reconhecido por nossa abordagem inovadora para a migração de Svelte 4 para Svelte 5"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive runes adoption across the codebase"
+msgstr "Adoção abrangente de runes implementada em todo o codebase"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Showcased offline-first architecture with robust local data persistence"
+msgstr "Arquitetura offline-first exibida com persistência de dados local robusta"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components"
+msgstr "IU/UX moderna demonstrada com recursos do Svelte 5 e componentes shadcn-svelte"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "January 16-19, 2025"
+msgstr "16-19 de janeiro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving functionality, user interface, and code quality"
+msgstr "Focado em melhorar a funcionalidade, a interface do usuário e a qualidade do código"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced Markdown editor with Carta-MD integration for better editing and preview capabilities"
+msgstr "Editor Markdown aprimorado com integração Carta-MD para melhores recursos de edição e visualização"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated currency conversion logic with easy-currencies library for improved accuracy"
+msgstr "Lógica de conversão de moeda atualizada com a biblioteca easy-currencies para maior precisão"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored NukeButton for better data clearing functionality and visual design"
+msgstr "NukeButton refatorado para melhor funcionalidade de limpeza de dados e design visual"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced GitHub contribution tracker with toast notifications and dynamic year updates"
+msgstr "Rastreador de contribuições do GitHub aprimorado com notificações toast e atualizações dinâmicas de ano"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced Partytown for web worker management and Google Tag Manager for analytics"
+msgstr "Partytown introduzido para gerenciamento de web worker e Google Tag Manager para análise"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Repositioned GitHub link in footer for better visibility"
+msgstr "Link do GitHub reposicionado no rodapé para melhor visibilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored GitGraph component for improved responsiveness and code cleanliness"
+msgstr "Componente GitGraph refatorado para melhor capacidade de resposta e limpeza de código"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated dependencies, including Svelte and TypeScript libraries"
+msgstr "Dependências atualizadas, incluindo bibliotecas Svelte e TypeScript"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "January 1-15, 2025"
+msgstr "1-15 de janeiro de 2025"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented user-focused features and cleaned up code structure"
+msgstr "Recursos focados no usuário implementados e estrutura de código limpa"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Corrected pluralization logic for GitHub contributions to ensure grammatical accuracy"
+msgstr "Lógica de pluralização corrigida para contribuições do GitHub para garantir precisão gramatical"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added robots.txt for better SEO and web crawler management"
+msgstr "robots.txt adicionado para melhor SEO e gerenciamento de rastreador da web"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized and cleaned up code for GitHub contribution tracker, including unused files"
+msgstr "Código otimizado e limpo para o rastreador de contribuições do GitHub, incluindo arquivos não utilizados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved password generator for better readability and consistency"
+msgstr "Gerador de senhas aprimorado para melhor legibilidade e consistência"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored UI elements for responsive design, notably in the heat map for contributions"
+msgstr "Elementos da IU refatorados para design responsivo, notavelmente no mapa de calor para contribuições"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced user role management in registration and session handling"
+msgstr "Gerenciamento de função de usuário aprimorado no registro e no tratamento de sessão"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved service worker functionality with error handling and update notifications"
+msgstr "Funcionalidade do service worker aprimorada com tratamento de erros e notificações de atualização"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed unused components, interfaces, and imports to streamline the codebase"
+msgstr "Componentes, interfaces e importações não utilizados removidos para simplificar o codebase"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refined feature flag logic to include privileged user roles"
+msgstr "Lógica de sinalizador de recurso refinada para incluir funções de usuário privilegiadas"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 29-31, 2024"
+msgstr "29-31 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactoring for code clarity, adding documentation, and enhancing user experience"
+msgstr "Refatoração para clareza do código, adição de documentação e aprimoramento da experiência do usuário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored import paths for consistency across components"
+msgstr "Caminhos de importação refatorados para consistência entre os componentes"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced command dialog components for enhanced command functionality"
+msgstr "Componentes de diálogo de comando introduzidos para funcionalidade de comando aprimorada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated UI colors to green for a cohesive design"
+msgstr "Cores da IU atualizadas para verde para um design coeso"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added keyboard shortcut for search input focus"
+msgstr "Atalho de teclado adicionado para foco na entrada de pesquisa"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced error handling in NukeButton for data integrity"
+msgstr "Tratamento de erros aprimorado no NukeButton para integridade dos dados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced CONTRIBUTING.md and enhanced README for better contributor guidance"
+msgstr "CONTRIBUTING.md introduzido e README aprimorado para melhor orientação do contribuidor"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored mantra and welcome components for cleaner state management"
+msgstr "Mantra e componentes de boas-vindas refatorados para gerenciamento de estado mais limpo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated dependencies and improved UI with new command shortcut component"
+msgstr "Dependências atualizadas e IU aprimorada com novo componente de atalho de comando"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 22-25, 2024"
+msgstr "22-25 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving user interface, adding new features, and enhancing interactivity"
+msgstr "Focado em melhorar a interface do usuário, adicionar novos recursos e aprimorar a interatividade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced GitHub tracker with dark mode support and better tooltips"
+msgstr "Rastreador do GitHub aprimorado com suporte ao modo escuro e melhores tooltips"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added comprehensive Drawer component suite for improved UI consistency"
+msgstr "Conjunto abrangente de componentes Drawer adicionado para maior consistência da IU"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated Navbar for dark mode compatibility"
+msgstr "Navbar atualizado para compatibilidade com o modo escuro"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced feature flags with visibility control for dynamic UI management"
+msgstr "Sinalizadores de recursos introduzidos com controle de visibilidade para gerenciamento dinâmico da IU"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved markdown editor with new components and responsive design"
+msgstr "Editor markdown aprimorado com novos componentes e design responsivo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added currency symbol helper in budget tracker for better financial data presentation"
+msgstr "Auxiliar de símbolo de moeda adicionado no rastreador de orçamento para melhor apresentação de dados financeiros"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker logic for better offline experience and caching"
+msgstr "Lógica do service worker aprimorada para melhor experiência offline e caching"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refined state management in reactive declarations for better app performance"
+msgstr "Gerenciamento de estado refinado em declarações reativas para melhor desempenho do aplicativo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 19-22, 2024"
+msgstr "19-22 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved user interaction, added new components, and enhanced service worker functionality"
+msgstr "Interação do usuário aprimorada, novos componentes adicionados e funcionalidade do service worker aprimorada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker update mechanism with hash checks and client notifications"
+msgstr "Mecanismo de atualização do service worker aprimorado com verificações de hash e notificações do cliente"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved budget tracker UI with better input handling and visual feedback"
+msgstr "IU do rastreador de orçamento aprimorada com melhor tratamento de entrada e feedback visual"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored to-do list with custom UI components for better organization"
+msgstr "Lista de tarefas refatorada com componentes de IU personalizados para melhor organização"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added custom columns to to-do list for dynamic task management"
+msgstr "Colunas personalizadas adicionadas à lista de tarefas para gerenciamento dinâmico de tarefas"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced 'Under Construction' component for informing users about ongoing development"
+msgstr "Componente 'Em Construção' introduzido para informar os usuários sobre o desenvolvimento em andamento"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added advanced emoji tools with new context menu and keyboard interactions"
+msgstr "Ferramentas de emoji avançadas adicionadas com novo menu de contexto e interações do teclado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 14-17, 2024"
+msgstr "14-17 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on code quality, new functionalities, and project setup"
+msgstr "Focado na qualidade do código, novas funcionalidades e configuração do projeto"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Simplified mantra retrieval logic for better readability"
+msgstr "Lógica de recuperação de mantra simplificada para melhor legibilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized Navbar button whitespace for cleaner UI"
+msgstr "Espaço em branco do botão da Navbar otimizado para uma IU mais limpa"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced pixel-to-rem conversion setting for responsive design"
+msgstr "Configuração de conversão de pixel para rem introduzida para design responsivo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added SEO guidelines and constants for enhanced visibility"
+msgstr "Diretrizes e constantes de SEO adicionadas para maior visibilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented to-do list with local storage persistence for task management"
+msgstr "Lista de tarefas implementada com persistência de armazenamento local para gerenciamento de tarefas"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced password management with new UI features and security measures"
+msgstr "Gerenciamento de senhas aprimorado com novos recursos da IU e medidas de segurança"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored OAuth callback handler for GitHub to improve maintainability"
+msgstr "Manipulador de callback OAuth refatorado para GitHub para melhorar a manutenibilidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated service worker hash output path for deployment consistency"
+msgstr "Atualizado o caminho de saída do hash do service worker para consistência na implantação"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 14, 2024"
+msgstr "14 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced new features for user interaction, database changes, and improved UI components"
+msgstr "Introduzidas novas funcionalidades para interação do usuário, alterações no banco de dados e componentes de UI aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added functionality to like mantras with database updates"
+msgstr "Adicionada funcionalidade para curtir mantras com atualizações no banco de dados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated database to SQLite, added Mantras table, and user feedback form"
+msgstr "Banco de dados migrado para SQLite, tabela Mantras adicionada e formulário de feedback do usuário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Modularized about-page components for better UX"
+msgstr "Componentes da página 'sobre' modularizados para melhor UX"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed service-worker-hash.json file to clean up the project structure"
+msgstr "Arquivo service-worker-hash.json removido para limpar a estrutura do projeto"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated service worker hash file path for consistency"
+msgstr "Caminho do arquivo hash do service worker atualizado para consistência"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 12-13, 2024"
+msgstr "12-13 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving service worker logic, styling, and project configuration"
+msgstr "Focado em melhorar a lógica do service worker, o estilo e a configuração do projeto"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker notification system with better version management"
+msgstr "Sistema de notificação do service worker aprimorado com melhor gerenciamento de versão"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Simplified service worker hash generation and update logic"
+msgstr "Geração de hash do service worker simplificada e lógica de atualização"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added enhanced-images package for better image handling in Svelte"
+msgstr "Pacote enhanced-images adicionado para melhor manipulação de imagens em Svelte"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced new components and images for the about page"
+msgstr "Novos componentes e imagens introduzidos para a página 'sobre'"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved HTML and CSS styling for better code readability"
+msgstr "Estilização HTML e CSS aprimorada para melhor legibilidade do código"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated build scripts and dependencies for compatibility and efficiency"
+msgstr "Scripts de build e dependências atualizados para compatibilidade e eficiência"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added password generation button to the random password generator"
+msgstr "Adicionado botão de geração de senha ao gerador de senha aleatória"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 11, 2024"
+msgstr "11 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved user control over app data and caching"
+msgstr "Controle aprimorado do usuário sobre os dados do aplicativo e o cache"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added comprehensive Nuke Button functionality to clear all cached data"
+msgstr "Adicionada funcionalidade abrangente do Botão Nuke para limpar todos os dados em cache"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Clear caches, localStorage, sessionStorage, and IndexedDB data"
+msgstr "Limpar caches, localStorage, sessionStorage e dados IndexedDB"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Automatic service worker unregistration for fresh starts"
+msgstr "Desregistro automático do service worker para reinícios limpos"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added user guidance for troubleshooting app issues"
+msgstr "Adicionada orientação ao usuário para solucionar problemas do aplicativo"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 10, 2024"
+msgstr "10 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete overhaul of password generator and enhanced clipboard functionality"
+msgstr "Revisão completa do gerador de senhas e funcionalidade aprimorada da área de transferência"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Reimplemented password generator with modern UI components and enhanced features"
+msgstr "Gerador de senhas reimplementado com componentes de UI modernos e recursos aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added versatile copyToClipboard utility function with toast notifications"
+msgstr "Adicionada função de utilitário copyToClipboard versátil com notificações toast"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented dynamic password strength indicators and character options"
+msgstr "Implementados indicadores dinâmicos de força da senha e opções de caracteres"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated slider component for flexible password length control"
+msgstr "Componente de slider integrado para controle flexível do comprimento da senha"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored emoji and password generators to use the new clipboard utility"
+msgstr "Geradores de emoji e senha refatorados para usar o novo utilitário de área de transferência"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 4, 2024"
+msgstr "4 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major improvements to QR code generation and social links functionality"
+msgstr "Grandes melhorias na geração de código QR e na funcionalidade de links sociais"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added QR code display component for improved modularity"
+msgstr "Adicionado componente de exibição de código QR para melhor modularidade"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented social links database with comprehensive management"
+msgstr "Banco de dados de links sociais implementado com gerenciamento abrangente"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created API endpoints for social links handling"
+msgstr "Endpoints de API criados para manipulação de links sociais"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced QR code generator with text and social links input"
+msgstr "Gerador de código QR aprimorado com entrada de texto e links sociais"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 1-3, 2024"
+msgstr "1-3 de dezembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "New features and improvements to existing apps"
+msgstr "Novos recursos e melhorias para aplicativos existentes"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced currency conversion with caching and user-agent rotation"
+msgstr "Conversão de moeda aprimorada com cache e rotação de user-agent"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added advanced emoji transformation features"
+msgstr "Adicionados recursos avançados de transformação de emoji"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented emoji checker functionality"
+msgstr "Funcionalidade de verificador de emoji implementada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added pattern validation for currency amounts"
+msgstr "Adicionada validação de padrão para valores de moeda"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 29-30, 2024"
+msgstr "29-30 de novembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major backend and infrastructure improvements"
+msgstr "Grandes melhorias no backend e na infraestrutura"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented English dictionary with caching"
+msgstr "Dicionário de inglês implementado com cache"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added health check endpoint"
+msgstr "Endpoint de verificação de saúde adicionado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker functionality"
+msgstr "Funcionalidade do service worker aprimorada"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Switched from drizzle-orm to Prisma for better database management"
+msgstr "Mudança de drizzle-orm para Prisma para melhor gerenciamento do banco de dados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 24-27, 2024"
+msgstr "24-27 de novembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major user experience and authentication improvements"
+msgstr "Grandes melhorias na experiência do usuário e na autenticação"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented user authentication system"
+msgstr "Sistema de autenticação de usuário implementado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added user profile components"
+msgstr "Componentes de perfil de usuário adicionados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created offline page component"
+msgstr "Componente de página offline criado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced navbar with user context"
+msgstr "Navbar aprimorada com contexto do usuário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 23-24, 2024"
+msgstr "23-24 de novembro de 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced visual feedback and animations"
+msgstr "Feedback visual e animações aprimorados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added new Lottie animations for improved UI feedback"
+msgstr "Novas animações Lottie adicionadas para feedback de UI aprimorado"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented trending, repository, and hover animations"
+msgstr "Implementadas animações de trending, repositório e hover"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated welcome message and about page layout"
+msgstr "Mensagem de boas-vindas e layout da página 'sobre' atualizados"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added alert component with description support"
+msgstr "Componente de alerta adicionado com suporte à descrição"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte Hack 2024 Achievement"
+msgstr "Conquista no Svelte Hack 2024"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for innovative Svelte 5 migration approach and offline-first architecture"
+msgstr "Reconhecido pela abordagem inovadora de migração para Svelte 5 e arquitetura offline-first"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major Refactoring"
+msgstr "Refatoração Principal"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Revamped code quality with widespread component refactors"
+msgstr "Qualidade do código renovada com refatorações generalizadas de componentes"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized service worker and asset caching for improved offline support"
+msgstr "Service worker e cache de ativos otimizados para melhor suporte offline"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "User Experience Enhancements"
+msgstr "Aprimoramentos na Experiência do Usuário"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Streamlined UI design and navigation for an intuitive experience"
+msgstr "Design da UI e navegação simplificados para uma experiência intuitiva"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced offline indicators and interaction feedback"
+msgstr "Indicadores offline e feedback de interação aprimorados"
+
+#~ msgid "All {0} are from earlier periods"
+#~ msgstr "Todos os {0} são de períodos anteriores"
+
+#: src/routes/changelog/+page.svelte
+msgid "Key achievements and major improvements."
+msgstr "Principais conquistas e grandes melhorias."
+
+#: src/routes/apps/+layout.svelte
+msgid "Svelte, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
+msgstr "Svelte, Mini Apps, Apps, Ferramentas, Aplicações, Ecossistema, Inovador, Único"

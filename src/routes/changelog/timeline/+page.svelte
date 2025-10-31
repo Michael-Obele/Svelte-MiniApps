@@ -14,7 +14,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
-	import { allTimeline, getTypeStyles } from '../data';
+	import { getAllTimeline, getTypeStyles } from '../data.svelte';
 	import { Bot, SquarePen } from '@lucide/svelte';
 	import ChangelogStats from '../ChangelogStats.svelte';
 	import DebugOrder from '../DebugOrder.svelte';
@@ -22,6 +22,7 @@
 	import { Label } from '@/ui/label';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
+	const allTimeline = getAllTimeline();
 	let selectedItem: (typeof allTimeline)[0] | null = $state(null);
 	let showGenerated = $state(true);
 	let showManual = $state(true);

@@ -110,7 +110,7 @@
 <RouteHead
 	title="About Page | Svelte Mini Apps"
 	description="Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
-	keywords="Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
+	keywords="Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 	route="/about"
 	image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
 />

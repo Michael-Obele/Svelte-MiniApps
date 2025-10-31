@@ -1,11 +1,13 @@
 <!-- Changelog Statistics Component -->
 <script lang="ts">
 	import { Button } from '@/ui/button';
-	import { allTimeline } from './data';
+	import { getAllTimeline } from './data.svelte';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Bot, SquarePen, TrendingUp, Calendar, Code } from '@lucide/svelte';
 	import { dev } from '$app/environment';
+
+	const allTimeline = getAllTimeline();
 
 	const stats = $derived.by(() => {
 		const manual = allTimeline.filter((item) => !('source' in item) || item.source === 'manual');

@@ -59,14 +59,6 @@
 	});
 </script>
 
-<!-- <RouteHead
-	title="Apps Page | Svelte Mini Apps"
-	description="Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
-	keywords="Svelte, MiniApps, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-	route="/apps"
-	image="https://i.ibb.co/ZhhhnCz/svelte-badge.png"
-/> -->
-
 {#if currentRoute && currentRoute !== 'apps'}
 	<AppTracker appLink={currentRoute} />
 {/if}

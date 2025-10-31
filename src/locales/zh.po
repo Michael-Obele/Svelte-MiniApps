@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-30T13:17:53.674Z\n"
+"PO-Revision-Date: 2025-10-31T07:30:37.021Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -12,14 +12,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#~ msgid "Invalid username"
-#~ msgstr "用户名无效"
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Invalid username"
+msgstr "用户名无效"
 
-#~ msgid "Invalid password"
-#~ msgstr "密码无效"
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Invalid password"
+msgstr "密码无效"
 
-#~ msgid "Incorrect username or password"
-#~ msgstr "用户名或密码错误"
+#: src/routes/(auth)/login/+page.server.ts
+#: src/routes/(auth)/login/+page.server.ts
+msgid "Incorrect username or password"
+msgstr "用户名或密码错误"
 
 #: src/routes/(auth)/register/+page.server.ts
 msgid "All fields are required"
@@ -185,9 +189,8 @@ msgstr "应用页面 | Svelte Mini Apps"
 msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
 msgstr "浏览我们独特的 Svelte Mini Apps 合集。 发现新工具、创新应用，并了解我们如何增强 Svelte 生态系统。"
 
-#: src/routes/apps/+layout.svelte
-msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-msgstr "Svelte, MiniApps, 应用, 工具, 应用程序, 生态系统, 创新, 独特"
+#~ msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
+#~ msgstr "Svelte, MiniApps, 应用, 工具, 应用程序, 生态系统, 创新, 独特"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -2332,39 +2335,22 @@ msgstr "探索接下来会发生什么"
 msgid "View Features"
 msgstr "查看功能"
 
-#: src/routes/changelog/+page.svelte
-msgid "TL;DR: Development Insights"
-msgstr "TL;DR：开发见解"
+#~ msgid "TL;DR: Development Insights"
+#~ msgstr "TL;DR：开发见解"
+
+#~ msgid "Real-time insights from our automated changelog system."
+#~ msgstr "来自我们自动化更新日志系统的实时见解。"
+
+#~ msgid "{0} recent update{1}"
+#~ msgstr "{0} 个最近的更新{1}"
+
+#~ msgid "No recent activity"
+#~ msgstr "最近没有活动"
+
+#~ msgid "+{0} more..."
+#~ msgstr "+{0} 更多..."
 
 #: src/routes/changelog/+page.svelte
-msgid "Real-time insights from our automated changelog system."
-msgstr "来自我们自动化更新日志系统的实时见解。"
-
-#. placeholder {0}: type
-#: src/routes/changelog/+page.svelte
-msgid "{0}s"
-msgstr "{0}个"
-
-#. placeholder {0}: stats.recent.length
-#. placeholder {1}: stats.recent.length === 1 ? '' : 's'
-#: src/routes/changelog/+page.svelte
-msgid "{0} recent update{1}"
-msgstr "{0} 个最近的更新{1}"
-
-#: src/routes/changelog/+page.svelte
-msgid "No recent activity"
-msgstr "最近没有活动"
-
-#. placeholder {0}: stats.recent.length - 2
-#: src/routes/changelog/+page.svelte
-msgid "+{0} more..."
-msgstr "+{0} 更多..."
-
-#. placeholder {0}: type
-#: src/routes/changelog/+page.svelte
-msgid "All {0}s are from earlier periods"
-msgstr "所有 {0} 均来自早期"
-
 #: src/routes/changelog/+page.svelte
 msgid "Highlights"
 msgstr "亮点"
@@ -7381,9 +7367,6 @@ msgstr "探索"
 msgid "All Apps"
 msgstr "所有应用"
 
-#~ msgid "Offline Mode"
-#~ msgstr "离线模式"
-
 #: src/lib/components/blocks/Footer.svelte
 msgid "Company"
 msgstr "公司"
@@ -7408,21 +7391,6 @@ msgstr "联系我们"
 msgid "View Source"
 msgstr "查看源代码"
 
-#~ msgid "Username must be at least 3 characters"
-#~ msgstr "用户名必须至少包含 3 个字符"
-
-#~ msgid "Username must be at most 31 characters"
-#~ msgstr "用户名最多包含 31 个字符"
-
-#~ msgid "Username must contain only lowercase letters, numbers, underscores, and hyphens"
-#~ msgstr "用户名只能包含小写字母、数字、下划线和连字符"
-
-#~ msgid "Password must be at least 6 characters"
-#~ msgstr "密码必须至少包含 6 个字符"
-
-#~ msgid "Password must be at most 255 characters"
-#~ msgstr "密码最多包含 255 个字符"
-
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
 msgstr "查看所有密码"
@@ -7430,24 +7398,6 @@ msgstr "查看所有密码"
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "View and manage your saved passwords securely."
 msgstr "安全地查看和管理您保存的密码。"
-
-#~ msgid "View and manage your saved passwords"
-#~ msgstr "查看和管理您保存的密码"
-
-#~ msgid "Please log in to view your saved passwords"
-#~ msgstr "请登录以查看您保存的密码"
-
-#~ msgid "Log In"
-#~ msgstr "登录"
-
-#~ msgid "Generate Your First Password"
-#~ msgstr "生成您的第一个密码"
-
-#~ msgid "Passwords"
-#~ msgstr "密码"
-
-#~ msgid "{0} Saved {1}"
-#~ msgstr "已保存 {0} 个{1}"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Securely manage and access your generated passwords"
@@ -7535,3 +7485,863 @@ msgstr "添加关于此密码的详细信息..."
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> 保存中...```"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Offline-First Architecture"
+msgstr "离线优先架构"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app."
+msgstr "完全重建，专注于离线功能和本地优先数据管理。如果用户发现应用有问题，可以使用核弹按钮清除缓存数据。"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced Performance"
+msgstr "性能增强"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized load times and responsiveness through local data management."
+msgstr "通过本地数据管理优化了加载时间和响应速度。"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte 5 Migration"
+msgstr "Svelte 5 迁移"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete upgrade to Svelte 5 with modern features and optimizations."
+msgstr "完全升级到 Svelte 5，具有现代功能和优化。"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Local Data Persistence"
+msgstr "本地数据持久化"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Robust local storage implementation with IndexedDB and background sync."
+msgstr "使用 IndexedDB 和后台同步实现的强大的本地存储。"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "PWA Support"
+msgstr "PWA 支持"
+
+#: src/routes/changelog/+page.svelte
+#: src/routes/changelog/data.svelte.ts
+msgid "Full Progressive Web App capabilities with offline support and installability."
+msgstr "完整的渐进式 Web 应用功能，支持离线和安装。"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "October 14, 2025"
+msgstr "2025 年 10 月 14 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte Mini Apps featured on the official MadeWithSvelte showcase"
+msgstr "Svelte Mini Apps 在官方 MadeWithSvelte 展台上推荐"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps"
+msgstr "在 MadeWithSvelte.com 上推荐，展示了我们的生产力迷你应用集合"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for our Svelte 5 implementation and modern PWA architecture"
+msgstr "因我们的 Svelte 5 实现和现代 PWA 架构而获得认可"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Highlighting our comprehensive suite of tools including budget tracker, todo list, and more"
+msgstr "重点介绍了我们全面的工具套件，包括预算跟踪器、待办事项列表等"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 29, 2025"
+msgstr "2025 年 3 月 29 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Switched from SQLite to PostgreSQL for improved scalability and performance"
+msgstr "从 SQLite 切换到 PostgreSQL，以提高可伸缩性和性能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated database from SQLite to PostgreSQL for better scalability"
+msgstr "将数据库从 SQLite 迁移到 PostgreSQL，以获得更好的可伸缩性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated Prisma schema and models to support PostgreSQL"
+msgstr "更新了 Prisma 模式和模型以支持 PostgreSQL"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added instructions for local PostgreSQL setup in README"
+msgstr "在 README 中添加了本地 PostgreSQL 设置的说明"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created dedicated db.ts file for Prisma client instance"
+msgstr "为 Prisma 客户端实例创建了专用的 db.ts 文件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed obsolete drizzle config files"
+msgstr "删除了过时的 drizzle 配置文件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 27, 2025"
+msgstr "2025 年 3 月 27 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Prepared for migrating budget tracker from localStorage to SQLite/Prisma"
+msgstr "准备将预算跟踪器从 localStorage 迁移到 SQLite/Prisma"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created detailed migration plan document"
+msgstr "创建了详细的迁移计划文档"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Outlined database schema updates and server-side implementation"
+msgstr "概述了数据库模式更新和服务器端实现"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Planned client-side integration strategy"
+msgstr "计划了客户端集成策略"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Prepared for future authentication integration"
+msgstr "为未来的身份验证集成做准备"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 22-27, 2025"
+msgstr "2025 年 3 月 22-27 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Completely refactored budget and expense state management"
+msgstr "完全重构了预算和费用状态管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Replaced legacy budgetStore with reactive stores"
+msgstr "用响应式存储替换了旧的 budgetStore"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive test suite for budget operations"
+msgstr "为预算操作实现了全面的测试套件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added cross-tab synchronization for consistent data"
+msgstr "添加了跨标签页同步以保持数据一致"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced form data binding and empty state handling"
+msgstr "增强了表单数据绑定和空状态处理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated to custom PersistedState from svelte-persisted-store"
+msgstr "从 svelte-persisted-store 迁移到自定义 PersistedState"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added currency symbol localization"
+msgstr "添加了货币符号本地化"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 21-22, 2025"
+msgstr "2025 年 3 月 21-22 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented visual feedback for page navigation"
+msgstr "为页面导航实现了可视化反馈"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created NavigationProgressIndicator component"
+msgstr "创建了 NavigationProgressIndicator 组件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated progress bar in Navbar and GitHub tracker pages"
+msgstr "在 Navbar 和 GitHub 跟踪器页面中集成了进度条"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized progress timing logic for smoother transitions"
+msgstr "优化了进度计时逻辑，以实现更平滑的过渡"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved navigation state handling across the app"
+msgstr "改进了整个应用程序的导航状态处理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 18-20, 2025"
+msgstr "2025 年 3 月 18-20 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Transformed todo list into full-featured Kanban board"
+msgstr "将待办事项列表转换为功能齐全的看板"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented drag-and-drop functionality with svelte-dnd-action"
+msgstr "使用 svelte-dnd-action 实现了拖放功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added dynamic column management"
+msgstr "添加了动态列管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved UI with grabber handles and resizer components"
+msgstr "使用抓取手柄和调整大小组件改进了 UI"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced task editing with icon buttons"
+msgstr "使用图标按钮增强了任务编辑"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized state management structure"
+msgstr "优化了状态管理结构"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 5-11, 2025"
+msgstr "2025 年 3 月 5-11 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Various enhancements to user interface and navigation"
+msgstr "对用户界面和导航的各种增强"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated keyboard shortcuts for better accessibility"
+msgstr "更新了键盘快捷键以提高可访问性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved app list layout and responsiveness"
+msgstr "改进了应用程序列表布局和响应性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added toggleable sheet menu for app navigation"
+msgstr "为应用程序导航添加了可切换的表单菜单"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored route metadata management"
+msgstr "重构了路由元数据管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Cleaned up unused components and imports"
+msgstr "清理了未使用的组件和导入"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "March 1-4, 2025"
+msgstr "2025 年 3 月 1-4 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive SEO improvements"
+msgstr "实施了全面的 SEO 改进"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created RouteHead component for centralized metadata"
+msgstr "创建了 RouteHead 组件以集中元数据"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added Open Graph and Twitter meta tags"
+msgstr "添加了 Open Graph 和 Twitter 元标签"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated structured data for better search visibility"
+msgstr "集成了结构化数据以提高搜索可见性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Applied RouteHead across all major pages"
+msgstr "将 RouteHead 应用于所有主要页面"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced About page with Attributions section"
+msgstr "使用“Attributions”部分增强了“关于”页面"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "February 26-28, 2025"
+msgstr "2025 年 2 月 26-28 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive usage analytics"
+msgstr "实施了全面的使用分析"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created AppTracker component for monitoring app usage"
+msgstr "创建了 AppTracker 组件以监控应用程序使用情况"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added favorite apps and recent activity to user profile"
+msgstr "将喜欢的应用程序和最近的活动添加到用户个人资料"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented streak tracking based on daily usage"
+msgstr "实施了基于每日使用情况的连胜跟踪"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced profile page with usage statistics tabs"
+msgstr "使用使用统计信息标签增强了个人资料页面"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added example app to demonstrate tracking functionality"
+msgstr "添加了示例应用程序以演示跟踪功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "February 22, 2025"
+msgstr "2025 年 2 月 22 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added visual elements to celebrate competition achievement"
+msgstr "添加了视觉元素以庆祝比赛成就"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added trophy icon to highlight 4th place win"
+msgstr "添加了奖杯图标以突出显示第四名"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated welcome message with competition results"
+msgstr "使用比赛结果更新了欢迎消息"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Linked to detailed changelog entry about migration features"
+msgstr "链接到有关迁移功能的详细变更日志条目"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "February 10, 2025"
+msgstr "2025 年 2 月 10 日"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for excellence in Svelte 5 migration with our Migration Magician entry"
+msgstr "因我们 Migration Magician 条目的 Svelte 5 迁移方面的卓越表现而获得认可"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Earned 4th place in the prestigious Svelte Hack 2024 competition"
+msgstr "在著名的 Svelte Hack 2024 比赛中获得第四名"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for our innovative approach to Svelte 4 to Svelte 5 migration"
+msgstr "因我们从 Svelte 4 到 Svelte 5 迁移的创新方法而获得认可"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented comprehensive runes adoption across the codebase"
+msgstr "在整个代码库中实施了全面的 runes 采用"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Showcased offline-first architecture with robust local data persistence"
+msgstr "展示了具有强大本地数据持久性的离线优先架构"
+
+#: src/routes/changelog/data.svelte.ts
+#: src/routes/changelog/data.svelte.ts
+msgid "Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components"
+msgstr "使用 Svelte 5 功能和 shadcn-svelte 组件演示了现代 UI/UX"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "January 16-19, 2025"
+msgstr "2025 年 1 月 16-19 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving functionality, user interface, and code quality"
+msgstr "专注于改进功能、用户界面和代码质量"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced Markdown editor with Carta-MD integration for better editing and preview capabilities"
+msgstr "通过 Carta-MD 集成增强了 Markdown 编辑器，以获得更好的编辑和预览功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated currency conversion logic with easy-currencies library for improved accuracy"
+msgstr "使用 easy-currencies 库更新了货币转换逻辑，以提高准确性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored NukeButton for better data clearing functionality and visual design"
+msgstr "重构了 NukeButton，以获得更好的数据清除功能和视觉设计"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced GitHub contribution tracker with toast notifications and dynamic year updates"
+msgstr "使用 toast 通知和动态年份更新增强了 GitHub 贡献跟踪器"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced Partytown for web worker management and Google Tag Manager for analytics"
+msgstr "引入了 Partytown 用于 web worker 管理，引入了 Google Tag Manager 用于分析"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Repositioned GitHub link in footer for better visibility"
+msgstr "重新定位了页脚中的 GitHub 链接，以提高可见性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored GitGraph component for improved responsiveness and code cleanliness"
+msgstr "重构了 GitGraph 组件，以提高响应性和代码简洁性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated dependencies, including Svelte and TypeScript libraries"
+msgstr "更新了依赖项，包括 Svelte 和 TypeScript 库"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "January 1-15, 2025"
+msgstr "2025 年 1 月 1-15 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented user-focused features and cleaned up code structure"
+msgstr "实施了以用户为中心的功能，并清理了代码结构"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Corrected pluralization logic for GitHub contributions to ensure grammatical accuracy"
+msgstr "更正了 GitHub 贡献的复数逻辑，以确保语法准确性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added robots.txt for better SEO and web crawler management"
+msgstr "添加了 robots.txt，以获得更好的 SEO 和 Web 爬虫管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized and cleaned up code for GitHub contribution tracker, including unused files"
+msgstr "优化并清理了 GitHub 贡献跟踪器的代码，包括未使用的文件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved password generator for better readability and consistency"
+msgstr "改进了密码生成器，以提高可读性和一致性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored UI elements for responsive design, notably in the heat map for contributions"
+msgstr "重构了 UI 元素以实现响应式设计，特别是在贡献的热图中"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced user role management in registration and session handling"
+msgstr "增强了注册和会话处理中的用户角色管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved service worker functionality with error handling and update notifications"
+msgstr "改进了服务工作线程的功能，包括错误处理和更新通知"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed unused components, interfaces, and imports to streamline the codebase"
+msgstr "删除了未使用的组件、接口和导入，以简化代码库"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refined feature flag logic to include privileged user roles"
+msgstr "改进了功能标志逻辑，以包括特权用户角色"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 29-31, 2024"
+msgstr "2024 年 12 月 29-31 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactoring for code clarity, adding documentation, and enhancing user experience"
+msgstr "重构以提高代码清晰度，添加文档并增强用户体验"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored import paths for consistency across components"
+msgstr "重构了导入路径，以确保组件之间的一致性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced command dialog components for enhanced command functionality"
+msgstr "引入了命令对话框组件，以增强命令功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated UI colors to green for a cohesive design"
+msgstr "将 UI 颜色更新为绿色，以实现内聚的设计"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added keyboard shortcut for search input focus"
+msgstr "添加了用于搜索输入焦点的键盘快捷键"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced error handling in NukeButton for data integrity"
+msgstr "增强了 NukeButton 中的错误处理，以确保数据完整性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced CONTRIBUTING.md and enhanced README for better contributor guidance"
+msgstr "引入了 CONTRIBUTING.md 并增强了 README，以提供更好的贡献者指南"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored mantra and welcome components for cleaner state management"
+msgstr "重构了 mantra 和欢迎组件，以实现更清晰的状态管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated dependencies and improved UI with new command shortcut component"
+msgstr "更新了依赖项，并使用新的命令快捷方式组件改进了 UI"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 22-25, 2024"
+msgstr "2024 年 12 月 22-25 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving user interface, adding new features, and enhancing interactivity"
+msgstr "专注于改进用户界面，添加新功能并增强交互性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced GitHub tracker with dark mode support and better tooltips"
+msgstr "使用深色模式支持和更好的工具提示增强了 GitHub 跟踪器"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added comprehensive Drawer component suite for improved UI consistency"
+msgstr "添加了全面的 Drawer 组件套件，以提高 UI 一致性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated Navbar for dark mode compatibility"
+msgstr "更新了 Navbar 以实现深色模式兼容性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced feature flags with visibility control for dynamic UI management"
+msgstr "引入了具有可见性控制的功能标志，用于动态 UI 管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved markdown editor with new components and responsive design"
+msgstr "使用新组件和响应式设计改进了 markdown 编辑器"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added currency symbol helper in budget tracker for better financial data presentation"
+msgstr "在预算跟踪器中添加了货币符号助手，以更好地呈现财务数据"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker logic for better offline experience and caching"
+msgstr "增强了服务工作线程逻辑，以获得更好的离线体验和缓存"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refined state management in reactive declarations for better app performance"
+msgstr "改进了响应式声明中的状态管理，以获得更好的应用程序性能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 19-22, 2024"
+msgstr "2024 年 12 月 19-22 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved user interaction, added new components, and enhanced service worker functionality"
+msgstr "改进了用户交互，添加了新组件，并增强了服务工作线程的功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker update mechanism with hash checks and client notifications"
+msgstr "使用哈希检查和客户端通知增强了服务工作线程更新机制"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved budget tracker UI with better input handling and visual feedback"
+msgstr "改进了预算跟踪器 UI，包括更好的输入处理和视觉反馈"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored to-do list with custom UI components for better organization"
+msgstr "使用自定义 UI 组件重构了待办事项列表，以获得更好的组织"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added custom columns to to-do list for dynamic task management"
+msgstr "向待办事项列表添加了自定义列，以实现动态任务管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced 'Under Construction' component for informing users about ongoing development"
+msgstr "引入了“正在建设中”组件，用于通知用户有关正在进行的开发"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added advanced emoji tools with new context menu and keyboard interactions"
+msgstr "添加了具有新上下文菜单和键盘交互的高级表情符号工具"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 14-17, 2024"
+msgstr "2024 年 12 月 14-17 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on code quality, new functionalities, and project setup"
+msgstr "专注于代码质量、新功能和项目设置"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Simplified mantra retrieval logic for better readability"
+msgstr "简化了 mantra 检索逻辑，以提高可读性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized Navbar button whitespace for cleaner UI"
+msgstr "优化了 Navbar 按钮空白，以获得更简洁的 UI"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced pixel-to-rem conversion setting for responsive design"
+msgstr "引入了像素到 rem 的转换设置，以实现响应式设计"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added SEO guidelines and constants for enhanced visibility"
+msgstr "添加了 SEO 指南和常量，以提高可见性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented to-do list with local storage persistence for task management"
+msgstr "实现了具有本地存储持久性的待办事项列表，用于任务管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced password management with new UI features and security measures"
+msgstr "使用新的 UI 功能和安全措施增强了密码管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored OAuth callback handler for GitHub to improve maintainability"
+msgstr "重构了 GitHub 的 OAuth 回调处理程序，以提高可维护性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated service worker hash output path for deployment consistency"
+msgstr "更新了服务工作线程哈希输出路径，以实现部署一致性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 14, 2024"
+msgstr "2024 年 12 月 14 日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced new features for user interaction, database changes, and improved UI components"
+msgstr "引入了用于用户交互、数据库更改和改进的 UI 组件的新功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added functionality to like mantras with database updates"
+msgstr "添加了使用数据库更新喜欢 mantras 的功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Migrated database to SQLite, added Mantras table, and user feedback form"
+msgstr "将数据库迁移到 SQLite，添加了 Mantras 表和用户反馈表单"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Modularized about-page components for better UX"
+msgstr "模块化了关于页面组件，以获得更好的 UX"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Removed service-worker-hash.json file to clean up the project structure"
+msgstr "删除了 service-worker-hash.json 文件以清理项目结构"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated service worker hash file path for consistency"
+msgstr "更新了服务工作线程哈希文件路径，以确保一致性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 12-13, 2024"
+msgstr "2024年12月12-13日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Focused on improving service worker logic, styling, and project configuration"
+msgstr "专注于改进 service worker 逻辑、样式和项目配置"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker notification system with better version management"
+msgstr "增强了 service worker 通知系统，具有更好的版本管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Simplified service worker hash generation and update logic"
+msgstr "简化了 service worker 哈希生成和更新逻辑"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added enhanced-images package for better image handling in Svelte"
+msgstr "添加了 enhanced-images 包，以便在 Svelte 中更好地处理图像"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Introduced new components and images for the about page"
+msgstr "为关于页面引入了新的组件和图像"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved HTML and CSS styling for better code readability"
+msgstr "改进了 HTML 和 CSS 样式，以提高代码可读性"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated build scripts and dependencies for compatibility and efficiency"
+msgstr "更新了构建脚本和依赖项，以提高兼容性和效率"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added password generation button to the random password generator"
+msgstr "向随机密码生成器添加了密码生成按钮"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 11, 2024"
+msgstr "2024年12月11日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Improved user control over app data and caching"
+msgstr "改进了用户对应用程序数据和缓存的控制"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added comprehensive Nuke Button functionality to clear all cached data"
+msgstr "添加了全面的“核弹按钮”功能，以清除所有缓存的数据"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Clear caches, localStorage, sessionStorage, and IndexedDB data"
+msgstr "清除缓存、localStorage、sessionStorage 和 IndexedDB 数据"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Automatic service worker unregistration for fresh starts"
+msgstr "自动注销 service worker 以实现全新启动"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added user guidance for troubleshooting app issues"
+msgstr "添加了用户指南，用于解决应用程序问题"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 10, 2024"
+msgstr "2024年12月10日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Complete overhaul of password generator and enhanced clipboard functionality"
+msgstr "全面改进密码生成器并增强了剪贴板功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Reimplemented password generator with modern UI components and enhanced features"
+msgstr "使用现代 UI 组件和增强功能重新实现了密码生成器"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added versatile copyToClipboard utility function with toast notifications"
+msgstr "添加了多功能的 copyToClipboard 实用程序函数，带有 toast 通知"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented dynamic password strength indicators and character options"
+msgstr "实现了动态密码强度指示器和字符选项"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Integrated slider component for flexible password length control"
+msgstr "集成了滑块组件，用于灵活的密码长度控制"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Refactored emoji and password generators to use the new clipboard utility"
+msgstr "重构了表情符号和密码生成器，以使用新的剪贴板实用程序"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 4, 2024"
+msgstr "2024年12月4日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major improvements to QR code generation and social links functionality"
+msgstr "对 QR 码生成和社交链接功能进行了重大改进"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added QR code display component for improved modularity"
+msgstr "添加了 QR 码显示组件，以提高模块化程度"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented social links database with comprehensive management"
+msgstr "实现了具有全面管理的社交链接数据库"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created API endpoints for social links handling"
+msgstr "创建了用于社交链接处理的 API 端点"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced QR code generator with text and social links input"
+msgstr "增强了 QR 码生成器，支持文本和社交链接输入"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "December 1-3, 2024"
+msgstr "2024年12月1-3日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "New features and improvements to existing apps"
+msgstr "新功能和对现有应用程序的改进"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced currency conversion with caching and user-agent rotation"
+msgstr "通过缓存和 user-agent 轮换增强了货币转换"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added advanced emoji transformation features"
+msgstr "添加了高级表情符号转换功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented emoji checker functionality"
+msgstr "实现了表情符号检查器功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added pattern validation for currency amounts"
+msgstr "为货币金额添加了模式验证"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 29-30, 2024"
+msgstr "2024年11月29-30日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major backend and infrastructure improvements"
+msgstr "主要的后端和基础设施改进"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented English dictionary with caching"
+msgstr "实现了带有缓存的英语词典"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added health check endpoint"
+msgstr "添加了健康检查端点"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced service worker functionality"
+msgstr "增强了 service worker 功能"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Switched from drizzle-orm to Prisma for better database management"
+msgstr "从 drizzle-orm 切换到 Prisma 以实现更好的数据库管理"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 24-27, 2024"
+msgstr "2024年11月24-27日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major user experience and authentication improvements"
+msgstr "主要的用户体验和身份验证改进"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented user authentication system"
+msgstr "实现了用户身份验证系统"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added user profile components"
+msgstr "添加了用户个人资料组件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Created offline page component"
+msgstr "创建了离线页面组件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced navbar with user context"
+msgstr "使用用户上下文增强了导航栏"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "November 23-24, 2024"
+msgstr "2024年11月23-24日"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced visual feedback and animations"
+msgstr "增强了视觉反馈和动画"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added new Lottie animations for improved UI feedback"
+msgstr "添加了新的 Lottie 动画，以改进 UI 反馈"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Implemented trending, repository, and hover animations"
+msgstr "实现了趋势、存储库和悬停动画"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Updated welcome message and about page layout"
+msgstr "更新了欢迎消息和关于页面布局"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Added alert component with description support"
+msgstr "添加了带有描述支持的警报组件"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Svelte Hack 2024 Achievement"
+msgstr "Svelte Hack 2024 成就"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Recognized for innovative Svelte 5 migration approach and offline-first architecture"
+msgstr "因创新的 Svelte 5 迁移方法和离线优先架构而获得认可"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Major Refactoring"
+msgstr "重大重构"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Revamped code quality with widespread component refactors"
+msgstr "通过广泛的组件重构改进了代码质量"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Optimized service worker and asset caching for improved offline support"
+msgstr "优化了 service worker 和资产缓存，以改进离线支持"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "User Experience Enhancements"
+msgstr "用户体验增强"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Streamlined UI design and navigation for an intuitive experience"
+msgstr "简化了 UI 设计和导航，以实现直观的体验"
+
+#: src/routes/changelog/data.svelte.ts
+msgid "Enhanced offline indicators and interaction feedback"
+msgstr "增强了离线指示器和交互反馈"
+
+#~ msgid "All {0} are from earlier periods"
+#~ msgstr "所有{0}都来自早期。"
+
+#: src/routes/changelog/+page.svelte
+msgid "Key achievements and major improvements."
+msgstr "主要成就和重大改进。"
+
+#: src/routes/apps/+layout.svelte
+msgid "Svelte, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
+msgstr "Svelte, 迷你应用, 应用, 工具, 应用程序, 生态系统, 创新, 独特"

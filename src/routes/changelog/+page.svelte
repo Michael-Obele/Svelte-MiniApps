@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
-	import { items, allTimeline, updates, getTypeAccent } from './data';
+	import { getAllTimeline, getUpdates, getTypeAccent } from './data.svelte';
 	import {
 		Card,
 		CardHeader,
@@ -9,7 +9,6 @@
 		CardDescription,
 		CardContent
 	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
 	import { ArrowRightIcon, ExternalLink } from '@lucide/svelte';
@@ -17,39 +16,51 @@
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import { ChevronDown, Megaphone } from '@lucide/svelte';
+	import { Code, Rocket, Search, Wrench, CircleSlash } from '@lucide/svelte';
+	import { Badge } from '@/ui/badge';
 
-	// Calculate dynamic statistics for insights
-	const typeStats = $derived.by(() => {
-		const sevenDaysAgo = new Date();
-		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+	// Get data from factory functions
+	const updates = getUpdates();
 
-		const stats: Record<string, { count: number; recent: typeof allTimeline }> = {};
-
-		// Initialize stats for all types
-		['feature', 'fix', 'improvement', 'breaking', 'deprecation'].forEach((type) => {
-			stats[type] = { count: 0, recent: [] };
-		});
-
-		allTimeline.forEach((item) => {
-			const type = item.type;
-			if (stats[type]) {
-				stats[type].count++;
-
-				// Check if item is recent (simplified date check)
-				const itemDate = new Date(item.date + ', 2025'); // Assuming 2025 for now
-				if (itemDate >= sevenDaysAgo) {
-					stats[type].recent.push(item);
-				}
-			}
-		});
-
-		// Sort by count and return only types with data
-		return Object.fromEntries(
-			Object.entries(stats)
-				.filter(([_, stat]) => stat.count > 0)
-				.sort(([, a], [, b]) => b.count - a.count)
-		);
-	});
+	// Bento grid items - defined here so strings are properly extracted by Wuchale
+	const items = [
+		{
+			title: 'Offline-First Architecture',
+			description:
+				'Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app.',
+			className: 'md:col-span-2',
+			color: 'from-blue-500/20 via-transparent',
+			icon: Code
+		},
+		{
+			title: 'Enhanced Performance',
+			description: 'Optimized load times and responsiveness through local data management.',
+			className: 'md:col-span-1',
+			color: 'from-purple-500/20 via-transparent',
+			icon: Rocket
+		},
+		{
+			title: 'Svelte 5 Migration',
+			description: 'Complete upgrade to Svelte 5 with modern features and optimizations.',
+			className: 'md:col-span-1',
+			color: 'from-green-500/20 via-transparent',
+			icon: Search
+		},
+		{
+			title: 'Local Data Persistence',
+			description: 'Robust local storage implementation with IndexedDB and background sync.',
+			className: 'md:col-span-1',
+			color: 'from-yellow-500/20 via-transparent',
+			icon: Wrench
+		},
+		{
+			title: 'PWA Support',
+			description: 'Full Progressive Web App capabilities with offline support and installability.',
+			className: 'md:col-span-1',
+			color: 'from-red-500/20 via-transparent',
+			icon: CircleSlash
+		}
+	];
 </script>
 
 <RouteHead
@@ -209,63 +220,13 @@
 			</Card>
 		</div>
 
-		<!-- Duplicate TL;DR section removed -->
-		<!-- Enhanced Updates Section with Dynamic Insights -->
+		<!-- Manual Highlights Section -->
 		<section id="updates" class="py-10">
-			<h2 class="text-foreground mb-2 text-center text-3xl font-bold">
-				TL;DR: Development Insights
-			</h2>
+			<h2 class="text-foreground mb-2 text-center text-3xl font-bold">Highlights</h2>
 			<p class="text-muted-foreground mb-10 text-center text-sm">
-				Real-time insights from our automated changelog system.
+				Key achievements and major improvements.
 			</p>
 
-			<!-- Dynamic Category Insights -->
-			<div class="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each Object.entries(typeStats) as [type, stats]}
-					<Card class="border-border/50 bg-card/50 relative overflow-hidden backdrop-blur">
-						<CardHeader class="pb-2">
-							<div class="flex items-center justify-between">
-								<CardTitle class="text-lg capitalize">{type}s</CardTitle>
-								<Badge variant="secondary" class="text-xs">
-									{stats.count}
-								</Badge>
-							</div>
-							<CardDescription class="text-xs">
-								{#if stats.recent.length > 0}
-									{stats.recent.length} recent update{stats.recent.length === 1 ? '' : 's'}
-								{:else}
-									No recent activity
-								{/if}
-							</CardDescription>
-						</CardHeader>
-						<CardContent class="space-y-2">
-							{#if stats.recent.length > 0}
-								{#each stats.recent.slice(0, 2) as item}
-									<div class="text-muted-foreground text-sm">
-										<div class="flex items-center gap-2">
-											<div class="bg-primary/60 h-1.5 w-1.5 rounded-full"></div>
-											<span class="truncate" title={item.description}>{item.title}</span>
-										</div>
-									</div>
-								{/each}
-								{#if stats.recent.length > 2}
-									<div class="text-muted-foreground/60 text-xs">
-										+{stats.recent.length - 2} more...
-									</div>
-								{/if}
-							{:else}
-								<div class="text-muted-foreground/40 text-xs italic">
-									All {type}s are from earlier periods
-								</div>
-							{/if}
-						</CardContent>
-						<!-- Visual accent based on type -->
-						<div class={`absolute bottom-0 left-0 h-1 w-full ${getTypeAccent(type)}`}></div>
-					</Card>
-				{/each}
-			</div>
-
-			<!-- Manual Highlights (preserved) -->
 			<div class="grid gap-6 md:grid-cols-3">
 				{#each updates as section}
 					<Card>

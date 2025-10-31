@@ -1,8 +1,9 @@
 <!-- Debug component to show timeline sorting -->
 <script lang="ts">
 	import { Button } from '@/ui/button';
-	import { allTimeline } from './data';
+	import { getAllTimeline } from './data.svelte';
 
+	const allTimeline = getAllTimeline();
 	let showDebug = $state(false);
 </script>
 
