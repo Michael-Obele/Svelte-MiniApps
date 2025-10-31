@@ -11,10 +11,14 @@ Usage:
 -->
 <script lang="ts">
 	import { projects, done, site, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
-	import { CheckCircle2, CircleHelp, CircleX } from '@lucide/svelte';
+	import { persistedLocale } from '$lib/stores/language-store.svelte';
+	import { CheckCircle2, CircleHelp, CircleX } from 'lucide-svelte';
 
-	// Sort projects alphabetically by title and split into done vs coming soon
-	let sortedProjects = $derived(projects().sort((a, b) => a.title.localeCompare(b.title)));
+	// Create locale-aware collator that reacts to language changes
+	let collator = $derived(new Intl.Collator(persistedLocale.current));
+
+	// Sort projects alphabetically by title using locale-aware sorting
+	let sortedProjects = $derived(projects().sort((a, b) => collator.compare(a.title, b.title)));
 	let doneProjects = $derived(sortedProjects.filter((p) => done().some((d) => d.name === p.link)));
 	let comingSoon = $derived(sortedProjects.filter((p) => !done().some((d) => d.name === p.link)));
 </script>
