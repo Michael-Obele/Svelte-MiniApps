@@ -162,9 +162,7 @@
 
 		<!-- Quick Access Cards -->
 		<div class="mx-auto mb-16 grid max-w-4xl gap-6 md:grid-cols-3">
-			<Card
-				class="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
-			>
+			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
 				<CardHeader class="text-center">
 					<div
 						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
@@ -175,15 +173,11 @@
 					<CardDescription>Detailed timeline of our Svelte 5 migration journey</CardDescription>
 				</CardHeader>
 				<CardContent class="text-center">
-					<Button variant="outline" class="w-full">
-						<a href="/changelog/timeline">View Timeline</a>
-					</Button>
+					<Button href="/changelog/timeline" variant="outline" class="w-full">View Timeline</Button>
 				</CardContent>
 			</Card>
 
-			<Card
-				class="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
-			>
+			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
 				<CardHeader class="text-center">
 					<div
 						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
@@ -194,15 +188,13 @@
 					<CardDescription>Latest news and upcoming features</CardDescription>
 				</CardHeader>
 				<CardContent class="text-center">
-					<Button variant="outline" class="w-full">
-						<a href="/changelog/announcements">View Announcements</a>
-					</Button>
+					<Button href="/changelog/announcements" variant="outline" class="w-full"
+						>View Announcements</Button
+					>
 				</CardContent>
 			</Card>
 
-			<Card
-				class="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
-			>
+			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
 				<CardHeader class="text-center">
 					<div
 						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
@@ -213,8 +205,8 @@
 					<CardDescription>Explore what's coming next</CardDescription>
 				</CardHeader>
 				<CardContent class="text-center">
-					<Button variant="outline" class="w-full">
-						<a href="/changelog/planned-features">View Features</a>
+					<Button href="/changelog/planned-features" variant="outline" class="w-full">
+						View Features
 					</Button>
 				</CardContent>
 			</Card>
