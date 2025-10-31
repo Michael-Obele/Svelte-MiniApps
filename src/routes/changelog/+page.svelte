@@ -61,6 +61,30 @@
 			icon: CircleSlash
 		}
 	];
+
+	const quickAccessCards = [
+		{
+			icon: ArrowRightIcon,
+			title: 'Timeline',
+			description: 'Detailed timeline of our Svelte 5 migration journey',
+			href: '/changelog/timeline',
+			buttonText: 'View Timeline'
+		},
+		{
+			icon: Megaphone,
+			title: 'Announcements',
+			description: 'Latest news and upcoming features',
+			href: '/changelog/announcements',
+			buttonText: 'View Announcements'
+		},
+		{
+			icon: ArrowRightIcon,
+			title: 'Planned Features',
+			description: "Explore what's coming next",
+			href: '/changelog/planned-features',
+			buttonText: 'View Features'
+		}
+	];
 </script>
 
 <RouteHead
@@ -139,7 +163,7 @@
 
 		<!-- Bento Grid -->
 		<div class="mx-auto mb-16 grid max-w-5xl gap-4 px-4 md:auto-rows-[20rem] md:grid-cols-3">
-			{#each items as item}
+			{#each items as item (item.title)}
 				<Motion
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -162,54 +186,22 @@
 
 		<!-- Quick Access Cards -->
 		<div class="mx-auto mb-16 grid max-w-4xl gap-6 md:grid-cols-3">
-			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
-				<CardHeader class="text-center">
-					<div
-						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
-					>
-						<ArrowRightIcon class="text-primary h-6 w-6" />
-					</div>
-					<CardTitle class="text-lg">Timeline</CardTitle>
-					<CardDescription>Detailed timeline of our Svelte 5 migration journey</CardDescription>
-				</CardHeader>
-				<CardContent class="text-center">
-					<Button href="/changelog/timeline" variant="outline" class="w-full">View Timeline</Button>
-				</CardContent>
-			</Card>
-
-			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
-				<CardHeader class="text-center">
-					<div
-						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
-					>
-						<Megaphone class="text-primary h-6 w-6" />
-					</div>
-					<CardTitle class="text-lg">Announcements</CardTitle>
-					<CardDescription>Latest news and upcoming features</CardDescription>
-				</CardHeader>
-				<CardContent class="text-center">
-					<Button href="/changelog/announcements" variant="outline" class="w-full"
-						>View Announcements</Button
-					>
-				</CardContent>
-			</Card>
-
-			<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
-				<CardHeader class="text-center">
-					<div
-						class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
-					>
-						<ArrowRightIcon class="text-primary h-6 w-6" />
-					</div>
-					<CardTitle class="text-lg">Planned Features</CardTitle>
-					<CardDescription>Explore what's coming next</CardDescription>
-				</CardHeader>
-				<CardContent class="text-center">
-					<Button href="/changelog/planned-features" variant="outline" class="w-full">
-						View Features
-					</Button>
-				</CardContent>
-			</Card>
+			{#each quickAccessCards as card (card.title)}
+				<Card class="group  transition-all duration-300 hover:scale-105 hover:shadow-lg">
+					<CardHeader class="text-center">
+						<div
+							class="bg-primary/10 group-hover:bg-primary/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full"
+						>
+							<card.icon class="text-primary h-6 w-6" />
+						</div>
+						<CardTitle class="text-lg">{card.title}</CardTitle>
+						<CardDescription>{card.description}</CardDescription>
+					</CardHeader>
+					<CardContent class="text-center">
+						<Button href={card.href} variant="outline" class="w-full">{card.buttonText}</Button>
+					</CardContent>
+				</Card>
+			{/each}
 		</div>
 
 		<!-- Manual Highlights Section -->
@@ -220,14 +212,14 @@
 			</p>
 
 			<div class="grid gap-6 md:grid-cols-3">
-				{#each updates as section}
+				{#each updates as section (section.category)}
 					<Card>
 						<CardHeader>
 							<CardTitle>{section.category}</CardTitle>
 							<CardDescription>Highlights</CardDescription>
 						</CardHeader>
 						<CardContent class="space-y-4">
-							{#each section.items as item}
+							{#each section.items as item (item)}
 								<Alert class="flex items-start gap-2">
 									<ArrowRightIcon class="mt-1 h-4 w-4" />
 									<AlertTitle class="leading-relaxed">{item}</AlertTitle>

@@ -72,34 +72,34 @@ global.localStorage.setItem = function (key, value) {
 	window.dispatchEvent(storageEvent);
 };
 // Mock Svelte 5 runes for testing
-global.$state = (initial) => {
-	let value = initial;
-	const state = {
-		get current() {
-			return value;
-		},
-		set current(newValue) {
-			value = newValue;
-		}
-	};
-	// Add missing properties
-	Object.assign(state, {
-		eager: false,
-		raw: state,
-		snapshot: () => value
-	});
-	return state;
-};
-global.$effect = Object.assign(() => {}, {
-	pre: false,
-	pending: false,
-	tracking: false,
-	root: (fn) => fn()
-});
-global.$derived = Object.assign((fn) => fn(), {
-	by: (fn) => fn()
-});
-global.$props = Object.assign(() => ({}), {
-	id: 'mock-props'
-});
-global.$bindable = (value) => value;
+// global.$state = (initial: any) => {
+// 	let value = initial;
+// 	const state = {
+// 		get current() {
+// 			return value;
+// 		},
+// 		set current(newValue: any) {
+// 			value = newValue;
+// 		}
+// 	};
+// 	// Add missing properties
+// 	Object.assign(state, {
+// 		eager: false,
+// 		raw: state,
+// 		snapshot: () => value
+// 	});
+// 	return state;
+// };
+// global.$effect = Object.assign(() => {}, {
+// 	pre: (fn: () => void) => fn(),
+// 	pending: false,
+// 	tracking: false,
+// 	root: (fn: () => void) => fn()
+// });
+// global.$derived = Object.assign((fn: any) => fn(), {
+// 	by: (fn: any) => fn()
+// });
+// global.$props = Object.assign(() => ({}), {
+// 	id: () => 'mock-props'
+// });
+// global.$bindable = (value: any) => value;
