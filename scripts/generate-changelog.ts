@@ -96,64 +96,52 @@ function getExistingGeneratedData(): TimelineItem[] {
 	}
 }
 
-// Smart merge: combines timeline items by date, deduplicating by commit hash
+// Smart merge: deduplicates by commit hash (each entry is now a single commit)
 function mergeTimelineItems(
 	newItems: TimelineItem[],
 	existingItems: TimelineItem[]
 ): TimelineItem[] {
 	const merged = new Map<string, TimelineItem>();
 
-	// First, add all existing items to the map
+	// First, add all existing items to the map (keyed by commit hash)
 	for (const item of existingItems) {
-		merged.set(item.date, { ...item, items: [...item.items] });
+		const hashMatch = item.items[0]?.match(/\(([a-f0-9]{7})\)$/);
+		const hash = hashMatch ? hashMatch[1] : item.title; // fallback to title if no hash
+		merged.set(hash, { ...item });
 	}
 
-	// Then merge or add new items
+	// Then add new items (only if they don't already exist)
+	let newCommitsAdded = 0;
 	for (const newItem of newItems) {
-		const existing = merged.get(newItem.date);
+		const hashMatch = newItem.items[0]?.match(/\(([a-f0-9]{7})\)$/);
+		const hash = hashMatch ? hashMatch[1] : newItem.title;
 
-		if (existing) {
-			// Extract commit hashes from existing items
-			const existingHashes = new Set(
-				existing.items
-					.map((item) => {
-						const match = item.match(/\(([a-f0-9]{7})\)$/);
-						return match ? match[1] : null;
-					})
-					.filter(Boolean)
-			);
-
-			// Add only new commits (by hash) - prepend to keep newest first
-			const newCommits = newItem.items.filter((item) => {
-				const match = item.match(/\(([a-f0-9]{7})\)$/);
-				const hash = match ? match[1] : null;
-				return hash && !existingHashes.has(hash);
-			});
-
-			if (newCommits.length > 0) {
-				// Prepend new commits (newest first)
-				existing.items = [...newCommits, ...existing.items];
-
-				// Update description
-				const totalFiles = new Set(existing.items).size;
-				existing.description = `Multiple updates across ${totalFiles} commit${totalFiles === 1 ? '' : 's'}`;
-
-				console.log(`  ✓ Merged ${newCommits.length} new commit(s) into ${newItem.date}`);
-			}
-		} else {
-			// New date entry, just add it
-			merged.set(newItem.date, newItem);
-			console.log(`  ✓ Added new date entry: ${newItem.date}`);
+		if (!merged.has(hash)) {
+			merged.set(hash, newItem);
+			newCommitsAdded++;
 		}
 	}
 
-	// Sort by date (newest first)
-	return Array.from(merged.values()).sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-	);
-}
+	console.log(`  ✓ Added ${newCommitsAdded} new commit entries`);
 
-// Get commits since last processed commit
+	// Convert back to array and sort by date (newest first)
+	const result = Array.from(merged.values()).sort((a, b) => {
+		// Parse dates for comparison
+		const dateA = new Date(a.date);
+		const dateB = new Date(b.date);
+
+		// If dates are the same, sort by commit hash (assuming newer commits have higher hashes)
+		if (dateA.getTime() === dateB.getTime()) {
+			const hashA = a.items[0]?.match(/\(([a-f0-9]{7})\)$/)?.[1] || '';
+			const hashB = b.items[0]?.match(/\(([a-f0-9]{7})\)$/)?.[1] || '';
+			return hashB.localeCompare(hashA); // Reverse alphabetical for newer hashes first
+		}
+
+		return dateB.getTime() - dateA.getTime();
+	});
+
+	return result;
+}// Get commits since last processed commit
 function getCommits(since?: string): CommitInfo[] {
 	// When no since hash, get all commits instead of limiting to 50
 	// This prevents losing old commit history
@@ -233,54 +221,34 @@ function parseCommitMessage(message: string): {
 	return { type: 'improvement', description: message, breaking: false };
 }
 
-// Group commits by date and type
+// Create individual timeline entries for each commit
 function groupCommits(commits: CommitInfo[]): TimelineItem[] {
-	const grouped = new Map<string, { commits: CommitInfo[]; types: Set<string> }>();
-
-	for (const commit of commits) {
-		const key = commit.date;
-		if (!grouped.has(key)) {
-			grouped.set(key, { commits: [], types: new Set() });
-		}
-
-		const parsed = parseCommitMessage(commit.message);
-		grouped.get(key)!.commits.push(commit);
-		grouped.get(key)!.types.add(parsed.breaking ? 'breaking' : parsed.type);
-	}
-
 	const timelineItems: TimelineItem[] = [];
 
-	for (const [date, { commits, types }] of grouped) {
-		// Ensure commits for the same date are newest-first
-		commits.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-		// Determine the primary type for this date
-		let primaryType = 'improvement';
-		if (types.has('breaking')) primaryType = 'breaking';
-		else if (types.has('feat')) primaryType = 'feat';
-		else if (types.has('fix')) primaryType = 'fix';
+	for (const commit of commits) {
+		const parsed = parseCommitMessage(commit.message);
+		const commitType = parsed.breaking ? 'breaking' : parsed.type;
+		const typeInfo = COMMIT_TYPE_MAP[commitType as keyof typeof COMMIT_TYPE_MAP] || COMMIT_TYPE_MAP.improvement;
 
-		const typeInfo =
-			COMMIT_TYPE_MAP[primaryType as keyof typeof COMMIT_TYPE_MAP] || COMMIT_TYPE_MAP.improvement;
-
-		// Generate title based on commits
-		const title = generateTitle(commits, primaryType);
-		const description = generateDescription(commits);
-
+		// Create individual entry for each commit
 		timelineItems.push({
-			date,
-			title,
-			description,
-			items: commits.map((commit) => {
-				const parsed = parseCommitMessage(commit.message);
-				return `${parsed.description} (${commit.hash.substring(0, 7)})`;
-			}),
+			date: commit.date,
+			title: parsed.description,
+			description: `Updated ${commit.files.slice(0, 3).join(', ')}${commit.files.length > 3 ? ' and more' : ''}`,
+			items: [`${parsed.description} (${commit.hash.substring(0, 7)})`],
 			type: typeInfo.type,
 			icon: typeInfo.icon,
 			color: typeInfo.color
 		});
 	}
 
-	return timelineItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+	// Sort by timestamp (newest first)
+	return timelineItems.sort((a, b) => {
+		// Find the corresponding commits to compare timestamps
+		const aCommit = commits.find(c => c.hash.substring(0, 7) === a.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]);
+		const bCommit = commits.find(c => c.hash.substring(0, 7) === b.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]);
+		return (bCommit?.timestamp || 0) - (aCommit?.timestamp || 0);
+	});
 }
 
 function generateTitle(commits: CommitInfo[], primaryType: string): string {
