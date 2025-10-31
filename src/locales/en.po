@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.009Z\n"
-"PO-Revision-Date: 2025-10-31T08:53:03.460Z\n"
+"PO-Revision-Date: 2025-10-31T11:14:05.965Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -96,7 +96,6 @@ msgid "Go Home"
 msgstr "Go Home"
 
 #: src/routes/+error.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/offline/+page.svelte
 msgid "Go Back"
 msgstr "Go Back"
@@ -553,7 +552,6 @@ msgstr "Clear"
 #: src/lib/components/blocks/Info.svelte
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
@@ -1717,6 +1715,7 @@ msgid "Refresh"
 msgstr "Refresh"
 
 #: src/routes/(auth)/profile/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Overview"
@@ -3722,9 +3721,8 @@ msgstr "GitHub Contribution Tracker"
 msgid "GitHub Username"
 msgstr "GitHub Username"
 
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid "Enter GitHub username"
-msgstr "Enter GitHub username"
+#~ msgid "Enter GitHub username"
+#~ msgstr "Enter GitHub username"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
@@ -6695,82 +6693,63 @@ msgstr "Error:"
 msgid "GitHub Contribution Graph"
 msgstr "GitHub Contribution Graph"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Reloading page..."
-msgstr "Reloading page..."
+#~ msgid "Reloading page..."
+#~ msgstr "Reloading page..."
 
-#. placeholder {0}: user
-#. placeholder {1}: year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
-msgstr "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
+#~ msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
+#~ msgstr "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "GitHub Contributions"
-msgstr "GitHub Contributions"
+#~ msgid "GitHub Contributions"
+#~ msgstr "GitHub Contributions"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "For <0/> <1>•</1> <2/>"
-msgstr "For <0/> <1>•</1> <2/>"
+#~ msgid "For <0/> <1>•</1> <2/>"
+#~ msgstr "For <0/> <1>•</1> <2/>"
 
-#. placeholder {0}: data.props.year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "In {0}, you made <0/> <1/>"
-msgstr "In {0}, you made <0/> <1/>"
+#~ msgid "In {0}, you made <0/> <1/>"
+#~ msgstr "In {0}, you made <0/> <1/>"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "contribution"
-msgstr "contribution"
+#~ msgid "contribution"
+#~ msgstr "contribution"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "contributions"
-msgstr "contributions"
+#~ msgid "contributions"
+#~ msgstr "contributions"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "MMMM"
-msgstr "MMMM"
+#~ msgid "MMMM"
+#~ msgstr "MMMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contributions"
 msgstr "Contributions"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "View Contribution Heat Map"
-msgstr "View Contribution Heat Map"
+#~ msgid "View Contribution Heat Map"
+#~ msgstr "View Contribution Heat Map"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "More Stats"
-msgstr "More Stats"
+#~ msgid "More Stats"
+#~ msgstr "More Stats"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#. placeholder {0}: month.reduce((a, b) => a + b.contributionCount, 0)
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Total Contributions: {0}"
-msgstr "Total Contributions: {0}"
+#~ msgid "Total Contributions: {0}"
+#~ msgstr "Total Contributions: {0}"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "View Chart"
-msgstr "View Chart"
+#~ msgid "View Chart"
+#~ msgstr "View Chart"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Heat Map"
-msgstr "Heat Map"
+#~ msgid "Heat Map"
+#~ msgstr "Heat Map"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Back to Top"
-msgstr "Back to Top"
+#~ msgid "Back to Top"
+#~ msgstr "Back to Top"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Reload Page"
-msgstr "Reload Page"
+#~ msgid "Reload Page"
+#~ msgstr "Reload Page"
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid username"
@@ -8497,3 +8476,196 @@ msgstr "Svelte, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Uni
 #: src/routes/about/+page.svelte
 msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Please enter a GitHub username"
+msgstr "Please enter a GitHub username"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
+msgstr "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Enter a GitHub username and year to view their activity"
+msgstr "Enter a GitHub username and year to view their activity"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "<0/> Track Contributions"
+msgstr "<0/> Track Contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "<0/> Recent Searches"
+msgstr "<0/> Recent Searches"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "No recent searches"
+msgstr "No recent searches"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Detailed Stats"
+msgstr "Detailed Stats"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "View commits, PRs, issues, and code reviews"
+msgstr "View commits, PRs, issues, and code reviews"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Heatmap"
+msgstr "Contribution Heatmap"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "GitHub-style calendar visualization"
+msgstr "GitHub-style calendar visualization"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Repository Insights"
+msgstr "Repository Insights"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+msgid "Top repositories and languages used"
+msgstr "Top repositories and languages used"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Commits"
+msgstr "Commits"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Pull Requests"
+msgstr "Pull Requests"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Issues"
+msgstr "Issues"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Reviews"
+msgstr "Reviews"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Refreshing data..."
+msgstr "Refreshing data..."
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Data refreshed successfully!"
+msgstr "Data refreshed successfully!"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Failed to refresh data"
+msgstr "Failed to refresh data"
+
+#. placeholder {0}: username
+#. placeholder {1}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
+msgstr "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
+
+#. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "GitHub Contributions in {0}"
+msgstr "GitHub Contributions in {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "<0/> Back"
+msgstr "<0/> Back"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Total Contributions"
+msgstr "Total Contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Repositories"
+msgstr "Repositories"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Calendar"
+msgstr "Calendar"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Insights"
+msgstr "Insights"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Monthly Contributions"
+msgstr "Monthly Contributions"
+
+#. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Total contributions per month in {0}"
+msgstr "Total contributions per month in {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Languages Used"
+msgstr "Languages Used"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Top programming languages in contributed repositories"
+msgstr "Top programming languages in contributed repositories"
+
+#. placeholder {0}: lang.count
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "{0} repos"
+msgstr "{0} repos"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Top Contributed Repositories"
+msgstr "Top Contributed Repositories"
+
+#. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Most starred repositories you contributed to in {0}"
+msgstr "Most starred repositories you contributed to in {0}"
+
+#. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Daily contribution activity throughout {0}"
+msgstr "Daily contribution activity throughout {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Activity Summary"
+msgstr "Activity Summary"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Average per day:"
+msgstr "Average per day:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Most active in:"
+msgstr "Most active in:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Repositories:"
+msgstr "Repositories:"
+
+#. placeholder {0}: stats?.restrictedContributionsCount ?? 0
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This user also has {0} private contributions"
+msgstr "This user also has {0} private contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Repository Breakdown"
+msgstr "Repository Breakdown"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With commits:"
+msgstr "With commits:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With PRs:"
+msgstr "With PRs:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With issues:"
+msgstr "With issues:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With reviews:"
+msgstr "With reviews:"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Available Years"
+msgstr "Available Years"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Other years with contribution data"
+msgstr "Other years with contribution data"
