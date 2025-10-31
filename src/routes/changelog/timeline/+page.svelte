@@ -178,6 +178,26 @@
 	</div>
 </div>
 
+{#snippet Items(selectedItem: (typeof allTimeline)[0] | null)}
+	{#if selectedItem}
+		{#if selectedItem.items.length >= 5}
+			<ScrollArea class="h-[22rem] w-full rounded-md border">
+				<ul class="my-4 ml-6 list-disc space-y-3">
+					{#each selectedItem.items as detail (detail)}
+						<li class="text-sm">{detail}</li>
+					{/each}
+				</ul>
+			</ScrollArea>
+		{:else}
+			<ul class="my-4 ml-6 list-disc space-y-3">
+				{#each selectedItem.items as detail (detail)}
+					<li class="text-sm">{detail}</li>
+				{/each}
+			</ul>
+		{/if}
+	{/if}
+{/snippet}
+
 <!-- Modal for Timeline Item Details -->
 <Dialog.Root
 	open={!!selectedItem}
@@ -207,15 +227,8 @@
 			</div>
 		{/if}
 		<!-- Details List -->
-		{#if selectedItem}
-			<ScrollArea class="h-[22rem] w-full rounded-md border">
-				<ul class="my-4 ml-6 list-disc space-y-3">
-					{#each selectedItem.items as detail (detail)}
-						<li class="text-sm">{detail}</li>
-					{/each}
-				</ul>
-			</ScrollArea>
-		{/if}
+
+		{@render Items(selectedItem)}
 		<Dialog.Footer>
 			<Button onclick={() => (selectedItem = null)}>Close</Button>
 		</Dialog.Footer>
