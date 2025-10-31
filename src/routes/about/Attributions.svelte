@@ -93,6 +93,14 @@
 			icon: Palette
 		},
 		{
+			name: 'wuchale',
+			description:
+				'Compile-time internationalization toolkit that automatically extracts translatable strings without requiring code changes.',
+			url: 'https://github.com/wuchalejs/wuchale',
+			theme: 'green',
+			icon: Code
+		},
+		{
 			name: 'Lottie Web',
 			description: 'Render After Effects animations natively on the web.',
 			url: 'https://github.com/airbnb/lottie-web',
