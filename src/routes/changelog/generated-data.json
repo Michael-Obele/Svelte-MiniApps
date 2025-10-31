@@ -1,7 +1,29 @@
 {
-  "lastProcessedCommit": "357e80c4f8efcc0c8fda120a974dd4b735c439ab",
-  "generatedAt": "2025-10-31T20:17:42.365Z",
+  "lastProcessedCommit": "1c75b3883ae7201b54feeea783e81b8589dd4811",
+  "generatedAt": "2025-10-31T21:01:52.032Z",
   "timeline": [
+    {
+      "date": "October 31, 2025",
+      "title": "refactor: improve code readability by adjusting formatting in mergeTimelineItems and groupCommits functions",
+      "description": "Updated scripts/generate-changelog.ts",
+      "items": [
+        "refactor: improve code readability by adjusting formatting in mergeTimelineItems and groupCommits functions (dbad026)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 31, 2025",
+      "title": "feat: add ScrollArea for detailed timeline item display and refactor rendering logic",
+      "description": "Updated src/routes/changelog/timeline/+page.svelte",
+      "items": [
+        "feat: add ScrollArea for detailed timeline item display and refactor rendering logic (a5db6ed)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "October 31, 2025",
       "title": "feat: implement JSON-first architecture for changelog generation",
@@ -66,6 +88,17 @@
     },
     {
       "date": "October 31, 2025",
+      "title": "feat: implement individual commit entries in changelog and fix build process",
+      "description": "Updated .gitignore, package.json, scripts/generate-changelog.ts and more",
+      "items": [
+        "feat: implement individual commit entries in changelog and fix build process (3335c67)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "October 31, 2025",
       "title": "refactor: clean up generated-data.ts and improve comments",
       "description": "Updated src/routes/changelog/generated-data.ts",
       "items": [
@@ -74,6 +107,17 @@
       "type": "improvement",
       "icon": "Code",
       "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 31, 2025",
+      "title": "feat: update PO revision dates and add Wuchale attribution in Attributions.svelte",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "feat: update PO revision dates and add Wuchale attribution in Attributions.svelte (1c75b38)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
     },
     {
       "date": "October 30, 2025",
