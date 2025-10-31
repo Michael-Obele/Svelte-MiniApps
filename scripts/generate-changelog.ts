@@ -312,26 +312,20 @@ function generateDescription(commits: CommitInfo[]): string {
 	return `Multiple updates across ${fileCount} file${fileCount === 1 ? '' : 's'}`;
 }
 
-// Generate the TypeScript file content
-function generateDataFile(timelineItems: TimelineItem[], lastCommit?: string): string {
-	return `// Auto-generated changelog data
-// Last processed commit: ${lastCommit || 'unknown'}
-// Generated at: ${new Date().toISOString()}
-
-export interface GeneratedTimelineItem {
-  date: string;
-  title: string;
-  description: string;
-  items: string[];
-  type: 'breaking' | 'feature' | 'improvement' | 'deprecation' | 'fix';
-  icon: string;
-  color: string;
-}
-
-export const generatedTimeline: GeneratedTimelineItem[] = ${JSON.stringify(timelineItems, null, 2)};
-
-export const lastUpdated = '${new Date().toISOString()}';
-`;
+// Generate the JSON data structure
+function generateJsonData(
+	timelineItems: TimelineItem[],
+	lastCommit?: string
+): {
+	lastProcessedCommit: string;
+	generatedAt: string;
+	timeline: TimelineItem[];
+} {
+	return {
+		lastProcessedCommit: lastCommit || 'unknown',
+		generatedAt: new Date().toISOString(),
+		timeline: timelineItems
+	};
 }
 
 // Main execution
@@ -360,28 +354,7 @@ async function main() {
 
 	if (commits.length === 0) {
 		console.log('✅ No new commits to process');
-
-		// Ensure JSON backup exists even when no new commits
-		const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
-		if (!existsSync(jsonPath)) {
-			console.log('📝 Creating JSON backup from existing TS file...');
-			const existingData = getExistingGeneratedData();
-			if (existingData.length > 0) {
-				writeFileSync(
-					jsonPath,
-					JSON.stringify(
-						{
-							lastProcessedCommit: lastProcessed || 'unknown',
-							generatedAt: new Date().toISOString(),
-							timeline: existingData
-						},
-						null,
-						2
-					)
-				);
-				console.log(`✅ JSON backup created with ${existingData.length} entries`);
-			}
-		}
+		console.log('� Changelog is up to date');
 		return;
 	}
 
@@ -408,30 +381,15 @@ async function main() {
 	}
 
 	const latestCommit = commits[0]?.hash;
-	const fileContent = generateDataFile(mergedItems, latestCommit);
-
-	const outputPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
+	const jsonData = generateJsonData(mergedItems, latestCommit);
 	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
 
-	// Save JSON first (source of truth), then generate TS file
-	writeFileSync(
-		jsonPath,
-		JSON.stringify(
-			{
-				lastProcessedCommit: latestCommit,
-				generatedAt: new Date().toISOString(),
-				timeline: mergedItems
-			},
-			null,
-			2
-		)
-	);
+	// Write to JSON file (single source of truth)
+	// The TypeScript file (generated-data.ts) imports and re-exports this JSON
+	writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2));
 
-	// Generate TypeScript file from JSON (for types and IDE support)
-	writeFileSync(outputPath, fileContent);
-
-	console.log(`✅ Changelog data written to ${outputPath}`);
-	console.log(`✅ JSON backup saved to ${jsonPath}`);
+	console.log(`✅ Changelog JSON updated with ${mergedItems.length} entries`);
+	console.log(`✅ Last processed commit: ${latestCommit}`);
 	console.log('🎉 Changelog generation complete!');
 }
 
