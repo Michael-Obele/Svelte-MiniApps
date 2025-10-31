@@ -21,6 +21,7 @@
 	import Checkbox from '@/ui/checkbox/checkbox.svelte';
 	import { Label } from '@/ui/label';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { ScrollArea } from '@/ui/scroll-area';
 
 	const allTimeline = getAllTimeline();
 	let selectedItem: (typeof allTimeline)[0] | null = $state(null);
@@ -207,11 +208,13 @@
 		{/if}
 		<!-- Details List -->
 		{#if selectedItem}
-			<ul class="my-4 ml-6 list-disc space-y-2">
-				{#each selectedItem.items as detail (detail)}
-					<li class="text-sm">{detail}</li>
-				{/each}
-			</ul>
+			<ScrollArea class="h-[22rem] w-full rounded-md border">
+				<ul class="my-4 ml-6 list-disc space-y-3">
+					{#each selectedItem.items as detail (detail)}
+						<li class="text-sm">{detail}</li>
+					{/each}
+				</ul>
+			</ScrollArea>
 		{/if}
 		<Dialog.Footer>
 			<Button onclick={() => (selectedItem = null)}>Close</Button>
