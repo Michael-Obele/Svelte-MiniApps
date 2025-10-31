@@ -153,8 +153,6 @@
 		}
 	}
 
-
-
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
 	onMount(() => {
@@ -319,62 +317,45 @@
 
 				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
 
-				<svelte:boundary>
-					{#if currentUser?.username}
-						{#await getSavedPasswords()}
-							<!-- Pending state handled by boundary -->
-						{:then savedPasswords}
-							<div class="flex gap-2">
-								<Button onclick={handleView} variant="secondary" class="flex-1" disabled={viewing}>
-									View Saved Passwords ({savedPasswords?.length || 0})
-								</Button>
-								<Button
-									href="/apps/random-password-generator/passwords"
-									variant="outline"
-									size="icon"
-									title="View all passwords"
-								>
-									<ExternalLink class="h-4 w-4" />
-								</Button>
-							</div>
-						{:catch error}
-							<Button variant="destructive" class="w-full" disabled>
-								Error loading saved passwords
-							</Button>
-						{/await}
-
-						<Button
-							onclick={() => (viewing = false)}
-							variant="secondary"
-							class="w-full {!viewing ? 'hidden' : ''}"
-							disabled={!viewing}
-						>
-							Hide Saved Passwords
+				{#if currentUser?.username}
+					<div class="flex gap-2">
+						<Button onclick={handleView} variant="secondary" class="flex-1" disabled={viewing}>
+							View Saved Passwords ({savedPasswords?.length || 0})
 						</Button>
+						<Button
+							href="/apps/random-password-generator/passwords"
+							variant="outline"
+							size="icon"
+							title="View all passwords"
+						>
+							<ExternalLink class="h-4 w-4" />
+						</Button>
+					</div>
 
-						{#if viewing && savedPasswords}
-							<div class="mt-4 space-y-2">
-								<h3 class="text-lg font-semibold">Saved Passwords</h3>
-								<ScrollArea class="h-[480px] w-full rounded-md border p-4">
-									<div class="grid gap-4">
-										{#each await getSavedPasswords() as savedPassword (savedPassword.id)}
-											<PasswordDisplay password={savedPassword} />
-										{:else}
-											<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
-										{/each}
-									</div>
-								</ScrollArea>
-							</div>
-						{/if}
-					{/if}
+					<Button
+						onclick={() => (viewing = false)}
+						variant="secondary"
+						class="w-full {!viewing ? 'hidden' : ''}"
+						disabled={!viewing}
+					>
+						Hide Saved Passwords
+					</Button>
 
-					{#snippet pending()}
-						<div class="space-y-2">
-							<Skeleton class="h-10 w-full rounded-md" />
-							<Skeleton class="h-10 w-full rounded-md" />
+					{#if viewing && savedPasswords}
+						<div class="mt-4 space-y-2">
+							<h3 class="text-lg font-semibold">Saved Passwords</h3>
+							<ScrollArea class="h-[480px] w-full rounded-md border p-4">
+								<div class="grid gap-4">
+									{#each savedPasswords as savedPassword (savedPassword.id)}
+										<PasswordDisplay password={savedPassword} />
+									{:else}
+										<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
+									{/each}
+								</div>
+							</ScrollArea>
 						</div>
-					{/snippet}
-				</svelte:boundary>
+					{/if}
+				{/if}
 			</div>
 		</div>
 	</div>

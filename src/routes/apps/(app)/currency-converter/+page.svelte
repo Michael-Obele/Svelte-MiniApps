@@ -21,7 +21,7 @@
 		form: ActionData & FormActionData;
 	}
 
-	let { data, form = $bindable() }: Props = $props();
+	let { data, form }: Props = $props();
 	let isLoading = $state(false);
 	let forceRefresh = $state(false);
 	let showHowToUseDialog = $state(false);
