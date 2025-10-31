@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-10-31T11:14:06.065Z\n"
+"PO-Revision-Date: 2025-10-31T12:42:12.004Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -247,9 +247,6 @@ msgstr "Página Acerca de | Svelte Mini Apps"
 msgid "Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
 msgstr "Descubre más sobre Svelte Mini Apps en nuestra página Acerca de. Conoce nuestras herramientas innovadoras, aplicaciones Svelte únicas y cómo estamos revolucionando el ecosistema de Svelte."
 
-#~ msgid "Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
-#~ msgstr "Svelte, MiniApps, Acerca de, Herramientas, Aplicaciones, Ecosistema, Innovador, Único"
-
 #: src/routes/about/+page.svelte
 msgid "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
 msgstr "Svelte Mini Apps: Herramientas potentes y pequeñas creadas con <0>SvelteKit <0/></0>"
@@ -491,9 +488,6 @@ msgstr "Página de Aplicaciones | Svelte Mini Apps"
 msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
 msgstr "Explora nuestra colección de Svelte Mini Apps únicas. Descubre nuevas herramientas, aplicaciones innovadoras y observa cómo estamos mejorando el ecosistema de Svelte."
 
-#~ msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-#~ msgstr "Svelte, MiniApps, Aplicaciones, Herramientas, Aplicaciones, Ecosistema, Innovadores, Únicos"
-
 #: src/routes/apps/+page.svelte
 msgid "Apps | Svelte Mini Apps"
 msgstr "Aplicaciones | Svelte Mini Apps"
@@ -658,21 +652,6 @@ msgstr "Descubre lo que viene a continuación"
 #: src/routes/changelog/+page.svelte
 msgid "View Features"
 msgstr "Ver características"
-
-#~ msgid "TL;DR: Development Insights"
-#~ msgstr "TL;DR: Perspectivas de desarrollo"
-
-#~ msgid "Real-time insights from our automated changelog system."
-#~ msgstr "Información en tiempo real de nuestro sistema automatizado de registro de cambios."
-
-#~ msgid "{0} recent update{1}"
-#~ msgstr "{0} actualización{1} reciente"
-
-#~ msgid "No recent activity"
-#~ msgstr "No hay actividad reciente"
-
-#~ msgid "+{0} more..."
-#~ msgstr "+{0} más..."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/+page.svelte
@@ -3706,9 +3685,6 @@ msgstr "Rastreador de contribuciones de GitHub"
 msgid "GitHub Username"
 msgstr "Nombre de usuario de GitHub"
 
-#~ msgid "Enter GitHub username"
-#~ msgstr "Introduce el nombre de usuario de GitHub"
-
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
 msgstr "Año"
@@ -5816,9 +5792,6 @@ msgstr "Generar contraseña"
 msgid "View Saved Passwords ({0})"
 msgstr "Ver contraseñas guardadas ({0})"
 
-#~ msgid "Error loading saved passwords"
-#~ msgstr "Error al cargar las contraseñas guardadas"
-
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
 msgstr "Ocultar contraseñas guardadas"
@@ -6655,63 +6628,18 @@ msgstr "Error:"
 msgid "GitHub Contribution Graph"
 msgstr "Gráfico de contribuciones de GitHub"
 
-#~ msgid "Reloading page..."
-#~ msgstr "Recargando la página..."
-
-#~ msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
-#~ msgstr "Visualiza las contribuciones de GitHub de {0} para {1} con gráficos interactivos y mapas de calor. Rastrea su actividad de codificación, rachas y más."
-
-#~ msgid "GitHub Contributions"
-#~ msgstr "Contribuciones de GitHub"
-
-#~ msgid "For <0/> <1>•</1> <2/>"
-#~ msgstr "Para <0/> <1>•</1> <2/>"
-
-#~ msgid "In {0}, you made <0/> <1/>"
-#~ msgstr "En {0}, hiciste <0/> <1/>"
-
-#~ msgid "contribution"
-#~ msgstr "contribución"
-
-#~ msgid "contributions"
-#~ msgstr "contribuciones"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMM"
 msgstr "MMM"
-
-#~ msgid "MMMM"
-#~ msgstr "MMMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contributions"
 msgstr "Contribuciones"
 
-#~ msgid "View Contribution Heat Map"
-#~ msgstr "Ver mapa de calor de contribuciones"
-
-#~ msgid "More Stats"
-#~ msgstr "Más estadísticas"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
-
-#~ msgid "Total Contributions: {0}"
-#~ msgstr "Contribuciones totales: {0}"
-
-#~ msgid "View Chart"
-#~ msgstr "Ver gráfico"
-
-#~ msgid "Heat Map"
-#~ msgstr "Mapa de calor"
-
-#~ msgid "Back to Top"
-#~ msgstr "Volver al inicio"
-
-#~ msgid "Reload Page"
-#~ msgstr "Recargar página"
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid username"
@@ -8422,9 +8350,6 @@ msgstr "Se agilizó el diseño y la navegación de la interfaz de usuario para u
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced offline indicators and interaction feedback"
 msgstr "Se mejoraron los indicadores sin conexión y la retroalimentación de la interacción```"
-
-#~ msgid "All {0} are from earlier periods"
-#~ msgstr "Todos los {0} son de periodos anteriores"
 
 #: src/routes/changelog/+page.svelte
 msgid "Key achievements and major improvements."

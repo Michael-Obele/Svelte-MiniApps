@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-10-31T11:14:06.354Z\n"
+"PO-Revision-Date: 2025-10-31T12:42:12.092Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -187,9 +187,6 @@ msgstr "应用页面 | Svelte Mini Apps"
 #: src/routes/apps/+layout.svelte
 msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
 msgstr "浏览我们独特的 Svelte Mini Apps 合集。 发现新工具、创新应用，并了解我们如何增强 Svelte 生态系统。"
-
-#~ msgid "Svelte, MiniApps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-#~ msgstr "Svelte, MiniApps, 应用, 工具, 应用程序, 生态系统, 创新, 独特"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -496,9 +493,6 @@ msgstr "关于页面 | Svelte Mini Apps"
 #: src/routes/about/+page.svelte
 msgid "Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
 msgstr "在我们的“关于”页面上了解更多关于 Svelte Mini Apps 的信息。 了解我们的创新工具、独特的 Svelte 应用程序以及我们如何彻底改变 Svelte 生态系统。"
-
-#~ msgid "Svelte, MiniApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
-#~ msgstr "Svelte, MiniApps, 关于, 工具, 应用程序, 生态系统, 创新, 独特"
 
 #: src/routes/about/+page.svelte
 msgid "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
@@ -1191,9 +1185,6 @@ msgstr "GitHub 贡献跟踪器"
 msgid "GitHub Username"
 msgstr "GitHub 用户名"
 
-#~ msgid "Enter GitHub username"
-#~ msgstr "输入 GitHub 用户名"
-
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
 msgstr "年份"
@@ -1202,63 +1193,18 @@ msgstr "年份"
 msgid "Track Contributions"
 msgstr "跟踪贡献"
 
-#~ msgid "Reloading page..."
-#~ msgstr "重新加载页面..."
-
-#~ msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts and heatmaps. Track their coding activity, streaks, and more."
-#~ msgstr "使用交互式图表和热图可视化 {0} 在 {1} 年的 GitHub 贡献。跟踪他们的编码活动、连胜记录等。"
-
-#~ msgid "GitHub Contributions"
-#~ msgstr "GitHub 贡献"
-
-#~ msgid "For <0/> <1>•</1> <2/>"
-#~ msgstr "对于 <0/> <1>•</1> <2/>"
-
-#~ msgid "In {0}, you made <0/> <1/>"
-#~ msgstr "在 {0} 年，你做出了 <0/> <1/>"
-
-#~ msgid "contribution"
-#~ msgstr "贡献"
-
-#~ msgid "contributions"
-#~ msgstr "贡献"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMM"
 msgstr "MMM"
-
-#~ msgid "MMMM"
-#~ msgstr "MMMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contributions"
 msgstr "贡献"
 
-#~ msgid "View Contribution Heat Map"
-#~ msgstr "查看贡献热图"
-
-#~ msgid "More Stats"
-#~ msgstr "更多统计信息"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMMM yyyy"
 msgstr "yyyy 年 MMMM 月"
-
-#~ msgid "Total Contributions: {0}"
-#~ msgstr "总贡献：{0}"
-
-#~ msgid "View Chart"
-#~ msgstr "查看图表"
-
-#~ msgid "Heat Map"
-#~ msgstr "热图"
-
-#~ msgid "Back to Top"
-#~ msgstr "回到顶部"
-
-#~ msgid "Reload Page"
-#~ msgstr "重新加载页面"
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid "Markdown Editor - Write and Preview Markdown with Ease"
@@ -1734,9 +1680,6 @@ msgstr "生成密码"
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View Saved Passwords ({0})"
 msgstr "查看已保存的密码 ({0})"
-
-#~ msgid "Error loading saved passwords"
-#~ msgstr "加载已保存的密码时出错"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
@@ -2311,21 +2254,6 @@ msgstr "探索接下来会发生什么"
 #: src/routes/changelog/+page.svelte
 msgid "View Features"
 msgstr "查看功能"
-
-#~ msgid "TL;DR: Development Insights"
-#~ msgstr "TL;DR：开发见解"
-
-#~ msgid "Real-time insights from our automated changelog system."
-#~ msgstr "来自我们自动化更新日志系统的实时见解。"
-
-#~ msgid "{0} recent update{1}"
-#~ msgstr "{0} 个最近的更新{1}"
-
-#~ msgid "No recent activity"
-#~ msgstr "最近没有活动"
-
-#~ msgid "+{0} more..."
-#~ msgstr "+{0} 更多..."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/+page.svelte
@@ -8311,9 +8239,6 @@ msgstr "简化了 UI 设计和导航，以实现直观的体验"
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced offline indicators and interaction feedback"
 msgstr "增强了离线指示器和交互反馈"
-
-#~ msgid "All {0} are from earlier periods"
-#~ msgstr "所有{0}都来自早期。"
 
 #: src/routes/changelog/+page.svelte
 msgid "Key achievements and major improvements."
