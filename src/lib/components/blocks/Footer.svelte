@@ -31,7 +31,7 @@
 >
 	<div class=" mx-auto px-4 md:px-6">
 		<!-- Sitemap Section -->
-		<div class="grid gap-8 border-b border-slate-600/50 pb-8 md:grid-cols-3">
+		<div class="grid grid-cols-2 gap-8 border-b border-slate-600/50 pb-8 md:grid-cols-3">
 			<!-- Explore -->
 			<div class="flex flex-col space-y-3">
 				<h3 class="text-sm font-semibold">Explore</h3>
@@ -82,7 +82,7 @@
 			</div>
 
 			<!-- Support -->
-			<div class="flex flex-col space-y-3">
+			<div class="col-span-2 flex flex-col space-y-3 md:col-span-1">
 				<h3 class="text-sm font-semibold">Support</h3>
 				<nav class="flex flex-col space-y-2">
 					<a
