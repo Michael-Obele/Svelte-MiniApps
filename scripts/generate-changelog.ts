@@ -69,73 +69,88 @@ function getLastProcessedCommit(): string | null {
 	}
 }
 
-// Get existing generated timeline items
+// Get existing generated timeline items from JSON (primary source of truth)
 function getExistingGeneratedData(): TimelineItem[] {
-	// Try to read from a JSON file first (preferred)
 	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
-	if (existsSync(jsonPath)) {
-		try {
-			const content = readFileSync(jsonPath, 'utf-8');
-			const data = JSON.parse(content);
-			if (Array.isArray(data.timeline)) return data.timeline as TimelineItem[];
-		} catch (error) {
-			console.warn('Failed to parse JSON data file:', error);
-		}
-	}
 
-	// Fallback: try to parse the TypeScript file and extract the exported generatedTimeline array
-	const dataPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
-	if (!existsSync(dataPath)) return [];
+	if (!existsSync(jsonPath)) {
+		console.log('📝 No existing JSON data found - starting fresh');
+		return [];
+	}
 
 	try {
-		const content = readFileSync(dataPath, 'utf-8');
+		const content = readFileSync(jsonPath, 'utf-8');
+		const data = JSON.parse(content);
 
-		// Find the start of the generatedTimeline array
-		const startMatch = content.match(/export const generatedTimeline[^=]*=\s*(\[)/);
-		if (!startMatch) {
-			console.warn('Could not find generatedTimeline export in TS file');
-			return [];
+		if (Array.isArray(data.timeline)) {
+			console.log(`📚 Loaded ${data.timeline.length} existing entries from JSON`);
+			return data.timeline as TimelineItem[];
 		}
 
-		const startIndex = startMatch.index! + startMatch[0].length - 1; // Position of the opening [
-		
-		// Find the matching closing bracket by counting brackets
-		let bracketCount = 0;
-		let endIndex = -1;
-		for (let i = startIndex; i < content.length; i++) {
-			if (content[i] === '[') bracketCount++;
-			else if (content[i] === ']') {
-				bracketCount--;
-				if (bracketCount === 0) {
-					endIndex = i + 1;
-					break;
-				}
-			}
-		}
-
-		if (endIndex === -1) {
-			console.warn('Could not find closing bracket for generatedTimeline array');
-			return [];
-		}
-
-		// Extract and parse the JSON array
-		const jsonStr = content.substring(startIndex, endIndex);
-		try {
-			const parsed = JSON.parse(jsonStr);
-			if (Array.isArray(parsed)) {
-				console.log(`✅ Successfully parsed ${parsed.length} entries from TS file`);
-				return parsed as TimelineItem[];
-			}
-		} catch (err) {
-			console.error('Failed to parse generatedTimeline JSON from TS file:', err);
-			console.error('Attempted to parse:', jsonStr.substring(0, 200) + '...');
-		}
-
+		console.warn('⚠️  JSON file exists but timeline is not an array');
 		return [];
 	} catch (error) {
-		console.warn('Failed to read existing data:', error);
+		console.error('❌ Failed to parse JSON data file:', error);
+		console.error('💡 You may need to run: bun run scripts/migrate-changelog-to-json.ts');
 		return [];
 	}
+}
+
+// Smart merge: combines timeline items by date, deduplicating by commit hash
+function mergeTimelineItems(
+	newItems: TimelineItem[],
+	existingItems: TimelineItem[]
+): TimelineItem[] {
+	const merged = new Map<string, TimelineItem>();
+
+	// First, add all existing items to the map
+	for (const item of existingItems) {
+		merged.set(item.date, { ...item, items: [...item.items] });
+	}
+
+	// Then merge or add new items
+	for (const newItem of newItems) {
+		const existing = merged.get(newItem.date);
+
+		if (existing) {
+			// Extract commit hashes from existing items
+			const existingHashes = new Set(
+				existing.items
+					.map((item) => {
+						const match = item.match(/\(([a-f0-9]{7})\)$/);
+						return match ? match[1] : null;
+					})
+					.filter(Boolean)
+			);
+
+			// Add only new commits (by hash) - prepend to keep newest first
+			const newCommits = newItem.items.filter((item) => {
+				const match = item.match(/\(([a-f0-9]{7})\)$/);
+				const hash = match ? match[1] : null;
+				return hash && !existingHashes.has(hash);
+			});
+
+			if (newCommits.length > 0) {
+				// Prepend new commits (newest first)
+				existing.items = [...newCommits, ...existing.items];
+
+				// Update description
+				const totalFiles = new Set(existing.items).size;
+				existing.description = `Multiple updates across ${totalFiles} commit${totalFiles === 1 ? '' : 's'}`;
+
+				console.log(`  ✓ Merged ${newCommits.length} new commit(s) into ${newItem.date}`);
+			}
+		} else {
+			// New date entry, just add it
+			merged.set(newItem.date, newItem);
+			console.log(`  ✓ Added new date entry: ${newItem.date}`);
+		}
+	}
+
+	// Sort by date (newest first)
+	return Array.from(merged.values()).sort(
+		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+	);
 }
 
 // Get commits since last processed commit
@@ -345,60 +360,75 @@ async function main() {
 
 	if (commits.length === 0) {
 		console.log('✅ No new commits to process');
+
+		// Ensure JSON backup exists even when no new commits
+		const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
+		if (!existsSync(jsonPath)) {
+			console.log('📝 Creating JSON backup from existing TS file...');
+			const existingData = getExistingGeneratedData();
+			if (existingData.length > 0) {
+				writeFileSync(
+					jsonPath,
+					JSON.stringify(
+						{
+							lastProcessedCommit: lastProcessed || 'unknown',
+							generatedAt: new Date().toISOString(),
+							timeline: existingData
+						},
+						null,
+						2
+					)
+				);
+				console.log(`✅ JSON backup created with ${existingData.length} entries`);
+			}
+		}
 		return;
 	}
 
 	const newTimelineItems = groupCommits(commits);
-	console.log(`📊 Generated ${newTimelineItems.length} changelog entries`);
+	console.log(`📊 Generated ${newTimelineItems.length} new changelog entries`);
 
-	// Always get existing data to preserve history
+	// Always get existing data to preserve history (JSON is source of truth)
 	const existingData = getExistingGeneratedData();
-	console.log(`📚 Found ${existingData.length} existing entries`);
 
-	// Merge with NEW items first, so they appear at the top and take precedence in deduplication
-	// This ensures new commits are always added to the top without modifying old entries
-	const allTimelineItems = [...newTimelineItems, ...existingData].sort(
-		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-	);
+	// Smart merge: combines by date, deduplicates by commit hash
+	console.log('🔄 Merging with existing entries...');
+	const mergedItems = mergeTimelineItems(newTimelineItems, existingData);
 
-	// Remove duplicates based on date and title
-	// Since new items are first, deduplication keeps the new version if there's a conflict
-	const uniqueItems = allTimelineItems.filter((item, index, arr) => {
-		return !arr
-			.slice(0, index)
-			.some((existing) => existing.date === item.date && existing.title === item.title);
-	});
-
-	console.log(`📋 Total entries after merge: ${uniqueItems.length}`);
+	console.log(`📋 Total entries after merge: ${mergedItems.length}`);
 
 	// Safety check: ensure we're not losing entries
-	if (uniqueItems.length < existingData.length && !forceFullRebuild) {
-		console.warn(
-			`⚠️  WARNING: Entry count decreased from ${existingData.length} to ${uniqueItems.length}`
+	if (mergedItems.length < existingData.length) {
+		console.error(
+			`❌ ERROR: Entry count decreased from ${existingData.length} to ${mergedItems.length}`
 		);
-		console.warn('⚠️  This may indicate data loss. Please verify the results.');
+		console.error('❌ This indicates data loss! Aborting to prevent data corruption.');
+		console.error('💡 Please check the changelog files and report this issue.');
+		process.exit(1);
 	}
 
 	const latestCommit = commits[0]?.hash;
-	const fileContent = generateDataFile(uniqueItems, latestCommit);
+	const fileContent = generateDataFile(mergedItems, latestCommit);
 
 	const outputPath = join(process.cwd(), 'src/routes/changelog/generated-data.ts');
 	const jsonPath = join(process.cwd(), 'src/routes/changelog/generated-data.json');
 
-	// Save both TypeScript and JSON versions
-	writeFileSync(outputPath, fileContent);
+	// Save JSON first (source of truth), then generate TS file
 	writeFileSync(
 		jsonPath,
 		JSON.stringify(
 			{
 				lastProcessedCommit: latestCommit,
 				generatedAt: new Date().toISOString(),
-				timeline: uniqueItems
+				timeline: mergedItems
 			},
 			null,
 			2
 		)
 	);
+
+	// Generate TypeScript file from JSON (for types and IDE support)
+	writeFileSync(outputPath, fileContent);
 
 	console.log(`✅ Changelog data written to ${outputPath}`);
 	console.log(`✅ JSON backup saved to ${jsonPath}`);
