@@ -90,24 +90,47 @@ function getExistingGeneratedData(): TimelineItem[] {
 	try {
 		const content = readFileSync(dataPath, 'utf-8');
 
-		// Try to locate the exported generatedTimeline assignment and parse the JSON block
-		const match = content.match(/export const generatedTimeline[\s\S]*?=\s*(\[[\s\S]*?\]);/m);
-		if (match && match[1]) {
-			try {
-				const parsed = JSON.parse(match[1]);
-				if (Array.isArray(parsed)) return parsed as TimelineItem[];
-			} catch (err) {
-				console.warn('Failed to parse generatedTimeline JSON from TS file:', err);
+		// Find the start of the generatedTimeline array
+		const startMatch = content.match(/export const generatedTimeline[^=]*=\s*(\[)/);
+		if (!startMatch) {
+			console.warn('Could not find generatedTimeline export in TS file');
+			return [];
+		}
+
+		const startIndex = startMatch.index! + startMatch[0].length - 1; // Position of the opening [
+		
+		// Find the matching closing bracket by counting brackets
+		let bracketCount = 0;
+		let endIndex = -1;
+		for (let i = startIndex; i < content.length; i++) {
+			if (content[i] === '[') bracketCount++;
+			else if (content[i] === ']') {
+				bracketCount--;
+				if (bracketCount === 0) {
+					endIndex = i + 1;
+					break;
+				}
 			}
 		}
 
-		// As a last resort, if the file contains the last processed commit but we couldn't parse, log and return empty
-		const commitMatch = content.match(/\/\/ Last processed commit: ([a-f0-9]+)/i);
-		if (commitMatch) {
-			console.log(
-				'📝 Found existing generated-data.ts but could not extract timeline; continuing with fresh data'
-			);
+		if (endIndex === -1) {
+			console.warn('Could not find closing bracket for generatedTimeline array');
+			return [];
 		}
+
+		// Extract and parse the JSON array
+		const jsonStr = content.substring(startIndex, endIndex);
+		try {
+			const parsed = JSON.parse(jsonStr);
+			if (Array.isArray(parsed)) {
+				console.log(`✅ Successfully parsed ${parsed.length} entries from TS file`);
+				return parsed as TimelineItem[];
+			}
+		} catch (err) {
+			console.error('Failed to parse generatedTimeline JSON from TS file:', err);
+			console.error('Attempted to parse:', jsonStr.substring(0, 200) + '...');
+		}
+
 		return [];
 	} catch (error) {
 		console.warn('Failed to read existing data:', error);
