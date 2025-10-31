@@ -141,7 +141,7 @@ function mergeTimelineItems(
 	});
 
 	return result;
-}// Get commits since last processed commit
+} // Get commits since last processed commit
 function getCommits(since?: string): CommitInfo[] {
 	// When no since hash, get all commits instead of limiting to 50
 	// This prevents losing old commit history
@@ -228,7 +228,8 @@ function groupCommits(commits: CommitInfo[]): TimelineItem[] {
 	for (const commit of commits) {
 		const parsed = parseCommitMessage(commit.message);
 		const commitType = parsed.breaking ? 'breaking' : parsed.type;
-		const typeInfo = COMMIT_TYPE_MAP[commitType as keyof typeof COMMIT_TYPE_MAP] || COMMIT_TYPE_MAP.improvement;
+		const typeInfo =
+			COMMIT_TYPE_MAP[commitType as keyof typeof COMMIT_TYPE_MAP] || COMMIT_TYPE_MAP.improvement;
 
 		// Create individual entry for each commit
 		timelineItems.push({
@@ -245,8 +246,12 @@ function groupCommits(commits: CommitInfo[]): TimelineItem[] {
 	// Sort by timestamp (newest first)
 	return timelineItems.sort((a, b) => {
 		// Find the corresponding commits to compare timestamps
-		const aCommit = commits.find(c => c.hash.substring(0, 7) === a.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]);
-		const bCommit = commits.find(c => c.hash.substring(0, 7) === b.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]);
+		const aCommit = commits.find(
+			(c) => c.hash.substring(0, 7) === a.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]
+		);
+		const bCommit = commits.find(
+			(c) => c.hash.substring(0, 7) === b.items[0].match(/\(([a-f0-9]{7})\)$/)?.[1]
+		);
 		return (bCommit?.timestamp || 0) - (aCommit?.timestamp || 0);
 	});
 }
