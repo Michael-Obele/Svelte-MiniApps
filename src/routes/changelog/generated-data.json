@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "1c75b3883ae7201b54feeea783e81b8589dd4811",
-  "generatedAt": "2025-10-31T21:01:52.032Z",
+  "lastProcessedCommit": "46818b0c48c487193e782d0223992da106ef5505",
+  "generatedAt": "2025-10-31T21:07:38.494Z",
   "timeline": [
     {
       "date": "October 31, 2025",
@@ -8,6 +8,17 @@
       "description": "Updated scripts/generate-changelog.ts",
       "items": [
         "refactor: improve code readability by adjusting formatting in mergeTimelineItems and groupCommits functions (dbad026)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 31, 2025",
+      "title": "chore: update generated changelog data with latest commits",
+      "description": "Updated src/routes/changelog/generated-data.json",
+      "items": [
+        "chore: update generated changelog data with latest commits (ac8635f)"
       ],
       "type": "improvement",
       "icon": "Code",
@@ -77,6 +88,17 @@
     },
     {
       "date": "October 31, 2025",
+      "title": "fix: remove changelog system entry from .gitignore",
+      "description": "Updated .gitignore",
+      "items": [
+        "fix: remove changelog system entry from .gitignore (46818b0)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "October 31, 2025",
       "title": "fix: update PO revision dates for localization files",
       "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
       "items": [
@@ -118,6 +140,17 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "October 31, 2025",
+      "title": "fix: update GitHub workflow to commit generated-data.json instead of .ts file",
+      "description": "Updated .github/workflows/generate-changelog.yml",
+      "items": [
+        "fix: update GitHub workflow to commit generated-data.json instead of .ts file (099385b)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "October 30, 2025",
