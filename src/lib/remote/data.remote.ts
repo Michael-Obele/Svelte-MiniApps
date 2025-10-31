@@ -1,0 +1,329 @@
+import { query } from '$app/server';
+import * as v from 'valibot';
+import { GraphQLClient, gql } from 'graphql-request';
+import { error } from '@sveltejs/kit';
+
+// ========== Type Definitions ==========
+
+export interface ContributionDay {
+	contributionCount: number;
+	date: string;
+	color: string;
+}
+
+export interface ContributionWeek {
+	contributionDays: ContributionDay[];
+}
+
+export interface Repository {
+	name: string;
+	nameWithOwner: string;
+	url: string;
+	description: string | null;
+	stargazerCount: number;
+	forkCount: number;
+	primaryLanguage: {
+		name: string;
+		color: string;
+	} | null;
+}
+
+export interface ContributionStats {
+	totalCommitContributions: number;
+	totalIssueContributions: number;
+	totalPullRequestContributions: number;
+	totalPullRequestReviewContributions: number;
+	totalRepositoryContributions: number;
+	totalRepositoriesWithContributedCommits: number;
+	totalRepositoriesWithContributedIssues: number;
+	totalRepositoriesWithContributedPullRequests: number;
+	totalRepositoriesWithContributedPullRequestReviews: number;
+	restrictedContributionsCount: number;
+}
+
+export interface ContributionData {
+	user: string;
+	year: string;
+	totalContributions: number;
+	weeks: ContributionWeek[];
+	contributions: ContributionDay[];
+	stats: ContributionStats;
+	repositories: Repository[];
+	contributionYears: number[];
+	streakStats: {
+		light: string | null;
+		dark: string | null;
+	};
+}
+
+// ========== Schema Validation ==========
+
+const contributionQuerySchema = v.object({
+	username: v.pipe(
+		v.string(),
+		v.minLength(1, 'Username is required'),
+		v.maxLength(39, 'Username is too long'),
+		v.regex(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i, 'Invalid GitHub username format')
+	),
+	year: v.pipe(
+		v.string(),
+		v.regex(/^\d{4}$/, 'Year must be a 4-digit number'),
+		v.transform((val) => parseInt(val, 10)),
+		v.minValue(2008, 'GitHub was founded in 2008'),
+		v.maxValue(new Date().getFullYear(), 'Year cannot be in the future')
+	)
+});
+
+// ========== GraphQL Queries ==========
+
+const CONTRIBUTION_QUERY = gql`
+	query ($username: String!, $from: DateTime!, $to: DateTime!) {
+		user(login: $username) {
+			contributionsCollection(from: $from, to: $to) {
+				contributionCalendar {
+					totalContributions
+					weeks {
+						contributionDays {
+							contributionCount
+							date
+							color
+						}
+					}
+				}
+				totalCommitContributions
+				totalIssueContributions
+				totalPullRequestContributions
+				totalPullRequestReviewContributions
+				totalRepositoryContributions
+				totalRepositoriesWithContributedCommits
+				totalRepositoriesWithContributedIssues
+				totalRepositoriesWithContributedPullRequests
+				totalRepositoriesWithContributedPullRequestReviews
+				restrictedContributionsCount
+				contributionYears
+			}
+			repositoriesContributedTo(
+				first: 100
+				contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, PULL_REQUEST_REVIEW]
+				orderBy: { field: STARGAZERS, direction: DESC }
+			) {
+				nodes {
+					name
+					nameWithOwner
+					url
+					description
+					stargazerCount
+					forkCount
+					primaryLanguage {
+						name
+						color
+					}
+				}
+			}
+		}
+	}
+`;
+
+// ========== Helper Functions ==========
+
+/**
+ * Creates a GraphQL client with GitHub token
+ */
+function createGitHubClient(): GraphQLClient {
+	const token = process.env.VITE_GITHUB_TOKEN;
+
+	if (!token) {
+		throw error(500, 'GitHub token not configured');
+	}
+
+	return new GraphQLClient('https://api.github.com/graphql', {
+		headers: {
+			Authorization: `bearer ${token}`
+		}
+	});
+}
+
+/**
+ * Fetches streak statistics SVG from external service
+ */
+async function fetchStreakStats(username: string, theme: 'light' | 'dark'): Promise<string | null> {
+	const streakStatsUrl = {
+		light: `https://github-readme-streak-stats-nine-alpha.vercel.app?user=${username}&theme=default`,
+		dark: `https://github-readme-streak-stats-nine-alpha.vercel.app?user=${username}&theme=highcontrast`
+	};
+
+	try {
+		const response = await fetch(streakStatsUrl[theme]);
+		return response.ok ? await response.text() : null;
+	} catch (err) {
+		console.error(`Failed to fetch streak stats for theme ${theme}:`, err);
+		return null;
+	}
+}
+
+/**
+ * Processes raw GitHub API response into clean contribution data
+ */
+function processContributionData(
+	rawData: any,
+	username: string,
+	year: string
+): Omit<ContributionData, 'streakStats'> {
+	const collection = rawData.user.contributionsCollection;
+	const calendar = collection.contributionCalendar;
+
+	// Flatten contribution days for easier processing
+	const contributions = calendar.weeks.flatMap((week: ContributionWeek) =>
+		week.contributionDays.map((day) => ({
+			date: day.date,
+			contributionCount: day.contributionCount,
+			color: day.color
+		}))
+	);
+
+	// Extract stats
+	const stats: ContributionStats = {
+		totalCommitContributions: collection.totalCommitContributions,
+		totalIssueContributions: collection.totalIssueContributions,
+		totalPullRequestContributions: collection.totalPullRequestContributions,
+		totalPullRequestReviewContributions: collection.totalPullRequestReviewContributions,
+		totalRepositoryContributions: collection.totalRepositoryContributions,
+		totalRepositoriesWithContributedCommits: collection.totalRepositoriesWithContributedCommits,
+		totalRepositoriesWithContributedIssues: collection.totalRepositoriesWithContributedIssues,
+		totalRepositoriesWithContributedPullRequests:
+			collection.totalRepositoriesWithContributedPullRequests,
+		totalRepositoriesWithContributedPullRequestReviews:
+			collection.totalRepositoriesWithContributedPullRequestReviews,
+		restrictedContributionsCount: collection.restrictedContributionsCount
+	};
+
+	// Extract repositories
+	const repositories: Repository[] =
+		rawData.user.repositoriesContributedTo.nodes?.map((repo: any) => ({
+			name: repo.name,
+			nameWithOwner: repo.nameWithOwner,
+			url: repo.url,
+			description: repo.description,
+			stargazerCount: repo.stargazerCount,
+			forkCount: repo.forkCount,
+			primaryLanguage: repo.primaryLanguage
+		})) || [];
+
+	return {
+		user: username,
+		year,
+		totalContributions: calendar.totalContributions,
+		weeks: calendar.weeks,
+		contributions,
+		stats,
+		repositories,
+		contributionYears: collection.contributionYears || []
+	};
+}
+
+// ========== Remote Functions ==========
+
+/**
+ * Fetches comprehensive GitHub contribution data for a user and year
+ */
+export const getContributionData = query(contributionQuerySchema, async (input) => {
+	const { username, year } = input;
+
+	try {
+		const client = createGitHubClient();
+
+		// Construct date range for the year
+		const from = `${year}-01-01T00:00:00Z`;
+		const to = `${year}-12-31T23:59:59Z`;
+
+		// Fetch GitHub data
+		const rawData = await client.request<any>(CONTRIBUTION_QUERY, {
+			username,
+			from,
+			to
+		});
+
+		// Check if user exists
+		if (!rawData.user) {
+			throw error(404, `GitHub user "${username}" not found`);
+		}
+
+		// Process the data
+		const processedData = processContributionData(rawData, username, year.toString());
+
+		// Fetch streak stats in parallel
+		const [lightStreakStats, darkStreakStats] = await Promise.all([
+			fetchStreakStats(username, 'light'),
+			fetchStreakStats(username, 'dark')
+		]);
+
+		const result: ContributionData = {
+			...processedData,
+			streakStats: {
+				light: lightStreakStats,
+				dark: darkStreakStats
+			}
+		};
+
+		return result;
+	} catch (err) {
+		console.error('Error fetching GitHub contribution data:', err);
+
+		// Handle specific error types
+		if (err && typeof err === 'object' && 'status' in err) {
+			const statusCode = (err as any).status;
+			if (statusCode === 404) {
+				throw error(404, `GitHub user "${username}" not found`);
+			}
+			if (statusCode === 401 || statusCode === 403) {
+				throw error(500, 'GitHub API authentication failed');
+			}
+		}
+
+		throw error(500, 'Failed to fetch GitHub contribution data');
+	}
+});
+
+/**
+ * Fetches available contribution years for a user
+ */
+export const getContributionYears = query(
+	v.object({
+		username: v.pipe(
+			v.string(),
+			v.minLength(1, 'Username is required'),
+			v.maxLength(39, 'Username is too long')
+		)
+	}),
+	async ({ username }) => {
+		try {
+			const client = createGitHubClient();
+			const currentYear = new Date().getFullYear();
+
+			const query = gql`
+				query ($username: String!, $from: DateTime!, $to: DateTime!) {
+					user(login: $username) {
+						contributionsCollection(from: $from, to: $to) {
+							contributionYears
+						}
+					}
+				}
+			`;
+
+			const data = await client.request<any>(query, {
+				username,
+				from: `${currentYear}-01-01T00:00:00Z`,
+				to: `${currentYear}-12-31T23:59:59Z`
+			});
+
+			if (!data.user) {
+				throw error(404, `GitHub user "${username}" not found`);
+			}
+
+			return data.user.contributionsCollection.contributionYears || [];
+		} catch (err) {
+			console.error('Error fetching contribution years:', err);
+			throw error(500, 'Failed to fetch contribution years');
+		}
+	}
+);

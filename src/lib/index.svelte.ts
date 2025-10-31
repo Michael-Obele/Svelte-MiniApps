@@ -31,7 +31,11 @@ export function site() {
 export function done() {
 	return [
 		{ name: 'random-password-generator', time: '2025-07-15T00:00:00.000Z' },
-		{ name: 'github-contribution-tracker', time: '2025-08-20T00:00:00.000Z' },
+		{
+			name: 'github-contribution-tracker',
+			time: '2025-08-20T00:00:00.000Z',
+			update: '2025-10-31T00:00:00.000Z'
+		},
 		{ name: 'qr-code-generator', time: '2025-07-10T00:00:00.000Z' },
 		{ name: 'dictionary-app', time: '2025-09-05T00:00:00.000Z' },
 		{ name: 'random-emoji-generator', time: '2025-08-01T00:00:00.000Z' },
