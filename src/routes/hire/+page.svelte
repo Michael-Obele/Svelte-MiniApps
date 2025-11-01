@@ -239,279 +239,284 @@
 			</div>
 		</div>
 
-		<div class="grid gap-12 lg:grid-cols-2">
-			<!-- About Section -->
-			<div class="space-y-8">
-				<div
-					class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
-				>
-					<div class="mb-4 flex items-center gap-3">
-						<div
-							class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
-						>
-							<Briefcase class="text-primary size-6" />
-						</div>
-						<h2 class="text-2xl font-semibold">About Me</h2>
+		<!-- Bento Grid Layout -->
+		<div class="grid auto-rows-auto grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-6">
+			<!-- About Me - Hero Card -->
+			<div
+				class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:col-span-2 lg:col-span-3 lg:row-span-2"
+			>
+				<div class="mb-4 flex items-center gap-3">
+					<div
+						class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+					>
+						<Briefcase class="text-primary size-6" />
 					</div>
-					<p class="text-muted-foreground mb-4 leading-relaxed">
-						Full‑stack developer and open source enthusiast passionate about building fast,
-						maintainable web applications. I specialize in <strong class="text-foreground"
-							>SvelteKit</strong
-						>, <strong class="text-foreground">TypeScript</strong>, and modern web technologies.
-					</p>
-					<p class="text-muted-foreground leading-relaxed">
-						Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating
-						on innovative solutions. Let's create something exceptional together!
-					</p>
-					<div class="mt-6 flex flex-wrap gap-2">
-						<span
-							class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium text-green-700 dark:text-green-400"
-						>
-							<CheckCircle2 class="size-4" />
-							Available Now
-						</span>
-						<span
-							class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-700 dark:text-blue-400"
-						>
-							<Zap class="size-4" />
-							Fast Response
-						</span>
-					</div>
+					<h2 class="text-2xl font-semibold">About Me</h2>
 				</div>
-
-				<!-- Skills -->
-				<div
-					class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
-				>
-					<div class="mb-6 flex items-center gap-3">
-						<div
-							class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
-						>
-							<Zap class="text-primary size-6" />
-						</div>
-						<h2 class="text-2xl font-semibold">Technical Skills</h2>
-					</div>
-					<div class="grid gap-3 sm:grid-cols-2">
-						{#each skills as skill}
-							<div
-								class="group/skill bg-background/50 hover:border-primary/50 hover:bg-background/80 flex items-center justify-between rounded-lg border p-3 transition-all hover:shadow-md"
-							>
-								<div class="flex items-center space-x-3">
-									<div
-										class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-transform group-hover/skill:scale-110 ${skill.color ?? 'bg-primary/10 text-primary'}`}
-									>
-										<span class="text-sm font-semibold">{skill.initials}</span>
-									</div>
-									<span class="font-medium">{skill.name}</span>
-								</div>
-								<span
-									class="bg-primary/10 text-primary rounded-full px-2.5 py-1 text-xs font-medium"
-									>{skill.level}</span
-								>
-							</div>
-						{/each}
-					</div>
-				</div>
-
-				<!-- Services -->
-				<div
-					class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
-				>
-					<div class="mb-6 flex items-center gap-3">
-						<div
-							class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
-						>
-							<Heart class="text-primary size-6" />
-						</div>
-						<h2 class="text-2xl font-semibold">Services Offered</h2>
-					</div>
-					<div class="grid gap-4 sm:grid-cols-2">
-						{#each services as service}
-							<div
-								class="group/service bg-background/50 hover:border-primary/50 hover:bg-background/80 rounded-lg border p-5 transition-all hover:shadow-md"
-							>
-								<div class="mb-3 flex items-center space-x-2">
-									<service.icon
-										class="text-primary size-6 transition-transform group-hover/service:scale-110"
-									/>
-									<h3 class="font-semibold">{service.title}</h3>
-								</div>
-								<p class="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-							</div>
-						{/each}
-					</div>
+				<p class="text-muted-foreground mb-4 leading-relaxed">
+					Full‑stack developer and open source enthusiast passionate about building fast,
+					maintainable web applications. I specialize in <strong class="text-foreground"
+						>SvelteKit</strong
+					>, <strong class="text-foreground">TypeScript</strong>, and modern web technologies.
+				</p>
+				<p class="text-muted-foreground leading-relaxed">
+					Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on
+					innovative solutions. Let's create something exceptional together!
+				</p>
+				<div class="mt-6 flex flex-wrap gap-2">
+					<span
+						class="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium text-green-700 dark:text-green-400"
+					>
+						<CheckCircle2 class="size-4" />
+						Available Now
+					</span>
+					<span
+						class="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-700 dark:text-blue-400"
+					>
+						<Zap class="size-4" />
+						Fast Response
+					</span>
 				</div>
 			</div>
 
-			<!-- Contact & Projects -->
-			<div class="space-y-8">
-				<!-- Contact Info -->
-				<div
-					class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
-				>
-					<div class="mb-6 flex items-center gap-3">
+			<!-- Technical Skills -->
+			<div
+				class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:col-span-2 lg:col-span-3 lg:row-span-2"
+			>
+				<div class="mb-6 flex items-center gap-3">
+					<div
+						class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+					>
+						<Zap class="text-primary size-6" />
+					</div>
+					<h2 class="text-2xl font-semibold">Technical Skills</h2>
+				</div>
+				<div class="grid gap-3 sm:grid-cols-2">
+					{#each skills as skill (skill.name)}
 						<div
-							class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+							class="group/skill bg-background/50 hover:border-primary/50 hover:bg-background/80 flex items-center justify-between rounded-lg border p-3 transition-all hover:shadow-md"
+						>
+							<div class="flex items-center space-x-3">
+								<div
+									class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-transform group-hover/skill:scale-110 ${skill.color ?? 'bg-primary/10 text-primary'}`}
+								>
+									<span class="text-sm font-semibold">{skill.initials}</span>
+								</div>
+								<span class="font-medium">{skill.name}</span>
+							</div>
+							<span class="bg-primary/10 text-primary rounded-full px-2.5 py-1 text-xs font-medium"
+								>{skill.level}</span
+							>
+						</div>
+					{/each}
+				</div>
+			</div>
+
+			<!-- Services Offered -->
+			<div
+				class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:col-span-4 lg:col-span-4"
+			>
+				<div class="mb-6 flex items-center gap-3">
+					<div
+						class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+					>
+						<Heart class="text-primary size-6" />
+					</div>
+					<h2 class="text-2xl font-semibold">Services Offered</h2>
+				</div>
+				<div class="grid gap-6 sm:grid-cols-2">
+					{#each services as service (service.title)}
+						<div
+							class="group/service bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col rounded-lg border p-6 transition-all hover:shadow-md"
+						>
+							<div class="mb-4 flex items-start gap-3">
+								<div
+									class="bg-primary/10 shrink-0 rounded-lg p-3 transition-transform group-hover/service:scale-110"
+								>
+									<service.icon class="text-primary size-6" />
+								</div>
+								<div class="flex-1">
+									<h3 class="mb-2 text-lg font-semibold">{service.title}</h3>
+									<p class="text-muted-foreground text-sm leading-relaxed">
+										{service.description}
+									</p>
+								</div>
+							</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+
+			<!-- Get In Touch -->
+			<div
+				class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:col-span-4 lg:col-span-2"
+			>
+				<div class="mb-6 flex items-center gap-3">
+					<div
+						class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+					>
+						<Mail class="text-primary size-6" />
+					</div>
+					<h2 class="text-2xl font-semibold">Get In Touch</h2>
+				</div>
+				<div class="space-y-4">
+					<a
+						href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
+						class="group/email from-primary/5 hover:border-primary/50 flex items-center space-x-4 rounded-lg border bg-gradient-to-r to-purple-500/5 p-4 transition-all hover:shadow-md"
+					>
+						<div
+							class="bg-primary/10 rounded-full p-3 transition-transform group-hover/email:scale-110"
 						>
 							<Mail class="text-primary size-6" />
 						</div>
-						<h2 class="text-2xl font-semibold">Get In Touch</h2>
-					</div>
-					<div class="space-y-4">
+						<div>
+							<p class="font-semibold">Email Me</p>
+							<p class="text-muted-foreground text-sm">hire@svelte-apps.me</p>
+						</div>
+					</a>
+					<div class="grid grid-cols-2 gap-3">
 						<a
-							href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
-							class="group/email from-primary/5 hover:border-primary/50 flex items-center space-x-4 rounded-lg border bg-gradient-to-r to-purple-500/5 p-4 transition-all hover:shadow-md"
+							href="https://github.com/Michael-Obele"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
 						>
-							<div
-								class="bg-primary/10 rounded-full p-3 transition-transform group-hover/email:scale-110"
-							>
-								<Mail class="text-primary size-6" />
-							</div>
-							<div>
-								<p class="font-semibold">Email Me</p>
-								<p class="text-muted-foreground text-sm">hire@svelte-apps.me</p>
-							</div>
+							<Github class="size-6 transition-transform group-hover/social:scale-110" />
+							<span class="text-sm font-medium">GitHub</span>
 						</a>
-						<div class="grid grid-cols-2 gap-3">
-							<a
-								href="https://github.com/Michael-Obele"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
-							>
-								<Github class="size-6 transition-transform group-hover/social:scale-110" />
-								<span class="text-sm font-medium">GitHub</span>
-							</a>
 
-							<a
-								href="https://twitter.com/Dev_Obele"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
-							>
-								<span class="size-6">
-									<XIcon class="size-6 transition-transform group-hover/social:scale-110" />
-								</span>
-								<span class="text-sm font-medium">Twitter</span>
-							</a>
-
-							<a
-								href="https://www.linkedin.com/in/dev-obele"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
-							>
-								<Linkedin class="size-6 transition-transform group-hover/social:scale-110" />
-								<span class="text-sm font-medium">LinkedIn</span>
-							</a>
-
-							<a
-								href="https://bsky.app/profile/svelte-apps.me"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
-							>
-								<Bluesky class="size-6 transition-transform group-hover/social:scale-110" />
-								<span class="text-sm font-medium">Bluesky</span>
-							</a>
-
-							<a
-								href="https://discord.com/users/michael_obele"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
-								title="Discord: michael_obele"
-							>
-								<span
-									class="icon-[ic--baseline-discord] size-10 transition-transform group-hover/social:scale-110"
-								></span>
-								<span class="text-sm font-medium">Discord</span>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<!-- Featured Projects -->
-				<div
-					id="projects"
-					class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
-				>
-					<div class="mb-6 flex items-center gap-3">
-						<div
-							class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+						<a
+							href="https://twitter.com/Dev_Obele"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
 						>
-							<Code class="text-primary size-6" />
-						</div>
-						<h2 class="text-2xl font-semibold">Featured Projects</h2>
-					</div>
-					<div class="space-y-5">
-						{#each projects as project}
-							<div
-								class="group/project bg-background/50 hover:border-primary/50 hover:bg-background/80 rounded-lg border p-5 transition-all hover:shadow-md"
-							>
-								<div class="mb-3 flex items-start justify-between">
-									<h3 class="text-lg font-semibold">{project.name}</h3>
-									<a
-										href={project.link}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="bg-primary/10 text-primary hover:bg-primary/20 rounded-full p-2 transition-all hover:scale-110"
-										aria-label="View project"
-									>
-										<ExternalLink class="size-4" />
-									</a>
-								</div>
-								<p class="text-muted-foreground mb-4 text-sm leading-relaxed">
-									{project.description}
-								</p>
-								<div class="mb-3 flex flex-wrap gap-2">
-									{#each project.tech as tech}
-										<span
-											class="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-medium"
-										>
-											{tech}
-										</span>
-									{/each}
-								</div>
-								<div class="text-muted-foreground flex items-center text-sm font-medium">
-									<Star class="mr-1.5 size-4 fill-yellow-500 text-yellow-500" />
-									{project.stars}
-								</div>
-							</div>
-						{/each}
+							<span class="size-6">
+								<XIcon class="size-6 transition-transform group-hover/social:scale-110" />
+							</span>
+							<span class="text-sm font-medium">Twitter</span>
+						</a>
+
+						<a
+							href="https://www.linkedin.com/in/dev-obele"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
+						>
+							<Linkedin class="size-6 transition-transform group-hover/social:scale-110" />
+							<span class="text-sm font-medium">LinkedIn</span>
+						</a>
+
+						<a
+							href="https://bsky.app/profile/svelte-apps.me"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
+						>
+							<Bluesky class="size-6 transition-transform group-hover/social:scale-110" />
+							<span class="text-sm font-medium">Bluesky</span>
+						</a>
+
+						<a
+							href="https://discord.com/users/michael_obele"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group/social bg-background/50 hover:border-primary/50 hover:bg-background/80 flex flex-col items-center space-y-2 rounded-lg border p-4 transition-all hover:shadow-md"
+							title="Discord: michael_obele"
+						>
+							<span
+								class="icon-[ic--baseline-discord] size-10 transition-transform group-hover/social:scale-110"
+							></span>
+							<span class="text-sm font-medium">Discord</span>
+						</a>
 					</div>
 				</div>
+			</div>
+		</div>
 
-				<!-- Call to Action -->
-				<div
-					class="from-primary/10 relative overflow-hidden rounded-xl border bg-gradient-to-br via-purple-500/10 to-pink-500/10 p-8 text-center shadow-md"
-				>
+		<!-- Featured Projects - Now in a full-width section -->
+		<div class="mt-16">
+			<div
+				id="projects"
+				class="group bg-card/50 rounded-xl border p-8 shadow-md backdrop-blur-sm transition-all hover:shadow-lg"
+			>
+				<div class="mb-6 flex items-center gap-3">
 					<div
-						class="bg-grid-white/10 absolute inset-0 [mask-image:radial-gradient(white,transparent_85%)]"
-					></div>
-					<div class="relative">
-						<div
-							class="bg-primary/20 ring-primary/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ring-4"
-						>
-							<Briefcase class="text-primary size-8" />
-						</div>
-						<h2 class="mb-3 text-2xl font-bold">Let's Work Together!</h2>
-						<p class="text-muted-foreground mx-auto mb-6 max-w-md leading-relaxed">
-							I'm open to freelance and consulting work, as well as collaboration on open source
-							projects and mentoring. Share a brief note about your project and I'll get back to you
-							within 24 hours.
-						</p>
-						<a
-							href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
-							class="group bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-8 py-4 font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-						>
-							<Mail class="size-5" />
-							Start a Conversation
-							<Rocket
-								class="size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-							/>
-						</a>
+						class="bg-primary/10 ring-primary/20 rounded-lg p-3 ring-2 transition-transform group-hover:scale-110"
+					>
+						<Code class="text-primary size-6" />
 					</div>
+					<h2 class="text-2xl font-semibold">Featured Projects</h2>
+				</div>
+				<div class="grid gap-5 md:grid-cols-2">
+					{#each projects as project (project.name)}
+						<div
+							class="group/project bg-background/50 hover:border-primary/50 hover:bg-background/80 rounded-lg border p-5 transition-all hover:shadow-md"
+						>
+							<div class="mb-3 flex items-start justify-between">
+								<h3 class="text-lg font-semibold">{project.name}</h3>
+								<a
+									href={project.link}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="bg-primary/10 text-primary hover:bg-primary/20 rounded-full p-2 transition-all hover:scale-110"
+									aria-label="View project"
+								>
+									<ExternalLink class="size-4" />
+								</a>
+							</div>
+							<p class="text-muted-foreground mb-4 text-sm leading-relaxed">
+								{project.description}
+							</p>
+							<div class="mb-3 flex flex-wrap gap-2">
+								{#each project.tech as tech (tech)}
+									<span
+										class="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-medium"
+									>
+										{tech}
+									</span>
+								{/each}
+							</div>
+							<div class="text-muted-foreground flex items-center text-sm font-medium">
+								<Star class="mr-1.5 size-4 fill-yellow-500 text-yellow-500" />
+								{project.stars}
+							</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+
+		<!-- Call to Action -->
+		<div class="mt-8">
+			<div
+				class="from-primary/10 relative overflow-hidden rounded-xl border bg-gradient-to-br via-purple-500/10 to-pink-500/10 p-8 text-center shadow-md"
+			>
+				<div
+					class="bg-grid-white/10 absolute inset-0 [mask-image:radial-gradient(white,transparent_85%)]"
+				></div>
+				<div class="relative">
+					<div
+						class="bg-primary/20 ring-primary/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ring-4"
+					>
+						<Briefcase class="text-primary size-8" />
+					</div>
+					<h2 class="mb-3 text-2xl font-bold">Let's Work Together!</h2>
+					<p class="text-muted-foreground mx-auto mb-6 max-w-md leading-relaxed">
+						I'm open to freelance and consulting work, as well as collaboration on open source
+						projects and mentoring. Share a brief note about your project and I'll get back to you
+						within 24 hours.
+					</p>
+					<a
+						href="mailto:hire@svelte-apps.me?subject=Hiring Inquiry"
+						class="group bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-8 py-4 font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+					>
+						<Mail class="size-5" />
+						Start a Conversation
+						<Rocket
+							class="size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+						/>
+					</a>
 				</div>
 			</div>
 		</div>
