@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-01T01:57:31.096Z\n"
+"PO-Revision-Date: 2025-11-01T03:06:14.257Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -46,9 +46,8 @@ msgstr "Coming soon"
 msgid "And many more"
 msgstr "And many more"
 
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid "Please enter a GitHub username"
-msgstr "Please enter a GitHub username"
+#~ msgid "Please enter a GitHub username"
+#~ msgstr "Please enter a GitHub username"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
@@ -76,10 +75,10 @@ msgid "Year"
 msgstr "Year"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Loading..."
 msgstr "<0/> Loading..."
 
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Track Contributions"
 msgstr "<0/> Track Contributions"
@@ -248,7 +247,7 @@ msgstr "Most active in:"
 msgid "Repositories:"
 msgstr "Repositories:"
 
-#. placeholder {0}: stats?.restrictedContributionsCount ?? 0
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This user also has {0} private contributions"
 msgstr "This user also has {0} private contributions"
@@ -8541,3 +8540,33 @@ msgid ""
 msgstr ""
 "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
 "innovative solutions. Let's create something exceptional together!"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Error Loading Data"
+msgstr "Error Loading Data"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Failed to load GitHub contribution data"
+msgstr "Failed to load GitHub contribution data"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This could be due to an invalid username, network issues, or GitHub API limits."
+msgstr "This could be due to an invalid username, network issues, or GitHub API limits."
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Try Again"
+msgstr "Try Again"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "<0/> Back to Search"
+msgstr "<0/> Back to Search"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Development Mode"
+msgstr "Development Mode"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This app is currently under development and may have bugs or incomplete features."
+msgstr "This app is currently under development and may have bugs or incomplete features."

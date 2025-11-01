@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-11-01T01:57:31.136Z\n"
+"PO-Revision-Date: 2025-11-01T03:06:14.334Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -3279,7 +3279,6 @@ msgid "Backup to Server"
 msgstr "Copia de seguridad en el servidor"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Loading..."
 msgstr "<0/> Cargando..."
 
@@ -8355,9 +8354,8 @@ msgstr "Svelte, Mini Aplicaciones, Apps, Herramientas, Aplicaciones, Ecosistema,
 msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, Min iApps, Acerca de, Herramientas, Aplicaciones, Ecosistema, Innovador, Único"
 
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid "Please enter a GitHub username"
-msgstr "Por favor, introduce un nombre de usuario de GitHub"
+#~ msgid "Please enter a GitHub username"
+#~ msgstr "Por favor, introduce un nombre de usuario de GitHub"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
@@ -8367,6 +8365,7 @@ msgstr "Visualiza y analiza las contribuciones de GitHub con estadísticas detal
 msgid "Enter a GitHub username and year to view their activity"
 msgstr "Introduce un nombre de usuario de GitHub y un año para ver su actividad"
 
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Track Contributions"
 msgstr "<0/> Rastrear Contribuciones"
@@ -8515,7 +8514,7 @@ msgstr "Más activo en:"
 msgid "Repositories:"
 msgstr "Repositorios:"
 
-#. placeholder {0}: stats?.restrictedContributionsCount ?? 0
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This user also has {0} private contributions"
 msgstr "Este usuario también tiene {0} contribuciones privadas"
@@ -8559,3 +8558,33 @@ msgid ""
 msgstr ""
 "Más allá del código, contribuyo a proyectos de Svelte, asesoro a desarrolladores y me encanta colaborar en\n"
 "soluciones innovadoras. ¡Creemos algo excepcional juntos!"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Error Loading Data"
+msgstr "Error al cargar los datos"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Failed to load GitHub contribution data"
+msgstr "No se pudieron cargar los datos de contribuciones de GitHub"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This could be due to an invalid username, network issues, or GitHub API limits."
+msgstr "Esto podría deberse a un nombre de usuario no válido, problemas de red o límites de la API de GitHub."
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Try Again"
+msgstr "Intentar otra vez"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "<0/> Back to Search"
+msgstr "<0/> Volver a la búsqueda```"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Development Mode"
+msgstr "Modo de Desarrollo"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This app is currently under development and may have bugs or incomplete features."
+msgstr "Esta aplicación está actualmente en desarrollo y puede tener errores o características incompletas."

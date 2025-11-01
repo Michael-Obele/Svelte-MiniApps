@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-01T01:57:31.258Z\n"
+"PO-Revision-Date: 2025-11-01T03:06:14.782Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -989,7 +989,6 @@ msgid "Backup to Server"
 msgstr "备份到服务器"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Loading..."
 msgstr "<0/> 加载中..."
 
@@ -8246,9 +8245,8 @@ msgstr "Svelte, 迷你应用, 应用, 工具, 应用程序, 生态系统, 创新
 msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, Min iApps, 关于, 工具, 应用, 生态系统, 创新, 独特"
 
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid "Please enter a GitHub username"
-msgstr "请输入 GitHub 用户名"
+#~ msgid "Please enter a GitHub username"
+#~ msgstr "请输入 GitHub 用户名"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
@@ -8258,6 +8256,7 @@ msgstr "通过详细的统计数据、热图和见解，可视化和分析 GitHu
 msgid "Enter a GitHub username and year to view their activity"
 msgstr "输入 GitHub 用户名和年份以查看其活动"
 
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Track Contributions"
 msgstr "<0/> 追踪贡献"
@@ -8406,7 +8405,7 @@ msgstr "最活跃于:"
 msgid "Repositories:"
 msgstr "仓库:"
 
-#. placeholder {0}: stats?.restrictedContributionsCount ?? 0
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This user also has {0} private contributions"
 msgstr "该用户还有 {0} 个私人贡献"
@@ -8448,3 +8447,33 @@ msgid ""
 "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
 "innovative solutions. Let's create something exceptional together!"
 msgstr "除了代码之外，我还为 Svelte 项目做贡献、指导开发人员，并且喜欢合作开发创新解决方案。让我们一起创造一些卓越的东西吧！"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Error Loading Data"
+msgstr "加载数据出错"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Failed to load GitHub contribution data"
+msgstr "无法加载 GitHub 贡献数据"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This could be due to an invalid username, network issues, or GitHub API limits."
+msgstr "这可能是由于无效的用户名、网络问题或 GitHub API 限制导致的。"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Try Again"
+msgstr "重试"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "<0/> Back to Search"
+msgstr "<0/> 返回搜索```"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Development Mode"
+msgstr "开发模式"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This app is currently under development and may have bugs or incomplete features."
+msgstr "此应用目前正在开发中，可能存在错误或功能不完整。"

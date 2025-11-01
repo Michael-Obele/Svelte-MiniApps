@@ -132,9 +132,12 @@ const CONTRIBUTION_QUERY = gql`
 function createGitHubClient(): GraphQLClient {
 	const token = process.env.VITE_GITHUB_TOKEN;
 
+	console.log(`[GitHub API] Checking for GitHub token...`);
 	if (!token) {
+		console.error(`[GitHub API] No VITE_GITHUB_TOKEN found in environment`);
 		throw error(500, 'GitHub token not configured');
 	}
+	console.log(`[GitHub API] Token found (length: ${token.length})`);
 
 	return new GraphQLClient('https://api.github.com/graphql', {
 		headers: {
@@ -229,33 +232,50 @@ function processContributionData(
 export const getContributionData = query(contributionQuerySchema, async (input) => {
 	const { username, year } = input;
 
+	console.log(`[GitHub API] Starting data fetch for user: ${username}, year: ${year}`);
+
 	try {
+		console.log(`[GitHub API] Creating GraphQL client...`);
 		const client = createGitHubClient();
+		console.log(`[GitHub API] GraphQL client created successfully`);
 
 		// Construct date range for the year
 		const from = `${year}-01-01T00:00:00Z`;
 		const to = `${year}-12-31T23:59:59Z`;
+		console.log(`[GitHub API] Date range: ${from} to ${to}`);
 
 		// Fetch GitHub data
+		console.log(`[GitHub API] Making GraphQL request to GitHub API...`);
 		const rawData = await client.request<any>(CONTRIBUTION_QUERY, {
 			username,
 			from,
 			to
 		});
+		console.log(`[GitHub API] GraphQL request completed, received data`);
 
 		// Check if user exists
 		if (!rawData.user) {
+			console.error(`[GitHub API] User "${username}" not found in API response`);
 			throw error(404, `GitHub user "${username}" not found`);
 		}
+		console.log(`[GitHub API] User "${username}" found, processing data...`);
 
 		// Process the data
+		console.log(`[GitHub API] Processing contribution data...`);
 		const processedData = processContributionData(rawData, username, year.toString());
+		console.log(
+			`[GitHub API] Data processing completed. Total contributions: ${processedData.totalContributions}`
+		);
 
 		// Fetch streak stats in parallel
+		console.log(`[GitHub API] Fetching streak stats for ${username}...`);
 		const [lightStreakStats, darkStreakStats] = await Promise.all([
 			fetchStreakStats(username, 'light'),
 			fetchStreakStats(username, 'dark')
 		]);
+		console.log(
+			`[GitHub API] Streak stats fetched. Light: ${lightStreakStats ? 'success' : 'failed'}, Dark: ${darkStreakStats ? 'success' : 'failed'}`
+		);
 
 		const result: ContributionData = {
 			...processedData,
@@ -265,21 +285,26 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 			}
 		};
 
+		console.log(`[GitHub API] Data fetch completed successfully for ${username}/${year}`);
 		return result;
 	} catch (err) {
-		console.error('Error fetching GitHub contribution data:', err);
+		console.error(`[GitHub API] Error fetching data for ${username}/${year}:`, err);
 
 		// Handle specific error types
 		if (err && typeof err === 'object' && 'status' in err) {
 			const statusCode = (err as any).status;
+			console.error(`[GitHub API] HTTP status code: ${statusCode}`);
 			if (statusCode === 404) {
+				console.error(`[GitHub API] User "${username}" not found (404)`);
 				throw error(404, `GitHub user "${username}" not found`);
 			}
 			if (statusCode === 401 || statusCode === 403) {
+				console.error(`[GitHub API] Authentication failed (${statusCode})`);
 				throw error(500, 'GitHub API authentication failed');
 			}
 		}
 
+		console.error(`[GitHub API] Generic error occurred, throwing 500`);
 		throw error(500, 'Failed to fetch GitHub contribution data');
 	}
 });

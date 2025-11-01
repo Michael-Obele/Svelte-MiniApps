@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-01T01:57:31.294Z\n"
+"PO-Revision-Date: 2025-11-01T03:06:14.812Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -4762,7 +4762,6 @@ msgid "Backup to Server"
 msgstr "サーバーにバックアップ"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Loading..."
 msgstr "<0/> 読み込み中..."
 
@@ -8250,9 +8249,8 @@ msgstr "辞書データの取得中に予期しないエラーが発生しまし
 msgid "Please try again later. If the problem persists, contact support."
 msgstr "後でもう一度お試しください。問題が解決しない場合は、サポートにお問い合わせください。"
 
-#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid "Please enter a GitHub username"
-msgstr "GitHubのユーザー名を入力してください"
+#~ msgid "Please enter a GitHub username"
+#~ msgstr "GitHubのユーザー名を入力してください"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
@@ -8262,6 +8260,7 @@ msgstr "詳細な統計、ヒートマップ、洞察でGitHubの貢献を視覚
 msgid "Enter a GitHub username and year to view their activity"
 msgstr "GitHubのユーザー名と年を入力して、アクティビティを表示します"
 
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Track Contributions"
 msgstr "<0/> 貢献を追跡"
@@ -8410,7 +8409,7 @@ msgstr "最も活発だった月:"
 msgid "Repositories:"
 msgstr "リポジトリ:"
 
-#. placeholder {0}: stats?.restrictedContributionsCount ?? 0
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This user also has {0} private contributions"
 msgstr "このユーザーは {0} 件のプライベート Contribution も行っています"
@@ -8452,3 +8451,33 @@ msgid ""
 "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
 "innovative solutions. Let's create something exceptional together!"
 msgstr "コードを書く以外にも、Svelteプロジェクトへの貢献、開発者の指導、革新的なソリューションでのコラボレーションを積極的に行っています。一緒に素晴らしいものを創造しましょう！"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Error Loading Data"
+msgstr "データの読み込みエラー"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Failed to load GitHub contribution data"
+msgstr "GitHubの貢献データの読み込みに失敗しました"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This could be due to an invalid username, network issues, or GitHub API limits."
+msgstr "無効なユーザー名、ネットワークの問題、またはGitHub APIの制限が原因である可能性があります。"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Try Again"
+msgstr "再試行"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "<0/> Back to Search"
+msgstr "<0/>検索に戻る"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Development Mode"
+msgstr "開発モード"
+
+#: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "This app is currently under development and may have bugs or incomplete features."
+msgstr "このアプリは現在開発中であり、バグや未完成の機能が含まれている可能性があります。"

@@ -1,20 +1,15 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { Input } from '@/ui/input/index.js';
 	import { Button } from '@/ui/button/index.js';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/ui/card';
-	import { toast } from 'svelte-sonner';
-	import { Loader2, HelpCircle, Clock, TrendingUp } from '@lucide/svelte';
-	import { navigating } from '$app/state';
+	import { HelpCircle, Clock, TrendingUp, TriangleAlert } from '@lucide/svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { githubContributionTrackerHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
-	import { getContributionYears } from '$lib/remote/data.remote';
 
 	// State
 	let username = $state('');
 	let year = $state(new Date().getFullYear().toString());
-	let isSubmitting = $state(false);
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState(
 		'github-contribution-tracker-has-seen-how-to-use',
@@ -34,50 +29,53 @@
 	const currentYear = new Date().getFullYear();
 	const suggestedYears = $derived([currentYear, currentYear - 1, currentYear - 2]);
 
-	async function handleSubmit(event: SubmitEvent) {
-		event.preventDefault();
+	// Dynamic href based on inputs
+	const trackerUrl = $derived(
+		username.trim() && year ? `/apps/github-contribution-tracker/${username.trim()}/${year}` : null
+	);
 
-		if (!username.trim()) {
-			toast.error('Please enter a GitHub username');
-			return;
-		}
-
-		isSubmitting = true;
-
-		try {
-			// Add to recent searches
-			const newSearch: RecentSearch = {
-				username: username.trim(),
-				year,
-				timestamp: Date.now()
-			};
-
-			// Keep only last 5 searches, remove duplicates
-			const filtered = recentSearches.current.filter(
-				(s) => !(s.username === newSearch.username && s.year === newSearch.year)
-			);
-			recentSearches.current = [newSearch, ...filtered].slice(0, 5);
-
-			// Navigate to results
-			await goto(`/apps/github-contribution-tracker/${username.trim()}/${year}`);
-		} catch (error) {
-			toast.error('Navigation failed. Please try again.');
-			isSubmitting = false;
-		}
-	}
+	// Check if form is valid
+	const isValid = $derived(!!username.trim() && !!year);
 
 	function loadRecentSearch(search: RecentSearch) {
 		username = search.username;
 		year = search.year;
 	}
 
-	// Reset isSubmitting when navigation is complete
-	$effect(() => {
-		if (!navigating || !navigating.to) {
-			isSubmitting = false;
-		}
-	});
+	// Add to recent searches when clicking the track button
+	function addToRecentSearches() {
+		if (!username.trim()) return;
+
+		const newSearch: RecentSearch = {
+			username: username.trim(),
+			year,
+			timestamp: Date.now()
+		};
+
+		// Keep only last 5 searches, remove duplicates
+		const filtered = recentSearches.current.filter(
+			(s) => !(s.username === newSearch.username && s.year === newSearch.year)
+		);
+		recentSearches.current = [newSearch, ...filtered].slice(0, 5);
+	}
 </script>
+
+<!-- Development Banner -->
+<div class="mx-auto my-4 max-w-6xl px-4">
+	<div
+		class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200"
+	>
+		<div class="flex items-center justify-between">
+			<div class="flex items-center gap-2">
+				<TriangleAlert class="h-5 w-5" />
+				<span class="font-medium">Development Mode</span>
+			</div>
+			<p class="text-sm">
+				This app is currently under development and may have bugs or incomplete features.
+			</p>
+		</div>
+	</div>
+</div>
 
 <div class="container mx-auto px-4 py-8">
 	<!-- Header -->
@@ -105,7 +103,7 @@
 				<CardDescription>Enter a GitHub username and year to view their activity</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<form onsubmit={handleSubmit} class="space-y-6">
+				<div class="space-y-6">
 					<div class="space-y-2">
 						<label for="username" class="text-sm font-medium">GitHub Username</label>
 						<Input
@@ -113,7 +111,6 @@
 							name="username"
 							bind:value={username}
 							placeholder="e.g., torvalds, gaearon"
-							required
 							autocomplete="username"
 						/>
 					</div>
@@ -127,12 +124,10 @@
 							bind:value={year}
 							min="2008"
 							max={currentYear}
-							required
 						/>
 						<div class="flex flex-wrap gap-2">
 							{#each suggestedYears as suggestedYear (suggestedYear)}
 								<Button
-									type="button"
 									variant="outline"
 									size="sm"
 									onclick={() => (year = suggestedYear.toString())}
@@ -144,16 +139,20 @@
 						</div>
 					</div>
 
-					<Button type="submit" disabled={isSubmitting} class="w-full">
-						{#if isSubmitting}
-							<Loader2 class="mr-2 size-4 animate-spin" />
-							Loading...
-						{:else}
+					{#if trackerUrl}
+						<a href={trackerUrl} onclick={addToRecentSearches}>
+							<Button class="w-full">
+								<TrendingUp class="mr-2 h-4 w-4" />
+								Track Contributions
+							</Button>
+						</a>
+					{:else}
+						<Button disabled class="w-full">
 							<TrendingUp class="mr-2 h-4 w-4" />
 							Track Contributions
-						{/if}
-					</Button>
-				</form>
+						</Button>
+					{/if}
+				</div>
 			</CardContent>
 		</Card>
 
