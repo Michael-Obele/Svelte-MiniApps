@@ -1,7 +1,7 @@
-import { query } from '$app/server';
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import * as v from 'valibot';
 import { GraphQLClient, gql } from 'graphql-request';
-import { error } from '@sveltejs/kit';
 
 // ========== Type Definitions ==========
 
@@ -224,32 +224,34 @@ function processContributionData(
 	};
 }
 
-// ========== Remote Functions ==========
+// ========== Load Function ==========
 
-/**
- * Fetches comprehensive GitHub contribution data for a user and year
- */
-export const getContributionData = query(contributionQuerySchema, async (input) => {
-	const { username, year } = input;
+export const load: PageServerLoad = async ({ params }) => {
+	const { user: username, year } = params;
 
 	console.log(`[GitHub API] ========== Starting data fetch ==========`);
 	console.log(`[GitHub API] User: ${username}, Year: ${year}`);
-	console.log(`[GitHub API] Request input:`, input);
 
 	try {
-		console.log(`[GitHub API] Step 1: Creating GraphQL client...`);
+		// Validate parameters
+		console.log(`[GitHub API] Step 1: Validating parameters...`);
+		const validated = v.parse(contributionQuerySchema, { username, year });
+		console.log(`[GitHub API] ✓ Parameters validated successfully`);
+
+		// Create GitHub client
+		console.log(`[GitHub API] Step 2: Creating GraphQL client...`);
 		const client = createGitHubClient();
 		console.log(`[GitHub API] ✓ GraphQL client created successfully`);
 
 		// Construct date range for the year
-		const from = `${year}-01-01T00:00:00Z`;
-		const to = `${year}-12-31T23:59:59Z`;
-		console.log(`[GitHub API] Step 2: Date range - ${from} to ${to}`);
+		const from = `${validated.year}-01-01T00:00:00Z`;
+		const to = `${validated.year}-12-31T23:59:59Z`;
+		console.log(`[GitHub API] Step 3: Date range - ${from} to ${to}`);
 
 		// Fetch GitHub data
-		console.log(`[GitHub API] Step 3: Making GraphQL request to GitHub API...`);
+		console.log(`[GitHub API] Step 4: Making GraphQL request to GitHub API...`);
 		const rawData = await client.request<any>(CONTRIBUTION_QUERY, {
-			username,
+			username: validated.username,
 			from,
 			to
 		});
@@ -264,8 +266,8 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 		console.log(`[GitHub API] ✓ User "${username}" found`);
 
 		// Process the data
-		console.log(`[GitHub API] Step 4: Processing contribution data...`);
-		const processedData = processContributionData(rawData, username, year.toString());
+		console.log(`[GitHub API] Step 5: Processing contribution data...`);
+		const processedData = processContributionData(rawData, validated.username, year);
 		console.log(`[GitHub API] ✓ Data processing completed`);
 		console.log(`[GitHub API] Processed data:`, {
 			user: processedData.user,
@@ -277,16 +279,16 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 		});
 
 		// Fetch streak stats in parallel
-		console.log(`[GitHub API] Step 5: Fetching streak stats for ${username}...`);
+		console.log(`[GitHub API] Step 6: Fetching streak stats for ${username}...`);
 		const [lightStreakStats, darkStreakStats] = await Promise.all([
-			fetchStreakStats(username, 'light'),
-			fetchStreakStats(username, 'dark')
+			fetchStreakStats(validated.username, 'light'),
+			fetchStreakStats(validated.username, 'dark')
 		]);
 		console.log(
 			`[GitHub API] ✓ Streak stats fetched - Light: ${lightStreakStats ? 'success' : 'failed'}, Dark: ${darkStreakStats ? 'success' : 'failed'}`
 		);
 
-		const result: ContributionData = {
+		const contributionData: ContributionData = {
 			...processedData,
 			streakStats: {
 				light: lightStreakStats,
@@ -297,20 +299,21 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 		console.log(`[GitHub API] ========== ✓ FETCH COMPLETED SUCCESSFULLY ==========`);
 		console.log(`[GitHub API] Returning data for ${username}/${year}`);
 		console.log(`[GitHub API] Result summary:`, {
-			totalContributions: result.totalContributions,
-			hasStreakStats: !!(result.streakStats.light || result.streakStats.dark),
-			dataStructure: Object.keys(result)
+			totalContributions: contributionData.totalContributions,
+			hasStreakStats: !!(contributionData.streakStats.light || contributionData.streakStats.dark),
+			dataStructure: Object.keys(contributionData)
 		});
 
-		return result;
+		return { contributionData };
 	} catch (err) {
 		console.error(`[GitHub API] ========== ✗ ERROR OCCURRED ==========`);
 		console.error(`[GitHub API] Error for ${username}/${year}:`, err);
-		console.error(`[GitHub API] Error type:`, typeof err);
-		console.error(`[GitHub API] Error details:`, {
-			message: err instanceof Error ? err.message : 'Unknown',
-			stack: err instanceof Error ? err.stack : undefined
-		});
+
+		// Handle Valibot validation errors
+		if (v.isValiError(err)) {
+			console.error(`[GitHub API] Validation error:`, err.issues);
+			throw error(400, 'Invalid username or year format');
+		}
 
 		// Handle specific error types
 		if (err && typeof err === 'object' && 'status' in err) {
@@ -329,48 +332,4 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 		console.error(`[GitHub API] Throwing 500 - Generic error`);
 		throw error(500, 'Failed to fetch GitHub contribution data');
 	}
-});
-
-/**
- * Fetches available contribution years for a user
- */
-export const getContributionYears = query(
-	v.object({
-		username: v.pipe(
-			v.string(),
-			v.minLength(1, 'Username is required'),
-			v.maxLength(39, 'Username is too long')
-		)
-	}),
-	async ({ username }) => {
-		try {
-			const client = createGitHubClient();
-			const currentYear = new Date().getFullYear();
-
-			const query = gql`
-				query ($username: String!, $from: DateTime!, $to: DateTime!) {
-					user(login: $username) {
-						contributionsCollection(from: $from, to: $to) {
-							contributionYears
-						}
-					}
-				}
-			`;
-
-			const data = await client.request<any>(query, {
-				username,
-				from: `${currentYear}-01-01T00:00:00Z`,
-				to: `${currentYear}-12-31T23:59:59Z`
-			});
-
-			if (!data.user) {
-				throw error(404, `GitHub user "${username}" not found`);
-			}
-
-			return data.user.contributionsCollection.contributionYears || [];
-		} catch (err) {
-			console.error('Error fetching contribution years:', err);
-			throw error(500, 'Failed to fetch contribution years');
-		}
-	}
-);
+};
