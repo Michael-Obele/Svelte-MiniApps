@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-11-01T01:38:50.624Z\n"
+"PO-Revision-Date: 2025-11-01T01:57:31.136Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1026,13 +1026,6 @@ msgid ""
 msgstr ""
 "Desarrollador full-stack y entusiasta del código abierto, apasionado por construir rápidamente aplicaciones web mantenibles.\n"
 "Me especializo en <0>SvelteKit</0>, <1>TypeScript</1> y tecnologías web modernas."
-
-#~ msgid ""
-#~ "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating\n"
-#~ "on innovative solutions. Let's create something exceptional together!"
-#~ msgstr ""
-#~ "Más allá del código, contribuyo a proyectos de Svelte, mentoría a desarrolladores y me encanta colaborar\n"
-#~ "en soluciones innovadoras. ¡Vamos a crear algo excepcional juntos!"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Available Now"
@@ -7337,8 +7330,8 @@ msgstr "Añade una descripción opcional para ayudarte a recordar para qué es e
 msgid "Description (Optional)"
 msgstr "Descripción (Opcional)"
 
-#. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: passwordDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8554,19 +8547,6 @@ msgstr "Años Disponibles"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Other years with contribution data"
 msgstr "Otros años con datos de contribución```"
-
-#~ msgid ""
-#~ "Jokester began sneaking into the castle in the middle of the night and leaving jokes all\n"
-#~ "over the place: under the king's pillow, in his soup, even in the royal toilet. The king\n"
-#~ "was furious, but he couldn't seem to stop Jokester. And then, one day, the people of the\n"
-#~ "kingdom discovered that the jokes left by Jokester were so funny that they couldn't help\n"
-#~ "but laugh. And once they started laughing, they couldn't stop. {0}"
-#~ msgstr ""
-#~ "Bromista comenzó a colarse en el castillo en medio de la noche y a dejar chistes por todas\n"
-#~ "partes: debajo de la almohada del rey, en su sopa, incluso en el baño real. El rey estaba\n"
-#~ "furioso, pero no parecía poder detener a Bromista. Y entonces, un día, la gente del reino\n"
-#~ "descubrió que los chistes que dejaba Bromista eran tan divertidos que no podían evitar\n"
-#~ "reírse. Y una vez que empezaron a reírse, no pudieron parar. {0}"
 
 #: src/routes/about/Attributions.svelte
 msgid "Compile-time internationalization toolkit that automatically extracts translatable strings without requiring code changes."

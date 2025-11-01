@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-01T01:40:16.390Z\n"
+"PO-Revision-Date: 2025-11-01T01:57:31.294Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -302,13 +302,6 @@ msgid ""
 msgstr ""
 "フルスタック開発者であり、高速で保守可能なWebアプリケーションの構築に情熱を注ぐオープンソース愛好家。\n"
 "私は<0>SvelteKit</0>、<1>TypeScript</1>、および最新のWebテクノロジーを専門としています。"
-
-#~ msgid ""
-#~ "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating\n"
-#~ "on innovative solutions. Let's create something exceptional together!"
-#~ msgstr ""
-#~ "コード以外にも、Svelteプロジェクトに貢献し、開発者を指導し、革新的なソリューションでコラボレーションするのが大好きです。\n"
-#~ "一緒に素晴らしいものを創造しましょう！"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Available Now"
@@ -7001,8 +6994,8 @@ msgstr "このパスワードが何に使用されるかを覚えておくのに
 msgid "Description (Optional)"
 msgstr "説明（任意）"
 
-#. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: passwordDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8449,14 +8442,6 @@ msgstr "利用可能な年"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Other years with contribution data"
 msgstr "Contribution データがあるその他の年```"
-
-#~ msgid ""
-#~ "Jokester began sneaking into the castle in the middle of the night and leaving jokes all\n"
-#~ "over the place: under the king's pillow, in his soup, even in the royal toilet. The king\n"
-#~ "was furious, but he couldn't seem to stop Jokester. And then, one day, the people of the\n"
-#~ "kingdom discovered that the jokes left by Jokester were so funny that they couldn't help\n"
-#~ "but laugh. And once they started laughing, they couldn't stop. {0}"
-#~ msgstr "ジョークスターは真夜中に城に忍び込み、ジョークを至る所に残し始めました。王の枕の下、スープの中、さらには王室のトイレの中にまで。王は激怒しましたが、ジョークスターを止めることができませんでした。そしてある日、王国の人々は、ジョークスターが残したジョークがあまりにも面白くて、笑わずにはいられないことに気づきました。そして一度笑い始めると、止まらなくなったのです。{0}"
 
 #: src/routes/about/Attributions.svelte
 msgid "Compile-time internationalization toolkit that automatically extracts translatable strings without requiring code changes."
