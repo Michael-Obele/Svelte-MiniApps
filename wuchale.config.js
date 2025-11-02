@@ -10,7 +10,12 @@ export default defineConfig({
 		main: svelte({
 			files: {
 				include: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}', 'src/**/*.client.svelte.{js,ts}'],
-				ignore: ['src/lib/assets/**']
+				ignore: [
+					'**/node_modules/**',
+					'src/lib/assets/**',
+					'src/routes/test-charts/**',
+					'src/routes/apps/(app)/github-contribution-tracker/**'
+				]
 			}
 		}),
 		js: js({
