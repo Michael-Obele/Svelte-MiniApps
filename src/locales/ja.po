@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-01T12:31:00.388Z\n"
+"PO-Revision-Date: 2025-11-02T07:28:02.899Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -6993,8 +6993,8 @@ msgstr "このパスワードが何に使用されるかを覚えておくのに
 msgid "Description (Optional)"
 msgstr "説明（任意）"
 
-#. placeholder {0}: editedDetails.length
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8155,15 +8155,20 @@ msgid ""
 msgstr "すべてのパスワードは暗号化され、安全に保管されます。パスワードはいつでも表示、コピー、削除できます。最大限のセキュリティを確保するために、機密性の高いアカウント専用のパスワードマネージャーの使用を検討してください。"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Contributions"
 msgstr "コントリビューション"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMMM yyyy"
 msgstr "yyyy年MMMM"
 
@@ -8339,6 +8344,7 @@ msgid "<0/> Back"
 msgstr "<0/> 戻る"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Total Contributions"
 msgstr "総 Contribution 数"
 
@@ -8473,3 +8479,85 @@ msgstr "開発モード"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This app is currently under development and may have bugs or incomplete features."
 msgstr "このアプリは現在開発中であり、バグや未完成の機能が含まれている可能性があります。"
+
+#: src/routes/test-charts/+page.svelte
+msgid "LayerChart Test Page"
+msgstr "LayerChart テストページ"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Testing charts with static mock data (no API calls)"
+msgstr "静的なモックデータでチャートをテスト (API 呼び出しなし)"
+
+#: src/routes/test-charts/+page.svelte
+msgid "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
+msgstr "このページでは、<0>src/lib/test-data/github-contribution-mock.ts</0>の静的データを使用して、LayerChart コンポーネントをテストします。"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 1: Monthly Contributions Bar Chart"
+msgstr "テスト 1: 月間貢献度棒グラフ"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Bars component with {0} months of data"
+msgstr "{0} か月分のデータで Bars コンポーネントをテスト"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 2: Contribution Calendar Heatmap"
+msgstr "テスト 2: 貢献カレンダーヒートマップ"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Calendar component with {0} days of data"
+msgstr "{0} 日分のデータで Calendar コンポーネントをテスト"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 3: Simplified Bar Chart"
+msgstr "テスト 3: 簡易棒グラフ"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Minimal configuration to isolate issues"
+msgstr "問題を特定するための最小限の構成"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Debug Information"
+msgstr "デバッグ情報"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data Sample (first 3):"
+msgstr "月間データサンプル (最初の 3 つ):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Sample (first 5):"
+msgstr "カレンダーデータサンプル (最初の 5 つ):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Data Structure:"
+msgstr "データ構造:"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data: {0} items with date (Date) and contributionCount (number)"
+msgstr "月間データ: {0} 個のアイテム (date (Date) と contributionCount (数値))"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data: {0} items with date (Date), value (number), and color (string)"
+msgstr "カレンダーデータ: {0} 個のアイテム (date (Date), value (数値), color (文字列))"
+
+#. placeholder {0}: calendarDataByYear.map(([year]) => year).join(', ')
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Years: {0}"
+msgstr "カレンダーデータの年: {0}```"
+
+#: src/lib/components/charts/layercake/AxisX.svelte
+#: src/lib/components/charts/layercake/AxisY.svelte
+#: src/lib/components/charts/layercake/Bars.svelte
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "LayerCake"
+msgstr "LayerCake"
+
+#. placeholder {0}: getDate(day)
+#. placeholder {1}: count(day)
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "{0}: {1} contributions"
+msgstr "{0}: {1} 件の貢献```"

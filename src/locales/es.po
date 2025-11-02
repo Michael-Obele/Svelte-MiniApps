@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-11-01T12:30:59.884Z\n"
+"PO-Revision-Date: 2025-11-02T07:28:02.321Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -6620,15 +6620,20 @@ msgid "GitHub Contribution Graph"
 msgstr "Gráfico de contribuciones de GitHub"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Contributions"
 msgstr "Contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
@@ -7329,8 +7334,8 @@ msgstr "Añade una descripción opcional para ayudarte a recordar para qué es e
 msgid "Description (Optional)"
 msgstr "Descripción (Opcional)"
 
-#. placeholder {0}: editedDetails.length
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8444,6 +8449,7 @@ msgid "<0/> Back"
 msgstr "<0/> Atrás"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Total Contributions"
 msgstr "Contribuciones Totales"
 
@@ -8580,3 +8586,85 @@ msgstr "Modo de Desarrollo"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This app is currently under development and may have bugs or incomplete features."
 msgstr "Esta aplicación está actualmente en desarrollo y puede tener errores o características incompletas."
+
+#: src/routes/test-charts/+page.svelte
+msgid "LayerChart Test Page"
+msgstr "Página de Prueba LayerChart"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Testing charts with static mock data (no API calls)"
+msgstr "Probando gráficos con datos estáticos simulados (sin llamadas a la API)"
+
+#: src/routes/test-charts/+page.svelte
+msgid "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
+msgstr "Esta página utiliza datos estáticos de <0>src/lib/test-data/github-contribution-mock.ts</0> para probar los componentes LayerChart."
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 1: Monthly Contributions Bar Chart"
+msgstr "Prueba 1: Gráfico de Barras de Contribuciones Mensuales"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Bars component with {0} months of data"
+msgstr "Probando el componente Barras con {0} meses de datos"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 2: Contribution Calendar Heatmap"
+msgstr "Prueba 2: Mapa de Calor del Calendario de Contribuciones"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Calendar component with {0} days of data"
+msgstr "Probando el componente Calendario con {0} días de datos"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 3: Simplified Bar Chart"
+msgstr "Prueba 3: Gráfico de Barras Simplificado"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Minimal configuration to isolate issues"
+msgstr "Configuración mínima para aislar problemas"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Debug Information"
+msgstr "Información de Depuración"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data Sample (first 3):"
+msgstr "Muestra de Datos Mensuales (los 3 primeros):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Sample (first 5):"
+msgstr "Muestra de Datos del Calendario (los 5 primeros):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Data Structure:"
+msgstr "Estructura de Datos:"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data: {0} items with date (Date) and contributionCount (number)"
+msgstr "Datos Mensuales: {0} elementos con fecha (Date) y contributionCount (número)"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data: {0} items with date (Date), value (number), and color (string)"
+msgstr "Datos del Calendario: {0} elementos con fecha (Date), value (número) y color (string)"
+
+#. placeholder {0}: calendarDataByYear.map(([year]) => year).join(', ')
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Years: {0}"
+msgstr "Años de Datos del Calendario: {0}```"
+
+#: src/lib/components/charts/layercake/AxisX.svelte
+#: src/lib/components/charts/layercake/AxisY.svelte
+#: src/lib/components/charts/layercake/Bars.svelte
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "LayerCake"
+msgstr "LayerCake"
+
+#. placeholder {0}: getDate(day)
+#. placeholder {1}: count(day)
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "{0}: {1} contributions"
+msgstr "{0}: {1} contribuciones```"

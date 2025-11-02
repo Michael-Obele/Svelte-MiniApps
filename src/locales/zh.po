@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-01T12:31:00.062Z\n"
+"PO-Revision-Date: 2025-11-02T07:28:02.661Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -1193,15 +1193,20 @@ msgid "Track Contributions"
 msgstr "跟踪贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Contributions"
 msgstr "贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "MMMM yyyy"
 msgstr "yyyy 年 MMMM 月"
 
@@ -7225,8 +7230,8 @@ msgstr "添加一个可选的描述，以帮助您记住此密码的用途。"
 msgid "Description (Optional)"
 msgstr "描述（可选）"
 
-#. placeholder {0}: editedDetails.length
 #. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8335,6 +8340,7 @@ msgid "<0/> Back"
 msgstr "<0/> 返回"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/test-charts/+page.svelte
 msgid "Total Contributions"
 msgstr "总贡献"
 
@@ -8469,3 +8475,85 @@ msgstr "开发模式"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This app is currently under development and may have bugs or incomplete features."
 msgstr "此应用目前正在开发中，可能存在错误或功能不完整。"
+
+#: src/routes/test-charts/+page.svelte
+msgid "LayerChart Test Page"
+msgstr "LayerChart 测试页面"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Testing charts with static mock data (no API calls)"
+msgstr "使用静态模拟数据测试图表 (无 API 调用)"
+
+#: src/routes/test-charts/+page.svelte
+msgid "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
+msgstr "此页面使用来自 <0>src/lib/test-data/github-contribution-mock.ts</0> 的静态数据来测试 LayerChart 组件。"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 1: Monthly Contributions Bar Chart"
+msgstr "测试 1：每月贡献柱状图"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Bars component with {0} months of data"
+msgstr "使用 {0} 个月的数据测试 Bars 组件"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 2: Contribution Calendar Heatmap"
+msgstr "测试 2：贡献日历热图"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Testing Calendar component with {0} days of data"
+msgstr "使用 {0} 天的数据测试 Calendar 组件"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Test 3: Simplified Bar Chart"
+msgstr "测试 3：简化柱状图"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Minimal configuration to isolate issues"
+msgstr "最小配置以隔离问题"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Debug Information"
+msgstr "调试信息"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data Sample (first 3):"
+msgstr "每月数据示例 (前 3 个):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Sample (first 5):"
+msgstr "日历数据示例 (前 5 个):"
+
+#: src/routes/test-charts/+page.svelte
+msgid "Data Structure:"
+msgstr "数据结构:"
+
+#. placeholder {0}: monthlyData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Monthly Data: {0} items with date (Date) and contributionCount (number)"
+msgstr "每月数据: {0} 个项目，包含日期 (Date) 和 contributionCount (数字)"
+
+#. placeholder {0}: calendarData.length
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data: {0} items with date (Date), value (number), and color (string)"
+msgstr "日历数据: {0} 个项目，包含日期 (Date)、值 (数字) 和颜色 (字符串)"
+
+#. placeholder {0}: calendarDataByYear.map(([year]) => year).join(', ')
+#: src/routes/test-charts/+page.svelte
+msgid "Calendar Data Years: {0}"
+msgstr "日历数据年份: {0}```"
+
+#: src/lib/components/charts/layercake/AxisX.svelte
+#: src/lib/components/charts/layercake/AxisY.svelte
+#: src/lib/components/charts/layercake/Bars.svelte
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "LayerCake"
+msgstr "分层蛋糕"
+
+#. placeholder {0}: getDate(day)
+#. placeholder {1}: count(day)
+#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
+msgid "{0}: {1} contributions"
+msgstr "{0}: {1} 个贡献```"
