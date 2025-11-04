@@ -14,6 +14,7 @@ export default defineConfig({
 					'**/node_modules/**',
 					'src/lib/assets/**',
 					'src/routes/test-charts/**',
+					'src/routes/test-*/**',
 					'src/routes/apps/(app)/github-contribution-tracker/**'
 				]
 			}
