@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-02T07:28:02.661Z\n"
+"PO-Revision-Date: 2025-11-03T19:37:06.531Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -631,6 +631,7 @@ msgstr "点击任何表情符号将其复制到您的剪贴板 📋"
 msgid "Transform"
 msgstr "转换"
 
+#: src/lib/components/common/IconSelectorCard.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Check"
@@ -8557,3 +8558,65 @@ msgstr "分层蛋糕"
 #: src/lib/components/charts/layercake/CalendarHeatmap.svelte
 msgid "{0}: {1} contributions"
 msgstr "{0}: {1} 个贡献```"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Demo"
+msgstr "图标选择器演示"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Card Demo"
+msgstr "图标选择器卡片演示"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Heart"
+msgstr "心形"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Star"
+msgstr "星星"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "X"
+msgstr "叉号"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Smile"
+msgstr "微笑"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Zap"
+msgstr "闪电"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Select an icon"
+msgstr "选择一个图标"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Icon Selector"
+msgstr "图标选择器"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose your favorite icon from the list below."
+msgstr "从下面的列表中选择你最喜欢的图标。"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "User"
+msgstr "用户"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "US"
+msgstr "美国"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Selected Icon:"
+msgstr "已选择图标："
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose an icon:"
+msgstr "选择一个图标："
+
+#~ msgid "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></0>"
+#~ msgstr "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>图标选择器</0> <1>从下面的列表中选择你喜欢的图标。</1></0> <1><0><0><0/> <1>美国</1></0> <1><0>已选图标：</0> <1/></1></0> <1><0>选择一个图标：</0> <1/></1></1></0>"
+
+#~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
+#~ msgstr "<0/> // 用于渲染选项图标的代码片段 <1/> <2><0><0>图标选择器</0> <1>从下面的列表中选择您喜欢的图标。</1></0> <1><0><0><0/> <1>美国</1></0> <1><0>已选图标：</0> <1/></1></0> <1><0>选择一个图标：</0> <1/></1></1></2>"

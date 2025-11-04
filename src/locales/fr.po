@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-11-02T07:28:02.365Z\n"
+"PO-Revision-Date: 2025-11-03T19:37:03.729Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -2963,6 +2963,7 @@ msgstr "Touchez n'importe quel émoji pour le copier dans votre presse-papiers �
 msgid "Transform"
 msgstr "Transformer"
 
+#: src/lib/components/common/IconSelectorCard.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Check"
@@ -8675,3 +8676,65 @@ msgstr "LayerCake"
 #: src/lib/components/charts/layercake/CalendarHeatmap.svelte
 msgid "{0}: {1} contributions"
 msgstr "{0} : {1} contributions"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Demo"
+msgstr "Démo du sélecteur d'icônes"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Card Demo"
+msgstr "Démo de la carte du sélecteur d'icônes"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Heart"
+msgstr "Cœur"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Star"
+msgstr "Étoile"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "X"
+msgstr "X"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Smile"
+msgstr "Sourire"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Zap"
+msgstr "Éclair"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Select an icon"
+msgstr "Sélectionner une icône"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Icon Selector"
+msgstr "Sélecteur d'icône"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose your favorite icon from the list below."
+msgstr "Choisissez votre icône préférée dans la liste ci-dessous."
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "US"
+msgstr "ÉU"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Selected Icon:"
+msgstr "Icône sélectionnée:"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose an icon:"
+msgstr "Choisissez une icône:"
+
+#~ msgid "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></0>"
+#~ msgstr "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>Sélecteur d'icône</0> <1>Choisissez votre icône préférée dans la liste ci-dessous.</1></0> <1><0><0><0/> <1>FR</1></0> <1><0>Icône sélectionnée :</0> <1/></1></0> <1><0>Choisissez une icône :</0> <1/></1></1></0>"
+
+#~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
+#~ msgstr "<0/> // Extrait pour afficher une icône d'option <1/> <2><0><0>Sélecteur d'icône</0> <1>Choisissez votre icône préférée dans la liste ci-dessous.</1></0> <1><0><0><0/> <1>FR</1></0> <1><0>Icône sélectionnée :</0> <1/></1></0> <1><0>Choisissez une icône :</0> <1/></1></1></2>"

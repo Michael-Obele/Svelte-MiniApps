@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-02T07:28:02.899Z\n"
+"PO-Revision-Date: 2025-11-03T19:14:06.627Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -4443,6 +4443,7 @@ msgstr "絵文字をタップしてクリップボードにコピー 📋"
 msgid "Transform"
 msgstr "変換"
 
+#: src/lib/components/common/IconSelectorCard.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Check"
@@ -8561,3 +8562,65 @@ msgstr "LayerCake"
 #: src/lib/components/charts/layercake/CalendarHeatmap.svelte
 msgid "{0}: {1} contributions"
 msgstr "{0}: {1} 件の貢献```"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Demo"
+msgstr "アイコンセレクターのデモ"
+
+#: src/routes/test-icon-selector/+page.svelte
+msgid "Icon Selector Card Demo"
+msgstr "アイコンセレクターカードのデモ"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Heart"
+msgstr "ハート"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Star"
+msgstr "星"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "X"
+msgstr "X"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Smile"
+msgstr "笑顔"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Zap"
+msgstr "稲妻"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Select an icon"
+msgstr "アイコンを選択"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Icon Selector"
+msgstr "アイコン選択"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose your favorite icon from the list below."
+msgstr "下のリストからお好きなアイコンをお選びください。"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "User"
+msgstr "ユーザー"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "US"
+msgstr "米国"
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Selected Icon:"
+msgstr "選択されたアイコン："
+
+#: src/lib/components/common/IconSelectorCard.svelte
+msgid "Choose an icon:"
+msgstr "アイコンを選択："
+
+#~ msgid "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></0>"
+#~ msgstr "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>アイコンセレクター</0> <1>以下の一覧からお気に入りのアイコンを選択してください。</1></0> <1><0><0><0/> <1>US</1></0> <1><0>選択されたアイコン:</0> <1/></1></0> <1><0>アイコンを選択:</0> <1/></1></1></0>"
+
+#~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
+#~ msgstr "<0/> // オプションアイコンを描画するためのスニペット <1/> <2><0><0>アイコンセレクター</0> <1>以下のリストからお気に入りのアイコンを選択してください。</1></0> <1><0><0><0/> <1>米国</1></0> <1><0>選択されたアイコン：</0> <1/></1></0> <1><0>アイコンを選択してください：</0> <1/></1></1></2>"
