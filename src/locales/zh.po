@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-03T19:37:06.531Z\n"
+"PO-Revision-Date: 2025-11-05T13:11:08.089Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -1193,13 +1193,11 @@ msgstr "年份"
 msgid "Track Contributions"
 msgstr "跟踪贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
@@ -5796,6 +5794,7 @@ msgid "Get a new mantra"
 msgstr "获取新的箴言"
 
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "More"
 msgstr "更多"
 
@@ -8284,7 +8283,6 @@ msgid "View commits, PRs, issues, and code reviews"
 msgstr "查看提交、PR、问题和代码审查"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Heatmap"
 msgstr "贡献热图"
 
@@ -8346,6 +8344,7 @@ msgid "Total Contributions"
 msgstr "总贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repositories"
 msgstr "仓库"
 
@@ -8374,10 +8373,8 @@ msgstr "使用的语言"
 msgid "Top programming languages in contributed repositories"
 msgstr "贡献的仓库中使用的主要编程语言"
 
-#. placeholder {0}: lang.count
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "{0} repos"
-msgstr "{0} 个仓库"
+#~ msgid "{0} repos"
+#~ msgstr "{0} 个仓库"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top Contributed Repositories"
@@ -8397,42 +8394,33 @@ msgstr "在 {0} 年的每日贡献活动"
 msgid "Activity Summary"
 msgstr "活动总结"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Average per day:"
-msgstr "平均每天:"
+#~ msgid "Average per day:"
+#~ msgstr "平均每天:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Most active in:"
-msgstr "最活跃于:"
+#~ msgid "Most active in:"
+#~ msgstr "最活跃于:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Repositories:"
-msgstr "仓库:"
+#~ msgid "Repositories:"
+#~ msgstr "仓库:"
 
-#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "This user also has {0} private contributions"
-msgstr "该用户还有 {0} 个私人贡献"
+#~ msgid "This user also has {0} private contributions"
+#~ msgstr "该用户还有 {0} 个私人贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repository Breakdown"
 msgstr "仓库细分"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With commits:"
-msgstr "包含提交:"
+#~ msgid "With commits:"
+#~ msgstr "包含提交:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With PRs:"
-msgstr "包含拉取请求:"
+#~ msgid "With PRs:"
+#~ msgstr "包含拉取请求:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With issues:"
-msgstr "包含问题:"
+#~ msgid "With issues:"
+#~ msgstr "包含问题:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With reviews:"
-msgstr "包含审核:"
+#~ msgid "With reviews:"
+#~ msgstr "包含审核:"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Available Years"
@@ -8620,3 +8608,69 @@ msgstr "选择一个图标："
 
 #~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
 #~ msgstr "<0/> // 用于渲染选项图标的代码片段 <1/> <2><0><0>图标选择器</0> <1>从下面的列表中选择您喜欢的图标。</1></0> <1><0><0><0/> <1>美国</1></0> <1><0>已选图标：</0> <1/></1></0> <1><0>选择一个图标：</0> <1/></1></1></2>"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Calendar"
+msgstr "贡献日历"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Less"
+msgstr "少"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Mon"
+msgstr "周一"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Wed"
+msgstr "周三"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Fri"
+msgstr "周五"
+
+#. placeholder {0}: day.value
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "{0} contributions"
+msgstr "{0} 个贡献"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "EEEE, MMMM d, yyyy"
+msgstr "yyyy年MMMMd日，EEEE"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Breakdown"
+msgstr "贡献分解"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Distribution of your contributions by type"
+msgstr "您的贡献类型分布"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Average per day"
+msgstr "平均每天"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Most active in"
+msgstr "最活跃于"
+
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "+ {0} private contributions"
+msgstr "+ {0} 个私有贡献"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With commits"
+msgstr "包含提交"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With PRs"
+msgstr "包含PR"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With issues"
+msgstr "包含问题"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With reviews"
+msgstr "包含评论"

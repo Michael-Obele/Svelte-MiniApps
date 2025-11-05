@@ -304,6 +304,42 @@ export const load: PageServerLoad = async ({ params }) => {
 			dataStructure: Object.keys(contributionData)
 		});
 
+		// ========== DETAILED DATA LOGGING FOR CHART DEBUGGING ==========
+		console.log(`[GitHub API] ========== DETAILED CONTRIBUTION DATA ==========`);
+		console.log(`[GitHub API] User: ${contributionData.user}`);
+		console.log(`[GitHub API] Year: ${contributionData.year}`);
+		console.log(`[GitHub API] Total Contributions: ${contributionData.totalContributions}`);
+		console.log(`[GitHub API] Weeks Count: ${contributionData.weeks.length}`);
+		console.log(
+			`[GitHub API] Contributions Array Length: ${contributionData.contributions.length}`
+		);
+
+		// Log first few contributions for chart data inspection
+		console.log(`[GitHub API] First 5 Contributions:`, contributionData.contributions.slice(0, 5));
+		console.log(`[GitHub API] Last 5 Contributions:`, contributionData.contributions.slice(-5));
+
+		// Log stats structure
+		console.log(`[GitHub API] Stats:`, contributionData.stats);
+
+		// Log repositories count
+		console.log(`[GitHub API] Repositories Count: ${contributionData.repositories.length}`);
+		if (contributionData.repositories.length > 0) {
+			console.log(`[GitHub API] Top Repository:`, contributionData.repositories[0]);
+		}
+
+		// Log streak stats
+		console.log(`[GitHub API] Streak Stats:`, {
+			hasLight: !!contributionData.streakStats.light,
+			hasDark: !!contributionData.streakStats.dark,
+			lightLength: contributionData.streakStats.light?.length || 0,
+			darkLength: contributionData.streakStats.dark?.length || 0
+		});
+
+		// Log contribution years
+		console.log(`[GitHub API] Contribution Years:`, contributionData.contributionYears);
+
+		console.log(`[GitHub API] ========== END DETAILED DATA LOGGING ==========`);
+
 		return { contributionData };
 	} catch (err) {
 		console.error(`[GitHub API] ========== ✗ ERROR OCCURRED ==========`);

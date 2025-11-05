@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-03T19:14:06.627Z\n"
+"PO-Revision-Date: 2025-11-05T13:11:08.118Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1860,6 +1860,7 @@ msgid "Note: Legacy builds may not include the latest security or PWA improvemen
 msgstr "注：レガシービルドには、最新のセキュリティまたはPWAの改善が含まれていない場合があります。```"
 
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "More"
 msgstr "もっと見る"
 
@@ -8155,13 +8156,11 @@ msgid ""
 "manager for sensitive accounts."
 msgstr "すべてのパスワードは暗号化され、安全に保管されます。パスワードはいつでも表示、コピー、削除できます。最大限のセキュリティを確保するために、機密性の高いアカウント専用のパスワードマネージャーの使用を検討してください。"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
@@ -8288,7 +8287,6 @@ msgid "View commits, PRs, issues, and code reviews"
 msgstr "コミット、PR、Issue、コードレビューを表示"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Heatmap"
 msgstr "貢献ヒートマップ"
 
@@ -8350,6 +8348,7 @@ msgid "Total Contributions"
 msgstr "総 Contribution 数"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repositories"
 msgstr "リポジトリ"
 
@@ -8378,10 +8377,8 @@ msgstr "使用言語"
 msgid "Top programming languages in contributed repositories"
 msgstr "Contribution したリポジトリで使われている上位のプログラミング言語"
 
-#. placeholder {0}: lang.count
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "{0} repos"
-msgstr "{0} リポジトリ"
+#~ msgid "{0} repos"
+#~ msgstr "{0} リポジトリ"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top Contributed Repositories"
@@ -8401,42 +8398,33 @@ msgstr "{0} 年の毎日の Contribution 活動"
 msgid "Activity Summary"
 msgstr "アクティビティ概要"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Average per day:"
-msgstr "1日平均:"
+#~ msgid "Average per day:"
+#~ msgstr "1日平均:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Most active in:"
-msgstr "最も活発だった月:"
+#~ msgid "Most active in:"
+#~ msgstr "最も活発だった月:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Repositories:"
-msgstr "リポジトリ:"
+#~ msgid "Repositories:"
+#~ msgstr "リポジトリ:"
 
-#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "This user also has {0} private contributions"
-msgstr "このユーザーは {0} 件のプライベート Contribution も行っています"
+#~ msgid "This user also has {0} private contributions"
+#~ msgstr "このユーザーは {0} 件のプライベート Contribution も行っています"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repository Breakdown"
 msgstr "リポジトリ内訳"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With commits:"
-msgstr "コミット数:"
+#~ msgid "With commits:"
+#~ msgstr "コミット数:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With PRs:"
-msgstr "プルリクエスト数:"
+#~ msgid "With PRs:"
+#~ msgstr "プルリクエスト数:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With issues:"
-msgstr "Issue 数:"
+#~ msgid "With issues:"
+#~ msgstr "Issue 数:"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With reviews:"
-msgstr "レビュー数:"
+#~ msgid "With reviews:"
+#~ msgstr "レビュー数:"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Available Years"
@@ -8624,3 +8612,69 @@ msgstr "アイコンを選択："
 
 #~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
 #~ msgstr "<0/> // オプションアイコンを描画するためのスニペット <1/> <2><0><0>アイコンセレクター</0> <1>以下のリストからお気に入りのアイコンを選択してください。</1></0> <1><0><0><0/> <1>米国</1></0> <1><0>選択されたアイコン：</0> <1/></1></0> <1><0>アイコンを選択してください：</0> <1/></1></1></2>"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Calendar"
+msgstr "貢献カレンダー"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Less"
+msgstr "少ない"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Mon"
+msgstr "月"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Wed"
+msgstr "水"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Fri"
+msgstr "金"
+
+#. placeholder {0}: day.value
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "{0} contributions"
+msgstr "{0} 件の貢献"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "EEEE, MMMM d, yyyy"
+msgstr "yyyy年M月d日(EEEE)"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Breakdown"
+msgstr "貢献の内訳"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Distribution of your contributions by type"
+msgstr "貢献の種類別分布"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Average per day"
+msgstr "1日あたりの平均"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Most active in"
+msgstr "最も活発な時期"
+
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "+ {0} private contributions"
+msgstr "+ {0} 件のプライベート貢献"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With commits"
+msgstr "コミットあり"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With PRs"
+msgstr "PRあり"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With issues"
+msgstr "Issueあり"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With reviews"
+msgstr "レビューあり"

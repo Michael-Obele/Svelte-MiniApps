@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-11-03T19:37:03.729Z\n"
+"PO-Revision-Date: 2025-11-05T13:11:07.801Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -2890,6 +2890,7 @@ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "More"
 msgstr "Plus"
 
@@ -6621,13 +6622,11 @@ msgstr ""
 "Prend en charge la conversion entre les unités de longueur, de température, de volume, de masse, de surface, de temps, d'angle, de données,\n"
 "d'énergie, de force, de puissance et de pression."
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
 msgid "MMM"
 msgstr "MMM"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
@@ -8400,7 +8399,6 @@ msgid "View commits, PRs, issues, and code reviews"
 msgstr "Afficher les commits, les PR, les problèmes et les revues de code"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Heatmap"
 msgstr "Carte thermique des contributions"
 
@@ -8462,6 +8460,7 @@ msgid "Total Contributions"
 msgstr "Contributions Totales"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repositories"
 msgstr "Référentiels"
 
@@ -8490,10 +8489,8 @@ msgstr "Langages Utilisés"
 msgid "Top programming languages in contributed repositories"
 msgstr "Principaux langages de programmation dans les référentiels contribués"
 
-#. placeholder {0}: lang.count
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "{0} repos"
-msgstr "{0} dépôts"
+#~ msgid "{0} repos"
+#~ msgstr "{0} dépôts"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top Contributed Repositories"
@@ -8513,42 +8510,33 @@ msgstr "Activité de contribution quotidienne tout au long de {0}"
 msgid "Activity Summary"
 msgstr "Résumé de l'activité"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Average per day:"
-msgstr "Moyenne par jour :"
+#~ msgid "Average per day:"
+#~ msgstr "Moyenne par jour :"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Most active in:"
-msgstr "Plus actif dans :"
+#~ msgid "Most active in:"
+#~ msgstr "Plus actif dans :"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "Repositories:"
-msgstr "Référentiels :"
+#~ msgid "Repositories:"
+#~ msgstr "Référentiels :"
 
-#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "This user also has {0} private contributions"
-msgstr "Cet utilisateur a également {0} contributions privées"
+#~ msgid "This user also has {0} private contributions"
+#~ msgstr "Cet utilisateur a également {0} contributions privées"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repository Breakdown"
 msgstr "Répartition des Référentiels"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With commits:"
-msgstr "Avec des commits :"
+#~ msgid "With commits:"
+#~ msgstr "Avec des commits :"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With PRs:"
-msgstr "Avec des PRs :"
+#~ msgid "With PRs:"
+#~ msgstr "Avec des PRs :"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With issues:"
-msgstr "Avec des problèmes :"
+#~ msgid "With issues:"
+#~ msgstr "Avec des problèmes :"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid "With reviews:"
-msgstr "Avec des revues :"
+#~ msgid "With reviews:"
+#~ msgstr "Avec des revues :"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Available Years"
@@ -8738,3 +8726,69 @@ msgstr "Choisissez une icône:"
 
 #~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
 #~ msgstr "<0/> // Extrait pour afficher une icône d'option <1/> <2><0><0>Sélecteur d'icône</0> <1>Choisissez votre icône préférée dans la liste ci-dessous.</1></0> <1><0><0><0/> <1>FR</1></0> <1><0>Icône sélectionnée :</0> <1/></1></0> <1><0>Choisissez une icône :</0> <1/></1></1></2>"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Calendar"
+msgstr "Calendrier des contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Less"
+msgstr "Moins"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Mon"
+msgstr "Lun"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Wed"
+msgstr "Mer"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Fri"
+msgstr "Ven"
+
+#. placeholder {0}: day.value
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "{0} contributions"
+msgstr "{0} contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "EEEE, MMMM d, yyyy"
+msgstr "EEEE, d MMMM yyyy```"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Contribution Breakdown"
+msgstr "Répartition des contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Distribution of your contributions by type"
+msgstr "Répartition de vos contributions par type"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Average per day"
+msgstr "Moyenne par jour"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Most active in"
+msgstr "Plus actif en"
+
+#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "+ {0} private contributions"
+msgstr "+ {0} contributions privées"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With commits"
+msgstr "Avec des commits"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With PRs"
+msgstr "Avec des PR"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With issues"
+msgstr "Avec des issues"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "With reviews"
+msgstr "Avec des revues```"
