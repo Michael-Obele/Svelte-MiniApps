@@ -19,7 +19,7 @@
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
-	import * as Popover from '@/ui/popover';
+	import * as Dialog from '@/ui/dialog';
 	import { onMount } from 'svelte';
 	import { ScrollArea } from '@/ui/scroll-area';
 
@@ -52,6 +52,7 @@
 
 	let copySuccess = $state(false);
 	let savedPasswords = $state<PasswordRecord[] | null>(null);
+	let loadingPasswords = $state(false);
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('random-password-generator-has-seen-how-to-use', false);
 	let showSavePopover = $state(false);
@@ -140,26 +141,42 @@
 	}
 
 	async function handleView() {
-		if (viewing) return;
-
-		try {
-			viewing = true;
-			if (!savedPasswords) {
-				savedPasswords = await getSavedPasswords();
-			}
-		} catch (error) {
-			console.error('Error viewing passwords:', error);
-			toast.error('Failed to load saved passwords');
+		if (viewing) {
+			viewing = false;
+			return;
 		}
+
+		// If we don't have passwords loaded yet, load them
+		if (!savedPasswords && !loadingPasswords) {
+			await loadSavedPasswords();
+		}
+
+		viewing = true;
 	}
 
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
+
+	// Load saved passwords when user becomes available
 	onMount(() => {
-		getCurrentUser().then((user) => {
-			currentUser = user;
-		});
+		if (currentUser && !savedPasswords && !loadingPasswords) {
+			loadSavedPasswords();
+		}
 	});
+
+	async function loadSavedPasswords() {
+		if (loadingPasswords) return;
+
+		try {
+			loadingPasswords = true;
+			savedPasswords = await getSavedPasswords();
+		} catch (error) {
+			console.error('Error loading saved passwords:', error);
+			toast.error('Failed to load saved passwords');
+		} finally {
+			loadingPasswords = false;
+		}
+	}
 </script>
 
 <RouteHead
@@ -190,14 +207,14 @@
 		<div class="bg-card space-y-4 rounded-lg border p-6">
 			<div class="space-y-2">
 				<div class="flex items-center gap-2">
-					<Popover.Root bind:open={showSavePopover}>
+					<Dialog.Root bind:open={showSavePopover}>
 						{#if !saving}
-							<Popover.Trigger
+							<Dialog.Trigger
 								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-10 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
 								disabled={!currentUser || !password}
 							>
 								<Star class="h-4 w-4 {isSaved ? 'fill-current' : ''}" />
-							</Popover.Trigger>
+							</Dialog.Trigger>
 						{:else}
 							<div class="flex size-10 items-center justify-center rounded-md border">
 								<div
@@ -205,14 +222,14 @@
 								></div>
 							</div>
 						{/if}
-						<Popover.Content class="w-80">
-							<div class="grid gap-4">
-								<div class="space-y-2">
-									<h4 class="leading-none font-medium">Save Password</h4>
-									<p class="text-muted-foreground text-sm">
-										Add an optional description to help you remember what this password is for.
-									</p>
-								</div>
+						<Dialog.Content class="w-80">
+							<Dialog.Header>
+								<Dialog.Title>Save Password</Dialog.Title>
+								<Dialog.Description>
+									Add an optional description to help you remember what this password is for.
+								</Dialog.Description>
+							</Dialog.Header>
+							<div class="grid gap-4 py-4">
 								<div class="grid gap-2">
 									<Label for="password-details">Description (Optional)</Label>
 									<Input
@@ -225,26 +242,20 @@
 										{passwordDetails.length}/200 characters
 									</p>
 								</div>
-								<div class="flex gap-2">
-									<Button
-										variant="outline"
-										class="flex-1"
-										onclick={() => (showSavePopover = false)}
-									>
-										Cancel
-									</Button>
-									<Button onclick={handleSave} disabled={saving} class="flex-1">
-										{#if saving}
-											<div
-												class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
-											></div>
-										{/if}
-										Save
-									</Button>
-								</div>
 							</div>
-						</Popover.Content>
-					</Popover.Root>
+							<Dialog.Footer>
+								<Button variant="outline" onclick={() => (showSavePopover = false)}>Cancel</Button>
+								<Button onclick={handleSave} disabled={saving}>
+									{#if saving}
+										<div
+											class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
+										></div>
+									{/if}
+									Save
+								</Button>
+							</Dialog.Footer>
+						</Dialog.Content>
+					</Dialog.Root>
 
 					<Input
 						type="text"
@@ -320,7 +331,11 @@
 				{#if currentUser?.username}
 					<div class="flex gap-2">
 						<Button onclick={handleView} variant="secondary" class="flex-1" disabled={viewing}>
-							View Saved Passwords ({savedPasswords?.length || 0})
+							View Saved Passwords ({loadingPasswords
+								? 'loading...'
+								: savedPasswords
+									? savedPasswords.length
+									: 'none saved'})
 						</Button>
 						<Button
 							href="/apps/random-password-generator/passwords"

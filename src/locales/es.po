@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-11-05T13:11:07.768Z\n"
+"PO-Revision-Date: 2025-11-08T09:58:42.099Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -5780,7 +5780,7 @@ msgstr "Caracteres especiales"
 msgid "Generate Password"
 msgstr "Generar contraseña"
 
-#. placeholder {0}: savedPasswords?.length || 0
+#. placeholder {0}: loadingPasswords ? 'loading...' : savedPasswords ? savedPasswords.length : 'none saved'
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View Saved Passwords ({0})"
 msgstr "Ver contraseñas guardadas ({0})"
@@ -7334,8 +7334,8 @@ msgstr "Añade una descripción opcional para ayudarte a recordar para qué es e
 msgid "Description (Optional)"
 msgstr "Descripción (Opcional)"
 
-#. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: passwordDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"

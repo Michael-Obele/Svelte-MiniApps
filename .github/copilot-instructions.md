@@ -294,4 +294,151 @@ mount(() => {
 
 - Lazy load heavy components with `await import()`
 - Use Svelte's built-in optimization features
-- Minimize bundle size with proper tree-shaking
+- Minimize bundle size with proper tree shaking
+
+## Remote Functions Pattern
+
+**Query/Command Pattern for Server Communication:**
+
+```typescript
+// src/lib/remote/example.remote.ts
+import { query, command } from '$app/server';
+import { prisma } from '$lib/server/db';
+import * as v from 'valibot';
+
+// Query for reading data
+export const getData = query(async () => {
+	return await prisma.example.findMany();
+});
+
+// Command for mutations with validation
+export const saveData = command(
+	v.object({
+		name: v.pipe(v.string(), v.nonEmpty()),
+		value: v.number()
+	}),
+	async (data) => {
+		const result = await prisma.example.create({ data });
+		await getData().refresh(); // Refresh queries
+		return result;
+	}
+);
+```
+
+**Key Patterns:**
+
+- Use `query()` for read operations
+- Use `command()` with Valibot validation for mutations
+- Call `.refresh()` after mutations to update cached queries
+- Import from `$lib/remote/index.ts` for centralized exports
+
+## App Architecture Patterns
+
+**Mini-App Structure:**
+
+```
+src/routes/apps/(app)/[app-name]/
+├── +page.svelte          # Main app component
+├── +page.server.ts       # Server-side data loading (optional)
+├── how-to-use-config.ts  # Help documentation (optional)
+└── [Component].svelte    # App-specific components
+```
+
+**Consistent Layout Integration:**
+
+- Apps use shared `+layout.svelte` in `(app)` route group
+- Breadcrumb navigation with GitHub source links
+- App tracker for usage analytics
+- Keyboard shortcuts (Alt+D for app menu)
+
+## Database Schema Patterns
+
+**User-Centric Models:**
+
+- All app data linked to authenticated users
+- Complex relationships (User → Sessions, Passwords, Budgets, etc.)
+- Soft deletes and audit trails with `createdAt`/`updatedAt`
+- PostgreSQL with Prisma ORM
+
+**Migration Workflow:**
+
+1. Update `schema.prisma`
+2. Run `npm run db:migrate` (creates migration files)
+3. Run `npm run db:push` (applies to dev database)
+
+## External API Integration
+
+**API Client Patterns:**
+
+- GitHub API for contribution data
+- Currency exchange APIs
+- Dictionary APIs with error handling
+- Web Speech API for audio features
+
+**Error Handling:**
+
+- Try/catch blocks with user-friendly toast messages
+- Loading states with skeleton components
+- Graceful degradation for offline functionality
+
+## Testing Strategy
+
+**Unit Tests (Vitest):**
+
+- Component logic and utilities
+- Custom hooks and stores
+- API client functions
+
+**E2E Tests (Playwright):**
+
+- User workflows across mini-apps
+- Form submissions and navigation
+- PWA functionality and offline behavior
+
+**Test File Organization:**
+
+```
+tests/
+├── unit/                 # Vitest unit tests
+└── e2e/                  # Playwright E2E tests
+```
+
+## Build & Deployment
+
+**Custom Build Process:**
+
+- Service worker hash generation
+- Changelog generation from commits
+- Enhanced image optimization
+- Partytown for third-party scripts
+
+**Environment Setup:**
+
+- PostgreSQL database required
+- Environment variables in `.env`
+- Prisma client generation
+- PWA manifest and icons
+
+## AI Development Guidelines
+
+**Content Organization:**
+
+- Technical documentation → `ai-generated/` folder
+- Generated code → `src/lib/assets/ai-digest/` (reference only)
+- Implementation guides → `ai-generated/` with descriptive names
+- Fix explanations → `ai-generated/` with timestamps
+
+**Code Generation Rules:**
+
+- Always use Svelte 5 runes syntax
+- Follow existing component patterns
+- Use proper TypeScript types
+- Include error handling and loading states
+- Test generated code before committing
+
+**Documentation Standards:**
+
+- Include code examples from codebase
+- Reference specific file paths
+- Document integration points
+- Explain architectural decisions
