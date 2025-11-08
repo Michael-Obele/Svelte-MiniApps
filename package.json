@@ -27,7 +27,8 @@
 		"extract:sync": "bunx wuchale --sync",
 		"extract:watch": "bunx wuchale --watch",
 		"extract:stat": "bunx wuchale status",
-		"extract:init": "bunx wuchale init"
+		"extract:init": "bunx wuchale init",
+		"fix:po": "node scripts/fix-po-backticks.js"
 	},
 	"devDependencies": {
 		"@exodus/schemasafe": "^1.3.0",
