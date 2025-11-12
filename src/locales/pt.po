@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-08T10:08:39.567Z\n"
+"PO-Revision-Date: 2025-11-12T05:31:13.482Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -2153,7 +2153,6 @@ msgid "Confirm new password"
 msgstr "Confirme a nova senha"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
-#: src/routes/(auth)/register/+page.server.ts
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "As senhas não coincidem"
@@ -6650,21 +6649,17 @@ msgstr "Senha inválida"
 msgid "Incorrect username or password"
 msgstr "Nome de usuário ou senha incorretos"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "All fields are required"
-msgstr "Todos os campos são obrigatórios"
+#~ msgid "All fields are required"
+#~ msgstr "Todos os campos são obrigatórios"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-msgstr "O nome de usuário deve ter entre 3 e 31 caracteres e conter apenas letras minúsculas, números, sublinhados e hífens"
+#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "O nome de usuário deve ter entre 3 e 31 caracteres e conter apenas letras minúsculas, números, sublinhados e hífens"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Password must be at least 6 characters long"
-msgstr "A senha deve ter pelo menos 6 caracteres"
+#~ msgid "Password must be at least 6 characters long"
+#~ msgstr "A senha deve ter pelo menos 6 caracteres"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username is already taken"
-msgstr "O nome de usuário já está em uso"
+#~ msgid "Username is already taken"
+#~ msgstr "O nome de usuário já está em uso"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"

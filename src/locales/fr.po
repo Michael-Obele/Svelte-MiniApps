@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-11-08T10:08:38.680Z\n"
+"PO-Revision-Date: 2025-11-12T05:31:12.790Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -2161,7 +2161,6 @@ msgid "Confirm new password"
 msgstr "Confirmer le nouveau mot de passe"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
-#: src/routes/(auth)/register/+page.server.ts
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "Les mots de passe ne correspondent pas"
@@ -6659,21 +6658,17 @@ msgstr "Mot de passe invalide"
 msgid "Incorrect username or password"
 msgstr "Nom d'utilisateur ou mot de passe incorrect"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "All fields are required"
-msgstr "Tous les champs sont obligatoires."
+#~ msgid "All fields are required"
+#~ msgstr "Tous les champs sont obligatoires."
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-msgstr "Le nom d'utilisateur doit comporter entre 3 et 31 caractères et ne contenir que des lettres minuscules, des chiffres, des caractères de soulignement et des tirets."
+#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "Le nom d'utilisateur doit comporter entre 3 et 31 caractères et ne contenir que des lettres minuscules, des chiffres, des caractères de soulignement et des tirets."
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Password must be at least 6 characters long"
-msgstr "Le mot de passe doit contenir au moins 6 caractères."
+#~ msgid "Password must be at least 6 characters long"
+#~ msgstr "Le mot de passe doit contenir au moins 6 caractères."
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username is already taken"
-msgstr "Le nom d'utilisateur est déjà pris."
+#~ msgid "Username is already taken"
+#~ msgstr "Le nom d'utilisateur est déjà pris."
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"

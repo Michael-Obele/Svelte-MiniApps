@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-08T10:08:39.437Z\n"
+"PO-Revision-Date: 2025-11-12T05:31:12.997Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -25,27 +25,22 @@ msgstr "密码无效"
 msgid "Incorrect username or password"
 msgstr "用户名或密码错误"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "All fields are required"
-msgstr "所有字段均为必填项"
+#~ msgid "All fields are required"
+#~ msgstr "所有字段均为必填项"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-msgstr "用户名必须在 3 到 31 个字符之间，并且只能包含小写字母、数字、下划线和连字符"
+#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "用户名必须在 3 到 31 个字符之间，并且只能包含小写字母、数字、下划线和连字符"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Password must be at least 6 characters long"
-msgstr "密码长度必须至少为 6 个字符"
+#~ msgid "Password must be at least 6 characters long"
+#~ msgstr "密码长度必须至少为 6 个字符"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
-#: src/routes/(auth)/register/+page.server.ts
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "密码不匹配"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username is already taken"
-msgstr "用户名已被占用"
+#~ msgid "Username is already taken"
+#~ msgstr "用户名已被占用"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"

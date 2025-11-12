@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-11-08T10:08:38.845Z\n"
+"PO-Revision-Date: 2025-11-12T05:31:12.928Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -2319,7 +2319,6 @@ msgid "Confirm Password"
 msgstr "Passwort bestätigen"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
-#: src/routes/(auth)/register/+page.server.ts
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "Passwörter stimmen nicht überein"
@@ -7217,21 +7216,17 @@ msgstr "Ungültiges Passwort"
 msgid "Incorrect username or password"
 msgstr "Falscher Benutzername oder falsches Passwort"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "All fields are required"
-msgstr "Alle Felder sind erforderlich"
+#~ msgid "All fields are required"
+#~ msgstr "Alle Felder sind erforderlich"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-msgstr "Der Benutzername muss zwischen 3 und 31 Zeichen lang sein und darf nur Kleinbuchstaben, Zahlen, Unterstriche und Bindestriche enthalten"
+#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "Der Benutzername muss zwischen 3 und 31 Zeichen lang sein und darf nur Kleinbuchstaben, Zahlen, Unterstriche und Bindestriche enthalten"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Password must be at least 6 characters long"
-msgstr "Das Passwort muss mindestens 6 Zeichen lang sein"
+#~ msgid "Password must be at least 6 characters long"
+#~ msgstr "Das Passwort muss mindestens 6 Zeichen lang sein"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username is already taken"
-msgstr "Der Benutzername ist bereits vergeben"
+#~ msgid "Username is already taken"
+#~ msgstr "Der Benutzername ist bereits vergeben"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"

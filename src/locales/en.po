@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-08T10:08:36.017Z\n"
+"PO-Revision-Date: 2025-11-12T05:31:12.644Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -3884,7 +3884,6 @@ msgid "Confirm new password"
 msgstr "Confirm new password"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
-#: src/routes/(auth)/register/+page.server.ts
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "Passwords do not match"
@@ -8460,21 +8459,17 @@ msgstr "Invalid password"
 msgid "Incorrect username or password"
 msgstr "Incorrect username or password"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "All fields are required"
-msgstr "All fields are required"
+#~ msgid "All fields are required"
+#~ msgstr "All fields are required"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-msgstr "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
+#~ msgstr "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Password must be at least 6 characters long"
-msgstr "Password must be at least 6 characters long"
+#~ msgid "Password must be at least 6 characters long"
+#~ msgstr "Password must be at least 6 characters long"
 
-#: src/routes/(auth)/register/+page.server.ts
-msgid "Username is already taken"
-msgstr "Username is already taken"
+#~ msgid "Username is already taken"
+#~ msgstr "Username is already taken"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"

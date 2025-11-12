@@ -10,16 +10,12 @@
 	import { Switch } from '@/ui/switch/index.js';
 	import { registerUser } from '$lib/remote';
 
-	$effect(() => {
-		invalidateAll();
-	});
-
 	let { data }: { data: PageData } = $props();
 
 	const register = registerUser;
 	let showPassword = $state(false);
 	let showConfirmPassword = $state(false);
-	let isAdmin = $state(false); // Default to not admin
+	let isTester = $state(false); // Default to not admin
 
 	let passwordMatch = $derived(
 		!register.fields.password.value() ||
@@ -34,11 +30,6 @@
 	function toggleConfirmPassword() {
 		showConfirmPassword = !showConfirmPassword;
 	}
-
-	// Update role field when switch changes
-	$effect(() => {
-		register.fields.role.set(isAdmin ? 'tester' : 'user');
-	});
 </script>
 
 <svelte:head>
@@ -157,7 +148,13 @@
 				</div>
 
 				<div class="flex items-center space-x-2">
-					<Switch id="tester-mode" bind:checked={isAdmin} />
+					<!-- Role switch -->
+					<input
+						{...register.fields.role.as('text')}
+						value={isTester ? 'tester' : 'user'}
+						class="hidden"
+					/>
+					<Switch id="tester-mode" bind:checked={isTester} />
 					<Label for="tester-mode">Tester</Label>
 				</div>
 

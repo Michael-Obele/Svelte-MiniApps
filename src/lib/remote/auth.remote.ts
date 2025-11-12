@@ -100,14 +100,18 @@ export const loginUser = form(loginSchema, async (data, invalid) => {
 });
 
 // Register form
-export const registerUser = form(registerSchema, async (data, invalid) => {
+export const registerUser = form(registerSchema, async (data) => {
+	console.log('Register form submitted with data:', data);
+
 	const event = getRequestEvent();
 
 	// Check if passwords match
 	if (data.password !== data.confirmPassword) {
-		invalid(invalid.confirmPassword('Passwords do not match'));
-		return; // This line won't be reached, invalid() throws
+		console.log('Passwords do not match');
+		error(400, 'Passwords do not match');
 	}
+
+	console.log('Passwords match, checking if user exists');
 
 	// Check if user already exists
 	const existingUser = await prisma.user.findUnique({
@@ -115,9 +119,11 @@ export const registerUser = form(registerSchema, async (data, invalid) => {
 	});
 
 	if (existingUser) {
-		invalid(invalid.username('Username is already taken'));
-		return; // This line won't be reached, invalid() throws
+		console.log('User already exists:', data.username);
+		error(400, 'Username is already taken');
 	}
+
+	console.log('User does not exist, creating user');
 
 	// Create the user
 	const userId = generateUserId();
@@ -131,6 +137,8 @@ export const registerUser = form(registerSchema, async (data, invalid) => {
 			role: data.role
 		}
 	});
+
+	console.log('User created, creating session');
 
 	const session = await auth.createSession(userId);
 	event.cookies.set(auth.sessionCookieName, session.id, {
