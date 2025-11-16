@@ -77,6 +77,14 @@ const customCategoriesState = new PersistedState<PurchaseCategory[]>('purchase-c
 	syncTabs: true
 });
 
+/* Migration notes:
+// To migrate to adapter:
+// import { createAdapter } from '$lib/persisted-state/adapter';
+// const purchaseAdapter = createAdapter({ dbName: 'miniapps-purchases-v1', storeName: 'purchase-items' });
+// await purchaseAdapter.init();
+// await purchaseAdapter.importLocalStorage('purchase-items');
+*/
+
 // Item management functions
 export function addItem(
 	name: string,

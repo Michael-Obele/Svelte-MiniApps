@@ -9,6 +9,16 @@ export { getSavedPasswords, savePassword, deletePassword, editPassword } from '.
 
 // Remote functions for purchase tracker
 export {
+	// Queries
+	getItems,
+	getItem,
+	getPurchasesForItem,
+	// Forms
+	createItemForm,
+	updateItemForm,
+	createPurchaseForm,
+	updatePurchaseForm,
+	// Commands & utilities
 	loadPurchaseData,
 	backupPurchaseData,
 	deletePurchaseItem,

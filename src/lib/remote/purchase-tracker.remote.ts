@@ -1,4 +1,4 @@
-import { getRequestEvent, query, command } from '$app/server';
+import { getRequestEvent, query, command, form } from '$app/server';
 import { prisma } from '$lib/server/db';
 import { getCurrentUser } from './auth.remote';
 import * as v from 'valibot';
@@ -57,6 +57,372 @@ const BackupDataSchema = v.object({
 	items: v.array(ItemSchema),
 	purchases: v.array(PurchaseRecordSchema)
 });
+
+// ============================================================================
+// QUERY FUNCTIONS - Read data from server
+// ============================================================================
+
+/**
+ * Get all items for the current user
+ */
+export const getItems = query(async () => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	const items = await prisma.item.findMany({
+		where: { userId: user.id },
+		orderBy: { createdAt: 'desc' }
+	});
+
+	return items.map((item) => ({
+		id: item.id,
+		name: item.name,
+		category: item.category,
+		description: item.description || undefined,
+		defaultUnit: item.defaultUnit || undefined,
+		defaultCurrency: item.defaultCurrency || undefined,
+		createdAt: item.createdAt.toISOString(),
+		updatedAt: item.updatedAt.toISOString()
+	}));
+});
+
+/**
+ * Get a single item with its purchase records
+ */
+export const getItem = query(v.string(), async (itemId) => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	const item = await prisma.item.findFirst({
+		where: {
+			id: itemId,
+			userId: user.id
+		},
+		include: {
+			purchases: {
+				orderBy: { date: 'desc' }
+			}
+		}
+	});
+
+	if (!item) {
+		throw new Error('Item not found');
+	}
+
+	return {
+		id: item.id,
+		name: item.name,
+		category: item.category,
+		description: item.description || undefined,
+		defaultUnit: item.defaultUnit || undefined,
+		defaultCurrency: item.defaultCurrency || undefined,
+		createdAt: item.createdAt.toISOString(),
+		updatedAt: item.updatedAt.toISOString(),
+		purchases: item.purchases.map((p) => ({
+			id: p.id,
+			itemId: p.itemId,
+			quantity: p.quantity,
+			cost: p.cost,
+			currency: p.currency,
+			date: p.date.toISOString(),
+			location: p.location || undefined,
+			paymentMethod: p.paymentMethod || undefined,
+			notes: p.notes || undefined,
+			createdAt: p.createdAt.toISOString()
+		}))
+	};
+});
+
+/**
+ * Get purchases for a specific item
+ */
+export const getPurchasesForItem = query(v.string(), async (itemId) => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	const purchases = await prisma.purchaseRecord.findMany({
+		where: {
+			itemId: itemId,
+			userId: user.id
+		},
+		orderBy: { date: 'desc' }
+	});
+
+	return purchases.map((p) => ({
+		id: p.id,
+		itemId: p.itemId,
+		quantity: p.quantity,
+		cost: p.cost,
+		currency: p.currency,
+		date: p.date.toISOString(),
+		location: p.location || undefined,
+		paymentMethod: p.paymentMethod || undefined,
+		notes: p.notes || undefined,
+		createdAt: p.createdAt.toISOString()
+	}));
+});
+
+// ============================================================================
+// FORM FUNCTIONS - Create/Update via forms with progressive enhancement
+// ============================================================================
+
+/**
+ * Create a new item
+ */
+export const createItemForm = form(
+	v.object({
+		name: v.pipe(v.string(), v.nonEmpty('Item name is required')),
+		category: v.pipe(v.string(), v.nonEmpty('Category is required')),
+		description: v.optional(v.string()),
+		defaultUnit: v.optional(v.string()),
+		defaultCurrency: v.optional(v.string(), 'USD')
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		const item = await prisma.item.create({
+			data: {
+				id: crypto.randomUUID(),
+				userId: user.id,
+				name: data.name,
+				category: data.category,
+				description: data.description,
+				defaultUnit: data.defaultUnit,
+				defaultCurrency: data.defaultCurrency || 'USD'
+			}
+		});
+
+		// Refresh the items query
+		await getItems().refresh();
+
+		return {
+			success: true,
+			item: {
+				id: item.id,
+				name: item.name,
+				category: item.category,
+				description: item.description || undefined,
+				defaultUnit: item.defaultUnit || undefined,
+				defaultCurrency: item.defaultCurrency || undefined,
+				createdAt: item.createdAt.toISOString(),
+				updatedAt: item.updatedAt.toISOString()
+			}
+		};
+	}
+);
+
+/**
+ * Update an existing item
+ */
+export const updateItemForm = form(
+	v.object({
+		id: v.string(),
+		name: v.pipe(v.string(), v.nonEmpty('Item name is required')),
+		category: v.pipe(v.string(), v.nonEmpty('Category is required')),
+		description: v.optional(v.string()),
+		defaultUnit: v.optional(v.string()),
+		defaultCurrency: v.optional(v.string())
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		// Verify ownership
+		const existingItem = await prisma.item.findFirst({
+			where: {
+				id: data.id,
+				userId: user.id
+			}
+		});
+
+		if (!existingItem) {
+			throw new Error('Item not found or you do not have permission to update it');
+		}
+
+		const item = await prisma.item.update({
+			where: { id: data.id },
+			data: {
+				name: data.name,
+				category: data.category,
+				description: data.description,
+				defaultUnit: data.defaultUnit,
+				defaultCurrency: data.defaultCurrency
+			}
+		});
+
+		// Refresh queries
+		await getItems().refresh();
+		await getItem(data.id).refresh();
+
+		return {
+			success: true,
+			item: {
+				id: item.id,
+				name: item.name,
+				category: item.category,
+				description: item.description || undefined,
+				defaultUnit: item.defaultUnit || undefined,
+				defaultCurrency: item.defaultCurrency || undefined,
+				createdAt: item.createdAt.toISOString(),
+				updatedAt: item.updatedAt.toISOString()
+			}
+		};
+	}
+);
+
+/**
+ * Create a new purchase record
+ */
+export const createPurchaseForm = form(
+	v.object({
+		itemId: v.string(),
+		quantity: v.pipe(v.number(), v.minValue(0.01, 'Quantity must be greater than 0')),
+		cost: v.pipe(v.number(), v.minValue(0, 'Cost must be 0 or greater')),
+		currency: v.pipe(v.string(), v.nonEmpty('Currency is required')),
+		date: v.pipe(v.string(), v.nonEmpty('Date is required')),
+		location: v.optional(v.string()),
+		paymentMethod: v.optional(v.string()),
+		notes: v.optional(v.string())
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		// Verify item ownership
+		const item = await prisma.item.findFirst({
+			where: {
+				id: data.itemId,
+				userId: user.id
+			}
+		});
+
+		if (!item) {
+			throw new Error('Item not found or you do not have permission to add purchases to it');
+		}
+
+		const purchase = await prisma.purchaseRecord.create({
+			data: {
+				id: crypto.randomUUID(),
+				userId: user.id,
+				itemId: data.itemId,
+				quantity: data.quantity,
+				cost: data.cost,
+				currency: data.currency,
+				date: new Date(data.date),
+				location: data.location,
+				paymentMethod: data.paymentMethod,
+				notes: data.notes
+			}
+		});
+
+		// Refresh queries
+		await getPurchasesForItem(data.itemId).refresh();
+		await getItem(data.itemId).refresh();
+
+		return {
+			success: true,
+			purchase: {
+				id: purchase.id,
+				itemId: purchase.itemId,
+				quantity: purchase.quantity,
+				cost: purchase.cost,
+				currency: purchase.currency,
+				date: purchase.date.toISOString(),
+				location: purchase.location || undefined,
+				paymentMethod: purchase.paymentMethod || undefined,
+				notes: purchase.notes || undefined,
+				createdAt: purchase.createdAt.toISOString()
+			}
+		};
+	}
+);
+
+/**
+ * Update an existing purchase record
+ */
+export const updatePurchaseForm = form(
+	v.object({
+		id: v.string(),
+		quantity: v.pipe(v.number(), v.minValue(0.01, 'Quantity must be greater than 0')),
+		cost: v.pipe(v.number(), v.minValue(0, 'Cost must be 0 or greater')),
+		currency: v.pipe(v.string(), v.nonEmpty('Currency is required')),
+		date: v.pipe(v.string(), v.nonEmpty('Date is required')),
+		location: v.optional(v.string()),
+		paymentMethod: v.optional(v.string()),
+		notes: v.optional(v.string())
+	}),
+	async (data) => {
+		const user = await getCurrentUser();
+
+		if (!user) {
+			throw new Error('User not authenticated');
+		}
+
+		// Verify ownership
+		const existingPurchase = await prisma.purchaseRecord.findFirst({
+			where: {
+				id: data.id,
+				userId: user.id
+			}
+		});
+
+		if (!existingPurchase) {
+			throw new Error('Purchase record not found or you do not have permission to update it');
+		}
+
+		const purchase = await prisma.purchaseRecord.update({
+			where: { id: data.id },
+			data: {
+				quantity: data.quantity,
+				cost: data.cost,
+				currency: data.currency,
+				date: new Date(data.date),
+				location: data.location,
+				paymentMethod: data.paymentMethod,
+				notes: data.notes
+			}
+		});
+
+		// Refresh queries
+		await getPurchasesForItem(purchase.itemId).refresh();
+		await getItem(purchase.itemId).refresh();
+
+		return {
+			success: true,
+			purchase: {
+				id: purchase.id,
+				itemId: purchase.itemId,
+				quantity: purchase.quantity,
+				cost: purchase.cost,
+				currency: purchase.currency,
+				date: purchase.date.toISOString(),
+				location: purchase.location || undefined,
+				paymentMethod: purchase.paymentMethod || undefined,
+				notes: purchase.notes || undefined,
+				createdAt: purchase.createdAt.toISOString()
+			}
+		};
+	}
+);
 
 // Query to load data from server
 export const loadPurchaseData = query(async () => {
