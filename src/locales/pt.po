@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-16T12:04:22.184Z\n"
+"PO-Revision-Date: 2025-11-16T12:28:15.651Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -3114,6 +3114,7 @@ msgstr "Selecionar Orçamento"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
@@ -3194,6 +3195,10 @@ msgid "BRL"
 msgstr "BRL"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "NGN"
 msgstr "NGN"
@@ -4771,9 +4776,8 @@ msgstr "Já há uma dose agendada neste horário"
 msgid "Dose rescheduled successfully"
 msgstr "Dose remarcada com sucesso"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please fill in all required fields"
-msgstr "Preencha todos os campos obrigatórios"
+#~ msgid "Please fill in all required fields"
+#~ msgstr "Preencha todos os campos obrigatórios"
 
 #~ msgid "Item added successfully!"
 #~ msgstr "Item adicionado com sucesso!"
@@ -9014,3 +9018,20 @@ msgstr "Criar Compra"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Edit Purchase"
 msgstr "Editar Compra"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "NGN - Nigerian Naira"
+msgstr "NGN - Naira Nigeriana```"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item created successfully (saved locally)"
+msgstr "Item criado com sucesso (salvo localmente)"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item updated successfully (saved locally)"
+msgstr "Item atualizado com sucesso (salvo localmente)"

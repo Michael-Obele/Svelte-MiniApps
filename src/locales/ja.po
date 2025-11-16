@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-16T12:04:22.012Z\n"
+"PO-Revision-Date: 2025-11-16T12:28:14.390Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -4604,6 +4604,7 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
@@ -4684,6 +4685,10 @@ msgid "BRL"
 msgstr "ブラジルレアル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "NGN"
 msgstr "ナイジェリアナイラ"
@@ -8912,3 +8917,20 @@ msgstr "購入を作成"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Edit Purchase"
 msgstr "購入を編集"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "NGN - Nigerian Naira"
+msgstr "NGN - ナイジェリア・ナイラ```"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item created successfully (saved locally)"
+msgstr "アイテムが正常に作成されました（ローカルに保存されました）"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item updated successfully (saved locally)"
+msgstr "アイテムが正常に更新されました（ローカルに保存されました）"
