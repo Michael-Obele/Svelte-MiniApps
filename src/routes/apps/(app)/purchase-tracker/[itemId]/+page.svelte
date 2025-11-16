@@ -6,6 +6,8 @@
 		purchases,
 		getAllCategories,
 		getPurchasesForItem,
+		addPurchaseRecord,
+		updatePurchaseRecord,
 		type Item,
 		type PurchaseRecord
 	} from '../states.svelte';
@@ -79,6 +81,29 @@
 	let editDialogOpen = $state(false);
 	let selectedPurchase = $state<PurchaseRecord | null>(null);
 
+	// Cost input state for formatted display
+	let costInput = $state('');
+	let editCostInput = $state('');
+
+	// Formatted cost displays
+	let formattedCost = $derived.by(() => {
+		const num = parseFloat(costInput);
+		if (isNaN(num) || !currentItem) return '';
+		return new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: currentItem.defaultCurrency || 'USD'
+		}).format(num);
+	});
+
+	let editFormattedCost = $derived.by(() => {
+		const num = parseFloat(editCostInput);
+		if (isNaN(num) || !currentItem) return '';
+		return new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: currentItem.defaultCurrency || 'USD'
+		}).format(num);
+	});
+
 	// Load server data if authenticated
 	$effect(() => {
 		if (currentUser && itemId) {
@@ -110,6 +135,7 @@
 
 	function openEditDialog(purchase: PurchaseRecord) {
 		selectedPurchase = purchase;
+		editCostInput = purchase.cost.toString();
 		editDialogOpen = true;
 	}
 
@@ -133,6 +159,54 @@
 			style: 'currency',
 			currency: currency
 		}).format(amount);
+	}
+
+	// Local form handlers for unauthenticated users
+	function handleLocalCreatePurchase(e: SubmitEvent) {
+		e.preventDefault();
+		if (!currentItem) return;
+
+		const form = e.currentTarget as HTMLFormElement;
+		const formData = new FormData(form);
+
+		const purchaseId = addPurchaseRecord(
+			currentItem.id,
+			parseFloat(formData.get('quantity') as string),
+			parseFloat(formData.get('cost') as string),
+			currentItem.defaultCurrency || 'USD',
+			formData.get('date') as string,
+			(formData.get('location') as string) || undefined,
+			(formData.get('paymentMethod') as string) || undefined,
+			(formData.get('notes') as string) || undefined
+		);
+
+		toast.success('Purchase saved (saved locally)');
+		createDialogOpen = false;
+		costInput = '';
+		form.reset();
+	}
+
+	function handleLocalUpdatePurchase(e: SubmitEvent) {
+		e.preventDefault();
+		if (!selectedPurchase || !currentItem) return;
+
+		const form = e.currentTarget as HTMLFormElement;
+		const formData = new FormData(form);
+
+		updatePurchaseRecord(selectedPurchase.id, {
+			quantity: parseFloat(formData.get('quantity') as string),
+			cost: parseFloat(formData.get('cost') as string),
+			currency: currentItem.defaultCurrency || 'USD',
+			date: formData.get('date') as string,
+			location: (formData.get('location') as string) || undefined,
+			paymentMethod: (formData.get('paymentMethod') as string) || undefined,
+			notes: (formData.get('notes') as string) || undefined
+		});
+
+		toast.success('Purchase updated (saved locally)');
+		editDialogOpen = false;
+		selectedPurchase = null;
+		editCostInput = '';
 	}
 </script>
 
@@ -191,6 +265,7 @@
 						<TableHead>Date</TableHead>
 						<TableHead>Quantity</TableHead>
 						<TableHead>Cost</TableHead>
+						<TableHead>Cost per Unit</TableHead>
 						<TableHead>Location</TableHead>
 						<TableHead>Payment Method</TableHead>
 						<TableHead>Notes</TableHead>
@@ -207,6 +282,11 @@
 							</TableCell>
 							<TableCell class="font-medium">
 								{formatCurrency(purchase.cost, purchase.currency)}
+							</TableCell>
+							<TableCell class="text-muted-foreground">
+								{purchase.quantity > 0
+									? formatCurrency(purchase.cost / purchase.quantity, purchase.currency)
+									: '-'}
 							</TableCell>
 							<TableCell class="text-muted-foreground">
 								{purchase.location || '-'}
@@ -283,22 +363,26 @@
 			</DialogHeader>
 
 			<form
-				{...createPurchaseForm.enhance(async ({ form, submit }) => {
-					try {
-						await submit();
-						const result = createPurchaseForm.result as
-							| { success: boolean; purchase: PurchaseRecord }
-							| undefined;
-						if (currentUser && result?.purchase) {
-							purchases.current = [...purchases.current, result.purchase];
-						}
-						toast.success('Purchase created successfully');
-						createDialogOpen = false;
-						form.reset();
-					} catch (error) {
-						toast.error('Failed to create purchase');
-					}
-				})}
+				{...currentUser
+					? createPurchaseForm.enhance(async ({ form, submit }) => {
+							try {
+								await submit();
+								const result = createPurchaseForm.result as
+									| { success: boolean; purchase: PurchaseRecord }
+									| undefined;
+								if (currentUser && result?.purchase) {
+									purchases.current = [...purchases.current, result.purchase];
+								}
+								toast.success('Purchase created successfully');
+								createDialogOpen = false;
+								costInput = '';
+								form.reset();
+							} catch (error) {
+								toast.error('Failed to create purchase');
+							}
+						})
+					: {}}
+				onsubmit={currentUser ? undefined : handleLocalCreatePurchase}
 			>
 				<input type="hidden" name="itemId" value={currentItem.id} />
 
@@ -316,18 +400,18 @@
 					</div>
 
 					<div class="grid gap-2">
-						<Label for="create-cost">Cost</Label>
-						<Input id="create-cost" name="cost" type="number" step="0.01" required />
-					</div>
-
-					<div class="grid gap-2">
-						<Label for="create-currency">Currency</Label>
+						<Label for="create-cost">Cost ({currentItem.defaultCurrency || 'USD'})</Label>
 						<Input
-							id="create-currency"
-							name="currency"
-							value={currentItem.defaultCurrency || 'USD'}
+							id="create-cost"
+							name="cost"
+							type="number"
+							step="0.01"
 							required
+							bind:value={costInput}
 						/>
+						{#if formattedCost}
+							<p class="text-muted-foreground text-sm">= {formattedCost}</p>
+						{/if}
 					</div>
 
 					<div class="grid gap-2">
@@ -377,25 +461,29 @@
 
 			{#if selectedPurchase}
 				<form
-					{...updatePurchaseForm.enhance(async ({ form, submit }) => {
-						try {
-							await submit();
-							const result = updatePurchaseForm.result as
-								| { success: boolean; purchase: PurchaseRecord }
-								| undefined;
-							if (currentUser && result?.purchase && selectedPurchase) {
-								const purchaseId = selectedPurchase.id;
-								purchases.current = purchases.current.map((p) =>
-									p.id === purchaseId ? result.purchase : p
-								);
-							}
-							toast.success('Purchase updated successfully');
-							editDialogOpen = false;
-							selectedPurchase = null;
-						} catch (error) {
-							toast.error('Failed to update purchase');
-						}
-					})}
+					{...currentUser
+						? updatePurchaseForm.enhance(async ({ form, submit }) => {
+								try {
+									await submit();
+									const result = updatePurchaseForm.result as
+										| { success: boolean; purchase: PurchaseRecord }
+										| undefined;
+									if (currentUser && result?.purchase && selectedPurchase) {
+										const purchaseId = selectedPurchase.id;
+										purchases.current = purchases.current.map((p) =>
+											p.id === purchaseId ? result.purchase : p
+										);
+									}
+									toast.success('Purchase updated successfully');
+									editDialogOpen = false;
+									selectedPurchase = null;
+									editCostInput = '';
+								} catch (error) {
+									toast.error('Failed to update purchase');
+								}
+							})
+						: {}}
+					onsubmit={currentUser ? undefined : handleLocalUpdatePurchase}
 				>
 					<input type="hidden" name="id" value={selectedPurchase.id} />
 
@@ -413,25 +501,18 @@
 						</div>
 
 						<div class="grid gap-2">
-							<Label for="edit-cost">Cost</Label>
+							<Label for="edit-cost">Cost ({currentItem.defaultCurrency || 'USD'})</Label>
 							<Input
 								id="edit-cost"
 								name="cost"
 								type="number"
 								step="0.01"
-								value={selectedPurchase.cost}
 								required
+								bind:value={editCostInput}
 							/>
-						</div>
-
-						<div class="grid gap-2">
-							<Label for="edit-currency">Currency</Label>
-							<Input
-								id="edit-currency"
-								name="currency"
-								value={selectedPurchase.currency}
-								required
-							/>
+							{#if editFormattedCost}
+								<p class="text-muted-foreground text-sm">= {editFormattedCost}</p>
+							{/if}
 						</div>
 
 						<div class="grid gap-2">

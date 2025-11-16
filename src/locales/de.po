@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-11-16T12:28:11.764Z\n"
+"PO-Revision-Date: 2025-11-16T14:46:45.406Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -3724,8 +3724,6 @@ msgstr "Formatierter Budgetbetrag"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "Währung"
@@ -3763,6 +3761,11 @@ msgstr "Budget auswählen"
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
@@ -8949,8 +8952,6 @@ msgid "Quantity"
 msgstr "Menge"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost"
 msgstr "Kosten"
 
@@ -8997,3 +8998,22 @@ msgstr "Artikel erfolgreich erstellt (lokal gespeichert)"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item updated successfully (saved locally)"
 msgstr "Artikel erfolgreich aktualisiert (lokal gespeichert)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase saved (saved locally)"
+msgstr "Kauf gespeichert (lokal gespeichert)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase updated (saved locally)"
+msgstr "Kauf aktualisiert (lokal gespeichert)"
+
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost ({0})"
+msgstr "Kosten ({0})"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost per Unit"
+msgstr "Kosten pro Einheit"

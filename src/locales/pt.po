@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-16T12:28:15.651Z\n"
+"PO-Revision-Date: 2025-11-16T14:46:45.995Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -3127,6 +3127,11 @@ msgstr "Selecionar Orçamento"
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "USD"
 msgstr "USD"
@@ -3362,8 +3367,6 @@ msgstr "Valor do orçamento formatado"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "Moeda"
@@ -8987,8 +8990,6 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost"
 msgstr "Custo"
 
@@ -9035,3 +9036,22 @@ msgstr "Item criado com sucesso (salvo localmente)"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item updated successfully (saved locally)"
 msgstr "Item atualizado com sucesso (salvo localmente)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase saved (saved locally)"
+msgstr "Compra salva (salva localmente)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase updated (saved locally)"
+msgstr "Compra atualizada (salva localmente)"
+
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost ({0})"
+msgstr "Custo ({0})"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost per Unit"
+msgstr "Custo por Unidade"

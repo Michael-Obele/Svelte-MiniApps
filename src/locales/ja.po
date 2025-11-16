@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-16T12:28:14.390Z\n"
+"PO-Revision-Date: 2025-11-16T14:46:45.526Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -4617,6 +4617,11 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "USD"
 msgstr "米ドル"
@@ -4846,8 +4851,6 @@ msgstr "フォーマットされた予算額"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "通貨"
@@ -8886,8 +8889,6 @@ msgid "Quantity"
 msgstr "数量"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost"
 msgstr "費用"
 
@@ -8934,3 +8935,22 @@ msgstr "アイテムが正常に作成されました（ローカルに保存さ
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item updated successfully (saved locally)"
 msgstr "アイテムが正常に更新されました（ローカルに保存されました）"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase saved (saved locally)"
+msgstr "購入履歴を保存しました（ローカルに保存）。"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase updated (saved locally)"
+msgstr "購入履歴を更新しました（ローカルに保存）。"
+
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost ({0})"
+msgstr "コスト（{0}）"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost per Unit"
+msgstr "ユニットあたりのコスト"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-16T12:28:13.021Z\n"
+"PO-Revision-Date: 2025-11-16T14:46:45.467Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -794,6 +794,11 @@ msgstr "选择预算"
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
@@ -3799,8 +3804,6 @@ msgstr "格式化的预算金额"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "货币"
@@ -8882,8 +8885,6 @@ msgid "Quantity"
 msgstr "数量"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost"
 msgstr "价格"
 
@@ -8930,3 +8931,22 @@ msgstr "物品创建成功（已本地保存）"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item updated successfully (saved locally)"
 msgstr "物品更新成功（已本地保存）"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase saved (saved locally)"
+msgstr "购买已保存（本地保存）"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase updated (saved locally)"
+msgstr "购买已更新（本地保存）"
+
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost ({0})"
+msgstr "成本 ({0})"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost per Unit"
+msgstr "每单位成本"
