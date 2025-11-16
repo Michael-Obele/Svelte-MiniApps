@@ -20,7 +20,6 @@
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
 	import * as Dialog from '@/ui/dialog';
-	import { onMount } from 'svelte';
 	import { ScrollArea } from '@/ui/scroll-area';
 
 	// Define User type inline to match what getCurrentUser returns
@@ -37,8 +36,6 @@
 		passwordHash: string;
 		details: string | null;
 	};
-
-	let { data }: PageProps = $props();
 
 	let password = $state('');
 	let passwordLength = $state(12);
@@ -157,8 +154,19 @@
 	// Use effect to get current user asynchronously
 	let currentUser = $state<User | null>(null);
 
+	// Load current user on mount
+	$effect(() => {
+		getCurrentUser()
+			.then((user) => {
+				currentUser = user;
+			})
+			.catch((error) => {
+				console.error('Error loading current user:', error);
+			});
+	});
+
 	// Load saved passwords when user becomes available
-	onMount(() => {
+	$effect(() => {
 		if (currentUser && !savedPasswords && !loadingPasswords) {
 			loadSavedPasswords();
 		}
