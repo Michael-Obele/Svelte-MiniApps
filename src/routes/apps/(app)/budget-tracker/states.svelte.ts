@@ -18,11 +18,22 @@ export interface Budget {
 	createdAt: string;
 }
 
-// Create a persisted state for budgets with cross-tab synchronization
+// Create a persisted state for budgets with cross-tab synchronization (legacy)
 const budgetState = new PersistedState<Budget[]>('budgets', [], {
 	storage: 'local', // Use localStorage
 	syncTabs: true // Sync across tabs
 });
+
+/*
+Migration notes:
+- To migrate to the new adapter (IndexedDB-backed):
+	import { createAdapter, importLocalStorage } from '$lib/persisted-state/adapter';
+	const adapter = createAdapter({ dbName: 'miniapps-budget-v1', storeName: 'budgets' });
+	await adapter.init();
+	// optional: import existing localStorage entries into the new IndexedDB store
+	const migrated = await adapter.importLocalStorage('budgets'); // returns count
+	// Now you can use adapter.getItem/listItems/saveItem instead of PersistedState
+*/
 
 // Create a persisted state for selected expenses
 const selectedExpensesState = new PersistedState<string[]>('selectedExpenses', [], {

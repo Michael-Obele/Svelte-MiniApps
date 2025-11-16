@@ -54,6 +54,14 @@ export const smokingAttempts = new PersistedState<SmokingAttempt[]>(
 	[]
 );
 
+/* Migration example:
+// To migrate to the new adapter:
+// import { createAdapter } from '$lib/persisted-state/adapter';
+// const adapter = createAdapter({ dbName: 'miniapps-smoke-free-v1', storeName: 'smoke-free-tracker:attempts' });
+// await adapter.init();
+// await adapter.importLocalStorage('smoke-free-tracker:attempts');
+*/
+
 // Craving logs
 export const cravingLogs = new PersistedState<CravingLog[]>('smoke-free-tracker:cravings', []);
 
