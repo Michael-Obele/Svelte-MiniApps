@@ -17,6 +17,8 @@ Provide a simple, robust client-side persistence adapter for unauthenticated use
 4. Provide mapping utilities to convert those envelopes to/from your Prisma/Drizzle model shapes (plain objects). Keep conversions explicit and type-safe.
 5. Offer fallbacks: `localStorage` fallback for very small data sets, or fail gracefully if IndexedDB not available.
 6. Add comprehensive error handling and JSDoc documentation.
+7. Provide factory-based API: `createAdapter({ dbName, storeName, version, upgrade })` to support multiple apps and store isolation.
+8. Provide a Svelte wrapper: `createPersistedStore({ dbName, storeName })` for components to quickly bind to local data with runes.
 
 ## Sync strategy recommendations
 
@@ -55,11 +57,11 @@ pnpm add idb
 3. Implement an API endpoint `/api/sync` that accepts `toServerFormat()` payload and returns authoritative server items to `fromServerFormat()` and merge locally.
 4. Add tests and a small migration script when changing schema.
 
-Files added in this folder:
+Files relevant to this plan:
 
 - `plan.md` — this file
 - `README.md` — quick usage and recommendations
-- `adapter.ts` — TypeScript prototype (client-only) using `idb` with improvements
+- Adapter implementation moved to the library at `src/lib/persisted-state/adapter.ts`. This docs folder now contains design and usage documentation only.
 
 ## Notes & references
 

@@ -6,8 +6,8 @@ Small prototype to persist unauthenticated user data in the browser and provide 
 
 ## What is included
 
-- `adapter.ts` — TypeScript prototype using `idb` (client-only, dynamic import) exposing a simple API with error handling and localStorage fallback.
 - `plan.md` — design and recommendations.
+- Implementation: adapter implementation now lives at `src/lib/persisted-state/adapter.ts` and `src/lib/persisted-state/README.md` (use `$lib/persisted-state` in your app).
 
 ## Install
 
@@ -28,16 +28,16 @@ npm i idb
 Import functions from the adapter in client code only (e.g. inside `onMount` or event handlers):
 
 ```ts
-import {
-	init,
-	saveItem,
-	getItem,
-	listItems
-} from '$lib/persisted-state/adapter';
+import { init, saveItem, getItem, listItems } from '$lib/persisted-state/adapter';
+import { createAdapter } from '$lib/persisted-state/adapter';
 
 await init({ dbName: 'app-store', storeName: 'items' });
 await saveItem({ payload: { title: 'Local todo' } });
 const all = await listItems();
+// Example: create per-app adapter
+const budgetAdapter = createAdapter({ dbName: 'miniapps-budget-v1', storeName: 'budget-items' });
+await budgetAdapter.init();
+await budgetAdapter.saveItem({ payload: { name: 'Spotify', cost: 9.99 } });
 ```
 
 ## Notes & recommendations
