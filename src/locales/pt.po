@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-12T05:31:13.482Z\n"
+"PO-Revision-Date: 2025-11-16T12:04:22.184Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -1835,9 +1835,13 @@ msgstr "Digite seu nome de usuário"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -3108,6 +3112,8 @@ msgstr "Selecionar Orçamento"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
@@ -3118,32 +3124,54 @@ msgstr "Selecionar Orçamento"
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "USD"
 msgstr "USD"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "EUR"
 msgstr "EUR"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "GBP"
 msgstr "GBP"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "JPY"
 msgstr "JPY"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "CAD"
 msgstr "CAD"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "AUD"
 msgstr "AUD"
@@ -3329,6 +3357,8 @@ msgstr "Valor do orçamento formatado"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "Moeda"
@@ -3392,6 +3422,7 @@ msgstr "Veja os detalhes da despesa abaixo. Clique no botão de lápis para edit
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Description"
 msgstr "Descrição"
@@ -3408,6 +3439,9 @@ msgstr "Salvar alterações"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Date"
 msgstr "Data"
 
@@ -3907,9 +3941,8 @@ msgstr "Perdidas"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
@@ -4490,6 +4523,8 @@ msgstr "Nome da Sessão *"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Description (optional)"
 msgstr "Descrição (opcional)"
 
@@ -4657,6 +4692,8 @@ msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "Opcionalmente, adicione uma nota explicando por que você está pulando esta dose."
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "Notas (opcional)"
@@ -4735,79 +4772,68 @@ msgid "Dose rescheduled successfully"
 msgstr "Dose remarcada com sucesso"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Please fill in all required fields"
 msgstr "Preencha todos os campos obrigatórios"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Item added successfully!"
-msgstr "Item adicionado com sucesso!"
+#~ msgid "Item added successfully!"
+#~ msgstr "Item adicionado com sucesso!"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Item updated successfully!"
-msgstr "Item atualizado com sucesso!"
+#~ msgid "Item updated successfully!"
+#~ msgstr "Item atualizado com sucesso!"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Purchase record added successfully!"
-msgstr "Registro de compra adicionado com sucesso!"
+#~ msgid "Purchase record added successfully!"
+#~ msgstr "Registro de compra adicionado com sucesso!"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Purchase record updated successfully!"
-msgstr "Registro de compra atualizado com sucesso!"
+#~ msgid "Purchase record updated successfully!"
+#~ msgstr "Registro de compra atualizado com sucesso!"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please log in to backup your data"
-msgstr "Faça login para fazer backup de seus dados."
+#~ msgid "Please log in to backup your data"
+#~ msgstr "Faça login para fazer backup de seus dados."
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please log in to refresh data from server"
-msgstr "Faça login para atualizar os dados do servidor."
+#~ msgid "Please log in to refresh data from server"
+#~ msgstr "Faça login para atualizar os dados do servidor."
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
-msgstr "Você tem alterações não salvas. A atualização substituirá suas alterações locais pelos dados do servidor. Deseja continuar?"
+#~ msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
+#~ msgstr "Você tem alterações não salvas. A atualização substituirá suas alterações locais pelos dados do servidor. Deseja continuar?"
 
 #: src/lib/index.svelte.ts
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "Rastreador de Compras"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Track your purchases over time with detailed records"
-msgstr "Acompanhe suas compras ao longo do tempo com registros detalhados"
+#~ msgid "Track your purchases over time with detailed records"
+#~ msgstr "Acompanhe suas compras ao longo do tempo com registros detalhados"
+
+#~ msgid "Delete Item"
+#~ msgstr "Excluir Item"
+
+#~ msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
+#~ msgstr "Tem certeza de que deseja excluir este item e todos os seus registros de compra? Isso removerá permanentemente todos os dados associados."
+
+#~ msgid "Delete Purchase Record"
+#~ msgstr "Excluir Registro de Compra"
+
+#~ msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
+#~ msgstr "Tem certeza de que deseja excluir este registro de compra? Esta ação não pode ser desfeita."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Delete Item"
-msgstr "Excluir Item"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
-msgstr "Tem certeza de que deseja excluir este item e todos os seus registros de compra? Isso removerá permanentemente todos os dados associados."
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Delete Purchase Record"
-msgstr "Excluir Registro de Compra"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
-msgstr "Tem certeza de que deseja excluir este registro de compra? Esta ação não pode ser desfeita."
-
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Edit Item"
 msgstr "Editar Item"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 msgid "Add New Item"
 msgstr "Adicionar Novo Item"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Update the item details."
 msgstr "Atualize os detalhes do item."
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Create a new item to track purchases for."
 msgstr "Crie um novo item para acompanhar as compras."
@@ -4820,6 +4846,8 @@ msgstr "Nome *"
 msgid "Category *"
 msgstr "Categoria *"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Select category"
@@ -4829,14 +4857,19 @@ msgstr "Selecionar categoria"
 msgid "Optional description..."
 msgstr "Descrição opcional..."
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Default Unit"
 msgstr "Unidade Padrão"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Default Currency"
 msgstr "Moeda Padrão"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Update Item"
 msgstr "Atualizar Item"
@@ -4854,6 +4887,7 @@ msgid "Add Purchase Record"
 msgstr "Adicionar Registro de Compra"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Update the purchase details."
 msgstr "Atualize os detalhes da compra."
 
@@ -4881,16 +4915,19 @@ msgstr "Data *"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Location"
 msgstr "Local"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Payment Method"
 msgstr "Forma de pagamento"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Notes"
 msgstr "Notas"
 
@@ -4899,6 +4936,7 @@ msgid "Optional notes..."
 msgstr "Notas opcionais..."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Update Purchase"
 msgstr "Atualizar Compra"
 
@@ -5106,6 +5144,7 @@ msgid "<0/> Edit Item"
 msgstr "<0/> Editar Item"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "<0/> Add Purchase"
 msgstr "<0/> Adicionar Compra"
 
@@ -5143,6 +5182,7 @@ msgstr "Pesquisar itens..."
 msgid "All Categories"
 msgstr "Todas as Categorias"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 msgid "<0/> Add Item"
 msgstr "<0/> Adicionar Item"
@@ -5173,14 +5213,17 @@ msgid "Complete purchase records for <0/>"
 msgstr "Registros completos de compras para <0/>"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Purchases"
 msgstr "Total de Compras"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Quantity"
 msgstr "Quantidade Total"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Spent"
 msgstr "Total Gasto"
 
@@ -5247,6 +5290,7 @@ msgstr "Notas:"
 msgid "Track items and record purchases over time"
 msgstr "Acompanhe itens e registre compras ao longo do tempo."
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Items"
 msgstr "Itens"
@@ -7329,7 +7373,7 @@ msgid "Description (Optional)"
 msgstr "Descrição (Opcional)"
 
 #. placeholder {0}: passwordDetails.length
-#. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8774,3 +8818,199 @@ msgstr "Com issues"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With reviews"
 msgstr "Com revisões"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Please sign in to backup data"
+msgstr "Por favor, faça login para fazer backup dos dados"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Please sign in to sync data"
+msgstr "Por favor, faça login para sincronizar os dados"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Track your purchases and analyze spending patterns"
+msgstr "Acompanhe suas compras e analise seus padrões de gastos"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "<0/> Sync"
+msgstr "<0/> Sincronizar"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "<0/> Backup"
+msgstr "<0/> Backup"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Sign in to sync and backup your data"
+msgstr "Faça login para sincronizar e fazer backup de seus dados"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Are you sure you want to delete this item and all its purchases?"
+msgstr "Tem certeza de que deseja excluir este item e todas as suas compras?"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item deleted"
+msgstr "Item excluído"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Purchase Tracker - Items"
+msgstr "Rastreador de Compras - Itens"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Manage your purchase tracking items"
+msgstr "Gerenciar seus itens de rastreamento de compras"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "No items yet. Click \"Add Item\" to get started."
+msgstr "Ainda não há itens. Clique em \"Adicionar Item\" para começar."
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Name"
+msgstr "Nome"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Category"
+msgstr "Categoria"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Actions"
+msgstr "Ações"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Default Unit (optional)"
+msgstr "Unidade Padrão (opcional)"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "USD - US Dollar"
+msgstr "USD - Dólar Americano"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "EUR - Euro"
+msgstr "EUR - Euro"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "GBP - British Pound"
+msgstr "GBP - Libra Esterlina"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "JPY - Japanese Yen"
+msgstr "JPY - Iene Japonês"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "CAD - Canadian Dollar"
+msgstr "CAD - Dólar Canadense"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "AUD - Australian Dollar"
+msgstr "AUD - Dólar Australiano```"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Select currency"
+msgstr "Selecione a moeda"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Create Item"
+msgstr "Criar Item"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Are you sure you want to delete this purchase record?"
+msgstr "Tem certeza de que deseja excluir este registro de compra?"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase deleted"
+msgstr "Compra excluída"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchases"
+msgstr "Compras"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Manage purchase records for this item"
+msgstr "Gerenciar registros de compra para este item"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Item Not Found"
+msgstr "Item Não Encontrado"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Item not found."
+msgstr "Item não encontrado."
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "No purchases yet. Click \"Add Purchase\" to get started."
+msgstr "Ainda não há compras. Clique em \"Adicionar Compra\" para começar."
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost"
+msgstr "Custo"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Add New Purchase"
+msgstr "Adicionar Nova Compra"
+
+#. placeholder {0}: currentItem.name
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Record a new purchase for {0}."
+msgstr "Registrar uma nova compra para {0}."
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Location (optional)"
+msgstr "Localização (opcional)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Payment Method (optional)"
+msgstr "Método de Pagamento (opcional)```"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Create Purchase"
+msgstr "Criar Compra"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Edit Purchase"
+msgstr "Editar Compra"

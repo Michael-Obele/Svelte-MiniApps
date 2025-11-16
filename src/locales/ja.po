@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-12T05:31:13.417Z\n"
+"PO-Revision-Date: 2025-11-16T12:04:22.012Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -958,7 +958,7 @@ msgid "medium"
 msgstr "普通"
 
 #: src/lib/index.svelte.ts
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "購入追跡ツール"
@@ -3327,9 +3327,13 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -4598,6 +4602,8 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
@@ -4608,32 +4614,54 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "USD"
 msgstr "米ドル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "EUR"
 msgstr "ユーロ"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "GBP"
 msgstr "英ポンド"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "JPY"
 msgstr "日本円"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "CAD"
 msgstr "カナダドル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "AUD"
 msgstr "豪ドル"
@@ -4813,6 +4841,8 @@ msgstr "フォーマットされた予算額"
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Currency"
 msgstr "通貨"
@@ -4876,6 +4906,7 @@ msgstr "以下の経費詳細をご覧ください。編集するには、鉛筆
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Description"
 msgstr "説明"
@@ -4892,6 +4923,9 @@ msgstr "変更を保存"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Date"
 msgstr "日付"
 
@@ -5377,9 +5411,8 @@ msgstr "未服用"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
@@ -5960,6 +5993,8 @@ msgstr "セッション名 *"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Description (optional)"
 msgstr "説明（オプション）"
 
@@ -6127,6 +6162,8 @@ msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "必要に応じて、この服用量をスキップする理由を説明するメモを追加してください。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "備考 (任意)"
@@ -6204,74 +6241,62 @@ msgstr "この時間にはすでに投与が予定されています"
 msgid "Dose rescheduled successfully"
 msgstr "投与スケジュールを変更しました"
 
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please fill in all required fields"
-msgstr "必須フィールドをすべて入力してください"
+#~ msgid "Please fill in all required fields"
+#~ msgstr "必須フィールドをすべて入力してください"
+
+#~ msgid "Item added successfully!"
+#~ msgstr "アイテムが正常に追加されました！"
+
+#~ msgid "Item updated successfully!"
+#~ msgstr "アイテムが正常に更新されました！"
+
+#~ msgid "Purchase record added successfully!"
+#~ msgstr "購入記録が正常に追加されました！"
+
+#~ msgid "Purchase record updated successfully!"
+#~ msgstr "購入記録が正常に更新されました！"
+
+#~ msgid "Please log in to backup your data"
+#~ msgstr "データをバックアップするにはログインしてください"
+
+#~ msgid "Please log in to refresh data from server"
+#~ msgstr "サーバーからデータを更新するにはログインしてください"
+
+#~ msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
+#~ msgstr "未保存の変更があります。更新すると、ローカルの変更がサーバーデータで上書きされます。続行しますか？"
+
+#~ msgid "Track your purchases over time with detailed records"
+#~ msgstr "詳細な記録で、時間の経過に伴う購入を追跡します"
+
+#~ msgid "Delete Item"
+#~ msgstr "アイテムを削除"
+
+#~ msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
+#~ msgstr "このアイテムとすべての購入記録を削除してもよろしいですか？これにより、関連するすべてのデータが完全に削除されます。"
+
+#~ msgid "Delete Purchase Record"
+#~ msgstr "購入記録を削除"
+
+#~ msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
+#~ msgstr "この購入記録を削除してもよろしいですか？この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Item added successfully!"
-msgstr "アイテムが正常に追加されました！"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Item updated successfully!"
-msgstr "アイテムが正常に更新されました！"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Purchase record added successfully!"
-msgstr "購入記録が正常に追加されました！"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Purchase record updated successfully!"
-msgstr "購入記録が正常に更新されました！"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please log in to backup your data"
-msgstr "データをバックアップするにはログインしてください"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Please log in to refresh data from server"
-msgstr "サーバーからデータを更新するにはログインしてください"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
-msgstr "未保存の変更があります。更新すると、ローカルの変更がサーバーデータで上書きされます。続行しますか？"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Track your purchases over time with detailed records"
-msgstr "詳細な記録で、時間の経過に伴う購入を追跡します"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Delete Item"
-msgstr "アイテムを削除"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
-msgstr "このアイテムとすべての購入記録を削除してもよろしいですか？これにより、関連するすべてのデータが完全に削除されます。"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Delete Purchase Record"
-msgstr "購入記録を削除"
-
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
-msgstr "この購入記録を削除してもよろしいですか？この操作は元に戻せません。"
-
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Edit Item"
 msgstr "アイテムを編集"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 msgid "Add New Item"
 msgstr "新しいアイテムを追加"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Update the item details."
 msgstr "アイテムの詳細を更新します。"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Create a new item to track purchases for."
 msgstr "購入を追跡するための新しいアイテムを作成します。"
@@ -6284,6 +6309,8 @@ msgstr "名前 *"
 msgid "Category *"
 msgstr "カテゴリー *"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Select category"
@@ -6293,14 +6320,19 @@ msgstr "カテゴリーを選択"
 msgid "Optional description..."
 msgstr "オプションの説明..."
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Default Unit"
 msgstr "デフォルト単位"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Default Currency"
 msgstr "デフォルト通貨"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Update Item"
 msgstr "アイテムを更新"
@@ -6318,6 +6350,7 @@ msgid "Add Purchase Record"
 msgstr "購入記録を追加"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Update the purchase details."
 msgstr "購入詳細を更新します。"
 
@@ -6345,16 +6378,19 @@ msgstr "日付 *"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Location"
 msgstr "場所"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Payment Method"
 msgstr "支払い方法"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Notes"
 msgstr "備考"
 
@@ -6363,6 +6399,7 @@ msgid "Optional notes..."
 msgstr "オプションの備考..."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Update Purchase"
 msgstr "購入を更新"
 
@@ -6568,6 +6605,7 @@ msgid "<0/> Edit Item"
 msgstr "<0/> 編集"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "<0/> Add Purchase"
 msgstr "<0/> 購入を追加"
 
@@ -6605,6 +6643,7 @@ msgstr "アイテムを検索..."
 msgid "All Categories"
 msgstr "すべてのカテゴリー"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 msgid "<0/> Add Item"
 msgstr "<0/> アイテムを追加"
@@ -6635,14 +6674,17 @@ msgid "Complete purchase records for <0/>"
 msgstr "<0/> の完全な購入記録"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Purchases"
 msgstr "合計購入数"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Quantity"
 msgstr "合計数量"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Total Spent"
 msgstr "合計支出"
 
@@ -6709,6 +6751,7 @@ msgstr "備考:"
 msgid "Track items and record purchases over time"
 msgstr "アイテムを追跡し、経時的な購入を記録します"
 
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Items"
 msgstr "アイテム"
@@ -6995,7 +7038,7 @@ msgid "Description (Optional)"
 msgstr "説明（任意）"
 
 #. placeholder {0}: passwordDetails.length
-#. placeholder {0}: passwordDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -8673,3 +8716,199 @@ msgstr "Issueあり"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With reviews"
 msgstr "レビューあり"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Please sign in to backup data"
+msgstr "データをバックアップするにはサインインしてください"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Please sign in to sync data"
+msgstr "データを同期するにはサインインしてください"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Track your purchases and analyze spending patterns"
+msgstr "購入を追跡し、支出パターンを分析します"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "<0/> Sync"
+msgstr "<0/> 同期"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "<0/> Backup"
+msgstr "<0/> バックアップ"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Sign in to sync and backup your data"
+msgstr "サインインしてデータを同期およびバックアップします"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Are you sure you want to delete this item and all its purchases?"
+msgstr "このアイテムとすべての購入記録を削除してもよろしいですか？"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item deleted"
+msgstr "アイテムを削除しました"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Purchase Tracker - Items"
+msgstr "購入トラッカー - アイテム"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Manage your purchase tracking items"
+msgstr "購入追跡アイテムを管理します"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "No items yet. Click \"Add Item\" to get started."
+msgstr "アイテムはまだありません。「アイテムを追加」をクリックして開始してください。"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Name"
+msgstr "名前"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Category"
+msgstr "カテゴリー"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Actions"
+msgstr "アクション"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Default Unit (optional)"
+msgstr "デフォルト単位 (任意)"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "USD - US Dollar"
+msgstr "USD - 米ドル"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "EUR - Euro"
+msgstr "EUR - ユーロ"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "GBP - British Pound"
+msgstr "GBP - イギリス・ポンド"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "JPY - Japanese Yen"
+msgstr "JPY - 日本円"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "CAD - Canadian Dollar"
+msgstr "CAD - カナダドル"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "AUD - Australian Dollar"
+msgstr "AUD - オーストラリアドル```"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Select currency"
+msgstr "通貨を選択"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Create Item"
+msgstr "アイテムを作成"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Are you sure you want to delete this purchase record?"
+msgstr "この購入記録を削除してもよろしいですか？"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase deleted"
+msgstr "購入記録を削除しました"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchases"
+msgstr "購入記録"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Manage purchase records for this item"
+msgstr "この商品の購入記録を管理する"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Item Not Found"
+msgstr "商品が見つかりません"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Item not found."
+msgstr "商品が見つかりませんでした。"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "No purchases yet. Click \"Add Purchase\" to get started."
+msgstr "購入記録はまだありません。「購入を追加」をクリックして開始してください。"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Quantity"
+msgstr "数量"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Cost"
+msgstr "費用"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Add New Purchase"
+msgstr "新規購入を追加"
+
+#. placeholder {0}: currentItem.name
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Record a new purchase for {0}."
+msgstr "{0} の新規購入を記録します。"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Location (optional)"
+msgstr "場所 (任意)"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Payment Method (optional)"
+msgstr "支払い方法 (任意)```"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Create Purchase"
+msgstr "購入を作成"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Edit Purchase"
+msgstr "購入を編集"
