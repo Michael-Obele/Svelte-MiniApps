@@ -107,7 +107,7 @@
 
 <div
 	id="budgets-list"
-	class="mx-auto grid w-full min-w-40 max-w-7xl flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
+	class="mx-auto grid w-full max-w-7xl min-w-40 flex-wrap justify-center gap-3 px-2 sm:grid-cols-2 sm:gap-4 sm:px-4 md:grid-cols-3"
 >
 	{#each budgets as budget}
 		{@const budgetStrikethroughEnabled = budgetStrikethroughModes[budget.id] ?? false}
@@ -134,7 +134,7 @@
 
 				<div class="mb-3 flex items-center justify-between sm:mb-4">
 					<div class="flex items-center gap-2">
-						<h3 class="truncate text-base font-semibold sm:text-lg">{budget.name}</h3>
+						<h3 class="truncate text-base font-semibold text-wrap sm:text-lg">{budget.name}</h3>
 						<Icon class="h-4 w-4 {color} shrink-0" />
 					</div>
 					<div class="flex gap-1 sm:gap-2">
@@ -202,7 +202,7 @@
 									{@const isSelected = selectedExpenses.includes(expense.id)}
 									<Card
 										class="cursor-pointer p-2 transition-all sm:p-3 {isSelected
-											? 'ring-2 ring-primary'
+											? 'ring-primary ring-2'
 											: ''} {budgetStrikethroughEnabled && isCompleted ? 'opacity-70' : ''}"
 										onclick={(e) => {
 											if (budgetStrikethroughEnabled) {
@@ -216,14 +216,14 @@
 										<div class="flex items-center justify-between">
 											<div class="min-w-0 flex-1">
 												<div
-													class="truncate break-words text-sm font-medium {budgetStrikethroughEnabled &&
+													class="truncate text-sm font-medium break-words {budgetStrikethroughEnabled &&
 													isCompleted
 														? 'line-through'
 														: ''}"
 												>
 													{expense.description}
 												</div>
-												<div class="truncate text-xs text-muted-foreground">
+												<div class="text-muted-foreground truncate text-xs">
 													{new Date(expense.createdAt).toLocaleDateString()}
 												</div>
 											</div>
@@ -255,7 +255,7 @@
 										</div>
 									</Card>
 									{#if i + 1 != budget.expenses.length}
-										<Separator class="my-2 bg-primary-foreground" />
+										<Separator class="bg-primary-foreground my-2" />
 									{/if}
 								{/each}
 							</ScrollArea>

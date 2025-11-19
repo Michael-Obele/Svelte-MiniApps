@@ -7,7 +7,7 @@
 	import { tick } from 'svelte';
 
 	let { getProgressBarColor } = $props();
-	
+
 	// Reactive store reference for budgets
 	let budgets = $state<Budget[]>([]);
 
@@ -43,16 +43,16 @@
 
 <Card class="">
 	<div class="p-4">
-		<h2 class="mb-2 text-sm font-semibold text-muted-foreground">Quick Navigation</h2>
+		<h2 class="text-muted-foreground mb-2 text-sm font-semibold">Quick Navigation</h2>
 		<div class="flex flex-wrap gap-2">
 			{#each budgets as budget}
 				<Button
 					variant="outline"
 					size="sm"
 					onclick={() => scrollToBudget(budget.id)}
-					class="flex items-center gap-2"
+					class="flex h-fit items-center gap-2 p-1"
 				>
-					<span>{budget.name}</span>
+					<span class="text-sm font-semibold text-wrap">{budget.name}</span>
 					<Progress
 						value={getProgressPercentage(budget)}
 						max={100}
