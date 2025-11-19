@@ -55,3 +55,12 @@ export {
 	updatePassword,
 	deleteAccount
 } from './profile.remote';
+
+// Remote functions for note taker
+export {
+	getNotes,
+	createNoteForm,
+	updateNoteForm,
+	deleteNote,
+	syncNoteData
+} from './note-taker.remote';

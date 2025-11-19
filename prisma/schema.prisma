@@ -27,9 +27,23 @@ model User {
   medicationSessions MedicationSession[]
   smokingAttempts    SmokingAttempt[]
   smokeFreeSettings  SmokeFreeSettings?
+  notes              Note[]
 
   @@index([username])
   @@map("user")
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("notes")
 }
 
 model Session {

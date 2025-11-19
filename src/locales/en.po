@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-16T14:46:45.012Z\n"
+"PO-Revision-Date: 2025-11-19T15:57:27.226Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -350,6 +350,7 @@ msgstr "finance"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "medium"
 msgstr "medium"
 
@@ -432,6 +433,7 @@ msgstr "Checklist Maker"
 msgid "Allows you to create checklists and mark items as completed."
 msgstr "Allows you to create checklists and mark items as completed."
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -7310,6 +7312,7 @@ msgstr "Description (Optional)"
 msgid "{0}/200 characters"
 msgstr "{0}/200 characters"
 
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
 msgstr "<0/> Save"
@@ -9043,3 +9046,67 @@ msgstr "Cost ({0})"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost per Unit"
 msgstr "Cost per Unit"
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Note Taker"
+msgstr "Note Taker"
+
+#: src/lib/index.svelte.ts
+msgid "Capture your thoughts and sync them across devices."
+msgstr "Capture your thoughts and sync them across devices."
+
+#~ msgid "Note created locally"
+#~ msgstr "Note created locally"
+
+#~ msgid "Note updated locally"
+#~ msgstr "Note updated locally"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Delete this note?"
+msgstr "Delete this note?"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Note deleted"
+msgstr "Note deleted"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Capture your thoughts"
+msgstr "Capture your thoughts"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "My Notes"
+msgstr "My Notes"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> Add Note"
+msgstr "<0/> Add Note"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "No notes yet. Click \"Add Note\" to get started."
+msgstr "No notes yet. Click \"Add Note\" to get started."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Create Note"
+msgstr "Create Note"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Title"
+msgstr "Title"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Content"
+msgstr "Content"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Edit Note"
+msgstr "Edit Note"
+
+#~ msgid "Update"
+#~ msgstr "Update"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> Update"
+msgstr "<0/> Update"

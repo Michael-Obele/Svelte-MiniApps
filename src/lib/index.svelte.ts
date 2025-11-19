@@ -52,7 +52,8 @@ export function done() {
 		},
 		{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
 		{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
-		{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' }
+		{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' },
+		{ name: 'note-taker', time: '2025-11-19T00:00:00.000Z' }
 	];
 }
 
@@ -410,6 +411,17 @@ export function projects(): Project[] {
 			difficulty: 'medium',
 			class: 'medium',
 			link: 'recipe-organizer'
+		},
+		{
+			title: 'Note Taker',
+			details: 'Capture your thoughts and sync them across devices.',
+			// @wc-include
+			tag: 'productivity',
+			tagClass: 'productivity',
+			// @wc-include
+			difficulty: 'medium',
+			class: 'medium',
+			link: 'note-taker'
 		},
 		// New Projects
 		{
