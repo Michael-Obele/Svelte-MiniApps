@@ -1,4 +1,5 @@
-import { createAdapter } from '$lib/persisted-state/adapter';
+import { PersistedState } from 'runed';
+import type { PersistedItem } from '$lib/persisted-state/adapter';
 import { syncNoteData } from '$lib/remote';
 
 export interface Note {
@@ -9,26 +10,108 @@ export interface Note {
 	updatedAt: string;
 }
 
-// Create adapter instance
-export const noteAdapter = createAdapter({
-	dbName: 'miniapps-notes-v1',
-	storeName: 'notes'
+// NOTE: switching to Runed PersistedState for simple cross-tab persistence.
+// We keep a minimal adapter wrapper to preserve the same adapter API used
+// throughout the app (`init`, `listItems`, `saveItem`, `deleteItem`, `clearAll`).
+
+const persistedNotes = new PersistedState<PersistedItem<Note>[]>('miniapps-notes-v1', [], {
+	storage: 'local',
+	syncTabs: true
 });
 
-// Reactive state
-export const notes = $state<{ current: Note[] }>({ current: [] });
+export const noteAdapter = {
+	async init() {
+		// PersistedState requires no async initialization but keep method for compatibility
+		return;
+	},
+
+	async listItems(): Promise<PersistedItem<Note>[]> {
+		// PersistedState stores raw persisted items. Return a shallow clone to avoid accidental mutation.
+		return $state.snapshot(persistedNotes.current) as PersistedItem<Note>[];
+	},
+
+	async saveItem(
+		item: Partial<PersistedItem<Note>> & { payload: Note }
+	): Promise<PersistedItem<Note>> {
+		const now = new Date().toISOString();
+		const id =
+			item.id ||
+			(typeof crypto !== 'undefined' && 'randomUUID' in crypto
+				? crypto.randomUUID()
+				: String(Date.now()));
+		const record: PersistedItem<Note> = {
+			id,
+			createdAt: item.createdAt || now,
+			updatedAt: now,
+			payload: item.payload,
+			schemaVersion: item.schemaVersion ?? 1
+		};
+
+		const current = persistedNotes.current || [];
+		const idx = current.findIndex((r) => r.id === id);
+		if (idx >= 0) {
+			current.splice(idx, 1, record);
+			persistedNotes.current = [...current];
+		} else {
+			persistedNotes.current = [...current, record];
+		}
+
+		return record;
+	},
+
+	async getItem(id: string): Promise<PersistedItem<Note> | null> {
+		return persistedNotes.current.find((r) => r.id === id) ?? null;
+	},
+
+	async deleteItem(id: string): Promise<void> {
+		persistedNotes.current = persistedNotes.current.filter((r) => r.id !== id);
+	},
+
+	async clearAll(): Promise<void> {
+		persistedNotes.current = [];
+	},
+
+	// For compatibility with previous adapter-based sync format
+	toServerFormat(item: PersistedItem<any>) {
+		return {
+			id: item.id,
+			...((item.payload as any) || {}),
+			_createdAt: item.createdAt,
+			_updatedAt: item.updatedAt,
+			schemaVersion: item.schemaVersion || 1
+		};
+	},
+
+	fromServerFormat(obj: Record<string, any>) {
+		const { id, _createdAt, _updatedAt, schemaVersion, ...payload } = obj as any;
+		return {
+			id: id || String(payload.id || Date.now()),
+			createdAt: _createdAt || new Date().toISOString(),
+			updatedAt: _updatedAt || new Date().toISOString(),
+			payload: payload as any,
+			schemaVersion: schemaVersion || 1
+		} as PersistedItem<any>;
+	}
+} as const;
+
+// Reactive state - derived from PersistedState for automatic reactivity
+// Cannot export derived state directly, so we export a function that returns the current value
+export const notes = {
+	get current() {
+		return persistedNotes.current
+			.map((item) => item.payload)
+			.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+	}
+};
 export const needsSync = $state({ value: false });
 
-// Initialize
+// Initialize - just ensure adapter is ready, reactive state will update automatically
 export async function initNotes() {
 	await noteAdapter.init();
-	const items = await noteAdapter.listItems<Note>();
-	notes.current = items
-		.map((item) => item.payload)
-		.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+	// The reactive notes state will automatically update when persistedNotes changes
 }
 
-// Actions
+// Actions - now just update PersistedState, reactive state updates automatically
 export async function addNote(title: string, content: string) {
 	const now = new Date().toISOString();
 	const newNote: Note = {
@@ -46,7 +129,6 @@ export async function addNote(title: string, content: string) {
 		updatedAt: newNote.updatedAt
 	});
 
-	notes.current = [newNote, ...notes.current];
 	needsSync.value = true;
 	return newNote;
 }
@@ -68,10 +150,6 @@ export async function updateNote(id: string, updates: Partial<Omit<Note, 'id' | 
 		updatedAt: updatedNote.updatedAt
 	});
 
-	notes.current = notes.current
-		.map((n) => (n.id === id ? updatedNote : n))
-		.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
-
 	needsSync.value = true;
 
 	return updatedNote;
@@ -79,12 +157,11 @@ export async function updateNote(id: string, updates: Partial<Omit<Note, 'id' | 
 
 export async function deleteNoteLocal(id: string) {
 	await noteAdapter.deleteItem(id);
-	notes.current = notes.current.filter((n) => n.id !== id);
 	needsSync.value = true;
 }
 
 export async function syncWithRemote() {
-	const localItems = await noteAdapter.listItems<Note>();
+	const localItems = await noteAdapter.listItems();
 	const localNotes = localItems.map((i) => i.payload);
 
 	const result = await syncNoteData({ notes: localNotes });
@@ -108,7 +185,7 @@ export async function syncWithRemote() {
 			});
 		}
 
-		notes.current = result.notes;
+		// Reactive state will update automatically
 		needsSync.value = false;
 		return { success: true, notes: result.notes };
 	}

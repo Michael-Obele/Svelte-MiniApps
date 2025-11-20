@@ -37,23 +37,18 @@
 		const content = formData.get('content') as string;
 		isSaving = true;
 		try {
-			await toast.promise(
-				noteAdapter.saveItem({
-					id: note.id,
-					payload: { ...note, title, content },
-					createdAt: note.createdAt,
-					updatedAt: new Date().toISOString()
-				}),
-				{
-					loading: 'Saving note locally...',
-					success: 'Note updated locally',
-					error: 'Failed to update note locally'
-				}
-			);
+			await noteAdapter.saveItem({
+				id: note.id,
+				payload: { ...note, title, content },
+				createdAt: note.createdAt,
+				updatedAt: new Date().toISOString()
+			});
+			toast.success('Note updated locally');
 			onSaved({ ...note, title, content, updatedAt: new Date().toISOString() });
+			(e.target as HTMLFormElement).reset();
 			onOpenChange(false);
 		} catch (err) {
-			// fallback
+			toast.error('Failed to update note locally');
 		} finally {
 			isSaving = false;
 		}
@@ -61,58 +56,78 @@
 </script>
 
 <Dialog {open} onOpenChange={(v) => onOpenChange(v)}>
-	<DialogContent>
+	<DialogContent class="sm:max-w-[550px]">
 		<DialogHeader>
-			<DialogTitle>Edit Note</DialogTitle>
+			<DialogTitle class="text-2xl">Edit Note</DialogTitle>
 		</DialogHeader>
 		{#if note}
 			<form
 				{...currentUser
-					? updateNoteForm.enhance(async ({ form, submit }: any) => {
+					? updateNoteForm.enhance(async ({ form, submit }: { form: HTMLFormElement; submit: () => Promise<any> }) => {
 							isSaving = true;
 							try {
-								await toast.promise(submit(), {
-									loading: 'Saving note...',
-									success: 'Note updated',
-									error: 'Failed to update note'
-								});
-								const result = updateNoteForm.result as { success: boolean; note: any } | undefined;
-								if (result?.note) {
+								const result = await submit();
+								if (result?.success && result?.note) {
+									// Update local persisted store with server note
 									await noteAdapter.saveItem({
 										id: result.note.id,
 										payload: result.note,
 										createdAt: result.note.createdAt,
 										updatedAt: result.note.updatedAt
 									});
-									onSaved(result.note);
+									toast.success('Note updated');
 									form.reset();
 									onOpenChange(false);
+								} else {
+									toast.error('Failed to update note');
 								}
 							} catch (e) {
-								// fallback
+								toast.error('Failed to update note');
 							} finally {
 								isSaving = false;
 							}
 						})
 					: {}}
 				onsubmit={currentUser ? undefined : handleLocalUpdate}
-				class="space-y-4"
+				class="space-y-6 py-4"
 			>
 				<input type="hidden" name="id" value={note.id} />
 				<div class="space-y-2">
-					<Label for="edit-title">Title</Label>
-					<Input id="edit-title" name="title" value={note.title} required />
+					<Label for="edit-title" class="text-base">Title</Label>
+					<Input
+						id="edit-title"
+						name="title"
+						value={note.title}
+						placeholder="Enter note title..."
+						required
+						class="text-base"
+					/>
 				</div>
 				<div class="space-y-2">
-					<Label for="edit-content">Content</Label>
-					<Textarea id="edit-content" name="content" value={note.content} rows={5} />
+					<Label for="edit-content" class="text-base">Content</Label>
+					<Textarea
+						id="edit-content"
+						name="content"
+						value={note.content}
+						rows={8}
+						placeholder="Write your thoughts..."
+						class="resize-none"
+					/>
 				</div>
 				<DialogFooter>
+					<Button
+						type="button"
+						variant="outline"
+						onclick={() => onOpenChange(false)}
+						disabled={isSaving}
+					>
+						Cancel
+					</Button>
 					<Button type="submit" disabled={isSaving}>
 						{#if isSaving}
 							<RefreshCw class="mr-2 size-4 animate-spin" />
 						{/if}
-						Update
+						Update Note
 					</Button>
 				</DialogFooter>
 			</form>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-20T07:13:55.800Z\n"
+"PO-Revision-Date: 2025-11-20T18:59:16.834Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -980,6 +980,8 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
@@ -7285,7 +7287,6 @@ msgstr "描述（可选）"
 msgid "{0}/200 characters"
 msgstr "{0}/200 个字符"
 
-#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
 msgstr "<0/> 保存"
@@ -8985,25 +8986,21 @@ msgstr ""
 msgid "My Notes"
 msgstr ""
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "<0/> Add Note"
-msgstr ""
+#~ msgid "<0/> Add Note"
+#~ msgstr ""
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes yet. Click \"Add Note\" to get started."
-msgstr ""
+#~ msgid "No notes yet. Click \"Add Note\" to get started."
+#~ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
 msgstr ""
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Title"
 msgstr ""
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Content"
@@ -9016,6 +9013,57 @@ msgstr ""
 #~ msgid "Update"
 #~ msgstr ""
 
+#~ msgid "<0/> Update"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Capture your thoughts and ideas"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> New Note"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Search notes by title or content..."
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "No notes yet"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid ""
+"Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
+"note."
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> Create Your First Note"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "No notes found"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "No notes match your search. Try different keywords or create a new note."
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
-msgid "<0/> Update"
+msgid "Enter note title..."
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "Write your thoughts..."
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+msgid "<0/> Create Note"
+msgstr ""
+
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "<0/> Update Note"
 msgstr ""

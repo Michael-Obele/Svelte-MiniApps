@@ -15,13 +15,27 @@
 	import { getCurrentUser, createNoteForm, updateNoteForm, deleteNote } from '$lib/remote';
 	import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Badge } from '$lib/components/ui/badge';
+	import { Separator } from '$lib/components/ui/separator';
 	import CreateNoteDialog from './components/CreateNoteDialog.svelte';
 	import EditNoteDialog from './components/EditNoteDialog.svelte';
-	import { Plus, Trash2, RefreshCw, Pencil } from 'lucide-svelte';
+	import { Plus, Trash2, RefreshCw, Pencil, Search, Calendar, StickyNote } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
+	import { fly, fade } from 'svelte/transition';
 
 	let currentUser = $state<{ id: string } | null>(null);
 	let isSyncing = $state(false);
+	let searchQuery = $state('');
+
+	// Filter notes based on search query
+	let filteredNotes = $derived(
+		notes.current.filter(
+			(note) =>
+				note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				note.content.toLowerCase().includes(searchQuery.toLowerCase())
+		)
+	);
 
 	// Visibility / online detection
 	let online = $state(true);
@@ -151,6 +165,18 @@
 		editDialogOpen = true;
 	}
 
+	function getRelativeTime(dateString: string): string {
+		const date = new Date(dateString);
+		const now = new Date();
+		const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+		if (diffInSeconds < 60) return 'just now';
+		if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+		if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+		if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+		return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+	}
+
 	async function handleDelete(id: string) {
 		if (confirm('Delete this note?')) {
 			await deleteNoteLocal(id);
@@ -172,58 +198,111 @@
 <svelte:document bind:visibilityState />
 
 <div class="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 md:p-8">
-	<div class="flex items-center justify-between">
-		<h2 class="text-2xl font-bold">My Notes</h2>
-		<div class="flex gap-2">
-			{#if currentUser}
-				<Button variant="outline" size="icon" onclick={handleSync} disabled={isSyncing}>
-					<RefreshCw class={isSyncing ? 'animate-spin' : ''} />
+	<!-- Header Section -->
+	<div class="space-y-4">
+		<div class="flex items-center justify-between">
+			<div>
+				<h2 class="text-3xl font-bold tracking-tight">My Notes</h2>
+				<p class="text-muted-foreground mt-1 text-sm">Capture your thoughts and ideas</p>
+			</div>
+			<div class="flex gap-2">
+				{#if currentUser}
+					<Button variant="outline" size="icon" onclick={handleSync} disabled={isSyncing}>
+						<RefreshCw class={isSyncing ? 'animate-spin' : ''} />
+					</Button>
+				{/if}
+				<Button onclick={() => (createDialogOpen = true)}>
+					<Plus class="mr-2 size-4" /> New Note
 				</Button>
-			{/if}
-			<Button onclick={() => (createDialogOpen = true)}>
-				<Plus class="mr-2 size-4" /> Add Note
-			</Button>
+			</div>
 		</div>
+
+		<!-- Search Bar -->
+		{#if notes.current.length > 0}
+			<div class="relative" transition:fade={{ duration: 200 }}>
+				<Search class="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+				<Input
+					type="text"
+					placeholder="Search notes by title or content..."
+					class="pl-10"
+					bind:value={searchQuery}
+				/>
+			</div>
+		{/if}
 	</div>
 
+	<Separator />
+
+	<!-- Notes Grid -->
 	{#if notes.current.length === 0}
-		<Card class="p-6">
-			<p class="text-muted-foreground text-center">
-				No notes yet. Click "Add Note" to get started.
+		<div
+			class="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center"
+			transition:fade={{ duration: 300 }}
+		>
+			<div class="bg-primary/10 mb-4 rounded-full p-4">
+				<StickyNote class="text-primary size-12" />
+			</div>
+			<h3 class="mb-2 text-xl font-semibold">No notes yet</h3>
+			<p class="text-muted-foreground mb-6 max-w-sm">
+				Start capturing your ideas and thoughts. Click the "New Note" button to create your first
+				note.
 			</p>
-		</Card>
+			<Button onclick={() => (createDialogOpen = true)}>
+				<Plus class="mr-2 size-4" /> Create Your First Note
+			</Button>
+		</div>
+	{:else if filteredNotes.length === 0}
+		<div
+			class="flex min-h-[300px] flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center"
+			transition:fade={{ duration: 300 }}
+		>
+			<Search class="text-muted-foreground mb-4 size-12" />
+			<h3 class="mb-2 text-xl font-semibold">No notes found</h3>
+			<p class="text-muted-foreground max-w-sm">
+				No notes match your search. Try different keywords or create a new note.
+			</p>
+		</div>
 	{:else}
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each notes.current as note (note.id)}
-				<Card class="flex flex-col p-4 md:p-6">
-					<CardHeader>
-						<CardTitle>{note.title}</CardTitle>
-					</CardHeader>
-					<CardContent class="flex-1 pb-4">
-						<p class="text-muted-foreground text-sm whitespace-pre-wrap">{note.content}</p>
-					</CardContent>
-					<CardFooter class="text-muted-foreground flex items-center justify-between gap-2 text-xs">
-						<span>{new Date(note.updatedAt).toLocaleDateString()}</span>
-						<div class="flex gap-1">
-							<Button
-								variant="ghost"
-								size="icon"
-								class="h-8 w-8"
-								onclick={() => openEditDialog(note)}
-							>
-								<Pencil class="size-3" />
-							</Button>
-							<Button
-								variant="ghost"
-								size="icon"
-								class="text-destructive h-8 w-8"
-								onclick={() => handleDelete(note.id)}
-							>
-								<Trash2 class="size-3" />
-							</Button>
-						</div>
-					</CardFooter>
-				</Card>
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{#each filteredNotes as note (note.id)}
+				<div transition:fly={{ y: 20, duration: 300 }} class="group">
+					<Card
+						class="flex h-full flex-col transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
+					>
+						<CardHeader class="space-y-2">
+							<div class="flex items-start justify-between gap-2">
+								<CardTitle class="line-clamp-2 text-xl">{note.title}</CardTitle>
+								<div class="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+									<Button
+										variant="ghost"
+										size="icon"
+										class="size-8"
+										onclick={() => openEditDialog(note)}
+									>
+										<Pencil class="size-4" />
+									</Button>
+									<Button
+										variant="ghost"
+										size="icon"
+										class="text-destructive hover:text-destructive size-8"
+										onclick={() => handleDelete(note.id)}
+									>
+										<Trash2 class="size-4" />
+									</Button>
+								</div>
+							</div>
+							<Badge variant="secondary" class="w-fit">
+								<Calendar class="mr-1 size-3" />
+								{getRelativeTime(note.updatedAt)}
+							</Badge>
+						</CardHeader>
+						<CardContent class="flex-1">
+							<p class="text-muted-foreground line-clamp-6 text-sm whitespace-pre-wrap">
+								{note.content}
+							</p>
+						</CardContent>
+					</Card>
+				</div>
 			{/each}
 		</div>
 	{/if}
@@ -235,7 +314,6 @@
 	{createNoteForm}
 	{noteAdapter}
 	{currentUser}
-	onSaved={(note: Note) => (notes.current = [note, ...notes.current])}
 />
 
 <EditNoteDialog
@@ -245,8 +323,4 @@
 	{noteAdapter}
 	note={selectedNote}
 	{currentUser}
-	onSaved={(note: Note) => {
-		notes.current = notes.current.map((n) => (n.id === note.id ? note : n));
-		selectedNote = null;
-	}}
 />
