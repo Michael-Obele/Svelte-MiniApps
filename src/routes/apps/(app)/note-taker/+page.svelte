@@ -8,27 +8,32 @@
 		deleteNoteLocal,
 		syncWithRemote,
 		noteAdapter,
+		needsSync,
 		type Note
 	} from './states.svelte';
+	import { page } from '$app/state';
 	import { getCurrentUser, createNoteForm, updateNoteForm, deleteNote } from '$lib/remote';
 	import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import {
-		Dialog,
-		DialogContent,
-		DialogHeader,
-		DialogTitle,
-		DialogFooter
-	} from '$lib/components/ui/dialog';
+	import CreateNoteDialog from './components/CreateNoteDialog.svelte';
+	import EditNoteDialog from './components/EditNoteDialog.svelte';
 	import { Plus, Trash2, RefreshCw, Pencil } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 
 	let currentUser = $state<{ id: string } | null>(null);
 	let isSyncing = $state(false);
-	let isSaving = $state(false);
+
+	// Visibility / online detection
+	let online = $state(true);
+	let visibilityState = $state<DocumentVisibilityState>('visible');
+
+	// Sync scheduling
+	let syncInFlight = $state(false);
+	let lastSyncAt = $state(0);
+	let syncIntervalBaseMs = 120_000; // 2 minute base interval
+	let syncIntervalMs = $state(syncIntervalBaseMs);
+	let failureCount = $state(0);
+	let immediateSyncTimer: number | null = null;
 
 	$effect(() => {
 		initNotes();
@@ -40,12 +45,94 @@
 		});
 	});
 
+	// Keep track of online/visibility events via bindings
+	// svelte:window and svelte:document bindings below will update `online` and `visibilityState`.
+
+	// Throttled/controlled sync runner
+	async function attemptSyncIfNeeded() {
+		if (!currentUser) return;
+		if (!online) return;
+		if (visibilityState !== 'visible') return;
+		if (!needsSync.value) return;
+		if (syncInFlight) return;
+
+		const now = Date.now();
+		const minIntervalMs = 10_000; // Don't sync more often than every 10s
+		if (now - lastSyncAt < minIntervalMs) return;
+
+		syncInFlight = true;
+		try {
+			const result = await syncWithRemote();
+			if (result?.success) {
+				// reset backoff and mark last sync
+				lastSyncAt = Date.now();
+				failureCount = 0;
+				syncIntervalMs = syncIntervalBaseMs;
+			} else {
+				failureCount += 1;
+				syncIntervalMs = Math.min(syncIntervalBaseMs * 2 ** failureCount, 10 * 60_000);
+			}
+		} catch (e) {
+			failureCount += 1;
+			syncIntervalMs = Math.min(syncIntervalBaseMs * 2 ** failureCount, 10 * 60_000);
+		} finally {
+			syncInFlight = false;
+		}
+	}
+
+	// Immediate debounce trigger when local changes happen
+	$effect(() => {
+		// Track the flag, and schedule immediate attempt after 5s
+		needsSync.value;
+		if (!needsSync.value || !currentUser) return;
+		if (!page.url.pathname.startsWith('/apps/note-taker')) return; // Only sync on note-taker page
+		if (immediateSyncTimer) clearTimeout(immediateSyncTimer);
+		immediateSyncTimer = setTimeout(() => {
+			attemptSyncIfNeeded();
+		}, 5000) as unknown as number;
+
+		return () => {
+			if (immediateSyncTimer) clearTimeout(immediateSyncTimer);
+		};
+	});
+
+	// Periodic interval runner that respects our interval/backoff
+	$effect(() => {
+		// depends on online, visibility, currentUser and syncIntervalMs
+		online;
+		visibilityState;
+		currentUser;
+		syncIntervalMs;
+
+		let intervalId: number | null = null;
+		if (
+			currentUser &&
+			online &&
+			visibilityState === 'visible' &&
+			page.url.pathname.startsWith('/apps/note-taker')
+		) {
+			// Run an initial check immediately, then on the interval
+			attemptSyncIfNeeded();
+			intervalId = setInterval(() => {
+				attemptSyncIfNeeded();
+			}, syncIntervalMs) as unknown as number;
+		}
+
+		return () => {
+			if (intervalId) clearInterval(intervalId);
+		};
+	});
+
 	async function handleSync() {
 		if (!currentUser) return;
 		isSyncing = true;
 		try {
-			await syncWithRemote();
-			toast.success('Notes synced successfully');
+			const result = await syncWithRemote();
+			if (result?.success) {
+				toast.success('Notes synced successfully');
+			} else {
+				toast.error('Failed to sync notes');
+			}
 		} catch (e) {
 			console.error(e);
 			toast.error('Failed to sync notes');
@@ -64,50 +151,6 @@
 		editDialogOpen = true;
 	}
 
-	// Local Handlers
-	async function handleLocalCreate(e: SubmitEvent) {
-		e.preventDefault();
-		const formData = new FormData(e.currentTarget as HTMLFormElement);
-		const title = formData.get('title') as string;
-		const content = formData.get('content') as string;
-		isSaving = true;
-		try {
-			toast.promise(addNote(title, content), {
-				loading: 'Saving note locally...',
-				success: 'Note saved locally',
-				error: 'Failed to save note locally'
-			});
-			createDialogOpen = false;
-			(e.target as HTMLFormElement).reset();
-		} catch (error) {
-			// toast.promise will display the error toast
-		} finally {
-			isSaving = false;
-		}
-	}
-
-	async function handleLocalUpdate(e: SubmitEvent) {
-		e.preventDefault();
-		if (!selectedNote) return;
-		const formData = new FormData(e.currentTarget as HTMLFormElement);
-		const title = formData.get('title') as string;
-		const content = formData.get('content') as string;
-		isSaving = true;
-		try {
-			toast.promise(updateNote(selectedNote.id, { title, content }), {
-				loading: 'Saving note locally...',
-				success: 'Note updated locally',
-				error: 'Failed to update note locally'
-			});
-			editDialogOpen = false;
-			selectedNote = null;
-		} catch (error) {
-			// toast.promise will display the error
-		} finally {
-			isSaving = false;
-		}
-	}
-
 	async function handleDelete(id: string) {
 		if (confirm('Delete this note?')) {
 			await deleteNoteLocal(id);
@@ -124,6 +167,9 @@
 </script>
 
 <RouteHead title="Note Taker" description="Capture your thoughts" route="/apps/note-taker" />
+
+<svelte:window bind:online />
+<svelte:document bind:visibilityState />
 
 <div class="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 md:p-8">
 	<div class="flex items-center justify-between">
@@ -183,127 +229,24 @@
 	{/if}
 </div>
 
-<!-- Create Dialog -->
-<Dialog open={createDialogOpen} onOpenChange={(open) => (createDialogOpen = open)}>
-	<DialogContent>
-		<DialogHeader>
-			<DialogTitle>Create Note</DialogTitle>
-		</DialogHeader>
-		<form
-			{...currentUser
-				? createNoteForm.enhance(async ({ form, submit }) => {
-						isSaving = true;
-						try {
-							toast.promise(submit(), {
-								loading: 'Saving note...',
-								success: 'Note saved',
-								error: 'Failed to save note'
-							});
-							const result = createNoteForm.result as { success: boolean; note: Note } | undefined;
-							if (result?.note) {
-								const n = result.note;
-								await noteAdapter.saveItem({
-									id: n.id,
-									payload: n,
-									createdAt: n.createdAt,
-									updatedAt: n.updatedAt
-								});
-								notes.current = [n, ...notes.current];
-								createDialogOpen = false;
-								form.reset();
-							}
-						} catch (e) {
-							// toast.promise will have shown an error but keep fallback
-							toast.error('Failed to create note');
-						} finally {
-							isSaving = false;
-						}
-					})
-				: {}}
-			onsubmit={currentUser ? undefined : handleLocalCreate}
-			class="space-y-4"
-		>
-			<div class="space-y-2">
-				<Label for="title">Title</Label>
-				<Input id="title" name="title" required />
-			</div>
-			<div class="space-y-2">
-				<Label for="content">Content</Label>
-				<Textarea id="content" name="content" rows={5} />
-			</div>
-			<DialogFooter>
-				<Button type="submit" disabled={isSaving}>
-					{#if isSaving}
-						<RefreshCw class="mr-2 size-4 animate-spin" />
-					{/if}
-					Save
-				</Button>
-			</DialogFooter>
-		</form>
-	</DialogContent>
-</Dialog>
+<CreateNoteDialog
+	open={createDialogOpen}
+	onOpenChange={(open: boolean) => (createDialogOpen = open)}
+	{createNoteForm}
+	{noteAdapter}
+	{currentUser}
+	onSaved={(note: Note) => (notes.current = [note, ...notes.current])}
+/>
 
-<!-- Edit Dialog -->
-<Dialog open={editDialogOpen} onOpenChange={(open) => (editDialogOpen = open)}>
-	<DialogContent>
-		<DialogHeader>
-			<DialogTitle>Edit Note</DialogTitle>
-		</DialogHeader>
-		{#if selectedNote}
-			<form
-				{...currentUser
-					? updateNoteForm.enhance(async ({ form, submit }) => {
-							isSaving = true;
-							try {
-								toast.promise(submit(), {
-									loading: 'Saving note...',
-									success: 'Note updated',
-									error: 'Failed to update note'
-								});
-								const result = updateNoteForm.result as
-									| { success: boolean; note: Note }
-									| undefined;
-								if (result?.note) {
-									const n = result.note;
-									await noteAdapter.saveItem({
-										id: n.id,
-										payload: n,
-										createdAt: n.createdAt,
-										updatedAt: n.updatedAt
-									});
-									notes.current = notes.current.map((x) => (x.id === n.id ? n : x));
-									editDialogOpen = false;
-									selectedNote = null;
-								}
-							} catch (e) {
-								// toast.promise will show an error, fallback message
-								toast.error('Failed to update note');
-							} finally {
-								isSaving = false;
-							}
-						})
-					: {}}
-				onsubmit={currentUser ? undefined : handleLocalUpdate}
-				class="space-y-4"
-			>
-				<input type="hidden" name="id" value={selectedNote.id} />
-				<div class="space-y-2">
-					<Label for="edit-title">Title</Label>
-					<Input id="edit-title" name="title" value={selectedNote.title} required />
-				</div>
-				<div class="space-y-2">
-					<Label for="edit-content">Content</Label>
-					<Textarea id="edit-content" name="content" value={selectedNote.content} rows={5} />
-				</div>
-				<DialogFooter>
-					<Button type="submit" disabled={isSaving}>
-						{#if isSaving}
-							<RefreshCw class="mr-2 size-4 animate-spin" />
-						{/if}
-						Update
-					</Button>
-				</DialogFooter>
-			</form>
-		{/if}
-	</DialogContent>
-</Dialog>
+<EditNoteDialog
+	open={editDialogOpen}
+	onOpenChange={(open: boolean) => (editDialogOpen = open)}
+	{updateNoteForm}
+	{noteAdapter}
+	note={selectedNote}
+	{currentUser}
+	onSaved={(note: Note) => {
+		notes.current = notes.current.map((n) => (n.id === note.id ? note : n));
+		selectedNote = null;
+	}}
+/>

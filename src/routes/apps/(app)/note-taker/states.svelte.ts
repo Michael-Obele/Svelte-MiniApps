@@ -17,6 +17,7 @@ export const noteAdapter = createAdapter({
 
 // Reactive state
 export const notes = $state<{ current: Note[] }>({ current: [] });
+export const needsSync = $state({ value: false });
 
 // Initialize
 export async function initNotes() {
@@ -46,6 +47,7 @@ export async function addNote(title: string, content: string) {
 	});
 
 	notes.current = [newNote, ...notes.current];
+	needsSync.value = true;
 	return newNote;
 }
 
@@ -70,12 +72,15 @@ export async function updateNote(id: string, updates: Partial<Omit<Note, 'id' | 
 		.map((n) => (n.id === id ? updatedNote : n))
 		.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 
+	needsSync.value = true;
+
 	return updatedNote;
 }
 
 export async function deleteNoteLocal(id: string) {
 	await noteAdapter.deleteItem(id);
 	notes.current = notes.current.filter((n) => n.id !== id);
+	needsSync.value = true;
 }
 
 export async function syncWithRemote() {
@@ -104,5 +109,8 @@ export async function syncWithRemote() {
 		}
 
 		notes.current = result.notes;
+		needsSync.value = false;
+		return { success: true, notes: result.notes };
 	}
+	return { success: false, notes: localNotes };
 }
