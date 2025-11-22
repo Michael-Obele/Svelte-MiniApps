@@ -17,7 +17,7 @@ Usage:
 	let contentBlocksData = $derived(getContentBlocksData());
 </script>
 
-<section class="w-full md:py-24 lg:py-32">
+<section class="bg-background text-foreground w-full md:py-24 lg:py-32">
 	<div class="px-4 md:px-6 xl:container">
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			{#each contentBlocksData as block}
@@ -26,7 +26,9 @@ Usage:
 						<div class="flex items-center justify-center space-x-2">
 							{#each block.header.text as segment}
 								<span
-									class={segment.type === 'strong' ? 'font-bold text-[#F03E3E]' : 'font-semibold'}
+									class={segment.type === 'strong'
+										? 'font-bold text-red-600 dark:text-red-500'
+										: 'font-semibold'}
 								>
 									{segment.content}
 								</span>
@@ -34,7 +36,7 @@ Usage:
 						</div>
 					{/snippet}
 					{#snippet paragraph()}
-						<span>
+						<span class="text-muted-foreground">
 							{block.paragraph}
 						</span>
 					{/snippet}

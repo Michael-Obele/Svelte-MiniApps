@@ -19,18 +19,18 @@ Usage:
 
 <section class="w-full px-4 py-5 md:px-6 md:py-8 lg:py-10 xl:container">
 	<div
-		class="mx-auto max-w-(--breakpoint-xl) justify-center bg-white px-4 py-8 lg:py-16 xl:rounded-lg dark:bg-gray-900"
+		class="bg-card text-card-foreground mx-auto max-w-(--breakpoint-xl) justify-center px-4 py-8 shadow-sm lg:py-16 xl:rounded-lg"
 	>
 		<div class="flex flex-col items-center justify-center space-y-4 text-center">
 			<ContentBlock iconId={'xyboiuok'}>
 				{#snippet header()}
 					<div>
-						<strong class="text-[#F03E3E]">Join</strong> the Journey
+						<strong class="text-red-600 dark:text-red-500">Join</strong> the Journey
 					</div>
 				{/snippet}
 
 				{#snippet paragraph()}
-					<span>
+					<span class="text-muted-foreground">
 						Every great tool starts with feedback from people like you. Here's how you can be part
 						of making these apps even better:
 					</span>
@@ -51,19 +51,19 @@ Usage:
 							/>
 						{/snippet}
 						{#snippet header()}
-							<span>{block.header}</span>
+							<span class="text-foreground">{block.header}</span>
 						{/snippet}
 						{#snippet paragraph()}
-							<span>{@html block.paragraph}</span>
+							<span class="text-muted-foreground">{@html block.paragraph}</span>
 						{/snippet}
 					</InfoBlock>
 				{/each}
 
-				<p class="mt-4 text-lg text-gray-800 dark:text-gray-200">
+				<p class="text-muted-foreground mt-4 text-lg">
 					Your insights and experiences help shape these tools into something truly useful. Whether
 					it's sharing ideas, reporting issues, or just letting me know how you use the apps, every
 					bit of feedback counts. Want to learn more about the project? Check out our
-					<a class="text-[#F03E3E] hover:underline" href="/about">story</a>.
+					<a class="text-red-600 hover:underline dark:text-red-500" href="/about">story</a>.
 				</p>
 			</div>
 		</div>

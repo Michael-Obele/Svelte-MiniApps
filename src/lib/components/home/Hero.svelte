@@ -14,15 +14,13 @@ Props:
 -->
 
 <script lang="ts">
+	import { Button } from '$lib/components/ui/button';
+	import { ArrowRight } from 'lucide-svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
-	import {
-		generateMantra,
-		getGreeting,
-		getMillisecondsUntilNextPeriod
-	} from '$lib/utility/greetings';
-	import BlurInText from '@/blocks/BlurInText.svelte';
-
 	const arrow = '/lottie/trending-flat.json';
+
+	import { generateMantra, getMillisecondsUntilNextPeriod } from '$lib/utility/greetings';
+	import BlurInText from '@/blocks/BlurInText.svelte';
 
 	let greeting = $state(generateMantra());
 
@@ -40,59 +38,86 @@ Props:
 	let { data } = $props();
 </script>
 
-<section id="hero" class="w-full py-8 md:py-14 lg:py-20">
-	<div class="px-4 md:px-6 xl:container">
-		<div class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-			<div class="flex flex-col justify-center space-y-4">
-				<div class="flex flex-col">
+{#snippet welcomeHeader(username: string)}
+	Welcome
+	{#if username}
+		Back,
+		<span class="text-green-700 capitalize dark:text-green-300">
+			{username}!
+		</span>
+	{/if}
+	to...
+{/snippet}
+
+<section id="hero" class="bg-background relative w-full py-12 md:py-24 lg:py-32">
+	<!-- Background Glow -->
+	<!-- <div
+		class="pointer-events-none absolute top-1/2 right-6 h-[800px] w-[800px] translate-x-1/4 -translate-y-1/2 overflow-hidden rounded-full bg-red-500/10 blur-[12rem] dark:bg-red-600/20"
+	></div> -->
+
+	<div class="relative z-10 container mx-auto px-4 md:px-6">
+		<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
+			<div class="flex flex-col justify-center space-y-8">
+				<div class="space-y-4">
 					<BlurInText
 						as="h2"
-						class="text-2xl font-bold text-red-700 sm:text-4xl xl:text-5xl/none dark:text-white"
+						class="text-foreground text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
 					>
-						Welcome
-						{#if data?.user?.username}
-							{@const username = data.user.username}
-							Back,
-							<span class="text-green-700 capitalize dark:text-green-300">
-								{username}!
-							</span>
-						{/if}
-						to...
+						{@render welcomeHeader(data?.user?.username)}
+						<br />
+
+						<BlurInText
+							as="span"
+							word="Svelte Mini Apps"
+							class="text-foreground text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none dark:text-red-500"
+						/>
 					</BlurInText>
-					<BlurInText
-						as="h2"
-						word="Svelte Mini Apps"
-						class="text-2xl font-bold text-red-700 sm:text-4xl xl:text-5xl/none dark:text-white"
-					/>
+
 					<BlurInText
 						as="p"
 						word="Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
-						class="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400"
+						class="text-muted-foreground max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 					/>
 				</div>
-				<a
-					href="/apps"
-					class="flex h-10 items-center justify-center rounded-md bg-red-700 px-3 text-center text-base font-medium text-white shadow transition-colors hover:bg-red-800 focus:ring-4 focus:ring-red-300 focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 dark:focus:ring-red-900"
-				>
+				<div class="flex flex-col gap-4 sm:flex-row">
 					<BlurInText as="span" class="inline-flex items-center">
-						Start Exploring
-						<lord-icon
-							target="#hero"
-							src={arrow}
-							colors="primary:white,secondary:green"
-							trigger="loop-on-hover"
-							class="ml-2 hidden h-5 w-5 md:grid"
-							state="hover-pinch"
+						<Button
+							href="/apps"
+							size="lg"
+							class="border-none bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:bg-red-700 dark:shadow-[0_0_20px_rgba(220,38,38,0.2)]"
 						>
-						</lord-icon>
+							Start Exploring
+							<lord-icon
+								target="#hero"
+								src={arrow}
+								colors="primary:white,secondary:green"
+								trigger="loop-on-hover"
+								class="ml-2 hidden h-5 w-5 md:grid"
+								state="hover-pinch"
+							>
+							</lord-icon>
+						</Button>
 					</BlurInText>
-				</a>
+				</div>
 			</div>
-			<BlurInText
-				as="div"
-				word={Svelte}
-				class="mx-auto hidden h-[60%] w-[60%] flex-row items-center justify-center md:flex md:w-full lg:h-full"
-			/>
+			<div class="relative flex justify-center lg:justify-end">
+				<div
+					class="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]"
+				>
+					<!-- Glowing Svelte Logo -->
+					<!-- Deep ambient glow -->
+					<div
+						class="pointer-events-none absolute top-1/2 left-1/2 h-[180%] w-[80%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(220,38,38,0.15)_0%,transparent_70%)] blur-3xl"
+					></div>
+
+					<!-- Core glow -->
+					<div
+						class="pointer-events-none absolute inset-0 rounded-full bg-red-500/20 blur-[90px] dark:bg-red-600/20"
+					></div>
+
+					<Svelte class="relative z-10 h-full w-full drop-shadow-[0_0_40px_rgba(220,38,38,0.4)]" />
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
