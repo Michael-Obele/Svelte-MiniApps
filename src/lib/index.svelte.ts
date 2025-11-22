@@ -1,5 +1,43 @@
 // place files you want to import through the `$lib` alias in this folder.
 
+import {
+	Scale,
+	Wallet,
+	Receipt,
+	Pill,
+	Activity,
+	Lock,
+	Smile,
+	Palette,
+	ListTodo,
+	FileText,
+	Binary,
+	Timer,
+	DollarSign,
+	Music,
+	QrCode,
+	CheckSquare,
+	Calendar,
+	Image,
+	Globe,
+	PenTool,
+	Github,
+	FileCode,
+	Book,
+	Clock,
+	Calculator,
+	Gamepad2,
+	Dices,
+	Utensils,
+	Notebook,
+	Cloud,
+	Divide,
+	Brain,
+	Search,
+	Dumbbell,
+	Flower2
+} from 'lucide-svelte';
+
 /**
  * Returns the site configuration object.
  * @returns Site configuration with metadata and branding information
@@ -65,6 +103,7 @@ export type Project = {
 	difficulty: 'easy' | 'medium' | 'hard';
 	class?: string;
 	link: string;
+	icon: any; // Icon component
 };
 
 /**
@@ -82,7 +121,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'unit-converter'
+			link: 'unit-converter',
+			icon: Scale
 		},
 		{
 			title: 'Budget Tracker',
@@ -93,7 +133,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'budget-tracker'
+			link: 'budget-tracker',
+			icon: Wallet
 		},
 		{
 			title: 'Purchase Tracker',
@@ -105,7 +146,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'purchase-tracker'
+			link: 'purchase-tracker',
+			icon: Receipt
 		},
 		{
 			title: 'Medication Tracker',
@@ -117,7 +159,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'medication-tracker'
+			link: 'medication-tracker',
+			icon: Pill
 		},
 		{
 			title: 'Smoke-Free Tracker',
@@ -129,7 +172,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'smoke-free-tracker'
+			link: 'smoke-free-tracker',
+			icon: Activity
 		},
 		{
 			title: 'Random Password Generator',
@@ -140,7 +184,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'random-password-generator'
+			link: 'random-password-generator',
+			icon: Lock
 		},
 		{
 			title: 'Advanced Emoji Tools',
@@ -151,7 +196,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'advanced-emoji-tools'
+			link: 'advanced-emoji-tools',
+			icon: Smile
 		},
 		{
 			title: 'Color Picker',
@@ -162,7 +208,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'color-picker'
+			link: 'color-picker',
+			icon: Palette
 		},
 		{
 			title: 'Checklist Maker',
@@ -173,7 +220,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'checklist-maker'
+			link: 'checklist-maker',
+			icon: ListTodo
 		},
 		{
 			title: 'Text Summarizer',
@@ -184,7 +232,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'text-summarizer'
+			link: 'text-summarizer',
+			icon: FileText
 		},
 		{
 			title: 'Morse Code Translator',
@@ -195,7 +244,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'morse-code-translator'
+			link: 'morse-code-translator',
+			icon: Binary
 		},
 		{
 			title: 'Countdown Timer',
@@ -206,7 +256,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'countdown-timer'
+			link: 'countdown-timer',
+			icon: Timer
 		},
 		{
 			title: 'Currency Converter',
@@ -217,7 +268,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'currency-converter'
+			link: 'currency-converter',
+			icon: DollarSign
 		},
 		{
 			title: 'BMI Calculator',
@@ -228,7 +280,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'bmi-calculator'
+			link: 'bmi-calculator',
+			icon: Activity
 		},
 		{
 			title: 'Music Player',
@@ -239,7 +292,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'music-player'
+			link: 'music-player',
+			icon: Music
 		},
 		{
 			title: 'QR Code Generator',
@@ -250,7 +304,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'qr-code-generator'
+			link: 'qr-code-generator',
+			icon: QrCode
 		},
 		{
 			title: 'To-Do List with Persistence',
@@ -261,7 +316,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'todo-list'
+			link: 'todo-list',
+			icon: CheckSquare
 		},
 		{
 			title: 'Habit Tracker',
@@ -272,7 +328,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'habit-tracker'
+			link: 'habit-tracker',
+			icon: Calendar
 		},
 		{
 			title: 'Photo Editor',
@@ -283,7 +340,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'photo-editor'
+			link: 'photo-editor',
+			icon: Image
 		},
 		{
 			title: 'Wikipedia Article Explorer',
@@ -294,7 +352,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'wikipedia-explorer'
+			link: 'wikipedia-explorer',
+			icon: Globe
 		},
 		{
 			title: 'Simple Drawing App',
@@ -305,7 +364,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'drawing-app'
+			link: 'drawing-app',
+			icon: PenTool
 		},
 		{
 			title: 'GitHub Contribution Tracker',
@@ -317,7 +377,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'github-contribution-tracker'
+			link: 'github-contribution-tracker',
+			icon: Github
 		},
 		{
 			title: 'Markdown Editor',
@@ -329,7 +390,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'markdown-editor'
+			link: 'markdown-editor',
+			icon: FileCode
 		},
 		{
 			title: 'English Dictionary App',
@@ -341,7 +403,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'dictionary-app'
+			link: 'dictionary-app',
+			icon: Book
 		},
 		{
 			title: 'Pomodoro Timer',
@@ -353,7 +416,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'pomodoro-timer'
+			link: 'pomodoro-timer',
+			icon: Clock
 		},
 		{
 			title: 'Random Emoji Generator',
@@ -364,7 +428,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'random-emoji-generator'
+			link: 'random-emoji-generator',
+			icon: Smile
 		},
 		{
 			title: 'Age Calculator',
@@ -375,7 +440,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'age-calculator'
+			link: 'age-calculator',
+			icon: Calculator
 		},
 		{
 			title: 'Rock Paper Scissors Game',
@@ -387,7 +453,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'rock-paper-scissors'
+			link: 'rock-paper-scissors',
+			icon: Gamepad2
 		},
 		{
 			title: 'Dice Roll Simulator',
@@ -398,7 +465,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'dice-roller'
+			link: 'dice-roller',
+			icon: Dices
 		},
 		{
 			title: 'Recipe Book Organizer',
@@ -410,7 +478,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'recipe-organizer'
+			link: 'recipe-organizer',
+			icon: Utensils
 		},
 		{
 			title: 'Note Taker',
@@ -421,7 +490,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'note-taker'
+			link: 'note-taker',
+			icon: Notebook
 		},
 		// New Projects
 		{
@@ -433,7 +503,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'weather-app'
+			link: 'weather-app',
+			icon: Cloud
 		},
 		{
 			title: 'Expense Splitter',
@@ -444,7 +515,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'expense-splitter'
+			link: 'expense-splitter',
+			icon: Divide
 		},
 		{
 			title: 'Flashcard Quizzer',
@@ -455,7 +527,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'flashcard-quizzer'
+			link: 'flashcard-quizzer',
+			icon: Brain
 		},
 		{
 			title: 'Recipe Finder',
@@ -466,7 +539,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'medium',
 			class: 'medium',
-			link: 'recipe-finder'
+			link: 'recipe-finder',
+			icon: Search
 		},
 		{
 			title: 'Fitness Tracker',
@@ -477,7 +551,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'hard',
 			class: 'hard',
-			link: 'fitness-tracker'
+			link: 'fitness-tracker',
+			icon: Dumbbell
 		},
 		{
 			title: 'Meditation Timer',
@@ -488,7 +563,8 @@ export function projects(): Project[] {
 			// @wc-include
 			difficulty: 'easy',
 			class: 'easy',
-			link: 'meditation-timer'
+			link: 'meditation-timer',
+			icon: Flower2
 		}
 	];
 }

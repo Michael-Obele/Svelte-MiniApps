@@ -13,41 +13,6 @@ Usage:
 	import { projects, done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
 	import {
-		Scale,
-		Wallet,
-		Receipt,
-		Pill,
-		Activity,
-		Lock,
-		Smile,
-		Palette,
-		ListTodo,
-		FileText,
-		Binary,
-		Timer,
-		DollarSign,
-		Music,
-		QrCode,
-		CheckSquare,
-		Calendar,
-		Image,
-		Globe,
-		PenTool,
-		Github,
-		FileCode,
-		Book,
-		Clock,
-		Calculator,
-		Gamepad2,
-		Dices,
-		Utensils,
-		Notebook,
-		Cloud,
-		Divide,
-		Brain,
-		Search,
-		Dumbbell,
-		Flower2,
 		Zap,
 		AppWindow,
 		CircleDashed,
@@ -74,47 +39,6 @@ Usage:
 
 	// Filter projects that are NOT done (Coming Soon)
 	let comingSoon = $derived(sortedProjects.filter((p) => !done().some((d) => d.name === p.link)));
-
-	// Icon mapping
-	const iconMap: Record<string, any> = {
-		'unit-converter': Scale,
-		'budget-tracker': Wallet,
-		'purchase-tracker': Receipt,
-		'medication-tracker': Pill,
-		'smoke-free-tracker': Activity,
-		'random-password-generator': Lock,
-		'advanced-emoji-tools': Smile,
-		'color-picker': Palette,
-		'checklist-maker': ListTodo,
-		'text-summarizer': FileText,
-		'morse-code-translator': Binary,
-		'countdown-timer': Timer,
-		'currency-converter': DollarSign,
-		'bmi-calculator': Activity,
-		'music-player': Music,
-		'qr-code-generator': QrCode,
-		'todo-list': CheckSquare,
-		'habit-tracker': Calendar,
-		'photo-editor': Image,
-		'wikipedia-explorer': Globe,
-		'drawing-app': PenTool,
-		'github-contribution-tracker': Github,
-		'markdown-editor': FileCode,
-		'dictionary-app': Book,
-		'pomodoro-timer': Clock,
-		'random-emoji-generator': Smile,
-		'age-calculator': Calculator,
-		'rock-paper-scissors': Gamepad2,
-		'dice-roller': Dices,
-		'recipe-organizer': Utensils,
-		'note-taker': Notebook,
-		'weather-app': Cloud,
-		'expense-splitter': Divide,
-		'flashcard-quizzer': Brain,
-		'recipe-finder': Search,
-		'fitness-tracker': Dumbbell,
-		'meditation-timer': Flower2
-	};
 </script>
 
 <section id="apps" class="bg-background w-full py-12 md:py-24 lg:py-32">
@@ -136,7 +60,7 @@ Usage:
 		<!-- Compact Grid -->
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 			{#each doneProjects as project (project.link)}
-				{@const Icon = iconMap[project.link] || AppWindow}
+				{@const Icon = project.icon || AppWindow}
 				<a
 					href={'/apps/' + project.link}
 					class="group bg-card text-card-foreground hover:border-primary/50 relative flex items-center overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-200 hover:shadow-md"
