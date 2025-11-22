@@ -12,20 +12,7 @@ Usage:
 <script lang="ts">
 	import { projects, done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
-	import {
-		Zap,
-		AppWindow,
-		CircleDashed,
-		Construction
-	} from 'lucide-svelte';
-	import {
-		Card,
-		CardContent,
-		CardHeader,
-		CardTitle,
-		CardDescription
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
+	import { AppWindow, CircleDashed, Construction } from 'lucide-svelte';
 	import { Separator } from '$lib/components/ui/separator';
 
 	// Create locale-aware collator that reacts to language changes
