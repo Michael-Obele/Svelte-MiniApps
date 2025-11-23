@@ -59,18 +59,9 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Announcements - Changelog - Svelte Mini Apps</title>
-	<meta
-		name="description"
-		content="Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-	/>
-</svelte:head>
-
 <RouteHead
 	title="Announcements - Changelog"
 	description="Stay updated with the latest announcements and future plans for Svelte Mini Apps including mobile and desktop companion apps"
-	route="/changelog/announcements"
 	keywords="announcements, updates, mobile apps, desktop apps, Svelte Mini Apps, roadmap"
 />
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getUserProfile } from '$lib/remote';
 	import { setContext } from 'svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	// Fetch user profile data using remote function
 	const profileQuery = getUserProfile();
@@ -29,13 +30,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Profile - Svelte Mini Apps</title>
-	<meta
-		name="description"
-		content="Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte."
-	/>
-</svelte:head>
+<RouteHead title="Profile - Svelte Mini Apps" description="Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte." />
 <main class="bg-gray-100 dark:bg-gray-900">
 	<section class="container min-h-screen space-y-6 p-6 py-4">
 		<div class="flex items-center justify-between">

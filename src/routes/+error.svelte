@@ -4,6 +4,7 @@
 	import NF from '$lib/assets/404.svelte';
 	import Bad from '$lib/assets/Bad.svelte';
 	import { Button } from '@/ui/button';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	// Custom messages and descriptions for common errors
 	interface ErrorInfo {
@@ -40,9 +41,7 @@
 	let currentError = $derived(errorInfo[page.status] || defaultError);
 </script>
 
-<svelte:head>
-	<title>{currentError.title} - Error {page.status}</title>
-</svelte:head>
+<RouteHead title={`${currentError.title} - Error ${page.status}`} description={currentError.description} />
 
 <section
 	class="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-8 md:px-8 dark:bg-gray-900"

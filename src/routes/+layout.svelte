@@ -5,6 +5,7 @@
 	import '../app.css';
 	import Footer from '$lib/components/blocks/Footer.svelte';
 	import Navbar from '$lib/components/blocks/Navbar.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import type { LayoutProps } from './$types';
 	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
@@ -29,10 +30,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Svelte Mini Apps</title>
-	<meta name="description" content="A collection of mini apps built with SvelteKit" />
-</svelte:head>
+<RouteHead title="Svelte Mini Apps" description="A collection of mini apps built with SvelteKit" />
 
 <!-- <Runatics {analyticsId} /> -->
 <ModeWatcher />

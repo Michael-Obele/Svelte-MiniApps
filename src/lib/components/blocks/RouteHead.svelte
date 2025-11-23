@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { site } from '$lib/index.svelte';
+	import { page } from '$app/state';
 
 	type OpenGraphType =
 		| 'website'
@@ -22,7 +23,7 @@
 		title: string;
 		description: string;
 		keywords?: string;
-		route: string;
+		route?: string;
 		image?: string;
 		author?: string;
 		canonical?: string;
@@ -44,7 +45,7 @@
 		keywords = '',
 		image = site().image,
 		author = site().author || 'Michael Obele',
-		canonical = `${site().url}${route}`,
+		canonical,
 		publishedTime,
 		modifiedTime,
 		type = 'website',
@@ -56,9 +57,12 @@
 		structuredData = null
 	}: Props = $props();
 
+	let routeValue = $derived(route ?? page.url.pathname);
+	let canonicalUrl = $derived(canonical ?? `${site().url}${routeValue}`);
+
 	let ogTitle = $derived(title);
 	let ogDescription = $derived(description);
-	let ogUrl = $derived(canonical);
+	let ogUrl = $derived(canonicalUrl);
 
 	let robotsContent = (() => {
 		const directives: string[] = [];
@@ -68,11 +72,11 @@
 	})();
 
 	// Enrich structuredData with site-wide info if not already present
-	let fullStructuredData = $derived(() => {
+	let fullStructuredData = $derived.by(() => {
 		if (!structuredData) return undefined;
 		return {
 			...structuredData,
-			url: structuredData.url ?? site().url,
+			url: structuredData.url ?? canonicalUrl,
 			image: structuredData.image ?? image,
 			publisher: structuredData.publisher ?? {
 				'@type': 'Organization',

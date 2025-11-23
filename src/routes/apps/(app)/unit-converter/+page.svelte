@@ -17,6 +17,7 @@
 	import { unitConverterHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	let inputValue: string = $state('');
 	let fromUnit: string = $state('meter');
@@ -106,13 +107,7 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Unit Converter - Svelte Mini Apps</title>
-	<meta
-		name="description"
-		content="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
-	/>
-</svelte:head>
+<RouteHead title="Unit Converter - Svelte Mini Apps" description="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure." />
 
 <div class="container mx-auto max-w-4xl p-4">
 	<div class="mb-8 text-center">

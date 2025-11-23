@@ -9,6 +9,7 @@
 	import { invalidateAll } from '$app/navigation';
 	import { Switch } from '@/ui/switch/index.js';
 	import { registerUser } from '$lib/remote';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -32,10 +33,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Sign Up | Svelte Mini Apps</title>
-	<meta name="description" content="Create your Svelte Mini Apps account" />
-</svelte:head>
+<RouteHead title="Sign Up | Svelte Mini Apps" description="Create your Svelte Mini Apps account" />
 
 <div
 	class="container mx-auto flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-8"

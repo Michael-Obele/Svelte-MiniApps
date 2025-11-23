@@ -19,6 +19,7 @@
 		Rocket
 	} from '@lucide/svelte';
 	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
+	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { google, bluesky, X } from '$lib/components/blocks/Icons.svelte';
 	import XIcon from '@/blocks/XIcon.svelte';
 	import type { PageProps } from './$types';
@@ -132,17 +133,7 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Hire Michael - Full-Stack Developer | Svelte Mini Apps</title>
-	<meta
-		name="description"
-		content="Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."
-	/>
-	<meta
-		name="keywords"
-		content="hire developer, freelance developer, Svelte developer, SvelteKit expert, full-stack developer, web development"
-	/>
-</svelte:head>
+<RouteHead title="Hire Michael - Full-Stack Developer | Svelte Mini Apps" description="Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration." keywords="hire developer, freelance developer, Svelte developer, SvelteKit expert, full-stack developer, web development" />
 
 <div class="from-background via-primary/5 to-background min-h-screen bg-gradient-to-br">
 	<!-- Hero Section with animated gradient -->
