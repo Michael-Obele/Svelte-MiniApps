@@ -52,7 +52,7 @@ Props:
 <section id="hero" class="bg-background relative w-full py-12 md:py-24 lg:py-32">
 	<!-- Background Glow -->
 	<!-- <div
-		class="pointer-events-none absolute top-1/2 right-6 h-[800px] w-[800px] translate-x-1/4 -translate-y-1/2 overflow-hidden rounded-full bg-red-500/10 blur-[12rem] dark:bg-red-600/20"
+		class="pointer-events-none absolute right-6 top-1/2 h-[800px] w-[800px] -translate-y-1/2 translate-x-1/4 overflow-hidden rounded-full bg-red-500/10 blur-[12rem] dark:bg-red-600/20"
 	></div> -->
 
 	<div class="relative z-10 container mx-auto px-4 md:px-6">
@@ -61,7 +61,7 @@ Props:
 				<div class="space-y-4">
 					<BlurInText
 						as="h2"
-						class="text-foreground text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
+						class="text-foreground text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none"
 					>
 						{@render welcomeHeader(data?.user?.username)}
 						<br />
