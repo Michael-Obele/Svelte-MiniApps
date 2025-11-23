@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2025-11-22T09:59:50.823Z\n"
+"PO-Revision-Date: 2025-11-23T07:49:53.735Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -72,11 +72,8 @@ msgstr "Se produjo un error inesperado al procesar su solicitud."
 msgid "Please try again or contact support if the problem persists."
 msgstr "Por favor, inténtelo de nuevo o póngase en contacto con el soporte si el problema persiste."
 
-#. placeholder {0}: currentError.title
-#. placeholder {1}: page.status
-#: src/routes/+error.svelte
-msgid "{0} - Error {1}"
-msgstr "{0} - Error {1}"
+#~ msgid "{0} - Error {1}"
+#~ msgstr "{0} - Error {1}"
 
 #: src/routes/+error.svelte
 msgid "Technical Details"
@@ -192,7 +189,6 @@ msgid "Style with Tailwind"
 msgstr "Estilizar con Tailwind"
 
 #: src/lib/stores/todo-store.svelte.ts
-#: src/routes/apps/+page.svelte
 msgid "Done"
 msgstr "Hecho"
 
@@ -500,42 +496,39 @@ msgstr "Explora una gran variedad de miniaplicaciones útiles creadas con Svelte
 msgid "Explore Our Mini Applications"
 msgstr "Explora nuestras miniaplicaciones"
 
-#: src/routes/apps/+page.svelte
-msgid "All"
-msgstr "Todos"
+#~ msgid "All"
+#~ msgstr "Todos"
 
-#: src/routes/apps/+page.svelte
-msgid "Find App..."
-msgstr "Buscar aplicación..."
+#~ msgid "Find App..."
+#~ msgstr "Buscar aplicación..."
 
-#: src/routes/apps/+page.svelte
-msgid "<0/>K"
-msgstr "<0/>K"
+#~ msgid "<0/>K"
+#~ msgstr "<0/>K"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
 msgstr "Buscar aplicaciones"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Find the mini application you're looking for"
 msgstr "Encuentra la miniaplicación que buscas"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search by name, or description..."
 msgstr "Busca por nombre o descripción..."
 
 #. placeholder {0}: searchQuery
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "No se encontraron proyectos que coincidan con \"{0}\""
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "(Coming Soon)"
 msgstr "(Próximamente)"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -545,7 +538,7 @@ msgstr "Limpiar"
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
 msgstr "Cerrar"
@@ -2430,13 +2423,11 @@ msgstr "Hazte voluntario para probar prototipos cuando estén disponibles"
 msgid "Join Testing"
 msgstr "Únete a las pruebas"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Announcements - Changelog - Svelte Mini Apps"
-msgstr "Anuncios - Registro de cambios - Svelte Mini Apps"
+#~ msgid "Announcements - Changelog - Svelte Mini Apps"
+#~ msgstr "Anuncios - Registro de cambios - Svelte Mini Apps"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-msgstr "Mantente al día con los últimos anuncios y planes futuros para Svelte Mini Apps"
+#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
+#~ msgstr "Mantente al día con los últimos anuncios y planes futuros para Svelte Mini Apps"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -5962,24 +5953,24 @@ msgstr "Seleccionar estrategia"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Delete this note?"
-msgstr ""
+msgstr "¿Eliminar esta nota?"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note deleted"
-msgstr ""
+msgstr "Nota eliminada"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note Taker"
-msgstr ""
+msgstr "Tomador de Notas"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts"
-msgstr ""
+msgstr "Captura tus pensamientos"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "My Notes"
-msgstr ""
+msgstr "Mis Notas"
 
 #~ msgid "<0/> Add Note"
 #~ msgstr ""
@@ -5989,41 +5980,41 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
-msgstr ""
+msgstr "Crear Nota"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Content"
-msgstr ""
+msgstr "Contenido"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "<0/> Save"
-msgstr ""
+msgstr "<0/> Guardar"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Edit Note"
-msgstr ""
+msgstr "Editar Nota"
 
 #~ msgid "<0/> Update"
 #~ msgstr ""
 
 #: src/lib/index.svelte.ts
 msgid "A collection of mini applications built with Svelte"
-msgstr ""
+msgstr "Una colección de mini aplicaciones construidas con Svelte"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Unit Converter"
-msgstr ""
+msgstr "Convertidor de Unidades"
 
 #: src/lib/index.svelte.ts
 msgid "Converts between various units (length, temperature, volume, etc.)"
-msgstr ""
+msgstr "Convierte entre varias unidades (longitud, temperatura, volumen, etc.)"
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6032,7 +6023,7 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "utility"
-msgstr ""
+msgstr "utilidad"
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6047,18 +6038,18 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "easy"
-msgstr ""
+msgstr "fácil"
 
 #: src/lib/index.svelte.ts
 msgid "Create and manage budgets, track expenses, and monitor your remaining balance."
-msgstr ""
+msgstr "Crea y gestiona presupuestos, realiza un seguimiento de los gastos y controla tu saldo restante."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "finance"
-msgstr ""
+msgstr "finanzas"
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6080,19 +6071,19 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "medium"
-msgstr ""
+msgstr "medio"
 
 #: src/lib/index.svelte.ts
 msgid "Track your purchases over time with detailed records including costs, quantities, and automatic timestamps for better expense management."
-msgstr ""
+msgstr "Realiza un seguimiento de tus compras a lo largo del tiempo con registros detallados que incluyen costos, cantidades y marcas de tiempo automáticas para una mejor gestión de gastos."
 
 #: src/lib/index.svelte.ts
 msgid "Medication Tracker"
-msgstr ""
+msgstr "Rastreador de Medicamentos"
 
 #: src/lib/index.svelte.ts
 msgid "Track your medications during treatment sessions. Manage multiple medications, schedule doses, monitor adherence, and never miss a dose."
-msgstr ""
+msgstr "Realiza un seguimiento de tus medicamentos durante las sesiones de tratamiento. Gestiona múltiples medicamentos, programa dosis, supervisa la adherencia y nunca te pierdas una dosis."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6100,49 +6091,49 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "health"
-msgstr ""
+msgstr "salud"
 
 #: src/lib/index.svelte.ts
 msgid "Track your smoke-free journey with real-time streak counting, health milestones, craving management, and motivational support to help you quit smoking."
-msgstr ""
+msgstr "Realiza un seguimiento de tu viaje sin humo con conteo de rachas en tiempo real, hitos de salud, gestión de antojos y apoyo motivacional para ayudarte a dejar de fumar."
 
 #: src/lib/index.svelte.ts
 msgid "Random Password Generator"
-msgstr ""
+msgstr "Generador de Contraseñas Aleatorias"
 
 #: src/lib/index.svelte.ts
 msgid "Generates secure passwords with customizable length and complexity."
-msgstr ""
+msgstr "Genera contraseñas seguras con longitud y complejidad personalizables."
 
 #: src/lib/index.svelte.ts
 msgid "security"
-msgstr ""
+msgstr "seguridad"
 
 #: src/lib/index.svelte.ts
 msgid "This mini-app offers advanced features for working with emojis."
-msgstr ""
+msgstr "Esta mini-aplicación ofrece funciones avanzadas para trabajar con emojis."
 
 #: src/lib/index.svelte.ts
 msgid "Color Picker"
-msgstr ""
+msgstr "Selector de Color"
 
 #: src/lib/index.svelte.ts
 msgid "Lets you choose a color and shows its HEX code or RGB values."
-msgstr ""
+msgstr "Te permite elegir un color y muestra su código HEX o valores RGB."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "design"
-msgstr ""
+msgstr "diseño"
 
 #: src/lib/index.svelte.ts
 msgid "Checklist Maker"
-msgstr ""
+msgstr "Creador de Listas de Verificación"
 
 #: src/lib/index.svelte.ts
 msgid "Allows you to create checklists and mark items as completed."
-msgstr ""
+msgstr "Te permite crear listas de verificación y marcar elementos como completados."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6154,82 +6145,82 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "productivity"
-msgstr ""
+msgstr "productividad"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text Summarizer"
-msgstr ""
+msgstr "Resumidor de Texto"
 
 #: src/lib/index.svelte.ts
 msgid "Creates a shorter version of a text by keeping within a word limit."
-msgstr ""
+msgstr "Crea una versión más corta de un texto manteniéndose dentro de un límite de palabras."
 
 #: src/lib/index.svelte.ts
 msgid "Morse Code Translator"
-msgstr ""
+msgstr "Traductor de Código Morse"
 
 #: src/lib/index.svelte.ts
 msgid "Translates between text and Morse code."
-msgstr ""
+msgstr "Traduce entre texto y código Morse."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "education"
-msgstr ""
+msgstr "educación"
 
 #: src/lib/index.svelte.ts
 msgid "Countdown Timer"
-msgstr ""
+msgstr "Temporizador de Cuenta Regresiva"
 
 #: src/lib/index.svelte.ts
 msgid "Sets a timer with a countdown and shows progress visually."
-msgstr ""
+msgstr "Establece un temporizador con una cuenta regresiva y muestra el progreso visualmente."
 
 #: src/lib/index.svelte.ts
 msgid "Gets live exchange rates and converts between different currencies."
-msgstr ""
+msgstr "Obtiene los tipos de cambio en vivo y convierte entre diferentes monedas."
 
 #: src/lib/index.svelte.ts
 msgid "BMI Calculator"
-msgstr ""
+msgstr "Calculadora de IMC"
 
 #: src/lib/index.svelte.ts
 msgid "Calculates your Body Mass Index based on your height and weight."
-msgstr ""
+msgstr "Calcula tu Índice de Masa Corporal basado en tu altura y peso."
 
 #: src/lib/index.svelte.ts
 msgid "Music Player"
-msgstr ""
+msgstr "Reproductor de Música"
 
 #: src/lib/index.svelte.ts
 msgid "Plays audio files stored on your device and lets you browse them."
-msgstr ""
+msgstr "Reproduce archivos de audio almacenados en tu dispositivo y te permite explorarlos."
 
 #: src/lib/index.svelte.ts
 msgid "multimedia"
-msgstr ""
+msgstr "multimedia"
 
 #: src/lib/index.svelte.ts
 msgid "Creates QR codes that contain URLs, text, or vCards."
-msgstr ""
+msgstr "Crea códigos QR que contienen URLs, texto o vCards."
 
 #: src/lib/index.svelte.ts
 msgid "To-Do List with Persistence"
-msgstr ""
+msgstr "Lista de Tareas Pendientes con Persistencia"
 
 #: src/lib/index.svelte.ts
 msgid "Lets you create and manage to-do items, and saves them for later use."
-msgstr ""
+msgstr "Te permite crear y gestionar elementos de tareas pendientes, y los guarda para su uso posterior."
 
 #: src/lib/index.svelte.ts
 msgid "Habit Tracker"
-msgstr ""
+msgstr "Rastreador de Hábitos"
 
 #: src/lib/index.svelte.ts
 msgid "Tracks your daily habits and shows your progress over time."
-msgstr ""
+msgstr "Realiza un seguimiento de tus hábitos diarios y muestra tu progreso a lo largo del tiempo."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -6238,183 +6229,183 @@ msgstr ""
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "hard"
-msgstr ""
+msgstr "difícil"
 
 #: src/lib/index.svelte.ts
 msgid "Photo Editor"
-msgstr ""
+msgstr "Editor de Fotos"
 
 #: src/lib/index.svelte.ts
 msgid "Provides basic tools like cropping, resizing, and applying filters to edit photos."
-msgstr ""
+msgstr "Proporciona herramientas básicas como recortar, cambiar el tamaño y aplicar filtros para editar fotos."
 
 #: src/lib/index.svelte.ts
 msgid "Wikipedia Article Explorer"
-msgstr ""
+msgstr "Explorador de Artículos de Wikipedia"
 
 #: src/lib/index.svelte.ts
 msgid "Lets you search Wikipedia and explore linked articles visually."
-msgstr ""
+msgstr "Te permite buscar en Wikipedia y explorar artículos enlazados visualmente."
 
 #: src/lib/index.svelte.ts
 msgid "Simple Drawing App"
-msgstr ""
+msgstr "Aplicación de Dibujo Simple"
 
 #: src/lib/index.svelte.ts
 msgid "Lets you create basic drawings using lines, shapes, and colors."
-msgstr ""
+msgstr "Te permite crear dibujos básicos utilizando líneas, formas y colores."
 
 #: src/lib/index.svelte.ts
 msgid "Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated."
-msgstr ""
+msgstr "Visualiza tus contribuciones de GitHub de una manera fácil de entender y atractiva. Te ayuda a rastrear rachas, encontrar patrones y mantenerte motivado."
 
 #: src/lib/index.svelte.ts
 msgid "developer-tools"
-msgstr ""
+msgstr "herramientas-de-desarrollador"
 
 #: src/lib/index.svelte.ts
 msgid "Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects."
-msgstr ""
+msgstr "Te permite editar y ver archivos markdown fácilmente. Ideal para escribir notas, listas de tareas o incluso proyectos creativos."
 
 #: src/lib/index.svelte.ts
 msgid "English Dictionary App"
-msgstr ""
+msgstr "Aplicación de Diccionario Inglés"
 
 #: src/lib/index.svelte.ts
 msgid "Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback."
-msgstr ""
+msgstr "Aplicación web que recupera definiciones de palabras, pronunciación y audio mediante una API. También implementa efectos de carga, manejo de errores y la API de Web Speech para la reproducción de audio."
 
 #: src/lib/index.svelte.ts
 msgid "Pomodoro Timer"
-msgstr ""
+msgstr "Temporizador Pomodoro"
 
 #: src/lib/index.svelte.ts
 msgid "Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you."
-msgstr ""
+msgstr "Crea un temporizador con una cuenta regresiva y te permite establecer intervalos de trabajo/descanso personalizables. También utiliza notificaciones de audio para alertarte."
 
 #: src/lib/index.svelte.ts
 msgid "Generates a random emoji with a single click."
-msgstr ""
+msgstr "Genera un emoji aleatorio con un solo clic."
 
 #: src/lib/index.svelte.ts
 msgid "fun"
-msgstr ""
+msgstr "diversión"
 
 #: src/lib/index.svelte.ts
 msgid "Age Calculator"
-msgstr ""
+msgstr "Calculadora de Edad"
 
 #: src/lib/index.svelte.ts
 msgid "Calculates your age based on the date you were born."
-msgstr ""
+msgstr "Calcula tu edad basándose en la fecha en que naciste."
 
 #: src/lib/index.svelte.ts
 msgid "math"
-msgstr ""
+msgstr "matemáticas"
 
 #: src/lib/index.svelte.ts
 msgid "Rock Paper Scissors Game"
-msgstr ""
+msgstr "Juego de Piedra Papel Tijeras"
 
 #: src/lib/index.svelte.ts
 msgid "Lets you play the classic rock, paper, scissors game against the computer and shows the outcome."
-msgstr ""
+msgstr "Te permite jugar al clásico juego de piedra, papel o tijeras contra la computadora y muestra el resultado."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 msgid "game"
-msgstr ""
+msgstr "juego"
 
 #: src/lib/index.svelte.ts
 msgid "Dice Roll Simulator"
-msgstr ""
+msgstr "Simulador de Lanzamiento de Dados"
 
 #: src/lib/index.svelte.ts
 msgid "Simulates rolling dice and visually shows the result."
-msgstr ""
+msgstr "Simula el lanzamiento de dados y muestra visualmente el resultado."
 
 #: src/lib/index.svelte.ts
 msgid "Recipe Book Organizer"
-msgstr ""
+msgstr "Organizador de Libro de Recetas"
 
 #: src/lib/index.svelte.ts
 msgid "Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions."
-msgstr ""
+msgstr "Te ayuda a administrar tus recetas permitiéndote crearlas, organizarlas y, potencialmente, convertirlas en instrucciones."
 
 #: src/lib/index.svelte.ts
 msgid "Capture your thoughts and sync them across devices."
-msgstr ""
+msgstr "Captura tus pensamientos y sincronízalos entre dispositivos."
 
 #: src/lib/index.svelte.ts
 msgid "Weather App"
-msgstr ""
+msgstr "Aplicación del Tiempo"
 
 #: src/lib/index.svelte.ts
 msgid "Displays current weather information based on user location or input city."
-msgstr ""
+msgstr "Muestra información meteorológica actual basada en la ubicación del usuario o en la ciudad ingresada."
 
 #: src/lib/index.svelte.ts
 msgid "Expense Splitter"
-msgstr ""
+msgstr "Divisor de Gastos"
 
 #: src/lib/index.svelte.ts
 msgid "Helps users split expenses among friends or family and calculates who owes what."
-msgstr ""
+msgstr "Ayuda a los usuarios a dividir los gastos entre amigos o familiares y calcula quién debe qué."
 
 #: src/lib/index.svelte.ts
 msgid "Flashcard Quizzer"
-msgstr ""
+msgstr "Cuestionario de Tarjetas de Memoria"
 
 #: src/lib/index.svelte.ts
 msgid "Allows users to create flashcards for studying and quizzes them on the content."
-msgstr ""
+msgstr "Permite a los usuarios crear tarjetas de memoria para estudiar y los evalúa sobre el contenido."
 
 #: src/lib/index.svelte.ts
 msgid "Recipe Finder"
-msgstr ""
+msgstr "Buscador de Recetas"
 
 #: src/lib/index.svelte.ts
 msgid "Lets users search for recipes based on ingredients they have at home."
-msgstr ""
+msgstr "Permite a los usuarios buscar recetas basadas en los ingredientes que tienen en casa."
 
 #: src/lib/index.svelte.ts
 msgid "Fitness Tracker"
-msgstr ""
+msgstr "Rastreador de Actividad Física"
 
 #: src/lib/index.svelte.ts
 msgid "Tracks workouts, calories burned, and progress over time."
-msgstr ""
+msgstr "Realiza un seguimiento de los entrenamientos, las calorías quemadas y el progreso a lo largo del tiempo."
 
 #: src/lib/index.svelte.ts
 msgid "Meditation Timer"
-msgstr ""
+msgstr "Temporizador de Meditación"
 
 #: src/lib/index.svelte.ts
 msgid "A timer specifically for meditation sessions with options for different intervals."
-msgstr ""
+msgstr "Un temporizador específicamente para sesiones de meditación con opciones para diferentes intervalos."
 
 #: src/lib/index.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 msgid "Good night"
-msgstr ""
+msgstr "Buenas noches"
 
 #: src/lib/index.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 msgid "Good morning"
-msgstr ""
+msgstr "Buenos días"
 
 #: src/lib/index.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 msgid "Good afternoon"
-msgstr ""
+msgstr "Buenas tardes"
 
 #: src/lib/index.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 msgid "Good evening"
-msgstr ""
+msgstr "Buenas tardes```"
 
 #~ msgid ""
 #~ "From managing your budget to boosting productivity, each app here is designed with one\n"
@@ -6423,116 +6414,116 @@ msgstr ""
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Explore"
-msgstr ""
+msgstr "Explorar"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "All Apps"
-msgstr ""
+msgstr "Todas las aplicaciones"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "View Source"
-msgstr ""
+msgstr "Ver código fuente"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "About Us"
-msgstr ""
+msgstr "Acerca de nosotros"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Work with Us"
-msgstr ""
+msgstr "Trabaja con nosotros"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Get Support"
-msgstr ""
+msgstr "Obtener soporte"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Contact Us"
-msgstr ""
+msgstr "Contáctanos"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/home/data.svelte.ts
 msgid "Mini Apps"
-msgstr ""
+msgstr "Mini aplicaciones"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "More options"
-msgstr ""
+msgstr "Más opciones"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "Toggle navigation menu"
-msgstr ""
+msgstr "Alternar menú de navegación"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
-msgstr ""
+msgstr "¡Bienvenido a tu nuevo conjunto de herramientas favorito! Nuestras Mini Apps son compañeros cuidadosamente diseñados para tu viaje digital diario. Cada aplicación está pensada para ti: de carga rápida, fácil de usar y lista para afrontar tus retos cotidianos. Tanto si estás planificando tu presupuesto, creando hábitos saludables u organizándote, tenemos la herramienta perfecta para ti."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Why"
-msgstr ""
+msgstr "¿Por qué?"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless."
-msgstr ""
+msgstr "¿Alguna vez has notado cómo algunas aplicaciones se sienten más fluidas y con mayor capacidad de respuesta? ¡Esa es la magia de Svelte en acción! Hemos elegido esta tecnología de vanguardia porque creemos que mereces herramientas que no solo sean potentes, sino también agradables de usar. Nuestras aplicaciones responden instantáneamente a tus interacciones, haciendo que cada clic y pulsación de tecla se sientan naturales y sin esfuerzo."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Simple"
-msgstr ""
+msgstr "Sencillo"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "span"
-msgstr ""
+msgstr "span"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "and Efficient"
-msgstr ""
+msgstr "y Eficiente"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
-msgstr ""
+msgstr "La vida ya es bastante complicada, tus herramientas no deberían serlo. Hemos eliminado el desorden para centrarnos en lo que más importa: ayudarte a hacer las cosas. Cada MiniApp está cuidadosamente diseñada para ser intuitiva y sencilla, al tiempo que incluye todas las funciones que necesitas. Sin curvas de aprendizaje pronunciadas, solo productividad pura desde el momento en que empiezas."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Versatile and"
-msgstr ""
+msgstr "Versátil y"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Scalable"
-msgstr ""
+msgstr "Escalable"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
-msgstr ""
+msgstr "Tanto si eres un estudiante que gestiona tareas, un profesional que sigue proyectos o cualquier persona entre ambos, nuestras Mini Apps se adaptan a tus necesidades. Empieza poco a poco con las funciones básicas y descubre capacidades más potentes a medida que creces. Además, funcionan a la perfección en todos tus dispositivos, por lo que tus herramientas están siempre ahí donde las necesitas."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Share the Joy:"
-msgstr ""
+msgstr "Comparte la alegría:"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with Mini Apps"
 msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
-msgstr ""
+msgstr "<strong>¿Has encontrado una MiniApp que te haya facilitado el día?</strong> ¿Por qué quedártelo para ti? ¡Comparte tu historia de éxito con amigos, familiares o compañeros que también puedan beneficiarse! Tu recomendación podría ayudar a alguien a descubrir la herramienta perfecta para simplificar su rutina diaria."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Help Us Improve:"
-msgstr ""
+msgstr "Ayúdanos a mejorar:"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting users to provide feedback and report issues"
 msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
-msgstr ""
+msgstr "<strong>¡Tu voz importa!</strong> Tanto si tienes una idea brillante, has detectado un error o simplemente quieres compartir tu experiencia, te escuchamos. Dirígete a nuestro <strong>repositorio de GitHub</strong> para abrir un problema o iniciar un debate. Cada comentario nos ayuda a construir mejores herramientas para ti."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Join the Creation:"
-msgstr ""
+msgstr "Únete a la creación:"
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-msgstr ""
+msgstr "<strong>¿Te encanta programar?</strong> ¡Podrías ser el próximo colaborador en hacer que estas Mini Apps sean aún más increíbles! Nuestro proyecto es de <strong>código abierto</strong>, lo que significa que estás invitado a sumergirte, explorar el código y dar vida a tus ideas. Tanto si eres un desarrollador experimentado como si estás empezando, hay un lugar para ti en nuestra comunidad.```"
 
 #: src/routes/apps/+layout.svelte
 msgid "Svelte, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
@@ -6540,1164 +6531,1166 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts and ideas"
-msgstr ""
+msgstr "Captura tus pensamientos e ideas"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
-msgstr ""
+msgstr "<0/> Nueva Nota"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Search notes by title or content..."
-msgstr ""
+msgstr "Buscar notas por título o contenido..."
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes yet"
-msgstr ""
+msgstr "Aún no hay notas"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid ""
 "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
 "note."
-msgstr ""
+msgstr "Comienza a capturar tus ideas y pensamientos. Haz clic en el botón \"Nueva Nota\" para crear tu primera nota."
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> Create Your First Note"
-msgstr ""
+msgstr "<0/> Crea Tu Primera Nota"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
-msgstr ""
+msgstr "No se encontraron notas"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes match your search. Try different keywords or create a new note."
-msgstr ""
+msgstr "Ninguna nota coincide con tu búsqueda. Intenta con diferentes palabras clave o crea una nueva nota.```"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Enter note title..."
-msgstr ""
+msgstr "Ingrese el título de la nota..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Write your thoughts..."
-msgstr ""
+msgstr "Escribe tus pensamientos..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "<0/> Create Note"
-msgstr ""
+msgstr "<0/> Crear Nota```"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "<0/> Update Note"
-msgstr ""
+msgstr "<0/> Actualizar Nota"
 
 #: src/routes/about/+page.svelte
 msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
-msgstr ""
+msgstr "Svelte, Min iApps, Acerca de, Herramientas, Aplicaciones, Ecosistema, Innovador, Único"
 
 #: src/routes/about/Attributions.svelte
 msgid "Compile-time internationalization toolkit that automatically extracts translatable strings without requiring code changes."
-msgstr ""
+msgstr "Kit de herramientas de internacionalización en tiempo de compilación que extrae automáticamente cadenas traducibles sin requerir cambios en el código."
 
 #: src/routes/about/data.svelte.ts
 msgid "Install When You Want"
-msgstr ""
+msgstr "Instala Cuando Quieras"
 
 #: src/routes/about/data.svelte.ts
 msgid "While they work great in the browser, you can also install them as PWAs. It's like having native apps that don't eat up your system resources - the best of both worlds."
-msgstr ""
+msgstr "Aunque funcionan muy bien en el navegador, también puedes instalarlas como PWA. Es como tener aplicaciones nativas que no consumen los recursos de tu sistema: lo mejor de ambos mundos."
 
 #: src/routes/about/data.svelte.ts
 msgid "Svelte-Powered Speed"
-msgstr ""
+msgstr "Velocidad Impulsada por Svelte"
 
 #: src/routes/about/data.svelte.ts
 msgid "We chose SvelteKit because it's blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless."
-msgstr ""
+msgstr "Elegimos SvelteKit porque es increíblemente rápido y divertido de usar. ¿El resultado? Herramientas que se cargan al instante y funcionan sin problemas, haciendo que tu flujo de trabajo se sienta sin esfuerzo."
 
 #: src/routes/about/data.svelte.ts
 msgid "The SvelteKit Advantage"
-msgstr ""
+msgstr "La Ventaja de SvelteKit"
 
 #: src/routes/about/data.svelte.ts
 msgid "When I discovered SvelteKit, it was love at first sight. Its elegant simplicity and powerful features made it perfect for building these focused tools."
-msgstr ""
+msgstr "Cuando descubrí SvelteKit, fue amor a primera vista. Su elegante simplicidad y potentes características lo hicieron perfecto para construir estas herramientas enfocadas."
 
 #: src/routes/about/data.svelte.ts
 msgid "Less is More"
-msgstr ""
+msgstr "Menos es Más"
 
 #: src/routes/about/data.svelte.ts
 msgid "Each app solves one problem really well. No feature bloat, no confusing interfaces - just clean, effective tools that respect your time and attention."
-msgstr ""
+msgstr "Cada aplicación resuelve un problema realmente bien. Sin hinchazón de características, sin interfaces confusas, solo herramientas limpias y efectivas que respetan tu tiempo y atención."
 
 #: src/routes/about/data.svelte.ts
 msgid "Growing Together"
-msgstr ""
+msgstr "Creciendo Juntos"
 
 #: src/routes/about/data.svelte.ts
 msgid "Every mini-app taught me something new about Svelte. Now, I'm sharing these lessons through code, hoping others can learn and build upon them."
-msgstr ""
+msgstr "Cada mini-aplicación me enseñó algo nuevo sobre Svelte. Ahora, estoy compartiendo estas lecciones a través del código, esperando que otros puedan aprender y construir sobre ellas."
 
 #: src/routes/about/data.svelte.ts
 msgid "Your Ideas Matter"
-msgstr ""
+msgstr "Tus Ideas Importan"
 
 #: src/routes/about/data.svelte.ts
 msgid "This project grows with your needs. Have an idea for a tool that would make your life easier? Let's build it together!"
-msgstr ""
+msgstr "Este proyecto crece con tus necesidades. ¿Tienes una idea para una herramienta que te haría la vida más fácil? ¡Construyámosla juntos!"
 
 #: src/routes/about/data.svelte.ts
 msgid "Building Bridges"
-msgstr ""
+msgstr "Construyendo Puentes"
 
 #: src/routes/about/data.svelte.ts
 msgid "Imagine a community where developers share their mini-tools, learn from each other, and collectively make development more enjoyable."
-msgstr ""
+msgstr "Imagina una comunidad donde los desarrolladores compartan sus mini-herramientas, aprendan unos de otros y, colectivamente, hagan que el desarrollo sea más agradable."
 
 #: src/routes/about/data.svelte.ts
 msgid "More Tools Coming"
-msgstr ""
+msgstr "Más Herramientas Próximamente"
 
 #: src/routes/about/data.svelte.ts
 msgid "The toolbox is always expanding! I'm constantly working on new mini-apps based on real-world needs and community suggestions."
-msgstr ""
+msgstr "¡La caja de herramientas siempre se está expandiendo! Estoy constantemente trabajando en nuevas mini-aplicaciones basadas en las necesidades del mundo real y las sugerencias de la comunidad."
 
 #: src/routes/about/data.svelte.ts
 msgid "Join the Journey"
-msgstr ""
+msgstr "Únete al Viaje"
 
 #: src/routes/about/data.svelte.ts
 msgid "Whether you're a Svelte enthusiast or just getting started, your perspective is valuable. Let's collaborate and make these tools even better!"
-msgstr ""
+msgstr "Ya seas un entusiasta de Svelte o estés empezando, tu perspectiva es valiosa. ¡Colaboremos y hagamos que estas herramientas sean aún mejores!"
 
 #: src/routes/about/data.svelte.ts
 msgid "Our app includes a powerful \"Nuke Button\" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
-msgstr ""
+msgstr "Nuestra aplicación incluye un potente \"Botón Nuclear\" que te permite borrar todos los datos almacenados en caché, incluyendo las cachés del service worker y el almacenamiento local. Esto es especialmente útil si encuentras algún problema de almacenamiento en caché o necesitas restablecer la aplicación a su estado predeterminado."
 
 #: src/routes/about/data.svelte.ts
 msgid "Clear all cached data, including service worker caches and local storage"
-msgstr ""
+msgstr "Borrar todos los datos almacenados en caché, incluyendo las cachés del service worker y el almacenamiento local"
 
 #: src/routes/about/data.svelte.ts
 msgid "Reset the app to its initial state when experiencing issues"
-msgstr ""
+msgstr "Restablecer la aplicación a su estado inicial cuando experimentes problemas"
 
 #: src/routes/about/data.svelte.ts
 msgid "Unregister service workers for a fresh start"
-msgstr ""
+msgstr "Anular el registro de los service workers para un nuevo comienzo"
 
 #: src/routes/about/data.svelte.ts
 msgid "Automatically reload the app after clearing data"
-msgstr ""
+msgstr "Recargar automáticamente la aplicación después de borrar los datos"
 
 #: src/routes/about/data.svelte.ts
 msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
-msgstr ""
+msgstr "Usa esta función si encuentras algún problema de almacenamiento en caché o necesitas restablecer la aplicación a su estado predeterminado.```"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Offline-First Architecture"
-msgstr ""
+msgstr "Arquitectura \"Primero Desconectado\""
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app."
-msgstr ""
+msgstr "Reconstrucción completa centrada en las capacidades offline y la gestión de datos local-first. Los usuarios pueden usar el botón de \"nuke\" para borrar los datos en caché si notan problemas con la aplicación."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced Performance"
-msgstr ""
+msgstr "Rendimiento Mejorado"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized load times and responsiveness through local data management."
-msgstr ""
+msgstr "Tiempos de carga y capacidad de respuesta optimizados a través de la gestión de datos local."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Svelte 5 Migration"
-msgstr ""
+msgstr "Migración a Svelte 5"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Complete upgrade to Svelte 5 with modern features and optimizations."
-msgstr ""
+msgstr "Actualización completa a Svelte 5 con características y optimizaciones modernas."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Local Data Persistence"
-msgstr ""
+msgstr "Persistencia de Datos Local"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Robust local storage implementation with IndexedDB and background sync."
-msgstr ""
+msgstr "Implementación robusta de almacenamiento local con IndexedDB y sincronización en segundo plano."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "PWA Support"
-msgstr ""
+msgstr "Soporte PWA"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
 msgid "Full Progressive Web App capabilities with offline support and installability."
-msgstr ""
+msgstr "Capacidades completas de Aplicación Web Progresiva con soporte offline e instalabilidad."
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline"
-msgstr ""
+msgstr "Cronología"
 
 #: src/routes/changelog/+page.svelte
 msgid "<0/> Timeline"
-msgstr ""
+msgstr "<0/> Cronología"
 
 #: src/routes/changelog/+page.svelte
 msgid "Key achievements and major improvements."
-msgstr ""
+msgstr "Logros clave y mejoras importantes.```"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "October 14, 2025"
-msgstr ""
+msgstr "14 de octubre de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Svelte Mini Apps featured on the official MadeWithSvelte showcase"
-msgstr ""
+msgstr "Svelte Mini Apps destacadas en la presentación oficial de MadeWithSvelte"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps"
-msgstr ""
+msgstr "Destacado en MadeWithSvelte.com mostrando nuestra colección de mini-aplicaciones de productividad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Recognized for our Svelte 5 implementation and modern PWA architecture"
-msgstr ""
+msgstr "Reconocido por nuestra implementación de Svelte 5 y la arquitectura PWA moderna"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Highlighting our comprehensive suite of tools including budget tracker, todo list, and more"
-msgstr ""
+msgstr "Destacando nuestro conjunto completo de herramientas que incluyen el rastreador de presupuesto, la lista de tareas y más"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 29, 2025"
-msgstr ""
+msgstr "29 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Switched from SQLite to PostgreSQL for improved scalability and performance"
-msgstr ""
+msgstr "Cambiado de SQLite a PostgreSQL para mejorar la escalabilidad y el rendimiento"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Migrated database from SQLite to PostgreSQL for better scalability"
-msgstr ""
+msgstr "Base de datos migrada de SQLite a PostgreSQL para una mejor escalabilidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated Prisma schema and models to support PostgreSQL"
-msgstr ""
+msgstr "Esquema y modelos de Prisma actualizados para admitir PostgreSQL"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added instructions for local PostgreSQL setup in README"
-msgstr ""
+msgstr "Instrucciones añadidas para la configuración local de PostgreSQL en README"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created dedicated db.ts file for Prisma client instance"
-msgstr ""
+msgstr "Archivo db.ts dedicado creado para la instancia del cliente Prisma"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Removed obsolete drizzle config files"
-msgstr ""
+msgstr "Archivos de configuración de drizzle obsoletos eliminados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 27, 2025"
-msgstr ""
+msgstr "27 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Prepared for migrating budget tracker from localStorage to SQLite/Prisma"
-msgstr ""
+msgstr "Preparado para migrar el rastreador de presupuesto de localStorage a SQLite/Prisma"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created detailed migration plan document"
-msgstr ""
+msgstr "Documento de plan de migración detallado creado"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Outlined database schema updates and server-side implementation"
-msgstr ""
+msgstr "Actualizaciones del esquema de la base de datos e implementación del lado del servidor descritas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Planned client-side integration strategy"
-msgstr ""
+msgstr "Estrategia de integración del lado del cliente planificada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Prepared for future authentication integration"
-msgstr ""
+msgstr "Preparado para la futura integración de la autenticación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 22-27, 2025"
-msgstr ""
+msgstr "22-27 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Completely refactored budget and expense state management"
-msgstr ""
+msgstr "Gestión del estado del presupuesto y los gastos completamente refactorizada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Replaced legacy budgetStore with reactive stores"
-msgstr ""
+msgstr "budgetStore heredado reemplazado con almacenes reactivos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented comprehensive test suite for budget operations"
-msgstr ""
+msgstr "Conjunto de pruebas integral implementado para las operaciones de presupuesto"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added cross-tab synchronization for consistent data"
-msgstr ""
+msgstr "Sincronización entre pestañas añadida para datos coherentes"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced form data binding and empty state handling"
-msgstr ""
+msgstr "Enlace de datos de formulario mejorado y gestión de estados vacíos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Migrated to custom PersistedState from svelte-persisted-store"
-msgstr ""
+msgstr "Migrado a PersistedState personalizado desde svelte-persisted-store"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added currency symbol localization"
-msgstr ""
+msgstr "Localización de símbolos de moneda añadida"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 21-22, 2025"
-msgstr ""
+msgstr "21-22 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented visual feedback for page navigation"
-msgstr ""
+msgstr "Implementada retroalimentación visual para la navegación de la página"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created NavigationProgressIndicator component"
-msgstr ""
+msgstr "Componente NavigationProgressIndicator creado"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Integrated progress bar in Navbar and GitHub tracker pages"
-msgstr ""
+msgstr "Barra de progreso integrada en las páginas de la barra de navegación y el rastreador de GitHub"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized progress timing logic for smoother transitions"
-msgstr ""
+msgstr "Lógica de temporización del progreso optimizada para transiciones más suaves"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved navigation state handling across the app"
-msgstr ""
+msgstr "Gestión del estado de navegación mejorada en toda la aplicación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 18-20, 2025"
-msgstr ""
+msgstr "18-20 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Transformed todo list into full-featured Kanban board"
-msgstr ""
+msgstr "Lista de tareas transformada en un tablero Kanban con todas las funciones"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented drag-and-drop functionality with svelte-dnd-action"
-msgstr ""
+msgstr "Funcionalidad de arrastrar y soltar implementada con svelte-dnd-action"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added dynamic column management"
-msgstr ""
+msgstr "Gestión de columnas dinámica añadida"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved UI with grabber handles and resizer components"
-msgstr ""
+msgstr "IU mejorada con controles de agarre y componentes de cambio de tamaño"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced task editing with icon buttons"
-msgstr ""
+msgstr "Edición de tareas mejorada con botones de icono"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized state management structure"
-msgstr ""
+msgstr "Estructura de gestión de estado optimizada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 5-11, 2025"
-msgstr ""
+msgstr "5-11 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Various enhancements to user interface and navigation"
-msgstr ""
+msgstr "Varias mejoras en la interfaz de usuario y la navegación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated keyboard shortcuts for better accessibility"
-msgstr ""
+msgstr "Atajos de teclado actualizados para una mejor accesibilidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved app list layout and responsiveness"
-msgstr ""
+msgstr "Diseño y capacidad de respuesta de la lista de aplicaciones mejorados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added toggleable sheet menu for app navigation"
-msgstr ""
+msgstr "Menú de hoja conmutable añadido para la navegación de la aplicación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored route metadata management"
-msgstr ""
+msgstr "Gestión de metadatos de ruta refactorizada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Cleaned up unused components and imports"
-msgstr ""
+msgstr "Componentes e importaciones no utilizados limpiados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "March 1-4, 2025"
-msgstr ""
+msgstr "1-4 de marzo de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented comprehensive SEO improvements"
-msgstr ""
+msgstr "Implementadas mejoras integrales de SEO"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created RouteHead component for centralized metadata"
-msgstr ""
+msgstr "Componente RouteHead creado para metadatos centralizados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added Open Graph and Twitter meta tags"
-msgstr ""
+msgstr "Etiquetas meta de Open Graph y Twitter añadidas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Integrated structured data for better search visibility"
-msgstr ""
+msgstr "Datos estructurados integrados para una mejor visibilidad de búsqueda"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Applied RouteHead across all major pages"
-msgstr ""
+msgstr "RouteHead aplicado en todas las páginas principales"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced About page with Attributions section"
-msgstr ""
+msgstr "Página 'Acerca de' mejorada con la sección 'Atribuciones'"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "February 26-28, 2025"
-msgstr ""
+msgstr "26-28 de febrero de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented comprehensive usage analytics"
-msgstr ""
+msgstr "Analíticas de uso integrales implementadas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created AppTracker component for monitoring app usage"
-msgstr ""
+msgstr "Componente AppTracker creado para supervisar el uso de la aplicación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added favorite apps and recent activity to user profile"
-msgstr ""
+msgstr "Aplicaciones favoritas y actividad reciente añadidas al perfil del usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented streak tracking based on daily usage"
-msgstr ""
+msgstr "Seguimiento de rachas implementado basado en el uso diario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced profile page with usage statistics tabs"
-msgstr ""
+msgstr "Página de perfil mejorada con pestañas de estadísticas de uso"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added example app to demonstrate tracking functionality"
-msgstr ""
+msgstr "Aplicación de ejemplo añadida para demostrar la funcionalidad de seguimiento"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "February 22, 2025"
-msgstr ""
+msgstr "22 de febrero de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added visual elements to celebrate competition achievement"
-msgstr ""
+msgstr "Elementos visuales añadidos para celebrar el logro de la competencia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added trophy icon to highlight 4th place win"
-msgstr ""
+msgstr "Icono de trofeo añadido para destacar la victoria del 4º puesto"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated welcome message with competition results"
-msgstr ""
+msgstr "Mensaje de bienvenida actualizado con los resultados de la competencia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Linked to detailed changelog entry about migration features"
-msgstr ""
+msgstr "Enlazado a una entrada detallada del registro de cambios sobre las características de la migración"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "February 10, 2025"
-msgstr ""
+msgstr "10 de febrero de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Recognized for excellence in Svelte 5 migration with our Migration Magician entry"
-msgstr ""
+msgstr "Reconocido por la excelencia en la migración de Svelte 5 con nuestra entrada Migration Magician"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Earned 4th place in the prestigious Svelte Hack 2024 competition"
-msgstr ""
+msgstr "Obtuvimos el 4º lugar en la prestigiosa competencia Svelte Hack 2024"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Recognized for our innovative approach to Svelte 4 to Svelte 5 migration"
-msgstr ""
+msgstr "Reconocido por nuestro enfoque innovador para la migración de Svelte 4 a Svelte 5"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented comprehensive runes adoption across the codebase"
-msgstr ""
+msgstr "Adopción integral de runas implementada en todo el código base"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Showcased offline-first architecture with robust local data persistence"
-msgstr ""
+msgstr "Arquitectura de prioridad offline mostrada con una persistencia de datos local robusta"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
 msgid "Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components"
-msgstr ""
+msgstr "IU/UX moderna demostrada con características de Svelte 5 y componentes shadcn-svelte"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "January 16-19, 2025"
-msgstr ""
+msgstr "16-19 de enero de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Focused on improving functionality, user interface, and code quality"
-msgstr ""
+msgstr "Centrado en mejorar la funcionalidad, la interfaz de usuario y la calidad del código"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced Markdown editor with Carta-MD integration for better editing and preview capabilities"
-msgstr ""
+msgstr "Editor de Markdown mejorado con la integración de Carta-MD para mejores capacidades de edición y vista previa"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated currency conversion logic with easy-currencies library for improved accuracy"
-msgstr ""
+msgstr "Lógica de conversión de moneda actualizada con la biblioteca easy-currencies para mejorar la precisión"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored NukeButton for better data clearing functionality and visual design"
-msgstr ""
+msgstr "NukeButton refactorizado para una mejor funcionalidad de borrado de datos y diseño visual"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced GitHub contribution tracker with toast notifications and dynamic year updates"
-msgstr ""
+msgstr "Rastreador de contribuciones de GitHub mejorado con notificaciones toast y actualizaciones dinámicas de año"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced Partytown for web worker management and Google Tag Manager for analytics"
-msgstr ""
+msgstr "Partytown introducido para la gestión de web workers y Google Tag Manager para analíticas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Repositioned GitHub link in footer for better visibility"
-msgstr ""
+msgstr "Enlace de GitHub reposicionado en el pie de página para una mejor visibilidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored GitGraph component for improved responsiveness and code cleanliness"
-msgstr ""
+msgstr "Componente GitGraph refactorizado para mejorar la capacidad de respuesta y la limpieza del código"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated dependencies, including Svelte and TypeScript libraries"
-msgstr ""
+msgstr "Dependencias actualizadas, incluidas las bibliotecas Svelte y TypeScript"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "January 1-15, 2025"
-msgstr ""
+msgstr "1-15 de enero de 2025"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented user-focused features and cleaned up code structure"
-msgstr ""
+msgstr "Características centradas en el usuario implementadas y estructura de código limpiada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Corrected pluralization logic for GitHub contributions to ensure grammatical accuracy"
-msgstr ""
+msgstr "Lógica de pluralización corregida para las contribuciones de GitHub para garantizar la precisión gramatical"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added robots.txt for better SEO and web crawler management"
-msgstr ""
+msgstr "robots.txt añadido para un mejor SEO y gestión de rastreadores web"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized and cleaned up code for GitHub contribution tracker, including unused files"
-msgstr ""
+msgstr "Código optimizado y limpiado para el rastreador de contribuciones de GitHub, incluidos los archivos no utilizados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved password generator for better readability and consistency"
-msgstr ""
+msgstr "Generador de contraseñas mejorado para una mejor legibilidad y consistencia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored UI elements for responsive design, notably in the heat map for contributions"
-msgstr ""
+msgstr "Elementos de la IU refactorizados para un diseño receptivo, especialmente en el mapa de calor de las contribuciones"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced user role management in registration and session handling"
-msgstr ""
+msgstr "Gestión de roles de usuario mejorada en el registro y el manejo de sesiones"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved service worker functionality with error handling and update notifications"
-msgstr ""
+msgstr "Funcionalidad del service worker mejorada con manejo de errores y notificaciones de actualización"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Removed unused components, interfaces, and imports to streamline the codebase"
-msgstr ""
+msgstr "Componentes, interfaces e importaciones no utilizados eliminados para agilizar el código base"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refined feature flag logic to include privileged user roles"
-msgstr ""
+msgstr "Lógica de indicadores de características refinada para incluir roles de usuario privilegiados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 29-31, 2024"
-msgstr ""
+msgstr "29-31 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactoring for code clarity, adding documentation, and enhancing user experience"
-msgstr ""
+msgstr "Refactorización para la claridad del código, agregando documentación y mejorando la experiencia del usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored import paths for consistency across components"
-msgstr ""
+msgstr "Rutas de importación refactorizadas para la consistencia entre los componentes"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced command dialog components for enhanced command functionality"
-msgstr ""
+msgstr "Componentes de diálogo de comando introducidos para mejorar la funcionalidad de los comandos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated UI colors to green for a cohesive design"
-msgstr ""
+msgstr "Colores de la IU actualizados a verde para un diseño cohesivo"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added keyboard shortcut for search input focus"
-msgstr ""
+msgstr "Atajo de teclado añadido para el foco de entrada de búsqueda"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced error handling in NukeButton for data integrity"
-msgstr ""
+msgstr "Manejo de errores mejorado en NukeButton para la integridad de los datos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced CONTRIBUTING.md and enhanced README for better contributor guidance"
-msgstr ""
+msgstr "CONTRIBUTING.md introducido y README mejorado para una mejor guía para los contribuyentes"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored mantra and welcome components for cleaner state management"
-msgstr ""
+msgstr "Componentes de mantra y bienvenida refactorizados para una gestión de estado más limpia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated dependencies and improved UI with new command shortcut component"
-msgstr ""
+msgstr "Dependencias actualizadas e IU mejorada con un nuevo componente de atajo de comando"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 22-25, 2024"
-msgstr ""
+msgstr "22-25 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Focused on improving user interface, adding new features, and enhancing interactivity"
-msgstr ""
+msgstr "Centrado en mejorar la interfaz de usuario, añadir nuevas funciones y mejorar la interactividad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced GitHub tracker with dark mode support and better tooltips"
-msgstr ""
+msgstr "Rastreador de GitHub mejorado con soporte de modo oscuro y mejores sugerencias"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added comprehensive Drawer component suite for improved UI consistency"
-msgstr ""
+msgstr "Conjunto completo de componentes Drawer añadido para mejorar la consistencia de la IU"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated Navbar for dark mode compatibility"
-msgstr ""
+msgstr "Barra de navegación actualizada para la compatibilidad con el modo oscuro"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced feature flags with visibility control for dynamic UI management"
-msgstr ""
+msgstr "Indicadores de características introducidos con control de visibilidad para la gestión dinámica de la IU"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved markdown editor with new components and responsive design"
-msgstr ""
+msgstr "Editor de markdown mejorado con nuevos componentes y diseño receptivo"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added currency symbol helper in budget tracker for better financial data presentation"
-msgstr ""
+msgstr "Asistente de símbolos de moneda añadido en el rastreador de presupuesto para una mejor presentación de datos financieros"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced service worker logic for better offline experience and caching"
-msgstr ""
+msgstr "Lógica del service worker mejorada para una mejor experiencia offline y almacenamiento en caché"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refined state management in reactive declarations for better app performance"
-msgstr ""
+msgstr "Gestión de estado refinada en declaraciones reactivas para un mejor rendimiento de la aplicación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 19-22, 2024"
-msgstr ""
+msgstr "19-22 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved user interaction, added new components, and enhanced service worker functionality"
-msgstr ""
+msgstr "Interacción del usuario mejorada, nuevos componentes añadidos y funcionalidad del service worker mejorada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced service worker update mechanism with hash checks and client notifications"
-msgstr ""
+msgstr "Mecanismo de actualización del service worker mejorado con comprobaciones hash y notificaciones al cliente"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved budget tracker UI with better input handling and visual feedback"
-msgstr ""
+msgstr "IU del rastreador de presupuesto mejorada con un mejor manejo de la entrada y retroalimentación visual"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored to-do list with custom UI components for better organization"
-msgstr ""
+msgstr "Lista de tareas refactorizada con componentes de IU personalizados para una mejor organización"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added custom columns to to-do list for dynamic task management"
-msgstr ""
+msgstr "Columnas personalizadas añadidas a la lista de tareas para la gestión dinámica de tareas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced 'Under Construction' component for informing users about ongoing development"
-msgstr ""
+msgstr "Componente 'En construcción' introducido para informar a los usuarios sobre el desarrollo en curso"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added advanced emoji tools with new context menu and keyboard interactions"
-msgstr ""
+msgstr "Herramientas de emoji avanzadas añadidas con un nuevo menú contextual e interacciones de teclado"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 14-17, 2024"
-msgstr ""
+msgstr "14-17 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Focused on code quality, new functionalities, and project setup"
-msgstr ""
+msgstr "Centrado en la calidad del código, nuevas funcionalidades y configuración del proyecto"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Simplified mantra retrieval logic for better readability"
-msgstr ""
+msgstr "Lógica de recuperación de mantra simplificada para una mejor legibilidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized Navbar button whitespace for cleaner UI"
-msgstr ""
+msgstr "Espacio en blanco del botón de la barra de navegación optimizado para una IU más limpia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced pixel-to-rem conversion setting for responsive design"
-msgstr ""
+msgstr "Ajuste de conversión de píxel a rem introducido para un diseño receptivo"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added SEO guidelines and constants for enhanced visibility"
-msgstr ""
+msgstr "Directrices y constantes de SEO añadidas para una visibilidad mejorada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented to-do list with local storage persistence for task management"
-msgstr ""
+msgstr "Lista de tareas implementada con persistencia de almacenamiento local para la gestión de tareas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced password management with new UI features and security measures"
-msgstr ""
+msgstr "Gestión de contraseñas mejorada con nuevas funciones de la IU y medidas de seguridad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored OAuth callback handler for GitHub to improve maintainability"
-msgstr ""
+msgstr "Manejador de devolución de llamada OAuth refactorizado para GitHub para mejorar la mantenibilidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated service worker hash output path for deployment consistency"
-msgstr ""
+msgstr "Ruta de salida hash del service worker actualizada para la coherencia de la implementación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 14, 2024"
-msgstr ""
+msgstr "14 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced new features for user interaction, database changes, and improved UI components"
-msgstr ""
+msgstr "Nuevas funciones introducidas para la interacción del usuario, los cambios en la base de datos y los componentes de la IU mejorados"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added functionality to like mantras with database updates"
-msgstr ""
+msgstr "Funcionalidad añadida para dar 'me gusta' a los mantras con actualizaciones de la base de datos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Migrated database to SQLite, added Mantras table, and user feedback form"
-msgstr ""
+msgstr "Base de datos migrada a SQLite, tabla Mantras añadida y formulario de comentarios del usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Modularized about-page components for better UX"
-msgstr ""
+msgstr "Componentes de la página 'acerca de' modularizados para una mejor experiencia de usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Removed service-worker-hash.json file to clean up the project structure"
-msgstr ""
+msgstr "Archivo service-worker-hash.json eliminado para limpiar la estructura del proyecto"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated service worker hash file path for consistency"
-msgstr ""
+msgstr "Ruta del archivo hash del service worker actualizada para la coherencia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 12-13, 2024"
-msgstr ""
+msgstr "12-13 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Focused on improving service worker logic, styling, and project configuration"
-msgstr ""
+msgstr "Centrado en mejorar la lógica del service worker, el estilo y la configuración del proyecto"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced service worker notification system with better version management"
-msgstr ""
+msgstr "Sistema de notificación del service worker mejorado con una mejor gestión de versiones"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Simplified service worker hash generation and update logic"
-msgstr ""
+msgstr "Generación hash del service worker simplificada y lógica de actualización"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added enhanced-images package for better image handling in Svelte"
-msgstr ""
+msgstr "Paquete enhanced-images añadido para un mejor manejo de imágenes en Svelte"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Introduced new components and images for the about page"
-msgstr ""
+msgstr "Nuevos componentes e imágenes introducidos para la página 'acerca de'"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved HTML and CSS styling for better code readability"
-msgstr ""
+msgstr "Estilo HTML y CSS mejorado para una mejor legibilidad del código"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated build scripts and dependencies for compatibility and efficiency"
-msgstr ""
+msgstr "Scripts de compilación y dependencias actualizados para la compatibilidad y la eficiencia"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added password generation button to the random password generator"
-msgstr ""
+msgstr "Botón de generación de contraseñas añadido al generador de contraseñas aleatorias"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 11, 2024"
-msgstr ""
+msgstr "11 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Improved user control over app data and caching"
-msgstr ""
+msgstr "Control de usuario mejorado sobre los datos de la aplicación y el almacenamiento en caché"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added comprehensive Nuke Button functionality to clear all cached data"
-msgstr ""
+msgstr "Funcionalidad completa del botón Nuke añadida para borrar todos los datos en caché"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Clear caches, localStorage, sessionStorage, and IndexedDB data"
-msgstr ""
+msgstr "Borrar cachés, localStorage, sessionStorage y datos de IndexedDB"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Automatic service worker unregistration for fresh starts"
-msgstr ""
+msgstr "Anulación automática del registro del service worker para nuevos comienzos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added user guidance for troubleshooting app issues"
-msgstr ""
+msgstr "Guía de usuario añadida para solucionar problemas de la aplicación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 10, 2024"
-msgstr ""
+msgstr "10 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Complete overhaul of password generator and enhanced clipboard functionality"
-msgstr ""
+msgstr "Revisión completa del generador de contraseñas y funcionalidad del portapapeles mejorada"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Reimplemented password generator with modern UI components and enhanced features"
-msgstr ""
+msgstr "Generador de contraseñas reim"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added versatile copyToClipboard utility function with toast notifications"
-msgstr ""
+msgstr "Se agregó una función de utilidad versátil copyToClipboard con notificaciones toast"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented dynamic password strength indicators and character options"
-msgstr ""
+msgstr "Se implementaron indicadores dinámicos de fortaleza de contraseña y opciones de caracteres"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Integrated slider component for flexible password length control"
-msgstr ""
+msgstr "Se integró un componente deslizador para un control flexible de la longitud de la contraseña"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Refactored emoji and password generators to use the new clipboard utility"
-msgstr ""
+msgstr "Se refactorizaron los generadores de emojis y contraseñas para usar la nueva utilidad de portapapeles"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 4, 2024"
-msgstr ""
+msgstr "4 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Major improvements to QR code generation and social links functionality"
-msgstr ""
+msgstr "Mejoras importantes en la generación de códigos QR y la funcionalidad de enlaces sociales"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added QR code display component for improved modularity"
-msgstr ""
+msgstr "Se agregó un componente de visualización de código QR para mejorar la modularidad"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented social links database with comprehensive management"
-msgstr ""
+msgstr "Se implementó una base de datos de enlaces sociales con gestión integral"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created API endpoints for social links handling"
-msgstr ""
+msgstr "Se crearon endpoints de API para el manejo de enlaces sociales"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced QR code generator with text and social links input"
-msgstr ""
+msgstr "Se mejoró el generador de códigos QR con entrada de texto y enlaces sociales"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "December 1-3, 2024"
-msgstr ""
+msgstr "1-3 de diciembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "New features and improvements to existing apps"
-msgstr ""
+msgstr "Nuevas características y mejoras para las aplicaciones existentes"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced currency conversion with caching and user-agent rotation"
-msgstr ""
+msgstr "Se mejoró la conversión de divisas con almacenamiento en caché y rotación de agente de usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added advanced emoji transformation features"
-msgstr ""
+msgstr "Se agregaron funciones avanzadas de transformación de emojis"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented emoji checker functionality"
-msgstr ""
+msgstr "Se implementó la funcionalidad de verificación de emojis"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added pattern validation for currency amounts"
-msgstr ""
+msgstr "Se agregó validación de patrones para montos de divisas"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "November 29-30, 2024"
-msgstr ""
+msgstr "29-30 de noviembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Major backend and infrastructure improvements"
-msgstr ""
+msgstr "Importantes mejoras en el backend y la infraestructura"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented English dictionary with caching"
-msgstr ""
+msgstr "Se implementó un diccionario de inglés con almacenamiento en caché"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added health check endpoint"
-msgstr ""
+msgstr "Se agregó un endpoint de verificación de salud"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced service worker functionality"
-msgstr ""
+msgstr "Se mejoró la funcionalidad del service worker"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Switched from drizzle-orm to Prisma for better database management"
-msgstr ""
+msgstr "Se cambió de drizzle-orm a Prisma para una mejor gestión de la base de datos"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "November 24-27, 2024"
-msgstr ""
+msgstr "24-27 de noviembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Major user experience and authentication improvements"
-msgstr ""
+msgstr "Importantes mejoras en la experiencia del usuario y la autenticación"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented user authentication system"
-msgstr ""
+msgstr "Se implementó un sistema de autenticación de usuarios"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added user profile components"
-msgstr ""
+msgstr "Se agregaron componentes de perfil de usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Created offline page component"
-msgstr ""
+msgstr "Se creó un componente de página sin conexión"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced navbar with user context"
-msgstr ""
+msgstr "Se mejoró la barra de navegación con contexto de usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "November 23-24, 2024"
-msgstr ""
+msgstr "23-24 de noviembre de 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced visual feedback and animations"
-msgstr ""
+msgstr "Se mejoraron las animaciones y la retroalimentación visual"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added new Lottie animations for improved UI feedback"
-msgstr ""
+msgstr "Se agregaron nuevas animaciones Lottie para mejorar la retroalimentación de la interfaz de usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Implemented trending, repository, and hover animations"
-msgstr ""
+msgstr "Se implementaron animaciones de tendencias, repositorios y hover"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Updated welcome message and about page layout"
-msgstr ""
+msgstr "Se actualizó el mensaje de bienvenida y el diseño de la página 'Acerca de'"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Added alert component with description support"
-msgstr ""
+msgstr "Se agregó un componente de alerta con soporte para descripciones"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Svelte Hack 2024 Achievement"
-msgstr ""
+msgstr "Logro de Svelte Hack 2024"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Recognized for innovative Svelte 5 migration approach and offline-first architecture"
-msgstr ""
+msgstr "Reconocido por el enfoque innovador de migración a Svelte 5 y la arquitectura de prioridad sin conexión"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Major Refactoring"
-msgstr ""
+msgstr "Refactorización Mayor"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Revamped code quality with widespread component refactors"
-msgstr ""
+msgstr "Se renovó la calidad del código con refactorizaciones generalizadas de componentes"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Optimized service worker and asset caching for improved offline support"
-msgstr ""
+msgstr "Se optimizó el service worker y el almacenamiento en caché de activos para mejorar el soporte sin conexión"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "User Experience Enhancements"
-msgstr ""
+msgstr "Mejoras en la Experiencia del Usuario"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Streamlined UI design and navigation for an intuitive experience"
-msgstr ""
+msgstr "Se simplificó el diseño de la interfaz de usuario y la navegación para una experiencia intuitiva"
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced offline indicators and interaction feedback"
-msgstr ""
+msgstr "Se mejoraron los indicadores sin conexión y la retroalimentación de la interacción```"
 
 #: src/routes/hire/+page.svelte
 msgid ""
 "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
 "innovative solutions. Let's create something exceptional together!"
 msgstr ""
+"Más allá del código, contribuyo a proyectos de Svelte, mentoreo a desarrolladores y me encanta colaborar en\n"
+"soluciones innovadoras. ¡Creemos algo excepcional juntos!"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Make changes to your profile here. Click save when you're done."
-msgstr ""
+msgstr "Realiza cambios en tu perfil aquí. Haz clic en guardar cuando hayas terminado."
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline | Svelte Mini Apps Changelog"
-msgstr ""
+msgstr "Cronología | Registro de cambios de Svelte Mini Apps"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Development Mode"
-msgstr ""
+msgstr "Modo de desarrollo"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "This app is currently under development and may have bugs or incomplete features."
-msgstr ""
+msgstr "Esta aplicación está actualmente en desarrollo y puede tener errores o características incompletas."
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
-msgstr ""
+msgstr "Visualiza y analiza las contribuciones de GitHub con estadísticas detalladas, mapas de calor e información relevante"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Enter a GitHub username and year to view their activity"
-msgstr ""
+msgstr "Ingresa un nombre de usuario de GitHub y un año para ver su actividad"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Track Contributions"
-msgstr ""
+msgstr "<0/> Rastrear Contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "<0/> Recent Searches"
-msgstr ""
+msgstr "<0/> Búsquedas Recientes"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "No recent searches"
-msgstr ""
+msgstr "No hay búsquedas recientes"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Detailed Stats"
-msgstr ""
+msgstr "Estadísticas Detalladas"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "View commits, PRs, issues, and code reviews"
-msgstr ""
+msgstr "Ver commits, PRs, issues y revisiones de código"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Contribution Heatmap"
-msgstr ""
+msgstr "Mapa de Calor de Contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "GitHub-style calendar visualization"
-msgstr ""
+msgstr "Visualización de calendario al estilo de GitHub"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Repository Insights"
-msgstr ""
+msgstr "Información del Repositorio"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Top repositories and languages used"
-msgstr ""
+msgstr "Principales repositorios e idiomas utilizados```"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to backup data"
-msgstr ""
+msgstr "Por favor, inicia sesión para hacer una copia de seguridad de los datos"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to sync data"
-msgstr ""
+msgstr "Por favor, inicia sesión para sincronizar los datos"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Track your purchases and analyze spending patterns"
-msgstr ""
+msgstr "Realiza un seguimiento de tus compras y analiza los patrones de gasto"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "<0/> Sync"
-msgstr ""
+msgstr "<0/> Sincronizar"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "<0/> Backup"
-msgstr ""
+msgstr "<0/> Copia de seguridad"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Sign in to sync and backup your data"
-msgstr ""
+msgstr "Inicia sesión para sincronizar y hacer una copia de seguridad de tus datos"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Are you sure you want to delete this item and all its purchases?"
-msgstr ""
+msgstr "¿Está seguro de que quiere eliminar este artículo y todas sus compras?"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item deleted"
-msgstr ""
+msgstr "Artículo eliminado"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item created successfully (saved locally)"
-msgstr ""
+msgstr "Artículo creado con éxito (guardado localmente)"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Item updated successfully (saved locally)"
-msgstr ""
+msgstr "Artículo actualizado con éxito (guardado localmente)"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Purchase Tracker - Items"
-msgstr ""
+msgstr "Seguimiento de Compras - Artículos"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Manage your purchase tracking items"
-msgstr ""
+msgstr "Administra tus artículos de seguimiento de compras"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "No items yet. Click \"Add Item\" to get started."
-msgstr ""
+msgstr "Aún no hay artículos. Haz clic en \"Agregar artículo\" para comenzar."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Default Unit (optional)"
-msgstr ""
+msgstr "Unidad predeterminada (opcional)"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7706,7 +7699,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "USD - US Dollar"
-msgstr ""
+msgstr "USD - Dólar estadounidense"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7715,7 +7708,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "EUR - Euro"
-msgstr ""
+msgstr "EUR - Euro"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7724,7 +7717,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "GBP - British Pound"
-msgstr ""
+msgstr "GBP - Libra esterlina"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7733,7 +7726,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "JPY - Japanese Yen"
-msgstr ""
+msgstr "JPY - Yen japonés"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7742,7 +7735,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "CAD - Canadian Dollar"
-msgstr ""
+msgstr "CAD - Dólar canadiense"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7751,7 +7744,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "AUD - Australian Dollar"
-msgstr ""
+msgstr "AUD - Dólar australiano"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -7760,241 +7753,241 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "NGN - Nigerian Naira"
-msgstr ""
+msgstr "NGN - Naira nigeriana```"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Select currency"
-msgstr ""
+msgstr "Seleccionar moneda"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Create Item"
-msgstr ""
+msgstr "Crear artículo"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Save Password"
-msgstr ""
+msgstr "Guardar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Add an optional description to help you remember what this password is for."
-msgstr ""
+msgstr "Añade una descripción opcional para ayudarte a recordar para qué es esta contraseña."
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Description (Optional)"
-msgstr ""
+msgstr "Descripción (Opcional)"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
-msgstr ""
+msgstr "{0}/200 caracteres"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
-msgstr ""
+msgstr "Ver todas las contraseñas"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Hide password"
-msgstr ""
+msgstr "Ocultar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Show password"
-msgstr ""
+msgstr "Mostrar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Copy password"
-msgstr ""
+msgstr "Copiar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Edit password"
-msgstr ""
+msgstr "Editar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Delete password"
-msgstr ""
+msgstr "Eliminar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Edit Password"
-msgstr ""
+msgstr "Editar Contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Update your password and its details. Click save when you're done."
-msgstr ""
+msgstr "Actualice su contraseña y sus detalles. Haga clic en guardar cuando haya terminado."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Enter password"
-msgstr ""
+msgstr "Ingresar contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Details (optional)"
-msgstr ""
+msgstr "Detalles (opcional)"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Add details about this password..."
-msgstr ""
+msgstr "Agregar detalles sobre esta contraseña..."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "<0/> Saving..."
-msgstr ""
+msgstr "<0/> Guardando...```"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Did you resist the craving?"
-msgstr ""
+msgstr "¿Resististe el antojo?"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Yes, I resisted!"
-msgstr ""
+msgstr "¡Sí, resistí!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "No, I gave in"
-msgstr ""
+msgstr "No, cedí"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Any additional thoughts..."
-msgstr ""
+msgstr "Alguna reflexión adicional..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "<0/> Log Craving"
-msgstr ""
+msgstr "<0/> Registrar Antojo"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Recent Cravings"
-msgstr ""
+msgstr "Antojos Recientes"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "{0} Intensity"
-msgstr ""
+msgstr "Intensidad {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Resisted"
-msgstr ""
+msgstr "Resistido"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Gave In"
-msgstr ""
+msgstr "Cedido"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Trigger:"
-msgstr ""
+msgstr "Desencadenante:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Strategy:"
-msgstr ""
+msgstr "Estrategia:```"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Attempt History"
-msgstr ""
+msgstr "<0/> Historial de Intentos"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
-msgstr ""
+msgstr "Aún no hay intentos. ¡Comienza tu viaje arriba!"
 
 #. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Attempt #{0}"
-msgstr ""
+msgstr "Intento #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Current"
-msgstr ""
+msgstr "Actual"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Completed"
-msgstr ""
+msgstr "Completado"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Longest Streak"
-msgstr ""
+msgstr "<0/> Racha Más Larga"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Resets"
-msgstr ""
+msgstr "<0/> Reinicios"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Total Duration"
-msgstr ""
+msgstr "<0/> Duración Total"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Status"
-msgstr ""
+msgstr "<0/> Estado"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Ended: {0}"
-msgstr ""
+msgstr "Finalizado: {0}```"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Health Milestones"
-msgstr ""
+msgstr "<0/> Hitos de Salud"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Achieved"
-msgstr ""
+msgstr "<0/> Alcanzado"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Locked"
-msgstr ""
+msgstr "<0/> Bloqueado"
 
 #. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "{0}% complete"
-msgstr ""
+msgstr "{0}% completado"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "Achieved {0}"
-msgstr ""
+msgstr "Alcanzado {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Failed to set custom start date"
-msgstr ""
+msgstr "No se pudo establecer la fecha de inicio personalizada"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
-msgstr ""
+msgstr "Configure sus hábitos de fumar para obtener estadísticas y cálculos precisos."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Smoking Habits"
-msgstr ""
+msgstr "Hábitos de fumar"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
-msgstr ""
+msgstr "Cigarrillos por día (antes de dejar de fumar)"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Cigarettes per pack"
-msgstr ""
+msgstr "Cigarrillos por paquete"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
-msgstr ""
+msgstr "<0/> Configuración financiera"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Price per pack"
-msgstr ""
+msgstr "Precio por paquete"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Select currency..."
-msgstr ""
+msgstr "Seleccionar moneda..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Your Motivational Goals"
-msgstr ""
+msgstr "Tus metas de motivación"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
-msgstr ""
+msgstr "Agregue razones personales para dejar de fumar y mantenerse motivado."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
-msgstr ""
+msgstr "Aún no se han agregado metas. ¡Agregue sus motivaciones personales arriba!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
-msgstr ""
+msgstr "<0/> Fecha de inicio personalizada"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid ""
@@ -8002,562 +7995,569 @@ msgid ""
 "the date you actually quit smoking. This will adjust your streak display to show your true\n"
 "quit date."
 msgstr ""
+"Si comenzó su viaje sin humo antes de usar esta aplicación, habilite esta función y establezca\n"
+"la fecha en que realmente dejó de fumar. Esto ajustará la visualización de su racha para mostrar su verdadera\n"
+"fecha en que dejó de fumar."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Enable custom start date"
-msgstr ""
+msgstr "Habilitar fecha de inicio personalizada"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Quit Date"
-msgstr ""
+msgstr "Fecha en que dejó de fumar"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Set Custom Start Date"
-msgstr ""
+msgstr "Establecer fecha de inicio personalizada"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Current custom start date:"
-msgstr ""
+msgstr "Fecha de inicio personalizada actual:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Save Settings"
-msgstr ""
+msgstr "<0/> Guardar ajustes```"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "<0/> Streak Information"
-msgstr ""
+msgstr "<0/> Información de la Racha"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "Longest Streak"
-msgstr ""
+msgstr "Racha Más Larga"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Reset Count"
-msgstr ""
+msgstr "Reiniciar Conteo"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "<0/> Health Progress"
-msgstr ""
+msgstr "<0/> Progreso de Salud"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Milestones Achieved"
-msgstr ""
+msgstr "Hitos Alcanzados"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
-msgstr ""
+msgstr "Cigarrillos No Fumados"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Days Smoke-Free"
-msgstr ""
+msgstr "Días Sin Fumar"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "<0/> Craving Management"
-msgstr ""
+msgstr "<0/> Manejo de Antojos"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Total Cravings"
-msgstr ""
+msgstr "Antojos Totales"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Resisted Successfully"
-msgstr ""
+msgstr "Resistidos Exitosamente"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Success Rate"
-msgstr ""
+msgstr "Tasa de Éxito"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "<0/> Achievements"
-msgstr ""
+msgstr "<0/> Logros"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Milestones Unlocked"
-msgstr ""
+msgstr "Hitos Desbloqueados"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Latest Achievement"
-msgstr ""
+msgstr "Último Logro"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Next Milestone"
-msgstr ""
+msgstr "Próximo Hito```"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "<0/> Smoke-Free For"
-msgstr ""
+msgstr "<0/> Libre de humo por"
 
 #. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
-msgstr ""
+msgstr "<0/> Intento #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "days"
-msgstr ""
+msgstr "días"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "hours"
-msgstr ""
+msgstr "horas"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "mins"
-msgstr ""
+msgstr "minutos"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "secs"
-msgstr ""
+msgstr "segundos"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "Started"
-msgstr ""
+msgstr "Comenzó"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Heart rate and blood pressure drop to normal levels"
-msgstr ""
+msgstr "La frecuencia cardíaca y la presión arterial vuelven a niveles normales"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Nicotine cravings peak but will decrease over time"
-msgstr ""
+msgstr "Los antojos de nicotina alcanzan su punto máximo, pero disminuirán con el tiempo"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Carbon monoxide level in blood drops to normal"
-msgstr ""
+msgstr "El nivel de monóxido de carbono en la sangre vuelve a la normalidad"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Anxiety peaks but will improve. Risk of heart attack begins to drop"
-msgstr ""
+msgstr "La ansiedad alcanza su punto máximo, pero mejorará. El riesgo de ataque cardíaco comienza a disminuir"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Nerve endings start regrowing. Smell and taste improve"
-msgstr ""
+msgstr "Las terminaciones nerviosas comienzan a crecer de nuevo. El olfato y el gusto mejoran"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Breathing becomes easier. Bronchial tubes begin to relax"
-msgstr ""
+msgstr "La respiración se vuelve más fácil. Los bronquios comienzan a relajarse"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "You've made it through the hardest part! Cravings are less intense"
-msgstr ""
+msgstr "¡Has superado la parte más difícil! Los antojos son menos intensos"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Circulation improves. Walking and exercise become easier"
-msgstr ""
+msgstr "La circulación mejora. Caminar y hacer ejercicio se vuelven más fáciles"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Lung function begins to improve. Coughing and shortness of breath decrease"
-msgstr ""
+msgstr "La función pulmonar comienza a mejorar. La tos y la dificultad para respirar disminuyen"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Circulation and lung function continue to improve"
-msgstr ""
+msgstr "La circulación y la función pulmonar continúan mejorando"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Stress levels normalize. Breathing problems continue to decrease"
-msgstr ""
+msgstr "Los niveles de estrés se normalizan. Los problemas respiratorios continúan disminuyendo"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Risk of coronary heart disease is half that of a smoker!"
-msgstr ""
+msgstr "¡El riesgo de enfermedad coronaria es la mitad que el de un fumador!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Every minute smoke-free is a victory! 🏆"
-msgstr ""
+msgstr "¡Cada minuto sin fumar es una victoria! 🏆"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "You're stronger than your cravings! 💪"
-msgstr ""
+msgstr "¡Eres más fuerte que tus antojos! 💪"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Think of how much healthier your body is becoming! ❤️"
-msgstr ""
+msgstr "¡Piensa en lo mucho más saludable que se está volviendo tu cuerpo! ❤️"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Your lungs are thanking you right now! 🫁"
-msgstr ""
+msgstr "¡Tus pulmones te lo están agradeciendo ahora mismo! 🫁"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "You're saving money and your life! 💰"
-msgstr ""
+msgstr "¡Estás ahorrando dinero y tu vida! 💰"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Cravings are temporary, but your health is forever! ⏳"
-msgstr ""
+msgstr "¡Los antojos son temporales, pero tu salud es para siempre! ⏳"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Look how far you've come! Keep going! 🚀"
-msgstr ""
+msgstr "¡Mira lo lejos que has llegado! ¡Sigue adelante! 🚀"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "You're proving to yourself that you can do hard things! 🌟"
-msgstr ""
+msgstr "¡Te estás demostrando a ti mismo que puedes hacer cosas difíciles! 🌟"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Every day smoke-free is a gift to your future self! 🎁"
-msgstr ""
+msgstr "¡Cada día sin fumar es un regalo para tu yo futuro! 🎁"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "You're inspiring others by your commitment! 👏"
-msgstr ""
+msgstr "¡Estás inspirando a otros con tu compromiso! 👏"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "After meals"
-msgstr ""
+msgstr "Después de las comidas"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "With coffee"
-msgstr ""
+msgstr "Con café"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Social situations"
-msgstr ""
+msgstr "Situaciones sociales"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Seeing others smoke"
-msgstr ""
+msgstr "Ver a otros fumar"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Drink water"
-msgstr ""
+msgstr "Beber agua"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Chew gum"
-msgstr ""
+msgstr "Masticar chicle"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Go for a walk"
-msgstr ""
+msgstr "Ir a caminar"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Call a friend"
-msgstr ""
+msgstr "Llamar a un amigo"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Exercise"
-msgstr ""
+msgstr "Hacer ejercicio"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Distract yourself"
-msgstr ""
+msgstr "Distraerse"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Eat healthy snack"
-msgstr ""
+msgstr "Comer un bocadillo saludable"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Review your goals"
-msgstr ""
+msgstr "Revisar tus metas```"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Escape"
-msgstr ""
+msgstr "Escape"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Beta Version"
-msgstr ""
+msgstr "Versión Beta"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Todo List"
-msgstr ""
+msgstr "Lista de Tareas"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "<0/> Add Column"
-msgstr ""
+msgstr "<0/> Agregar Columna"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Enter todo text..."
-msgstr ""
+msgstr "Ingresa el texto de la tarea..."
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "<0/> Add Todo"
-msgstr ""
+msgstr "<0/> Agregar Tarea"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Edit Todo"
-msgstr ""
+msgstr "Editar Tarea"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Save"
-msgstr ""
+msgstr "Guardar```"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text Summarizer - Create Concise Summaries Instantly"
-msgstr ""
+msgstr "Resumidor de Texto - Crea Resúmenes Concisos al Instante"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
-msgstr ""
+msgstr "Resume rápidamente textos largos en versiones concisas con nuestra herramienta de Resumidor de Texto. Perfecto para estudiantes, investigadores y profesionales que necesitan extraer información clave."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
 "Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
 "techniques, not AI."
-msgstr ""
+msgstr "¡Bienvenido al <0>Resumidor de Texto</0>! Crea rápidamente resúmenes concisos de textos más largos utilizando técnicas extractivas algorítmicas, no IA."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
 "Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
 "and getting results instantly. Try it with sample text or your own content!"
-msgstr ""
+msgstr "Ahorre tiempo y concéntrese en lo que importa pegando su texto, ajustando la longitud del resumen y obteniendo resultados al instante. ¡Pruébelo con texto de muestra o su propio contenido!"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Input Text"
-msgstr ""
+msgstr "Texto de Entrada"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Enter or paste the text you want to summarize"
-msgstr ""
+msgstr "Ingrese o pegue el texto que desea resumir"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Preview"
-msgstr ""
+msgstr "Vista Previa"
 
 #. placeholder {0}: inputWordCount
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "{0} words"
-msgstr ""
+msgstr "{0} palabras"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Enter text to summarize..."
-msgstr ""
+msgstr "Ingrese el texto para resumir..."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Load Sample"
-msgstr ""
+msgstr "Cargar Ejemplo"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Summary Settings"
-msgstr ""
+msgstr "Ajustes del Resumen"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Adjust how your summary is generated"
-msgstr ""
+msgstr "Ajuste cómo se genera su resumen"
 
 #. placeholder {0}: summaryRatioState
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Summary Length: {0}% of original"
-msgstr ""
+msgstr "Longitud del Resumen: {0}% del original"
 
 #. placeholder {0}: targetWordCount
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Target: ~{0} words"
-msgstr ""
+msgstr "Objetivo: ~{0} palabras"
 
 #. placeholder {0}: maxWordsState
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Maximum Words: {0}"
-msgstr ""
+msgstr "Máximo de Palabras: {0}"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Generate Summary"
-msgstr ""
+msgstr "Generar Resumen"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #. placeholder {0}: summaryWordCount
 #. placeholder {1}: Math.round( (summaryWordCount / Math.max(1, inputWordCount)) * 100 )
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "{0} words ({1}% of original)"
-msgstr ""
+msgstr "{0} palabras ({1}% del original)"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Your summarized text will appear here"
-msgstr ""
+msgstr "Su texto resumido aparecerá aquí"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Click \"Generate Summary\" to create a summary of your text"
-msgstr ""
+msgstr "Haga clic en \"Generar Resumen\" para crear un resumen de su texto"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Copied!"
-msgstr ""
+msgstr "¡Copiado!"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Copiar al Portapapeles"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "<0/> How It Works"
-msgstr ""
+msgstr "<0/> Cómo Funciona"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
 "This Text Summarizer uses an extractive summarization algorithm to identify and\n"
 "extract the most important sentences from your text."
-msgstr ""
+msgstr "Este Resumidor de Texto utiliza un algoritmo de resumen extractivo para identificar y extraer las oraciones más importantes de su texto."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "The process works as follows:"
-msgstr ""
+msgstr "El proceso funciona de la siguiente manera:"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "The text is broken down into sentences."
-msgstr ""
+msgstr "El texto se divide en oraciones."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Each sentence is scored based on the frequency and importance of words it contains."
-msgstr ""
+msgstr "Cada oración se califica según la frecuencia e importancia de las palabras que contiene."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "The highest-scoring sentences are selected to form a coherent summary."
-msgstr ""
+msgstr "Las oraciones con la puntuación más alta se seleccionan para formar un resumen coherente."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "The summary length is adjusted based on your settings."
-msgstr ""
+msgstr "La longitud del resumen se ajusta según su configuración."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
 "Note: For best results, use well-structured text with clear paragraphs. This\n"
 "summarizer works best with informational or educational content rather than creative\n"
 "writing."
-msgstr ""
+msgstr "Nota: Para obtener los mejores resultados, utilice texto bien estructurado con párrafos claros. Este resumidor funciona mejor con contenido informativo o educativo en lugar de escritura creativa."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Reset Everything"
-msgstr ""
+msgstr "Restablecer Todo```"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Invalid input"
-msgstr ""
+msgstr "Entrada inválida"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Select unit type"
-msgstr ""
+msgstr "Seleccionar tipo de unidad"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Select from unit"
-msgstr ""
+msgstr "Seleccionar unidad de origen"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Select to unit"
-msgstr ""
+msgstr "Seleccionar unidad de destino"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Unit Converter - Svelte Mini Apps"
-msgstr ""
+msgstr "Convertidor de Unidades - Svelte Mini Apps"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
-msgstr ""
+msgstr "Convierte entre varias unidades de medida, incluyendo longitud, temperatura, volumen, masa, área, tiempo, ángulo, datos, energía, fuerza, potencia y presión."
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Convert between various units of measurement with ease"
-msgstr ""
+msgstr "Convierte entre varias unidades de medida con facilidad"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Select Unit Type"
-msgstr ""
+msgstr "Seleccionar Tipo de Unidad"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Choose the category of units you want to convert"
-msgstr ""
+msgstr "Elige la categoría de unidades que quieres convertir"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Conversion"
-msgstr ""
+msgstr "Conversión"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Enter a value and select units to convert"
-msgstr ""
+msgstr "Introduce un valor y selecciona las unidades para convertir"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Enter value"
-msgstr ""
+msgstr "Introduce un valor"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Clear input"
-msgstr ""
+msgstr "Borrar entrada"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "From"
-msgstr ""
+msgstr "De"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Swap units"
-msgstr ""
+msgstr "Intercambiar unidades"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "To"
-msgstr ""
+msgstr "A"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 #. placeholder {0}: formattedInputValue
 #. placeholder {1}: formattedFromUnitLabel
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "{0} {1} equals"
-msgstr ""
+msgstr "{0} {1} equivale a"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Converting..."
-msgstr ""
+msgstr "Convirtiendo..."
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "Enter a value to see the conversion result"
-msgstr ""
+msgstr "Introduce un valor para ver el resultado de la conversión"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid ""
 "Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
 "energy, force, power, and pressure units."
 msgstr ""
+"Soporta la conversión entre unidades de longitud, temperatura, volumen, masa, área, tiempo, ángulo, datos,\n"
+"energía, fuerza, potencia y presión.```"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "View and manage your saved passwords securely."
-msgstr ""
+msgstr "Visualiza y administra tus contraseñas guardadas de forma segura."
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Securely manage and access your generated passwords"
-msgstr ""
+msgstr "Gestiona y accede de forma segura a tus contraseñas generadas"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Generate New Password"
-msgstr ""
+msgstr "Generar Nueva Contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "No Saved Passwords"
-msgstr ""
+msgstr "No hay contraseñas guardadas"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid ""
 "Start generating secure passwords to keep track of them here. Your passwords are\n"
 "encrypted and stored safely."
 msgstr ""
+"Comienza a generar contraseñas seguras para realizar un seguimiento de ellas aquí. Tus contraseñas están\n"
+"cifradas y almacenadas de forma segura."
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Create Your First Password"
-msgstr ""
+msgstr "Crea tu primera contraseña"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Your Password Vault"
-msgstr ""
+msgstr "Tu Bóveda de Contraseñas"
 
 #. placeholder {0}: passwords.length
 #. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
-msgstr ""
+msgstr "{0} {1} almacenada(s) de forma segura"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Secure Storage"
-msgstr ""
+msgstr "Almacenamiento Seguro"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid ""
@@ -8565,325 +8565,328 @@ msgid ""
 "passwords at any time. For maximum security, consider using a dedicated password\n"
 "manager for sensitive accounts."
 msgstr ""
+"Todas las contraseñas están encriptadas y almacenadas de forma segura. Puedes ver, copiar y eliminar tus\n"
+"contraseñas en cualquier momento. Para máxima seguridad, considera usar un administrador de contraseñas dedicado\n"
+"para cuentas confidenciales.```"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Are you sure you want to delete this purchase record?"
-msgstr ""
+msgstr "¿Estás seguro de que quieres eliminar este registro de compra?"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Purchase deleted"
-msgstr ""
+msgstr "Compra eliminada"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Purchase saved (saved locally)"
-msgstr ""
+msgstr "Compra guardada (guardada localmente)"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Purchase updated (saved locally)"
-msgstr ""
+msgstr "Compra actualizada (guardada localmente)"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Purchases"
-msgstr ""
+msgstr "Compras"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Manage purchase records for this item"
-msgstr ""
+msgstr "Administrar los registros de compra de este artículo"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Item Not Found"
-msgstr ""
+msgstr "Artículo no encontrado"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Item not found."
-msgstr ""
+msgstr "Artículo no encontrado."
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "No purchases yet. Click \"Add Purchase\" to get started."
-msgstr ""
+msgstr "Aún no hay compras. Haga clic en \"Añadir compra\" para comenzar."
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost"
-msgstr ""
+msgstr "Costo"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost per Unit"
-msgstr ""
+msgstr "Costo por unidad"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Add New Purchase"
-msgstr ""
+msgstr "Añadir nueva compra"
 
 #. placeholder {0}: currentItem.name
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Record a new purchase for {0}."
-msgstr ""
+msgstr "Registrar una nueva compra para {0}."
 
 #. placeholder {0}: currentItem.defaultCurrency || 'USD'
 #. placeholder {0}: currentItem.defaultCurrency || 'USD'
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost ({0})"
-msgstr ""
+msgstr "Costo ({0})"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Location (optional)"
-msgstr ""
+msgstr "Ubicación (opcional)"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Payment Method (optional)"
-msgstr ""
+msgstr "Método de pago (opcional)```"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Create Purchase"
-msgstr ""
+msgstr "Crear compra"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Edit Purchase"
-msgstr ""
+msgstr "Editar compra"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Commits"
-msgstr ""
+msgstr "Commits"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Pull Requests"
-msgstr ""
+msgstr "Pull Requests"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Issues"
-msgstr ""
+msgstr "Incidencias"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Reviews"
-msgstr ""
+msgstr "Revisiones"
 
 #. placeholder {0}: username
 #. placeholder {1}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
-msgstr ""
+msgstr "Visualiza las contribuciones de {0} en GitHub para {1} con gráficos interactivos, mapas de calor e información detallada."
 
 #. placeholder {0}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "GitHub Contributions in {0}"
-msgstr ""
+msgstr "Contribuciones de GitHub en {0}"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "<0/> Back"
-msgstr ""
+msgstr "<0/> Atrás"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Total Contributions"
-msgstr ""
+msgstr "Contribuciones Totales"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repositories"
-msgstr ""
+msgstr "Repositorios"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Calendar"
-msgstr ""
+msgstr "Calendario"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Insights"
-msgstr ""
+msgstr "Perspectivas"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Monthly Contributions"
-msgstr ""
+msgstr "Contribuciones Mensuales"
 
 #. placeholder {0}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Total contributions per month in {0}"
-msgstr ""
+msgstr "Contribuciones totales por mes en {0}"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contributions"
-msgstr ""
+msgstr "Contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "MMMM yyyy"
-msgstr ""
+msgstr "MMMM yyyy"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Languages Used"
-msgstr ""
+msgstr "Lenguajes Utilizados"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top programming languages in contributed repositories"
-msgstr ""
+msgstr "Los principales lenguajes de programación en los repositorios contribuídos"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top Contributed Repositories"
-msgstr ""
+msgstr "Principales Repositorios Contribuídos"
 
 #. placeholder {0}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Most starred repositories you contributed to in {0}"
-msgstr ""
+msgstr "Los repositorios más populares en los que contribuiste en {0}"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Calendar"
-msgstr ""
+msgstr "Calendario de Contribuciones"
 
 #. placeholder {0}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Daily contribution activity throughout {0}"
-msgstr ""
+msgstr "Actividad de contribución diaria a lo largo de {0}"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Less"
-msgstr ""
+msgstr "Menos"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Mon"
-msgstr ""
+msgstr "Lun"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Wed"
-msgstr ""
+msgstr "Mié"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Fri"
-msgstr ""
+msgstr "Vie"
 
 #. placeholder {0}: day.value
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "{0} contributions"
-msgstr ""
+msgstr "{0} contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "EEEE, MMMM d, yyyy"
-msgstr ""
+msgstr "EEEE, d de MMMM de yyyy"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Breakdown"
-msgstr ""
+msgstr "Desglose de Contribuciones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Distribution of your contributions by type"
-msgstr ""
+msgstr "Distribución de sus contribuciones por tipo"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Activity Summary"
-msgstr ""
+msgstr "Resumen de Actividad"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Average per day"
-msgstr ""
+msgstr "Promedio por día"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Most active in"
-msgstr ""
+msgstr "Más activo en"
 
 #. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "+ {0} private contributions"
-msgstr ""
+msgstr "+ {0} contribuciones privadas"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repository Breakdown"
-msgstr ""
+msgstr "Desglose de Repositorios"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With commits"
-msgstr ""
+msgstr "Con commits"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With PRs"
-msgstr ""
+msgstr "Con PRs"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With issues"
-msgstr ""
+msgstr "Con incidencias"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "With reviews"
-msgstr ""
+msgstr "Con revisiones"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Available Years"
-msgstr ""
+msgstr "Años Disponibles"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Other years with contribution data"
-msgstr ""
+msgstr "Otros años con datos de contribución```"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/GitGraph.svelte
 msgid "Error:"
-msgstr ""
+msgstr "Error:"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/GitGraph.svelte
 msgid "GitHub Contribution Graph"
-msgstr ""
+msgstr "Gráfico de Contribuciones de GitHub"
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid username"
-msgstr ""
+msgstr "Nombre de usuario no válido"
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid password"
-msgstr ""
+msgstr "Contraseña no válida"
 
 #: src/routes/(auth)/login/+page.server.ts
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Nombre de usuario o contraseña incorrectos"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word is required"
-msgstr ""
+msgstr "Se requiere una palabra"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word cannot be empty"
-msgstr ""
+msgstr "La palabra no puede estar vacía"
 
 #. placeholder {0}: MAX_WORD_LENGTH
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word cannot be longer than {0} characters"
-msgstr ""
+msgstr "La palabra no puede tener más de {0} caracteres"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Word can only contain letters, spaces, and hyphens"
-msgstr ""
+msgstr "La palabra solo puede contener letras, espacios y guiones"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "AbortError"
-msgstr ""
+msgstr "AbortError"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Request Timeout"
-msgstr ""
+msgstr "Tiempo de espera agotado para la solicitud"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "The request took too long to complete."
-msgstr ""
+msgstr "La solicitud tardó demasiado en completarse."
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Please try again. If the problem persists, check your internet connection."
-msgstr ""
+msgstr "Por favor, inténtelo de nuevo. Si el problema persiste, compruebe su conexión a Internet."
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Service Error"
-msgstr ""
+msgstr "Error de servicio"
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "An unexpected error occurred while fetching the dictionary data."
-msgstr ""
+msgstr "Se produjo un error inesperado al obtener los datos del diccionario."
 
 #: src/routes/apps/(app)/dictionary-app/+page.server.ts
 msgid "Please try again later. If the problem persists, contact support."
-msgstr ""
+msgstr "Por favor, inténtelo de nuevo más tarde. Si el problema persiste, póngase en contacto con el soporte técnico.```"
 
 #~ msgid "From managing your budget to boosting productivity, each app is designed to help you get things done."
 #~ msgstr ""
@@ -8933,13 +8936,13 @@ msgstr ""
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "<0/> Coming Soon"
-msgstr ""
+msgstr "<0/> Próximamente"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
 "From managing your budget to boosting productivity, each app is designed to help you get\n"
 "things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
-msgstr ""
+msgstr "Desde la gestión de tu presupuesto hasta el aumento de la productividad, cada aplicación está diseñada para ayudarte a hacer las cosas. Construidas con <0>Svelte</0>, estas herramientas son rápidas, receptivas y fáciles de usar."
 
 #~ msgid "Welcome to... <0/> <1>Svelte Mini Apps</1> <2/>"
 #~ msgstr ""
@@ -8949,3 +8952,53 @@ msgstr ""
 
 #~ msgid "Start Exploring <0/> <1/>"
 #~ msgstr ""
+
+#: src/routes/apps/+page.svelte
+msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
+msgstr "Descubre una colección de herramientas potentes creadas con <0>Svelte</0>."
+
+#~ msgid "New"
+#~ msgstr ""
+
+#~ msgid "Updated"
+#~ msgstr ""
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> New"
+msgstr "<0/> Nuevo"
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> Updated"
+msgstr "<0/> Actualizado"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Filter by"
+msgstr "Filtrar por"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show all apps"
+msgstr "Mostrar todas las aplicaciones"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All Apps"
+msgstr "<0/> Todas las aplicaciones"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show completed apps"
+msgstr "Mostrar aplicaciones completadas"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed"
+msgstr "<0/> Completadas"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search apps..."
+msgstr "Buscar aplicaciones..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "K"
+msgstr "K"
+
+#: src/routes/(auth)/logout/+page.svelte
+msgid "Sign out of your Svelte Mini Apps account"
+msgstr "Cerrar sesión de tu cuenta de Svelte Mini Apps"

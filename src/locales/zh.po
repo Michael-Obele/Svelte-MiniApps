@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-22T09:59:51.125Z\n"
+"PO-Revision-Date: 2025-11-23T07:47:29.975Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -147,11 +147,8 @@ msgstr "在处理您的请求时发生意外错误。"
 msgid "Please try again or contact support if the problem persists."
 msgstr "请稍后重试，如果问题仍然存在，请联系支持人员。"
 
-#. placeholder {0}: currentError.title
-#. placeholder {1}: page.status
-#: src/routes/+error.svelte
-msgid "{0} - Error {1}"
-msgstr "{0} - 错误 {1}"
+#~ msgid "{0} - Error {1}"
+#~ msgstr "{0} - 错误 {1}"
 
 #: src/routes/+error.svelte
 msgid "Technical Details"
@@ -535,47 +532,43 @@ msgstr "探索使用 Svelte 构建的各种有用的迷你应用程序。查找�
 msgid "Explore Our Mini Applications"
 msgstr "探索我们的迷你应用程序"
 
-#: src/routes/apps/+page.svelte
-msgid "All"
-msgstr "所有"
+#~ msgid "All"
+#~ msgstr "所有"
 
 #: src/lib/stores/todo-store.svelte.ts
-#: src/routes/apps/+page.svelte
 msgid "Done"
 msgstr "完成"
 
-#: src/routes/apps/+page.svelte
-msgid "Find App..."
-msgstr "查找应用..."
+#~ msgid "Find App..."
+#~ msgstr "查找应用..."
 
-#: src/routes/apps/+page.svelte
-msgid "<0/>K"
-msgstr "<0/>K"
+#~ msgid "<0/>K"
+#~ msgstr "<0/>K"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
 msgstr "搜索应用"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Find the mini application you're looking for"
 msgstr "找到您正在寻找的迷你应用程序"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search by name, or description..."
 msgstr "按名称或描述搜索..."
 
 #. placeholder {0}: searchQuery
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "未找到与 \"{0}\" 匹配的项目"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "(Coming Soon)"
 msgstr "（即将推出）"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Clear"
 msgstr "清除"
 
@@ -585,7 +578,7 @@ msgstr "清除"
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
 msgstr "关闭"
@@ -2357,13 +2350,11 @@ msgstr "在有原型可用时自愿测试"
 msgid "Join Testing"
 msgstr "加入测试"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Announcements - Changelog - Svelte Mini Apps"
-msgstr "公告 - 更新日志 - Svelte Mini Apps"
+#~ msgid "Announcements - Changelog - Svelte Mini Apps"
+#~ msgstr "公告 - 更新日志 - Svelte Mini Apps"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-msgstr "随时了解 Svelte Mini Apps 的最新公告和未来计划"
+#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
+#~ msgstr "随时了解 Svelte Mini Apps 的最新公告和未来计划"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -8952,11 +8943,11 @@ msgstr "每单位成本"
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note Taker"
-msgstr ""
+msgstr "笔记工具"
 
 #: src/lib/index.svelte.ts
 msgid "Capture your thoughts and sync them across devices."
-msgstr ""
+msgstr "捕捉您的想法并在设备之间同步。"
 
 #~ msgid "Note created locally"
 #~ msgstr ""
@@ -8966,19 +8957,19 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Delete this note?"
-msgstr ""
+msgstr "删除此笔记？"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note deleted"
-msgstr ""
+msgstr "笔记已删除"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts"
-msgstr ""
+msgstr "捕捉你的想法"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "My Notes"
-msgstr ""
+msgstr "我的笔记"
 
 #~ msgid "<0/> Add Note"
 #~ msgstr ""
@@ -8988,21 +8979,21 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
-msgstr ""
+msgstr "创建笔记"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Content"
-msgstr ""
+msgstr "内容"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Edit Note"
-msgstr ""
+msgstr "编辑笔记"
 
 #~ msgid "Update"
 #~ msgstr ""
@@ -9012,55 +9003,55 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts and ideas"
-msgstr ""
+msgstr "捕捉你的想法和创意"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
-msgstr ""
+msgstr "<0/> 新笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Search notes by title or content..."
-msgstr ""
+msgstr "按标题或内容搜索笔记..."
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes yet"
-msgstr ""
+msgstr "还没有笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid ""
 "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
 "note."
-msgstr ""
+msgstr "开始捕捉你的想法和创意。点击“新建笔记”按钮创建你的第一篇笔记。"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> Create Your First Note"
-msgstr ""
+msgstr "<0/> 创建你的第一篇笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
-msgstr ""
+msgstr "未找到笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes match your search. Try different keywords or create a new note."
-msgstr ""
+msgstr "没有笔记符合你的搜索条件。请尝试不同的关键词或创建一篇新笔记。```"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Enter note title..."
-msgstr ""
+msgstr "输入笔记标题..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Write your thoughts..."
-msgstr ""
+msgstr "写下你的想法..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "<0/> Create Note"
-msgstr ""
+msgstr "<0/> 创建笔记"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "<0/> Update Note"
-msgstr ""
+msgstr "<0/> 更新笔记"
 
 #~ msgid "From managing your budget to boosting productivity, each app is designed to help you get things done."
 #~ msgstr ""
@@ -9110,13 +9101,13 @@ msgstr ""
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "<0/> Coming Soon"
-msgstr ""
+msgstr "<0/> 即将推出"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
 "From managing your budget to boosting productivity, each app is designed to help you get\n"
 "things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
-msgstr ""
+msgstr "从管理您的预算到提高工作效率，每个应用程序都旨在帮助您完成工作。 这些工具使用 <0>Svelte</0> 构建，速度快、响应迅速且易于使用。"
 
 #~ msgid "Welcome to... <0/> <1>Svelte Mini Apps</1> <2/>"
 #~ msgstr ""
@@ -9126,3 +9117,53 @@ msgstr ""
 
 #~ msgid "Start Exploring <0/> <1/>"
 #~ msgstr ""
+
+#: src/routes/apps/+page.svelte
+msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
+msgstr "探索一系列使用 <0>Svelte</0> 构建的强大工具。"
+
+#~ msgid "New"
+#~ msgstr ""
+
+#~ msgid "Updated"
+#~ msgstr ""
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> New"
+msgstr "<0/> 新"
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> Updated"
+msgstr "<0/> 已更新"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Filter by"
+msgstr "筛选条件"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show all apps"
+msgstr "显示所有应用"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All Apps"
+msgstr "<0/> 所有应用"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show completed apps"
+msgstr "显示已完成的应用"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed"
+msgstr "<0/> 已完成"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search apps..."
+msgstr "搜索应用..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "K"
+msgstr "千"
+
+#: src/routes/(auth)/logout/+page.svelte
+msgid "Sign out of your Svelte Mini Apps account"
+msgstr "登出您的 Svelte Mini Apps 帐户"

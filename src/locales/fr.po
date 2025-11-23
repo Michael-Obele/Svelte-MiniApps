@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-11-22T09:59:50.964Z\n"
+"PO-Revision-Date: 2025-11-23T07:47:29.934Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -678,11 +678,8 @@ msgstr "Une erreur inattendue s'est produite lors du traitement de votre demande
 msgid "Please try again or contact support if the problem persists."
 msgstr "Veuillez réessayer ou contactez le support si le problème persiste."
 
-#. placeholder {0}: currentError.title
-#. placeholder {1}: page.status
-#: src/routes/+error.svelte
-msgid "{0} - Error {1}"
-msgstr "{0} - Erreur {1}"
+#~ msgid "{0} - Error {1}"
+#~ msgstr "{0} - Erreur {1}"
 
 #: src/routes/+error.svelte
 msgid "Technical Details"
@@ -798,7 +795,6 @@ msgid "Style with Tailwind"
 msgstr "Styliser avec Tailwind"
 
 #: src/lib/stores/todo-store.svelte.ts
-#: src/routes/apps/+page.svelte
 msgid "Done"
 msgstr "Terminé"
 
@@ -1110,42 +1106,39 @@ msgstr "Explorez une variété de mini-applications utiles construites avec Svel
 msgid "Explore Our Mini Applications"
 msgstr "Explorez nos mini-applications"
 
-#: src/routes/apps/+page.svelte
-msgid "All"
-msgstr "Toutes"
+#~ msgid "All"
+#~ msgstr "Toutes"
 
-#: src/routes/apps/+page.svelte
-msgid "Find App..."
-msgstr "Trouver une application..."
+#~ msgid "Find App..."
+#~ msgstr "Trouver une application..."
 
-#: src/routes/apps/+page.svelte
-msgid "<0/>K"
-msgstr "<0/>K"
+#~ msgid "<0/>K"
+#~ msgstr "<0/>K"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
 msgstr "Rechercher des applications"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Find the mini application you're looking for"
 msgstr "Trouvez la mini-application que vous recherchez"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search by name, or description..."
 msgstr "Rechercher par nom ou description..."
 
 #. placeholder {0}: searchQuery
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "Aucun projet trouvé correspondant à \"{0}\""
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "(Coming Soon)"
 msgstr "(À venir)"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Clear"
 msgstr "Effacer"
 
@@ -1155,7 +1148,7 @@ msgstr "Effacer"
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
 msgstr "Fermer"
@@ -2437,13 +2430,11 @@ msgstr "Devenez bénévole pour tester les prototypes lorsqu'ils seront disponib
 msgid "Join Testing"
 msgstr "Participer aux tests"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Announcements - Changelog - Svelte Mini Apps"
-msgstr "Annonces - Journal des modifications - Svelte-MiniApps"
+#~ msgid "Announcements - Changelog - Svelte Mini Apps"
+#~ msgstr "Annonces - Journal des modifications - Svelte-MiniApps"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-msgstr "Restez informé des dernières annonces et des plans futurs pour Svelte-MiniApps."
+#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
+#~ msgstr "Restez informé des dernières annonces et des plans futurs pour Svelte-MiniApps."
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -9070,11 +9061,11 @@ msgstr "Coût par unité"
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note Taker"
-msgstr ""
+msgstr "Prendre des notes"
 
 #: src/lib/index.svelte.ts
 msgid "Capture your thoughts and sync them across devices."
-msgstr ""
+msgstr "Capturez vos pensées et synchronisez-les sur tous vos appareils."
 
 #~ msgid "Note created locally"
 #~ msgstr ""
@@ -9084,19 +9075,19 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Delete this note?"
-msgstr ""
+msgstr "Supprimer cette note ?"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Note deleted"
-msgstr ""
+msgstr "Note supprimée"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts"
-msgstr ""
+msgstr "Capturez vos pensées"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "My Notes"
-msgstr ""
+msgstr "Mes Notes"
 
 #~ msgid "<0/> Add Note"
 #~ msgstr ""
@@ -9106,21 +9097,21 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
-msgstr ""
+msgstr "Créer une note"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Edit Note"
-msgstr ""
+msgstr "Modifier la note"
 
 #~ msgid "Update"
 #~ msgstr ""
@@ -9130,55 +9121,57 @@ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts and ideas"
-msgstr ""
+msgstr "Capturez vos pensées et vos idées"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
-msgstr ""
+msgstr "<0/> Nouvelle Note"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Search notes by title or content..."
-msgstr ""
+msgstr "Rechercher des notes par titre ou contenu..."
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes yet"
-msgstr ""
+msgstr "Aucune note pour le moment"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid ""
 "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
 "note."
 msgstr ""
+"Commencez à capturer vos idées et vos pensées. Cliquez sur le bouton \"Nouvelle Note\" pour créer votre première\n"
+"note."
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> Create Your First Note"
-msgstr ""
+msgstr "<0/> Créez votre première note"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
-msgstr ""
+msgstr "Aucune note trouvée"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes match your search. Try different keywords or create a new note."
-msgstr ""
+msgstr "Aucune note ne correspond à votre recherche. Essayez d'autres mots-clés ou créez une nouvelle note.```"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Enter note title..."
-msgstr ""
+msgstr "Entrez le titre de la note..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Write your thoughts..."
-msgstr ""
+msgstr "Écrivez vos pensées..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "<0/> Create Note"
-msgstr ""
+msgstr "<0/> Créer une note"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "<0/> Update Note"
-msgstr ""
+msgstr "<0/> Mettre à jour la note"
 
 #~ msgid "From managing your budget to boosting productivity, each app is designed to help you get things done."
 #~ msgstr ""
@@ -9228,13 +9221,13 @@ msgstr ""
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "<0/> Coming Soon"
-msgstr ""
+msgstr "<0/> Bientôt disponible"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
 "From managing your budget to boosting productivity, each app is designed to help you get\n"
 "things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
-msgstr ""
+msgstr "De la gestion de votre budget à l'augmentation de votre productivité, chaque application est conçue pour vous aider à faire avancer les choses. Construits avec <0>Svelte</0>, ces outils sont rapides, réactifs et faciles à utiliser."
 
 #~ msgid "Welcome to... <0/> <1>Svelte Mini Apps</1> <2/>"
 #~ msgstr ""
@@ -9244,3 +9237,53 @@ msgstr ""
 
 #~ msgid "Start Exploring <0/> <1/>"
 #~ msgstr ""
+
+#: src/routes/apps/+page.svelte
+msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
+msgstr "Découvrez une collection d'outils puissants construits avec <0>Svelte</0>."
+
+#~ msgid "New"
+#~ msgstr ""
+
+#~ msgid "Updated"
+#~ msgstr ""
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> New"
+msgstr "<0/> Nouveau"
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> Updated"
+msgstr "<0/> Mis à jour"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Filter by"
+msgstr "Filtrer par"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show all apps"
+msgstr "Afficher toutes les applications"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All Apps"
+msgstr "<0/> Toutes les applications"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show completed apps"
+msgstr "Afficher les applications terminées"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed"
+msgstr "<0/> Terminées"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search apps..."
+msgstr "Rechercher des applications..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "K"
+msgstr "K```"
+
+#: src/routes/(auth)/logout/+page.svelte
+msgid "Sign out of your Svelte Mini Apps account"
+msgstr "Déconnexion de votre compte Svelte Mini Apps"

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProjectsGrid from './ProjectsGrid.svelte';
+	import AppGrid from './AppGrid.svelte';
 	import { done } from '$lib/index.svelte';
 	import { projects } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
@@ -38,9 +38,9 @@
 </script>
 
 {#if filteredBy === 'all'}
-	<ProjectsGrid items={sortedProjects} />
+	<AppGrid items={sortedProjects} />
 {:else if filteredBy === 'done'}
-	<ProjectsGrid items={sortedDoneProjects} />
+	<AppGrid items={sortedDoneProjects} />
 {:else}
-	<ProjectsGrid items={filteredProjects} />
+	<AppGrid items={filteredProjects} />
 {/if}

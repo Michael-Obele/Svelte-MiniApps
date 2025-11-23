@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-22T09:59:50.729Z\n"
+"PO-Revision-Date: 2025-11-23T07:33:38.384Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -764,11 +764,8 @@ msgstr "An unexpected error occurred while processing your request."
 msgid "Please try again or contact support if the problem persists."
 msgstr "Please try again or contact support if the problem persists."
 
-#. placeholder {0}: currentError.title
-#. placeholder {1}: page.status
-#: src/routes/+error.svelte
-msgid "{0} - Error {1}"
-msgstr "{0} - Error {1}"
+#~ msgid "{0} - Error {1}"
+#~ msgstr "{0} - Error {1}"
 
 #: src/routes/+error.svelte
 msgid "Technical Details"
@@ -850,7 +847,6 @@ msgid "Style with Tailwind"
 msgstr "Style with Tailwind"
 
 #: src/lib/stores/todo-store.svelte.ts
-#: src/routes/apps/+page.svelte
 msgid "Done"
 msgstr "Done"
 
@@ -1266,42 +1262,39 @@ msgstr "Explore a variety of useful mini applications built with Svelte. Find to
 msgid "Explore Our Mini Applications"
 msgstr "Explore Our Mini Applications"
 
-#: src/routes/apps/+page.svelte
-msgid "All"
-msgstr "All"
+#~ msgid "All"
+#~ msgstr "All"
 
-#: src/routes/apps/+page.svelte
-msgid "Find App..."
-msgstr "Find App..."
+#~ msgid "Find App..."
+#~ msgstr "Find App..."
 
-#: src/routes/apps/+page.svelte
-msgid "<0/>K"
-msgstr "<0/>K"
+#~ msgid "<0/>K"
+#~ msgstr "<0/>K"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
 msgstr "Search Apps"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Find the mini application you're looking for"
 msgstr "Find the mini application you're looking for"
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Search by name, or description..."
 msgstr "Search by name, or description..."
 
 #. placeholder {0}: searchQuery
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "No projects found matching \"{0}\""
 
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "(Coming Soon)"
 msgstr "(Coming Soon)"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 msgid "Clear"
 msgstr "Clear"
 
@@ -1311,7 +1304,7 @@ msgstr "Clear"
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
-#: src/routes/apps/+page.svelte
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
 msgstr "Close"
@@ -4165,13 +4158,11 @@ msgstr "Volunteer to test prototypes when available"
 msgid "Join Testing"
 msgstr "Join Testing"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Announcements - Changelog - Svelte Mini Apps"
-msgstr "Announcements - Changelog - Svelte Mini Apps"
+#~ msgid "Announcements - Changelog - Svelte Mini Apps"
+#~ msgstr "Announcements - Changelog - Svelte Mini Apps"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-msgstr "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
+#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
+#~ msgstr "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -9230,3 +9221,53 @@ msgstr ""
 
 #~ msgid "Start Exploring <0/> <1/>"
 #~ msgstr "Start Exploring <0/> <1/>"
+
+#: src/routes/apps/+page.svelte
+msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
+msgstr "Discover a collection of powerful tools built with <0>Svelte</0>."
+
+#~ msgid "New"
+#~ msgstr "New"
+
+#~ msgid "Updated"
+#~ msgstr "Updated"
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> New"
+msgstr "<0/> New"
+
+#: src/routes/apps/AppCard.svelte
+msgid "<0/> Updated"
+msgstr "<0/> Updated"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Filter by"
+msgstr "Filter by"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show all apps"
+msgstr "Show all apps"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All Apps"
+msgstr "<0/> All Apps"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Show completed apps"
+msgstr "Show completed apps"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed"
+msgstr "<0/> Completed"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search apps..."
+msgstr "Search apps..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "K"
+msgstr "K"
+
+#: src/routes/(auth)/logout/+page.svelte
+msgid "Sign out of your Svelte Mini Apps account"
+msgstr "Sign out of your Svelte Mini Apps account"
