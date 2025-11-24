@@ -8,7 +8,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
+				"Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
 		},
 		{
 			header: {
@@ -18,7 +18,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless.",
+				"Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow.",
 			// @wc-ignore
 			iconId: 'axteoudt'
 		},
@@ -31,7 +31,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start.",
+				"Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done.",
 			// @wc-ignore
 			iconId: 'zguybvqs'
 		},
@@ -43,7 +43,7 @@ export function getContentBlocksData() {
 				]
 			},
 			paragraph:
-				"Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them.",
+				"Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow.",
 			// @wc-ignore
 			iconId: 'yxyampao'
 		}
