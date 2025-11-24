@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-24T09:27:02.903Z\n"
+"PO-Revision-Date: 2025-11-24T09:07:33.452Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -9103,9 +9103,8 @@ msgstr "<0/> ノートを作成```"
 #~ "things done."
 #~ msgstr ""
 
-#: src/lib/components/home/AppsSection.svelte
-msgid "<0/> Coming Soon"
-msgstr "<0/> 近日公開"
+#~ msgid "<0/> Coming Soon"
+#~ msgstr "<0/> 近日公開"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
@@ -9172,17 +9171,26 @@ msgstr "千"
 msgid "Sign out of your Svelte Mini Apps account"
 msgstr "Svelte Mini Appsアカウントからサインアウト"
 
-#~ msgid "<0/> Active Apps ({0})"
-#~ msgstr ""
+#. placeholder {0}: doneProjects.length
+#: src/lib/components/home/AppsSection.svelte
+msgid "<0/> Active Apps ({0})"
+msgstr ""
 
-#~ msgid "Collapse"
-#~ msgstr ""
+#: src/lib/components/home/AppsSection.svelte
+msgid "Collapse"
+msgstr ""
 
-#~ msgid "Expand"
-#~ msgstr ""
+#: src/lib/components/home/AppsSection.svelte
+msgid "Expand"
+msgstr ""
 
-#~ msgid "Coming Soon ({0})"
-#~ msgstr ""
+#. placeholder {0}: comingSoon.length
+#: src/lib/components/home/AppsSection.svelte
+msgid "Coming Soon ({0})"
+msgstr ""
 
-#~ msgid "Width: {0} Height: {1}"
-#~ msgstr ""
+#. placeholder {0}: size.width
+#. placeholder {1}: size.height
+#: src/lib/components/home/AppsSection.svelte
+msgid "Width: {0} Height: {1}"
+msgstr ""

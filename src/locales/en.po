@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-24T09:27:02.540Z\n"
+"PO-Revision-Date: 2025-11-24T09:19:03.036Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -9201,9 +9201,8 @@ msgstr "<0/> Update Note"
 #~ "From managing your budget to boosting productivity, each app is designed to help you get\n"
 #~ "things done."
 
-#: src/lib/components/home/AppsSection.svelte
-msgid "<0/> Coming Soon"
-msgstr "<0/> Coming Soon"
+#~ msgid "<0/> Coming Soon"
+#~ msgstr "<0/> Coming Soon"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
@@ -9272,17 +9271,23 @@ msgstr "K"
 msgid "Sign out of your Svelte Mini Apps account"
 msgstr "Sign out of your Svelte Mini Apps account"
 
-#~ msgid "<0/> Active Apps ({0})"
-#~ msgstr "<0/> Active Apps ({0})"
+#. placeholder {0}: doneProjects.length
+#: src/lib/components/home/AppsSection.svelte
+msgid "<0/> Active Apps ({0})"
+msgstr "<0/> Active Apps ({0})"
 
-#~ msgid "Collapse"
-#~ msgstr "Collapse"
+#: src/lib/components/home/AppsSection.svelte
+msgid "Collapse"
+msgstr "Collapse"
 
-#~ msgid "Expand"
-#~ msgstr "Expand"
+#: src/lib/components/home/AppsSection.svelte
+msgid "Expand"
+msgstr "Expand"
 
-#~ msgid "Coming Soon ({0})"
-#~ msgstr "Coming Soon ({0})"
+#. placeholder {0}: comingSoon.length
+#: src/lib/components/home/AppsSection.svelte
+msgid "Coming Soon ({0})"
+msgstr "Coming Soon ({0})"
 
 #~ msgid "Width: {0} Height: {1}"
 #~ msgstr "Width: {0} Height: {1}"
