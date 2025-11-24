@@ -10,7 +10,7 @@
 
 <div class="mx-auto max-w-3xl space-y-4">
 	<h2
-		class="flex flex-col items-center justify-center gap-4 text-3xl font-bold tracking-tight sm:flex-row sm:gap-3 sm:text-5xl"
+		class="flex flex-col items-start justify-start gap-4 text-3xl font-bold tracking-tight sm:flex-row sm:items-center sm:gap-3 sm:text-5xl"
 		class:cursor-pointer={iconId !== ''}
 	>
 		{@render header?.()}
@@ -26,7 +26,7 @@
 			</lord-icon>
 		{/if}
 	</h2>
-	<p class="mx-auto max-w-[700px] text-base text-gray-600 dark:text-gray-400 md:text-lg lg:text-xl">
+	<p class="max-w-[700px] text-left text-base text-gray-600 md:text-lg lg:text-xl dark:text-gray-400">
 		{@render paragraph?.()}
 	</p>
 </div>
