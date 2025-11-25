@@ -8,26 +8,31 @@ datasource db {
 }
 
 model User {
-  id                 String              @id @default(uuid())
-  age                Int?
-  username           String              @unique
-  passwordHash       String              @map("password_hash")
-  role               String              @default("user")
-  createdAt          DateTime            @default(now()) @map("created_at")
-  updatedAt          DateTime            @updatedAt @map("updated_at")
-  githubId           String?             @unique
-  googleId           String?             @unique
-  mantras            Mantra[]
-  sessions           Session[]
-  SocialLinkPage     SocialLinkPage[]
-  UserPassword       UserPassword[]
-  budgets            Budget[]
-  items              Item[]
-  purchaseRecords    PurchaseRecord[]
-  medicationSessions MedicationSession[]
-  smokingAttempts    SmokingAttempt[]
-  smokeFreeSettings  SmokeFreeSettings?
-  notes              Note[]
+  id                      String                  @id @default(uuid())
+  age                     Int?
+  username                String                  @unique
+  passwordHash            String                  @map("password_hash")
+  role                    String                  @default("user")
+  createdAt               DateTime                @default(now()) @map("created_at")
+  updatedAt               DateTime                @updatedAt @map("updated_at")
+  githubId                String?                 @unique
+  googleId                String?                 @unique
+  mantras                 Mantra[]
+  sessions                Session[]
+  SocialLinkPage          SocialLinkPage[]
+  UserPassword            UserPassword[]
+  budgets                 Budget[]
+  items                   Item[]
+  purchaseRecords         PurchaseRecord[]
+  medicationSessions      MedicationSession[]
+  smokingAttempts         SmokingAttempt[]
+  smokeFreeSettings       SmokeFreeSettings?
+  notes                   Note[]
+  // Scenario Tracker relations
+  scenarioSettings        ScenarioSettings?
+  scenarioOptions         ScenarioOption[]
+  scenarioTimelineEntries ScenarioTimelineEntry[]
+  scenarioRisks           ScenarioRisk[]
 
   @@index([username])
   @@map("user")
@@ -275,4 +280,102 @@ model SmokeFreeSettings {
   user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("smoke_free_settings")
+}
+
+// ============================================
+// Scenario Tracker Models
+// ============================================
+
+model ScenarioSettings {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  startDate DateTime @default(now()) @map("start_date")
+  endDate   DateTime @map("end_date")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("scenario_settings")
+}
+
+model ScenarioOption {
+  id                        String                        @id @default(uuid())
+  userId                    String                        @map("user_id")
+  name                      String
+  description               String?
+  color                     String                        @default("bg-blue-500")
+  totalTimeSpent            Float                         @default(0) @map("total_time_spent")
+  progress                  Int                           @default(0)
+  estimatedTimeToCompletion String?                       @map("estimated_time_to_completion")
+  allocation                Int                           @default(0)
+  createdAt                 DateTime                      @default(now()) @map("created_at")
+  updatedAt                 DateTime                      @updatedAt @map("updated_at")
+  user                      User                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activities                ScenarioActivity[]
+  risks                     ScenarioRisk[]
+  timelineEntryOptions      ScenarioTimelineEntryOption[]
+
+  @@index([userId])
+  @@map("scenario_options")
+}
+
+model ScenarioActivity {
+  id             String         @id @default(uuid())
+  optionId       String         @map("option_id")
+  date           DateTime       @default(now())
+  description    String
+  timeSpent      Float          @map("time_spent")
+  progressMetric String?        @map("progress_metric")
+  status         String         @default("planning")
+  notes          String?
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+  option         ScenarioOption @relation(fields: [optionId], references: [id], onDelete: Cascade)
+
+  @@index([optionId])
+  @@map("scenario_activities")
+}
+
+model ScenarioTimelineEntry {
+  id          String                        @id @default(uuid())
+  userId      String                        @map("user_id")
+  date        DateTime                      @default(now())
+  outcomes    String?
+  adjustments String?
+  createdAt   DateTime                      @default(now()) @map("created_at")
+  updatedAt   DateTime                      @updatedAt @map("updated_at")
+  user        User                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  options     ScenarioTimelineEntryOption[]
+
+  @@index([userId])
+  @@map("scenario_timeline_entries")
+}
+
+model ScenarioTimelineEntryOption {
+  id              String                @id @default(uuid())
+  timelineEntryId String                @map("timeline_entry_id")
+  optionId        String                @map("option_id")
+  timeAllocation  Int                   @default(0) @map("time_allocation")
+  timelineEntry   ScenarioTimelineEntry @relation(fields: [timelineEntryId], references: [id], onDelete: Cascade)
+  option          ScenarioOption        @relation(fields: [optionId], references: [id], onDelete: Cascade)
+
+  @@unique([timelineEntryId, optionId])
+  @@map("scenario_timeline_entry_options")
+}
+
+model ScenarioRisk {
+  id          String          @id @default(uuid())
+  userId      String          @map("user_id")
+  optionId    String?         @map("option_id")
+  description String
+  severity    String          @default("medium")
+  mitigation  String?
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  option      ScenarioOption? @relation(fields: [optionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([optionId])
+  @@map("scenario_risks")
 }

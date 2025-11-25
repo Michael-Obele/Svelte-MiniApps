@@ -55,6 +55,7 @@ export interface DashboardStats {
 	averageProgress: number;
 	remainingYears: number;
 	remainingDays: number;
+	totalDuration?: number; // total planning duration in years
 }
 
 // Default options for the scenario tracker

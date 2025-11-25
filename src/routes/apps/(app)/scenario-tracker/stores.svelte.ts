@@ -11,8 +11,63 @@ import {
 	calculateYearsRemaining
 } from './types';
 
-// 10-year end date from Nov 25, 2025
-const END_DATE = new Date(2035, 10, 25); // November 25, 2035
+// Default dates: 10 years from now
+const DEFAULT_START_DATE = new Date();
+const DEFAULT_END_DATE = new Date(DEFAULT_START_DATE.getTime() + 10 * 365.25 * 24 * 60 * 60 * 1000);
+
+// Persisted settings for start/end dates
+export const scenarioSettings = new PersistedState<{ startDate: string; endDate: string }>(
+	'scenario-tracker-settings',
+	{
+		startDate: DEFAULT_START_DATE.toISOString(),
+		endDate: DEFAULT_END_DATE.toISOString()
+	},
+	{
+		storage: 'local',
+		syncTabs: true
+	}
+);
+
+// Getter for parsed dates
+export function getStartDate(): Date {
+	return new Date(scenarioSettings.current.startDate);
+}
+
+export function getEndDate(): Date {
+	return new Date(scenarioSettings.current.endDate);
+}
+
+// Update settings
+export function updateSettings(startDate: Date, endDate: Date): void {
+	scenarioSettings.current = {
+		startDate: startDate.toISOString(),
+		endDate: endDate.toISOString()
+	};
+}
+
+// Initialize settings from server data (for authenticated users)
+export function initializeFromServer(data: {
+	settings: { startDate: string; endDate: string } | null;
+	options: Option[] | null;
+	timelineEntries: TimelineEntry[] | null;
+	risks: Risk[] | null;
+}): void {
+	if (data.settings) {
+		scenarioSettings.current = {
+			startDate: data.settings.startDate,
+			endDate: data.settings.endDate
+		};
+	}
+	if (data.options) {
+		options.current = data.options;
+	}
+	if (data.timelineEntries) {
+		timelineEntries.current = data.timelineEntries;
+	}
+	if (data.risks) {
+		risks.current = data.risks;
+	}
+}
 
 // Persisted state for options
 export const options = new PersistedState<Option[]>('scenario-tracker-options', [], {
@@ -219,11 +274,19 @@ export function getDashboardStats(): DashboardStats {
 			? options.current.reduce((sum, opt) => sum + opt.progress, 0) / options.current.length
 			: 0;
 
+	const endDate = getEndDate();
+	const startDate = getStartDate();
+
+	// Calculate total duration in years
+	const totalDuration =
+		(endDate.getTime() - startDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+
 	return {
 		totalTimeSpent: totalTime,
 		averageProgress: Math.round(avgProgress),
-		remainingYears: calculateYearsRemaining(END_DATE),
-		remainingDays: calculateDaysRemaining(END_DATE)
+		remainingYears: calculateYearsRemaining(endDate),
+		remainingDays: calculateDaysRemaining(endDate),
+		totalDuration
 	};
 }
 
@@ -238,6 +301,3 @@ export function getRisksByOption(optionId: string | null): Risk[] {
 export function getGeneralRisks(): Risk[] {
 	return risks.current.filter((r) => r.optionId === null);
 }
-
-// Export END_DATE for use in components
-export { END_DATE };

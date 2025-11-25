@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Option, DashboardStats } from './types';
 	import { formatDate, getSeverityColor } from './types';
-	import { options, risks, getDashboardStats, END_DATE } from './stores.svelte';
+	import { options, risks, getDashboardStats, getStartDate, getEndDate } from './stores.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import { Progress } from '@/ui/progress';
 	import { Badge } from '$lib/components/ui/badge';
@@ -15,6 +15,17 @@
 	} from 'lucide-svelte';
 
 	let stats = $derived(getDashboardStats());
+	let startDate = $derived(getStartDate());
+	let endDate = $derived(getEndDate());
+
+	// Calculate progress through planning period
+	let progressThroughPeriod = $derived.by(() => {
+		const now = new Date();
+		const totalDuration = endDate.getTime() - startDate.getTime();
+		const elapsed = now.getTime() - startDate.getTime();
+		const progress = (elapsed / totalDuration) * 100;
+		return Math.max(0, Math.min(100, progress));
+	});
 
 	// Chart data for allocation
 	let allocationData = $derived(
@@ -212,23 +223,23 @@
 		<Card.Header>
 			<Card.Title>Deadline</Card.Title>
 			<Card.Description
-				>Your 10-year planning window ends on {formatDate(END_DATE.toISOString())}</Card.Description
+				>Your planning window ends on {formatDate(endDate.toISOString())}</Card.Description
 			>
 		</Card.Header>
 		<Card.Content>
 			<div class="space-y-2">
 				<div class="flex justify-between text-sm">
 					<span>Progress through planning period</span>
-					<span>{((1 - stats.remainingYears / 10) * 100).toFixed(1)}%</span>
+					<span>{progressThroughPeriod.toFixed(1)}%</span>
 				</div>
 				<Progress
-					value={(1 - stats.remainingYears / 10) * 100}
+					value={progressThroughPeriod}
 					class="h-3"
 					classInner="bg-gradient-to-r from-green-500 via-amber-500 to-red-500 transition-all"
 				/>
 				<div class="text-muted-foreground flex justify-between text-xs">
-					<span>Started: Nov 25, 2025</span>
-					<span>Deadline: Nov 25, 2035</span>
+					<span>Started: {formatDate(startDate.toISOString())}</span>
+					<span>Deadline: {formatDate(endDate.toISOString())}</span>
 				</div>
 			</div>
 		</Card.Content>

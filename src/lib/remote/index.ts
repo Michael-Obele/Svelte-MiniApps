@@ -64,3 +64,29 @@ export {
 	deleteNote,
 	syncNoteData
 } from './note-taker.remote';
+
+// Remote functions for scenario tracker
+export {
+	// Query
+	getScenarioData,
+	// Settings
+	updateScenarioSettings,
+	// Options
+	addScenarioOption,
+	updateScenarioOption,
+	deleteScenarioOption,
+	// Activities
+	addScenarioActivity,
+	updateScenarioActivity,
+	deleteScenarioActivity,
+	// Timeline
+	addScenarioTimelineEntry,
+	updateScenarioTimelineEntry,
+	deleteScenarioTimelineEntry,
+	// Risks
+	addScenarioRisk,
+	updateScenarioRisk,
+	deleteScenarioRisk,
+	// Initialization
+	initializeScenarioDefaults
+} from './scenario-tracker.remote';

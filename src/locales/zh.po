@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-25T01:50:03.591Z\n"
+"PO-Revision-Date: 2025-11-25T09:26:06.303Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -4057,6 +4057,7 @@ msgid "Brief description of this treatment period..."
 msgstr "对此治疗期间的简要描述..."
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Start Date"
 msgstr "开始日期"
 
@@ -5184,6 +5185,7 @@ msgstr "设置自定义开始日期"
 msgid "Current custom start date:"
 msgstr "当前自定义开始日期："
 
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Save Settings"
 msgstr "<0/> 保存设置"
@@ -9293,9 +9295,8 @@ msgstr ""
 msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
 msgstr ""
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid "Plan your future: track options, investments, and risks over your 10-year horizon"
-msgstr ""
+#~ msgid "Plan your future: track options, investments, and risks over your 10-year horizon"
+#~ msgstr ""
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "<0/> Reset"
@@ -9497,7 +9498,9 @@ msgid "Time Remaining"
 msgstr ""
 
 #. placeholder {0}: stats.remainingYears
+#. placeholder {0}: durationYears
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "{0} years"
 msgstr ""
 
@@ -9575,22 +9578,18 @@ msgstr ""
 msgid "Deadline"
 msgstr ""
 
-#. placeholder {0}: formatDate(END_DATE.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Your 10-year planning window ends on {0}"
-msgstr ""
+#~ msgid "Your 10-year planning window ends on {0}"
+#~ msgstr ""
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Progress through planning period"
 msgstr ""
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Started: Nov 25, 2025"
-msgstr ""
+#~ msgid "Started: Nov 25, 2025"
+#~ msgstr ""
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Deadline: Nov 25, 2035"
-msgstr ""
+#~ msgid "Deadline: Nov 25, 2035"
+#~ msgstr ""
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -9772,4 +9771,101 @@ msgstr ""
 msgid ""
 "This will permanently delete all your options, activities, timeline entries, and risks. The\n"
 "default options will be restored. This action cannot be undone."
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Plan your future: track options, investments, and risks over your planning horizon"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Settings"
+msgstr ""
+
+#. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Your planning window ends on {0}"
+msgstr ""
+
+#. placeholder {0}: formatDate(startDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Started: {0}"
+msgstr ""
+
+#. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Deadline: {0}"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Please select both start and end dates"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "End date must be after start date"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Timeline settings saved"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "<0/> Timeline Settings"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Quick Presets"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "1 Year"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "3 Years"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "5 Years"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "10 Years"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "15 Years"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Pick a start date"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "End Date (Deadline)"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Pick an end date"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "Planning Duration"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "⚠️ End date must be after start date"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid ""
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
+"devices. <1>Sign in</1> to sync your data."
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "<0/> Cancel"
 msgstr ""

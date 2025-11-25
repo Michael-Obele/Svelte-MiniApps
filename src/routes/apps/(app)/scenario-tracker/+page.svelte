@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import * as Tabs from '$lib/components/ui/tabs';
@@ -10,20 +9,22 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import {
 		LayoutDashboard,
-		Target,
 		Calendar,
 		AlertTriangle,
 		Plus,
 		Save,
-		RotateCcw
+		RotateCcw,
+		Settings as SettingsIcon
 	} from 'lucide-svelte';
 
 	import Dashboard from './Dashboard.svelte';
 	import OptionDetail from './OptionDetail.svelte';
 	import Timeline from './Timeline.svelte';
 	import Risks from './Risks.svelte';
+	import Settings from './Settings.svelte';
 	import { scenarioTrackerHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
+	import { toast } from 'svelte-sonner';
 
 	import {
 		options,
@@ -31,13 +32,34 @@
 		addOption,
 		deleteOption,
 		timelineEntries,
-		risks
+		risks,
+		getStartDate,
+		getEndDate,
+		updateSettings,
+		initializeFromServer
 	} from './stores.svelte';
+
+	import {
+		getCurrentUser,
+		getScenarioData,
+		updateScenarioSettings,
+		addScenarioOption,
+		deleteScenarioOption
+	} from '$lib/remote';
+
+	let currentUser = $state<{
+		id: string;
+		username: string;
+		role: string;
+	} | null>(null);
+
+	let isLoading = $state(true);
 
 	let activeTab = $state('dashboard');
 	let showAddOptionDialog = $state(false);
 	let showResetDialog = $state(false);
 	let showHowToUseDialog = $state(false);
+	let showSettingsDialog = $state(false);
 
 	// Track if user has seen the guide
 	const hasSeenGuide = new PersistedState<boolean>(scenarioTrackerHowToUse.storageKey, false);
@@ -61,21 +83,130 @@
 		{ value: 'bg-indigo-500', label: 'Indigo' }
 	];
 
-	onMount(() => {
-		initializeDefaultOptions();
-		// Show guide on first visit
-		if (!hasSeenGuide.current) {
-			showHowToUseDialog = true;
-		}
+	// Load current user and data
+	$effect(() => {
+		getCurrentUser()
+			.then(async (user) => {
+				currentUser = user || null;
+
+				if (user) {
+					// Load data from server for authenticated users
+					try {
+						const serverData = await getScenarioData();
+						if (serverData) {
+							initializeFromServer({
+								settings: serverData.settings,
+								options: serverData.options.map((opt) => ({
+									id: opt.id,
+									name: opt.name,
+									description: opt.description || '',
+									color: opt.color,
+									totalTimeSpent: opt.totalTimeSpent,
+									progress: opt.progress,
+									estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+									allocation: opt.allocation,
+									activities: opt.activities.map((act) => ({
+										id: act.id,
+										date: act.date,
+										description: act.description,
+										timeSpent: act.timeSpent,
+										progressMetric: act.progressMetric || '',
+										status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+										notes: act.notes || ''
+									})),
+									createdAt: opt.createdAt
+								})),
+								timelineEntries: serverData.timelineEntries.map((entry) => ({
+									id: entry.id,
+									date: entry.date,
+									optionsWorked: entry.optionsWorked,
+									timeAllocation: entry.timeAllocation,
+									outcomes: entry.outcomes || '',
+									adjustments: entry.adjustments || ''
+								})),
+								risks: serverData.risks.map((risk) => ({
+									id: risk.id,
+									description: risk.description,
+									severity: risk.severity as 'low' | 'medium' | 'high' | 'critical',
+									mitigation: risk.mitigation || '',
+									optionId: risk.optionId,
+									createdAt: risk.createdAt
+								}))
+							});
+						}
+					} catch (error) {
+						console.error('Failed to load scenario data:', error);
+						// Fall back to local storage
+						initializeDefaultOptions();
+					}
+				} else {
+					// Use local storage defaults for unauthenticated users
+					initializeDefaultOptions();
+				}
+			})
+			.catch(() => {
+				currentUser = null;
+				initializeDefaultOptions();
+			})
+			.finally(() => {
+				isLoading = false;
+
+				// Show guide on first visit
+				if (!hasSeenGuide.current) {
+					showHowToUseDialog = true;
+				}
+			});
 	});
 
-	function handleAddOption() {
-		addOption(
-			newOptionForm.name,
-			newOptionForm.description,
-			newOptionForm.color,
-			newOptionForm.allocation
-		);
+	async function handleAddOption() {
+		if (currentUser) {
+			// Save to server for authenticated users
+			try {
+				await addScenarioOption({
+					name: newOptionForm.name,
+					description: newOptionForm.description,
+					color: newOptionForm.color,
+					allocation: newOptionForm.allocation
+				});
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					options.current = serverData.options.map((opt) => ({
+						id: opt.id,
+						name: opt.name,
+						description: opt.description || '',
+						color: opt.color,
+						totalTimeSpent: opt.totalTimeSpent,
+						progress: opt.progress,
+						estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+						allocation: opt.allocation,
+						activities: opt.activities.map((act) => ({
+							id: act.id,
+							date: act.date,
+							description: act.description,
+							timeSpent: act.timeSpent,
+							progressMetric: act.progressMetric || '',
+							status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+							notes: act.notes || ''
+						})),
+						createdAt: opt.createdAt
+					}));
+				}
+				toast.success('Option added successfully');
+			} catch (error) {
+				console.error('Failed to add option:', error);
+				toast.error('Failed to add option');
+			}
+		} else {
+			// Local storage for unauthenticated users
+			addOption(
+				newOptionForm.name,
+				newOptionForm.description,
+				newOptionForm.color,
+				newOptionForm.allocation
+			);
+		}
+
 		newOptionForm = {
 			name: '',
 			description: '',
@@ -99,18 +230,75 @@
 		}
 	}
 
-	function handleDeleteOption(optionId: string) {
+	async function handleDeleteOption(optionId: string) {
 		if (
 			confirm(
 				'Are you sure you want to delete this option? All related activities and risks will also be deleted.'
 			)
 		) {
-			deleteOption(optionId);
+			if (currentUser) {
+				try {
+					await deleteScenarioOption(optionId);
+					// Reload data from server
+					const serverData = await getScenarioData();
+					if (serverData) {
+						options.current = serverData.options.map((opt) => ({
+							id: opt.id,
+							name: opt.name,
+							description: opt.description || '',
+							color: opt.color,
+							totalTimeSpent: opt.totalTimeSpent,
+							progress: opt.progress,
+							estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+							allocation: opt.allocation,
+							activities: opt.activities.map((act) => ({
+								id: act.id,
+								date: act.date,
+								description: act.description,
+								timeSpent: act.timeSpent,
+								progressMetric: act.progressMetric || '',
+								status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+								notes: act.notes || ''
+							})),
+							createdAt: opt.createdAt
+						}));
+					}
+					toast.success('Option deleted');
+				} catch (error) {
+					console.error('Failed to delete option:', error);
+					toast.error('Failed to delete option');
+				}
+			} else {
+				deleteOption(optionId);
+			}
+
 			if (activeTab === optionId) {
 				activeTab = 'dashboard';
 			}
 		}
 	}
+
+	async function handleSettingsSave(startDate: Date, endDate: Date) {
+		updateSettings(startDate, endDate);
+
+		// If authenticated, also save to server
+		if (currentUser) {
+			try {
+				await updateScenarioSettings({
+					startDate: startDate.toISOString(),
+					endDate: endDate.toISOString()
+				});
+				toast.success('Settings saved');
+			} catch (error) {
+				console.error('Failed to save settings:', error);
+				toast.error('Failed to save settings to server');
+			}
+		}
+	}
+
+	// Get current settings for the Settings dialog
+	let currentStartDate = $derived(getStartDate());
+	let currentEndDate = $derived(getEndDate());
 </script>
 
 <RouteHead
@@ -124,11 +312,15 @@
 		<div>
 			<h1 class="text-3xl font-bold tracking-tight">Scenario Tracker</h1>
 			<p class="text-muted-foreground">
-				Plan your future: track options, investments, and risks over your 10-year horizon
+				Plan your future: track options, investments, and risks over your planning horizon
 			</p>
 		</div>
-		<div class="flex gap-2">
+		<div class="flex flex-wrap gap-2">
 			<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>Help</Button>
+			<Button variant="outline" onclick={() => (showSettingsDialog = true)}>
+				<SettingsIcon class="mr-2 size-4" />
+				Settings
+			</Button>
 			<Button variant="outline" onclick={() => (showResetDialog = true)}>
 				<RotateCcw class="mr-2 size-4" />
 				Reset
@@ -280,4 +472,14 @@
 	description={scenarioTrackerHowToUse.description}
 	tabs={scenarioTrackerHowToUse.tabs}
 	showFooterHelpText={scenarioTrackerHowToUse.showFooterHelpText}
+/>
+
+<!-- Settings Dialog -->
+<Settings
+	open={showSettingsDialog}
+	onOpenChange={(open) => (showSettingsDialog = open)}
+	startDate={currentStartDate}
+	endDate={currentEndDate}
+	onSave={handleSettingsSave}
+	isAuthenticated={!!currentUser}
 />
