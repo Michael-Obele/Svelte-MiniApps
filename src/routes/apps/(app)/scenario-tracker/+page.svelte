@@ -14,7 +14,8 @@
 		Plus,
 		Save,
 		RotateCcw,
-		Settings as SettingsIcon
+		Settings as SettingsIcon,
+		Trash2
 	} from 'lucide-svelte';
 
 	import Dashboard from './Dashboard.svelte';
@@ -22,6 +23,7 @@
 	import Timeline from './Timeline.svelte';
 	import Risks from './Risks.svelte';
 	import Settings from './Settings.svelte';
+	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import { scenarioTrackerHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
 	import { toast } from 'svelte-sonner';
@@ -60,6 +62,8 @@
 	let showResetDialog = $state(false);
 	let showHowToUseDialog = $state(false);
 	let showSettingsDialog = $state(false);
+	let showDeleteOptionDialog = $state(false);
+	let optionToDelete = $state<string | null>(null);
 
 	// Track if user has seen the guide
 	const hasSeenGuide = new PersistedState<boolean>(scenarioTrackerHowToUse.storageKey, false);
@@ -160,8 +164,8 @@
 
 	async function handleAddOption() {
 		if (currentUser) {
-			// Save to server for authenticated users
-			try {
+			// Save to server for authenticated users with loading toast
+			const addOptionPromise = async () => {
 				await addScenarioOption({
 					name: newOptionForm.name,
 					description: newOptionForm.description,
@@ -192,10 +196,16 @@
 						createdAt: opt.createdAt
 					}));
 				}
-				toast.success('Option added successfully');
+			};
+
+			try {
+				toast.promise(addOptionPromise(), {
+					loading: 'Adding option...',
+					success: 'Option added successfully',
+					error: 'Failed to add option'
+				});
 			} catch (error) {
 				console.error('Failed to add option:', error);
-				toast.error('Failed to add option');
 			}
 		} else {
 			// Local storage for unauthenticated users
@@ -231,67 +241,85 @@
 	}
 
 	async function handleDeleteOption(optionId: string) {
-		if (
-			confirm(
-				'Are you sure you want to delete this option? All related activities and risks will also be deleted.'
-			)
-		) {
-			if (currentUser) {
-				try {
-					await deleteScenarioOption(optionId);
-					// Reload data from server
-					const serverData = await getScenarioData();
-					if (serverData) {
-						options.current = serverData.options.map((opt) => ({
-							id: opt.id,
-							name: opt.name,
-							description: opt.description || '',
-							color: opt.color,
-							totalTimeSpent: opt.totalTimeSpent,
-							progress: opt.progress,
-							estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
-							allocation: opt.allocation,
-							activities: opt.activities.map((act) => ({
-								id: act.id,
-								date: act.date,
-								description: act.description,
-								timeSpent: act.timeSpent,
-								progressMetric: act.progressMetric || '',
-								status: act.status as 'planning' | 'active' | 'paused' | 'complete',
-								notes: act.notes || ''
-							})),
-							createdAt: opt.createdAt
-						}));
-					}
-					toast.success('Option deleted');
-				} catch (error) {
-					console.error('Failed to delete option:', error);
-					toast.error('Failed to delete option');
-				}
-			} else {
-				deleteOption(optionId);
-			}
+		optionToDelete = optionId;
+		showDeleteOptionDialog = true;
+	}
 
-			if (activeTab === optionId) {
-				activeTab = 'dashboard';
+	async function confirmDeleteOption() {
+		if (!optionToDelete) return;
+
+		const optionId = optionToDelete;
+		optionToDelete = null;
+		showDeleteOptionDialog = false;
+
+		if (currentUser) {
+			// Delete from server with loading toast
+			const deleteOptionPromise = async () => {
+				await deleteScenarioOption(optionId);
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					options.current = serverData.options.map((opt) => ({
+						id: opt.id,
+						name: opt.name,
+						description: opt.description || '',
+						color: opt.color,
+						totalTimeSpent: opt.totalTimeSpent,
+						progress: opt.progress,
+						estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+						allocation: opt.allocation,
+						activities: opt.activities.map((act) => ({
+							id: act.id,
+							date: act.date,
+							description: act.description,
+							timeSpent: act.timeSpent,
+							progressMetric: act.progressMetric || '',
+							status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+							notes: act.notes || ''
+						})),
+						createdAt: opt.createdAt
+					}));
+				}
+			};
+
+			try {
+				toast.promise(deleteOptionPromise(), {
+					loading: 'Deleting option...',
+					success: 'Option deleted',
+					error: 'Failed to delete option'
+				});
+			} catch (error) {
+				console.error('Failed to delete option:', error);
 			}
+		} else {
+			deleteOption(optionId);
+		}
+
+		if (activeTab === optionId) {
+			activeTab = 'dashboard';
 		}
 	}
 
 	async function handleSettingsSave(startDate: Date, endDate: Date) {
 		updateSettings(startDate, endDate);
 
-		// If authenticated, also save to server
+		// If authenticated, also save to server with loading toast
 		if (currentUser) {
-			try {
+			const saveSettingsPromise = async () => {
 				await updateScenarioSettings({
 					startDate: startDate.toISOString(),
 					endDate: endDate.toISOString()
 				});
-				toast.success('Settings saved');
+			};
+
+			try {
+				toast.promise(saveSettingsPromise(), {
+					loading: 'Saving settings...',
+					success: 'Settings saved',
+					error: 'Failed to save settings to server'
+				});
 			} catch (error) {
 				console.error('Failed to save settings:', error);
-				toast.error('Failed to save settings to server');
 			}
 		}
 	}
@@ -318,15 +346,15 @@
 		<div class="flex flex-wrap gap-2">
 			<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>Help</Button>
 			<Button variant="outline" onclick={() => (showSettingsDialog = true)}>
-				<SettingsIcon class="mr-2 size-4" />
+				<SettingsIcon class="size-4 mr-2" />
 				Settings
 			</Button>
 			<Button variant="outline" onclick={() => (showResetDialog = true)}>
-				<RotateCcw class="mr-2 size-4" />
+				<RotateCcw class="size-4 mr-2" />
 				Reset
 			</Button>
 			<Button onclick={() => (showAddOptionDialog = true)}>
-				<Plus class="mr-2 size-4" />
+				<Plus class="size-4 mr-2" />
 				Add Option
 			</Button>
 		</div>
@@ -365,19 +393,20 @@
 				<Tabs.Content value={option.id}>
 					<div class="mb-4 flex justify-end">
 						<Button variant="destructive" size="sm" onclick={() => handleDeleteOption(option.id)}>
+							<Trash2 class="size-4 mr-2" />
 							Delete Option
 						</Button>
 					</div>
-					<OptionDetail optionId={option.id} />
+					<OptionDetail optionId={option.id} {currentUser} />
 				</Tabs.Content>
 			{/each}
 
 			<Tabs.Content value="timeline">
-				<Timeline />
+				<Timeline {currentUser} />
 			</Tabs.Content>
 
 			<Tabs.Content value="risks">
-				<Risks />
+				<Risks {currentUser} />
 			</Tabs.Content>
 		</div>
 	</Tabs.Root>
@@ -440,7 +469,7 @@
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showAddOptionDialog = false)}>Cancel</Button>
 			<Button onclick={handleAddOption} disabled={!newOptionForm.name}>
-				<Save class="mr-2 size-4" />
+				<Save class="size-4 mr-2" />
 				Add Option
 			</Button>
 		</Dialog.Footer>
@@ -482,4 +511,13 @@
 	endDate={currentEndDate}
 	onSave={handleSettingsSave}
 	isAuthenticated={!!currentUser}
+/>
+
+<!-- Delete Option Confirmation Dialog -->
+<DeleteConfirmationDialog
+	open={showDeleteOptionDialog}
+	title="Delete Option"
+	description="Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
+	onConfirm={confirmDeleteOption}
+	onCancel={() => { showDeleteOptionDialog = false; optionToDelete = null; }}
 />

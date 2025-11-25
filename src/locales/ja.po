@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T07:55:32.320Z\n"
-"PO-Revision-Date: 2025-11-25T09:44:59.120Z\n"
+"PO-Revision-Date: 2025-11-25T10:54:31.745Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -3327,6 +3327,7 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -4947,6 +4948,7 @@ msgstr "日付"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "削除"
 
@@ -9291,9 +9293,8 @@ msgstr "インディゴ"
 msgid "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
 msgstr "オプション、アクティビティ、タイムラインエントリ、リスクを含むすべてのデータが削除されます。本当に削除しますか？"
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
-msgstr "このオプションを削除しますか？関連するすべてのアクティビティとリスクも削除されます。"
+#~ msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
+#~ msgstr "このオプションを削除しますか？関連するすべてのアクティビティとリスクも削除されます。"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
@@ -9375,9 +9376,8 @@ msgstr "一時停止"
 msgid "Complete"
 msgstr "完了"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-msgid "Are you sure you want to delete this activity?"
-msgstr "このアクティビティを削除してもよろしいですか？"
+#~ msgid "Are you sure you want to delete this activity?"
+#~ msgstr "このアクティビティを削除してもよろしいですか？"
 
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
@@ -9493,6 +9493,11 @@ msgstr "<0/> 変更を保存"
 msgid "Option not found."
 msgstr "オプションが見つかりません。"
 
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
 msgid "TBD"
 msgstr "未定"
@@ -9595,9 +9600,8 @@ msgstr "計画期間の進捗"
 #~ msgid "Deadline: Nov 25, 2035"
 #~ msgstr ""
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
-msgid "Are you sure you want to delete this timeline entry?"
-msgstr "このタイムラインエントリを削除してもよろしいですか？"
+#~ msgid "Are you sure you want to delete this timeline entry?"
+#~ msgstr "このタイムラインエントリを削除してもよろしいですか？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Timeline Log"
@@ -9688,9 +9692,8 @@ msgstr "高"
 msgid "Critical"
 msgstr "重大"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-msgid "Are you sure you want to delete this risk?"
-msgstr "本当にこのリスクを削除しますか？"
+#~ msgid "Are you sure you want to delete this risk?"
+#~ msgstr "本当にこのリスクを削除しますか？"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -9877,3 +9880,54 @@ msgstr ""
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Cancel"
 msgstr "<0/> キャンセル"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Delete Option"
+msgstr "<0/> オプションを削除"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this option? All related activities and risks will also be deleted.\n"
+#~ "This action cannot be undone."
+#~ msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Delete Activity"
+msgstr "アクティビティを削除"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Are you sure you want to delete this activity? This action cannot be undone."
+msgstr "このアクティビティを削除してもよろしいですか？この操作は元に戻せません。"
+
+#~ msgid "<0/> Delete Activity"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Delete Timeline Entry"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
+msgstr ""
+
+#~ msgid "<0/> Delete Entry"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Delete Risk"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Are you sure you want to delete this risk? This action cannot be undone."
+msgstr ""
+
+#~ msgid "<0/> Delete Risk"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
+msgstr "このオプションを削除してもよろしいですか？関連するすべてのアクティビティとリスクも削除されます。この操作は元に戻せません。"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Delete Entry"
+msgstr ""

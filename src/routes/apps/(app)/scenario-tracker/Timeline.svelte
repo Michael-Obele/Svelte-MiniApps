@@ -8,6 +8,13 @@
 		updateTimelineEntry,
 		deleteTimelineEntry
 	} from './stores.svelte';
+	import {
+		getScenarioData,
+		addScenarioTimelineEntry,
+		updateScenarioTimelineEntry,
+		deleteScenarioTimelineEntry
+	} from '$lib/remote';
+	import { toast } from 'svelte-sonner';
 	import * as Card from '$lib/components/ui/card';
 	import * as Table from '$lib/components/ui/table';
 	import * as Dialog from '$lib/components/ui/dialog';
@@ -17,10 +24,19 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Badge } from '$lib/components/ui/badge';
+	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import { Plus, Pencil, Trash2, Calendar, Save } from 'lucide-svelte';
+
+	interface Props {
+		currentUser?: { id: string; username: string; role: string } | null;
+	}
+
+	let { currentUser = null }: Props = $props();
 
 	// Dialog states
 	let showEntryDialog = $state(false);
+	let showDeleteEntryDialog = $state(false);
+	let entryToDelete = $state<string | null>(null);
 	let editingEntry = $state<TimelineEntry | null>(null);
 
 	// Form states
@@ -64,22 +80,106 @@
 		}
 	}
 
-	function saveEntry() {
-		if (editingEntry) {
-			updateTimelineEntry(editingEntry.id, entryForm);
+	async function saveEntry() {
+		if (currentUser) {
+			// Save to server for authenticated users with loading toast
+			const saveEntryPromise = async () => {
+				if (editingEntry) {
+					await updateScenarioTimelineEntry({
+						id: editingEntry.id,
+						outcomes: entryForm.outcomes,
+						adjustments: entryForm.adjustments,
+						optionsWorked: entryForm.optionsWorked,
+						timeAllocation: entryForm.timeAllocation
+					});
+				} else {
+					await addScenarioTimelineEntry({
+						outcomes: entryForm.outcomes,
+						adjustments: entryForm.adjustments,
+						optionsWorked: entryForm.optionsWorked,
+						timeAllocation: entryForm.timeAllocation
+					});
+				}
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					timelineEntries.current = serverData.timelineEntries.map((entry) => ({
+						id: entry.id,
+						date: entry.date,
+						optionsWorked: entry.optionsWorked,
+						timeAllocation: entry.timeAllocation,
+						outcomes: entry.outcomes || '',
+						adjustments: entry.adjustments || ''
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(saveEntryPromise(), {
+					loading: editingEntry ? 'Updating entry...' : 'Adding entry...',
+					success: editingEntry ? 'Timeline entry updated' : 'Timeline entry added',
+					error: editingEntry ? 'Failed to update entry' : 'Failed to add entry'
+				});
+			} catch (error) {
+				console.error('Failed to save timeline entry:', error);
+			}
 		} else {
-			addTimelineEntry(
-				entryForm.optionsWorked,
-				entryForm.timeAllocation,
-				entryForm.outcomes,
-				entryForm.adjustments
-			);
+			// Local storage for unauthenticated users
+			if (editingEntry) {
+				updateTimelineEntry(editingEntry.id, entryForm);
+			} else {
+				addTimelineEntry(
+					entryForm.optionsWorked,
+					entryForm.timeAllocation,
+					entryForm.outcomes,
+					entryForm.adjustments
+				);
+			}
 		}
 		showEntryDialog = false;
 	}
 
-	function handleDeleteEntry(entryId: string) {
-		if (confirm('Are you sure you want to delete this timeline entry?')) {
+	async function handleDeleteEntry(entryId: string) {
+		entryToDelete = entryId;
+		showDeleteEntryDialog = true;
+	}
+
+	async function confirmDeleteEntry() {
+		if (!entryToDelete) return;
+
+		const entryId = entryToDelete;
+		entryToDelete = null;
+		showDeleteEntryDialog = false;
+
+		if (currentUser) {
+			// Delete from server with loading toast
+			const deleteEntryPromise = async () => {
+				await deleteScenarioTimelineEntry(entryId);
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					timelineEntries.current = serverData.timelineEntries.map((entry) => ({
+						id: entry.id,
+						date: entry.date,
+						optionsWorked: entry.optionsWorked,
+						timeAllocation: entry.timeAllocation,
+						outcomes: entry.outcomes || '',
+						adjustments: entry.adjustments || ''
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(deleteEntryPromise(), {
+					loading: 'Deleting entry...',
+					success: 'Timeline entry deleted',
+					error: 'Failed to delete entry'
+				});
+			} catch (error) {
+				console.error('Failed to delete timeline entry:', error);
+			}
+		} else {
+			// Local storage for unauthenticated users
 			deleteTimelineEntry(entryId);
 		}
 	}
@@ -261,3 +361,13 @@
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
+
+<!-- Delete Timeline Entry Confirmation Dialog -->
+<DeleteConfirmationDialog
+	open={showDeleteEntryDialog}
+	title="Delete Timeline Entry"
+	description="Are you sure you want to delete this timeline entry? This action cannot be undone."
+	confirmText="Delete Entry"
+	onConfirm={confirmDeleteEntry}
+	onCancel={() => { showDeleteEntryDialog = false; entryToDelete = null; }}
+/>

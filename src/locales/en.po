@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-25T09:44:47.434Z\n"
+"PO-Revision-Date: 2025-11-25T10:54:31.493Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -3566,6 +3566,7 @@ msgstr "Enter your username"
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -5193,6 +5194,7 @@ msgstr "Date"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "Delete"
 
@@ -7854,8 +7856,8 @@ msgstr "<0/> Achieved"
 msgid "<0/> Locked"
 msgstr "<0/> Locked"
 
-#. placeholder {0}: milestone.progress.toFixed(0)
 #. placeholder {0}: option.progress
+#. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "{0}% complete"
@@ -9345,6 +9347,11 @@ msgstr "Zero learning curve. Maximum productivity. Each mini app is designed to 
 msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
 msgid "TBD"
 msgstr "TBD"
@@ -9395,9 +9402,8 @@ msgstr "Indigo"
 msgid "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
 msgstr "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
-msgstr "Are you sure you want to delete this option? All related activities and risks will also be deleted."
+#~ msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
+#~ msgstr "Are you sure you want to delete this option? All related activities and risks will also be deleted."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
@@ -9496,8 +9502,8 @@ msgid "Total Time Invested"
 msgstr "Total Time Invested"
 
 #. placeholder {0}: stats.totalTimeSpent
-#. placeholder {0}: option.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
+#. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
@@ -9607,9 +9613,8 @@ msgstr "Paused"
 msgid "Complete"
 msgstr "Complete"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-msgid "Are you sure you want to delete this activity?"
-msgstr "Are you sure you want to delete this activity?"
+#~ msgid "Are you sure you want to delete this activity?"
+#~ msgstr "Are you sure you want to delete this activity?"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Invested"
@@ -9709,9 +9714,8 @@ msgstr "<0/> Save Changes"
 msgid "Option not found."
 msgstr "Option not found."
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
-msgid "Are you sure you want to delete this timeline entry?"
-msgstr "Are you sure you want to delete this timeline entry?"
+#~ msgid "Are you sure you want to delete this timeline entry?"
+#~ msgstr "Are you sure you want to delete this timeline entry?"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Timeline Log"
@@ -9802,9 +9806,8 @@ msgstr "High"
 msgid "Critical"
 msgstr "Critical"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-msgid "Are you sure you want to delete this risk?"
-msgstr "Are you sure you want to delete this risk?"
+#~ msgid "Are you sure you want to delete this risk?"
+#~ msgstr "Are you sure you want to delete this risk?"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -9960,3 +9963,56 @@ msgstr ""
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Cancel"
 msgstr "<0/> Cancel"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Delete Option"
+msgstr "<0/> Delete Option"
+
+#~ msgid ""
+#~ "Are you sure you want to delete this option? All related activities and risks will also be deleted.\n"
+#~ "This action cannot be undone."
+#~ msgstr ""
+#~ "Are you sure you want to delete this option? All related activities and risks will also be deleted.\n"
+#~ "This action cannot be undone."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Delete Activity"
+msgstr "Delete Activity"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Are you sure you want to delete this activity? This action cannot be undone."
+msgstr "Are you sure you want to delete this activity? This action cannot be undone."
+
+#~ msgid "<0/> Delete Activity"
+#~ msgstr "<0/> Delete Activity"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Delete Timeline Entry"
+msgstr "Delete Timeline Entry"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
+msgstr "Are you sure you want to delete this timeline entry? This action cannot be undone."
+
+#~ msgid "<0/> Delete Entry"
+#~ msgstr "<0/> Delete Entry"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Delete Risk"
+msgstr "Delete Risk"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Are you sure you want to delete this risk? This action cannot be undone."
+msgstr "Are you sure you want to delete this risk? This action cannot be undone."
+
+#~ msgid "<0/> Delete Risk"
+#~ msgstr "<0/> Delete Risk"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
+msgstr "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Delete Entry"
+msgstr "Delete Entry"

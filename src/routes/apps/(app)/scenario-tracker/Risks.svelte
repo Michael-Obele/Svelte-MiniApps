@@ -2,6 +2,13 @@
 	import type { Risk, Severity } from './types';
 	import { formatDate, getSeverityColor } from './types';
 	import { options, risks, addRisk, updateRisk, deleteRisk } from './stores.svelte';
+	import {
+		getScenarioData,
+		addScenarioRisk,
+		updateScenarioRisk,
+		deleteScenarioRisk
+	} from '$lib/remote';
+	import { toast } from 'svelte-sonner';
 	import * as Card from '$lib/components/ui/card';
 	import * as Table from '$lib/components/ui/table';
 	import * as Dialog from '$lib/components/ui/dialog';
@@ -10,10 +17,19 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Badge } from '$lib/components/ui/badge';
+	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import { Plus, Pencil, Trash2, AlertTriangle, Shield, Save } from 'lucide-svelte';
+
+	interface Props {
+		currentUser?: { id: string; username: string; role: string } | null;
+	}
+
+	let { currentUser = null }: Props = $props();
 
 	// Dialog states
 	let showRiskDialog = $state(false);
+	let showDeleteRiskDialog = $state(false);
+	let riskToDelete = $state<string | null>(null);
 	let editingRisk = $state<Risk | null>(null);
 
 	// Form states
@@ -54,17 +70,101 @@
 		showRiskDialog = true;
 	}
 
-	function saveRisk() {
-		if (editingRisk) {
-			updateRisk(editingRisk.id, riskForm);
+	async function saveRisk() {
+		if (currentUser) {
+			// Save to server for authenticated users with loading toast
+			const saveRiskPromise = async () => {
+				if (editingRisk) {
+					await updateScenarioRisk({
+						id: editingRisk.id,
+						description: riskForm.description,
+						severity: riskForm.severity,
+						mitigation: riskForm.mitigation,
+						optionId: riskForm.optionId
+					});
+				} else {
+					await addScenarioRisk({
+						description: riskForm.description,
+						severity: riskForm.severity,
+						mitigation: riskForm.mitigation,
+						optionId: riskForm.optionId
+					});
+				}
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					risks.current = serverData.risks.map((risk) => ({
+						id: risk.id,
+						description: risk.description,
+						severity: risk.severity as 'low' | 'medium' | 'high' | 'critical',
+						mitigation: risk.mitigation || '',
+						optionId: risk.optionId,
+						createdAt: risk.createdAt
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(saveRiskPromise(), {
+					loading: editingRisk ? 'Updating risk...' : 'Adding risk...',
+					success: editingRisk ? 'Risk updated' : 'Risk added',
+					error: editingRisk ? 'Failed to update risk' : 'Failed to add risk'
+				});
+			} catch (error) {
+				console.error('Failed to save risk:', error);
+			}
 		} else {
-			addRisk(riskForm.description, riskForm.severity, riskForm.mitigation, riskForm.optionId);
+			// Local storage for unauthenticated users
+			if (editingRisk) {
+				updateRisk(editingRisk.id, riskForm);
+			} else {
+				addRisk(riskForm.description, riskForm.severity, riskForm.mitigation, riskForm.optionId);
+			}
 		}
 		showRiskDialog = false;
 	}
 
-	function handleDeleteRisk(riskId: string) {
-		if (confirm('Are you sure you want to delete this risk?')) {
+	async function handleDeleteRisk(riskId: string) {
+		riskToDelete = riskId;
+		showDeleteRiskDialog = true;
+	}
+
+	async function confirmDeleteRisk() {
+		if (!riskToDelete) return;
+
+		const riskId = riskToDelete;
+		riskToDelete = null;
+		showDeleteRiskDialog = false;
+
+		if (currentUser) {
+			// Delete from server with loading toast
+			const deleteRiskPromise = async () => {
+				await deleteScenarioRisk(riskId);
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					risks.current = serverData.risks.map((risk) => ({
+						id: risk.id,
+						description: risk.description,
+						severity: risk.severity as 'low' | 'medium' | 'high' | 'critical',
+						mitigation: risk.mitigation || '',
+						optionId: risk.optionId,
+						createdAt: risk.createdAt
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(deleteRiskPromise(), {
+					loading: 'Deleting risk...',
+					success: 'Risk deleted',
+					error: 'Failed to delete risk'
+				});
+			} catch (error) {
+				console.error('Failed to delete risk:', error);
+			}
+		} else {
+			// Local storage for unauthenticated users
 			deleteRisk(riskId);
 		}
 	}
@@ -311,3 +411,12 @@
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
+
+<!-- Delete Risk Confirmation Dialog -->
+<DeleteConfirmationDialog
+	open={showDeleteRiskDialog}
+	title="Delete Risk"
+	description="Are you sure you want to delete this risk? This action cannot be undone."
+	onConfirm={confirmDeleteRisk}
+	onCancel={() => { showDeleteRiskDialog = false; riskToDelete = null; }}
+/>

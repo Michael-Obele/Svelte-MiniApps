@@ -10,6 +10,14 @@
 		deleteActivity,
 		getRisksByOption
 	} from './stores.svelte';
+	import {
+		getScenarioData,
+		updateScenarioOption,
+		addScenarioActivity,
+		updateScenarioActivity,
+		deleteScenarioActivity
+	} from '$lib/remote';
+	import { toast } from 'svelte-sonner';
 	import * as Card from '$lib/components/ui/card';
 	import * as Table from '$lib/components/ui/table';
 	import { Progress } from '@/ui/progress';
@@ -20,6 +28,7 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Badge } from '$lib/components/ui/badge';
+	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import {
 		Plus,
 		Pencil,
@@ -31,11 +40,10 @@
 		Save
 	} from 'lucide-svelte';
 
-	interface Props {
+	let { optionId, currentUser = null }: {
 		optionId: string;
-	}
-
-	let { optionId }: Props = $props();
+		currentUser?: { id: string; username: string; role: string } | null;
+	} = $props();
 
 	let option = $derived(options.current.find((o) => o.id === optionId));
 	let optionRisks = $derived(getRisksByOption(optionId));
@@ -43,6 +51,8 @@
 	// Dialog states
 	let showActivityDialog = $state(false);
 	let showEditOptionDialog = $state(false);
+	let showDeleteActivityDialog = $state(false);
+	let activityToDelete = $state<string | null>(null);
 	let editingActivity = $state<Activity | null>(null);
 
 	// Form states
@@ -83,11 +93,60 @@
 		}
 	}
 
-	function saveOption() {
-		if (option) {
+	async function saveOption() {
+		if (!option) return;
+
+		if (currentUser) {
+			// Save to server for authenticated users with loading toast
+			const saveOptionPromise = async () => {
+				await updateScenarioOption({
+					id: option.id,
+					name: optionForm.name,
+					description: optionForm.description,
+					allocation: optionForm.allocation,
+					progress: optionForm.progress,
+					estimatedTimeToCompletion: optionForm.estimatedTimeToCompletion
+				});
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					options.current = serverData.options.map((opt) => ({
+						id: opt.id,
+						name: opt.name,
+						description: opt.description || '',
+						color: opt.color,
+						totalTimeSpent: opt.totalTimeSpent,
+						progress: opt.progress,
+						estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+						allocation: opt.allocation,
+						activities: opt.activities.map((act) => ({
+							id: act.id,
+							date: act.date,
+							description: act.description,
+							timeSpent: act.timeSpent,
+							progressMetric: act.progressMetric || '',
+							status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+							notes: act.notes || ''
+						})),
+						createdAt: opt.createdAt
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(saveOptionPromise(), {
+					loading: 'Saving changes...',
+					success: 'Option updated successfully',
+					error: 'Failed to update option'
+				});
+			} catch (error) {
+				console.error('Failed to update option:', error);
+			}
+		} else {
+			// Local storage for unauthenticated users
 			updateOption(option.id, optionForm);
-			showEditOptionDialog = false;
 		}
+		showEditOptionDialog = false;
 	}
 
 	function openAddActivityDialog() {
@@ -114,26 +173,137 @@
 		showActivityDialog = true;
 	}
 
-	function saveActivity() {
+	async function saveActivity() {
 		if (!option) return;
 
-		if (editingActivity) {
-			updateActivity(option.id, editingActivity.id, activityForm);
+		if (currentUser) {
+			// Save to server for authenticated users with loading toast
+			const saveActivityPromise = async () => {
+				if (editingActivity) {
+					await updateScenarioActivity({
+						id: editingActivity.id,
+						description: activityForm.description,
+						timeSpent: activityForm.timeSpent,
+						progressMetric: activityForm.progressMetric,
+						status: activityForm.status,
+						notes: activityForm.notes
+					});
+				} else {
+					await addScenarioActivity({
+						optionId: option.id,
+						description: activityForm.description,
+						timeSpent: activityForm.timeSpent,
+						progressMetric: activityForm.progressMetric,
+						status: activityForm.status,
+						notes: activityForm.notes
+					});
+				}
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					options.current = serverData.options.map((opt) => ({
+						id: opt.id,
+						name: opt.name,
+						description: opt.description || '',
+						color: opt.color,
+						totalTimeSpent: opt.totalTimeSpent,
+						progress: opt.progress,
+						estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+						allocation: opt.allocation,
+						activities: opt.activities.map((act) => ({
+							id: act.id,
+							date: act.date,
+							description: act.description,
+							timeSpent: act.timeSpent,
+							progressMetric: act.progressMetric || '',
+							status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+							notes: act.notes || ''
+						})),
+						createdAt: opt.createdAt
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(saveActivityPromise(), {
+					loading: editingActivity ? 'Updating activity...' : 'Adding activity...',
+					success: editingActivity ? 'Activity updated' : 'Activity added',
+					error: editingActivity ? 'Failed to update activity' : 'Failed to add activity'
+				});
+			} catch (error) {
+				console.error('Failed to save activity:', error);
+			}
 		} else {
-			addActivity(
-				option.id,
-				activityForm.description,
-				activityForm.timeSpent,
-				activityForm.progressMetric,
-				activityForm.status,
-				activityForm.notes
-			);
+			// Local storage for unauthenticated users
+			if (editingActivity) {
+				updateActivity(option.id, editingActivity.id, activityForm);
+			} else {
+				addActivity(
+					option.id,
+					activityForm.description,
+					activityForm.timeSpent,
+					activityForm.progressMetric,
+					activityForm.status,
+					activityForm.notes
+				);
+			}
 		}
 		showActivityDialog = false;
 	}
 
-	function handleDeleteActivity(activityId: string) {
-		if (option && confirm('Are you sure you want to delete this activity?')) {
+	async function handleDeleteActivity(activityId: string) {
+		activityToDelete = activityId;
+		showDeleteActivityDialog = true;
+	}
+
+	async function confirmDeleteActivity() {
+		if (!option || !activityToDelete) return;
+
+		const activityId = activityToDelete;
+		activityToDelete = null;
+		showDeleteActivityDialog = false;
+
+		if (currentUser) {
+			// Delete from server with loading toast
+			const deleteActivityPromise = async () => {
+				await deleteScenarioActivity(activityId);
+				// Reload data from server
+				const serverData = await getScenarioData();
+				if (serverData) {
+					options.current = serverData.options.map((opt) => ({
+						id: opt.id,
+						name: opt.name,
+						description: opt.description || '',
+						color: opt.color,
+						totalTimeSpent: opt.totalTimeSpent,
+						progress: opt.progress,
+						estimatedTimeToCompletion: opt.estimatedTimeToCompletion || 'TBD',
+						allocation: opt.allocation,
+						activities: opt.activities.map((act) => ({
+							id: act.id,
+							date: act.date,
+							description: act.description,
+							timeSpent: act.timeSpent,
+							progressMetric: act.progressMetric || '',
+							status: act.status as 'planning' | 'active' | 'paused' | 'complete',
+							notes: act.notes || ''
+						})),
+						createdAt: opt.createdAt
+					}));
+				}
+			};
+
+			try {
+				await toast.promise(deleteActivityPromise(), {
+					loading: 'Deleting activity...',
+					success: 'Activity deleted',
+					error: 'Failed to delete activity'
+				});
+			} catch (error) {
+				console.error('Failed to delete activity:', error);
+			}
+		} else {
+			// Local storage for unauthenticated users
 			deleteActivity(option.id, activityId);
 		}
 	}
@@ -425,6 +595,16 @@
 			</Dialog.Footer>
 		</Dialog.Content>
 	</Dialog.Root>
+
+	<!-- Delete Activity Confirmation Dialog -->
+	<DeleteConfirmationDialog
+		open={showDeleteActivityDialog}
+		title="Delete Activity"
+		description="Are you sure you want to delete this activity? This action cannot be undone."
+		confirmText="Delete Activity"
+		onConfirm={confirmDeleteActivity}
+		onCancel={() => { showDeleteActivityDialog = false; activityToDelete = null; }}
+	/>
 {:else}
 	<div class="text-muted-foreground py-8 text-center">
 		<p>Option not found.</p>
