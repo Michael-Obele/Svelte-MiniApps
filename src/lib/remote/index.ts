@@ -51,9 +51,14 @@ export {
 export {
 	getUserProfile,
 	getUserPasswords,
+	getUserSessions,
 	updateProfile,
 	updatePassword,
-	deleteAccount
+	updateDisplayName,
+	deleteAccount,
+	revokeSession,
+	revokeAllOtherSessions,
+	type UserSession
 } from './profile.remote';
 
 // Remote functions for note taker
@@ -98,3 +103,6 @@ export {
 	convertCurrencyForm,
 	type CurrencyInfo
 } from './currency.remote';
+
+// Remote functions for dictionary app
+export { searchDictionary, type DictionaryEntry, type ApiError } from './dictionary.remote';

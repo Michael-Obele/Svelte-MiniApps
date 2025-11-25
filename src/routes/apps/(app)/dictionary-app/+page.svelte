@@ -1,84 +1,60 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { Button } from '@/ui/button/index.js';
-	import Input from '@/ui/input/input.svelte';
+	import { searchDictionary } from '$lib/remote/dictionary.remote';
+	import type { DictionaryEntry } from '$lib/remote/dictionary.remote';
 
-	import { AudioLines } from '@lucide/svelte';
+	import { Button } from '@/ui/button/index.js';
+	import { Input } from '@/ui/input/index.js';
+	import { Badge } from '@/ui/badge/index.js';
+	import { Skeleton } from '@/ui/skeleton/index.js';
+	import * as Card from '@/ui/card/index.js';
+
+	import {
+		Search,
+		Volume2,
+		BookOpen,
+		AlertCircle,
+		HelpCircle,
+		Loader2,
+		ExternalLink,
+		Quote,
+		ArrowRight
+	} from '@lucide/svelte';
 
 	import NoWord from '$lib/assets/not-found.svelte';
-	import type { SubmitFunction } from '@sveltejs/kit';
-	import { toast } from 'svelte-sonner';
-	import { enhance } from '$app/forms';
-	import type { ActionData } from './$types';
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { dictionaryAppHowToUse } from './how-to-use-config';
-	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from 'runed';
 
-	interface Props {
-		//
-		form: ActionData;
-	}
-
-	let { form }: Props = $props();
-	let isLoading = $state(false);
-
-	interface DictionaryEntry {
-		title?: string;
-		message?: string;
-		resolution?: string;
-		word?: string;
-		// Add other properties as needed
-	}
-
-	interface FormState {
-		data?: DictionaryEntry;
-		error?: boolean;
-		// Other form state properties
-	}
-
-	let currentMeaning: DictionaryEntry | undefined;
-
-	let Meaning = form?.data;
-
-	let searchTerm = '';
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('dictionary-app-has-seen-how-to-use', false);
 
-	// let fetchMeaning = async () => {
-	// 	let response: any = await _fetchDictionaryEntry(searchTerm);
-	// 	if (response && response.length > 0) {
-	// 		currentMeaning = response[0];
-	// 	} else {
-	// 		currentMeaning = response;
-	// 	}
-	// };
+	// Track loading state from form
+	let isSearching = $derived(!!searchDictionary.pending);
 
-	// Start form submission process.
-	const handleSubmit: SubmitFunction = () => {
-		isLoading = true; // Indicate submission is in progress.
-		toast.loading('Submitting...'); // Show loading toast.
+	// Get results from form
+	let result = $derived(searchDictionary.result);
+	let entries = $derived(result?.success ? (result.data as DictionaryEntry[]) : null);
+	let error = $derived(!result?.success && result?.error ? result.error : null);
 
-		return async ({ update, result }) => {
-			if (result.type === 'failure') {
-				toast.dismiss(); // Dismiss all toasts.
-				toast.error('Error'); // Show error toast.
-			} else {
-				toast.dismiss(); // Dismiss all toasts.
-				toast.success('Success', {
-					action: {
-						label: 'OK',
-						onClick: () => toast.dismiss()
-					}
-				}); // Show success toast.
-			}
+	// Helper to play audio
+	function playAudio(audioUrl: string) {
+		const audio = new Audio(audioUrl);
+		audio.play();
+	}
 
-			await update(); // Wait for update to finish.
-			isLoading = false; // Submission process ends.
-		};
-	};
+	// Get all unique synonyms from definitions
+	function getAllSynonyms(definitions: { synonyms?: string[] }[]): string[] {
+		const allSynonyms = definitions.flatMap((d) => d.synonyms || []);
+		return [...new Set(allSynonyms)].slice(0, 8); // Limit to 8
+	}
+
+	// Get all unique antonyms from definitions
+	function getAllAntonyms(definitions: { antonyms?: string[] }[]): string[] {
+		const allAntonyms = definitions.flatMap((d) => d.antonyms || []);
+		return [...new Set(allAntonyms)].slice(0, 8); // Limit to 8
+	}
 </script>
 
 <RouteHead
@@ -89,187 +65,309 @@
 	image={site().image}
 />
 
-<form
-	use:enhance={handleSubmit}
-	method="POST"
-	class="mx-auto flex max-w-2xl flex-col justify-center px-4"
->
-	<div class="mb-8 text-center">
-		<div class="mb-2 flex items-center justify-center gap-4">
-			<h1 class="text-3xl font-bold text-gray-800 dark:text-white">English Dictionary</h1>
-			<Button variant="outline" size="icon" onclick={() => (showHowToUse = true)} class="shrink-0">
-				<HelpCircle class="h-4 w-4" />
+<div class="mx-auto max-w-3xl px-4 py-8">
+	<!-- Header Section -->
+	<header class="mb-8 text-center">
+		<div class="mb-4 flex items-center justify-center gap-3">
+			<div class="rounded-xl bg-indigo-100 p-3 dark:bg-indigo-900/50">
+				<BookOpen class="size-8 text-indigo-600 dark:text-indigo-400" />
+			</div>
+			<h1 class="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl dark:text-white">
+				English Dictionary
+			</h1>
+			<Button
+				variant="ghost"
+				size="icon"
+				onclick={() => (showHowToUse = true)}
+				class="shrink-0"
+				aria-label="How to use"
+			>
+				<HelpCircle class="size-5" />
 			</Button>
 		</div>
-		<p class="text-lg text-gray-600 dark:text-gray-300">Explore the world of words together.</p>
-	</div>
+		<p class="text-lg text-gray-600 dark:text-gray-300">
+			Explore the world of words — definitions, synonyms, and pronunciations.
+		</p>
+	</header>
 
-	<div class="flex flex-col gap-4 sm:flex-row">
-		<Input
-			type="text"
-			name="word"
-			value={form?.word ?? ''}
-			placeholder="Enter a word"
-			class="flex-1 rounded-lg border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-		/>
-		<Button
-			type="submit"
-			disabled={isLoading}
-			class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-600"
-		>
-			{isLoading ? 'Searching...' : 'Find Meaning'}
-		</Button>
-	</div>
-</form>
+	<!-- Search Form -->
+	<form {...searchDictionary} class="mb-8">
+		<Card.Root class="overflow-hidden border-2 border-indigo-100 dark:border-indigo-900/50">
+			<Card.Content class="p-4">
+				<div class="flex flex-col gap-3 sm:flex-row">
+					<div class="relative flex-1">
+						<Search class="text-muted-foreground absolute top-1/2 left-3 size-5 -translate-y-1/2" />
+						<Input
+							{...searchDictionary.fields.word.as('text')}
+							placeholder="Enter a word to search..."
+							class="h-12 pl-10 text-lg"
+							disabled={isSearching}
+						/>
+					</div>
+					<Button
+						type="submit"
+						disabled={isSearching}
+						class="h-12 gap-2 bg-indigo-600 px-6 text-base hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+					>
+						{#if isSearching}
+							<Loader2 class="size-5 animate-spin" />
+							Searching...
+						{:else}
+							<Search class="size-5" />
+							Find Meaning
+						{/if}
+					</Button>
+				</div>
 
-{#if isLoading}
-	<div class="mx-auto my-8 text-center">
-		<div
-			class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"
-		></div>
-		<p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Searching for meaning...</p>
-	</div>
-{/if}
+				<!-- Validation errors -->
+				{#each searchDictionary.fields.word.issues() ?? [] as issue, i (i)}
+					<p class="mt-2 flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
+						<AlertCircle class="size-4" />
+						{issue.message}
+					</p>
+				{/each}
+			</Card.Content>
+		</Card.Root>
+	</form>
 
-<section
-	class:hidden={isLoading}
-	class="mx-auto my-10 flex max-w-3xl flex-col justify-center space-y-6 px-4"
->
-	{#if form?.error}
-		<div class="error space-y-4 rounded-lg bg-red-50 p-6 text-center shadow-lg dark:bg-red-900/50">
-			<NoWord />
-			<h2 class="text-2xl font-bold text-red-800 dark:text-red-200">{form?.title}</h2>
-			{#if form?.message}
-				<p class="text-lg text-red-700 dark:text-red-300">{form?.message}</p>
-			{/if}
-			{#if form?.resolution}
-				<p class="text-sm text-red-600 dark:text-red-400">{form?.resolution}</p>
-			{/if}
+	<!-- Loading State -->
+	{#if isSearching}
+		<div class="space-y-4">
+			<Card.Root>
+				<Card.Header>
+					<Skeleton class="h-8 w-32" />
+					<Skeleton class="mt-2 h-4 w-24" />
+				</Card.Header>
+				<Card.Content class="space-y-4">
+					<div class="flex items-center gap-3">
+						<Skeleton class="size-10 rounded-lg" />
+						<Skeleton class="h-8 w-48" />
+					</div>
+					<div class="space-y-3">
+						<Skeleton class="h-6 w-24" />
+						<div class="space-y-2 pl-4">
+							<Skeleton class="h-4 w-full" />
+							<Skeleton class="h-4 w-3/4" />
+							<Skeleton class="h-4 w-5/6" />
+						</div>
+					</div>
+				</Card.Content>
+			</Card.Root>
 		</div>
-	{:else if form?.data}
-		{#each form.data as item}
-			<article class="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
-				<header
-					class="border-b border-gray-200 bg-gray-50 px-6 py-4 dark:border-gray-700 dark:bg-gray-900"
-				>
-					<h1 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
-						{item?.word}
-					</h1>
-					{#if item?.phonetic}
-						<p class="mt-2 text-center text-lg text-gray-600 dark:text-gray-300">
-							{item.phonetic}
-						</p>
-					{/if}
-				</header>
+	{/if}
 
-				<div class="p-6">
-					{#if item?.phonetics?.length}
-						<div class="mb-6 space-y-3">
-							{#each item.phonetics as phonetic}
-								{#if phonetic.audio}
-									<div class="flex items-center gap-4 rounded-lg bg-gray-50 p-3 dark:bg-gray-900">
-										<AudioLines class="h-6 w-6 text-indigo-500" />
-										<audio controls src={phonetic.audio} class="h-8"></audio>
-										{#if phonetic.text}
-											<span class="text-sm text-gray-600 dark:text-gray-300">{phonetic.text}</span>
+	<!-- Error State -->
+	{#if error && !isSearching}
+		<Card.Root class="border-red-200 bg-red-50 dark:border-red-900/50 dark:bg-red-950/30">
+			<Card.Content class="py-8 text-center">
+				<NoWord />
+				<h2 class="mt-4 text-xl font-semibold text-red-800 dark:text-red-200">{error.title}</h2>
+				{#if error.message}
+					<p class="mt-2 text-red-700 dark:text-red-300">{error.message}</p>
+				{/if}
+				{#if error.resolution}
+					<p class="mt-2 text-sm text-red-600 dark:text-red-400">{error.resolution}</p>
+				{/if}
+			</Card.Content>
+		</Card.Root>
+	{/if}
+
+	<!-- Results -->
+	{#if entries && !isSearching}
+		<div class="space-y-6">
+			{#each entries as entry (entry.word)}
+				<Card.Root class="overflow-hidden">
+					<!-- Word Header -->
+					<Card.Header
+						class="border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-purple-50 dark:border-gray-800 dark:from-indigo-950/50 dark:to-purple-950/50"
+					>
+						<div class="flex items-start justify-between">
+							<div>
+								<Card.Title class="text-3xl font-bold text-gray-900 dark:text-white">
+									{entry.word}
+								</Card.Title>
+								{#if entry.phonetic}
+									<Card.Description
+										class="mt-1 text-lg font-medium text-indigo-600 dark:text-indigo-400"
+									>
+										{entry.phonetic}
+									</Card.Description>
+								{/if}
+							</div>
+							{#if result?.cached}
+								<Badge variant="secondary" class="text-xs">Cached</Badge>
+							{/if}
+						</div>
+					</Card.Header>
+
+					<Card.Content class="space-y-6 p-6">
+						<!-- Audio Pronunciations -->
+						{#if entry.phonetics?.some((p) => p.audio)}
+							<div class="flex flex-wrap items-center gap-2">
+								<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+									>Pronunciations:</span
+								>
+								{#each entry.phonetics.filter((p) => p.audio) as phonetic, i (phonetic.audio || i)}
+									<Button
+										variant="outline"
+										size="sm"
+										class="gap-2"
+										onclick={() => playAudio(phonetic.audio!)}
+									>
+										<Volume2 class="size-4" />
+										{phonetic.text || 'Play'}
+									</Button>
+								{/each}
+							</div>
+						{/if}
+
+						<!-- Meanings -->
+						{#each entry.meanings as meaning, i (meaning.partOfSpeech + i)}
+							<div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-900/50">
+								<div class="mb-3 flex items-center gap-2">
+									<Badge variant="default" class="bg-indigo-600 dark:bg-indigo-500">
+										{meaning.partOfSpeech}
+									</Badge>
+									{#if meaning.synonyms?.length}
+										<span class="text-xs text-gray-500">
+											{meaning.definitions.length} definition{meaning.definitions.length > 1
+												? 's'
+												: ''}
+										</span>
+									{/if}
+								</div>
+
+								<ol class="space-y-3">
+									{#each meaning.definitions.slice(0, 5) as definition, index (index)}
+										<li class="flex gap-3">
+											<span
+												class="flex size-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-medium text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400"
+											>
+												{index + 1}
+											</span>
+											<div class="flex-1">
+												<p class="text-gray-800 dark:text-gray-200">{definition.definition}</p>
+												{#if definition.example}
+													<p
+														class="mt-1 flex items-start gap-2 text-sm text-gray-600 italic dark:text-gray-400"
+													>
+														<Quote class="mt-0.5 size-3 shrink-0" />
+														<span>"{definition.example}"</span>
+													</p>
+												{/if}
+											</div>
+										</li>
+									{/each}
+								</ol>
+
+								{#if meaning.definitions.length > 5}
+									<p class="mt-3 text-sm text-gray-500">
+										+{meaning.definitions.length - 5} more definitions
+									</p>
+								{/if}
+
+								<!-- Synonyms & Antonyms for this meaning -->
+								{#if getAllSynonyms(meaning.definitions).length > 0 || getAllAntonyms(meaning.definitions).length > 0}
+									<div class="mt-4 space-y-2 border-t border-gray-200 pt-4 dark:border-gray-700">
+										{#if getAllSynonyms(meaning.definitions).length > 0}
+											<div class="flex flex-wrap items-center gap-2">
+												<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+													>Synonyms:</span
+												>
+												{#each getAllSynonyms(meaning.definitions) as synonym (synonym)}
+													<Badge variant="outline" class="text-emerald-600 dark:text-emerald-400">
+														{synonym}
+													</Badge>
+												{/each}
+											</div>
+										{/if}
+										{#if getAllAntonyms(meaning.definitions).length > 0}
+											<div class="flex flex-wrap items-center gap-2">
+												<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+													>Antonyms:</span
+												>
+												{#each getAllAntonyms(meaning.definitions) as antonym (antonym)}
+													<Badge variant="outline" class="text-rose-600 dark:text-rose-400">
+														{antonym}
+													</Badge>
+												{/each}
+											</div>
 										{/if}
 									</div>
 								{/if}
-							{/each}
-						</div>
-					{/if}
+							</div>
+						{/each}
 
-					{#if item?.meanings?.length}
-						<div class="space-y-6">
-							{#each item.meanings as meaning}
-								<div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
-									<h2 class="mb-3 text-xl font-semibold text-indigo-600 dark:text-indigo-400">
-										{meaning.partOfSpeech}
-									</h2>
-									<div class="space-y-4">
-										{#each meaning.definitions as definition, index}
-											<div class="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-800">
-												<p class="text-gray-800 dark:text-gray-200">
-													<span class="mr-2 font-medium text-indigo-600 dark:text-indigo-400"
-														>{index + 1}.</span
-													>
-													{definition.definition}
-												</p>
-												{#if definition.example}
-													<p class="mt-2 text-sm text-gray-600 italic dark:text-gray-400">
-														"<span>{definition.example}</span>"
-													</p>
-												{/if}
-												{#if definition.synonyms?.length}
-													<div class="mt-2">
-														<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
-															>Synonyms:</span
-														>
-														<div class="mt-1 flex flex-wrap gap-2">
-															{#each definition.synonyms as synonym}
-																<span
-																	class="rounded-full bg-indigo-50 px-3 py-1 text-sm text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-300"
-																>
-																	{synonym}
-																</span>
-															{/each}
-														</div>
-													</div>
-												{/if}
-												{#if definition.antonyms?.length}
-													<div class="mt-2">
-														<span class="text-sm font-medium text-gray-600 dark:text-gray-400"
-															>Antonyms:</span
-														>
-														<div class="mt-1 flex flex-wrap gap-2">
-															{#each definition.antonyms as antonym}
-																<span
-																	class="rounded-full bg-red-50 px-3 py-1 text-sm text-red-600 dark:bg-red-900/50 dark:text-red-300"
-																>
-																	{antonym}
-																</span>
-															{/each}
-														</div>
-													</div>
-												{/if}
-											</div>
-										{/each}
-									</div>
-								</div>
-							{/each}
-						</div>
-					{/if}
-
-					{#if item?.origin}
-						<div class="mt-6 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
-							<h3 class="font-medium text-gray-900 dark:text-white">Origin</h3>
-							<p class="mt-1 text-gray-600 dark:text-gray-300">{item.origin}</p>
-						</div>
-					{/if}
-				</div>
-
-				{#if item?.license}
-					<footer
-						class="border-t border-gray-200 bg-gray-50 px-6 py-4 text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400"
-					>
-						<p>
-							License: {item.license.name}
-							{#if item.license.url}
-								-
-								<a
-									href={item.license.url}
-									class="text-indigo-600 hover:underline dark:text-indigo-400"
-									target="_blank"
-									rel="noopener noreferrer">View License</a
+						<!-- Origin -->
+						{#if entry.origin}
+							<div class="rounded-lg bg-amber-50 p-4 dark:bg-amber-950/30">
+								<h3
+									class="mb-2 flex items-center gap-2 font-medium text-amber-800 dark:text-amber-200"
 								>
-							{/if}
-						</p>
-					</footer>
-				{/if}
-			</article>
-		{/each}
+									<ArrowRight class="size-4" />
+									Word Origin
+								</h3>
+								<p class="text-amber-700 dark:text-amber-300">{entry.origin}</p>
+							</div>
+						{/if}
+					</Card.Content>
+
+					<!-- Footer with License -->
+					{#if entry.license || entry.sourceUrls?.length}
+						<Card.Footer
+							class="border-t border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-gray-900/50"
+						>
+							<div
+								class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400"
+							>
+								{#if entry.license}
+									<span>
+										License: {entry.license.name}
+										{#if entry.license.url}
+											<a
+												href={entry.license.url}
+												class="ml-1 inline-flex items-center gap-1 text-indigo-600 hover:underline dark:text-indigo-400"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												View <ExternalLink class="size-3" />
+											</a>
+										{/if}
+									</span>
+								{/if}
+								{#if entry.sourceUrls?.length}
+									<a
+										href={entry.sourceUrls[0]}
+										class="inline-flex items-center gap-1 text-indigo-600 hover:underline dark:text-indigo-400"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Source <ExternalLink class="size-3" />
+									</a>
+								{/if}
+							</div>
+						</Card.Footer>
+					{/if}
+				</Card.Root>
+			{/each}
+		</div>
 	{/if}
-</section>
+
+	<!-- Empty State (no search yet) -->
+	{#if !result && !isSearching}
+		<Card.Root class="border-dashed">
+			<Card.Content class="py-12 text-center">
+				<div class="mx-auto mb-4 w-fit rounded-full bg-indigo-100 p-4 dark:bg-indigo-900/50">
+					<Search class="size-8 text-indigo-600 dark:text-indigo-400" />
+				</div>
+				<h3 class="text-lg font-medium text-gray-900 dark:text-white">Start exploring words</h3>
+				<p class="mt-1 text-gray-600 dark:text-gray-400">
+					Enter any English word above to discover its meanings, pronunciations, and more.
+				</p>
+			</Card.Content>
+		</Card.Root>
+	{/if}
+</div>
 
 <HowToUseDialog
 	bind:open={showHowToUse}
