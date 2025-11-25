@@ -35,7 +35,8 @@ import {
 	Brain,
 	Search,
 	Dumbbell,
-	Flower2
+	Flower2,
+	Target
 } from 'lucide-svelte';
 
 /**
@@ -91,7 +92,8 @@ export function done() {
 		{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
 		{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
 		{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' },
-		{ name: 'note-taker', time: '2025-11-19T00:00:00.000Z' }
+		{ name: 'note-taker', time: '2025-11-19T00:00:00.000Z' },
+		{ name: 'scenario-tracker', time: '2025-11-25T00:00:00.000Z' }
 	];
 }
 
@@ -565,6 +567,18 @@ export function projects(): Project[] {
 			class: 'easy',
 			link: 'meditation-timer',
 			icon: Flower2
+		},
+		{
+			title: 'Scenario Tracker',
+			details: 'Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon.',
+			// @wc-include
+			tag: 'productivity',
+			tagClass: 'productivity',
+			// @wc-include
+			difficulty: 'hard',
+			class: 'hard',
+			link: 'scenario-tracker',
+			icon: Target
 		}
 	];
 }

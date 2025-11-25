@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-24T10:00:16.556Z\n"
+"PO-Revision-Date: 2025-11-25T01:50:02.855Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -436,6 +436,7 @@ msgstr "Allows you to create checklists and mark items as completed."
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "productivity"
 msgstr "productivity"
 
@@ -525,6 +526,7 @@ msgstr "Habit Tracker"
 msgid "Tracks your daily habits and shows your progress over time."
 msgstr "Tracks your daily habits and shows your progress over time."
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -1375,6 +1377,7 @@ msgstr "PWA Support"
 msgid "Full Progressive Web App capabilities with offline support and installability."
 msgstr "Full Progressive Web App capabilities with offline support and installability."
 
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline"
@@ -3561,6 +3564,12 @@ msgstr "Enter your username"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -3936,6 +3945,8 @@ msgid "All projects are completed!"
 msgstr "All projects are completed!"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -5000,6 +5011,7 @@ msgstr "How to Use"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Help"
 msgstr "Help"
@@ -5146,6 +5158,12 @@ msgstr "View the expense details below. Click the pencil button to edit."
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Description"
 msgstr "Description"
 
@@ -5164,6 +5182,8 @@ msgstr "Save Changes"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Date"
 msgstr "Date"
 
@@ -5185,6 +5205,7 @@ msgid "This action cannot be undone. Are you sure you want to delete this expens
 msgstr "This action cannot be undone. Are you sure you want to delete this expense?"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Edit"
 msgstr "<0/> Edit"
 
@@ -5755,6 +5776,7 @@ msgid "Update the date and time when this medication was taken."
 msgstr "Update the date and time when this medication was taken."
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time"
 msgstr "Time"
 
@@ -5984,6 +6006,9 @@ msgstr "Add Medication"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Add"
 msgstr "Add"
 
@@ -6271,6 +6296,7 @@ msgid "No treatment sessions yet. Create one above to get started."
 msgstr "No treatment sessions yet. Create one above to get started."
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Active"
 msgstr "Active"
 
@@ -6410,6 +6436,7 @@ msgstr "Optionally add a note explaining why you're skipping this dose."
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "Notes (optional)"
@@ -7826,7 +7853,9 @@ msgstr "<0/> Achieved"
 msgid "<0/> Locked"
 msgstr "<0/> Locked"
 
+#. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% complete"
@@ -8845,6 +8874,8 @@ msgstr "No items yet. Click \"Add Item\" to get started."
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Name"
 msgstr "Name"
 
@@ -8856,6 +8887,9 @@ msgstr "Category"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Actions"
 msgstr "Actions"
 
@@ -9083,8 +9117,11 @@ msgstr "Content"
 msgid "Edit Note"
 msgstr "Edit Note"
 
-#~ msgid "Update"
-#~ msgstr "Update"
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Update"
+msgstr "Update"
 
 #~ msgid "<0/> Update"
 #~ msgstr "<0/> Update"
@@ -9305,3 +9342,542 @@ msgstr "Zero learning curve. Maximum productivity. Each mini app is designed to 
 #: src/lib/components/home/data.svelte.ts
 msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Scenario Tracker"
+msgstr "Scenario Tracker"
+
+#: src/lib/index.svelte.ts
+msgid "Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon."
+msgstr "Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Blue"
+msgstr "Blue"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Amber"
+msgstr "Amber"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Purple"
+msgstr "Purple"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Emerald"
+msgstr "Emerald"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Rose"
+msgstr "Rose"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Cyan"
+msgstr "Cyan"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Orange"
+msgstr "Orange"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Indigo"
+msgstr "Indigo"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
+msgstr "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
+msgstr "Are you sure you want to delete this option? All related activities and risks will also be deleted."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
+msgstr "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Plan your future: track options, investments, and risks over your 10-year horizon"
+msgstr "Plan your future: track options, investments, and risks over your 10-year horizon"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Reset"
+msgstr "<0/> Reset"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Add Option"
+msgstr "<0/> Add Option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Risks"
+msgstr "Risks"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Delete Option"
+msgstr "Delete Option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Add New Option"
+msgstr "Add New Option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Create a new scenario option to track."
+msgstr "Create a new scenario option to track."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Brief description of this option"
+msgstr "Brief description of this option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Color"
+msgstr "Color"
+
+#. placeholder {0}: color.label
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Select {0} color"
+msgstr "Select {0} color"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Allocation (%)"
+msgstr "Allocation (%)"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Reset All Data?"
+msgstr "Reset All Data?"
+
+#~ msgid ""
+#~ "This will permanently delete all your options, activities, timeline entries, and risks.\n"
+#~ "The default options will be restored. This action cannot be undone."
+#~ msgstr ""
+#~ "This will permanently delete all your options, activities, timeline entries, and risks.\n"
+#~ "The default options will be restored. This action cannot be undone."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Yes, Reset Everything"
+msgstr "Yes, Reset Everything"
+
+#: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
+msgid "TBD"
+msgstr "TBD"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Planning"
+msgstr "Planning"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Paused"
+msgstr "Paused"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Complete"
+msgstr "Complete"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Are you sure you want to delete this activity?"
+msgstr "Are you sure you want to delete this activity?"
+
+#. placeholder {0}: stats.totalTimeSpent
+#. placeholder {0}: activity.timeSpent
+#. placeholder {0}: option.totalTimeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "{0} hrs"
+msgstr "{0} hrs"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Time Invested"
+msgstr "Time Invested"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Allocation"
+msgstr "Allocation"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Progress"
+msgstr "Progress"
+
+#. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Est. completion: {0}"
+msgstr "Est. completion: {0}"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Activity Log"
+msgstr "Activity Log"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Track your work sessions and progress"
+msgstr "Track your work sessions and progress"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "<0/> Add Activity"
+msgstr "<0/> Add Activity"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Status"
+msgstr "Status"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "No activities logged yet."
+msgstr "No activities logged yet."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Start tracking your work by adding an activity."
+msgstr "Start tracking your work by adding an activity."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Edit Activity"
+msgstr "Edit Activity"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Add Activity"
+msgstr "Add Activity"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Update the activity details."
+msgstr "Update the activity details."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Log a new work session or milestone."
+msgstr "Log a new work session or milestone."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "What did you work on?"
+msgstr "What did you work on?"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Time Spent (hours)"
+msgstr "Time Spent (hours)"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Select status"
+msgstr "Select status"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Progress Metric"
+msgstr "Progress Metric"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Additional notes or observations"
+msgstr "Additional notes or observations"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Edit Option"
+msgstr "Edit Option"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Update the option settings and targets."
+msgstr "Update the option settings and targets."
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Progress (%)"
+msgstr "Progress (%)"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Est. Time to Completion"
+msgstr "Est. Time to Completion"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "<0/> Save Changes"
+msgstr "<0/> Save Changes"
+
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Option not found."
+msgstr "Option not found."
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Time Remaining"
+msgstr "Time Remaining"
+
+#. placeholder {0}: stats.remainingYears
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} years"
+msgstr "{0} years"
+
+#. placeholder {0}: stats.remainingDays.toLocaleString()
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} days left"
+msgstr "{0} days left"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Total Time Invested"
+msgstr "Total Time Invested"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Across all options"
+msgstr "Across all options"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Average Progress"
+msgstr "Average Progress"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Active Risks"
+msgstr "Active Risks"
+
+#. placeholder {0}: highRisksCount
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} high/critical severity"
+msgstr "{0} high/critical severity"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "<0/> Options Overview"
+msgstr "<0/> Options Overview"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Track progress across your scenario options"
+msgstr "Track progress across your scenario options"
+
+#. placeholder {0}: option.totalTimeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} hrs invested"
+msgstr "{0} hrs invested"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "No options yet. Add your first scenario option to get started."
+msgstr "No options yet. Add your first scenario option to get started."
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "<0/> Time Allocation"
+msgstr "<0/> Time Allocation"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "How you're dividing your effort"
+msgstr "How you're dividing your effort"
+
+#. placeholder {0}: 100 - totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "({0}% unallocated)"
+msgstr "({0}% unallocated)"
+
+#. placeholder {0}: totalAllocation - 100
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "(over-allocated by {0}%)"
+msgstr "(over-allocated by {0}%)"
+
+#. placeholder {0}: totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Total: {0}% <0/>"
+msgstr "Total: {0}% <0/>"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Add options to see allocation chart"
+msgstr "Add options to see allocation chart"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Deadline"
+msgstr "Deadline"
+
+#. placeholder {0}: formatDate(END_DATE.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Your 10-year planning window ends on {0}"
+msgstr "Your 10-year planning window ends on {0}"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Progress through planning period"
+msgstr "Progress through planning period"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Started: Nov 25, 2025"
+msgstr "Started: Nov 25, 2025"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Deadline: Nov 25, 2035"
+msgstr "Deadline: Nov 25, 2035"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Are you sure you want to delete this timeline entry?"
+msgstr "Are you sure you want to delete this timeline entry?"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "<0/> Timeline Log"
+msgstr "<0/> Timeline Log"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Track your daily/weekly progress across all options"
+msgstr "Track your daily/weekly progress across all options"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "<0/> Add Entry"
+msgstr "<0/> Add Entry"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Options Worked"
+msgstr "Options Worked"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Time Allocation"
+msgstr "Time Allocation"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Outcomes"
+msgstr "Outcomes"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Adjustments"
+msgstr "Adjustments"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "No timeline entries yet."
+msgstr "No timeline entries yet."
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Start tracking your weekly progress by adding an entry."
+msgstr "Start tracking your weekly progress by adding an entry."
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Edit Timeline Entry"
+msgstr "Edit Timeline Entry"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Add Timeline Entry"
+msgstr "Add Timeline Entry"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Update the entry details."
+msgstr "Update the entry details."
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Log your progress for this period."
+msgstr "Log your progress for this period."
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Options Worked On"
+msgstr "Options Worked On"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "What did you accomplish?"
+msgstr "What did you accomplish?"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Adjustments/Notes"
+msgstr "Adjustments/Notes"
+
+#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+msgid "Any changes to your strategy?"
+msgstr "Any changes to your strategy?"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Low"
+msgstr "Low"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Medium"
+msgstr "Medium"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "High"
+msgstr "High"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Critical"
+msgstr "Critical"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Are you sure you want to delete this risk?"
+msgstr "Are you sure you want to delete this risk?"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "General"
+msgstr "General"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "<0/> Risks & Assumptions"
+msgstr "<0/> Risks & Assumptions"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Track and mitigate potential risks to your plans"
+msgstr "Track and mitigate potential risks to your plans"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "<0/> Add Risk"
+msgstr "<0/> Add Risk"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Severity"
+msgstr "Severity"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Option"
+msgstr "Option"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Mitigation"
+msgstr "Mitigation"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Added"
+msgstr "Added"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "No risks tracked yet."
+msgstr "No risks tracked yet."
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Add risks to keep track of potential challenges."
+msgstr "Add risks to keep track of potential challenges."
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Edit Risk"
+msgstr "Edit Risk"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Add Risk"
+msgstr "Add Risk"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Update the risk details."
+msgstr "Update the risk details."
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Document a potential risk or assumption."
+msgstr "Document a potential risk or assumption."
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Describe the risk or assumption"
+msgstr "Describe the risk or assumption"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Select severity"
+msgstr "Select severity"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Related Option"
+msgstr "Related Option"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "Mitigation Strategy"
+msgstr "Mitigation Strategy"
+
+#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+msgid "How will you address this risk?"
+msgstr "How will you address this risk?"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid ""
+"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+"default options will be restored. This action cannot be undone."
+msgstr ""
+"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+"default options will be restored. This action cannot be undone."
