@@ -13,7 +13,6 @@
 	import { currencyConverterHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
 	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';
-	import * as Select from '@/ui/select/index.js';
 	import { onMount } from 'svelte';
 
 	let showHowToUseDialog = $state(false);
@@ -23,13 +22,58 @@
 		storage: 'local'
 	});
 
-	// Form state for UI (Select components need separate state)
-	let fromCurrency = $state('USD');
-	let toCurrency = $state('EUR');
+	// Form state for currency inputs (text input for datalist)
+	let fromCurrencyInput = $state('USD');
+	let toCurrencyInput = $state('EUR');
+
+	// Amount state for formatted display
+	let amountValue = $state<number>(0);
 
 	// Currencies state with full info
 	let currencies = $state<CurrencyInfo[]>([]);
 	let currenciesLoading = $state(true);
+
+	// Valid currency codes set for quick lookup
+	let validCurrencyCodes = $derived(new Set(currencies.map((c) => c.value)));
+
+	// Validate and normalize currency input (uppercase, must be valid code)
+	function normalizeCurrencyInput(input: string): string {
+		return input.toUpperCase().trim();
+	}
+
+	// Check if a currency code is valid
+	function isValidCurrency(code: string): boolean {
+		return validCurrencyCodes.has(code);
+	}
+
+	// Derived validated currency codes (fallback to USD/EUR if invalid)
+	let fromCurrency = $derived(
+		isValidCurrency(normalizeCurrencyInput(fromCurrencyInput))
+			? normalizeCurrencyInput(fromCurrencyInput)
+			: 'USD'
+	);
+	let toCurrency = $derived(
+		isValidCurrency(normalizeCurrencyInput(toCurrencyInput))
+			? normalizeCurrencyInput(toCurrencyInput)
+			: 'EUR'
+	);
+
+	// Formatted amount preview using Intl.NumberFormat
+	let formattedAmount = $derived.by(() => {
+		if (!amountValue || amountValue <= 0 || !isValidCurrency(fromCurrency)) {
+			return '';
+		}
+		try {
+			return new Intl.NumberFormat('en-US', {
+				style: 'currency',
+				currency: fromCurrency,
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			}).format(amountValue);
+		} catch {
+			return `${amountValue.toFixed(2)} ${fromCurrency}`;
+		}
+	});
 
 	// Load currencies on mount
 	onMount(async () => {
@@ -58,15 +102,12 @@
 	}
 
 	function swapCurrencies() {
-		const temp = fromCurrency;
-		fromCurrency = toCurrency;
-		toCurrency = temp;
-		// Update form fields
-		convertCurrencyForm.fields.from.set(fromCurrency);
-		convertCurrencyForm.fields.to.set(toCurrency);
+		const temp = fromCurrencyInput;
+		fromCurrencyInput = toCurrencyInput;
+		toCurrencyInput = temp;
 	}
 
-	// Sync Select values with form fields
+	// Sync currency inputs with form fields
 	$effect(() => {
 		convertCurrencyForm.fields.from.set(fromCurrency);
 	});
@@ -74,6 +115,12 @@
 	$effect(() => {
 		convertCurrencyForm.fields.to.set(toCurrency);
 	});
+
+	// Handle amount input change
+	function handleAmountChange(e: Event) {
+		const target = e.target as HTMLInputElement;
+		amountValue = parseFloat(target.value) || 0;
+	}
 
 	// Track form state
 	let isSubmitting = $derived(!!convertCurrencyForm.pending);
@@ -126,76 +173,71 @@
 					})}
 					class="space-y-6"
 				>
-					<!-- Hidden fields for from/to since we use Select components -->
+					<!-- Hidden fields for from/to with validated values -->
 					<input type="hidden" name="from" value={fromCurrency} />
 					<input type="hidden" name="to" value={toCurrency} />
+
+					<!-- Datalist with all currencies -->
+					<datalist id="currencyList">
+						{#each currencies as currency (currency.value)}
+							<option value={currency.value}>{currency.label} ({currency.symbol})</option>
+						{/each}
+					</datalist>
 
 					<div class="grid gap-6 md:grid-cols-2">
 						<!-- From Currency -->
 						<div class="space-y-2">
-							<label for="currencyFrom" class="text-sm font-medium">Convert From</label>
+							<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
 							{#if currenciesLoading}
 								<div class="flex items-center space-x-2">
 									<Loader2 class="h-4 w-4 animate-spin" />
 									<span class="text-sm text-muted-foreground">Loading currencies...</span>
 								</div>
 							{:else}
-								<Select.Root type="single" bind:value={fromCurrency}>
-									<Select.Trigger class="w-full">
-										<span class="flex items-center gap-2">
-											<span class="font-medium">{fromCurrency}</span>
-											<span class="text-muted-foreground">- {getCurrencyLabel(fromCurrency)}</span>
-										</span>
-									</Select.Trigger>
-									<Select.Content class="max-h-[300px]">
-										<Select.Group>
-											<Select.GroupHeading>Currencies</Select.GroupHeading>
-											{#each currencies as currency (currency.value)}
-												<Select.Item value={currency.value}>
-													<span class="flex items-center gap-2">
-														<span class="font-medium">{currency.value}</span>
-														<span class="text-muted-foreground">- {currency.label}</span>
-														<span class="ml-auto text-muted-foreground">{currency.symbol}</span>
-													</span>
-												</Select.Item>
-											{/each}
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
+								<Input
+									id="currencyFrom"
+									type="text"
+									list="currencyList"
+									bind:value={fromCurrencyInput}
+									placeholder="Type to search (e.g., USD, EUR)"
+									class="w-full uppercase"
+									autocomplete="off"
+								/>
+								{#if fromCurrencyInput && isValidCurrency(normalizeCurrencyInput(fromCurrencyInput))}
+									<p class="text-sm text-muted-foreground">
+										{getCurrencyLabel(fromCurrency)} ({getCurrencySymbol(fromCurrency)})
+									</p>
+								{:else if fromCurrencyInput && fromCurrencyInput.length >= 3}
+									<p class="text-sm text-destructive">Invalid currency code</p>
+								{/if}
 							{/if}
 						</div>
 
 						<!-- To Currency -->
 						<div class="space-y-2">
-							<label for="currencyTo" class="text-sm font-medium">Convert To</label>
+							<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
 							{#if currenciesLoading}
 								<div class="flex items-center space-x-2">
 									<Loader2 class="h-4 w-4 animate-spin" />
 									<span class="text-sm text-muted-foreground">Loading currencies...</span>
 								</div>
 							{:else}
-								<Select.Root type="single" bind:value={toCurrency}>
-									<Select.Trigger class="w-full">
-										<span class="flex items-center gap-2">
-											<span class="font-medium">{toCurrency}</span>
-											<span class="text-muted-foreground">- {getCurrencyLabel(toCurrency)}</span>
-										</span>
-									</Select.Trigger>
-									<Select.Content class="max-h-[300px]">
-										<Select.Group>
-											<Select.GroupHeading>Currencies</Select.GroupHeading>
-											{#each currencies as currency (currency.value)}
-												<Select.Item value={currency.value}>
-													<span class="flex items-center gap-2">
-														<span class="font-medium">{currency.value}</span>
-														<span class="text-muted-foreground">- {currency.label}</span>
-														<span class="ml-auto text-muted-foreground">{currency.symbol}</span>
-													</span>
-												</Select.Item>
-											{/each}
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
+								<Input
+									id="currencyTo"
+									type="text"
+									list="currencyList"
+									bind:value={toCurrencyInput}
+									placeholder="Type to search (e.g., USD, EUR)"
+									class="w-full uppercase"
+									autocomplete="off"
+								/>
+								{#if toCurrencyInput && isValidCurrency(normalizeCurrencyInput(toCurrencyInput))}
+									<p class="text-sm text-muted-foreground">
+										{getCurrencyLabel(toCurrency)} ({getCurrencySymbol(toCurrency)})
+									</p>
+								{:else if toCurrencyInput && toCurrencyInput.length >= 3}
+									<p class="text-sm text-destructive">Invalid currency code</p>
+								{/if}
 							{/if}
 						</div>
 					</div>
@@ -215,18 +257,35 @@
 
 					<!-- Amount -->
 					<div class="space-y-2">
-						<label for="currencyAmount" class="text-sm font-medium">Amount</label>
-						{#each convertCurrencyForm.fields.amount.issues() ?? [] as issue}
+						<Label for="currencyAmount" class="text-sm font-medium">Amount</Label>
+						{#each convertCurrencyForm.fields.amount.issues() ?? [] as issue, i (i)}
 							<p class="text-sm text-destructive">{issue.message}</p>
 						{/each}
-						<Input
-							{...convertCurrencyForm.fields.amount.as('number')}
-							id="currencyAmount"
-							placeholder="Enter amount"
-							step="0.01"
-							min="0.01"
-							class="w-full"
-						/>
+						<div class="grid gap-4 md:grid-cols-2">
+							<div class="space-y-1">
+								<Input
+									{...convertCurrencyForm.fields.amount.as('number')}
+									id="currencyAmount"
+									placeholder="Enter amount"
+									step="0.01"
+									min="0.01"
+									class="w-full"
+									oninput={handleAmountChange}
+								/>
+								<p class="text-xs text-muted-foreground">Enter the amount to convert</p>
+							</div>
+							<div class="space-y-1">
+								<Input
+									id="formattedAmount"
+									type="text"
+									value={formattedAmount || 'Enter an amount'}
+									readonly
+									disabled
+									class="w-full bg-muted"
+								/>
+								<p class="text-xs text-muted-foreground">Formatted preview</p>
+							</div>
+						</div>
 					</div>
 
 					<!-- Force Refresh Switch -->
