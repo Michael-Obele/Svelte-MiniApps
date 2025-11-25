@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-11-25T09:26:06.161Z\n"
+"PO-Revision-Date: 2025-11-25T09:44:47.434Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -7854,8 +7854,8 @@ msgstr "<0/> Achieved"
 msgid "<0/> Locked"
 msgstr "<0/> Locked"
 
-#. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#. placeholder {0}: option.progress
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "{0}% complete"
@@ -9345,6 +9345,10 @@ msgstr "Zero learning curve. Maximum productivity. Each mini app is designed to 
 msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 
+#: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
+msgid "TBD"
+msgstr "TBD"
+
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -9399,8 +9403,13 @@ msgstr "Are you sure you want to delete this option? All related activities and 
 msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
 msgstr "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
 
-#~ msgid "Plan your future: track options, investments, and risks over your 10-year horizon"
-#~ msgstr "Plan your future: track options, investments, and risks over your 10-year horizon"
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Plan your future: track options, investments, and risks over your planning horizon"
+msgstr "Plan your future: track options, investments, and risks over your planning horizon"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "<0/> Settings"
+msgstr "<0/> Settings"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "<0/> Reset"
@@ -9454,20 +9463,137 @@ msgstr "Allocation (%)"
 msgid "Reset All Data?"
 msgstr "Reset All Data?"
 
-#~ msgid ""
-#~ "This will permanently delete all your options, activities, timeline entries, and risks.\n"
-#~ "The default options will be restored. This action cannot be undone."
-#~ msgstr ""
-#~ "This will permanently delete all your options, activities, timeline entries, and risks.\n"
-#~ "The default options will be restored. This action cannot be undone."
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid ""
+"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+"default options will be restored. This action cannot be undone."
+msgstr ""
+"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+"default options will be restored. This action cannot be undone."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Yes, Reset Everything"
 msgstr "Yes, Reset Everything"
 
-#: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
-msgid "TBD"
-msgstr "TBD"
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Time Remaining"
+msgstr "Time Remaining"
+
+#. placeholder {0}: stats.remainingYears
+#. placeholder {0}: durationYears
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+msgid "{0} years"
+msgstr "{0} years"
+
+#. placeholder {0}: stats.remainingDays.toLocaleString()
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} days left"
+msgstr "{0} days left"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Total Time Invested"
+msgstr "Total Time Invested"
+
+#. placeholder {0}: stats.totalTimeSpent
+#. placeholder {0}: option.totalTimeSpent
+#. placeholder {0}: activity.timeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "{0} hrs"
+msgstr "{0} hrs"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Across all options"
+msgstr "Across all options"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Average Progress"
+msgstr "Average Progress"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Active Risks"
+msgstr "Active Risks"
+
+#. placeholder {0}: highRisksCount
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} high/critical severity"
+msgstr "{0} high/critical severity"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "<0/> Options Overview"
+msgstr "<0/> Options Overview"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Track progress across your scenario options"
+msgstr "Track progress across your scenario options"
+
+#. placeholder {0}: option.totalTimeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "{0} hrs invested"
+msgstr "{0} hrs invested"
+
+#. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+msgid "Est. completion: {0}"
+msgstr "Est. completion: {0}"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "No options yet. Add your first scenario option to get started."
+msgstr "No options yet. Add your first scenario option to get started."
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "<0/> Time Allocation"
+msgstr "<0/> Time Allocation"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "How you're dividing your effort"
+msgstr "How you're dividing your effort"
+
+#. placeholder {0}: 100 - totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "({0}% unallocated)"
+msgstr "({0}% unallocated)"
+
+#. placeholder {0}: totalAllocation - 100
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "(over-allocated by {0}%)"
+msgstr "(over-allocated by {0}%)"
+
+#. placeholder {0}: totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Total: {0}% <0/>"
+msgstr "Total: {0}% <0/>"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Add options to see allocation chart"
+msgstr "Add options to see allocation chart"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Deadline"
+msgstr "Deadline"
+
+#. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Your planning window ends on {0}"
+msgstr "Your planning window ends on {0}"
+
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Progress through planning period"
+msgstr "Progress through planning period"
+
+#. placeholder {0}: formatDate(startDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Started: {0}"
+msgstr "Started: {0}"
+
+#. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+msgid "Deadline: {0}"
+msgstr "Deadline: {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Planning"
@@ -9485,15 +9611,6 @@ msgstr "Complete"
 msgid "Are you sure you want to delete this activity?"
 msgstr "Are you sure you want to delete this activity?"
 
-#. placeholder {0}: stats.totalTimeSpent
-#. placeholder {0}: activity.timeSpent
-#. placeholder {0}: option.totalTimeSpent
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-msgid "{0} hrs"
-msgstr "{0} hrs"
-
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Invested"
 msgstr "Time Invested"
@@ -9506,13 +9623,6 @@ msgstr "Allocation"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress"
 msgstr "Progress"
-
-#. placeholder {0}: option.estimatedTimeToCompletion
-#. placeholder {0}: option.estimatedTimeToCompletion
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-msgid "Est. completion: {0}"
-msgstr "Est. completion: {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Activity Log"
@@ -9598,104 +9708,6 @@ msgstr "<0/> Save Changes"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Option not found."
 msgstr "Option not found."
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Time Remaining"
-msgstr "Time Remaining"
-
-#. placeholder {0}: stats.remainingYears
-#. placeholder {0}: durationYears
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
-msgid "{0} years"
-msgstr "{0} years"
-
-#. placeholder {0}: stats.remainingDays.toLocaleString()
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "{0} days left"
-msgstr "{0} days left"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Total Time Invested"
-msgstr "Total Time Invested"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Across all options"
-msgstr "Across all options"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Average Progress"
-msgstr "Average Progress"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Active Risks"
-msgstr "Active Risks"
-
-#. placeholder {0}: highRisksCount
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "{0} high/critical severity"
-msgstr "{0} high/critical severity"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "<0/> Options Overview"
-msgstr "<0/> Options Overview"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Track progress across your scenario options"
-msgstr "Track progress across your scenario options"
-
-#. placeholder {0}: option.totalTimeSpent
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "{0} hrs invested"
-msgstr "{0} hrs invested"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "No options yet. Add your first scenario option to get started."
-msgstr "No options yet. Add your first scenario option to get started."
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "<0/> Time Allocation"
-msgstr "<0/> Time Allocation"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "How you're dividing your effort"
-msgstr "How you're dividing your effort"
-
-#. placeholder {0}: 100 - totalAllocation
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "({0}% unallocated)"
-msgstr "({0}% unallocated)"
-
-#. placeholder {0}: totalAllocation - 100
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "(over-allocated by {0}%)"
-msgstr "(over-allocated by {0}%)"
-
-#. placeholder {0}: totalAllocation
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Total: {0}% <0/>"
-msgstr "Total: {0}% <0/>"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Add options to see allocation chart"
-msgstr "Add options to see allocation chart"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Deadline"
-msgstr "Deadline"
-
-#~ msgid "Your 10-year planning window ends on {0}"
-#~ msgstr "Your 10-year planning window ends on {0}"
-
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Progress through planning period"
-msgstr "Progress through planning period"
-
-#~ msgid "Started: Nov 25, 2025"
-#~ msgstr "Started: Nov 25, 2025"
-
-#~ msgid "Deadline: Nov 25, 2035"
-#~ msgstr "Deadline: Nov 25, 2035"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry?"
@@ -9872,37 +9884,6 @@ msgstr "Mitigation Strategy"
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "How will you address this risk?"
 msgstr "How will you address this risk?"
-
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
-"default options will be restored. This action cannot be undone."
-msgstr ""
-"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
-"default options will be restored. This action cannot be undone."
-
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid "Plan your future: track options, investments, and risks over your planning horizon"
-msgstr "Plan your future: track options, investments, and risks over your planning horizon"
-
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid "<0/> Settings"
-msgstr "<0/> Settings"
-
-#. placeholder {0}: formatDate(endDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Your planning window ends on {0}"
-msgstr "Your planning window ends on {0}"
-
-#. placeholder {0}: formatDate(startDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Started: {0}"
-msgstr "Started: {0}"
-
-#. placeholder {0}: formatDate(endDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-msgid "Deadline: {0}"
-msgstr "Deadline: {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Please select both start and end dates"
