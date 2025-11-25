@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "1a7f74f5b454a6c1f485d4871af61c36f215e975",
-  "generatedAt": "2025-11-25T09:58:08.377Z",
+  "lastProcessedCommit": "8634e9ef24f5616c12190275c8434608cd7c0770",
+  "generatedAt": "2025-11-25T10:58:28.834Z",
   "timeline": [
     {
       "date": "November 25, 2025",
@@ -30,6 +30,17 @@
       "description": "Updated prisma/schema.prisma, src/lib/remote/index.ts, src/lib/remote/scenario-tracker.remote.ts and more",
       "items": [
         "feat(scenario-tracker): implement timeline settings and enhance user experience (d2f427e)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "November 25, 2025",
+      "title": "feat(scenario-tracker): add delete confirmation dialog component",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "feat(scenario-tracker): add delete confirmation dialog component (8634e9e)"
       ],
       "type": "feature",
       "icon": "Rocket",
