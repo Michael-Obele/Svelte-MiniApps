@@ -1,19 +1,18 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import { Card, CardHeader, CardContent, CardTitle, CardFooter, CardDescription } from '@/ui/card';
-	import { Avatar, AvatarFallback, AvatarImage } from '@/ui/avatar';
-	import { Badge } from '@/ui/badge';
-	import { Button } from '@/ui/button';
-	import { Separator } from '@/ui/separator';
-	import * as Dialog from '@/ui/dialog';
-	import { Input } from '@/ui/input';
-	import { Label } from '@/ui/label';
-	import { Edit2, Github, Calendar, Shield } from '@lucide/svelte';
-	import { updateProfile } from '$lib/remote';
+	import * as Card from '$lib/components/ui/card';
+	import * as Avatar from '$lib/components/ui/avatar';
+	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '$lib/components/ui/button';
+	import { Separator } from '$lib/components/ui/separator';
+	import * as Dialog from '$lib/components/ui/dialog';
+	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
+	import { Edit2, Github, Calendar, Shield } from 'lucide-svelte';
+	import { updateProfile, getUserProfile } from '$lib/remote';
 	import { toast } from 'svelte-sonner';
 
-	// Get profile query from context (no prop drilling!)
-	const profileQuery = getContext<any>('profileQuery');
+	// Get profile data directly from remote function (cached, same instance returned across components)
+	const profileQuery = getUserProfile();
 	const userData = $derived(profileQuery.current?.user);
 	const userStats = $derived(profileQuery.current?.stats);
 
@@ -37,47 +36,17 @@
 
 	// Edit dialog state
 	let showEditDialog = $state(false);
-	let editUsername = $state('');
-	let editAge = $state('');
-	let isSubmitting = $state(false);
 
-	// Update edit values when dialog opens
+	// Sync edit values to form fields when dialog opens or userData changes
 	$effect(() => {
 		if (showEditDialog && userData) {
-			editUsername = userData.username;
-			editAge = userData.age?.toString() || '';
+			updateProfile.fields.username.set(userData.username);
+			updateProfile.fields.age.set(userData.age?.toString() || '');
 		}
 	});
 
-	// Handle form submission with toast notifications
-	async function handleUpdateProfile(event: SubmitEvent) {
-		event.preventDefault();
-		isSubmitting = true;
-
-		const toastId = toast.loading('Updating profile...');
-
-		try {
-			const formData = new FormData(event.target as HTMLFormElement);
-			const response = await fetch(updateProfile.action, {
-				method: 'POST',
-				body: formData
-			});
-
-			const result = await response.json();
-
-			if (response.ok && result.success) {
-				toast.success('Profile updated successfully!', { id: toastId });
-				profileQuery.refresh();
-				showEditDialog = false;
-			} else {
-				toast.error(result.message || 'Failed to update profile', { id: toastId });
-			}
-		} catch (error) {
-			toast.error('An error occurred while updating profile', { id: toastId });
-		} finally {
-			isSubmitting = false;
-		}
-	}
+	// Track pending state (convert to boolean with !!)
+	let isSubmitting = $derived(!!updateProfile.pending);
 </script>
 
 <!--
@@ -95,86 +64,98 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 -->
 
 {#if userData && userStats}
-	<Card class="h-full">
-		<CardHeader class="pb-2 text-center">
+	<Card.Root class="h-full">
+		<Card.Header class="pb-2 text-center">
 			<div class="mx-auto mb-4">
-				<Avatar class="border-primary/10 h-24 w-24 border-4">
-					<AvatarFallback class="text-2xl"
-						>{userData.username[0]?.toUpperCase() || 'U'}</AvatarFallback
-					>
-				</Avatar>
+				<div class="relative">
+					<Avatar.Root class="border-primary/20 relative size-24 border-4 shadow-lg">
+						<Avatar.Fallback class="bg-primary/10 text-2xl"
+							>{userData.username[0]?.toUpperCase() || 'U'}</Avatar.Fallback
+						>
+					</Avatar.Root>
+				</div>
 			</div>
-			<CardTitle class="text-xl">{userData.username}</CardTitle>
-			<CardDescription class="text-muted-foreground text-sm">
+			<Card.Title class="text-xl">{userData.username}</Card.Title>
+			<Card.Description class="text-muted-foreground text-sm">
 				@{userData.username.toLowerCase()}
-			</CardDescription>
+			</Card.Description>
 
-			<div class="mt-2 flex justify-center gap-2">
+			<div class="mt-3 flex flex-wrap justify-center gap-2">
 				{#if userData.isAdmin}
-					<Badge variant="default" class="gap-1 bg-gradient-to-r from-indigo-500 to-purple-500">
-						<Shield class="h-3 w-3" />
+					<Badge variant="default" class="gap-1.5 bg-indigo-500 shadow-md hover:bg-indigo-600">
+						<Shield class="size-3" />
 						<span>Admin</span>
 					</Badge>
 				{/if}
 				{#if userData.hasGithub}
-					<Badge variant="outline" class="gap-1">
-						<Github class="h-3 w-3" />
+					<Badge variant="outline" class="border-primary/20 gap-1.5 shadow-sm">
+						<Github class="size-3" />
 						<span>GitHub</span>
 					</Badge>
 				{/if}
-				<Badge variant="secondary" class="gap-1">
-					<Calendar class="h-3 w-3" />
+				<Badge variant="secondary" class="gap-1.5 shadow-sm">
+					<Calendar class="size-3" />
 					<span>Member</span>
 				</Badge>
 			</div>
-		</CardHeader>
+		</Card.Header>
 
-		<CardContent>
-			<div class="grid grid-cols-2 gap-4 py-2 text-center">
-				<div>
-					<p class="text-muted-foreground text-sm">Account Age</p>
+		<Card.Content>
+			<div class="grid grid-cols-2 gap-4 py-3">
+				<div class="border-border/50 bg-muted/30 rounded-lg border p-3 text-center">
+					<p class="text-muted-foreground mb-1 text-xs font-medium">Account Age</p>
 					<p class="text-lg font-bold">{formatAccountAge(userStats.accountAge)}</p>
 				</div>
-				<div>
-					<p class="text-muted-foreground text-sm">Joined</p>
+				<div class="border-border/50 bg-muted/30 rounded-lg border p-3 text-center">
+					<p class="text-muted-foreground mb-1 text-xs font-medium">Joined</p>
 					<p class="text-xs font-medium">{formatJoinDate(userData.createdAt)}</p>
 				</div>
-				<div>
-					<p class="text-muted-foreground text-sm">Budgets</p>
+				<div class="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3 text-center">
+					<p class="text-muted-foreground mb-1 text-xs font-medium">Budgets</p>
 					<p class="text-lg font-bold">{userStats.totalBudgets}</p>
 				</div>
-				<div>
-					<p class="text-muted-foreground text-sm">Mantras</p>
+				<div class="rounded-lg border border-purple-500/20 bg-purple-500/5 p-3 text-center">
+					<p class="text-muted-foreground mb-1 text-xs font-medium">Mantras</p>
 					<p class="text-lg font-bold">{userStats.totalMantras}</p>
 				</div>
 			</div>
 
 			<Separator class="my-4" />
 
-			<div class="space-y-2 text-sm">
-				<div class="flex items-center justify-between">
-					<span class="text-muted-foreground">Saved Passwords</span>
-					<span class="font-medium">{userStats.totalPasswords}</span>
+			<div class="space-y-3 text-sm">
+				<div
+					class="border-border/50 bg-muted/30 flex items-center justify-between rounded-lg border p-2.5"
+				>
+					<span class="text-muted-foreground flex items-center gap-2">
+						<span class="bg-primary size-1.5 rounded-full"></span>
+						Saved Passwords
+					</span>
+					<span class="font-semibold">{userStats.totalPasswords}</span>
 				</div>
-				<div class="flex items-center justify-between">
-					<span class="text-muted-foreground">Social Pages</span>
-					<span class="font-medium">{userStats.totalSocialPages}</span>
+				<div
+					class="border-border/50 bg-muted/30 flex items-center justify-between rounded-lg border p-2.5"
+				>
+					<span class="text-muted-foreground flex items-center gap-2">
+						<span class="bg-primary size-1.5 rounded-full"></span>
+						Social Pages
+					</span>
+					<span class="font-semibold">{userStats.totalSocialPages}</span>
 				</div>
 			</div>
-		</CardContent>
+		</Card.Content>
 
-		<CardFooter class="flex justify-between gap-2">
+		<Card.Footer class="flex justify-between gap-2">
 			<Button
 				variant="outline"
 				size="sm"
-				class="w-full gap-1"
+				class="w-full gap-1.5 shadow-sm transition-all hover:shadow-md"
 				onclick={() => (showEditDialog = true)}
 			>
-				<Edit2 class="h-4 w-4" />
+				<Edit2 class="size-4" />
 				<span>Edit Profile</span>
 			</Button>
-		</CardFooter>
-	</Card>
+		</Card.Footer>
+	</Card.Root>
 
 	<!-- Edit Profile Dialog -->
 	<Dialog.Root bind:open={showEditDialog}>
@@ -185,7 +166,19 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 					Make changes to your profile here. Click save when you're done.
 				</Dialog.Description>
 			</Dialog.Header>
-			<form onsubmit={handleUpdateProfile}>
+			<form
+				{...updateProfile.enhance(async ({ form, submit }) => {
+					const toastId = toast.loading('Updating profile...');
+					try {
+						await submit();
+						toast.success('Profile updated successfully!', { id: toastId });
+						showEditDialog = false;
+						await getUserProfile().refresh();
+					} catch (error) {
+						toast.error('Failed to update profile', { id: toastId });
+					}
+				})}
+			>
 				<div class="grid gap-4 py-4">
 					<div class="grid gap-2">
 						<Label for="username">Username</Label>
@@ -193,14 +186,22 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 							type="text"
 							name="username"
 							id="username"
-							bind:value={editUsername}
+							value={updateProfile.fields.username.value()}
+							oninput={(e) => updateProfile.fields.username.set(e.currentTarget.value)}
 							placeholder="Enter username"
 							required
 						/>
 					</div>
 					<div class="grid gap-2">
 						<Label for="age">Age (optional)</Label>
-						<Input type="number" name="age" id="age" bind:value={editAge} placeholder="Enter age" />
+						<Input
+							type="number"
+							name="age"
+							id="age"
+							value={updateProfile.fields.age.value()}
+							oninput={(e) => updateProfile.fields.age.set(e.currentTarget.value)}
+							placeholder="Enter age"
+						/>
 					</div>
 				</div>
 				<Dialog.Footer>
@@ -215,9 +216,9 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 		</Dialog.Content>
 	</Dialog.Root>
 {:else}
-	<Card class="h-full">
-		<CardContent class="flex items-center justify-center p-8">
+	<Card.Root class="h-full">
+		<Card.Content class="flex items-center justify-center p-8">
 			<p class="text-muted-foreground">Loading profile...</p>
-		</CardContent>
-	</Card>
+		</Card.Content>
+	</Card.Root>
 {/if}

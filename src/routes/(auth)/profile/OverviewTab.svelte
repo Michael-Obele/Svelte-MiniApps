@@ -1,21 +1,31 @@
 <script lang="ts">
-	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/ui/card';
-	import { Progress } from '@/ui/progress';
-	import { Button } from '@/ui/button';
-	import { Code, Zap, Award, Activity, Clock } from '@lucide/svelte';
+	import * as Card from '$lib/components/ui/card';
+	import { Progress } from '$lib/components/ui/progress';
+	import { Button } from '$lib/components/ui/button';
+	import { Badge } from '$lib/components/ui/badge';
+	import { Separator } from '$lib/components/ui/separator';
+	import {
+		Code,
+		Zap,
+		Award,
+		Activity,
+		Clock,
+		TrendingUp,
+		Target,
+		Star,
+		Trophy,
+		Flame,
+		Sparkles
+	} from 'lucide-svelte';
 	import UserProfileCard from './UserProfileCard.svelte';
 	import UpcomingFeaturesList from './UpcomingFeaturesList.svelte';
 	import FavoriteAppList from './FavoriteAppList.svelte';
 	import { projects, done } from '$lib/index.svelte';
-	import { persisted } from 'svelte-persisted-store';
 	import { onMount } from 'svelte';
-	import { PersistedState } from 'runed';
-	import { appUsageTracker, appLastUsed } from '$lib/states.svelte';
 	import { getFavoriteApps, getRecentActivity } from '$lib/utils';
-	import * as Sheet from '@/ui/sheet/index.js';
 	import RecentActivityCard from './RecentActivityCard.svelte';
 
-	// Persisted stores for user activity and favorites
+	// Type definitions
 	interface UserActivity {
 		app: string;
 		date: string;
@@ -28,11 +38,20 @@
 		appDescription: string;
 	};
 
-	// Type definition for recent activity array
 	interface RecentActivity {
 		appLink: string;
 		date: string;
 		appName: string;
+	}
+
+	interface Achievement {
+		id: string;
+		title: string;
+		description: string;
+		icon: typeof Trophy;
+		unlocked: boolean;
+		progress?: number;
+		maxProgress?: number;
 	}
 
 	// State for recent activity and favorite apps
@@ -42,7 +61,7 @@
 	let lastActiveDate = $state('');
 
 	// Stats for dashboard
-	const stats = $state({
+	let stats = $state({
 		completedApps: done().length,
 		totalApps: projects().length,
 		progress: Math.round((done().length / projects().length) * 100),
@@ -53,13 +72,58 @@
 		uniqueAppsUsed: 0
 	});
 
+	// Achievements
+	let achievements = $state<Achievement[]>([
+		{
+			id: 'first-use',
+			title: 'First Steps',
+			description: 'Use your first app',
+			icon: Star,
+			unlocked: false
+		},
+		{
+			id: 'explorer',
+			title: 'Explorer',
+			description: 'Use 5 different apps',
+			icon: Target,
+			unlocked: false,
+			progress: 0,
+			maxProgress: 5
+		},
+		{
+			id: 'power-user',
+			title: 'Power User',
+			description: 'Use apps 50 times',
+			icon: Zap,
+			unlocked: false,
+			progress: 0,
+			maxProgress: 50
+		},
+		{
+			id: 'streak-master',
+			title: 'Streak Master',
+			description: 'Maintain a 7-day streak',
+			icon: Flame,
+			unlocked: false,
+			progress: 0,
+			maxProgress: 7
+		},
+		{
+			id: 'champion',
+			title: 'Champion',
+			description: 'Reach Level 5',
+			icon: Trophy,
+			unlocked: false,
+			progress: 0,
+			maxProgress: 5
+		}
+	]);
+
 	// Calculate streak based on recent activity
 	function calculateStreak() {
-		// Get the app usage data
 		const appLastUsedData = JSON.parse(localStorage.getItem('app-last-used') || '{}');
 		if (Object.keys(appLastUsedData).length === 0) return 0;
 
-		// Convert to array of dates
 		const dates = Object.values(appLastUsedData)
 			.map((dateStr) => {
 				const date = new Date(dateStr as string);
@@ -69,7 +133,6 @@
 
 		if (dates.length === 0) return 0;
 
-		// Get today's date (reset time to midnight for comparison)
 		const today = new Date();
 		const todayMidnight = new Date(
 			today.getFullYear(),
@@ -77,22 +140,18 @@
 			today.getDate()
 		).getTime();
 
-		// If no activity today, no current streak
 		if (dates[0] !== todayMidnight) return 0;
 
 		let streak = 1;
 		let currentDate = todayMidnight;
 
-		// Check for consecutive days
 		for (let i = 1; i < dates.length; i++) {
-			const prevDate = currentDate - 86400000; // Previous day (86400000 = 24 * 60 * 60 * 1000)
-
-			// If we find this date in our sorted dates array, increment streak
+			const prevDate = currentDate - 86400000;
 			if (dates.includes(prevDate)) {
 				streak++;
 				currentDate = prevDate;
 			} else {
-				break; // Streak is broken
+				break;
 			}
 		}
 
@@ -101,13 +160,11 @@
 
 	// Calculate level based on total usage
 	function calculateLevel(totalUsage: number) {
-		// Every 50 app usages increases level
 		return Math.floor(totalUsage / 50) + 1;
 	}
 
 	// Calculate points based on total usage
 	function calculatePoints(totalUsage: number) {
-		// 10 points per app usage
 		return totalUsage * 10;
 	}
 
@@ -118,7 +175,6 @@
 			details: project.details,
 			link: project.link
 		}));
-
 		localStorage.setItem('projects', JSON.stringify(projectsData));
 	}
 
@@ -146,158 +202,281 @@
 		return dates[0].toISOString();
 	}
 
-	onMount(() => {
-		// Store projects data for utility functions
-		storeProjectsData();
+	// Update achievements based on stats
+	function updateAchievements() {
+		achievements = achievements.map((achievement) => {
+			switch (achievement.id) {
+				case 'first-use':
+					return { ...achievement, unlocked: stats.totalUsage > 0 };
+				case 'explorer':
+					return {
+						...achievement,
+						unlocked: stats.uniqueAppsUsed >= 5,
+						progress: Math.min(stats.uniqueAppsUsed, 5)
+					};
+				case 'power-user':
+					return {
+						...achievement,
+						unlocked: stats.totalUsage >= 50,
+						progress: Math.min(stats.totalUsage, 50)
+					};
+				case 'streak-master':
+					return {
+						...achievement,
+						unlocked: stats.streak >= 7,
+						progress: Math.min(stats.streak, 7)
+					};
+				case 'champion':
+					return {
+						...achievement,
+						unlocked: stats.level >= 5,
+						progress: Math.min(stats.level, 5)
+					};
+				default:
+					return achievement;
+			}
+		});
+	}
 
-		// Get recent activity and favorite apps
+	// Points to next level
+	let pointsToNextLevel = $derived(stats.level * 50 - stats.totalUsage);
+
+	// Unlocked achievements count
+	let unlockedCount = $derived(achievements.filter((a) => a.unlocked).length);
+
+	onMount(() => {
+		storeProjectsData();
 		recentActivities = getRecentActivity(5);
 		favoriteApps = getFavoriteApps(3);
 
-		// Get usage statistics
 		const totalUsage = getTotalUsageCount();
 		const uniqueApps = getUniqueAppsUsed();
 		lastActiveDate = getLastActiveDate();
 
-		// Update stats
 		stats.streak = calculateStreak();
 		stats.totalUsage = totalUsage;
 		stats.uniqueAppsUsed = uniqueApps;
 		stats.level = calculateLevel(totalUsage);
 		stats.points = calculatePoints(totalUsage);
+
+		updateAchievements();
 	});
 </script>
 
-<!-- Container with improved responsive spacing -->
-<div class="space-y-8 px-2 sm:px-6 lg:px-8">
-	<!-- Stats Cards with better spacing and alignment -->
-	<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-		<Card class="overflow-hidden">
-			<CardHeader class="p-3 pb-0 sm:p-4 sm:pb-2">
-				<CardTitle class="text-xs font-medium sm:text-sm">Completed Apps</CardTitle>
-			</CardHeader>
-			<CardContent class="p-3 pt-2 sm:p-4 sm:pt-2">
-				<div class="text-base font-bold sm:text-2xl">{stats.completedApps}/{stats.totalApps}</div>
-				<Progress value={stats.progress} class="mt-2" />
-				<p class="text-muted-foreground mt-2 text-xs">{stats.progress}% of total projects</p>
-			</CardContent>
-		</Card>
+<div class="space-y-8">
+	<!-- Stats Cards Grid -->
+	<div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+		<!-- Completed Apps -->
+		<Card.Root class="relative overflow-hidden">
+			<div class="from-primary/5 to-primary/10 absolute inset-0 bg-gradient-to-br"></div>
+			<Card.Header class="relative pb-2">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+					<Code class="size-4" />
+					Completed Apps
+				</Card.Title>
+			</Card.Header>
+			<Card.Content class="relative">
+				<div class="text-3xl font-bold">{stats.completedApps}/{stats.totalApps}</div>
+				<Progress value={stats.progress} class="mt-3 h-2" />
+				<p class="text-muted-foreground mt-2 text-xs">{stats.progress}% complete</p>
+			</Card.Content>
+		</Card.Root>
 
-		<Card>
-			<CardHeader class="pb-2">
-				<CardTitle class="text-sm font-medium">Current Streak</CardTitle>
-			</CardHeader>
-			<CardContent>
-				<div class="flex items-center gap-2">
-					<div class="text-2xl font-bold">{stats.streak} days</div>
-					<Zap class="h-5 w-5 text-yellow-500" />
-				</div>
-				<p class="text-muted-foreground mt-2 text-xs">Keep it going!</p>
-			</CardContent>
-		</Card>
-
-		<Card>
-			<CardHeader class="pb-2">
-				<CardTitle class="text-sm font-medium">Total App Usage</CardTitle>
-			</CardHeader>
-			<CardContent>
-				<div class="flex items-center gap-2">
-					<div class="text-2xl font-bold">{stats.totalUsage}</div>
-					<Activity class="h-5 w-5 text-blue-500" />
-				</div>
-				<p class="text-muted-foreground mt-2 text-xs">{stats.uniqueAppsUsed} unique apps used</p>
-			</CardContent>
-		</Card>
-
-		<Card>
-			<CardHeader class="pb-2">
-				<CardTitle class="text-sm font-medium">Developer Level</CardTitle>
-			</CardHeader>
-			<CardContent>
-				<div class="flex items-center gap-2">
-					<div class="text-2xl font-bold">Level {stats.level}</div>
-					<Award class="h-5 w-5 text-purple-500" />
+		<!-- Current Streak -->
+		<Card.Root class="relative overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-500/10"></div>
+			<Card.Header class="relative pb-2">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+					<Flame class="size-4 text-orange-500" />
+					Current Streak
+				</Card.Title>
+			</Card.Header>
+			<Card.Content class="relative">
+				<div class="flex items-baseline gap-1">
+					<span class="text-3xl font-bold">{stats.streak}</span>
+					<span class="text-muted-foreground text-sm">days</span>
 				</div>
 				<p class="text-muted-foreground mt-2 text-xs">
-					{stats.level * 50 - stats.totalUsage} more uses to next level
+					{#if stats.streak > 0}
+						🔥 Keep it going!
+					{:else}
+						Start your streak today!
+					{/if}
 				</p>
-			</CardContent>
-		</Card>
+			</Card.Content>
+		</Card.Root>
+
+		<!-- Total Usage -->
+		<Card.Root class="relative overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-500/10"></div>
+			<Card.Header class="relative pb-2">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+					<Activity class="size-4 text-blue-500" />
+					Total Usage
+				</Card.Title>
+			</Card.Header>
+			<Card.Content class="relative">
+				<div class="text-3xl font-bold">{stats.totalUsage}</div>
+				<p class="text-muted-foreground mt-2 text-xs">
+					{stats.uniqueAppsUsed} unique apps explored
+				</p>
+			</Card.Content>
+		</Card.Root>
+
+		<!-- Developer Level -->
+		<Card.Root class="relative overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-500/10"></div>
+			<Card.Header class="relative pb-2">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+					<Trophy class="size-4 text-purple-500" />
+					Level
+				</Card.Title>
+			</Card.Header>
+			<Card.Content class="relative">
+				<div class="flex items-baseline gap-2">
+					<span class="text-3xl font-bold">{stats.level}</span>
+					<Badge variant="secondary" class="text-xs">{stats.points} XP</Badge>
+				</div>
+				<p class="text-muted-foreground mt-2 text-xs">
+					{pointsToNextLevel} more uses to level up
+				</p>
+			</Card.Content>
+		</Card.Root>
 	</div>
 
-	<!-- Profile and Activity section with improved responsive layout -->
-	<div class="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
-		<!-- User Profile Card with full width on mobile -->
+	<!-- Achievements Section -->
+	<Card.Root>
+		<Card.Header>
+			<div class="flex items-center justify-between">
+				<div>
+					<Card.Title class="flex items-center gap-2">
+						<Sparkles class="size-5 text-yellow-500" />
+						Achievements
+					</Card.Title>
+					<Card.Description>
+						{unlockedCount} of {achievements.length} unlocked
+					</Card.Description>
+				</div>
+				<Badge variant="outline" class="gap-1">
+					<Trophy class="size-3" />
+					{unlockedCount}/{achievements.length}
+				</Badge>
+			</div>
+		</Card.Header>
+		<Card.Content>
+			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+				{#each achievements as achievement (achievement.id)}
+					<div
+						class="relative flex flex-col items-center gap-2 rounded-lg border p-4 text-center transition-all {achievement.unlocked
+							? 'bg-primary/5 border-primary/20'
+							: 'opacity-60'}"
+					>
+						<div
+							class="flex size-12 items-center justify-center rounded-full {achievement.unlocked
+								? 'bg-primary/10 text-primary'
+								: 'bg-muted text-muted-foreground'}"
+						>
+							<achievement.icon class="size-6" />
+						</div>
+						<div>
+							<p class="text-sm font-medium">{achievement.title}</p>
+							<p class="text-muted-foreground text-xs">{achievement.description}</p>
+						</div>
+						{#if achievement.maxProgress && !achievement.unlocked}
+							<Progress
+								value={((achievement.progress ?? 0) / achievement.maxProgress) * 100}
+								class="mt-1 h-1.5 w-full"
+							/>
+							<p class="text-muted-foreground text-xs">
+								{achievement.progress}/{achievement.maxProgress}
+							</p>
+						{/if}
+						{#if achievement.unlocked}
+							<Badge variant="default" class="absolute -top-1 -right-1 size-5 p-0">✓</Badge>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		</Card.Content>
+	</Card.Root>
+
+	<!-- Profile and Activity Section -->
+	<div class="grid gap-6 lg:grid-cols-3">
 		<div class="lg:col-span-1">
 			<UserProfileCard />
 		</div>
-		<!-- Activity card that spans two columns on larger screens -->
 		<div class="lg:col-span-2">
 			<RecentActivityCard {recentActivities} />
 		</div>
 	</div>
 
-	<!-- Bottom section with better alignment and spacing -->
-	<div class="mx-auto flex flex-col gap-6 md:flex-row md:gap-6 lg:gap-10">
-		<!-- Upcoming Apps with equal flex distribution -->
-		<Card class="flex-1">
-			<CardHeader class="p-4">
-				<CardTitle class="text-lg sm:text-xl">Upcoming Apps</CardTitle>
-				<CardDescription>New apps coming soon</CardDescription>
-			</CardHeader>
-			<CardContent class="max-h-[400px] overflow-y-auto p-4">
+	<!-- Bottom Section -->
+	<div class="grid gap-6 md:grid-cols-2">
+		<!-- Upcoming Apps -->
+		<Card.Root>
+			<Card.Header>
+				<Card.Title class="flex items-center gap-2">
+					<TrendingUp class="size-5" />
+					Upcoming Apps
+				</Card.Title>
+				<Card.Description>New apps coming soon</Card.Description>
+			</Card.Header>
+			<Card.Content class="max-h-[400px] overflow-y-auto">
 				<UpcomingFeaturesList />
-			</CardContent>
-		</Card>
+			</Card.Content>
+		</Card.Root>
 
-		<!-- Favorite Apps with equal flex distribution -->
-		<Card class="flex-1">
-			<CardHeader class="p-4">
-				<CardTitle class="text-lg sm:text-xl">Favorite Apps</CardTitle>
-				<CardDescription>Apps you use the most</CardDescription>
-			</CardHeader>
-			<CardContent class="p-4">
+		<!-- Favorite Apps -->
+		<Card.Root>
+			<Card.Header>
+				<Card.Title class="flex items-center gap-2">
+					<Star class="size-5 text-yellow-500" />
+					Favorite Apps
+				</Card.Title>
+				<Card.Description>Apps you use the most</Card.Description>
+			</Card.Header>
+			<Card.Content>
 				{#if favoriteApps.length > 0}
-					<div class="space-y-3 sm:space-y-4">
-						{#each favoriteApps as app}
+					<div class="space-y-3">
+						{#each favoriteApps as app (app.appLink)}
 							<div
-								class="group hover:bg-muted/50 flex flex-row items-start gap-3 rounded-lg border p-3 transition-all sm:p-4"
+								class="group hover:bg-muted/50 flex items-start gap-3 rounded-lg border p-3 transition-all"
 							>
 								<div
-									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 sm:h-10 sm:w-10 dark:bg-yellow-900/30 dark:text-yellow-500"
+									class="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
 								>
-									<Award class="h-4 w-4 sm:h-5 sm:w-5" />
+									<Award class="size-5" />
 								</div>
-								<div class="flex-1">
-									<div
-										class="flex flex-col items-start justify-between sm:flex-row sm:items-center"
+								<div class="min-w-0 flex-1">
+									<div class="flex items-center justify-between gap-2">
+										<h4 class="truncate font-medium">{app.appName}</h4>
+										<Badge variant="secondary" class="shrink-0 text-xs">
+											{app.usageCount} uses
+										</Badge>
+									</div>
+									<p class="text-muted-foreground mt-1 line-clamp-2 text-sm">
+										{app.appDescription}
+									</p>
+									<Button
+										variant="ghost"
+										size="sm"
+										class="mt-2 h-7 gap-1 px-2 text-xs"
+										href="/apps/{app.appLink}"
 									>
-										<h4 class="font-medium">{app.appName}</h4>
-										<div class="text-muted-foreground text-xs sm:text-sm">
-											<span>{app.usageCount} uses</span>
-										</div>
-									</div>
-									<p class="text-muted-foreground mt-1 text-xs sm:text-sm">{app.appDescription}</p>
-									<div class="mt-2 flex items-center justify-end sm:mt-3">
-										<Button
-											variant="outline"
-											size="sm"
-											class="h-7 gap-1 text-xs opacity-100 sm:h-8 sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100"
-											href="/apps/{app.appLink}"
-										>
-											Open App
-										</Button>
-									</div>
+										Open App →
+									</Button>
 								</div>
 							</div>
 						{/each}
 					</div>
 				{:else}
-					<div class="text-muted-foreground flex items-center justify-center p-4">
-						No favorite apps yet
+					<div class="text-muted-foreground flex flex-col items-center justify-center py-8">
+						<Star class="mb-2 size-8 opacity-50" />
+						<p>No favorite apps yet</p>
+						<p class="text-xs">Start using apps to see your favorites here</p>
 					</div>
 				{/if}
-			</CardContent>
-		</Card>
+			</Card.Content>
+		</Card.Root>
 	</div>
 </div>
