@@ -1,29 +1,21 @@
 <script lang="ts">
-	import { site } from '$lib/index.svelte'; // Import site-related variables
-	import { enhance } from '$app/forms';
+	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import type { ActionData, SubmitFunction, PageData } from './$types';
 	import * as Alert from '@/ui/alert/index.js';
-	import { AlertCircle, ArrowLeftRight, HelpCircle } from '@lucide/svelte';
+	import { ArrowLeftRight, AlertCircle, Loader2, HelpCircle, RefreshCw } from 'lucide-svelte';
 	import Input from '@/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
 	import Switch from '@/ui/switch/switch.svelte';
 	import Label from '@/ui/label/label.svelte';
 	import { Button } from '@/ui/button';
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
-	import Loading from '@/blocks/Loading.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
+	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';
+	import * as Select from '@/ui/select/index.js';
+	import { onMount } from 'svelte';
 
-	interface Props {
-		data: PageData;
-		form: ActionData & FormActionData;
-	}
-
-	let { data, form }: Props = $props();
-	let isLoading = $state(false);
-	let forceRefresh = $state(false);
 	let showHowToUseDialog = $state(false);
 
 	// Track if user has seen the how-to guide
@@ -31,80 +23,61 @@
 		storage: 'local'
 	});
 
-	interface FormActionData {
-		status?: number;
-		error?: string;
-		currencyFrom?: string;
-		currencyTo?: string;
-		currencyAmount?: number;
-		body?: {
-			error?: string;
-			rate: number;
-			convertedAmount: number;
-			cached?: boolean;
-			cacheAge?: number;
-		};
+	// Form state for UI (Select components need separate state)
+	let fromCurrency = $state('USD');
+	let toCurrency = $state('EUR');
+
+	// Currencies state with full info
+	let currencies = $state<CurrencyInfo[]>([]);
+	let currenciesLoading = $state(true);
+
+	// Load currencies on mount
+	onMount(async () => {
+		try {
+			currencies = await getCurrencies();
+		} catch (error) {
+			console.error('Failed to load currencies:', error);
+			toast.error('Failed to load currencies');
+		} finally {
+			currenciesLoading = false;
+		}
+	});
+
+	function getCurrencyData(currencyCode: string): CurrencyInfo | undefined {
+		return currencies.find((c) => c.value === currencyCode);
 	}
 
-	let currencyList = data.currencyList;
-
-	// Start form submission process.
-	const handleSubmit: SubmitFunction = () => {
-		isLoading = true; // Indicate submission is in progress.
-		toast.loading('Converting currencies...'); // Show loading toast.
-		if (form) {
-			form.status = 0;
-		}
-
-		return async ({ update, result }) => {
-			await update(); // Wait for update to finish.
-			isLoading = false; // Submission process ends.
-			toast.dismiss(); // Dismiss loading toast.
-
-			console.log('[Frontend] Form data after update:', form);
-			console.log('[Frontend] Result after update:', result);
-
-			// Check form status first as it represents the final state
-			if (form?.status === 200) {
-				toast.success('Successfully converted currencies');
-			} else if (form?.error) {
-				toast.error(form.error);
-			}
-		};
-	};
-
-	function getCurrencyLabel(currencyTo: string) {
-		const foundCurrency = currencyList.find((f: { value: string }) => f.value === currencyTo);
-		return foundCurrency ? foundCurrency.label : currencyTo; // Return label if found, else return the currency code
+	function getCurrencyLabel(currencyCode: string): string {
+		const foundCurrency = getCurrencyData(currencyCode);
+		return foundCurrency ? foundCurrency.label : currencyCode;
 	}
 
-	function formatNumberInput(e: Event) {
-		const target = e.target as HTMLInputElement;
-
-		// First, remove any non-numeric characters except dots and commas
-		let value = target.value.replace(/[^\d.,]/g, '');
-
-		// Replace multiple dots with a single dot and ensure only one decimal point
-		value = value.replace(/\.+/g, '.');
-		const parts = value.split('.');
-		if (parts.length > 2) {
-			value = parts[0] + '.' + parts.slice(1).join('');
-		}
-
-		// Remove commas and format with proper thousand separators
-		value = value.replace(/,/g, '');
-		if (value) {
-			const [integerPart, decimalPart] = value.split('.');
-			// Format integer part with thousand separators
-			let formattedInteger = Number(integerPart).toLocaleString('en-US');
-
-			// Add back decimal part if it exists
-			value = decimalPart ? `${formattedInteger}.${decimalPart}` : formattedInteger;
-		}
-
-		// Update the input value
-		target.value = value;
+	function getCurrencySymbol(currencyCode: string): string {
+		const foundCurrency = getCurrencyData(currencyCode);
+		return foundCurrency?.symbol || currencyCode;
 	}
+
+	function swapCurrencies() {
+		const temp = fromCurrency;
+		fromCurrency = toCurrency;
+		toCurrency = temp;
+		// Update form fields
+		convertCurrencyForm.fields.from.set(fromCurrency);
+		convertCurrencyForm.fields.to.set(toCurrency);
+	}
+
+	// Sync Select values with form fields
+	$effect(() => {
+		convertCurrencyForm.fields.from.set(fromCurrency);
+	});
+
+	$effect(() => {
+		convertCurrencyForm.fields.to.set(toCurrency);
+	});
+
+	// Track form state
+	let isSubmitting = $derived(!!convertCurrencyForm.pending);
+	let result = $derived(convertCurrencyForm.result);
 </script>
 
 <RouteHead
@@ -137,52 +110,93 @@
 				<CardTitle>Convert Currency</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<form use:enhance={handleSubmit} method="POST" class="space-y-6">
+				<form
+					{...convertCurrencyForm.enhance(async ({ form, submit }) => {
+						try {
+							await submit();
+							if (convertCurrencyForm.result) {
+								toast.success('Successfully converted currencies');
+							}
+						} catch (error) {
+							console.error('Conversion error:', error);
+							toast.error(
+								error instanceof Error ? error.message : 'An error occurred during conversion'
+							);
+						}
+					})}
+					class="space-y-6"
+				>
+					<!-- Hidden fields for from/to since we use Select components -->
+					<input type="hidden" name="from" value={fromCurrency} />
+					<input type="hidden" name="to" value={toCurrency} />
+
 					<div class="grid gap-6 md:grid-cols-2">
 						<!-- From Currency -->
 						<div class="space-y-2">
 							<label for="currencyFrom" class="text-sm font-medium">Convert From</label>
-							<div class="relative">
-								<Input
-									type="text"
-									list="currency-from"
-									name="currencyFrom"
-									id="currencyFrom"
-									value={form?.currencyFrom ?? ''}
-									required
-									maxlength={3}
-									placeholder="USD"
-									class="w-full"
-								/>
-								<datalist id="currency-from">
-									{#each currencyList as currency}
-										<option label={currency.label} value={currency.value}></option>
-									{/each}
-								</datalist>
-							</div>
+							{#if currenciesLoading}
+								<div class="flex items-center space-x-2">
+									<Loader2 class="h-4 w-4 animate-spin" />
+									<span class="text-sm text-muted-foreground">Loading currencies...</span>
+								</div>
+							{:else}
+								<Select.Root type="single" bind:value={fromCurrency}>
+									<Select.Trigger class="w-full">
+										<span class="flex items-center gap-2">
+											<span class="font-medium">{fromCurrency}</span>
+											<span class="text-muted-foreground">- {getCurrencyLabel(fromCurrency)}</span>
+										</span>
+									</Select.Trigger>
+									<Select.Content class="max-h-[300px]">
+										<Select.Group>
+											<Select.GroupHeading>Currencies</Select.GroupHeading>
+											{#each currencies as currency (currency.value)}
+												<Select.Item value={currency.value}>
+													<span class="flex items-center gap-2">
+														<span class="font-medium">{currency.value}</span>
+														<span class="text-muted-foreground">- {currency.label}</span>
+														<span class="ml-auto text-muted-foreground">{currency.symbol}</span>
+													</span>
+												</Select.Item>
+											{/each}
+										</Select.Group>
+									</Select.Content>
+								</Select.Root>
+							{/if}
 						</div>
 
 						<!-- To Currency -->
 						<div class="space-y-2">
 							<label for="currencyTo" class="text-sm font-medium">Convert To</label>
-							<div class="relative">
-								<Input
-									type="text"
-									list="currency-to"
-									id="currencyTo"
-									name="currencyTo"
-									required
-									maxlength={3}
-									value={form?.currencyTo ?? ''}
-									placeholder="EUR"
-									class="w-full"
-								/>
-								<datalist id="currency-to">
-									{#each currencyList as currency}
-										<option label={currency.label} value={currency.value}></option>
-									{/each}
-								</datalist>
-							</div>
+							{#if currenciesLoading}
+								<div class="flex items-center space-x-2">
+									<Loader2 class="h-4 w-4 animate-spin" />
+									<span class="text-sm text-muted-foreground">Loading currencies...</span>
+								</div>
+							{:else}
+								<Select.Root type="single" bind:value={toCurrency}>
+									<Select.Trigger class="w-full">
+										<span class="flex items-center gap-2">
+											<span class="font-medium">{toCurrency}</span>
+											<span class="text-muted-foreground">- {getCurrencyLabel(toCurrency)}</span>
+										</span>
+									</Select.Trigger>
+									<Select.Content class="max-h-[300px]">
+										<Select.Group>
+											<Select.GroupHeading>Currencies</Select.GroupHeading>
+											{#each currencies as currency (currency.value)}
+												<Select.Item value={currency.value}>
+													<span class="flex items-center gap-2">
+														<span class="font-medium">{currency.value}</span>
+														<span class="text-muted-foreground">- {currency.label}</span>
+														<span class="ml-auto text-muted-foreground">{currency.symbol}</span>
+													</span>
+												</Select.Item>
+											{/each}
+										</Select.Group>
+									</Select.Content>
+								</Select.Root>
+							{/if}
 						</div>
 					</div>
 
@@ -192,13 +206,7 @@
 							type="button"
 							variant="outline"
 							size="sm"
-							onclick={() => {
-								const fromInput = document.getElementById('currencyFrom') as HTMLInputElement;
-								const toInput = document.getElementById('currencyTo') as HTMLInputElement;
-								const fromValue = fromInput.value;
-								fromInput.value = toInput.value;
-								toInput.value = fromValue;
-							}}
+							onclick={swapCurrencies}
 							aria-label="Swap currencies"
 						>
 							<ArrowLeftRight class="h-4 w-4" />
@@ -208,26 +216,35 @@
 					<!-- Amount -->
 					<div class="space-y-2">
 						<label for="currencyAmount" class="text-sm font-medium">Amount</label>
+						{#each convertCurrencyForm.fields.amount.issues() ?? [] as issue}
+							<p class="text-sm text-destructive">{issue.message}</p>
+						{/each}
 						<Input
-							type="text"
-							name="currencyAmount"
+							{...convertCurrencyForm.fields.amount.as('number')}
 							id="currencyAmount"
-							required
-							value={form?.currencyAmount ?? ''}
 							placeholder="Enter amount"
-							oninput={formatNumberInput}
+							step="0.01"
+							min="0.01"
 							class="w-full"
 						/>
 					</div>
 
 					<!-- Force Refresh Switch -->
 					<div class="flex items-center space-x-2">
-						<input type="hidden" name="forceRefresh" value={forceRefresh ? 'true' : 'false'} />
-						<Switch bind:checked={forceRefresh} id="force-refresh" />
-						<Label for="force-refresh" class="text-sm font-medium">Force Fresh Rate</Label>
+						<input
+							{...convertCurrencyForm.fields.forceRefresh.as('checkbox')}
+							id="force-refresh"
+							class="hidden"
+						/>
+						<Switch
+							checked={convertCurrencyForm.fields.forceRefresh.value() ?? false}
+							onCheckedChange={(checked) => convertCurrencyForm.fields.forceRefresh.set(checked)}
+							id="force-refresh-switch"
+						/>
+						<Label for="force-refresh-switch" class="text-sm font-medium">Force Fresh Rate</Label>
 					</div>
 
-					{#if forceRefresh}
+					{#if convertCurrencyForm.fields.forceRefresh.value()}
 						<Alert.Root variant="destructive">
 							<AlertCircle class="h-4 w-4" />
 							<Alert.Description>
@@ -238,11 +255,12 @@
 					{/if}
 
 					<!-- Convert Button -->
-					<Button type="submit" class="w-full" disabled={isLoading}>
-						{#if isLoading}
-							<Loading class="mr-2 h-4 w-4" />
+					<Button type="submit" class="w-full" disabled={isSubmitting}>
+						{#if isSubmitting}
+							<Loader2 class="mr-2 h-4 w-4 animate-spin" />
 							Converting...
 						{:else}
+							<RefreshCw class="mr-2 h-4 w-4" />
 							Convert Currency
 						{/if}
 					</Button>
@@ -251,7 +269,7 @@
 		</Card>
 
 		<!-- Results Card -->
-		{#if form?.status === 200 && form?.body?.convertedAmount !== undefined && form?.body?.rate !== undefined}
+		{#if result}
 			<Card>
 				<CardHeader>
 					<CardTitle>Conversion Result</CardTitle>
@@ -260,51 +278,45 @@
 					<div class="space-y-4">
 						<div class="text-center">
 							<div class="text-2xl font-bold text-gray-900 dark:text-white">
-								{Number(form?.currencyAmount || 0).toLocaleString('en-US', {
+								{getCurrencySymbol(result.fromCurrency)}
+								{Number(result.originalAmount).toLocaleString('en-US', {
 									minimumFractionDigits: 2,
 									maximumFractionDigits: 2
 								})}
-								{getCurrencyLabel(form?.currencyFrom)} =
+								{result.fromCurrency} =
 							</div>
-							<div class="text-primary text-3xl font-bold">
-								{Number(form.body.convertedAmount).toLocaleString('en-US', {
+							<div class="mt-2 text-3xl font-bold text-primary">
+								{getCurrencySymbol(result.toCurrency)}
+								{Number(result.convertedAmount).toLocaleString('en-US', {
 									minimumFractionDigits: 2,
 									maximumFractionDigits: 2
 								})}
-								{getCurrencyLabel(form?.currencyTo)}
+								{result.toCurrency}
 							</div>
 						</div>
 
-						<div class="bg-muted rounded-lg p-4">
-							<div class="text-muted-foreground text-center text-sm">
+						<div class="rounded-lg bg-muted p-4">
+							<div class="text-center text-sm text-muted-foreground">
 								<div class="font-medium">
-									Exchange Rate: 1 {getCurrencyLabel(form?.currencyFrom)} = {Number(
-										form.body.rate
-									).toLocaleString('en-US', {
-										minimumFractionDigits: 4,
-										maximumFractionDigits: 4
-									})}
-									{getCurrencyLabel(form?.currencyTo)}
+									Exchange Rate: 1 {result.fromCurrency} = {Number(result.rate).toLocaleString(
+										'en-US',
+										{
+											minimumFractionDigits: 4,
+											maximumFractionDigits: 4
+										}
+									)}
+									{result.toCurrency}
 								</div>
-								{#if form?.body?.cached}
+								{#if result.cached}
 									<div class="mt-1 text-xs">
-										Cached {form.body.cacheAge !== undefined
-											? `${Math.floor(form.body.cacheAge / 60)}m ${form.body.cacheAge % 60}s ago`
+										Cached {result.cacheAge !== undefined
+											? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago`
 											: 'just now'}
 									</div>
 								{/if}
 							</div>
 						</div>
 					</div>
-				</CardContent>
-			</Card>
-		{:else if form?.error}
-			<Card class="border-destructive">
-				<CardContent class="pt-6">
-					<Alert.Root variant="destructive">
-						<AlertCircle class="h-4 w-4" />
-						<Alert.Description>{form.error}</Alert.Description>
-					</Alert.Root>
 				</CardContent>
 			</Card>
 		{/if}

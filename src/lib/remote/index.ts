@@ -90,3 +90,11 @@ export {
 	// Initialization
 	initializeScenarioDefaults
 } from './scenario-tracker.remote';
+
+// Remote functions for currency converter
+export {
+	getCurrencies,
+	getCurrencyInfo,
+	convertCurrencyForm,
+	type CurrencyInfo
+} from './currency.remote';

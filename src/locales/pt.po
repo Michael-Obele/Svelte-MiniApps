@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-25T10:54:31.778Z\n"
+"PO-Revision-Date: 2025-11-25T12:33:30.806Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -3556,13 +3556,11 @@ msgstr "Despesas Totais: $ {0}"
 msgid "Remaining Budget: $ {0}"
 msgstr "Orçamento Restante: $ {0}"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Converting currencies..."
-msgstr "Convertendo moedas..."
+#~ msgid "Converting currencies..."
+#~ msgstr "Convertendo moedas..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Successfully converted currencies"
-msgstr "Moedas convertidas com sucesso"
+#~ msgid "Successfully converted currencies"
+#~ msgstr "Moedas convertidas com sucesso"
 
 #. placeholder {0}: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
@@ -3588,7 +3586,6 @@ msgstr "Converta moedas com taxas de câmbio em tempo real"
 msgid "<0/> How to Use"
 msgstr "<0/> Como Usar"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert Currency"
 msgstr "Converter moeda"
@@ -3627,14 +3624,14 @@ msgstr "<0/> Convertendo..."
 msgid "Conversion Result"
 msgstr "Resultado da conversão"
 
-#. placeholder {0}: getCurrencyLabel(form?.currencyFrom)
-#. placeholder {1}: Number( form.body.rate ).toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })
-#. placeholder {2}: getCurrencyLabel(form?.currencyTo)
+#. placeholder {0}: result.fromCurrency
+#. placeholder {1}: Number(result.rate).toLocaleString( 'en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 } )
+#. placeholder {2}: result.toCurrency
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Exchange Rate: 1 {0} = {1} {2}"
 msgstr "Taxa de câmbio: 1 {0} = {1} {2}"
 
-#. placeholder {0}: form.body.cacheAge !== undefined ? `${Math.floor(form.body.cacheAge / 60)}m ${form.body.cacheAge % 60}s ago` : 'just now'
+#. placeholder {0}: result.cacheAge !== undefined ? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago` : 'just now'
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Cached {0}"
 msgstr "Cacheado {0}"
@@ -10033,4 +10030,21 @@ msgstr "Tem certeza de que deseja excluir esta opção? Todas as atividades e ri
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Entry"
+msgstr ""
+
+#~ msgid "Please enter a valid amount"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Currencies"
+msgstr ""
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Loading currencies..."
+msgstr ""
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Convert Currency"
 msgstr ""
