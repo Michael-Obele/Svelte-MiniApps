@@ -1,6 +1,7 @@
 // @ts-check
 import { adapter as svelte } from '@wuchale/svelte';
 import { adapter as js } from 'wuchale/adapter-vanilla';
+import { gemini } from 'wuchale';
 import { defineConfig } from 'wuchale';
 
 export default defineConfig({
@@ -22,32 +23,10 @@ export default defineConfig({
 		js: js({
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
-	}
-	// ai: {
-	// 	name: 'openai',
-	// 	translate: async (messages, instruction) => {
-	// 		const openai = new OpenAI({
-	// 			apiKey: process.env.OPENAI_API_KEY // Use export OPENAI_API_KEY=sk-... in your terminal
-	// 		});
-
-	// 		try {
-	// 			const response = await openai.responses.create({
-	// 				model: 'gpt-5-nano',
-	// 				input: [
-	// 					{ role: 'system', content: instruction },
-	// 					{ role: 'user', content: messages }
-	// 				]
-	// 			});
-
-	// 			return response.output_text;
-	// 		} catch (error) {
-	// 			console.error('OpenAI translation error:', error);
-	// 			// Return original messages as fallback
-	// 			return messages;
-	// 		}
-	// 	},
-
-	// 	batchSize: 45, // Adjust for rate limits/cost
-	// 	parallel: 8 // Parallel batches
-	// }
+	},
+	ai: gemini({
+		batchSize: 45,
+		parallel: 8,
+		think: true
+	})
 });
