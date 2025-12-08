@@ -34,6 +34,24 @@
 	let editedPassword = $state(password.passwordHash);
 	let editedDetails = $state(password.details || '');
 
+	// Create colored password display
+	let coloredPassword = $derived.by(() => {
+		const pwd = showPassword ? password.passwordHash : '•'.repeat(password.passwordHash.length);
+		return pwd.split('').map((char) => {
+			if (char === '•') return { char, colorClass: 'text-foreground' };
+
+			let colorClass = '';
+			if (/\d/.test(char)) {
+				colorClass = 'text-orange-700 dark:text-orange-400'; // Numbers in orange
+			} else if (/[^A-Za-z0-9]/.test(char)) {
+				colorClass = 'text-purple-700 dark:text-purple-400'; // Special characters in purple
+			} else {
+				colorClass = 'text-foreground'; // Letters in default color
+			}
+			return { char, colorClass };
+		});
+	});
+
 	async function copyPassword() {
 		await copyToClipboard(
 			password.passwordHash,
@@ -78,12 +96,12 @@
 			isDeleting = true;
 			await deletePassword(password.id);
 			toast.success('Password deleted successfully!');
-			// Refresh the query so all instances update
-			await getSavedPasswords().refresh();
 		} catch (error) {
 			console.error('Error deleting password:', error);
 			toast.error('Failed to delete password');
 		} finally {
+			// Refresh the query so all instances update
+			await getSavedPasswords().refresh();
 			isDeleting = false;
 		}
 	}
@@ -99,18 +117,19 @@
 >
 	<div class="flex-1 space-y-2">
 		<div class="flex flex-wrap items-center gap-2">
-			<Input
-				type={showPassword ? 'text' : 'password'}
-				value={password.passwordHash}
-				readonly
-				class="h-auto flex-1 border-none bg-transparent p-0 font-mono text-sm focus-visible:ring-0"
-			/>
+			<div
+				class="flex h-auto min-h-[2.5rem] flex-1 items-center border-none bg-transparent p-0 font-mono text-lg focus-visible:ring-0 md:text-xl"
+			>
+				{#each coloredPassword as { char, colorClass }}
+					<span class={colorClass}>{char}</span>
+				{/each}
+			</div>
 			<div class="flex items-center gap-1">
 				<Button
 					onclick={() => (showPassword = !showPassword)}
 					variant="ghost"
 					size="sm"
-					class="h-8 w-8 p-0"
+					class="h-9 w-9 p-0"
 					aria-label={showPassword ? 'Hide password' : 'Show password'}
 				>
 					{#if showPassword}
@@ -123,7 +142,7 @@
 					onclick={copyPassword}
 					variant="ghost"
 					size="sm"
-					class="h-8 w-8 p-0 {copySuccess ? 'text-green-600' : ''}"
+					class="h-9 w-9 p-0 {copySuccess ? 'text-green-600' : ''}"
 					aria-label="Copy password"
 				>
 					{#if copySuccess}
@@ -140,7 +159,7 @@
 						}}
 						variant="ghost"
 						size="sm"
-						class="h-8 w-8 p-0"
+						class="h-9 w-9 p-0"
 						aria-label="Edit password"
 					>
 						<Pencil class="h-4 w-4" />
@@ -151,7 +170,7 @@
 						onclick={handleDelete}
 						variant="ghost"
 						size="sm"
-						class="text-destructive hover:text-destructive h-8 w-8 p-0"
+						class="text-destructive hover:text-destructive h-9 w-9 p-0"
 						disabled={isDeleting}
 						aria-label="Delete password"
 					>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2025-11-25T17:35:27.419Z\n"
+"PO-Revision-Date: 2025-12-08T06:50:18.018Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -97,9 +97,6 @@ msgstr "換算元"
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Loading currencies..."
 msgstr "通貨を読み込み中..."
-
-#~ msgid "Currencies"
-#~ msgstr "通貨"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert To"
@@ -1025,9 +1022,6 @@ msgstr "Svelte Mini Apps の未来：次は何が来るのか？"
 msgid "The Future of Svelte Mini Apps"
 msgstr "Svelte Mini Apps の未来"
 
-#~ msgid "Svelte Mini Apps is an <0>ever-evolving project</0>, and <1>you</1> hold the reins!"
-#~ msgstr "Svelte Mini Apps は<0>常に進化しているプロジェクト</0>であり、<1>その手綱を握っているのはあなた</1>です！"
-
 #: src/routes/about/Vision.svelte
 msgid "Have ideas or feedback?"
 msgstr "アイデアやフィードバックをお持ちですか？"
@@ -1427,6 +1421,7 @@ msgstr "<0/> 自動生成"
 msgid "<0/> By Type"
 msgstr "<0/> タイプ別"
 
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/changelog/ChangelogStats.svelte
 #: src/routes/changelog/DebugOrder.svelte
 msgid "Hide"
@@ -3306,15 +3301,6 @@ msgstr "アカウントからサインアウトするには、以下をクリッ
 msgid "<0/> Sign Out"
 msgstr "<0/> サインアウト"
 
-#~ msgid "Profile - Svelte Mini Apps"
-#~ msgstr ""
-
-#~ msgid "Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte."
-#~ msgstr ""
-
-#~ msgid "Developer Dashboard"
-#~ msgstr ""
-
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
@@ -3327,15 +3313,6 @@ msgstr "更新"
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Overview"
 msgstr "概要"
-
-#~ msgid "Projects"
-#~ msgstr ""
-
-#~ msgid "Usage Stats"
-#~ msgstr ""
-
-#~ msgid "Learning"
-#~ msgstr ""
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Deleting account..."
@@ -3423,9 +3400,6 @@ msgstr "危険地帯"
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Delete Account"
 msgstr "アカウントを削除"
-
-#~ msgid "Permanently delete your account and all associated data. This action cannot be undone."
-#~ msgstr ""
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
@@ -3687,12 +3661,6 @@ msgstr "初心者向け"
 msgid "View All Resources"
 msgstr "すべてのリソースを表示"
 
-#~ msgid "Completed Apps"
-#~ msgstr "完了したアプリ"
-
-#~ msgid "{0}% of total projects"
-#~ msgstr "全プロジェクトの{0}%"
-
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "現在の連続日数"
@@ -3702,30 +3670,9 @@ msgstr "現在の連続日数"
 msgid "{0} days"
 msgstr "{0}日"
 
-#~ msgid "Keep it going!"
-#~ msgstr "この調子で頑張りましょう！"
-
-#~ msgid "{0} unique apps used"
-#~ msgstr "{0}個のユニークなアプリを利用"
-
-#~ msgid "Developer Level"
-#~ msgstr "開発者レベル"
-
-#~ msgid "Level {0}"
-#~ msgstr "レベル{0}"
-
-#~ msgid "{0} more uses to next level"
-#~ msgstr "あと{0}回利用で次のレベルに進めます"
-
-#~ msgid "Upcoming Apps"
-#~ msgstr "近日公開のアプリ"
-
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "New apps coming soon"
 msgstr "新しいアプリが近日公開予定"
-
-#~ msgid "Favorite Apps"
-#~ msgstr "お気に入りのアプリ"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
@@ -3837,15 +3784,9 @@ msgstr "更新中..."
 msgid "Update Password"
 msgstr "パスワードを更新```"
 
-#~ msgid "Recent Activity"
-#~ msgstr "最近のアクティビティ"
-
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Your latest interactions with Svelte Mini Apps"
 msgstr "Svelte Mini Appsでの最新のインタラクション"
-
-#~ msgid "Used {0}"
-#~ msgstr "{0}を使用しました"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
@@ -3859,19 +3800,10 @@ msgstr "今日"
 msgid "Yesterday"
 msgstr "昨日"
 
-#~ msgid "No recent activity yet. Start using apps to see your activity here!"
-#~ msgstr "まだ最近のアクティビティはありません。アプリの使用を開始して、ここにアクティビティを表示してください！```"
-
-#~ msgid "View All Activity"
-#~ msgstr "すべてのアクティビティを表示"
-
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Account Settings"
 msgstr "アカウント設定"
-
-#~ msgid "Manage your profile and preferences"
-#~ msgstr "プロフィールと設定を管理"
 
 #: src/routes/(auth)/profile/UpcomingFeaturesList.svelte
 msgid "All projects are completed!"
@@ -3924,9 +3856,6 @@ msgstr "マントラ"
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "保存されたパスワード"
-
-#~ msgid "Social Pages"
-#~ msgstr "ソーシャルページ"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/(auth)/profile/UserProfileCard.svelte
@@ -5157,15 +5086,9 @@ msgstr "合計支出: $ {0}"
 msgid "Remaining Budget: $ {0}"
 msgstr "残りの予算: $ {0}```"
 
-#~ msgid "Submitting..."
-#~ msgstr "送信中..."
-
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Error"
 msgstr "エラー"
-
-#~ msgid "Success"
-#~ msgstr "成功"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Svelte Mini Apps - English Dictionary App"
@@ -5183,21 +5106,6 @@ msgstr "英語辞書、単語検索、定義、同義語、反意語、Svelte、
 msgid "English Dictionary"
 msgstr "英語辞書"
 
-#~ msgid "Explore the world of words together."
-#~ msgstr "一緒に言葉の世界を探求しましょう。"
-
-#~ msgid "Enter a word"
-#~ msgstr "単語を入力"
-
-#~ msgid "Searching..."
-#~ msgstr "検索中..."
-
-#~ msgid "Find Meaning"
-#~ msgstr "意味を検索"
-
-#~ msgid "Searching for meaning..."
-#~ msgstr "意味を検索中..."
-
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Synonyms:"
 msgstr "同義語:"
@@ -5205,12 +5113,6 @@ msgstr "同義語:"
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Antonyms:"
 msgstr "反意語:"
-
-#~ msgid "Origin"
-#~ msgstr "語源"
-
-#~ msgid "View License"
-#~ msgstr "ライセンスを表示"
 
 #. placeholder {0}: entry.license.name
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
@@ -7330,10 +7232,8 @@ msgstr "パスワードがここに表示されます"
 msgid "Password Strength: {0}%"
 msgstr "パスワード強度: {0}%"
 
-#. placeholder {0}: passwordLength
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Length: {0}"
-msgstr "パスワードの長さ: {0}"
+#~ msgid "Password Length: {0}"
+#~ msgstr "パスワードの長さ: {0}"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Uppercase Letters"
@@ -7355,10 +7255,8 @@ msgstr "特殊文字"
 msgid "Generate Password"
 msgstr "パスワードを生成"
 
-#. placeholder {0}: loadingPasswords ? 'loading...' : savedPasswords ? savedPasswords.length : 'none saved'
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "View Saved Passwords ({0})"
-msgstr "保存されたパスワードを表示 ({0})"
+#~ msgid "View Saved Passwords ({0})"
+#~ msgstr "保存されたパスワードを表示 ({0})"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
@@ -7553,23 +7451,23 @@ msgstr "このオプションを削除してもよろしいですか？関連す
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Time Remaining"
-msgstr ""
+msgstr "残り時間"
 
 #. placeholder {0}: stats.remainingYears
 #. placeholder {0}: durationYears
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "{0} years"
-msgstr ""
+msgstr "{0}年"
 
 #. placeholder {0}: stats.remainingDays.toLocaleString()
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} days left"
-msgstr ""
+msgstr "残り{0}日"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Total Time Invested"
-msgstr ""
+msgstr "総投資時間"
 
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
@@ -7578,37 +7476,37 @@ msgstr ""
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "{0} hrs"
-msgstr ""
+msgstr "{0}時間"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Across all options"
-msgstr ""
+msgstr "全オプション"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Average Progress"
-msgstr ""
+msgstr "平均進捗"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Active Risks"
-msgstr ""
+msgstr "アクティブなリスク"
 
 #. placeholder {0}: highRisksCount
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} high/critical severity"
-msgstr ""
+msgstr "{0} 高/重大リスク"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "<0/> Options Overview"
-msgstr ""
+msgstr "<0/> オプション概要"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Track progress across your scenario options"
-msgstr ""
+msgstr "シナリオオプション全体の進捗を追跡"
 
 #. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} hrs invested"
-msgstr ""
+msgstr "{0}時間投資済み"
 
 #. placeholder {0}: stats.progress
 #. placeholder {0}: stats.progress
@@ -7626,647 +7524,647 @@ msgstr "{0}% 完了"
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Est. completion: {0}"
-msgstr ""
+msgstr "完了見込み: {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "No options yet. Add your first scenario option to get started."
-msgstr ""
+msgstr "まだオプションはありません。開始するには最初のシナリオオプションを追加してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "<0/> Time Allocation"
-msgstr ""
+msgstr "<0/> 時間配分"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "How you're dividing your effort"
-msgstr ""
+msgstr "努力の配分方法"
 
 #. placeholder {0}: 100 - totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "({0}% unallocated)"
-msgstr ""
+msgstr "({0}% 未割り当て)"
 
 #. placeholder {0}: totalAllocation - 100
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
-msgstr ""
+msgstr "({0}% 過剰割り当て)"
 
 #. placeholder {0}: totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Total: {0}% <0/>"
-msgstr ""
+msgstr "合計: {0}% <0/>"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Add options to see allocation chart"
-msgstr ""
+msgstr "割り当てグラフを見るにはオプションを追加してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Deadline"
-msgstr ""
+msgstr "期限"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Your planning window ends on {0}"
-msgstr ""
+msgstr "計画期間は {0} に終了します"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Progress through planning period"
-msgstr ""
+msgstr "計画期間の進捗"
 
 #. placeholder {0}: formatDate(startDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Started: {0}"
-msgstr ""
+msgstr "開始日: {0}"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Deadline: {0}"
-msgstr ""
+msgstr "期限: {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Planning"
-msgstr ""
+msgstr "計画中"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Paused"
-msgstr ""
+msgstr "一時停止"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Complete"
-msgstr ""
+msgstr "完了"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Invested"
-msgstr ""
+msgstr "費やした時間"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Allocation"
-msgstr ""
+msgstr "割り当て"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress"
-msgstr ""
+msgstr "進捗"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Activity Log"
-msgstr ""
+msgstr "アクティビティログ"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Track your work sessions and progress"
-msgstr ""
+msgstr "作業セッションと進捗を追跡する"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Add Activity"
-msgstr ""
+msgstr "<0/> アクティビティを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Status"
-msgstr ""
+msgstr "ステータス"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "No activities logged yet."
-msgstr ""
+msgstr "まだアクティビティは記録されていません。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Start tracking your work by adding an activity."
-msgstr ""
+msgstr "アクティビティを追加して作業の追跡を開始してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Edit Activity"
-msgstr ""
+msgstr "アクティビティを編集"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Add Activity"
-msgstr ""
+msgstr "アクティビティを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Update the activity details."
-msgstr ""
+msgstr "アクティビティの詳細を更新します。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Log a new work session or milestone."
-msgstr ""
+msgstr "新しい作業セッションまたはマイルストーンを記録します。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "What did you work on?"
-msgstr ""
+msgstr "何に取り組みましたか？"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Spent (hours)"
-msgstr ""
+msgstr "費やした時間（時間）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Select status"
-msgstr ""
+msgstr "ステータスを選択"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress Metric"
-msgstr ""
+msgstr "進捗指標"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Additional notes or observations"
-msgstr ""
+msgstr "追加のメモまたは観察事項"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Edit Option"
-msgstr ""
+msgstr "オプションを編集"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Update the option settings and targets."
-msgstr ""
+msgstr "オプション設定とターゲットを更新します。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress (%)"
-msgstr ""
+msgstr "進捗（％）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Est. Time to Completion"
-msgstr ""
+msgstr "完了までの推定時間"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Save Changes"
-msgstr ""
+msgstr "<0/> 変更を保存"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Delete Activity"
-msgstr ""
+msgstr "アクティビティを削除"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
-msgstr ""
+msgstr "このアクティビティを削除してもよろしいですか？この操作は取り消せません。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Option not found."
-msgstr ""
+msgstr "オプションが見つかりません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Low"
-msgstr ""
+msgstr "低リスク"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Medium"
-msgstr ""
+msgstr "中リスク"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "High"
-msgstr ""
+msgstr "高リスク"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Critical"
-msgstr ""
+msgstr "重大リスク"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "<0/> Risks & Assumptions"
-msgstr ""
+msgstr "<0/> リスクと前提"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Track and mitigate potential risks to your plans"
-msgstr ""
+msgstr "計画に対する潜在的なリスクを追跡し、対策を講じます。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "<0/> Add Risk"
-msgstr ""
+msgstr "<0/> リスクを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Severity"
-msgstr ""
+msgstr "重大度"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Option"
-msgstr ""
+msgstr "オプション"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Mitigation"
-msgstr ""
+msgstr "緩和策"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Added"
-msgstr ""
+msgstr "追加済み"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "No risks tracked yet."
-msgstr ""
+msgstr "まだリスクは追跡されていません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Add risks to keep track of potential challenges."
-msgstr ""
+msgstr "潜在的な課題を追跡するためにリスクを追加してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Edit Risk"
-msgstr ""
+msgstr "リスクを編集"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Add Risk"
-msgstr ""
+msgstr "リスクを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Update the risk details."
-msgstr ""
+msgstr "リスクの詳細を更新します。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Document a potential risk or assumption."
-msgstr ""
+msgstr "潜在的なリスクや仮定を文書化します。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Describe the risk or assumption"
-msgstr ""
+msgstr "リスクまたは仮定を説明"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Select severity"
-msgstr ""
+msgstr "重大度を選択"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Related Option"
-msgstr ""
+msgstr "関連オプション"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Mitigation Strategy"
-msgstr ""
+msgstr "緩和戦略"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "How will you address this risk?"
-msgstr ""
+msgstr "このリスクにはどう対処しますか？"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Delete Risk"
-msgstr ""
+msgstr "リスクを削除"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
-msgstr ""
+msgstr "このリスクを削除しますか？この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Please select both start and end dates"
-msgstr ""
+msgstr "開始日と終了日の両方を選択してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "End date must be after start date"
-msgstr ""
+msgstr "終了日は開始日より後の日付を指定してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Timeline settings saved"
-msgstr ""
+msgstr "タイムライン設定を保存しました。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Timeline Settings"
-msgstr ""
+msgstr "<0/> タイムライン設定"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
-msgstr ""
+msgstr "計画の期間を調整してください。これにより「残り時間」の計算に影響します。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Quick Presets"
-msgstr ""
+msgstr "クイックプリセット"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "1 Year"
-msgstr ""
+msgstr "1年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "3 Years"
-msgstr ""
+msgstr "3年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "5 Years"
-msgstr ""
+msgstr "5年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "10 Years"
-msgstr ""
+msgstr "10年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "15 Years"
-msgstr ""
+msgstr "15年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Pick a start date"
-msgstr ""
+msgstr "開始日を選択してください"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "End Date (Deadline)"
-msgstr ""
+msgstr "終了日（期限）"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Pick an end date"
-msgstr ""
+msgstr "終了日を選択してください"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Planning Duration"
-msgstr ""
+msgstr "計画期間"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "⚠️ End date must be after start date"
-msgstr ""
+msgstr "⚠️ 終了日は開始日より後の日付でなければなりません"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid ""
 "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
-msgstr ""
+msgstr "<0>注:</0> ログインしていません。設定はローカルに保存され、デバイス間で同期されません。 <1>サインイン</1> してデータを同期してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Cancel"
-msgstr ""
+msgstr "<0/> キャンセル"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Save Settings"
-msgstr ""
+msgstr "<0/> 設定を保存"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Timeline Log"
-msgstr ""
+msgstr "<0/> タイムライン ログ"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Track your daily/weekly progress across all options"
-msgstr ""
+msgstr "すべてのオプションで日次・週次の進捗を追跡する"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Add Entry"
-msgstr ""
+msgstr "<0/> エントリを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Options Worked"
-msgstr ""
+msgstr "取り組んだオプション"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Time Allocation"
-msgstr ""
+msgstr "時間割り当て"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Outcomes"
-msgstr ""
+msgstr "成果"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Adjustments"
-msgstr ""
+msgstr "調整"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "No timeline entries yet."
-msgstr ""
+msgstr "タイムラインのエントリはまだありません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Start tracking your weekly progress by adding an entry."
-msgstr ""
+msgstr "エントリを追加して週次の進捗を追跡し始めましょう。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Edit Timeline Entry"
-msgstr ""
+msgstr "タイムラインエントリを編集"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Add Timeline Entry"
-msgstr ""
+msgstr "タイムラインエントリを追加"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Update the entry details."
-msgstr ""
+msgstr "エントリの詳細を更新します。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Log your progress for this period."
-msgstr ""
+msgstr "この期間の進捗を記録します。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Options Worked On"
-msgstr ""
+msgstr "取り組んだオプション"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "What did you accomplish?"
-msgstr ""
+msgstr "何を達成しましたか？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Adjustments/Notes"
-msgstr ""
+msgstr "調整/ノート"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Any changes to your strategy?"
-msgstr ""
+msgstr "戦略に何か変更はありますか？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Timeline Entry"
-msgstr ""
+msgstr "タイムラインエントリを削除"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
-msgstr ""
+msgstr "このタイムラインエントリを削除してもよろしいですか？この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Entry"
-msgstr ""
+msgstr "エントリを削除"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Your smoke-free journey begins now! 🎉"
-msgstr ""
+msgstr "今すぐ禁煙への旅を始めましょう！🎉"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Previous attempt saved to history. Starting fresh! 💪"
-msgstr ""
+msgstr "前回の試みは履歴に保存されました。新しいスタートです！💪"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Craving logged! Stay strong! 💪"
-msgstr ""
+msgstr "渇望を記録しました！頑張ってください！💪"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Track your smoke-free streak, monitor health improvements, and stay motivated on your journey to quit smoking."
-msgstr ""
+msgstr "禁煙の連続記録を追跡し、健康の改善をモニタリングし、禁煙への旅を続けるモチベーションを維持しましょう。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Your journey to a healthier life"
-msgstr ""
+msgstr "より健康な生活への旅"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "🔄 Sync"
-msgstr ""
+msgstr "🔄 同期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "☁️ Backup"
-msgstr ""
+msgstr "☁️ バックアップ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Log Craving"
-msgstr ""
+msgstr "渇望を記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "I Smoked"
-msgstr ""
+msgstr "喫煙しました"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Ready to Quit Smoking?"
-msgstr ""
+msgstr "禁煙の準備はできていますか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
 "Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
 "journey."
-msgstr ""
+msgstr "進捗を追跡し、健康の改善をモニターし、禁煙の旅でモチベーションを維持しましょう。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "<0/> Start Your Journey"
-msgstr ""
+msgstr "<0/> 旅を始めましょう"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Milestones"
-msgstr ""
+msgstr "マイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Cravings"
-msgstr ""
+msgstr "渇望"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "History"
-msgstr ""
+msgstr "履歴"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Money Saved"
-msgstr ""
+msgstr "節約額"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Cigarettes Avoided"
-msgstr ""
+msgstr "避けたたばこ本数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Milestones Reached"
-msgstr ""
+msgstr "達成した節目"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Craving Success"
-msgstr ""
+msgstr "渇望を克服"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "<0/> Next Milestone"
-msgstr ""
+msgstr "<0/> 次の節目"
 
 #. placeholder {0}: smokeState.formatDuration( statistics.nextMilestone.duration - statistics.streakMinutes )
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "{0} remaining"
-msgstr ""
+msgstr "{0} 残り"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Start Your Smoke-Free Journey"
-msgstr ""
+msgstr "禁煙の旅を始めましょう"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "When did you have your last cigarette? We'll track your progress from that moment."
-msgstr ""
+msgstr "最後に喫煙したのはいつですか？その瞬間から進捗を追跡します。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Starting now with your last cigarette being right now"
-msgstr ""
+msgstr "今から開始します。最後の喫煙は今この瞬間です。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Your timer will begin from this moment"
-msgstr ""
+msgstr "この瞬間からタイマーを開始します"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "What to expect:"
-msgstr ""
+msgstr "期待できること："
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Track your real-time smoke-free streak"
-msgstr ""
+msgstr "• 禁煙のリアルタイム連続記録を追跡"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Celebrate health improvement milestones"
-msgstr ""
+msgstr "• 健康改善の節目を祝う"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Monitor money saved and cigarettes avoided"
-msgstr ""
+msgstr "• 節約したお金と避けた喫煙本数を把握する"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Log and manage cravings effectively"
-msgstr ""
+msgstr "• 渇望を効果的に記録・管理する"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "<0/> Start Journey"
-msgstr ""
+msgstr "<0/> 旅を始める"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Confirm You Smoked"
-msgstr ""
+msgstr "喫煙したことを確認"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
 "Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
 "ensure accurate tracking."
-msgstr ""
+msgstr "連勝をリセットする前に、実際に喫煙したことを確認してください。これにより正確な追跡が可能になります。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "What happens when you reset?"
-msgstr ""
+msgstr "リセットするとどうなる？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Your current streak timer will stop"
-msgstr ""
+msgstr "• 現在の連勝タイマーが停止します"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• This attempt will be saved to your history"
-msgstr ""
+msgstr "• この試みは履歴に保存されます"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• A new streak will begin immediately"
-msgstr ""
+msgstr "• すぐに新しい連勝が始まります"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "• Your longest streak record remains intact"
-msgstr ""
+msgstr "• 最長連勝の記録はそのまま維持されます"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Are you sure you smoked?"
-msgstr ""
+msgstr "本当に喫煙しましたか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
 "Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
 "logging it instead."
-msgstr ""
+msgstr "実際に喫煙した場合のみ進んでください。耐えた渇望であれば、その代わりに記録してください。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Yes, I Smoked - Reset Streak"
-msgstr ""
+msgstr "はい、喫煙しました - 連勝をリセット"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Record a Smoke?"
-msgstr ""
+msgstr "喫煙を記録しますか？"
 
 #. placeholder {0}: statistics?.longestStreak ?? '0 minutes'
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
 "Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
 "going. Your longest streak of {0} is still an achievement!"
-msgstr ""
+msgstr "自分をあまり責めすぎないでください。回復は直線的ではありません。連勝をリセットして前に進みましょう。最長連勝が {0} 分であることは、依然として達成です！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Reset Streak"
-msgstr ""
+msgstr "連勝をリセット"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Log a Craving"
-msgstr ""
+msgstr "渇望を記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Track your cravings to understand your triggers and improve your strategy."
-msgstr ""
+msgstr "渇望を追跡してトリガーを理解し、戦略を改善しましょう。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
@@ -8275,11 +8173,11 @@ msgstr "ストレス"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "After meal"
-msgstr ""
+msgstr "食後"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Social situation"
-msgstr ""
+msgstr "社交の場面"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
@@ -8293,7 +8191,7 @@ msgstr "アルコール"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Coffee/tea"
-msgstr ""
+msgstr "コーヒー／紅茶"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
@@ -8313,7 +8211,7 @@ msgstr "朝の習慣"
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
@@ -8322,19 +8220,19 @@ msgstr "深呼吸"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Exercise/walk"
-msgstr ""
+msgstr "運動／散歩"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Water/snack"
-msgstr ""
+msgstr "水分／おやつ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Call friend"
-msgstr ""
+msgstr "友だちに電話"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Distraction"
-msgstr ""
+msgstr "気を紛らす"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
@@ -8343,231 +8241,231 @@ msgstr "瞑想"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Chewing gum"
-msgstr ""
+msgstr "ガムを噛む"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Read motivations"
-msgstr ""
+msgstr "動機を読む"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Delay tactics"
-msgstr ""
+msgstr "遅延の戦術"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Very Mild"
-msgstr ""
+msgstr "非常に軽い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Mild"
-msgstr ""
+msgstr "軽い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Moderate"
-msgstr ""
+msgstr "中程度"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Very Strong"
-msgstr ""
+msgstr "非常に強い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Craving Log"
-msgstr ""
+msgstr "渇望ログ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Intensity (1-5)"
-msgstr ""
+msgstr "強さ（1-5）"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "What triggered it?"
-msgstr ""
+msgstr "何がきっかけですか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Select trigger"
-msgstr ""
+msgstr "トリガーを選択"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "How did you cope?"
-msgstr ""
+msgstr "どう対処しましたか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Select strategy"
-msgstr ""
+msgstr "戦略を選択"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Did you resist the craving?"
-msgstr ""
+msgstr "渇望を抑えましたか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Yes, I resisted!"
-msgstr ""
+msgstr "はい、抑えました！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "No, I gave in"
-msgstr ""
+msgstr "いいえ、欲望に負けました"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Any additional thoughts..."
-msgstr ""
+msgstr "他に考えはありますか…"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "<0/> Log Craving"
-msgstr ""
+msgstr "<0/> 渇望を記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Recent Cravings"
-msgstr ""
+msgstr "最近の渇望"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "{0} Intensity"
-msgstr ""
+msgstr "{0} の強さ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Resisted"
-msgstr ""
+msgstr "抑えた"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Gave In"
-msgstr ""
+msgstr "欲望に負けた"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Trigger:"
-msgstr ""
+msgstr "トリガー:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "Strategy:"
-msgstr ""
+msgstr "戦略:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Attempt History"
-msgstr ""
+msgstr "<0/> 禁煙挑戦履歴"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
-msgstr ""
+msgstr "まだ挑戦はありません。上部から旅を始めましょう！"
 
 #. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Attempt #{0}"
-msgstr ""
+msgstr "挑戦 #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Current"
-msgstr ""
+msgstr "現在"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Completed"
-msgstr ""
+msgstr "完了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Longest Streak"
-msgstr ""
+msgstr "<0/> 最長の連続記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Resets"
-msgstr ""
+msgstr "<0/> リセット回数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Total Duration"
-msgstr ""
+msgstr "<0/> 合計時間"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "<0/> Status"
-msgstr ""
+msgstr "<0/> 状態"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Ended: {0}"
-msgstr ""
+msgstr "終了: {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Health Milestones"
-msgstr ""
+msgstr "<0/> 健康マイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Achieved"
-msgstr ""
+msgstr "<0/> 達成済み"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "<0/> Locked"
-msgstr ""
+msgstr "<0/> ロック済み"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "Achieved {0}"
-msgstr ""
+msgstr "達成済み {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Failed to set custom start date"
-msgstr ""
+msgstr "カスタム開始日を設定できませんでした。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
-msgstr ""
+msgstr "正確な統計と計算を得るために、喫煙習慣を設定してください。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Smoking Habits"
-msgstr ""
+msgstr "喫煙習慣"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
-msgstr ""
+msgstr "1日あたりの喫煙本数（禁煙前）"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Cigarettes per pack"
-msgstr ""
+msgstr "1箱あたりのタバコ本数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
-msgstr ""
+msgstr "<0/> 財務設定"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Price per pack"
-msgstr ""
+msgstr "1箱あたりの価格"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Select currency..."
-msgstr ""
+msgstr "通貨を選択..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Your Motivational Goals"
-msgstr ""
+msgstr "あなたのモチベーション目標"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
-msgstr ""
+msgstr "自分を動機づけるために、禁煙の個人的な理由を追加してください。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
-msgstr ""
+msgstr "まだ目標が追加されていません。上にあなたの個人的な動機を追加してください！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
-msgstr ""
+msgstr "<0/> カスタム開始日"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid ""
 "If you started your smoke-free journey before using this app, enable this feature and set\n"
 "the date you actually quit smoking. This will adjust your streak display to show your true\n"
 "quit date."
-msgstr ""
+msgstr "このアプリを使用する前に禁煙を始めていた場合は、この機能を有効にし、実際に禁煙した日付を設定してください。これにより、連続日数の表示が実際の禁煙日を示すように調整されます。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Enable custom start date"
-msgstr ""
+msgstr "カスタム開始日を有効にする"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Quit Date"
-msgstr ""
+msgstr "禁煙日"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Set Custom Start Date"
-msgstr ""
+msgstr "カスタム開始日を設定"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid "Current custom start date:"
-msgstr ""
+msgstr "現在のカスタム開始日："
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "<0/> Streak Information"
@@ -9426,72 +9324,27 @@ msgstr "無効なパスワード"
 msgid "Incorrect username or password"
 msgstr "ユーザー名またはパスワードが正しくありません"
 
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word is required"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be empty"
-msgstr ""
-
-#. placeholder {0}: MAX_WORD_LENGTH
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be longer than {0} characters"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word can only contain letters, spaces, and hyphens"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "AbortError"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Request Timeout"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "The request took too long to complete."
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again. If the problem persists, check your internet connection."
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Service Error"
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "An unexpected error occurred while fetching the dictionary data."
-msgstr ""
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again later. If the problem persists, contact support."
-msgstr ""
-
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Type to search (e.g., USD, EUR)"
-msgstr ""
+msgstr "検索語を入力してください（例：USD、EUR）"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Invalid currency code"
-msgstr ""
+msgstr "無効な通貨コード"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter the amount to convert"
-msgstr ""
+msgstr "換算する金額を入力してください"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter an amount"
-msgstr ""
+msgstr "金額を入力してください"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Formatted preview"
-msgstr ""
+msgstr "フォーマット済みのプレビュー"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Sessions"
@@ -9660,79 +9513,79 @@ msgstr "アプリを使い始めると、ここにお気に入りが表示され
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Settings - Svelte Mini Apps"
-msgstr ""
+msgstr "セキュリティ設定 - Svelteミニアプリ"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your account security settings and password."
-msgstr ""
+msgstr "アカウントのセキュリティ設定とパスワードを管理します。"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your password and security settings"
-msgstr ""
+msgstr "パスワードとセキュリティ設定を管理します"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Change Password"
-msgstr ""
+msgstr "パスワードを変更"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Options"
-msgstr ""
+msgstr "セキュリティオプション"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Additional security settings for your account"
-msgstr ""
+msgstr "アカウントの追加セキュリティ設定"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Add an extra layer of security (Coming Soon)"
-msgstr ""
+msgstr "追加のセキュリティレイヤーを追加する（近日公開）"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Login Alerts"
-msgstr ""
+msgstr "ログイン通知"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Get notified of new logins (Coming Soon)"
-msgstr ""
+msgstr "新しいログインの通知を受け取る（近日公開）"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "<0/> Password Tips"
-msgstr ""
+msgstr "<0/> パスワードのヒント"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Use at least 8 characters with a mix of letters, numbers, and symbols"
-msgstr ""
+msgstr "• 文字、数字、記号を混ぜて、最低8文字以上にしてください"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Avoid using common words or personal information"
-msgstr ""
+msgstr "• よく使われる単語や個人情報の使用を避けてください"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Don't reuse passwords across multiple sites"
-msgstr ""
+msgstr "• 複数のサイトでパスワードを使い回さないでください"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Consider using a password manager for better security"
-msgstr ""
+msgstr "• より高いセキュリティのためにパスワードマネージャーの使用を検討してください"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Profile Settings - Svelte Mini Apps"
-msgstr ""
+msgstr "プロフィール設定 - Svelteミニアプリ"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Manage your account settings and preferences."
-msgstr ""
+msgstr "アカウント設定と好みを管理します。"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Manage your profile information and connected accounts"
-msgstr ""
+msgstr "プロフィール情報と連携済みアカウントを管理します。"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Profile & Account"
-msgstr ""
+msgstr "プロフィールとアカウント"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Update your personal information and manage security settings"
-msgstr ""
+msgstr "個人情報を更新し、セキュリティ設定を管理します。"
 
 #: src/routes/about/Vision.svelte
 msgid "Svelte Mini Apps is an <0>ever-evolving project, <0>and <0>you</0> hold the reins!</0></0>"
@@ -9740,111 +9593,101 @@ msgstr "Svelte Mini Appsは<0>常に進化しているプロジェクトであ�
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Admin"
-msgstr ""
+msgstr "<0/> 管理者"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> GitHub"
-msgstr ""
+msgstr "<0/> GitHub"
 
 #. placeholder {0}: memberSince
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Member since {0}"
-msgstr ""
+msgstr "<0/> 会員登録日 {0}"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Profile completion"
-msgstr ""
+msgstr "プロフィールの完成度"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Complete your profile to unlock all features"
-msgstr ""
+msgstr "すべての機能を利用できるように、プロフィールを完成させてください"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Edit Profile"
-msgstr ""
+msgstr "<0/> プロフィールを編集"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Settings <1/>"
-msgstr ""
+msgstr "<0/> 設定 <1/>"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Just now"
-msgstr ""
+msgstr "たった今"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "<0/> Active Sessions"
-msgstr ""
+msgstr "<0/> アクティブなセッション"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "Manage your active sessions across devices"
-msgstr ""
+msgstr "デバイス間でアクティブなセッションを管理します"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Others"
-msgstr ""
+msgstr "他のすべてのセッションを取り消す"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "No active sessions found"
-msgstr ""
+msgstr "アクティブなセッションが見つかりません"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Session"
-msgstr ""
+msgstr "セッション"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Current"
-msgstr ""
+msgstr "<0/> 現在の"
 
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Created {0}"
-msgstr ""
+msgstr "<0/> 作成済み {0}"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke session"
-msgstr ""
+msgstr "セッションを取り消す"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke Session"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out the device and end its session. The user will need to log in again on\n"
-#~ "that device."
-#~ msgstr ""
+msgstr "セッションを取り消す"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoking..."
-msgstr ""
+msgstr "取り消し中..."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Other Sessions"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out all other devices ({0} session{1}).\n"
-#~ "Your current session will remain active."
-#~ msgstr ""
+msgstr "他のすべてのセッションを取り消す"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All"
-msgstr ""
+msgstr "すべてのセッションを取り消す"
 
 #: src/routes/(auth)/profile/SettingsTab.svelte
 msgid "Manage your profile and connected accounts"
@@ -9856,54 +9699,54 @@ msgstr "セッションとセキュリティ設定を管理"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions - Svelte Mini Apps"
-msgstr ""
+msgstr "アクティブセッション - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across devices."
-msgstr ""
+msgstr "デバイス間でアクティブなセッションを管理してください。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions"
-msgstr ""
+msgstr "アクティブセッション"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across different devices"
-msgstr ""
+msgstr "異なるデバイス間でアクティブなセッションを管理してください。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Loading sessions..."
-msgstr ""
+msgstr "セッションを読み込み中..."
 
 #. placeholder {0}: sessions.length
 #. placeholder {1}: sessions.length !== 1 ? 's' : ''
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "{0} active session{1}"
-msgstr ""
+msgstr "{0}件のアクティブセッション{1}"
 
 #. placeholder {0}: formatExpiryDate(session.expiresAt)
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Expires {0}"
-msgstr ""
+msgstr "有効期限: {0}"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Security Tips"
-msgstr ""
+msgstr "セキュリティのヒント"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Revoke sessions from devices you no longer use or don't recognize"
-msgstr ""
+msgstr "• 使用していない、または認識できないデバイスからのセッションを取り消してください"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Your current session will remain active when revoking other sessions"
-msgstr ""
+msgstr "• 他のセッションを取り消しても、現在のセッションは引き続きアクティブです"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Consider changing your password if you notice suspicious activity"
-msgstr ""
+msgstr "• 不審な活動を見つけた場合は、パスワードの変更を検討してください"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Sessions automatically expire after 30 days of inactivity"
-msgstr ""
+msgstr "• 30日間の非アクティビティ後、セッションは自動的に有効期限が切れます"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "<0/> Saved Passwords"
@@ -9915,19 +9758,19 @@ msgstr "<0/> ソーシャルページ"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "<0/> Recent Activity"
-msgstr ""
+msgstr "<0/> 最近のアクティビティ"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "View All <0/>"
-msgstr ""
+msgstr "すべて表示 <0/>"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "All Activity"
-msgstr ""
+msgstr "すべてのアクティビティ"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Complete activity history"
-msgstr ""
+msgstr "完全なアクティビティ履歴"
 
 #. placeholder {0}: formatActivityDate(activity.date)
 #. placeholder {1}: formatTime(activity.date)
@@ -9936,15 +9779,15 @@ msgstr ""
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "{0} at {1}"
-msgstr ""
+msgstr "{0} の {1}"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "No recent activity yet"
-msgstr ""
+msgstr "まだ最近のアクティビティはありません"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Start using apps to see your activity here!"
-msgstr ""
+msgstr "ここでアクティビティを表示するには、アプリを起動して使用を開始してください！"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Activity"
@@ -9956,127 +9799,127 @@ msgstr "設定"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Saving preferences..."
-msgstr ""
+msgstr "設定を保存しています..."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences saved successfully!"
-msgstr ""
+msgstr "設定が正常に保存されました！"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences - Svelte Mini Apps"
-msgstr ""
+msgstr "設定 - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage your app preferences and settings."
-msgstr ""
+msgstr "アプリの設定と好みを管理します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Preferences"
-msgstr ""
+msgstr "<0/> 設定"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize your experience and manage your settings"
-msgstr ""
+msgstr "体験をカスタマイズし、設定を管理します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Notifications"
-msgstr ""
+msgstr "<0/> 通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage how you receive notifications and updates"
-msgstr ""
+msgstr "通知と更新の受け取り方法を管理します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Receive email updates about your activity"
-msgstr ""
+msgstr "あなたのアクティビティに関するメール更新を受け取る"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Push Notifications"
-msgstr ""
+msgstr "プッシュ通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Get instant browser notifications"
-msgstr ""
+msgstr "ブラウザの即時通知を受け取る"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Activity Updates"
-msgstr ""
+msgstr "アクティビティの更新"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Notifications for app usage milestones"
-msgstr ""
+msgstr "アプリの利用マイルストーンに関する通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly Digest"
-msgstr ""
+msgstr "週次ダイジェスト"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly summary of your activity and stats"
-msgstr ""
+msgstr "あなたのアクティビティと統計の週次サマリー"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Privacy"
-msgstr ""
+msgstr "<0/> プライバシー"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Control your data and visibility settings"
-msgstr ""
+msgstr "データと可視性設定を管理します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Public Profile"
-msgstr ""
+msgstr "公開プロフィール"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Allow others to view your profile information"
-msgstr ""
+msgstr "他のユーザーがあなたのプロフィール情報を閲覧できるようにします。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Show Activity"
-msgstr ""
+msgstr "アクティビティを表示"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Display your activity to other users"
-msgstr ""
+msgstr "他のユーザーにあなたのアクティビティを表示します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Analytics Data Collection"
-msgstr ""
+msgstr "分析データ収集"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Help improve the app by sharing usage data"
-msgstr ""
+msgstr "使用データを共有してアプリの改善に役立てます。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Interface"
-msgstr ""
+msgstr "<0/> インターフェース"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize how the app looks and behaves"
-msgstr ""
+msgstr "アプリの見た目と挙動をカスタマイズします。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Compact Mode"
-msgstr ""
+msgstr "コンパクトモード"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reduce spacing for a more condensed view"
-msgstr ""
+msgstr "よりコンパクトな表示のために間隔を縮小します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Auto-Save"
-msgstr ""
+msgstr "自動保存"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Automatically save your work"
-msgstr ""
+msgstr "作業を自動的に保存します。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Save Preferences"
-msgstr ""
+msgstr "<0/> 設定を保存"
 
 #: src/routes/(auth)/profile/+page.svelte
 msgid "<0/> Sync Coming Soon"
@@ -10137,77 +9980,77 @@ msgstr "アプリを使い始めてアクティビティ履歴を作成しまし
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "How to use"
-msgstr ""
+msgstr "使い方"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Explore the world of words — definitions, synonyms, and pronunciations."
-msgstr ""
+msgstr "言葉の世界を探検する — 定義、同義語、発音。"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter a word to search..."
-msgstr ""
+msgstr "検索する単語を入力してください..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Searching..."
-msgstr ""
+msgstr "<0/> 検索中..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Find Meaning"
-msgstr ""
+msgstr "<0/> 意味を見つける"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Cached"
-msgstr ""
+msgstr "キャッシュ済み"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Pronunciations:"
-msgstr ""
+msgstr "発音:"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "再生"
 
 #. placeholder {0}: meaning.definitions.length
 #. placeholder {1}: meaning.definitions.length > 1 ? 's' : ''
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "{0} definition{1}"
-msgstr ""
+msgstr "{0} 定義{1}"
 
 #. placeholder {0}: meaning.definitions.length - 5
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "+{0} more definitions"
-msgstr ""
+msgstr "さらに{0}件の定義"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Word Origin"
-msgstr ""
+msgstr "<0/> 語源"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "View <0/>"
-msgstr ""
+msgstr "表示 <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Source <0/>"
-msgstr ""
+msgstr "出典 <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Start exploring words"
-msgstr ""
+msgstr "言葉の探索を始める"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter any English word above to discover its meanings, pronunciations, and more."
-msgstr ""
+msgstr "上の英単語を入力すると、その意味・発音などを確認できます。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "CONFIRM"
-msgstr ""
+msgstr "確認"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid ""
 "This will log out the device and end its session. The user will need to log in again on that\n"
 "device."
-msgstr ""
+msgstr "この操作はデバイスのログアウトを行い、セッションを終了します。ユーザーはそのデバイスで再度ログインする必要があります。"
 
 #. placeholder {0}: otherSessionsCount
 #. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
@@ -10216,10 +10059,27 @@ msgstr ""
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "This will log out all other devices ({0} session{1}). Your current session will remain active."
-msgstr ""
+msgstr "これにより、他のすべてのデバイスのセッションをログアウトします（{0} セッション{1}）。現在のセッションは引き続き有効です。"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid ""
 "Permanently delete your account and all associated data. This action cannot be\n"
 "undone."
 msgstr "アカウントとすべての関連データを完全に削除します。この操作は元に戻せません。"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Password Length"
+msgstr "パスワードの長さ"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View Saved Passwords"
+msgstr "保存済みのパスワードを表示"
+
+#. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved ({0})"
+msgstr "保存済み ({0})"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Generate and save your first password above"
+msgstr "上に表示されている最初のパスワードを生成して保存してください"

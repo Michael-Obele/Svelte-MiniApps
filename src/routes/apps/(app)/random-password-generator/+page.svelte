@@ -95,6 +95,22 @@
 		return strength;
 	});
 
+	// Create colored password display
+	let coloredPassword = $derived.by(() => {
+		if (!password) return [];
+		return password.split('').map((char) => {
+			let colorClass = '';
+			if (/\d/.test(char)) {
+				colorClass = 'text-orange-700 dark:text-orange-400'; // Numbers in orange (darker for light mode, lighter for dark mode)
+			} else if (/[^A-Za-z0-9]/.test(char)) {
+				colorClass = 'text-purple-700 dark:text-purple-400'; // Special characters in purple (darker for light mode, lighter for dark mode)
+			} else {
+				colorClass = 'text-foreground'; // Letters in default color
+			}
+			return { char, colorClass };
+		});
+	});
+
 	const getStrengthColor = (strength: number): string => {
 		if (strength <= 25) return 'bg-red-500';
 		if (strength <= 50) return 'bg-orange-500';
@@ -214,19 +230,19 @@
 
 		<div class="bg-card space-y-4 rounded-lg border p-6">
 			<div class="space-y-2">
-				<div class="flex items-center gap-2">
+				<div class="flex items-center gap-3">
 					<Dialog.Root bind:open={showSavePopover}>
 						{#if !saving}
 							<Dialog.Trigger
-								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-10 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-12 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
 								disabled={!currentUser || !password}
 							>
-								<Star class="h-4 w-4 {isSaved ? 'fill-current' : ''}" />
+								<Star class="h-5 w-5 {isSaved ? 'fill-current' : ''}" />
 							</Dialog.Trigger>
 						{:else}
-							<div class="flex size-10 items-center justify-center rounded-md border">
+							<div class="flex size-12 items-center justify-center rounded-md border">
 								<div
-									class="size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
+									class="size-5 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
 								></div>
 							</div>
 						{/if}
@@ -265,24 +281,30 @@
 						</Dialog.Content>
 					</Dialog.Root>
 
-					<Input
-						type="text"
-						value={password}
-						placeholder="Your password will appear here"
-						readonly
-						class="font-mono text-lg"
-					/>
+					<div
+						class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[3rem] w-full items-center rounded-md border px-4 py-3 font-mono text-lg focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-xl"
+					>
+						{#if password}
+							{#each coloredPassword as { char, colorClass }}
+								<span class={colorClass}>{char}</span>
+							{/each}
+						{:else}
+							<span class="text-muted-foreground text-lg md:text-xl"
+								>Your password will appear here</span
+							>
+						{/if}
+					</div>
 					<Button
 						variant="outline"
-						size="icon"
+						size="lg"
 						onclick={handleCopy}
 						disabled={!password}
-						class={copySuccess ? 'border-green-500 bg-green-50 text-green-600' : ''}
+						class="size-12 shrink-0"
 					>
 						{#if copySuccess}
-							<Check class="h-4 w-4" />
+							<Check class="h-5 w-5" />
 						{:else}
-							<Copy class="h-4 w-4" />
+							<Copy class="h-5 w-5" />
 						{/if}
 					</Button>
 				</div>
@@ -301,9 +323,12 @@
 				{/if}
 			</div>
 
-			<div class="space-y-4">
+			<div class="space-y-6">
 				<div class="space-y-4">
-					<Label for="passwordLength">Password Length: {passwordLength}</Label>
+					<div class="flex items-center justify-between">
+						<Label for="passwordLength" class="text-base font-medium">Password Length</Label>
+						<span class="bg-muted rounded px-2 py-1 font-mono text-sm">{passwordLength}</span>
+					</div>
 					<Slider
 						id="passwordLength"
 						bind:value={passwordLength}
@@ -311,47 +336,61 @@
 						max={32}
 						step={1}
 						type="single"
-						class="my-5"
+						class="my-3"
 					/>
 				</div>
 
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<div class="flex items-center justify-between">
-						<Label>Uppercase Letters</Label>
+				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+					<div
+						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
+					>
+						<Label class="cursor-pointer">Uppercase Letters</Label>
 						<Switch bind:checked={includeUppercase} />
 					</div>
-					<div class="flex items-center justify-between">
-						<Label>Lowercase Letters</Label>
+					<div
+						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
+					>
+						<Label class="cursor-pointer">Lowercase Letters</Label>
 						<Switch bind:checked={includeLowercase} />
 					</div>
-					<div class="flex items-center justify-between">
-						<Label>Numbers</Label>
+					<div
+						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
+					>
+						<Label class="cursor-pointer">Numbers</Label>
 						<Switch bind:checked={includeNumbers} />
 					</div>
-					<div class="flex items-center justify-between">
-						<Label>Special Characters</Label>
+					<div
+						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
+					>
+						<Label class="cursor-pointer">Special Characters</Label>
 						<Switch bind:checked={includeSymbols} />
 					</div>
 				</div>
 
-				<Button class="w-full" onclick={generatePassword}>Generate Password</Button>
+				<Button class="h-12 w-full text-base font-medium" onclick={generatePassword}>
+					Generate Password
+				</Button>
 
 				{#if currentUser?.username}
-					<div class="flex gap-2">
-						<Button onclick={handleView} variant="secondary" class="flex-1" disabled={viewing}>
-							View Saved Passwords ({loadingPasswords
-								? 'loading...'
-								: savedPasswords
-									? savedPasswords.length
-									: 'none saved'})
+					<div class="flex gap-3 pt-2">
+						<Button onclick={handleView} variant="secondary" class="h-11 flex-1" disabled={viewing}>
+							<span class="hidden sm:inline">View Saved Passwords</span>
+							<span class="sm:hidden"
+								>Saved ({loadingPasswords
+									? '...'
+									: savedPasswords
+										? savedPasswords.length
+										: '0'})</span
+							>
 						</Button>
 						<Button
 							href="/apps/random-password-generator/passwords"
 							variant="outline"
-							size="icon"
+							size="lg"
 							title="View all passwords"
+							class="size-11"
 						>
-							<ExternalLink class="h-4 w-4" />
+							<ExternalLink class="h-5 w-5" />
 						</Button>
 					</div>
 
@@ -365,14 +404,29 @@
 					</Button>
 
 					{#if viewing && savedPasswords}
-						<div class="mt-4 space-y-2">
-							<h3 class="text-lg font-semibold">Saved Passwords</h3>
-							<ScrollArea class="h-[480px] w-full rounded-md border p-4">
-								<div class="grid gap-4">
+						<div class="mt-6 space-y-4">
+							<div class="flex items-center justify-between">
+								<h3 class="text-lg font-semibold">Saved Passwords</h3>
+								<Button
+									onclick={() => (viewing = false)}
+									variant="ghost"
+									size="sm"
+									class="text-muted-foreground hover:text-foreground"
+								>
+									Hide
+								</Button>
+							</div>
+							<ScrollArea class="bg-muted/20 h-[400px] w-full rounded-lg border p-4">
+								<div class="space-y-3">
 									{#each savedPasswords as savedPassword (savedPassword.id)}
 										<PasswordDisplay password={savedPassword} />
 									{:else}
-										<p class="text-muted-foreground py-4 text-center">No saved passwords yet</p>
+										<div class="py-8 text-center">
+											<p class="mb-2 text-muted-foreground">No saved passwords yet</p>
+											<p class="text-sm text-muted-foreground">
+												Generate and save your first password above
+											</p>
+										</div>
 									{/each}
 								</div>
 							</ScrollArea>

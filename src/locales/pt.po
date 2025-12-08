@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2025-11-25T17:35:24.611Z\n"
+"PO-Revision-Date: 2025-12-08T06:51:40.714Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -71,9 +71,6 @@ msgstr "Um erro inesperado ocorreu ao processar sua solicitação."
 #: src/routes/+error.svelte
 msgid "Please try again or contact support if the problem persists."
 msgstr "Por favor, tente novamente ou entre em contato com o suporte se o problema persistir."
-
-#~ msgid "{0} - Error {1}"
-#~ msgstr "{0} - Erro {1}"
 
 #: src/routes/+error.svelte
 msgid "Technical Details"
@@ -478,14 +475,6 @@ msgstr ""
 msgid "Send Feedback"
 msgstr "Enviar Feedback"
 
-#: src/routes/apps/+layout.svelte
-msgid "Apps Page | Svelte Mini Apps"
-msgstr "Página de Aplicativos | MiniApps Svelte"
-
-#: src/routes/apps/+layout.svelte
-msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
-msgstr "Explore nossa coleção de MiniApps Svelte únicos. Descubra novas ferramentas, aplicativos inovadores e veja como estamos aprimorando o ecossistema Svelte."
-
 #: src/routes/apps/+page.svelte
 msgid "Apps | Svelte Mini Apps"
 msgstr "Aplicativos | MiniApps Svelte"
@@ -497,15 +486,6 @@ msgstr "Explore uma variedade de mini-aplicativos úteis construídos com Svelte
 #: src/routes/apps/+page.svelte
 msgid "Explore Our Mini Applications"
 msgstr "Explore Nossos Mini Aplicativos"
-
-#~ msgid "All"
-#~ msgstr "Todos"
-
-#~ msgid "Find App..."
-#~ msgstr "Encontrar Aplicativo..."
-
-#~ msgid "<0/>K"
-#~ msgstr "<0/>K"
 
 #: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
@@ -544,22 +524,6 @@ msgstr "Limpar"
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
 msgstr "Fechar"
-
-#: src/routes/apps/Tags.svelte
-msgid "NEW"
-msgstr "NOVO"
-
-#: src/routes/apps/Tags.svelte
-msgid "UPDATED"
-msgstr "ATUALIZADO"
-
-#: src/routes/apps/TaskCard.svelte
-msgid "Try now <0/>"
-msgstr "Experimente agora <0/>"
-
-#: src/routes/apps/TaskCard.svelte
-msgid "Coming Soon!"
-msgstr "Em Breve!"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -700,6 +664,7 @@ msgstr "<0/> Gerado Automaticamente"
 msgid "<0/> By Type"
 msgstr "<0/> Por Tipo"
 
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/changelog/ChangelogStats.svelte
 #: src/routes/changelog/DebugOrder.svelte
 msgid "Hide"
@@ -1458,21 +1423,9 @@ msgstr "Escreva seu Markdown aqui..."
 msgid "Tools That Make a Difference"
 msgstr "Ferramentas que fazem a diferença"
 
-#~ msgid "What's in the Toolbox:"
-#~ msgstr "O que há na Caixa de Ferramentas:"
-
-#~ msgid "Coming soon"
-#~ msgstr "Em breve"
-
-#~ msgid "And many more"
-#~ msgstr "E muito mais"
-
 #: src/lib/components/home/Banner.svelte
 msgid "4th place at Svelte Hack 2024! See our <0>Svelte Hack timeline</0> <1/>"
 msgstr "4º lugar no Svelte Hack 2024! Veja nossa <0>linha do tempo do Svelte Hack</0> <1/>"
-
-#~ msgid "Tspace-x-2 flex items-center justify-center text-3xl font-bold tracking-tighter sm:text-5xl"
-#~ msgstr "Tspace-x-2 flex items-center justify-center text-3xl font-bold tracking-tighter sm:text-5xl"
 
 #: src/lib/components/home/Content.svelte
 msgid "<0>Join</0> the Journey"
@@ -1643,15 +1596,6 @@ msgstr "Clique abaixo para sair da sua conta"
 msgid "<0/> Sign Out"
 msgstr "<0/> Sair"
 
-#~ msgid "Profile - Svelte Mini Apps"
-#~ msgstr "Perfil - Svelte Mini Apps"
-
-#~ msgid "Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte."
-#~ msgstr "Página de perfil do Svelte Mini Apps, uma coleção de pequenos aplicativos web focados criados com Svelte."
-
-#~ msgid "Developer Dashboard"
-#~ msgstr "Painel do Desenvolvedor"
-
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
@@ -1664,15 +1608,6 @@ msgstr "Atualizar"
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Overview"
 msgstr "Visão geral"
-
-#~ msgid "Projects"
-#~ msgstr "Projetos"
-
-#~ msgid "Usage Stats"
-#~ msgstr "Estatísticas de uso"
-
-#~ msgid "Learning"
-#~ msgstr "Aprendizado"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Deleting account..."
@@ -1760,9 +1695,6 @@ msgstr "Zona de Perigo"
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Delete Account"
 msgstr "Excluir Conta"
-
-#~ msgid "Permanently delete your account and all associated data. This action cannot be undone."
-#~ msgstr "Excluir permanentemente sua conta e todos os dados associados. Esta ação não pode ser desfeita."
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
@@ -2024,12 +1956,6 @@ msgstr "Iniciante"
 msgid "View All Resources"
 msgstr "Ver todos os recursos"
 
-#~ msgid "Completed Apps"
-#~ msgstr "Apps concluídos"
-
-#~ msgid "{0}% of total projects"
-#~ msgstr "{0}% do total de projetos"
-
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "Sequência Atual"
@@ -2039,30 +1965,9 @@ msgstr "Sequência Atual"
 msgid "{0} days"
 msgstr "{0} dias"
 
-#~ msgid "Keep it going!"
-#~ msgstr "Continue assim!"
-
-#~ msgid "{0} unique apps used"
-#~ msgstr "{0} aplicativos únicos usados"
-
-#~ msgid "Developer Level"
-#~ msgstr "Nível do desenvolvedor"
-
-#~ msgid "Level {0}"
-#~ msgstr "Nível {0}"
-
-#~ msgid "{0} more uses to next level"
-#~ msgstr "{0} usos a mais para o próximo nível"
-
-#~ msgid "Upcoming Apps"
-#~ msgstr "Apps futuros"
-
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "New apps coming soon"
 msgstr "Novos apps em breve"
-
-#~ msgid "Favorite Apps"
-#~ msgstr "Apps favoritos"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
@@ -2174,15 +2079,9 @@ msgstr "Atualizando..."
 msgid "Update Password"
 msgstr "Atualizar Senha"
 
-#~ msgid "Recent Activity"
-#~ msgstr "Atividade Recente"
-
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Your latest interactions with Svelte Mini Apps"
 msgstr "Suas últimas interações com os Svelte Mini Apps"
-
-#~ msgid "Used {0}"
-#~ msgstr "Usado {0}"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
@@ -2196,19 +2095,10 @@ msgstr "Hoje"
 msgid "Yesterday"
 msgstr "Ontem"
 
-#~ msgid "No recent activity yet. Start using apps to see your activity here!"
-#~ msgstr "Ainda não há atividade recente. Comece a usar os aplicativos para ver sua atividade aqui!"
-
-#~ msgid "View All Activity"
-#~ msgstr "Ver toda a atividade"
-
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Account Settings"
 msgstr "Configurações da Conta"
-
-#~ msgid "Manage your profile and preferences"
-#~ msgstr "Gerencie seu perfil e preferências"
 
 #: src/routes/(auth)/profile/UpcomingFeaturesList.svelte
 msgid "All projects are completed!"
@@ -2261,9 +2151,6 @@ msgstr "Mantras"
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Saved Passwords"
 msgstr "Senhas salvas"
-
-#~ msgid "Social Pages"
-#~ msgstr "Páginas Sociais"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/(auth)/profile/UserProfileCard.svelte
@@ -2432,12 +2319,6 @@ msgstr "Voluntarie-se para testar protótipos quando estiverem disponíveis."
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Join Testing"
 msgstr "Participar do Teste"
-
-#~ msgid "Announcements - Changelog - Svelte Mini Apps"
-#~ msgstr "Anúncios - Histórico de Alterações - Svelte Mini Apps"
-
-#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-#~ msgstr "Mantenha-se informado sobre os anúncios mais recentes e os planos futuros do Svelte Mini Apps"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -2956,7 +2837,6 @@ msgstr "Toque em qualquer emoji para copiá-lo para a sua área de transferênci
 msgid "Transform"
 msgstr "Transformar"
 
-#: src/lib/components/common/IconSelectorCard.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Check"
@@ -3561,12 +3441,6 @@ msgstr "Despesas Totais: $ {0}"
 msgid "Remaining Budget: $ {0}"
 msgstr "Orçamento Restante: $ {0}"
 
-#~ msgid "Converting currencies..."
-#~ msgstr "Convertendo moedas..."
-
-#~ msgid "Successfully converted currencies"
-#~ msgstr "Moedas convertidas com sucesso"
-
 #. placeholder {0}: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
@@ -3641,12 +3515,6 @@ msgstr "Taxa de câmbio: 1 {0} = {1} {2}"
 msgid "Cached {0}"
 msgstr "Cacheado {0}"
 
-#~ msgid "Submitting..."
-#~ msgstr "Enviando..."
-
-#~ msgid "Success"
-#~ msgstr "Sucesso"
-
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Svelte Mini Apps - English Dictionary App"
 msgstr "Svelte Mini Apps - Aplicativo de Dicionário em Inglês"
@@ -3663,21 +3531,6 @@ msgstr "Dicionário Inglês, Busca de Palavras, Definições, Sinônimos, Antôn
 msgid "English Dictionary"
 msgstr "Dicionário Inglês"
 
-#~ msgid "Explore the world of words together."
-#~ msgstr "Explore o mundo das palavras juntos."
-
-#~ msgid "Enter a word"
-#~ msgstr "Digite uma palavra"
-
-#~ msgid "Searching..."
-#~ msgstr "Procurando..."
-
-#~ msgid "Find Meaning"
-#~ msgstr "Encontrar Significado"
-
-#~ msgid "Searching for meaning..."
-#~ msgstr "Procurando pelo significado..."
-
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Synonyms:"
 msgstr "Sinônimos:"
@@ -3685,12 +3538,6 @@ msgstr "Sinônimos:"
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Antonyms:"
 msgstr "Antônimos:"
-
-#~ msgid "Origin"
-#~ msgstr "Origem"
-
-#~ msgid "View License"
-#~ msgstr "Ver Licença"
 
 #. placeholder {0}: entry.license.name
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
@@ -4789,50 +4636,11 @@ msgstr "Já há uma dose agendada neste horário"
 msgid "Dose rescheduled successfully"
 msgstr "Dose remarcada com sucesso"
 
-#~ msgid "Please fill in all required fields"
-#~ msgstr "Preencha todos os campos obrigatórios"
-
-#~ msgid "Item added successfully!"
-#~ msgstr "Item adicionado com sucesso!"
-
-#~ msgid "Item updated successfully!"
-#~ msgstr "Item atualizado com sucesso!"
-
-#~ msgid "Purchase record added successfully!"
-#~ msgstr "Registro de compra adicionado com sucesso!"
-
-#~ msgid "Purchase record updated successfully!"
-#~ msgstr "Registro de compra atualizado com sucesso!"
-
-#~ msgid "Please log in to backup your data"
-#~ msgstr "Faça login para fazer backup de seus dados."
-
-#~ msgid "Please log in to refresh data from server"
-#~ msgstr "Faça login para atualizar os dados do servidor."
-
-#~ msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
-#~ msgstr "Você tem alterações não salvas. A atualização substituirá suas alterações locais pelos dados do servidor. Deseja continuar?"
-
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "Rastreador de Compras"
-
-#~ msgid "Track your purchases over time with detailed records"
-#~ msgstr "Acompanhe suas compras ao longo do tempo com registros detalhados"
-
-#~ msgid "Delete Item"
-#~ msgstr "Excluir Item"
-
-#~ msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
-#~ msgstr "Tem certeza de que deseja excluir este item e todos os seus registros de compra? Isso removerá permanentemente todos os dados associados."
-
-#~ msgid "Delete Purchase Record"
-#~ msgstr "Excluir Registro de Compra"
-
-#~ msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
-#~ msgstr "Tem certeza de que deseja excluir este registro de compra? Esta ação não pode ser desfeita."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
@@ -5816,10 +5624,8 @@ msgstr "Sua senha aparecerá aqui"
 msgid "Password Strength: {0}%"
 msgstr "Força da senha: {0}%"
 
-#. placeholder {0}: passwordLength
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Length: {0}"
-msgstr "Comprimento da senha: {0}"
+#~ msgid "Password Length: {0}"
+#~ msgstr "Comprimento da senha: {0}"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Uppercase Letters"
@@ -5841,10 +5647,8 @@ msgstr "Caracteres especiais"
 msgid "Generate Password"
 msgstr "Gerar senha"
 
-#. placeholder {0}: loadingPasswords ? 'loading...' : savedPasswords ? savedPasswords.length : 'none saved'
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "View Saved Passwords ({0})"
-msgstr "Ver senhas salvas ({0})"
+#~ msgid "View Saved Passwords ({0})"
+#~ msgstr "Ver senhas salvas ({0})"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
@@ -6723,63 +6527,6 @@ msgstr "Senha inválida"
 msgid "Incorrect username or password"
 msgstr "Nome de usuário ou senha incorretos"
 
-#~ msgid "All fields are required"
-#~ msgstr "Todos os campos são obrigatórios"
-
-#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-#~ msgstr "O nome de usuário deve ter entre 3 e 31 caracteres e conter apenas letras minúsculas, números, sublinhados e hífens"
-
-#~ msgid "Password must be at least 6 characters long"
-#~ msgstr "A senha deve ter pelo menos 6 caracteres"
-
-#~ msgid "Username is already taken"
-#~ msgstr "O nome de usuário já está em uso"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word is required"
-msgstr "A palavra é obrigatória."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be empty"
-msgstr "A palavra não pode ficar vazia."
-
-#. placeholder {0}: MAX_WORD_LENGTH
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be longer than {0} characters"
-msgstr "A palavra não pode ter mais de {0} caracteres."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word can only contain letters, spaces, and hyphens"
-msgstr "A palavra pode conter apenas letras, espaços e hífens."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "AbortError"
-msgstr "Erro de aborto"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Request Timeout"
-msgstr "Tempo limite da requisição"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "The request took too long to complete."
-msgstr "A requisição levou muito tempo para ser concluída."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again. If the problem persists, check your internet connection."
-msgstr "Por favor, tente novamente. Se o problema persistir, verifique sua conexão com a internet."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Service Error"
-msgstr "Erro de serviço"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "An unexpected error occurred while fetching the dictionary data."
-msgstr "Ocorreu um erro inesperado ao buscar os dados do dicionário."
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again later. If the problem persists, contact support."
-msgstr "Por favor, tente novamente mais tarde. Se o problema persistir, entre em contato com o suporte."
-
 #: src/lib/index.svelte.ts
 #: src/lib/index.ts
 #: src/lib/utility/greetings.client.svelte.ts
@@ -6994,12 +6741,6 @@ msgstr "e Eficiente"
 #: src/lib/components/home/data.svelte.ts
 msgid "Mini Apps"
 msgstr "Mini Aplicações"
-
-#~ msgid "Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
-#~ msgstr "Bem-vindo ao seu novo conjunto de ferramentas favorito! Nossos Mini Apps são companheiros cuidadosamente elaborados para sua jornada digital diária. Cada app é projetado pensando em você - rápido para carregar, fácil de usar e pronto para enfrentar seus desafios diários. Seja planejando seu orçamento, construindo hábitos saudáveis ou se mantendo organizado, temos a ferramenta certa para você."
-
-#~ msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
-#~ msgstr "Seja você um estudante gerenciando tarefas, um profissional rastreando projetos ou qualquer pessoa entre os dois, nossos Mini Apps se adaptam às suas necessidades. Comece pequeno com recursos básicos e descubra capacidades mais poderosas à medida que você cresce. Além disso, eles funcionam perfeitamente em todos os seus dispositivos, para que suas ferramentas estejam sempre onde você precisa delas."
 
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with Mini Apps"
@@ -7262,11 +7003,6 @@ msgstr "Um temporizador especificamente para sessões de meditação com opçõe
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Make changes to your profile here. Click save when you're done."
 msgstr "Faça alterações no seu perfil aqui. Clique em salvar quando terminar."
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
-#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-#~ msgstr "Desde gerenciar seu orçamento até aumentar a produtividade, cada aplicativo aqui foi projetado com um objetivo: ajudar você a realizar suas tarefas. Construídas com <0>Svelte</0>, essas ferramentas são rápidas, responsivas e um prazer de usar."
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -8414,16 +8150,9 @@ msgstr "Indicadores offline e feedback de interação aprimorados"
 msgid "Key achievements and major improvements."
 msgstr "Principais conquistas e grandes melhorias."
 
-#: src/routes/apps/+layout.svelte
-msgid "Svelte, Mini Apps, Apps, Tools, Applications, Ecosystem, Innovative, Unique"
-msgstr "Svelte, Mini Apps, Apps, Ferramentas, Aplicações, Ecossistema, Inovador, Único"
-
 #: src/routes/about/+page.svelte
 msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Unique"
 msgstr "Svelte, Min iApps, Sobre, Ferramentas, Aplicações, Ecossistema, Inovador, Único"
-
-#~ msgid "Please enter a GitHub username"
-#~ msgstr "Por favor, insira um nome de usuário do GitHub"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
@@ -8486,15 +8215,6 @@ msgstr "Issues"
 msgid "Reviews"
 msgstr "Reviews"
 
-#~ msgid "Refreshing data..."
-#~ msgstr "A atualizar os dados..."
-
-#~ msgid "Data refreshed successfully!"
-#~ msgstr "Dados atualizados com sucesso!"
-
-#~ msgid "Failed to refresh data"
-#~ msgstr "Falha ao atualizar os dados"
-
 #. placeholder {0}: username
 #. placeholder {1}: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
@@ -8545,9 +8265,6 @@ msgstr "Linguagens Utilizadas"
 msgid "Top programming languages in contributed repositories"
 msgstr "Principais linguagens de programação em repositórios contribuídos"
 
-#~ msgid "{0} repos"
-#~ msgstr "{0} repositórios"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Top Contributed Repositories"
 msgstr "Principais Repositórios Contribuídos"
@@ -8566,33 +8283,9 @@ msgstr "Atividade de contribuição diária ao longo de {0}"
 msgid "Activity Summary"
 msgstr "Resumo da Atividade"
 
-#~ msgid "Average per day:"
-#~ msgstr "Média por dia:"
-
-#~ msgid "Most active in:"
-#~ msgstr "Mais ativo em:"
-
-#~ msgid "Repositories:"
-#~ msgstr "Repositórios:"
-
-#~ msgid "This user also has {0} private contributions"
-#~ msgstr "Este usuário também tem {0} contribuições privadas"
-
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Repository Breakdown"
 msgstr "Distribuição por Repositório"
-
-#~ msgid "With commits:"
-#~ msgstr "Com commits:"
-
-#~ msgid "With PRs:"
-#~ msgstr "Com PRs:"
-
-#~ msgid "With issues:"
-#~ msgstr "Com issues:"
-
-#~ msgid "With reviews:"
-#~ msgstr "Com revisões:"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Available Years"
@@ -8613,21 +8306,6 @@ msgid ""
 msgstr ""
 "Além do código, contribuo para projetos Svelte, oriento desenvolvedores e adoro colaborar em\n"
 "soluções inovadoras. Vamos criar algo excepcional juntos!"
-
-#~ msgid "Error Loading Data"
-#~ msgstr "Erro ao Carregar Dados"
-
-#~ msgid "Failed to load GitHub contribution data"
-#~ msgstr "Falha ao carregar os dados de contribuição do GitHub"
-
-#~ msgid "This could be due to an invalid username, network issues, or GitHub API limits."
-#~ msgstr "Isso pode ser devido a um nome de usuário inválido, problemas de rede ou limites da API do GitHub."
-
-#~ msgid "Try Again"
-#~ msgstr "Tentar Novamente"
-
-#~ msgid "<0/> Back to Search"
-#~ msgstr "<0/> Voltar para a Pesquisa```"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
@@ -8708,19 +8386,6 @@ msgstr "Dados do Calendário: {0} itens com data (Date), valor (número) e cor (
 msgid "Calendar Data Years: {0}"
 msgstr "Anos dos Dados do Calendário: {0}"
 
-#: src/lib/components/charts/layercake/AxisX.svelte
-#: src/lib/components/charts/layercake/AxisY.svelte
-#: src/lib/components/charts/layercake/Bars.svelte
-#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
-msgid "LayerCake"
-msgstr "LayerCake"
-
-#. placeholder {0}: getDate(day)
-#. placeholder {1}: count(day)
-#: src/lib/components/charts/layercake/CalendarHeatmap.svelte
-msgid "{0}: {1} contributions"
-msgstr "{0}: {1} contribuições"
-
 #: src/routes/test-icon-selector/+page.svelte
 msgid "Icon Selector Demo"
 msgstr "Demonstração do Seletor de Ícones"
@@ -8728,60 +8393,6 @@ msgstr "Demonstração do Seletor de Ícones"
 #: src/routes/test-icon-selector/+page.svelte
 msgid "Icon Selector Card Demo"
 msgstr "Demonstração do Cartão do Seletor de Ícones"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Heart"
-msgstr "Coração"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Star"
-msgstr "Estrela"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "X"
-msgstr "X"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Smile"
-msgstr "Sorriso"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Zap"
-msgstr "Raio"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Select an icon"
-msgstr "Selecione um ícone"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Icon Selector"
-msgstr "Seletor de Ícones"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Choose your favorite icon from the list below."
-msgstr "Escolha seu ícone favorito na lista abaixo."
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "User"
-msgstr "Usuário"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "US"
-msgstr "EUA"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Selected Icon:"
-msgstr "Ícone Selecionado:"
-
-#: src/lib/components/common/IconSelectorCard.svelte
-msgid "Choose an icon:"
-msgstr "Escolha um ícone:"
-
-#~ msgid "Svelte-MiniApps/src/lib/components/common/IconSelectorCard.svelte <0><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></0>"
-#~ msgstr ""
-
-#~ msgid "<0/> // Snippet for rendering an option icon <1/> <2><0><0>Icon Selector</0> <1>Choose your favorite icon from the list below.</1></0> <1><0><0><0/> <1>US</1></0> <1><0>Selected Icon:</0> <1/></1></0> <1><0>Choose an icon:</0> <1/></1></1></2>"
-#~ msgstr "<0/> // Trecho de código para renderizar um ícone de opção <1/> <2><0><0>Seletor de Ícones</0> <1>Escolha seu ícone favorito da lista abaixo.</1></0> <1><0><0><0/> <1>EUA</1></0> <1><0>Ícone Selecionado:</0> <1/></1></0> <1><0>Escolha um ícone:</0> <1/></1></1></2>"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Contribution Calendar"
@@ -9093,12 +8704,6 @@ msgstr "Anotador"
 msgid "Capture your thoughts and sync them across devices."
 msgstr "Capture seus pensamentos e sincronize-os entre dispositivos."
 
-#~ msgid "Note created locally"
-#~ msgstr ""
-
-#~ msgid "Note updated locally"
-#~ msgstr ""
-
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Delete this note?"
 msgstr "Excluir esta nota?"
@@ -9114,12 +8719,6 @@ msgstr "Capture seus pensamentos"
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "My Notes"
 msgstr "Minhas Notas"
-
-#~ msgid "<0/> Add Note"
-#~ msgstr ""
-
-#~ msgid "No notes yet. Click \"Add Note\" to get started."
-#~ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
@@ -9144,9 +8743,6 @@ msgstr "Editar Nota"
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Update"
 msgstr "Atualizar"
-
-#~ msgid "<0/> Update"
-#~ msgstr ""
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Capture your thoughts and ideas"
@@ -9202,55 +8798,9 @@ msgstr "<0/> Atualizar Nota"
 msgid "<0/> Create Note"
 msgstr "<0/> Criar Nota"
 
-#~ msgid "From managing your budget to boosting productivity, each app is designed to help you get things done."
-#~ msgstr ""
-
-#~ msgid "Explore the {0} tool to enhance your workflow."
-#~ msgstr ""
-
-#~ msgid "Open App <0/>"
-#~ msgstr ""
-
-#~ msgid "<0>Svelte</0> Mini Apps"
-#~ msgstr ""
-
-#~ msgid "Welcome to Svelte Mini Apps"
-#~ msgstr ""
-
-#~ msgid "Your everyday digital companion. A curated collection of beautifully crafted tools designed to simplify your life and boost your productivity."
-#~ msgstr ""
-
-#~ msgid "Explore Apps <0/>"
-#~ msgstr ""
-
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> GitHub"
-msgstr ""
-
-#~ msgid "Every great tool starts with feedback from people like you. Here's how you can be part of making these apps even better."
-#~ msgstr ""
-
-#~ msgid "Welcome to... <0/> <1>Svelte Mini Apps</1>"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Explore our curated collection of elegant Svelte applications, thoughtfully designed to\n"
-#~ "enhance your digital workflow with modern, efficient solutions."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app is designed to help you get\n"
-#~ "things done. Built with <0>Svelte</0>, these\n"
-#~ "tools are fast, responsive, and easy to use."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app is designed to help you get\n"
-#~ "things done."
-#~ msgstr ""
-
-#~ msgid "<0/> Coming Soon"
-#~ msgstr "<0/> Em breve"
+msgstr "<0/> GitHub"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
@@ -9258,24 +8808,9 @@ msgid ""
 "things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
 msgstr "Desde gerenciar seu orçamento até aumentar a produtividade, cada aplicativo é projetado para ajudá-lo a realizar tarefas. Construídas com <0>Svelte</0>, essas ferramentas são rápidas, responsivas e fáceis de usar."
 
-#~ msgid "Welcome to... <0/> <1>Svelte Mini Apps</1> <2/>"
-#~ msgstr ""
-
-#~ msgid "Welcome to... <0/> <1/>"
-#~ msgstr ""
-
-#~ msgid "Start Exploring <0/> <1/>"
-#~ msgstr ""
-
 #: src/routes/apps/+page.svelte
 msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
 msgstr "Descubra uma coleção de ferramentas poderosas construídas com <0>Svelte</0>."
-
-#~ msgid "New"
-#~ msgstr ""
-
-#~ msgid "Updated"
-#~ msgstr ""
 
 #: src/routes/apps/AppCard.svelte
 msgid "<0/> New"
@@ -9334,12 +8869,6 @@ msgstr "Expandir"
 #: src/lib/components/home/AppsSection.svelte
 msgid "Coming Soon ({0})"
 msgstr "Em Breve ({0})"
-
-#~ msgid "Width: {0} Height: {1}"
-#~ msgstr ""
-
-#~ msgid "Your new favorite productivity toolkit ✨ Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
-#~ msgstr ""
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
@@ -9403,15 +8932,9 @@ msgstr "Índigo"
 msgid "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
 msgstr "Isto apagará TODOS os seus dados, incluindo opções, atividades, entradas da linha do tempo e riscos. Tem certeza absoluta?"
 
-#~ msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted."
-#~ msgstr "Tem certeza de que deseja excluir esta opção? Todas as atividades e riscos relacionados também serão excluídos."
-
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
 msgstr "Acompanhe várias opções de vida/carreira com investimentos de tempo, métricas de progresso e riscos ao longo de um horizonte de planejamento de 10 anos."
-
-#~ msgid "Plan your future: track options, investments, and risks over your 10-year horizon"
-#~ msgstr ""
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "<0/> Reset"
@@ -9465,11 +8988,6 @@ msgstr "Alocação (%)"
 msgid "Reset All Data?"
 msgstr "Resetar Todos os Dados?"
 
-#~ msgid ""
-#~ "This will permanently delete all your options, activities, timeline entries, and risks.\n"
-#~ "The default options will be restored. This action cannot be undone."
-#~ msgstr ""
-
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Yes, Reset Everything"
 msgstr "Sim, Resetar Tudo"
@@ -9485,9 +9003,6 @@ msgstr "Pausado"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Complete"
 msgstr "Concluído"
-
-#~ msgid "Are you sure you want to delete this activity?"
-#~ msgstr "Tem certeza de que deseja excluir esta atividade?"
 
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
@@ -9697,18 +9212,9 @@ msgstr "Adicione opções para ver o gráfico de alocação"
 msgid "Deadline"
 msgstr "Prazo Final"
 
-#~ msgid "Your 10-year planning window ends on {0}"
-#~ msgstr ""
-
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Progress through planning period"
 msgstr "Progresso durante o período de planejamento"
-
-#~ msgid "Started: Nov 25, 2025"
-#~ msgstr ""
-
-#~ msgid "Deadline: Nov 25, 2035"
-#~ msgstr ""
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -9729,9 +9235,6 @@ msgstr "Alta"
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Critical"
 msgstr "Crítica"
-
-#~ msgid "Are you sure you want to delete this risk?"
-#~ msgstr "Tem certeza de que deseja excluir este risco?"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
@@ -9811,9 +9314,6 @@ msgstr "Estratégia de Mitigação"
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "How will you address this risk?"
 msgstr "Como você abordará este risco?"
-
-#~ msgid "Are you sure you want to delete this timeline entry?"
-#~ msgstr "Tem certeza de que deseja excluir esta entrada da linha do tempo?"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Timeline Log"
@@ -9995,11 +9495,6 @@ msgstr "<0/> Cancelar"
 msgid "<0/> Delete Option"
 msgstr "<0/> Excluir Opção"
 
-#~ msgid ""
-#~ "Are you sure you want to delete this option? All related activities and risks will also be deleted.\n"
-#~ "This action cannot be undone."
-#~ msgstr ""
-
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Delete Activity"
@@ -10009,30 +9504,21 @@ msgstr "Excluir Atividade"
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
 msgstr "Tem certeza de que deseja excluir esta atividade? Esta ação não pode ser desfeita."
 
-#~ msgid "<0/> Delete Activity"
-#~ msgstr ""
-
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Timeline Entry"
-msgstr ""
+msgstr "Excluir entrada da linha do tempo"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
-msgstr ""
-
-#~ msgid "<0/> Delete Entry"
-#~ msgstr ""
+msgstr "Tem certeza de que deseja excluir esta entrada da linha do tempo? Esta ação não pode ser desfeita."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Delete Risk"
-msgstr ""
+msgstr "Excluir risco"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
-msgstr ""
-
-#~ msgid "<0/> Delete Risk"
-#~ msgstr ""
+msgstr "Tem certeza de que deseja excluir este risco? Esta ação não pode ser desfeita."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
@@ -10040,44 +9526,38 @@ msgstr "Tem certeza de que deseja excluir esta opção? Todas as atividades e ri
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Entry"
-msgstr ""
-
-#~ msgid "Please enter a valid amount"
-#~ msgstr ""
-
-#~ msgid "Currencies"
-#~ msgstr ""
+msgstr "Excluir entrada"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Loading currencies..."
-msgstr ""
+msgstr "Carregando moedas..."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "<0/> Convert Currency"
-msgstr ""
+msgstr "<0/> Converter moeda"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Type to search (e.g., USD, EUR)"
-msgstr ""
+msgstr "Digite para pesquisar (ex.: USD, EUR)"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Invalid currency code"
-msgstr ""
+msgstr "Código de moeda inválido"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter the amount to convert"
-msgstr ""
+msgstr "Digite o valor a ser convertido"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter an amount"
-msgstr ""
+msgstr "Digite um valor"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Formatted preview"
-msgstr ""
+msgstr "Pré-visualização formatada"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Sessions"
@@ -10246,183 +9726,173 @@ msgstr "Comece a usar aplicativos para ver seus favoritos aqui```"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Settings - Svelte Mini Apps"
-msgstr ""
+msgstr "Configurações de Segurança - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your account security settings and password."
-msgstr ""
+msgstr "Gerencie as configurações de segurança da sua conta e a senha."
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your password and security settings"
-msgstr ""
+msgstr "Gerencie sua senha e as configurações de segurança"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Change Password"
-msgstr ""
+msgstr "Alterar Senha"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Options"
-msgstr ""
+msgstr "Opções de Segurança"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Additional security settings for your account"
-msgstr ""
+msgstr "Configurações adicionais de segurança para a sua conta"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Add an extra layer of security (Coming Soon)"
-msgstr ""
+msgstr "Adicionar uma camada extra de segurança (Em breve)"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Login Alerts"
-msgstr ""
+msgstr "Alertas de login"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Get notified of new logins (Coming Soon)"
-msgstr ""
+msgstr "Receba notificações de novos logins (Em breve)"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "<0/> Password Tips"
-msgstr ""
+msgstr "<0/> Dicas de Senha"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Use at least 8 characters with a mix of letters, numbers, and symbols"
-msgstr ""
+msgstr "• Use pelo menos 8 caracteres com uma combinação de letras, números e símbolos"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Avoid using common words or personal information"
-msgstr ""
+msgstr "• Evite usar palavras comuns ou informações pessoais"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Don't reuse passwords across multiple sites"
-msgstr ""
+msgstr "• Não reutilize senhas entre vários sites"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Consider using a password manager for better security"
-msgstr ""
+msgstr "• Considere usar um gerenciador de senhas para uma melhor segurança"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Profile Settings - Svelte Mini Apps"
-msgstr ""
+msgstr "Configurações de Perfil - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Manage your account settings and preferences."
-msgstr ""
+msgstr "Gerencie as configurações e preferências da sua conta."
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Manage your profile information and connected accounts"
-msgstr ""
+msgstr "Gerencie suas informações de perfil e contas conectadas."
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Profile & Account"
-msgstr ""
+msgstr "Perfil e Conta"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Update your personal information and manage security settings"
-msgstr ""
+msgstr "Atualize suas informações pessoais e gerencie as configurações de segurança."
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Admin"
-msgstr ""
+msgstr "<0/> Administrador"
 
 #. placeholder {0}: memberSince
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Member since {0}"
-msgstr ""
+msgstr "<0/> Membro desde {0}"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Profile completion"
-msgstr ""
+msgstr "Conclusão do perfil"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Complete your profile to unlock all features"
-msgstr ""
+msgstr "Conclua seu perfil para desbloquear todos os recursos"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Edit Profile"
-msgstr ""
+msgstr "<0/> Editar Perfil"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Settings <1/>"
-msgstr ""
+msgstr "<0/> Configurações <1/>"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Just now"
-msgstr ""
+msgstr "Agora há pouco"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "<0/> Active Sessions"
-msgstr ""
+msgstr "<0/> Sessões ativas"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "Manage your active sessions across devices"
-msgstr ""
+msgstr "Gerencie suas sessões ativas em vários dispositivos."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Others"
-msgstr ""
+msgstr "Revogar todas as outras sessões."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "No active sessions found"
-msgstr ""
+msgstr "Nenhuma sessão ativa encontrada."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Session"
-msgstr ""
+msgstr "Sessão"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Current"
-msgstr ""
+msgstr "<0/> Atual"
 
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Created {0}"
-msgstr ""
+msgstr "<0/> Criado {0}"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke session"
-msgstr ""
+msgstr "Revogar sessão"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke Session"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out the device and end its session. The user will need to log in again on\n"
-#~ "that device."
-#~ msgstr ""
+msgstr "Revogar Sessão"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoking..."
-msgstr ""
+msgstr "Revogando..."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Other Sessions"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out all other devices ({0} session{1}).\n"
-#~ "Your current session will remain active."
-#~ msgstr ""
+msgstr "Revogar todas as outras sessões"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All"
-msgstr ""
+msgstr "Revogar tudo"
 
 #: src/routes/(auth)/profile/SettingsTab.svelte
 msgid "Manage your profile and connected accounts"
@@ -10434,54 +9904,54 @@ msgstr "Gerencie suas sessões e configurações de segurança"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions - Svelte Mini Apps"
-msgstr ""
+msgstr "Sessões Ativas - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across devices."
-msgstr ""
+msgstr "Gerencie suas sessões ativas em vários dispositivos."
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions"
-msgstr ""
+msgstr "Sessões Ativas"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across different devices"
-msgstr ""
+msgstr "Gerencie suas sessões ativas em dispositivos diferentes."
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Loading sessions..."
-msgstr ""
+msgstr "Carregando sessões..."
 
 #. placeholder {0}: sessions.length
 #. placeholder {1}: sessions.length !== 1 ? 's' : ''
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "{0} active session{1}"
-msgstr ""
+msgstr "{0} sessão{1} ativa"
 
 #. placeholder {0}: formatExpiryDate(session.expiresAt)
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Expires {0}"
-msgstr ""
+msgstr "Expira em {0}"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Security Tips"
-msgstr ""
+msgstr "Dicas de Segurança"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Revoke sessions from devices you no longer use or don't recognize"
-msgstr ""
+msgstr "• Revogue sessões de dispositivos que você não usa mais ou não reconhece"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Your current session will remain active when revoking other sessions"
-msgstr ""
+msgstr "• Sua sessão atual permanecerá ativa ao revogar outras sessões"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Consider changing your password if you notice suspicious activity"
-msgstr ""
+msgstr "• Considere alterar sua senha se notar atividade suspeita"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Sessions automatically expire after 30 days of inactivity"
-msgstr ""
+msgstr "• As sessões expiram automaticamente após 30 dias de inatividade"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "<0/> Saved Passwords"
@@ -10493,19 +9963,19 @@ msgstr "<0/> Páginas Sociais"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "<0/> Recent Activity"
-msgstr ""
+msgstr "<0/> Atividade recente"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "View All <0/>"
-msgstr ""
+msgstr "Ver tudo <0/>"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "All Activity"
-msgstr ""
+msgstr "Todas as atividades"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Complete activity history"
-msgstr ""
+msgstr "Histórico completo de atividades"
 
 #. placeholder {0}: formatActivityDate(activity.date)
 #. placeholder {1}: formatTime(activity.date)
@@ -10514,15 +9984,15 @@ msgstr ""
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "{0} at {1}"
-msgstr ""
+msgstr "{0} às {1}"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "No recent activity yet"
-msgstr ""
+msgstr "Ainda não há atividade recente"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Start using apps to see your activity here!"
-msgstr ""
+msgstr "Comece a usar aplicativos para ver sua atividade aqui!"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Activity"
@@ -10534,127 +10004,127 @@ msgstr "Preferências"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Saving preferences..."
-msgstr ""
+msgstr "Salvando preferências..."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences saved successfully!"
-msgstr ""
+msgstr "Preferências salvas com sucesso!"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences - Svelte Mini Apps"
-msgstr ""
+msgstr "Preferências - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage your app preferences and settings."
-msgstr ""
+msgstr "Gerencie suas preferências e configurações do aplicativo."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Preferences"
-msgstr ""
+msgstr "<0/> Preferências"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize your experience and manage your settings"
-msgstr ""
+msgstr "Personalize sua experiência e gerencie suas configurações."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Notifications"
-msgstr ""
+msgstr "<0/> Notificações"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage how you receive notifications and updates"
-msgstr ""
+msgstr "Gerencie como você recebe notificações e atualizações."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Receive email updates about your activity"
-msgstr ""
+msgstr "Receber atualizações por e-mail sobre sua atividade."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Push Notifications"
-msgstr ""
+msgstr "Notificações Push"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Get instant browser notifications"
-msgstr ""
+msgstr "Receber notificações instantâneas do navegador."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Activity Updates"
-msgstr ""
+msgstr "Atualizações de atividade"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Notifications for app usage milestones"
-msgstr ""
+msgstr "Notificações sobre marcos de uso do aplicativo"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly Digest"
-msgstr ""
+msgstr "Resumo semanal"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly summary of your activity and stats"
-msgstr ""
+msgstr "Resumo semanal da sua atividade e estatísticas"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Privacy"
-msgstr ""
+msgstr "<0/> Privacidade"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Control your data and visibility settings"
-msgstr ""
+msgstr "Controle seus dados e configurações de visibilidade."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Public Profile"
-msgstr ""
+msgstr "Perfil público"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Allow others to view your profile information"
-msgstr ""
+msgstr "Permitir que outras pessoas vejam as informações do seu perfil."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Show Activity"
-msgstr ""
+msgstr "Mostrar atividade"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Display your activity to other users"
-msgstr ""
+msgstr "Exibir sua atividade para outros usuários"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Analytics Data Collection"
-msgstr ""
+msgstr "Coleta de dados analíticos"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Help improve the app by sharing usage data"
-msgstr ""
+msgstr "Ajude a melhorar o aplicativo compartilhando dados de uso"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Interface"
-msgstr ""
+msgstr "<0/> Interface"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize how the app looks and behaves"
-msgstr ""
+msgstr "Personalize a aparência e o comportamento do aplicativo."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Compact Mode"
-msgstr ""
+msgstr "Modo compacto"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reduce spacing for a more condensed view"
-msgstr ""
+msgstr "Reduza o espaçamento para uma visão mais compacta."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Auto-Save"
-msgstr ""
+msgstr "Salvar automaticamente"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Automatically save your work"
-msgstr ""
+msgstr "Salve automaticamente seu trabalho."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reset"
-msgstr ""
+msgstr "Redefinir"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Save Preferences"
-msgstr ""
+msgstr "<0/> Salvar Preferências"
 
 #: src/routes/(auth)/profile/+page.svelte
 msgid "<0/> Sync Coming Soon"
@@ -10662,123 +10132,123 @@ msgstr "<0/> Sincronização Em Breve"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "App Name"
-msgstr ""
+msgstr "Nome do aplicativo"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Activity History - Svelte Mini Apps"
-msgstr ""
+msgstr "Histórico de Atividades - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Your complete activity history and app usage."
-msgstr ""
+msgstr "Seu histórico completo de atividades e uso de aplicativos."
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "<0/> Activity History"
-msgstr ""
+msgstr "<0/> Histórico de Atividades"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Complete log of your app usage and interactions"
-msgstr ""
+msgstr "Registro completo do uso de aplicativos e interações"
 
 #. placeholder {0}: totalActivities
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "<0/> {0} total"
-msgstr ""
+msgstr "<0/> {0} total"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "<0/> Export"
-msgstr ""
+msgstr "<0/> Exportar"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Search activities by app name..."
-msgstr ""
+msgstr "Pesquise atividades pelo nome do aplicativo..."
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Open →"
-msgstr ""
+msgstr "Abrir →"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "No activities found"
-msgstr ""
+msgstr "Nenhuma atividade encontrada"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Try adjusting your search query"
-msgstr ""
+msgstr "Tente ajustar sua consulta de pesquisa"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "No activity yet"
-msgstr ""
+msgstr "Ainda sem atividade"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "Start using apps to build your activity history"
-msgstr ""
+msgstr "Comece a usar apps para construir seu histórico de atividades"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "How to use"
-msgstr ""
+msgstr "Como usar"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Explore the world of words — definitions, synonyms, and pronunciations."
-msgstr ""
+msgstr "Explore o mundo das palavras — definições, sinônimos e pronúncias."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter a word to search..."
-msgstr ""
+msgstr "Digite uma palavra para pesquisar..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Searching..."
-msgstr ""
+msgstr "<0/> Pesquisando..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Find Meaning"
-msgstr ""
+msgstr "<0/> Encontrar significado"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Cached"
-msgstr ""
+msgstr "Em cache"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Pronunciations:"
-msgstr ""
+msgstr "Pronúncias:"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "Tocar"
 
 #. placeholder {0}: meaning.definitions.length
 #. placeholder {1}: meaning.definitions.length > 1 ? 's' : ''
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "{0} definition{1}"
-msgstr ""
+msgstr "{0} definição{1}"
 
 #. placeholder {0}: meaning.definitions.length - 5
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "+{0} more definitions"
-msgstr ""
+msgstr "+{0} definições adicionais"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Word Origin"
-msgstr ""
+msgstr "<0/> Origem da palavra"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "View <0/>"
-msgstr ""
+msgstr "Ver <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Source <0/>"
-msgstr ""
+msgstr "Fonte <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Start exploring words"
-msgstr ""
+msgstr "Comece a explorar palavras"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter any English word above to discover its meanings, pronunciations, and more."
-msgstr ""
+msgstr "Digite qualquer palavra em inglês acima para descobrir seus significados, pronúncias e muito mais."
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "CONFIRM"
-msgstr ""
+msgstr "CONFIRMAR"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
@@ -10786,6 +10256,8 @@ msgid ""
 "This will log out the device and end its session. The user will need to log in again on that\n"
 "device."
 msgstr ""
+"Isso fará com que o dispositivo seja desconectado e a sessão seja encerrada. O usuário precisará fazer login novamente neste\n"
+"dispositivo."
 
 #. placeholder {0}: otherSessionsCount
 #. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
@@ -10794,7 +10266,7 @@ msgstr ""
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "This will log out all other devices ({0} session{1}). Your current session will remain active."
-msgstr ""
+msgstr "Isso encerrará todas as outras sessões ({0} sessão{1}). Sua sessão atual permanecerá ativa."
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid ""
@@ -10803,3 +10275,20 @@ msgid ""
 msgstr ""
 "Exclua permanentemente sua conta e todos os dados associados. Esta ação não\n"
 "pode ser desfeita."
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Password Length"
+msgstr "Comprimento da senha"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View Saved Passwords"
+msgstr "Ver senhas salvas"
+
+#. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved ({0})"
+msgstr "Salvas ({0})"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Generate and save your first password above"
+msgstr "Gere e salve sua primeira senha acima"

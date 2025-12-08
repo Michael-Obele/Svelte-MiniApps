@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-11-25T17:36:10.496Z\n"
+"PO-Revision-Date: 2025-12-08T06:49:39.148Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -25,68 +25,11 @@ msgstr "密码无效"
 msgid "Incorrect username or password"
 msgstr "用户名或密码错误"
 
-#~ msgid "All fields are required"
-#~ msgstr "所有字段均为必填项"
-
-#~ msgid "Username must be between 3 and 31 characters and contain only lowercase letters, numbers, underscores, and hyphens"
-#~ msgstr "用户名必须在 3 到 31 个字符之间，并且只能包含小写字母、数字、下划线和连字符"
-
-#~ msgid "Password must be at least 6 characters long"
-#~ msgstr "密码长度必须至少为 6 个字符"
-
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
 #: src/routes/(auth)/register/+page.svelte
 msgid "Passwords do not match"
 msgstr "密码不匹配"
-
-#~ msgid "Username is already taken"
-#~ msgstr "用户名已被占用"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word is required"
-msgstr "单词是必需的"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be empty"
-msgstr "单词不能为空"
-
-#. placeholder {0}: MAX_WORD_LENGTH
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word cannot be longer than {0} characters"
-msgstr "单词长度不能超过 {0} 个字符"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Word can only contain letters, spaces, and hyphens"
-msgstr "单词只能包含字母、空格和连字符"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "AbortError"
-msgstr "中止错误"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Request Timeout"
-msgstr "请求超时"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "The request took too long to complete."
-msgstr "请求花费的时间太长，无法完成。"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again. If the problem persists, check your internet connection."
-msgstr "请重试。如果问题仍然存在，请检查您的互联网连接。"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Service Error"
-msgstr "服务错误"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "An unexpected error occurred while fetching the dictionary data."
-msgstr "获取字典数据时发生意外错误。"
-
-#: src/routes/apps/(app)/dictionary-app/+page.server.ts
-msgid "Please try again later. If the problem persists, contact support."
-msgstr "请稍后再试。如果问题仍然存在，请联系支持人员。"
 
 #: src/lib/components/home/Hero.svelte
 #: src/lib/index.svelte.ts
@@ -148,9 +91,6 @@ msgstr "在处理您的请求时发生意外错误。"
 msgid "Please try again or contact support if the problem persists."
 msgstr "请稍后重试，如果问题仍然存在，请联系支持人员。"
 
-#~ msgid "{0} - Error {1}"
-#~ msgstr "{0} - 错误 {1}"
-
 #: src/routes/+error.svelte
 msgid "Technical Details"
 msgstr "技术细节"
@@ -172,14 +112,6 @@ msgstr "回到主页"
 #: src/routes/offline/+page.svelte
 msgid "Go Back"
 msgstr "返回"
-
-#: src/routes/apps/+layout.svelte
-msgid "Apps Page | Svelte Mini Apps"
-msgstr "应用页面 | Svelte Mini Apps"
-
-#: src/routes/apps/+layout.svelte
-msgid "Explore our collection of unique Svelte Mini Apps. Discover new tools, innovative applications, and see how we're enhancing the Svelte ecosystem."
-msgstr "浏览我们独特的 Svelte Mini Apps 合集。 发现新工具、创新应用，并了解我们如何增强 Svelte 生态系统。"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -335,15 +267,6 @@ msgstr "点击下方以退出您的帐户"
 msgid "<0/> Sign Out"
 msgstr "<0/> 登出"
 
-#~ msgid "Profile - Svelte Mini Apps"
-#~ msgstr "个人资料 - Svelte Mini Apps"
-
-#~ msgid "Profile page for Svelte Mini Apps, a collection of small, focused web applications built with Svelte."
-#~ msgstr "Svelte Mini Apps 的个人资料页面，这是一组使用 Svelte 构建的小型、专注的 Web 应用程序。"
-
-#~ msgid "Developer Dashboard"
-#~ msgstr "开发者仪表板"
-
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
@@ -356,15 +279,6 @@ msgstr "刷新"
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Overview"
 msgstr "概览"
-
-#~ msgid "Projects"
-#~ msgstr "项目"
-
-#~ msgid "Usage Stats"
-#~ msgstr "使用统计"
-
-#~ msgid "Learning"
-#~ msgstr "学习"
 
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/+layout.svelte
@@ -529,18 +443,9 @@ msgstr "探索使用 Svelte 构建的各种有用的迷你应用程序。查找�
 msgid "Explore Our Mini Applications"
 msgstr "探索我们的迷你应用程序"
 
-#~ msgid "All"
-#~ msgstr "所有"
-
 #: src/lib/stores/todo-store.svelte.ts
 msgid "Done"
 msgstr "完成"
-
-#~ msgid "Find App..."
-#~ msgstr "查找应用..."
-
-#~ msgid "<0/>K"
-#~ msgstr "<0/>K"
 
 #: src/routes/apps/AppFilters.svelte
 msgid "Search Apps"
@@ -616,7 +521,6 @@ msgstr "点击任何表情符号将其复制到您的剪贴板 📋"
 msgid "Transform"
 msgstr "转换"
 
-#: src/lib/components/common/IconSelectorCard.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Check"
@@ -1053,12 +957,6 @@ msgstr "创建预算"
 msgid "OK"
 msgstr "确定"
 
-#~ msgid "Converting currencies..."
-#~ msgstr "转换货币中..."
-
-#~ msgid "Successfully converted currencies"
-#~ msgstr "成功转换货币"
-
 #. placeholder {0}: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
@@ -1141,15 +1039,9 @@ msgstr "汇率：1 {0} = {1} {2}"
 msgid "Cached {0}"
 msgstr "缓存于 {0}"
 
-#~ msgid "Submitting..."
-#~ msgstr "提交中..."
-
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Error"
 msgstr "错误"
-
-#~ msgid "Success"
-#~ msgstr "成功"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Svelte Mini Apps - English Dictionary App"
@@ -1167,21 +1059,6 @@ msgstr "英语词典，单词查找，定义，同义词，反义词，Svelte，
 msgid "English Dictionary"
 msgstr "英语词典"
 
-#~ msgid "Explore the world of words together."
-#~ msgstr "一起探索文字的世界。"
-
-#~ msgid "Enter a word"
-#~ msgstr "输入一个词"
-
-#~ msgid "Searching..."
-#~ msgstr "搜索中..."
-
-#~ msgid "Find Meaning"
-#~ msgstr "查找含义"
-
-#~ msgid "Searching for meaning..."
-#~ msgstr "搜索含义中..."
-
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Synonyms:"
 msgstr "同义词："
@@ -1189,12 +1066,6 @@ msgstr "同义词："
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Antonyms:"
 msgstr "反义词："
-
-#~ msgid "Origin"
-#~ msgstr "起源"
-
-#~ msgid "View License"
-#~ msgstr "查看许可证"
 
 #. placeholder {0}: entry.license.name
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
@@ -1460,50 +1331,11 @@ msgstr "错过"
 msgid "T"
 msgstr "T"
 
-#~ msgid "Please fill in all required fields"
-#~ msgstr "请填写所有必填字段"
-
-#~ msgid "Item added successfully!"
-#~ msgstr "项目添加成功!"
-
-#~ msgid "Item updated successfully!"
-#~ msgstr "项目更新成功!"
-
-#~ msgid "Purchase record added successfully!"
-#~ msgstr "购买记录添加成功!"
-
-#~ msgid "Purchase record updated successfully!"
-#~ msgstr "购买记录更新成功!"
-
-#~ msgid "Please log in to backup your data"
-#~ msgstr "请登录以备份您的数据"
-
-#~ msgid "Please log in to refresh data from server"
-#~ msgstr "请登录以从服务器刷新数据"
-
-#~ msgid "You have unsaved changes. Refreshing will override your local changes with server data. Continue?"
-#~ msgstr "您有未保存的更改。刷新会将您的本地更改覆盖为服务器数据。继续吗？"
-
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "消费追踪器"
-
-#~ msgid "Track your purchases over time with detailed records"
-#~ msgstr "通过详细的记录跟踪您随时间的消费"
-
-#~ msgid "Delete Item"
-#~ msgstr "删除项目"
-
-#~ msgid "Are you sure you want to delete this item and all its purchase records? This will permanently remove all associated data."
-#~ msgstr "确定要删除此项目及其所有购买记录吗？这将永久删除所有关联的数据。"
-
-#~ msgid "Delete Purchase Record"
-#~ msgstr "删除购买记录"
-
-#~ msgid "Are you sure you want to delete this purchase record? This action cannot be undone."
-#~ msgstr "您确定要删除此购买记录吗？此操作无法撤消。"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid ""
@@ -1663,10 +1495,8 @@ msgstr "您的密码将在此处显示"
 msgid "Password Strength: {0}%"
 msgstr "密码强度: {0}%"
 
-#. placeholder {0}: passwordLength
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Length: {0}"
-msgstr "密码长度: {0}"
+#~ msgid "Password Length: {0}"
+#~ msgstr "密码长度: {0}"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Uppercase Letters"
@@ -1688,10 +1518,8 @@ msgstr "特殊字符"
 msgid "Generate Password"
 msgstr "生成密码"
 
-#. placeholder {0}: loadingPasswords ? 'loading...' : savedPasswords ? savedPasswords.length : 'none saved'
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "View Saved Passwords ({0})"
-msgstr "查看已保存的密码 ({0})"
+#~ msgid "View Saved Passwords ({0})"
+#~ msgstr "查看已保存的密码 ({0})"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
@@ -2346,12 +2174,6 @@ msgstr "在有原型可用时自愿测试"
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Join Testing"
 msgstr "加入测试"
-
-#~ msgid "Announcements - Changelog - Svelte Mini Apps"
-#~ msgstr "公告 - 更新日志 - Svelte Mini Apps"
-
-#~ msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps"
-#~ msgstr "随时了解 Svelte Mini Apps 的最新公告和未来计划"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Announcements - Changelog"
@@ -3227,12 +3049,6 @@ msgstr "图像对象"
 msgid "{@html structuredDataJson}"
 msgstr "{@html structuredDataJson}"
 
-#~ msgid "Completed Apps"
-#~ msgstr "已完成的应用"
-
-#~ msgid "{0}% of total projects"
-#~ msgstr "总项目的{0}%"
-
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "当前连续"
@@ -3242,34 +3058,13 @@ msgstr "当前连续"
 msgid "{0} days"
 msgstr "{0}天"
 
-#~ msgid "Keep it going!"
-#~ msgstr "继续保持！"
-
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Total App Usage"
 msgstr "应用总使用量"
 
-#~ msgid "{0} unique apps used"
-#~ msgstr "使用了{0}个不同的应用"
-
-#~ msgid "Developer Level"
-#~ msgstr "开发者等级"
-
-#~ msgid "Level {0}"
-#~ msgstr "等级 {0}"
-
-#~ msgid "{0} more uses to next level"
-#~ msgstr "再使用{0}次即可升级"
-
-#~ msgid "Upcoming Apps"
-#~ msgstr "即将推出的应用"
-
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "New apps coming soon"
 msgstr "新应用即将推出"
-
-#~ msgid "Favorite Apps"
-#~ msgstr "喜欢的应用"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
@@ -3350,9 +3145,6 @@ msgstr "查看所有资源"
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Account Settings"
 msgstr "账户设置"
-
-#~ msgid "Manage your profile and preferences"
-#~ msgstr "管理您的个人资料和偏好设置"
 
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Sunday"
@@ -5750,6 +5542,7 @@ msgstr "<0/> 自动生成"
 msgid "<0/> By Type"
 msgstr "<0/> 按类型"
 
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/changelog/ChangelogStats.svelte
 #: src/routes/changelog/DebugOrder.svelte
 msgid "Hide"
@@ -5779,29 +5572,9 @@ msgstr "调试：时间线顺序（总数：{0}）"
 msgid "Tools That Make a Difference"
 msgstr "改变现状的工具"
 
-#~ msgid "What's in the Toolbox:"
-#~ msgstr "工具箱里有什么："
-
-#: src/routes/apps/Tags.svelte
-msgid "NEW"
-msgstr "新"
-
-#: src/routes/apps/Tags.svelte
-msgid "UPDATED"
-msgstr "已更新"
-
-#~ msgid "Coming soon"
-#~ msgstr "即将推出"
-
-#~ msgid "And many more"
-#~ msgstr "还有更多"
-
 #: src/lib/components/home/Banner.svelte
 msgid "4th place at Svelte Hack 2024! See our <0>Svelte Hack timeline</0> <1/>"
 msgstr "Svelte Hack 2024 第四名！查看我们的<0>Svelte Hack 时间线</0> <1/>"
-
-#~ msgid "Tspace-x-2 flex items-center justify-center text-3xl font-bold tracking-tighter sm:text-5xl"
-#~ msgstr "Tspace-x-2 flex items-center justify-center text-3xl font-bold tracking-tighter sm:text-5xl"
 
 #: src/lib/components/home/Content.svelte
 msgid "<0>Join</0> the Journey"
@@ -5849,14 +5622,6 @@ msgstr "获取新的箴言"
 msgid "More"
 msgstr "更多"
 
-#: src/routes/apps/TaskCard.svelte
-msgid "Try now <0/>"
-msgstr "立即尝试 <0/>"
-
-#: src/routes/apps/TaskCard.svelte
-msgid "Coming Soon!"
-msgstr "即将推出！"
-
 #: src/lib/components/home/data.svelte.ts
 #: src/lib/components/home/data.svelte.ts
 msgid "Svelte"
@@ -5865,9 +5630,6 @@ msgstr "Svelte"
 #: src/lib/components/home/data.svelte.ts
 msgid "Why"
 msgstr "为什么"
-
-#~ msgid "Ever noticed how some apps just feel smoother and more responsive? That's the magic of Svelte at work! We've chosen this cutting-edge technology because we believe you deserve tools that are not just powerful, but also delightful to use. Our apps respond instantly to your interactions, making every click and keystroke feel natural and effortless."
-#~ msgstr "有没有注意到有些应用程序感觉更流畅、响应更快？这就是 Svelte 的魔力！我们选择这种尖端技术是因为我们相信您应该拥有不仅功能强大，而且使用起来令人愉悦的工具。我们的应用程序可以立即响应您的交互，使每次点击和击键都感觉自然而轻松。"
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Simple"
@@ -6020,9 +5782,6 @@ msgstr "预算"
 msgid "Mantras"
 msgstr "箴言"
 
-#~ msgid "Social Pages"
-#~ msgstr "社交页面"
-
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Edit Profile"
@@ -6056,21 +5815,9 @@ msgstr "所有项目均已完成！"
 msgid "No favorite apps yet. Start using apps to see your favorites here!"
 msgstr "还没有收藏的应用。开始使用应用，在这里查看您的收藏！"
 
-#~ msgid "Recent Activity"
-#~ msgstr "最近活动"
-
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Your latest interactions with Svelte Mini Apps"
 msgstr "您与 Svelte Mini Apps 的最新互动"
-
-#~ msgid "Used {0}"
-#~ msgstr "使用了 {0}"
-
-#~ msgid "No recent activity yet. Start using apps to see your activity here!"
-#~ msgstr "还没有最近活动。开始使用应用，在这里查看您的活动！"
-
-#~ msgid "View All Activity"
-#~ msgstr "查看所有活动"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
@@ -6238,9 +5985,6 @@ msgstr "危险区域"
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Delete Account"
 msgstr "删除帐户"
-
-#~ msgid "Permanently delete your account and all associated data. This action cannot be undone."
-#~ msgstr "永久删除您的帐户和所有相关数据。此操作无法撤消。"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "This action is permanent and cannot be undone. All your data will be permanently deleted."
@@ -6889,12 +6633,6 @@ msgstr "晚安"
 msgid "Mini Apps"
 msgstr "迷你應用"
 
-#~ msgid "Welcome to your new favorite toolkit! Our Mini Apps are carefully crafted companions for your daily digital journey. Each app is designed with you in mind - quick to load, easy to use, and ready to tackle your everyday challenges. Whether you're planning your budget, building healthy habits, or staying organized, we've got just the right tool for you."
-#~ msgstr "欢迎来到您最喜爱的新工具包！我们的迷你应用是精心制作的伴侣，陪伴您进行每日数字之旅。每个应用都以您为中心设计 - 加载速度快，易于使用，并随时准备好应对您的日常挑战。无论您是规划预算、培养健康习惯还是保持井井有条，我们都有适合您的工具。"
-
-#~ msgid "Whether you're a student managing assignments, a professional tracking projects, or anyone in between, our Mini Apps adapt to your needs. Start small with basic features and discover more powerful capabilities as you grow. Plus, they work seamlessly across all your devices, so your tools are always right where you need them."
-#~ msgstr "无论您是管理作业的学生、跟踪项目的专业人士，还是介于两者之间的任何人，我们的迷你应用都能满足您的需求。从基本功能开始，随着您的成长，发现更强大的功能。此外，它们可以在您的所有设备上无缝运行，因此您的工具始终触手可及。"
-
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - encouraging users to share positive experiences with Mini Apps"
 msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
@@ -7156,14 +6894,6 @@ msgstr "专门用于冥想的计时器，可以选择不同的间隔。"
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Make changes to your profile here. Click save when you're done."
 msgstr "您可以在这里更改您的个人资料。完成后点击保存。"
-
-#~ msgid "Life's complicated enough - your tools shouldn't be. We've stripped away the clutter to focus on what matters most: helping you get things done. Each MiniApp is thoughtfully designed to be intuitive and straightforward, while packing all the features you need. No steep learning curves, just pure productivity from the moment you start."
-#~ msgstr "生活已经够复杂了——你的工具不应该如此。我们去除了繁琐，专注于最重要的事情：帮助你完成任务。每个 MiniApp 都经过精心设计，直观而简单，同时包含你所需的所有功能。没有陡峭的学习曲线，从你开始的那一刻起，就是纯粹的生产力。"
-
-#~ msgid ""
-#~ "From managing your budget to boosting productivity, each app here is designed with one\n"
-#~ "goal: to help you get things done. Built with <0>Svelte</0>, these tools are fast, responsive, and a joy to use."
-#~ msgstr "从管理您的预算到提高生产力，这里的每个应用程序都围绕着一个目标而设计：帮助您完成任务。 这些工具由 <0>Svelte</0> 构建，快速、响应灵敏且易于使用。"
 
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -7467,9 +7197,6 @@ msgstr "离线优先架构"
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Loading currencies..."
 msgstr "正在加载货币..."
-
-#~ msgid "Currencies"
-#~ msgstr "货币"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "<0/> Convert Currency"
@@ -8945,390 +8672,392 @@ msgstr "截止日期：{0}```"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Planning"
-msgstr ""
+msgstr "计划中"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Paused"
-msgstr ""
+msgstr "已暂停"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Complete"
-msgstr ""
+msgstr "已完成"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Invested"
-msgstr ""
+msgstr "已投入时间"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Allocation"
-msgstr ""
+msgstr "分配"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress"
-msgstr ""
+msgstr "进度"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Activity Log"
-msgstr ""
+msgstr "活动日志"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Track your work sessions and progress"
-msgstr ""
+msgstr "跟踪您的工作会话和进度"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Add Activity"
-msgstr ""
+msgstr "<0/> 添加活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "No activities logged yet."
-msgstr ""
+msgstr "尚未记录任何活动。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Start tracking your work by adding an activity."
-msgstr ""
+msgstr "通过添加一个活动开始跟踪您的工作。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Edit Activity"
-msgstr ""
+msgstr "编辑活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Add Activity"
-msgstr ""
+msgstr "添加活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Update the activity details."
-msgstr ""
+msgstr "更新活动详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Log a new work session or milestone."
-msgstr ""
+msgstr "记录一个新的工作会话或里程碑。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "What did you work on?"
-msgstr ""
+msgstr "你在做什么工作？"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time Spent (hours)"
-msgstr ""
+msgstr "花费时间（小时）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Select status"
-msgstr ""
+msgstr "选择状态"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress Metric"
-msgstr ""
+msgstr "进度指标"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Additional notes or observations"
-msgstr ""
+msgstr "其他备注或观察"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Edit Option"
-msgstr ""
+msgstr "编辑选项"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Update the option settings and targets."
-msgstr ""
+msgstr "更新选项设置和目标。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Progress (%)"
-msgstr ""
+msgstr "进度（%）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Est. Time to Completion"
-msgstr ""
+msgstr "预计完成时间"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Save Changes"
-msgstr ""
+msgstr "<0/> 保存变更"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Delete Activity"
-msgstr ""
+msgstr "删除活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
-msgstr ""
+msgstr "您确定要删除此活动吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Option not found."
-msgstr ""
+msgstr "未找到选项。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Low"
-msgstr ""
+msgstr "低"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Medium"
-msgstr ""
+msgstr "中等"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "High"
-msgstr ""
+msgstr "高"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Critical"
-msgstr ""
+msgstr "严重"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "<0/> Risks & Assumptions"
-msgstr ""
+msgstr "<0/> 风险与假设"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Track and mitigate potential risks to your plans"
-msgstr ""
+msgstr "跟踪并降低你计划中的潜在风险。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "<0/> Add Risk"
-msgstr ""
+msgstr "<0/> 添加风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Severity"
-msgstr ""
+msgstr "严重性"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Option"
-msgstr ""
+msgstr "选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Mitigation"
-msgstr ""
+msgstr "缓解措施"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Added"
-msgstr ""
+msgstr "已添加"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "No risks tracked yet."
-msgstr ""
+msgstr "尚未跟踪任何风险。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Add risks to keep track of potential challenges."
-msgstr ""
+msgstr "添加风险以便跟踪潜在挑战。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Edit Risk"
-msgstr ""
+msgstr "编辑风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Add Risk"
-msgstr ""
+msgstr "添加风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Update the risk details."
-msgstr ""
+msgstr "更新风险详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Document a potential risk or assumption."
-msgstr ""
+msgstr "记录潜在风险或假设。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Describe the risk or assumption"
-msgstr ""
+msgstr "描述风险或假设"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Select severity"
-msgstr ""
+msgstr "选择严重性"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Related Option"
-msgstr ""
+msgstr "相关选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Mitigation Strategy"
-msgstr ""
+msgstr "缓解策略"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "How will you address this risk?"
-msgstr ""
+msgstr "你将如何应对这个风险？"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Delete Risk"
-msgstr ""
+msgstr "删除风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
-msgstr ""
+msgstr "您确定要删除此风险吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Please select both start and end dates"
-msgstr ""
+msgstr "请同时选择开始日期和结束日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "End date must be after start date"
-msgstr ""
+msgstr "结束日期必须在开始日期之后"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Timeline settings saved"
-msgstr ""
+msgstr "时间线设置已保存"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Timeline Settings"
-msgstr ""
+msgstr "<0/> 时间线设置"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
-msgstr ""
+msgstr "调整你的计划期限。这会影响“剩余时间”的计算。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Quick Presets"
-msgstr ""
+msgstr "快速预设"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "1 Year"
-msgstr ""
+msgstr "1 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "3 Years"
-msgstr ""
+msgstr "3 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "5 Years"
-msgstr ""
+msgstr "5 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "10 Years"
-msgstr ""
+msgstr "10 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "15 Years"
-msgstr ""
+msgstr "15 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Pick a start date"
-msgstr ""
+msgstr "选择开始日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "End Date (Deadline)"
-msgstr ""
+msgstr "结束日期（截止日期）"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Pick an end date"
-msgstr ""
+msgstr "选择结束日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Planning Duration"
-msgstr ""
+msgstr "计划时长"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "⚠️ End date must be after start date"
-msgstr ""
+msgstr "⚠️ 结束日期必须晚于开始日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid ""
 "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
 msgstr ""
+"<0>注意：</0> 您尚未登录。设置将被本地保存，并且不会跨设备同步。\n"
+"<1>登录</1> 以同步您的数据。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "<0/> Cancel"
-msgstr ""
+msgstr "<0/> 取消"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Timeline Log"
-msgstr ""
+msgstr "<0/> 时间线日志"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Track your daily/weekly progress across all options"
-msgstr ""
+msgstr "在所有选项中跟踪每日/每周进展"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "<0/> Add Entry"
-msgstr ""
+msgstr "<0/> 添加条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Options Worked"
-msgstr ""
+msgstr "已完成的选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Time Allocation"
-msgstr ""
+msgstr "时间分配"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Outcomes"
-msgstr ""
+msgstr "结果"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Adjustments"
-msgstr ""
+msgstr "调整"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "No timeline entries yet."
-msgstr ""
+msgstr "尚无时间线条目。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Start tracking your weekly progress by adding an entry."
-msgstr ""
+msgstr "通过添加条目开始跟踪你每周的进展。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Edit Timeline Entry"
-msgstr ""
+msgstr "编辑时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Add Timeline Entry"
-msgstr ""
+msgstr "添加时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Update the entry details."
-msgstr ""
+msgstr "更新条目详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Log your progress for this period."
-msgstr ""
+msgstr "记录本期进展。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Options Worked On"
-msgstr ""
+msgstr "已处理的选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "What did you accomplish?"
-msgstr ""
+msgstr "你取得了哪些成就？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Adjustments/Notes"
-msgstr ""
+msgstr "调整/备注"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Any changes to your strategy?"
-msgstr ""
+msgstr "对你的策略有任何变动吗？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Timeline Entry"
-msgstr ""
+msgstr "删除时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
-msgstr ""
+msgstr "你确定要删除此时间线条目吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 msgid "Delete Entry"
-msgstr ""
+msgstr "删除条目"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
@@ -9614,24 +9343,24 @@ msgstr "包含贡献数据的其他年份```"
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Type to search (e.g., USD, EUR)"
-msgstr ""
+msgstr "输入以搜索货币代码（例如 USD、EUR）"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Invalid currency code"
-msgstr ""
+msgstr "无效的货币代码"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter the amount to convert"
-msgstr ""
+msgstr "请输入要转换的金额"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter an amount"
-msgstr ""
+msgstr "请输入金额"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Formatted preview"
-msgstr ""
+msgstr "格式化预览"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Sessions"
@@ -9800,59 +9529,59 @@ msgstr "开始使用应用，在此处查看您喜欢的应用```"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Settings - Svelte Mini Apps"
-msgstr ""
+msgstr "安全设置 - Svelte 小型应用"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your account security settings and password."
-msgstr ""
+msgstr "管理您的账户安全设置和密码。"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Manage your password and security settings"
-msgstr ""
+msgstr "管理您的密码和安全设置"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Change Password"
-msgstr ""
+msgstr "更改密码"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Options"
-msgstr ""
+msgstr "安全选项"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Additional security settings for your account"
-msgstr ""
+msgstr "账户的额外安全设置"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Add an extra layer of security (Coming Soon)"
-msgstr ""
+msgstr "添加额外的安全层（敬请期待）"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Login Alerts"
-msgstr ""
+msgstr "登录提醒"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Get notified of new logins (Coming Soon)"
-msgstr ""
+msgstr "将收到新登录通知（敬请期待）"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "<0/> Password Tips"
-msgstr ""
+msgstr "<0/> 密码提示"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Use at least 8 characters with a mix of letters, numbers, and symbols"
-msgstr ""
+msgstr "• 至少使用8个字符，混合字母、数字和符号"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Avoid using common words or personal information"
-msgstr ""
+msgstr "• 避免使用常见单词或个人信息"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Don't reuse passwords across multiple sites"
-msgstr ""
+msgstr "• 不要在多个网站重复使用同一密码"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "• Consider using a password manager for better security"
-msgstr ""
+msgstr "• 考虑使用密码管理器以提升安全性"
 
 #: src/routes/(auth)/profile/settings/+page.svelte
 msgid "Profile Settings - Svelte Mini Apps"
@@ -9876,111 +9605,101 @@ msgstr "更新您的个人信息并管理安全设置"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Admin"
-msgstr ""
+msgstr "<0/> 管理员"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> GitHub"
-msgstr ""
+msgstr "<0/> GitHub"
 
 #. placeholder {0}: memberSince
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Member since {0}"
-msgstr ""
+msgstr "<0/> 自 {0} 起成为成员"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Profile completion"
-msgstr ""
+msgstr "个人资料完成度"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "Complete your profile to unlock all features"
-msgstr ""
+msgstr "完善您的个人资料以解锁所有功能"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Edit Profile"
-msgstr ""
+msgstr "<0/> 编辑个人资料"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Settings <1/>"
-msgstr ""
+msgstr "<0/> 设置 <1/>"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Just now"
-msgstr ""
+msgstr "刚刚"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "<0/> Active Sessions"
-msgstr ""
+msgstr "<0/> 活跃会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 msgid "Manage your active sessions across devices"
-msgstr ""
+msgstr "跨设备管理您的活跃会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Others"
-msgstr ""
+msgstr "撤销所有其他会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "No active sessions found"
-msgstr ""
+msgstr "未找到活跃会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Session"
-msgstr ""
+msgstr "会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Current"
-msgstr ""
+msgstr "<0/> 当前"
 
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #. placeholder {0}: formatRelativeTime(session.createdAt)
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Created {0}"
-msgstr ""
+msgstr "<0/> 已创建 {0}"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke session"
-msgstr ""
+msgstr "吊销会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke Session"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out the device and end its session. The user will need to log in again on\n"
-#~ "that device."
-#~ msgstr ""
+msgstr "吊销会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoking..."
-msgstr ""
+msgstr "正在撤销..."
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All Other Sessions"
-msgstr ""
-
-#~ msgid ""
-#~ "This will log out all other devices ({0} session{1}).\n"
-#~ "Your current session will remain active."
-#~ msgstr ""
+msgstr "撤销所有其他会话"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Revoke All"
-msgstr ""
+msgstr "撤销所有"
 
 #: src/routes/(auth)/profile/SettingsTab.svelte
 msgid "Manage your profile and connected accounts"
@@ -9992,54 +9711,54 @@ msgstr "管理您的会话和安全设置"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions - Svelte Mini Apps"
-msgstr ""
+msgstr "活跃会话 - Svelte 小型应用"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across devices."
-msgstr ""
+msgstr "跨设备管理您的活跃会话。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Active Sessions"
-msgstr ""
+msgstr "活跃会话"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Manage your active sessions across different devices"
-msgstr ""
+msgstr "跨不同设备管理您的活跃会话。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Loading sessions..."
-msgstr ""
+msgstr "正在加载会话…"
 
 #. placeholder {0}: sessions.length
 #. placeholder {1}: sessions.length !== 1 ? 's' : ''
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "{0} active session{1}"
-msgstr ""
+msgstr "{0} 个活跃会话{1}"
 
 #. placeholder {0}: formatExpiryDate(session.expiresAt)
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Expires {0}"
-msgstr ""
+msgstr "到期时间：{0}"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Security Tips"
-msgstr ""
+msgstr "安全提示"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Revoke sessions from devices you no longer use or don't recognize"
-msgstr ""
+msgstr "• 撤销您不再使用或不认识的设备上的会话"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Your current session will remain active when revoking other sessions"
-msgstr ""
+msgstr "• 撤销其他会话时，当前会话将保持活动状态"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Consider changing your password if you notice suspicious activity"
-msgstr ""
+msgstr "• 如果发现可疑活动，请考虑更改密码"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "• Sessions automatically expire after 30 days of inactivity"
-msgstr ""
+msgstr "• 会话在 30 天不活动后将自动过期"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "<0/> Saved Passwords"
@@ -10051,19 +9770,19 @@ msgstr "<0/> 社交页面"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "<0/> Recent Activity"
-msgstr ""
+msgstr "<0/> 最近活动"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "View All <0/>"
-msgstr ""
+msgstr "查看全部 <0/>"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "All Activity"
-msgstr ""
+msgstr "全部活动"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Complete activity history"
-msgstr ""
+msgstr "完整的活动历史"
 
 #. placeholder {0}: formatActivityDate(activity.date)
 #. placeholder {1}: formatTime(activity.date)
@@ -10072,15 +9791,15 @@ msgstr ""
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "{0} at {1}"
-msgstr ""
+msgstr "{0} 在 {1}"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "No recent activity yet"
-msgstr ""
+msgstr "暂无最近活动"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Start using apps to see your activity here!"
-msgstr ""
+msgstr "开始使用应用程序，即可在此查看您的活动！"
 
 #: src/routes/(auth)/profile/+layout.svelte
 msgid "Activity"
@@ -10092,127 +9811,127 @@ msgstr "偏好设置"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Saving preferences..."
-msgstr ""
+msgstr "正在保存偏好设置..."
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences saved successfully!"
-msgstr ""
+msgstr "偏好设置已成功保存！"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Preferences - Svelte Mini Apps"
-msgstr ""
+msgstr "偏好设置 - Svelte Mini Apps"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage your app preferences and settings."
-msgstr ""
+msgstr "管理您的应用偏好与设置。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Preferences"
-msgstr ""
+msgstr "<0/> 偏好"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize your experience and manage your settings"
-msgstr ""
+msgstr "自定义您的体验并管理设置。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Notifications"
-msgstr ""
+msgstr "<0/> 通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Manage how you receive notifications and updates"
-msgstr ""
+msgstr "管理您接收通知和更新的方式。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Receive email updates about your activity"
-msgstr ""
+msgstr "接收有关您活动的电子邮件更新。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Push Notifications"
-msgstr ""
+msgstr "推送通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Get instant browser notifications"
-msgstr ""
+msgstr "即时浏览器通知"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Activity Updates"
-msgstr ""
+msgstr "活动更新"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Notifications for app usage milestones"
-msgstr ""
+msgstr "关于应用使用里程碑的通知。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly Digest"
-msgstr ""
+msgstr "每周摘要"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Weekly summary of your activity and stats"
-msgstr ""
+msgstr "您本周的活动与统计数据摘要。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Privacy"
-msgstr ""
+msgstr "<0/> 隐私"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Control your data and visibility settings"
-msgstr ""
+msgstr "控制您的数据和可见性设置。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Public Profile"
-msgstr ""
+msgstr "公开个人资料"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Allow others to view your profile information"
-msgstr ""
+msgstr "允许他人查看您的个人资料。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Show Activity"
-msgstr ""
+msgstr "显示活动"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Display your activity to other users"
-msgstr ""
+msgstr "向其他用户显示您的活动。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Analytics Data Collection"
-msgstr ""
+msgstr "分析数据收集"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Help improve the app by sharing usage data"
-msgstr ""
+msgstr "通过分享使用数据来帮助改进应用。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Interface"
-msgstr ""
+msgstr "<0/> 界面"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Customize how the app looks and behaves"
-msgstr ""
+msgstr "自定义应用的外观和行为。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Compact Mode"
-msgstr ""
+msgstr "紧凑模式"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reduce spacing for a more condensed view"
-msgstr ""
+msgstr "为获得更紧凑的视图而减少间距。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Auto-Save"
-msgstr ""
+msgstr "自动保存"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Automatically save your work"
-msgstr ""
+msgstr "自动保存您的工作。"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "Reset"
-msgstr ""
+msgstr "重置"
 
 #: src/routes/(auth)/profile/preferences/+page.svelte
 msgid "<0/> Save Preferences"
-msgstr ""
+msgstr "<0/> 保存偏好设置"
 
 #: src/routes/(auth)/profile/+page.svelte
 msgid "<0/> Sync Coming Soon"
@@ -10273,77 +9992,77 @@ msgstr "开始使用应用来构建您的活动历史记录```"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "How to use"
-msgstr ""
+msgstr "如何使用"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Explore the world of words — definitions, synonyms, and pronunciations."
-msgstr ""
+msgstr "探索词语的世界——定义、同义词和发音。"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter a word to search..."
-msgstr ""
+msgstr "输入要搜索的单词..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Searching..."
-msgstr ""
+msgstr "<0/> 正在搜索..."
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Find Meaning"
-msgstr ""
+msgstr "<0/> 查找词义"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Cached"
-msgstr ""
+msgstr "已缓存"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Pronunciations:"
-msgstr ""
+msgstr "发音："
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "播放"
 
 #. placeholder {0}: meaning.definitions.length
 #. placeholder {1}: meaning.definitions.length > 1 ? 's' : ''
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "{0} definition{1}"
-msgstr ""
+msgstr "{0} 条释义{1}"
 
 #. placeholder {0}: meaning.definitions.length - 5
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "+{0} more definitions"
-msgstr ""
+msgstr "+{0} 条更多释义"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "<0/> Word Origin"
-msgstr ""
+msgstr "<0/> 词源"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "View <0/>"
-msgstr ""
+msgstr "查看 <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Source <0/>"
-msgstr ""
+msgstr "来源 <0/>"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Start exploring words"
-msgstr ""
+msgstr "开始探索单词"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "Enter any English word above to discover its meanings, pronunciations, and more."
-msgstr ""
+msgstr "在上方输入任意英文单词，以了解其释义、发音等信息。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "CONFIRM"
-msgstr ""
+msgstr "确认"
 
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid ""
 "This will log out the device and end its session. The user will need to log in again on that\n"
 "device."
-msgstr ""
+msgstr "此操作将登出该设备并结束其会话。用户需要在该设备上重新登录。"
 
 #. placeholder {0}: otherSessionsCount
 #. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
@@ -10352,10 +10071,27 @@ msgstr ""
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "This will log out all other devices ({0} session{1}). Your current session will remain active."
-msgstr ""
+msgstr "这将登出所有其他设备（{0} 个会话{1}）。当前会话将保持活跃。"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid ""
 "Permanently delete your account and all associated data. This action cannot be\n"
 "undone."
 msgstr "永久删除您的帐户和所有相关数据。此操作无法撤消。"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Password Length"
+msgstr "密码长度"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "View Saved Passwords"
+msgstr "查看已保存的密码"
+
+#. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved ({0})"
+msgstr "已保存 ({0})"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Generate and save your first password above"
+msgstr "在上方生成并保存第一条密码"

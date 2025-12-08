@@ -70,6 +70,9 @@ export const deletePassword = command(v.string(), async (passwordId) => {
 		}
 	});
 
+	// Refresh the query to get the updated list
+	await getSavedPasswords().refresh();
+
 	return { success: true };
 });
 
