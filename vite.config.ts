@@ -5,6 +5,8 @@ import { partytownVite } from '@builder.io/partytown/utils';
 import { join } from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import { wuchale } from '@wuchale/vite-plugin';
+import lingo from 'vite-plugin-lingo';
+
 
 // export default defineConfig({
 // 	plugins: [sveltekit(), enhancedImages()],
@@ -28,6 +30,10 @@ export default defineConfig({
 			dest: join(__dirname, 'static', '~partytown')
 		}),
 		wuchale(),
+		lingo({
+      route: '/_translations',  // Route where editor UI is served
+      localesDir: './src/locales',  // Path to .po files
+    }),
 		sveltekit()
 	],
 	server: {
