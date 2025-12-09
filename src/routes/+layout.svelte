@@ -14,6 +14,7 @@
 
 	// Import language store initialization
 	import { initLanguage } from '$lib/stores/language-store.svelte';
+	import ChristmasSnow from '$lib/components/blocks/ChristmasSnow.svelte';
 
 	let { children, data }: LayoutProps = $props();
 	let { user, ANALYTICS_ID } = data;
@@ -48,6 +49,7 @@
 />
 
 <Navbar />
+<ChristmasSnow />
 <div class="min-h-screen">
 	{@render children()}
 </div>

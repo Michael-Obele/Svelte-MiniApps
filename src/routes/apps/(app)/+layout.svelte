@@ -63,6 +63,11 @@
 	<AppTracker appLink={currentRoute} />
 {/if}
 
+<!-- Christmas Decoration for Apps: Candy Cane Pattern -->
+<div
+	class="h-2 w-full christmasStrip"
+></div>
+
 <div class="flex items-start justify-between p-1">
 	<div class="relative mt-2 mb-5 flex place-items-center justify-center">
 		<Breadcrumb.Root>
@@ -160,3 +165,20 @@
 <div class="relative mt-6 min-h-screen" transition:fade={{ duration: 150 }}>
 	{@render children?.()}
 </div>
+
+
+<style>
+	.christmasStrip {
+	background: repeating-linear-gradient(
+  45deg,
+  #ef4444,
+  #ef4444 10px,
+  #ffffff 10px,
+  #ffffff 20px,
+  #22c55e 20px,
+  #22c55e 30px,
+  #ffffff 30px,
+  #ffffff 40px
+);
+	}
+</style>

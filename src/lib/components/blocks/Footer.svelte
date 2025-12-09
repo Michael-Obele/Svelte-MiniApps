@@ -15,21 +15,32 @@
 		Copyright,
 		Sparkles,
 		Download,
-		Briefcase
+		Briefcase,
+		Snowflake
 	} from '@lucide/svelte';
 
 	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
 	import { bluesky } from './Icons.svelte';
+	import { Button } from '@/ui/button';
+	import { christmasState } from '$lib/stores/christmas.svelte';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
 	const currentYear = new Date().getFullYear();
+
+	const toggleSnow = () => {
+		if (christmasState.isSnowing) {
+			christmasState.stopSnow();
+		} else {
+			christmasState.triggerSnow();
+		}
+	};
 </script>
 
 <footer
 	class="bg-background text-foreground w-full border-t border-slate-600 py-6 shadow-lg md:py-8"
 >
-	<div class=" mx-auto px-4 md:px-6">
+	<div class="mx-auto px-4 md:px-6">
 		<!-- Sitemap Section -->
 		<div class="grid grid-cols-2 gap-8 border-b border-slate-600/50 pb-8 md:grid-cols-3">
 			<!-- Explore -->
@@ -110,7 +121,9 @@
 		<div class="grid gap-8 pt-8 md:grid-cols-2">
 			<!-- Left Column -->
 			<div class="flex flex-col items-center justify-center space-y-4 md:items-start">
-				<div class="flex items-center space-x-2">
+				<div class="relative flex items-center space-x-2">
+					<!-- Christmas Hat -->
+					<div class="absolute -top-3 -left-2 rotate-[-35deg] transform text-2xl">🎩</div>
 					<span class="m-1 size-6 self-center whitespace-nowrap">
 						<Svelte />
 					</span>
@@ -161,7 +174,7 @@
 						class="text-muted-foreground hover:text-primary transition-colors"
 						aria-label="GitHub"
 					>
-						<Github class="size-5 " strokeWidth={1.5} />
+						<Github class="size-5" strokeWidth={1.5} />
 					</a>
 					<a
 						href="https://bsky.app/profile/svelte-apps.me"
@@ -223,6 +236,16 @@
 					</button>
 					<LanguageSwitcher />
 					<ThemeSwitch />
+					<!-- Snow Toggle -->
+					<Button
+						variant="ghost"
+						size="icon"
+						class="size-9 xl:size-10 {christmasState.isSnowing ? 'text-blue-500' : ''}"
+						onclick={() => toggleSnow()}
+						title="Let it snow!"
+					>
+						<Snowflake class="size-4 xl:size-5" />
+					</Button>
 					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>
 				<div class="flex flex-col items-center space-y-2 md:items-end">
