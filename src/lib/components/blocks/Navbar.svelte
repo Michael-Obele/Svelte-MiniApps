@@ -10,9 +10,6 @@
 	import { bluesky } from '$lib/components/blocks/Icons.svelte';
 	import { beforeNavigate } from '$app/navigation';
 	import NavigationProgressIndicator from '@/blocks/NavigationProgressIndicator.svelte';
-
-	import { christmasState } from '$lib/stores/christmas.svelte';
-	import { Snowflake } from 'lucide-svelte';
 	import { getCurrentUser } from '$lib/remote/auth.remote';
 
 	const menuItems = [

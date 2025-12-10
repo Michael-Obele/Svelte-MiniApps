@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {  onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { christmasState } from '$lib/stores/christmas.svelte';
 
@@ -23,15 +23,9 @@
 
 	const maxSnowflakes = 30;
 
-	// Effect to handle auto-stop
-	$effect(() => {
-		if (christmasState.isSnowing) {
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				christmasState.stopSnow();
-			}, duration);
-		}
-	});
+	timer = setTimeout(() => {
+		christmasState.stopSnow();
+	}, duration);
 
 	function createSnowflake(): Snowflake {
 		return {
@@ -66,10 +60,6 @@
 		ctx.fill();
 		animationFrameId = requestAnimationFrame(update);
 	}
-
-	onMount(() => {
-		christmasState.triggerSnow();
-	});
 
 	$effect(() => {
 		width = window.innerWidth;
@@ -112,7 +102,7 @@
 	<canvas
 		bind:this={canvas}
 		transition:fade={{ duration: 2000 }}
-		class="pointer-events-none fixed left-0 top-0 z-50 h-full w-full"
+		class="pointer-events-none fixed top-0 left-0 z-50 h-full w-full"
 		style="pointer-events: none;"
 	></canvas>
 {/if}

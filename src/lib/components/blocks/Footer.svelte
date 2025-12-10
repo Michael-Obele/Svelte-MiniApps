@@ -6,12 +6,8 @@
 
 	import { scrollToTop } from '$lib/utils';
 	import {
-		Heart,
 		ArrowUp,
 		Github,
-		Twitter,
-		Linkedin,
-		Globe,
 		Copyright,
 		Sparkles,
 		Download,
@@ -19,20 +15,30 @@
 		Snowflake
 	} from '@lucide/svelte';
 
-	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
 	import { bluesky } from './Icons.svelte';
 	import { Button } from '@/ui/button';
 	import { christmasState } from '$lib/stores/christmas.svelte';
+	import { onMount } from 'svelte';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
 	const currentYear = new Date().getFullYear();
+
+	onMount(() => {
+		christmasState.triggerSnow();
+		setTimeout(() => {
+			christmasState.stopSnow();
+		}, 30000); // Stop snow after 30 seconds
+	});
 
 	const toggleSnow = () => {
 		if (christmasState.isSnowing) {
 			christmasState.stopSnow();
 		} else {
 			christmasState.triggerSnow();
+			setTimeout(() => {
+				christmasState.stopSnow();
+			}, 60000); // Stop snow after 1 minute
 		}
 	};
 </script>
