@@ -7,15 +7,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { wuchale } from '@wuchale/vite-plugin';
 import lingo from 'vite-plugin-lingo';
 
-
-// export default defineConfig({
-// 	plugins: [sveltekit(), enhancedImages()],
-// 	server: {
-// 		port: 5178,
-// 		strictPort: false
-// 	}
-// });
-
 export default defineConfig({
 	plugins: [
 		// sentrySvelteKit({
@@ -31,9 +22,9 @@ export default defineConfig({
 		}),
 		wuchale(),
 		lingo({
-      route: '/_translations',  // Route where editor UI is served
-      localesDir: './src/locales',  // Path to .po files
-    }),
+			route: '/_lang', // Route where editor UI is served
+			localesDir: './src/locales' // Path to .po files
+		}),
 		sveltekit()
 	],
 	server: {
