@@ -19,6 +19,7 @@
 	import { Button } from '@/ui/button';
 	import { christmasState } from '$lib/stores/christmas.svelte';
 	import { onMount } from 'svelte';
+	import { mode } from 'mode-watcher';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
@@ -41,6 +42,8 @@
 			}, 60000); // Stop snow after 1 minute
 		}
 	};
+
+	let colors = $derived(mode.current === 'dark' ? 'primary:white,secondary:green' : 'primary:black,secondary:green');
 </script>
 
 <footer
@@ -159,17 +162,8 @@
 							trigger="loop"
 							stroke="thick"
 							state="hover-draw"
-							class="text-muted-foreground hover:text-primary hidden size-5 transition-colors dark:inline-block"
-							colors="primary:white,secondary:green"
-							aria-label="Twitter"
-						></lord-icon>
-						<lord-icon
-							src={logoX}
-							trigger="loop"
-							stroke="thick"
-							state="hover-draw"
-							class="hover:text-primary size-5 text-white transition-colors dark:hidden"
-							colors="primary:black,secondary:green"
+							class="hover:text-primary size-5 transition-colors"
+							colors={colors}
 							aria-label="Twitter"
 						></lord-icon>
 					</a>
@@ -213,17 +207,8 @@
 							trigger="loop"
 							stroke="thick"
 							state="pinch"
-							class="text-muted-foreground hover:text-primary hidden size-5 transition-colors dark:inline-block"
-							colors="primary:white,secondary:green"
-							aria-label="LinkedIn"
-						></lord-icon>
-						<lord-icon
-							src={logoLinkendin}
-							trigger="loop"
-							stroke="thick"
-							state="pinch"
-							class="text-muted-foreground hover:text-primary size-5 transition-colors dark:hidden"
-							colors="primary:black,secondary:green"
+							class="text-muted-foreground hover:text-primary size-5 transition-colors"
+							colors={colors}
 							aria-label="LinkedIn"
 						></lord-icon>
 					</a>
