@@ -43,7 +43,9 @@
 		}
 	};
 
-	let colors = $derived(mode.current === 'dark' ? 'primary:white,secondary:green' : 'primary:black,secondary:green');
+	let colors = $derived(
+		mode.current === 'dark' ? 'primary:white,secondary:green' : 'primary:black,secondary:green'
+	);
 </script>
 
 <footer
@@ -163,7 +165,7 @@
 							stroke="thick"
 							state="hover-draw"
 							class="hover:text-primary size-5 transition-colors"
-							colors={colors}
+							{colors}
 							aria-label="Twitter"
 						></lord-icon>
 					</a>
@@ -208,7 +210,7 @@
 							stroke="thick"
 							state="pinch"
 							class="text-muted-foreground hover:text-primary size-5 transition-colors"
-							colors={colors}
+							{colors}
 							aria-label="LinkedIn"
 						></lord-icon>
 					</a>
