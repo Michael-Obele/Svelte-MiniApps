@@ -1,7 +1,18 @@
 {
-  "lastProcessedCommit": "e863ebce0870dfa8c5b8acba4619fdcd6be45d98",
-  "generatedAt": "2025-12-11T08:41:49.090Z",
+  "lastProcessedCommit": "4e7b8d4e193bee36bff671e4e1100490c04382e3",
+  "generatedAt": "2025-12-16T11:35:29.876Z",
   "timeline": [
+    {
+      "date": "December 16, 2025",
+      "title": "chore: update Chinese translations",
+      "description": "Updated src/locales/zh.po",
+      "items": [
+        "chore: update Chinese translations (4e7b8d4)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
     {
       "date": "December 11, 2025",
       "title": "feat: enhance footer icons with dynamic color support based on theme mode",
@@ -12,6 +23,17 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "December 11, 2025",
+      "title": "fix: correct colors binding in footer component for improved theme support",
+      "description": "Updated src/lib/components/blocks/Footer.svelte",
+      "items": [
+        "fix: correct colors binding in footer component for improved theme support (89c3bad)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "December 10, 2025",
