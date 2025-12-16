@@ -45,6 +45,7 @@ export function getDefaultCategories(): PurchaseCategory[] {
 		{ id: 'shopping', name: 'Shopping', color: '#ec4899', icon: '🛍️' },
 		{ id: 'healthcare', name: 'Healthcare', color: '#06b6d4', icon: '🏥' },
 		{ id: 'transportation', name: 'Transportation', color: '#84cc16', icon: '🚗' },
+		{ id: 'gifts', name: 'Gifts', color: '#f43f5e', icon: '🎁' },
 		{ id: 'other', name: 'Other', color: '#6b7280', icon: '📦' }
 	];
 }
