@@ -2,7 +2,7 @@
 	import { History, CalendarRange, List, Calendar } from '@lucide/svelte';
 	import { Button } from '@/ui/button';
 	import { Badge } from '@/ui/badge';
-	import * as purchaseState from './states.svelte';
+	import * as purchaseState from '../states.svelte';
 	import PurchaseRecord from './PurchaseRecord.svelte';
 
 	interface Props {

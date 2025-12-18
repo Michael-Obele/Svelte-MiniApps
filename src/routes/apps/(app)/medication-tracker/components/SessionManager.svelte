@@ -11,8 +11,8 @@
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
 
-	import * as medState from './states.svelte';
-	import type { TreatmentSession } from './states.svelte';
+	import * as medState from '../states.svelte';
+	import type { TreatmentSession } from '../states.svelte';
 
 	// Import remote functions
 	import { deleteMedicationSession } from '$lib/remote';

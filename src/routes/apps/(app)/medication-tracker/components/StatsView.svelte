@@ -3,8 +3,8 @@
 	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 
-	import type { TreatmentSession, MedicationStats } from './states.svelte';
-	import * as medState from './states.svelte';
+	import type { TreatmentSession, MedicationStats } from '../states.svelte';
+	import * as medState from '../states.svelte';
 
 	// Props
 	let { session, stats } = $props<{

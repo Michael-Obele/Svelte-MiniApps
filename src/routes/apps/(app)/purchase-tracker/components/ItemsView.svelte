@@ -4,8 +4,8 @@
 	import { Button } from '@/ui/button';
 	import * as DropdownMenu from '@/ui/dropdown-menu';
 
-	import type { Item } from './states.svelte';
-	import * as purchaseState from './states.svelte';
+	import type { Item } from '../states.svelte';
+	import * as purchaseState from '../states.svelte';
 	import ItemCard from './ItemCard.svelte';
 
 	interface Props {

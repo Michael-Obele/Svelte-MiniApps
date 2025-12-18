@@ -18,12 +18,14 @@
 		Trash2
 	} from 'lucide-svelte';
 
-	import Dashboard from './Dashboard.svelte';
-	import OptionDetail from './OptionDetail.svelte';
-	import Timeline from './Timeline.svelte';
-	import Risks from './Risks.svelte';
-	import Settings from './Settings.svelte';
-	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
+	import {
+		Dashboard,
+		OptionDetail,
+		Timeline,
+		Risks,
+		Settings,
+		DeleteConfirmationDialog
+	} from './components';
 	import { scenarioTrackerHowToUse } from './how-to-use-config';
 	import { PersistedState } from 'runed';
 	import { toast } from 'svelte-sonner';
@@ -346,15 +348,15 @@
 		<div class="flex flex-wrap gap-2">
 			<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>Help</Button>
 			<Button variant="outline" onclick={() => (showSettingsDialog = true)}>
-				<SettingsIcon class="size-4 mr-2" />
+				<SettingsIcon class="mr-2 size-4" />
 				Settings
 			</Button>
 			<Button variant="outline" onclick={() => (showResetDialog = true)}>
-				<RotateCcw class="size-4 mr-2" />
+				<RotateCcw class="mr-2 size-4" />
 				Reset
 			</Button>
 			<Button onclick={() => (showAddOptionDialog = true)}>
-				<Plus class="size-4 mr-2" />
+				<Plus class="mr-2 size-4" />
 				Add Option
 			</Button>
 		</div>
@@ -393,7 +395,7 @@
 				<Tabs.Content value={option.id}>
 					<div class="mb-4 flex justify-end">
 						<Button variant="destructive" size="sm" onclick={() => handleDeleteOption(option.id)}>
-							<Trash2 class="size-4 mr-2" />
+							<Trash2 class="mr-2 size-4" />
 							Delete Option
 						</Button>
 					</div>
@@ -469,7 +471,7 @@
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showAddOptionDialog = false)}>Cancel</Button>
 			<Button onclick={handleAddOption} disabled={!newOptionForm.name}>
-				<Save class="size-4 mr-2" />
+				<Save class="mr-2 size-4" />
 				Add Option
 			</Button>
 		</Dialog.Footer>
@@ -519,5 +521,8 @@
 	title="Delete Option"
 	description="Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
 	onConfirm={confirmDeleteOption}
-	onCancel={() => { showDeleteOptionDialog = false; optionToDelete = null; }}
+	onCancel={() => {
+		showDeleteOptionDialog = false;
+		optionToDelete = null;
+	}}
 />

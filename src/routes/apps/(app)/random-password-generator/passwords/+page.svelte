@@ -3,7 +3,7 @@
 	import { ArrowLeft, Shield } from '@lucide/svelte';
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import PasswordDisplay from '../PasswordDisplay.svelte';
+	import { PasswordDisplay } from '../components';
 	import { getSavedPasswords } from '$lib/remote';
 	import * as Card from '@/ui/card';
 	import { Separator } from '@/ui/separator';
@@ -54,7 +54,9 @@
 		<!-- Passwords Section with Reactive Query -->
 		{#await getSavedPasswords()}
 			<div class="flex items-center justify-center py-12">
-				<div class="size-8 animate-spin rounded-full border-4 border-gray-300 border-t-gray-600"></div>
+				<div
+					class="size-8 animate-spin rounded-full border-4 border-gray-300 border-t-gray-600"
+				></div>
 			</div>
 		{:then passwords}
 			<!-- Empty State -->
@@ -104,7 +106,8 @@
 					</div>
 				</div>
 			{/if}
-		{/await}		<!-- Info Section -->
+		{/await}
+		<!-- Info Section -->
 		<Card.Root class="bg-muted/50 border-dashed">
 			<Card.Content class="py-6">
 				<div class="flex items-start gap-3">

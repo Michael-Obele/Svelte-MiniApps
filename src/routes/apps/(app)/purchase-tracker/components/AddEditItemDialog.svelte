@@ -7,7 +7,7 @@
 	import * as DropdownMenu from '@/ui/dropdown-menu';
 	import * as Dialog from '@/ui/dialog';
 
-	import type { Item } from './states.svelte';
+	import type { Item } from '../states.svelte';
 
 	interface Props {
 		open: boolean;

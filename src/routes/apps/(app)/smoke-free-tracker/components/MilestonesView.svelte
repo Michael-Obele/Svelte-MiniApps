@@ -3,8 +3,8 @@
 	import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import { Progress } from '@/ui/progress';
-	import type { SmokingAttempt } from './states.svelte';
-	import { getDefaultMilestones, getStreakMinutes } from './states.svelte';
+	import type { SmokingAttempt } from '../states.svelte';
+	import { getDefaultMilestones, getStreakMinutes } from '../states.svelte';
 
 	interface Props {
 		statistics: {

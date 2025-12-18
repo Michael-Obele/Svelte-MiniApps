@@ -12,8 +12,8 @@
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
 
-	import * as medState from './states.svelte';
-	import type { TreatmentSession, Medication } from './states.svelte';
+	import * as medState from '../states.svelte';
+	import type { TreatmentSession, Medication } from '../states.svelte';
 	import ScheduleViewer from './ScheduleViewer.svelte';
 
 	// Import remote functions

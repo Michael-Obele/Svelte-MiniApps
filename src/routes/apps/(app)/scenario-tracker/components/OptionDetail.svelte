@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Option, Activity, Status } from './types';
-	import { formatDate, getStatusColor } from './types';
+	import type { Option, Activity, Status } from '../types';
+	import { formatDate, getStatusColor } from '../types';
 	import {
 		options,
 		risks,
@@ -9,7 +9,7 @@
 		updateActivity,
 		deleteActivity,
 		getRisksByOption
-	} from './stores.svelte';
+	} from '../stores.svelte';
 	import {
 		getScenarioData,
 		updateScenarioOption,
@@ -40,7 +40,10 @@
 		Save
 	} from 'lucide-svelte';
 
-	let { optionId, currentUser = null }: {
+	let {
+		optionId,
+		currentUser = null
+	}: {
 		optionId: string;
 		currentUser?: { id: string; username: string; role: string } | null;
 	} = $props();
@@ -603,7 +606,10 @@
 		description="Are you sure you want to delete this activity? This action cannot be undone."
 		confirmText="Delete Activity"
 		onConfirm={confirmDeleteActivity}
-		onCancel={() => { showDeleteActivityDialog = false; activityToDelete = null; }}
+		onCancel={() => {
+			showDeleteActivityDialog = false;
+			activityToDelete = null;
+		}}
 	/>
 {:else}
 	<div class="text-muted-foreground py-8 text-center">

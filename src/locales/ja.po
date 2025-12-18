@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2025-12-18T21:18:21.478Z\n"
+"PO-Revision-Date: 2025-12-18T23:04:48.625Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -47,6 +47,7 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
 msgstr "米ドル"
 
@@ -58,6 +59,7 @@ msgstr "米ドル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "EUR"
 msgstr "ユーロ"
 
@@ -745,6 +747,8 @@ msgstr "永続性の追加"
 #: src/lib/stores/todo-store.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "In Progress"
 msgstr "進行中"
 
@@ -1220,6 +1224,7 @@ msgstr "クリア"
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
@@ -2893,6 +2898,7 @@ msgstr "マイアカウント"
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Settings"
 msgstr "設定"
 
@@ -3251,6 +3257,7 @@ msgstr "3～31文字：小文字、数字、アンダースコア、ハイフン
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/register/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password"
 msgstr "パスワード"
 
@@ -3489,6 +3496,7 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
@@ -3500,6 +3508,7 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Cancel"
 msgstr "キャンセル"
@@ -3678,6 +3687,7 @@ msgid "View All Resources"
 msgstr "すべてのリソースを表示"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "現在の連続日数"
 
@@ -3726,6 +3736,7 @@ msgstr "良い"
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strong"
 msgstr "強い"
 
@@ -3903,6 +3914,7 @@ msgstr "保存中..."
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "変更を保存"
 
@@ -4494,6 +4506,7 @@ msgstr "すべて表示"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -4711,6 +4724,7 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "GBP"
 msgstr "英ポンド"
 
@@ -4720,6 +4734,7 @@ msgstr "英ポンド"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "JPY"
 msgstr "日本円"
 
@@ -4729,6 +4744,7 @@ msgstr "日本円"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "CAD"
 msgstr "カナダドル"
 
@@ -4738,6 +4754,7 @@ msgstr "カナダドル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "AUD"
 msgstr "オーストラリアドル"
 
@@ -4751,6 +4768,7 @@ msgstr "中国人民元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "インドルピー"
 
@@ -4764,6 +4782,7 @@ msgstr "ブラジルレアル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "NGN"
 msgstr "ナイジェリアナイラ"
 
@@ -4921,6 +4940,7 @@ msgstr "フォーマットされた予算額"
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
 msgstr "通貨"
 
@@ -5470,6 +5490,7 @@ msgstr "未服用```"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
 
@@ -5952,6 +5973,7 @@ msgstr "<0/> 終了：{0}"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ongoing"
 msgstr "継続"
 
@@ -6457,6 +6479,7 @@ msgstr "必要に応じて、この投与量をスキップする理由を説明
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "注 (オプション)"
 
@@ -7374,62 +7397,77 @@ msgid "Social Links"
 msgstr "ソーシャルリンク```"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Full Name"
 msgstr "氏名"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "John Doe"
 msgstr "ジョン・ドゥ"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Phone Number"
 msgstr "電話番号"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Email"
 msgstr "メールアドレス"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Website"
 msgstr "ウェブサイト"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Your QR Code"
 msgstr "あなたのQRコード"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download"
 msgstr "ダウンロード"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download QR Code"
 msgstr "QRコードをダウンロード"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Link Label"
 msgstr "リンクのラベル"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Instagram, Twitter, Portfolio, etc."
 msgstr "インスタグラム、ツイッター、ポートフォリオなど"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "URL"
 msgstr "URL"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Remove"
 msgstr "削除"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Add Another Link"
 msgstr "別のリンクを追加"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter Text or URL"
 msgstr "テキストまたはURLを入力"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter text or paste a URL"
 msgstr "テキストを入力するか、URLを貼り付けてください"
 
@@ -7467,11 +7505,13 @@ msgstr "少なくとも1つの文字タイプを選択してください"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "パスワードをクリップボードにコピーしました"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "パスワードのコピーに失敗しました"
 
@@ -7501,8 +7541,10 @@ msgstr "説明 (オプション)"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 文字"
 
@@ -7558,52 +7600,66 @@ msgid "No saved passwords yet"
 msgstr "まだ保存されたパスワードはありません```"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Hide password"
 msgstr "パスワードを隠す"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Show password"
 msgstr "パスワードを表示"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Copy password"
 msgstr "パスワードをコピー"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit password"
 msgstr "パスワードを編集"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Delete password"
 msgstr "パスワードを削除"
 
 #. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
+#. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
+#. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "{0} {1}に保存"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit Password"
 msgstr "パスワードを編集"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Update your password and its details. Click save when you're done."
 msgstr "パスワードと詳細を更新します。完了したら「保存」をクリックしてください。"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Enter password"
 msgstr "パスワードを入力"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Details (optional)"
 msgstr "詳細（オプション）"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Add details about this password..."
 msgstr "このパスワードの詳細を追加..."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> 保存中...```"
 
@@ -7799,10 +7855,12 @@ msgstr "{0}時間投資済み"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% 完了"
 
@@ -8175,6 +8233,7 @@ msgstr "<0/> キャンセル"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
 msgstr "<0/> 設定を保存"
 
@@ -8454,284 +8513,357 @@ msgid "Track your cravings to understand your triggers and improve your strategy
 msgstr "渇望を追跡してトリガーを理解し、戦略を改善しましょう。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Stress"
 msgstr "ストレス"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "After meal"
 msgstr "食後"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Social situation"
 msgstr "社交の場面"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Boredom"
 msgstr "退屈"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Alcohol"
 msgstr "アルコール"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Coffee/tea"
 msgstr "コーヒー／紅茶"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Work break"
 msgstr "休憩時間"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Driving"
 msgstr "運転中"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Morning routine"
 msgstr "朝の習慣"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
 msgstr "その他"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Deep breathing"
 msgstr "深呼吸"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Exercise/walk"
 msgstr "運動／散歩"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Water/snack"
 msgstr "水分／おやつ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Call friend"
 msgstr "友だちに電話"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Distraction"
 msgstr "気を紛らす"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Meditation"
 msgstr "瞑想"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Chewing gum"
 msgstr "ガムを噛む"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Read motivations"
 msgstr "動機を読む"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Delay tactics"
 msgstr "遅延の戦術"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Mild"
 msgstr "非常に軽い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Mild"
 msgstr "軽い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Moderate"
 msgstr "中程度"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Strong"
 msgstr "非常に強い"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Craving Log"
 msgstr "渇望ログ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Intensity (1-5)"
 msgstr "強さ（1-5）"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "What triggered it?"
 msgstr "何がきっかけですか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select trigger"
 msgstr "トリガーを選択"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "How did you cope?"
 msgstr "どう対処しましたか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select strategy"
 msgstr "戦略を選択"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Did you resist the craving?"
 msgstr "渇望を抑えましたか？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Yes, I resisted!"
 msgstr "はい、抑えました！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "No, I gave in"
 msgstr "いいえ、欲望に負けました"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Any additional thoughts..."
 msgstr "他に考えはありますか…"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "<0/> Log Craving"
 msgstr "<0/> 渇望を記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Recent Cravings"
 msgstr "最近の渇望"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
+#. placeholder {0}: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} の強さ"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Resisted"
 msgstr "抑えた"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Gave In"
 msgstr "欲望に負けた"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Trigger:"
 msgstr "トリガー:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strategy:"
 msgstr "戦略:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Attempt History"
 msgstr "<0/> 禁煙挑戦履歴"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
 msgstr "まだ挑戦はありません。上部から旅を始めましょう！"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "挑戦 #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Current"
 msgstr "現在"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
 msgstr "完了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Longest Streak"
 msgstr "<0/> 最長の連続記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Resets"
 msgstr "<0/> リセット回数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Total Duration"
 msgstr "<0/> 合計時間"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Status"
 msgstr "<0/> 状態"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
+#. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "終了: {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Health Milestones"
 msgstr "<0/> 健康マイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Achieved"
 msgstr "<0/> 達成済み"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Locked"
 msgstr "<0/> ロック済み"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
+#. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "達成済み {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Failed to set custom start date"
 msgstr "カスタム開始日を設定できませんでした。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
 msgstr "正確な統計と計算を得るために、喫煙習慣を設定してください。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Smoking Habits"
 msgstr "喫煙習慣"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
 msgstr "1日あたりの喫煙本数（禁煙前）"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per pack"
 msgstr "1箱あたりのタバコ本数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
 msgstr "<0/> 財務設定"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Price per pack"
 msgstr "1箱あたりの価格"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Select currency..."
 msgstr "通貨を選択..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Your Motivational Goals"
 msgstr "あなたのモチベーション目標"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
 msgstr "自分を動機づけるために、禁煙の個人的な理由を追加してください。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
 msgstr "まだ目標が追加されていません。上にあなたの個人的な動機を追加してください！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
 msgstr "<0/> カスタム開始日"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid ""
 "If you started your smoke-free journey before using this app, enable this feature and set\n"
 "the date you actually quit smoking. This will adjust your streak display to show your true\n"
@@ -8739,112 +8871,140 @@ msgid ""
 msgstr "このアプリを使用する前に禁煙を始めていた場合は、この機能を有効にし、実際に禁煙した日付を設定してください。これにより、連続日数の表示が実際の禁煙日を示すように調整されます。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Enable custom start date"
 msgstr "カスタム開始日を有効にする"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Quit Date"
 msgstr "禁煙日"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Set Custom Start Date"
 msgstr "カスタム開始日を設定"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Current custom start date:"
 msgstr "現在のカスタム開始日："
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Streak Information"
 msgstr "<0/> 連続記録の情報"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Longest Streak"
 msgstr "最長連続記録"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Reset Count"
 msgstr "リセット回数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Health Progress"
 msgstr "<0/> 健康の進捗"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Achieved"
 msgstr "達成したマイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
 msgstr "吸わなかったタバコの本数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Days Smoke-Free"
 msgstr "禁煙日数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Craving Management"
 msgstr "<0/> 欲求管理"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Total Cravings"
 msgstr "欲求の合計"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Resisted Successfully"
 msgstr "正常に抵抗"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Success Rate"
 msgstr "成功率"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Achievements"
 msgstr "<0/> アチーブメント"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Unlocked"
 msgstr "アンロックされたマイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Latest Achievement"
 msgstr "最新の成果"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Next Milestone"
 msgstr "次のマイルストーン"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> 禁煙時間"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> {0}回目の挑戦"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "days"
 msgstr "日"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "hours"
 msgstr "時間"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "mins"
 msgstr "分"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "secs"
 msgstr "秒"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Started"
 msgstr "開始"
 

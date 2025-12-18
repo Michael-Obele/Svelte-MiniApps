@@ -11,7 +11,7 @@
 		updateSettings,
 		getActiveAttempt,
 		setCustomStartDate
-	} from './states.svelte';
+	} from '../states.svelte';
 	import { toast } from 'svelte-sonner';
 
 	interface Props {

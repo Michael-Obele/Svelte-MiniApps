@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { TimelineEntry } from './types';
-	import { formatDate } from './types';
+	import type { TimelineEntry } from '../types';
+	import { formatDate } from '../types';
 	import {
 		options,
 		timelineEntries,
 		addTimelineEntry,
 		updateTimelineEntry,
 		deleteTimelineEntry
-	} from './stores.svelte';
+	} from '../stores.svelte';
 	import {
 		getScenarioData,
 		addScenarioTimelineEntry,
@@ -369,5 +369,8 @@
 	description="Are you sure you want to delete this timeline entry? This action cannot be undone."
 	confirmText="Delete Entry"
 	onConfirm={confirmDeleteEntry}
-	onCancel={() => { showDeleteEntryDialog = false; entryToDelete = null; }}
+	onCancel={() => {
+		showDeleteEntryDialog = false;
+		entryToDelete = null;
+	}}
 />

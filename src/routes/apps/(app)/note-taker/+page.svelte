@@ -18,9 +18,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Separator } from '$lib/components/ui/separator';
-	import CreateNoteDialog from './components/CreateNoteDialog.svelte';
-	import EditNoteDialog from './components/EditNoteDialog.svelte';
-	import ViewNoteDialog from './components/ViewNoteDialog.svelte';
+	import { CreateNoteDialog, EditNoteDialog, ViewNoteDialog } from './components';
 	import {
 		Plus,
 		Trash2,

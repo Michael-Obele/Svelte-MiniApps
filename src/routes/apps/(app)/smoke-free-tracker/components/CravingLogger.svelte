@@ -6,8 +6,8 @@
 	import { Label } from '@/ui/label';
 	import { Textarea } from '@/ui/textarea';
 	import * as Select from '@/ui/select';
-	import type { SmokingAttempt } from './states.svelte';
-	import { logCraving, getCravingsForAttempt, deleteCravingLog } from './states.svelte';
+	import type { SmokingAttempt } from '../states.svelte';
+	import { logCraving, getCravingsForAttempt, deleteCravingLog } from '../states.svelte';
 
 	interface Props {
 		attempt: SmokingAttempt;

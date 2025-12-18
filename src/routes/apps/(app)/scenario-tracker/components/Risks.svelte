@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Risk, Severity } from './types';
-	import { formatDate, getSeverityColor } from './types';
-	import { options, risks, addRisk, updateRisk, deleteRisk } from './stores.svelte';
+	import type { Risk, Severity } from '../types';
+	import { formatDate, getSeverityColor } from '../types';
+	import { options, risks, addRisk, updateRisk, deleteRisk } from '../stores.svelte';
 	import {
 		getScenarioData,
 		addScenarioRisk,
@@ -418,5 +418,8 @@
 	title="Delete Risk"
 	description="Are you sure you want to delete this risk? This action cannot be undone."
 	onConfirm={confirmDeleteRisk}
-	onCancel={() => { showDeleteRiskDialog = false; riskToDelete = null; }}
+	onCancel={() => {
+		showDeleteRiskDialog = false;
+		riskToDelete = null;
+	}}
 />

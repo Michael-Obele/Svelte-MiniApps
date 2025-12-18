@@ -5,8 +5,8 @@
 	import { Badge } from '@/ui/badge';
 	import * as Dialog from '@/ui/dialog';
 
-	import type { Item, PurchaseRecord } from './states.svelte';
-	import * as purchaseState from './states.svelte';
+	import type { Item, PurchaseRecord } from '../states.svelte';
+	import * as purchaseState from '../states.svelte';
 
 	interface Props {
 		open: boolean;

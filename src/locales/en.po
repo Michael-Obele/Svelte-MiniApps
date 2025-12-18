@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2025-12-18T21:17:21.314Z\n"
+"PO-Revision-Date: 2025-12-18T23:04:46.340Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -771,6 +771,8 @@ msgstr "Add persistence"
 #: src/lib/stores/todo-store.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "In Progress"
 msgstr "In Progress"
 
@@ -1221,6 +1223,7 @@ msgstr "Clear"
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
@@ -2906,6 +2909,7 @@ msgstr "My Account"
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Settings"
 msgstr "Settings"
 
@@ -3227,6 +3231,7 @@ msgstr "3-31 characters: lowercase letters, numbers, underscores, and hyphens"
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/register/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password"
 msgstr "Password"
 
@@ -3454,6 +3459,7 @@ msgstr "Enter your username"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
@@ -3465,6 +3471,7 @@ msgstr "Enter your username"
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Cancel"
 msgstr "Cancel"
@@ -3643,6 +3650,7 @@ msgid "View All Resources"
 msgstr "View All Resources"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "Current Streak"
 
@@ -3691,6 +3699,7 @@ msgstr "Good"
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strong"
 msgstr "Strong"
 
@@ -3868,6 +3877,7 @@ msgstr "Saving..."
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "Save changes"
 
@@ -4465,6 +4475,7 @@ msgstr "Show All"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -4711,6 +4722,7 @@ msgstr "Select Budget"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
 msgstr "USD"
 
@@ -4722,6 +4734,7 @@ msgstr "USD"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "EUR"
 msgstr "EUR"
 
@@ -4731,6 +4744,7 @@ msgstr "EUR"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "GBP"
 msgstr "GBP"
 
@@ -4740,6 +4754,7 @@ msgstr "GBP"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "JPY"
 msgstr "JPY"
 
@@ -4749,6 +4764,7 @@ msgstr "JPY"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "CAD"
 msgstr "CAD"
 
@@ -4758,6 +4774,7 @@ msgstr "CAD"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "AUD"
 msgstr "AUD"
 
@@ -4771,6 +4788,7 @@ msgstr "CNY"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "INR"
 
@@ -4784,6 +4802,7 @@ msgstr "BRL"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "NGN"
 msgstr "NGN"
 
@@ -4937,6 +4956,7 @@ msgstr "Formated Budget Amount"
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
 msgstr "Currency"
 
@@ -5504,6 +5524,7 @@ msgstr "Missed"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
 
@@ -5992,6 +6013,7 @@ msgstr "<0/> Ends: {0}"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ongoing"
 msgstr "Ongoing"
 
@@ -6503,6 +6525,7 @@ msgstr "Optionally add a note explaining why you're skipping this dose."
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "Notes (optional)"
 
@@ -7247,62 +7270,77 @@ msgid "Social Links"
 msgstr "Social Links"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Full Name"
 msgstr "Full Name"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "John Doe"
 msgstr "John Doe"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Phone Number"
 msgstr "Phone Number"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Email"
 msgstr "Email"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Website"
 msgstr "Website"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Your QR Code"
 msgstr "Your QR Code"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download"
 msgstr "Download"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download QR Code"
 msgstr "Download QR Code"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Link Label"
 msgstr "Link Label"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Instagram, Twitter, Portfolio, etc."
 msgstr "Instagram, Twitter, Portfolio, etc."
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "URL"
 msgstr "URL"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Remove"
 msgstr "Remove"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Add Another Link"
 msgstr "Add Another Link"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter Text or URL"
 msgstr "Enter Text or URL"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter text or paste a URL"
 msgstr "Enter text or paste a URL"
 
@@ -7316,11 +7354,13 @@ msgstr "Please select at least one character type"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "Password copied to clipboard"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "Failed to copy password"
 
@@ -7350,8 +7390,10 @@ msgstr "Description (Optional)"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 characters"
 
@@ -7407,52 +7449,66 @@ msgid "No saved passwords yet"
 msgstr "No saved passwords yet"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Hide password"
 msgstr "Hide password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Show password"
 msgstr "Show password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Copy password"
 msgstr "Copy password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit password"
 msgstr "Edit password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Delete password"
 msgstr "Delete password"
 
 #. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
+#. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
+#. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "Saved on {0} at {1}"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit Password"
 msgstr "Edit Password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Update your password and its details. Click save when you're done."
 msgstr "Update your password and its details. Click save when you're done."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Enter password"
 msgstr "Enter password"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Details (optional)"
 msgstr "Details (optional)"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Add details about this password..."
 msgstr "Add details about this password..."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> Saving..."
 
@@ -7659,227 +7715,285 @@ msgid "Track your cravings to understand your triggers and improve your strategy
 msgstr "Track your cravings to understand your triggers and improve your strategy."
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Stress"
 msgstr "Stress"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "After meal"
 msgstr "After meal"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Social situation"
 msgstr "Social situation"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Boredom"
 msgstr "Boredom"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Alcohol"
 msgstr "Alcohol"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Coffee/tea"
 msgstr "Coffee/tea"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Work break"
 msgstr "Work break"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Driving"
 msgstr "Driving"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Morning routine"
 msgstr "Morning routine"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
 msgstr "Other"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Deep breathing"
 msgstr "Deep breathing"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Exercise/walk"
 msgstr "Exercise/walk"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Water/snack"
 msgstr "Water/snack"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Call friend"
 msgstr "Call friend"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Distraction"
 msgstr "Distraction"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Meditation"
 msgstr "Meditation"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Chewing gum"
 msgstr "Chewing gum"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Read motivations"
 msgstr "Read motivations"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Delay tactics"
 msgstr "Delay tactics"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Mild"
 msgstr "Very Mild"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Mild"
 msgstr "Mild"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Moderate"
 msgstr "Moderate"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Strong"
 msgstr "Very Strong"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Craving Log"
 msgstr "Craving Log"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Intensity (1-5)"
 msgstr "Intensity (1-5)"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "What triggered it?"
 msgstr "What triggered it?"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select trigger"
 msgstr "Select trigger"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "How did you cope?"
 msgstr "How did you cope?"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select strategy"
 msgstr "Select strategy"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Did you resist the craving?"
 msgstr "Did you resist the craving?"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Yes, I resisted!"
 msgstr "Yes, I resisted!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "No, I gave in"
 msgstr "No, I gave in"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Any additional thoughts..."
 msgstr "Any additional thoughts..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "<0/> Log Craving"
 msgstr "<0/> Log Craving"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Recent Cravings"
 msgstr "Recent Cravings"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
+#. placeholder {0}: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} Intensity"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Resisted"
 msgstr "Resisted"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Gave In"
 msgstr "Gave In"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Trigger:"
 msgstr "Trigger:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strategy:"
 msgstr "Strategy:"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Attempt History"
 msgstr "<0/> Attempt History"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
 msgstr "No attempts yet. Start your journey above!"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "Attempt #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Current"
 msgstr "Current"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
 msgstr "Completed"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Longest Streak"
 msgstr "<0/> Longest Streak"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Resets"
 msgstr "<0/> Resets"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Total Duration"
 msgstr "<0/> Total Duration"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Status"
 msgstr "<0/> Status"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
+#. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "Ended: {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Health Milestones"
 msgstr "<0/> Health Milestones"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Achieved"
 msgstr "<0/> Achieved"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Locked"
 msgstr "<0/> Locked"
 
@@ -7887,67 +8001,84 @@ msgstr "<0/> Locked"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% complete"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
+#. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "Achieved {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Failed to set custom start date"
 msgstr "Failed to set custom start date"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
 msgstr "Configure your smoking habits to get accurate statistics and calculations."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Smoking Habits"
 msgstr "Smoking Habits"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
 msgstr "Cigarettes per day (before quitting)"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per pack"
 msgstr "Cigarettes per pack"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
 msgstr "<0/> Financial Settings"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Price per pack"
 msgstr "Price per pack"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Select currency..."
 msgstr "Select currency..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Your Motivational Goals"
 msgstr "Your Motivational Goals"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
 msgstr "Add personal reasons for quitting to keep yourself motivated."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
 msgstr "No goals added yet. Add your personal motivations above!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
 msgstr "<0/> Custom Start Date"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid ""
 "If you started your smoke-free journey before using this app, enable this feature and set\n"
 "the date you actually quit smoking. This will adjust your streak display to show your true\n"
@@ -7958,117 +8089,146 @@ msgstr ""
 "quit date."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Enable custom start date"
 msgstr "Enable custom start date"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Quit Date"
 msgstr "Quit Date"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Set Custom Start Date"
 msgstr "Set Custom Start Date"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Current custom start date:"
 msgstr "Current custom start date:"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
 msgstr "<0/> Save Settings"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Streak Information"
 msgstr "<0/> Streak Information"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Longest Streak"
 msgstr "Longest Streak"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Reset Count"
 msgstr "Reset Count"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Health Progress"
 msgstr "<0/> Health Progress"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Achieved"
 msgstr "Milestones Achieved"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
 msgstr "Cigarettes Not Smoked"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Days Smoke-Free"
 msgstr "Days Smoke-Free"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Craving Management"
 msgstr "<0/> Craving Management"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Total Cravings"
 msgstr "Total Cravings"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Resisted Successfully"
 msgstr "Resisted Successfully"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Success Rate"
 msgstr "Success Rate"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Achievements"
 msgstr "<0/> Achievements"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Unlocked"
 msgstr "Milestones Unlocked"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Latest Achievement"
 msgstr "Latest Achievement"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Next Milestone"
 msgstr "Next Milestone"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> Smoke-Free For"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> Attempt #{0}"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "days"
 msgstr "days"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "hours"
 msgstr "hours"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "mins"
 msgstr "mins"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "secs"
 msgstr "secs"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Started"
 msgstr "Started"
 

@@ -39,12 +39,14 @@
 	import type { SmokingAttempt, CravingLog } from './states.svelte';
 
 	// Component imports
-	import StreakTimer from './StreakTimer.svelte';
-	import StatisticsView from './StatisticsView.svelte';
-	import MilestonesView from './MilestonesView.svelte';
-	import CravingLogger from './CravingLogger.svelte';
-	import SettingsDialog from './SettingsDialog.svelte';
-	import HistoryView from './HistoryView.svelte';
+	import {
+		StreakTimer,
+		StatisticsView,
+		MilestonesView,
+		CravingLogger,
+		SettingsDialog,
+		HistoryView
+	} from './components';
 
 	// Props from load function
 	let { data } = $props<{ data: any }>();

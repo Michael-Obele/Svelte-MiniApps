@@ -8,8 +8,8 @@
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
 
-	import * as medState from './states.svelte';
-	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
+	import * as medState from '../states.svelte';
+	import type { TreatmentSession, Medication, MedicationLog } from '../states.svelte';
 
 	// Import remote functions
 	import { deleteMedicationLog } from '$lib/remote';

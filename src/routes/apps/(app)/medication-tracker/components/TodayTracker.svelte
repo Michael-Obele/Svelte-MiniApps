@@ -17,8 +17,8 @@
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
 
-	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
-	import { updateLog, rescheduleLog } from './states.svelte';
+	import type { TreatmentSession, Medication, MedicationLog } from '../states.svelte';
+	import { updateLog, rescheduleLog } from '../states.svelte';
 
 	// Props
 	let {

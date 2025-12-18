@@ -1,11 +1,8 @@
 <script lang="ts">
 	import * as htmlToImage from 'html-to-image';
-	import TextInput from './TextInput.svelte';
+	import { TextInput, ContactInput, SocialLinks, QRCodeDisplay } from './components';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import ContactInput from './ContactInput.svelte';
-	import SocialLinks from './SocialLinks.svelte';
 	import * as Tabs from '@/ui/tabs';
-	import QRCodeDisplay from './QRCodeDisplay.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { qrCodeGeneratorHowToUse } from './how-to-use-config';
 	import { Button } from '@/ui/button';

@@ -17,8 +17,8 @@
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
 	import { toast } from 'svelte-sonner';
-	import type { TreatmentSession, MedicationLog, Medication } from './states.svelte';
-	import { updateLog, rescheduleLog } from './states.svelte';
+	import type { TreatmentSession, MedicationLog, Medication } from '../states.svelte';
+	import { updateLog, rescheduleLog } from '../states.svelte';
 
 	// Props
 	let {

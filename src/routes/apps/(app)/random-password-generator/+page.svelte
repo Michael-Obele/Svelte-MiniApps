@@ -13,7 +13,7 @@
 	import { copyToClipboard } from '$lib/utils';
 	import type { PageProps } from './$types';
 	import { Skeleton } from '@/ui/skeleton';
-	import PasswordDisplay from './PasswordDisplay.svelte';
+	import { PasswordDisplay } from './components';
 	import { getSavedPasswords, savePassword, getCurrentUser } from '$lib/remote';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-12-18T21:18:08.647Z\n"
+"PO-Revision-Date: 2025-12-18T23:04:48.344Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -219,6 +219,7 @@ msgstr "3-31 个字符：小写字母、数字、下划线和连字符"
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/register/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password"
 msgstr "密码"
 
@@ -284,6 +285,7 @@ msgstr "概览"
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Settings"
 msgstr "设置"
 
@@ -483,6 +485,7 @@ msgstr "清除"
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Close"
@@ -493,6 +496,7 @@ msgstr "关闭"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -701,6 +705,7 @@ msgstr "选择预算"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
 msgstr "美元"
 
@@ -712,6 +717,7 @@ msgstr "美元"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "EUR"
 msgstr "欧元"
 
@@ -721,6 +727,7 @@ msgstr "欧元"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "GBP"
 msgstr "英镑"
 
@@ -730,6 +737,7 @@ msgstr "英镑"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "JPY"
 msgstr "日元"
 
@@ -739,6 +747,7 @@ msgstr "日元"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "CAD"
 msgstr "加元"
 
@@ -748,6 +757,7 @@ msgstr "加元"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "AUD"
 msgstr "澳元"
 
@@ -761,6 +771,7 @@ msgstr "人民币"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "印度卢比"
 
@@ -774,6 +785,7 @@ msgstr "巴西雷亚尔"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "NGN"
 msgstr "尼日利亚奈拉"
 
@@ -909,6 +921,7 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
@@ -920,6 +933,7 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Cancel"
 msgstr "取消"
@@ -1373,6 +1387,7 @@ msgstr "错过"
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
 
@@ -1511,11 +1526,13 @@ msgstr "请选择至少一种字符类型"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "密码已复制到剪贴板"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "复制密码失败"
 
@@ -3087,6 +3104,7 @@ msgid "{@html structuredDataJson}"
 msgstr "{@html structuredDataJson}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "当前连续"
 
@@ -3333,62 +3351,77 @@ msgid "Got It!"
 msgstr "知道了！"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter Text or URL"
 msgstr "输入文本或 URL"
 
 #: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter text or paste a URL"
 msgstr "输入文本或粘贴 URL"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Full Name"
 msgstr "全名"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "John Doe"
 msgstr "约翰·多伊"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Phone Number"
 msgstr "电话号码"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Email"
 msgstr "电子邮件"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Website"
 msgstr "网站"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Link Label"
 msgstr "链接标签"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Instagram, Twitter, Portfolio, etc."
 msgstr "Instagram、Twitter、作品集等"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "URL"
 msgstr "URL"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Remove"
 msgstr "删除"
 
 #: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Add Another Link"
 msgstr "添加另一个链接"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Your QR Code"
 msgstr "您的二维码"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download"
 msgstr "下载"
 
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
+#: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download QR Code"
 msgstr "下载二维码"
 
@@ -3615,12 +3648,14 @@ msgstr "格式化的预算金额"
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
 msgstr "货币"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "保存更改"
 
@@ -3758,7 +3793,10 @@ msgstr "GitHub 贡献图"
 
 #. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
+#. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
+#. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "保存在 {0} {1}"
 
@@ -4087,6 +4125,7 @@ msgstr "<0/> 结束：{0}"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ongoing"
 msgstr "进行中"
 
@@ -4367,6 +4406,7 @@ msgstr "可以添加一条备注，说明您跳过此剂量的原因。"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "备注（可选）"
 
@@ -4624,6 +4664,8 @@ msgstr "添加持久化存储"
 #: src/lib/stores/todo-store.svelte.ts
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "In Progress"
 msgstr "进行中"
 
@@ -4784,6 +4826,7 @@ msgid "You're inspiring others by your commitment! 👏"
 msgstr "你的承诺正在激励他人！👏"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Stress"
 msgstr "压力"
@@ -4801,21 +4844,25 @@ msgid "Social situations"
 msgstr "社交场合"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Boredom"
 msgstr "无聊"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Alcohol"
 msgstr "酒精"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Driving"
 msgstr "驾驶"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Work break"
 msgstr "工作休息"
@@ -4825,11 +4872,13 @@ msgid "Seeing others smoke"
 msgstr "看到别人吸烟"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Morning routine"
 msgstr "早晨习惯"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Deep breathing"
 msgstr "深呼吸"
@@ -4855,6 +4904,7 @@ msgid "Exercise"
 msgstr "锻炼"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Meditation"
 msgstr "冥想"
@@ -4872,244 +4922,306 @@ msgid "Review your goals"
 msgstr "回顾你的目标"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> 无烟时长"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> 尝试 #{0}"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "days"
 msgstr "天"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "hours"
 msgstr "小时"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "mins"
 msgstr "分钟"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "secs"
 msgstr "秒"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Started"
 msgstr "开始"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Longest Streak"
 msgstr "最长连续"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Streak Information"
 msgstr "<0/> 连续信息"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Reset Count"
 msgstr "重置计数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Health Progress"
 msgstr "<0/> 健康进展"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Achieved"
 msgstr "已达成的里程碑"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
 msgstr "未吸的香烟"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Days Smoke-Free"
 msgstr "无烟天数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Craving Management"
 msgstr "<0/> 烟瘾管理"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Total Cravings"
 msgstr "总烟瘾数"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Resisted Successfully"
 msgstr "成功抵抗"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Success Rate"
 msgstr "成功率"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Achievements"
 msgstr "<0/> 成就"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Unlocked"
 msgstr "解锁的里程碑"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Latest Achievement"
 msgstr "最新成就"
 
 #: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Next Milestone"
 msgstr "下一个里程碑"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "After meal"
 msgstr "饭后"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Social situation"
 msgstr "社交场合"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Coffee/tea"
 msgstr "咖啡/茶"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
 msgstr "其他"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Exercise/walk"
 msgstr "运动/散步"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Water/snack"
 msgstr "喝水/吃零食"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Call friend"
 msgstr "给朋友打电话"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Distraction"
 msgstr "转移注意力"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Chewing gum"
 msgstr "嚼口香糖"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Read motivations"
 msgstr "阅读动机"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Delay tactics"
 msgstr "拖延战术"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Mild"
 msgstr "非常轻微"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Mild"
 msgstr "轻微"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Moderate"
 msgstr "中等"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strong"
 msgstr "强烈"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Strong"
 msgstr "非常强烈"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Craving Log"
 msgstr "烟瘾记录"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Intensity (1-5)"
 msgstr "强度 (1-5)"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "What triggered it?"
 msgstr "是什么触发了它？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select trigger"
 msgstr "选择触发因素"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "How did you cope?"
 msgstr "你是如何应对的？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select strategy"
 msgstr "选择策略"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Did you resist the craving?"
 msgstr "你抵制住烟瘾了吗？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Yes, I resisted!"
 msgstr "是的，我抵制住了！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "No, I gave in"
 msgstr "不，我屈服了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Any additional thoughts..."
 msgstr "任何其他的想法..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "<0/> Log Craving"
 msgstr "<0/> 记录烟瘾"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Recent Cravings"
 msgstr "最近的烟瘾"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
+#. placeholder {0}: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} 强度"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Resisted"
 msgstr "抵制住了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Gave In"
 msgstr "屈服了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Trigger:"
 msgstr "触发因素："
 
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strategy:"
 msgstr "策略："
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Health Milestones"
 msgstr "<0/> 健康里程碑"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Achieved"
 msgstr "<0/> 已达成"
 
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Locked"
 msgstr "<0/> 已锁定"
 
@@ -5117,67 +5229,84 @@ msgstr "<0/> 已锁定"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% 完成"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
+#. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "已达成 {0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Failed to set custom start date"
 msgstr "设置自定义开始日期失败"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
 msgstr "配置您的吸烟习惯以获得准确的统计数据和计算。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Smoking Habits"
 msgstr "吸烟习惯"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
 msgstr "每天吸烟数量（戒烟前）"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per pack"
 msgstr "每包香烟数量"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
 msgstr "<0/> 财务设置"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Price per pack"
 msgstr "每包价格"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Select currency..."
 msgstr "选择货币..."
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Your Motivational Goals"
 msgstr "您的激励目标"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
 msgstr "添加个人戒烟理由以保持动力。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
 msgstr "尚未添加目标。请在上方添加您的个人动力！"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
 msgstr "<0/> 自定义开始日期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid ""
 "If you started your smoke-free journey before using this app, enable this feature and set\n"
 "the date you actually quit smoking. This will adjust your streak display to show your true\n"
@@ -5185,66 +5314,84 @@ msgid ""
 msgstr "如果您在使用此应用程序之前就开始了无烟之旅，请启用此功能并设置您实际戒烟的日期。这将调整您的连胜显示，以显示您真实的戒烟日期。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Enable custom start date"
 msgstr "启用自定义开始日期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Quit Date"
 msgstr "戒烟日期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Set Custom Start Date"
 msgstr "设置自定义开始日期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Current custom start date:"
 msgstr "当前自定义开始日期："
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
 msgstr "<0/> 保存设置"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Attempt History"
 msgstr "<0/> 尝试历史"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
 msgstr "尚未进行任何尝试。请从上方开始您的旅程！"
 
 #. placeholder {0}: attempt.resetCount + 1
+#. placeholder {0}: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "尝试 #{0}"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Current"
 msgstr "当前"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
 msgstr "已完成"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Longest Streak"
 msgstr "<0/> 最长连胜"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Resets"
 msgstr "<0/> 重置"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Total Duration"
 msgstr "<0/> 总时长"
 
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Status"
 msgstr "<0/> 状态"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
+#. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "结束于：{0}"
 
@@ -7297,8 +7444,10 @@ msgstr "描述（可选）"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 个字符"
 
@@ -7412,46 +7561,57 @@ msgid ""
 msgstr "所有密码均已加密并安全存储。您可以随时查看、复制和删除您的密码。为了获得最高的安全性，请考虑为敏感帐户使用专用的密码管理器。"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Hide password"
 msgstr "隐藏密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Show password"
 msgstr "显示密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Copy password"
 msgstr "复制密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit password"
 msgstr "编辑密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Delete password"
 msgstr "删除密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit Password"
 msgstr "编辑密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Update your password and its details. Click save when you're done."
 msgstr "更新您的密码及其详细信息。完成后点击保存。"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Enter password"
 msgstr "输入密码"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Details (optional)"
 msgstr "详细信息（可选）"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Add details about this password..."
 msgstr "添加关于此密码的详细信息..."
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> 保存中..."
 

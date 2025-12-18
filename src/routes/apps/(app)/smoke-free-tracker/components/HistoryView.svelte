@@ -7,7 +7,7 @@
 		formatDuration,
 		getAttemptDuration,
 		getOverallLongestStreak
-	} from './states.svelte';
+	} from '../states.svelte';
 
 	let allAttempts = $derived(smokingAttempts.current.slice().reverse());
 </script>

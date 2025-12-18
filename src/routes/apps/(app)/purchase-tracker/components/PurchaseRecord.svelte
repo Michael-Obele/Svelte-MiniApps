@@ -4,8 +4,8 @@
 	import { Badge } from '@/ui/badge';
 	import { Button } from '@/ui/button';
 
-	import type { PurchaseRecord } from './states.svelte';
-	import * as purchaseState from './states.svelte';
+	import type { PurchaseRecord } from '../states.svelte';
+	import * as purchaseState from '../states.svelte';
 
 	interface Props {
 		purchase: PurchaseRecord & { item: any };

@@ -46,11 +46,7 @@
 	import { backupMedicationData, loadMedicationData, syncMedicationData } from '$lib/remote';
 
 	// Component imports
-	import SessionManager from './SessionManager.svelte';
-	import MedicationList from './MedicationList.svelte';
-	import TodayTracker from './TodayTracker.svelte';
-	import StatsView from './StatsView.svelte';
-	import HistoryView from './HistoryView.svelte';
+	import { SessionManager, MedicationList, TodayTracker, StatsView, HistoryView } from './components';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { medicationTrackerHowToUse } from './how-to-use-config';
 
