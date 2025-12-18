@@ -8,16 +8,9 @@
 	import { PersistedState } from 'runed';
 	import icons from 'currency-icons';
 
-	import BudgetsList from './BudgetsList.svelte';
-	import FloatingBtn from './FloatingBtn.svelte';
-	import BudgetDialog from './BudgetDialog.svelte';
-	import QuickNavigation from './QuickNavigation.svelte';
+	import { BudgetsList, FloatingBtn, BudgetDialog, QuickNavigation, ExpenseDialog, BudgetSection, ExpenseSection, ExpensesList } from './components';
 	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
-	import ExpenseDialog from './ExpenseDialog.svelte';
-	import BudgetSection from './BudgetSection.svelte';
-	import ExpenseSection from './ExpenseSection.svelte';
-	import ExpensesList from './ExpensesList.svelte';
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
 	import { scrollToID } from '$lib/utils';

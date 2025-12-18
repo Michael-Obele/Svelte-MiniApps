@@ -2,8 +2,8 @@
 	import { Card } from '@/ui/card';
 	import { Button } from '@/ui/button';
 	import { Pencil, Trash2 } from '@lucide/svelte';
-	import type { Budget, Expense } from './states.svelte';
-	import * as budgetState from './states.svelte';
+	import type { Budget, Expense } from '../states.svelte';
+	import * as budgetState from '../states.svelte';
 	import { toast } from 'svelte-sonner';
 
 	// Props with proper typing

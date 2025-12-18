@@ -3,8 +3,8 @@
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import * as AlertDialog from '@/ui/alert-dialog';
-	import type { Expense } from './states.svelte';
-	import { findBudget } from './states.svelte';
+	import type { Expense } from '../states.svelte';
+	import { findBudget } from '../states.svelte';
 	import { Bolt } from '@lucide/svelte';
 
 	interface Props {

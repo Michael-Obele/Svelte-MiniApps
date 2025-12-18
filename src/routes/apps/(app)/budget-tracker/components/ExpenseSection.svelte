@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Select from '@/ui/select';
-	import * as budgetState from './states.svelte';
-	import type { Budget, Expense } from './states.svelte';
+	import * as budgetState from '../states.svelte';
+	import type { Budget, Expense } from '../states.svelte';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Card } from '@/ui/card';

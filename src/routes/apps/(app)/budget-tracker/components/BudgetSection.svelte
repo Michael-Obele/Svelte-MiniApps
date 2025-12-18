@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Select from '@/ui/select';
-	import type { Budget } from './states.svelte';
+	import type { Budget } from '../states.svelte';
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Card } from '@/ui/card';

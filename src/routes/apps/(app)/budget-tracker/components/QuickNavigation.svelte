@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as budgetState from './states.svelte';
-	import type { Budget } from './states.svelte';
+	import * as budgetState from '../states.svelte';
+	import type { Budget } from '../states.svelte';
 	import { Button } from '@/ui/button';
 	import { Card } from '@/ui/card';
 	import { Progress } from '@/ui/progress/index.js';
