@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-12-11T08:39:02.439Z\n"
+"PO-Revision-Date: 2025-12-18T21:18:08.647Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -49,9 +49,7 @@ msgid "Page Not Found"
 msgstr "未找到页面"
 
 #: src/routes/+error.svelte
-msgid ""
-"The page you are looking for might have been removed, had its name changed, "
-"or is temporarily unavailable."
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
 msgstr "您要查找的页面可能已被删除、更改名称或暂时不可用。"
 
 #: src/routes/+error.svelte
@@ -144,25 +142,15 @@ msgid "Available Apps"
 msgstr "可用应用"
 
 #: src/routes/apps/(app)/+layout.svelte
-msgid ""
-"Explore our collection of interactive mini applications built with Svelte. "
-"<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> "
-"<1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> "
-"<2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected "
-"app</1></3></0>"
-msgstr ""
-"浏览我们使用 Svelte 构建的交互式迷你应用程序合集。<0><0><0>Alt</0> <1>+</1> <2>D</2> "
-"<3>切换此菜单</3></0> <1><0>Tab</0> <1>向前导航</1></1> <2><0>Shift</0> <1>+</1> "
-"<2>Tab</2> <3>向后导航</3></2> <3><0>Enter</0> <1>打开选定的应用程序</1></3></0>"
+msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
+msgstr "浏览我们使用 Svelte 构建的交互式迷你应用程序合集。<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>切换此菜单</3></0> <1><0>Tab</0> <1>向前导航</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>向后导航</3></2> <3><0>Enter</0> <1>打开选定的应用程序</1></3></0>"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
 msgid "Svelte Mini Apps - GitHub Contribution Tracker"
 msgstr "Svelte Mini Apps - GitHub 贡献追踪器"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
-msgid ""
-"Visualize your GitHub contributions in a clear and engaging way. Track "
-"streaks, identify patterns, and stay motivated."
+msgid "Visualize your GitHub contributions in a clear and engaging way. Track streaks, identify patterns, and stay motivated."
 msgstr "以清晰且引人入胜的方式可视化您的 GitHub 贡献。 跟踪连胜记录、识别模式并保持动力。"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
@@ -178,9 +166,7 @@ msgid "Changelog"
 msgstr "更新日志"
 
 #: src/routes/+page.svelte
-msgid ""
-"Your everyday digital companion - a collection of beautifully crafted tools "
-"to simplify your life."
+msgid "Your everyday digital companion - a collection of beautifully crafted tools to simplify your life."
 msgstr "您日常的数字伴侣 - 一系列精心打造的工具，旨在简化您的生活。"
 
 #: src/routes/+page.svelte
@@ -409,13 +395,8 @@ msgid "About Page | Svelte Mini Apps"
 msgstr "关于页面 | Svelte Mini Apps"
 
 #: src/routes/about/+page.svelte
-msgid ""
-"Discover more about Svelte Mini Apps on our About page. Learn about our "
-"innovative tools, unique Svelte applications, and how we're revolutionizing "
-"the Svelte ecosystem."
-msgstr ""
-"在我们的“关于”页面上了解更多关于 Svelte Mini Apps 的信息。 了解我们的创新工具、独特的 Svelte 应用程序以及我们如何彻底改变 "
-"Svelte 生态系统。"
+msgid "Discover more about Svelte Mini Apps on our About page. Learn about our innovative tools, unique Svelte applications, and how we're revolutionizing the Svelte ecosystem."
+msgstr "在我们的“关于”页面上了解更多关于 Svelte Mini Apps 的信息。 了解我们的创新工具、独特的 Svelte 应用程序以及我们如何彻底改变 Svelte 生态系统。"
 
 #: src/routes/about/+page.svelte
 msgid "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
@@ -423,22 +404,15 @@ msgstr "Svelte Mini Apps: 使用 <0>SvelteKit <0/></0> 构建的强大小型工�
 
 #: src/routes/about/+page.svelte
 msgid ""
-"<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools "
-"built with <1>SvelteKit</1> for lightning speed. Conquer\n"
+"<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
 "everyday tasks with ease."
-msgstr ""
-"<0>增强您的工作流程！</0> Svelte Mini Apps 是使用 <1>SvelteKit</1> 构建的小型、专注的工具，速度极快。 "
-"轻松完成日常任务。"
+msgstr "<0>增强您的工作流程！</0> Svelte Mini Apps 是使用 <1>SvelteKit</1> 构建的小型、专注的工具，速度极快。 轻松完成日常任务。"
 
 #: src/routes/about/+page.svelte
 msgid ""
-"<0>Work anytime, anywhere!</0> These tiny web apps, built with "
-"<1>SvelteKit</1>, let you install them for\n"
-"seamless offline access. Conquer your daily challenges, even without an "
-"internet connection."
-msgstr ""
-"<0>随时随地工作！</0> 这些使用 <1>SvelteKit</1> 构建的小型 Web 应用程序允许您安装它们以实现无缝的离线访问。 "
-"即使没有互联网连接，也能克服您的日常挑战。"
+"<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for\n"
+"seamless offline access. Conquer your daily challenges, even without an internet connection."
+msgstr "<0>随时随地工作！</0> 这些使用 <1>SvelteKit</1> 构建的小型 Web 应用程序允许您安装它们以实现无缝的离线访问。 即使没有互联网连接，也能克服您的日常挑战。"
 
 #: src/routes/about/+page.svelte
 msgid "Like What You See?"
@@ -446,8 +420,7 @@ msgstr "喜欢你所看到的吗？"
 
 #: src/routes/about/+page.svelte
 msgid ""
-"I'm available for freelance work, consulting, and exciting collaborations. "
-"Let's build\n"
+"I'm available for freelance work, consulting, and exciting collaborations. Let's build\n"
 "something amazing together with modern web technologies!"
 msgstr "我提供自由职业、咨询和激动人心的合作机会。让我们一起使用现代 Web 技术构建出色的东西！"
 
@@ -464,9 +437,7 @@ msgid "Apps | Svelte Mini Apps"
 msgstr "应用 | Svelte 迷你应用"
 
 #: src/routes/apps/+page.svelte
-msgid ""
-"Explore a variety of useful mini applications built with Svelte. Find tools "
-"for productivity, entertainment, and more."
+msgid "Explore a variety of useful mini applications built with Svelte. Find tools for productivity, entertainment, and more."
 msgstr "探索使用 Svelte 构建的各种有用的迷你应用程序。查找提高工作效率、娱乐等的工具。"
 
 #: src/routes/apps/+page.svelte
@@ -489,8 +460,8 @@ msgstr "找到您正在寻找的迷你应用程序"
 msgid "Search by name, or description..."
 msgstr "按名称或描述搜索..."
 
-#: src/routes/apps/AppFilters.svelte
 #. placeholder {0}: searchQuery
+#: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "未找到与 \"{0}\" 匹配的项目"
 
@@ -508,6 +479,8 @@ msgstr "清除"
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
@@ -518,6 +491,7 @@ msgstr "关闭"
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -532,9 +506,7 @@ msgid "Advanced Emoji Tools"
 msgstr "高级表情符号工具"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid ""
-"An advanced toolset for working with emojis. Convert text to emojis, search "
-"for emojis, and more."
+msgid "An advanced toolset for working with emojis. Convert text to emojis, search for emojis, and more."
 msgstr "用于处理表情符号的高级工具集。将文本转换为表情符号，搜索表情符号等。"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
@@ -671,15 +643,15 @@ msgstr "找到满足您需求的完美表情符号"
 msgid "Search emojis..."
 msgstr "搜索表情符号..."
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #. placeholder {0}: result.name
 #. placeholder {0}: result.name
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Copied {0}!"
 msgstr "已复制 {0}！"
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #. placeholder {0}: result.name
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Copied name: {0}"
 msgstr "已复制名称：{0}"
 
@@ -849,9 +821,7 @@ msgid "Budget Tracker | Svelte Mini Apps"
 msgstr "预算跟踪器 | Svelte Mini Apps"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-msgid ""
-"Create and manage budgets, track expenses, and visualize your spending with "
-"our simple yet powerful budget tracking tool."
+msgid "Create and manage budgets, track expenses, and visualize your spending with our simple yet powerful budget tracking tool."
 msgstr "使用我们简单而强大的预算跟踪工具，创建和管理预算、跟踪费用并可视化您的支出。"
 
 #: src/lib/index.svelte.ts
@@ -869,9 +839,7 @@ msgid "Offer"
 msgstr "提供"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-msgid ""
-"Create budgets, Track expenses, Visualize spending, Multiple currency "
-"support"
+msgid "Create budgets, Track expenses, Visualize spending, Multiple currency support"
 msgstr "创建预算，跟踪支出，可视化消费，支持多种货币"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -888,8 +856,8 @@ msgstr "如何使用"
 msgid "Help"
 msgstr "帮助"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
 #. placeholder {0}: autoBackupCountdown
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Auto-backup in {0}s"
 msgstr "将在 {0} 秒后自动备份"
 
@@ -917,6 +885,19 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -951,8 +932,8 @@ msgstr "自动备份已禁用 - 未保存的更改"
 msgid "Enable"
 msgstr "启用"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
 #. placeholder {0}: AUTO_BACKUP_DELAY / 1000
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Auto-backup ({0}s)"
 msgstr "自动备份（{0} 秒）"
 
@@ -993,15 +974,13 @@ msgstr "创建预算"
 msgid "OK"
 msgstr "确定"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
 #. placeholder {0}: site().name
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
 msgstr "货币转换器 - {0}"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid ""
-"Convert currencies effortlessly with our easy-to-use currency converter. "
-"Get instant results and accurate exchange rates."
+msgid "Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
 msgstr "使用我们易于使用的货币转换器轻松转换货币。获取即时结果和准确的汇率。"
 
 #: src/lib/index.svelte.ts
@@ -1053,8 +1032,7 @@ msgstr "强制刷新汇率"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid ""
-"Please use Force Fresh Rate sparingly. The cache is only active for 8 "
-"minutes to\n"
+"Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to\n"
 "ensure rate accuracy."
 msgstr "请谨慎使用强制刷新汇率。缓存仅在 8 分钟内有效，以确保汇率准确。"
 
@@ -1066,15 +1044,15 @@ msgstr "<0/> 转换中..."
 msgid "Conversion Result"
 msgstr "转换结果"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
 #. placeholder {0}: result.fromCurrency
 #. placeholder {1}: Number(result.rate).toLocaleString( 'en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 } )
 #. placeholder {2}: result.toCurrency
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Exchange Rate: 1 {0} = {1} {2}"
 msgstr "汇率：1 {0} = {1} {2}"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
 #. placeholder {0}: result.cacheAge !== undefined ? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago` : 'just now'
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Cached {0}"
 msgstr "缓存于 {0}"
 
@@ -1087,16 +1065,11 @@ msgid "Svelte Mini Apps - English Dictionary App"
 msgstr "Svelte Mini Apps - 英语词典应用"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
-msgid ""
-"Look up words and their meanings with our English Dictionary App. Explore "
-"definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast "
-"and engaging experience."
+msgid "Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
 msgstr "使用我们的英语词典应用程序查找单词及其含义。探索定义、同义词、反义词等。使用 SvelteKit 构建，提供快速且引人入胜的体验。"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
-msgid ""
-"English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, "
-"SvelteKit, Dictionary App"
+msgid "English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
 msgstr "英语词典，单词查找，定义，同义词，反义词，Svelte，SvelteKit，词典应用"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
@@ -1111,8 +1084,8 @@ msgstr "同义词："
 msgid "Antonyms:"
 msgstr "反义词："
 
-#: src/routes/apps/(app)/dictionary-app/+page.svelte
 #. placeholder {0}: entry.license.name
+#: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "License: {0} <0/>"
 msgstr "许可证：{0} <0/>"
 
@@ -1154,9 +1127,7 @@ msgid "Markdown Editor - Write and Preview Markdown with Ease"
 msgstr "Markdown 编辑器 - 轻松编写和预览 Markdown"
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
-msgid ""
-"Experience a seamless Markdown editing with our Svelte and Carta-MD powered "
-"editor. Write, preview, and save your markdown content effortlessly."
+msgid "Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
 msgstr "使用我们由 Svelte 和 Carta-MD 提供支持的编辑器，体验无缝的 Markdown 编辑。轻松编写、预览和保存您的 markdown 内容。"
 
 #: src/lib/index.svelte.ts
@@ -1166,8 +1137,7 @@ msgstr "Markdown 编辑器"
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid ""
-"Write, preview, and edit Markdown with a lightweight, browser-based editor. "
-"Your content\n"
+"Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content\n"
 "is automatically saved to localStorage so you won't lose changes."
 msgstr "使用轻量级的基于浏览器的编辑器编写、预览和编辑 Markdown。您的内容会自动保存到 localStorage，因此您不会丢失更改。"
 
@@ -1198,9 +1168,7 @@ msgid "Medication Tracker - Track Your Medications"
 msgstr "药物追踪器 - 追踪您的药物"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-msgid ""
-"Track your medications, treatment sessions, and medication adherence. Never "
-"miss a dose with our comprehensive medication tracking system."
+msgid "Track your medications, treatment sessions, and medication adherence. Never miss a dose with our comprehensive medication tracking system."
 msgstr "追踪您的药物、治疗过程和药物依从性。使用我们全面的药物追踪系统，绝不会错过任何一次剂量。"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
@@ -1228,8 +1196,8 @@ msgstr "• 已结束"
 msgid "• Ongoing"
 msgstr "• 进行中"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
 #. placeholder {0}: session.medications.length
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "{0} medications <0/>"
 msgstr "{0} 种药物 <0/>"
 
@@ -1279,21 +1247,22 @@ msgstr "管理会话"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage"
 msgstr "管理"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
 #. placeholder {0}: formatDate(activeSession.startDate)
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "Started {0}"
 msgstr "开始于 {0}"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
 #. placeholder {0}: formatDate(activeSession.endDate)
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "• Ended {0}"
 msgstr "• 结束于 {0}"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
 #. placeholder {0}: activeSession.medications.length
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "• {0} medications"
 msgstr "• {0} 种药物"
 
@@ -1309,6 +1278,12 @@ msgstr "依从性"
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Taken"
 msgstr "已服用"
 
@@ -1342,6 +1317,7 @@ msgstr "<0/> 统计"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Total Doses"
 msgstr "总剂量"
 
@@ -1350,6 +1326,10 @@ msgstr "总剂量"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Skipped"
 msgstr "跳过"
 
@@ -1358,6 +1338,10 @@ msgstr "跳过"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Missed"
 msgstr "错过"
 
@@ -1374,6 +1358,18 @@ msgstr "错过"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
@@ -1390,37 +1386,57 @@ msgstr "消费追踪器"
 msgid ""
 "My Social Links:\n"
 "\n"
+""
 msgstr ""
 "我的社交链接:\n"
 "\n"
+""
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid ""
 "BEGIN:VCARD\n"
 "VERSION:3.0\n"
+""
 msgstr ""
 "BEGIN:VCARD\n"
 "VERSION:3.0\n"
+""
 
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
 #. placeholder {0}: contactInfo.name
-msgid "FN:{0}\n"
-msgstr "FN:{0}\n"
-
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
+msgid ""
+"FN:{0}\n"
+""
+msgstr ""
+"FN:{0}\n"
+""
+
 #. placeholder {0}: contactInfo.phone
-msgid "TEL:{0}\n"
-msgstr "TEL:{0}\n"
-
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
+msgid ""
+"TEL:{0}\n"
+""
+msgstr ""
+"TEL:{0}\n"
+""
+
 #. placeholder {0}: contactInfo.email
-msgid "EMAIL:{0}\n"
-msgstr "EMAIL:{0}\n"
-
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
+msgid ""
+"EMAIL:{0}\n"
+""
+msgstr ""
+"EMAIL:{0}\n"
+""
+
 #. placeholder {0}: contactInfo.website
-msgid "URL:{0}\n"
-msgstr "URL:{0}\n"
+#: src/routes/apps/(app)/qr-code-generator/+page.svelte
+msgid ""
+"URL:{0}\n"
+""
+msgstr ""
+"URL:{0}\n"
+""
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid "END:VCARD"
@@ -1433,9 +1449,7 @@ msgid "QR Code Generator"
 msgstr "二维码生成器"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"Generate and download QR codes for links, contact info, or any data you "
-"want to embed."
+msgid "Generate and download QR codes for links, contact info, or any data you want to embed."
 msgstr "生成并下载链接、联系信息或您想要嵌入的任何数据的二维码。"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
@@ -1443,9 +1457,7 @@ msgid "QR Code, QR Code Generator, Encode QR, Save QR"
 msgstr "二维码, 二维码生成器, 编码二维码, 保存二维码"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"Create QR codes for text, URLs, contact information, and more. Download "
-"instantly."
+msgid "Create QR codes for text, URLs, contact information, and more. Download instantly."
 msgstr "为文本、URL、联系信息等创建二维码。 立即下载。"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
@@ -1465,9 +1477,7 @@ msgid "Random Emoji Generator - Svelte Mini Apps"
 msgstr "随机表情生成器 - Svelte 迷你应用"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
-msgid ""
-"Generate random emojis with our Random Emoji Generator. Click the button to "
-"get a new emoji. Perfect for fun and productivity."
+msgid "Generate random emojis with our Random Emoji Generator. Click the button to get a new emoji. Perfect for fun and productivity."
 msgstr "使用我们的随机表情生成器生成随机表情。 点击按钮获取新的表情。 非常适合娱乐和提高效率。"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
@@ -1510,9 +1520,7 @@ msgid "Failed to copy password"
 msgstr "复制密码失败"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid ""
-"Generates random passwords with configurable length and complexity. Secure "
-"your accounts with ease."
+msgid "Generates random passwords with configurable length and complexity. Secure your accounts with ease."
 msgstr "生成具有可配置长度和复杂性的随机密码。 轻松保护您的帐户。"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
@@ -1527,8 +1535,8 @@ msgstr "立即生成安全、随机的密码"
 msgid "Your password will appear here"
 msgstr "您的密码将在此处显示"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #. placeholder {0}: Math.round(passwordStrength)
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Password Strength: {0}%"
 msgstr "密码强度: {0}%"
 
@@ -1584,9 +1592,7 @@ msgid "Smoke-Free Tracker"
 msgstr "无烟追踪器"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"Track your smoke-free streak, monitor health improvements, and stay "
-"motivated on your journey to quit smoking."
+msgid "Track your smoke-free streak, monitor health improvements, and stay motivated on your journey to quit smoking."
 msgstr "追踪您的无烟记录，监测健康改善情况，并在戒烟的旅程中保持动力。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -1615,8 +1621,7 @@ msgstr "准备好戒烟了吗？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
-"Track your progress, monitor health improvements, and stay motivated on "
-"your smoke-free\n"
+"Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
 "journey."
 msgstr "追踪您的进度，监测健康改善情况，并在您的无烟旅程中保持动力。"
 
@@ -1656,8 +1661,8 @@ msgstr "成功克服烟瘾"
 msgid "<0/> Next Milestone"
 msgstr "<0/> 下一个里程碑"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #. placeholder {0}: smokeState.formatDuration( statistics.nextMilestone.duration - statistics.streakMinutes )
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "{0} remaining"
 msgstr "还剩 {0}"
 
@@ -1666,9 +1671,7 @@ msgid "Start Your Smoke-Free Journey"
 msgstr "开始您的无烟之旅"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"When did you have your last cigarette? We'll track your progress from that "
-"moment."
+msgid "When did you have your last cigarette? We'll track your progress from that moment."
 msgstr "您最后一次吸烟是什么时候？我们将从那一刻起追踪您的进度。"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -1709,8 +1712,7 @@ msgstr "确认您吸烟了"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
-"Before we reset your streak, please confirm that you actually had a "
-"cigarette. This helps\n"
+"Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
 "ensure accurate tracking."
 msgstr "在我们重置您的记录之前，请确认您确实吸烟了。这有助于确保准确的追踪。"
 
@@ -1740,8 +1742,7 @@ msgstr "您确定您抽烟了吗？"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
-"Only proceed if you actually had a cigarette. If this was a craving you "
-"resisted, consider\n"
+"Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
 "logging it instead."
 msgstr "只有在您确实抽了一支烟的情况下才继续。如果这是一种您抵制的渴望，请考虑记录下来。"
 
@@ -1753,11 +1754,10 @@ msgstr "是的，我抽烟了 - 重置连胜"
 msgid "Record a Smoke?"
 msgstr "记录一次吸烟？"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #. placeholder {0}: statistics?.longestStreak ?? '0 minutes'
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid ""
-"Don't be too hard on yourself. Recovery isn't linear. Let's reset your "
-"streak and keep\n"
+"Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
 "going. Your longest streak of {0} is still an achievement!"
 msgstr "不要对自己太苛刻。恢复不是线性的。让我们重置您的连胜纪录并继续前进。您最长的 {0} 连胜仍然是一项成就！"
 
@@ -1778,10 +1778,7 @@ msgid "Text Summarizer - Create Concise Summaries Instantly"
 msgstr "文本摘要器 - 立即创建简洁的摘要"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"Quickly summarize long text into concise versions with our Text Summarizer "
-"tool. Perfect for students, researchers, and professionals who need to "
-"extract key information."
+msgid "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
 msgstr "使用我们的文本摘要器工具，将长文本快速总结成简洁的版本。非常适合需要提取关键信息的学生、研究人员和专业人士。"
 
 #: src/lib/index.svelte.ts
@@ -1791,15 +1788,13 @@ msgstr "文本摘要器"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
-"Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of "
-"longer texts using algorithmic extractive\n"
+"Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
 "techniques, not AI."
 msgstr "欢迎使用 <0>文本摘要器</0>！使用算法提取技术（而非 AI）快速创建较长文本的简洁摘要。"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
-"Save time and focus on what matters by pasting your text, adjusting the "
-"summary length,\n"
+"Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
 "and getting results instantly. Try it with sample text or your own content!"
 msgstr "通过粘贴文本、调整摘要长度并立即获得结果，节省时间并专注于重要事项。使用示例文本或您自己的内容试一试！"
 
@@ -1819,8 +1814,8 @@ msgstr "文本"
 msgid "Preview"
 msgstr "预览"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
 #. placeholder {0}: inputWordCount
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "{0} words"
 msgstr "{0} 个字"
 
@@ -1840,18 +1835,18 @@ msgstr "摘要设置"
 msgid "Adjust how your summary is generated"
 msgstr "调整摘要的生成方式"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
 #. placeholder {0}: summaryRatioState
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Summary Length: {0}% of original"
 msgstr "摘要长度：原始文本的 {0}%"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
 #. placeholder {0}: targetWordCount
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Target: ~{0} words"
 msgstr "目标：约 {0} 个字"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
 #. placeholder {0}: maxWordsState
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Maximum Words: {0}"
 msgstr "最多字数：{0}"
 
@@ -1863,9 +1858,9 @@ msgstr "生成摘要"
 msgid "Summary"
 msgstr "摘要"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
 #. placeholder {0}: summaryWordCount
 #. placeholder {1}: Math.round( (summaryWordCount / Math.max(1, inputWordCount)) * 100 )
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "{0} words ({1}% of original)"
 msgstr "{0} 个字（占原始文本的 {1}%）"
 
@@ -1891,8 +1886,7 @@ msgstr "<0/> 工作原理"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
-"This Text Summarizer uses an extractive summarization algorithm to identify "
-"and\n"
+"This Text Summarizer uses an extractive summarization algorithm to identify and\n"
 "extract the most important sentences from your text."
 msgstr "此文本摘要器使用提取式摘要算法来识别和提取文本中最重要的句子。"
 
@@ -1905,9 +1899,7 @@ msgid "The text is broken down into sentences."
 msgstr "文本被分解成句子。"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"Each sentence is scored based on the frequency and importance of words it "
-"contains."
+msgid "Each sentence is scored based on the frequency and importance of words it contains."
 msgstr "根据每个句子包含的单词的频率和重要性对其进行评分。"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
@@ -1920,10 +1912,8 @@ msgstr "摘要长度根据您的设置进行调整。"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid ""
-"Note: For best results, use well-structured text with clear paragraphs. "
-"This\n"
-"summarizer works best with informational or educational content rather than "
-"creative\n"
+"Note: For best results, use well-structured text with clear paragraphs. This\n"
+"summarizer works best with informational or educational content rather than creative\n"
 "writing."
 msgstr "注意：为了获得最佳效果，请使用结构良好的文本和清晰的段落。此摘要器最适合信息或教育内容，而不是创意写作。"
 
@@ -1952,9 +1942,7 @@ msgid "Unit Converter - Svelte Mini Apps"
 msgstr "单位转换器 - Svelte Mini Apps"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
-msgid ""
-"Convert between various units of measurement including length, temperature, "
-"volume, mass, area, time, angle, data, energy, force, power, and pressure."
+msgid "Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
 msgstr "在各种测量单位之间进行转换，包括长度、温度、体积、质量、面积、时间、角度、数据、能量、力、功率和压力。"
 
 #: src/lib/index.svelte.ts
@@ -2011,9 +1999,9 @@ msgstr "到"
 msgid "Result"
 msgstr "结果"
 
-#: src/routes/apps/(app)/unit-converter/+page.svelte
 #. placeholder {0}: formattedInputValue
 #. placeholder {1}: formattedFromUnitLabel
+#: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "{0} {1} equals"
 msgstr "{0} {1} 等于"
 
@@ -2027,8 +2015,7 @@ msgstr "输入一个值以查看转换结果"
 
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid ""
-"Supports conversion between length, temperature, volume, mass, area, time, "
-"angle, data,\n"
+"Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
 "energy, force, power, and pressure units."
 msgstr "支持长度、温度、体积、质量、面积、时间、角度、数据、能量、力、功率和压力单位之间的转换。"
 
@@ -2078,9 +2065,7 @@ msgstr "更新日志：Svelte 4 到 Svelte 5 迁移"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/+page.svelte
-msgid ""
-"Track our journey from Svelte 4 to Svelte 5, featuring offline-first "
-"architecture, enhanced performance, and progressive web app capabilities."
+msgid "Track our journey from Svelte 4 to Svelte 5, featuring offline-first architecture, enhanced performance, and progressive web app capabilities."
 msgstr "追踪我们从 Svelte 4 到 Svelte 5 的旅程，具有离线优先架构、增强的性能和渐进式 Web 应用程序功能。"
 
 #: src/routes/changelog/+page.svelte
@@ -2094,14 +2079,10 @@ msgstr "Michael Obele"
 
 #: src/routes/changelog/+page.svelte
 msgid ""
-"Explore our Svelte 5 migration — a focused modernization bringing "
-"offline-first resilience,\n"
-"faster rendering with smaller bundles, enhanced PWA capabilities, and "
-"improved developer\n"
+"Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,\n"
+"faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer\n"
 "experience across the app."
-msgstr ""
-"探索我们的 Svelte 5 迁移 — 一项重点现代化，为整个应用程序带来离线优先的弹性、使用更小 bundles 的更快渲染、增强的 PWA "
-"功能以及改进的开发者体验。"
+msgstr "探索我们的 Svelte 5 迁移 — 一项重点现代化，为整个应用程序带来离线优先的弹性、使用更小 bundles 的更快渲染、增强的 PWA 功能以及改进的开发者体验。"
 
 #: src/routes/changelog/+page.svelte
 msgid "<0/> More <1/>"
@@ -2171,8 +2152,7 @@ msgstr "旧版本"
 
 #: src/routes/changelog/+page.svelte
 msgid ""
-"If you depend on the Svelte 4 release, open the legacy app. The new app "
-"focuses on\n"
+"If you depend on the Svelte 4 release, open the legacy app. The new app focuses on\n"
 "performance and PWA features; review your integration before upgrading."
 msgstr "如果您依赖 Svelte 4 版本，请打开旧版应用程序。 新应用程序侧重于性能和 PWA 功能； 升级前请查看您的集成。"
 
@@ -2193,14 +2173,8 @@ msgid "Coming Soon"
 msgstr "即将推出"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid ""
-"We're excited to announce plans to build official mobile and desktop "
-"companion apps for Svelte-MiniApps. The apps will be designed to complement "
-"the PWA and provide native experiences for offline use, quicker access to "
-"frequently used mini-apps, and optional OS integrations."
-msgstr ""
-"我们很高兴地宣布计划为 Svelte-MiniApps 构建官方移动和桌面配套应用程序。 这些应用程序旨在补充 "
-"PWA，并为离线使用、更快地访问常用迷你应用程序和可选的操作系统集成提供原生体验。"
+msgid "We're excited to announce plans to build official mobile and desktop companion apps for Svelte-MiniApps. The apps will be designed to complement the PWA and provide native experiences for offline use, quicker access to frequently used mini-apps, and optional OS integrations."
+msgstr "我们很高兴地宣布计划为 Svelte-MiniApps 构建官方移动和桌面配套应用程序。 这些应用程序旨在补充 PWA，并为离线使用、更快地访问常用迷你应用程序和可选的操作系统集成提供原生体验。"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Native shell with offline-first support and selective sync for user data"
@@ -2245,9 +2219,7 @@ msgid "Announcements - Changelog"
 msgstr "公告 - 更新日志"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid ""
-"Stay updated with the latest announcements and future plans for Svelte Mini "
-"Apps including mobile and desktop companion apps"
+msgid "Stay updated with the latest announcements and future plans for Svelte Mini Apps including mobile and desktop companion apps"
 msgstr "随时了解 Svelte Mini Apps 的最新公告和未来计划，包括移动和桌面配套应用程序"
 
 #: src/routes/changelog/announcements/+page.svelte
@@ -2256,8 +2228,7 @@ msgstr "最新公告"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid ""
-"Stay informed about major milestones, new features, and exciting "
-"developments in Svelte\n"
+"Stay informed about major milestones, new features, and exciting developments in Svelte\n"
 "MiniApps."
 msgstr "随时了解 Svelte Mini Apps 中的重大里程碑、新功能和令人兴奋的开发。"
 
@@ -2271,8 +2242,7 @@ msgstr "您可以如何提供帮助"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid ""
-"We value your input! Here are ways you can contribute to the development of "
-"mobile and\n"
+"We value your input! Here are ways you can contribute to the development of mobile and\n"
 "desktop apps."
 msgstr "我们重视您的意见！ 以下是您可以为移动和桌面应用程序的开发做出贡献的方式。"
 
@@ -2281,9 +2251,7 @@ msgid "No Announcements Yet"
 msgstr "暂无公告"
 
 #: src/routes/changelog/announcements/+page.svelte
-msgid ""
-"Check back soon for exciting updates and announcements about Svelte Mini "
-"Apps!"
+msgid "Check back soon for exciting updates and announcements about Svelte Mini Apps!"
 msgstr "请稍后回来查看有关 Svelte Mini Apps 的精彩更新和公告！"
 
 #: src/routes/changelog/planned-features/+page.svelte
@@ -2527,17 +2495,13 @@ msgid "Planned Features | Svelte Mini Apps Changelog"
 msgstr "计划功能 | Svelte Mini Apps 更新日志"
 
 #: src/routes/changelog/planned-features/+page.svelte
-msgid ""
-"Explore upcoming features and planned enhancements for Svelte-MiniApps, "
-"including mobile apps, desktop companions, and new functionality."
+msgid "Explore upcoming features and planned enhancements for Svelte-MiniApps, including mobile apps, desktop companions, and new functionality."
 msgstr "了解 Svelte-MiniApps 即将推出的功能和计划的增强功能，包括移动应用程序、桌面辅助程序和新功能。"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid ""
-"Discover what's coming next for Svelte-MiniApps. From mobile and desktop "
-"companion apps to\n"
-"enhanced learning tools and accessibility improvements, explore our "
-"development roadmap."
+"Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to\n"
+"enhanced learning tools and accessibility improvements, explore our development roadmap."
 msgstr "了解 Svelte-MiniApps 的下一步发展方向。从移动和桌面辅助应用程序到增强的学习工具和可访问性改进，探索我们的开发路线图。"
 
 #: src/routes/changelog/planned-features/+page.svelte
@@ -2665,15 +2629,12 @@ msgid "<0/> Create Issue"
 msgstr "<0/> 创建问题"
 
 #: src/routes/changelog/timeline/+page.svelte
-msgid ""
-"Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring "
-"key milestones, technical updates, and development progress."
+msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
 msgstr "我们从 Svelte 4 到 Svelte 5 的迁移旅程的详细时间线，包括关键里程碑、技术更新和开发进度。"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid ""
-"Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, "
-"technical updates,\n"
+"Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates,\n"
 "and development progress tracking our modernization efforts."
 msgstr "了解我们从 Svelte 4 到 Svelte 5 的详细过程，包括关键里程碑、技术更新和开发进度，跟踪我们的现代化工作。"
 
@@ -2777,9 +2738,7 @@ msgid "DO"
 msgstr "DO"
 
 #: src/routes/hire/+page.svelte
-msgid ""
-"A collection of productivity mini-apps built with SvelteKit and modern web "
-"technologies"
+msgid "A collection of productivity mini-apps built with SvelteKit and modern web technologies"
 msgstr "一组使用 SvelteKit 和现代 Web 技术构建的效率迷你应用程序"
 
 #: src/routes/hire/+page.svelte
@@ -2815,11 +2774,7 @@ msgid "VaultNote"
 msgstr "VaultNote"
 
 #: src/routes/hire/+page.svelte
-msgid ""
-"A modern, secure, and open-source desktop application designed to be a "
-"productivity hub for professionals, developers, and power users. VaultNote "
-"integrates essential tools into a single, focused, and trustworthy "
-"environment."
+msgid "A modern, secure, and open-source desktop application designed to be a productivity hub for professionals, developers, and power users. VaultNote integrates essential tools into a single, focused, and trustworthy environment."
 msgstr "一款现代、安全且开源的桌面应用程序，旨在成为专业人士、开发人员和高级用户的效率中心。VaultNote 将基本工具集成到一个专注且值得信赖的环境中。"
 
 #: src/routes/hire/+page.svelte
@@ -2839,15 +2794,8 @@ msgid "Myth Buster"
 msgstr "神话终结者"
 
 #: src/routes/hire/+page.svelte
-msgid ""
-"An interactive web application transforming myth verification into a "
-"profound, user-guided research journey. Leveraging the Perplexity Sonar "
-"API, it acts as a dynamic AI research assistant empowering users to uncover "
-"layers of information, critically examine evidence, explore diverse "
-"contexts, and synthesize knowledge into coherent understanding."
-msgstr ""
-"一个交互式Web应用程序，将神话验证转化为深刻的、用户引导的研究之旅。利用Perplexity Sonar "
-"API，它充当动态AI研究助手，帮助用户揭示信息层面，批判性地审查证据，探索不同的上下文，并将知识综合为连贯的理解。"
+msgid "An interactive web application transforming myth verification into a profound, user-guided research journey. Leveraging the Perplexity Sonar API, it acts as a dynamic AI research assistant empowering users to uncover layers of information, critically examine evidence, explore diverse contexts, and synthesize knowledge into coherent understanding."
+msgstr "一个交互式Web应用程序，将神话验证转化为深刻的、用户引导的研究之旅。利用Perplexity Sonar API，它充当动态AI研究助手，帮助用户揭示信息层面，批判性地审查证据，探索不同的上下文，并将知识综合为连贯的理解。"
 
 #: src/routes/hire/+page.svelte
 msgid "Perplexity Sonar API"
@@ -2918,13 +2866,8 @@ msgid "Hire Michael - Full-Stack Developer | Svelte Mini Apps"
 msgstr "雇佣Michael - 全栈开发者 | Svelte Mini Apps"
 
 #: src/routes/hire/+page.svelte
-msgid ""
-"Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, "
-"maintainable web apps with SvelteKit, TypeScript and Node. Open to "
-"freelance, contract, and collaboration."
-msgstr ""
-"雇佣Michael - "
-"全栈开发者和Svelte维护者。我使用SvelteKit、TypeScript和Node构建快速、可维护的Web应用程序。欢迎自由职业、合同和合作。"
+msgid "Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."
+msgstr "雇佣Michael - 全栈开发者和Svelte维护者。我使用SvelteKit、TypeScript和Node构建快速、可维护的Web应用程序。欢迎自由职业、合同和合作。"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Back to Home"
@@ -2940,12 +2883,9 @@ msgstr "让我们构建一些<0>了不起的</0>东西"
 
 #: src/routes/hire/+page.svelte
 msgid ""
-"Full‑stack developer specializing in <0>Svelte & SvelteKit</0>. I build "
-"fast, maintainable web applications with modern technologies. Open to\n"
+"Full‑stack developer specializing in <0>Svelte & SvelteKit</0>. I build fast, maintainable web applications with modern technologies. Open to\n"
 "freelance, contract work, and exciting collaborations."
-msgstr ""
-"全栈开发人员，专门从事<0>Svelte & SvelteKit</0>。 我使用现代技术构建快速、可维护的 Web 应用程序。 "
-"欢迎自由职业、合同工作和令人兴奋的合作。"
+msgstr "全栈开发人员，专门从事<0>Svelte & SvelteKit</0>。 我使用现代技术构建快速、可维护的 Web 应用程序。 欢迎自由职业、合同工作和令人兴奋的合作。"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Get In Touch <1/>"
@@ -2973,13 +2913,9 @@ msgstr "关于我"
 
 #: src/routes/hire/+page.svelte
 msgid ""
-"Full‑stack developer and open source enthusiast passionate about building "
-"fast,\n"
-"maintainable web applications. I specialize in <0>SvelteKit</0>, "
-"<1>TypeScript</1>, and modern web technologies."
-msgstr ""
-"全栈开发人员和开源爱好者，热衷于构建快速、可维护的 Web 应用程序。 我专精于 <0>SvelteKit</0>、<1>TypeScript</1> "
-"和现代 Web 技术。"
+"Full‑stack developer and open source enthusiast passionate about building fast,\n"
+"maintainable web applications. I specialize in <0>SvelteKit</0>, <1>TypeScript</1>, and modern web technologies."
+msgstr "全栈开发人员和开源爱好者，热衷于构建快速、可维护的 Web 应用程序。 我专精于 <0>SvelteKit</0>、<1>TypeScript</1> 和现代 Web 技术。"
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Available Now"
@@ -3060,10 +2996,8 @@ msgstr "让我们一起工作吧！"
 
 #: src/routes/hire/+page.svelte
 msgid ""
-"I'm open to freelance and consulting work, as well as collaboration on open "
-"source\n"
-"projects and mentoring. Share a brief note about your project and I'll get "
-"back to you\n"
+"I'm open to freelance and consulting work, as well as collaboration on open source\n"
+"projects and mentoring. Share a brief note about your project and I'll get back to you\n"
 "within 24 hours."
 msgstr "我欢迎自由职业和咨询工作，以及开源项目的合作和指导。分享关于您项目的简要说明，我将在24小时内回复您。"
 
@@ -3076,9 +3010,7 @@ msgid "Offline | Svelte Mini Apps"
 msgstr "离线 | Svelte Mini Apps"
 
 #: src/routes/offline/+page.svelte
-msgid ""
-"Check your internet connection status and access cached content while "
-"offline."
+msgid "Check your internet connection status and access cached content while offline."
 msgstr "检查您的互联网连接状态，并在离线时访问缓存的内容。"
 
 #: src/routes/offline/+page.svelte
@@ -3087,8 +3019,7 @@ msgstr "您已在线"
 
 #: src/routes/offline/+page.svelte
 msgid ""
-"Your internet connection has been restored. You can now access all features "
-"and continue\n"
+"Your internet connection has been restored. You can now access all features and continue\n"
 "using the application."
 msgstr "您的互联网连接已恢复。您现在可以访问所有功能并继续使用该应用程序。"
 
@@ -3099,9 +3030,7 @@ msgstr "您已离线"
 
 #: src/lib/components/blocks/OfflinePage.svelte
 #: src/routes/offline/+page.svelte
-msgid ""
-"It looks like you've lost your internet connection. Some features might be "
-"unavailable."
+msgid "It looks like you've lost your internet connection. Some features might be unavailable."
 msgstr "看起来您已断开互联网连接。某些功能可能不可用。"
 
 #: src/lib/components/blocks/Navbar.svelte
@@ -3110,10 +3039,10 @@ msgstr "看起来您已断开互联网连接。某些功能可能不可用。"
 msgid "Checking..."
 msgstr "检查中..."
 
+#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
+#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
 #: src/lib/components/blocks/OfflinePage.svelte
 #: src/routes/offline/+page.svelte
-#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
-#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
 msgid "Retry Connection {0}"
 msgstr "重试连接 {0}"
 
@@ -3161,8 +3090,8 @@ msgstr "{@html structuredDataJson}"
 msgid "Current Streak"
 msgstr "当前连续"
 
-#: src/routes/(auth)/profile/+layout.svelte
 #. placeholder {0}: profile.stats.accountAge
+#: src/routes/(auth)/profile/+layout.svelte
 msgid "{0} days"
 msgstr "{0}天"
 
@@ -3179,12 +3108,12 @@ msgstr "新应用即将推出"
 msgid "Apps you use the most"
 msgstr "您最常使用的应用"
 
+#. placeholder {0}: app.usageCount
+#. placeholder {0}: app.usageCount
+#. placeholder {0}: app.usageCount
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/FavoriteAppList.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#. placeholder {0}: app.usageCount
-#. placeholder {0}: app.usageCount
-#. placeholder {0}: app.usageCount
 msgid "{0} uses"
 msgstr "使用了{0}次"
 
@@ -3288,18 +3217,18 @@ msgstr "星期六"
 msgid "Never"
 msgstr "从未使用"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Today at {0}"
 msgstr "今天 {0}"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Yesterday at {0}"
 msgstr "昨天 {0}"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: appUsageData.length
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Across {0} different apps"
 msgstr "使用了 {0} 个不同的应用"
 
@@ -3319,8 +3248,8 @@ msgstr "最活跃的一天"
 msgid "None"
 msgstr "无"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: mostActiveDay.count
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "{0} activities on this day"
 msgstr "这一天有 {0} 个活动"
 
@@ -3332,13 +3261,13 @@ msgstr "应用使用情况细分"
 msgid "Detailed statistics for each app you've used"
 msgstr "您使用的每个应用的详细统计信息"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: app.usageCount
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "({0} uses)"
 msgstr "（使用 {0} 次）"
 
-#: src/routes/(auth)/profile/AppUsageStats.svelte
 #. placeholder {0}: app.lastUsed ? formatDate(app.lastUsed).split(' at ')[0] : 'Never'
+#: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Last: {0}"
 msgstr "上次使用：{0}"
 
@@ -3378,11 +3307,13 @@ msgstr "可选详细信息："
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Status Indicators"
 msgstr "<0/> 状态指示器"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Pro tip:"
 msgstr "专业提示："
 
@@ -3392,6 +3323,7 @@ msgstr "<0/> 快速提示："
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need help? Reopen this guide anytime from the header"
 msgstr "需要帮助吗？可以随时从标题重新打开本指南"
 
@@ -3469,9 +3401,7 @@ msgid "The Future of Svelte Mini Apps"
 msgstr "Svelte Mini Apps 的未来"
 
 #: src/routes/about/Vision.svelte
-msgid ""
-"Svelte Mini Apps is an <0>ever-evolving project, <0>and <0>you</0> hold the "
-"reins!</0></0>"
+msgid "Svelte Mini Apps is an <0>ever-evolving project, <0>and <0>you</0> hold the reins!</0></0>"
 msgstr "Svelte Mini Apps 是一个 <0>不断发展的项目，<0>而 <0>您</0> 掌握着控制权！</0></0>"
 
 #: src/routes/about/Vision.svelte
@@ -3480,8 +3410,7 @@ msgstr "有想法或反馈吗？"
 
 #: src/routes/about/Vision.svelte
 msgid ""
-"Your input shapes the future of Svelte Mini Apps. Share your thoughts, "
-"feature requests, or\n"
+"Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
 "suggestions with us."
 msgstr "您的意见塑造了 Svelte Mini Apps 的未来。与我们分享您的想法、功能要求或建议。"
 
@@ -3500,18 +3429,12 @@ msgstr "Svelte Mini Apps 背后的原因"
 
 #: src/routes/about/Philosophy.svelte
 msgid ""
-"We've all been there - <0>wrestling with a complex framework for a simple "
-"task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight "
-"solutions for lightweight\n"
+"We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
 "problems.</1>"
-msgstr ""
-"我们都经历过这种情况——<0>为一个简单的任务而与复杂的框架作斗争。</0> <1>Svelte Mini Apps "
-"的诞生源于对轻量级问题使用重量级解决方案的挫败感。</1>"
+msgstr "我们都经历过这种情况——<0>为一个简单的任务而与复杂的框架作斗争。</0> <1>Svelte Mini Apps 的诞生源于对轻量级问题使用重量级解决方案的挫败感。</1>"
 
 #: src/routes/about/Philosophy.svelte
-msgid ""
-"We wanted something <0>modular, efficient, and focused</0> on getting the "
-"job done, just like that trusty screwdriver you use all the time."
+msgid "We wanted something <0>modular, efficient, and focused</0> on getting the job done, just like that trusty screwdriver you use all the time."
 msgstr "我们想要一些 <0>模块化、高效且专注</0> 于完成工作的工具，就像您一直使用的可靠螺丝刀一样。"
 
 #: src/routes/about/Tools.svelte
@@ -3524,8 +3447,7 @@ msgstr "Svelte Mini Apps 的工具"
 
 #: src/routes/about/Tools.svelte
 msgid ""
-"Our collection covers a wide variety of use cases, from basic tools like "
-"unit converters to\n"
+"Our collection covers a wide variety of use cases, from basic tools like unit converters to\n"
 "more complex ones like persistent to-do lists."
 msgstr "我们的集合涵盖了各种各样的用例，从诸如单位转换器之类的基本工具到诸如持久性待办事项列表之类的更复杂的工具。"
 
@@ -3552,14 +3474,10 @@ msgstr "数据管理与问题排查"
 
 #: src/routes/about/DataManagement.svelte
 msgid ""
-"Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear "
-"all cached data, including service worker caches and local storage.\n"
-"This is especially useful if you encounter any caching issues or need to "
-"reset the app to its\n"
+"Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage.\n"
+"This is especially useful if you encounter any caching issues or need to reset the app to its\n"
 "default state."
-msgstr ""
-"我们的应用程序包含一个强大的“核弹按钮”<0/"
-">，允许您清除所有缓存数据，包括服务工作线程缓存和本地存储。当您遇到任何缓存问题或需要将应用程序重置为其默认状态时，此功能特别有用。"
+msgstr "我们的应用程序包含一个强大的“核弹按钮”<0/>，允许您清除所有缓存数据，包括服务工作线程缓存和本地存储。当您遇到任何缓存问题或需要将应用程序重置为其默认状态时，此功能特别有用。"
 
 #: src/routes/about/Features.svelte
 msgid "Why Choose Svelte Mini Apps?"
@@ -3574,9 +3492,7 @@ msgid "Features-list"
 msgstr "功能列表"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"The framework powering this application, providing routing, server-side "
-"rendering, and more."
+msgid "The framework powering this application, providing routing, server-side rendering, and more."
 msgstr "为本应用程序提供支持的框架，提供路由、服务器端渲染等功能。"
 
 #: src/routes/about/Attributions.svelte
@@ -3584,28 +3500,19 @@ msgid "Shadcn UI"
 msgstr "Shadcn UI"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"Beautiful, accessible, and customizable UI components for Svelte "
-"applications."
+msgid "Beautiful, accessible, and customizable UI components for Svelte applications."
 msgstr "适用于 Svelte 应用程序的美观、可访问且可自定义的 UI 组件。"
 
 #: src/routes/about/Attributions.svelte
 msgid "Lordicon"
 msgstr "Lordicon"
 
-#: src/routes/about/Attributions.svelte
 #. placeholder {0}: theme.red.accent
 #. placeholder {1}: theme.green.accent
 #. placeholder {2}: theme.green.text
-msgid ""
-"Powerful animated icons library that brings life to the user interface. "
-"<span class=\"{0}\">Note:</span> Lordicon is <span class=\"font-semibold "
-"{1}\">not open source</span>, but offers <span class=\"{2}\">free usage "
-"with attribution</span>."
-msgstr ""
-"强大的动画图标库，为用户界面带来活力。<span class=\"{0}\">注意：</span>Lordicon <span "
-"class=\"font-semibold {1}\">不是开源的</span>，但提供<span "
-"class=\"{2}\">免费使用，但需署名</span>。"
+#: src/routes/about/Attributions.svelte
+msgid "Powerful animated icons library that brings life to the user interface. <span class=\"{0}\">Note:</span> Lordicon is <span class=\"font-semibold {1}\">not open source</span>, but offers <span class=\"{2}\">free usage with attribution</span>."
+msgstr "强大的动画图标库，为用户界面带来活力。<span class=\"{0}\">注意：</span>Lordicon <span class=\"font-semibold {1}\">不是开源的</span>，但提供<span class=\"{2}\">免费使用，但需署名</span>。"
 
 #: src/routes/about/Attributions.svelte
 msgid "Lucide Icons"
@@ -3624,9 +3531,7 @@ msgid "Bits UI"
 msgstr "Bits UI"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"Accessible, unstyled components for building high-quality Svelte "
-"applications."
+msgid "Accessible, unstyled components for building high-quality Svelte applications."
 msgstr "可访问的、无样式的组件，用于构建高质量的 Svelte 应用程序。"
 
 #: src/routes/about/Attributions.svelte
@@ -3634,10 +3539,7 @@ msgid "Carta"
 msgstr "Carta"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"A lightweight Markdown editor and viewer for Svelte with syntax "
-"highlighting and rich features. Provides textarea functionality without a "
-"full code editor."
+msgid "A lightweight Markdown editor and viewer for Svelte with syntax highlighting and rich features. Provides textarea functionality without a full code editor."
 msgstr "一个轻量级的 Markdown 编辑器和查看器，适用于 Svelte，具有语法高亮和丰富的功能。 提供 textarea 功能，而无需完整的代码编辑器。"
 
 #: src/routes/about/Attributions.svelte
@@ -3649,9 +3551,7 @@ msgid "Render After Effects animations natively on the web."
 msgstr "在 Web 上原生渲染 After Effects 动画。"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"Svelte Mini Apps is built with the help of these amazing open-source "
-"projects:"
+msgid "Svelte Mini Apps is built with the help of these amazing open-source projects:"
 msgstr "Svelte Mini Apps 是在这些出色的开源项目的帮助下构建的："
 
 #: src/routes/about/Attributions.svelte
@@ -3660,8 +3560,7 @@ msgstr "访问网站"
 
 #: src/routes/about/Attributions.svelte
 msgid ""
-"We are grateful to all the open-source contributors who make these tools "
-"available to the\n"
+"We are grateful to all the open-source contributors who make these tools available to the\n"
 "community."
 msgstr "我们感谢所有开源贡献者，他们使这些工具可供社区使用。"
 
@@ -3765,12 +3664,15 @@ msgstr "格式化的金额"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Save Changes"
 msgstr "保存更改"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3785,6 +3687,10 @@ msgstr "日期"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "删除"
@@ -3850,9 +3756,9 @@ msgstr "错误:"
 msgid "GitHub Contribution Graph"
 msgstr "GitHub 贡献图"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "保存在 {0} {1}"
 
@@ -3897,6 +3803,7 @@ msgid "Weekly"
 msgstr "每周"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Custom"
 msgstr "自定义"
@@ -3915,51 +3822,64 @@ msgstr "剂量重新安排成功"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Please enter a session name"
 msgstr "请输入会话名称"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session created successfully"
 msgstr "治疗会话创建成功"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Active session changed"
 msgstr "活动会话已更改"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session ended"
 msgstr "会话已结束"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session restarted"
 msgstr "治疗会话已重启"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session updated successfully"
 msgstr "会话更新成功"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment Sessions"
 msgstr "治疗会话"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
-"Manage your treatment sessions. Each session groups medications for a "
-"specific treatment\n"
+"Manage your treatment sessions. Each session groups medications for a specific treatment\n"
 "period."
 msgstr "管理您的治疗会话。每个会话将特定治疗时期的药物分组。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Create New Session"
 msgstr "创建新的会话"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session Name *"
 msgstr "会话名称 *"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Description (optional)"
@@ -3967,75 +3887,98 @@ msgstr "描述（可选）"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Brief description of this treatment period..."
 msgstr "对此治疗期间的简要描述..."
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Start Date"
 msgstr "开始日期"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Create Session"
 msgstr "<0/> 创建会话"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Your Sessions"
 msgstr "您的会话"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #. placeholder {0}: allSessions?.length || 0
+#. placeholder {0}: allSessions?.length || 0
+#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "{0} total"
 msgstr "总共 {0} 个"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "No treatment sessions yet. Create one above to get started."
 msgstr "还没有治疗会话。创建一个以上开始。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Active"
 msgstr "活动"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #. placeholder {0}: formatDate(session.endDate)
+#. placeholder {0}: formatDate(session.endDate)
+#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ended {0}"
 msgstr "<0/> 结束于 {0}"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ongoing"
 msgstr "<0/> 进行中"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #. placeholder {0}: session.medications.length
 #. placeholder {1}: session.medications.length !== 1 ? 's' : ''
+#. placeholder {0}: session.medications.length
+#. placeholder {1}: session.medications.length !== 1 ? 's' : ''
+#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> {0} med{1}"
 msgstr "<0/> {0} 种药物"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Activate"
 msgstr "<0/> 激活"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> End"
 msgstr "<0/> 结束"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Restart"
 msgstr "<0/> 重新开始"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit"
 msgstr "编辑"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Delete Treatment Session?"
 msgstr "删除治疗会话？"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #. placeholder {0}: sessionToDelete?.name
+#. placeholder {0}: sessionToDelete?.name
+#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all associated medication logs.\n"
 "This action cannot be undone."
@@ -4044,45 +3987,58 @@ msgstr ""
 "此操作无法撤消。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit Treatment Session"
 msgstr "编辑治疗会话"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Update the name and description of your treatment session."
 msgstr "更新您的治疗会话的名称和描述。"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please enter medication name"
 msgstr "请输入药物名称"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication added successfully"
 msgstr "药物添加成功"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication updated"
 msgstr "药物已更新"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please add at least one time"
 msgstr "请至少添加一个时间"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "T12:00:00"
 msgstr "T12:00:00"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medications"
 msgstr "药物"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Medication"
 msgstr "添加药物"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
@@ -4091,156 +4047,206 @@ msgstr "添加"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "No medications added yet."
 msgstr "尚未添加任何药物。"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Your First Medication"
 msgstr "添加您的第一种药物"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add First Med"
 msgstr "添加首个药物"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage:"
 msgstr "剂量："
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency:"
 msgstr "频率："
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions:"
 msgstr "说明："
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #. placeholder {0}: formatDate(med.endDate)
+#. placeholder {0}: formatDate(med.endDate)
+#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "<0/> Ends: {0}"
 msgstr "<0/> 结束：{0}"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Ongoing"
 msgstr "进行中"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule"
 msgstr "时间表"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add a new medication to this treatment session."
 msgstr "向此治疗会话添加新药物。"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication Name *"
 msgstr "药物名称 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage *"
 msgstr "剂量 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency *"
 msgstr "频率 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Select frequency"
 msgstr "选择频率"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions (optional)"
 msgstr "说明（可选）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Start Date *"
 msgstr "开始日期 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "End Date <0>(optional - leave empty for ongoing)</0>"
 msgstr "结束日期 <0>(可选 - 持续用药请留空)</0>"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Leave empty for ongoing medication"
 msgstr "持续用药请留空"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #. placeholder {0}: suggestedTimes.join(', ')
+#. placeholder {0}: suggestedTimes.join(', ')
+#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "• Suggested times: {0}"
 msgstr "• 建议时间：{0}"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "📊 Expected total doses: <0/> <1/>"
 msgstr "📊 预计总剂量：<0/> <1/>"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Edit Medication"
 msgstr "编辑药物"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions"
 msgstr "说明"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Doses"
 msgstr "安排剂量"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #. placeholder {0}: schedulingMedication?.name
+#. placeholder {0}: schedulingMedication?.name
+#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Create scheduled reminders for {0}"
 msgstr "为 {0} 创建计划提醒"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Type"
 msgstr "计划类型"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto (Based on Frequency)"
 msgstr "自动（基于频率）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto Schedule"
 msgstr "自动计划"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Custom Times"
 msgstr "自定义时间"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Daily Times"
 msgstr "每日时间"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Time"
 msgstr "添加时间"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #. placeholder {0}: scheduleTimes.length
+#. placeholder {0}: scheduleTimes.length
+#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "✅ Will create <0/> scheduled doses ({0}x\n"
 "per day)"
 msgstr "✅ 将创建 <0/> 个计划剂量（每天 {0} 次）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Generate Schedule"
 msgstr "生成计划"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Delete Medication?"
 msgstr "删除药物？"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #. placeholder {0}: deletingMedication?.name
+#. placeholder {0}: deletingMedication?.name
+#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all its logs. This action\n"
 "cannot be undone."
@@ -4248,22 +4254,28 @@ msgstr "这将永久删除 \"{0}\" 及其所有日志。此操作无法撤消。
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time updated successfully"
 msgstr "时间更新成功"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Today's Schedule"
 msgstr "今天的计划"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "No scheduled medications for today."
 msgstr "今天没有计划用药。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Add medications and create a schedule to get started."
 msgstr "添加药物并创建一个计划以开始。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Overdue"
 msgstr "<0/> 过期"
 
@@ -4271,62 +4283,86 @@ msgstr "<0/> 过期"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule"
 msgstr "重新安排"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken"
 msgstr "<0/> 已服用"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skip"
 msgstr "<0/> 跳过"
 
+#. placeholder {0}: formatTime(log.actualTime)
+#. placeholder {0}: formatTime(log.actualTime)
+#. placeholder {0}: formatTime(log.actualTime)
+#. placeholder {0}: formatTime(log.actualTime)
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#. placeholder {0}: formatTime(log.actualTime)
-#. placeholder {0}: formatTime(log.actualTime)
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "at {0}"
 msgstr "在 {0}"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken <1/>"
 msgstr "<0/> 已服用 <1/>"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time"
 msgstr "编辑时间"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skipped"
 msgstr "<0/> 已跳过"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Missed"
 msgstr "<0/> 错过"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Taken"
 msgstr "标记为已服用"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Skipped"
 msgstr "标记为已跳过"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Skip Medication"
 msgstr "跳过用药"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "可以添加一条备注，说明您跳过此剂量的原因。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
@@ -4335,147 +4371,187 @@ msgid "Notes (optional)"
 msgstr "备注（可选）"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Confirm Skip"
 msgstr "确认跳过"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time Taken"
 msgstr "编辑服用时间"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Adjust the time when this medication was actually taken."
 msgstr "调整实际服用这种药物的时间。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time Taken"
 msgstr "服用时间"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
+#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
+#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Scheduled time: {0}"
 msgstr "计划时间：{0}"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Save Time"
 msgstr "保存时间"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule Medication"
 msgstr "重新安排用药"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
-"Change when this dose is scheduled to be taken. This updates the planned "
-"time, not the\n"
+"Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
 "actual time taken."
 msgstr "更改此剂量的预定服用时间。这将更新计划时间，而不是实际服用时间。"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
-"💡 This reschedules only this single dose. To change the entire medication "
-"schedule, use\n"
+"💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
 "the Schedule button in the Medications list."
 msgstr "💡 这只会重新安排这单个剂量。要更改整个用药计划，请使用药物列表中的“计划”按钮。"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Date"
 msgstr "新的日期"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Time"
 msgstr "新的时间"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "<0/> Overall Statistics"
 msgstr "<0/> 总体统计"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Your medication adherence across all medications"
 msgstr "您在所有药物上的用药依从性"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Overall Adherence Rate"
 msgstr "总体依从率"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Medication-Specific Statistics"
 msgstr "特定药物的统计数据"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Track adherence for each medication individually"
 msgstr "分别跟踪每种药物的依从性"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #. placeholder {0}: stats.totalDoses
+#. placeholder {0}: stats.totalDoses
+#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "{0} total doses"
 msgstr "{0} 总剂量"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Improve Your Adherence"
 msgstr "提高您的依从性"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Set reminders on your phone for each medication time"
 msgstr "• 在手机上为每次用药时间设置提醒"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Keep medications in a visible location"
 msgstr "• 将药物放在显眼的位置"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Use a pill organizer to prepare doses in advance"
 msgstr "• 使用药盒提前准备剂量"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Link medication times to daily routines (meals, bedtime, etc.)"
 msgstr "• 将用药时间与日常活动（用餐、就寝等）联系起来"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Today"
 msgstr "今天"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Yesterday"
 msgstr "昨天"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Medication status reset to pending"
 msgstr "药物状态已重置为待定"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "<0/> Medication History"
 msgstr "<0/> 用药历史"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #. placeholder {0}: session.name
+#. placeholder {0}: session.name
+#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "View your medication schedule grouped by day for {0}"
 msgstr "查看您按天分组的 {0} 的用药计划"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "No History Yet"
 msgstr "暂无历史记录"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Your medication history will appear here once you start taking medications"
 msgstr "一旦您开始服药，您的用药历史将在此处显示"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #. placeholder {0}: stats.total
 #. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
+#. placeholder {0}: stats.total
+#. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
+#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "{0} {1} scheduled"
 msgstr "已安排 {0} {1}"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "adherence"
 msgstr "依从性"
 
@@ -4483,36 +4559,48 @@ msgstr "依从性"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Pending"
 msgstr "待定"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Undo"
 msgstr "撤消"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Skip"
 msgstr "跳过"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Optionally add a note explaining why you're skipping this medication."
 msgstr "（可选）添加说明您跳过此药物的原因的注释。"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Reason for skipping (optional)..."
 msgstr "跳过的原因（可选）..."
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Edit Medication Time"
 msgstr "编辑用药时间"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Update the date and time when this medication was taken."
 msgstr "更新服用此药物的日期和时间。"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time"
 msgstr "时间"
@@ -4787,8 +4875,8 @@ msgstr "回顾你的目标"
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> 无烟时长"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #. placeholder {0}: attempt.resetCount + 1
+#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> 尝试 #{0}"
 
@@ -4992,8 +5080,8 @@ msgstr "<0/> 记录烟瘾"
 msgid "Recent Cravings"
 msgstr "最近的烟瘾"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #. placeholder {0}: getIntensityLabel(craving.intensity)
+#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} 强度"
 
@@ -5025,19 +5113,19 @@ msgstr "<0/> 已达成"
 msgid "<0/> Locked"
 msgstr "<0/> 已锁定"
 
-#: src/routes/(auth)/profile/+page.svelte
-#: src/routes/(auth)/profile/OverviewTab.svelte
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #. placeholder {0}: stats.progress
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
+#: src/routes/(auth)/profile/+page.svelte
+#: src/routes/(auth)/profile/OverviewTab.svelte
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% 完成"
 
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
+#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "已达成 {0}"
 
@@ -5091,10 +5179,8 @@ msgstr "<0/> 自定义开始日期"
 
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 msgid ""
-"If you started your smoke-free journey before using this app, enable this "
-"feature and set\n"
-"the date you actually quit smoking. This will adjust your streak display to "
-"show your true\n"
+"If you started your smoke-free journey before using this app, enable this feature and set\n"
+"the date you actually quit smoking. This will adjust your streak display to show your true\n"
 "quit date."
 msgstr "如果您在使用此应用程序之前就开始了无烟之旅，请启用此功能并设置您实际戒烟的日期。这将调整您的连胜显示，以显示您真实的戒烟日期。"
 
@@ -5127,8 +5213,8 @@ msgstr "<0/> 尝试历史"
 msgid "No attempts yet. Start your journey above!"
 msgstr "尚未进行任何尝试。请从上方开始您的旅程！"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #. placeholder {0}: attempt.resetCount + 1
+#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "尝试 #{0}"
 
@@ -5157,8 +5243,8 @@ msgstr "<0/> 总时长"
 msgid "<0/> Status"
 msgstr "<0/> 状态"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
+#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "结束于：{0}"
 
@@ -5192,8 +5278,8 @@ msgstr "联系"
 msgid "Sponsor Michael-Obele"
 msgstr "赞助 Michael-Obele"
 
-#: src/lib/components/blocks/Footer.svelte
 #. placeholder {0}: currentYear
+#: src/lib/components/blocks/Footer.svelte
 msgid "<0/> 2024- {0} Svelte Apps. All rights reserved."
 msgstr "<0/> 2024- {0} Svelte 应用。版权所有。"
 
@@ -5309,23 +5395,23 @@ msgstr "<0/> 按年"
 msgid "<0/> All"
 msgstr "<0/> 全部"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #. placeholder {0}: purchases.length
 #. placeholder {1}: purchases.length !== 1 ? 's' : ''
 #. placeholder {0}: purchasesWithItems.length
 #. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
+#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 msgid "{0} record{1}"
 msgstr "{0} 条记录{1}"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #. placeholder {0}: groupPurchases.length
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
+#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 msgid "{0} purchase{1}"
 msgstr "{0} 次购买{1}"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
+#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 msgid "Total: {0}"
 msgstr "总计: {0}"
 
@@ -5405,8 +5491,8 @@ msgstr "添加购买记录"
 msgid "Update the purchase details."
 msgstr "更新购买详情。"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #. placeholder {0}: selectedItemForPurchase?.name
+#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 msgid "Record a new purchase for \"{0}\"."
 msgstr "为“{0}”记录新的购买。"
 
@@ -5497,8 +5583,8 @@ msgstr "购买记录"
 msgid "No purchases yet"
 msgstr "暂无购买记录"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #. placeholder {0}: selectedItemForHistory.name
+#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 msgid ""
 "Start tracking your purchases for {0} to see detailed history\n"
 "and analytics here."
@@ -5529,9 +5615,7 @@ msgid "Add an Item"
 msgstr "添加项目"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-msgid ""
-"Click <0>\"Add Item\"</0> button. Name it something like \"Coffee\" or "
-"\"Gas\"."
+msgid "Click <0>\"Add Item\"</0> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "点击 <0>“添加项目”</0> 按钮。将其命名为“咖啡”或“汽油”之类的名称。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
@@ -5557,8 +5641,7 @@ msgstr "您可以开始追踪购买了。如果需要，设置单位和货币。
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid ""
-"<0>Pro tip:</0> Start with just one or two items you buy frequently. You "
-"can always\n"
+"<0>Pro tip:</0> Start with just one or two items you buy frequently. You can always\n"
 "add more later!"
 msgstr "<0>专业提示：</0> 从您经常购买的一两个项目开始。您可以随时添加更多项目！"
 
@@ -5573,9 +5656,7 @@ msgstr "在“项目”选项卡上，点击任何项目卡片上的 <0>⋮</0> 
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
-msgid ""
-"Enter how much you bought and what it cost. Date is set to today "
-"automatically."
+msgid "Enter how much you bought and what it cost. Date is set to today automatically."
 msgstr "输入您购买了多少以及花费了多少。日期会自动设置为今天。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
@@ -5614,8 +5695,7 @@ msgstr "<0/> 查看您的数据"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 msgid ""
-"Switch between <0>Items</0> and <1>Purchase History</1> tabs to see "
-"different\n"
+"Switch between <0>Items</0> and <1>Purchase History</1> tabs to see different\n"
 "views."
 msgstr "在 <0>项目</0> 和 <1>购买历史</1> 选项卡之间切换以查看不同的视图。"
 
@@ -5705,18 +5785,18 @@ msgstr "隐藏"
 msgid "Show"
 msgstr "显示"
 
-#: src/routes/changelog/ChangelogStats.svelte
 #. placeholder {0}: showStats ? 'Hide' : 'Show'
+#: src/routes/changelog/ChangelogStats.svelte
 msgid "<0/> {0} Statistics"
 msgstr "<0/> {0} 统计"
 
-#: src/routes/changelog/DebugOrder.svelte
 #. placeholder {0}: showDebug ? 'Hide' : 'Show'
+#: src/routes/changelog/DebugOrder.svelte
 msgid "{0} Debug Order"
 msgstr "{0} 调试顺序"
 
-#: src/routes/changelog/DebugOrder.svelte
 #. placeholder {0}: allTimeline.length
+#: src/routes/changelog/DebugOrder.svelte
 msgid "Debug: Timeline Order (Total: {0})"
 msgstr "调试：时间线顺序（总数：{0}）"
 
@@ -5734,22 +5814,16 @@ msgstr "<0>加入</0>旅程"
 
 #: src/lib/components/home/Content.svelte
 msgid ""
-"Every great tool starts with feedback from people like you. Here's how you "
-"can be part\n"
+"Every great tool starts with feedback from people like you. Here's how you can be part\n"
 "of making these apps even better:"
 msgstr "每个伟大的工具都始于像您这样的人的反馈。以下是如何参与使这些应用程序变得更好的方法："
 
 #: src/lib/components/home/Content.svelte
 msgid ""
-"Your insights and experiences help shape these tools into something truly "
-"useful. Whether\n"
-"it's sharing ideas, reporting issues, or just letting me know how you use "
-"the apps, every\n"
-"bit of feedback counts. Want to learn more about the project? Check out our "
-"<0>story</0>."
-msgstr ""
-"您的见解和经验有助于将这些工具塑造成真正有用的东西。无论是分享想法、报告问题，还是只是让我知道您如何使用这些应用程序，每一条反馈都很重要。想了解更多关于"
-"该项目的信息？查看我们的<0>故事</0>。"
+"Your insights and experiences help shape these tools into something truly useful. Whether\n"
+"it's sharing ideas, reporting issues, or just letting me know how you use the apps, every\n"
+"bit of feedback counts. Want to learn more about the project? Check out our <0>story</0>."
+msgstr "您的见解和经验有助于将这些工具塑造成真正有用的东西。无论是分享想法、报告问题，还是只是让我知道您如何使用这些应用程序，每一条反馈都很重要。想了解更多关于该项目的信息？查看我们的<0>故事</0>。"
 
 #: src/lib/components/home/Hero.svelte
 msgid "Back, <0>{0}!</0>"
@@ -5760,9 +5834,7 @@ msgid "Welcome <0/> to..."
 msgstr "欢迎 <0/> 来到..."
 
 #: src/lib/components/home/Hero.svelte
-msgid ""
-"Explore our curated collection of elegant Svelte applications, thoughtfully "
-"designed to enhance your digital workflow with modern, efficient solutions."
+msgid "Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
 msgstr "探索我们精心策划的优雅 Svelte 应用程序集合，这些应用程序经过精心设计，可通过现代、高效的解决方案增强您的数字工作流程。"
 
 #: src/lib/components/home/Hero.svelte
@@ -6147,9 +6219,7 @@ msgid "Delete Account"
 msgstr "删除帐户"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
-msgid ""
-"This action is permanent and cannot be undone. All your data will be "
-"permanently deleted."
+msgid "This action is permanent and cannot be undone. All your data will be permanently deleted."
 msgstr "此操作是永久性的，无法撤消。您的所有数据将被永久删除。"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
@@ -6188,39 +6258,49 @@ msgstr "正在删除..."
 msgid "Loading account settings..."
 msgstr "正在加载帐户设置..."
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
+#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "<0/> View Schedule ({0})"
 msgstr "<0/> 查看时间表 ({0})"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #. placeholder {0}: medication.name
+#. placeholder {0}: medication.name
+#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Schedule for {0}"
 msgstr "{0} 的时间表"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Total"
 msgstr "总计"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "No scheduled doses yet."
 msgstr "尚未安排剂量。"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
+#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete All ({0})"
 msgstr "全部删除 ({0})"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete Scheduled Dose?"
 msgstr "删除预定剂量？"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-msgid ""
-"This will permanently delete this scheduled dose. This action cannot be "
-"undone."
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+msgid "This will permanently delete this scheduled dose. This action cannot be undone."
 msgstr "这将永久删除此预定剂量。此操作无法撤消。"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
@@ -6276,21 +6356,21 @@ msgstr "地点:"
 msgid "Notes:"
 msgstr "注释:"
 
+#. placeholder {0}: result.username
+#. placeholder {0}: result.username
 #: src/lib/components/blocks/AuthStatus.svelte
-#. placeholder {0}: result.username
-#. placeholder {0}: result.username
 msgid "Welcome back, {0}!"
 msgstr "欢迎回来，{0}！"
 
+#. placeholder {0}: result.role
+#. placeholder {0}: result.role
 #: src/lib/components/blocks/AuthStatus.svelte
-#. placeholder {0}: result.role
-#. placeholder {0}: result.role
 msgid "Role: {0}"
 msgstr "角色：{0}"
 
+#. placeholder {0}: result.createdAt.toLocaleDateString()
+#. placeholder {0}: result.createdAt.toLocaleDateString()
 #: src/lib/components/blocks/AuthStatus.svelte
-#. placeholder {0}: result.createdAt.toLocaleDateString()
-#. placeholder {0}: result.createdAt.toLocaleDateString()
 msgid "Member since: {0}"
 msgstr "会员起始时间：{0}"
 
@@ -6353,15 +6433,12 @@ msgstr "🚧 我们正在进行改进"
 
 #: src/lib/components/blocks/UnderConstruction.svelte
 msgid ""
-"We're upgrading this app to bring you an even better experience. Our team "
-"is working hard to\n"
+"We're upgrading this app to bring you an even better experience. Our team is working hard to\n"
 "add new features and improvements."
 msgstr "我们正在升级此应用，以带给您更好的体验。 我们的团队正在努力添加新功能和改进。"
 
 #: src/lib/components/blocks/UnderConstruction.svelte
-msgid ""
-"In the meantime, you can continue using the <0>current version</0> with all "
-"its existing features."
+msgid "In the meantime, you can continue using the <0>current version</0> with all its existing features."
 msgstr "在此期间，您可以继续使用<0>当前版本</0>及其所有现有功能。"
 
 #: src/lib/components/markdown/Editor.svelte
@@ -6435,210 +6512,210 @@ msgstr "支出名称："
 msgid "Expense Amount:"
 msgstr "支出金额："
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#: src/routes/apps/(app)/budget-tracker/Test.svelte
 msgid "Total Expenses: $ {0}"
 msgstr "总支出：$ {0}"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#: src/routes/apps/(app)/budget-tracker/Test.svelte
 msgid "Remaining Budget: $ {0}"
 msgstr "剩余预算：$ {0}"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Create a Session"
 msgstr "创建一个会话"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Click <strong>\"New Session\"</strong> and give it a meaningful name like "
-"\"Morning Routine\", \"Weekly Meds\", or \"Antibiotics Course\"."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Click <strong>\"New Session\"</strong> and give it a meaningful name like \"Morning Routine\", \"Weekly Meds\", or \"Antibiotics Course\"."
 msgstr "点击 <strong>“新会话”</strong> 并给它一个有意义的名称，如“早间例程”、“每周药物”或“抗生素疗程”。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Add Medications"
 msgstr "添加药物"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"In your session, click <strong>\"Add Medication\"</strong>. Include the "
-"medication name, dosage (e.g., \"500mg\"), and any special instructions."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "In your session, click <strong>\"Add Medication\"</strong>. Include the medication name, dosage (e.g., \"500mg\"), and any special instructions."
 msgstr "在您的会话中，点击 <strong>“添加药物”</strong>。 包括药物名称、剂量（例如，“500mg”）和任何特殊说明。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set Schedule Times"
 msgstr "设置时间表"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Choose specific times for each medication (e.g., 9:00 AM, 2:00 PM, 9:00 "
-"PM). The app will automatically generate your daily schedule."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Choose specific times for each medication (e.g., 9:00 AM, 2:00 PM, 9:00 PM). The app will automatically generate your daily schedule."
 msgstr "为每种药物选择具体时间（例如，上午 9:00、下午 2:00、晚上 9:00）。 该应用将自动生成您的每日时间表。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Check Today's Schedule"
 msgstr "查看今天的日程安排"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"The <strong>\"Today\"</strong> tab displays all medications due today with "
-"their scheduled times and current status."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "The <strong>\"Today\"</strong> tab displays all medications due today with their scheduled times and current status."
 msgstr "<strong>“今天”</strong>选项卡显示今天应服用的所有药物及其预定时间和当前状态。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Mark as Taken"
 msgstr "标记为已服用"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Click the <strong>✓ Taken</strong> button when you take each medication. "
-"The app records the actual time and you can add optional notes."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Click the <strong>✓ Taken</strong> button when you take each medication. The app records the actual time and you can add optional notes."
 msgstr "服用每种药物时，点击 <strong>✓ 已服用</strong> 按钮。 该应用会记录实际时间，您可以添加可选注释。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Handle Exceptions"
 msgstr "处理例外情况"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"If you miss a dose, use <strong>\"Skip\"</strong> (with reason) or "
-"<strong>\"Reschedule\"</strong> (to a different time) to keep your tracking "
-"accurate."
-msgstr ""
-"如果您错过了一剂，请使用 <strong>“跳过”</strong>（说明原因）或 "
-"<strong>“重新安排”</strong>（到不同的时间）以保持跟踪的准确性。"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "If you miss a dose, use <strong>\"Skip\"</strong> (with reason) or <strong>\"Reschedule\"</strong> (to a different time) to keep your tracking accurate."
+msgstr "如果您错过了一剂，请使用 <strong>“跳过”</strong>（说明原因）或 <strong>“重新安排”</strong>（到不同的时间）以保持跟踪的准确性。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Medication successfully taken at the recorded time"
 msgstr "药物已在记录的时间成功服用"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Dose intentionally skipped with optional reason"
 msgstr "剂量被有意跳过，可选择填写原因"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Overdue medication that needs attention"
 msgstr "已过期需要注意的药物"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Scheduled medication waiting to be taken"
 msgstr "等待服用的计划药物"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "View History"
 msgstr "查看历史记录"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"The <strong>\"History\"</strong> tab shows all past medication logs grouped "
-"by date. Edit times, undo actions, or add notes to any entry. You can also "
-"change the status of missed doses (mark as taken or skipped)."
-msgstr ""
-"<strong>“历史记录”</"
-"strong>选项卡显示按日期分组的所有过去用药记录。编辑时间、撤消操作或为任何条目添加注释。您还可以更改漏服剂量的状态（标记为已服用或已跳过）。"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "The <strong>\"History\"</strong> tab shows all past medication logs grouped by date. Edit times, undo actions, or add notes to any entry. You can also change the status of missed doses (mark as taken or skipped)."
+msgstr "<strong>“历史记录”</strong>选项卡显示按日期分组的所有过去用药记录。编辑时间、撤消操作或为任何条目添加注释。您还可以更改漏服剂量的状态（标记为已服用或已跳过）。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track Statistics"
 msgstr "追踪统计数据"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"The <strong>\"Stats\"</strong> tab displays adherence rates, current "
-"streaks, missed doses, and detailed medication patterns over time."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "The <strong>\"Stats\"</strong> tab displays adherence rates, current streaks, missed doses, and detailed medication patterns over time."
 msgstr "<strong>“统计”</strong>选项卡显示依从率、当前连续天数、漏服剂量以及随时间推移的详细用药模式。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage Schedules"
 msgstr "管理时间表"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Edit medication details, adjust dosages, modify schedules, or reschedule "
-"individual doses from the <strong>\"Medications\"</strong> tab."
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Edit medication details, adjust dosages, modify schedules, or reschedule individual doses from the <strong>\"Medications\"</strong> tab."
 msgstr "从<strong>“药物”</strong>选项卡编辑药物详细信息、调整剂量、修改时间表或重新安排单个剂量。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Reschedule Doses"
 msgstr "重新安排剂量"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Need to take a medication at a different time? Click "
-"<strong>\"Reschedule\"</strong> on any pending dose in the Today tab to "
-"move it to a new date and time. This only affects that single dose."
-msgstr ""
-"需要在不同的时间服用药物？点击“今天”选项卡中任何待服剂量上的<strong>“重新安排”</"
-"strong>，将其移动到新的日期和时间。这只会影响该单个剂量。"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Need to take a medication at a different time? Click <strong>\"Reschedule\"</strong> on any pending dose in the Today tab to move it to a new date and time. This only affects that single dose."
+msgstr "需要在不同的时间服用药物？点击“今天”选项卡中任何待服剂量上的<strong>“重新安排”</strong>，将其移动到新的日期和时间。这只会影响该单个剂量。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set reminders on your phone for critical medications"
 msgstr "在手机上为重要药物设置提醒"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Review your adherence statistics weekly to identify patterns"
 msgstr "每周查看您的依从性统计数据以识别模式"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Use the notes field to track side effects or effectiveness"
 msgstr "使用备注字段来追踪副作用或疗效"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Backup your data: Click the cloud icon to manually backup, or changes "
-"auto-backup after 15 seconds if logged in"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Backup your data: Click the cloud icon to manually backup, or changes auto-backup after 15 seconds if logged in"
 msgstr "备份您的数据：点击云图标手动备份，或者如果已登录，更改会在 15 秒后自动备份"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Sync across devices: Use the sync button (refresh icon) to merge data from "
-"the server with your local data"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Sync across devices: Use the sync button (refresh icon) to merge data from the server with your local data"
 msgstr "跨设备同步：使用同步按钮（刷新图标）将服务器中的数据与您的本地数据合并"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The app works offline - perfect for travel and areas with poor connectivity"
 msgstr "该应用程序可以离线工作 - 非常适合旅行和连接不良的地区"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-msgid ""
-"Missed doses auto-mark when time passes, but you can still edit them in "
-"History to mark as taken or skipped"
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+msgid "Missed doses auto-mark when time passes, but you can still edit them in History to mark as taken or skipped"
 msgstr "漏服的剂量会在时间过去后自动标记，但您仍然可以在历史记录中对其进行编辑，以标记为已服用或已跳过"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Medication Tracker Guide"
 msgstr "<0/>药物追踪器指南"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to manage your medication schedule effectively"
 msgstr "有效管理您的用药时间表的简单步骤"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Start"
 msgstr "开始"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track"
 msgstr "追踪"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid ""
-"Start with just 1-2 medications to get familiar with the system. You can "
-"always add\n"
+"Start with just 1-2 medications to get familiar with the system. You can always add\n"
 "more medications and adjust schedules as needed!"
 msgstr "首先从 1-2 种药物开始，以熟悉该系统。您可以随时添加更多药物并根据需要调整时间表！"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Tips"
 msgstr "<0/>快速提示"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Got It!"
 msgstr "<0/>知道了！"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
-msgid ""
-"Click <strong>\"Add Item\"</strong> button. Name it something like "
-"\"Coffee\" or \"Gas\"."
+msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "点击<strong>“添加项目”</strong>按钮。将其命名为“咖啡”或“汽油”之类的名称。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
@@ -6650,9 +6727,7 @@ msgid "View Your Data"
 msgstr "查看您的数据"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
-msgid ""
-"Switch between <strong>Items</strong> and <strong>Purchase History</strong> "
-"tabs to see different views."
+msgid "Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see different views."
 msgstr "在<strong>项目</strong>和<strong>购买历史记录</strong>选项卡之间切换以查看不同的视图。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
@@ -6700,10 +6775,7 @@ msgid "Install When You Want"
 msgstr "随时安装"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"While they work great in the browser, you can also install them as PWAs. "
-"It's like having native apps that don't eat up your system resources - the "
-"best of both worlds."
+msgid "While they work great in the browser, you can also install them as PWAs. It's like having native apps that don't eat up your system resources - the best of both worlds."
 msgstr "虽然它们在浏览器中运行良好，但您也可以将它们安装为 PWA。这就像拥有不占用系统资源的本地应用程序一样——两全其美。"
 
 #: src/routes/about/data.svelte.ts
@@ -6711,10 +6783,7 @@ msgid "Svelte-Powered Speed"
 msgstr "Svelte 驱动的速度"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"We chose SvelteKit because it's blazing fast and fun to work with. The "
-"result? Tools that load instantly and run smoothly, making your workflow "
-"feel effortless."
+msgid "We chose SvelteKit because it's blazing fast and fun to work with. The result? Tools that load instantly and run smoothly, making your workflow feel effortless."
 msgstr "我们选择 SvelteKit 是因为它速度极快且易于使用。结果呢？工具可以立即加载并平稳运行，让您的工作流程感觉毫不费力。"
 
 #: src/routes/about/data.svelte.ts
@@ -6722,10 +6791,7 @@ msgid "The SvelteKit Advantage"
 msgstr "SvelteKit 的优势"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"When I discovered SvelteKit, it was love at first sight. Its elegant "
-"simplicity and powerful features made it perfect for building these focused "
-"tools."
+msgid "When I discovered SvelteKit, it was love at first sight. Its elegant simplicity and powerful features made it perfect for building these focused tools."
 msgstr "当我发现 SvelteKit 时，我一见钟情。它优雅的简洁性和强大的功能使其非常适合构建这些专注的工具。"
 
 #: src/routes/about/data.svelte.ts
@@ -6733,10 +6799,7 @@ msgid "Less is More"
 msgstr "少即是多"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Each app solves one problem really well. No feature bloat, no confusing "
-"interfaces - just clean, effective tools that respect your time and "
-"attention."
+msgid "Each app solves one problem really well. No feature bloat, no confusing interfaces - just clean, effective tools that respect your time and attention."
 msgstr "每个应用程序都能很好地解决一个问题。没有功能臃肿，没有令人困惑的界面——只有干净、有效的工具，尊重您的时间和注意力。"
 
 #: src/routes/about/data.svelte.ts
@@ -6744,9 +6807,7 @@ msgid "Growing Together"
 msgstr "共同成长"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Every mini-app taught me something new about Svelte. Now, I'm sharing these "
-"lessons through code, hoping others can learn and build upon them."
+msgid "Every mini-app taught me something new about Svelte. Now, I'm sharing these lessons through code, hoping others can learn and build upon them."
 msgstr "每个迷你应用程序都教会了我关于 Svelte 的新知识。现在，我通过代码分享这些经验，希望其他人可以学习并在其基础上构建。"
 
 #: src/routes/about/data.svelte.ts
@@ -6754,9 +6815,7 @@ msgid "Your Ideas Matter"
 msgstr "您的想法很重要"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"This project grows with your needs. Have an idea for a tool that would make "
-"your life easier? Let's build it together!"
+msgid "This project grows with your needs. Have an idea for a tool that would make your life easier? Let's build it together!"
 msgstr "这个项目随着您的需求而增长。您是否有任何可以使您的生活更轻松的工具的想法？让我们一起构建它！"
 
 #: src/routes/about/data.svelte.ts
@@ -6764,9 +6823,7 @@ msgid "Building Bridges"
 msgstr "搭建桥梁"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Imagine a community where developers share their mini-tools, learn from "
-"each other, and collectively make development more enjoyable."
+msgid "Imagine a community where developers share their mini-tools, learn from each other, and collectively make development more enjoyable."
 msgstr "想象一下这样一个社区：开发者分享他们的迷你工具，互相学习，并共同使开发更加愉快。"
 
 #: src/routes/about/data.svelte.ts
@@ -6774,9 +6831,7 @@ msgid "More Tools Coming"
 msgstr "更多工具即将推出"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"The toolbox is always expanding! I'm constantly working on new mini-apps "
-"based on real-world needs and community suggestions."
+msgid "The toolbox is always expanding! I'm constantly working on new mini-apps based on real-world needs and community suggestions."
 msgstr "工具箱总是在不断扩展！我一直在根据实际需求和社区建议开发新的迷你应用程序。"
 
 #: src/routes/about/data.svelte.ts
@@ -6784,20 +6839,12 @@ msgid "Join the Journey"
 msgstr "加入旅程"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Whether you're a Svelte enthusiast or just getting started, your "
-"perspective is valuable. Let's collaborate and make these tools even better!"
+msgid "Whether you're a Svelte enthusiast or just getting started, your perspective is valuable. Let's collaborate and make these tools even better!"
 msgstr "无论您是 Svelte 爱好者还是刚开始，您的观点都很有价值。让我们合作，使这些工具变得更好！"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Our app includes a powerful \"Nuke Button\" that allows you to clear all "
-"cached data, including service worker caches and local storage. This is "
-"especially useful if you encounter any caching issues or need to reset the "
-"app to its default state."
-msgstr ""
-"我们的应用程序包含一个强大的“核弹按钮”，可让您清除所有缓存的数据，包括 service worker "
-"缓存和本地存储。如果您遇到任何缓存问题或需要将应用程序重置为其默认状态，这将特别有用。"
+msgid "Our app includes a powerful \"Nuke Button\" that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
+msgstr "我们的应用程序包含一个强大的“核弹按钮”，可让您清除所有缓存的数据，包括 service worker 缓存和本地存储。如果您遇到任何缓存问题或需要将应用程序重置为其默认状态，这将特别有用。"
 
 #: src/routes/about/data.svelte.ts
 msgid "Clear all cached data, including service worker caches and local storage"
@@ -6816,9 +6863,7 @@ msgid "Automatically reload the app after clearing data"
 msgstr "清除数据后自动重新加载应用程序"
 
 #: src/routes/about/data.svelte.ts
-msgid ""
-"Use this feature if you encounter any caching issues or need to reset the "
-"app to its default state."
+msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
 msgstr "如果您遇到任何缓存问题或需要将应用程序重置为其默认状态，请使用此功能。"
 
 #: src/lib/components/home/data.svelte.ts
@@ -6874,15 +6919,11 @@ msgid "Converts between various units (length, temperature, volume, etc.)"
 msgstr "在各种单位（长度、温度、体积等）之间进行转换"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Create and manage budgets, track expenses, and monitor your remaining "
-"balance."
+msgid "Create and manage budgets, track expenses, and monitor your remaining balance."
 msgstr "创建和管理预算，跟踪费用，并监控您的剩余余额。"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Track your purchases over time with detailed records including costs, "
-"quantities, and automatic timestamps for better expense management."
+msgid "Track your purchases over time with detailed records including costs, quantities, and automatic timestamps for better expense management."
 msgstr "通过详细的记录（包括成本、数量和自动时间戳）来跟踪您随时间的推移进行的购买，以便更好地进行费用管理。"
 
 #: src/lib/index.svelte.ts
@@ -6890,16 +6931,11 @@ msgid "Medication Tracker"
 msgstr "药物追踪器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Track your medications during treatment sessions. Manage multiple "
-"medications, schedule doses, monitor adherence, and never miss a dose."
+msgid "Track your medications during treatment sessions. Manage multiple medications, schedule doses, monitor adherence, and never miss a dose."
 msgstr "在治疗期间跟踪您的药物。管理多种药物，安排剂量，监控依从性，并且永远不会错过剂量。"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Track your smoke-free journey with real-time streak counting, health "
-"milestones, craving management, and motivational support to help you quit "
-"smoking."
+msgid "Track your smoke-free journey with real-time streak counting, health milestones, craving management, and motivational support to help you quit smoking."
 msgstr "通过实时连胜计数、健康里程碑、渴望管理和激励支持来跟踪您的无烟之旅，以帮助您戒烟。"
 
 #: src/lib/index.svelte.ts
@@ -6995,9 +7031,7 @@ msgid "Photo Editor"
 msgstr "照片编辑器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Provides basic tools like cropping, resizing, and applying filters to edit "
-"photos."
+msgid "Provides basic tools like cropping, resizing, and applying filters to edit photos."
 msgstr "提供基本的工具，如裁剪、调整大小和应用滤镜来编辑照片。"
 
 #: src/lib/index.svelte.ts
@@ -7017,15 +7051,11 @@ msgid "Lets you create basic drawings using lines, shapes, and colors."
 msgstr "让您使用线条、形状和颜色创建基本绘图。"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Visualizes your GitHub contributions in a way that is easy to understand "
-"and engaging. It helps you track streaks, find patterns, and stay motivated."
+msgid "Visualizes your GitHub contributions in a way that is easy to understand and engaging. It helps you track streaks, find patterns, and stay motivated."
 msgstr "以一种易于理解和引人入胜的方式可视化您的 GitHub 贡献。 它可以帮助您跟踪连胜纪录、发现模式并保持动力。"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Allows you to edit and view markdown files easily. Great for writing notes, "
-"to-do lists, or even creative projects."
+msgid "Allows you to edit and view markdown files easily. Great for writing notes, to-do lists, or even creative projects."
 msgstr "允许您轻松编辑和查看 markdown 文件。 非常适合编写笔记、待办事项列表，甚至创意项目。"
 
 #: src/lib/index.svelte.ts
@@ -7033,10 +7063,7 @@ msgid "English Dictionary App"
 msgstr "英语词典应用程序"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Web app that retrieves word definitions, pronunciation, and audio using an "
-"API. It also implements loading effects, error handling, and Web Speech API "
-"for audio playback."
+msgid "Web app that retrieves word definitions, pronunciation, and audio using an API. It also implements loading effects, error handling, and Web Speech API for audio playback."
 msgstr "Web 应用程序，它使用 API 检索单词定义、发音和音频。 它还实现了加载效果、错误处理和 Web Speech API 用于音频播放。"
 
 #: src/lib/index.svelte.ts
@@ -7044,9 +7071,7 @@ msgid "Pomodoro Timer"
 msgstr "番茄工作法计时器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Creates a timer with a countdown and lets you set customizable work/break "
-"intervals. It also uses audio notifications to alert you."
+msgid "Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you."
 msgstr "创建一个带有倒计时的计时器，让您可以设置可自定义的工作/休息间隔。 它还使用音频通知来提醒您。"
 
 #: src/lib/index.svelte.ts
@@ -7066,9 +7091,7 @@ msgid "Rock Paper Scissors Game"
 msgstr "石头剪刀布游戏"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Lets you play the classic rock, paper, scissors game against the computer "
-"and shows the outcome."
+msgid "Lets you play the classic rock, paper, scissors game against the computer and shows the outcome."
 msgstr "让您与电脑玩经典的石头、剪刀、布游戏并显示结果。"
 
 #: src/lib/index.svelte.ts
@@ -7084,9 +7107,7 @@ msgid "Recipe Book Organizer"
 msgstr "食谱簿整理器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Helps you manage your recipes by letting you create, organize, and "
-"potentially convert them into instructions."
+msgid "Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions."
 msgstr "通过让您创建、组织并可能将它们转换为说明来帮助您管理您的食谱。"
 
 #: src/lib/index.svelte.ts
@@ -7102,9 +7123,7 @@ msgid "Expense Splitter"
 msgstr "费用分摊器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Helps users split expenses among friends or family and calculates who owes "
-"what."
+msgid "Helps users split expenses among friends or family and calculates who owes what."
 msgstr "帮助用户在朋友或家人之间分摊费用，并计算谁欠谁什么。"
 
 #: src/lib/index.svelte.ts
@@ -7112,9 +7131,7 @@ msgid "Flashcard Quizzer"
 msgstr "抽认卡测验器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Allows users to create flashcards for studying and quizzes them on the "
-"content."
+msgid "Allows users to create flashcards for studying and quizzes them on the content."
 msgstr "允许用户创建抽认卡进行学习，并就内容对他们进行测验。"
 
 #: src/lib/index.svelte.ts
@@ -7138,9 +7155,7 @@ msgid "Meditation Timer"
 msgstr "冥想计时器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"A timer specifically for meditation sessions with options for different "
-"intervals."
+msgid "A timer specifically for meditation sessions with options for different intervals."
 msgstr "专门用于冥想的计时器，可以选择不同的间隔。"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
@@ -7280,10 +7295,10 @@ msgstr "添加一个可选的描述，以帮助您记住此密码的用途。"
 msgid "Description (Optional)"
 msgstr "描述（可选）"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 个字符"
 
@@ -7367,8 +7382,7 @@ msgstr "没有保存的密码"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid ""
-"Start generating secure passwords to keep track of them here. Your "
-"passwords are\n"
+"Start generating secure passwords to keep track of them here. Your passwords are\n"
 "encrypted and stored safely."
 msgstr "开始生成安全密码，以便在此处进行跟踪。您的密码已加密并安全存储。"
 
@@ -7380,9 +7394,9 @@ msgstr "创建您的第一个密码"
 msgid "Your Password Vault"
 msgstr "您的密码库"
 
-#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 #. placeholder {0}: passwords.length
 #. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "已安全存储 {0} 个{1}"
 
@@ -7392,10 +7406,8 @@ msgstr "安全存储"
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid ""
-"All passwords are encrypted and stored securely. You can view, copy, and "
-"delete your\n"
-"passwords at any time. For maximum security, consider using a dedicated "
-"password\n"
+"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+"passwords at any time. For maximum security, consider using a dedicated password\n"
 "manager for sensitive accounts."
 msgstr "所有密码均已加密并安全存储。您可以随时查看、复制和删除您的密码。为了获得最高的安全性，请考虑为敏感帐户使用专用的密码管理器。"
 
@@ -7473,9 +7485,7 @@ msgid "Scenario Tracker"
 msgstr "情景追踪器"
 
 #: src/lib/index.svelte.ts
-msgid ""
-"Track multiple life/career scenarios with time investments, progress "
-"metrics, and risk analysis over a 10-year planning horizon."
+msgid "Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon."
 msgstr "在 10 年的规划范围内，使用时间投入、进度指标和风险分析来跟踪多个生活/职业情景。"
 
 #: src/routes/about/+page.svelte
@@ -7483,9 +7493,7 @@ msgid "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Uni
 msgstr "Svelte, Min iApps, 关于, 工具, 应用, 生态系统, 创新, 独特"
 
 #: src/routes/about/Attributions.svelte
-msgid ""
-"Compile-time internationalization toolkit that automatically extracts "
-"translatable strings without requiring code changes."
+msgid "Compile-time internationalization toolkit that automatically extracts translatable strings without requiring code changes."
 msgstr "一个编译时国际化工具包，可以自动提取可翻译的字符串，而无需更改代码。"
 
 #: src/routes/apps/+page.svelte
@@ -7530,10 +7538,7 @@ msgstr "千"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Complete rebuild focusing on offline capabilities and local-first data "
-"management. Users can use the nuke button to clear cached data if they "
-"notice issues with the app."
+msgid "Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app."
 msgstr "完全重建，专注于离线功能和本地优先的数据管理。如果用户发现应用存在问题，可以使用“核弹”按钮清除缓存数据。"
 
 #: src/routes/changelog/+page.svelte
@@ -7573,9 +7578,7 @@ msgstr "PWA 支持"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Full Progressive Web App capabilities with offline support and "
-"installability."
+msgid "Full Progressive Web App capabilities with offline support and installability."
 msgstr "完整的渐进式 Web 应用功能，具有离线支持和可安装性。"
 
 #: src/routes/changelog/+page.svelte
@@ -7591,9 +7594,7 @@ msgid "Svelte Mini Apps featured on the official MadeWithSvelte showcase"
 msgstr "Svelte Mini Apps在官方MadeWithSvelte展示中亮相"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Featured on MadeWithSvelte.com showcasing our collection of productivity "
-"mini-apps"
+msgid "Featured on MadeWithSvelte.com showcasing our collection of productivity mini-apps"
 msgstr "在MadeWithSvelte.com上展示，突出了我们的生产力迷你应用集合"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7601,9 +7602,7 @@ msgid "Recognized for our Svelte 5 implementation and modern PWA architecture"
 msgstr "因我们的Svelte 5实施和现代PWA架构而受到认可"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Highlighting our comprehensive suite of tools including budget tracker, "
-"todo list, and more"
+msgid "Highlighting our comprehensive suite of tools including budget tracker, todo list, and more"
 msgstr "重点介绍了我们全面的工具套件，包括预算跟踪器、待办事项列表等"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7853,9 +7852,7 @@ msgstr "2025年2月10日"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Recognized for excellence in Svelte 5 migration with our Migration Magician "
-"entry"
+msgid "Recognized for excellence in Svelte 5 migration with our Migration Magician entry"
 msgstr "凭借我们的Migration Magician条目，因Svelte 5迁移方面的卓越表现而获得认可"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7880,9 +7877,7 @@ msgstr "展示了具有强大本地数据持久性的离线优先架构"
 
 #: src/routes/changelog/data.svelte.ts
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte "
-"components"
+msgid "Demonstrated modern UI/UX with Svelte 5 features and shadcn-svelte components"
 msgstr "使用Svelte 5功能和shadcn-svelte组件演示了现代UI/UX"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7894,33 +7889,23 @@ msgid "Focused on improving functionality, user interface, and code quality"
 msgstr "专注于改进功能、用户界面和代码质量"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Enhanced Markdown editor with Carta-MD integration for better editing and "
-"preview capabilities"
+msgid "Enhanced Markdown editor with Carta-MD integration for better editing and preview capabilities"
 msgstr "通过Carta-MD集成增强了Markdown编辑器，以实现更好的编辑和预览功能"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Updated currency conversion logic with easy-currencies library for improved "
-"accuracy"
+msgid "Updated currency conversion logic with easy-currencies library for improved accuracy"
 msgstr "使用easy-currencies库更新了货币转换逻辑，以提高准确性"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Refactored NukeButton for better data clearing functionality and visual "
-"design"
+msgid "Refactored NukeButton for better data clearing functionality and visual design"
 msgstr "重构了NukeButton，以实现更好的数据清除功能和视觉设计"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Enhanced GitHub contribution tracker with toast notifications and dynamic "
-"year updates"
+msgid "Enhanced GitHub contribution tracker with toast notifications and dynamic year updates"
 msgstr "通过toast通知和动态年份更新增强了GitHub贡献跟踪器"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Introduced Partytown for web worker management and Google Tag Manager for "
-"analytics"
+msgid "Introduced Partytown for web worker management and Google Tag Manager for analytics"
 msgstr "引入了Partytown用于Web Worker管理，并引入了Google Tag Manager用于分析"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7928,9 +7913,7 @@ msgid "Repositioned GitHub link in footer for better visibility"
 msgstr "重新定位了页脚中的GitHub链接，以提高可见性"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Refactored GitGraph component for improved responsiveness and code "
-"cleanliness"
+msgid "Refactored GitGraph component for improved responsiveness and code cleanliness"
 msgstr "重构了GitGraph组件，以提高响应性和代码清洁度"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7946,9 +7929,7 @@ msgid "Implemented user-focused features and cleaned up code structure"
 msgstr "实施了以用户为中心的功能，并清理了代码结构"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Corrected pluralization logic for GitHub contributions to ensure "
-"grammatical accuracy"
+msgid "Corrected pluralization logic for GitHub contributions to ensure grammatical accuracy"
 msgstr "更正了GitHub贡献的复数逻辑，以确保语法准确性"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7956,9 +7937,7 @@ msgid "Added robots.txt for better SEO and web crawler management"
 msgstr "添加了robots.txt，以实现更好的SEO和Web爬网程序管理"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Optimized and cleaned up code for GitHub contribution tracker, including "
-"unused files"
+msgid "Optimized and cleaned up code for GitHub contribution tracker, including unused files"
 msgstr "优化并清理了GitHub贡献跟踪器的代码，包括未使用的文件"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7966,9 +7945,7 @@ msgid "Improved password generator for better readability and consistency"
 msgstr "改进了密码生成器，以提高可读性和一致性"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Refactored UI elements for responsive design, notably in the heat map for "
-"contributions"
+msgid "Refactored UI elements for responsive design, notably in the heat map for contributions"
 msgstr "重构了UI元素以实现响应式设计，特别是在贡献的热图中"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7976,15 +7953,11 @@ msgid "Enhanced user role management in registration and session handling"
 msgstr "增强了注册和会话处理中的用户角色管理"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Improved service worker functionality with error handling and update "
-"notifications"
+msgid "Improved service worker functionality with error handling and update notifications"
 msgstr "改进了Service Worker的功能，包括错误处理和更新通知"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Removed unused components, interfaces, and imports to streamline the "
-"codebase"
+msgid "Removed unused components, interfaces, and imports to streamline the codebase"
 msgstr "删除了未使用的组件、接口和导入，以简化代码库"
 
 #: src/routes/changelog/data.svelte.ts
@@ -7996,9 +7969,7 @@ msgid "December 29-31, 2024"
 msgstr "2024年12月29-31日"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Refactoring for code clarity, adding documentation, and enhancing user "
-"experience"
+msgid "Refactoring for code clarity, adding documentation, and enhancing user experience"
 msgstr "重构以提高代码清晰度，添加文档并增强用户体验"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8022,9 +7993,7 @@ msgid "Enhanced error handling in NukeButton for data integrity"
 msgstr "增强了NukeButton中的错误处理，以确保数据完整性"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Introduced CONTRIBUTING.md and enhanced README for better contributor "
-"guidance"
+msgid "Introduced CONTRIBUTING.md and enhanced README for better contributor guidance"
 msgstr "引入了CONTRIBUTING.md并增强了README，以提供更好的贡献者指导"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8040,9 +8009,7 @@ msgid "December 22-25, 2024"
 msgstr "2024年12月22-25日"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Focused on improving user interface, adding new features, and enhancing "
-"interactivity"
+msgid "Focused on improving user interface, adding new features, and enhancing interactivity"
 msgstr "专注于改进用户界面，添加新功能并增强交互性"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8066,9 +8033,7 @@ msgid "Improved markdown editor with new components and responsive design"
 msgstr "使用新组件和响应式设计改进了Markdown编辑器"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Added currency symbol helper in budget tracker for better financial data "
-"presentation"
+msgid "Added currency symbol helper in budget tracker for better financial data presentation"
 msgstr "在预算跟踪器中添加了货币符号助手，以更好地呈现财务数据"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8084,15 +8049,11 @@ msgid "December 19-22, 2024"
 msgstr "2024年12月19-22日"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Improved user interaction, added new components, and enhanced service "
-"worker functionality"
+msgid "Improved user interaction, added new components, and enhanced service worker functionality"
 msgstr "改进了用户交互，添加了新组件并增强了Service Worker的功能"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Enhanced service worker update mechanism with hash checks and client "
-"notifications"
+msgid "Enhanced service worker update mechanism with hash checks and client notifications"
 msgstr "通过哈希检查和客户端通知增强了Service Worker更新机制"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8108,9 +8069,7 @@ msgid "Added custom columns to to-do list for dynamic task management"
 msgstr "向待办事项列表添加了自定义列，以实现动态任务管理"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Introduced 'Under Construction' component for informing users about ongoing "
-"development"
+msgid "Introduced 'Under Construction' component for informing users about ongoing development"
 msgstr "引入了“正在建设中”组件，以告知用户有关正在进行的开发"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8162,9 +8121,7 @@ msgid "December 14, 2024"
 msgstr "2024年12月14日"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Introduced new features for user interaction, database changes, and "
-"improved UI components"
+msgid "Introduced new features for user interaction, database changes, and improved UI components"
 msgstr "引入了用于用户交互的新功能、数据库更改和改进的UI组件"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8192,9 +8149,7 @@ msgid "December 12-13, 2024"
 msgstr "2024年12月12-13日"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Focused on improving service worker logic, styling, and project "
-"configuration"
+msgid "Focused on improving service worker logic, styling, and project configuration"
 msgstr "专注于改进Service Worker逻辑、样式和项目配置"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8258,9 +8213,7 @@ msgid "Complete overhaul of password generator and enhanced clipboard functional
 msgstr "彻底修改了密码生成器，并增强了剪贴板功能"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Reimplemented password generator with modern UI components and enhanced "
-"features"
+msgid "Reimplemented password generator with modern UI components and enhanced features"
 msgstr "使用现代UI组件和增强的功能重新实现了密码生成器"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8404,9 +8357,7 @@ msgid "Svelte Hack 2024 Achievement"
 msgstr "Svelte Hack 2024 成就"
 
 #: src/routes/changelog/data.svelte.ts
-msgid ""
-"Recognized for innovative Svelte 5 migration approach and offline-first "
-"architecture"
+msgid "Recognized for innovative Svelte 5 migration approach and offline-first architecture"
 msgstr "因创新的 Svelte 5 迁移方法和离线优先架构而获得认可"
 
 #: src/routes/changelog/data.svelte.ts
@@ -8435,21 +8386,18 @@ msgstr "增强了离线指示器和交互反馈```"
 
 #: src/routes/hire/+page.svelte
 msgid ""
-"Beyond code, I contribute to Svelte projects, mentor developers, and love "
-"collaborating on\n"
+"Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
 "innovative solutions. Let's create something exceptional together!"
 msgstr "除了代码之外，我还为 Svelte 项目做贡献，指导开发人员，并且喜欢合作开发创新解决方案。让我们一起创造一些特别的东西吧！"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid ""
-"From managing your budget to boosting productivity, each app is designed to "
-"help you get\n"
-"things done. Built with <0>Svelte</0>, these tools are fast, responsive, "
-"and easy to use."
+"From managing your budget to boosting productivity, each app is designed to help you get\n"
+"things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
 msgstr "从管理预算到提高工作效率，每个应用程序都旨在帮助您完成任务。这些工具使用 <0>Svelte</0> 构建，速度快、响应灵敏且易于使用。"
 
-#: src/lib/components/home/AppsSection.svelte
 #. placeholder {0}: doneProjects.length
+#: src/lib/components/home/AppsSection.svelte
 msgid "<0/> Active Apps ({0})"
 msgstr "<0/> 活跃应用 ({0})"
 
@@ -8461,42 +8409,26 @@ msgstr "折叠"
 msgid "Expand"
 msgstr "展开"
 
-#: src/lib/components/home/AppsSection.svelte
 #. placeholder {0}: comingSoon.length
+#: src/lib/components/home/AppsSection.svelte
 msgid "Coming Soon ({0})"
 msgstr "即将推出 ({0})"
 
 #: src/lib/components/home/data.svelte.ts
-msgid ""
-"Your new favorite productivity toolkit. Lightning-fast mini apps crafted "
-"for your daily needs. Budget tracking, habit building, task management, and "
-"more — each app loads instantly and works beautifully on any device."
-msgstr ""
-"你最喜欢的新生产力工具包。闪电般快速的迷你应用程序，专为您的日常需求而设计。预算跟踪、习惯养成、任务管理等等——每个应用程序都能立即加载，并在任何设备上"
-"完美运行。"
+msgid "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
+msgstr "你最喜欢的新生产力工具包。闪电般快速的迷你应用程序，专为您的日常需求而设计。预算跟踪、习惯养成、任务管理等等——每个应用程序都能立即加载，并在任何设备上完美运行。"
 
 #: src/lib/components/home/data.svelte.ts
-msgid ""
-"Blazing fast and incredibly smooth. Built with Svelte, our apps respond "
-"instantly to every interaction — no lag, no waiting. Experience the "
-"difference that cutting-edge technology makes in your daily workflow."
+msgid "Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow."
 msgstr "速度极快，非常流畅。我们的应用程序采用 Svelte 构建，可立即响应每次交互——没有延迟，无需等待。体验尖端技术在您的日常工作流程中带来的差异。"
 
 #: src/lib/components/home/data.svelte.ts
-msgid ""
-"Zero learning curve. Maximum productivity. Each mini app is designed to be "
-"instantly intuitive — open it and start working. No tutorials needed, no "
-"complexity, just clean tools that help you get things done."
+msgid "Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done."
 msgstr "零学习曲线。最大生产力。每个迷你应用程序都设计得非常直观——打开它并开始工作。无需教程，没有复杂性，只有干净的工具可以帮助您完成工作。"
 
 #: src/lib/components/home/data.svelte.ts
-msgid ""
-"Works everywhere you do. Student, professional, or anywhere in between — "
-"our apps adapt to your workflow. Seamlessly sync across all your devices "
-"and scale from basic features to advanced capabilities as your needs grow."
-msgstr ""
-"随处可用。学生、专业人士或介于两者之间的任何身份——我们的应用程序都适应您的工作流程。在您的所有设备上无缝同步，并随着您需求的增长，从基本功能扩展到高级"
-"功能。"
+msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
+msgstr "随处可用。学生、专业人士或介于两者之间的任何身份——我们的应用程序都适应您的工作流程。在您的所有设备上无缝同步，并随着您需求的增长，从基本功能扩展到高级功能。"
 
 #: src/routes/(auth)/logout/+page.svelte
 msgid "Sign out of your Svelte Mini Apps account"
@@ -8509,15 +8441,11 @@ msgstr "开发模式"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-msgid ""
-"This app is currently under development and may have bugs or incomplete "
-"features."
+msgid "This app is currently under development and may have bugs or incomplete features."
 msgstr "此应用程序目前正在开发中，可能存在错误或不完整的功能。"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
-msgid ""
-"Visualize and analyze GitHub contributions with detailed statistics, "
-"heatmaps, and insights"
+msgid "Visualize and analyze GitHub contributions with detailed statistics, heatmaps, and insights"
 msgstr "通过详细的统计信息、热图和见解，可视化和分析 GitHub 贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
@@ -8595,8 +8523,7 @@ msgstr "还没有笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid ""
-"Start capturing your ideas and thoughts. Click the \"New Note\" button to "
-"create your first\n"
+"Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
 "note."
 msgstr "开始捕捉您的想法和创意。单击“新建笔记”按钮以创建您的第一篇笔记。"
 
@@ -8805,21 +8732,15 @@ msgid "TBD"
 msgstr "待定"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"This will delete ALL your data including options, activities, timeline "
-"entries, and risks. Are you absolutely sure?"
+msgid "This will delete ALL your data including options, activities, timeline entries, and risks. Are you absolutely sure?"
 msgstr "这将删除您的所有数据，包括选项、活动、时间线条目和风险。您确定要这样做吗？"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"Track multiple life/career options with time investments, progress metrics, "
-"and risks over a 10-year planning horizon."
+msgid "Track multiple life/career options with time investments, progress metrics, and risks over a 10-year planning horizon."
 msgstr "在 10 年的规划范围内，跟踪多个生活/职业选项的时间投入、进度指标和风险。"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"Plan your future: track options, investments, and risks over your planning "
-"horizon"
+msgid "Plan your future: track options, investments, and risks over your planning horizon"
 msgstr "规划您的未来：在您的规划范围内跟踪选项、投资和风险"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -8864,8 +8785,8 @@ msgstr "此选项的简要说明"
 msgid "Color"
 msgstr "颜色"
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #. placeholder {0}: color.label
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Select {0} color"
 msgstr "选择 {0} 颜色"
 
@@ -8880,8 +8801,7 @@ msgstr "重置所有数据？"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid ""
-"This will permanently delete all your options, activities, timeline "
-"entries, and risks. The\n"
+"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
 "default options will be restored. This action cannot be undone."
 msgstr "这将永久删除您的所有选项、活动、时间线条目和风险。默认选项将被恢复。此操作无法撤消。"
 
@@ -8894,24 +8814,22 @@ msgid "Delete Option"
 msgstr "删除选项"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"Are you sure you want to delete this option? All related activities and "
-"risks will also be deleted. This action cannot be undone."
+msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
 msgstr "您确定要删除此选项吗？所有相关的活动和风险也将被删除。此操作无法撤消。```"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Time Remaining"
 msgstr "剩余时间"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #. placeholder {0}: stats.remainingYears
 #. placeholder {0}: durationYears
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "{0} years"
 msgstr "{0} 年"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: stats.remainingDays.toLocaleString()
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} days left"
 msgstr "还剩 {0} 天"
 
@@ -8919,12 +8837,12 @@ msgstr "还剩 {0} 天"
 msgid "Total Time Invested"
 msgstr "总投入时间"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
 #. placeholder {0}: option.totalTimeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "{0} hrs"
 msgstr "{0} 小时"
 
@@ -8940,8 +8858,8 @@ msgstr "平均进度"
 msgid "Active Risks"
 msgstr "活跃风险"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: highRisksCount
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} high/critical severity"
 msgstr "{0} 个高/危急严重性风险"
 
@@ -8953,15 +8871,15 @@ msgstr "<0/> 方案概览"
 msgid "Track progress across your scenario options"
 msgstr "跟踪你的方案选项的进度"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: option.totalTimeSpent
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "{0} hrs invested"
 msgstr "已投入 {0} 小时"
 
+#. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#. placeholder {0}: option.estimatedTimeToCompletion
-#. placeholder {0}: option.estimatedTimeToCompletion
 msgid "Est. completion: {0}"
 msgstr "预计完成时间：{0}"
 
@@ -8977,18 +8895,18 @@ msgstr "<0/> 时间分配"
 msgid "How you're dividing your effort"
 msgstr "你如何分配你的精力"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: 100 - totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "({0}% unallocated)"
 msgstr "（{0}% 未分配）"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: totalAllocation - 100
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
 msgstr "（超额分配 {0}%）"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: totalAllocation
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Total: {0}% <0/>"
 msgstr "总计：{0}% <0/>"
 
@@ -9000,8 +8918,8 @@ msgstr "添加选项以查看分配图表"
 msgid "Deadline"
 msgstr "截止日期"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Your planning window ends on {0}"
 msgstr "你的规划窗口截止于 {0}"
 
@@ -9009,13 +8927,13 @@ msgstr "你的规划窗口截止于 {0}"
 msgid "Progress through planning period"
 msgstr "规划期间的进度"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: formatDate(startDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Started: {0}"
 msgstr "开始时间：{0}"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #. placeholder {0}: formatDate(endDate.toISOString())
+#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Deadline: {0}"
 msgstr "截止日期：{0}```"
 
@@ -9268,9 +9186,7 @@ msgid "<0/> Timeline Settings"
 msgstr "<0/> 时间线设置"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
-msgid ""
-"Adjust your planning horizon. This affects the \"Time Remaining\" "
-"calculations."
+msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
 msgstr "调整你的计划期限。这会影响“剩余时间”的计算。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
@@ -9319,8 +9235,7 @@ msgstr "⚠️ 结束日期必须晚于开始日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't "
-"sync across\n"
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
 msgstr ""
 "<0>注意：</0> 您尚未登录。设置将被本地保存，并且不会跨设备同步。\n"
@@ -9404,9 +9319,7 @@ msgid "Delete Timeline Entry"
 msgstr "删除时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
-msgid ""
-"Are you sure you want to delete this timeline entry? This action cannot be "
-"undone."
+msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
 msgstr "你确定要删除此时间线条目吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
@@ -9503,15 +9416,15 @@ msgstr "每单位成本"
 msgid "Add New Purchase"
 msgstr "添加新购买"
 
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #. placeholder {0}: currentItem.name
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Record a new purchase for {0}."
 msgstr "记录 {0} 的新购买。"
 
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #. placeholder {0}: currentItem.defaultCurrency || 'USD'
 #. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost ({0})"
 msgstr "成本 ({0})"
 
@@ -9549,16 +9462,14 @@ msgstr "问题"
 msgid "Reviews"
 msgstr "审核"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: username
 #. placeholder {1}: year
-msgid ""
-"Visualize {0}'s GitHub contributions for {1} with interactive charts, "
-"heatmaps, and detailed insights."
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
 msgstr "使用交互式图表、热图和详细的见解，可视化 {0} 在 {1} 年的 GitHub 贡献。"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "GitHub Contributions in {0}"
 msgstr "{0} 年的 GitHub 贡献"
 
@@ -9587,8 +9498,8 @@ msgstr "见解"
 msgid "Monthly Contributions"
 msgstr "每月贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Total contributions per month in {0}"
 msgstr "{0} 年每月总贡献"
 
@@ -9604,8 +9515,8 @@ msgstr "贡献的仓库中使用的顶级编程语言"
 msgid "Top Contributed Repositories"
 msgstr "贡献最多的仓库"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Most starred repositories you contributed to in {0}"
 msgstr "你在 {0} 年贡献的获得最多星标的仓库"
 
@@ -9613,8 +9524,8 @@ msgstr "你在 {0} 年贡献的获得最多星标的仓库"
 msgid "Contribution Calendar"
 msgstr "贡献日历"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Daily contribution activity throughout {0}"
 msgstr "整个 {0} 年的每日贡献活动"
 
@@ -9634,8 +9545,8 @@ msgstr "周三"
 msgid "Fri"
 msgstr "周五"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: day.value
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "{0} contributions"
 msgstr "{0} 项贡献"
 
@@ -9663,8 +9574,8 @@ msgstr "平均每天"
 msgid "Most active in"
 msgstr "最活跃于"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "+ {0} private contributions"
 msgstr "+ {0} 项私有贡献"
 
@@ -9829,10 +9740,10 @@ msgstr "今天开始你的连续使用吧！"
 msgid "<0/> Total Usage"
 msgstr "<0/> 总使用次数"
 
+#. placeholder {0}: stats.uniqueAppsUsed
+#. placeholder {0}: stats.uniqueAppsUsed
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#. placeholder {0}: stats.uniqueAppsUsed
-#. placeholder {0}: stats.uniqueAppsUsed
 msgid "{0} unique apps explored"
 msgstr "已探索 {0} 个独特的应用"
 
@@ -9841,26 +9752,26 @@ msgstr "已探索 {0} 个独特的应用"
 msgid "<0/> Level"
 msgstr "<0/> 等级"
 
+#. placeholder {0}: stats.points
+#. placeholder {0}: stats.points
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#. placeholder {0}: stats.points
-#. placeholder {0}: stats.points
 msgid "{0} XP"
 msgstr "{0} 经验值"
 
+#. placeholder {0}: pointsToNextLevel
+#. placeholder {0}: pointsToNextLevel
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#. placeholder {0}: pointsToNextLevel
-#. placeholder {0}: pointsToNextLevel
 msgid "{0} more uses to level up"
 msgstr "再使用 {0} 次即可升级"
 
+#. placeholder {0}: unlockedCount
+#. placeholder {1}: achievements.length
+#. placeholder {0}: unlockedCount
+#. placeholder {1}: achievements.length
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#. placeholder {0}: unlockedCount
-#. placeholder {1}: achievements.length
-#. placeholder {0}: unlockedCount
-#. placeholder {1}: achievements.length
 msgid "{0} of {1} unlocked"
 msgstr "{0} / {1} 已解锁"
 
@@ -9967,8 +9878,8 @@ msgstr "<0/> 管理员"
 msgid "<0/> GitHub"
 msgstr "<0/> GitHub"
 
-#: src/routes/(auth)/profile/ProfileHeader.svelte
 #. placeholder {0}: memberSince
+#: src/routes/(auth)/profile/ProfileHeader.svelte
 msgid "<0/> Member since {0}"
 msgstr "<0/> 自 {0} 起成为成员"
 
@@ -10021,10 +9932,10 @@ msgstr "会话"
 msgid "<0/> Current"
 msgstr "<0/> 当前"
 
+#. placeholder {0}: formatRelativeTime(session.createdAt)
+#. placeholder {0}: formatRelativeTime(session.createdAt)
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
-#. placeholder {0}: formatRelativeTime(session.createdAt)
-#. placeholder {0}: formatRelativeTime(session.createdAt)
 msgid "<0/> Created {0}"
 msgstr "<0/> 已创建 {0}"
 
@@ -10085,14 +9996,14 @@ msgstr "跨不同设备管理您的活跃会话。"
 msgid "Loading sessions..."
 msgstr "正在加载会话…"
 
-#: src/routes/(auth)/profile/sessions/+page.svelte
 #. placeholder {0}: sessions.length
 #. placeholder {1}: sessions.length !== 1 ? 's' : ''
+#: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "{0} active session{1}"
 msgstr "{0} 个活跃会话{1}"
 
-#: src/routes/(auth)/profile/sessions/+page.svelte
 #. placeholder {0}: formatExpiryDate(session.expiresAt)
+#: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Expires {0}"
 msgstr "到期时间：{0}"
 
@@ -10140,12 +10051,12 @@ msgstr "全部活动"
 msgid "Complete activity history"
 msgstr "完整的活动历史"
 
-#: src/routes/(auth)/profile/RecentActivityCard.svelte
-#: src/routes/(auth)/profile/RecentActivityCard.svelte
 #. placeholder {0}: formatActivityDate(activity.date)
 #. placeholder {1}: formatTime(activity.date)
 #. placeholder {0}: formatActivityDate(activity.date)
 #. placeholder {1}: formatTime(activity.date)
+#: src/routes/(auth)/profile/RecentActivityCard.svelte
+#: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "{0} at {1}"
 msgstr "{0} 在 {1}"
 
@@ -10313,8 +10224,8 @@ msgstr "<0/> 活动历史记录"
 msgid "Complete log of your app usage and interactions"
 msgstr "您的应用使用和互动完整日志"
 
-#: src/routes/(auth)/profile/activity/+page.svelte
 #. placeholder {0}: totalActivities
+#: src/routes/(auth)/profile/activity/+page.svelte
 msgid "<0/> {0} total"
 msgstr "<0/> 总共 {0} 个"
 
@@ -10378,14 +10289,14 @@ msgstr "发音："
 msgid "Play"
 msgstr "播放"
 
-#: src/routes/apps/(app)/dictionary-app/+page.svelte
 #. placeholder {0}: meaning.definitions.length
 #. placeholder {1}: meaning.definitions.length > 1 ? 's' : ''
+#: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "{0} definition{1}"
 msgstr "{0} 条释义{1}"
 
-#: src/routes/apps/(app)/dictionary-app/+page.svelte
 #. placeholder {0}: meaning.definitions.length - 5
+#: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "+{0} more definitions"
 msgstr "+{0} 条更多释义"
 
@@ -10406,9 +10317,7 @@ msgid "Start exploring words"
 msgstr "开始探索单词"
 
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
-msgid ""
-"Enter any English word above to discover its meanings, pronunciations, and "
-"more."
+msgid "Enter any English word above to discover its meanings, pronunciations, and more."
 msgstr "在上方输入任意英文单词，以了解其释义、发音等信息。"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
@@ -10418,26 +10327,22 @@ msgstr "确认"
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid ""
-"This will log out the device and end its session. The user will need to log "
-"in again on that\n"
+"This will log out the device and end its session. The user will need to log in again on that\n"
 "device."
 msgstr "此操作将登出该设备并结束其会话。用户需要在该设备上重新登录。"
 
+#. placeholder {0}: otherSessionsCount
+#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
+#. placeholder {0}: otherSessionsCount
+#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
-#. placeholder {0}: otherSessionsCount
-#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
-#. placeholder {0}: otherSessionsCount
-#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
-msgid ""
-"This will log out all other devices ({0} session{1}). Your current session "
-"will remain active."
+msgid "This will log out all other devices ({0} session{1}). Your current session will remain active."
 msgstr "这将登出所有其他设备（{0} 个会话{1}）。当前会话将保持活跃。"
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid ""
-"Permanently delete your account and all associated data. This action cannot "
-"be\n"
+"Permanently delete your account and all associated data. This action cannot be\n"
 "undone."
 msgstr "永久删除您的帐户和所有相关数据。此操作无法撤消。"
 
@@ -10449,8 +10354,8 @@ msgstr "密码长度"
 msgid "View Saved Passwords"
 msgstr "查看已保存的密码"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Saved ({0})"
 msgstr "已保存 ({0})"
 
@@ -10463,50 +10368,31 @@ msgid "Let it snow!"
 msgstr "让雪下起来！"
 
 #: src/lib/components/home/data.svelte.ts
-msgctxt ""
-"Community engagement section - inviting users to provide feedback and "
-"report issues"
-msgid ""
-"<strong>Your voice matters!</strong> Whether you've got a brilliant idea, "
-"spotted a bug, or just want to share your experience - we're listening. "
-"Head over to our <strong>GitHub repository</strong> to open an issue or "
-"start a discussion. Every piece of feedback helps us build better tools for "
-"you."
-msgstr ""
-"<strong>您的声音很重要！</strong> "
-"无论您有绝妙的想法、发现了错误，还是只想分享您的体验，我们都在倾听。前往我们的<strong>GitHub存储库</"
-"strong>以提交问题或发起讨论。每一条反馈都有助于我们为您构建更好的工具。"
+msgctxt "Community engagement section - inviting users to provide feedback and report issues"
+msgid "<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
+msgstr "<strong>您的声音很重要！</strong> 无论您有绝妙的想法、发现了错误，还是只想分享您的体验，我们都在倾听。前往我们的<strong>GitHub存储库</strong>以提交问题或发起讨论。每一条反馈都有助于我们为您构建更好的工具。"
 
 #: src/lib/components/home/data.svelte.ts
-msgctxt ""
-"Community engagement section - encouraging users to share positive "
-"experiences with Mini Apps"
-msgid ""
-"<strong>Found a MiniApp that made your day easier?</strong> Why keep it to "
-"yourself? Share your success story with friends, family, or colleagues who "
-"might benefit too! Your recommendation could help someone discover the "
-"perfect tool to simplify their daily routine."
-msgstr ""
-"<strong>发现一款让您的一天更轻松的迷你应用了吗？</strong> "
-"为什么要独自享受？与可能从中受益的朋友、家人或同事分享您的成功故事！您的推荐可以帮助其他人发现简化日常生活的完美工具。"
+msgctxt "Community engagement section - encouraging users to share positive experiences with Mini Apps"
+msgid "<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine."
+msgstr "<strong>发现一款让您的一天更轻松的迷你应用了吗？</strong> 为什么要独自享受？与可能从中受益的朋友、家人或同事分享您的成功故事！您的推荐可以帮助其他人发现简化日常生活的完美工具。"
 
 #: src/lib/components/home/data.svelte.ts
-msgctxt ""
-"Community engagement section - inviting developers to contribute to the "
-"open source project"
-msgid ""
-"<strong>Love coding?</strong> You could be the next contributor to make "
-"these Mini Apps even more awesome! Our project is <strong>open "
-"source</strong>, which means you're invited to dive in, explore the code, "
-"and bring your ideas to life. Whether you're a seasoned developer or just "
-"starting out, there's a place for you in our community."
-msgstr ""
-"<strong>热爱编程吗？</strong> "
-"下一位让这些迷你应用更出色的贡献者可能就是你！我们的项目是<strong>开源</"
-"strong>的，这意味着我们邀请你深入了解、探索代码，并将你的想法变为现实。无论你是一位经验丰富的开发者，还是刚刚起步，我们的社区都有你的位置。"
+msgctxt "Community engagement section - inviting developers to contribute to the open source project"
+msgid "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
+msgstr "<strong>热爱编程吗？</strong> 下一位让这些迷你应用更出色的贡献者可能就是你！我们的项目是<strong>开源</strong>的，这意味着我们邀请你深入了解、探索代码，并将你的想法变为现实。无论你是一位经验丰富的开发者，还是刚刚起步，我们的社区都有你的位置。"
 
 #~ msgid "Password Length: {0}"
 #~ msgstr "密码长度: {0}"
 
 #~ msgid "View Saved Passwords ({0})"
 #~ msgstr "查看已保存的密码 ({0})"
+
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
+msgid "Note Details"
+msgstr "笔记详情"
+
+#. placeholder {0}: new Date(note.updatedAt).toLocaleString()
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
+msgid "Last updated: {0}"
+msgstr "上次更新：{0}"

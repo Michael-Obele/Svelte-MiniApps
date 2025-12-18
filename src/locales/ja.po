@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2025-12-11T08:39:02.479Z\n"
+"PO-Revision-Date: 2025-12-18T21:18:21.478Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1216,6 +1216,8 @@ msgstr "クリア"
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
@@ -3193,11 +3195,13 @@ msgstr "オプションの詳細:"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Status Indicators"
 msgstr "<0/> ステータスインジケーター"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Pro tip:"
 msgstr "プロのヒント："
 
@@ -3207,6 +3211,7 @@ msgstr "<0/> クイックヒント:"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need help? Reopen this guide anytime from the header"
 msgstr "ヘルプが必要ですか？ヘッダーからいつでもこのガイドを再オープンしてください"
 
@@ -3460,6 +3465,19 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -3789,12 +3807,14 @@ msgstr "Svelte Mini Appsでの最新のインタラクション"
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Today"
 msgstr "今日"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Yesterday"
 msgstr "昨日"
 
@@ -4472,6 +4492,7 @@ msgstr "すべて表示"
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -4972,12 +4993,15 @@ msgstr "金額（書式設定済み）"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Save Changes"
 msgstr "変更を保存"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -4992,6 +5016,10 @@ msgstr "日付"
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "削除"
@@ -5316,6 +5344,7 @@ msgstr "セッションを管理"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage"
 msgstr "管理"
 
@@ -5346,6 +5375,12 @@ msgstr "アドヒアランス"
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Taken"
 msgstr "服用"
 
@@ -5379,6 +5414,7 @@ msgstr "<0/> 統計"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Total Doses"
 msgstr "総投与量"
 
@@ -5387,6 +5423,10 @@ msgstr "総投与量"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Skipped"
 msgstr "スキップ"
 
@@ -5395,6 +5435,10 @@ msgstr "スキップ"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Missed"
 msgstr "未服用```"
 
@@ -5411,6 +5455,18 @@ msgstr "未服用```"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
@@ -5419,37 +5475,49 @@ msgstr "T"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time updated successfully"
 msgstr "時間更新に成功しました"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Medication status reset to pending"
 msgstr "薬のステータスが保留中にリセットされました"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "<0/> Medication History"
 msgstr "<0/> 服薬履歴"
 
 #. placeholder {0}: session.name
+#. placeholder {0}: session.name
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "View your medication schedule grouped by day for {0}"
 msgstr "{0} の服薬スケジュールを日ごとに表示"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "No History Yet"
 msgstr "まだ履歴はありません"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Your medication history will appear here once you start taking medications"
 msgstr "服薬を開始すると、ここに服薬履歴が表示されます"
 
 #. placeholder {0}: stats.total
 #. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
+#. placeholder {0}: stats.total
+#. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "{0} {1} scheduled"
 msgstr "{0} {1} がスケジュールされています"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "adherence"
 msgstr "服薬遵守"
 
@@ -5457,33 +5525,49 @@ msgstr "服薬遵守"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Pending"
 msgstr "保留中"
 
 #. placeholder {0}: formatTime(log.actualTime)
 #. placeholder {0}: formatTime(log.actualTime)
+#. placeholder {0}: formatTime(log.actualTime)
+#. placeholder {0}: formatTime(log.actualTime)
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "at {0}"
 msgstr "{0} に"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time"
 msgstr "時間を編集"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Undo"
 msgstr "元に戻す"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Taken"
 msgstr "服用済みにする"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Skipped"
 msgstr "スキップ済みにする"
 
@@ -5491,53 +5575,72 @@ msgstr "スキップ済みにする"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule"
 msgstr "スケジュール変更```"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Skip"
 msgstr "スキップ"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Skip Medication"
 msgstr "服薬をスキップ"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Optionally add a note explaining why you're skipping this medication."
 msgstr "この薬をスキップする理由を説明するメモを追加することもできます (オプション)。"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Reason for skipping (optional)..."
 msgstr "スキップする理由 (オプション)..."
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Edit Medication Time"
 msgstr "服薬時間を編集"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Update the date and time when this medication was taken."
 msgstr "この薬を服用した日時を更新します。"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Time"
 msgstr "時間"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Save Time"
 msgstr "時間を保存"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule Medication"
 msgstr "服薬のスケジュールを変更"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
 "Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
 "actual time taken."
@@ -5545,6 +5648,8 @@ msgstr "この薬を服用する予定の時間を変更します。これは、
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
 "💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
 "the Schedule button in the Medications list."
@@ -5552,200 +5657,253 @@ msgstr "💡 これは、この1回分の服用のみスケジュールを変更
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Date"
 msgstr "新しい日付"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Time"
 msgstr "新しい時間"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Create a Session"
 msgstr "セッションを作成"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Click <strong>\"New Session\"</strong> and give it a meaningful name like \"Morning Routine\", \"Weekly Meds\", or \"Antibiotics Course\"."
 msgstr "<strong>「新規セッション」</strong>をクリックし、「朝のルーティン」、「週ごとの薬」、「抗生物質コース」など、意味のある名前を付けます。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Add Medications"
 msgstr "薬を追加"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "In your session, click <strong>\"Add Medication\"</strong>. Include the medication name, dosage (e.g., \"500mg\"), and any special instructions."
 msgstr "セッションで、<strong>「薬を追加」</strong>をクリックします。薬の名前、投与量（例：「500mg」）、および特別な指示を含めます。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set Schedule Times"
 msgstr "スケジュール時間を設定"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Choose specific times for each medication (e.g., 9:00 AM, 2:00 PM, 9:00 PM). The app will automatically generate your daily schedule."
 msgstr "各薬の特定の時間を選択します（例：午前9時、午後2時、午後9時）。アプリは自動的に毎日のスケジュールを生成します。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Check Today's Schedule"
 msgstr "今日のスケジュールを確認"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"Today\"</strong> tab displays all medications due today with their scheduled times and current status."
 msgstr "<strong>「今日」</strong>タブには、今日の予定のすべての薬が、予定時刻と現在のステータスとともに表示されます。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Mark as Taken"
 msgstr "服用済みにする"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Click the <strong>✓ Taken</strong> button when you take each medication. The app records the actual time and you can add optional notes."
 msgstr "各薬を服用したら、<strong>✓ 服用済み</strong>ボタンをクリックします。アプリは実際の時間を記録し、オプションでメモを追加できます。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Handle Exceptions"
 msgstr "例外を処理"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "If you miss a dose, use <strong>\"Skip\"</strong> (with reason) or <strong>\"Reschedule\"</strong> (to a different time) to keep your tracking accurate."
 msgstr "服用し忘れた場合は、<strong>「スキップ」</strong>（理由付き）または<strong>「リスケジュール」</strong>（別の時間へ）を使用して、追跡の精度を維持します。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Medication successfully taken at the recorded time"
 msgstr "薬は記録された時間に正常に服用されました"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Dose intentionally skipped with optional reason"
 msgstr "用量は意図的にスキップされました（オプションで理由付き）"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Overdue medication that needs attention"
 msgstr "注意が必要な期限切れの薬"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Scheduled medication waiting to be taken"
 msgstr "服用を待っている予定の薬"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "View History"
 msgstr "履歴を見る"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"History\"</strong> tab shows all past medication logs grouped by date. Edit times, undo actions, or add notes to any entry. You can also change the status of missed doses (mark as taken or skipped)."
 msgstr "<strong>「履歴」</strong>タブには、過去のすべての薬のログが日付別にグループ化されて表示されます。時間編集、アクションの取り消し、またはメモを追加できます。服用し忘れた用量のステータスを変更することもできます（服用済みまたはスキップとしてマーク）。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track Statistics"
 msgstr "統計を追跡"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"Stats\"</strong> tab displays adherence rates, current streaks, missed doses, and detailed medication patterns over time."
 msgstr "<strong>「統計」</strong>タブには、アドヒアランス率、現在の連続記録、服用し忘れた用量、および長期的な詳細な薬のパターンが表示されます。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage Schedules"
 msgstr "スケジュールを管理"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Edit medication details, adjust dosages, modify schedules, or reschedule individual doses from the <strong>\"Medications\"</strong> tab."
 msgstr "<strong>「薬」</strong>タブから、薬の詳細の編集、投与量の調整、スケジュールの変更、または個々の用量のリスケジュールを行います。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Reschedule Doses"
 msgstr "用量をリスケジュール"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need to take a medication at a different time? Click <strong>\"Reschedule\"</strong> on any pending dose in the Today tab to move it to a new date and time. This only affects that single dose."
 msgstr "薬を別の時間に服用する必要がありますか？「今日」タブの保留中の用量で<strong>「リスケジュール」</strong>をクリックして、新しい日付と時間に移動します。これはその単一の用量にのみ影響します。"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set reminders on your phone for critical medications"
 msgstr "重要な薬について、携帯電話でリマインダーを設定します"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Review your adherence statistics weekly to identify patterns"
 msgstr "アドヒアランス統計を毎週確認して、パターンを特定します"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Use the notes field to track side effects or effectiveness"
 msgstr "メモ欄を使用して、副作用または有効性を追跡します"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Backup your data: Click the cloud icon to manually backup, or changes auto-backup after 15 seconds if logged in"
 msgstr "データをバックアップします。クラウドアイコンをクリックして手動でバックアップするか、ログインしている場合は15秒後に変更が自動的にバックアップされます"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Sync across devices: Use the sync button (refresh icon) to merge data from the server with your local data"
 msgstr "デバイス間で同期します。同期ボタン（更新アイコン）を使用して、サーバーからのデータとローカルデータをマージします"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The app works offline - perfect for travel and areas with poor connectivity"
 msgstr "アプリはオフラインで動作します。旅行や接続が悪い地域に最適です"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Missed doses auto-mark when time passes, but you can still edit them in History to mark as taken or skipped"
 msgstr "服用し忘れた用量は時間が経過すると自動的にマークされますが、「履歴」で編集して、服用済みまたはスキップとしてマークすることができます"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Medication Tracker Guide"
 msgstr "<0/> 薬トラッカーガイド"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to manage your medication schedule effectively"
 msgstr "薬のスケジュールを効果的に管理するための簡単な手順"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Start"
 msgstr "開始"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track"
 msgstr "追跡"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid ""
 "Start with just 1-2 medications to get familiar with the system. You can always add\n"
 "more medications and adjust schedules as needed!"
 msgstr "まずは1〜2種類の薬から始めて、システムに慣れてください。いつでも薬を追加したり、必要に応じてスケジュールを調整できます！"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Tips"
 msgstr "<0/> クイックヒント"
 
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Got It!"
 msgstr "<0/> 承知しました！```"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please enter medication name"
 msgstr "薬の名前を入力してください"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication added successfully"
 msgstr "薬が正常に追加されました"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication updated"
 msgstr "薬が更新されました"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please add at least one time"
 msgstr "少なくとも1つの時間を追加してください"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "T12:00:00"
 msgstr "T12:00:00"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medications"
 msgstr "薬"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Medication"
 msgstr "薬を追加"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
@@ -5754,250 +5912,329 @@ msgstr "追加"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "No medications added yet."
 msgstr "まだ薬が追加されていません。"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Your First Medication"
 msgstr "最初の薬を追加"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add First Med"
 msgstr "最初の薬を追加"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage:"
 msgstr "投与量："
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency:"
 msgstr "頻度："
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions:"
 msgstr "指示："
 
 #. placeholder {0}: formatDate(med.endDate)
+#. placeholder {0}: formatDate(med.endDate)
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "<0/> Ends: {0}"
 msgstr "<0/> 終了：{0}"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 msgid "Ongoing"
 msgstr "継続"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule"
 msgstr "スケジュール"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit"
 msgstr "編集"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add a new medication to this treatment session."
 msgstr "この治療セッションに新しい薬を追加します。"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication Name *"
 msgstr "薬名 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage *"
 msgstr "投与量 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency *"
 msgstr "頻度 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Select frequency"
 msgstr "頻度を選択"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions (optional)"
 msgstr "指示（オプション）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Start Date *"
 msgstr "開始日 *"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "End Date <0>(optional - leave empty for ongoing)</0>"
 msgstr "終了日 <0>（オプション - 継続の場合は空白のまま）</0>"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Leave empty for ongoing medication"
 msgstr "継続的な薬の場合は空白のままにしてください"
 
 #. placeholder {0}: suggestedTimes.join(', ')
+#. placeholder {0}: suggestedTimes.join(', ')
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "• Suggested times: {0}"
 msgstr "• 推奨時間：{0}"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "📊 Expected total doses: <0/> <1/>"
 msgstr "📊 予想される総投与量：<0/> <1/>"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Edit Medication"
 msgstr "薬を編集"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions"
 msgstr "指示"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Doses"
 msgstr "投与スケジュール"
 
 #. placeholder {0}: schedulingMedication?.name
+#. placeholder {0}: schedulingMedication?.name
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Create scheduled reminders for {0}"
 msgstr "{0}のスケジュールされたリマインダーを作成する"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Type"
 msgstr "スケジュールタイプ"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto (Based on Frequency)"
 msgstr "自動（頻度に基づく）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto Schedule"
 msgstr "自動スケジュール"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Custom Times"
 msgstr "カスタム時間"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Custom"
 msgstr "カスタム"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Daily Times"
 msgstr "毎日の時間"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Time"
 msgstr "時間を追加"
 
 #. placeholder {0}: scheduleTimes.length
+#. placeholder {0}: scheduleTimes.length
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "✅ Will create <0/> scheduled doses ({0}x\n"
 "per day)"
 msgstr "✅ <0/>のスケジュールされた投与量を作成します（1日に{0}回）"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Generate Schedule"
 msgstr "スケジュールを生成"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Delete Medication?"
 msgstr "薬を削除しますか？"
 
 #. placeholder {0}: deletingMedication?.name
+#. placeholder {0}: deletingMedication?.name
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all its logs. This action\n"
 "cannot be undone."
 msgstr "これにより、「{0}」とそのすべてのログが完全に削除されます。この操作は元に戻せません。```"
 
 #. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "<0/> View Schedule ({0})"
 msgstr "<0/> スケジュールを見る ({0})"
 
 #. placeholder {0}: medication.name
+#. placeholder {0}: medication.name
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Schedule for {0}"
 msgstr "{0} のスケジュール"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Total"
 msgstr "合計"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "No scheduled doses yet."
 msgstr "まだ予定されている投与量はありません。"
 
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
+#. placeholder {0}: totalLogs
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete All ({0})"
 msgstr "すべて削除 ({0})"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete Scheduled Dose?"
 msgstr "予定されている投与量を削除しますか？"
 
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "This will permanently delete this scheduled dose. This action cannot be undone."
 msgstr "これは、予定されている投与量を完全に削除します。この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Please enter a session name"
 msgstr "セッション名を入力してください"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session created successfully"
 msgstr "治療セッションが正常に作成されました"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Active session changed"
 msgstr "アクティブなセッションが変更されました"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session ended"
 msgstr "セッションが終了しました"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session restarted"
 msgstr "治療セッションが再開されました"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session updated successfully"
 msgstr "セッションが正常に更新されました"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment Sessions"
 msgstr "治療セッション"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
 "Manage your treatment sessions. Each session groups medications for a specific treatment\n"
 "period."
 msgstr "治療セッションを管理します。各セッションは、特定の治療期間の薬をグループ化します。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Create New Session"
 msgstr "新しいセッションを作成"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session Name *"
 msgstr "セッション名 *"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 msgid "Description (optional)"
@@ -6005,70 +6242,91 @@ msgstr "説明 (オプション)"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Brief description of this treatment period..."
 msgstr "この治療期間の簡単な説明...```"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 msgid "Start Date"
 msgstr "開始日"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Create Session"
 msgstr "<0/> セッションを作成"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Your Sessions"
 msgstr "あなたのセッション"
 
 #. placeholder {0}: allSessions?.length || 0
+#. placeholder {0}: allSessions?.length || 0
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "{0} total"
 msgstr "合計 {0}"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "No treatment sessions yet. Create one above to get started."
 msgstr "まだ治療セッションはありません。上から作成して開始してください。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "Active"
 msgstr "アクティブ"
 
 #. placeholder {0}: formatDate(session.endDate)
+#. placeholder {0}: formatDate(session.endDate)
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ended {0}"
 msgstr "<0/> {0} に終了"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ongoing"
 msgstr "<0/> 進行中"
 
 #. placeholder {0}: session.medications.length
 #. placeholder {1}: session.medications.length !== 1 ? 's' : ''
+#. placeholder {0}: session.medications.length
+#. placeholder {1}: session.medications.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> {0} med{1}"
 msgstr "<0/> {0} 薬{1}"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Activate"
 msgstr "<0/> アクティブ化"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> End"
 msgstr "<0/> 終了"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Restart"
 msgstr "<0/> 再開"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Delete Treatment Session?"
 msgstr "治療セッションを削除しますか？"
 
 #. placeholder {0}: sessionToDelete?.name
+#. placeholder {0}: sessionToDelete?.name
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all associated medication logs.\n"
 "This action cannot be undone."
@@ -6077,99 +6335,124 @@ msgstr ""
 "この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit Treatment Session"
 msgstr "治療セッションを編集"
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Update the name and description of your treatment session."
 msgstr "治療セッションの名前と説明を更新します。"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "<0/> Overall Statistics"
 msgstr "<0/> 全体統計"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Your medication adherence across all medications"
 msgstr "すべての薬に関するあなたの服薬遵守率"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Overall Adherence Rate"
 msgstr "全体の遵守率"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Medication-Specific Statistics"
 msgstr "薬別の統計"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Track adherence for each medication individually"
 msgstr "各薬の遵守状況を個別に追跡"
 
 #. placeholder {0}: stats.totalDoses
+#. placeholder {0}: stats.totalDoses
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "{0} total doses"
 msgstr "合計{0}回分"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Improve Your Adherence"
 msgstr "遵守率を向上させる"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Set reminders on your phone for each medication time"
 msgstr "• 各服薬時間の前に携帯電話でリマインダーを設定する"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Keep medications in a visible location"
 msgstr "• 薬を目に見える場所に保管する"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Use a pill organizer to prepare doses in advance"
 msgstr "• ピルオーガナイザーを使用して、事前に用量を準備する"
 
 #: src/routes/apps/(app)/medication-tracker/StatsView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Link medication times to daily routines (meals, bedtime, etc.)"
 msgstr "• 服薬時間を毎日のルーチン（食事、就寝時間など）に関連付ける"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Today's Schedule"
 msgstr "今日のスケジュール"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "No scheduled medications for today."
 msgstr "今日の予定されている薬はありません。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Add medications and create a schedule to get started."
 msgstr "開始するには、薬を追加してスケジュールを作成してください。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Overdue"
 msgstr "<0/> 期限切れ"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken"
 msgstr "<0/> 服用済み"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skip"
 msgstr "<0/> スキップ"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken <1/>"
 msgstr "<0/> 服用済み <1/>"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skipped"
 msgstr "<0/> スキップ済み"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Missed"
 msgstr "<0/> 飲み忘れ"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "必要に応じて、この投与量をスキップする理由を説明するメモを追加してください。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
@@ -6178,23 +6461,29 @@ msgid "Notes (optional)"
 msgstr "注 (オプション)"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Confirm Skip"
 msgstr "スキップの確認"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time Taken"
 msgstr "服用時間の編集"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Adjust the time when this medication was actually taken."
 msgstr "この薬が実際に服用された時間を調整します。"
 
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time Taken"
 msgstr "服用時間"
 
 #. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
+#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Scheduled time: {0}"
 msgstr "予定時間: {0}```"
 
@@ -10085,3 +10374,12 @@ msgstr "上に表示されている最初のパスワードを生成して保存
 #: src/lib/components/blocks/Footer.svelte
 msgid "Let it snow!"
 msgstr "雪よ、降れ！"
+
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
+msgid "Note Details"
+msgstr "ノートの詳細"
+
+#. placeholder {0}: new Date(note.updatedAt).toLocaleString()
+#: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
+msgid "Last updated: {0}"
+msgstr "最終更新日: {0}"

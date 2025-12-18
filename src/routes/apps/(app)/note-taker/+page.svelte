@@ -20,7 +20,17 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import CreateNoteDialog from './components/CreateNoteDialog.svelte';
 	import EditNoteDialog from './components/EditNoteDialog.svelte';
-	import { Plus, Trash2, RefreshCw, Pencil, Search, Calendar, StickyNote } from 'lucide-svelte';
+	import ViewNoteDialog from './components/ViewNoteDialog.svelte';
+	import {
+		Plus,
+		Trash2,
+		RefreshCw,
+		Pencil,
+		Search,
+		Calendar,
+		StickyNote,
+		Eye
+	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fly, fade } from 'svelte/transition';
 
@@ -158,11 +168,17 @@
 	// Dialogs
 	let createDialogOpen = $state(false);
 	let editDialogOpen = $state(false);
+	let viewDialogOpen = $state(false);
 	let selectedNote = $state<Note | null>(null);
 
 	function openEditDialog(note: Note) {
 		selectedNote = note;
 		editDialogOpen = true;
+	}
+
+	function openViewDialog(note: Note) {
+		selectedNote = note;
+		viewDialogOpen = true;
 	}
 
 	function getRelativeTime(dateString: string): string {
@@ -277,6 +293,14 @@
 										variant="ghost"
 										size="icon"
 										class="size-8"
+										onclick={() => openViewDialog(note)}
+									>
+										<Eye class="size-4" />
+									</Button>
+									<Button
+										variant="ghost"
+										size="icon"
+										class="size-8"
 										onclick={() => openEditDialog(note)}
 									>
 										<Pencil class="size-4" />
@@ -323,4 +347,10 @@
 	{noteAdapter}
 	note={selectedNote}
 	{currentUser}
+/>
+
+<ViewNoteDialog
+	open={viewDialogOpen}
+	onOpenChange={(open: boolean) => (viewDialogOpen = open)}
+	note={selectedNote}
 />
