@@ -152,7 +152,7 @@ msgstr "為替レート: 1 {0} = {1} {2}"
 #. placeholder {0}: result.cacheAge !== undefined ? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago` : 'just now'
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Cached {0}"
-msgstr "キャッシュ {0}```"
+msgstr "キャッシュ {0}"
 
 #: src/lib/components/blocks/Loading.svelte
 msgid "Loading..."
@@ -629,7 +629,7 @@ msgstr "こんにちは"
 #: src/lib/utility/greetings.client.svelte.ts
 #: src/lib/utility/greetings.client.svelte.ts
 msgid "Good evening"
-msgstr "こんばんは```"
+msgstr "こんばんは"
 
 #: src/routes/+error.svelte
 msgid "Page Not Found"
@@ -805,7 +805,7 @@ msgstr "ビジョン"
 #: src/routes/about/+page.svelte
 #: src/routes/about/Attributions.svelte
 msgid "Attributions"
-msgstr "貢献```"
+msgstr "貢献"
 
 #: src/routes/about/+page.svelte
 msgid "About Page | Svelte Mini Apps"
@@ -942,7 +942,7 @@ msgstr "ウェブサイトを見る"
 msgid ""
 "We are grateful to all the open-source contributors who make these tools available to the\n"
 "community."
-msgstr "これらのツールをコミュニティに提供しているすべてのオープンソースの貢献者に感謝します。```"
+msgstr "これらのツールをコミュニティに提供しているすべてのオープンソースの貢献者に感謝します。"
 
 #: src/routes/about/DataManagement.svelte
 #: src/routes/about/data.svelte.ts
@@ -1135,7 +1135,7 @@ msgstr "データをクリアした後、アプリを自動的にリロード"
 
 #: src/routes/about/data.svelte.ts
 msgid "Use this feature if you encounter any caching issues or need to reset the app to its default state."
-msgstr "キャッシュの問題が発生した場合や、アプリをデフォルトの状態にリセットする必要がある場合は、この機能を使用してください。```"
+msgstr "キャッシュの問題が発生した場合や、アプリをデフォルトの状態にリセットする必要がある場合は、この機能を使用してください。"
 
 #: src/routes/apps/+page.svelte
 msgid "Apps | Svelte Mini Apps"
@@ -1236,7 +1236,7 @@ msgstr "閉じる"
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Changelog"
-msgstr "変更履歴```"
+msgstr "変更履歴"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
@@ -1406,7 +1406,7 @@ msgstr "レガシーアプリを開く"
 
 #: src/routes/changelog/+page.svelte
 msgid "Note: Legacy builds may not include the latest security or PWA improvements."
-msgstr "注：レガシービルドには、最新のセキュリティまたはPWAの改善が含まれていない場合があります。```"
+msgstr "注：レガシービルドには、最新のセキュリティまたはPWAの改善が含まれていない場合があります。"
 
 #: src/routes/changelog/ChangelogStats.svelte
 msgid "<0/> Changelog Statistics"
@@ -2291,7 +2291,7 @@ msgstr "直感的なエクスペリエンスのためにUIデザインとナビ�
 
 #: src/routes/changelog/data.svelte.ts
 msgid "Enhanced offline indicators and interaction feedback"
-msgstr "オフラインインジケーターとインタラクションフィードバックを強化```"
+msgstr "オフラインインジケーターとインタラクションフィードバックを強化"
 
 #: src/routes/hire/+page.svelte
 msgid "Svelte/SvelteKit"
@@ -2638,7 +2638,7 @@ msgstr "フリーランスやコンサルティングのお仕事、オープン
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> Start a Conversation <1/>"
-msgstr "<0/> 会話を始める <1/>```"
+msgstr "<0/> 会話を始める <1/>"
 
 #: src/routes/offline/+page.svelte
 msgid "Offline | Svelte Mini Apps"
@@ -2823,7 +2823,7 @@ msgstr "<0/> 2024-{0} Svelte Apps. 無断複写・転載を禁じます。"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "<0/> <1>Pro Tip:</1> This app is installable!"
-msgstr "<0/> <1>プロのヒント:</1> このアプリはインストール可能です！```"
+msgstr "<0/> <1>プロのヒント:</1> このアプリはインストール可能です！"
 
 #: src/lib/components/blocks/Info.svelte
 msgid "App Information"
@@ -2868,7 +2868,7 @@ msgstr "M15 12L3 6"
 
 #: src/lib/components/blocks/MorphSVG.svelte
 msgid "M3 17L21 6"
-msgstr "M3 17L21 6```"
+msgstr "M3 17L21 6"
 
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/apps/(app)/+layout.svelte
@@ -2992,7 +2992,7 @@ msgstr "IndexedDBをクリア"
 
 #: src/lib/components/blocks/NukeButton.svelte
 msgid "Clear All Data"
-msgstr "すべてのデータをクリア```"
+msgstr "すべてのデータをクリア"
 
 #: src/lib/components/blocks/OfflinePage.svelte
 msgid "Share App"
@@ -3171,7 +3171,7 @@ msgstr "作成に参加する:"
 #: src/lib/components/home/data.svelte.ts
 msgctxt "Community engagement section - inviting developers to contribute to the open source project"
 msgid "<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community."
-msgstr "<strong>コーディングが好きですか？</strong> あなたはこれらのミニアプリをさらに素晴らしいものにする次の貢献者になるかもしれません！私たちのプロジェクトは<strong>オープンソース</strong>です。つまり、飛び込んでコードを調べ、あなたのアイデアを実現することができます。あなたが経験豊富な開発者であろうと、始めたばかりであろうと、私たちのコミュニティにはあなたの居場所があります。```"
+msgstr "<strong>コーディングが好きですか？</strong> あなたはこれらのミニアプリをさらに素晴らしいものにする次の貢献者になるかもしれません！私たちのプロジェクトは<strong>オープンソース</strong>です。つまり、飛び込んでコードを調べ、あなたのアイデアを実現することができます。あなたが経験豊富な開発者であろうと、始めたばかりであろうと、私たちのコミュニティにはあなたの居場所があります。"
 
 #: src/lib/components/markdown/Editor.svelte
 msgid "Write your markdown here..."
@@ -3519,7 +3519,7 @@ msgstr "削除中..."
 
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Loading account settings..."
-msgstr "アカウント設定を読み込んでいます...```"
+msgstr "アカウント設定を読み込んでいます..."
 
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Sunday"
@@ -3623,7 +3623,7 @@ msgstr "利用統計はリアルタイムで更新されます"
 
 #: src/routes/(auth)/profile/AppUsageStats.svelte
 msgid "Export Data"
-msgstr "データのエクスポート```"
+msgstr "データのエクスポート"
 
 #. placeholder {0}: app.usageCount
 #. placeholder {0}: app.usageCount
@@ -3708,7 +3708,7 @@ msgstr "最もよく使うアプリ"
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "No favorite apps yet"
-msgstr "まだお気に入りのアプリはありません```"
+msgstr "まだお気に入りのアプリはありません"
 
 #: src/routes/(auth)/profile/ProjectsTab.svelte
 msgid "Your Projects"
@@ -3809,7 +3809,7 @@ msgstr "更新中..."
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Update Password"
-msgstr "パスワードを更新```"
+msgstr "パスワードを更新"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "Your latest interactions with Svelte Mini Apps"
@@ -3920,7 +3920,7 @@ msgstr "変更を保存"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Loading profile..."
-msgstr "プロファイルを読み込み中...```"
+msgstr "プロファイルを読み込み中..."
 
 #: src/routes/(auth)/register/+page.svelte
 msgid "Sign Up | Svelte Mini Apps"
@@ -3992,7 +3992,7 @@ msgstr "<0/> アカウントを作成"
 
 #: src/routes/(auth)/register/+page.svelte
 msgid "Already have an account? Sign In"
-msgstr "すでにアカウントをお持ちですか？サインイン```"
+msgstr "すでにアカウントをお持ちですか？サインイン"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "View Source Code"
@@ -4097,7 +4097,7 @@ msgstr "まだお知らせはありません"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Check back soon for exciting updates and announcements about Svelte Mini Apps!"
-msgstr "Svelte Mini Appsに関するエキサイティングな更新と発表については、すぐにまた確認してください！```"
+msgstr "Svelte Mini Appsに関するエキサイティングな更新と発表については、すぐにまた確認してください！"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Mobile Companion Apps"
@@ -4471,7 +4471,7 @@ msgstr "見出しを追加するときは目次を更新する"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "<0/> Create Issue"
-msgstr "<0/> 課題を作成```"
+msgstr "<0/> 課題を作成"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline | Svelte Mini Apps Changelog"
@@ -4677,7 +4677,7 @@ msgstr "絵文字と名前をクリップボードにコピーしました！"
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Copy Both <0>⌥⌘C</0>"
-msgstr "両方をコピー <0>⌥⌘C</0>```"
+msgstr "両方をコピー <0>⌥⌘C</0>"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "<0>🎲</0> Get Another"
@@ -4912,7 +4912,7 @@ msgstr "予算を作成"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "OK"
-msgstr "OK```"
+msgstr "OK"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 msgid "Edit Budget"
@@ -5055,7 +5055,7 @@ msgstr "この操作は元に戻せません。この経費を削除してもよ
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 msgid "<0/> Edit"
-msgstr "<0/> 編集```"
+msgstr "<0/> 編集"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 msgid "Add New Expense"
@@ -5130,7 +5130,7 @@ msgstr "合計支出: $ {0}"
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
 msgid "Remaining Budget: $ {0}"
-msgstr "残りの予算: $ {0}```"
+msgstr "残りの予算: $ {0}"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Error"
@@ -5163,7 +5163,7 @@ msgstr "反意語:"
 #. placeholder {0}: entry.license.name
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "License: {0} <0/>"
-msgstr "ライセンス: {0} <0/>```"
+msgstr "ライセンス: {0} <0/>"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
 msgid "Svelte Mini Apps - GitHub Contribution Tracker"
@@ -5242,7 +5242,7 @@ msgstr "リポジトリの洞察"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Top repositories and languages used"
-msgstr "上位のリポジトリと使用言語```"
+msgstr "上位のリポジトリと使用言語"
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid "Markdown Editor - Write and Preview Markdown with Ease"
@@ -5460,7 +5460,7 @@ msgstr "スキップ"
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Missed"
-msgstr "未服用```"
+msgstr "未服用"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
@@ -5601,7 +5601,7 @@ msgstr "スキップ済みにする"
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule"
-msgstr "スケジュール変更```"
+msgstr "スケジュール変更"
 
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -5880,7 +5880,7 @@ msgstr "<0/> クイックヒント"
 #: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Got It!"
-msgstr "<0/> 承知しました！```"
+msgstr "<0/> 承知しました！"
 
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -6150,7 +6150,7 @@ msgstr "薬を削除しますか？"
 msgid ""
 "This will permanently delete \"{0}\" and all its logs. This action\n"
 "cannot be undone."
-msgstr "これにより、「{0}」とそのすべてのログが完全に削除されます。この操作は元に戻せません。```"
+msgstr "これにより、「{0}」とそのすべてのログが完全に削除されます。この操作は元に戻せません。"
 
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
@@ -6267,7 +6267,7 @@ msgstr "説明 (オプション)"
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Brief description of this treatment period..."
-msgstr "この治療期間の簡単な説明...```"
+msgstr "この治療期間の簡単な説明..."
 
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
@@ -6508,7 +6508,7 @@ msgstr "服用時間"
 #: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Scheduled time: {0}"
-msgstr "予定時間: {0}```"
+msgstr "予定時間: {0}"
 
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Once daily"
@@ -6560,7 +6560,7 @@ msgstr "この時間にはすでに投与がスケジュールされています
 
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Dose rescheduled successfully"
-msgstr "投与スケジュールを変更しました```"
+msgstr "投与スケジュールを変更しました"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Delete this note?"
@@ -6610,7 +6610,7 @@ msgstr "ノートが見つかりませんでした"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes match your search. Try different keywords or create a new note."
-msgstr "検索に一致するノートはありません。別のキーワードを試すか、新しいノートを作成してください。```"
+msgstr "検索に一致するノートはありません。別のキーワードを試すか、新しいノートを作成してください。"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to backup data"
@@ -6817,7 +6817,7 @@ msgstr "アイテムの詳細を更新します。"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Update Item"
-msgstr "アイテムを更新```"
+msgstr "アイテムを更新"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 msgid "Name *"
@@ -6902,7 +6902,7 @@ msgstr "購入を更新"
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid "Add Purchase"
-msgstr "購入を追加```"
+msgstr "購入を追加"
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 msgid "⚠️ This action cannot be undone."
@@ -7057,7 +7057,7 @@ msgstr "ログインしている場合は、データをバックアップして
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid "Works offline - no internet needed!"
-msgstr "オフラインで動作します - インターネットは不要です！```"
+msgstr "オフラインで動作します - インターネットは不要です！"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
@@ -7152,7 +7152,7 @@ msgstr "最初のアイテムを追加して始めましょう。"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 msgid "Add Your First Item"
-msgstr "最初のアイテムを追加```"
+msgstr "最初のアイテムを追加"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
@@ -7215,7 +7215,7 @@ msgstr ""
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 msgid "<0/> Add First Purchase"
-msgstr "<0/> 最初の購入を追加```"
+msgstr "<0/> 最初の購入を追加"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 msgid "Quantity:"
@@ -7290,7 +7290,7 @@ msgstr "購入記録はありません"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 msgid "Add some purchases to your items to see the history here."
-msgstr "ここに履歴を表示するには、アイテムに購入を追加してください。```"
+msgstr "ここに履歴を表示するには、アイテムに購入を追加してください。"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 msgid "All Time"
@@ -7394,7 +7394,7 @@ msgstr "連絡先カード"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid "Social Links"
-msgstr "ソーシャルリンク```"
+msgstr "ソーシャルリンク"
 
 #: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
@@ -7597,7 +7597,7 @@ msgstr "保存されたパスワードを非表示"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "No saved passwords yet"
-msgstr "まだ保存されたパスワードはありません```"
+msgstr "まだ保存されたパスワードはありません"
 
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
@@ -7661,7 +7661,7 @@ msgstr "このパスワードの詳細を追加..."
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "<0/> Saving..."
-msgstr "<0/> 保存中...```"
+msgstr "<0/> 保存中..."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Blue"
@@ -7790,7 +7790,7 @@ msgstr "オプションを削除"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
-msgstr "このオプションを削除してもよろしいですか？関連するすべてのアクティビティとリスクも削除されます。この操作は元に戻せません。```"
+msgstr "このオプションを削除してもよろしいですか？関連するすべてのアクティビティとリスクも削除されます。この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 msgid "Time Remaining"
@@ -9142,7 +9142,7 @@ msgstr "健康的なおやつを食べる"
 
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Review your goals"
-msgstr "目標を見直す```"
+msgstr "目標を見直す"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text Summarizer - Create Concise Summaries Instantly"
@@ -9285,7 +9285,7 @@ msgstr "注：最良の結果を得るには、明確な段落で構成された
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Reset Everything"
-msgstr "すべてリセット```"
+msgstr "すべてリセット"
 
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -9412,7 +9412,7 @@ msgstr "換算結果を見るには、値を入力してください"
 msgid ""
 "Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
 "energy, force, power, and pressure units."
-msgstr "長さ、温度、体積、質量、面積、時間、角度、データ、エネルギー、力、電力、圧力の単位換算に対応しています。```"
+msgstr "長さ、温度、体積、質量、面積、時間、角度、データ、エネルギー、力、電力、圧力の単位換算に対応しています。"
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
@@ -9440,7 +9440,7 @@ msgstr "考えを書いてください..."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "<0/> Create Note"
-msgstr "<0/> ノートを作成```"
+msgstr "<0/> ノートを作成"
 
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 msgid "Edit Note"
@@ -9524,7 +9524,7 @@ msgstr "場所（任意）"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Payment Method (optional)"
-msgstr "支払い方法（任意）```"
+msgstr "支払い方法（任意）"
 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Create Purchase"
@@ -9748,7 +9748,7 @@ msgstr "利用可能な年"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Other years with contribution data"
-msgstr "コントリビューションデータのある他の年```"
+msgstr "コントリビューションデータのある他の年"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/GitGraph.svelte
 msgid "Error:"
@@ -9956,7 +9956,7 @@ msgstr "アプリを開く →"
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 msgid "Start using apps to see your favorites here"
-msgstr "アプリを使い始めると、ここにお気に入りが表示されます```"
+msgstr "アプリを使い始めると、ここにお気に入りが表示されます"
 
 #: src/routes/(auth)/profile/security/+page.svelte
 msgid "Security Settings - Svelte Mini Apps"
