@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-12-18T23:04:48.344Z\n"
+"PO-Revision-Date: 2025-12-23T22:14:21.191Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -1125,13 +1125,13 @@ msgstr "跟踪贡献"
 msgid "MMM"
 msgstr "MMM"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
 msgid "Contributions"
 msgstr "贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/test-charts/+page.svelte
 msgid "MMMM yyyy"
 msgstr "yyyy 年 MMMM 月"
@@ -5997,7 +5997,7 @@ msgid "Get a new mantra"
 msgstr "获取新的箴言"
 
 #: src/lib/components/ui/breadcrumb/breadcrumb-ellipsis.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "More"
 msgstr "更多"
 
@@ -9642,7 +9642,7 @@ msgid "Total Contributions"
 msgstr "总贡献"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Repositories"
 msgstr "仓库"
 
@@ -9654,116 +9654,116 @@ msgstr "日历"
 msgid "Insights"
 msgstr "见解"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Monthly Contributions"
 msgstr "每月贡献"
 
 #. placeholder {0}: year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Total contributions per month in {0}"
 msgstr "{0} 年每月总贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Languages Used"
 msgstr "使用的语言"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Top programming languages in contributed repositories"
 msgstr "贡献的仓库中使用的顶级编程语言"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/RepositoriesTab.svelte
 msgid "Top Contributed Repositories"
 msgstr "贡献最多的仓库"
 
 #. placeholder {0}: year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/RepositoriesTab.svelte
 msgid "Most starred repositories you contributed to in {0}"
 msgstr "你在 {0} 年贡献的获得最多星标的仓库"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Contribution Calendar"
 msgstr "贡献日历"
 
 #. placeholder {0}: year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Daily contribution activity throughout {0}"
 msgstr "整个 {0} 年的每日贡献活动"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Less"
 msgstr "更少"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Mon"
 msgstr "周一"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Wed"
 msgstr "周三"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Fri"
 msgstr "周五"
 
 #. placeholder {0}: day.value
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "{0} contributions"
 msgstr "{0} 项贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "EEEE, MMMM d, yyyy"
 msgstr "yyyy年MMMMd日，EEEE"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Contribution Breakdown"
 msgstr "贡献明细"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Distribution of your contributions by type"
 msgstr "按类型分布的贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Activity Summary"
 msgstr "活动摘要"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Average per day"
 msgstr "平均每天"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Most active in"
 msgstr "最活跃于"
 
 #. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "+ {0} private contributions"
 msgstr "+ {0} 项私有贡献"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Repository Breakdown"
 msgstr "仓库明细"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "With commits"
 msgstr "包含提交"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "With PRs"
 msgstr "包含拉取请求"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "With issues"
 msgstr "包含问题"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "With reviews"
 msgstr "包含审核"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Available Years"
 msgstr "可用年份"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Other years with contribution data"
 msgstr "包含贡献数据的其他年份```"
 
@@ -10556,3 +10556,9 @@ msgstr "笔记详情"
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 msgid "Last updated: {0}"
 msgstr "上次更新：{0}"
+
+#~ msgid "Hover"
+#~ msgstr "悬停"
+
+#~ msgid "Add to library"
+#~ msgstr "添加到库"
