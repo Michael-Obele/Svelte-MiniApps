@@ -130,7 +130,8 @@ const CONTRIBUTION_QUERY = gql`
  * Creates a GraphQL client with GitHub token
  */
 function createGitHubClient(): GraphQLClient {
-	const token = process.env.VITE_GITHUB_TOKEN;
+	let token = process.env.VITE_GITHUB_TOKEN || '';
+	token = token.trim();
 
 	console.log(`[GitHub API] Checking for GitHub token...`);
 	if (!token) {
@@ -141,7 +142,9 @@ function createGitHubClient(): GraphQLClient {
 
 	return new GraphQLClient('https://api.github.com/graphql', {
 		headers: {
-			Authorization: `bearer ${token}`
+			Authorization: `Bearer ${token}`,
+			'User-Agent': 'Svelte-MiniApps-GitHub-Tracker',
+			'X-GitHub-Api-Version': '2022-11-28'
 		}
 	});
 }
@@ -313,16 +316,20 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 		});
 
 		// Handle specific error types
-		if (err && typeof err === 'object' && 'status' in err) {
-			const statusCode = (err as any).status;
-			console.error(`[GitHub API] HTTP status code: ${statusCode}`);
+		if (err && typeof err === 'object') {
+			// graphql-request ClientError structure
+			const response = (err as any).response;
+			const statusCode = response?.status || (err as any).status;
+
+			console.error(`[GitHub API] Detected status code: ${statusCode}`);
+
 			if (statusCode === 404) {
 				console.error(`[GitHub API] Throwing 404 - User not found`);
 				throw error(404, `GitHub user "${username}" not found`);
 			}
 			if (statusCode === 401 || statusCode === 403) {
-				console.error(`[GitHub API] Throwing 500 - Authentication failed`);
-				throw error(500, 'GitHub API authentication failed');
+				console.error(`[GitHub API] Throwing 500 - Authentication failed (Status: ${statusCode})`);
+				throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
 			}
 		}
 
@@ -370,6 +377,16 @@ export const getContributionYears = query(
 			return data.user.contributionsCollection.contributionYears || [];
 		} catch (err) {
 			console.error('Error fetching contribution years:', err);
+
+			if (err && typeof err === 'object') {
+				const response = (err as any).response;
+				const statusCode = response?.status || (err as any).status;
+
+				if (statusCode === 401 || statusCode === 403) {
+					throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
+				}
+			}
+
 			throw error(500, 'Failed to fetch contribution years');
 		}
 	}

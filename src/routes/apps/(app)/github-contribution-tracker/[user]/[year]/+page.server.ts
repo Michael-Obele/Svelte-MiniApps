@@ -129,19 +129,34 @@ const CONTRIBUTION_QUERY = gql`
 /**
  * Creates a GraphQL client with GitHub token
  */
+// Import dynamic private environment variables
+import { env } from '$env/dynamic/private';
+
+/**
+ * Creates a GraphQL client with GitHub token
+ */
 function createGitHubClient(): GraphQLClient {
-	const token = process.env.VITE_GITHUB_TOKEN;
+	// Try standard GITHUB_TOKEN first, then fall back to VITE_ prefixed version
+	// Using $env/dynamic/private ensures we get the runtime value in all adapters
+	let token = env.GITHUB_TOKEN || env.VITE_GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '';
+	token = token.trim();
 
 	console.log(`[GitHub API] Checking for GitHub token...`);
 	if (!token) {
-		console.error(`[GitHub API] No VITE_GITHUB_TOKEN found in environment`);
+		console.error(`[GitHub API] No GITHUB_TOKEN or VITE_GITHUB_TOKEN found in environment`);
 		throw error(500, 'GitHub token not configured');
 	}
-	console.log(`[GitHub API] Token found (length: ${token.length})`);
+
+	// Log token details for debugging (safe mask)
+	const mask =
+		token.length > 8 ? `${token.substring(0, 4)}...${token.substring(token.length - 4)}` : '***';
+	console.log(`[GitHub API] Token found (length: ${token.length}, prefix: ${mask})`);
 
 	return new GraphQLClient('https://api.github.com/graphql', {
 		headers: {
-			Authorization: `bearer ${token}`
+			Authorization: `Bearer ${token}`,
+			'User-Agent': 'Svelte-MiniApps-GitHub-Tracker',
+			'X-GitHub-Api-Version': '2022-11-28'
 		}
 	});
 }
@@ -352,16 +367,20 @@ export const load: PageServerLoad = async ({ params }) => {
 		}
 
 		// Handle specific error types
-		if (err && typeof err === 'object' && 'status' in err) {
-			const statusCode = (err as any).status;
-			console.error(`[GitHub API] HTTP status code: ${statusCode}`);
+		if (err && typeof err === 'object') {
+			// graphql-request ClientError structure
+			const response = (err as any).response;
+			const statusCode = response?.status || (err as any).status;
+
+			console.error(`[GitHub API] Detected status code: ${statusCode}`);
+
 			if (statusCode === 404) {
 				console.error(`[GitHub API] Throwing 404 - User not found`);
 				throw error(404, `GitHub user "${username}" not found`);
 			}
 			if (statusCode === 401 || statusCode === 403) {
-				console.error(`[GitHub API] Throwing 500 - Authentication failed`);
-				throw error(500, 'GitHub API authentication failed');
+				console.error(`[GitHub API] Throwing 500 - Authentication failed (Status: ${statusCode})`);
+				throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
 			}
 		}
 
