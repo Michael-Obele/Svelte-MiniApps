@@ -93,7 +93,8 @@ export function done() {
 		{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
 		{ name: 'smoke-free-tracker', time: '2025-10-11T00:00:00.000Z' },
 		{ name: 'note-taker', time: '2025-11-19T00:00:00.000Z' },
-		{ name: 'scenario-tracker', time: '2025-11-25T00:00:00.000Z' }
+		{ name: 'scenario-tracker', time: '2025-11-25T00:00:00.000Z' },
+		{ name: 'countdown-timer', time: '2025-12-24T00:00:00.000Z' }
 	];
 }
 

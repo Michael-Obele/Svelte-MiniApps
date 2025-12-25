@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2025-12-23T22:14:21.132Z\n"
+"PO-Revision-Date: 2025-12-25T20:19:42.224Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -1129,6 +1129,7 @@ msgstr "Effacer"
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
@@ -1501,6 +1502,8 @@ msgstr "Étapes simples pour commencer"
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Optional Details:"
 msgstr "Détails optionnels :"
 
@@ -1528,6 +1531,7 @@ msgstr "Besoin d'aide ? Vous pouvez rouvrir ce guide à tout moment depuis l'en-
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Got It!"
 msgstr "Compris !"
 
@@ -1615,6 +1619,7 @@ msgstr "<0/> Se déconnecter"
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh"
 msgstr "Actualiser"
 
@@ -1712,8 +1717,10 @@ msgstr "Zone dangereuse"
 msgid "Delete Account"
 msgstr "Supprimer le compte"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> Supprimer"
 
@@ -1760,6 +1767,10 @@ msgstr "Saisissez votre nom d’utilisateur"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
@@ -1795,6 +1806,9 @@ msgstr "Saisissez votre nom d’utilisateur"
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
@@ -1805,6 +1819,11 @@ msgstr "Saisissez votre nom d’utilisateur"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -2142,6 +2161,8 @@ msgstr "Tous les projets sont terminés !"
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -2210,6 +2231,7 @@ msgstr "Sauvegarde en cours..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
@@ -3015,6 +3037,8 @@ msgstr "Émoji et nom copiés !"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Select Budget"
 msgstr "Sélectionner le budget"
 
@@ -3024,6 +3048,8 @@ msgstr "Sélectionner le budget"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -3052,6 +3078,16 @@ msgstr "Sélectionner le budget"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
@@ -3141,6 +3177,7 @@ msgstr "NGN"
 msgid "Auto-backup cancelled"
 msgstr "Sauvegarde automatique annulée"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -3205,6 +3242,7 @@ msgstr "Créer des budgets, suivre les dépenses, visualiser les dépenses et pr
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "How to Use"
 msgstr "Comment utiliser"
@@ -3264,6 +3302,7 @@ msgstr "Créez votre premier budget pour commencer à suivre vos dépenses."
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Create Budget"
 msgstr "Créer un budget"
 
@@ -3272,36 +3311,47 @@ msgid "OK"
 msgstr "OK"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Edit Budget"
 msgstr "Modifier le budget"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Make changes to your budget here. Click save when you're done."
 msgstr "Modifiez votre budget ici. Cliquez sur Enregistrer lorsque vous avez terminé."
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "Nom du budget"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "Montant du budget"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Formated Budget Amount"
 msgstr "Montant du budget (formaté)"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
 msgstr "Devise"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Add New Budget"
 msgstr "Ajouter un nouveau budget"
 
@@ -3309,73 +3359,99 @@ msgstr "Ajouter un nouveau budget"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Amount"
 msgstr "Montant"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "<0/> Add Budget"
 msgstr "<0/> Ajouter un budget"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Deleting budget..."
 msgstr "Suppression du budget..."
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Strike out completed expenses"
 msgstr "Rayez les dépenses terminées"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Budget:"
 msgstr "Budget :"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Spent:"
 msgstr "Dépensé :"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Remaining:"
 msgstr "Restant :"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expenses"
 msgstr "Dépenses"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Edit Expense"
 msgstr "Modifier la dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Expense Details"
 msgstr "Détails de la dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Make changes to the expense here. Click save when you're done."
 msgstr "Apportez les modifications à la dépense ici. Cliquez sur Enregistrer lorsque vous avez terminé."
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
 msgstr "Consultez les détails de la dépense ci-dessous. Cliquez sur le bouton crayon pour modifier."
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Description"
 msgstr "Description"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Formatted Amount"
 msgstr "Montant formaté"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -3383,8 +3459,10 @@ msgstr "Montant formaté"
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3392,11 +3470,15 @@ msgstr "Enregistrer les modifications"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Date"
 msgstr "Date"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
@@ -3406,94 +3488,121 @@ msgstr "Date"
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "Supprimer"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Delete Expense"
 msgstr "Supprimer la dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "This action cannot be undone. Are you sure you want to delete this expense?"
 msgstr "Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir supprimer cette dépense ?"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Edit"
 msgstr "<0/> Modifier"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Add New Expense"
 msgstr "Ajouter une nouvelle dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Expense Description"
 msgstr "Description de la dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Formated Expense Amount"
 msgstr "Montant de la dépense formaté"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "<0/> Add Expense"
 msgstr "<0/> Ajouter une dépense"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "Êtes-vous sûr de vouloir supprimer cette dépense ?"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Expense deleted successfully"
 msgstr "Dépense supprimée avec succès"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Latest Transactions <0>(showing 12 most recent)</0>"
 msgstr "Dernières transactions <0>(affichage des 12 plus récentes)</0>"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
 msgstr "Aucune dépense pour le moment. Ajoutez votre première dépense pour commencer."
 
 #: src/routes/apps/(app)/budget-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickNavigation.svelte
 msgid "Quick Navigation"
 msgstr "Navigation rapide"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget not found. Please save the budget first."
 msgstr "Budget non trouvé. Veuillez enregistrer le budget d'abord."
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Name:"
 msgstr "Nom du budget:"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Amount:"
 msgstr "Montant du budget:"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Save Budget"
 msgstr "Enregistrer le budget"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Add Expense"
 msgstr "Ajouter une dépense"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Name:"
 msgstr "Nom de la dépense:"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Amount:"
 msgstr "Montant de la dépense:"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Total Expenses: $ {0}"
 msgstr "Total des dépenses: $ {0}"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Remaining Budget: $ {0}"
 msgstr "Budget restant: $ {0}"
 
@@ -3733,12 +3842,14 @@ msgstr "<0>Synchroniser depuis le serveur:</0> Assure que les données locales s
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Backing up..."
 msgstr "Sauvegarde en cours..."
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Backup"
 msgstr "Sauvegarde"
 
@@ -3881,6 +3992,7 @@ msgstr "Manqué"
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
@@ -4033,6 +4145,7 @@ msgstr "Mettre à jour la date et l'heure auxquelles ce médicament a été pris
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time"
 msgstr "Heure"
 
@@ -4324,6 +4437,9 @@ msgstr "Ajouter un médicament"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add"
 msgstr "Ajouter"
 
@@ -4672,6 +4788,7 @@ msgstr "Brève description de cette période de traitement..."
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Start Date"
 msgstr "Date de début"
 
@@ -4701,6 +4818,7 @@ msgstr "Aucune séance de traitement pour le moment. Créez-en une ci-dessus pou
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Active"
 msgstr "Actif"
 
@@ -4878,6 +4996,7 @@ msgstr "Optionnellement, ajoutez une note expliquant pourquoi vous sautez cette 
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
@@ -4965,35 +5084,43 @@ msgstr "La dose a été reprogrammée avec succès"
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "Suivi des achats"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Edit Item"
 msgstr "Modifier l'article"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add New Item"
 msgstr "Ajouter un nouvel article"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update the item details."
 msgstr "Mettre à jour les détails de l'article."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Create a new item to track purchases for."
 msgstr "Créer un nouvel article pour suivre les achats."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Name *"
 msgstr "Nom *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Category *"
 msgstr "Catégorie *"
 
@@ -5001,15 +5128,19 @@ msgstr "Catégorie *"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Select category"
 msgstr "Sélectionner la catégorie"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Optional description..."
 msgstr "Description optionnelle..."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Unit"
 msgstr "Unité par défaut"
 
@@ -5017,49 +5148,61 @@ msgstr "Unité par défaut"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Currency"
 msgstr "Devise par défaut"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update Item"
 msgstr "Mettre à jour l'article"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Add Item"
 msgstr "Ajouter un article"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Edit Purchase Record"
 msgstr "Modifier l'enregistrement d'achat"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Add Purchase Record"
 msgstr "Ajouter un enregistrement d'achat"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update the purchase details."
 msgstr "Mettre à jour les détails de l'achat."
 
 #. placeholder {0}: selectedItemForPurchase?.name
+#. placeholder {0}: selectedItemForPurchase?.name
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Record a new purchase for \"{0}\"."
 msgstr "Enregistrez un nouvel achat pour « {0} »."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Quantity *"
 msgstr "Quantité *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Cost *"
 msgstr "Coût *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Formatted cost will appear here"
 msgstr "Le coût formaté apparaîtra ici."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Date *"
 msgstr "Date *"
 
@@ -5067,11 +5210,15 @@ msgstr "Date *"
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Location"
 msgstr "Lieu"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Payment Method"
 msgstr "Mode de paiement"
 
@@ -5080,78 +5227,107 @@ msgstr "Mode de paiement"
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Notes"
 msgstr "Notes"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Optional notes..."
 msgstr "Notes facultatives..."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update Purchase"
 msgstr "Mettre à jour l'achat"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add Purchase"
 msgstr "Ajouter un achat"
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "⚠️ This action cannot be undone."
 msgstr "⚠️ Cette action ne peut pas être annulée."
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
 msgstr "<0/> Suppression en cours..."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Start"
 msgstr "<0/> Démarrer"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Record"
 msgstr "<0/> Enregistrer"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Tips"
 msgstr "<0/> Astuces"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add an Item"
 msgstr "Ajouter un article"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click <0>\"Add Item\"</0> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "Cliquez sur le bouton <0>\"Ajouter un article\"</0>. Nommez-le quelque chose comme « Café » ou « Essence »."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Pick a Category"
 msgstr "Choisissez une catégorie"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Choose from Groceries, Fuel, Dining, etc. or create your own."
 msgstr "Choisissez parmi Épicerie, Carburant, Restauration, etc. ou créez votre propre catégorie."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "That's It!"
 msgstr "C'est tout !"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "You're ready to track purchases. Set units and currency if you want."
 msgstr "Vous êtes prêt à suivre vos achats. Définissez les unités et la devise si vous le souhaitez."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid ""
 "<0>Pro tip:</0> Start with just one or two items you buy frequently. You can always\n"
 "add more later!"
@@ -5161,53 +5337,72 @@ msgstr ""
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Find Your Item"
 msgstr "Trouvez votre article"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "On the Items tab, click the <0>⋮</0> menu on any item card."
 msgstr "Dans l'onglet Articles, cliquez sur le menu <0>⋮</0> sur la carte d'un article."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Enter how much you bought and what it cost. Date is set to today automatically."
 msgstr "Entrez la quantité achetée et son coût. La date est automatiquement définie sur aujourd'hui."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Save It"
 msgstr "Enregistrer"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click Save. Your purchase is recorded and statistics update instantly!"
 msgstr "Cliquez sur Enregistrer. Votre achat est enregistré et les statistiques se mettent à jour instantanément!"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Where you bought it"
 msgstr "Où vous l'avez acheté"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Payment"
 msgstr "Paiement"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Cash, Card, etc."
 msgstr "Espèces, Carte, etc."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Any extra details"
 msgstr "Détails supplémentaires"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> View Your Data"
 msgstr "<0/> Voir vos données"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid ""
 "Switch between <0>Items</0> and <1>Purchase History</1> tabs to see different\n"
 "views."
@@ -5216,181 +5411,232 @@ msgstr ""
 "vues."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Check Statistics"
 msgstr "<0/> Consulter les statistiques"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Each item card shows total spent and number of purchases at a glance."
 msgstr "Chaque carte d'article affiche le total dépensé et le nombre d'achats en un coup d'œil."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Edit Anytime"
 msgstr "<0/> Modifier à tout moment"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click the <0>⋮</0> menu to edit items or view detailed history."
 msgstr "Cliquez sur le menu <0>⋮</0> pour modifier les articles ou afficher l'historique détaillé."
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Quick Tips:"
 msgstr "Astuces rapides:"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Record purchases regularly for accurate tracking"
 msgstr "Enregistrez régulièrement vos achats pour un suivi précis"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Use consistent categories for easier analysis"
 msgstr "Utilisez des catégories cohérentes pour une analyse plus facile"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Backup your data if logged in (cloud icon in header)"
 msgstr "Sauvegardez vos données si vous êtes connecté (icône nuage dans l'en-tête)"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Works offline - no internet needed!"
 msgstr "Fonctionne hors ligne - pas besoin d'internet !"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "Cliquez sur le bouton <strong>\"Ajouter un élément\"</strong>. Nommez-le quelque chose comme \"Café\" ou \"Gaz\"."
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "On the Items tab, click the <strong>⋮</strong> menu on any item card."
 msgstr "Dans l’onglet Articles, cliquez sur le menu <strong>⋮</strong> sur n’importe quelle carte d’article."
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "View Your Data"
 msgstr "Voir vos données"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see different views."
 msgstr "Basculez entre les onglets <strong>Articles</strong> et <strong>Historique des achats</strong> pour voir différentes vues."
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Check Statistics"
 msgstr "Consultez les statistiques"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Edit Anytime"
 msgstr "Éditez à tout moment"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click the <strong>⋮</strong> menu to edit items or view detailed history."
 msgstr "Cliquez sur le menu <strong>⋮</strong> pour modifier des articles ou afficher l’historique détaillé."
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Guide"
 msgstr "<0/> Guide rapide"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to track your purchases effectively"
 msgstr "Des étapes simples pour suivre efficacement vos achats."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Edit Item"
 msgstr "<0/> Modifier l'article"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Add Purchase"
 msgstr "<0/> Ajouter un achat"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> View History"
 msgstr "<0/> Voir l'historique"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Delete Item"
 msgstr "<0/> Supprimer l'article"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Unit:"
 msgstr "Unité:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Currency:"
 msgstr "Devise:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Purchases:"
 msgstr "Achats totaux:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Spent:"
 msgstr "Dépense totale:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Search items..."
 msgstr "Rechercher des articles..."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "All Categories"
 msgstr "Toutes les catégories"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "<0/> Add Item"
 msgstr "<0/> Ajouter un article"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "No items found"
 msgstr "Aucun article trouvé"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Try adjusting your search or filters."
 msgstr "Essayez d'ajuster votre recherche ou vos filtres."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Get started by adding your first item."
 msgstr "Commencez par ajouter votre premier article."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add Your First Item"
 msgstr "Ajouter votre premier article"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase History"
 msgstr "Historique des achats"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Complete purchase records for <0/>"
 msgstr "Complétez les enregistrements d'achats pour <0/>"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Purchases"
 msgstr "Achats totaux"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Quantity"
 msgstr "Quantité totale"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Spent"
 msgstr "Dépenses totales"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "N/A"
 msgstr "Non disponible"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Avg Cost"
 msgstr "Coût moyen"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Purchase Records"
 msgstr "Enregistrements d'achats"
 
@@ -5398,17 +5644,26 @@ msgstr "Enregistrements d'achats"
 #. placeholder {1}: purchases.length !== 1 ? 's' : ''
 #. placeholder {0}: purchasesWithItems.length
 #. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
+#. placeholder {0}: purchases.length
+#. placeholder {1}: purchases.length !== 1 ? 's' : ''
+#. placeholder {0}: purchasesWithItems.length
+#. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} record{1}"
 msgstr "{0} enregistrement{1}"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "No purchases yet"
 msgstr "Aucun achat pour le moment"
 
 #. placeholder {0}: selectedItemForHistory.name
+#. placeholder {0}: selectedItemForHistory.name
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid ""
 "Start tracking your purchases for {0} to see detailed history\n"
 "and analytics here."
@@ -5417,107 +5672,135 @@ msgstr ""
 "et les analyses ici."
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "<0/> Add First Purchase"
 msgstr "<0/> Ajouter le premier achat"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Quantity:"
 msgstr "Quantité :"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Cost:"
 msgstr "Coût :"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Date:"
 msgstr "Date :"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Location:"
 msgstr "Emplacement :"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Notes:"
 msgstr "Notes :"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Track items and record purchases over time"
 msgstr "Suivre les articles et enregistrer les achats au fil du temps"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Items"
 msgstr "Articles"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh data from server"
 msgstr "Actualiser les données depuis le serveur"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refreshing..."
 msgstr "Actualisation..."
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Invalid Date"
 msgstr "Date invalide"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchases"
 msgstr "Tous les achats"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchase Records"
 msgstr "Tous les enregistrements d'achats"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Month"
 msgstr "<0/> Par mois"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Year"
 msgstr "<0/> Par an"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> All"
 msgstr "<0/> Tous"
 
 #. placeholder {0}: groupPurchases.length
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
+#. placeholder {0}: groupPurchases.length
+#. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} purchase{1}"
 msgstr "{0} achat{1}"
 
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
+#. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Total: {0}"
 msgstr "Total : {0}"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "No purchase records"
 msgstr "Aucun enregistrement d'achats"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Add some purchases to your items to see the history here."
 msgstr "Ajoutez quelques achats à vos articles pour voir l'historique ici."
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "All Time"
 msgstr "Depuis le début"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Week"
 msgstr "Cette semaine"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Month"
 msgstr "Ce mois-ci"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Quarter"
 msgstr "Ce trimestre"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "Quick Filters"
 msgstr "Filtres rapides"
 
@@ -6281,11 +6564,13 @@ msgstr "<0/> Bloqué"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
+#. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
 #. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
@@ -6390,6 +6675,7 @@ msgid "Current custom start date:"
 msgstr "Date de début personnalisée actuelle :"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
@@ -8967,6 +9253,7 @@ msgstr "Aucun article pour le moment. Cliquez sur \"Ajouter un article\" pour co
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Name"
 msgstr "Nom"
 
@@ -8976,11 +9263,15 @@ msgstr "Nom"
 msgid "Category"
 msgstr "Catégorie"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Actions"
 msgstr "Actions"
 
@@ -9199,6 +9490,9 @@ msgstr "Modifier la note"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -9354,6 +9648,7 @@ msgstr "Suivi de Scénarios"
 msgid "Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon."
 msgstr "Suivez plusieurs scénarios de vie/carrière avec des investissements en temps, des mesures de progrès et une analyse des risques sur un horizon de planification de 10 ans."
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Blue"
 msgstr "Bleu"
@@ -9366,10 +9661,12 @@ msgstr "Ambre"
 msgid "Purple"
 msgstr "Violet"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Emerald"
 msgstr "Émeraude"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Rose"
 msgstr "Rose"
@@ -9378,10 +9675,12 @@ msgstr "Rose"
 msgid "Cyan"
 msgstr "Cyan"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Orange"
 msgstr "Orange"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Indigo"
 msgstr "Indigo"
@@ -9409,6 +9708,7 @@ msgstr "Tableau de bord"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Risks"
 msgstr "Risques"
 
@@ -9439,6 +9739,7 @@ msgstr "Sélectionner la couleur {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation (%)"
 msgstr "Allocation (%)"
 
@@ -9455,390 +9756,510 @@ msgstr "Oui, tout réinitialiser"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
 msgid "TBD"
 msgstr "À déterminer"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Planning"
 msgstr "Planification"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Paused"
 msgstr "En pause"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Complete"
 msgstr "Terminé"
 
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
 #. placeholder {0}: option.totalTimeSpent
+#. placeholder {0}: stats.totalTimeSpent
+#. placeholder {0}: activity.timeSpent
+#. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "{0} hrs"
 msgstr "{0} heures"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Invested"
 msgstr "Temps investi"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation"
 msgstr "Allocation"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress"
 msgstr "Progression"
 
 #. placeholder {0}: option.estimatedTimeToCompletion
 #. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. completion: {0}"
 msgstr "Achèvement estimé : {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Activity Log"
 msgstr "Journal d'activité"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Track your work sessions and progress"
 msgstr "Suivez vos sessions de travail et votre progression"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Add Activity"
 msgstr "<0/> Ajouter une activité"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Status"
 msgstr "Statut"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "No activities logged yet."
 msgstr "Aucune activité enregistrée pour le moment."
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Start tracking your work by adding an activity."
 msgstr "Commencez à suivre votre travail en ajoutant une activité."
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Activity"
 msgstr "Modifier l'activité"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Add Activity"
 msgstr "Ajouter une activité"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the activity details."
 msgstr "Mettre à jour les détails de l'activité."
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Log a new work session or milestone."
 msgstr "Enregistrer une nouvelle session de travail ou un jalon."
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "What did you work on?"
 msgstr "Sur quoi avez-vous travaillé ?"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Spent (hours)"
 msgstr "Temps passé (heures)"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Select status"
 msgstr "Sélectionner un statut"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress Metric"
 msgstr "Métrique de progression"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Additional notes or observations"
 msgstr "Notes ou observations supplémentaires"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Option"
 msgstr "Modifier l'option"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the option settings and targets."
 msgstr "Mettre à jour les paramètres et les objectifs de l'option."
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress (%)"
 msgstr "Progression (%)"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. Time to Completion"
 msgstr "Temps estimé avant achèvement"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Save Changes"
 msgstr "<0/> Enregistrer les modifications"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Option not found."
 msgstr "Option introuvable."
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Time Remaining"
 msgstr "Temps restant"
 
 #. placeholder {0}: stats.remainingYears
 #. placeholder {0}: durationYears
+#. placeholder {0}: stats.remainingYears
+#. placeholder {0}: durationYears
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "{0} years"
 msgstr "{0} ans"
 
 #. placeholder {0}: stats.remainingDays.toLocaleString()
+#. placeholder {0}: stats.remainingDays.toLocaleString()
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} days left"
 msgstr "Il reste {0} jours"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total Time Invested"
 msgstr "Temps total investi"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Across all options"
 msgstr "Pour toutes les options"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Average Progress"
 msgstr "Progression moyenne"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Active Risks"
 msgstr "Risques actifs"
 
 #. placeholder {0}: highRisksCount
+#. placeholder {0}: highRisksCount
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} high/critical severity"
 msgstr "{0} de gravité élevée/critique"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Options Overview"
 msgstr "<0/> Aperçu des options"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Track progress across your scenario options"
 msgstr "Suivez les progrès de vos options de scénario"
 
 #. placeholder {0}: option.totalTimeSpent
+#. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} hrs invested"
 msgstr "{0} heures investies"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "No options yet. Add your first scenario option to get started."
 msgstr "Pas d'options pour le moment. Ajoutez votre première option de scénario pour commencer."
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Time Allocation"
 msgstr "<0/> Répartition du temps"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "How you're dividing your effort"
 msgstr "Comment vous répartissez vos efforts"
 
 #. placeholder {0}: 100 - totalAllocation
+#. placeholder {0}: 100 - totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "({0}% unallocated)"
 msgstr "({0} % non attribué)"
 
 #. placeholder {0}: totalAllocation - 100
+#. placeholder {0}: totalAllocation - 100
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
 msgstr "(sur-allocation de {0} %)"
 
 #. placeholder {0}: totalAllocation
+#. placeholder {0}: totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total: {0}% <0/>"
 msgstr "Total : {0} % <0/>"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Add options to see allocation chart"
 msgstr "Ajoutez des options pour voir le graphique de répartition"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline"
 msgstr "Date limite"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Progress through planning period"
 msgstr "Progrès pendant la période de planification"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Timeline Log"
 msgstr "<0/> Journal de la chronologie"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Track your daily/weekly progress across all options"
 msgstr "Suivez vos progrès quotidiens/hebdomadaires dans toutes les options"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Add Entry"
 msgstr "<0/> Ajouter une entrée"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked"
 msgstr "Options travaillées"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Time Allocation"
 msgstr "Allocation de temps"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Outcomes"
 msgstr "Résultats"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments"
 msgstr "Ajustements"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "No timeline entries yet."
 msgstr "Aucune entrée de chronologie pour le moment."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Start tracking your weekly progress by adding an entry."
 msgstr "Commencez à suivre vos progrès hebdomadaires en ajoutant une entrée."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Edit Timeline Entry"
 msgstr "Modifier l'entrée de chronologie"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add Timeline Entry"
 msgstr "Ajouter une entrée de chronologie"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update the entry details."
 msgstr "Mettez à jour les détails de l'entrée."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Log your progress for this period."
 msgstr "Enregistrez vos progrès pour cette période."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked On"
 msgstr "Options sur lesquelles vous avez travaillé"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "What did you accomplish?"
 msgstr "Qu'avez-vous accompli ?"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments/Notes"
 msgstr "Ajustements/Notes"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Any changes to your strategy?"
 msgstr "Des changements dans votre stratégie ?"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Low"
 msgstr "Faible"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Medium"
 msgstr "Moyen"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "High"
 msgstr "Élevé"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Critical"
 msgstr "Critique"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "General"
 msgstr "Général"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Risks & Assumptions"
 msgstr "<0/> Risques et hypothèses"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Track and mitigate potential risks to your plans"
 msgstr "Suivez et atténuez les risques potentiels pour vos plans"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Add Risk"
 msgstr "<0/> Ajouter un risque"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Severity"
 msgstr "Gravité"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Option"
 msgstr "Option"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation"
 msgstr "Atténuation"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Added"
 msgstr "Ajouté"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "No risks tracked yet."
 msgstr "Aucun risque suivi pour le moment."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add risks to keep track of potential challenges."
 msgstr "Ajoutez des risques pour suivre les défis potentiels."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Edit Risk"
 msgstr "Modifier le risque"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add Risk"
 msgstr "Ajouter un risque"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Update the risk details."
 msgstr "Mettez à jour les détails du risque."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Document a potential risk or assumption."
 msgstr "Documentez un risque ou une hypothèse potentielle."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Describe the risk or assumption"
 msgstr "Décrivez le risque ou l'hypothèse"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Select severity"
 msgstr "Sélectionnez la gravité"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Related Option"
 msgstr "Option associée"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation Strategy"
 msgstr "Stratégie d'atténuation"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "How will you address this risk?"
 msgstr "Comment allez-vous gérer ce risque?"
 
@@ -9859,85 +10280,108 @@ msgid "<0/> Settings"
 msgstr "<0/> Paramètres"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
+#. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Your planning window ends on {0}"
 msgstr "Votre période de planification se termine le {0}"
 
 #. placeholder {0}: formatDate(startDate.toISOString())
+#. placeholder {0}: formatDate(startDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Started: {0}"
 msgstr "Début : {0}"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
+#. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline: {0}"
 msgstr "Date limite : {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Please select both start and end dates"
 msgstr "Veuillez sélectionner une date de début et une date de fin."
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End date must be after start date"
 msgstr "La date de fin doit être postérieure à la date de début."
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Timeline settings saved"
 msgstr "Paramètres de la chronologie enregistrés"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Timeline Settings"
 msgstr "<0/> Paramètres de la chronologie"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
 msgstr "Ajustez votre horizon de planification. Cela affecte les calculs du \"Temps restant\"."
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Quick Presets"
 msgstr "Préréglages rapides"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "1 Year"
 msgstr "1 an"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "3 Years"
 msgstr "3 ans"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "5 Years"
 msgstr "5 ans"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "10 Years"
 msgstr "10 ans"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "15 Years"
 msgstr "15 ans"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick a start date"
 msgstr "Choisissez une date de début"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End Date (Deadline)"
 msgstr "Date de fin (Date limite)"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick an end date"
 msgstr "Choisissez une date de fin"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Planning Duration"
 msgstr "Durée de planification"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ La date de fin doit être postérieure à la date de début"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid ""
 "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
@@ -9946,6 +10390,7 @@ msgstr ""
 "appareils. <1>Connectez-vous</1> pour synchroniser vos données."
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
 msgstr "<0/> Annuler"
 
@@ -9955,26 +10400,33 @@ msgstr "<0/> Supprimer l'option"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Delete Activity"
 msgstr "Supprimer l'activité"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
 msgstr "Êtes-vous sûr de vouloir supprimer cette activité ? Cette action est irréversible."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Timeline Entry"
 msgstr "Supprimer l'entrée de la chronologie"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
 msgstr "Êtes-vous sûr de vouloir supprimer cette entrée de la chronologie ? Cette action ne peut pas être annulée."
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Delete Risk"
 msgstr "Supprimer le Risque"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
 msgstr "Êtes-vous sûr de vouloir supprimer ce risque ? Cette action est irréversible."
 
@@ -9983,6 +10435,7 @@ msgid "Are you sure you want to delete this option? All related activities and r
 msgstr "Êtes-vous sûr de vouloir supprimer cette option ? Toutes les activités et tous les risques associés seront également supprimés. Cette action est irréversible."
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Entry"
 msgstr "Supprimer l'entrée"
 
@@ -10767,3 +11220,176 @@ msgstr "Dernière mise à jour : {0}"
 
 #~ msgid "Add to library"
 #~ msgstr "Ajouter à la bibliothèque"
+
+#~ msgid "Track the moments that matter. From your next big launch to the New Year's ball drop."
+#~ msgstr "Suivez les moments qui comptent. Du prochain grand lancement jusqu’à la chute de la boule du Nouvel An."
+
+#~ msgid "<0/> Create New Countdown"
+#~ msgstr "<0/> Créer un nouveau compte à rebours"
+
+#~ msgid "No active countdowns."
+#~ msgstr "Aucun compte à rebours actif."
+
+#~ msgid "Click the button above to start tracking something special!"
+#~ msgstr "Cliquez sur le bouton ci-dessus pour commencer à suivre quelque chose de spécial !"
+
+#~ msgid "Time's Up!"
+#~ msgstr "Le temps est écoulé !"
+
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Days"
+msgstr "Jours"
+
+#~ msgid "Hrs"
+#~ msgstr "Heures"
+
+#~ msgid "Mins"
+#~ msgstr "Minutes"
+
+#~ msgid "Secs"
+#~ msgstr "Secondes"
+
+#~ msgid "Ocean"
+#~ msgstr "Océan"
+
+#~ msgid "Sunset"
+#~ msgstr "Crépuscule"
+
+#~ msgid "Berry"
+#~ msgstr "Baie"
+
+#~ msgid "Forest"
+#~ msgstr "Forêt"
+
+#~ msgid "Royal"
+#~ msgstr "royal"
+
+#~ msgid "Midnight"
+#~ msgstr "Minuit"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Please select a future date and time"
+msgstr "Veuillez sélectionner une date et une heure futures"
+
+#~ msgid "Create New Countdown"
+#~ msgstr "Créer un nouveau compte à rebours"
+
+#~ msgid "Set a target date and time for your countdown."
+#~ msgstr "Définissez une date et une heure cibles pour votre compte à rebours."
+
+#~ msgid "Theme"
+#~ msgstr "Thème"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Create Countdown"
+msgstr "Créer un compte à rebours"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Hr"
+msgstr "Heure"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Min"
+msgstr "Minute"
+
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Sec"
+msgstr "Seconde"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "PM"
+msgstr "Après-midi"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Carbon"
+msgstr "Carbone"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "AM"
+msgstr "Matin"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Form"
+msgstr "Formulaire"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Label"
+msgstr "Libellé"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Time (12-hour)"
+msgstr "Heure (format 12 h)"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Accent Color"
+msgstr "Couleur d'accentuation"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Start Countdown"
+msgstr "Démarrer le compte à rebours"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Countdown"
+msgstr "Compte à rebours"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Focus on the moments that matter."
+msgstr "Concentrez-vous sur les moments qui comptent."
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "<0/> New Timer"
+msgstr "<0/> Nouveau minuteur"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "No active timers."
+msgstr "Aucun minuteur actif."
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Time is ticking. What are you waiting for?"
+msgstr "Le temps s'écoule. Qu'attendez-vous ?"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Create one now"
+msgstr "Créez-en un maintenant"
+
+#. placeholder {0}: token
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "Bearer {0}"
+msgstr "Bearer {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "User-Agent"
+msgstr "User-Agent"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "Svelte-MiniApps-GitHub-Tracker"
+msgstr "Svelte-MiniApps-GitHub-Tracker"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "X-GitHub-Api-Version"
+msgstr "X-GitHub-Api-Version"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Minutes must be between 0 and 59"
+msgstr "Les minutes doivent être comprises entre 0 et 59."
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Hour must be between 1 and 12"
+msgstr "L'heure doit être comprise entre 1 et 12."
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Edit Countdown"
+msgstr "Modifier le compte à rebours"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Update Timer"
+msgstr "Mettre à jour le minuteur"

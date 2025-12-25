@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-12-23T22:14:21.191Z\n"
+"PO-Revision-Date: 2025-12-25T20:19:42.296Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -272,6 +272,7 @@ msgstr "<0/> 登出"
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh"
 msgstr "刷新"
 
@@ -484,6 +485,7 @@ msgstr "清除"
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
@@ -667,6 +669,8 @@ msgstr "已复制表情符号和名称！"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Select Budget"
 msgstr "选择预算"
 
@@ -676,6 +680,8 @@ msgstr "选择预算"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -704,6 +710,16 @@ msgstr "选择预算"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
@@ -793,6 +809,7 @@ msgstr "尼日利亚奈拉"
 msgid "Auto-backup cancelled"
 msgstr "自动备份已取消"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -857,6 +874,7 @@ msgstr "创建预算，跟踪支出，可视化消费，支持多种货币"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "How to Use"
 msgstr "如何使用"
@@ -884,6 +902,10 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
@@ -919,6 +941,9 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
@@ -929,6 +954,11 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -981,6 +1011,7 @@ msgstr "创建您的第一个预算，开始跟踪您的支出。"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Create Budget"
 msgstr "创建预算"
 
@@ -1032,6 +1063,10 @@ msgstr "交换货币"
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Amount"
 msgstr "金额"
@@ -1240,12 +1275,14 @@ msgstr "<0>从服务器同步:</0> 确保本地数据已同步，然后下载并
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Backing up..."
 msgstr "正在备份..."
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Backup"
 msgstr "备份"
 
@@ -1386,6 +1423,7 @@ msgstr "错过"
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
@@ -1394,6 +1432,7 @@ msgstr "T"
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "消费追踪器"
 
@@ -3320,6 +3359,8 @@ msgstr "开始使用的简单步骤"
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Optional Details:"
 msgstr "可选详细信息："
 
@@ -3347,6 +3388,7 @@ msgstr "需要帮助吗？可以随时从标题重新打开本指南"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Got It!"
 msgstr "知道了！"
 
@@ -3598,55 +3640,72 @@ msgid ""
 msgstr "我们感谢所有开源贡献者，他们使这些工具可供社区使用。"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Deleting budget..."
 msgstr "正在删除预算..."
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Strike out completed expenses"
 msgstr "划掉已完成的支出"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Budget:"
 msgstr "预算："
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Spent:"
 msgstr "已花费："
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Remaining:"
 msgstr "剩余："
 
 #: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expenses"
 msgstr "支出"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Edit Budget"
 msgstr "编辑预算"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Make changes to your budget here. Click save when you're done."
 msgstr "在此处更改您的预算。完成后点击保存。"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "预算名称"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "预算金额"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Formated Budget Amount"
 msgstr "格式化的预算金额"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
@@ -3654,49 +3713,65 @@ msgstr "货币"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "保存更改"
 
 #: src/routes/apps/(app)/budget-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickNavigation.svelte
 msgid "Quick Navigation"
 msgstr "快速导航"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Edit Expense"
 msgstr "编辑支出"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Expense Details"
 msgstr "支出详情"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Make changes to the expense here. Click save when you're done."
 msgstr "在此处更改支出。完成后点击保存。"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
 msgstr "查看下面的支出详情。点击铅笔按钮进行编辑。"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Description"
 msgstr "描述"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Formatted Amount"
 msgstr "格式化的金额"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -3704,8 +3779,10 @@ msgstr "格式化的金额"
 msgid "Save Changes"
 msgstr "保存更改"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3713,11 +3790,15 @@ msgstr "保存更改"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Date"
 msgstr "日期"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
@@ -3727,59 +3808,75 @@ msgstr "日期"
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "删除"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Delete Expense"
 msgstr "删除支出"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "This action cannot be undone. Are you sure you want to delete this expense?"
 msgstr "此操作无法撤消。您确定要删除此支出吗？"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Edit"
 msgstr "<0/> 编辑"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Add New Budget"
 msgstr "添加新的预算"
 
 #: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "<0/> Add Budget"
 msgstr "<0/> 添加预算"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Add New Expense"
 msgstr "添加新的支出"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Expense Description"
 msgstr "支出描述"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Formated Expense Amount"
 msgstr "格式化的支出金额"
 
 #: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "<0/> Add Expense"
 msgstr "<0/> 添加支出"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "您确定要删除此支出吗？"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Expense deleted successfully"
 msgstr "支出删除成功"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Latest Transactions <0>(showing 12 most recent)</0>"
 msgstr "最新交易记录 <0>(显示最近 12 条)</0>"
 
 #: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
 msgstr "还没有支出。添加您的第一笔支出以开始。"
 
@@ -3933,6 +4030,7 @@ msgstr "对此治疗期间的简要描述..."
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Start Date"
 msgstr "开始日期"
 
@@ -3962,6 +4060,7 @@ msgstr "还没有治疗会话。创建一个以上开始。"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Active"
 msgstr "活动"
 
@@ -4080,6 +4179,9 @@ msgstr "添加药物"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add"
 msgstr "添加"
 
@@ -4405,6 +4507,7 @@ msgstr "可以添加一条备注，说明您跳过此剂量的原因。"
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
@@ -4642,6 +4745,7 @@ msgstr "更新服用此药物的日期和时间。"
 #: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time"
 msgstr "时间"
 
@@ -5228,11 +5332,13 @@ msgstr "<0/> 已锁定"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
+#. placeholder {0}: option.progress
 #. placeholder {0}: milestone.progress.toFixed(0)
 #. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
@@ -5334,6 +5440,7 @@ msgid "Current custom start date:"
 msgstr "当前自定义开始日期："
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
@@ -5459,86 +5566,109 @@ msgid "Login"
 msgstr "登录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Track items and record purchases over time"
 msgstr "跟踪项目并记录一段时间内的购买情况"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Items"
 msgstr "项目"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase History"
 msgstr "购买历史"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh data from server"
 msgstr "从服务器刷新数据"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refreshing..."
 msgstr "刷新中..."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Search items..."
 msgstr "搜索商品..."
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "All Categories"
 msgstr "所有类别"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "<0/> Add Item"
 msgstr "<0/> 添加商品"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "No items found"
 msgstr "未找到商品"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Try adjusting your search or filters."
 msgstr "尝试调整您的搜索或过滤器。"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Get started by adding your first item."
 msgstr "开始添加您的第一个商品。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add New Item"
 msgstr "添加新商品"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add Your First Item"
 msgstr "添加您的第一个商品"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Invalid Date"
 msgstr "无效日期"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchases"
 msgstr "所有购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchase Records"
 msgstr "所有购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Month"
 msgstr "<0/> 按月"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Year"
 msgstr "<0/> 按年"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> All"
 msgstr "<0/> 全部"
 
@@ -5546,50 +5676,68 @@ msgstr "<0/> 全部"
 #. placeholder {1}: purchases.length !== 1 ? 's' : ''
 #. placeholder {0}: purchasesWithItems.length
 #. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
+#. placeholder {0}: purchases.length
+#. placeholder {1}: purchases.length !== 1 ? 's' : ''
+#. placeholder {0}: purchasesWithItems.length
+#. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} record{1}"
 msgstr "{0} 条记录{1}"
 
 #. placeholder {0}: groupPurchases.length
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
+#. placeholder {0}: groupPurchases.length
+#. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} purchase{1}"
 msgstr "{0} 次购买{1}"
 
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
+#. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Total: {0}"
 msgstr "总计: {0}"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "No purchase records"
 msgstr "没有购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Add some purchases to your items to see the history here."
 msgstr "为您的商品添加一些购买记录，以在此处查看历史记录。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Edit Item"
 msgstr "编辑商品"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update the item details."
 msgstr "更新商品详情。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Create a new item to track purchases for."
 msgstr "创建一个新商品来跟踪购买记录。"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Name *"
 msgstr "名称 *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Category *"
 msgstr "类别 *"
 
@@ -5597,15 +5745,19 @@ msgstr "类别 *"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Select category"
 msgstr "选择类别"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Optional description..."
 msgstr "可选描述..."
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Unit"
 msgstr "默认单位"
 
@@ -5613,49 +5765,61 @@ msgstr "默认单位"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Currency"
 msgstr "默认货币"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update Item"
 msgstr "更新商品"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Add Item"
 msgstr "添加商品"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Edit Purchase Record"
 msgstr "编辑购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Add Purchase Record"
 msgstr "添加购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update the purchase details."
 msgstr "更新购买详情。"
 
 #. placeholder {0}: selectedItemForPurchase?.name
+#. placeholder {0}: selectedItemForPurchase?.name
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Record a new purchase for \"{0}\"."
 msgstr "为“{0}”记录新的购买。"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Quantity *"
 msgstr "数量 *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Cost *"
 msgstr "成本 *"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Formatted cost will appear here"
 msgstr "格式化的成本将在此处显示"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Date *"
 msgstr "日期 *"
 
@@ -5663,11 +5827,15 @@ msgstr "日期 *"
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Location"
 msgstr "地点"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Payment Method"
 msgstr "支付方式"
 
@@ -5676,117 +5844,156 @@ msgstr "支付方式"
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Notes"
 msgstr "备注"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Optional notes..."
 msgstr "可选备注..."
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update Purchase"
 msgstr "更新购买"
 
 #: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add Purchase"
 msgstr "添加购买"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Complete purchase records for <0/>"
 msgstr "完整的<0/>购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Purchases"
 msgstr "购买总数"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Quantity"
 msgstr "总数量"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Spent"
 msgstr "总花费"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "N/A"
 msgstr "不适用"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Avg Cost"
 msgstr "平均成本"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Purchase Records"
 msgstr "购买记录"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "No purchases yet"
 msgstr "暂无购买记录"
 
 #. placeholder {0}: selectedItemForHistory.name
+#. placeholder {0}: selectedItemForHistory.name
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid ""
 "Start tracking your purchases for {0} to see detailed history\n"
 "and analytics here."
 msgstr "开始追踪您对 {0} 的购买，以在此处查看详细的历史记录和分析。"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "<0/> Add First Purchase"
 msgstr "<0/> 添加首次购买"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Start"
 msgstr "<0/> 开始"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Record"
 msgstr "<0/> 记录"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Tips"
 msgstr "<0/> 提示"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add an Item"
 msgstr "添加项目"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click <0>\"Add Item\"</0> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "点击 <0>“添加项目”</0> 按钮。将其命名为“咖啡”或“汽油”之类的名称。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Pick a Category"
 msgstr "选择类别"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Choose from Groceries, Fuel, Dining, etc. or create your own."
 msgstr "从食品杂货、燃料、餐饮等中选择，或创建自己的类别。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "That's It!"
 msgstr "就这样！"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "You're ready to track purchases. Set units and currency if you want."
 msgstr "您可以开始追踪购买了。如果需要，设置单位和货币。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid ""
 "<0>Pro tip:</0> Start with just one or two items you buy frequently. You can always\n"
 "add more later!"
@@ -5794,110 +6001,148 @@ msgstr "<0>专业提示：</0> 从您经常购买的一两个项目开始。您�
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Find Your Item"
 msgstr "找到您的项目"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "On the Items tab, click the <0>⋮</0> menu on any item card."
 msgstr "在“项目”选项卡上，点击任何项目卡片上的 <0>⋮</0> 菜单。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Enter how much you bought and what it cost. Date is set to today automatically."
 msgstr "输入您购买了多少以及花费了多少。日期会自动设置为今天。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Save It"
 msgstr "保存"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click Save. Your purchase is recorded and statistics update instantly!"
 msgstr "点击“保存”。您的购买将被记录，统计数据会立即更新！"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Where you bought it"
 msgstr "您在哪里购买的"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Payment"
 msgstr "支付方式"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Cash, Card, etc."
 msgstr "现金、卡等"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Any extra details"
 msgstr "任何额外的详细信息"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> View Your Data"
 msgstr "<0/> 查看您的数据"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid ""
 "Switch between <0>Items</0> and <1>Purchase History</1> tabs to see different\n"
 "views."
 msgstr "在 <0>项目</0> 和 <1>购买历史</1> 选项卡之间切换以查看不同的视图。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Check Statistics"
 msgstr "<0/> 查看统计信息"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Each item card shows total spent and number of purchases at a glance."
 msgstr "每个项目卡片一目了然地显示总花费和购买次数。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Edit Anytime"
 msgstr "<0/> 随时编辑"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click the <0>⋮</0> menu to edit items or view detailed history."
 msgstr "点击 <0>⋮</0> 菜单以编辑项目或查看详细的历史记录。"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Quick Tips:"
 msgstr "快速提示："
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Record purchases regularly for accurate tracking"
 msgstr "定期记录购买以进行准确的追踪"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Use consistent categories for easier analysis"
 msgstr "使用一致的类别以便于分析"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Backup your data if logged in (cloud icon in header)"
 msgstr "如果已登录，请备份您的数据（标题中的云图标）"
 
 #: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Works offline - no internet needed!"
 msgstr "离线工作 - 无需互联网！"
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "⚠️ This action cannot be undone."
 msgstr "⚠️ 此操作无法撤消。"
 
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
 msgstr "<0/> 正在删除..."
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 删除"
 
@@ -6121,6 +6366,8 @@ msgstr "清除所有数据"
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Unknown"
 msgstr "未知"
 
@@ -6451,55 +6698,68 @@ msgid "This will permanently delete this scheduled dose. This action cannot be u
 msgstr "这将永久删除此预定剂量。此操作无法撤消。"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Edit Item"
 msgstr "<0/> 编辑项目"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Add Purchase"
 msgstr "<0/> 添加购买"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> View History"
 msgstr "<0/> 查看历史"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Delete Item"
 msgstr "<0/> 删除项目"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Unit:"
 msgstr "单位:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Currency:"
 msgstr "货币:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Purchases:"
 msgstr "总购买量:"
 
 #: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Spent:"
 msgstr "总花费:"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Quantity:"
 msgstr "数量:"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Cost:"
 msgstr "成本:"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Date:"
 msgstr "日期:"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Location:"
 msgstr "地点:"
 
 #: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Notes:"
 msgstr "注释:"
 
@@ -6631,41 +6891,53 @@ msgid "Toggle Sidebar"
 msgstr "切换侧边栏"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget not found. Please save the budget first."
 msgstr "未找到预算。请先保存预算。"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Name:"
 msgstr "预算名称："
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Amount:"
 msgstr "预算金额："
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Save Budget"
 msgstr "保存预算"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Add Expense"
 msgstr "添加支出"
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Name:"
 msgstr "支出名称："
 
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Amount:"
 msgstr "支出金额："
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Total Expenses: $ {0}"
 msgstr "总支出：$ {0}"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #: src/routes/apps/(app)/budget-tracker/Test.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Remaining Budget: $ {0}"
 msgstr "剩余预算：$ {0}"
 
@@ -6862,58 +7134,72 @@ msgid "<0/> Got It!"
 msgstr "<0/>知道了！"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "点击<strong>“添加项目”</strong>按钮。将其命名为“咖啡”或“汽油”之类的名称。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "On the Items tab, click the <strong>⋮</strong> menu on any item card."
 msgstr "在“项目”选项卡上，点击任何项目卡片上的 <strong>⋮</strong> 菜单。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "View Your Data"
 msgstr "查看您的数据"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see different views."
 msgstr "在<strong>项目</strong>和<strong>购买历史记录</strong>选项卡之间切换以查看不同的视图。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Check Statistics"
 msgstr "检查统计数据"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Edit Anytime"
 msgstr "随时编辑"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click the <strong>⋮</strong> menu to edit items or view detailed history."
 msgstr "点击 <strong>⋮</strong> 菜单以编辑项目或查看详细历史记录。"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Guide"
 msgstr "<0/>快速指南"
 
 #: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to track your purchases effectively"
 msgstr "有效追踪您的购买情况的简单步骤"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "All Time"
 msgstr "所有时间"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Week"
 msgstr "本周"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Month"
 msgstr "本月"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Quarter"
 msgstr "本季度"
 
 #: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
+#: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "Quick Filters"
 msgstr "快速筛选"
 
@@ -8756,6 +9042,7 @@ msgstr "还没有项目。点击“添加项目”开始。"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Name"
 msgstr "名称"
 
@@ -8765,11 +9052,15 @@ msgstr "名称"
 msgid "Category"
 msgstr "类别"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Actions"
 msgstr "操作"
 
@@ -8850,6 +9141,7 @@ msgstr "选择货币"
 msgid "Create Item"
 msgstr "创建项目"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Blue"
 msgstr "蓝色"
@@ -8862,10 +9154,12 @@ msgstr "琥珀色"
 msgid "Purple"
 msgstr "紫色"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Emerald"
 msgstr "翠绿色"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Rose"
 msgstr "玫瑰色"
@@ -8874,10 +9168,12 @@ msgstr "玫瑰色"
 msgid "Cyan"
 msgstr "青色"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Orange"
 msgstr "橙色"
 
+#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Indigo"
 msgstr "靛蓝色"
@@ -8887,6 +9183,9 @@ msgstr "靛蓝色"
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
 msgid "TBD"
 msgstr "待定"
@@ -8922,6 +9221,7 @@ msgstr "仪表盘"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Risks"
 msgstr "风险"
 
@@ -8952,6 +9252,7 @@ msgstr "选择 {0} 颜色"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation (%)"
 msgstr "分配 (%)"
 
@@ -8978,422 +9279,552 @@ msgid "Are you sure you want to delete this option? All related activities and r
 msgstr "您确定要删除此选项吗？所有相关的活动和风险也将被删除。此操作无法撤消。"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Time Remaining"
 msgstr "剩余时间"
 
 #. placeholder {0}: stats.remainingYears
 #. placeholder {0}: durationYears
+#. placeholder {0}: stats.remainingYears
+#. placeholder {0}: durationYears
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "{0} years"
 msgstr "{0} 年"
 
 #. placeholder {0}: stats.remainingDays.toLocaleString()
+#. placeholder {0}: stats.remainingDays.toLocaleString()
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} days left"
 msgstr "还剩 {0} 天"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total Time Invested"
 msgstr "总投入时间"
 
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
 #. placeholder {0}: option.totalTimeSpent
+#. placeholder {0}: stats.totalTimeSpent
+#. placeholder {0}: activity.timeSpent
+#. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "{0} hrs"
 msgstr "{0} 小时"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Across all options"
 msgstr "所有方案"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Average Progress"
 msgstr "平均进度"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Active Risks"
 msgstr "活跃风险"
 
 #. placeholder {0}: highRisksCount
+#. placeholder {0}: highRisksCount
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} high/critical severity"
 msgstr "{0} 个高/危急严重性风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Options Overview"
 msgstr "<0/> 方案概览"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Track progress across your scenario options"
 msgstr "跟踪你的方案选项的进度"
 
 #. placeholder {0}: option.totalTimeSpent
+#. placeholder {0}: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} hrs invested"
 msgstr "已投入 {0} 小时"
 
 #. placeholder {0}: option.estimatedTimeToCompletion
 #. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
+#. placeholder {0}: option.estimatedTimeToCompletion
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. completion: {0}"
 msgstr "预计完成时间：{0}"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "No options yet. Add your first scenario option to get started."
 msgstr "还没有方案。添加你的第一个方案选项以开始。"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Time Allocation"
 msgstr "<0/> 时间分配"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "How you're dividing your effort"
 msgstr "你如何分配你的精力"
 
 #. placeholder {0}: 100 - totalAllocation
+#. placeholder {0}: 100 - totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "({0}% unallocated)"
 msgstr "（{0}% 未分配）"
 
 #. placeholder {0}: totalAllocation - 100
+#. placeholder {0}: totalAllocation - 100
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
 msgstr "（超额分配 {0}%）"
 
 #. placeholder {0}: totalAllocation
+#. placeholder {0}: totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total: {0}% <0/>"
 msgstr "总计：{0}% <0/>"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Add options to see allocation chart"
 msgstr "添加选项以查看分配图表"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline"
 msgstr "截止日期"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
+#. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Your planning window ends on {0}"
 msgstr "你的规划窗口截止于 {0}"
 
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Progress through planning period"
 msgstr "规划期间的进度"
 
 #. placeholder {0}: formatDate(startDate.toISOString())
+#. placeholder {0}: formatDate(startDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Started: {0}"
 msgstr "开始时间：{0}"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
+#. placeholder {0}: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline: {0}"
 msgstr "截止日期：{0}"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Planning"
 msgstr "计划中"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Paused"
 msgstr "已暂停"
 
+#: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Complete"
 msgstr "已完成"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Invested"
 msgstr "已投入时间"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation"
 msgstr "分配"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress"
 msgstr "进度"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Activity Log"
 msgstr "活动日志"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Track your work sessions and progress"
 msgstr "跟踪您的工作会话和进度"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Add Activity"
 msgstr "<0/> 添加活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Status"
 msgstr "状态"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "No activities logged yet."
 msgstr "尚未记录任何活动。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Start tracking your work by adding an activity."
 msgstr "通过添加一个活动开始跟踪您的工作。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Activity"
 msgstr "编辑活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Add Activity"
 msgstr "添加活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the activity details."
 msgstr "更新活动详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Log a new work session or milestone."
 msgstr "记录一个新的工作会话或里程碑。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "What did you work on?"
 msgstr "你在做什么工作？"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Spent (hours)"
 msgstr "花费时间（小时）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Select status"
 msgstr "选择状态"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress Metric"
 msgstr "进度指标"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Additional notes or observations"
 msgstr "其他备注或观察"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update"
 msgstr "更新"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Option"
 msgstr "编辑选项"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the option settings and targets."
 msgstr "更新选项设置和目标。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress (%)"
 msgstr "进度（%）"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. Time to Completion"
 msgstr "预计完成时间"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Save Changes"
 msgstr "<0/> 保存变更"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Delete Activity"
 msgstr "删除活动"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
 msgstr "您确定要删除此活动吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Option not found."
 msgstr "未找到选项。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Low"
 msgstr "低"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Medium"
 msgstr "中等"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "High"
 msgstr "高"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Critical"
 msgstr "严重"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "General"
 msgstr "一般"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Risks & Assumptions"
 msgstr "<0/> 风险与假设"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Track and mitigate potential risks to your plans"
 msgstr "跟踪并降低你计划中的潜在风险。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Add Risk"
 msgstr "<0/> 添加风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Severity"
 msgstr "严重性"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Option"
 msgstr "选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation"
 msgstr "缓解措施"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Added"
 msgstr "已添加"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "No risks tracked yet."
 msgstr "尚未跟踪任何风险。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add risks to keep track of potential challenges."
 msgstr "添加风险以便跟踪潜在挑战。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Edit Risk"
 msgstr "编辑风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add Risk"
 msgstr "添加风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Update the risk details."
 msgstr "更新风险详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Document a potential risk or assumption."
 msgstr "记录潜在风险或假设。"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Describe the risk or assumption"
 msgstr "描述风险或假设"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Select severity"
 msgstr "选择严重性"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Related Option"
 msgstr "相关选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation Strategy"
 msgstr "缓解策略"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "How will you address this risk?"
 msgstr "你将如何应对这个风险？"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Delete Risk"
 msgstr "删除风险"
 
 #: src/routes/apps/(app)/scenario-tracker/Risks.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
 msgstr "您确定要删除此风险吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Please select both start and end dates"
 msgstr "请同时选择开始日期和结束日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End date must be after start date"
 msgstr "结束日期必须在开始日期之后"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Timeline settings saved"
 msgstr "时间线设置已保存"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Timeline Settings"
 msgstr "<0/> 时间线设置"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
 msgstr "调整你的计划期限。这会影响“剩余时间”的计算。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Quick Presets"
 msgstr "快速预设"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "1 Year"
 msgstr "1 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "3 Years"
 msgstr "3 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "5 Years"
 msgstr "5 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "10 Years"
 msgstr "10 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "15 Years"
 msgstr "15 年"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick a start date"
 msgstr "选择开始日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End Date (Deadline)"
 msgstr "结束日期（截止日期）"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick an end date"
 msgstr "选择结束日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Planning Duration"
 msgstr "计划时长"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ 结束日期必须晚于开始日期"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid ""
 "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
@@ -9402,87 +9833,109 @@ msgstr ""
 "<1>登录</1> 以同步您的数据。"
 
 #: src/routes/apps/(app)/scenario-tracker/Settings.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
 msgstr "<0/> 取消"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Timeline Log"
 msgstr "<0/> 时间线日志"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Track your daily/weekly progress across all options"
 msgstr "在所有选项中跟踪每日/每周进展"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Add Entry"
 msgstr "<0/> 添加条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked"
 msgstr "已完成的选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Time Allocation"
 msgstr "时间分配"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Outcomes"
 msgstr "结果"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments"
 msgstr "调整"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "No timeline entries yet."
 msgstr "尚无时间线条目。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Start tracking your weekly progress by adding an entry."
 msgstr "通过添加条目开始跟踪你每周的进展。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Edit Timeline Entry"
 msgstr "编辑时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add Timeline Entry"
 msgstr "添加时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update the entry details."
 msgstr "更新条目详情。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Log your progress for this period."
 msgstr "记录本期进展。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked On"
 msgstr "已处理的选项"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "What did you accomplish?"
 msgstr "你取得了哪些成就？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments/Notes"
 msgstr "调整/备注"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Any changes to your strategy?"
 msgstr "对你的策略有任何变动吗？"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Timeline Entry"
 msgstr "删除时间线条目"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
 msgstr "你确定要删除此时间线条目吗？此操作无法撤销。"
 
 #: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Entry"
 msgstr "删除条目"
 
@@ -10562,3 +11015,176 @@ msgstr "上次更新：{0}"
 
 #~ msgid "Add to library"
 #~ msgstr "添加到库"
+
+#~ msgid "Track the moments that matter. From your next big launch to the New Year's ball drop."
+#~ msgstr "跟踪那些重要的时刻。从你下一次重大发布到跨年球落下的瞬间。"
+
+#~ msgid "<0/> Create New Countdown"
+#~ msgstr "<0/> 创建新的倒计时"
+
+#~ msgid "No active countdowns."
+#~ msgstr "当前没有进行中的倒计时。"
+
+#~ msgid "Click the button above to start tracking something special!"
+#~ msgstr "点击上方按钮，开始跟踪一些特别的时刻！"
+
+#~ msgid "Time's Up!"
+#~ msgstr "时间到了！"
+
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Days"
+msgstr "天"
+
+#~ msgid "Hrs"
+#~ msgstr "时"
+
+#~ msgid "Mins"
+#~ msgstr "分"
+
+#~ msgid "Secs"
+#~ msgstr "秒"
+
+#~ msgid "Ocean"
+#~ msgstr "海洋"
+
+#~ msgid "Sunset"
+#~ msgstr "日落"
+
+#~ msgid "Berry"
+#~ msgstr "莓果"
+
+#~ msgid "Forest"
+#~ msgstr "森林"
+
+#~ msgid "Royal"
+#~ msgstr "皇家"
+
+#~ msgid "Midnight"
+#~ msgstr "午夜"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Please select a future date and time"
+msgstr "请选择一个将来日期和时间"
+
+#~ msgid "Create New Countdown"
+#~ msgstr "创建新的倒计时"
+
+#~ msgid "Set a target date and time for your countdown."
+#~ msgstr "为你的倒计时设置目标日期和时间。"
+
+#~ msgid "Theme"
+#~ msgstr "主题"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Create Countdown"
+msgstr "创建倒计时"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Countdown"
+msgstr "倒计时"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Focus on the moments that matter."
+msgstr "专注于那些重要的时刻。"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "<0/> New Timer"
+msgstr "<0/> 新建计时器"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "No active timers."
+msgstr "暂无活动的计时器。"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Time is ticking. What are you waiting for?"
+msgstr "时间在滴答流逝。你在等什么？"
+
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "Create one now"
+msgstr "现在就创建一个"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Hr"
+msgstr "时"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Min"
+msgstr "分"
+
+#: src/lib/components/countdown/TimerCard.svelte
+msgid "Sec"
+msgstr "秒"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "PM"
+msgstr "下午"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Carbon"
+msgstr "炭色"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "AM"
+msgstr "上午"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Form"
+msgstr "表格"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Label"
+msgstr "标签"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Time (12-hour)"
+msgstr "时间 (12 小时制)"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Accent Color"
+msgstr "强调色"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Start Countdown"
+msgstr "开始倒计时"
+
+#. placeholder {0}: token
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "Bearer {0}"
+msgstr "Bearer {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "User-Agent"
+msgstr "用户代理"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "Svelte-MiniApps-GitHub-Tracker"
+msgstr "Svelte-MiniApps-GitHub-Tracker"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
+msgid "X-GitHub-Api-Version"
+msgstr "X-GitHub-Api-Version"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Minutes must be between 0 and 59"
+msgstr "分钟数必须在 0 到 59 之间"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Hour must be between 1 and 12"
+msgstr "小时数必须在 1 到 12 之间"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Edit Countdown"
+msgstr "编辑倒计时"
+
+#: src/lib/components/countdown/AddTimerModal.svelte
+msgid "Update Timer"
+msgstr "更新计时器"
