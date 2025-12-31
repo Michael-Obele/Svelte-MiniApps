@@ -3,6 +3,8 @@
 
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  BUN_VERSION = "1.3.5"
   
 [[plugins]]
   package = "netlify-plugin-cache"
