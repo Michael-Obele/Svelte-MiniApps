@@ -13,11 +13,12 @@ Usage:
 <script lang="ts">
 	import { projects, done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
-	import { AppWindow, CircleDashed, Construction, ChevronDown } from 'lucide-svelte';
+	import { MediaQuery } from 'svelte/reactivity';
+	import { AppWindow, CircleDashed, Construction, ChevronDown, ArrowRight } from 'lucide-svelte';
 	import { Separator } from '$lib/components/ui/separator';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import type { Project } from '$lib/index.svelte';
-	import { MediaQuery } from 'svelte/reactivity';
 
 	// Create locale-aware collator that reacts to language changes
 	let collator = $derived(new Intl.Collator(persistedLocale.current));
@@ -31,9 +32,14 @@ Usage:
 	// Filter projects that are NOT done (Coming Soon)
 	let comingSoon = $derived(sortedProjects.filter((p) => !done().some((d) => d.name === p.link)));
 
-	// Collapsible state - Active Apps open by default, Coming Soon collapsed
-	const isDesktop = new MediaQuery('min-width: 768px');
-	let activeAppsOpen = $state(true);
+	// Collapsible state - Active Apps open by default on desktop, closed on mobile
+	const isDesktop = new MediaQuery('(min-width: 768px)');
+	let activeAppsOpen = $state(false);
+
+	$effect(() => {
+		activeAppsOpen = isDesktop.current;
+	});
+
 	let comingSoonOpen: boolean = $derived(isDesktop.current);
 </script>
 
@@ -41,15 +47,17 @@ Usage:
 	{@const Icon = project.icon || AppWindow}
 	<a
 		href={'/apps/' + project.link}
-		class="group bg-card text-card-foreground hover:border-primary/50 relative flex items-center overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-200 hover:shadow-md"
+		class="group bg-card text-card-foreground hover:border-primary/50 relative flex flex-col items-center overflow-hidden rounded-xl border p-3 shadow-sm transition-all duration-200 hover:shadow-md md:flex-row md:p-4"
 	>
 		<div
-			class="bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
+			class="bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary mb-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors md:mb-0"
 		>
 			<Icon class="h-5 w-5" />
 		</div>
-		<div class="ml-4 min-w-0 flex-1">
-			<h3 class="group-hover:text-primary truncate pr-6 font-semibold transition-colors">
+		<div class="min-w-0 flex-1 text-center md:ml-4 md:text-left">
+			<h3
+				class="group-hover:text-primary truncate text-sm font-semibold transition-colors md:pr-6 md:text-base"
+			>
 				{project.title}
 			</h3>
 		</div>
@@ -113,10 +121,19 @@ Usage:
 			</div>
 
 			<Collapsible.Content>
-				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+				<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 					{#each doneProjects as project (project.link)}
 						{@render appCard(project)}
 					{/each}
+				</div>
+				<div class="mt-6 flex justify-center md:hidden">
+					<a
+						href="/apps"
+						class={buttonVariants({ variant: 'outline', className: 'w-full sm:w-auto' })}
+					>
+						View All Apps
+						<ArrowRight class="ml-2 h-4 w-4" />
+					</a>
 				</div>
 			</Collapsible.Content>
 		</Collapsible.Root>
