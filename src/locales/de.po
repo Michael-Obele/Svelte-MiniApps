@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2025-12-25T20:19:42.262Z\n"
+"PO-Revision-Date: 2026-01-01T18:51:00.014Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -4103,6 +4103,7 @@ msgstr "Datum"
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
@@ -5024,6 +5025,7 @@ msgstr "Zeitplan"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -9388,10 +9390,10 @@ msgstr "Notiz gelöscht"
 msgid "Capture your thoughts"
 msgstr "Halte deine Gedanken fest"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "My Notes"
-msgstr "Meine Notizen"
+#~ msgid "My Notes"
+#~ msgstr "Meine Notizen"
 
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
 msgstr "Notiz erstellen"
@@ -9419,41 +9421,35 @@ msgstr "Notiz bearbeiten"
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Capture your thoughts and ideas"
-msgstr "Halte deine Gedanken und Ideen fest"
+#~ msgid "Capture your thoughts and ideas"
+#~ msgstr "Halte deine Gedanken und Ideen fest"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
 msgstr "<0/> Neue Notiz"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Search notes by title or content..."
-msgstr "Notizen nach Titel oder Inhalt suchen..."
+#~ msgid "Search notes by title or content..."
+#~ msgstr "Notizen nach Titel oder Inhalt suchen..."
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes yet"
-msgstr "Noch keine Notizen"
+#~ msgid "No notes yet"
+#~ msgstr "Noch keine Notizen"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid ""
-"Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
-"note."
-msgstr ""
-"Beginne, deine Ideen und Gedanken festzuhalten. Klicke auf den \"Neue Notiz\"-Button, um deine erste\n"
-"Notiz zu erstellen."
+#~ msgid ""
+#~ "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
+#~ "note."
+#~ msgstr ""
+#~ "Beginne, deine Ideen und Gedanken festzuhalten. Klicke auf den \"Neue Notiz\"-Button, um deine erste\n"
+#~ "Notiz zu erstellen."
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "<0/> Create Your First Note"
-msgstr "<0/> Erstelle deine erste Notiz"
+#~ msgid "<0/> Create Your First Note"
+#~ msgstr "<0/> Erstelle deine erste Notiz"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
 msgstr "Keine Notizen gefunden"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes match your search. Try different keywords or create a new note."
-msgstr "Keine Notizen entsprechen deiner Suche. Versuche andere Schlüsselwörter oder erstelle eine neue Notiz."
+#~ msgid "No notes match your search. Try different keywords or create a new note."
+#~ msgstr "Keine Notizen entsprechen deiner Suche. Versuche andere Schlüsselwörter oder erstelle eine neue Notiz."
 
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
@@ -11004,6 +11000,7 @@ msgid "No activities found"
 msgstr "Keine Aktivitäten gefunden"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Try adjusting your search query"
 msgstr "Versuchen Sie, Ihre Suchanfrage anzupassen"
 
@@ -11335,3 +11332,27 @@ msgstr "Countdown bearbeiten"
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "Update Timer"
 msgstr "Timer aktualisieren"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Search notes..."
+msgstr "Notizen durchsuchen..."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Sync now"
+msgstr "Jetzt synchronisieren"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> You are currently offline. Changes will be saved locally and synced when you reconnect."
+msgstr "<0/> Sie sind derzeit offline. Änderungen werden lokal gespeichert und synchronisiert, sobald Sie sich wieder verbinden."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Create your first note to get started"
+msgstr "Erstelle deine erste Notiz, um loszulegen"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Local"
+msgstr "Lokal"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "View"
+msgstr "Ansicht"

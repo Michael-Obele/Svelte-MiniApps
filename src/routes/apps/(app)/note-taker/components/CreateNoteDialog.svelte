@@ -12,13 +12,14 @@
 	import { Button } from '$lib/components/ui/button';
 	import { RefreshCw } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
+	import type { Note } from '../states.svelte';
 
 	let {
-		open = false,
+		open = $bindable(false),
 		onOpenChange: onOpenChangeProp = () => {},
 		createNoteForm,
 		noteAdapter,
-		onSaved = () => {},
+		onSaved = (note: Note) => {},
 		currentUser = null
 	} = $props();
 
@@ -65,30 +66,32 @@
 		</DialogHeader>
 		<form
 			{...currentUser
-				? createNoteForm.enhance(async ({ form, submit }: { form: HTMLFormElement; submit: () => Promise<any> }) => {
-						isSaving = true;
-						try {
-							const result = await submit();
-							if (result?.success && result?.note) {
-								// Update local persisted store with server note
-								await noteAdapter.saveItem({
-									id: result.note.id,
-									payload: result.note,
-									createdAt: result.note.createdAt,
-									updatedAt: result.note.updatedAt
-								});
-								toast.success('Note saved');
-								form.reset();
-								onOpenChange(false);
-							} else {
+				? createNoteForm.enhance(
+						async ({ form, submit }: { form: HTMLFormElement; submit: () => Promise<any> }) => {
+							isSaving = true;
+							try {
+								const result = await submit();
+								if (result?.success && result?.note) {
+									// Update local persisted store with server note
+									await noteAdapter.saveItem({
+										id: result.note.id,
+										payload: result.note,
+										createdAt: result.note.createdAt,
+										updatedAt: result.note.updatedAt
+									});
+									toast.success('Note saved');
+									form.reset();
+									onOpenChange(false);
+								} else {
+									toast.error('Failed to save note');
+								}
+							} catch (e) {
 								toast.error('Failed to save note');
+							} finally {
+								isSaving = false;
 							}
-						} catch (e) {
-							toast.error('Failed to save note');
-						} finally {
-							isSaving = false;
 						}
-					})
+					)
 				: {}}
 			onsubmit={currentUser ? undefined : handleLocalCreate}
 			class="space-y-6 py-4"

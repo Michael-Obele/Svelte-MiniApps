@@ -12,7 +12,7 @@
 	import type { Note } from '../states.svelte';
 
 	let {
-		open = false,
+		open = $bindable(false),
 		onOpenChange: onOpenChangeProp = () => {},
 		note = null
 	} = $props<{

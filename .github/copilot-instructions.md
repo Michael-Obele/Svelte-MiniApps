@@ -435,6 +435,7 @@ tests/
 - Use proper TypeScript types
 - Include error handling and loading states
 - Test generated code before committing
+- **ALWAYS update the `done()` function in `src/lib/index.svelte.ts` with the current date whenever an app is updated or a new one is created.**
 
 **Documentation Standards:**
 

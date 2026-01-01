@@ -3,8 +3,6 @@
 	import {
 		notes,
 		initNotes,
-		addNote,
-		updateNote,
 		deleteNoteLocal,
 		syncWithRemote,
 		noteAdapter,
@@ -12,8 +10,21 @@
 		type Note
 	} from './states.svelte';
 	import { page } from '$app/state';
-	import { getCurrentUser, createNoteForm, updateNoteForm, deleteNote } from '$lib/remote';
-	import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '$lib/components/ui/card';
+	import {
+		getCurrentUser,
+		createNoteForm,
+		updateNoteForm,
+		deleteNote,
+		getNotes
+	} from '$lib/remote';
+	import {
+		Card,
+		CardContent,
+		CardHeader,
+		CardTitle,
+		CardFooter,
+		CardDescription
+	} from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Badge } from '$lib/components/ui/badge';
@@ -27,7 +38,8 @@
 		Search,
 		Calendar,
 		StickyNote,
-		Eye
+		Eye,
+		Loader2
 	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fly, fade } from 'svelte/transition';
@@ -57,6 +69,9 @@
 	let failureCount = $state(0);
 	let immediateSyncTimer: number | null = null;
 
+	// Polling state
+	let hasRemoteChanges = $state(false);
+
 	$effect(() => {
 		initNotes();
 		getCurrentUser().then((user) => {
@@ -65,6 +80,62 @@
 				handleSync();
 			}
 		});
+	});
+
+	// Polling for updates
+	$effect(() => {
+		if (!currentUser || !online) return;
+
+		const interval = setInterval(async () => {
+			try {
+				const remoteNotes = await getNotes();
+
+				const localNotes = notes.current;
+
+				let changed = false;
+				if (remoteNotes.length !== localNotes.length) {
+					changed = true;
+				} else {
+					const latestRemote = remoteNotes.reduce(
+						(prev, curr) => (new Date(curr.updatedAt) > new Date(prev.updatedAt) ? curr : prev),
+						remoteNotes[0]
+					);
+
+					const latestLocal = localNotes.reduce(
+						(prev, curr) => (new Date(curr.updatedAt) > new Date(prev.updatedAt) ? curr : prev),
+						localNotes[0]
+					);
+
+					if (latestRemote && latestLocal) {
+						if (
+							new Date(latestRemote.updatedAt).getTime() > new Date(latestLocal.updatedAt).getTime()
+						) {
+							changed = true;
+						}
+					} else if (latestRemote || latestLocal) {
+						changed = true;
+					}
+				}
+
+				if (changed && !hasRemoteChanges) {
+					hasRemoteChanges = true;
+					toast.info('New changes available', {
+						action: {
+							label: 'Refresh',
+							onClick: () => {
+								handleSync();
+								hasRemoteChanges = false;
+							}
+						},
+						duration: Infinity
+					});
+				}
+			} catch (e) {
+				console.error('Polling failed', e);
+			}
+		}, 10000); // 10 seconds
+
+		return () => clearInterval(interval);
 	});
 
 	// Keep track of online/visibility events via bindings
@@ -211,118 +282,124 @@
 <svelte:window bind:online />
 <svelte:document bind:visibilityState />
 
-<div class="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 md:p-8">
-	<!-- Header Section -->
-	<div class="space-y-4">
-		<div class="flex items-center justify-between">
-			<div>
-				<h2 class="text-3xl font-bold tracking-tight">My Notes</h2>
-				<p class="text-muted-foreground mt-1 text-sm">Capture your thoughts and ideas</p>
-			</div>
-			<div class="flex gap-2">
-				{#if currentUser}
-					<Button variant="outline" size="icon" onclick={handleSync} disabled={isSyncing}>
-						<RefreshCw class={isSyncing ? 'animate-spin' : ''} />
-					</Button>
-				{/if}
-				<Button onclick={() => (createDialogOpen = true)}>
-					<Plus class="mr-2 size-4" /> New Note
-				</Button>
-			</div>
+<div class="container mx-auto max-w-6xl space-y-8 p-4 md:p-8">
+	<div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+		<div class="relative w-full md:w-96">
+			<Search class="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+			<Input placeholder="Search notes..." bind:value={searchQuery} class="pl-9" />
 		</div>
-
-		<!-- Search Bar -->
-		{#if notes.current.length > 0}
-			<div class="relative" transition:fade={{ duration: 200 }}>
-				<Search class="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-				<Input
-					type="text"
-					placeholder="Search notes by title or content..."
-					class="pl-10"
-					bind:value={searchQuery}
-				/>
-			</div>
-		{/if}
-	</div>
-
-	<Separator />
-
-	<!-- Notes Grid -->
-	{#if notes.current.length === 0}
-		<div
-			class="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center"
-			transition:fade={{ duration: 300 }}
-		>
-			<div class="bg-primary/10 mb-4 rounded-full p-4">
-				<StickyNote class="text-primary size-12" />
-			</div>
-			<h3 class="mb-2 text-xl font-semibold">No notes yet</h3>
-			<p class="text-muted-foreground mb-6 max-w-sm">
-				Start capturing your ideas and thoughts. Click the "New Note" button to create your first
-				note.
-			</p>
-			<Button onclick={() => (createDialogOpen = true)}>
-				<Plus class="mr-2 size-4" /> Create Your First Note
+		<div class="flex w-full items-center gap-2 md:w-auto">
+			{#if currentUser}
+				<Button
+					variant="outline"
+					size="icon"
+					onclick={handleSync}
+					disabled={isSyncing || !online}
+					title="Sync now"
+				>
+					<RefreshCw class="h-4 w-4 {isSyncing ? 'animate-spin' : ''}" />
+				</Button>
+			{/if}
+			<Button onclick={() => (createDialogOpen = true)} class="w-full md:w-auto">
+				<Plus class="mr-2 h-4 w-4" />
+				New Note
 			</Button>
 		</div>
-	{:else if filteredNotes.length === 0}
+	</div>
+
+	{#if !online}
 		<div
-			class="flex min-h-[300px] flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center"
-			transition:fade={{ duration: 300 }}
+			class="flex items-center gap-2 rounded-md bg-yellow-100 px-4 py-2 text-sm text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200"
+			transition:fade
 		>
-			<Search class="text-muted-foreground mb-4 size-12" />
-			<h3 class="mb-2 text-xl font-semibold">No notes found</h3>
-			<p class="text-muted-foreground max-w-sm">
-				No notes match your search. Try different keywords or create a new note.
-			</p>
+			<div class="h-2 w-2 rounded-full bg-yellow-500"></div>
+			You are currently offline. Changes will be saved locally and synced when you reconnect.
+		</div>
+	{/if}
+
+	{#if filteredNotes.length === 0}
+		<div class="space-y-4 py-20 text-center" in:fade>
+			<div class="bg-muted/30 mx-auto w-fit rounded-full p-6">
+				<StickyNote class="text-muted-foreground/50 h-12 w-12" />
+			</div>
+			<div class="space-y-1">
+				<h3 class="text-xl font-semibold">No notes found</h3>
+				<p class="text-muted-foreground">
+					{searchQuery
+						? 'Try adjusting your search query'
+						: 'Create your first note to get started'}
+				</p>
+			</div>
+			{#if !searchQuery}
+				<Button variant="outline" onclick={() => (createDialogOpen = true)}>Create Note</Button>
+			{/if}
 		</div>
 	{:else}
-		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" in:fade>
 			{#each filteredNotes as note (note.id)}
-				<div transition:fly={{ y: 20, duration: 300 }} class="group">
+				<div transition:fly={{ y: 20, duration: 300 }}>
 					<Card
-						class="flex h-full flex-col transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
+						class="group relative flex h-full flex-col overflow-hidden transition-shadow hover:shadow-md"
 					>
-						<CardHeader class="space-y-2">
+						<CardHeader class="pb-3">
 							<div class="flex items-start justify-between gap-2">
-								<CardTitle class="line-clamp-2 text-xl">{note.title}</CardTitle>
-								<div class="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-									<Button
-										variant="ghost"
-										size="icon"
-										class="size-8"
-										onclick={() => openViewDialog(note)}
-									>
-										<Eye class="size-4" />
-									</Button>
-									<Button
-										variant="ghost"
-										size="icon"
-										class="size-8"
-										onclick={() => openEditDialog(note)}
-									>
-										<Pencil class="size-4" />
-									</Button>
-									<Button
-										variant="ghost"
-										size="icon"
-										class="text-destructive hover:text-destructive size-8"
-										onclick={() => handleDelete(note.id)}
-									>
-										<Trash2 class="size-4" />
-									</Button>
-								</div>
+								<CardTitle
+									class="line-clamp-1 text-lg leading-tight font-semibold"
+									title={note.title}
+								>
+									{note.title}
+								</CardTitle>
+								{#if !currentUser}
+									<Badge variant="secondary" class="h-5 px-1.5 text-[10px]">Local</Badge>
+								{/if}
 							</div>
-							<Badge variant="secondary" class="w-fit">
-								<Calendar class="mr-1 size-3" />
-								{getRelativeTime(note.updatedAt)}
-							</Badge>
+							<CardDescription class="flex items-center gap-1 text-xs">
+								<Calendar class="h-3 w-3" />
+								{new Date(note.updatedAt).toLocaleDateString()}
+							</CardDescription>
 						</CardHeader>
-						<CardContent class="flex-1">
-							<p class="text-muted-foreground line-clamp-6 text-sm whitespace-pre-wrap">
+						<CardContent class="flex-grow pb-3">
+							<p class="text-muted-foreground line-clamp-4 text-sm whitespace-pre-wrap">
 								{note.content}
 							</p>
 						</CardContent>
+						<CardFooter
+							class="flex justify-end gap-1 pt-0 opacity-0 transition-opacity group-hover:opacity-100"
+						>
+							<Button
+								variant="ghost"
+								size="icon"
+								class="h-8 w-8"
+								onclick={() => {
+									selectedNote = note;
+									viewDialogOpen = true;
+								}}
+								title="View"
+							>
+								<Eye class="h-4 w-4" />
+							</Button>
+							<Button
+								variant="ghost"
+								size="icon"
+								class="h-8 w-8"
+								onclick={() => {
+									selectedNote = note;
+									editDialogOpen = true;
+								}}
+								title="Edit"
+							>
+								<Pencil class="h-4 w-4" />
+							</Button>
+							<Button
+								variant="ghost"
+								size="icon"
+								class="text-destructive hover:text-destructive h-8 w-8"
+								onclick={() => handleDelete(note.id)}
+								title="Delete"
+							>
+								<Trash2 class="h-4 w-4" />
+							</Button>
+						</CardFooter>
 					</Card>
 				</div>
 			{/each}
@@ -331,24 +408,24 @@
 </div>
 
 <CreateNoteDialog
-	open={createDialogOpen}
-	onOpenChange={(open: boolean) => (createDialogOpen = open)}
+	bind:open={createDialogOpen}
 	{createNoteForm}
 	{noteAdapter}
 	{currentUser}
+	onSaved={(note: Note) => {
+		needsSync.value = true;
+	}}
 />
 
 <EditNoteDialog
-	open={editDialogOpen}
-	onOpenChange={(open: boolean) => (editDialogOpen = open)}
+	bind:open={editDialogOpen}
+	note={selectedNote}
 	{updateNoteForm}
 	{noteAdapter}
-	note={selectedNote}
 	{currentUser}
+	onSaved={(note: Note) => {
+		needsSync.value = true;
+	}}
 />
 
-<ViewNoteDialog
-	open={viewDialogOpen}
-	onOpenChange={(open: boolean) => (viewDialogOpen = open)}
-	note={selectedNote}
-/>
+<ViewNoteDialog bind:open={viewDialogOpen} note={selectedNote} />

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2025-12-25T20:19:42.296Z\n"
+"PO-Revision-Date: 2026-01-01T18:51:00.126Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -3807,6 +3807,7 @@ msgstr "日期"
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
@@ -4104,6 +4105,7 @@ msgstr "<0/> 重新开始"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Edit"
 msgstr "编辑"
 
@@ -8947,43 +8949,36 @@ msgstr "笔记已删除"
 msgid "Capture your thoughts"
 msgstr "捕捉您的想法"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "My Notes"
-msgstr "我的笔记"
+#~ msgid "My Notes"
+#~ msgstr "我的笔记"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Capture your thoughts and ideas"
-msgstr "捕捉您的想法和创意"
+#~ msgid "Capture your thoughts and ideas"
+#~ msgstr "捕捉您的想法和创意"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
 msgstr "<0/> 新笔记"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Search notes by title or content..."
-msgstr "按标题或内容搜索笔记..."
+#~ msgid "Search notes by title or content..."
+#~ msgstr "按标题或内容搜索笔记..."
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes yet"
-msgstr "还没有笔记"
+#~ msgid "No notes yet"
+#~ msgstr "还没有笔记"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid ""
-"Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
-"note."
-msgstr "开始捕捉您的想法和创意。单击“新建笔记”按钮以创建您的第一篇笔记。"
+#~ msgid ""
+#~ "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
+#~ "note."
+#~ msgstr "开始捕捉您的想法和创意。单击“新建笔记”按钮以创建您的第一篇笔记。"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "<0/> Create Your First Note"
-msgstr "<0/> 创建您的第一篇笔记"
+#~ msgid "<0/> Create Your First Note"
+#~ msgstr "<0/> 创建您的第一篇笔记"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
 msgstr "未找到笔记"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes match your search. Try different keywords or create a new note."
-msgstr "没有笔记与您的搜索匹配。请尝试不同的关键字或创建新笔记。"
+#~ msgid "No notes match your search. Try different keywords or create a new note."
+#~ msgstr "没有笔记与您的搜索匹配。请尝试不同的关键字或创建新笔记。"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to backup data"
@@ -9939,6 +9934,7 @@ msgstr "你确定要删除此时间线条目吗？此操作无法撤销。"
 msgid "Delete Entry"
 msgstr "删除条目"
 
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
 msgstr "创建笔记"
@@ -10859,6 +10855,7 @@ msgid "No activities found"
 msgstr "未找到任何活动"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Try adjusting your search query"
 msgstr "尝试调整您的搜索查询"
 
@@ -11188,3 +11185,27 @@ msgstr "编辑倒计时"
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "Update Timer"
 msgstr "更新计时器"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Search notes..."
+msgstr "搜索笔记..."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Sync now"
+msgstr "立即同步"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> You are currently offline. Changes will be saved locally and synced when you reconnect."
+msgstr "<0/> 您目前处于离线状态。更改将保存在本地，并在您重新连接时同步。"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Create your first note to get started"
+msgstr "创建您的第一篇笔记以开始使用"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Local"
+msgstr "本地"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "View"
+msgstr "查看"

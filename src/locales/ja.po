@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2025-12-25T20:19:42.335Z\n"
+"PO-Revision-Date: 2026-01-01T18:51:00.181Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -5123,6 +5123,7 @@ msgstr "日付"
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
@@ -6103,6 +6104,7 @@ msgstr "スケジュール"
 #: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Edit"
 msgstr "編集"
 
@@ -6694,43 +6696,36 @@ msgstr "ノートを削除しました"
 msgid "Capture your thoughts"
 msgstr "考えを書き留める"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "My Notes"
-msgstr "マイノート"
+#~ msgid "My Notes"
+#~ msgstr "マイノート"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Capture your thoughts and ideas"
-msgstr "考えやアイデアを書き留めましょう"
+#~ msgid "Capture your thoughts and ideas"
+#~ msgstr "考えやアイデアを書き留めましょう"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
 msgstr "<0/> 新しいノート"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "Search notes by title or content..."
-msgstr "タイトルまたはコンテンツでノートを検索..."
+#~ msgid "Search notes by title or content..."
+#~ msgstr "タイトルまたはコンテンツでノートを検索..."
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes yet"
-msgstr "まだノートはありません"
+#~ msgid "No notes yet"
+#~ msgstr "まだノートはありません"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid ""
-"Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
-"note."
-msgstr "アイデアや考えを書き留め始めましょう。「新しいノート」ボタンをクリックして、最初のノートを作成してください。"
+#~ msgid ""
+#~ "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
+#~ "note."
+#~ msgstr "アイデアや考えを書き留め始めましょう。「新しいノート」ボタンをクリックして、最初のノートを作成してください。"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "<0/> Create Your First Note"
-msgstr "<0/> 最初のノートを作成"
+#~ msgid "<0/> Create Your First Note"
+#~ msgstr "<0/> 最初のノートを作成"
 
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
 msgstr "ノートが見つかりませんでした"
 
-#: src/routes/apps/(app)/note-taker/+page.svelte
-msgid "No notes match your search. Try different keywords or create a new note."
-msgstr "検索に一致するノートはありません。別のキーワードを試すか、新しいノートを作成してください。"
+#~ msgid "No notes match your search. Try different keywords or create a new note."
+#~ msgstr "検索に一致するノートはありません。別のキーワードを試すか、新しいノートを作成してください。"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to backup data"
@@ -9867,6 +9862,7 @@ msgid ""
 "energy, force, power, and pressure units."
 msgstr "長さ、温度、体積、質量、面積、時間、角度、データ、エネルギー、力、電力、圧力の単位換算に対応しています。"
 
+#: src/routes/apps/(app)/note-taker/+page.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
 msgid "Create Note"
 msgstr "ノートを作成"
@@ -10867,6 +10863,7 @@ msgid "No activities found"
 msgstr "アクティビティが見つかりませんでした"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Try adjusting your search query"
 msgstr "検索クエリを調整してみてください"
 
@@ -11175,3 +11172,27 @@ msgstr "カウントダウンを編集"
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "Update Timer"
 msgstr "タイマーを更新"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Search notes..."
+msgstr "メモを検索..."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Sync now"
+msgstr "今すぐ同期"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "<0/> You are currently offline. Changes will be saved locally and synced when you reconnect."
+msgstr "<0/> 現在オフラインです。変更はローカルに保存され、再接続時に同期されます。"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Create your first note to get started"
+msgstr "最初のメモを作成して始めましょう"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Local"
+msgstr "ローカル"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "View"
+msgstr "表示"
