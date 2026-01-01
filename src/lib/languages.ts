@@ -60,14 +60,14 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 		nativeName: 'Português',
 		flag: '🇵🇹',
 		dir: 'ltr'
-	},
-	{
-		code: 'ar',
-		name: 'Arabic',
-		nativeName: 'العربية',
-		flag: '🇸🇦',
-		dir: 'rtl'
 	}
+	// {
+	// 	code: 'ar',
+	// 	name: 'Arabic',
+	// 	nativeName: 'العربية',
+	// 	flag: '🇸🇦',
+	// 	dir: 'rtl'
+	// }
 ];
 
 /**

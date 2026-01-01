@@ -24,20 +24,20 @@ export default defineConfig({
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
 	},
-	// ai: {
-	// 	name: 'OpenAI GPT-5 Nano',
-	// 	batchSize: 45,
-	// 	parallel: 8,
-	// 	translate: async (messages, instruction) => {
-	// 		const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-	// 		const response = await client.chat.completions.create({
-	// 			model: 'gpt-5-nano',
-	// 			messages: [
-	// 				{ role: 'system', content: instruction },
-	// 				{ role: 'user', content: messages }
-	// 			]
-	// 		});
-	// 		return response.choices[0].message.content || '';
-	// 	}
-	// }
+	ai: {
+		name: 'OpenAI GPT-5 Nano',
+		batchSize: 45,
+		parallel: 8,
+		translate: async (messages, instruction) => {
+			const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+			const response = await client.chat.completions.create({
+				model: 'gpt-5-nano',
+				messages: [
+					{ role: 'system', content: instruction },
+					{ role: 'user', content: messages }
+				]
+			});
+			return response.choices[0].message.content || '';
+		}
+	}
 });
