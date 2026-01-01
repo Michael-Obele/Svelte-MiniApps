@@ -15,6 +15,7 @@ Props:
 
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import { Badge } from '$lib/components/ui/badge';
 	import { ArrowRight } from 'lucide-svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
 	const arrow = '/lottie/trending-flat.json';
@@ -42,18 +43,21 @@ Props:
 	Welcome
 	{#if username}
 		Back,
-		<span class="text-green-700 capitalize dark:text-green-300">
+		<span class="text-primary capitalize">
 			{username}!
 		</span>
 	{/if}
 	to...
 {/snippet}
 
-<section id="hero" class="bg-background relative w-full py-12 md:py-24 lg:py-32">
+<section id="hero" class="bg-background relative w-full overflow-hidden py-12 md:py-24 lg:py-32">
 	<!-- Background Glow -->
-	<!-- <div
-		class="pointer-events-none absolute right-6 top-1/2 h-[800px] w-[800px] -translate-y-1/2 translate-x-1/4 overflow-hidden rounded-full bg-red-500/10 blur-[12rem] dark:bg-red-600/20"
-	></div> -->
+	<div
+		class="bg-primary/5 dark:bg-primary/10 pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full blur-3xl"
+	></div>
+	<div
+		class="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-slate-500/5 blur-3xl dark:bg-slate-500/10"
+	></div>
 
 	<div class="relative z-10 container mx-auto px-4 md:px-6">
 		<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
@@ -69,7 +73,7 @@ Props:
 						<BlurInText
 							as="span"
 							word="Svelte Mini Apps"
-							class="text-foreground text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none dark:text-red-500"
+							class="text-primary text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none"
 						/>
 					</BlurInText>
 
@@ -84,13 +88,13 @@ Props:
 						<Button
 							href="/apps"
 							size="lg"
-							class="border-none bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:bg-red-700 dark:shadow-[0_0_20px_rgba(220,38,38,0.2)]"
+							class="bg-primary hover:bg-primary/90 border-none text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] dark:shadow-[0_0_20px_rgba(220,38,38,0.2)]"
 						>
 							Start Exploring
 							<lord-icon
 								target="#hero"
 								src={arrow}
-								colors="primary:white,secondary:green"
+								colors="primary:white,secondary:red"
 								trigger="loop-on-hover"
 								class="ml-2 hidden h-5 w-5 md:grid"
 								state="hover-pinch"
@@ -107,15 +111,15 @@ Props:
 					<!-- Glowing Svelte Logo -->
 					<!-- Deep ambient glow -->
 					<div
-						class="pointer-events-none absolute top-1/2 left-1/2 h-[180%] w-[80%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(220,38,38,0.15)_0%,transparent_70%)] blur-3xl"
+						class="pointer-events-none absolute top-1/2 left-1/2 h-[180%] w-[80%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(220,38,38,0.1)_0%,transparent_70%)] blur-3xl"
 					></div>
 
 					<!-- Core glow -->
 					<div
-						class="pointer-events-none absolute inset-0 rounded-full bg-red-500/20 blur-[90px] dark:bg-red-600/20"
+						class="bg-primary/10 dark:bg-primary/20 pointer-events-none absolute inset-0 rounded-full blur-[90px]"
 					></div>
 
-					<Svelte class="relative z-10 h-full w-full drop-shadow-[0_0_40px_rgba(220,38,38,0.4)]" />
+					<Svelte class="relative z-10 h-full w-full drop-shadow-[0_0_40px_rgba(220,38,38,0.3)]" />
 				</div>
 			</div>
 		</div>

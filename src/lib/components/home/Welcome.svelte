@@ -51,9 +51,9 @@ Props:
 	<BlurFade delay={0.25}>
 		<BlurInText
 			as="h1"
-			class="text-center text-3xl font-bold tracking-tighter text-red-700 sm:text-5xl xl:text-6xl/none dark:text-white"
+			class="text-center text-3xl font-bold tracking-tighter text-primary sm:text-5xl xl:text-6xl/none"
 		>
-			<span class="text-green-700 capitalize dark:text-green-300">
+			<span class="capitalize text-slate-700 dark:text-slate-200">
 				{`${greeting.greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
 			</span>
 		</BlurInText>
