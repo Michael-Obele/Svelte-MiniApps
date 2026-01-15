@@ -52,12 +52,6 @@ Props:
 
 <section id="hero" class="bg-background relative w-full overflow-hidden py-12 md:py-24 lg:py-32">
 	<!-- Background Glow -->
-	<div
-		class="bg-primary/5 dark:bg-primary/10 pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full blur-3xl"
-	></div>
-	<div
-		class="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-slate-500/5 blur-3xl dark:bg-slate-500/10"
-	></div>
 
 	<div class="relative z-10 container mx-auto px-4 md:px-6">
 		<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
@@ -110,9 +104,6 @@ Props:
 				>
 					<!-- Glowing Svelte Logo -->
 					<!-- Deep ambient glow -->
-					<div
-						class="pointer-events-none absolute top-1/2 left-1/2 h-[180%] w-[80%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(220,38,38,0.1)_0%,transparent_70%)] blur-3xl"
-					></div>
 
 					<!-- Core glow -->
 					<div
