@@ -56,8 +56,6 @@
 			href="/"
 			class="relative flex shrink-0 items-center space-x-1.5 md:flex-col md:space-y-0.5 md:space-x-0 lg:flex-row lg:space-y-0 lg:space-x-2 rtl:space-x-reverse"
 		>
-			<!-- Christmas Hat -->
-			<div class="absolute -top-5 -left-2 rotate-[-15deg] transform text-2xl">🎅</div>
 			<span class="size-5 shrink-0 sm:size-5 md:size-4 lg:size-5 xl:size-6">
 				<Svelte />
 			</span>

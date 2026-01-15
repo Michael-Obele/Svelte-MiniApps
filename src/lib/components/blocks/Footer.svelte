@@ -5,43 +5,16 @@
 	import Svelte from '$lib/assets/svelte.svelte';
 
 	import { scrollToTop } from '$lib/utils';
-	import {
-		ArrowUp,
-		Github,
-		Copyright,
-		Sparkles,
-		Download,
-		Briefcase,
-		Snowflake
-	} from '@lucide/svelte';
+	import { ArrowUp, Github, Copyright, Sparkles, Download, Briefcase } from '@lucide/svelte';
 
 	import { bluesky } from './Icons.svelte';
 	import { Button } from '@/ui/button';
-	import { christmasState } from '$lib/stores/christmas.svelte';
-	import { onMount } from 'svelte';
+
 	import { mode } from 'mode-watcher';
 	const logoX = '/lottie/logo-x.json';
 	const logoLinkendin = '/lottie/logo-linkedin.json';
 
 	const currentYear = new Date().getFullYear();
-
-	onMount(() => {
-		christmasState.triggerSnow();
-		setTimeout(() => {
-			christmasState.stopSnow();
-		}, 30000); // Stop snow after 30 seconds
-	});
-
-	const toggleSnow = () => {
-		if (christmasState.isSnowing) {
-			christmasState.stopSnow();
-		} else {
-			christmasState.triggerSnow();
-			setTimeout(() => {
-				christmasState.stopSnow();
-			}, 60000); // Stop snow after 1 minute
-		}
-	};
 
 	let colors = $derived(
 		mode.current === 'dark' ? 'primary:white,secondary:green' : 'primary:black,secondary:green'
@@ -133,8 +106,6 @@
 			<!-- Left Column -->
 			<div class="flex flex-col items-center justify-center space-y-4 md:items-start">
 				<div class="relative flex items-center space-x-2">
-					<!-- Christmas Hat -->
-					<div class="absolute -top-3 -left-2 rotate-[-35deg] transform text-2xl">🎩</div>
 					<span class="m-1 size-6 self-center whitespace-nowrap">
 						<Svelte />
 					</span>
@@ -229,16 +200,7 @@
 					</button>
 					<LanguageSwitcher />
 					<ThemeSwitch />
-					<!-- Snow Toggle -->
-					<Button
-						variant="ghost"
-						size="icon"
-						class="size-9 xl:size-10 {christmasState.isSnowing ? 'text-blue-500' : ''}"
-						onclick={() => toggleSnow()}
-						title="Let it snow!"
-					>
-						<Snowflake class="size-4 xl:size-5" />
-					</Button>
+
 					<NukeButton class="opacity-70 transition-opacity hover:opacity-100" />
 				</div>
 				<div class="flex flex-col items-center space-y-2 md:items-end">

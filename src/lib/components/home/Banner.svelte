@@ -9,7 +9,7 @@
 	>
 		<Trophy class="h-4 w-4 shrink-0 text-red-500 sm:h-5 sm:w-5" />
 		<span class="break-words"
-			>Happy New Year 2026! Check out our <a
+			>Proud Winners of Svelte Hack 2025! Check out our <a
 				href="/changelog/timeline"
 				class="whitespace-nowrap text-white underline decoration-red-500/50 underline-offset-4 hover:decoration-red-500 dark:text-slate-200"
 				>2025 Timeline</a
