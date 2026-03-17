@@ -107,7 +107,7 @@ Props:
 
 					<!-- Core glow -->
 					<div
-						class="bg-primary/10 dark:bg-primary/20 pointer-events-none absolute inset-0 rounded-full blur-[90px]"
+						class="bg-primary/10 dark:bg-primary/20 pointer-events-none absolute inset-0 hidden rounded-full blur-[90px] sm:inline-block"
 					></div>
 
 					<Svelte class="relative z-10 h-full w-full drop-shadow-[0_0_40px_rgba(220,38,38,0.3)]" />
