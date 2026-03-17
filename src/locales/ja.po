@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-01-15T14:34:10.891Z\n"
+"PO-Revision-Date: 2026-03-17T12:07:37.450Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -16,8 +16,6 @@ msgstr ""
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
@@ -31,16 +29,6 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -58,7 +46,6 @@ msgstr ""
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "USD"
 msgstr "米ドル"
@@ -70,7 +57,6 @@ msgstr "米ドル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "EUR"
 msgstr "ユーロ"
@@ -96,6 +82,7 @@ msgstr "リアルタイムの為替レートで通貨を換算"
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> How to Use"
 msgstr "<0/> 使い方"
 
@@ -120,10 +107,6 @@ msgstr "換算先"
 msgid "Swap currencies"
 msgstr "通貨を入れ替える"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -201,6 +184,7 @@ msgstr "様々な単位（長さ、温度、体積など）を変換します"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "utility"
 msgstr "ユーティリティ"
 
@@ -255,12 +239,12 @@ msgstr "金融"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "medium"
 msgstr "普通"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase Tracker"
 msgstr "購買履歴トラッカー"
@@ -762,8 +746,6 @@ msgid "Add persistence"
 msgstr "永続性の追加"
 
 #: src/lib/stores/todo-store.svelte.ts
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "In Progress"
@@ -1236,12 +1218,9 @@ msgstr "クリア"
 #: src/lib/components/blocks/Info.svelte
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 #: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/timeline/+page.svelte
@@ -2915,7 +2894,6 @@ msgstr "マイアカウント"
 
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/+layout.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Settings"
 msgstr "設定"
@@ -3074,9 +3052,6 @@ msgstr "展開"
 msgid "Coming Soon ({0})"
 msgstr "近日公開 ({0})"
 
-#~ msgid "4th place at Svelte Hack 2024! See our <0>Svelte Hack timeline</0> <1/>"
-#~ msgstr "Svelte Hack 2024で4位入賞！<0>Svelte Hackのタイムライン</0>をご覧ください <1/>"
-
 #: src/lib/components/home/Content.svelte
 msgid "<0>Join</0> the Journey"
 msgstr "<0>旅に</0>参加しませんか"
@@ -3211,21 +3186,17 @@ msgid "Simple steps to get started"
 msgstr "始めるための簡単なステップ"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Optional Details:"
 msgstr "オプションの詳細:"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Status Indicators"
 msgstr "<0/> ステータスインジケーター"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Pro tip:"
 msgstr "プロのヒント："
@@ -3235,13 +3206,11 @@ msgid "<0/> Quick Tips:"
 msgstr "<0/> クイックヒント:"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need help? Reopen this guide anytime from the header"
 msgstr "ヘルプが必要ですか？ヘッダーからいつでもこのガイドを再オープンしてください"
 
 #: src/lib/components/ui/HowToUseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Got It!"
 msgstr "了解！"
@@ -3276,7 +3245,6 @@ msgstr "3～31文字：小文字、数字、アンダースコア、ハイフン
 #: src/routes/(auth)/login/+page.svelte
 #: src/routes/(auth)/profile/SettingsTab.svelte
 #: src/routes/(auth)/register/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password"
 msgstr "パスワード"
@@ -3333,7 +3301,6 @@ msgstr "<0/> サインアウト"
 
 #: src/routes/(auth)/profile/+layout.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh"
 msgstr "更新"
@@ -3434,7 +3401,6 @@ msgstr "アカウントを削除"
 
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
-#: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 削除"
@@ -3478,27 +3444,10 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -3516,24 +3465,15 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -3542,7 +3482,6 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "Cancel"
@@ -3721,7 +3660,6 @@ msgstr "初心者向け"
 msgid "View All Resources"
 msgstr "すべてのリソースを表示"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Current Streak"
 msgstr "現在の連続日数"
@@ -3770,7 +3708,6 @@ msgstr "良い"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strong"
 msgstr "強い"
@@ -3852,14 +3789,12 @@ msgstr "Svelte Mini Appsでの最新のインタラクション"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Today"
 msgstr "今日"
 
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Yesterday"
 msgstr "昨日"
@@ -3874,8 +3809,6 @@ msgid "All projects are completed!"
 msgstr "すべてのプロジェクトが完了しました！"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Unknown"
@@ -3949,9 +3882,7 @@ msgid "Saving..."
 msgstr "保存中..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "変更を保存"
@@ -4541,9 +4472,7 @@ msgstr "すべて表示"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
@@ -4751,8 +4680,6 @@ msgstr "絵文字と名前をコピーしました！"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Select Budget"
@@ -4763,7 +4690,6 @@ msgstr "予算を選択"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "GBP"
 msgstr "英ポンド"
@@ -4773,7 +4699,6 @@ msgstr "英ポンド"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "JPY"
 msgstr "日本円"
@@ -4783,7 +4708,6 @@ msgstr "日本円"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "CAD"
 msgstr "カナダドル"
@@ -4793,7 +4717,6 @@ msgstr "カナダドル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "AUD"
 msgstr "オーストラリアドル"
@@ -4807,7 +4730,6 @@ msgid "CNY"
 msgstr "中国人民元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "インドルピー"
@@ -4821,7 +4743,6 @@ msgstr "ブラジルレアル"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "NGN"
 msgstr "ナイジェリアナイラ"
@@ -4888,7 +4809,6 @@ msgstr "予算の作成、支出の追跡、支出の視覚化、複数の通貨
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/todo-list/+page.svelte
 msgid "How to Use"
@@ -4948,7 +4868,6 @@ msgid "Create your first budget to get started tracking your expenses."
 msgstr "最初に予算を作成して、支出の追跡を開始しましょう。"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Create Budget"
 msgstr "予算を作成"
@@ -4957,121 +4876,89 @@ msgstr "予算を作成"
 msgid "OK"
 msgstr "OK"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Edit Budget"
 msgstr "予算を編集"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Make changes to your budget here. Click save when you're done."
 msgstr "ここで予算を変更してください。完了したら「保存」をクリックします。"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "予算名"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "予算額"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Formated Budget Amount"
 msgstr "フォーマットされた予算額"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Currency"
 msgstr "通貨"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Add New Budget"
 msgstr "新しい予算を追加"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "<0/> Add Budget"
 msgstr "<0/> 予算を追加"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Deleting budget..."
 msgstr "予算を削除中..."
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Strike out completed expenses"
 msgstr "完了した出費に線を入れる"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Budget:"
 msgstr "予算:"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Spent:"
 msgstr "支出:"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Remaining:"
 msgstr "残高:"
 
-#: src/routes/apps/(app)/budget-tracker/BudgetsList.svelte
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expenses"
 msgstr "出費"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Edit Expense"
 msgstr "経費を編集"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Expense Details"
 msgstr "経費の詳細"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Make changes to the expense here. Click save when you're done."
 msgstr "経費の変更はここで行ってください。完了したら「保存」をクリックしてください。"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
 msgstr "以下の経費詳細をご覧ください。編集するには鉛筆ボタンをクリックしてください。"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -5080,15 +4967,11 @@ msgstr "以下の経費詳細をご覧ください。編集するには鉛筆ボ
 msgid "Description"
 msgstr "説明"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Formatted Amount"
 msgstr "金額（書式設定済み）"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Save Changes"
@@ -5096,148 +4979,114 @@ msgstr "変更を保存"
 
 #: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Date"
 msgstr "日付"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/note-taker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/DeleteConfirmationDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/DeleteConfirmationDialog.svelte
 msgid "Delete"
 msgstr "削除"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Delete Expense"
 msgstr "経費を削除"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "This action cannot be undone. Are you sure you want to delete this expense?"
 msgstr "この操作は元に戻せません。この経費を削除してもよろしいですか？"
 
 #: src/lib/components/countdown/TimerCard.svelte
-#: src/routes/apps/(app)/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Edit"
 msgstr "<0/> 編集"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Add New Expense"
 msgstr "新しい支出を追加"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Expense Description"
 msgstr "支出の説明"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Formated Expense Amount"
 msgstr "整形された支出額"
 
-#: src/routes/apps/(app)/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "<0/> Add Expense"
 msgstr "<0/> 支出を追加"
 
-#: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "この支出を削除してもよろしいですか？"
 
-#: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Expense deleted successfully"
 msgstr "支出が正常に削除されました"
 
-#: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Latest Transactions <0>(showing 12 most recent)</0>"
 msgstr "最新の取引 <0>（最近の12件を表示）</0>"
 
-#: src/routes/apps/(app)/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
 msgstr "まだ支出はありません。最初の支出を追加して始めましょう。"
 
-#: src/routes/apps/(app)/budget-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickNavigation.svelte
 msgid "Quick Navigation"
 msgstr "クイックナビゲーション"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget not found. Please save the budget first."
 msgstr "予算が見つかりません。最初に予算を保存してください。"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Name:"
 msgstr "予算名:"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Amount:"
 msgstr "予算額:"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Save Budget"
 msgstr "予算を保存"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Add Expense"
 msgstr "支出を追加"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Name:"
 msgstr "支出名:"
 
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Amount:"
 msgstr "支出額:"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Total Expenses: $ {0}"
 msgstr "合計支出: $ {0}"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
-#: src/routes/apps/(app)/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Remaining Budget: $ {0}"
 msgstr "残りの予算: $ {0}"
@@ -5452,14 +5301,12 @@ msgid ""
 msgstr "<0>サーバーから同期:</0> ローカルデータが同期されていることを確認し、タイムスタンプを使用してサーバーデータをダウンロードおよびマージし、競合を解決します。"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Backing up..."
 msgstr "バックアップ中..."
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Backup"
 msgstr "バックアップ"
@@ -5475,7 +5322,6 @@ msgid "Manage Sessions"
 msgstr "セッションを管理"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage"
 msgstr "管理"
@@ -5501,12 +5347,6 @@ msgstr "アドヒアランス"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -5545,16 +5385,11 @@ msgid "<0/> Statistics"
 msgstr "<0/> 統計"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Total Doses"
 msgstr "総投与量"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
@@ -5563,10 +5398,6 @@ msgid "Skipped"
 msgstr "スキップ"
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
@@ -5575,18 +5406,6 @@ msgid "Missed"
 msgstr "未服用"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -5599,44 +5418,35 @@ msgstr "未服用"
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "T"
 msgstr "T"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time updated successfully"
 msgstr "時間更新に成功しました"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Medication status reset to pending"
 msgstr "薬のステータスが保留中にリセットされました"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "<0/> Medication History"
 msgstr "<0/> 服薬履歴"
 
 #. placeholder {0}: session.name
 #. placeholder {0}: session.name
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "View your medication schedule grouped by day for {0}"
 msgstr "{0} の服薬スケジュールを日ごとに表示"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "No History Yet"
 msgstr "まだ履歴はありません"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Your medication history will appear here once you start taking medications"
 msgstr "服薬を開始すると、ここに服薬履歴が表示されます"
@@ -5645,20 +5455,14 @@ msgstr "服薬を開始すると、ここに服薬履歴が表示されます"
 #. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
 #. placeholder {0}: stats.total
 #. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "{0} {1} scheduled"
 msgstr "{0} {1} がスケジュールされています"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "adherence"
 msgstr "服薬遵守"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
@@ -5670,45 +5474,31 @@ msgstr "保留中"
 #. placeholder {0}: formatTime(log.actualTime)
 #. placeholder {0}: formatTime(log.actualTime)
 #. placeholder {0}: formatTime(log.actualTime)
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "at {0}"
 msgstr "{0} に"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time"
 msgstr "時間を編集"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Taken"
 msgstr "服用済みにする"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Mark Skipped"
 msgstr "スキップ済みにする"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
@@ -5716,64 +5506,48 @@ msgstr "スキップ済みにする"
 msgid "Reschedule"
 msgstr "スケジュール変更"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Skip"
 msgstr "スキップ"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Skip Medication"
 msgstr "服薬をスキップ"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Optionally add a note explaining why you're skipping this medication."
 msgstr "この薬をスキップする理由を説明するメモを追加することもできます (オプション)。"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Reason for skipping (optional)..."
 msgstr "スキップする理由 (オプション)..."
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Edit Medication Time"
 msgstr "服薬時間を編集"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Update the date and time when this medication was taken."
 msgstr "この薬を服用した日時を更新します。"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time"
 msgstr "時間"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Save Time"
 msgstr "時間を保存"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule Medication"
 msgstr "服薬のスケジュールを変更"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
@@ -5781,8 +5555,6 @@ msgid ""
 "actual time taken."
 msgstr "この薬を服用する予定の時間を変更します。これは、実際に服用した時間ではなく、予定時間を更新します。"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid ""
@@ -5790,382 +5562,294 @@ msgid ""
 "the Schedule button in the Medications list."
 msgstr "💡 これは、この1回分の服用のみスケジュールを変更します。服薬スケジュール全体を変更するには、薬リストの [スケジュール] ボタンを使用します。"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Date"
 msgstr "新しい日付"
 
-#: src/routes/apps/(app)/medication-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "New Time"
 msgstr "新しい時間"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Create a Session"
 msgstr "セッションを作成"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Click <strong>\"New Session\"</strong> and give it a meaningful name like \"Morning Routine\", \"Weekly Meds\", or \"Antibiotics Course\"."
 msgstr "<strong>「新規セッション」</strong>をクリックし、「朝のルーティン」、「週ごとの薬」、「抗生物質コース」など、意味のある名前を付けます。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Add Medications"
 msgstr "薬を追加"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "In your session, click <strong>\"Add Medication\"</strong>. Include the medication name, dosage (e.g., \"500mg\"), and any special instructions."
 msgstr "セッションで、<strong>「薬を追加」</strong>をクリックします。薬の名前、投与量（例：「500mg」）、および特別な指示を含めます。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set Schedule Times"
 msgstr "スケジュール時間を設定"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Choose specific times for each medication (e.g., 9:00 AM, 2:00 PM, 9:00 PM). The app will automatically generate your daily schedule."
 msgstr "各薬の特定の時間を選択します（例：午前9時、午後2時、午後9時）。アプリは自動的に毎日のスケジュールを生成します。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Check Today's Schedule"
 msgstr "今日のスケジュールを確認"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"Today\"</strong> tab displays all medications due today with their scheduled times and current status."
 msgstr "<strong>「今日」</strong>タブには、今日の予定のすべての薬が、予定時刻と現在のステータスとともに表示されます。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Mark as Taken"
 msgstr "服用済みにする"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Click the <strong>✓ Taken</strong> button when you take each medication. The app records the actual time and you can add optional notes."
 msgstr "各薬を服用したら、<strong>✓ 服用済み</strong>ボタンをクリックします。アプリは実際の時間を記録し、オプションでメモを追加できます。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Handle Exceptions"
 msgstr "例外を処理"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "If you miss a dose, use <strong>\"Skip\"</strong> (with reason) or <strong>\"Reschedule\"</strong> (to a different time) to keep your tracking accurate."
 msgstr "服用し忘れた場合は、<strong>「スキップ」</strong>（理由付き）または<strong>「リスケジュール」</strong>（別の時間へ）を使用して、追跡の精度を維持します。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Medication successfully taken at the recorded time"
 msgstr "薬は記録された時間に正常に服用されました"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Dose intentionally skipped with optional reason"
 msgstr "用量は意図的にスキップされました（オプションで理由付き）"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Overdue medication that needs attention"
 msgstr "注意が必要な期限切れの薬"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Scheduled medication waiting to be taken"
 msgstr "服用を待っている予定の薬"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "View History"
 msgstr "履歴を見る"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"History\"</strong> tab shows all past medication logs grouped by date. Edit times, undo actions, or add notes to any entry. You can also change the status of missed doses (mark as taken or skipped)."
 msgstr "<strong>「履歴」</strong>タブには、過去のすべての薬のログが日付別にグループ化されて表示されます。時間編集、アクションの取り消し、またはメモを追加できます。服用し忘れた用量のステータスを変更することもできます（服用済みまたはスキップとしてマーク）。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track Statistics"
 msgstr "統計を追跡"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The <strong>\"Stats\"</strong> tab displays adherence rates, current streaks, missed doses, and detailed medication patterns over time."
 msgstr "<strong>「統計」</strong>タブには、アドヒアランス率、現在の連続記録、服用し忘れた用量、および長期的な詳細な薬のパターンが表示されます。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Manage Schedules"
 msgstr "スケジュールを管理"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Edit medication details, adjust dosages, modify schedules, or reschedule individual doses from the <strong>\"Medications\"</strong> tab."
 msgstr "<strong>「薬」</strong>タブから、薬の詳細の編集、投与量の調整、スケジュールの変更、または個々の用量のリスケジュールを行います。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Reschedule Doses"
 msgstr "用量をリスケジュール"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need to take a medication at a different time? Click <strong>\"Reschedule\"</strong> on any pending dose in the Today tab to move it to a new date and time. This only affects that single dose."
 msgstr "薬を別の時間に服用する必要がありますか？「今日」タブの保留中の用量で<strong>「リスケジュール」</strong>をクリックして、新しい日付と時間に移動します。これはその単一の用量にのみ影響します。"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Set reminders on your phone for critical medications"
 msgstr "重要な薬について、携帯電話でリマインダーを設定します"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Review your adherence statistics weekly to identify patterns"
 msgstr "アドヒアランス統計を毎週確認して、パターンを特定します"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Use the notes field to track side effects or effectiveness"
 msgstr "メモ欄を使用して、副作用または有効性を追跡します"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Backup your data: Click the cloud icon to manually backup, or changes auto-backup after 15 seconds if logged in"
 msgstr "データをバックアップします。クラウドアイコンをクリックして手動でバックアップするか、ログインしている場合は15秒後に変更が自動的にバックアップされます"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Sync across devices: Use the sync button (refresh icon) to merge data from the server with your local data"
 msgstr "デバイス間で同期します。同期ボタン（更新アイコン）を使用して、サーバーからのデータとローカルデータをマージします"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "The app works offline - perfect for travel and areas with poor connectivity"
 msgstr "アプリはオフラインで動作します。旅行や接続が悪い地域に最適です"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Missed doses auto-mark when time passes, but you can still edit them in History to mark as taken or skipped"
 msgstr "服用し忘れた用量は時間が経過すると自動的にマークされますが、「履歴」で編集して、服用済みまたはスキップとしてマークすることができます"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Medication Tracker Guide"
 msgstr "<0/> 薬トラッカーガイド"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to manage your medication schedule effectively"
 msgstr "薬のスケジュールを効果的に管理するための簡単な手順"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Start"
 msgstr "開始"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Track"
 msgstr "追跡"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid ""
 "Start with just 1-2 medications to get familiar with the system. You can always add\n"
 "more medications and adjust schedules as needed!"
 msgstr "まずは1〜2種類の薬から始めて、システムに慣れてください。いつでも薬を追加したり、必要に応じてスケジュールを調整できます！"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Tips"
 msgstr "<0/> クイックヒント"
 
-#: src/routes/apps/(app)/medication-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Got It!"
 msgstr "<0/> 承知しました！"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please enter medication name"
 msgstr "薬の名前を入力してください"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication added successfully"
 msgstr "薬が正常に追加されました"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication updated"
 msgstr "薬が更新されました"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Please add at least one time"
 msgstr "少なくとも1つの時間を追加してください"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "T12:00:00"
 msgstr "T12:00:00"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medications"
 msgstr "薬"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Medication"
 msgstr "薬を追加"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add"
 msgstr "追加"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "No medications added yet."
 msgstr "まだ薬が追加されていません。"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Your First Medication"
 msgstr "最初の薬を追加"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add First Med"
 msgstr "最初の薬を追加"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage:"
 msgstr "投与量："
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency:"
 msgstr "頻度："
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions:"
 msgstr "指示："
 
 #. placeholder {0}: formatDate(med.endDate)
 #. placeholder {0}: formatDate(med.endDate)
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "<0/> Ends: {0}"
 msgstr "<0/> 終了：{0}"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ongoing"
 msgstr "継続"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule"
 msgstr "スケジュール"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Edit"
 msgstr "編集"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add a new medication to this treatment session."
 msgstr "この治療セッションに新しい薬を追加します。"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medication Name *"
 msgstr "薬名 *"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Dosage *"
 msgstr "投与量 *"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Frequency *"
 msgstr "頻度 *"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Select frequency"
 msgstr "頻度を選択"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions (optional)"
 msgstr "指示（オプション）"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Start Date *"
 msgstr "開始日 *"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "End Date <0>(optional - leave empty for ongoing)</0>"
 msgstr "終了日 <0>（オプション - 継続の場合は空白のまま）</0>"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -6174,96 +5858,79 @@ msgstr "継続的な薬の場合は空白のままにしてください"
 
 #. placeholder {0}: suggestedTimes.join(', ')
 #. placeholder {0}: suggestedTimes.join(', ')
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "• Suggested times: {0}"
 msgstr "• 推奨時間：{0}"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "📊 Expected total doses: <0/> <1/>"
 msgstr "📊 予想される総投与量：<0/> <1/>"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Edit Medication"
 msgstr "薬を編集"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Instructions"
 msgstr "指示"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Doses"
 msgstr "投与スケジュール"
 
 #. placeholder {0}: schedulingMedication?.name
 #. placeholder {0}: schedulingMedication?.name
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Create scheduled reminders for {0}"
 msgstr "{0}のスケジュールされたリマインダーを作成する"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Schedule Type"
 msgstr "スケジュールタイプ"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto (Based on Frequency)"
 msgstr "自動（頻度に基づく）"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Auto Schedule"
 msgstr "自動スケジュール"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Custom Times"
 msgstr "カスタム時間"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/states.svelte.ts
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Daily Times"
 msgstr "毎日の時間"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Add Time"
 msgstr "時間を追加"
 
 #. placeholder {0}: scheduleTimes.length
 #. placeholder {0}: scheduleTimes.length
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "✅ Will create <0/> scheduled doses ({0}x\n"
 "per day)"
 msgstr "✅ <0/>のスケジュールされた投与量を作成します（1日に{0}回）"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Generate Schedule"
 msgstr "スケジュールを生成"
 
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Delete Medication?"
 msgstr "薬を削除しますか？"
 
 #. placeholder {0}: deletingMedication?.name
 #. placeholder {0}: deletingMedication?.name
-#: src/routes/apps/(app)/medication-tracker/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all its logs. This action\n"
@@ -6272,24 +5939,20 @@ msgstr "これにより、「{0}」とそのすべてのログが完全に削除
 
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "<0/> View Schedule ({0})"
 msgstr "<0/> スケジュールを見る ({0})"
 
 #. placeholder {0}: medication.name
 #. placeholder {0}: medication.name
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Schedule for {0}"
 msgstr "{0} のスケジュール"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Total"
 msgstr "合計"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "No scheduled doses yet."
 msgstr "まだ予定されている投与量はありません。"
@@ -6298,81 +5961,63 @@ msgstr "まだ予定されている投与量はありません。"
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
 #. placeholder {0}: totalLogs
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete All ({0})"
 msgstr "すべて削除 ({0})"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete Scheduled Dose?"
 msgstr "予定されている投与量を削除しますか？"
 
-#: src/routes/apps/(app)/medication-tracker/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "This will permanently delete this scheduled dose. This action cannot be undone."
 msgstr "これは、予定されている投与量を完全に削除します。この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Please enter a session name"
 msgstr "セッション名を入力してください"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session created successfully"
 msgstr "治療セッションが正常に作成されました"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Active session changed"
 msgstr "アクティブなセッションが変更されました"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session ended"
 msgstr "セッションが終了しました"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment session restarted"
 msgstr "治療セッションが再開されました"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session updated successfully"
 msgstr "セッションが正常に更新されました"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Treatment Sessions"
 msgstr "治療セッション"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
 "Manage your treatment sessions. Each session groups medications for a specific treatment\n"
 "period."
 msgstr "治療セッションを管理します。各セッションは、特定の治療期間の薬をグループ化します。"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Create New Session"
 msgstr "新しいセッションを作成"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Session Name *"
 msgstr "セッション名 *"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -6380,58 +6025,46 @@ msgstr "セッション名 *"
 msgid "Description (optional)"
 msgstr "説明 (オプション)"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Brief description of this treatment period..."
 msgstr "この治療期間の簡単な説明..."
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Start Date"
 msgstr "開始日"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Create Session"
 msgstr "<0/> セッションを作成"
 
 #: src/routes/(auth)/profile/sessions/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Your Sessions"
 msgstr "あなたのセッション"
 
 #. placeholder {0}: allSessions?.length || 0
 #. placeholder {0}: allSessions?.length || 0
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "{0} total"
 msgstr "合計 {0}"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "No treatment sessions yet. Create one above to get started."
 msgstr "まだ治療セッションはありません。上から作成して開始してください。"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Active"
 msgstr "アクティブ"
 
 #. placeholder {0}: formatDate(session.endDate)
 #. placeholder {0}: formatDate(session.endDate)
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ended {0}"
 msgstr "<0/> {0} に終了"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ongoing"
 msgstr "<0/> 進行中"
@@ -6440,34 +6073,28 @@ msgstr "<0/> 進行中"
 #. placeholder {1}: session.medications.length !== 1 ? 's' : ''
 #. placeholder {0}: session.medications.length
 #. placeholder {1}: session.medications.length !== 1 ? 's' : ''
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> {0} med{1}"
 msgstr "<0/> {0} 薬{1}"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Activate"
 msgstr "<0/> アクティブ化"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> End"
 msgstr "<0/> 終了"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Restart"
 msgstr "<0/> 再開"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Delete Treatment Session?"
 msgstr "治療セッションを削除しますか？"
 
 #. placeholder {0}: sessionToDelete?.name
 #. placeholder {0}: sessionToDelete?.name
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid ""
 "This will permanently delete \"{0}\" and all associated medication logs.\n"
@@ -6476,157 +6103,126 @@ msgstr ""
 "これにより、「{0}」および関連するすべての投薬ログが完全に削除されます。\n"
 "この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit Treatment Session"
 msgstr "治療セッションを編集"
 
-#: src/routes/apps/(app)/medication-tracker/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Update the name and description of your treatment session."
 msgstr "治療セッションの名前と説明を更新します。"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "<0/> Overall Statistics"
 msgstr "<0/> 全体統計"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Your medication adherence across all medications"
 msgstr "すべての薬に関するあなたの服薬遵守率"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Overall Adherence Rate"
 msgstr "全体の遵守率"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Medication-Specific Statistics"
 msgstr "薬別の統計"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Track adherence for each medication individually"
 msgstr "各薬の遵守状況を個別に追跡"
 
 #. placeholder {0}: stats.totalDoses
 #. placeholder {0}: stats.totalDoses
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "{0} total doses"
 msgstr "合計{0}回分"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "Improve Your Adherence"
 msgstr "遵守率を向上させる"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Set reminders on your phone for each medication time"
 msgstr "• 各服薬時間の前に携帯電話でリマインダーを設定する"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Keep medications in a visible location"
 msgstr "• 薬を目に見える場所に保管する"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Use a pill organizer to prepare doses in advance"
 msgstr "• ピルオーガナイザーを使用して、事前に用量を準備する"
 
-#: src/routes/apps/(app)/medication-tracker/StatsView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "• Link medication times to daily routines (meals, bedtime, etc.)"
 msgstr "• 服薬時間を毎日のルーチン（食事、就寝時間など）に関連付ける"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Today's Schedule"
 msgstr "今日のスケジュール"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "No scheduled medications for today."
 msgstr "今日の予定されている薬はありません。"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Add medications and create a schedule to get started."
 msgstr "開始するには、薬を追加してスケジュールを作成してください。"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Overdue"
 msgstr "<0/> 期限切れ"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken"
 msgstr "<0/> 服用済み"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skip"
 msgstr "<0/> スキップ"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Taken <1/>"
 msgstr "<0/> 服用済み <1/>"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Skipped"
 msgstr "<0/> スキップ済み"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "<0/> Missed"
 msgstr "<0/> 飲み忘れ"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "必要に応じて、この投与量をスキップする理由を説明するメモを追加してください。"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Notes (optional)"
 msgstr "注 (オプション)"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Confirm Skip"
 msgstr "スキップの確認"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Edit Time Taken"
 msgstr "服用時間の編集"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Adjust the time when this medication was actually taken."
 msgstr "この薬が実際に服用された時間を調整します。"
 
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Time Taken"
 msgstr "服用時間"
 
 #. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
 #. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
-#: src/routes/apps/(app)/medication-tracker/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Scheduled time: {0}"
 msgstr "予定時間: {0}"
@@ -6695,36 +6291,13 @@ msgstr "ノートを削除しました"
 msgid "Capture your thoughts"
 msgstr "考えを書き留める"
 
-#~ msgid "My Notes"
-#~ msgstr "マイノート"
-
-#~ msgid "Capture your thoughts and ideas"
-#~ msgstr "考えやアイデアを書き留めましょう"
-
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "<0/> New Note"
 msgstr "<0/> 新しいノート"
 
-#~ msgid "Search notes by title or content..."
-#~ msgstr "タイトルまたはコンテンツでノートを検索..."
-
-#~ msgid "No notes yet"
-#~ msgstr "まだノートはありません"
-
-#~ msgid ""
-#~ "Start capturing your ideas and thoughts. Click the \"New Note\" button to create your first\n"
-#~ "note."
-#~ msgstr "アイデアや考えを書き留め始めましょう。「新しいノート」ボタンをクリックして、最初のノートを作成してください。"
-
-#~ msgid "<0/> Create Your First Note"
-#~ msgstr "<0/> 最初のノートを作成"
-
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "No notes found"
 msgstr "ノートが見つかりませんでした"
-
-#~ msgid "No notes match your search. Try different keywords or create a new note."
-#~ msgstr "検索に一致するノートはありません。別のキーワードを試すか、新しいノートを作成してください。"
 
 #: src/routes/apps/(app)/purchase-tracker/+layout.svelte
 msgid "Please sign in to backup data"
@@ -6776,13 +6349,11 @@ msgstr "購入追跡アイテムを管理します"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Items"
 msgstr "アイテム"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "<0/> Add Item"
 msgstr "<0/> アイテムを追加"
@@ -6795,7 +6366,6 @@ msgstr "アイテムはまだありません。「アイテムを追加」をク
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Name"
 msgstr "名前"
@@ -6807,7 +6377,6 @@ msgid "Category"
 msgstr "カテゴリー"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Unit"
 msgstr "デフォルト単位"
@@ -6815,7 +6384,6 @@ msgstr "デフォルト単位"
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Default Currency"
 msgstr "デフォルト通貨"
@@ -6823,9 +6391,6 @@ msgstr "デフォルト通貨"
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
@@ -6833,23 +6398,18 @@ msgid "Actions"
 msgstr "アクション"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add New Item"
 msgstr "新しいアイテムを追加"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Create a new item to track purchases for."
 msgstr "購入を追跡するための新しいアイテムを作成します。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Select category"
@@ -6933,54 +6493,44 @@ msgid "Create Item"
 msgstr "アイテムを作成"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Edit Item"
 msgstr "アイテムを編集"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update the item details."
 msgstr "アイテムの詳細を更新します。"
 
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Update Item"
 msgstr "アイテムを更新"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Name *"
 msgstr "名前 *"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Category *"
 msgstr "カテゴリー *"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Optional description..."
 msgstr "オプションの説明..."
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 msgid "Add Item"
 msgstr "アイテムを追加"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Edit Purchase Record"
 msgstr "購入記録を編集"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Add Purchase Record"
 msgstr "購入記録を追加"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update the purchase details."
@@ -6988,34 +6538,26 @@ msgstr "購入の詳細を更新します。"
 
 #. placeholder {0}: selectedItemForPurchase?.name
 #. placeholder {0}: selectedItemForPurchase?.name
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Record a new purchase for \"{0}\"."
 msgstr "\"{0}\" の新規購入を記録します。"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Quantity *"
 msgstr "数量 *"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Cost *"
 msgstr "費用 *"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Formatted cost will appear here"
 msgstr "書式設定された費用がここに表示されます"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Date *"
 msgstr "日付 *"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
@@ -7023,16 +6565,12 @@ msgstr "日付 *"
 msgid "Location"
 msgstr "場所"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Payment Method"
 msgstr "支払い方法"
 
 #: src/routes/(auth)/profile/ProfileHeader.svelte
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
@@ -7040,99 +6578,73 @@ msgstr "支払い方法"
 msgid "Notes"
 msgstr "メモ"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Optional notes..."
 msgstr "オプションのメモ..."
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 msgid "Update Purchase"
 msgstr "購入を更新"
 
-#: src/routes/apps/(app)/purchase-tracker/AddEditPurchaseDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add Purchase"
 msgstr "購入を追加"
 
-#: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "⚠️ This action cannot be undone."
 msgstr "⚠️ この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/purchase-tracker/ConfirmDeleteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
 msgstr "<0/> 削除中..."
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Start"
 msgstr "<0/> 開始"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Record"
 msgstr "<0/> 記録"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Tips"
 msgstr "<0/> ヒント"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Add an Item"
 msgstr "アイテムを追加"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click <0>\"Add Item\"</0> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "<0>「アイテムを追加」</0>ボタンをクリックします。「コーヒー」や「ガス」などの名前を付けます。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Pick a Category"
 msgstr "カテゴリを選択"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Choose from Groceries, Fuel, Dining, etc. or create your own."
 msgstr "食料品、燃料、外食などから選択するか、独自のカテゴリを作成します。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "That's It!"
 msgstr "それだけです！"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "You're ready to track purchases. Set units and currency if you want."
 msgstr "購入を追跡する準備ができました。必要に応じて、単位と通貨を設定します。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid ""
@@ -7140,299 +6652,230 @@ msgid ""
 "add more later!"
 msgstr "<0>プロのヒント:</0> よく購入するアイテムを1つか2つから始めましょう。後でいつでも追加できます！"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Find Your Item"
 msgstr "アイテムを探す"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "On the Items tab, click the <0>⋮</0> menu on any item card."
 msgstr "「アイテム」タブで、アイテムカードの<0>⋮</0>メニューをクリックします。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Enter how much you bought and what it cost. Date is set to today automatically."
 msgstr "購入量と費用を入力します。日付は自動的に今日に設定されます。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Save It"
 msgstr "保存"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click Save. Your purchase is recorded and statistics update instantly!"
 msgstr "「保存」をクリックします。購入が記録され、統計が即座に更新されます！"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Where you bought it"
 msgstr "購入場所"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Payment"
 msgstr "支払い"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Cash, Card, etc."
 msgstr "現金、カードなど"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Any extra details"
 msgstr "その他の詳細"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> View Your Data"
 msgstr "<0/> データを表示"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid ""
 "Switch between <0>Items</0> and <1>Purchase History</1> tabs to see different\n"
 "views."
 msgstr "異なるビューを表示するには、<0>アイテム</0>タブと<1>購入履歴</1>タブを切り替えます。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Check Statistics"
 msgstr "<0/> 統計を確認"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Each item card shows total spent and number of purchases at a glance."
 msgstr "各アイテムカードには、合計支出額と購入回数が一目で表示されます。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "<0/> Edit Anytime"
 msgstr "<0/> いつでも編集"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 msgid "Click the <0>⋮</0> menu to edit items or view detailed history."
 msgstr "<0>⋮</0>メニューをクリックして、アイテムを編集するか、詳細な履歴を表示します。"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Quick Tips:"
 msgstr "クイックヒント:"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Record purchases regularly for accurate tracking"
 msgstr "正確な追跡のために定期的に購入を記録します"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Use consistent categories for easier analysis"
 msgstr "分析を容易にするために一貫したカテゴリを使用します"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Backup your data if logged in (cloud icon in header)"
 msgstr "ログインしている場合は、データをバックアップしてください（ヘッダーのクラウドアイコン）"
 
-#: src/routes/apps/(app)/purchase-tracker/HelpDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Works offline - no internet needed!"
 msgstr "オフラインで動作します - インターネットは不要です！"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click <strong>\"Add Item\"</strong> button. Name it something like \"Coffee\" or \"Gas\"."
 msgstr "<strong>「アイテムを追加」</strong>ボタンをクリックします。「コーヒー」や「ガソリン」のように名前を付けます。"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "On the Items tab, click the <strong>⋮</strong> menu on any item card."
 msgstr "「アイテム」タブで、任意のアイテムカードの<strong>⋮</strong>メニューをクリックします。"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "View Your Data"
 msgstr "データを表示"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Switch between <strong>Items</strong> and <strong>Purchase History</strong> tabs to see different views."
 msgstr "<strong>「アイテム」</strong>タブと<strong>「購入履歴」</strong>タブを切り替えて、さまざまな表示を確認します。"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Check Statistics"
 msgstr "統計を確認"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Edit Anytime"
 msgstr "いつでも編集"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Click the <strong>⋮</strong> menu to edit items or view detailed history."
 msgstr "<strong>⋮</strong>メニューをクリックして、アイテムを編集したり、詳細な履歴を表示したりします。"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Quick Guide"
 msgstr "<0/> クイックガイド"
 
-#: src/routes/apps/(app)/purchase-tracker/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Simple steps to track your purchases effectively"
 msgstr "購入を効果的に追跡するための簡単なステップ"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Edit Item"
 msgstr "<0/> 項目を編集"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Add Purchase"
 msgstr "<0/> 購入を追加"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> View History"
 msgstr "<0/> 履歴を見る"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "<0/> Delete Item"
 msgstr "<0/> 項目を削除"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Unit:"
 msgstr "単位:"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Currency:"
 msgstr "通貨:"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Purchases:"
 msgstr "合計購入数:"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemCard.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemCard.svelte
 msgid "Total Spent:"
 msgstr "合計支出:"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Search items..."
 msgstr "アイテムを検索..."
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "All Categories"
 msgstr "すべてのカテゴリ"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "No items found"
 msgstr "アイテムが見つかりません"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Try adjusting your search or filters."
 msgstr "検索やフィルターを調整してみてください。"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Get started by adding your first item."
 msgstr "最初のアイテムを追加して始めましょう。"
 
-#: src/routes/apps/(app)/purchase-tracker/ItemsView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ItemsView.svelte
 msgid "Add Your First Item"
 msgstr "最初のアイテムを追加"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Purchase History"
 msgstr "購入履歴"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Complete purchase records for <0/>"
 msgstr "<0/> の完全な購入記録"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Purchases"
 msgstr "合計購入数"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Quantity"
 msgstr "合計数量"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Spent"
 msgstr "合計支出額"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "N/A"
 msgstr "該当なし"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Avg Cost"
 msgstr "平均コスト"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Purchase Records"
 msgstr "購入記録"
@@ -7445,21 +6888,17 @@ msgstr "購入記録"
 #. placeholder {1}: purchases.length !== 1 ? 's' : ''
 #. placeholder {0}: purchasesWithItems.length
 #. placeholder {1}: purchasesWithItems.length !== 1 ? 's' : ''
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} record{1}"
 msgstr "{0} 件の記録{1}"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "No purchases yet"
 msgstr "まだ購入記録はありません"
 
 #. placeholder {0}: selectedItemForHistory.name
 #. placeholder {0}: selectedItemForHistory.name
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid ""
 "Start tracking your purchases for {0} to see detailed history\n"
@@ -7468,77 +6907,62 @@ msgstr ""
 "{0} の購入を追跡して、詳細な履歴と分析をここで確認してください。\n"
 ""
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseHistoryDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "<0/> Add First Purchase"
 msgstr "<0/> 最初の購入を追加"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Quantity:"
 msgstr "数量:"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Cost:"
 msgstr "費用:"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Date:"
 msgstr "日付:"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Location:"
 msgstr "場所:"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseRecord.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseRecord.svelte
 msgid "Notes:"
 msgstr "備考:"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Track items and record purchases over time"
 msgstr "アイテムを追跡し、購入履歴を記録します"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refresh data from server"
 msgstr "サーバーからデータを更新"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchaseTrackerHeader.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Refreshing..."
 msgstr "更新中..."
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Invalid Date"
 msgstr "無効な日付"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchases"
 msgstr "すべての購入"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "All Purchase Records"
 msgstr "すべての購入記録"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Month"
 msgstr "<0/> 月別"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> By Year"
 msgstr "<0/> 年別"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "<0/> All"
 msgstr "<0/> すべて"
@@ -7547,49 +6971,40 @@ msgstr "<0/> すべて"
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
 #. placeholder {0}: groupPurchases.length
 #. placeholder {1}: groupPurchases.length !== 1 ? 's' : ''
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "{0} purchase{1}"
 msgstr "{0} 件の購入{1}"
 
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
 #. placeholder {0}: formatCurrency(groupStats.totalSpent, 'USD')
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Total: {0}"
 msgstr "合計: {0}"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "No purchase records"
 msgstr "購入記録はありません"
 
-#: src/routes/apps/(app)/purchase-tracker/PurchasesView.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchasesView.svelte
 msgid "Add some purchases to your items to see the history here."
 msgstr "ここに履歴を表示するには、アイテムに購入を追加してください。"
 
-#: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "All Time"
 msgstr "全期間"
 
-#: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Week"
 msgstr "今週"
 
-#: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Month"
 msgstr "今月"
 
-#: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "This Quarter"
 msgstr "今四半期"
 
-#: src/routes/apps/(app)/purchase-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/QuickNavigation.svelte
 msgid "Quick Filters"
 msgstr "クイックフィルター"
@@ -7678,77 +7093,62 @@ msgstr "連絡先カード"
 msgid "Social Links"
 msgstr "ソーシャルリンク"
 
-#: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Full Name"
 msgstr "氏名"
 
-#: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "John Doe"
 msgstr "ジョン・ドゥ"
 
-#: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Phone Number"
 msgstr "電話番号"
 
-#: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Email"
 msgstr "メールアドレス"
 
-#: src/routes/apps/(app)/qr-code-generator/ContactInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/ContactInput.svelte
 msgid "Website"
 msgstr "ウェブサイト"
 
-#: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Your QR Code"
 msgstr "あなたのQRコード"
 
-#: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/routes/apps/(app)/qr-code-generator/QRCodeDisplay.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/QRCodeDisplay.svelte
 msgid "Download QR Code"
 msgstr "QRコードをダウンロード"
 
-#: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Link Label"
 msgstr "リンクのラベル"
 
-#: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Instagram, Twitter, Portfolio, etc."
 msgstr "インスタグラム、ツイッター、ポートフォリオなど"
 
-#: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "URL"
 msgstr "URL"
 
-#: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Remove"
 msgstr "削除"
 
-#: src/routes/apps/(app)/qr-code-generator/SocialLinks.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/SocialLinks.svelte
 msgid "Add Another Link"
 msgstr "別のリンクを追加"
 
-#: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter Text or URL"
 msgstr "テキストまたはURLを入力"
 
-#: src/routes/apps/(app)/qr-code-generator/TextInput.svelte
 #: src/routes/apps/(app)/qr-code-generator/components/TextInput.svelte
 msgid "Enter text or paste a URL"
 msgstr "テキストを入力するか、URLを貼り付けてください"
@@ -7786,13 +7186,11 @@ msgid "Please select at least one character type"
 msgstr "少なくとも1つの文字タイプを選択してください"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "パスワードをクリップボードにコピーしました"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "パスワードのコピーに失敗しました"
@@ -7825,7 +7223,6 @@ msgstr "説明 (オプション)"
 #. placeholder {0}: editedDetails.length
 #. placeholder {0}: editedDetails.length
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 文字"
@@ -7842,9 +7239,6 @@ msgstr "パスワードがここに表示されます"
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Password Strength: {0}%"
 msgstr "パスワード強度: {0}%"
-
-#~ msgid "Password Length: {0}"
-#~ msgstr "パスワードの長さ: {0}"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Uppercase Letters"
@@ -7866,9 +7260,6 @@ msgstr "特殊文字"
 msgid "Generate Password"
 msgstr "パスワードを生成"
 
-#~ msgid "View Saved Passwords ({0})"
-#~ msgstr "保存されたパスワードを表示 ({0})"
-
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
 msgstr "すべてのパスワードを表示"
@@ -7881,27 +7272,22 @@ msgstr "保存されたパスワードを非表示"
 msgid "No saved passwords yet"
 msgstr "まだ保存されたパスワードはありません"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Hide password"
 msgstr "パスワードを隠す"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Show password"
 msgstr "パスワードを表示"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Copy password"
 msgstr "パスワードをコピー"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit password"
 msgstr "パスワードを編集"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Delete password"
 msgstr "パスワードを削除"
@@ -7910,37 +7296,30 @@ msgstr "パスワードを削除"
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
 #. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
 #. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "{0} {1}に保存"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Edit Password"
 msgstr "パスワードを編集"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Update your password and its details. Click save when you're done."
 msgstr "パスワードと詳細を更新します。完了したら「保存」をクリックしてください。"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Enter password"
 msgstr "パスワードを入力"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Details (optional)"
 msgstr "詳細（オプション）"
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Add details about this password..."
 msgstr "このパスワードの詳細を追加..."
 
-#: src/routes/apps/(app)/random-password-generator/PasswordDisplay.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "<0/> Saving..."
 msgstr "<0/> 保存中..."
@@ -7984,9 +7363,6 @@ msgstr "インディゴ"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -8024,7 +7400,6 @@ msgid "Dashboard"
 msgstr "ダッシュボード"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Risks"
 msgstr "リスク"
@@ -8055,7 +7430,6 @@ msgid "Select {0} color"
 msgstr "{0}の色を選択"
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation (%)"
 msgstr "配分 (%)"
@@ -8084,7 +7458,6 @@ msgstr "オプションを削除"
 msgid "Are you sure you want to delete this option? All related activities and risks will also be deleted. This action cannot be undone."
 msgstr "このオプションを削除してもよろしいですか？関連するすべてのアクティビティとリスクも削除されます。この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Time Remaining"
 msgstr "残り時間"
@@ -8093,8 +7466,6 @@ msgstr "残り時間"
 #. placeholder {0}: durationYears
 #. placeholder {0}: stats.remainingYears
 #. placeholder {0}: durationYears
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "{0} years"
@@ -8102,12 +7473,10 @@ msgstr "{0}年"
 
 #. placeholder {0}: stats.remainingDays.toLocaleString()
 #. placeholder {0}: stats.remainingDays.toLocaleString()
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} days left"
 msgstr "残り{0}日"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total Time Invested"
 msgstr "総投資時間"
@@ -8118,50 +7487,40 @@ msgstr "総投資時間"
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
 #. placeholder {0}: option.totalTimeSpent
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "{0} hrs"
 msgstr "{0}時間"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Across all options"
 msgstr "全オプション"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Average Progress"
 msgstr "平均進捗"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Active Risks"
 msgstr "アクティブなリスク"
 
 #. placeholder {0}: highRisksCount
 #. placeholder {0}: highRisksCount
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} high/critical severity"
 msgstr "{0} 高/重大リスク"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Options Overview"
 msgstr "<0/> オプション概要"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Track progress across your scenario options"
 msgstr "シナリオオプション全体の進捗を追跡"
 
 #. placeholder {0}: option.totalTimeSpent
 #. placeholder {0}: option.totalTimeSpent
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} hrs invested"
 msgstr "{0}時間投資済み"
@@ -8169,14 +7528,12 @@ msgstr "{0}時間投資済み"
 #. placeholder {0}: stats.progress
 #. placeholder {0}: stats.progress
 #. placeholder {0}: option.progress
-#. placeholder {0}: option.progress
+#. placeholder {0}: milestone.progress.toFixed(0)
 #. placeholder {0}: milestone.progress.toFixed(0)
 #. placeholder {0}: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% 完了"
@@ -8185,582 +7542,460 @@ msgstr "{0}% 完了"
 #. placeholder {0}: option.estimatedTimeToCompletion
 #. placeholder {0}: option.estimatedTimeToCompletion
 #. placeholder {0}: option.estimatedTimeToCompletion
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. completion: {0}"
 msgstr "完了見込み: {0}"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "No options yet. Add your first scenario option to get started."
 msgstr "まだオプションはありません。開始するには最初のシナリオオプションを追加してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "<0/> Time Allocation"
 msgstr "<0/> 時間配分"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "How you're dividing your effort"
 msgstr "努力の配分方法"
 
 #. placeholder {0}: 100 - totalAllocation
 #. placeholder {0}: 100 - totalAllocation
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "({0}% unallocated)"
 msgstr "({0}% 未割り当て)"
 
 #. placeholder {0}: totalAllocation - 100
 #. placeholder {0}: totalAllocation - 100
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
 msgstr "({0}% 過剰割り当て)"
 
 #. placeholder {0}: totalAllocation
 #. placeholder {0}: totalAllocation
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total: {0}% <0/>"
 msgstr "合計: {0}% <0/>"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Add options to see allocation chart"
 msgstr "割り当てグラフを見るにはオプションを追加してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline"
 msgstr "期限"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
 #. placeholder {0}: formatDate(endDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Your planning window ends on {0}"
 msgstr "計画期間は {0} に終了します"
 
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Progress through planning period"
 msgstr "計画期間の進捗"
 
 #. placeholder {0}: formatDate(startDate.toISOString())
 #. placeholder {0}: formatDate(startDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Started: {0}"
 msgstr "開始日: {0}"
 
 #. placeholder {0}: formatDate(endDate.toISOString())
 #. placeholder {0}: formatDate(endDate.toISOString())
-#: src/routes/apps/(app)/scenario-tracker/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline: {0}"
 msgstr "期限: {0}"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Planning"
 msgstr "計画中"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Paused"
 msgstr "一時停止"
 
 #: src/lib/components/countdown/TimerCard.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Complete"
 msgstr "完了"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Invested"
 msgstr "費やした時間"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Allocation"
 msgstr "割り当て"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress"
 msgstr "進捗"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Activity Log"
 msgstr "アクティビティログ"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Track your work sessions and progress"
 msgstr "作業セッションと進捗を追跡する"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Add Activity"
 msgstr "<0/> アクティビティを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Status"
 msgstr "ステータス"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "No activities logged yet."
 msgstr "まだアクティビティは記録されていません。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Start tracking your work by adding an activity."
 msgstr "アクティビティを追加して作業の追跡を開始してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Activity"
 msgstr "アクティビティを編集"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Add Activity"
 msgstr "アクティビティを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the activity details."
 msgstr "アクティビティの詳細を更新します。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Log a new work session or milestone."
 msgstr "新しい作業セッションまたはマイルストーンを記録します。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "What did you work on?"
 msgstr "何に取り組みましたか？"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time Spent (hours)"
 msgstr "費やした時間（時間）"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Select status"
 msgstr "ステータスを選択"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress Metric"
 msgstr "進捗指標"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Additional notes or observations"
 msgstr "追加のメモまたは観察事項"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update"
 msgstr "更新"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Edit Option"
 msgstr "オプションを編集"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Update the option settings and targets."
 msgstr "オプション設定とターゲットを更新します。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress (%)"
 msgstr "進捗（％）"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. Time to Completion"
 msgstr "完了までの推定時間"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Save Changes"
 msgstr "<0/> 変更を保存"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Delete Activity"
 msgstr "アクティビティを削除"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Are you sure you want to delete this activity? This action cannot be undone."
 msgstr "このアクティビティを削除してもよろしいですか？この操作は取り消せません。"
 
-#: src/routes/apps/(app)/scenario-tracker/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Option not found."
 msgstr "オプションが見つかりません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Low"
 msgstr "低リスク"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Medium"
 msgstr "中リスク"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "High"
 msgstr "高リスク"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Critical"
 msgstr "重大リスク"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "General"
 msgstr "一般"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Risks & Assumptions"
 msgstr "<0/> リスクと前提"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Track and mitigate potential risks to your plans"
 msgstr "計画に対する潜在的なリスクを追跡し、対策を講じます。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "<0/> Add Risk"
 msgstr "<0/> リスクを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Severity"
 msgstr "重大度"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Option"
 msgstr "オプション"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation"
 msgstr "緩和策"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Added"
 msgstr "追加済み"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "No risks tracked yet."
 msgstr "まだリスクは追跡されていません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add risks to keep track of potential challenges."
 msgstr "潜在的な課題を追跡するためにリスクを追加してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Edit Risk"
 msgstr "リスクを編集"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Add Risk"
 msgstr "リスクを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Update the risk details."
 msgstr "リスクの詳細を更新します。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Document a potential risk or assumption."
 msgstr "潜在的なリスクや仮定を文書化します。"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Describe the risk or assumption"
 msgstr "リスクまたは仮定を説明"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Select severity"
 msgstr "重大度を選択"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Related Option"
 msgstr "関連オプション"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Mitigation Strategy"
 msgstr "緩和戦略"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "How will you address this risk?"
 msgstr "このリスクにはどう対処しますか？"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Delete Risk"
 msgstr "リスクを削除"
 
-#: src/routes/apps/(app)/scenario-tracker/Risks.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
 msgid "Are you sure you want to delete this risk? This action cannot be undone."
 msgstr "このリスクを削除しますか？この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Please select both start and end dates"
 msgstr "開始日と終了日の両方を選択してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End date must be after start date"
 msgstr "終了日は開始日より後の日付を指定してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Timeline settings saved"
 msgstr "タイムライン設定を保存しました。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Timeline Settings"
 msgstr "<0/> タイムライン設定"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Adjust your planning horizon. This affects the \"Time Remaining\" calculations."
 msgstr "計画の期間を調整してください。これにより「残り時間」の計算に影響します。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Quick Presets"
 msgstr "クイックプリセット"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "1 Year"
 msgstr "1年"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "3 Years"
 msgstr "3年"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "5 Years"
 msgstr "5年"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "10 Years"
 msgstr "10年"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "15 Years"
 msgstr "15年"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick a start date"
 msgstr "開始日を選択してください"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "End Date (Deadline)"
 msgstr "終了日（期限）"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Pick an end date"
 msgstr "終了日を選択してください"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "Planning Duration"
 msgstr "計画期間"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ 終了日は開始日より後の日付でなければなりません"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid ""
 "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
 "devices. <1>Sign in</1> to sync your data."
 msgstr "<0>注:</0> ログインしていません。設定はローカルに保存され、デバイス間で同期されません。 <1>サインイン</1> してデータを同期してください。"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
 msgstr "<0/> キャンセル"
 
-#: src/routes/apps/(app)/scenario-tracker/Settings.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Save Settings"
 msgstr "<0/> 設定を保存"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Timeline Log"
 msgstr "<0/> タイムライン ログ"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Track your daily/weekly progress across all options"
 msgstr "すべてのオプションで日次・週次の進捗を追跡する"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "<0/> Add Entry"
 msgstr "<0/> エントリを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked"
 msgstr "取り組んだオプション"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Time Allocation"
 msgstr "時間割り当て"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Outcomes"
 msgstr "成果"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments"
 msgstr "調整"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "No timeline entries yet."
 msgstr "タイムラインのエントリはまだありません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Start tracking your weekly progress by adding an entry."
 msgstr "エントリを追加して週次の進捗を追跡し始めましょう。"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Edit Timeline Entry"
 msgstr "タイムラインエントリを編集"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Add Timeline Entry"
 msgstr "タイムラインエントリを追加"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Update the entry details."
 msgstr "エントリの詳細を更新します。"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Log your progress for this period."
 msgstr "この期間の進捗を記録します。"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Options Worked On"
 msgstr "取り組んだオプション"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "What did you accomplish?"
 msgstr "何を達成しましたか？"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Adjustments/Notes"
 msgstr "調整/ノート"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Any changes to your strategy?"
 msgstr "戦略に何か変更はありますか？"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Timeline Entry"
 msgstr "タイムラインエントリを削除"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Are you sure you want to delete this timeline entry? This action cannot be undone."
 msgstr "このタイムラインエントリを削除してもよろしいですか？この操作は元に戻せません。"
 
-#: src/routes/apps/(app)/scenario-tracker/Timeline.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
 msgid "Delete Entry"
 msgstr "エントリを削除"
@@ -8959,357 +8194,288 @@ msgstr "渇望を記録"
 msgid "Track your cravings to understand your triggers and improve your strategy."
 msgstr "渇望を追跡してトリガーを理解し、戦略を改善しましょう。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Stress"
 msgstr "ストレス"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "After meal"
 msgstr "食後"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Social situation"
 msgstr "社交の場面"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Boredom"
 msgstr "退屈"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Alcohol"
 msgstr "アルコール"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Coffee/tea"
 msgstr "コーヒー／紅茶"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Work break"
 msgstr "休憩時間"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Driving"
 msgstr "運転中"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Morning routine"
 msgstr "朝の習慣"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
 msgstr "その他"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Deep breathing"
 msgstr "深呼吸"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Exercise/walk"
 msgstr "運動／散歩"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Water/snack"
 msgstr "水分／おやつ"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Call friend"
 msgstr "友だちに電話"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Distraction"
 msgstr "気を紛らす"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
 msgid "Meditation"
 msgstr "瞑想"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Chewing gum"
 msgstr "ガムを噛む"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Read motivations"
 msgstr "動機を読む"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Delay tactics"
 msgstr "遅延の戦術"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Mild"
 msgstr "非常に軽い"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Mild"
 msgstr "軽い"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Moderate"
 msgstr "中程度"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Very Strong"
 msgstr "非常に強い"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Craving Log"
 msgstr "渇望ログ"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Intensity (1-5)"
 msgstr "強さ（1-5）"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "What triggered it?"
 msgstr "何がきっかけですか？"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select trigger"
 msgstr "トリガーを選択"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "How did you cope?"
 msgstr "どう対処しましたか？"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Select strategy"
 msgstr "戦略を選択"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Did you resist the craving?"
 msgstr "渇望を抑えましたか？"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Yes, I resisted!"
 msgstr "はい、抑えました！"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "No, I gave in"
 msgstr "いいえ、欲望に負けました"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Any additional thoughts..."
 msgstr "他に考えはありますか…"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "<0/> Log Craving"
 msgstr "<0/> 渇望を記録"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Recent Cravings"
 msgstr "最近の渇望"
 
 #. placeholder {0}: getIntensityLabel(craving.intensity)
 #. placeholder {0}: getIntensityLabel(craving.intensity)
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} の強さ"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Resisted"
 msgstr "抑えた"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Gave In"
 msgstr "欲望に負けた"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Trigger:"
 msgstr "トリガー:"
 
-#: src/routes/apps/(app)/smoke-free-tracker/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Strategy:"
 msgstr "戦略:"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Attempt History"
 msgstr "<0/> 禁煙挑戦履歴"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "No attempts yet. Start your journey above!"
 msgstr "まだ挑戦はありません。上部から旅を始めましょう！"
 
 #. placeholder {0}: attempt.resetCount + 1
 #. placeholder {0}: attempt.resetCount + 1
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "挑戦 #{0}"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Current"
 msgstr "現在"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
 msgstr "完了"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Longest Streak"
 msgstr "<0/> 最長の連続記録"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Resets"
 msgstr "<0/> リセット回数"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Total Duration"
 msgstr "<0/> 合計時間"
 
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "<0/> Status"
 msgstr "<0/> 状態"
 
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
 #. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
-#: src/routes/apps/(app)/smoke-free-tracker/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "終了: {0}"
 
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Health Milestones"
 msgstr "<0/> 健康マイルストーン"
 
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Achieved"
 msgstr "<0/> 達成済み"
 
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "<0/> Locked"
 msgstr "<0/> ロック済み"
 
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
-#: src/routes/apps/(app)/smoke-free-tracker/MilestonesView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "達成済み {0}"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Failed to set custom start date"
 msgstr "カスタム開始日を設定できませんでした。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Configure your smoking habits to get accurate statistics and calculations."
 msgstr "正確な統計と計算を得るために、喫煙習慣を設定してください。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Smoking Habits"
 msgstr "喫煙習慣"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per day (before quitting)"
 msgstr "1日あたりの喫煙本数（禁煙前）"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Cigarettes per pack"
 msgstr "1箱あたりのタバコ本数"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Financial Settings"
 msgstr "<0/> 財務設定"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Price per pack"
 msgstr "1箱あたりの価格"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Select currency..."
 msgstr "通貨を選択..."
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Your Motivational Goals"
 msgstr "あなたのモチベーション目標"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Add personal reasons for quitting to keep yourself motivated."
 msgstr "自分を動機づけるために、禁煙の個人的な理由を追加してください。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "No goals added yet. Add your personal motivations above!"
 msgstr "まだ目標が追加されていません。上にあなたの個人的な動機を追加してください！"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "<0/> Custom Start Date"
 msgstr "<0/> カスタム開始日"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid ""
 "If you started your smoke-free journey before using this app, enable this feature and set\n"
@@ -9317,140 +8483,113 @@ msgid ""
 "quit date."
 msgstr "このアプリを使用する前に禁煙を始めていた場合は、この機能を有効にし、実際に禁煙した日付を設定してください。これにより、連続日数の表示が実際の禁煙日を示すように調整されます。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Enable custom start date"
 msgstr "カスタム開始日を有効にする"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Quit Date"
 msgstr "禁煙日"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Set Custom Start Date"
 msgstr "カスタム開始日を設定"
 
-#: src/routes/apps/(app)/smoke-free-tracker/SettingsDialog.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Current custom start date:"
 msgstr "現在のカスタム開始日："
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Streak Information"
 msgstr "<0/> 連続記録の情報"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Longest Streak"
 msgstr "最長連続記録"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Reset Count"
 msgstr "リセット回数"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Health Progress"
 msgstr "<0/> 健康の進捗"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Achieved"
 msgstr "達成したマイルストーン"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Cigarettes Not Smoked"
 msgstr "吸わなかったタバコの本数"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Days Smoke-Free"
 msgstr "禁煙日数"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Craving Management"
 msgstr "<0/> 欲求管理"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Total Cravings"
 msgstr "欲求の合計"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Resisted Successfully"
 msgstr "正常に抵抗"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Success Rate"
 msgstr "成功率"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "<0/> Achievements"
 msgstr "<0/> アチーブメント"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Milestones Unlocked"
 msgstr "アンロックされたマイルストーン"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Latest Achievement"
 msgstr "最新の成果"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 msgid "Next Milestone"
 msgstr "次のマイルストーン"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> 禁煙時間"
 
 #. placeholder {0}: attempt.resetCount + 1
 #. placeholder {0}: attempt.resetCount + 1
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> {0}回目の挑戦"
 
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/OverviewTab.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "days"
 msgstr "日"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "hours"
 msgstr "時間"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "mins"
 msgstr "分"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "secs"
 msgstr "秒"
 
-#: src/routes/apps/(app)/smoke-free-tracker/StreakTimer.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Started"
 msgstr "開始"
@@ -10980,9 +10119,6 @@ msgstr "保存済み ({0})"
 msgid "Generate and save your first password above"
 msgstr "上に表示されている最初のパスワードを生成して保存してください"
 
-#~ msgid "Let it snow!"
-#~ msgstr "雪よ、降れ！"
-
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 msgid "Note Details"
 msgstr "ノートの詳細"
@@ -10992,70 +10128,13 @@ msgstr "ノートの詳細"
 msgid "Last updated: {0}"
 msgstr "最終更新日: {0}"
 
-#~ msgid "Hover"
-#~ msgstr "マウスオーバー"
-
-#~ msgid "Add to library"
-#~ msgstr "ライブラリに追加"
-
-#~ msgid "Track the moments that matter. From your next big launch to the New Year's ball drop."
-#~ msgstr "大切な瞬間を見逃さず追いかけよう。次の大きなローンチから新年のボール落下イベントまで。"
-
-#~ msgid "<0/> Create New Countdown"
-#~ msgstr "<0/> 新しいカウントダウンを作成"
-
-#~ msgid "No active countdowns."
-#~ msgstr "現在、アクティブなカウントダウンはありません。"
-
-#~ msgid "Click the button above to start tracking something special!"
-#~ msgstr "上のボタンをクリックして、何か特別なものを追跡し始めましょう！"
-
-#~ msgid "Time's Up!"
-#~ msgstr "時間切れ！"
-
 #: src/lib/components/countdown/TimerCard.svelte
 msgid "Days"
 msgstr "日"
 
-#~ msgid "Hrs"
-#~ msgstr "時"
-
-#~ msgid "Mins"
-#~ msgstr "分"
-
-#~ msgid "Secs"
-#~ msgstr "秒"
-
-#~ msgid "Ocean"
-#~ msgstr "オーシャン"
-
-#~ msgid "Sunset"
-#~ msgstr "サンセット"
-
-#~ msgid "Berry"
-#~ msgstr "ベリー"
-
-#~ msgid "Forest"
-#~ msgstr "フォレスト"
-
-#~ msgid "Royal"
-#~ msgstr "ロイヤル"
-
-#~ msgid "Midnight"
-#~ msgstr "ミッドナイト"
-
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "Please select a future date and time"
 msgstr "未来の日付と時刻を選択してください"
-
-#~ msgid "Create New Countdown"
-#~ msgstr "新しいカウントダウンを作成"
-
-#~ msgid "Set a target date and time for your countdown."
-#~ msgstr "カウントダウンの目標日付と時刻を設定します。"
-
-#~ msgid "Theme"
-#~ msgstr "テーマ"
 
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "Create Countdown"
@@ -11195,15 +10274,6 @@ msgstr "ローカル"
 msgid "View"
 msgstr "表示"
 
-#~ msgid "Happy New Year 2026! Check out our <0>2025 Timeline</0> <1/>"
-#~ msgstr "2026年、明けましておめでとうございます！私たちの <0>2025年のタイムライン</0> <1/> をご覧ください"
-
-#~ msgid "🎉 New Year 2026 Edition"
-#~ msgstr ""
-
-#~ msgid "<0>🎉</0> New Year 2026 Edition"
-#~ msgstr ""
-
 #: src/lib/components/home/AppsSection.svelte
 msgid "View All Apps <0/>"
 msgstr "すべてのアプリを表示 <0/>"
@@ -11211,3 +10281,317 @@ msgstr "すべてのアプリを表示 <0/>"
 #: src/lib/components/home/Banner.svelte
 msgid "Proud Winners of Svelte Hack 2025! Check out our <0>2025 Timeline</0> <1/>"
 msgstr "Svelte Hack 2025の誇り高き受賞者！私たちの <0>2025年のタイムライン</0>をご覧ください <1/>"
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Calculator"
+msgstr "サブネット計算機"
+
+#: src/lib/index.svelte.ts
+msgid "Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly."
+msgstr "CIDR 表記に対応したリアルタイムの IPv4/IPv6 サブネット計算機。ネットワークアドレス、サブネットマスク、ブロードキャストアドレス、そして使用可能な IP アドレス範囲を即座に計算します。"
+
+#. placeholder {0}: label
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Copied: {0}"
+msgstr "コピー済み: {0}"
+
+#. placeholder {0}: info.ipAddress
+#. placeholder {1}: info.networkAddress
+#. placeholder {2}: info.cidrNotation
+#. placeholder {3}: info.subnetMask
+#. placeholder {4}: info.wildcardMask
+#. placeholder {5}: info.binarySubnetMask
+#. placeholder {6}: info.firstUsableIp
+#. placeholder {7}: info.lastUsableIp
+#. placeholder {8}: info.broadcastAddress
+#. placeholder {9}: info.totalHosts
+#. placeholder {10}: info.usableHosts
+#. placeholder {11}: info.ipClass
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid ""
+"Subnet Calculator Results - IPv4\n"
+"\n"
+"IP Address: {0}\n"
+"Network Address: {1}\n"
+"CIDR Notation: {2}\n"
+"Subnet Mask: {3}\n"
+"Wildcard Mask: {4}\n"
+"Binary Subnet Mask: {5}\n"
+"\n"
+"Address Range:\n"
+"- Usable Host IP Range: {6} - {7}\n"
+"- Broadcast Address: {8}\n"
+"\n"
+"Host Counts:\n"
+"- Total Number of Hosts: {9}\n"
+"- Number of Usable Hosts: {10}\n"
+"\n"
+"IP Class: {11}"
+msgstr ""
+"サブネット計算結果 - IPv4\n"
+"\n"
+"IPアドレス: {0}\n"
+"ネットワークアドレス: {1}\n"
+"CIDR表記: {2}\n"
+"サブネットマスク: {3}\n"
+"ワイルドカードマスク: {4}\n"
+"バイナリサブネットマスク: {5}\n"
+"\n"
+"アドレス範囲:\n"
+"- 使用可能なホストIP範囲: {6} - {7}\n"
+"- ブロードキャストアドレス: {8}\n"
+"\n"
+"ホスト数:\n"
+"- ホストの総数: {9}\n"
+"- 使用可能なホスト数: {10}\n"
+"\n"
+"IPクラス: {11}"
+
+#. placeholder {0}: info.ipAddress
+#. placeholder {1}: info.networkAddress
+#. placeholder {2}: info.cidrNotation
+#. placeholder {3}: info.totalAddresses
+#. placeholder {4}: info.addressScope
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid ""
+"Subnet Calculator Results - IPv6\n"
+"\n"
+"IP Address: {0}\n"
+"Network Address: {1}\n"
+"CIDR Notation: {2}\n"
+"Total Addresses: {3}\n"
+"Address Scope: {4}"
+msgstr ""
+"サブネット計算結果 - IPv6\n"
+"\n"
+"IPアドレス: {0}\n"
+"ネットワークアドレス: {1}\n"
+"CIDR表記: {2}\n"
+"総アドレス数: {3}\n"
+"アドレススコープ: {4}"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "All results copied to clipboard"
+msgstr "すべての結果をクリップボードにコピーしました"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Calculator - IPv4 & IPv6 - Svelte Mini Apps"
+msgstr "サブネット計算機 - IPv4 および IPv6 - Svelte ミニアプリ"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, broadcast addresses, subnet masks, and usable IP ranges instantly."
+msgstr "CIDR表記を用いたIPv4およびIPv6のリアルタイムサブネット計算機。ネットワークアドレス、ブロードキャストアドレス、サブネットマスク、および使用可能なIPレンジを瞬時に計算します。"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IPv4 & IPv6 subnetting with CIDR"
+msgstr "CIDRを用いた IPv4 および IPv6 のサブネット分割"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Configuration"
+msgstr "サブネット設定"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Select IP version and enter address with CIDR"
+msgstr "IP バージョンを選択し、CIDRを含むアドレスを入力"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IPv4"
+msgstr "IPv4"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Toggle between IPv4 and IPv6"
+msgstr "IPv4とIPv6の切り替え"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IPv6"
+msgstr "IPv6"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IPv6 Address"
+msgstr "IPv6アドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IPv4 Address"
+msgstr "IPv4アドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "CIDR Prefix"
+msgstr "CIDRプレフィックス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Default LAN subnet is /64"
+msgstr "デフォルトのLANサブネットは /64"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Common values: /8, /16, /24, /30"
+msgstr "よく使われる値: /8、/16、/24、/30"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "<0/> Essential Information"
+msgstr "<0/> 基本情報"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IP Address"
+msgstr "IPアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Network Address"
+msgstr "ネットワークアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "CIDR Notation"
+msgstr "CIDR表記"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Mask"
+msgstr "サブネットマスク"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Broadcast Address"
+msgstr "ブロードキャストアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Usable Host Range"
+msgstr "使用可能なホスト範囲"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Host Range"
+msgstr "ホスト範囲"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Total Addresses"
+msgstr "総アドレス数"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Address Scope"
+msgstr "アドレススコープ"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "<0/> Copy All Results"
+msgstr "<0/> すべての結果をコピー"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Display Options"
+msgstr "表示オプション"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Select which information sections to display"
+msgstr "表示する情報セクションを選択"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Basic Information"
+msgstr "基本情報"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Mask Details"
+msgstr "サブネットマスクの詳細"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Binary Representation"
+msgstr "バイナリ表現"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IP Class"
+msgstr "IPクラス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Wildcard Mask"
+msgstr "ワイルドカードマスク"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Address Ranges"
+msgstr "アドレス範囲"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Host Counts"
+msgstr "ホスト数"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "First Usable IP"
+msgstr "最初の使用可能IPアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Last Usable IP"
+msgstr "最後の使用可能IPアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Subnet Mask (Dotted Decimal)"
+msgstr "サブネットマスク（ドット十進法）"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Usable Host Addresses"
+msgstr "使用可能なホストアドレス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Wildcard Mask (Dotted Decimal)"
+msgstr "ワイルドカードマスク（ドット十進法）"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Used in ACLs and OSPF configurations (inverse of subnet mask)"
+msgstr "ACL および OSPF 設定で使用される（サブネットマスクの逆数）"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "IP Classification"
+msgstr "IP分類"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Class"
+msgstr "クラス"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Scope"
+msgstr "スコープ"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Private"
+msgstr "プライベート"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Public"
+msgstr "パブリック"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "<0/> Binary Subnet Mask"
+msgstr "<0/> バイナリサブネットマスク"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "Network Bits (1) | Host Bits (0)"
+msgstr "ネットワークビット(1) | ホストビット(0)"
+
+#. placeholder {0}: 32 - (info.totalHosts === 1 ? 0 : Math.log2(info.totalHosts))
+#. placeholder {1}: Math.log2(info.totalHosts)
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid ""
+"First {0} bits are network\n"
+"portion, remaining {1} bits are host portion."
+msgstr ""
+"最初の {0} ビットはネットワーク部\n"
+"残りの {1} ビットはホスト部。"
+
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "<0/> Binary Representation"
+msgstr "<0/> バイナリ表現"

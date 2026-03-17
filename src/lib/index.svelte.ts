@@ -36,7 +36,8 @@ import {
 	Search,
 	Dumbbell,
 	Flower2,
-	Target
+	Target,
+	Network
 } from 'lucide-svelte';
 
 /**
@@ -98,7 +99,8 @@ export function done() {
 			update: '2026-01-01T00:00:00.000Z'
 		},
 		{ name: 'scenario-tracker', time: '2025-11-25T00:00:00.000Z' },
-		{ name: 'countdown-timer', time: '2025-12-24T00:00:00.000Z' }
+		{ name: 'countdown-timer', time: '2025-12-24T00:00:00.000Z' },
+		{ name: 'subnet-calculator', time: '2026-03-17T00:00:00.000Z' }
 	];
 }
 
@@ -584,6 +586,18 @@ export function projects(): Project[] {
 			class: 'hard',
 			link: 'scenario-tracker',
 			icon: Target
+		},
+		{
+			title: 'Subnet Calculator',
+			details: 'Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly.',
+			// @wc-include
+			tag: 'utility',
+			tagClass: 'utility',
+			// @wc-include
+			difficulty: 'medium',
+			class: 'medium',
+			link: 'subnet-calculator',
+			icon: Network
 		}
 	];
 }
