@@ -3,6 +3,7 @@ import { adapter as svelte } from '@wuchale/svelte';
 import { adapter as js } from 'wuchale/adapter-vanilla';
 import OpenAI from 'openai';
 import { defineConfig } from 'wuchale';
+import { gemini } from 'wuchale';
 
 export default defineConfig({
 	// sourceLocale is en by default
@@ -40,4 +41,10 @@ export default defineConfig({
 			return response.choices[0].message.content || '';
 		}
 	}
+	// ai: gemini({
+	// 	model: 'gemini-3-flash-preview',
+	// 	batchSize: 40,
+	// 	parallel: 5,
+	// 	think: true // default: false
+	// })
 });
