@@ -63,59 +63,86 @@
 	route="/offline"
 />
 
-<div
-	class="flex min-h-screen items-center justify-center bg-linear-to-br from-red-50 to-red-100 p-8 dark:from-gray-800 dark:to-gray-700"
->
-	<div class="w-full max-w-2xl rounded-2xl bg-white p-8 text-center shadow-lg dark:bg-gray-900">
+<div class="flex min-h-screen items-center justify-center bg-red-50 p-8 dark:bg-black">
+	<div
+		class="w-full max-w-2xl rounded-2xl bg-white p-8 text-center shadow-lg transition-all duration-500 dark:border dark:border-zinc-900/50 dark:bg-black dark:shadow-none"
+	>
 		<div class="mb-6">
-			<svg
-				class="mx-auto text-red-600 dark:text-red-500"
-				viewBox="0 0 24 24"
-				width="48"
-				height="48"
-			>
-				<path
-					d="M1 1L23 23M16.72 11.06C17.54 11.42 18.29 11.93 18.94 12.57M5.28 11.06C6.81 10.14 8.58 9.64 10.5 9.64M12 15.5C13.66 15.5 15 16.84 15 18.5M8.53 8.53C6.92 7.82 5.14 7.5 3.34 7.64M20.66 7.64C18.86 7.5 17.08 7.82 15.47 8.53M12 21.5V21.51M12 18.5C10.34 18.5 9 16.84 9 15.5"
+			{#if isConnectionRestored}
+				<svg
+					class="mx-auto text-green-600 transition-colors dark:text-green-500"
+					viewBox="0 0 24 24"
+					width="48"
+					height="48"
 					stroke="currentColor"
 					fill="none"
 					stroke-width="2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-				/>
-			</svg>
+				>
+					<path d="M12 20h.01" />
+					<path d="M2 8.82a15 15 0 0 1 20 0" />
+					<path d="M5 12.859a10 10 0 0 1 14 0" />
+					<path d="M8.5 16.429a5 5 0 0 1 7 0" />
+				</svg>
+			{:else}
+				<svg
+					class="mx-auto text-red-600 transition-colors dark:text-red-500"
+					viewBox="0 0 24 24"
+					width="48"
+					height="48"
+					stroke="currentColor"
+					fill="none"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="1" x2="23" y1="1" y2="23" />
+					<path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.57" />
+					<path d="M5 12.57a10.94 10.94 0 0 1 5.5-2.93" />
+					<path d="M8.5 16.429a5 5 0 0 1 7 0" />
+					<path d="M2 8.82a15 15 0 0 1 4.17-2.65" />
+					<path d="M10.66 5a15 15 0 0 1 11.34 3.82" />
+					<line x1="12" x2="12.01" y1="20" y2="20" />
+				</svg>
+			{/if}
 		</div>
 
 		{#if isConnectionRestored}
-			<h1 class="mb-4 text-3xl font-bold text-green-600 dark:text-green-200">You're Online</h1>
-			<p class="mb-6 text-gray-800 dark:text-gray-300">
+			<h1 class="mb-4 text-3xl font-bold text-green-600 transition-colors dark:text-green-500">
+				You're Online
+			</h1>
+			<p class="mb-6 text-zinc-800 transition-colors dark:text-zinc-400">
 				Your internet connection has been restored. You can now access all features and continue
 				using the application.
 			</p>
 
 			<div class="my-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
 				<button
-					class="rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-70"
+					class="rounded-lg bg-green-600 px-6 py-3 font-medium text-white transition-all hover:bg-green-700 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70 dark:border dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-400 dark:hover:bg-green-500/20"
 					onclick={() => (window.location.href = '/')}
 				>
 					Go Home
 				</button>
 
 				<button
-					class="rounded-lg bg-gray-800 px-6 py-3 font-medium text-gray-200 transition-colors hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-70"
+					class="rounded-lg bg-zinc-800 px-6 py-3 font-medium text-zinc-100 transition-all hover:bg-zinc-900 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70 dark:border dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
 					onclick={() => window.history.back()}
 				>
 					Go Back
 				</button>
 			</div>
 		{:else}
-			<h1 class="mb-4 text-3xl font-bold text-red-600 dark:text-red-200">You're Offline</h1>
-			<p class="mb-6 text-gray-800 dark:text-gray-300">
+			<h1 class="mb-4 text-3xl font-bold text-red-600 transition-colors dark:text-red-500">
+				You're Offline
+			</h1>
+			<p class="mb-6 text-zinc-800 transition-colors dark:text-zinc-400">
 				It looks like you've lost your internet connection. Some features might be unavailable.
 			</p>
 
 			<div class="mb-8 flex flex-col justify-center gap-4 sm:flex-row">
 				<button
-					class="rounded-lg bg-red-600 px-6 py-3 font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
+					class="rounded-lg bg-red-600 px-6 py-3 font-medium text-white transition-all hover:bg-red-700 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70 dark:border dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-400 dark:hover:bg-red-500/20"
 					onclick={checkConnection}
 					disabled={isChecking}
 				>
@@ -130,27 +157,29 @@
 			<!-- Connection status message -->
 			<div class="my-4 text-center">
 				{#if isOnline}
-					<p class="text-green-600 dark:text-green-400">Connection restored!</p>
+					<p class="text-green-600 transition-colors dark:text-green-500">Connection restored!</p>
 				{:else}
-					<p class="text-red-600 dark:text-red-400">Still offline...</p>
+					<p class="text-red-600 transition-colors dark:text-red-500">Still offline...</p>
 				{/if}
 			</div>
 
-			<div class="border-t border-gray-300 pt-6 text-left dark:border-gray-700">
-				<p class="text-gray-800 dark:text-gray-300">While you're offline, you can still:</p>
+			<div class="border-t border-zinc-300 pt-6 text-left transition-colors dark:border-zinc-900">
+				<p class="text-zinc-800 transition-colors dark:text-zinc-400">
+					While you're offline, you can still:
+				</p>
 				<ul class="mt-2">
 					<li
-						class="flex items-center py-2 text-gray-800 before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-gray-300 dark:before:text-red-200"
+						class="flex items-center py-2 text-zinc-800 transition-colors before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-zinc-400 dark:before:text-red-500"
 					>
 						Use cached mini-apps
 					</li>
 					<li
-						class="flex items-center py-2 text-gray-800 before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-gray-300 dark:before:text-red-200"
+						class="flex items-center py-2 text-zinc-800 transition-colors before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-zinc-400 dark:before:text-red-500"
 					>
 						View previously loaded content
 					</li>
 					<li
-						class="flex items-center py-2 text-gray-800 before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-gray-300 dark:before:text-red-200"
+						class="flex items-center py-2 text-zinc-800 transition-colors before:mr-2 before:font-bold before:text-red-600 before:content-['•'] dark:text-zinc-400 dark:before:text-red-500"
 					>
 						Use tools that don't require internet
 					</li>
