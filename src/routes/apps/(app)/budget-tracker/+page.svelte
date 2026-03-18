@@ -164,7 +164,13 @@
 				};
 
 				// Add budget to state with its existing ID
-				budgetState.addBudget(budget.name, budget.amount, budget.currency, budget.id);
+				budgetState.addBudget(
+					budget.name,
+					budget.amount,
+					budget.currency,
+					budget.id,
+					budget.createdAt
+				);
 
 				// Add expenses if any, ensuring we don't add duplicates
 				if (serverBudget.expenses && serverBudget.expenses.length > 0) {
@@ -193,7 +199,13 @@
 							};
 
 							// Add to state with existing ID
-							budgetState.addExpense(budget.id, expense.description, expense.amount, expense.id);
+							budgetState.addExpense(
+								budget.id,
+								expense.description,
+								expense.amount,
+								expense.id,
+								expense.createdAt
+							);
 
 							// Mark as processed
 							processedExpenseIds.add(serverExpense.id);

@@ -49,7 +49,13 @@ const budgetStrikethroughState = new PersistedState<Record<string, boolean>>(
 );
 
 // Budget store functions
-export function addBudget(name: string, amount: number, currency: string, id?: string): string {
+export function addBudget(
+	name: string,
+	amount: number,
+	currency: string,
+	id?: string,
+	createdAt?: string
+): string {
 	// Validate input
 	if (!name.trim() || amount < 0 || !currency.trim()) {
 		return '';
@@ -61,7 +67,7 @@ export function addBudget(name: string, amount: number, currency: string, id?: s
 		amount,
 		currency,
 		expenses: [],
-		createdAt: new Date().toISOString()
+		createdAt: createdAt ?? new Date().toISOString()
 	};
 
 	// Update the persisted state
@@ -117,7 +123,8 @@ export function addExpense(
 	budgetId: string,
 	description: string,
 	amount: number,
-	id?: string
+	id?: string,
+	createdAt?: string
 ): string {
 	// Validate input
 	if (!description.trim() || amount < 0) {
@@ -128,7 +135,7 @@ export function addExpense(
 		id: id || crypto.randomUUID(),
 		description,
 		amount,
-		createdAt: new Date().toISOString()
+		createdAt: createdAt ?? new Date().toISOString()
 	};
 
 	const updatedBudgets = budgetState.current.map((budget) =>
@@ -156,8 +163,7 @@ export function updateExpense(
 						return {
 							...expense,
 							description,
-							amount,
-							createdAt: new Date().toISOString()
+							amount
 						};
 					}
 					return expense;
