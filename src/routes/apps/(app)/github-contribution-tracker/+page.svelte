@@ -5,7 +5,7 @@
 	import { HelpCircle, Clock, TrendingUp, TriangleAlert } from '@lucide/svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { githubContributionTrackerHowToUse } from './how-to-use-config';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 
 	// State
 	let username = $state('');

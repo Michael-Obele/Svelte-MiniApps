@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
-import { PersistedState } from 'runed';
 import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '$lib/languages';
+import { PersistedState } from 'runed';
 import { loadLocale } from 'wuchale/load-utils';
 
 // Define valid language codes for validation

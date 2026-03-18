@@ -1,4 +1,4 @@
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 
 /**
  * Persisted configuration for the medication tracker app
@@ -10,7 +10,6 @@ export const hasSeenGuide = new PersistedState<boolean>(
 	'medication-tracker-has-seen-guide',
 	false,
 	{
-		storage: 'local',
 		syncTabs: true
 	}
 );

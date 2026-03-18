@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import {
 	todoStore,
 	addColumn,
@@ -17,7 +17,7 @@ import {
 } from '$lib/stores/todo-store.svelte';
 
 // Mock PersistedState
-vi.mock('runed', () => ({
+vi.mock('$lib/persisted-state', () => ({
 	PersistedState: class {
 		constructor(key: string, defaultValue: any) {
 			this.key = key;

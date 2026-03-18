@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
 	import { Plus, X, Edit, Check, AlertTriangle, HelpCircle } from '@lucide/svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
@@ -36,7 +36,6 @@
 	// How-to guide state
 	let showHowToUseDialog = $state(false);
 	let hasSeenGuide = new PersistedState<boolean>(todoListHowToUse.storageKey, false, {
-		storage: 'local'
 	});
 
 	// Keyboard event handlers for the edit modal

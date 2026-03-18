@@ -5,7 +5,7 @@
 	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
 	import { Loader2, HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import icons from 'currency-icons';
 
 	import { BudgetsList, FloatingBtn, BudgetDialog, QuickNavigation, ExpenseDialog, BudgetSection, ExpenseSection, ExpensesList } from './components';
@@ -85,7 +85,6 @@
 	let autoBackupCountdown = $state(0);
 	let countdownTimer: ReturnType<typeof setInterval> | null = $state(null);
 	const autoBackupEnabled = new PersistedState('autoBackupEnabled', true, {
-		storage: 'local',
 		syncTabs: true
 	});
 	let autoBackupRetryCount = $state(0);
@@ -295,7 +294,6 @@
 	// How-to guide state
 	let showHowToUseDialog = $state(false);
 	let hasSeenGuide = new PersistedState<boolean>(budgetTrackerHowToUse.storageKey, false, {
-		storage: 'local'
 	});
 
 	$effect(() => {

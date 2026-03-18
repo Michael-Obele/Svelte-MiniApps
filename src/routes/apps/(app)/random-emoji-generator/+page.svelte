@@ -7,7 +7,7 @@
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { randomEmojiGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 
 	let randomEmoji = $state(emoji.random());
 	let showHowToUse = $state(false);

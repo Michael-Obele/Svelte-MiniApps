@@ -27,7 +27,7 @@
 		DeleteConfirmationDialog
 	} from './components';
 	import { scenarioTrackerHowToUse } from './how-to-use-config';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import { toast } from 'svelte-sonner';
 
 	import {

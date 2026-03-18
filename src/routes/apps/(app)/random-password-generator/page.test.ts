@@ -25,7 +25,7 @@ vi.mock('svelte-sonner', () => ({
 	}
 }));
 
-vi.mock('runed', () => ({
+vi.mock('$lib/persisted-state', () => ({
 	PersistedState: class {
 		constructor(key: string, defaultValue: any) {
 			this.current = defaultValue;

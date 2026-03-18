@@ -18,7 +18,7 @@
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import * as Dialog from '@/ui/dialog';
 	import { ScrollArea } from '@/ui/scroll-area';
 

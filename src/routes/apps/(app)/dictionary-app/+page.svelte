@@ -25,7 +25,7 @@
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { dictionaryAppHowToUse } from './how-to-use-config';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('dictionary-app-has-seen-how-to-use', false);

@@ -1,4 +1,4 @@
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import type { PersistedItem } from '$lib/persisted-state/adapter';
 import { syncNoteData } from '$lib/remote';
 
@@ -10,12 +10,11 @@ export interface Note {
 	updatedAt: string;
 }
 
-// NOTE: switching to Runed PersistedState for simple cross-tab persistence.
+// NOTE: switching to the IndexedDB-backed PersistedState wrapper for simple cross-tab persistence.
 // We keep a minimal adapter wrapper to preserve the same adapter API used
 // throughout the app (`init`, `listItems`, `saveItem`, `deleteItem`, `clearAll`).
 
 const persistedNotes = new PersistedState<PersistedItem<Note>[]>('miniapps-notes-v1', [], {
-	storage: 'local',
 	syncTabs: true
 });
 

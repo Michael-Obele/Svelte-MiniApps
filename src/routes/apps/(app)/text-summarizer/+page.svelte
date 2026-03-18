@@ -6,7 +6,7 @@
 	import * as Card from '@/ui/card';
 	import { AlertCircle, Copy, Info } from '@lucide/svelte';
 	import * as Alert from '@/ui/alert/index.js';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import DOMPurify from 'isomorphic-dompurify';
 	import { marked } from 'marked';
 	import { sampleText, sampleIntroduction } from './data';

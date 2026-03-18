@@ -1,4 +1,4 @@
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import { browser } from '$app/environment';
 import { deleteMedicationLog } from '$lib/remote';
 
@@ -83,14 +83,12 @@ export const treatmentSessions = new PersistedState<TreatmentSession[]>(
 	'medication-tracker-sessions',
 	[],
 	{
-		storage: 'local',
 		syncTabs: true
 	}
 );
 
 // Persisted state for medication logs
 export const medicationLogs = new PersistedState<MedicationLog[]>('medication-tracker-logs', [], {
-	storage: 'local',
 	syncTabs: true
 });
 

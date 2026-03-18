@@ -1,5 +1,5 @@
 // @wc-ignore-file
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import icons from 'currency-icons';
 
 // Types
@@ -64,17 +64,14 @@ export function getSupportedCurrencies() {
 
 // Create persisted states
 const itemsState = new PersistedState<Item[]>('purchase-items', [], {
-	storage: 'local',
 	syncTabs: true
 });
 
 const purchasesState = new PersistedState<PurchaseRecord[]>('purchase-records', [], {
-	storage: 'local',
 	syncTabs: true
 });
 
 const customCategoriesState = new PersistedState<PurchaseCategory[]>('purchase-categories', [], {
-	storage: 'local',
 	syncTabs: true
 });
 

@@ -16,7 +16,7 @@
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { advancedEmojiToolsHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 
 	interface EmojiResult {
 		emoji: string;

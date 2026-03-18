@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-// Mock PersistedState to avoid localStorage issues
-vi.mock('runed', () => ({
+// Mock PersistedState to avoid browser storage issues
+vi.mock('$lib/persisted-state', () => ({
 	PersistedState: class MockPersistedState {
 		current: any;
 		constructor(initial: any) {

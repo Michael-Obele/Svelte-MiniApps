@@ -1,18 +1,17 @@
 /*
- * Persisted State Adapter (client-only) — Library copy
- * - Uses dynamic import of `idb` to avoid SSR issues in SvelteKit
- * - Small envelope around payload to keep metadata for sync/migrations
- * - Includes localStorage fallback if IndexedDB unavailable
+ * Persisted State Adapter (svelte-idb backed)
+ * - Uses svelte-idb as the IndexedDB implementation
+ * - Keeps a localStorage import path for first-run migrations
+ * - Preserves the existing adapter helper API used throughout the app
  */
+import { browser } from '$app/environment';
+import { createDB } from 'svelte-idb';
 
-import type { IDBPDatabase } from 'idb';
 export type AdapterOptions = {
 	dbName?: string;
 	storeName?: string;
 	version?: number;
 	useLocalStorageFallback?: boolean;
-	// optional upgrade hook for custom migrations
-	upgrade?: (db: IDBPDatabase, oldVersion: number) => void;
 };
 
 export interface PersistedItem<T = any> {
@@ -29,11 +28,19 @@ export interface SyncOptions<T = any> {
 	conflictResolver?: (local: PersistedItem<T>, remote: Record<string, any>) => PersistedItem<T>;
 }
 
-// Module-level defaults (used by defaultAdapter)
-const DEFAULT_DB_NAME = 'app-persist';
-const DEFAULT_STORE_NAME = 'items';
+const DEFAULT_DB_NAME = 'miniapps-persisted-state';
+const DEFAULT_STORE_NAME = 'states';
 const DEFAULT_DB_VERSION = 1;
 const DEFAULT_USE_LOCALSTORAGE_FALLBACK = true;
+
+type SvelteIdbDatabase = ReturnType<typeof createDB>;
+type SvelteIdbStore = {
+	put(value: PersistedItem<any>): Promise<unknown>;
+	get(key: string): Promise<PersistedItem<any> | undefined>;
+	getAll(): Promise<Array<PersistedItem<any>>>;
+	delete(key: string): Promise<void>;
+	clear(): Promise<void>;
+};
 
 export interface PersistedAdapter {
 	init(): Promise<void>;
@@ -45,152 +52,168 @@ export interface PersistedAdapter {
 	toServerFormat<T = any>(item: PersistedItem<T>): Record<string, any>;
 	fromServerFormat<T = any>(obj: Record<string, any>): PersistedItem<T>;
 	syncWithServer<T = any>(opts: SyncOptions<T>): Promise<{ pushed: number; pulled: number }>;
-	importLocalStorage(prefix?: string): Promise<number>; // imports keys with prefix and returns how many imported
+	importLocalStorage(prefix?: string): Promise<number>;
 }
 
-// Factory to create an adapter for a specific db/store
 export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
-	const _dbName = opts?.dbName || DEFAULT_DB_NAME;
-	const _storeName = opts?.storeName || DEFAULT_STORE_NAME;
-	const _dbVersion = opts?.version || DEFAULT_DB_VERSION;
-	let _useLocalStorageFallback = opts?.useLocalStorageFallback ?? DEFAULT_USE_LOCALSTORAGE_FALLBACK;
-	let dbPromise: Promise<IDBPDatabase> | null = null;
+	const dbName = opts?.dbName ?? DEFAULT_DB_NAME;
+	const storeName = opts?.storeName ?? DEFAULT_STORE_NAME;
+	const version = opts?.version ?? DEFAULT_DB_VERSION;
+	const useLocalStorageFallback = opts?.useLocalStorageFallback ?? DEFAULT_USE_LOCALSTORAGE_FALLBACK;
+	let dbInstance: SvelteIdbDatabase | null = null;
 
 	async function init() {
-		if (typeof window === 'undefined') return;
-		if (dbPromise) return;
-		try {
-			const mod = await import('idb');
-			const { openDB } = mod;
-			dbPromise = openDB(_dbName, _dbVersion, {
-				upgrade(db: IDBPDatabase, oldVersion: number) {
-					if (oldVersion < 1) {
-						db.createObjectStore(_storeName, { keyPath: 'id' });
-					}
-					if (oldVersion < 2) {
-						// Example migration: add an index in version 2
-						// If the store doesn't exist, create it with the index
-						if (!db.objectStoreNames.contains(_storeName)) {
-							const store = db.createObjectStore(_storeName, { keyPath: 'id' });
-							store.createIndex('updatedAt', 'updatedAt');
-						}
-						// If the store already exists, creating an index requires a transaction on that store
-						// which isn't necessary for our simple example. Add index creation logic in a migration script if required.
-					}
-				   // Call optional user-provided upgrade
-				   if (opts?.upgrade) {
-					   try {
-						   opts.upgrade(db, oldVersion);
-					   } catch (e) {
-						   console.warn('Adapter upgrade hook threw an error:', e);
-					   }
-				   }
+		if (dbInstance) return;
+
+		dbInstance = createDB({
+			name: dbName,
+			version,
+			stores: {
+				[storeName]: {
+					keyPath: 'id'
 				}
-			});
-		} catch (error) {
-			console.warn('IndexedDB unavailable, falling back to localStorage:', error);
-			if (_useLocalStorageFallback) {
-				_useLocalStorageFallback = true;
-			} else {
-				throw new Error('IndexedDB unavailable and fallback disabled');
-			}
-		}
+			},
+			ssr: 'noop'
+		});
 	}
 
-	async function getDB(): Promise<IDBPDatabase | null> {
-		if (typeof window === 'undefined') throw new Error('Persisted adapter must be used in browser');
-		if (_useLocalStorageFallback) return null;
-		if (!dbPromise) await init();
-		return dbPromise!;
+	async function getDB(): Promise<SvelteIdbDatabase | null> {
+		await init();
+		return dbInstance;
+	}
+
+	function getStore(db: SvelteIdbDatabase): SvelteIdbStore {
+		return (db as unknown as Record<string, SvelteIdbStore>)[storeName];
+	}
+
+	function createRecord<T>(item: Partial<PersistedItem<T>> & { payload: T }): PersistedItem<T> {
+		const now = new Date().toISOString();
+		const id = item.id ?? crypto.randomUUID();
+
+		return {
+			id,
+			createdAt: item.createdAt ?? now,
+			updatedAt: item.updatedAt ?? now,
+			payload: item.payload,
+			schemaVersion: item.schemaVersion ?? 1
+		};
+	}
+
+	function storageKey(id: string) {
+		return `${storeName}:${id}`;
+	}
+
+	function readLocalStorageValue<T>(key: string): PersistedItem<T> | null {
+		const raw = localStorage.getItem(key);
+		if (!raw) return null;
+
+		try {
+			const parsed = JSON.parse(raw) as Partial<PersistedItem<T>> | T;
+
+			if (
+				typeof parsed === 'object' &&
+				parsed !== null &&
+				'id' in parsed &&
+				'payload' in parsed
+			) {
+				return {
+					id: String((parsed as PersistedItem<T>).id),
+					createdAt: (parsed as PersistedItem<T>).createdAt ?? new Date().toISOString(),
+					updatedAt: (parsed as PersistedItem<T>).updatedAt ?? new Date().toISOString(),
+					payload: (parsed as PersistedItem<T>).payload,
+					schemaVersion: (parsed as PersistedItem<T>).schemaVersion ?? 1
+				};
+			}
+
+			return {
+				id: key,
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString(),
+				payload: parsed as T,
+				schemaVersion: 1
+			};
+		} catch {
+			return {
+				id: key,
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString(),
+				payload: raw as T,
+				schemaVersion: 1
+			};
+		}
 	}
 
 	async function saveItem<T = any>(item: Partial<PersistedItem<T>> & { payload: T }): Promise<PersistedItem<T>> {
-		try {
-			const db = await getDB();
-			const now = new Date().toISOString();
-			const id = item.id || (typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : String(Date.now()) + Math.random());
-			const record: PersistedItem<T> = {
-				id,
-				createdAt: item.createdAt || now,
-				updatedAt: now,
-				payload: item.payload,
-				schemaVersion: item.schemaVersion || 1
-			};
-			if (db) {
-				await db.put(_storeName, record);
-			} else {
-				localStorage.setItem(`${_storeName}:${id}`, JSON.stringify(record));
-			}
-			return record;
-		} catch (error) {
-			throw new Error(`Failed to save item: ${error}`);
+		const record = createRecord(item);
+		const db = await getDB();
+
+		if (db) {
+			await getStore(db).put(record);
+		} else if (browser) {
+			localStorage.setItem(storageKey(record.id), JSON.stringify(record));
 		}
+
+		return record;
 	}
 
 	async function getItem<T = any>(id: string): Promise<PersistedItem<T> | null> {
-		try {
-			const db = await getDB();
-			if (db) {
-				return db.get(_storeName, id) as Promise<PersistedItem<T> | null>;
-			} else {
-				const stored = localStorage.getItem(`${_storeName}:${id}`);
-				return stored ? JSON.parse(stored) : null;
-			}
-		} catch (error) {
-			throw new Error(`Failed to get item: ${error}`);
+		const db = await getDB();
+
+		if (db) {
+			return ((await getStore(db).get(id)) as PersistedItem<T> | undefined) ?? null;
 		}
+
+		if (!browser) return null;
+		return readLocalStorageValue<T>(storageKey(id));
 	}
 
 	async function listItems<T = any>(): Promise<Array<PersistedItem<T>>> {
-		try {
-			const db = await getDB();
-			if (db) {
-				return db.getAll(_storeName) as Promise<Array<PersistedItem<T>>>;
-			} else {
-				const items: Array<PersistedItem<T>> = [];
-				for (let i = 0; i < localStorage.length; i++) {
-					const key = localStorage.key(i);
-					if (key?.startsWith(`${_storeName}:`)) {
-						const stored = localStorage.getItem(key);
-						if (stored) items.push(JSON.parse(stored));
-					}
-				}
-				return items;
-			}
-		} catch (error) {
-			throw new Error(`Failed to list items: ${error}`);
+		const db = await getDB();
+
+		if (db) {
+			return (await getStore(db).getAll()) as Array<PersistedItem<T>>;
 		}
+
+		if (!browser) return [];
+
+		const items: Array<PersistedItem<T>> = [];
+		for (let index = 0; index < localStorage.length; index++) {
+			const key = localStorage.key(index);
+			if (!key || !key.startsWith(`${storeName}:`)) continue;
+			const value = readLocalStorageValue<T>(key);
+			if (value) items.push(value);
+		}
+
+		return items;
 	}
 
 	async function deleteItem(id: string): Promise<void> {
-		try {
-			const db = await getDB();
-			if (db) {
-				await db.delete(_storeName, id);
-			} else {
-				localStorage.removeItem(`${_storeName}:${id}`);
-			}
-		} catch (error) {
-			throw new Error(`Failed to delete item: ${error}`);
+		const db = await getDB();
+
+		if (db) {
+			await getStore(db).delete(id);
+		} else if (browser) {
+			localStorage.removeItem(storageKey(id));
 		}
 	}
 
 	async function clearAll(): Promise<void> {
-		try {
-			const db = await getDB();
-			if (db) {
-				await db.clear(_storeName);
-			} else {
-				const keysToRemove: string[] = [];
-				for (let i = 0; i < localStorage.length; i++) {
-					const key = localStorage.key(i);
-					if (key?.startsWith(`${_storeName}:`)) keysToRemove.push(key);
-				}
-				keysToRemove.forEach((key) => localStorage.removeItem(key));
-			}
-		} catch (error) {
-			throw new Error(`Failed to clear all items: ${error}`);
+		const db = await getDB();
+
+		if (db) {
+			await getStore(db).clear();
+			return;
 		}
+
+		if (!browser) return;
+
+		const keysToRemove: string[] = [];
+		for (let index = 0; index < localStorage.length; index++) {
+			const key = localStorage.key(index);
+			if (key?.startsWith(`${storeName}:`)) keysToRemove.push(key);
+		}
+
+		keysToRemove.forEach((key) => localStorage.removeItem(key));
 	}
 
 	function toServerFormat<T = any>(item: PersistedItem<T>): Record<string, any> {
@@ -199,12 +222,13 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 			...((item.payload as any) || {}),
 			_createdAt: item.createdAt,
 			_updatedAt: item.updatedAt,
-			schemaVersion: item.schemaVersion || 1
+			schemaVersion: item.schemaVersion ?? 1
 		};
 	}
 
 	function fromServerFormat<T = any>(obj: Record<string, any>): PersistedItem<T> {
 		const { id, _createdAt, _updatedAt, schemaVersion, ...payload } = obj as any;
+
 		return {
 			id: id || String(payload.id || Date.now()),
 			createdAt: _createdAt || new Date().toISOString(),
@@ -215,53 +239,57 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 	}
 
 	async function syncWithServer<T = any>(opts: SyncOptions<T>): Promise<{ pushed: number; pulled: number }> {
-		try {
-			const local = await listItems<T>();
-			const serverPushPayload = local.map((i) => toServerFormat(i));
+		const localItems = await listItems<T>();
+		const localPayload = localItems.map((item) => toServerFormat(item));
 
-			if (opts.pushLocalChanges) await opts.pushLocalChanges(serverPushPayload);
-
-			let serverItems: Array<Record<string, any>> = [];
-			if (opts.fetchServerChanges) serverItems = await opts.fetchServerChanges();
-
-			const resolver = opts.conflictResolver || defaultConflictResolver;
-
-			const itemsToSave: PersistedItem<T>[] = [];
-			for (const s of serverItems) {
-				const localMatch = local.find((l) => l.id === s.id);
-				if (!localMatch) itemsToSave.push(fromServerFormat<T>(s));
-				else itemsToSave.push(resolver(localMatch, s));
-			}
-
-			async function importLocalStorage(prefix?: string): Promise<number> {
-				// Copy keys from localStorage that match key prefix into DB (migration helper)
-				const keyPrefix = prefix ? `${prefix}:` : `${_storeName}:`;
-				const imported: string[] = [];
-				for (let i = 0; i < localStorage.length; i++) {
-					const key = localStorage.key(i);
-					if (!key) continue;
-					if (key.startsWith(keyPrefix)) {
-						const stored = localStorage.getItem(key);
-						if (!stored) continue;
-						try {
-							const obj = JSON.parse(stored);
-							if (obj && obj.id && obj.payload !== undefined) {
-								await saveItem(obj);
-								imported.push(key);
-							}
-						} catch (e) {
-							console.warn('Failed to parse localStorage key', key, e);
-						}
-					}
-				}
-				return imported.length;
-			}
-
-			await Promise.all(itemsToSave.map((item) => saveItem(item)));
-			return { pushed: serverPushPayload.length, pulled: serverItems.length };
-		} catch (error) {
-			throw new Error(`Sync failed: ${error}`);
+		if (opts.pushLocalChanges) {
+			await opts.pushLocalChanges(localPayload);
 		}
+
+		const remoteItems = opts.fetchServerChanges ? await opts.fetchServerChanges() : [];
+		const resolver = opts.conflictResolver ?? defaultConflictResolver;
+
+		for (const remote of remoteItems) {
+			const localMatch = localItems.find((item) => item.id === remote.id);
+			const nextItem = localMatch ? resolver(localMatch, remote) : fromServerFormat<T>(remote);
+			await saveItem(nextItem);
+		}
+
+		return { pushed: localPayload.length, pulled: remoteItems.length };
+	}
+
+	async function importLocalStorage(prefix?: string): Promise<number> {
+		if (!browser) return 0;
+
+		const targetPrefix = prefix ?? storeName;
+		let imported = 0;
+
+		for (let index = 0; index < localStorage.length; index++) {
+			const key = localStorage.key(index);
+			if (!key) continue;
+
+			const matchesPrefix = key === targetPrefix || key.startsWith(`${targetPrefix}:`);
+			if (!matchesPrefix) continue;
+
+			const raw = localStorage.getItem(key);
+			if (!raw) continue;
+
+			try {
+				const parsed = JSON.parse(raw);
+				if (parsed && typeof parsed === 'object' && 'payload' in parsed) {
+					await saveItem(parsed as Partial<PersistedItem<any>> & { payload: any });
+				} else {
+					const id = key.includes(':') ? key.slice(key.lastIndexOf(':') + 1) : key;
+					await saveItem({ id, payload: parsed });
+				}
+				localStorage.removeItem(key);
+				imported += 1;
+			} catch (error) {
+				console.warn('Failed to import localStorage key', key, error);
+			}
+		}
+
+		return imported;
 	}
 
 	return {
@@ -275,42 +303,49 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 		fromServerFormat,
 		syncWithServer,
 		importLocalStorage
-	} as PersistedAdapter;
+	};
 }
 
-// Default adapter instance for convenience (app-level usage)
 let defaultAdapterInstance: PersistedAdapter | null = null;
 
 export function getDefaultAdapter(): PersistedAdapter {
-	if (!defaultAdapterInstance) defaultAdapterInstance = createAdapter({ dbName: DEFAULT_DB_NAME, storeName: DEFAULT_STORE_NAME, version: DEFAULT_DB_VERSION, useLocalStorageFallback: DEFAULT_USE_LOCALSTORAGE_FALLBACK });
+	if (!defaultAdapterInstance) {
+		defaultAdapterInstance = createAdapter();
+	}
+
 	return defaultAdapterInstance;
 }
 
 export async function init(opts?: AdapterOptions) {
-	if (typeof window === 'undefined') return;
-	if (!defaultAdapterInstance) defaultAdapterInstance = createAdapter(opts);
+	if (!defaultAdapterInstance) {
+		defaultAdapterInstance = createAdapter(opts);
+	}
+
 	await defaultAdapterInstance.init();
 }
 
-// Convenience wrappers that use defaultAdapterInstance
 function ensureDefaultAdapter() {
-	if (!defaultAdapterInstance) defaultAdapterInstance = createAdapter();
+	if (!defaultAdapterInstance) {
+		defaultAdapterInstance = createAdapter();
+	}
+
 	return defaultAdapterInstance;
 }
 
-export const saveItem = async <T = any>(item: Partial<PersistedItem<T>> & { payload: T }) => ensureDefaultAdapter().saveItem(item);
-export const getItem = async <T = any>(id: string) => ensureDefaultAdapter().getItem(id);
+export const saveItem = async <T = any>(item: Partial<PersistedItem<T>> & { payload: T }) =>
+	ensureDefaultAdapter().saveItem(item);
+export const getItem = async <T = any>(id: string) => ensureDefaultAdapter().getItem<T>(id);
 export const listItems = async <T = any>() => ensureDefaultAdapter().listItems<T>();
 export const deleteItem = async (id: string) => ensureDefaultAdapter().deleteItem(id);
 export const clearAll = async () => ensureDefaultAdapter().clearAll();
-export const toServerFormat = <T = any>(item: PersistedItem<T>) => ensureDefaultAdapter().toServerFormat(item);
-export const fromServerFormat = <T = any>(obj: Record<string, any>) => ensureDefaultAdapter().fromServerFormat(obj);
-export const syncWithServer = async <T = any>(opts: SyncOptions<T>) => ensureDefaultAdapter().syncWithServer(opts);
-export const importLocalStorage = async (prefix?: string) => ensureDefaultAdapter().importLocalStorage(prefix);
-
-// Top-level convenience wrappers exist above and delegate to the default adapter.
-
-// Conversion utilities and sync wrappers are exported above and delegate to the default adapter.
+export const toServerFormat = <T = any>(item: PersistedItem<T>) =>
+	ensureDefaultAdapter().toServerFormat(item);
+export const fromServerFormat = <T = any>(obj: Record<string, any>) =>
+	ensureDefaultAdapter().fromServerFormat<T>(obj);
+export const syncWithServer = async <T = any>(opts: SyncOptions<T>) =>
+	ensureDefaultAdapter().syncWithServer(opts);
+export const importLocalStorage = async (prefix?: string) =>
+	ensureDefaultAdapter().importLocalStorage(prefix);
 
 function defaultConflictResolver<T = any>(
 	local: PersistedItem<T>,
@@ -322,5 +357,6 @@ function defaultConflictResolver<T = any>(
 	if (remoteUpdated > localUpdated) {
 		return fromServerFormat<T>(remote);
 	}
+
 	return local;
 }

@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import * as budgetState from './states.svelte';
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import type { Budget, Expense } from './states.svelte';
 
 /**
- * Mock implementation for the PersistedState class from runed
+ * Mock implementation for the PersistedState class from the local wrapper
  * This allows us to test the budget state functions without relying on the actual
  * PersistedState implementation, ensuring clean and isolated tests.
  */
@@ -12,7 +12,7 @@ let mockBudgets: Budget[] = [];
 let mockSubscribers: Function[] = [];
 
 // Mock PersistedState
-vi.mock('runed', () => {
+vi.mock('$lib/persisted-state', () => {
   return {
     PersistedState: vi.fn().mockImplementation(() => {
       return {

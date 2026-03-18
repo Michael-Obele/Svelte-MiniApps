@@ -11,7 +11,7 @@
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
-	import { PersistedState } from 'runed';
+	import { PersistedState } from '$lib/persisted-state';
 	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';
 	import { onMount } from 'svelte';
 
@@ -19,7 +19,6 @@
 
 	// Track if user has seen the how-to guide
 	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {
-		storage: 'local'
 	});
 
 	// Form state for currency inputs (text input for datalist)

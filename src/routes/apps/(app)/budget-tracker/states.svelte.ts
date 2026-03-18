@@ -1,4 +1,4 @@
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 
 // Types
 export interface Expense {
@@ -20,7 +20,6 @@ export interface Budget {
 
 // Create a persisted state for budgets with cross-tab synchronization (legacy)
 const budgetState = new PersistedState<Budget[]>('budgets', [], {
-	storage: 'local', // Use localStorage
 	syncTabs: true // Sync across tabs
 });
 
@@ -37,7 +36,6 @@ Migration notes:
 
 // Create a persisted state for selected expenses
 const selectedExpensesState = new PersistedState<string[]>('selectedExpenses', [], {
-	storage: 'local',
 	syncTabs: true
 });
 
@@ -46,7 +44,6 @@ const budgetStrikethroughState = new PersistedState<Record<string, boolean>>(
 	'budget-strikethrough-modes',
 	{},
 	{
-		storage: 'local',
 		syncTabs: true
 	}
 );

@@ -1,4 +1,4 @@
-import { PersistedState } from 'runed';
+import { PersistedState } from '$lib/persisted-state';
 import {
 	type Option,
 	type Activity,
@@ -23,7 +23,6 @@ export const scenarioSettings = new PersistedState<{ startDate: string; endDate:
 		endDate: DEFAULT_END_DATE.toISOString()
 	},
 	{
-		storage: 'local',
 		syncTabs: true
 	}
 );
@@ -71,7 +70,6 @@ export function initializeFromServer(data: {
 
 // Persisted state for options
 export const options = new PersistedState<Option[]>('scenario-tracker-options', [], {
-	storage: 'local',
 	syncTabs: true
 });
 
@@ -80,14 +78,12 @@ export const timelineEntries = new PersistedState<TimelineEntry[]>(
 	'scenario-tracker-timeline',
 	[],
 	{
-		storage: 'local',
 		syncTabs: true
 	}
 );
 
 // Persisted state for risks
 export const risks = new PersistedState<Risk[]>('scenario-tracker-risks', [], {
-	storage: 'local',
 	syncTabs: true
 });
 

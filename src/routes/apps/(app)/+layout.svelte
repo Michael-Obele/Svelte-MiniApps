@@ -11,6 +11,8 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { toast } from 'svelte-sonner';
+	import { PersistedState } from 'runed';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -23,6 +25,10 @@
 
 	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps/tree/master/src/routes/apps/(app)';
 	let isSheetOpen = $state(false);
+	const indexedDbNoticeSeen = new PersistedState('miniapps-indexeddb-notice-seen', false, {
+		storage: 'local',
+		syncTabs: true
+	});
 
 	// Function to toggle the sheet
 	function toggleSheet() {
@@ -51,6 +57,13 @@
 	onMount(() => {
 		// Add keyboard event listener when component mounts
 		window.addEventListener('keydown', handleKeyDown);
+
+		if (!indexedDbNoticeSeen.current) {
+			toast.info('App storage now uses IndexedDB only.', {
+				description: 'LocalStorage fallback has been removed for app data.'
+			});
+			indexedDbNoticeSeen.current = true;
+		}
 
 		// Cleanup when component unmounts
 		return () => {
@@ -136,7 +149,7 @@
 				</Sheet.Description>
 			</Sheet.Header>
 			<div class="flex flex-col gap-2 overflow-y-auto py-4" style="max-height: calc(80vh - 150px);">
-				{#each done() as app}
+				{#each done() as app (app.name)}
 					<Sheet.Description>
 						<!-- Updated to use the navigateToApp function -->
 						<button
