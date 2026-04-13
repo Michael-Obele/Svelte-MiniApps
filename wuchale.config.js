@@ -26,13 +26,13 @@ export default defineConfig({
 		})
 	},
 	ai: {
-		name: 'OpenAI GPT-5 Nano',
+		name: 'OpenAI GPT-5.4 Nano',
 		batchSize: 45,
 		parallel: 8,
 		translate: async (messages, instruction) => {
 			const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 			const response = await client.chat.completions.create({
-				model: 'gpt-5-nano',
+				model: 'gpt-5.4-nano',
 				messages: [
 					{ role: 'system', content: instruction },
 					{ role: 'user', content: messages }
