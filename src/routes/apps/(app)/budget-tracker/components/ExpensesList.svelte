@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card } from '@/ui/card';
 	import { Button } from '@/ui/button';
-	import { Pencil, Trash2 } from '@lucide/svelte';
+	import { Pencil, Trash2, Clock, Package } from '@lucide/svelte';
 	import type { Budget, Expense } from '../states.svelte';
 	import * as budgetState from '../states.svelte';
 	import { toast } from 'svelte-sonner';
@@ -78,65 +78,127 @@
 	}
 </script>
 
-<div class=" mx-auto mt-8 flex max-w-7xl flex-col justify-center">
-	<h2 class="mx-auto mb-4 text-xl font-semibold">
-		Latest Transactions <span class="text-xs font-normal text-muted-foreground"
-			>(showing 12 most recent)</span
-		>
-	</h2>
-	<!-- <p class="mb-4 text-sm text-muted-foreground">{allExpenses.length} expenses</p> -->
+<div class="mx-auto mt-8 flex max-w-7xl flex-col justify-center">
+	<div class="mb-6 flex items-center gap-3">
+		<div class="bg-muted rounded-lg p-2">
+			<Clock class="text-foreground h-5 w-5" />
+		</div>
+		<div>
+			<h2 class="text-foreground text-lg font-bold md:text-xl">Recent Transactions</h2>
+			<p class="text-muted-foreground text-xs">Last 12 expenses across all budgets</p>
+		</div>
+	</div>
 
 	{#if allExpenses.length === 0}
-		<div class="rounded-lg border border-dashed p-6 text-center text-muted-foreground">
-			<p>No expenses yet. Add your first expense to get started.</p>
-		</div>
+		<Card class="border-dashed p-8 text-center md:p-12">
+			<div class="mb-4 flex justify-center">
+				<div class="bg-muted rounded-lg p-3">
+					<Package class="text-muted-foreground h-6 w-6" />
+				</div>
+			</div>
+			<p class="text-muted-foreground">No expenses yet. Add your first expense to get started.</p>
+		</Card>
 	{:else}
 		<div
 			class="grid w-full max-w-full grow grid-cols-1 place-items-stretch gap-3 md:grid-cols-2 lg:grid-cols-3"
 		>
 			{#each getSortedExpenses().slice(0, 12) as { budgetId, budgetName, expense }}
 				{@const currency = getBudgetCurrency(budgetId)}
-				<Card class="w-full p-4 transition-shadow hover:shadow-sm">
-					<!-- Mobile layout: Stack everything vertically -->
-					<div class="flex w-full flex-col gap-2 sm:hidden">
-						<!-- Row 1: Description -->
-						<div class="truncate font-medium" title={expense.description}>
-							{expense.description}
-						</div>
-						<!-- Row 2: Budget name and Amount on same line -->
-						<div class="flex items-center justify-between gap-2">
-							<div class="truncate text-sm text-muted-foreground">
-								{budgetName}
+				<Card class="p-4 transition-all duration-150 hover:shadow-sm md:p-5">
+					<div class="relative">
+						<!-- Mobile layout: Stack everything vertically -->
+						<div class="flex w-full flex-col gap-3 sm:hidden">
+							<!-- Description -->
+							<div class="flex items-start justify-between gap-2">
+								<div
+									class="text-foreground truncate text-sm font-semibold"
+									title={expense.description}
+								>
+									{expense.description}
+								</div>
+								<div class="flex flex-shrink-0 gap-1">
+									<Button
+										variant="ghost"
+										size="sm"
+										class="h-7 w-7 p-0"
+										onclick={() => openEditExpenseDialog(budgetId, expense)}
+										title="Edit expense"
+									>
+										<Pencil class="h-3.5 w-3.5" />
+									</Button>
+									<Button
+										variant="ghost"
+										size="sm"
+										class="text-destructive hover:text-destructive h-7 w-7 p-0"
+										onclick={() => handleDeleteExpense(budgetId, expense.id)}
+										title="Delete expense"
+									>
+										<Trash2 class="h-3.5 w-3.5" />
+									</Button>
+								</div>
 							</div>
-							<div class="shrink-0 font-semibold">
-								{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
+							<!-- Budget name and Amount -->
+							<div class="flex items-center justify-between gap-2">
+								<div class="text-muted-foreground bg-muted/50 truncate rounded px-2 py-1 text-xs">
+									{budgetName}
+								</div>
+								<div class="shrink-0 text-sm font-bold">
+									{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
+								</div>
 							</div>
-						</div>
-						<!-- Row 3: Date -->
-						<div class="text-[11px] text-muted-foreground">
-							{formatDate(expense.createdAt)}
-						</div>
-					</div>
-
-					<!-- Desktop layout: Side by side -->
-					<div class="hidden w-full items-center justify-between gap-2 sm:flex">
-						<!-- Col 1: Description (takes remaining space) with budget name under it -->
-						<div class="min-w-0 flex-1">
-							<div class="truncate font-medium" title={expense.description}>
-								{expense.description}
-							</div>
-							<div class="mt-1 truncate text-sm text-muted-foreground">
-								{budgetName}
-							</div>
-						</div>
-
-						<!-- Col 2: Amount and then Date (date in the smallest font) -->
-						<div class="flex flex-none flex-col items-end">
-							<div class="whitespace-nowrap font-semibold">
-								{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
-							</div>
-							<div class="mt-1 whitespace-nowrap text-[11px] text-muted-foreground">
+							<!-- Date -->
+							<div class="text-muted-foreground text-[11px]">
 								{formatDate(expense.createdAt)}
+							</div>
+						</div>
+
+						<!-- Desktop layout: Side by side -->
+						<div class="hidden w-full items-center justify-between gap-3 sm:flex">
+							<!-- Col 1: Description (takes remaining space) -->
+							<div class="min-w-0 flex-1">
+								<div
+									class="text-foreground truncate text-sm font-semibold"
+									title={expense.description}
+								>
+									{expense.description}
+								</div>
+								<div class="mt-2 flex items-center gap-2">
+									<div class="text-muted-foreground bg-muted/50 truncate rounded px-2 py-1 text-xs">
+										{budgetName}
+									</div>
+									<div class="text-muted-foreground shrink-0 text-[11px] whitespace-nowrap">
+										{formatDate(expense.createdAt)}
+									</div>
+								</div>
+							</div>
+
+							<!-- Col 2: Amount and Actions -->
+							<div class="flex flex-none items-center gap-2">
+								<div class="text-right">
+									<div class="text-sm font-bold">
+										{getCurrencySymbol(currency)}{formatNumberWithCommas(expense.amount)}
+									</div>
+								</div>
+								<div class="flex gap-1">
+									<Button
+										variant="ghost"
+										size="sm"
+										class="h-8 w-8 p-0"
+										onclick={() => openEditExpenseDialog(budgetId, expense)}
+										title="Edit expense"
+									>
+										<Pencil class="h-3.5 w-3.5" />
+									</Button>
+									<Button
+										variant="ghost"
+										size="sm"
+										class="text-destructive hover:text-destructive h-8 w-8 p-0"
+										onclick={() => handleDeleteExpense(budgetId, expense.id)}
+										title="Delete expense"
+									>
+										<Trash2 class="h-3.5 w-3.5" />
+									</Button>
+								</div>
 							</div>
 						</div>
 					</div>

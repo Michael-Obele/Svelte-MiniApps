@@ -1,3 +1,4 @@
+export { default as BudgetCard } from './BudgetCard.svelte';
 export { default as BudgetDialog } from './BudgetDialog.svelte';
 export { default as BudgetSection } from './BudgetSection.svelte';
 export { default as BudgetsList } from './BudgetsList.svelte';

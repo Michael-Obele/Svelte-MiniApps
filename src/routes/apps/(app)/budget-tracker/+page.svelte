@@ -8,7 +8,17 @@
 	import { PersistedState } from '$lib/persisted-state';
 	import icons from 'currency-icons';
 
-	import { BudgetsList, FloatingBtn, BudgetDialog, QuickNavigation, ExpenseDialog, BudgetSection, ExpenseSection, ExpensesList } from './components';
+	import {
+		BudgetsList,
+		FloatingBtn,
+		BudgetDialog,
+		QuickNavigation,
+		ExpenseDialog,
+		BudgetSection,
+		ExpenseSection,
+		ExpensesList,
+		BudgetCard
+	} from './components';
 	import type { Budget, Expense } from './states.svelte';
 	import * as budgetState from './states.svelte';
 	import RouteHead from '@/blocks/RouteHead.svelte';
@@ -95,6 +105,9 @@
 
 	// Check if user is authenticated
 	let isAuthenticated = $state(!!data.user);
+	const pageTitle = 'Budget Tracker | Svelte Mini Apps';
+	const pageDescription =
+		'Track every budget, add expenses quickly, and review your recent spending in one place.';
 
 	$effect(() => {
 		// Update authentication status when data changes
@@ -305,8 +318,7 @@
 
 	// How-to guide state
 	let showHowToUseDialog = $state(false);
-	let hasSeenGuide = new PersistedState<boolean>(budgetTrackerHowToUse.storageKey, false, {
-	});
+	let hasSeenGuide = new PersistedState<boolean>(budgetTrackerHowToUse.storageKey, false, {});
 
 	$effect(() => {
 		if (form && typeof form.success !== 'undefined') {
@@ -452,6 +464,28 @@
 		editExpenseAmount = String(expense.amount);
 	}
 
+	function openQuickExpenseDialog(budgetId: string) {
+		// Create a new expense for the specific budget
+		editingExpense = {
+			budgetId,
+			expense: {
+				id: '',
+				description: '',
+				amount: 0,
+				createdAt: new Date().toISOString()
+			}
+		};
+		editExpenseDescription = '';
+		editExpenseAmount = '';
+		selectedBudgetId = budgetId;
+		selectedBudgetName = budgetState.budgets.current.find((b) => b.id === budgetId)?.name || '';
+	}
+
+	function navigateToBudgetDetail(budgetId: string) {
+		scrollToID(`budget-detail-${budgetId}`);
+		window.location.href = `/apps/budget-tracker/${budgetId}`;
+	}
+
 	let editingBudget = $state<Budget | null>(null);
 	let editBudgetName = $state('');
 	let editBudgetAmount = $state('');
@@ -536,6 +570,13 @@
 	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
 	import { Label } from '@/ui/label';
 </script>
+
+<!-- <svelte:head>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+</svelte:head> -->
 
 <RouteHead
 	title="Budget Tracker | Svelte Mini Apps"
@@ -755,18 +796,74 @@
 					<Button onclick={() => scrollToID('budget-form')}>Create Budget</Button>
 				</div>
 			{:else}
-				<BudgetsList
-					{openEditDialog}
-					{openEditExpenseDialog}
-					{getProgressBarColor}
-					{getProgressPercentage}
-					{getCurrencySymbol}
-					{formatNumberWithCommas}
-					{calculateTotalExpenses}
-					budgets={budgetState.budgets.current}
-				/>
+				<!-- Budget Cards Grid (Dashboard) -->
+				<div class="space-y-4">
+					<!-- Summary Card -->
+					<div class="border-border bg-card rounded-lg border p-4">
+						<h3 class="text-foreground mb-3 text-sm font-semibold">Overall Summary</h3>
+						<div class="grid grid-cols-3 gap-4">
+							<div class="space-y-1">
+								<p class="text-muted-foreground text-xs font-medium">Total Budget</p>
+								<p class="text-line text-lg font-bold">
+									{formatNumber(budgetState.budgets.current.reduce((sum, b) => sum + b.amount, 0))}
+								</p>
+							</div>
+							<div class="space-y-1">
+								<p class="text-muted-foreground text-xs font-medium">Total Spent</p>
+								<p class="text-destructive text-lg font-bold">
+									{formatNumber(
+										budgetState.budgets.current.reduce(
+											(sum, b) => sum + b.expenses.reduce((s, e) => s + e.amount, 0),
+											0
+										)
+									)}
+								</p>
+							</div>
+							<div class="space-y-1">
+								<p class="text-muted-foreground text-xs font-medium">Remaining</p>
+								<p class="text-lg font-bold text-green-600 dark:text-green-400">
+									{formatNumber(
+										Math.max(
+											budgetState.budgets.current.reduce(
+												(sum, b) => sum + (b.amount - b.expenses.reduce((s, e) => s + e.amount, 0)),
+												0
+											),
+											0
+										)
+									)}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 
-				<div class="mx-auto">
+				<!-- Budget Cards Grid -->
+				<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					{#each budgetState.budgets.current as budget (budget.id)}
+						<div id="budget-card-{budget.id}">
+							<BudgetCard
+								{budget}
+								{formatNumber}
+								onAddExpense={() => openQuickExpenseDialog(budget.id)}
+								onEdit={() => openEditDialog(budget)}
+								onView={() => navigateToBudgetDetail(budget.id)}
+								onDelete={() => {
+									if (confirm(`Are you sure you want to delete "${budget.name}"?`)) {
+										budgetState.deleteBudget(budget.id);
+										toast.success('Budget deleted');
+										hasUnsavedChanges = true;
+										if (autoBackupEnabled.current) {
+											performAutoBackup();
+										}
+									}
+								}}
+							/>
+						</div>
+					{/each}
+				</div>
+
+				<!-- Recent Expenses Section -->
+				<div class="mx-auto mt-6">
 					<ExpensesList
 						budgets={budgetState.budgets.current}
 						{openEditExpenseDialog}
