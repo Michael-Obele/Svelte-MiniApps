@@ -1,7 +1,117 @@
 {
-  "lastProcessedCommit": "f7a1f1058fdea2e0b86fa93ceddea6c00ded2ad1",
-  "generatedAt": "2026-03-18T18:47:32.127Z",
+  "lastProcessedCommit": "7b5d7b41ddd3308954d4c97e068f7e6401b55ce9",
+  "generatedAt": "2026-04-18T22:26:09.839Z",
   "timeline": [
+    {
+      "date": "April 18, 2026",
+      "title": "feat: add update timestamps for completed mini-apps and improve project details formatting",
+      "description": "Updated src/lib/index.svelte.ts",
+      "items": [
+        "feat: add update timestamps for completed mini-apps and improve project details formatting (f93ffca)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "feat: integrate DeepSeek model for live translation and update environment configuration",
+      "description": "Updated .env.example, wuchale.config.js",
+      "items": [
+        "feat: integrate DeepSeek model for live translation and update environment configuration (f48f7a3)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "feat: add DeepSeek SDK and AI dependency to enhance functionality",
+      "description": "Updated bun.lockb, package.json",
+      "items": [
+        "feat: add DeepSeek SDK and AI dependency to enhance functionality (c30f50c)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "fix(locales): update PO revision dates and add new translations for app search features",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "fix(locales): update PO revision dates and add new translations for app search features (b91586b)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "feat(currency-converter): enhance currency selection with recent pairs and persist state",
+      "description": "Updated src/routes/apps/(app)/currency-converter/+page.svelte, src/routes/apps/(app)/currency-converter/how-to-use-config.ts, src/routes/apps/(app)/currency-converter/state.svelte.ts",
+      "items": [
+        "feat(currency-converter): enhance currency selection with recent pairs and persist state (9eb71d5)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "refactor: remove unused SSR configuration from Vite setup",
+      "description": "Updated vite.config.ts",
+      "items": [
+        "refactor: remove unused SSR configuration from Vite setup (7b5d7b4)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "feat: enhance ExpenseDialog with new expense handling and improved UI",
+      "description": "Updated src/routes/apps/(app)/budget-tracker/+page.svelte, src/routes/apps/(app)/budget-tracker/[id]/+page.svelte, src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte and more",
+      "items": [
+        "feat: enhance ExpenseDialog with new expense handling and improved UI (5f0fb95)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "Update Chinese translations for budget tracker and currency converter components",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "Update Chinese translations for budget tracker and currency converter components (55e9a2b)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "April 18, 2026",
+      "title": "refactor(currency-converter): improve code formatting and readability",
+      "description": "Updated src/routes/apps/(app)/currency-converter/+page.svelte, src/routes/apps/(app)/currency-converter/how-to-use-config.ts, src/routes/apps/(app)/currency-converter/state.svelte.ts",
+      "items": [
+        "refactor(currency-converter): improve code formatting and readability (2e94bb9)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "April 13, 2026",
+      "title": "fix: update OpenAI model name to GPT-5.4 Nano",
+      "description": "Updated wuchale.config.js",
+      "items": [
+        "fix: update OpenAI model name to GPT-5.4 Nano (a6649c3)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
     {
       "date": "March 18, 2026",
       "title": "♻️ refactor(budget-tracker): improve code readability and maintainability",
