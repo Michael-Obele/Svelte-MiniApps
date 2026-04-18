@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-04-18T21:16:44.980Z\n"
+"PO-Revision-Date: 2026-04-18T22:17:44.584Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -1193,22 +1193,19 @@ msgstr "Explore Our Mini Applications"
 msgid "Search Apps"
 msgstr "Search Apps"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Find the mini application you're looking for"
-msgstr "Find the mini application you're looking for"
+#~ msgid "Find the mini application you're looking for"
+#~ msgstr "Find the mini application you're looking for"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Search by name, or description..."
-msgstr "Search by name, or description..."
+#~ msgid "Search by name, or description..."
+#~ msgstr "Search by name, or description..."
 
 #. placeholder {0}: searchQuery
 #: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "No projects found matching \"{0}\""
 
-#: src/routes/apps/AppFilters.svelte
-msgid "(Coming Soon)"
-msgstr "(Coming Soon)"
+#~ msgid "(Coming Soon)"
+#~ msgstr "(Coming Soon)"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
@@ -3953,6 +3950,7 @@ msgstr "Explore our collection of interactive mini applications built with Svelt
 msgid "Svelte-MiniApps: Mobile & Desktop Coming Soon"
 msgstr "Svelte-MiniApps: Mobile & Desktop Coming Soon"
 
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Coming Soon"
 msgstr "Coming Soon"
@@ -8846,13 +8844,11 @@ msgstr "Show completed apps"
 msgid "<0/> Completed"
 msgstr "<0/> Completed"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Search apps..."
-msgstr "Search apps..."
+#~ msgid "Search apps..."
+#~ msgstr "Search apps..."
 
-#: src/routes/apps/AppFilters.svelte
-msgid "K"
-msgstr "K"
+#~ msgid "K"
+#~ msgstr "K"
 
 #: src/routes/(auth)/logout/+page.svelte
 msgid "Sign out of your Svelte Mini Apps account"
@@ -11221,3 +11217,47 @@ msgid ""
 msgstr ""
 "Review the budget at a glance, inspect where the money is going, and manage expenses\n"
 "without switching context."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Open app search"
+msgstr "Open app search"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Jump to a mini app by name, tag, or feature."
+msgstr "Jump to a mini app by name, tag, or feature."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Ctrl K"
+msgstr "Ctrl K"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Find the mini application you want by title, tag, or description."
+msgstr "Find the mini application you want by title, tag, or description."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search by app name, description, tag, or slug..."
+msgstr "Search by app name, description, tag, or slug..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Clear search"
+msgstr "Clear search"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All apps"
+msgstr "<0/> All apps"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Browse the full catalogue when you want to explore everything."
+msgstr "Browse the full catalogue when you want to explore everything."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed apps"
+msgstr "<0/> Completed apps"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Surface the tools that are already available to use right now."
+msgstr "Surface the tools that are already available to use right now."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Ready"
+msgstr "<0/> Ready"

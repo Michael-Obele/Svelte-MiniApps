@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-04-18T22:01:25.157Z\n"
+"PO-Revision-Date: 2026-04-18T22:21:09.333Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -452,22 +452,19 @@ msgstr "完成"
 msgid "Search Apps"
 msgstr "搜索应用"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Find the mini application you're looking for"
-msgstr "找到您正在寻找的迷你应用程序"
+#~ msgid "Find the mini application you're looking for"
+#~ msgstr "找到您正在寻找的迷你应用程序"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Search by name, or description..."
-msgstr "按名称或描述搜索..."
+#~ msgid "Search by name, or description..."
+#~ msgstr "按名称或描述搜索..."
 
 #. placeholder {0}: searchQuery
 #: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "未找到与 \"{0}\" 匹配的项目"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "(Coming Soon)"
-msgstr "（即将推出）"
+#~ msgid "(Coming Soon)"
+#~ msgstr "（即将推出）"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
@@ -2141,6 +2138,7 @@ msgstr "注意：旧版本可能不包含最新的安全或 PWA 改进。"
 msgid "Svelte-MiniApps: Mobile & Desktop Coming Soon"
 msgstr "Svelte-MiniApps：移动和桌面版本即将推出"
 
+#: src/routes/apps/AppFilters.svelte
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Coming Soon"
 msgstr "即将推出"
@@ -7298,13 +7296,11 @@ msgstr "显示已完成的应用"
 msgid "<0/> Completed"
 msgstr "<0/> 已完成"
 
-#: src/routes/apps/AppFilters.svelte
-msgid "Search apps..."
-msgstr "搜索应用..."
+#~ msgid "Search apps..."
+#~ msgstr "搜索应用..."
 
-#: src/routes/apps/AppFilters.svelte
-msgid "K"
-msgstr "千"
+#~ msgid "K"
+#~ msgstr "千"
 
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/data.svelte.ts
@@ -11039,3 +11035,47 @@ msgid ""
 "Review the budget at a glance, inspect where the money is going, and manage expenses\n"
 "without switching context."
 msgstr "一览预算概况，检查资金去向，并在不切换上下文的情况下管理支出。"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Open app search"
+msgstr "打开应用搜索"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Jump to a mini app by name, tag, or feature."
+msgstr "通过名称、标签或功能跳转到一个小程序。"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Ctrl K"
+msgstr "Ctrl K"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Find the mini application you want by title, tag, or description."
+msgstr "通过标题、标签或描述找到您想要的小程序。"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Search by app name, description, tag, or slug..."
+msgstr "按应用名称、描述、标签或别名搜索..."
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Clear search"
+msgstr "清除搜索"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> All apps"
+msgstr "<0/> 所有应用"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Browse the full catalogue when you want to explore everything."
+msgstr "当您想探索所有内容时，请浏览完整目录。"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Completed apps"
+msgstr "<0/> 已完成的应用"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "Surface the tools that are already available to use right now."
+msgstr "展示当前即可使用的工具。"
+
+#: src/routes/apps/AppFilters.svelte
+msgid "<0/> Ready"
+msgstr "<0/> 就绪"
