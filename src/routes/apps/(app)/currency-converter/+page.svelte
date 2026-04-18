@@ -2,28 +2,35 @@
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import * as Alert from '@/ui/alert/index.js';
-	import { ArrowLeftRight, AlertCircle, Loader2, HelpCircle, RefreshCw } from 'lucide-svelte';
+	import { ArrowLeftRight, Clock, Globe, History, HelpCircle, Loader } from '@lucide/svelte';
 	import Input from '@/ui/input/input.svelte';
 	import { toast } from 'svelte-sonner';
 	import Switch from '@/ui/switch/switch.svelte';
 	import Label from '@/ui/label/label.svelte';
 	import { Button } from '@/ui/button';
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
+	import { Badge } from '@/ui/badge';
+	import { Separator } from '@/ui/separator';
+	import * as Select from '@/ui/select';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
 	import { PersistedState } from '$lib/persisted-state';
 	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';
 	import { onMount } from 'svelte';
+	import {
+		currencySelection,
+		normalizeCurrencyCode,
+		rememberCurrencySelection,
+		resetCurrencySelection
+	} from './state.svelte';
 
 	let showHowToUseDialog = $state(false);
+	const defaultFromCurrency = 'USD';
+	const defaultToCurrency = 'EUR';
 
 	// Track if user has seen the how-to guide
 	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {
 	});
-
-	// Form state for currency inputs (text input for datalist)
-	let fromCurrencyInput = $state('USD');
-	let toCurrencyInput = $state('EUR');
 
 	// Amount state for formatted display
 	let amountValue = $state<number>(0);
@@ -34,27 +41,69 @@
 
 	// Valid currency codes set for quick lookup
 	let validCurrencyCodes = $derived(new Set(currencies.map((c) => c.value)));
-
-	// Validate and normalize currency input (uppercase, must be valid code)
-	function normalizeCurrencyInput(input: string): string {
-		return input.toUpperCase().trim();
-	}
+	let recentPairs = $derived(currencySelection.current.recentPairs);
 
 	// Check if a currency code is valid
 	function isValidCurrency(code: string): boolean {
 		return validCurrencyCodes.has(code);
 	}
 
+	function getDefaultTargetCurrency(fromCurrency: string): string {
+		if (fromCurrency !== defaultToCurrency && isValidCurrency(defaultToCurrency)) {
+			return defaultToCurrency;
+		}
+
+		if (fromCurrency !== defaultFromCurrency && isValidCurrency(defaultFromCurrency)) {
+			return defaultFromCurrency;
+		}
+
+		return currencies.find((currency) => currency.value !== fromCurrency)?.value ?? fromCurrency;
+	}
+
+	function sanitizeStoredSelection() {
+		if (currencies.length === 0) return;
+
+		const normalizedFrom = normalizeCurrencyCode(currencySelection.current.fromCurrency);
+		const normalizedTo = normalizeCurrencyCode(currencySelection.current.toCurrency);
+		const nextFrom = isValidCurrency(normalizedFrom) ? normalizedFrom : defaultFromCurrency;
+		const nextTo =
+			isValidCurrency(normalizedTo) && normalizedTo !== nextFrom
+				? normalizedTo
+				: getDefaultTargetCurrency(nextFrom);
+
+		if (
+			nextFrom !== currencySelection.current.fromCurrency ||
+			nextTo !== currencySelection.current.toCurrency
+		) {
+			currencySelection.current = {
+				...currencySelection.current,
+				fromCurrency: nextFrom,
+				toCurrency: nextTo
+			};
+		}
+	}
+
 	// Derived validated currency codes (fallback to USD/EUR if invalid)
 	let fromCurrency = $derived(
-		isValidCurrency(normalizeCurrencyInput(fromCurrencyInput))
-			? normalizeCurrencyInput(fromCurrencyInput)
-			: 'USD'
+		isValidCurrency(normalizeCurrencyCode(currencySelection.current.fromCurrency))
+			? normalizeCurrencyCode(currencySelection.current.fromCurrency)
+			: defaultFromCurrency
 	);
 	let toCurrency = $derived(
-		isValidCurrency(normalizeCurrencyInput(toCurrencyInput))
-			? normalizeCurrencyInput(toCurrencyInput)
-			: 'EUR'
+		isValidCurrency(normalizeCurrencyCode(currencySelection.current.toCurrency))
+			? normalizeCurrencyCode(currencySelection.current.toCurrency)
+			: defaultToCurrency
+	);
+
+	let selectedFromCurrency = $derived(
+		getCurrencyData(fromCurrency)
+			? `${getCurrencyLabel(fromCurrency)} (${getCurrencySymbol(fromCurrency)})`
+			: fromCurrency
+	);
+	let selectedToCurrency = $derived(
+		getCurrencyData(toCurrency)
+			? `${getCurrencyLabel(toCurrency)} (${getCurrencySymbol(toCurrency)})`
+			: toCurrency
 	);
 
 	// Formatted amount preview using Intl.NumberFormat
@@ -78,6 +127,7 @@
 	onMount(async () => {
 		try {
 			currencies = await getCurrencies();
+			sanitizeStoredSelection();
 		} catch (error) {
 			console.error('Failed to load currencies:', error);
 			toast.error('Failed to load currencies');
@@ -100,20 +150,19 @@
 		return foundCurrency?.symbol || currencyCode;
 	}
 
-	function swapCurrencies() {
-		const temp = fromCurrencyInput;
-		fromCurrencyInput = toCurrencyInput;
-		toCurrencyInput = temp;
+	function persistCurrencySelection(nextFromCurrency: string, nextToCurrency: string) {
+		rememberCurrencySelection(nextFromCurrency, nextToCurrency);
 	}
 
-	// Sync currency inputs with form fields
-	$effect(() => {
-		convertCurrencyForm.fields.from.set(fromCurrency);
-	});
+	function swapCurrencies() {
+		const nextFromCurrency = toCurrency;
+		const nextToCurrency = fromCurrency;
+		rememberCurrencySelection(nextFromCurrency, nextToCurrency);
+	}
 
-	$effect(() => {
-		convertCurrencyForm.fields.to.set(toCurrency);
-	});
+	function resetCurrencies() {
+		resetCurrencySelection();
+	}
 
 	// Handle amount input change
 	function handleAmountChange(e: Event) {
@@ -136,12 +185,20 @@
 
 <div class="container mx-auto max-w-4xl px-4 py-8">
 	<!-- Header -->
-	<div class="mb-8 flex flex-col items-start justify-between gap-4 sm:items-center md:flex-row">
-		<div>
-			<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Currency Converter</h1>
-			<p class="mt-1 text-gray-600 dark:text-gray-400">
-				Convert currencies with real-time exchange rates
-			</p>
+	<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+		<div class="space-y-4">
+			<div class="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+				<Globe class="size-3.5" />
+				Stored in browser
+			</div>
+			<div>
+				<h1 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+					Currency Converter
+				</h1>
+				<p class="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+					Convert currencies with real-time exchange rates and pick up right where you left off.
+				</p>
+			</div>
 		</div>
 		<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>
 			<HelpCircle class="mr-2 h-4 w-4" />
@@ -151,13 +208,25 @@
 
 	<!-- Main Content -->
 	<div class="space-y-6">
-		<Card>
-			<CardHeader>
-				<CardTitle>Convert Currency</CardTitle>
+		<Card class="overflow-hidden border-border/60 shadow-sm">
+			<CardHeader class="space-y-4">
+				<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+					<div>
+						<CardTitle class="text-xl">Convert Currency</CardTitle>
+						<p class="mt-1 text-sm text-muted-foreground">
+							Your last currency pair is restored automatically.
+						</p>
+					</div>
+					<Badge variant="secondary" class="w-fit gap-1.5">
+						<History class="size-3.5" />
+						Recently remembered
+					</Badge>
+				</div>
+				<Separator />
 			</CardHeader>
 			<CardContent>
 				<form
-					{...convertCurrencyForm.enhance(async ({ form, submit }) => {
+					{...convertCurrencyForm.enhance(async ({ submit }) => {
 						try {
 							await submit();
 							if (convertCurrencyForm.result) {
@@ -176,69 +245,110 @@
 					<input type="hidden" name="from" value={fromCurrency} />
 					<input type="hidden" name="to" value={toCurrency} />
 
-					<!-- Datalist with all currencies -->
-					<datalist id="currencyList">
-						{#each currencies as currency (currency.value)}
-							<option value={currency.value}>{currency.label} ({currency.symbol})</option>
-						{/each}
-					</datalist>
+					{#if currenciesLoading}
+						<div class="flex items-center gap-2 rounded-xl border border-dashed border-border/60 bg-muted/20 px-4 py-3 text-sm text-muted-foreground">
+							<Loader class="size-4 animate-spin" />
+							Loading currencies...
+						</div>
+					{:else}
+						<div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
+							<!-- From Currency -->
+							<div class="space-y-2">
+								<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
+								<Select.Root
+									type="single"
+									bind:value={currencySelection.current.fromCurrency}
+									onValueChange={(value) => persistCurrencySelection(value, toCurrency)}
+								>
+									<Select.Trigger id="currencyFrom" class="w-full justify-between gap-3">
+										<span class="block min-w-0 truncate text-left">{selectedFromCurrency}</span>
+									</Select.Trigger>
+									<Select.Content class="max-h-[18rem]">
+										<Select.Group>
+											<Select.GroupHeading>All currencies</Select.GroupHeading>
+											{#each currencies as currency (currency.value)}
+												<Select.Item value={currency.value} label={currency.label}>
+													<div class="flex w-full items-center justify-between gap-3">
+														<span class="truncate">{currency.label}</span>
+														<span class="text-xs text-muted-foreground">{currency.value} · {currency.symbol}</span>
+													</div>
+												</Select.Item>
+											{/each}
+										</Select.Group>
+									</Select.Content>
+								</Select.Root>
+							</div>
 
-					<div class="grid gap-6 md:grid-cols-2">
-						<!-- From Currency -->
-						<div class="space-y-2">
-							<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
-							{#if currenciesLoading}
-								<div class="flex items-center space-x-2">
-									<Loader2 class="h-4 w-4 animate-spin" />
-									<span class="text-sm text-muted-foreground">Loading currencies...</span>
-								</div>
-							{:else}
-								<Input
-									id="currencyFrom"
-									type="text"
-									list="currencyList"
-									bind:value={fromCurrencyInput}
-									placeholder="Type to search (e.g., USD, EUR)"
-									class="w-full uppercase"
-									autocomplete="off"
-								/>
-								{#if fromCurrencyInput && isValidCurrency(normalizeCurrencyInput(fromCurrencyInput))}
-									<p class="text-sm text-muted-foreground">
-										{getCurrencyLabel(fromCurrency)} ({getCurrencySymbol(fromCurrency)})
-									</p>
-								{:else if fromCurrencyInput && fromCurrencyInput.length >= 3}
-									<p class="text-sm text-destructive">Invalid currency code</p>
-								{/if}
-							{/if}
+							<div class="flex justify-center lg:pb-1">
+								<Button
+									type="button"
+									variant="outline"
+									size="icon"
+									onclick={swapCurrencies}
+									aria-label="Swap currencies"
+									class="rounded-full"
+								>
+									<ArrowLeftRight class="size-4" />
+								</Button>
+							</div>
+
+							<!-- To Currency -->
+							<div class="space-y-2">
+								<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
+								<Select.Root
+									type="single"
+									bind:value={currencySelection.current.toCurrency}
+									onValueChange={(value) => persistCurrencySelection(fromCurrency, value)}
+								>
+									<Select.Trigger id="currencyTo" class="w-full justify-between gap-3">
+										<span class="block min-w-0 truncate text-left">{selectedToCurrency}</span>
+									</Select.Trigger>
+									<Select.Content class="max-h-[18rem]">
+										<Select.Group>
+											<Select.GroupHeading>All currencies</Select.GroupHeading>
+											{#each currencies as currency (currency.value)}
+												<Select.Item value={currency.value} label={currency.label}>
+													<div class="flex w-full items-center justify-between gap-3">
+														<span class="truncate">{currency.label}</span>
+														<span class="text-xs text-muted-foreground">{currency.value} · {currency.symbol}</span>
+													</div>
+												</Select.Item>
+											{/each}
+										</Select.Group>
+									</Select.Content>
+								</Select.Root>
+							</div>
 						</div>
 
-						<!-- To Currency -->
-						<div class="space-y-2">
-							<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
-							{#if currenciesLoading}
-								<div class="flex items-center space-x-2">
-									<Loader2 class="h-4 w-4 animate-spin" />
-									<span class="text-sm text-muted-foreground">Loading currencies...</span>
-								</div>
-							{:else}
-								<Input
-									id="currencyTo"
-									type="text"
-									list="currencyList"
-									bind:value={toCurrencyInput}
-									placeholder="Type to search (e.g., USD, EUR)"
-									class="w-full uppercase"
-									autocomplete="off"
-								/>
-								{#if toCurrencyInput && isValidCurrency(normalizeCurrencyInput(toCurrencyInput))}
-									<p class="text-sm text-muted-foreground">
-										{getCurrencyLabel(toCurrency)} ({getCurrencySymbol(toCurrency)})
-									</p>
-								{:else if toCurrencyInput && toCurrencyInput.length >= 3}
-									<p class="text-sm text-destructive">Invalid currency code</p>
+						<div class="rounded-2xl border border-dashed border-border/60 bg-muted/20 p-4">
+							<div class="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+								<History class="size-3.5" />
+								Recently remembered pairs
+							</div>
+							<div class="mt-3 flex flex-wrap gap-2">
+								{#if recentPairs.length > 0}
+									{#each recentPairs as pair (pair.fromCurrency + pair.toCurrency)}
+										<Badge variant="secondary" class="gap-1.5">
+											{pair.fromCurrency}
+											<ArrowLeftRight class="size-3" />
+											{pair.toCurrency}
+										</Badge>
+									{/each}
+								{:else}
+									<div class="flex items-center gap-2 text-sm text-muted-foreground">
+										<Clock class="size-4" />
+										No saved pairs yet. Your first selection will be remembered here.
+									</div>
 								{/if}
-							{/if}
+							</div>
 						</div>
+					{/if}
+
+					<div class="flex items-center justify-between gap-3 rounded-xl border border-border/60 bg-muted/10 px-4 py-3 text-sm text-muted-foreground">
+						<span>Need to start over?</span>
+						<Button type="button" variant="ghost" size="sm" onclick={resetCurrencies}>
+							Reset saved pair
+						</Button>
 					</div>
 
 					<!-- Swap Button -->
@@ -304,10 +414,9 @@
 
 					{#if convertCurrencyForm.fields.forceRefresh.value()}
 						<Alert.Root variant="destructive">
-							<AlertCircle class="h-4 w-4" />
 							<Alert.Description>
-								Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to
-								ensure rate accuracy.
+								Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure
+								rate accuracy.
 							</Alert.Description>
 						</Alert.Root>
 					{/if}
@@ -315,10 +424,9 @@
 					<!-- Convert Button -->
 					<Button type="submit" class="w-full" disabled={isSubmitting}>
 						{#if isSubmitting}
-							<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+							<Loader class="mr-2 size-4 animate-spin" />
 							Converting...
 						{:else}
-							<RefreshCw class="mr-2 h-4 w-4" />
 							Convert Currency
 						{/if}
 					</Button>
@@ -328,9 +436,15 @@
 
 		<!-- Results Card -->
 		{#if result}
-			<Card>
+			<Card class="overflow-hidden border-border/60 shadow-sm">
 				<CardHeader>
-					<CardTitle>Conversion Result</CardTitle>
+					<div class="flex items-center justify-between gap-3">
+						<CardTitle>Conversion Result</CardTitle>
+						<Badge variant="outline" class="gap-1.5">
+							<Clock class="size-3.5" />
+							{result.cached ? 'Cached rate' : 'Live rate'}
+						</Badge>
+					</div>
 				</CardHeader>
 				<CardContent>
 					<div class="space-y-4">

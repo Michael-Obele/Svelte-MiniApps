@@ -1,8 +1,8 @@
 import {
-	DollarSign,
 	ArrowLeftRight,
-	RefreshCw,
-	TrendingUp,
+	Clock,
+	Globe,
+	History,
 	type Icon as IconType
 } from '@lucide/svelte';
 import type { HowToUseConfig, Step, Feature, Tip } from '$lib/types/how-to-use';
@@ -13,7 +13,7 @@ const gettingStartedSteps: Step[] = [
 		number: 1,
 		title: 'Select Currencies',
 		description:
-			'Choose your <strong>"From"</strong> and <strong>"To"</strong> currencies using the dropdowns or type currency codes.',
+			'Choose your <strong>"From"</strong> and <strong>"To"</strong> currencies from the dropdowns. The app remembers your last pair automatically.',
 		color: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400'
 	},
 	{
@@ -56,8 +56,8 @@ const advancedSteps: Step[] = [
 // Key Features
 const keyFeatures: Feature[] = [
 	{
-		icon: DollarSign,
-		title: '150+ Currencies',
+		icon: Globe,
+		title: 'Global Coverage',
 		description: 'Convert between all major world currencies with up-to-date exchange rates.'
 	},
 	{
@@ -66,13 +66,12 @@ const keyFeatures: Feature[] = [
 		description: 'Instantly swap currencies with one click using the swap button.'
 	},
 	{
-		icon: RefreshCw,
-		title: 'Fresh Rates',
-		description:
-			'Get the latest exchange rates with optional cache bypass for critical conversions.'
+		icon: History,
+		title: 'Remembered Pair',
+		description: 'Your last selected currencies are stored locally and restored on revisit.'
 	},
 	{
-		icon: TrendingUp,
+		icon: Clock,
 		title: 'Rate Display',
 		description: 'View detailed exchange rates and cache timestamps for transparency.'
 	}
@@ -96,7 +95,7 @@ export const currencyConverterHowToUse: HowToUseConfig = {
 		{
 			value: 'start',
 			label: 'Get Started',
-			icon: DollarSign,
+			icon: Globe,
 			steps: gettingStartedSteps,
 			proTip: {
 				text: 'Start with common currencies like USD, EUR, GBP, or JPY for the best experience!'
@@ -105,7 +104,7 @@ export const currencyConverterHowToUse: HowToUseConfig = {
 		{
 			value: 'advanced',
 			label: 'Advanced',
-			icon: TrendingUp,
+			icon: Clock,
 			steps: advancedSteps,
 			optionalDetails: [
 				{
@@ -113,13 +112,14 @@ export const currencyConverterHowToUse: HowToUseConfig = {
 					description: 'Rates are cached for 8 minutes to balance speed and accuracy'
 				},
 				{ label: 'Rate Source', description: 'Exchange rates provided by reliable financial APIs' },
-				{ label: 'Offline Support', description: 'Works offline with previously cached rates' }
+				{ label: 'Offline Support', description: 'Works offline with previously cached rates' },
+				{ label: 'Saved Selection', description: 'Your last currency pair is remembered in browser storage' }
 			]
 		},
 		{
 			value: 'features',
 			label: 'Features',
-			icon: RefreshCw,
+			icon: History,
 			features: keyFeatures,
 			tips: quickTips
 		}
