@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-03-17T12:07:37.450Z\n"
+"PO-Revision-Date: 2026-04-18T21:41:45.765Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -16,10 +16,11 @@ msgstr ""
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/state.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -51,8 +52,9 @@ msgid "USD"
 msgstr "米ドル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/state.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -75,9 +77,8 @@ msgstr "使いやすい通貨コンバーターで、手間なく通貨を換算
 msgid "Currency Converter"
 msgstr "通貨換算ツール"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Convert currencies with real-time exchange rates"
-msgstr "リアルタイムの為替レートで通貨を換算"
+#~ msgid "Convert currencies with real-time exchange rates"
+#~ msgstr "リアルタイムの為替レートで通貨を換算"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
@@ -87,6 +88,7 @@ msgid "<0/> How to Use"
 msgstr "<0/> 使い方"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert Currency"
 msgstr "通貨換算"
 
@@ -94,15 +96,14 @@ msgstr "通貨換算"
 msgid "Convert From"
 msgstr "換算元"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Loading currencies..."
-msgstr "通貨を読み込み中..."
+#~ msgid "Loading currencies..."
+#~ msgstr "通貨を読み込み中..."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert To"
 msgstr "換算先"
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Swap currencies"
 msgstr "通貨を入れ替える"
@@ -123,19 +124,17 @@ msgstr "金額を入力"
 msgid "Force Fresh Rate"
 msgstr "最新レートを強制取得"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid ""
-"Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to\n"
-"ensure rate accuracy."
-msgstr "最新レートの強制取得は、できるだけ控えてください。レートの精度を保つため、キャッシュは8分間のみ有効です。"
+#~ msgid ""
+#~ "Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to\n"
+#~ "ensure rate accuracy."
+#~ msgstr "最新レートの強制取得は、できるだけ控えてください。レートの精度を保つため、キャッシュは8分間のみ有効です。"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "<0/> Converting..."
 msgstr "<0/> 換算中..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "<0/> Convert Currency"
-msgstr "<0/> 通貨換算"
+#~ msgid "<0/> Convert Currency"
+#~ msgstr "<0/> 通貨換算"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Conversion Result"
@@ -1218,6 +1217,7 @@ msgstr "クリア"
 #: src/lib/components/blocks/Info.svelte
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
@@ -3401,6 +3401,8 @@ msgstr "アカウントを削除"
 
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 削除"
@@ -3445,7 +3447,6 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -3882,7 +3883,6 @@ msgid "Saving..."
 msgstr "保存中..."
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "変更を保存"
@@ -4686,6 +4686,7 @@ msgid "Select Budget"
 msgstr "予算を選択"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -4695,6 +4696,7 @@ msgid "GBP"
 msgstr "英ポンド"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -4704,6 +4706,7 @@ msgid "JPY"
 msgstr "日本円"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -4713,6 +4716,7 @@ msgid "CAD"
 msgstr "カナダドル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -4722,23 +4726,28 @@ msgid "AUD"
 msgstr "オーストラリアドル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "CHF"
 msgstr "スイスフラン"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "CNY"
 msgstr "中国人民元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "インドルピー"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "BRL"
 msgstr "ブラジルレアル"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -4776,6 +4785,7 @@ msgid "Expense updated successfully"
 msgstr "支出が正常に更新されました"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Expense deleted"
 msgstr "支出が削除されました"
 
@@ -4787,6 +4797,7 @@ msgstr "編集する予算が選択されていません"
 msgid "Budget updated successfully"
 msgstr "予算が正常に更新されました"
 
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Budget Tracker | Svelte Mini Apps"
 msgstr "予算トラッカー | Svelte ミニアプリ"
@@ -4876,25 +4887,24 @@ msgstr "予算を作成"
 msgid "OK"
 msgstr "OK"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-msgid "Edit Budget"
-msgstr "予算を編集"
+#~ msgid "Edit Budget"
+#~ msgstr "予算を編集"
+
+#~ msgid "Make changes to your budget here. Click save when you're done."
+#~ msgstr "ここで予算を変更してください。完了したら「保存」をクリックします。"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-msgid "Make changes to your budget here. Click save when you're done."
-msgstr "ここで予算を変更してください。完了したら「保存」をクリックします。"
-
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "予算名"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "予算額"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Formated Budget Amount"
 msgstr "フォーマットされた予算額"
 
@@ -4905,13 +4915,11 @@ msgstr "フォーマットされた予算額"
 msgid "Currency"
 msgstr "通貨"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
-msgid "Add New Budget"
-msgstr "新しい予算を追加"
+#~ msgid "Add New Budget"
+#~ msgstr "新しい予算を追加"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
-msgid "<0/> Add Budget"
-msgstr "<0/> 予算を追加"
+#~ msgid "<0/> Add Budget"
+#~ msgstr "<0/> 予算を追加"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Deleting budget..."
@@ -4938,17 +4946,14 @@ msgstr "残高:"
 msgid "Expenses"
 msgstr "出費"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Edit Expense"
-msgstr "経費を編集"
+#~ msgid "Edit Expense"
+#~ msgstr "経費を編集"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Expense Details"
-msgstr "経費の詳細"
+#~ msgid "Expense Details"
+#~ msgstr "経費の詳細"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Make changes to the expense here. Click save when you're done."
-msgstr "経費の変更はここで行ってください。完了したら「保存」をクリックしてください。"
+#~ msgid "Make changes to the expense here. Click save when you're done."
+#~ msgstr "経費の変更はここで行ってください。完了したら「保存」をクリックしてください。"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
@@ -4967,11 +4972,10 @@ msgstr "以下の経費詳細をご覧ください。編集するには鉛筆ボ
 msgid "Description"
 msgstr "説明"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Formatted Amount"
 msgstr "金額（書式設定済み）"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Save Changes"
@@ -4990,7 +4994,6 @@ msgid "Date"
 msgstr "日付"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
@@ -5000,13 +5003,11 @@ msgstr "日付"
 msgid "Delete"
 msgstr "削除"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Delete Expense"
-msgstr "経費を削除"
+#~ msgid "Delete Expense"
+#~ msgstr "経費を削除"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "This action cannot be undone. Are you sure you want to delete this expense?"
-msgstr "この操作は元に戻せません。この経費を削除してもよろしいですか？"
+#~ msgid "This action cannot be undone. Are you sure you want to delete this expense?"
+#~ msgstr "この操作は元に戻せません。この経費を削除してもよろしいですか？"
 
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -5026,10 +5027,14 @@ msgstr "支出の説明"
 msgid "Formated Expense Amount"
 msgstr "整形された支出額"
 
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "<0/> Add Expense"
 msgstr "<0/> 支出を追加"
 
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "この支出を削除してもよろしいですか？"
@@ -5038,9 +5043,8 @@ msgstr "この支出を削除してもよろしいですか？"
 msgid "Expense deleted successfully"
 msgstr "支出が正常に削除されました"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
-msgid "Latest Transactions <0>(showing 12 most recent)</0>"
-msgstr "最新の取引 <0>（最近の12件を表示）</0>"
+#~ msgid "Latest Transactions <0>(showing 12 most recent)</0>"
+#~ msgstr "最新の取引 <0>（最近の12件を表示）</0>"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
@@ -5162,6 +5166,7 @@ msgstr "GitHubのユーザー名と年を入力して、アクティビティを
 msgid "GitHub Username"
 msgstr "GitHub ユーザー名"
 
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
 msgstr "年"
@@ -5756,6 +5761,7 @@ msgstr "薬"
 msgid "Add Medication"
 msgstr "薬を追加"
 
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -6862,6 +6868,9 @@ msgstr "合計購入数"
 msgid "Total Quantity"
 msgstr "合計数量"
 
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Spent"
@@ -7628,6 +7637,7 @@ msgstr "費やした時間"
 msgid "Allocation"
 msgstr "割り当て"
 
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress"
@@ -8236,6 +8246,7 @@ msgstr "運転中"
 msgid "Morning routine"
 msgstr "朝の習慣"
 
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
@@ -8383,6 +8394,7 @@ msgstr "挑戦 #{0}"
 msgid "Current"
 msgstr "現在"
 
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
@@ -9358,15 +9370,11 @@ msgstr "無効なパスワード"
 msgid "Incorrect username or password"
 msgstr "ユーザー名またはパスワードが正しくありません"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Type to search (e.g., USD, EUR)"
-msgstr "検索語を入力してください（例：USD、EUR）"
+#~ msgid "Type to search (e.g., USD, EUR)"
+#~ msgstr "検索語を入力してください（例：USD、EUR）"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Invalid currency code"
-msgstr "無効な通貨コード"
+#~ msgid "Invalid currency code"
+#~ msgstr "無効な通貨コード"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter the amount to convert"
@@ -10006,6 +10014,7 @@ msgid "Try adjusting your search query"
 msgstr "検索クエリを調整してみてください"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "No activity yet"
 msgstr "まだアクティビティはありません"
 
@@ -10595,3 +10604,425 @@ msgstr ""
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> Binary Representation"
 msgstr "<0/> バイナリ表現"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Overall Summary"
+msgstr "全体の概要"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Total Budget"
+msgstr "予算総額"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Remaining"
+msgstr "残り"
+
+#. placeholder {0}: budget.name
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "「{0}」を削除してもよろしいですか？"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Budget deleted"
+msgstr "予算が削除されました"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "<0/> Edit Budget"
+msgstr "<0/> 予算を編集"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "<0/> View Details"
+msgstr "<0/> 詳細を見る"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Allocated"
+msgstr "割り当て済み"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Spent"
+msgstr "支出済み"
+
+#. placeholder {0}: budget.expenses.length
+#. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "{0} expense{1}"
+msgstr "{0} 件の経費"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget updated"
+msgstr "予算が更新されました"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Expense updated"
+msgstr "支出が更新されました"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Back to Budgets"
+msgstr "<0/> 予算一覧へ戻る"
+
+#~ msgid "Track and manage your {0} budget"
+#~ msgstr "あなたの {0} 予算を追跡・管理する"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Not Found"
+msgstr "予算が見つかりません"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "The budget you're looking for doesn't exist."
+msgstr "お探しの予算は存在しません。"
+
+#~ msgid "Analytics"
+#~ msgstr "分析"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Budget Allocated"
+msgstr "割り当て済みの予算"
+
+#. placeholder {0}: percentUsed.toFixed(1)
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "{0}% of budget"
+msgstr "予算の{0}％"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Over budget"
+msgstr "予算超過"
+
+#~ msgid "Available"
+#~ msgstr "利用可能額"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "View Details <0/>"
+msgstr "詳細を見る <0/>"
+
+#. placeholder {0}: budget.expenses.length
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Expenses ({0})"
+msgstr "支出（{0}）"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "No expenses yet"
+msgstr "まだ支出はありません"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Edit expense"
+msgstr "支出を編集"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Delete expense"
+msgstr "支出を削除```"
+
+#~ msgid "Spending by Category"
+#~ msgstr "カテゴリ別の支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "No expense data yet"
+msgstr "まだ支出データはありません"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Spending Trends"
+msgstr "支出の推移"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Week"
+msgstr "週"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Month"
+msgstr "月"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "All-time"
+msgstr "累計"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "No expense data for this period"
+msgstr "この期間の支出データはありません"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Daily Average"
+msgstr "1日あたりの平均"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Budget vs Spent"
+msgstr "予算と支出の比較"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Expense added"
+msgstr "支出が追加されました"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Enter the expense details below. Click save when you're done."
+msgstr "下に支出の詳細を入力してください。完了したら保存をクリックしてください。"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Not Found | Budget Tracker"
+msgstr "予算が見つかりません | 予算トラッカー"
+
+#. placeholder {0}: budget.name
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Review {0}, compare spending, and manage expenses in the Budget Tracker."
+msgstr "{0}を確認し、支出を比較し、予算トラッカーで費用を管理しましょう。"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Review budget details, charts, and expenses in the Budget Tracker."
+msgstr "予算トラッカーで予算の詳細、チャート、支出を確認しましょう。"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Track every budget, add expenses quickly, and review your recent spending in one place."
+msgstr "すべての予算を管理し、経費を素早く追加し、直近の支出を1か所で確認できます。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Stored in browser"
+msgstr "<0/> ブラウザに保存"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Convert currencies with real-time exchange rates and pick up right where you left off."
+msgstr "リアルタイムの為替レートで通貨を変換し、中断したところからすぐに再開できます。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Your last currency pair is restored automatically."
+msgstr "最後に使用した通貨ペアは自動的に復元されます。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Recently remembered"
+msgstr "<0/> 最近記憶したもの"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Loading currencies..."
+msgstr "<0/> 通貨を読み込み中..."
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "All currencies"
+msgstr "すべての通貨"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Recently remembered pairs"
+msgstr "<0/> 最近記憶したペア"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> No saved pairs yet. Your first selection will be remembered here."
+msgstr "<0/> 保存されたペアはまだありません。最初に選択したペアがここに記憶されます。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Need to start over?"
+msgstr "最初からやり直しますか？"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Reset saved pair"
+msgstr "保存したペアをリセット"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid ""
+"Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
+"rate accuracy."
+msgstr "強制最新レートは控えめに使用してください。レートの正確性を保つため、キャッシュは8分間のみ有効です。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Cached rate"
+msgstr "キャッシュされたレート"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Live rate"
+msgstr "ライブレート"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "Update your budget details. Click save when you're done."
+msgstr "予算の詳細を更新します。完了したら保存をクリックしてください。"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Select Currency"
+msgstr "通貨を選択"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "✓ Save Changes"
+msgstr "✓ 変更を保存"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+msgid "Recent Transactions"
+msgstr "最近の取引"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+msgid "Last 12 expenses across all budgets"
+msgstr "全予算における直近12件の支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Create New Budget"
+msgstr "新規予算を作成"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Set up a budget to track your spending"
+msgstr "支出を追跡するための予算を設定します"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Formatted"
+msgstr "フォーマット済み"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "Budget"
+msgstr "予算"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "Left"
+msgstr "残り"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "<0/> Add New Expense"
+msgstr "<0/> 新規支出を追加"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "<0/> Expense Details"
+msgstr "<0/> 支出の詳細"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "What did you spend on?"
+msgstr "何に使いましたか？"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Delete Expense?"
+msgstr "支出を削除しますか？"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "This action cannot be undone. The expense will be permanently removed."
+msgstr "この操作は取り消せません。支出は完全に削除されます。"
+
+#~ msgid "{0} budget"
+#~ msgstr ""
+
+#~ msgid "Expenses <0/>"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Daily spending over selected period"
+msgstr "選択期間における日次支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "<0/> Over budget"
+msgstr "<0/> 予算超過"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "<0/> Available"
+msgstr "<0/> 利用可能"
+
+#~ msgid "Distribution of expenses across categories"
+#~ msgstr ""
+
+#~ msgid "+{0} more categories"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Comparison of allocated budget and actual spending"
+msgstr "予算配分と実際の支出の比較"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "No expenses recorded yet"
+msgstr "まだ支出が記録されていません"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Approaching limit"
+msgstr "制限に近づいています"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "On track"
+msgstr "順調です"
+
+#. placeholder {0}: budget.currency
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> {0} budget"
+msgstr "<0/> {0} 予算"
+
+#~ msgid ""
+#~ "Review the budget at a glance, inspect where the money is going, and manage\n"
+#~ "expenses without switching context."
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Largest entry"
+msgstr "<0/> 最大の支出"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Nothing logged yet"
+msgstr "まだ記録がありません"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Latest activity"
+msgstr "<0/> 最新の活動"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Most recent expense logged"
+msgstr "記録された最新の支出"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Coverage"
+msgstr "<0/> 使用率"
+
+#. placeholder {0}: percentUsed.toFixed(0)
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0}% of this budget is already used"
+msgstr "この予算の{0}%は既に使用済みです"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Useful context for pacing spend"
+msgstr "支出ペースを管理するための有用な情報"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Health"
+msgstr "予算の健全性"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Remaining before the budget cap is reached"
+msgstr "予算上限に達するまでの残り"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Used"
+msgstr "使用済み"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Analytics"
+msgstr "<0/> 分析"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Expenses <1/>"
+msgstr "<0/> 支出 <1/>"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Top Spending Items"
+msgstr "支出上位項目"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Part-to-whole view of the biggest expense descriptions in this budget"
+msgstr "この予算における最大の支出項目の部分対全体ビュー"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Largest item"
+msgstr "最大の項目"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Total spent"
+msgstr "合計支出"
+
+#. placeholder {0}: hiddenItemCount
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Grouped {0} smaller items into Other."
+msgstr "{0}個の小額項目を「その他」にグループ化しました。"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Every logged item for this budget"
+msgstr "この予算のすべての記録項目"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid ""
+"Review the budget at a glance, inspect where the money is going, and manage expenses\n"
+"without switching context."
+msgstr "予算を一目で確認し、お金の流れを把握し、コンテキストを切り替えることなく支出を管理できます。"

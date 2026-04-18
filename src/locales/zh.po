@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-03-17T12:07:37.427Z\n"
+"PO-Revision-Date: 2026-04-18T22:01:25.157Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -478,6 +478,7 @@ msgstr "清除"
 #: src/lib/components/blocks/Info.svelte
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
@@ -668,10 +669,11 @@ msgstr "选择预算"
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/state.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -703,8 +705,9 @@ msgid "USD"
 msgstr "美元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/state.svelte.ts
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -714,6 +717,7 @@ msgid "EUR"
 msgstr "欧元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -723,6 +727,7 @@ msgid "GBP"
 msgstr "英镑"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -732,6 +737,7 @@ msgid "JPY"
 msgstr "日元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -741,6 +747,7 @@ msgid "CAD"
 msgstr "加元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -750,23 +757,28 @@ msgid "AUD"
 msgstr "澳元"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "CHF"
 msgstr "瑞士法郎"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "CNY"
 msgstr "人民币"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "INR"
 msgstr "印度卢比"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "BRL"
 msgstr "巴西雷亚尔"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -804,6 +816,7 @@ msgid "Expense updated successfully"
 msgstr "费用已成功更新"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Expense deleted"
 msgstr "费用已删除"
 
@@ -815,6 +828,7 @@ msgstr "未选择要编辑的预算"
 msgid "Budget updated successfully"
 msgstr "预算已成功更新"
 
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Budget Tracker | Svelte Mini Apps"
 msgstr "预算跟踪器 | Svelte Mini Apps"
@@ -868,7 +882,6 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/(auth)/profile/sessions/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -974,9 +987,8 @@ msgstr "使用我们易于使用的货币转换器轻松转换货币。获取即
 msgid "Currency Converter"
 msgstr "货币转换器"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Convert currencies with real-time exchange rates"
-msgstr "使用实时汇率转换货币"
+#~ msgid "Convert currencies with real-time exchange rates"
+#~ msgstr "使用实时汇率转换货币"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
@@ -985,6 +997,7 @@ msgstr "使用实时汇率转换货币"
 msgid "<0/> How to Use"
 msgstr "<0/> 如何使用"
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert Currency"
 msgstr "转换货币"
@@ -997,6 +1010,7 @@ msgstr "从"
 msgid "Convert To"
 msgstr "到"
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Swap currencies"
 msgstr "交换货币"
@@ -1017,11 +1031,10 @@ msgstr "输入金额"
 msgid "Force Fresh Rate"
 msgstr "强制刷新汇率"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid ""
-"Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to\n"
-"ensure rate accuracy."
-msgstr "请谨慎使用强制刷新汇率。缓存仅在 8 分钟内有效，以确保汇率准确。"
+#~ msgid ""
+#~ "Please use Force Fresh Rate sparingly. The cache is only active for 8 minutes to\n"
+#~ "ensure rate accuracy."
+#~ msgstr "请谨慎使用强制刷新汇率。缓存仅在 8 分钟内有效，以确保汇率准确。"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "<0/> Converting..."
@@ -1085,6 +1098,7 @@ msgstr "GitHub 贡献跟踪器"
 msgid "GitHub Username"
 msgstr "GitHub 用户名"
 
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
 msgstr "年份"
@@ -3545,25 +3559,24 @@ msgstr "剩余："
 msgid "Expenses"
 msgstr "支出"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-msgid "Edit Budget"
-msgstr "编辑预算"
+#~ msgid "Edit Budget"
+#~ msgstr "编辑预算"
+
+#~ msgid "Make changes to your budget here. Click save when you're done."
+#~ msgstr "在此处更改您的预算。完成后点击保存。"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-msgid "Make changes to your budget here. Click save when you're done."
-msgstr "在此处更改您的预算。完成后点击保存。"
-
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "预算名称"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "预算金额"
 
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Formated Budget Amount"
 msgstr "格式化的预算金额"
 
@@ -3575,7 +3588,6 @@ msgid "Currency"
 msgstr "货币"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Save changes"
 msgstr "保存更改"
@@ -3584,17 +3596,14 @@ msgstr "保存更改"
 msgid "Quick Navigation"
 msgstr "快速导航"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Edit Expense"
-msgstr "编辑支出"
+#~ msgid "Edit Expense"
+#~ msgstr "编辑支出"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Expense Details"
-msgstr "支出详情"
+#~ msgid "Expense Details"
+#~ msgstr "支出详情"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Make changes to the expense here. Click save when you're done."
-msgstr "在此处更改支出。完成后点击保存。"
+#~ msgid "Make changes to the expense here. Click save when you're done."
+#~ msgstr "在此处更改支出。完成后点击保存。"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
@@ -3613,11 +3622,10 @@ msgstr "查看下面的支出详情。点击铅笔按钮进行编辑。"
 msgid "Description"
 msgstr "描述"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Formatted Amount"
 msgstr "格式化的金额"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Save Changes"
@@ -3636,7 +3644,6 @@ msgid "Date"
 msgstr "日期"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
@@ -3646,13 +3653,11 @@ msgstr "日期"
 msgid "Delete"
 msgstr "删除"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "Delete Expense"
-msgstr "删除支出"
+#~ msgid "Delete Expense"
+#~ msgstr "删除支出"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-msgid "This action cannot be undone. Are you sure you want to delete this expense?"
-msgstr "此操作无法撤消。您确定要删除此支出吗？"
+#~ msgid "This action cannot be undone. Are you sure you want to delete this expense?"
+#~ msgstr "此操作无法撤消。您确定要删除此支出吗？"
 
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -3660,13 +3665,11 @@ msgstr "此操作无法撤消。您确定要删除此支出吗？"
 msgid "<0/> Edit"
 msgstr "<0/> 编辑"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
-msgid "Add New Budget"
-msgstr "添加新的预算"
+#~ msgid "Add New Budget"
+#~ msgstr "添加新的预算"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
-msgid "<0/> Add Budget"
-msgstr "<0/> 添加预算"
+#~ msgid "<0/> Add Budget"
+#~ msgstr "<0/> 添加预算"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Add New Expense"
@@ -3680,10 +3683,14 @@ msgstr "支出描述"
 msgid "Formated Expense Amount"
 msgstr "格式化的支出金额"
 
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "<0/> Add Expense"
 msgstr "<0/> 添加支出"
 
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "您确定要删除此支出吗？"
@@ -3692,9 +3699,8 @@ msgstr "您确定要删除此支出吗？"
 msgid "Expense deleted successfully"
 msgstr "支出删除成功"
 
-#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
-msgid "Latest Transactions <0>(showing 12 most recent)</0>"
-msgstr "最新交易记录 <0>(显示最近 12 条)</0>"
+#~ msgid "Latest Transactions <0>(showing 12 most recent)</0>"
+#~ msgstr "最新交易记录 <0>(显示最近 12 条)</0>"
 
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
@@ -3946,6 +3952,7 @@ msgstr "药物"
 msgid "Add Medication"
 msgstr "添加药物"
 
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -4765,6 +4772,7 @@ msgstr "社交场合"
 msgid "Coffee/tea"
 msgstr "咖啡/茶"
 
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "Other"
@@ -5015,6 +5023,7 @@ msgstr "尝试 #{0}"
 msgid "Current"
 msgstr "当前"
 
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Completed"
@@ -5363,6 +5372,9 @@ msgstr "购买总数"
 msgid "Total Quantity"
 msgstr "总数量"
 
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
 msgid "Total Spent"
@@ -5554,6 +5566,8 @@ msgstr "<0/> 正在删除..."
 
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 删除"
@@ -7219,14 +7233,11 @@ msgstr "<0/> 保存中..."
 msgid "Offline-First Architecture"
 msgstr "离线优先架构"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Loading currencies..."
-msgstr "正在加载货币..."
+#~ msgid "Loading currencies..."
+#~ msgstr "正在加载货币..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "<0/> Convert Currency"
-msgstr "<0/> 转换货币"
+#~ msgid "<0/> Convert Currency"
+#~ msgstr "<0/> 转换货币"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/note-taker/+page.svelte
@@ -8709,6 +8720,7 @@ msgstr "已投入时间"
 msgid "Allocation"
 msgstr "分配"
 
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Progress"
@@ -9360,15 +9372,11 @@ msgstr "可用年份"
 msgid "Other years with contribution data"
 msgstr "包含贡献数据的其他年份"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Type to search (e.g., USD, EUR)"
-msgstr "输入以搜索货币代码（例如 USD、EUR）"
+#~ msgid "Type to search (e.g., USD, EUR)"
+#~ msgstr "输入以搜索货币代码（例如 USD、EUR）"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid "Invalid currency code"
-msgstr "无效的货币代码"
+#~ msgid "Invalid currency code"
+#~ msgstr "无效的货币代码"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Enter the amount to convert"
@@ -10004,6 +10012,7 @@ msgid "Try adjusting your search query"
 msgstr "尝试调整您的搜索查询"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "No activity yet"
 msgstr "尚无活动"
 
@@ -10608,3 +10617,425 @@ msgstr ""
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> Binary Representation"
 msgstr "<0/> 二进制表示"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Overall Summary"
+msgstr "总览"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Total Budget"
+msgstr "总预算"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Remaining"
+msgstr "剩余"
+
+#. placeholder {0}: budget.name
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "您确定要删除“{0}”吗？"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Budget deleted"
+msgstr "预算已删除"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "<0/> Edit Budget"
+msgstr "<0/> 编辑预算"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "<0/> View Details"
+msgstr "<0/> 查看详情"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Allocated"
+msgstr "已分配"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Spent"
+msgstr "已花费"
+
+#. placeholder {0}: budget.expenses.length
+#. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "{0} expense{1}"
+msgstr "{0} 项支出{1}"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget updated"
+msgstr "预算已更新"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Expense updated"
+msgstr "支出已更新"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Back to Budgets"
+msgstr "<0/> 返回预算"
+
+#~ msgid "Track and manage your {0} budget"
+#~ msgstr "跟踪并管理您的 {0} 预算"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Not Found"
+msgstr "未找到预算"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "The budget you're looking for doesn't exist."
+msgstr "您要找的预算不存在。"
+
+#~ msgid "Analytics"
+#~ msgstr "分析"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Budget Allocated"
+msgstr "已分配预算"
+
+#. placeholder {0}: percentUsed.toFixed(1)
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "{0}% of budget"
+msgstr "{0}% 的预算"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Over budget"
+msgstr "超出预算"
+
+#~ msgid "Available"
+#~ msgstr "可用"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "View Details <0/>"
+msgstr "查看详情 <0/>"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Budget vs Spent"
+msgstr "预算与支出对比"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Spending Trends"
+msgstr "支出趋势"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Week"
+msgstr "周"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Month"
+msgstr "月"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "All-time"
+msgstr "全部时间"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "No expense data for this period"
+msgstr "本期暂无支出数据"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Daily Average"
+msgstr "每日平均"
+
+#~ msgid "Spending by Category"
+#~ msgstr "按类别支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "No expense data yet"
+msgstr "暂无支出数据"
+
+#. placeholder {0}: budget.expenses.length
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Expenses ({0})"
+msgstr "支出（{0}）"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "No expenses yet"
+msgstr "暂无支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Edit expense"
+msgstr "编辑支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Delete expense"
+msgstr "删除支出"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Expense added"
+msgstr "支出已添加"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Enter the expense details below. Click save when you're done."
+msgstr "在下方输入费用详情。完成后点击保存。"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Not Found | Budget Tracker"
+msgstr "未找到预算 | 预算跟踪器"
+
+#. placeholder {0}: budget.name
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Review {0}, compare spending, and manage expenses in the Budget Tracker."
+msgstr "查看 {0}，对比支出，并在预算跟踪器中管理费用。"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Review budget details, charts, and expenses in the Budget Tracker."
+msgstr "在预算跟踪器中查看预算详情、图表和费用。"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Track every budget, add expenses quickly, and review your recent spending in one place."
+msgstr "跟踪每一笔预算，快速添加支出，并在一个地方查看你最近的消费。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Stored in browser"
+msgstr "<0/> 存储在浏览器中"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Convert currencies with real-time exchange rates and pick up right where you left off."
+msgstr "使用实时汇率转换货币，并可从上次中断处继续。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Your last currency pair is restored automatically."
+msgstr "您上次使用的货币对将自动恢复。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Recently remembered"
+msgstr "<0/> 最近记住的"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Loading currencies..."
+msgstr "<0/> 正在加载货币..."
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "All currencies"
+msgstr "所有货币"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> Recently remembered pairs"
+msgstr "<0/> 最近记住的货币对"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "<0/> No saved pairs yet. Your first selection will be remembered here."
+msgstr "<0/> 尚无保存的货币对。您的首次选择将在此处被记住。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Need to start over?"
+msgstr "需要重新开始吗？"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Reset saved pair"
+msgstr "重置已保存的货币对"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid ""
+"Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
+"rate accuracy."
+msgstr "请谨慎使用强制刷新汇率。缓存仅持续8分钟，以确保汇率准确性。"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Cached rate"
+msgstr "缓存汇率"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Live rate"
+msgstr "实时汇率"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "Update your budget details. Click save when you're done."
+msgstr "更新您的预算详情。完成后请点击保存。"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Select Currency"
+msgstr "选择货币"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
+msgid "✓ Save Changes"
+msgstr "✓ 保存更改"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+msgid "Recent Transactions"
+msgstr "最近交易"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
+msgid "Last 12 expenses across all budgets"
+msgstr "所有预算中最近12笔支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Create New Budget"
+msgstr "创建新预算"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+msgid "Set up a budget to track your spending"
+msgstr "设置预算以追踪您的支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Formatted"
+msgstr "已格式化"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "Budget"
+msgstr "预算"
+
+#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+msgid "Left"
+msgstr "剩余"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "<0/> Add New Expense"
+msgstr "<0/> 添加新支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "<0/> Expense Details"
+msgstr "<0/> 支出详情"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "What did you spend on?"
+msgstr "你花费在什么项目上？"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "Delete Expense?"
+msgstr "删除支出？"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+msgid "This action cannot be undone. The expense will be permanently removed."
+msgstr "此操作无法撤销。该支出将被永久删除。"
+
+#~ msgid "{0} budget"
+#~ msgstr ""
+
+#~ msgid "Expenses <0/>"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
+msgid "Daily spending over selected period"
+msgstr "选定期间内的每日支出"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "<0/> Over budget"
+msgstr "<0/> 超出预算"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "<0/> Available"
+msgstr "<0/> 可用余额"
+
+#~ msgid "Distribution of expenses across categories"
+#~ msgstr ""
+
+#~ msgid "+{0} more categories"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "Comparison of allocated budget and actual spending"
+msgstr "预算分配与实际支出对比"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
+msgid "No expenses recorded yet"
+msgstr "暂无支出记录"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Approaching limit"
+msgstr "接近上限"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "On track"
+msgstr "正常"
+
+#. placeholder {0}: budget.currency
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> {0} budget"
+msgstr "<0/> {0} 预算"
+
+#~ msgid ""
+#~ "Review the budget at a glance, inspect where the money is going, and manage\n"
+#~ "expenses without switching context."
+#~ msgstr ""
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Largest entry"
+msgstr "<0/> 最大支出项"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Nothing logged yet"
+msgstr "暂无记录"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Latest activity"
+msgstr "<0/> 最近活动"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Most recent expense logged"
+msgstr "最近记录的支出"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Coverage"
+msgstr "<0/> 覆盖情况"
+
+#. placeholder {0}: percentUsed.toFixed(0)
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0}% of this budget is already used"
+msgstr "此预算的 {0}% 已被使用"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Useful context for pacing spend"
+msgstr "控制支出节奏的有用信息"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget Health"
+msgstr "预算健康状况"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Remaining before the budget cap is reached"
+msgstr "达到预算上限前的剩余额度"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Used"
+msgstr "已使用"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Analytics"
+msgstr "<0/> 分析"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Expenses <1/>"
+msgstr "<0/> 支出 <1/>"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Top Spending Items"
+msgstr "主要支出项目"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Part-to-whole view of the biggest expense descriptions in this budget"
+msgstr "本预算中最大支出项目的部分与整体关系视图"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Largest item"
+msgstr "最大项目"
+
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Total spent"
+msgstr "总支出"
+
+#. placeholder {0}: hiddenItemCount
+#: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
+msgid "Grouped {0} smaller items into Other."
+msgstr "已将 {0} 个较小的项目归入“其他”类别。"
+
+#: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
+msgid "Every logged item for this budget"
+msgstr "此预算的所有记录项目"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid ""
+"Review the budget at a glance, inspect where the money is going, and manage expenses\n"
+"without switching context."
+msgstr "一览预算概况，检查资金去向，并在不切换上下文的情况下管理支出。"
