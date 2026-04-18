@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2026-04-18T22:20:35.171Z\n"
+"PO-Revision-Date: 2026-04-18T22:38:21.146Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -10752,10 +10752,8 @@ msgstr "El presupuesto que buscas no existe."
 msgid "Budget Allocated"
 msgstr "Presupuesto asignado"
 
-#. placeholder {0}: percentUsed.toFixed(1)
-#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
-msgid "{0}% of budget"
-msgstr "{0}% del presupuesto"
+#~ msgid "{0}% of budget"
+#~ msgstr "{0}% del presupuesto"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Over budget"
@@ -10978,13 +10976,11 @@ msgstr "Esta acción no se puede deshacer. El gasto se eliminará permanentement
 msgid "Daily spending over selected period"
 msgstr "Gasto diario durante el período seleccionado"
 
-#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
-msgid "<0/> Over budget"
-msgstr "<0/> Por encima del presupuesto"
+#~ msgid "<0/> Over budget"
+#~ msgstr "<0/> Por encima del presupuesto"
 
-#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
-msgid "<0/> Available"
-msgstr "<0/> Disponible"
+#~ msgid "<0/> Available"
+#~ msgstr "<0/> Disponible"
 
 #~ msgid "Distribution of expenses across categories"
 #~ msgstr ""
@@ -11143,3 +11139,74 @@ msgstr "Muestra las herramientas que ya están disponibles para usar ahora mismo
 #: src/routes/apps/AppFilters.svelte
 msgid "<0/> Ready"
 msgstr "<0/> Listo"
+
+#~ msgid "Near limit"
+#~ msgstr "Cerca del límite"
+
+#~ msgid "<0/> Budget base"
+#~ msgstr "<0/> Base del presupuesto"
+
+#~ msgid "Expense count"
+#~ msgstr "Cantidad de gastos"
+
+#~ msgid "{0} tracked"
+#~ msgstr "{0} registrados"
+
+#~ msgid "{0}% of budget used"
+#~ msgstr "{0}% del presupuesto utilizado"
+
+#~ msgid "Utilization"
+#~ msgstr "Utilización"
+
+#~ msgid "Budget utilization"
+#~ msgstr "Utilización del presupuesto"
+
+#~ msgid "<0/> Needs attention"
+#~ msgstr "<0/> Necesita atención"
+
+#~ msgid "<0/> Available funds"
+#~ msgstr "<0/> Fondos disponibles"
+
+#~ msgid "Review recent expenses and rebalance this budget."
+#~ msgstr "Revisa los gastos recientes y reequilibra este presupuesto."
+
+#~ msgid "{0}% of this budget is still available."
+#~ msgstr "El {0}% de este presupuesto aún está disponible."
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Available balance"
+msgstr "Saldo disponible"
+
+#~ msgid "Remaining budget"
+#~ msgstr "Presupuesto restante"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Active Base"
+msgstr "Base Activa"
+
+#. placeholder {0}: budget.expenses.length
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "{0} expenses"
+msgstr "{0} gastos"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Over Limit"
+msgstr "Sobre el Límite"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Near Limit"
+msgstr "Cerca del Límite"
+
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "On Track"
+msgstr "En Camino"
+
+#. placeholder {0}: percentUsed.toFixed(1)
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "{0}% used"
+msgstr "{0}% usado"
+
+#. placeholder {0}: formatNumber(Math.abs(remaining))
+#: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
+msgid "Exceeded by {0}"
+msgstr "Excedido por {0}"

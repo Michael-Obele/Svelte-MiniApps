@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card } from '@/ui/card';
-	import { TrendingDown, TrendingUp, Wallet, CircleAlert, CircleCheck } from '@lucide/svelte';
+	import { Activity, CircleAlert, TrendingDown, TrendingUp, Wallet } from '@lucide/svelte';
 	import type { Budget } from '../states.svelte';
 
 	interface Props {
@@ -10,77 +10,108 @@
 
 	let { budget, formatNumber }: Props = $props();
 
+	function clamp(value: number, min: number, max: number) {
+		return Math.min(Math.max(value, min), max);
+	}
+
 	const spent = $derived(budget.expenses.reduce((sum, exp) => sum + exp.amount, 0));
 	const remaining = $derived(budget.amount - spent);
-	const percentUsed = $derived(Math.min((spent / budget.amount) * 100, 100));
+	const percentUsed = $derived(
+		budget.amount > 0 ? clamp((spent / budget.amount) * 100, 0, 100) : spent > 0 ? 100 : 0
+	);
 	const isOverBudget = $derived(spent > budget.amount);
+	const isNearLimit = $derived(!isOverBudget && percentUsed >= 80);
 </script>
 
 <div class="grid gap-4 md:grid-cols-3">
 	<!-- Budget Allocated Card -->
-	<Card class="border-l-primary border-l-4 p-4 md:p-6">
-		<div class="flex items-start justify-between">
-			<div class="space-y-2">
-				<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-					Budget Allocated
-				</p>
-				<p class="text-foreground text-2xl font-bold md:text-3xl">{formatNumber(budget.amount)}</p>
-				<p class="text-muted-foreground text-xs">{budget.currency}</p>
+	<Card class="bg-card flex flex-col justify-between p-6 shadow-sm">
+		<div class="space-y-4">
+			<div class="flex items-center justify-between">
+				<p class="text-muted-foreground text-sm font-medium">Budget Allocated</p>
+				<Wallet class="text-muted-foreground size-4" />
 			</div>
-			<div class="bg-muted rounded-lg p-3">
-				<Wallet class="text-foreground h-5 w-5" />
+
+			<div class="space-y-1">
+				<h3 class="text-2xl font-bold tracking-tight">{formatNumber(budget.amount)}</h3>
+				<div class="flex items-center gap-2 text-sm">
+					<div
+						class="flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-emerald-600 dark:text-emerald-400"
+					>
+						<div class="size-1.5 rounded-full bg-emerald-500"></div>
+						<span class="text-xs font-medium">Active Base</span>
+					</div>
+					<span class="text-muted-foreground">{budget.expenses.length} expenses</span>
+				</div>
 			</div>
 		</div>
 	</Card>
 
 	<!-- Total Spent Card -->
-	<Card
-		class="border-l-4 p-4 md:p-6 {isOverBudget ? 'border-l-destructive' : 'border-l-orange-500'}"
-	>
-		<div class="flex items-start justify-between">
-			<div class="space-y-2">
-				<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Total Spent</p>
-				<p
-					class={`text-2xl font-bold md:text-3xl ${isOverBudget ? 'text-destructive' : 'text-foreground'}`}
-				>
-					{formatNumber(spent)}
-				</p>
-				<p class={`text-xs ${isOverBudget ? 'text-destructive' : 'text-muted-foreground'}`}>
-					{percentUsed.toFixed(1)}% of budget
-				</p>
+	<Card class="bg-card flex flex-col justify-between p-6 shadow-sm">
+		<div class="space-y-4">
+			<div class="flex items-center justify-between">
+				<p class="text-muted-foreground text-sm font-medium">Total Spent</p>
+				<Activity class="text-muted-foreground size-4" />
 			</div>
-			<div class="bg-muted rounded-lg p-3">
-				<TrendingDown class={`h-5 w-5 ${isOverBudget ? 'text-destructive' : 'text-foreground'}`} />
+
+			<div class="space-y-1">
+				<h3 class="text-2xl font-bold tracking-tight">{formatNumber(spent)}</h3>
+				<div class="flex items-center gap-2 text-sm">
+					{#if isOverBudget}
+						<div
+							class="bg-destructive/10 text-destructive flex items-center gap-1.5 rounded-full px-2 py-0.5"
+						>
+							<div class="bg-destructive size-1.5 animate-pulse rounded-full"></div>
+							<span class="text-xs font-medium">Over Limit</span>
+						</div>
+					{:else if isNearLimit}
+						<div
+							class="flex items-center gap-1.5 rounded-full bg-orange-500/10 px-2 py-0.5 text-orange-600 dark:text-orange-400"
+						>
+							<div class="size-1.5 rounded-full bg-orange-500"></div>
+							<span class="text-xs font-medium">Near Limit</span>
+						</div>
+					{:else}
+						<div
+							class="flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-emerald-600 dark:text-emerald-400"
+						>
+							<div class="size-1.5 rounded-full bg-emerald-500"></div>
+							<span class="text-xs font-medium">On Track</span>
+						</div>
+					{/if}
+					<span class="text-muted-foreground">{percentUsed.toFixed(1)}% used</span>
+				</div>
 			</div>
 		</div>
 	</Card>
 
 	<!-- Remaining Card -->
-	<Card
-		class="border-l-4 p-4 md:p-6 {isOverBudget ? 'border-l-destructive' : 'border-l-green-500'}"
-	>
-		<div class="flex items-start justify-between">
-			<div class="space-y-2">
-				<p class="text-muted-foreground text-xs font-medium tracking-wide uppercase">Remaining</p>
-				<p
-					class={`text-2xl font-bold md:text-3xl ${remaining < 0 ? 'text-destructive' : 'text-foreground'}`}
-				>
-					{formatNumber(Math.max(remaining, 0))}
-				</p>
-				<p
-					class={`flex items-center gap-1 text-xs ${isOverBudget ? 'text-destructive font-medium' : 'text-muted-foreground'}`}
-				>
-					{#if isOverBudget}
-						<CircleAlert class="h-3.5 w-3.5" />
-						Over budget
-					{:else}
-						<CircleCheck class="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
-						Available
-					{/if}
-				</p>
+	<Card class="bg-card flex flex-col justify-between p-6 shadow-sm">
+		<div class="space-y-4">
+			<div class="flex items-center justify-between">
+				<p class="text-muted-foreground text-sm font-medium">Remaining</p>
+				{#if isOverBudget}
+					<TrendingDown class="text-destructive size-4" />
+				{:else}
+					<TrendingUp class="size-4 text-emerald-500" />
+				{/if}
 			</div>
-			<div class="bg-muted rounded-lg p-3">
-				<TrendingUp class={`h-5 w-5 ${isOverBudget ? 'text-destructive' : 'text-foreground'}`} />
+
+			<div class="space-y-1">
+				<h3 class="text-2xl font-bold tracking-tight">{formatNumber(Math.max(remaining, 0))}</h3>
+				<div class="flex items-center gap-2 text-sm">
+					{#if isOverBudget}
+						<div class="text-destructive flex items-center gap-1.5">
+							<CircleAlert class="size-3.5" />
+							<span class="text-xs font-medium"
+								>Exceeded by {formatNumber(Math.abs(remaining))}</span
+							>
+						</div>
+					{:else}
+						<span class="text-muted-foreground">Available balance</span>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</Card>
