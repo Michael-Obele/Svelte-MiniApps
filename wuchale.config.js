@@ -1,9 +1,30 @@
 // @ts-check
 import { adapter as svelte } from '@wuchale/svelte';
 import { adapter as js } from 'wuchale/adapter-vanilla';
-import OpenAI from 'openai';
+import { generateText } from 'ai';
+import { deepseek } from '@ai-sdk/deepseek';
 import { defineConfig } from 'wuchale';
-import { gemini } from 'wuchale';
+
+const deepseekModel = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+
+/**
+ * @param {string} messages
+ * @param {string} instruction
+ */
+async function translateWithDeepSeek(messages, instruction) {
+	if (!process.env.DEEPSEEK_API_KEY) {
+		throw new Error('Missing DEEPSEEK_API_KEY for Wuchale live translation.');
+	}
+
+	const { text } = await generateText({
+		model: deepseek(deepseekModel),
+		system: instruction,
+		prompt: messages,
+		temperature: 0
+	});
+
+	return text;
+}
 
 export default defineConfig({
 	// sourceLocale is en by default
@@ -26,25 +47,9 @@ export default defineConfig({
 		})
 	},
 	ai: {
-		name: 'OpenAI GPT-5.4 Nano',
-		batchSize: 45,
-		parallel: 8,
-		translate: async (messages, instruction) => {
-			const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-			const response = await client.chat.completions.create({
-				model: 'gpt-5.4-nano',
-				messages: [
-					{ role: 'system', content: instruction },
-					{ role: 'user', content: messages }
-				]
-			});
-			return response.choices[0].message.content || '';
-		}
+		name: `DeepSeek (${deepseekModel})`,
+		batchSize: 40,
+		parallel: 5,
+		translate: translateWithDeepSeek
 	}
-	// ai: gemini({
-	// 	model: 'gemini-3-flash-preview',
-	// 	batchSize: 40,
-	// 	parallel: 5,
-	// 	think: true // default: false
-	// })
 });
