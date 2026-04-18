@@ -79,9 +79,17 @@ export function done() {
 		{ name: 'qr-code-generator', time: '2025-07-10T00:00:00.000Z' },
 		{ name: 'dictionary-app', time: '2025-09-05T00:00:00.000Z' },
 		{ name: 'random-emoji-generator', time: '2025-08-01T00:00:00.000Z' },
-		{ name: 'currency-converter', time: '2025-07-25T00:00:00.000Z' },
+		{
+			name: 'currency-converter',
+			time: '2025-07-25T00:00:00.000Z',
+			update: '2026-04-14T00:00:00.000Z'
+		},
 		{ name: 'advanced-emoji-tools', time: '2025-09-15T00:00:00.000Z' },
-		{ name: 'budget-tracker', time: '2025-08-10T00:00:00.000Z' },
+		{
+			name: 'budget-tracker',
+			time: '2025-08-10T00:00:00.000Z',
+			update: '2026-04-18T00:00:00.000Z'
+		},
 		{ name: 'todo-list', time: '2025-07-05T00:00:00.000Z' },
 		{ name: 'markdown-editor', time: '2025-09-20T00:00:00.000Z' },
 		{ name: 'text-summarizer', time: '2025-08-15T00:00:00.000Z' },
@@ -577,7 +585,8 @@ export function projects(): Project[] {
 		},
 		{
 			title: 'Scenario Tracker',
-			details: 'Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon.',
+			details:
+				'Track multiple life/career scenarios with time investments, progress metrics, and risk analysis over a 10-year planning horizon.',
 			// @wc-include
 			tag: 'productivity',
 			tagClass: 'productivity',
@@ -589,7 +598,8 @@ export function projects(): Project[] {
 		},
 		{
 			title: 'Subnet Calculator',
-			details: 'Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly.',
+			details:
+				'Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly.',
 			// @wc-include
 			tag: 'utility',
 			tagClass: 'utility',
