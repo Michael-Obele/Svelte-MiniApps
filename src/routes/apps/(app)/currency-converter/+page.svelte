@@ -29,8 +29,7 @@
 	const defaultToCurrency = 'EUR';
 
 	// Track if user has seen the how-to guide
-	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {
-	});
+	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {});
 
 	// Amount state for formatted display
 	let amountValue = $state<number>(0);
@@ -187,15 +186,17 @@
 	<!-- Header -->
 	<div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 		<div class="space-y-4">
-			<div class="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+			<div
+				class="border-border/60 bg-muted/40 text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-[0.24em] uppercase"
+			>
 				<Globe class="size-3.5" />
 				Stored in browser
 			</div>
 			<div>
-				<h1 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+				<h1 class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
 					Currency Converter
 				</h1>
-				<p class="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
+				<p class="text-muted-foreground mt-2 max-w-2xl text-sm sm:text-base">
 					Convert currencies with real-time exchange rates and pick up right where you left off.
 				</p>
 			</div>
@@ -208,12 +209,12 @@
 
 	<!-- Main Content -->
 	<div class="space-y-6">
-		<Card class="overflow-hidden border-border/60 shadow-sm">
+		<Card class="border-border/60 overflow-hidden shadow-sm">
 			<CardHeader class="space-y-4">
 				<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 					<div>
 						<CardTitle class="text-xl">Convert Currency</CardTitle>
-						<p class="mt-1 text-sm text-muted-foreground">
+						<p class="text-muted-foreground mt-1 text-sm">
 							Your last currency pair is restored automatically.
 						</p>
 					</div>
@@ -246,7 +247,9 @@
 					<input type="hidden" name="to" value={toCurrency} />
 
 					{#if currenciesLoading}
-						<div class="flex items-center gap-2 rounded-xl border border-dashed border-border/60 bg-muted/20 px-4 py-3 text-sm text-muted-foreground">
+						<div
+							class="border-border/60 bg-muted/20 text-muted-foreground flex items-center gap-2 rounded-xl border border-dashed px-4 py-3 text-sm"
+						>
 							<Loader class="size-4 animate-spin" />
 							Loading currencies...
 						</div>
@@ -270,7 +273,9 @@
 												<Select.Item value={currency.value} label={currency.label}>
 													<div class="flex w-full items-center justify-between gap-3">
 														<span class="truncate">{currency.label}</span>
-														<span class="text-xs text-muted-foreground">{currency.value} · {currency.symbol}</span>
+														<span class="text-muted-foreground text-xs"
+															>{currency.value} · {currency.symbol}</span
+														>
 													</div>
 												</Select.Item>
 											{/each}
@@ -310,7 +315,9 @@
 												<Select.Item value={currency.value} label={currency.label}>
 													<div class="flex w-full items-center justify-between gap-3">
 														<span class="truncate">{currency.label}</span>
-														<span class="text-xs text-muted-foreground">{currency.value} · {currency.symbol}</span>
+														<span class="text-muted-foreground text-xs"
+															>{currency.value} · {currency.symbol}</span
+														>
 													</div>
 												</Select.Item>
 											{/each}
@@ -320,8 +327,10 @@
 							</div>
 						</div>
 
-						<div class="rounded-2xl border border-dashed border-border/60 bg-muted/20 p-4">
-							<div class="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
+						<div class="border-border/60 bg-muted/20 rounded-2xl border border-dashed p-4">
+							<div
+								class="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-[0.24em] uppercase"
+							>
 								<History class="size-3.5" />
 								Recently remembered pairs
 							</div>
@@ -335,7 +344,7 @@
 										</Badge>
 									{/each}
 								{:else}
-									<div class="flex items-center gap-2 text-sm text-muted-foreground">
+									<div class="text-muted-foreground flex items-center gap-2 text-sm">
 										<Clock class="size-4" />
 										No saved pairs yet. Your first selection will be remembered here.
 									</div>
@@ -344,7 +353,9 @@
 						</div>
 					{/if}
 
-					<div class="flex items-center justify-between gap-3 rounded-xl border border-border/60 bg-muted/10 px-4 py-3 text-sm text-muted-foreground">
+					<div
+						class="border-border/60 bg-muted/10 text-muted-foreground flex items-center justify-between gap-3 rounded-xl border px-4 py-3 text-sm"
+					>
 						<span>Need to start over?</span>
 						<Button type="button" variant="ghost" size="sm" onclick={resetCurrencies}>
 							Reset saved pair
@@ -368,7 +379,7 @@
 					<div class="space-y-2">
 						<Label for="currencyAmount" class="text-sm font-medium">Amount</Label>
 						{#each convertCurrencyForm.fields.amount.issues() ?? [] as issue, i (i)}
-							<p class="text-sm text-destructive">{issue.message}</p>
+							<p class="text-destructive text-sm">{issue.message}</p>
 						{/each}
 						<div class="grid gap-4 md:grid-cols-2">
 							<div class="space-y-1">
@@ -381,7 +392,7 @@
 									class="w-full"
 									oninput={handleAmountChange}
 								/>
-								<p class="text-xs text-muted-foreground">Enter the amount to convert</p>
+								<p class="text-muted-foreground text-xs">Enter the amount to convert</p>
 							</div>
 							<div class="space-y-1">
 								<Input
@@ -390,9 +401,9 @@
 									value={formattedAmount || 'Enter an amount'}
 									readonly
 									disabled
-									class="w-full bg-muted"
+									class="bg-muted w-full"
 								/>
-								<p class="text-xs text-muted-foreground">Formatted preview</p>
+								<p class="text-muted-foreground text-xs">Formatted preview</p>
 							</div>
 						</div>
 					</div>
@@ -436,7 +447,7 @@
 
 		<!-- Results Card -->
 		{#if result}
-			<Card class="overflow-hidden border-border/60 shadow-sm">
+			<Card class="border-border/60 overflow-hidden shadow-sm">
 				<CardHeader>
 					<div class="flex items-center justify-between gap-3">
 						<CardTitle>Conversion Result</CardTitle>
@@ -457,7 +468,7 @@
 								})}
 								{result.fromCurrency} =
 							</div>
-							<div class="mt-2 text-3xl font-bold text-primary">
+							<div class="text-primary mt-2 text-3xl font-bold">
 								{getCurrencySymbol(result.toCurrency)}
 								{Number(result.convertedAmount).toLocaleString('en-US', {
 									minimumFractionDigits: 2,
@@ -467,8 +478,8 @@
 							</div>
 						</div>
 
-						<div class="rounded-lg bg-muted p-4">
-							<div class="text-center text-sm text-muted-foreground">
+						<div class="bg-muted rounded-lg p-4">
+							<div class="text-muted-foreground text-center text-sm">
 								<div class="font-medium">
 									Exchange Rate: 1 {result.fromCurrency} = {Number(result.rate).toLocaleString(
 										'en-US',

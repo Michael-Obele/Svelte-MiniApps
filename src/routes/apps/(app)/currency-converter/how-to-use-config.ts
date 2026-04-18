@@ -1,10 +1,4 @@
-import {
-	ArrowLeftRight,
-	Clock,
-	Globe,
-	History,
-	type Icon as IconType
-} from '@lucide/svelte';
+import { ArrowLeftRight, Clock, Globe, History, type Icon as IconType } from '@lucide/svelte';
 import type { HowToUseConfig, Step, Feature, Tip } from '$lib/types/how-to-use';
 
 // Getting Started Steps
@@ -113,7 +107,10 @@ export const currencyConverterHowToUse: HowToUseConfig = {
 				},
 				{ label: 'Rate Source', description: 'Exchange rates provided by reliable financial APIs' },
 				{ label: 'Offline Support', description: 'Works offline with previously cached rates' },
-				{ label: 'Saved Selection', description: 'Your last currency pair is remembered in browser storage' }
+				{
+					label: 'Saved Selection',
+					description: 'Your last currency pair is remembered in browser storage'
+				}
 			]
 		},
 		{

@@ -44,7 +44,8 @@ export function rememberCurrencySelection(fromCurrency: string, toCurrency: stri
 	const recentPairs = [
 		nextPair,
 		...currencySelection.current.recentPairs.filter(
-			(pair) => pair.fromCurrency !== nextPair.fromCurrency || pair.toCurrency !== nextPair.toCurrency
+			(pair) =>
+				pair.fromCurrency !== nextPair.fromCurrency || pair.toCurrency !== nextPair.toCurrency
 		)
 	].slice(0, 4);
 
