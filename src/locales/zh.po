@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-04-18T22:52:27.889Z\n"
+"PO-Revision-Date: 2026-04-19T23:14:14.842Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -1000,9 +1000,11 @@ msgid "Convert Currency"
 msgstr "转换货币"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert From"
 msgstr "从"
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert To"
 msgstr "到"
@@ -10807,8 +10809,7 @@ msgstr "<0/> 最近记住的"
 msgid "<0/> Loading currencies..."
 msgstr "<0/> 正在加载货币..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "All currencies"
 msgstr "所有货币"
 
@@ -11146,3 +11147,11 @@ msgstr "已使用 {0}%"
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Exceeded by {0}"
 msgstr "超出 {0}"
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "Search currencies..."
+msgstr ""
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "No currencies found. Try a name, code, or symbol."
+msgstr ""

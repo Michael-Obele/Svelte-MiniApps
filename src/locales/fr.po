@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2026-04-18T22:52:27.760Z\n"
+"PO-Revision-Date: 2026-04-19T23:11:26.263Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -3488,9 +3488,11 @@ msgid "Convert Currency"
 msgstr "Convertir la devise"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert From"
 msgstr "De"
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert To"
 msgstr "Vers"
@@ -11010,8 +11012,7 @@ msgstr "<0/> Récemment mémorisé"
 msgid "<0/> Loading currencies..."
 msgstr "<0/> Chargement des devises..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "All currencies"
 msgstr "Toutes les devises"
 
@@ -11351,3 +11352,11 @@ msgstr "{0}% utilisés"
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Exceeded by {0}"
 msgstr "Dépassé de {0}"
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "Search currencies..."
+msgstr "Rechercher des devises..."
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "No currencies found. Try a name, code, or symbol."
+msgstr "Aucune devise trouvée. Essayez un nom, un code ou un symbole."

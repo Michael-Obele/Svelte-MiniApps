@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-04-18T22:52:28.008Z\n"
+"PO-Revision-Date: 2026-04-19T23:11:53.025Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -93,12 +93,14 @@ msgid "Convert Currency"
 msgstr "通貨換算"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert From"
 msgstr "換算元"
 
 #~ msgid "Loading currencies..."
 #~ msgstr "通貨を読み込み中..."
 
+#: src/routes/apps/(app)/currency-converter/+page.svelte
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Convert To"
 msgstr "換算先"
@@ -10794,8 +10796,7 @@ msgstr "<0/> 最近記憶したもの"
 msgid "<0/> Loading currencies..."
 msgstr "<0/> 通貨を読み込み中..."
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "All currencies"
 msgstr "すべての通貨"
 
@@ -11133,3 +11134,11 @@ msgstr "{0}% 使用済み"
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Exceeded by {0}"
 msgstr "{0}超過"
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "Search currencies..."
+msgstr "通貨を検索..."
+
+#: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
+msgid "No currencies found. Try a name, code, or symbol."
+msgstr "通貨が見つかりませんでした。名前、コード、または記号でお試しください。"

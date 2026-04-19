@@ -11,7 +11,6 @@
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import { Separator } from '@/ui/separator';
-	import * as Select from '@/ui/select';
 	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
 	import { PersistedState } from '$lib/persisted-state';
@@ -23,6 +22,7 @@
 		rememberCurrencySelection,
 		resetCurrencySelection
 	} from './state.svelte';
+	import CurrencyCombobox from './currency-combobox.svelte';
 
 	let showHowToUseDialog = $state(false);
 	const defaultFromCurrency = 'USD';
@@ -94,17 +94,6 @@
 			: defaultToCurrency
 	);
 
-	let selectedFromCurrency = $derived(
-		getCurrencyData(fromCurrency)
-			? `${getCurrencyLabel(fromCurrency)} (${getCurrencySymbol(fromCurrency)})`
-			: fromCurrency
-	);
-	let selectedToCurrency = $derived(
-		getCurrencyData(toCurrency)
-			? `${getCurrencyLabel(toCurrency)} (${getCurrencySymbol(toCurrency)})`
-			: toCurrency
-	);
-
 	// Formatted amount preview using Intl.NumberFormat
 	let formattedAmount = $derived.by(() => {
 		if (!amountValue || amountValue <= 0 || !isValidCurrency(fromCurrency)) {
@@ -137,11 +126,6 @@
 
 	function getCurrencyData(currencyCode: string): CurrencyInfo | undefined {
 		return currencies.find((c) => c.value === currencyCode);
-	}
-
-	function getCurrencyLabel(currencyCode: string): string {
-		const foundCurrency = getCurrencyData(currencyCode);
-		return foundCurrency ? foundCurrency.label : currencyCode;
 	}
 
 	function getCurrencySymbol(currencyCode: string): string {
@@ -258,30 +242,13 @@
 							<!-- From Currency -->
 							<div class="space-y-2">
 								<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
-								<Select.Root
-									type="single"
+								<CurrencyCombobox
+									id="currencyFrom"
+									label="Convert From"
+									currencies={currencies}
 									bind:value={currencySelection.current.fromCurrency}
-									onValueChange={(value) => persistCurrencySelection(value, toCurrency)}
-								>
-									<Select.Trigger id="currencyFrom" class="w-full justify-between gap-3">
-										<span class="block min-w-0 truncate text-left">{selectedFromCurrency}</span>
-									</Select.Trigger>
-									<Select.Content class="max-h-[18rem]">
-										<Select.Group>
-											<Select.GroupHeading>All currencies</Select.GroupHeading>
-											{#each currencies as currency (currency.value)}
-												<Select.Item value={currency.value} label={currency.label}>
-													<div class="flex w-full items-center justify-between gap-3">
-														<span class="truncate">{currency.label}</span>
-														<span class="text-muted-foreground text-xs"
-															>{currency.value} · {currency.symbol}</span
-														>
-													</div>
-												</Select.Item>
-											{/each}
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
+									onSelect={(value) => persistCurrencySelection(value, toCurrency)}
+								/>
 							</div>
 
 							<div class="flex justify-center lg:pb-1">
@@ -300,30 +267,13 @@
 							<!-- To Currency -->
 							<div class="space-y-2">
 								<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
-								<Select.Root
-									type="single"
+								<CurrencyCombobox
+									id="currencyTo"
+									label="Convert To"
+									currencies={currencies}
 									bind:value={currencySelection.current.toCurrency}
-									onValueChange={(value) => persistCurrencySelection(fromCurrency, value)}
-								>
-									<Select.Trigger id="currencyTo" class="w-full justify-between gap-3">
-										<span class="block min-w-0 truncate text-left">{selectedToCurrency}</span>
-									</Select.Trigger>
-									<Select.Content class="max-h-[18rem]">
-										<Select.Group>
-											<Select.GroupHeading>All currencies</Select.GroupHeading>
-											{#each currencies as currency (currency.value)}
-												<Select.Item value={currency.value} label={currency.label}>
-													<div class="flex w-full items-center justify-between gap-3">
-														<span class="truncate">{currency.label}</span>
-														<span class="text-muted-foreground text-xs"
-															>{currency.value} · {currency.symbol}</span
-														>
-													</div>
-												</Select.Item>
-											{/each}
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
+									onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
+								/>
 							</div>
 						</div>
 
