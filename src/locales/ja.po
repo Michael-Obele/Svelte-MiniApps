@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-04-19T23:11:53.025Z\n"
+"PO-Revision-Date: 2026-04-20T00:03:01.250Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -3968,17 +3968,15 @@ msgstr "ソースコードを見る"
 msgid "Open apps menu"
 msgstr "アプリメニューを開く"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Alt+D"
-msgstr "Alt+D"
+#~ msgid "Alt+D"
+#~ msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
 msgstr "利用可能なアプリ"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
-msgstr "Svelte で構築されたインタラクティブなミニアプリケーションのコレクションをご覧ください。<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>このメニューを切り替える</3></0> <1><0>Tab</0> <1>前に移動</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>後ろに移動</3></2> <3><0>Enter</0> <1>選択したアプリを開く</1></3></0>"
+#~ msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
+#~ msgstr "Svelte で構築されたインタラクティブなミニアプリケーションのコレクションをご覧ください。<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>このメニューを切り替える</3></0> <1><0>Tab</0> <1>前に移動</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>後ろに移動</3></2> <3><0>Enter</0> <1>選択したアプリを開く</1></3></0>"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Svelte-MiniApps: Mobile & Desktop Coming Soon"
@@ -4468,6 +4466,7 @@ msgstr "自動生成"
 msgid "Show All"
 msgstr "すべて表示"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
@@ -4823,6 +4822,7 @@ msgstr "予算の作成、支出の追跡、支出の視覚化、複数の通貨
 msgid "How to Use"
 msgstr "使い方"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -11142,3 +11142,50 @@ msgstr "通貨を検索..."
 #: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "No currencies found. Try a name, code, or symbol."
 msgstr "通貨が見つかりませんでした。名前、コード、または記号でお試しください。"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Toggle this menu"
+msgstr "このメニューを切り替える"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Alt"
+msgstr "Alt"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "D"
+msgstr "D"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate forward"
+msgstr "次へ移動"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Tab"
+msgstr "Tab"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate backwards"
+msgstr "前へ移動"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Shift"
+msgstr "Shift"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Open selected app"
+msgstr "選択したアプリを開く"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Explore our collection of interactive mini applications built with Svelte."
+msgstr "Svelteで構築されたインタラクティブなミニアプリケーションのコレクションを探索してください。"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Keyboard shortcuts"
+msgstr "キーボードショートカット"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Fast controls for navigating apps"
+msgstr "アプリを素早く操作するためのショートカット"

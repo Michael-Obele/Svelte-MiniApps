@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-04-19T23:14:14.842Z\n"
+"PO-Revision-Date: 2026-04-20T00:03:57.311Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -133,17 +133,15 @@ msgstr "查看源代码"
 msgid "Open apps menu"
 msgstr "打开应用菜单"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Alt+D"
-msgstr "Alt+D"
+#~ msgid "Alt+D"
+#~ msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
 msgstr "可用应用"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
-msgstr "浏览我们使用 Svelte 构建的交互式迷你应用程序合集。<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>切换此菜单</3></0> <1><0>Tab</0> <1>向前导航</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>向后导航</3></2> <3><0>Enter</0> <1>打开选定的应用程序</1></3></0>"
+#~ msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
+#~ msgstr "浏览我们使用 Svelte 构建的交互式迷你应用程序合集。<0><0><0>Alt</0> <1>+</1> <2>D</2> <3>切换此菜单</3></0> <1><0>Tab</0> <1>向前导航</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>向后导航</3></2> <3><0>Enter</0> <1>打开选定的应用程序</1></3></0>"
 
 #: src/routes/apps/(app)/github-contribution-tracker/+layout.svelte
 msgid "Svelte Mini Apps - GitHub Contribution Tracker"
@@ -485,6 +483,7 @@ msgstr "清除"
 msgid "Close"
 msgstr "关闭"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
@@ -859,6 +858,7 @@ msgstr "创建预算，跟踪支出，可视化消费，支持多种货币"
 msgid "How to Use"
 msgstr "如何使用"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -11155,3 +11155,50 @@ msgstr ""
 #: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "No currencies found. Try a name, code, or symbol."
 msgstr ""
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Toggle this menu"
+msgstr "切换此菜单"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Alt"
+msgstr "Alt"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "D"
+msgstr "D"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate forward"
+msgstr "向前导航"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Tab"
+msgstr "Tab"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate backwards"
+msgstr "向后导航"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Shift"
+msgstr "Shift"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Open selected app"
+msgstr "打开选中的应用"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Explore our collection of interactive mini applications built with Svelte."
+msgstr "探索我们使用 Svelte 构建的交互式迷你应用集合。"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Keyboard shortcuts"
+msgstr "键盘快捷键"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Fast controls for navigating apps"
+msgstr "快速导航应用的控制键"

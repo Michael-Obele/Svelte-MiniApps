@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-04-19T23:11:09.274Z\n"
+"PO-Revision-Date: 2026-04-20T00:01:58.379Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -3934,17 +3934,15 @@ msgstr "View Source Code"
 msgid "Open apps menu"
 msgstr "Open apps menu"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Alt+D"
-msgstr "Alt+D"
+#~ msgid "Alt+D"
+#~ msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
 msgstr "Available Apps"
 
-#: src/routes/apps/(app)/+layout.svelte
-msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
-msgstr "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
+#~ msgid "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
+#~ msgstr "Explore our collection of interactive mini applications built with Svelte. <0><0><0>Alt</0> <1>+</1> <2>D</2> <3>Toggle this menu</3></0> <1><0>Tab</0> <1>Navigate forward</1></1> <2><0>Shift</0> <1>+</1> <2>Tab</2> <3>Navigate backwards</3></2> <3><0>Enter</0> <1>Open selected app</1></3></0>"
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Svelte-MiniApps: Mobile & Desktop Coming Soon"
@@ -4440,6 +4438,7 @@ msgstr "Auto-Generated"
 msgid "Show All"
 msgstr "Show All"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
@@ -4846,6 +4845,7 @@ msgstr "Create budgets, Track expenses, Visualize spending, Multiple currency su
 msgid "How to Use"
 msgstr "How to Use"
 
+#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -11337,3 +11337,50 @@ msgstr "Search currencies..."
 #: src/routes/apps/(app)/currency-converter/currency-combobox.svelte
 msgid "No currencies found. Try a name, code, or symbol."
 msgstr "No currencies found. Try a name, code, or symbol."
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Toggle this menu"
+msgstr "Toggle this menu"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Alt"
+msgstr "Alt"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "D"
+msgstr "D"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate forward"
+msgstr "Navigate forward"
+
+#: src/routes/apps/(app)/+layout.svelte
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Tab"
+msgstr "Tab"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Navigate backwards"
+msgstr "Navigate backwards"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Shift"
+msgstr "Shift"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Open selected app"
+msgstr "Open selected app"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Explore our collection of interactive mini applications built with Svelte."
+msgstr "Explore our collection of interactive mini applications built with Svelte."
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Keyboard shortcuts"
+msgstr "Keyboard shortcuts"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "Fast controls for navigating apps"
+msgstr "Fast controls for navigating apps"
