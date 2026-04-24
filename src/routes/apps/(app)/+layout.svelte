@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as Breadcrumb from '@/ui/breadcrumb/index.js';
+	import * as Kbd from '$lib/components/ui/kbd/index.js';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import { Badge } from '@/ui/badge/index.js';
 	import { page } from '$app/state';
@@ -25,6 +26,18 @@
 
 	let link = 'https://github.com/Michael-Obele/Svelte-MiniApps/tree/master/src/routes/apps/(app)';
 	let isSheetOpen = $state(false);
+	type Shortcut = {
+		description: string;
+		keys: string[];
+	};
+
+	const keyboardShortcuts: Shortcut[] = [
+		{ description: 'Toggle this menu', keys: ['Alt', 'D'] },
+		{ description: 'Navigate forward', keys: ['Tab'] },
+		{ description: 'Navigate backwards', keys: ['Shift', 'Tab'] },
+		{ description: 'Open selected app', keys: ['Enter'] }
+	];
+
 	const indexedDbNoticeSeen = new PersistedState('miniapps-indexeddb-notice-seen', false, {
 		storage: 'local',
 		syncTabs: true
@@ -96,7 +109,11 @@
 							>{routeId.toLowerCase()}</Breadcrumb.Link
 						>
 					{/if}
-					<Badge variant="secondary" href="{link}/{routeId.toLowerCase()}" target="_blank" class="">
+					<Badge
+						variant="secondary"
+						href={`${link}/${routeId.toLowerCase()}`}
+						target="_blank"
+					>
 						<span class="hidden sm:inline"> View Source Code </span>
 						<CodeXml size="16" class="sm:mx-1" />
 					</Badge>
@@ -109,44 +126,59 @@
 	</div>
 
 	<Sheet.Root bind:open={isSheetOpen}>
-		<Sheet.Trigger class="hover:bg-muted order-first mt-2 rounded-md transition-colors">
+		<Sheet.Trigger class="hover:bg-muted order-first mt-2 inline-flex rounded-xl border border-border/60 bg-background px-3 py-2 shadow-sm transition-colors">
 			<div class="flex items-center gap-1">
 				<PanelRightOpen class="size-5" />
 				<span class="sr-only">Open apps menu</span>
-				<div class="text-muted-foreground hidden items-center text-xs md:flex">
-					<Keyboard class="mr-1 h-3 w-3" />
-					<span>Alt+D</span>
+				<div class="text-muted-foreground hidden items-center gap-1.5 text-xs md:flex">
+					<Keyboard class="size-3.5" />
+					<Kbd.Group class="rounded-md bg-muted/50 px-1.5 py-1">
+						<Kbd.Root>Alt</Kbd.Root>
+						<span class="px-0.5 text-[10px] leading-none">+</span>
+						<Kbd.Root>D</Kbd.Root>
+					</Kbd.Group>
 				</div>
 			</div>
 		</Sheet.Trigger>
 		<Sheet.Content class="w-[300px] sm:w-[400px]">
 			<Sheet.Header class="pb-4">
 				<Sheet.Title class="text-xl font-semibold">Available Apps</Sheet.Title>
-				<Sheet.Description class="text-muted-foreground text-sm">
+				<Sheet.Description class="text-muted-foreground text-sm leading-6">
 					Explore our collection of interactive mini applications built with Svelte.
-					<div class="border-muted bg-muted/30 mt-2 space-y-1.5 rounded-md border p-2 text-xs">
-						<div class="flex items-center gap-1">
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Alt</kbd>
-							<span>+</span>
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">D</kbd>
-							<span class="text-muted-foreground ml-1.5">Toggle this menu</span>
-						</div>
-						<div class="flex items-center gap-1">
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
-							<span class="text-muted-foreground ml-1.5">Navigate forward</span>
-						</div>
-						<div class="flex items-center gap-1">
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Shift</kbd>
-							<span>+</span>
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Tab</kbd>
-							<span class="text-muted-foreground ml-1.5">Navigate backwards</span>
-						</div>
-						<div class="flex items-center gap-1">
-							<kbd class="bg-background rounded px-1.5 py-0.5 text-xs font-medium">Enter</kbd>
-							<span class="text-muted-foreground ml-1.5">Open selected app</span>
-						</div>
-					</div>
 				</Sheet.Description>
+				<div class="border-muted/70 bg-gradient-to-br from-muted/50 to-background mt-3 rounded-xl border p-3 shadow-sm">
+					<div class="flex items-start justify-between gap-3 border-b border-border/60 pb-3">
+						<div class="flex items-center gap-2">
+							<div class="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-full">
+								<Keyboard class="size-4" />
+							</div>
+							<div>
+								<p class="text-sm font-medium leading-none">Keyboard shortcuts</p>
+								<p class="text-muted-foreground mt-1 text-xs">Fast controls for navigating apps</p>
+							</div>
+						</div>
+						<span class="text-muted-foreground text-[10px] uppercase tracking-[0.24em]">Help</span>
+					</div>
+					<div class="mt-3 space-y-2 text-xs">
+						{#each keyboardShortcuts as shortcut (shortcut.description)}
+							<div class="bg-background/80 border-border/60 flex items-center justify-between gap-4 rounded-lg border px-3 py-2">
+								<span class="text-muted-foreground shrink-0">{shortcut.description}</span>
+								{#if shortcut.keys.length === 1}
+									<Kbd.Root>{shortcut.keys[0]}</Kbd.Root>
+								{:else}
+									<Kbd.Group class="rounded-md bg-muted/60 px-1.5 py-1">
+										{#each shortcut.keys as key, index (key + index)}
+											<Kbd.Root>{key}</Kbd.Root>
+											{#if index < shortcut.keys.length - 1}
+												<span class="text-muted-foreground px-0.5 text-[10px] leading-none">+</span>
+											{/if}
+										{/each}
+									</Kbd.Group>
+								{/if}
+							</div>
+						{/each}
+					</div>
+				</div>
 			</Sheet.Header>
 			<div class="flex flex-col gap-2 overflow-y-auto py-4" style="max-height: calc(80vh - 150px);">
 				{#each done() as app (app.name)}
