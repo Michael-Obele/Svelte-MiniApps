@@ -1,7 +1,40 @@
 {
-  "lastProcessedCommit": "0f3117521bfbce41aa3d46f70a8bc1bef36cf91d",
-  "generatedAt": "2026-04-19T23:18:35.408Z",
+  "lastProcessedCommit": "8e0c04d40caf12c6969bb3c01070d10d714c3291",
+  "generatedAt": "2026-04-24T21:28:45.314Z",
   "timeline": [
+    {
+      "date": "April 24, 2026",
+      "title": "feat(apps-layout): improve keyboard shortcuts display and styling",
+      "description": "Updated src/routes/apps/(app)/+layout.svelte",
+      "items": [
+        "feat(apps-layout): improve keyboard shortcuts display and styling (8e0c04d)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "April 24, 2026",
+      "title": "chore(i18n): split keyboard shortcut translations for better localization",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "chore(i18n): split keyboard shortcut translations for better localization (8d09126)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "April 20, 2026",
+      "title": "feat(kbd): add Kbd and KbdGroup components for keyboard input styling",
+      "description": "Updated src/lib/components/ui/kbd/index.ts, src/lib/components/ui/kbd/kbd-group.svelte, src/lib/components/ui/kbd/kbd.svelte",
+      "items": [
+        "feat(kbd): add Kbd and KbdGroup components for keyboard input styling (d3856b1)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "April 19, 2026",
       "title": "feat(currency-converter): implement CurrencyCombobox for selecting currencies",
