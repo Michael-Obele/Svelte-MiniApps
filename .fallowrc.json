@@ -1,15 +1,18 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
 	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
-	"ignorePatterns": ["src/lib/components/ui/**", "src/locales/**"],
+	"ignorePatterns": ["src/lib/components/ui/**", "**/src/lib/server/**"],
 	"duplicates": {
-		// Common additions (uncomment to enable):
-		// "ignore": [
-		//   "**/lib/**",          // for repos that publish transpiled output to lib/
-		//   "**/legacy/**",       // for repos with legacy-build artifacts
-		//   "**/__generated__/**", // Relay, GraphQL Code Generator
-		//   "**/generated/**"     // OpenAPI, Protobuf codegen
-		// ]
+		"mode": "mild",
+		"minTokens": 80,
+		"minLines": 15,
+		"ignoreImports": true,
+		"skipLocal": true,
+		"ignoreDefaults": true
 	},
-	"rules": {}
+	"dynamicallyLoaded": ["**/src/lib/remote/**", "src/lib/types/**", "**/*.d.ts"], // preferred over ignorePatterns
+	"rules": {
+		"unused-dependencies": "warn", // or "off" if you prefer
+		"unused-dev-dependencies": "off"
+	}
 }
