@@ -39,6 +39,8 @@
 	// Calculate total spent for current period
 	const totalSpent = $derived(trendData.reduce((sum, d) => sum + d.spent, 0));
 	const avgSpent = $derived(trendData.length > 0 ? totalSpent / trendData.length : 0);
+	const peakSpend = $derived(Math.max(...trendData.map((entry) => entry.spent), 0));
+	const latestSpend = $derived(trendData[trendData.length - 1]?.spent ?? 0);
 
 	function formatTooltipLabel(value: Date | string) {
 		if (value instanceof Date) {
@@ -52,19 +54,31 @@
 	}
 </script>
 
-<Card class="p-4">
-	<div class="space-y-4">
-		<div class="flex items-center justify-between">
-			<div>
-				<h3 class="text-sm font-semibold">Spending Trends</h3>
-				<p class="text-muted-foreground text-xs">Daily spending over selected period</p>
+<Card class="overflow-hidden p-4 sm:p-5">
+	<div class="space-y-5">
+		<div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+			<div class="space-y-1">
+				<h3 class="text-sm font-semibold">Spending pace</h3>
+				<p class="text-muted-foreground text-xs leading-5">
+					Track how spending is moving over time, then compare peak days with the current pace.
+				</p>
 			</div>
-			<ToggleGroup.Root type="single" bind:value={selectedPeriod}>
-				<ToggleGroup.Item value="week" size="sm">Week</ToggleGroup.Item>
-				<ToggleGroup.Item value="month" size="sm">Month</ToggleGroup.Item>
-				<ToggleGroup.Item value="year" size="sm">Year</ToggleGroup.Item>
-				<ToggleGroup.Item value="all" size="sm">All-time</ToggleGroup.Item>
-			</ToggleGroup.Root>
+			<div class="overflow-x-auto pb-1">
+				<ToggleGroup.Root type="single" bind:value={selectedPeriod} class="flex min-w-max gap-1">
+					<ToggleGroup.Item value="week" size="sm" class="min-w-[3.25rem] rounded-xl px-3">
+						7D
+					</ToggleGroup.Item>
+					<ToggleGroup.Item value="month" size="sm" class="min-w-[3.25rem] rounded-xl px-3">
+						30D
+					</ToggleGroup.Item>
+					<ToggleGroup.Item value="year" size="sm" class="min-w-[3.25rem] rounded-xl px-3">
+						Year
+					</ToggleGroup.Item>
+					<ToggleGroup.Item value="all" size="sm" class="min-w-[3.25rem] rounded-xl px-3">
+						All
+					</ToggleGroup.Item>
+				</ToggleGroup.Root>
+			</div>
 		</div>
 
 		{#if trendData.length === 0}
@@ -73,36 +87,54 @@
 			</div>
 		{:else}
 			<div class="space-y-4">
-				<!-- Summary stats -->
-				<div class="grid grid-cols-2 gap-3">
-					<div class="rounded-md border p-3">
-						<p class="text-muted-foreground text-xs">Total Spent</p>
-						<p class="text-foreground text-sm font-semibold">{formatNumber(totalSpent)}</p>
+				<div class="flex flex-col gap-3 sm:flex-row">
+					<div class="rounded-2xl border p-3 sm:flex-1">
+						<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+							Total spent
+						</p>
+						<p class="text-foreground mt-2 text-sm font-semibold">{formatNumber(totalSpent)}</p>
 					</div>
-					<div class="rounded-md border p-3">
-						<p class="text-muted-foreground text-xs">Daily Average</p>
-						<p class="text-foreground text-sm font-semibold">{formatNumber(avgSpent)}</p>
+					<div class="rounded-2xl border p-3 sm:flex-1">
+						<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+							Average
+						</p>
+						<p class="text-foreground mt-2 text-sm font-semibold">{formatNumber(avgSpent)}</p>
+					</div>
+					<div class="rounded-2xl border p-3 sm:flex-1">
+						<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+							Peak day
+						</p>
+						<p class="text-foreground mt-2 text-sm font-semibold">{formatNumber(peakSpend)}</p>
 					</div>
 				</div>
 
-				<!-- LayerChart area chart -->
-				<Chart.Container config={chartConfig} class="h-[280px] w-full">
-					<AreaChart data={chartData} x="date" y="spent">
-						{#snippet tooltip()}
-							<Chart.Tooltip labelFormatter={formatTooltipLabel} />
-						{/snippet}
-					</AreaChart>
-				</Chart.Container>
+				<div class="overflow-x-auto pb-1">
+					<div class="min-w-[18rem]">
+						<Chart.Container
+							config={chartConfig}
+							class="h-[220px] w-full overflow-hidden sm:h-[280px]"
+						>
+							<AreaChart data={chartData} x="date" y="spent">
+								{#snippet tooltip()}
+									<Chart.Tooltip labelFormatter={formatTooltipLabel} />
+								{/snippet}
+							</AreaChart>
+						</Chart.Container>
+					</div>
+				</div>
 
-				<div class="text-muted-foreground flex items-center justify-between text-xs">
+				<div
+					class="text-muted-foreground flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between"
+				>
 					<span>{getDateLabel(trendData[0]?.date ?? new Date().toISOString(), selectedPeriod)}</span
 					>
-					<span
-						>{getDateLabel(
+					<span>Latest interval: {formatNumber(latestSpend)}</span>
+					<span>
+						{getDateLabel(
 							trendData[trendData.length - 1]?.date ?? new Date().toISOString(),
 							selectedPeriod
-						)}</span
-					>
+						)}
+					</span>
 				</div>
 			</div>
 		{/if}

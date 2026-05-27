@@ -14,7 +14,14 @@ export type BudgetShareSettings = {
 
 const budgetShareSchema = v.object({
 	budgetId: v.pipe(v.string(), v.nonEmpty()),
-	isPublic: v.optional(v.boolean(), false)
+	isPublic: v.pipe(
+		v.any(),
+		v.transform((val) => {
+			if (typeof val === 'boolean') return val;
+			if (typeof val === 'string') return val === 'true';
+			return false;
+		})
+	)
 });
 
 const budgetShareTokenSchema = v.object({

@@ -5,7 +5,7 @@ import { generateText } from 'ai';
 import { deepseek } from '@ai-sdk/deepseek';
 import { defineConfig } from 'wuchale';
 
-const deepseekModel = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+const deepseekModel = process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
 
 /**
  * @param {string} messages
