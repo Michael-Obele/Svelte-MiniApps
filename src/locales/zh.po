@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-05-27T16:03:38.365Z\n"
+"PO-Revision-Date: 2026-05-27T16:09:19.727Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -11556,9 +11556,8 @@ msgstr "没有可备份的预算"
 msgid "<0/> Backed up {0}"
 msgstr "<0/> 已备份于 {0}"
 
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid "● Unsaved changes"
-msgstr "● 未保存的更改"
+#~ msgid "● Unsaved changes"
+#~ msgstr "● 未保存的更改"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
@@ -11569,3 +11568,7 @@ msgstr "<0/> 正在保存…"
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Save to Cloud"
 msgstr "保存到云端"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Unsaved changes"
+msgstr ""

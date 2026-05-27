@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-05-27T16:03:42.458Z\n"
+"PO-Revision-Date: 2026-05-27T16:09:20.248Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -11547,9 +11547,8 @@ msgstr "バックアップする予算がありません"
 msgid "<0/> Backed up {0}"
 msgstr "<0/> {0} にバックアップ済み"
 
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid "● Unsaved changes"
-msgstr "● 未保存の変更"
+#~ msgid "● Unsaved changes"
+#~ msgstr "● 未保存の変更"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
@@ -11560,3 +11559,7 @@ msgstr "<0/> 保存中…"
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Save to Cloud"
 msgstr "クラウドに保存"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Unsaved changes"
+msgstr ""
