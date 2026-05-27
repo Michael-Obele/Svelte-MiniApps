@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card } from '@/ui/card';
-	import type { Expense } from '../../states.svelte';
-	import { formatCategoryChartData } from '../../utils/chartData';
+	import type { Expense } from '$lib/budget-tracker/states.svelte';
+	import { formatCategoryChartData } from '../../../../routes/apps/(app)/budget-tracker/utils/chartData';
 	import { PieChart, Tooltip } from 'layerchart';
 
 	interface Props {

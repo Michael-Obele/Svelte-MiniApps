@@ -4,8 +4,8 @@
 	import { Input } from '@/ui/input';
 	import * as AlertDialog from '@/ui/alert-dialog';
 	import { Label } from '@/ui/label';
-	import type { Expense } from '../states.svelte';
-	import { findBudget } from '../states.svelte';
+	import type { Expense } from '$lib/budget-tracker/states.svelte';
+	import { findBudget } from '$lib/budget-tracker/states.svelte';
 	import { Pencil, Trash2, Calendar, PlusCircle, Wallet } from '@lucide/svelte';
 
 	interface Props {

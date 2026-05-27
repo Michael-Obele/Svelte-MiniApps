@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card } from '@/ui/card';
-	import type { Budget } from '../../states.svelte';
+	import type { Budget } from '$lib/budget-tracker/states.svelte';
 	import { BarChart, Tooltip } from 'layerchart';
 
 	interface Props {

@@ -104,5 +104,13 @@ export {
 	type CurrencyInfo
 } from './currency.remote';
 
+// Remote functions for budget tracker
+export {
+	getBudgetShareSettings,
+	setBudgetSharing,
+	regenerateBudgetShareLink,
+	type BudgetShareSettings
+} from './budget-tracker.remote';
+
 // Remote functions for dictionary app
 export { searchDictionary, type DictionaryEntry, type ApiError } from './dictionary.remote';

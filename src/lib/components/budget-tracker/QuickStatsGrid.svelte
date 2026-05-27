@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card } from '@/ui/card';
 	import { Activity, CircleAlert, TrendingDown, TrendingUp, Wallet } from '@lucide/svelte';
-	import type { Budget } from '../states.svelte';
+	import type { Budget } from '$lib/budget-tracker/states.svelte';
 
 	interface Props {
 		budget: Budget;

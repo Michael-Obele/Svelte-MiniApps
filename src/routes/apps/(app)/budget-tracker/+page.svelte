@@ -18,9 +18,9 @@
 		ExpenseSection,
 		ExpensesList,
 		BudgetCard
-	} from './components';
-	import type { Budget, Expense } from './states.svelte';
-	import * as budgetState from './states.svelte';
+	} from '@/budget-tracker';
+	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
+	import * as budgetState from '$lib/budget-tracker/states.svelte';
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
 	import { scrollToID } from '$lib/utils';

@@ -88,7 +88,7 @@ export function done() {
 		{
 			name: 'budget-tracker',
 			time: '2025-08-10T00:00:00.000Z',
-			update: '2026-04-18T00:00:00.000Z'
+			update: '2026-05-27T00:00:00.000Z'
 		},
 		{ name: 'todo-list', time: '2025-07-05T00:00:00.000Z' },
 		{ name: 'markdown-editor', time: '2025-09-20T00:00:00.000Z' },

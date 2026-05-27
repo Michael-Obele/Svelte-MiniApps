@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import * as budgetState from './states.svelte';
+import * as budgetState from '$lib/budget-tracker/states.svelte';
 import { PersistedState } from '$lib/persisted-state';
-import type { Budget, Expense } from './states.svelte';
+import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
 
 /**
  * Mock implementation for the PersistedState class from the local wrapper

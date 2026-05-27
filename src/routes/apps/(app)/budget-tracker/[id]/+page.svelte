@@ -1,31 +1,50 @@
 <script lang="ts">
 	import { Button } from '@/ui/button';
+	import { Switch } from '@/ui/switch';
 	import { Progress } from '@/ui/progress';
 	import {
 		CalendarRange,
 		ChartColumnBig,
 		ChevronLeft,
+		Copy,
 		CircleDollarSign,
+		Eye,
+		Globe,
+		Lock,
 		Pencil,
 		PiggyBank,
 		Plus,
+		RefreshCcw,
 		ReceiptText
 	} from '@lucide/svelte';
 	import * as Tabs from '@/ui/tabs';
-	import QuickStatsGrid from '../components/QuickStatsGrid.svelte';
-	import CategoryChart from '../components/Charts/CategoryChart.svelte';
-	import TrendChart from '../components/Charts/TrendChart.svelte';
-	import ExpensesSection from '../components/ExpensesSection.svelte';
-	import * as budgetState from '../states.svelte';
-	import type { Budget, Expense } from '../states.svelte';
+	import QuickStatsGrid from '@/budget-tracker/QuickStatsGrid.svelte';
+	import CategoryChart from '@/budget-tracker/Charts/CategoryChart.svelte';
+	import TrendChart from '@/budget-tracker/Charts/TrendChart.svelte';
+	import ExpensesSection from '@/budget-tracker/ExpensesSection.svelte';
+	import * as budgetState from '$lib/budget-tracker/states.svelte';
+	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
 	import { toast } from 'svelte-sonner';
+	import { tick } from 'svelte';
 	import icons from 'currency-icons';
-	import { BudgetDialog, ExpenseDialog } from '../components';
+	import { BudgetDialog, ExpenseDialog } from '@/budget-tracker';
+	import { getBudgetShareSettings, regenerateBudgetShareLink, setBudgetSharing } from '$lib/remote';
+	import { copyToClipboard } from '$lib/utils';
 
 	let { params } = $props();
+	const budgetId = $derived(params.id);
+	const shareQuery = $derived(getBudgetShareSettings(budgetId));
 
 	// Get the budget by ID
-	const budget = $derived(budgetState.budgets.current.find((b) => b.id === params.id));
+	const budget = $derived(budgetState.budgets.current.find((b) => b.id === budgetId));
+	const shareDetails = $derived(shareQuery.current);
+	const shareLink = $derived(
+		shareDetails?.sharePath && typeof window !== 'undefined'
+			? `${window.location.origin}${shareDetails.sharePath}`
+			: (shareDetails?.sharePath ?? null)
+	);
+	let shareVisibility = $state(false);
+	let shareFormElement = $state<HTMLFormElement | null>(null);
 
 	// Dialog states
 	let editingBudget = $state<{ id: string; name: string; amount: number; currency: string } | null>(
@@ -182,6 +201,36 @@
 			editExpenseAmount = '';
 		}
 	}
+
+	async function handleShareToggle(checked: boolean) {
+		if (!budget || setBudgetSharing.pending) {
+			return;
+		}
+
+		shareVisibility = checked;
+		await tick();
+		shareFormElement?.requestSubmit();
+	}
+
+	async function handleCopyShareLink() {
+		if (!shareLink) {
+			return;
+		}
+
+		await copyToClipboard(shareLink, 'Share link copied to clipboard', 'Failed to copy share link');
+	}
+
+	function handleOpenSharedPage() {
+		if (!shareDetails?.sharePath) {
+			return;
+		}
+
+		window.open(shareDetails.sharePath, '_blank', 'noopener,noreferrer');
+	}
+
+	$effect(() => {
+		shareVisibility = shareDetails?.canShare ? shareDetails.isPublic : false;
+	});
 </script>
 
 <svelte:head>
@@ -277,35 +326,194 @@
 				</div>
 			</div>
 
-			<aside class="bg-card rounded-3xl border p-5 shadow-sm">
-				<p class="text-muted-foreground text-xs font-medium tracking-[0.24em] uppercase">
-					Budget Health
-				</p>
-				<div class="mt-3 space-y-1">
-					<p class="text-foreground text-2xl font-semibold">{formatNumber(remaining)}</p>
-					<p class="text-muted-foreground text-sm">Remaining before the budget cap is reached</p>
-				</div>
-
-				<div class="mt-5 space-y-2">
-					<div class="text-muted-foreground flex items-center justify-between text-xs font-medium">
-						<span>Used</span>
-						<span>{percentUsed.toFixed(1)}%</span>
+			<aside class="space-y-4">
+				<div class="bg-card rounded-3xl border p-5 shadow-sm">
+					<p class="text-muted-foreground text-xs font-medium tracking-[0.24em] uppercase">
+						Budget Health
+					</p>
+					<div class="mt-3 space-y-1">
+						<p class="text-foreground text-2xl font-semibold">{formatNumber(remaining)}</p>
+						<p class="text-muted-foreground text-sm">Remaining before the budget cap is reached</p>
 					</div>
-					<Progress value={percentUsed} class="h-2.5" />
+
+					<div class="mt-5 space-y-2">
+						<div
+							class="text-muted-foreground flex items-center justify-between text-xs font-medium"
+						>
+							<span>Used</span>
+							<span>{percentUsed.toFixed(1)}%</span>
+						</div>
+						<Progress value={percentUsed} class="h-2.5" />
+					</div>
+
+					<div class="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
+						<Button size="sm" class="gap-2" onclick={handleAddExpense}>
+							<Plus class="h-4 w-4" /> Add Expense
+						</Button>
+						<Button
+							variant="outline"
+							size="sm"
+							class="gap-2"
+							onclick={() => openEditBudgetDialog(budget)}
+						>
+							<Pencil class="h-4 w-4" /> Edit Budget
+						</Button>
+					</div>
 				</div>
 
-				<div class="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
-					<Button size="sm" class="gap-2" onclick={handleAddExpense}>
-						<Plus class="h-4 w-4" /> Add Expense
-					</Button>
-					<Button
-						variant="outline"
-						size="sm"
-						class="gap-2"
-						onclick={() => openEditBudgetDialog(budget)}
-					>
-						<Pencil class="h-4 w-4" /> Edit Budget
-					</Button>
+				<div class="bg-card rounded-3xl border p-5 shadow-sm">
+					<div class="flex items-start justify-between gap-3">
+						<div>
+							<p class="text-muted-foreground text-xs font-medium tracking-[0.24em] uppercase">
+								Sharing
+							</p>
+							<h2 class="text-foreground mt-2 text-lg font-semibold">Public link access</h2>
+						</div>
+						<span
+							class={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${
+								shareDetails?.isPublic
+									? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+									: 'text-muted-foreground bg-muted/40 border-border'
+							}`}
+						>
+							{#if shareDetails?.isPublic}
+								<Globe class="h-3.5 w-3.5" /> Public
+							{:else}
+								<Lock class="h-3.5 w-3.5" /> Private
+							{/if}
+						</span>
+					</div>
+
+					{#if !shareDetails}
+						<div class="mt-4 rounded-2xl border border-dashed p-4">
+							<p class="text-muted-foreground text-sm">Checking sharing status...</p>
+						</div>
+					{:else if !shareDetails.canShare}
+						<div class="mt-4 rounded-2xl border border-dashed p-4">
+							<p class="text-foreground text-sm font-medium">
+								{shareDetails.reason === 'unauthenticated'
+									? 'Sign in to create a shareable budget link.'
+									: 'Back up this budget to your account before sharing it.'}
+							</p>
+							<p class="text-muted-foreground mt-1 text-xs leading-5">
+								Sharing only works for budgets that exist on the server, so the public page stays in
+								sync.
+							</p>
+						</div>
+					{:else}
+						<div class="mt-4 space-y-4">
+							<form
+								bind:this={shareFormElement}
+								{...setBudgetSharing.enhance(async ({ submit }) => {
+									const nextState = shareVisibility;
+									try {
+										await submit();
+										await shareQuery.refresh();
+										toast.success(nextState ? 'Budget sharing enabled' : 'Budget sharing turned off');
+									} catch (error) {
+										console.error('Error updating budget sharing:', error);
+										shareVisibility = shareDetails.isPublic;
+										toast.error(
+											error instanceof Error ? error.message : 'Unable to update sharing settings'
+										);
+									}
+								})}
+								class="flex items-center justify-between gap-3 rounded-2xl border p-4"
+							>
+								<input type="hidden" name="budgetId" value={budget.id} />
+								<div class="space-y-1">
+									<p class="text-foreground text-sm font-medium">Anyone with the link can view</p>
+									<p class="text-muted-foreground text-xs leading-5">
+										The public page is view-only and does not expose editing actions.
+									</p>
+								</div>
+								<div class="flex items-center gap-3">
+									<Switch
+										checked={shareVisibility}
+										disabled={!!setBudgetSharing.pending}
+										onCheckedChange={handleShareToggle}
+										id="budget-share-switch"
+										name="isPublic"
+									/>
+									<Button type="submit" variant="outline" size="sm" disabled={!!setBudgetSharing.pending}>
+										{#if setBudgetSharing.pending}
+											Updating...
+										{:else}
+											Update Access
+										{/if}
+									</Button>
+								</div>
+							</form>
+
+							<div class="rounded-2xl border p-4">
+								<div class="flex items-start gap-3">
+									<div class="bg-muted rounded-xl p-2">
+										<Eye class="text-foreground h-4 w-4" />
+									</div>
+									<div class="min-w-0 flex-1">
+										<p class="text-foreground text-sm font-medium">Shared page link</p>
+										<p class="text-muted-foreground mt-1 text-xs leading-5 break-all">
+											{shareLink ?? 'Enable public access to generate a live share link.'}
+										</p>
+									</div>
+								</div>
+
+								<div class="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
+									<Button
+										variant="outline"
+										size="sm"
+										class="gap-2"
+										disabled={!shareLink}
+										onclick={handleCopyShareLink}
+									>
+										<Copy class="h-4 w-4" /> Copy Link
+									</Button>
+									<Button
+										variant="outline"
+										size="sm"
+										class="gap-2"
+										disabled={!shareLink}
+										onclick={handleOpenSharedPage}
+									>
+										<Eye class="h-4 w-4" /> Open Shared Page
+									</Button>
+									<form
+										{...regenerateBudgetShareLink.enhance(async ({ submit }) => {
+											try {
+												await submit();
+												await shareQuery.refresh();
+												toast.success('Share link regenerated');
+											} catch (error) {
+												console.error('Error regenerating share link:', error);
+												toast.error(
+													error instanceof Error
+														? error.message
+														: 'Unable to regenerate share link'
+												);
+											}
+										})}
+										class="sm:col-span-2 xl:col-span-1"
+									>
+											<input type="hidden" name="budgetId" value={budget.id} />
+										<Button
+											type="submit"
+											variant="outline"
+											size="sm"
+											class="gap-2 w-full"
+											disabled={!!regenerateBudgetShareLink.pending}
+										>
+											<RefreshCcw class="h-4 w-4" />
+											{#if regenerateBudgetShareLink.pending}
+												Working...
+											{:else}
+												{shareDetails.hasShareToken ? 'Regenerate Link' : 'Generate Link'}
+											{/if}
+										</Button>
+									</form>
+								</div>
+							</div>
+						</div>
+					{/if}
 				</div>
 			</aside>
 		</section>

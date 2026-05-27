@@ -2,8 +2,11 @@
 	import { Card } from '@/ui/card';
 	import * as Chart from '@/ui/chart';
 	import * as ToggleGroup from '@/ui/toggle-group';
-	import type { Expense } from '../../states.svelte';
-	import { formatTrendChartData, getDateLabel } from '../../utils/chartData';
+	import type { Expense } from '$lib/budget-tracker/states.svelte';
+	import {
+		formatTrendChartData,
+		getDateLabel
+	} from '../../../../routes/apps/(app)/budget-tracker/utils/chartData';
 	import { AreaChart } from 'layerchart';
 	import type { ChartConfig } from '@/ui/chart';
 

@@ -5,6 +5,7 @@
 	import { Button } from '@/ui/button';
 	import { Label } from '@/ui/label';
 	import { ChartBar } from '@lucide/svelte';
+	import type { Budget } from '$lib/budget-tracker/states.svelte';
 
 	interface Props {
 		editingBudget: { id: string; name: string; amount: number; currency: string } | null;

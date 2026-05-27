@@ -2,7 +2,7 @@
 	import { Card } from '@/ui/card';
 	import { Button } from '@/ui/button';
 	import { Pencil, Plus, ReceiptText, Trash2 } from '@lucide/svelte';
-	import type { Budget, Expense } from '../states.svelte';
+	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
 
 	interface Props {
 		budget: Budget;

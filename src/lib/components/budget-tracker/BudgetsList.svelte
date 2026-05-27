@@ -3,8 +3,8 @@
 	import { Button } from '@/ui/button';
 	import { Progress } from '@/ui/progress/index.js';
 	import { Pencil, SquareArrowOutUpRight, Trash2 } from '@lucide/svelte';
-	import type { Budget, Expense } from '../states.svelte';
-	import * as budgetState from '../states.svelte';
+	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
+	import * as budgetState from '$lib/budget-tracker/states.svelte';
 	import { AlertCircle, AlertTriangle, CheckCircle2, Circle } from '@lucide/svelte';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
@@ -115,7 +115,7 @@
 		{@const percentage = (activeExpenses / budget.amount) * 100}
 		<Card
 			id="budget-{budget.id}"
-			class="w-[95%] sm:w-full min-w-[200px] p-3 transition-all hover:shadow-md sm:p-4 lg:p-6"
+			class="w-[95%] min-w-[200px] p-3 transition-all hover:shadow-md sm:w-full sm:p-4 lg:p-6"
 		>
 			{#if budget.expenses}
 				{@const { icon: Icon, color } = getBudgetStatusIconAndColor(percentage)}
@@ -137,7 +137,7 @@
 
 				<div class="mb-3 flex items-center justify-between sm:mb-4">
 					<div class="flex items-center gap-2">
-						<h3 class="text-wrap truncate text-base font-semibold sm:text-lg">{budget.name}</h3>
+						<h3 class="truncate text-base font-semibold text-wrap sm:text-lg">{budget.name}</h3>
 						<Icon class="h-4 w-4 {color} shrink-0" />
 					</div>
 					<div class="flex gap-1 sm:gap-2">
@@ -226,7 +226,7 @@
 												>
 													{expense.description}
 												</div>
-												<div class="truncate text-xs text-muted-foreground">
+												<div class="text-muted-foreground truncate text-xs">
 													{new Date(expense.createdAt).toLocaleDateString()}
 												</div>
 											</div>
@@ -258,7 +258,7 @@
 										</div>
 									</Card>
 									{#if i + 1 != budget.expenses.length}
-										<Separator class="my-2 bg-primary-foreground" />
+										<Separator class="bg-primary-foreground my-2" />
 									{/if}
 								{/each}
 							</ScrollArea>
