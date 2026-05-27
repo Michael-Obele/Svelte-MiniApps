@@ -1,7 +1,51 @@
 {
-  "lastProcessedCommit": "2559bcb430e8fcb048d8bf688e650af45f7ef48e",
-  "generatedAt": "2026-05-06T13:03:51.636Z",
+  "lastProcessedCommit": "ae33be438657ed396e87c71ea676ea940aca6a8b",
+  "generatedAt": "2026-05-27T10:40:57.248Z",
   "timeline": [
+    {
+      "date": "May 27, 2026",
+      "title": "feat: add budget tracking components including charts, dialogs, and expense management",
+      "description": "Updated src/lib/components/budget-tracker/BudgetCard.svelte, src/lib/components/budget-tracker/BudgetDialog.svelte, src/lib/components/budget-tracker/BudgetSection.svelte and more",
+      "items": [
+        "feat: add budget tracking components including charts, dialogs, and expense management (cb15cc1)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "May 27, 2026",
+      "title": "feat: add is_public and share_token fields to Budget model and corresponding migration",
+      "description": "Updated prisma/migrations/20260527000000_add_budget_share_fields/migration.sql, prisma/schema.prisma",
+      "items": [
+        "feat: add is_public and share_token fields to Budget model and corresponding migration (c175916)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "May 27, 2026",
+      "title": "refactor: update import paths for budget tracker components and types",
+      "description": "Updated src/lib/budget-tracker/states.svelte.ts, src/lib/components/budget-tracker/BudgetCard.svelte, src/lib/components/budget-tracker/BudgetDialog.svelte and more",
+      "items": [
+        "refactor: update import paths for budget tracker components and types (ae33be4)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "May 27, 2026",
+      "title": "feat: update .fallowrc.json to refine ignore patterns and enhance duplicates configuration",
+      "description": "Updated .fallowrc.json",
+      "items": [
+        "feat: update .fallowrc.json to refine ignore patterns and enhance duplicates configuration (30c1a8f)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "May 6, 2026",
       "title": "feat: add .fallowrc.json configuration file for Fallow",
