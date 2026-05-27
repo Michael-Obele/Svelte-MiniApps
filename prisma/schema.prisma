@@ -113,15 +113,17 @@ model Mantra {
 }
 
 model Budget {
-  id        String    @id @default(uuid())
-  name      String
-  amount    Float
-  currency  String
-  userId    String?   @map("user_id")
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
-  expenses  Expense[]
-  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         String    @id @default(uuid())
+  name       String
+  amount     Float
+  currency   String
+  isPublic   Boolean   @default(false) @map("is_public")
+  shareToken String?   @unique @map("share_token")
+  userId     String?   @map("user_id")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  expenses   Expense[]
+  user       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("budgets")
 }
