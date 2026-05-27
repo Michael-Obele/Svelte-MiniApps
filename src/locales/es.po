@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2026-04-20T00:02:12.285Z\n"
+"PO-Revision-Date: 2026-05-27T16:05:14.365Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -510,6 +510,7 @@ msgid "Clear"
 msgstr "Limpiar"
 
 #: src/lib/components/blocks/Info.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -1690,6 +1691,8 @@ msgstr "Zona de peligro"
 msgid "Delete Account"
 msgstr "Eliminar cuenta"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
@@ -1730,6 +1733,9 @@ msgstr "Escribe <0/> para confirmar"
 msgid "Enter your username"
 msgstr "Ingresa tu nombre de usuario"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
@@ -2067,6 +2073,7 @@ msgstr "Las contraseñas no coinciden"
 
 #: src/routes/(auth)/profile/PwdComponent.svelte
 #: src/routes/(auth)/profile/security/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Updating..."
 msgstr "Actualizando..."
 
@@ -2966,6 +2973,8 @@ msgstr "Nombre copiado: {0}"
 msgid "Copied emoji and name!"
 msgstr "¡Emoji y nombre copiados!"
 
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
@@ -2973,6 +2982,8 @@ msgstr "¡Emoji y nombre copiados!"
 msgid "Select Budget"
 msgstr "Seleccionar presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -3224,6 +3235,7 @@ msgstr "Aún no hay presupuestos"
 msgid "Create your first budget to get started tracking your expenses."
 msgstr "Crea tu primer presupuesto para empezar a rastrear tus gastos."
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Create Budget"
@@ -3239,21 +3251,29 @@ msgstr "Aceptar"
 #~ msgid "Make changes to your budget here. Click save when you're done."
 #~ msgstr "Realiza cambios en tu presupuesto aquí. Haz clic en guardar cuando termines."
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Budget Name"
 msgstr "Nombre del presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Budget Amount"
 msgstr "Monto del presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Formated Budget Amount"
 msgstr "Monto del presupuesto formateado"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
@@ -3264,6 +3284,10 @@ msgstr "Moneda"
 #~ msgid "Add New Budget"
 #~ msgstr "Agregar nuevo presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -3275,26 +3299,33 @@ msgstr "Cantidad"
 #~ msgid "<0/> Add Budget"
 #~ msgstr "<0/> Agregar presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Deleting budget..."
 msgstr "Eliminando presupuesto..."
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Strike out completed expenses"
 msgstr "Tachar gastos completados"
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Budget:"
 msgstr "Presupuesto:"
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Spent:"
 msgstr "Gastado:"
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 msgid "Remaining:"
 msgstr "Restante:"
 
+#: src/lib/components/budget-tracker/BudgetsList.svelte
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expenses"
@@ -3309,10 +3340,13 @@ msgstr "Gastos"
 #~ msgid "Make changes to the expense here. Click save when you're done."
 #~ msgstr "Realiza cambios en el gasto aquí. Haz clic en Guardar cuando termines."
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "View the expense details below. Click the pencil button to edit."
 msgstr "Ver los detalles del gasto a continuación. Haz clic en el lápiz para editar."
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
@@ -3326,6 +3360,7 @@ msgstr "Ver los detalles del gasto a continuación. Haz clic en el lápiz para e
 msgid "Description"
 msgstr "Descripción"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Formatted Amount"
 msgstr "Monto formateado"
@@ -3335,6 +3370,7 @@ msgstr "Monto formateado"
 msgid "Save Changes"
 msgstr "Guardar cambios"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
@@ -3347,6 +3383,7 @@ msgstr "Guardar cambios"
 msgid "Date"
 msgstr "Fecha"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -3363,24 +3400,31 @@ msgstr "Eliminar"
 #~ msgid "This action cannot be undone. Are you sure you want to delete this expense?"
 #~ msgstr "Esta acción no se puede deshacer. ¿Seguro que quieres eliminar este gasto?"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/countdown/TimerCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "<0/> Edit"
 msgstr "<0/> Editar"
 
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Add New Expense"
 msgstr "Agregar nuevo gasto"
 
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Expense Description"
 msgstr "Descripción del gasto"
 
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
 msgid "Formated Expense Amount"
 msgstr "Importe del gasto formateado"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/ExpenseSection.svelte
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseSection.svelte
@@ -3388,11 +3432,13 @@ msgstr "Importe del gasto formateado"
 msgid "<0/> Add Expense"
 msgstr "<0/> Agregar gasto"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Are you sure you want to delete this expense?"
 msgstr "¿Seguro que quieres eliminar este gasto?"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Expense deleted successfully"
 msgstr "Gasto eliminado con éxito"
@@ -3400,51 +3446,63 @@ msgstr "Gasto eliminado con éxito"
 #~ msgid "Latest Transactions <0>(showing 12 most recent)</0>"
 #~ msgstr "Últimas transacciones <0>(mostrando las 12 más recientes)</0>"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "No expenses yet. Add your first expense to get started."
 msgstr "Aún no hay gastos. Añade tu primer gasto para empezar."
 
+#: src/lib/components/budget-tracker/QuickNavigation.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickNavigation.svelte
 msgid "Quick Navigation"
 msgstr "Navegación rápida"
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget not found. Please save the budget first."
 msgstr "Presupuesto no encontrado. Por favor, guarda el presupuesto primero."
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Name:"
 msgstr "Nombre del presupuesto:"
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Budget Amount:"
 msgstr "Monto del presupuesto:"
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Save Budget"
 msgstr "Guardar presupuesto"
 
+#: src/lib/components/budget-tracker/Test.svelte
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Add Expense"
 msgstr "Agregar gasto"
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Name:"
 msgstr "Nombre del gasto:"
 
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Expense Amount:"
 msgstr "Monto del gasto:"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Total Expenses: $ {0}"
 msgstr "Gastos totales: $ {0}"
 
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
 #. placeholder {0}: (() => { const budgetString = localStorage.getItem(budgetName); const budget = budgetString ? JSON.parse(budgetString) : null; return budget ? budget.amount - budget.expenses.reduce((sum: number, expense: Expense) => sum + expense.amount, 0) : 0; })()
+#: src/lib/components/budget-tracker/Test.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Test.svelte
 msgid "Remaining Budget: $ {0}"
 msgstr "Presupuesto restante: $ {0}"
@@ -3576,6 +3634,7 @@ msgstr "Rastreador de contribuciones de GitHub"
 msgid "GitHub Username"
 msgstr "Nombre de usuario de GitHub"
 
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
 msgid "Year"
@@ -3695,6 +3754,8 @@ msgstr ""
 msgid "Backing up..."
 msgstr "Respaldando..."
 
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseTrackerHeader.svelte
 msgid "Backup"
@@ -4147,6 +4208,7 @@ msgstr "Medicamentos"
 msgid "Add Medication"
 msgstr "Agregar medicamento"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
@@ -5090,6 +5152,7 @@ msgstr "Compras totales"
 msgid "Total Quantity"
 msgstr "Cantidad total"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
@@ -5332,6 +5395,7 @@ msgstr "Texto/URL"
 msgid "Contact Card"
 msgstr "Tarjeta de contacto"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
@@ -7715,6 +7779,7 @@ msgstr "Intento #{0}"
 msgid "Current"
 msgstr "Actual"
 
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
@@ -8921,6 +8986,7 @@ msgstr "Tiempo Invertido"
 msgid "Allocation"
 msgstr "Asignación"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -9839,6 +9905,7 @@ msgstr "Intenta ajustar tu consulta de búsqueda."
 
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "No activity yet"
 msgstr "Aún no hay actividad"
 
@@ -10684,6 +10751,7 @@ msgstr "Resumen general"
 msgid "Total Budget"
 msgstr "Presupuesto total"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
@@ -10699,12 +10767,15 @@ msgstr "¿Seguro que quieres eliminar \"{0}\"?"
 msgid "Budget deleted"
 msgstr "Presupuesto eliminado"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "<0/> Edit Budget"
 msgstr "<0/> Editar presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 msgid "<0/> View Details"
 msgstr "<0/> Ver detalles"
@@ -10713,13 +10784,18 @@ msgstr "<0/> Ver detalles"
 msgid "Allocated"
 msgstr "Asignado"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
 msgid "Spent"
 msgstr "Gastado"
 
 #. placeholder {0}: budget.expenses.length
 #. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
+#. placeholder {0}: budget.expenses.length
+#. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
+#: src/lib/components/budget-tracker/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 msgid "{0} expense{1}"
 msgstr "{0} gasto{1}"
@@ -10747,9 +10823,11 @@ msgstr "Presupuesto no encontrado"
 msgid "The budget you're looking for doesn't exist."
 msgstr "El presupuesto que buscas no existe."
 
-#~ msgid "Analytics"
-#~ msgstr "Análisis"
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Analytics"
+msgstr "Análisis"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Budget Allocated"
 msgstr "Presupuesto asignado"
@@ -10758,12 +10836,14 @@ msgstr "Presupuesto asignado"
 #~ msgstr "{0}% del presupuesto"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Over budget"
 msgstr "Por encima del presupuesto"
 
 #~ msgid "Available"
 #~ msgstr "Disponible"
 
+#: src/lib/components/budget-tracker/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 msgid "View Details <0/>"
 msgstr "Ver detalles <0/>"
@@ -10788,6 +10868,7 @@ msgstr "Mes"
 msgid "All-time"
 msgstr "Todos los tiempos"
 
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/TrendChart.svelte
 msgid "No expense data for this period"
 msgstr "No hay datos de gastos para este periodo"
@@ -10799,25 +10880,35 @@ msgstr "Promedio diario"
 #~ msgid "Spending by Category"
 #~ msgstr "Gastos por categoría"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "No expense data yet"
 msgstr "Aún no hay datos de gastos"
 
 #. placeholder {0}: budget.expenses.length
+#. placeholder {0}: budget.expenses.length
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "Expenses ({0})"
 msgstr "Gastos ({0})"
 
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "No expenses yet"
 msgstr "Aún no hay gastos"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "Edit expense"
 msgstr "Editar gasto"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
@@ -10828,6 +10919,7 @@ msgstr "Eliminar gasto"
 msgid "Expense added"
 msgstr "Gasto agregado"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Enter the expense details below. Click save when you're done."
 msgstr "Introduce los detalles del gasto a continuación. Haz clic en \"Guardar\" cuando termines."
@@ -10905,64 +10997,83 @@ msgstr "Tasa en caché"
 msgid "Live rate"
 msgstr "Tasa en vivo"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "Update your budget details. Click save when you're done."
 msgstr "Actualiza los detalles de tu presupuesto. Haz clic en guardar cuando termines."
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Select Currency"
 msgstr "Seleccionar Moneda"
 
+#: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 msgid "✓ Save Changes"
 msgstr "✓ Guardar Cambios"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Recent Transactions"
 msgstr "Transacciones Recientes"
 
+#: src/lib/components/budget-tracker/ExpensesList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesList.svelte
 msgid "Last 12 expenses across all budgets"
 msgstr "Últimos 12 gastos en todos los presupuestos"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Create New Budget"
 msgstr "Crear Nuevo Presupuesto"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 msgid "Set up a budget to track your spending"
 msgstr "Configura un presupuesto para rastrear tus gastos"
 
+#: src/lib/components/budget-tracker/BudgetSection.svelte
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Formatted"
 msgstr "Formateado"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 msgid "Budget"
 msgstr "Presupuesto"
 
-#: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
+#: src/lib/components/budget-tracker/BudgetCard.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 msgid "Left"
 msgstr "Restante"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "<0/> Add New Expense"
 msgstr "<0/> Agregar Nuevo Gasto"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "<0/> Expense Details"
 msgstr "<0/> Detalles del Gasto"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "What did you spend on?"
 msgstr "¿En qué gastaste?"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "Delete Expense?"
 msgstr "¿Eliminar Gasto?"
 
+#: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 msgid "This action cannot be undone. The expense will be permanently removed."
 msgstr "Esta acción no se puede deshacer. El gasto se eliminará permanentemente."
@@ -10993,20 +11104,25 @@ msgstr "Gasto diario durante el período seleccionado"
 msgid "Comparison of allocated budget and actual spending"
 msgstr "Comparación del presupuesto asignado y el gasto real"
 
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/ComparisonChart.svelte
 msgid "No expenses recorded yet"
 msgstr "Aún no se han registrado gastos"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Approaching limit"
 msgstr "Acercándose al límite"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "On track"
 msgstr "En camino"
 
 #. placeholder {0}: budget.currency
+#. placeholder {0}: budget.currency
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "<0/> {0} budget"
 msgstr "<0/> Presupuesto en {0}"
 
@@ -11024,35 +11140,45 @@ msgid "Nothing logged yet"
 msgstr "Aún no se ha registrado nada"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "<0/> Latest activity"
 msgstr "<0/> Actividad más reciente"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Most recent expense logged"
 msgstr "Gasto más reciente registrado"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "<0/> Coverage"
 msgstr "<0/> Cobertura"
 
 #. placeholder {0}: percentUsed.toFixed(0)
+#. placeholder {0}: percentUsed.toFixed(0)
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "{0}% of this budget is already used"
 msgstr "Ya se ha usado el {0}% de este presupuesto"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Useful context for pacing spend"
 msgstr "Contexto útil para el ritmo de gasto"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Budget Health"
 msgstr "Salud del Presupuesto"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Remaining before the budget cap is reached"
 msgstr "Restante antes de alcanzar el límite del presupuesto"
 
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Used"
 msgstr "Usado"
 
@@ -11064,27 +11190,35 @@ msgstr "<0/> Análisis"
 msgid "<0/> Expenses <1/>"
 msgstr "<0/> Gastos <1/>"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "Top Spending Items"
 msgstr "Principales Elementos de Gasto"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "Part-to-whole view of the biggest expense descriptions in this budget"
 msgstr "Vista de parte a todo de las descripciones de gastos más grandes en este presupuesto"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "Largest item"
 msgstr "Elemento más grande"
 
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "Total spent"
 msgstr "Total gastado"
 
 #. placeholder {0}: hiddenItemCount
+#. placeholder {0}: hiddenItemCount
+#: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 #: src/routes/apps/(app)/budget-tracker/components/Charts/CategoryChart.svelte
 msgid "Grouped {0} smaller items into Other."
 msgstr "Se agruparon {0} elementos más pequeños en Otros."
 
+#: src/lib/components/budget-tracker/ExpensesSection.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpensesSection.svelte
 msgid "Every logged item for this budget"
 msgstr "Cada elemento registrado para este presupuesto"
@@ -11174,6 +11308,7 @@ msgstr "<0/> Listo"
 #~ msgid "{0}% of this budget is still available."
 #~ msgstr "El {0}% de este presupuesto aún está disponible."
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Available balance"
 msgstr "Saldo disponible"
@@ -11181,33 +11316,43 @@ msgstr "Saldo disponible"
 #~ msgid "Remaining budget"
 #~ msgstr "Presupuesto restante"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Active Base"
 msgstr "Base Activa"
 
 #. placeholder {0}: budget.expenses.length
+#. placeholder {0}: budget.expenses.length
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "{0} expenses"
 msgstr "{0} gastos"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Over Limit"
 msgstr "Sobre el Límite"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Near Limit"
 msgstr "Cerca del Límite"
 
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "On Track"
 msgstr "En Camino"
 
 #. placeholder {0}: percentUsed.toFixed(1)
+#. placeholder {0}: percentUsed.toFixed(1)
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "{0}% used"
 msgstr "{0}% usado"
 
 #. placeholder {0}: formatNumber(Math.abs(remaining))
+#. placeholder {0}: formatNumber(Math.abs(remaining))
+#: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 #: src/routes/apps/(app)/budget-tracker/components/QuickStatsGrid.svelte
 msgid "Exceeded by {0}"
 msgstr "Excedido por {0}"
@@ -11266,3 +11411,234 @@ msgstr "Atajos de teclado"
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Fast controls for navigating apps"
 msgstr "Controles rápidos para navegar por las aplicaciones"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Share link copied to clipboard"
+msgstr "Enlace de compartir copiado al portapapeles"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Failed to copy share link"
+msgstr "Error al copiar el enlace de compartir"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Sharing"
+msgstr "Compartir"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Public link access"
+msgstr "Acceso mediante enlace público"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Public"
+msgstr "<0/> Público"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Private"
+msgstr "<0/> Privado"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Checking sharing status..."
+msgstr "Verificando estado de uso compartido..."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Sign in to create a shareable budget link."
+msgstr "Inicia sesión para crear un enlace de presupuesto compartible."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Back up this budget to your account before sharing it."
+msgstr "Haz una copia de seguridad de este presupuesto en tu cuenta antes de compartirlo."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid ""
+"Sharing only works for budgets that exist on the server, so the public page stays in\n"
+"sync."
+msgstr ""
+"Compartir solo funciona para presupuestos que existen en el servidor, así la página pública se mantiene\n"
+"sincronizada."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Anyone with the link can view"
+msgstr "Cualquier persona con el enlace puede ver"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "The public page is view-only and does not expose editing actions."
+msgstr "La página pública es solo de lectura y no expone acciones de edición."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Update Access"
+msgstr "Actualizar acceso"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Shared page link"
+msgstr "Enlace de página compartida"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Enable public access to generate a live share link."
+msgstr "Habilita el acceso público para generar un enlace de compartir en vivo."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Copy Link"
+msgstr "<0/> Copiar enlace"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Open Shared Page"
+msgstr "<0/> Abrir página compartida"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Working..."
+msgstr "Trabajando..."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Regenerate Link"
+msgstr "Regenerar enlace"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Generate Link"
+msgstr "Generar enlace"
+
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+msgid "Budget balance"
+msgstr "Saldo del presupuesto"
+
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+msgid "A clearer read on the budget cap, current spend, and how much room is still available."
+msgstr "Una visión más clara del límite del presupuesto, el gasto actual y cuánto margen queda disponible."
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "Spending pace"
+msgstr "Ritmo de gasto"
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "Track how spending is moving over time, then compare peak days with the current pace."
+msgstr "Sigue cómo evoluciona el gasto a lo largo del tiempo y compara los días pico con el ritmo actual."
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "7D"
+msgstr "7D"
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "30D"
+msgstr "30D"
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "All"
+msgstr "Todo"
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "Average"
+msgstr "Promedio"
+
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "Peak day"
+msgstr "Día pico"
+
+#. placeholder {0}: formatNumber(latestSpend)
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
+msgid "Latest interval: {0}"
+msgstr "Último intervalo: {0}"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Spend clarity without the clutter"
+msgstr "Claridad de gastos sin desorden"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid ""
+"Start with the balance view to see how close the budget is to its cap, then read the\n"
+"trend chart to spot whether the current pace is accelerating or settling."
+msgstr ""
+"Comienza con la vista de saldo para ver qué tan cerca está el presupuesto de su límite, luego lee el\n"
+"gráfico de tendencias para detectar si el ritmo actual se está acelerando o estabilizando."
+
+#. placeholder {0}: expenseCount
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0} logged"
+msgstr "{0} registrados"
+
+#. placeholder {0}: formatNumber(totalSpent)
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0} spent"
+msgstr "{0} gastados"
+
+#. placeholder {0}: formatNumber(remaining)
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0} left"
+msgstr "{0} restantes"
+
+#. placeholder {0}: budget.name
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "View a shared read-only budget for {0} in Svelte Mini Apps."
+msgstr "Ver un presupuesto compartido de solo lectura para {0} en Svelte Mini Apps."
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "<0/> Back to Budget Tracker"
+msgstr "<0/> Volver al Rastreador de Presupuestos"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "<0/> Read-only link"
+msgstr "<0/> Enlace de solo lectura"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid ""
+"This shared budget is view only. You can review spend, trends, and logged expenses, but\n"
+"editing stays with the owner."
+msgstr ""
+"Este presupuesto compartido es de solo lectura. Puedes revisar gastos, tendencias y gastos registrados, pero\n"
+"la edición permanece con el propietario."
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "<0/> Budget amount"
+msgstr "<0/> Monto del presupuesto"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "Original allocation"
+msgstr "Asignación original"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid ""
+"Shared links are view only. No edits, deletes, or new expenses can be made from this\n"
+"page."
+msgstr ""
+"Los enlaces compartidos son de solo lectura. No se pueden realizar ediciones, eliminaciones ni nuevos gastos desde esta\n"
+"página."
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "Expense log"
+msgstr "Registro de gastos"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "Line items recorded for this shared budget."
+msgstr "Partidas registradas para este presupuesto compartido."
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "View only"
+msgstr "Solo lectura"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "No expenses have been logged yet."
+msgstr "Aún no se han registrado gastos."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "No budgets to back up"
+msgstr "No hay presupuestos para respaldar"
+
+#. placeholder {0}: lastBackedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Backed up {0}"
+msgstr "<0/> Respaldado {0}"
+
+#~ msgid "● Unsaved changes"
+#~ msgstr "● Cambios sin guardar"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Saving…"
+msgstr "<0/> Guardando…"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Save to Cloud"
+msgstr "Guardar en la nube"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "<0/> Unsaved changes"
+msgstr "<0/> Cambios sin guardar"
