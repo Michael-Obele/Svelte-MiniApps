@@ -1,4 +1,3 @@
-// @ts-check
 import { adapter as svelte } from '@wuchale/svelte';
 import { adapter as js } from 'wuchale/adapter-vanilla';
 import { generateText } from 'ai';

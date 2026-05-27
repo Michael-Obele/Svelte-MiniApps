@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
 	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
-	"ignorePatterns": ["src/lib/components/ui/**", "**/src/lib/server/**"],
+	"ignorePatterns": ["src/lib/components/ui/**", "**/src/lib/server/**", "wuchale.config.js"],
 	"duplicates": {
 		"mode": "mild",
 		"minTokens": 80,
