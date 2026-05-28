@@ -23,20 +23,29 @@ Usage:
 			{#each contentBlocksData as block, index (index)}
 				<!-- Staircase layout: straight on mobile, progressively indented on larger screens -->
 				<section
-					class="group w-full transition-all duration-300 md:mr-auto md:max-w-3xl lg:max-w-4xl"
-					class:md:ml-[0%]={index === 0}
-					class:md:ml-[8%]={index === 1}
-					class:md:ml-[16%]={index === 2}
-					class:md:ml-[24%]={index === 3}
+					class={[
+						'group w-full transition-all duration-300 md:mr-auto md:max-w-3xl lg:max-w-4xl',
+						index === 0 && 'md:ml-[0%]',
+						index === 1 && 'md:ml-[8%]',
+						index === 2 && 'md:ml-[16%]',
+						index === 3 && 'md:ml-[24%]'
+					]
+						.filter(Boolean)
+						.join(' ')}
 				>
 					<ContentBlock>
 						{#snippet header()}
 							<div class="w-full cursor-pointer">
 								{#each block.header.text as segment, i (segment.content)}
 									<span
-										class="{segment.type === 'strong'
-											? 'font-bold text-red-600 transition-colors group-hover:text-red-700 dark:text-red-500'
-											: 'font-semibold'} {i > 0 ? 'ml-3' : ''}"
+										class={[
+											segment.type === 'strong'
+												? 'font-bold text-red-600 transition-colors group-hover:text-red-700 dark:text-red-500'
+												: 'font-semibold',
+											i > 0 && 'ml-3'
+										]
+											.filter(Boolean)
+											.join(' ')}
 									>
 										{segment.content}
 									</span>
@@ -63,11 +72,15 @@ Usage:
 				<!-- Connector line showing the staircase progression (hidden on mobile) -->
 				{#if index < contentBlocksData.length - 1}
 					<div
-						class="hidden h-px bg-gradient-to-r from-red-200 to-transparent md:block dark:from-red-800/50"
-						class:md:ml-[4%]={index === 0}
-						class:md:ml-[12%]={index === 1}
-						class:md:ml-[20%]={index === 2}
-						class:md:w-[8%]={true}
+						class={[
+							'hidden h-px bg-gradient-to-r from-red-200 to-transparent md:block dark:from-red-800/50',
+							index === 0 && 'md:ml-[4%]',
+							index === 1 && 'md:ml-[12%]',
+							index === 2 && 'md:ml-[20%]',
+							'md:w-[8%]'
+						]
+							.filter(Boolean)
+							.join(' ')}
 					></div>
 				{/if}
 			{/each}
