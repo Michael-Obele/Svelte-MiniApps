@@ -179,10 +179,10 @@
 				</Dialog.Description>
 			</Dialog.Header>
 			<form
-				{...deleteAccount.enhance(async ({ form, submit }) => {
+				{...deleteAccount.enhance(async (form) => {
 					const toastId = toast.loading('Deleting account...');
 					try {
-						await submit();
+						await form.submit();
 						toast.success('Account deleted successfully. Redirecting...', { id: toastId });
 						setTimeout(() => {
 							goto('/login');

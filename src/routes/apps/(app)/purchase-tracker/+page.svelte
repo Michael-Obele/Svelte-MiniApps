@@ -225,9 +225,9 @@
 
 		<form
 			{...currentUser
-				? createItemForm.enhance(async ({ form, submit }) => {
+				? createItemForm.enhance(async (form) => {
 						try {
-							await submit();
+							await form.submit();
 							// Check result after submission
 							const result = createItemForm.result as { success: boolean; item: Item } | undefined;
 							if (currentUser && result?.item) {
@@ -237,7 +237,7 @@
 							createDialogOpen = false;
 							selectedCategory = 'groceries';
 							selectedCurrency = 'USD';
-							form.reset();
+							form.element.reset();
 						} catch (error) {
 							toast.error('Failed to create item');
 						}
@@ -346,9 +346,9 @@
 		{#if selectedItem}
 			<form
 				{...currentUser
-					? updateItemForm.enhance(async ({ form, submit }) => {
+					? updateItemForm.enhance(async (form) => {
 							try {
-								await submit();
+								await form.submit();
 								const result = updateItemForm.result as
 									| { success: boolean; item: Item }
 									| undefined;

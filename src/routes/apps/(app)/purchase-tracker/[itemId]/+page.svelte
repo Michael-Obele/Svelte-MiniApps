@@ -364,9 +364,9 @@
 
 			<form
 				{...currentUser
-					? createPurchaseForm.enhance(async ({ form, submit }) => {
+					? createPurchaseForm.enhance(async (form) => {
 							try {
-								await submit();
+								await form.submit();
 								const result = createPurchaseForm.result as
 									| { success: boolean; purchase: PurchaseRecord }
 									| undefined;
@@ -376,7 +376,7 @@
 								toast.success('Purchase created successfully');
 								createDialogOpen = false;
 								costInput = '';
-								form.reset();
+								form.element.reset();
 							} catch (error) {
 								toast.error('Failed to create purchase');
 							}
@@ -462,9 +462,9 @@
 			{#if selectedPurchase}
 				<form
 					{...currentUser
-						? updatePurchaseForm.enhance(async ({ form, submit }) => {
+						? updatePurchaseForm.enhance(async (form) => {
 								try {
-									await submit();
+									await form.submit();
 									const result = updatePurchaseForm.result as
 										| { success: boolean; purchase: PurchaseRecord }
 										| undefined;

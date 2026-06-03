@@ -253,10 +253,10 @@
 			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
 			{#if revokeForm}
 				<form
-					{...revokeForm.enhance(async ({ form, submit }) => {
+					{...revokeForm.enhance(async (form) => {
 						try {
-							await submit();
-							form.reset();
+							await form.submit();
+							form.element.reset();
 							toast.success('Session revoked successfully');
 							sessionToRevoke = null;
 						} catch (error) {
@@ -292,10 +292,10 @@
 		<AlertDialog.Footer>
 			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
 			<form
-				{...revokeAllOtherSessions.enhance(async ({ form, submit }) => {
+				{...revokeAllOtherSessions.enhance(async (form) => {
 					try {
-						await submit();
-						form.reset();
+						await form.submit();
+						form.element.reset();
 						toast.success('All other sessions have been revoked');
 						showRevokeAllDialog = false;
 					} catch (error) {

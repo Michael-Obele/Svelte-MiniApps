@@ -9,13 +9,14 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Clipboard, Timer, Copy, Check, AlertTriangle, ArrowLeft } from 'lucide-svelte';
+	import { page } from '$app/state';
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
-	import type { PageProps } from './$types';
+	import { getFlashTextLive } from '$lib/remote';
 
-	let { data }: PageProps = $props();
+	let flashText = $derived.by(() => getFlashTextLive(page.params.slug));
 
-	let currentFlashText = $derived(data.flashText);
+	let currentFlashText = $derived(flashText.ready ? flashText.current : null);
 
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);

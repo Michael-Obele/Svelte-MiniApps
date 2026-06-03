@@ -147,11 +147,11 @@
 		</CardHeader>
 		<CardContent>
 			<form
-				{...createFlashText.enhance(async ({ form, submit }) => {
+				{...createFlashText.enhance(async (form) => {
 					isCreating = true;
 					try {
-						await submit();
-						form.reset();
+						await form.submit();
+						form.element.reset();
 						if (currentUser) {
 							await loadUserPastes();
 						}

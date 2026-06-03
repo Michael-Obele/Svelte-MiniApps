@@ -1,5 +1,5 @@
 import { getRequestEvent, query, form } from '$app/server';
-import { error, redirect, fail } from '@sveltejs/kit';
+import { error, redirect, fail, invalid } from '@sveltejs/kit';
 import * as v from 'valibot';
 import * as auth from '$lib/server/auth';
 import { prisma } from '$lib/server/db';
@@ -62,7 +62,7 @@ const registerSchema = v.object({
 });
 
 // Login form
-export const loginUser = form(loginSchema, async (data, invalid) => {
+export const loginUser = form(loginSchema, async (data, issue) => {
 	const event = getRequestEvent();
 
 	const existingUser = await prisma.user.findUnique({
@@ -70,14 +70,14 @@ export const loginUser = form(loginSchema, async (data, invalid) => {
 	});
 
 	if (!existingUser) {
-		invalid(invalid.username('Incorrect username or password'));
+		invalid(issue.username('Incorrect username or password'));
 		return; // This line won't be reached, invalid() throws
 	}
 
 	const validPassword = await auth.verifyPassword(data.password, existingUser.passwordHash);
 
 	if (!validPassword) {
-		invalid(invalid.password('Incorrect username or password'));
+		invalid(issue.password('Incorrect username or password'));
 		return; // This line won't be reached, invalid() throws
 	}
 

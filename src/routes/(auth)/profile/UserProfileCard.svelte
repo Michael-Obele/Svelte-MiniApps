@@ -167,10 +167,10 @@ Utilizes the `userData` object from the `page.data.user` store to populate the p
 				</Dialog.Description>
 			</Dialog.Header>
 			<form
-				{...updateProfile.enhance(async ({ form, submit }) => {
+				{...updateProfile.enhance(async (form) => {
 					const toastId = toast.loading('Updating profile...');
 					try {
-						await submit();
+						await form.submit();
 						toast.success('Profile updated successfully!', { id: toastId });
 						showEditDialog = false;
 						await getUserProfile().refresh();

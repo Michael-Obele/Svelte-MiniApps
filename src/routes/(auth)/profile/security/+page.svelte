@@ -90,12 +90,12 @@
 		</Card.Header>
 		<Card.Content>
 			<form
-				{...updatePassword.enhance(async ({ form, submit }) => {
+				{...updatePassword.enhance(async (form) => {
 					const toastId = toast.loading('Updating password...');
 					try {
-						await submit();
+						await form.submit();
 						toast.success('Password updated successfully!', { id: toastId });
-						form.reset();
+						form.element.reset();
 						currentPasswordValue = '';
 						newPasswordValue = '';
 						confirmPasswordValue = '';

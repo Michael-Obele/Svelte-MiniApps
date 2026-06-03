@@ -117,6 +117,7 @@ export { searchDictionary, type DictionaryEntry, type ApiError } from './diction
 
 // Remote functions for flash-text
 export {
+	getFlashTextLive,
 	getUserFlashTexts,
 	createFlashText,
 	deleteFlashText,
