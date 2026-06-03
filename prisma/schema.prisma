@@ -33,7 +33,7 @@ model User {
   scenarioOptions         ScenarioOption[]
   scenarioTimelineEntries ScenarioTimelineEntry[]
   scenarioRisks           ScenarioRisk[]
-
+    flashTexts              FlashText[]
   @@index([username])
   @@map("user")
 }
@@ -380,4 +380,22 @@ model ScenarioRisk {
   @@index([userId])
   @@index([optionId])
   @@map("scenario_risks")
+}
+
+// ============================================
+// FlashText - Temporary Text Sharing
+// ============================================
+
+model FlashText {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  content   String
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  userId    String?  @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([slug])
+  @@index([expiresAt])
+  @@map("flash_texts")
 }
