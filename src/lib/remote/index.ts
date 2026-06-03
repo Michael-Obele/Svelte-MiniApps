@@ -114,3 +114,11 @@ export {
 
 // Remote functions for dictionary app
 export { searchDictionary, type DictionaryEntry, type ApiError } from './dictionary.remote';
+
+// Remote functions for flash-text
+export {
+	getUserFlashTexts,
+	createFlashText,
+	deleteFlashText,
+	cleanupExpiredFlashTexts
+} from './flash-text.remote';

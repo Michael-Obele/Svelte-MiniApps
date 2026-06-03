@@ -37,7 +37,8 @@ import {
 	Dumbbell,
 	Flower2,
 	Target,
-	Network
+	Network,
+	Clipboard
 } from 'lucide-svelte';
 
 /**
@@ -108,7 +109,8 @@ export function done() {
 		},
 		{ name: 'scenario-tracker', time: '2025-11-25T00:00:00.000Z' },
 		{ name: 'countdown-timer', time: '2025-12-24T00:00:00.000Z' },
-		{ name: 'subnet-calculator', time: '2026-03-17T00:00:00.000Z' }
+		{ name: 'subnet-calculator', time: '2026-03-17T00:00:00.000Z' },
+		{ name: 'flash-text', time: '2026-06-01T00:00:00.000Z' }
 	];
 }
 
@@ -608,6 +610,19 @@ export function projects(): Project[] {
 			class: 'medium',
 			link: 'subnet-calculator',
 			icon: Network
+		},
+		{
+			title: 'FlashText',
+			details:
+				'Share text temporarily with self-destructing links. Paste text, get a short-lived public URL (1–24h), and anyone with the link can view it — no account needed.',
+			// @wc-include
+			tag: 'productivity',
+			tagClass: 'productivity',
+			// @wc-include
+			difficulty: 'medium',
+			class: 'medium',
+			link: 'flash-text',
+			icon: Clipboard
 		}
 	];
 }
