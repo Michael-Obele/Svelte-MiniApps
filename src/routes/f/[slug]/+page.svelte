@@ -11,31 +11,27 @@
 	import { Clipboard, Timer, Copy, Check, AlertTriangle, ArrowLeft } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
+	import type { PageProps } from './$types';
 
-	interface FlashTextItem {
-		id: string;
-		slug: string;
-		content: string;
-		expiresAt: string;
-		createdAt: string;
-		userId: string | null;
-	}
+	let { data }: PageProps = $props();
 
-	let { data }: { data: { flashText: FlashTextItem | null; slug: string } } = $props();
+	let currentFlashText = $derived(data.flashText);
 
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
 
-	let flashText = $derived(data.flashText);
-
 	// Countdown timer
 	$effect(() => {
-		if (!flashText) return;
+		if (!currentFlashText) {
+			timeRemaining = null;
+			isExpired = false;
+			return;
+		}
 
 		const updateTimer = () => {
 			const now = Date.now();
-			const expires = new Date(flashText.expiresAt).getTime();
+			const expires = new Date(currentFlashText.expiresAt).getTime();
 			const diff = expires - now;
 
 			if (diff <= 0) {
@@ -57,19 +53,19 @@
 	});
 
 	async function handleCopy() {
-		if (!flashText) return;
-		await navigator.clipboard.writeText(flashText.content);
+		if (!currentFlashText) return;
+		await navigator.clipboard.writeText(currentFlashText.content);
 		copyConfirmed = true;
 		toast.success('Text copied!');
 		setTimeout(() => (copyConfirmed = false), 2000);
 	}
 
-	let charCount = $derived(flashText?.content?.length ?? 0);
-	let lineCount = $derived(flashText?.content?.split('\n').length ?? 0);
+	let charCount = $derived(currentFlashText?.content?.length ?? 0);
+	let lineCount = $derived(currentFlashText?.content?.split('\n').length ?? 0);
 </script>
 
 <svelte:head>
-	<title>{flashText ? 'FlashText' : 'Expired — FlashText'}</title>
+	<title>{currentFlashText ? 'FlashText' : 'Expired — FlashText'}</title>
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
@@ -85,7 +81,7 @@
 		</div>
 	</div>
 
-	{#if !flashText}
+	{#if !currentFlashText}
 		<!-- Expired / Not Found -->
 		<div transition:fade>
 			<Card class="border-destructive/50 bg-destructive/5">
@@ -150,13 +146,13 @@
 				<CardContent>
 					<pre
 						class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
-{flashText.content}</pre>
+						{currentFlashText.content}</pre>
 				</CardContent>
 			</Card>
 
 			<!-- Footer -->
 			<p class="text-muted-foreground text-center text-xs">
-				Created {new Date(flashText.createdAt).toLocaleString()} &middot;
+				Created {new Date(currentFlashText.createdAt).toLocaleString()} &middot;
 				<a href="/apps/flash-text" class="text-primary hover:underline">Create your own</a>
 			</p>
 		</div>

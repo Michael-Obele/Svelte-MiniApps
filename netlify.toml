@@ -11,6 +11,9 @@
   [plugins.inputs]
     paths = [".svelte-kit", "node_modules/.vite", "node_modules/.cache"]
 
+[functions."cleanup-flash-texts"]
+  schedule = "@hourly"
+
 [images]
   # Optional: If you ever test CDN as fallback
   # remote_images = ["https://example-external-domain.com/.*"]
