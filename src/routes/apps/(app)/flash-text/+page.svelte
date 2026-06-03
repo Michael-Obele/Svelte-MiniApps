@@ -1,51 +1,71 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { createFlashText, getUserFlashTexts, deleteFlashText, getCurrentUser } from '$lib/remote';
+	import {
+		createFlashText,
+		deleteFlashText,
+		getCurrentUser,
+		getUserFlashTexts,
+		lookupFlashText,
+		type FlashTextItem
+	} from '$lib/remote';
 	import {
 		Card,
 		CardContent,
+		CardDescription,
 		CardHeader,
-		CardTitle,
-		CardDescription
+		CardTitle
 	} from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Textarea } from '$lib/components/ui/textarea';
+	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Separator } from '$lib/components/ui/separator';
 	import { Skeleton } from '$lib/components/ui/skeleton';
-	import { Clipboard, Link, Timer, Trash, Copy, Check, Loader2 } from 'lucide-svelte';
+	import * as Tabs from '$lib/components/ui/tabs';
+	import {
+		AlertTriangle,
+		Check,
+		Clipboard,
+		ClipboardPaste,
+		Copy,
+		Link,
+		Loader2,
+		SquarePen,
+		Timer,
+		Trash
+	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fade, fly } from 'svelte/transition';
 
-	// --- State ---
+	let activeTab = $state<'create' | 'lookup'>('create');
 	let isCreating = $state(false);
 	let copyConfirmed = $state(false);
+	let lookupCopyConfirmed = $state(false);
 	let currentUser = $state<{ id: string } | null>(null);
-	let userFlashTexts = $state<
-		Array<{ id: string; slug: string; content: string; expiresAt: string; createdAt: string }>
-	>([]);
+	let userFlashTexts = $state<FlashTextItem[]>([]);
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
-	let formRef = $state<HTMLFormElement | null>(null);
-
-	// --- Derived ---
+	let lookupInput = $state('');
+	let lookupResult = $state<FlashTextItem | null>(null);
+	let lookupState = $state<'idle' | 'loading' | 'found' | 'missing' | 'error'>('idle');
+	let lookupMessage = $state<string | null>(null);
 	let createdSlug = $derived(page.url.searchParams.get('slug'));
 	let createdExpiresAt = $derived(page.url.searchParams.get('expiresAt'));
 	let shareUrl = $derived(createdSlug ? `${page.url.origin}/f/${createdSlug}` : null);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
+	let lookupCharCount = $derived(lookupResult?.content?.length ?? 0);
+	let lookupLineCount = $derived(lookupResult?.content?.split('\n').length ?? 0);
 
-	// --- Init ---
 	$effect(() => {
-		getCurrentUser().then((u) => {
-			currentUser = u || null;
-			if (u) loadUserPastes();
+		getCurrentUser().then((user) => {
+			currentUser = user || null;
+			if (user) loadUserPastes();
 		});
 	});
 
-	// --- Countdown timer for created paste ---
 	$effect(() => {
 		if (!createdExpiresAt) {
 			timeRemaining = null;
@@ -54,9 +74,8 @@
 		}
 
 		const updateTimer = () => {
-			const now = Date.now();
-			const expires = new Date(createdExpiresAt!).getTime();
-			const diff = expires - now;
+			const expires = new Date(createdExpiresAt).getTime();
+			const diff = expires - Date.now();
 
 			if (diff <= 0) {
 				timeRemaining = 'Expired';
@@ -76,13 +95,12 @@
 		return () => clearInterval(interval);
 	});
 
-	// --- Actions ---
 	async function loadUserPastes() {
 		isLoadingPastes = true;
 		try {
 			userFlashTexts = await getUserFlashTexts();
 		} catch {
-			// Silently fail
+			// The list is optional; ignore failures.
 		} finally {
 			isLoadingPastes = false;
 		}
@@ -94,6 +112,20 @@
 		copyConfirmed = true;
 		toast.success('Link copied!');
 		setTimeout(() => (copyConfirmed = false), 2000);
+	}
+
+	async function handleLookupCopy() {
+		if (!lookupResult) return;
+		await navigator.clipboard.writeText(`${page.url.origin}/f/${lookupResult.slug}`);
+		lookupCopyConfirmed = true;
+		toast.success('Link copied!');
+		setTimeout(() => (lookupCopyConfirmed = false), 2000);
+	}
+
+	function handleOpenLookupLink() {
+		const slug = lookupResult?.slug;
+		if (!slug) return;
+		goto(`/f/${slug}`);
 	}
 
 	async function handleDelete(id: string) {
@@ -110,20 +142,77 @@
 	}
 
 	function handleNew() {
+		activeTab = 'create';
 		goto('/apps/flash-text', { replaceState: true, noScroll: true });
 	}
 
 	function previewContent(text: string, maxLen = 120): string {
-		return text.length > maxLen ? text.slice(0, maxLen) + '...' : text;
+		return text.length > maxLen ? `${text.slice(0, maxLen)}...` : text;
 	}
 
 	function formatDate(iso: string): string {
 		return new Date(iso).toLocaleString();
 	}
+
+	function extractFlashTextSlug(value: string): string | null {
+		const trimmed = value.trim();
+		if (!trimmed) return null;
+
+		if (/^[A-Za-z0-9_-]+$/.test(trimmed)) {
+			return trimmed;
+		}
+
+		try {
+			const parsedUrl = new URL(trimmed, page.url.origin);
+			const segments = parsedUrl.pathname.split('/').filter(Boolean);
+			const slug = segments.at(-1);
+			if (slug && /^[A-Za-z0-9_-]+$/.test(slug)) {
+				return slug;
+			}
+		} catch {
+			// Fall through to the regex fallback below.
+		}
+
+		const match = trimmed.match(/(?:^|\/f\/)([A-Za-z0-9_-]+)(?:[/?#].*)?$/);
+		return match?.[1] ?? null;
+	}
+
+	async function handleLookup() {
+		lookupMessage = null;
+		lookupResult = null;
+
+		const slug = extractFlashTextSlug(lookupInput);
+		if (!slug) {
+			lookupState = 'error';
+			lookupMessage = 'Paste a valid FlashText code or share link.';
+			return;
+		}
+
+		lookupState = 'loading';
+
+		try {
+			const flashText = await lookupFlashText(slug);
+			if (!flashText) {
+				lookupState = 'missing';
+				lookupMessage = 'That link is expired or not found.';
+				return;
+			}
+
+			lookupResult = flashText;
+			lookupState = 'found';
+		} catch {
+			lookupState = 'error';
+			lookupMessage = 'Could not load that FlashText right now.';
+		}
+	}
 </script>
 
+<svelte:head>
+	<title>FlashText</title>
+	<meta name="description" content="Create temporary text links and open them by code." />
+</svelte:head>
+
 <div class="mx-auto max-w-3xl space-y-8 p-4 sm:p-6">
-	<!-- Header -->
 	<div class="flex items-center gap-3">
 		<div class="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
 			<Clipboard class="text-primary size-5" />
@@ -136,123 +225,251 @@
 		</div>
 	</div>
 
-	<!-- Create Section -->
-	<Card>
-		<CardHeader>
-			<CardTitle>Create a Share Link</CardTitle>
-			<CardDescription>
-				Paste your text below. A temporary link will be generated — anyone with the link can view it
-				until it expires.
-			</CardDescription>
-		</CardHeader>
-		<CardContent>
-			<form
-				{...createFlashText.enhance(async (form) => {
-					isCreating = true;
-					try {
-						await form.submit();
-						form.element.reset();
-						if (currentUser) {
-							await loadUserPastes();
-						}
-					} catch {
-						toast.error('Failed to create link. Please try again.');
-					} finally {
-						isCreating = false;
-					}
-				})}
-				bind:this={formRef}
-				class="space-y-4"
-			>
-				<div class="space-y-2">
-					<Label for="flash-content">Your Text</Label>
-					<Textarea
-						id="flash-content"
-						name="content"
-						placeholder="Paste your text here... (whitespace & formatting preserved)"
-						class="min-h-[200px] font-mono text-sm"
-						required
-					/>
-				</div>
+	<Tabs.Root bind:value={activeTab} class="space-y-6">
+		<Tabs.List aria-label="FlashText modes" class="grid w-full grid-cols-2">
+			<Tabs.Trigger value="create" class="gap-2">
+				<SquarePen class="size-4" />
+				Create
+			</Tabs.Trigger>
+			<Tabs.Trigger value="lookup" class="gap-2">
+				<ClipboardPaste class="size-4" />
+				Open by Code
+			</Tabs.Trigger>
+		</Tabs.List>
 
-				<div class="space-y-2">
-					<Label for="expiry">Expires After</Label>
-					<select
-						id="expiry"
-						name="expiryHours"
-						class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-					>
-						<option value="1">1 hour</option>
-						<option value="3">3 hours</option>
-						<option value="6" selected>6 hours</option>
-						<option value="12">12 hours</option>
-						<option value="24">24 hours</option>
-					</select>
-				</div>
-
-				<Button type="submit" disabled={isCreating} class="w-full sm:w-auto">
-					{#if isCreating}
-						<Loader2 class="mr-2 size-4 animate-spin" />
-						Creating...
-					{:else}
-						<Link class="mr-2 size-4" />
-						Generate Link
-					{/if}
-				</Button>
-			</form>
-		</CardContent>
-	</Card>
-
-	<!-- Result Card -->
-	{#if createdSlug}
-		<div transition:fly={{ y: 20, duration: 300 }}>
-			<Card
-				class={isExpired
-					? 'border-destructive/50 bg-destructive/5'
-					: 'border-green-500/50 bg-green-500/5'}
-			>
+		<Tabs.Content value="create" class="space-y-6">
+			<Card>
 				<CardHeader>
-					<CardTitle class="flex items-center gap-2">
-						{#if isExpired}
-							<Timer class="text-destructive size-5" />
-							<span class="text-destructive">Link Expired</span>
-						{:else}
-							<Link class="size-5 text-green-500" />
-							<span class="text-green-600 dark:text-green-400">Link Ready</span>
-						{/if}
-					</CardTitle>
+					<CardTitle>Create a Share Link</CardTitle>
 					<CardDescription>
-						{#if isExpired}
-							This link has expired and is no longer accessible.
-						{:else}
-							Share this link — it expires in <span class="font-semibold tabular-nums"
-								>{timeRemaining}</span
-							>
-						{/if}
+						Paste your text below. A temporary link will be generated, and the short code can be
+						opened in the second tab.
 					</CardDescription>
 				</CardHeader>
-				<CardContent class="space-y-4">
-					<div class="bg-muted flex items-center gap-2 rounded-md p-3 font-mono text-sm break-all">
-						<span class="text-muted-foreground">{shareUrl}</span>
-					</div>
-					<div class="flex flex-wrap gap-2">
-						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
-							{#if copyConfirmed}
-								<Check class="mr-2 size-4 text-green-500" />
-								Copied!
+				<CardContent>
+					<form
+						{...createFlashText.enhance(async (form) => {
+							isCreating = true;
+							try {
+								await form.submit();
+								form.element.reset();
+								if (currentUser) await loadUserPastes();
+							} catch {
+								toast.error('Failed to create link. Please try again.');
+							} finally {
+								isCreating = false;
+							}
+						})}
+						class="space-y-4"
+					>
+						<div class="space-y-2">
+							<Label for="flash-content">Your Text</Label>
+							<Textarea
+								id="flash-content"
+								name="content"
+								placeholder="Paste your text here... (whitespace & formatting preserved)"
+								class="min-h-[200px] font-mono text-sm"
+								required
+							/>
+						</div>
+
+						<div class="space-y-2">
+							<Label for="expiry">Expires After</Label>
+							<select
+								id="expiry"
+								name="expiryHours"
+								class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+							>
+								<option value="1">1 hour</option>
+								<option value="3">3 hours</option>
+								<option value="6" selected>6 hours</option>
+								<option value="12">12 hours</option>
+								<option value="24">24 hours</option>
+							</select>
+						</div>
+
+						<Button type="submit" disabled={isCreating} class="w-full sm:w-auto">
+							{#if isCreating}
+								<Loader2 class="mr-2 size-4 animate-spin" />
+								Creating...
 							{:else}
-								<Copy class="mr-2 size-4" />
-								Copy Link
+								<Link class="mr-2 size-4" />
+								Generate Link
 							{/if}
 						</Button>
-						<Button variant="ghost" size="sm" onclick={handleNew}>Create New</Button>
-					</div>
+					</form>
 				</CardContent>
 			</Card>
-		</div>
-	{/if}
 
-	<!-- User's Pastes (if logged in) -->
+			{#if createdSlug}
+				<div transition:fly={{ y: 20, duration: 300 }}>
+					<Card
+						class={isExpired
+							? 'border-destructive/50 bg-destructive/5'
+							: 'border-green-500/50 bg-green-500/5'}
+					>
+						<CardHeader>
+							<CardTitle class="flex items-center gap-2">
+								{#if isExpired}
+									<Timer class="text-destructive size-5" />
+									<span class="text-destructive">Link Expired</span>
+								{:else}
+									<Link class="size-5 text-green-500" />
+									<span class="text-green-600 dark:text-green-400">Link Ready</span>
+								{/if}
+							</CardTitle>
+							<CardDescription>
+								{#if isExpired}
+									This link has expired and is no longer accessible.
+								{:else}
+									Share this link - it expires in <span class="font-semibold tabular-nums"
+										>{timeRemaining}</span
+									>
+								{/if}
+							</CardDescription>
+						</CardHeader>
+						<CardContent class="space-y-4">
+							<div class="flex flex-wrap gap-2">
+								<Badge variant="secondary" class="font-mono text-xs">{createdSlug}</Badge>
+								<Badge variant="secondary" class="text-xs"
+									>{createdExpiresAt ? formatDate(createdExpiresAt) : ''}</Badge
+								>
+							</div>
+							<div
+								class="bg-muted flex items-center gap-2 rounded-md p-3 font-mono text-sm break-all"
+							>
+								<span class="text-muted-foreground">{shareUrl}</span>
+							</div>
+							<div class="flex flex-wrap gap-2">
+								<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
+									{#if copyConfirmed}
+										<Check class="mr-2 size-4 text-green-500" />
+										Copied!
+									{:else}
+										<Copy class="mr-2 size-4" />
+										Copy Link
+									{/if}
+								</Button>
+								<Button variant="ghost" size="sm" onclick={handleNew}>Create New</Button>
+							</div>
+						</CardContent>
+					</Card>
+				</div>
+			{/if}
+		</Tabs.Content>
+
+		<Tabs.Content value="lookup" class="space-y-6">
+			<Card>
+				<CardHeader>
+					<CardTitle>Open a FlashText</CardTitle>
+					<CardDescription>
+						Paste the short code or the full share link to preview the text without leaving the app.
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<form
+						class="space-y-4"
+						onsubmit={async (event) => {
+							event.preventDefault();
+							await handleLookup();
+						}}
+					>
+						<div class="space-y-2">
+							<Label for="lookup-input">FlashText link or code</Label>
+							<Input
+								id="lookup-input"
+								value={lookupInput}
+								oninput={(event) => (lookupInput = event.currentTarget.value)}
+								placeholder="Paste /f/abc123 or just abc123"
+								class="font-mono"
+							/>
+						</div>
+
+						<div class="flex flex-wrap gap-2">
+							<Button type="submit" disabled={lookupState === 'loading'}>
+								{#if lookupState === 'loading'}
+									<Loader2 class="mr-2 size-4 animate-spin" />
+									Looking up...
+								{:else}
+									<ClipboardPaste class="mr-2 size-4" />
+									View Text
+								{/if}
+							</Button>
+							<Button type="button" variant="ghost" onclick={() => (lookupInput = '')}>Clear</Button
+							>
+						</div>
+					</form>
+				</CardContent>
+			</Card>
+
+			{#if lookupState === 'loading'}
+				<Card class="border-dashed">
+					<CardContent class="text-muted-foreground flex items-center gap-3 p-6 text-sm">
+						<Loader2 class="size-4 animate-spin" />
+						Checking that code...
+					</CardContent>
+				</Card>
+			{:else if lookupResult}
+				<div transition:fade class="space-y-4">
+					<Card>
+						<CardHeader>
+							<CardTitle class="flex items-center gap-2">
+								<Link class="size-5 text-green-500" />
+								<span>FlashText Loaded</span>
+							</CardTitle>
+							<CardDescription>The code is valid and the text is still active.</CardDescription>
+						</CardHeader>
+						<CardContent class="space-y-4">
+							<div class="flex flex-wrap gap-2">
+								<Badge variant="secondary" class="font-mono text-xs">{lookupResult.slug}</Badge>
+								<Badge variant="secondary" class="text-xs">{lookupCharCount} chars</Badge>
+								<Badge variant="secondary" class="text-xs">{lookupLineCount} lines</Badge>
+							</div>
+							<div
+								class="bg-muted/50 max-h-[50vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap"
+							>
+								{lookupResult.content}
+							</div>
+							<div class="flex flex-wrap gap-2">
+								<Button variant="outline" size="sm" onclick={handleLookupCopy}>
+									{#if lookupCopyConfirmed}
+										<Check class="mr-2 size-4 text-green-500" />
+										Copied!
+									{:else}
+										<Copy class="mr-2 size-4" />
+										Copy Link
+									{/if}
+								</Button>
+								<Button variant="ghost" size="sm" onclick={handleOpenLookupLink}>
+									Open public link
+								</Button>
+							</div>
+						</CardContent>
+					</Card>
+				</div>
+			{:else if lookupState === 'missing' || lookupState === 'error'}
+				<Card class="border-destructive/50 bg-destructive/5">
+					<CardHeader>
+						<CardTitle class="flex items-center gap-2">
+							<AlertTriangle class="text-destructive size-5" />
+							<span class="text-destructive">Link Expired or Not Found</span>
+						</CardTitle>
+						<CardDescription>
+							{lookupMessage ??
+								'FlashText links are temporary and automatically deleted after expiry.'}
+						</CardDescription>
+					</CardHeader>
+				</Card>
+			{:else}
+				<Card class="border-dashed">
+					<CardContent class="text-muted-foreground p-6 text-sm">
+						Paste a FlashText code or full link to preview the text here.
+					</CardContent>
+				</Card>
+			{/if}
+		</Tabs.Content>
+	</Tabs.Root>
+
 	{#if currentUser}
 		<Separator />
 
@@ -261,7 +478,7 @@
 
 			{#if isLoadingPastes}
 				<div class="space-y-3">
-					{#each [1, 2, 3] as _}
+					{#each [1, 2, 3] as skeletonId (skeletonId)}
 						<Skeleton class="h-20 w-full rounded-lg" />
 					{/each}
 				</div>
@@ -278,9 +495,7 @@
 											{previewContent(paste.content)}
 										</p>
 										<div class="text-muted-foreground flex flex-wrap items-center gap-2 text-xs">
-											<Badge variant="secondary" class="text-xs">
-												/f/{paste.slug}
-											</Badge>
+											<Badge variant="secondary" class="text-xs">/f/{paste.slug}</Badge>
 											<span>Expires: {formatDate(paste.expiresAt)}</span>
 										</div>
 									</div>

@@ -9,14 +9,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Clipboard, Timer, Copy, Check, AlertTriangle, ArrowLeft } from 'lucide-svelte';
-	import { page } from '$app/state';
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
-	import { getFlashTextLive } from '$lib/remote';
+	import type { PageProps } from './$types';
 
-	let flashText = $derived.by(() => getFlashTextLive(page.params.slug));
-
-	let currentFlashText = $derived(flashText.ready ? flashText.current : null);
+	let { data }: PageProps = $props();
+	let currentFlashText = $derived(data.flashText);
 
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);
@@ -148,7 +146,7 @@
 					<pre
 						class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
 						{currentFlashText.content}</pre>
-				</CardContent>
+					</CardContent>
 			</Card>
 
 			<!-- Footer -->

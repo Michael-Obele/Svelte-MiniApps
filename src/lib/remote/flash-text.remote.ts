@@ -8,7 +8,7 @@ import * as v from 'valibot';
 // TYPES
 // ============================================================================
 
-interface FlashTextItem {
+export interface FlashTextItem {
 	id: string;
 	slug: string;
 	content: string;
@@ -52,32 +52,26 @@ export const getUserFlashTexts = query(async () => {
 	})) satisfies FlashTextItem[];
 });
 
-export const getFlashTextLive = query.live(v.string(), async function* (slug) {
-	while (true) {
-		const flashText = await prisma.flashText.findUnique({
-			where: { slug }
-		});
+export const lookupFlashText = query(v.string(), async (slug) => {
+	const flashText = await prisma.flashText.findUnique({
+		where: { slug }
+	});
 
-		if (!flashText) {
-			yield null;
-		} else if (new Date() > flashText.expiresAt) {
-			await prisma.flashText.delete({ where: { id: flashText.id } }).catch(() => {});
-			yield null;
-		} else {
-			yield {
-				id: flashText.id,
-				slug: flashText.slug,
-				content: flashText.content,
-				expiresAt: flashText.expiresAt.toISOString(),
-				createdAt: flashText.createdAt.toISOString(),
-				userId: flashText.userId
-			} satisfies FlashTextItem;
-		}
+	if (!flashText) return null;
 
-		const nextExpiry = flashText ? flashText.expiresAt.getTime() - Date.now() : 60_000;
-		const waitMs = Math.max(Math.min(nextExpiry, 60_000), 5_000);
-		await new Promise((resolve) => setTimeout(resolve, waitMs));
+	if (new Date() > flashText.expiresAt) {
+		await prisma.flashText.delete({ where: { id: flashText.id } }).catch(() => {});
+		return null;
 	}
+
+	return {
+		id: flashText.id,
+		slug: flashText.slug,
+		content: flashText.content,
+		expiresAt: flashText.expiresAt.toISOString(),
+		createdAt: flashText.createdAt.toISOString(),
+		userId: flashText.userId
+	} satisfies FlashTextItem;
 });
 
 // ============================================================================
