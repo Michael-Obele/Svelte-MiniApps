@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2026-06-03T09:42:44.555Z\n"
+"PO-Revision-Date: 2026-06-03T11:17:46.814Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -1026,6 +1026,7 @@ msgstr "Keine Projekte gefunden, die \"{0}\" entsprechen"
 #~ msgid "(Coming Soon)"
 #~ msgstr "(Kommt bald)"
 
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 #: src/routes/apps/AppFilters.svelte
@@ -11540,6 +11541,8 @@ msgstr "Aktivieren Sie den öffentlichen Zugriff, um einen Live-Freigabelink zu 
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> Link kopieren"
 
@@ -11708,6 +11711,7 @@ msgstr ""
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "FlashText"
@@ -11725,6 +11729,8 @@ msgstr "Abgelaufen"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "Link copied!"
 msgstr "Link kopiert!"
 
@@ -11791,10 +11797,10 @@ msgstr "Link bereit"
 msgid "This link has expired and is no longer accessible."
 msgstr "Dieser Link ist abgelaufen und nicht mehr zugänglich."
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Share this link — it expires in <0/>"
-msgstr "Teilen Sie diesen Link – er läuft ab in <0/>"
+#~ msgid "Share this link — it expires in <0/>"
+#~ msgstr "Teilen Sie diesen Link – er läuft ab in <0/>"
 
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copied!"
@@ -11822,13 +11828,12 @@ msgstr "/f/{0}"
 msgid "Expires: {0}"
 msgstr "Läuft ab: {0}"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid ""
-"Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
-"until it expires."
-msgstr ""
-"Fügen Sie Ihren Text unten ein. Es wird ein temporärer Link generiert – jeder, der den Link hat, kann ihn einsehen,\n"
-"bis er abläuft."
+#~ msgid ""
+#~ "Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
+#~ "until it expires."
+#~ msgstr ""
+#~ "Fügen Sie Ihren Text unten ein. Es wird ein temporärer Link generiert – jeder, der den Link hat, kann ihn einsehen,\n"
+#~ "bis er abläuft."
 
 #: src/routes/f/[slug]/+page.svelte
 msgid "Text copied!"
@@ -11842,6 +11847,7 @@ msgstr "Abgelaufen — FlashText"
 msgid "Temporary shared text — view-only"
 msgstr "Vorübergehend geteilter Text — Nur Ansicht"
 
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "Link Expired or Not Found"
 msgstr "Link abgelaufen oder nicht gefunden"
@@ -11862,12 +11868,16 @@ msgstr "<0/> Erstelle dein eigenes FlashText"
 msgid "Expires in <0/>"
 msgstr "Läuft ab in <0/>"
 
+#. placeholder {0}: lookupCharCount
 #. placeholder {0}: charCount
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} chars"
 msgstr "{0} Zeichen"
 
+#. placeholder {0}: lookupLineCount
 #. placeholder {0}: lineCount
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} lines"
 msgstr "{0} Zeilen"
@@ -11884,3 +11894,93 @@ msgstr "Geteilter Text"
 #: src/routes/f/[slug]/+page.svelte
 msgid "Created {0} · <0>Create your own</0>"
 msgstr "Erstellt {0} · <0>Erstelle dein eigenes</0>"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste a valid FlashText code or share link."
+msgstr "Fügen Sie einen gültigen FlashText-Code oder einen Freigabelink ein."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Create"
+msgstr "<0/> Erstellen"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Open by Code"
+msgstr "<0/> Per Code öffnen"
+
+#~ msgid ""
+#~ "Paste your text below. A temporary link will be generated, and you can paste that\n"
+#~ "code back into the second tab to view it."
+#~ msgstr ""
+#~ "Fügen Sie unten Ihren Text ein. Es wird ein temporärer Link generiert, den Sie dann\n"
+#~ "in den zweiten Tab einfügen können, um den Text anzuzeigen."
+
+#~ msgid "Share this link or copy the short code."
+#~ msgstr "Teilen Sie diesen Link oder kopieren Sie den Kurzcode."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Open a FlashText"
+msgstr "Ein FlashText öffnen"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste the short code or the full share link to preview the text without leaving the app."
+msgstr "Fügen Sie den Kurzcode oder den vollständigen Freigabelink ein, um den Text zu sehen, ohne die App zu verlassen."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "FlashText link or code"
+msgstr "FlashText-Link oder -Code"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste /f/abc123 or just abc123"
+msgstr "Fügen Sie /f/abc123 oder einfach abc123 ein."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Looking up..."
+msgstr "<0/> Suche läuft..."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> View Text"
+msgstr "<0/> Text anzeigen"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Checking that code..."
+msgstr "<0/> Code wird überprüft..."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "FlashText Loaded"
+msgstr "FlashText geladen"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "The code is valid and the text is still active."
+msgstr "Der Code ist gültig und der Text ist noch aktiv."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Open public link"
+msgstr "Öffentlichen Link öffnen"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "FlashText links are temporary and automatically deleted after expiry."
+msgstr "FlashText-Links sind temporär und werden nach Ablauf automatisch gelöscht."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste a FlashText code or full link to preview the text here."
+msgstr "Fügen Sie einen FlashText-Code oder einen vollständigen Link ein, um den Text hier anzuzeigen."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create temporary text links and open them by code."
+msgstr "Erstellen Sie temporäre Textlinks und öffnen Sie sie per Code."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Paste your text below. A temporary link will be generated, and the short code can be\n"
+"opened in the second tab."
+msgstr ""
+"Fügen Sie Ihren Text unten ein. Es wird ein temporärer Link generiert, und der Kurzcode kann\n"
+"im zweiten Tab geöffnet werden."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share this link - it expires in <0/>"
+msgstr "Teilen Sie diesen Link - er läuft in <0/> ab."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "FlashText modes"
+msgstr "FlashText-Modi"
