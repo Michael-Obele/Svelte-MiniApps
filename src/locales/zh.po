@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-05-27T16:09:19.727Z\n"
+"PO-Revision-Date: 2026-06-03T06:39:01.005Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -7049,6 +7049,7 @@ msgstr "金融"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "medium"
 msgstr "中等"
 
@@ -7070,6 +7071,7 @@ msgstr "安全"
 msgid "design"
 msgstr "设计"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -11411,6 +11413,7 @@ msgid "Enable public access to generate a live share link."
 msgstr "启用公开访问以生成实时分享链接。"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> 复制链接"
 
@@ -11572,3 +11575,182 @@ msgstr "保存到云端"
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Unsaved changes"
 msgstr ""
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "FlashText"
+msgstr "闪文"
+
+#: src/lib/index.svelte.ts
+msgid "Share text temporarily with self-destructing links. Paste text, get a short-lived public URL (1–24h), and anyone with the link can view it — no account needed."
+msgstr "暂时分享文本，链接会自动销毁。粘贴文本，获取一个短期有效的公开 URL（1–24 小时），任何拥有链接的人都可以查看——无需账户。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired"
+msgstr "已过期"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link copied!"
+msgstr "链接已复制！"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share text temporarily with self-destructing links"
+msgstr "通过自毁链接临时分享文本"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create a Share Link"
+msgstr "创建分享链接"
+
+#~ msgid "Paste your text below. A temporary link will be generated — anyone with the link can view it until it expires."
+#~ msgstr "在下方粘贴你的文本。将生成一个临时链接——任何拥有该链接的人都可以查看，直到链接过期。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Text"
+msgstr "你的文本"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste your text here... (whitespace & formatting preserved)"
+msgstr "在这里粘贴你的文本...（保留空格和格式）"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires After"
+msgstr "过期时间"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "1 hour"
+msgstr "1小时"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "3 hours"
+msgstr "3小时"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "6 hours"
+msgstr "6小时"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "12 hours"
+msgstr "12小时"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "24 hours"
+msgstr "24小时"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Creating..."
+msgstr "<0/> 创建中..."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Generate Link"
+msgstr "<0/> 生成链接"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Expired"
+msgstr "链接已过期"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Ready"
+msgstr "链接已就绪"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "This link has expired and is no longer accessible."
+msgstr "此链接已过期，无法再访问。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share this link — it expires in <0/>"
+msgstr "分享此链接——它在<0/>后过期"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> 已复制！"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create New"
+msgstr "新建"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Recent Pastes"
+msgstr "你最近的粘贴"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "No active pastes. Create one above!"
+msgstr "没有活动的粘贴。在上方创建一个！"
+
+#. placeholder {0}: paste.slug
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "/f/{0}"
+msgstr "/f/{0}"
+
+#. placeholder {0}: formatDate(paste.expiresAt)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires: {0}"
+msgstr "过期时间：{0}"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
+"until it expires."
+msgstr ""
+"将您的文本粘贴到下方。将生成一个临时链接——拥有该链接的任何人都可以查看它\n"
+"直到它过期。"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Text copied!"
+msgstr "文本已复制！"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired — FlashText"
+msgstr "已过期 — FlashText"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Temporary shared text — view-only"
+msgstr "临时共享文本 — 仅查看"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Link Expired or Not Found"
+msgstr "链接已过期或未找到"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid ""
+"This text has either expired or the link is invalid. FlashText links are temporary and\n"
+"automatically deleted after their expiry time (max 24 hours)."
+msgstr ""
+"此文本已过期或链接无效。FlashText链接是临时的，\n"
+"在过期时间（最长24小时）后自动删除。"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Create your own FlashText"
+msgstr "<0/> 创建你自己的FlashText"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expires in <0/>"
+msgstr "在 <0/> 过期"
+
+#. placeholder {0}: charCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} chars"
+msgstr "{0} 字符"
+
+#. placeholder {0}: lineCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} lines"
+msgstr "{0} 行"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copy Text"
+msgstr "<0/> 复制文本"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Shared Text"
+msgstr "共享文本"
+
+#. placeholder {0}: new Date(flashText.createdAt).toLocaleString()
+#: src/routes/f/[slug]/+page.svelte
+msgid "Created {0} · <0>Create your own</0>"
+msgstr "创建于 {0} · <0>创建你自己的</0>"

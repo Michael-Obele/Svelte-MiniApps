@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-05-27T16:09:20.248Z\n"
+"PO-Revision-Date: 2026-06-03T06:39:14.517Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -247,6 +247,7 @@ msgstr "金融"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "medium"
 msgstr "普通"
 
@@ -329,6 +330,7 @@ msgstr "チェックリストメーカー"
 msgid "Allows you to create checklists and mark items as completed."
 msgstr "チェックリストを作成し、項目を完了としてマークできます。"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -11400,6 +11402,7 @@ msgid "Enable public access to generate a live share link."
 msgstr "公開アクセスを有効にしてライブ共有リンクを生成します。"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> リンクをコピー"
 
@@ -11563,3 +11566,182 @@ msgstr "クラウドに保存"
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Unsaved changes"
 msgstr ""
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "FlashText"
+msgstr "フラッシュテキスト"
+
+#: src/lib/index.svelte.ts
+msgid "Share text temporarily with self-destructing links. Paste text, get a short-lived public URL (1–24h), and anyone with the link can view it — no account needed."
+msgstr "自己消滅リンクでテキストを一時的に共有できます。テキストを貼り付けると、短期間有効な公開URL（1～24時間）が生成されます。リンクを持っている人なら誰でも表示でき、アカウントは不要です。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired"
+msgstr "期限切れ"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link copied!"
+msgstr "リンクをコピーしました！"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share text temporarily with self-destructing links"
+msgstr "自己破壊リンクを使ってテキストを一時的に共有"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create a Share Link"
+msgstr "共有リンクを作成"
+
+#~ msgid "Paste your text below. A temporary link will be generated — anyone with the link can view it until it expires."
+#~ msgstr "下にテキストを貼り付けてください。一時的なリンクが生成されます。リンクを知っている人は誰でも有効期限まで閲覧できます。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Text"
+msgstr "あなたのテキスト"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste your text here... (whitespace & formatting preserved)"
+msgstr "ここにテキストを貼り付けてください...（空白と書式は保持されます）"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires After"
+msgstr "有効期限"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "1 hour"
+msgstr "1時間"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "3 hours"
+msgstr "3時間"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "6 hours"
+msgstr "6時間"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "12 hours"
+msgstr "12時間"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "24 hours"
+msgstr "24時間"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Creating..."
+msgstr "<0/> 作成中..."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Generate Link"
+msgstr "<0/> リンクを生成"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Expired"
+msgstr "リンク期限切れ"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Ready"
+msgstr "リンク準備完了"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "This link has expired and is no longer accessible."
+msgstr "このリンクは期限切れで、もうアクセスできません。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share this link — it expires in <0/>"
+msgstr "このリンクを共有 — <0/>以内に期限切れ"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> コピーしました！"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create New"
+msgstr "新規作成"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Recent Pastes"
+msgstr "最近のペースト"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "No active pastes. Create one above!"
+msgstr "アクティブなペーストはありません。上から作成してください！"
+
+#. placeholder {0}: paste.slug
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "/f/{0}"
+msgstr "/f/{0}"
+
+#. placeholder {0}: formatDate(paste.expiresAt)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires: {0}"
+msgstr "期限切れ: {0}"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
+"until it expires."
+msgstr ""
+"以下のテキストを貼り付けてください。一時的なリンクが生成されます — リンクを持つ人は誰でも表示できます\n"
+"有効期限が切れるまで。"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Text copied!"
+msgstr "テキストをコピーしました！"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired — FlashText"
+msgstr "期限切れ — FlashText"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Temporary shared text — view-only"
+msgstr "一時共有テキスト — 閲覧専用"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Link Expired or Not Found"
+msgstr "リンクの期限切れまたは見つかりません"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid ""
+"This text has either expired or the link is invalid. FlashText links are temporary and\n"
+"automatically deleted after their expiry time (max 24 hours)."
+msgstr ""
+"このテキストは期限切れになったか、リンクが無効です。FlashTextのリンクは一時的なもので、\n"
+"有効期限（最大24時間）が過ぎると自動的に削除されます。"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Create your own FlashText"
+msgstr "<0/> 自分のFlashTextを作成"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expires in <0/>"
+msgstr "<0/> 後に期限切れ"
+
+#. placeholder {0}: charCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} chars"
+msgstr "{0} 文字"
+
+#. placeholder {0}: lineCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} lines"
+msgstr "{0} 行"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copy Text"
+msgstr "<0/> テキストをコピー"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Shared Text"
+msgstr "共有テキスト"
+
+#. placeholder {0}: new Date(flashText.createdAt).toLocaleString()
+#: src/routes/f/[slug]/+page.svelte
+msgid "Created {0} · <0>Create your own</0>"
+msgstr "{0} 作成 · <0>自分で作成</0>"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.154Z\n"
-"PO-Revision-Date: 2026-05-27T16:09:20.931Z\n"
+"PO-Revision-Date: 2026-06-03T06:39:25.844Z\n"
 "Last-Translator: \n"
 "Language: pt\n"
 "Language-Team: \n"
@@ -7172,6 +7172,7 @@ msgstr "finanças"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "medium"
 msgstr "médio"
 
@@ -7193,6 +7194,7 @@ msgstr "segurança"
 msgid "design"
 msgstr "design"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -11609,6 +11611,7 @@ msgid "Enable public access to generate a live share link."
 msgstr "Ative o acesso público para gerar um link de compartilhamento ao vivo."
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> Copiar Link"
 
@@ -11774,3 +11777,182 @@ msgstr "Salvar na nuvem"
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Unsaved changes"
 msgstr ""
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "FlashText"
+msgstr "FlashText"
+
+#: src/lib/index.svelte.ts
+msgid "Share text temporarily with self-destructing links. Paste text, get a short-lived public URL (1–24h), and anyone with the link can view it — no account needed."
+msgstr "Compartilhe texto temporariamente com links autodestrutivos. Cole o texto, obtenha uma URL pública de curta duração (1–24h), e qualquer pessoa com o link pode visualizá-lo — sem necessidade de conta."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired"
+msgstr "Expirado"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link copied!"
+msgstr "Link copiado!```"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share text temporarily with self-destructing links"
+msgstr "Compartilhe texto temporariamente com links autodestrutivos"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create a Share Link"
+msgstr "Criar um Link de Compartilhamento"
+
+#~ msgid "Paste your text below. A temporary link will be generated — anyone with the link can view it until it expires."
+#~ msgstr "Cole seu texto abaixo. Um link temporário será gerado — qualquer pessoa com o link pode visualizá-lo até expirar."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Text"
+msgstr "Seu Texto"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste your text here... (whitespace & formatting preserved)"
+msgstr "Cole seu texto aqui... (espaços em branco e formatação preservados)"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires After"
+msgstr "Expira Após"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "1 hour"
+msgstr "1 hora"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "3 hours"
+msgstr "3 horas"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "6 hours"
+msgstr "6 horas"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "12 hours"
+msgstr "12 horas"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "24 hours"
+msgstr "24 horas"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Creating..."
+msgstr "<0/> Criando..."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Generate Link"
+msgstr "<0/> Gerar Link"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Expired"
+msgstr "Link Expirado"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Link Ready"
+msgstr "Link Pronto"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "This link has expired and is no longer accessible."
+msgstr "Este link expirou e não está mais acessível."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Share this link — it expires in <0/>"
+msgstr "Compartilhe este link — ele expira em <0/>"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> Copiado!"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Create New"
+msgstr "Criar Novo"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your Recent Pastes"
+msgstr "Seus Pastes Recentes"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "No active pastes. Create one above!"
+msgstr "Nenhum paste ativo. Crie um acima!"
+
+#. placeholder {0}: paste.slug
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "/f/{0}"
+msgstr "/f/{0}"
+
+#. placeholder {0}: formatDate(paste.expiresAt)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Expires: {0}"
+msgstr "Expira: {0}"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
+"until it expires."
+msgstr ""
+"Cole seu texto abaixo. Um link temporário será gerado — qualquer pessoa com o link pode visualizá-lo\n"
+"até expirar."
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Text copied!"
+msgstr "Texto copiado!"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expired — FlashText"
+msgstr "Expirado — FlashText"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Temporary shared text — view-only"
+msgstr "Texto compartilhado temporário — somente visualização"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Link Expired or Not Found"
+msgstr "Link expirado ou não encontrado"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid ""
+"This text has either expired or the link is invalid. FlashText links are temporary and\n"
+"automatically deleted after their expiry time (max 24 hours)."
+msgstr ""
+"Este texto expirou ou o link é inválido. Os links do FlashText são temporários e\n"
+"são automaticamente excluídos após o tempo de expiração (máx. 24 horas)."
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Create your own FlashText"
+msgstr "<0/> Crie seu próprio FlashText"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Expires in <0/>"
+msgstr "Expira em <0/>"
+
+#. placeholder {0}: charCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} chars"
+msgstr "{0} caracteres"
+
+#. placeholder {0}: lineCount
+#: src/routes/f/[slug]/+page.svelte
+msgid "{0} lines"
+msgstr "{0} linhas"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "<0/> Copy Text"
+msgstr "<0/> Copiar texto"
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "Shared Text"
+msgstr "Texto compartilhado"
+
+#. placeholder {0}: new Date(flashText.createdAt).toLocaleString()
+#: src/routes/f/[slug]/+page.svelte
+msgid "Created {0} · <0>Create your own</0>"
+msgstr "Criado {0} · <0>Crie o seu próprio</0>"
