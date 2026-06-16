@@ -31,7 +31,7 @@ jobs:
       - name: Create placeholder build directory for Capacitor sync
         run: mkdir -p build
 
-      - name: Setup Java 21
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: "21"
@@ -39,20 +39,14 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-        with:
-          log-accepted-android-sdk-licenses: false
-
-      - name: Accept Android SDK licenses
-        run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
 
       - name: Install Android SDK build tools & platform
         run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
             "platforms;android-36" \
             "build-tools;36.0.0" \
-            "platform-tools" \
-            --sdk_root=$ANDROID_HOME > /dev/null 2>&1 || true
+            "platform-tools"
 
       - name: Sync Capacitor with web build
         run: npx cap sync
@@ -62,12 +56,11 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
           retention-days: 14
