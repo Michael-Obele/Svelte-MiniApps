@@ -28,10 +28,7 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Generate Service Worker Hash
-        run: bun run scripts/generateServiceWorkerHash.js
-
-      - name: Build SvelteKit web app
+      - name: Build SvelteKit for Capacitor
         env:
           CAPACITOR_BUILD: "true"
         run: bunx vite build
