@@ -38,9 +38,8 @@
 		"cap:open:ios": "npx cap open ios",
 		"cap:copy": "npx cap copy",
 		"cap:update": "npx cap update",
-		"build:capacitor": "CAPACITOR_BUILD=true vite build",
-		"build:android": "CAPACITOR_BUILD=true vite build && npx cap sync && npx cap copy",
-		"cap:dev:android": "CAPACITOR_BUILD=true bun vite dev --host & sleep 3 && npx cap sync && npx cap open android"
+		"cap:build:android": "npx cap sync && cd android && ./gradlew assembleDebug",
+		"cap:dev:android": "CAPACITOR_SERVER_URL=http://10.0.2.2:5178 npx cap sync && npx cap open android"
 	},
 	"devDependencies": {
 		"@capacitor/android": "^8.4.0",

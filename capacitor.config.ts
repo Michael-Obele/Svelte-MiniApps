@@ -5,9 +5,11 @@ const config: CapacitorConfig = {
 	appName: 'Svelte MiniApps',
 	webDir: 'build',
 	server: {
-		cleartext: true
-	},
-	loggingBehavior: 'debug'
+		// Production: load from the live SvelteKit server
+		// Override with CAPACITOR_SERVER_URL env var for local dev
+		url: process.env.CAPACITOR_SERVER_URL || 'https://svelte-apps.me/',
+		cleartext: !!process.env.CAPACITOR_SERVER_URL
+	}
 };
 
 export default config;

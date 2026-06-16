@@ -1,6 +1,5 @@
 import { mdsvex } from 'mdsvex';
-import adapterAuto from '@sveltejs/adapter-auto';
-import adapterStatic from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -18,9 +17,7 @@ const config = {
 		experimental: {
 			remoteFunctions: true
 		},
-		adapter: process.env.CAPACITOR_BUILD
-			? adapterStatic({ fallback: 'index.html' })
-			: adapterAuto(),
+		adapter: adapter(),
 		serviceWorker: {
 			register: false
 		},
