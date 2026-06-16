@@ -31,6 +31,13 @@ jobs:
       - name: Build SvelteKit for Capacitor
         env:
           CAPACITOR_BUILD: "true"
+          # Placeholder env vars required by $env/static/private at build time.
+          # Replace with GitHub secrets if OAuth integration is needed.
+          AUTH_GITHUB_ID: "placeholder"
+          AUTH_GITHUB_SECRET: "placeholder"
+          AUTH_GOOGLE_ID: "placeholder"
+          AUTH_GOOGLE_SECRET: "placeholder"
+          ANALYTICS_ID: "placeholder"
         run: bunx vite build
 
       - name: Setup Java 21
