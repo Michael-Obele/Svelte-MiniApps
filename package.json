@@ -38,8 +38,8 @@
 		"cap:open:ios": "npx cap open ios",
 		"cap:copy": "npx cap copy",
 		"cap:update": "npx cap update",
-		"build:capacitor": "CAPACITOR_BUILD=true bun run scripts/generateServiceWorkerHash.js && vite build",
-		"build:android": "CAPACITOR_BUILD=true bun run scripts/generateServiceWorkerHash.js && vite build && npx cap sync && npx cap copy",
+		"build:capacitor": "CAPACITOR_BUILD=true vite build",
+		"build:android": "CAPACITOR_BUILD=true vite build && npx cap sync && npx cap copy",
 		"cap:dev:android": "CAPACITOR_BUILD=true bun vite dev --host & sleep 3 && npx cap sync && npx cap open android"
 	},
 	"devDependencies": {

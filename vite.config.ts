@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { wuchale } from '@wuchale/vite-plugin';
 import lingo from 'vite-plugin-lingo';
 
+const isCapacitor = process.env.CAPACITOR_BUILD === 'true';
+
 export default defineConfig({
 	plugins: [
 		// sentrySvelteKit({
@@ -17,9 +19,9 @@ export default defineConfig({
 		// }),
 		tailwindcss(),
 		enhancedImages(),
-		partytownVite({
+		...(isCapacitor ? [] : [partytownVite({
 			dest: join(__dirname, 'static', '~partytown')
-		}),
+		})]),
 		wuchale(),
 		lingo({
 			route: '/_lang', // Route where editor UI is served
