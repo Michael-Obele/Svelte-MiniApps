@@ -71,7 +71,7 @@
 		showFooterHelpText = false
 	}: Props = $props();
 
-	let activeTab = $state(tabs[0]?.value || '');
+	let activeTab = $derived(tabs[0]?.value || '');
 
 	// Ensure activeTab is valid when tabs change
 	$effect(() => {
