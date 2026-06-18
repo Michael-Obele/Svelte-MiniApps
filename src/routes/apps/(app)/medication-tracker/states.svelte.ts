@@ -48,7 +48,7 @@ export interface MedicationStats {
 }
 
 // Color palette for medications
-export const medicationColors = [
+const medicationColors = [
 	'#ef4444', // red
 	'#f59e0b', // amber
 	'#22c55e', // green
@@ -222,7 +222,7 @@ export function deleteMedication(sessionId: string, medicationId: string): void 
 	);
 }
 
-export function createLog(
+function createLog(
 	sessionId: string,
 	medicationId: string,
 	scheduledTime: string,
@@ -350,12 +350,12 @@ export async function deletePendingLogsForMedication(
 	});
 }
 
-export function getActiveSession(): TreatmentSession | undefined {
+function getActiveSession(): TreatmentSession | undefined {
 	if (!browser) return undefined;
 	return treatmentSessions.current.find((s) => s.isActive);
 }
 
-export function getSessionById(sessionId: string): TreatmentSession | undefined {
+function getSessionById(sessionId: string): TreatmentSession | undefined {
 	if (!browser) return undefined;
 	return treatmentSessions.current.find((s) => s.id === sessionId);
 }
@@ -370,7 +370,7 @@ export function getLogsForMedication(medicationId: string): MedicationLog[] {
 	return medicationLogs.current.filter((log) => log.medicationId === medicationId);
 }
 
-export function getLogsForDateRange(
+function getLogsForDateRange(
 	sessionId: string,
 	startDate: Date,
 	endDate: Date

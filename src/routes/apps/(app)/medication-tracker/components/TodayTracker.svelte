@@ -10,15 +10,12 @@
 	import { Button } from '@/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
-	import * as Dialog from '@/ui/dialog';
-	import { Textarea } from '@/ui/textarea';
-	import { Input } from '@/ui/input';
-	import { Label } from '@/ui/label';
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
 
 	import type { TreatmentSession, Medication, MedicationLog } from '../states.svelte';
 	import { updateLog, rescheduleLog } from '../states.svelte';
+	import DoseActionDialogs from './DoseActionDialogs.svelte';
 
 	// Props
 	let {
@@ -41,96 +38,56 @@
 		onDataChanged?: () => void;
 	}>();
 
-	// State
-	let showSkipDialog = $state(false);
-	let skipNotes = $state('');
+	// Dialog state
+	let openDialog = $state('');
 	let currentLog = $state<MedicationLog | null>(null);
-	let showEditTimeDialog = $state(false);
-	let editTimeLog = $state<MedicationLog | null>(null);
-	let editedTime = $state('');
-
-	// Reschedule state
-	let showRescheduleDialog = $state(false);
-	let rescheduleLog_local = $state<MedicationLog | null>(null);
-	let rescheduledTime = $state('');
-	let rescheduledDate = $state('');
+	let editTimeValue = $state('');
+	let scheduleDateValue = $state('');
+	let scheduleTimeValue = $state('');
 
 	function openSkipDialog(log: MedicationLog) {
 		currentLog = log;
-		skipNotes = '';
-		showSkipDialog = true;
+		openDialog = 'skip';
 	}
 
-	function confirmSkip() {
-		if (currentLog) {
-			onMarkSkipped(currentLog.id, skipNotes.trim() || undefined);
-			showSkipDialog = false;
-			currentLog = null;
-			skipNotes = '';
-		}
+	function handleSkipConfirm(logId: string, notes?: string) {
+		onMarkSkipped(logId, notes);
 	}
 
 	function openEditTimeDialog(log: MedicationLog) {
-		editTimeLog = log;
-		// Get current time or use scheduled time
+		currentLog = log;
 		const timeToEdit = log.actualTime || log.scheduledTime;
-		const date = new Date(timeToEdit);
-		editedTime = date.toTimeString().slice(0, 5); // HH:MM format
-		showEditTimeDialog = true;
+		editTimeValue = new Date(timeToEdit).toTimeString().slice(0, 5);
+		openDialog = 'edit-time';
 	}
 
-	function saveEditedTime() {
-		if (!editTimeLog || !editedTime) return;
-
-		// Parse the time and create a new date with today's date
-		const [hours, minutes] = editedTime.split(':');
-		const now = new Date(editTimeLog.scheduledTime);
+	function handleEditSave(logId: string, _date: string, time: string) {
+		if (!time) return;
+		const [hours, minutes] = time.split(':');
+		const now = new Date(currentLog?.scheduledTime || Date.now());
 		now.setHours(parseInt(hours), parseInt(minutes), 0, 0);
-
-		// Update local state directly
-		updateLog(editTimeLog.id, {
-			actualTime: now.toISOString()
-		});
-
+		updateLog(logId, { actualTime: now.toISOString() });
 		onDataChanged?.();
 		toast.success('Time updated successfully');
-		showEditTimeDialog = false;
-		editTimeLog = null;
-		editedTime = '';
 	}
 
-	// Reschedule dialog functions
 	function openRescheduleDialog(log: MedicationLog) {
-		rescheduleLog_local = log;
+		currentLog = log;
 		const date = new Date(log.scheduledTime);
-
-		// Set date (YYYY-MM-DD format)
-		rescheduledDate = date.toISOString().split('T')[0];
-
-		// Set time (HH:MM format)
-		rescheduledTime = date.toTimeString().slice(0, 5);
-
-		showRescheduleDialog = true;
+		scheduleDateValue = date.toISOString().split('T')[0];
+		scheduleTimeValue = date.toTimeString().slice(0, 5);
+		openDialog = 'reschedule';
 	}
 
-	function saveRescheduledTime() {
-		if (!rescheduleLog_local || !rescheduledTime || !rescheduledDate) return;
-
-		// Parse the date and time
-		const [hours, minutes] = rescheduledTime.split(':');
-		const dateTime = new Date(rescheduledDate);
+	function handleRescheduleSave(logId: string, date: string, time: string) {
+		if (!time || !date) return;
+		const [hours, minutes] = time.split(':');
+		const dateTime = new Date(date);
 		dateTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
-
-		// Reschedule the log
-		const result = rescheduleLog(rescheduleLog_local.id, dateTime.toISOString());
-
+		const result = rescheduleLog(logId, dateTime.toISOString());
 		if (result.success) {
 			onDataChanged?.();
 			toast.success(result.message);
-			showRescheduleDialog = false;
-			rescheduleLog_local = null;
-			rescheduledTime = '';
-			rescheduledDate = '';
 		} else {
 			toast.error(result.message);
 		}
@@ -264,91 +221,14 @@
 	</CardContent>
 </Card>
 
-<!-- Skip Dialog -->
-<Dialog.Root bind:open={showSkipDialog}>
-	<Dialog.Content>
-		<Dialog.Header>
-			<Dialog.Title>Skip Medication</Dialog.Title>
-			<Dialog.Description>
-				Optionally add a note explaining why you're skipping this dose.
-			</Dialog.Description>
-		</Dialog.Header>
-
-		<div class="space-y-4">
-			<div class="space-y-2">
-				<Label for="skip-notes">Notes (optional)</Label>
-				<Textarea
-					id="skip-notes"
-					bind:value={skipNotes}
-					placeholder="e.g., Forgot to take it, felt nauseous..."
-					rows={3}
-				/>
-			</div>
-		</div>
-
-		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showSkipDialog = false)}>Cancel</Button>
-			<Button onclick={confirmSkip}>Confirm Skip</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
-
-<!-- Edit Time Dialog -->
-<Dialog.Root bind:open={showEditTimeDialog}>
-	<Dialog.Content>
-		<Dialog.Header>
-			<Dialog.Title>Edit Time Taken</Dialog.Title>
-			<Dialog.Description>
-				Adjust the time when this medication was actually taken.
-			</Dialog.Description>
-		</Dialog.Header>
-
-		<div class="space-y-4">
-			<div class="space-y-2">
-				<Label for="edit-time">Time Taken</Label>
-				<Input id="edit-time" type="time" bind:value={editedTime} class="w-full" />
-				<p class="text-xs text-gray-500 dark:text-gray-400">
-					Scheduled time: {editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''}
-				</p>
-			</div>
-		</div>
-
-		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showEditTimeDialog = false)}>Cancel</Button>
-			<Button onclick={saveEditedTime}>Save Time</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
-
-<!-- Reschedule Dialog -->
-<Dialog.Root bind:open={showRescheduleDialog}>
-	<Dialog.Content>
-		<Dialog.Header>
-			<Dialog.Title>Reschedule Medication</Dialog.Title>
-			<Dialog.Description>
-				Change when this dose is scheduled to be taken. This updates the planned time, not the
-				actual time taken.
-			</Dialog.Description>
-		</Dialog.Header>
-		<div class="space-y-4 py-4">
-			<div class="rounded-lg bg-blue-50 p-3 dark:bg-blue-950">
-				<p class="text-sm text-blue-800 dark:text-blue-200">
-					💡 This reschedules only this single dose. To change the entire medication schedule, use
-					the Schedule button in the Medications list.
-				</p>
-			</div>
-			<div class="space-y-2">
-				<Label for="reschedule-date">New Date</Label>
-				<Input id="reschedule-date" type="date" bind:value={rescheduledDate} class="w-full" />
-			</div>
-			<div class="space-y-2">
-				<Label for="reschedule-time">New Time</Label>
-				<Input id="reschedule-time" type="time" bind:value={rescheduledTime} class="w-full" />
-			</div>
-		</div>
-		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showRescheduleDialog = false)}>Cancel</Button>
-			<Button onclick={saveRescheduledTime}>Reschedule</Button>
-		</Dialog.Footer>
-	</Dialog.Content>
-</Dialog.Root>
+<DoseActionDialogs
+	bind:openDialog
+	bind:currentLog
+	bind:editTime={editTimeValue}
+	bind:rescheduleDate={scheduleDateValue}
+	bind:rescheduleTime={scheduleTimeValue}
+	onSkipConfirm={handleSkipConfirm}
+	onEditSave={handleEditSave}
+	onRescheduleSave={handleRescheduleSave}
+	scheduledTime={currentLog ? formatTime(currentLog.scheduledTime) : ''}
+/>

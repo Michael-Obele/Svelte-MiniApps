@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import {
 		Plus,
 		Pill,
-		Calendar,
 		Clock,
 		CheckCircle2,
 		XCircle,
@@ -13,7 +12,6 @@
 		TrendingUp,
 		Activity,
 		Settings,
-		ChevronRight,
 		CalendarDays,
 		ListChecks,
 		Cloud,
@@ -26,28 +24,21 @@
 
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
-	import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/ui/card';
+	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
-	import * as Dialog from '@/ui/dialog';
 	import * as Tabs from '@/ui/tabs';
-	import * as AlertDialog from '@/ui/alert-dialog';
 	import * as Tooltip from '@/ui/tooltip';
 	import * as Select from '@/ui/select';
 	import { toast } from 'svelte-sonner';
 
-	// Import state management (PersistedState-based)
 	import * as medState from './states.svelte';
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
-
-	// Import persisted UI config
 	import { hasSeenGuide } from './persisted-config.svelte';
-
-	// Import remote functions
-	import { backupMedicationData, loadMedicationData, syncMedicationData } from '$lib/remote';
+	import { backupMedicationData, loadMedicationData } from '$lib/remote';
 
 	// Component imports
 	import { SessionManager, MedicationList, TodayTracker, StatsView, HistoryView } from './components';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { medicationTrackerHowToUse } from './how-to-use-config';
 
 	// Props from load function
