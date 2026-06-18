@@ -29,10 +29,13 @@
 		Copy,
 		Link,
 		Loader2,
+		QrCode,
 		SquarePen,
 		Timer,
 		Trash
 	} from 'lucide-svelte';
+import { QRCodeImage } from 'svelte-qrcode-image';
+import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
 
@@ -308,6 +311,33 @@
 										Copy Link
 									{/if}
 								</Button>
+
+								<AlertDialog.Root>
+									<AlertDialog.Trigger>
+										<Button variant="outline" size="sm" disabled={isExpired}>
+											<QrCode class="mr-2 size-4" />
+											QR Code
+										</Button>
+									</AlertDialog.Trigger>
+									<AlertDialog.Content>
+										<AlertDialog.Header>
+											<AlertDialog.Title>QR Code</AlertDialog.Title>
+											<AlertDialog.Description>
+												Scan this QR code to open the FlashText link.
+											</AlertDialog.Description>
+										</AlertDialog.Header>
+										<div class="flex justify-center py-4">
+											<QRCodeImage
+												text={shareUrl ?? ''}
+												displayClass="h-64 w-64 rounded-md"
+											/>
+										</div>
+										<AlertDialog.Footer>
+											<AlertDialog.Cancel>Close</AlertDialog.Cancel>
+										</AlertDialog.Footer>
+									</AlertDialog.Content>
+								</AlertDialog.Root>
+
 								<Button variant="ghost" size="sm" onclick={handleNew}>Create New</Button>
 							</div>
 						</CardContent>
