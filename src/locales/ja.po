@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-06-18T11:50:15.823Z\n"
+"PO-Revision-Date: 2026-06-18T12:18:11.024Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1225,6 +1225,7 @@ msgstr "クリア"
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
@@ -3985,8 +3986,9 @@ msgstr "ソースコードを見る"
 msgid "Open apps menu"
 msgstr "アプリメニューを開く"
 
-#~ msgid "Alt+D"
-#~ msgstr "Alt+D"
+#: src/routes/+layout.svelte
+msgid "Alt+D"
+msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
@@ -11843,3 +11845,31 @@ msgstr "作成した最新のリンクにすばやくアクセスできます。
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your recent FlashTexts will appear here after you create them."
 msgstr "FlashTextを作成すると、最近のFlashTextがここに表示されます。"
+
+#: src/routes/+layout.svelte
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: src/routes/+layout.svelte
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: src/routes/+layout.svelte
+msgid "Alt+R"
+msgstr "Alt+R"
+
+#: src/routes/+layout.svelte
+msgid "Alt+O"
+msgstr "Alt+O"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> QR Code"
+msgstr "<0/> QRコード"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "QR Code"
+msgstr "QRコード"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Scan this QR code to open the FlashText link."
+msgstr "このQRコードをスキャンしてFlashTextリンクを開いてください。"

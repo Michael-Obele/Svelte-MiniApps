@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.086Z\n"
-"PO-Revision-Date: 2026-06-18T11:49:52.995Z\n"
+"PO-Revision-Date: 2026-06-18T12:17:48.840Z\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: \n"
@@ -1123,6 +1123,7 @@ msgstr "Effacer"
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
@@ -2274,8 +2275,9 @@ msgstr "Voir le code source"
 msgid "Open apps menu"
 msgstr "Ouvrir le menu des applications"
 
-#~ msgid "Alt+D"
-#~ msgstr "Alt+D"
+#: src/routes/+layout.svelte
+msgid "Alt+D"
+msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
@@ -12063,3 +12065,31 @@ msgstr "Accès rapide aux derniers liens que vous avez créés."
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your recent FlashTexts will appear here after you create them."
 msgstr "Vos FlashTexts récents apparaîtront ici après les avoir créés."
+
+#: src/routes/+layout.svelte
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: src/routes/+layout.svelte
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: src/routes/+layout.svelte
+msgid "Alt+R"
+msgstr "Alt+R"
+
+#: src/routes/+layout.svelte
+msgid "Alt+O"
+msgstr "Alt+O"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> QR Code"
+msgstr "<0/> Code QR"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "QR Code"
+msgstr "Code QR"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Scan this QR code to open the FlashText link."
+msgstr "Scannez ce code QR pour ouvrir le lien FlashText."

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-06-18T11:50:11.370Z\n"
+"PO-Revision-Date: 2026-06-18T12:18:03.165Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -133,8 +133,9 @@ msgstr "查看源代码"
 msgid "Open apps menu"
 msgstr "打开应用菜单"
 
-#~ msgid "Alt+D"
-#~ msgstr "Alt+D"
+#: src/routes/+layout.svelte
+msgid "Alt+D"
+msgstr "Alt+D"
 
 #: src/routes/apps/(app)/+layout.svelte
 msgid "Available Apps"
@@ -476,6 +477,7 @@ msgstr "清除"
 #: src/lib/components/ui/dialog/dialog-content.svelte
 #: src/lib/components/ui/sheet/sheet-content.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/PurchaseHistoryDialog.svelte
@@ -11852,3 +11854,31 @@ msgstr "快速访问您创建的最新链接。"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your recent FlashTexts will appear here after you create them."
 msgstr "您最近的 FlashTexts 将在创建后显示在这里。"
+
+#: src/routes/+layout.svelte
+msgid "Alt+I"
+msgstr "Alt+I"
+
+#: src/routes/+layout.svelte
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: src/routes/+layout.svelte
+msgid "Alt+R"
+msgstr "Alt+R"
+
+#: src/routes/+layout.svelte
+msgid "Alt+O"
+msgstr "Alt+O"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> QR Code"
+msgstr "<0/> 二维码"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "QR Code"
+msgstr "二维码"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Scan this QR code to open the FlashText link."
+msgstr "扫描此二维码即可打开 FlashText 链接。```"
