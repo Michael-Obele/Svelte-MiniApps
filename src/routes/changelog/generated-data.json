@@ -1,7 +1,73 @@
 {
-  "lastProcessedCommit": "cf54a40d35bc73e4fb591c19dd343f731141a2e9",
-  "generatedAt": "2026-06-03T11:35:13.470Z",
+  "lastProcessedCommit": "b879d0e5f5a0c9f3826074bde6fe59d389f9a988",
+  "generatedAt": "2026-06-18T12:21:18.425Z",
   "timeline": [
+    {
+      "date": "June 18, 2026",
+      "title": "feat: enhance Agentation component with custom key bindings and properties",
+      "description": "Updated src/routes/+layout.svelte",
+      "items": [
+        "feat: enhance Agentation component with custom key bindings and properties (d4c156b)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "fix: update PO revision dates and add translations for QR code functionality",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "fix: update PO revision dates and add translations for QR code functionality (b879d0e)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "fix: update toolbar position in playground annotation props",
+      "description": "Updated src/routes/+layout.svelte",
+      "items": [
+        "fix: update toolbar position in playground annotation props (271425a)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "Update localization files for FlashText feature and enhance UI interactions",
+      "description": "Updated src/lib/remote/flash-text.remote.ts, src/lib/remote/index.ts, src/locales/de.po and more",
+      "items": [
+        "Update localization files for FlashText feature and enhance UI interactions (1aaa567)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "chore: update TypeScript version and localization files for FlashText feature",
+      "description": "Updated bun.lockb, package.json, src/locales/ja.po and more",
+      "items": [
+        "chore: update TypeScript version and localization files for FlashText feature (1094e60)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "feat: add QR code generation and alert dialog for FlashText links",
+      "description": "Updated src/routes/apps/(app)/flash-text/+page.svelte",
+      "items": [
+        "feat: add QR code generation and alert dialog for FlashText links (05ab274)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "June 3, 2026",
       "title": "fix: update @sveltejs/kit dependency version to 2.62.0",
