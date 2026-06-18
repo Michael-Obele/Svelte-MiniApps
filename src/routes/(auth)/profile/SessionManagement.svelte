@@ -8,11 +8,8 @@
 	import { toast } from 'svelte-sonner';
 	import {
 		Monitor,
-		Smartphone,
-		Tablet,
 		Globe,
 		Clock,
-		MapPin,
 		Trash2,
 		ShieldAlert,
 		CheckCircle2
@@ -29,11 +26,6 @@
 	let sessionToRevoke = $state<(typeof sessions)[number] | null>(null);
 	let showRevokeAllDialog = $state(false);
 	let isRevoking = $state(false);
-
-	// Get device icon - simplified since userAgent is not available
-	function getDeviceIcon() {
-		return Monitor;
-	}
 
 	// Format relative time
 	function formatRelativeTime(dateStr: string): string {
@@ -151,13 +143,12 @@
 			</div>
 		{:else}
 			{#each sessions as session (session.id)}
-				{@const DeviceIcon = getDeviceIcon()}
 				<div
 					class="hover:bg-muted/50 flex items-center gap-4 rounded-lg border p-4 transition-colors"
 				>
 					<!-- Device icon -->
 					<div class="bg-muted flex size-10 items-center justify-center rounded-lg">
-						<DeviceIcon class="text-foreground size-5" />
+						<Monitor class="text-foreground size-5" />
 					</div>
 
 					<!-- Session info -->

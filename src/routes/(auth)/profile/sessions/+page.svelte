@@ -103,24 +103,6 @@
 
 <div class="space-y-8">
 	<!-- Page Header -->
-	<div class="flex items-center justify-between">
-		<div>
-			<h2 class="text-xl font-semibold tracking-tight">Active Sessions</h2>
-			<p class="text-muted-foreground text-sm">
-				Manage your active sessions across different devices
-			</p>
-		</div>
-		<Button
-			variant="outline"
-			size="sm"
-			class="gap-2"
-			onclick={refreshSessions}
-			disabled={isRefreshing}
-		>
-			<RefreshCw class="size-4 {isRefreshing ? 'animate-spin' : ''}" />
-			<span class="hidden sm:inline">Refresh</span>
-		</Button>
-	</div>
 
 	<!-- Sessions Card -->
 	<Card.Root>
