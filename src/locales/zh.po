@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-06-03T11:51:36.174Z\n"
+"PO-Revision-Date: 2026-06-18T11:50:11.370Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -11584,6 +11584,7 @@ msgstr ""
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "FlashText"
 msgstr "闪文"
 
@@ -11669,6 +11670,7 @@ msgstr "此链接已过期，无法再访问。"
 #~ msgstr "分享此链接——它在<0/>后过期"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copied!"
 msgstr "<0/> 已复制！"
 
@@ -11833,11 +11835,11 @@ msgstr "FlashText 模式"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Paste the short code or the full share link to open the public page."
-msgstr "粘贴短代码或完整共享链接以打开公共页面。"
+msgstr "将短代码或完整分享链接粘贴到此处以打开公开页面。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "<0/> Open public page"
-msgstr "<0/> 打开公共页面"
+msgstr "<0/> 打开公开页面"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Recent FlashTexts"
@@ -11849,4 +11851,4 @@ msgstr "快速访问您创建的最新链接。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your recent FlashTexts will appear here after you create them."
-msgstr "您最近的 FlashTexts 将在创建后显示在此处。"
+msgstr "您最近的 FlashTexts 将在创建后显示在这里。"

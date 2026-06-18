@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-06-03T11:51:41.475Z\n"
+"PO-Revision-Date: 2026-06-18T11:50:15.823Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -11575,6 +11575,7 @@ msgstr ""
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "FlashText"
 msgstr "フラッシュテキスト"
 
@@ -11660,6 +11661,7 @@ msgstr "このリンクは期限切れで、もうアクセスできません。
 #~ msgstr "このリンクを共有 — <0/>以内に期限切れ"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copied!"
 msgstr "<0/> コピーしました！"
 
@@ -11824,7 +11826,7 @@ msgstr "FlashTextモード"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Paste the short code or the full share link to open the public page."
-msgstr "公開ページを開くには、短いコードまたは共有リンク全体を貼り付けてください。"
+msgstr "公開ページを開くには、ショートコードまたは完全な共有リンクを貼り付けてください。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "<0/> Open public page"
@@ -11832,12 +11834,12 @@ msgstr "<0/> 公開ページを開く"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Recent FlashTexts"
-msgstr "最近のFlashTexts"
+msgstr "最近のFlashText"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Quick access to the latest links you created."
-msgstr "作成した最新のリンクに素早くアクセスできます。"
+msgstr "作成した最新のリンクにすばやくアクセスできます。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your recent FlashTexts will appear here after you create them."
-msgstr "作成後、最近のFlashTextsがここに表示されます。"
+msgstr "FlashTextを作成すると、最近のFlashTextがここに表示されます。"
