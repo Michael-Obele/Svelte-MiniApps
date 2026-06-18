@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2026-06-18T12:17:42.609Z\n"
+"PO-Revision-Date: 2026-06-18T13:13:06.588Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1467,39 +1467,47 @@ msgstr "Nuevo mantra"
 msgid "Get a new mantra"
 msgstr "Obtén un nuevo mantra"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Quick Guide"
 msgstr "Guía rápida"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Simple steps to get started"
 msgstr "Pasos simples para empezar"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Optional Details:"
 msgstr "Detalles opcionales:"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Status Indicators"
 msgstr "<0/> Indicadores de estado"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Pro tip:"
 msgstr "Consejo:"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "<0/> Quick Tips:"
 msgstr "<0/> Consejos rápidos:"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need help? Reopen this guide anytime from the header"
 msgstr "¿Necesitas ayuda? Reabre esta guía en cualquier momento desde la cabecera"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Got It!"
@@ -1749,21 +1757,17 @@ msgstr "Ingresa tu nombre de usuario"
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
-#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3378,7 +3382,7 @@ msgstr "Guardar cambios"
 #: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3955,9 +3959,8 @@ msgstr "Marcar como tomada"
 msgid "Mark Skipped"
 msgstr "Marcar como omitida"
 
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule"
 msgstr "Reprogramar"
@@ -3966,19 +3969,17 @@ msgstr "Reprogramar"
 msgid "Skip"
 msgstr "Omitir"
 
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Skip Medication"
 msgstr "Omitir medicamento"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-msgid "Optionally add a note explaining why you're skipping this medication."
-msgstr "Opcionalmente, añade una nota explicando por qué estás omitiendo este medicamento."
+#~ msgid "Optionally add a note explaining why you're skipping this medication."
+#~ msgstr "Opcionalmente, añade una nota explicando por qué estás omitiendo este medicamento."
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-msgid "Reason for skipping (optional)..."
-msgstr "Razón para omitir (opcional)..."
+#~ msgid "Reason for skipping (optional)..."
+#~ msgstr "Razón para omitir (opcional)..."
 
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Edit Medication Time"
@@ -3989,42 +3990,35 @@ msgid "Update the date and time when this medication was taken."
 msgstr "Actualiza la fecha y la hora en que se tomó esta medicación."
 
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time"
 msgstr "Hora"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Save Time"
 msgstr "Guardar hora"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Reschedule Medication"
 msgstr "Reprogramar la medicación"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid ""
-"Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
-"actual time taken."
-msgstr "Cambiar cuándo se debe tomar esta dosis. Esto actualiza la hora prevista, no la hora real tomada."
+#~ msgid ""
+#~ "Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
+#~ "actual time taken."
+#~ msgstr "Cambiar cuándo se debe tomar esta dosis. Esto actualiza la hora prevista, no la hora real tomada."
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid ""
 "💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
 "the Schedule button in the Medications list."
 msgstr "💡 Esto reprograma solo esta dosis. Para cambiar todo el horario de la medicación, use el botón Programar en la lista de medicamentos."
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "New Date"
 msgstr "Nueva fecha"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "New Time"
 msgstr "Nueva hora"
 
@@ -4655,11 +4649,11 @@ msgstr "<0/> Omitido"
 msgid "<0/> Missed"
 msgstr "<0/> No tomado"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "Opcionalmente, añade una nota explicando por qué estás omitiendo esta dosis."
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -4667,25 +4661,22 @@ msgstr "Opcionalmente, añade una nota explicando por qué estás omitiendo esta
 msgid "Notes (optional)"
 msgstr "Notas (opcionales)"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid "Confirm Skip"
-msgstr "Confirmar omitir"
+#~ msgid "Confirm Skip"
+#~ msgstr "Confirmar omitir"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Edit Time Taken"
 msgstr "Editar hora de la toma"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Adjust the time when this medication was actually taken."
 msgstr "Ajusta la hora en que realmente se tomó este medicamento."
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid "Time Taken"
-msgstr "Hora de la toma"
+#~ msgid "Time Taken"
+#~ msgstr "Hora de la toma"
 
-#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
-#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#. placeholder {0}: scheduledTime
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Scheduled time: {0}"
 msgstr "Hora programada: {0}"
 
@@ -11952,3 +11943,7 @@ msgstr "Código QR"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Scan this QR code to open the FlashText link."
 msgstr "Escanea este código QR para abrir el enlace de FlashText."
+
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+msgid "Change when this dose is scheduled to be taken."
+msgstr "Cambiar la hora programada para tomar esta dosis."

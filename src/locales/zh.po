@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-06-18T12:18:03.165Z\n"
+"PO-Revision-Date: 2026-06-18T13:13:07.492Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -892,21 +892,16 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/budget-tracker/components/BudgetDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
-#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3283,39 +3278,47 @@ msgstr "加载中..."
 msgid "Blur In"
 msgstr "模糊淡入"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Quick Guide"
 msgstr "快速指南"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "Simple steps to get started"
 msgstr "开始使用的简单步骤"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HelpDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Optional Details:"
 msgstr "可选详细信息："
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "<0/> Status Indicators"
 msgstr "<0/> 状态指示器"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Pro tip:"
 msgstr "专业提示："
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 msgid "<0/> Quick Tips:"
 msgstr "<0/> 快速提示："
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
 msgid "Need help? Reopen this guide anytime from the header"
 msgstr "需要帮助吗？可以随时从标题重新打开本指南"
 
+#: src/lib/components/blocks/HowToUseDialog.svelte
 #: src/lib/components/ui/HowToUseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/HowToUseDialog.svelte
 msgid "Got It!"
@@ -3674,7 +3677,7 @@ msgstr "保存更改"
 #: src/lib/components/countdown/AddTimerModal.svelte
 #: src/routes/(auth)/profile/activity/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -4196,9 +4199,8 @@ msgstr "添加药物并创建一个计划以开始。"
 msgid "<0/> Overdue"
 msgstr "<0/> 过期"
 
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "Reschedule"
 msgstr "重新安排"
@@ -4247,17 +4249,16 @@ msgstr "标记为已服用"
 msgid "Mark Skipped"
 msgstr "标记为已跳过"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Skip Medication"
 msgstr "跳过用药"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Optionally add a note explaining why you're skipping this dose."
 msgstr "可以添加一条备注，说明您跳过此剂量的原因。"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -4265,59 +4266,49 @@ msgstr "可以添加一条备注，说明您跳过此剂量的原因。"
 msgid "Notes (optional)"
 msgstr "备注（可选）"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid "Confirm Skip"
-msgstr "确认跳过"
+#~ msgid "Confirm Skip"
+#~ msgstr "确认跳过"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Edit Time Taken"
 msgstr "编辑服用时间"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Adjust the time when this medication was actually taken."
 msgstr "调整实际服用这种药物的时间。"
 
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid "Time Taken"
-msgstr "服用时间"
+#~ msgid "Time Taken"
+#~ msgstr "服用时间"
 
-#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
-#. placeholder {0}: editTimeLog ? formatTime(editTimeLog.scheduledTime) : ''
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#. placeholder {0}: scheduledTime
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Scheduled time: {0}"
 msgstr "计划时间：{0}"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Save Time"
 msgstr "保存时间"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Reschedule Medication"
 msgstr "重新安排用药"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-msgid ""
-"Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
-"actual time taken."
-msgstr "更改此剂量的预定服用时间。这将更新计划时间，而不是实际服用时间。"
+#~ msgid ""
+#~ "Change when this dose is scheduled to be taken. This updates the planned time, not the\n"
+#~ "actual time taken."
+#~ msgstr "更改此剂量的预定服用时间。这将更新计划时间，而不是实际服用时间。"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid ""
 "💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
 "the Schedule button in the Medications list."
 msgstr "💡 这只会重新安排这单个剂量。要更改整个用药计划，请使用药物列表中的“计划”按钮。"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "New Date"
 msgstr "新的日期"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "New Time"
 msgstr "新的时间"
 
@@ -4429,13 +4420,11 @@ msgstr "撤消"
 msgid "Skip"
 msgstr "跳过"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-msgid "Optionally add a note explaining why you're skipping this medication."
-msgstr "（可选）添加说明您跳过此药物的原因的注释。"
+#~ msgid "Optionally add a note explaining why you're skipping this medication."
+#~ msgstr "（可选）添加说明您跳过此药物的原因的注释。"
 
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-msgid "Reason for skipping (optional)..."
-msgstr "跳过的原因（可选）..."
+#~ msgid "Reason for skipping (optional)..."
+#~ msgstr "跳过的原因（可选）..."
 
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "Edit Medication Time"
@@ -4446,7 +4435,7 @@ msgid "Update the date and time when this medication was taken."
 msgstr "更新服用此药物的日期和时间。"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Time"
 msgstr "时间"
@@ -11882,3 +11871,10 @@ msgstr "二维码"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Scan this QR code to open the FlashText link."
 msgstr "扫描此二维码即可打开 FlashText 链接。```"
+
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+msgid "Change when this dose is scheduled to be taken."
+msgstr "更改此剂量的计划服用时间。"
+racker/components/DoseActionDialogs.svelte
+msgid "Change when this dose is scheduled to be taken."
+msgstr "更改此剂量的计划服用时间。"
