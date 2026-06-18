@@ -29,7 +29,7 @@
 	};
 
 	let playgroundAnnotationProps: AnnotationProps = {
-		toolbarPosition: 'top-right',
+		toolbarPosition: 'bottom-left',
 		outputMode: 'forensic',
 		pauseAnimations: true,
 		clearOnCopy: true,
