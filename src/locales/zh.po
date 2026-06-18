@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-06-03T11:27:22.771Z\n"
+"PO-Revision-Date: 2026-06-03T11:51:36.174Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -5613,6 +5613,7 @@ msgstr "离线工作 - 无需互联网！"
 msgid "⚠️ This action cannot be undone."
 msgstr "⚠️ 此操作无法撤消。"
 
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
 msgstr "<0/> 正在删除..."
@@ -5623,6 +5624,7 @@ msgstr "<0/> 正在删除..."
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 删除"
@@ -11582,7 +11584,6 @@ msgstr ""
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
-#: src/routes/f/[slug]/+page.svelte
 msgid "FlashText"
 msgstr "闪文"
 
@@ -11596,7 +11597,6 @@ msgstr "暂时分享文本，链接会自动销毁。粘贴文本，获取一个
 msgid "Expired"
 msgstr "已过期"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Link copied!"
@@ -11669,8 +11669,6 @@ msgstr "此链接已过期，无法再访问。"
 #~ msgstr "分享此链接——它在<0/>后过期"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copied!"
 msgstr "<0/> 已复制！"
 
@@ -11678,23 +11676,17 @@ msgstr "<0/> 已复制！"
 msgid "Create New"
 msgstr "新建"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Your Recent Pastes"
-msgstr "你最近的粘贴"
+#~ msgid "Your Recent Pastes"
+#~ msgstr "你最近的粘贴"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "No active pastes. Create one above!"
-msgstr "没有活动的粘贴。在上方创建一个！"
+#~ msgid "No active pastes. Create one above!"
+#~ msgstr "没有活动的粘贴。在上方创建一个！"
 
-#. placeholder {0}: paste.slug
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "/f/{0}"
-msgstr "/f/{0}"
+#~ msgid "/f/{0}"
+#~ msgstr "/f/{0}"
 
-#. placeholder {0}: formatDate(paste.expiresAt)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Expires: {0}"
-msgstr "过期时间：{0}"
+#~ msgid "Expires: {0}"
+#~ msgstr "过期时间：{0}"
 
 #~ msgid ""
 #~ "Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
@@ -11715,7 +11707,6 @@ msgstr "已过期 — FlashText"
 msgid "Temporary shared text — view-only"
 msgstr "临时共享文本 — 仅查看"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "Link Expired or Not Found"
 msgstr "链接已过期或未找到"
@@ -11736,16 +11727,12 @@ msgstr "<0/> 创建你自己的FlashText"
 msgid "Expires in <0/>"
 msgstr "在 <0/> 过期"
 
-#. placeholder {0}: lookupCharCount
 #. placeholder {0}: charCount
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} chars"
 msgstr "{0} 字符"
 
-#. placeholder {0}: lookupLineCount
 #. placeholder {0}: lineCount
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} lines"
 msgstr "{0} 行"
@@ -11789,9 +11776,8 @@ msgstr "<0/> 通过代码打开"
 msgid "Open a FlashText"
 msgstr "打开一个 FlashText"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Paste the short code or the full share link to preview the text without leaving the app."
-msgstr "粘贴短代码或完整分享链接，无需离开应用即可预览文本。"
+#~ msgid "Paste the short code or the full share link to preview the text without leaving the app."
+#~ msgstr "粘贴短代码或完整分享链接，无需离开应用即可预览文本。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText link or code"
@@ -11801,37 +11787,29 @@ msgstr "FlashText 链接或代码"
 msgid "Paste /f/abc123 or just abc123"
 msgstr "粘贴 /f/abc123 或仅 abc123"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> Looking up..."
-msgstr "<0/> 正在查找..."
+#~ msgid "<0/> Looking up..."
+#~ msgstr "<0/> 正在查找..."
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> View Text"
-msgstr "<0/> 查看文本"
+#~ msgid "<0/> View Text"
+#~ msgstr "<0/> 查看文本"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> Checking that code..."
-msgstr "<0/> 正在检查该代码..."
+#~ msgid "<0/> Checking that code..."
+#~ msgstr "<0/> 正在检查该代码..."
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "FlashText Loaded"
-msgstr "FlashText 已加载"
+#~ msgid "FlashText Loaded"
+#~ msgstr "FlashText 已加载"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "The code is valid and the text is still active."
-msgstr "代码有效且文本仍然有效。"
+#~ msgid "The code is valid and the text is still active."
+#~ msgstr "代码有效且文本仍然有效。"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Open public link"
-msgstr "打开公开链接"
+#~ msgid "Open public link"
+#~ msgstr "打开公开链接"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "FlashText links are temporary and automatically deleted after expiry."
-msgstr "FlashText 链接是临时的，过期后自动删除。"
+#~ msgid "FlashText links are temporary and automatically deleted after expiry."
+#~ msgstr "FlashText 链接是临时的，过期后自动删除。"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Paste a FlashText code or full link to preview the text here."
-msgstr "在此处粘贴 FlashText 代码或完整链接以预览文本。"
+#~ msgid "Paste a FlashText code or full link to preview the text here."
+#~ msgstr "在此处粘贴 FlashText 代码或完整链接以预览文本。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Create temporary text links and open them by code."
@@ -11852,3 +11830,23 @@ msgstr "分享此链接 - 它在<0/>后过期"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText modes"
 msgstr "FlashText 模式"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste the short code or the full share link to open the public page."
+msgstr "粘贴短代码或完整共享链接以打开公共页面。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Open public page"
+msgstr "<0/> 打开公共页面"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Recent FlashTexts"
+msgstr "最近的 FlashTexts"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Quick access to the latest links you created."
+msgstr "快速访问您创建的最新链接。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your recent FlashTexts will appear here after you create them."
+msgstr "您最近的 FlashTexts 将在创建后显示在此处。"

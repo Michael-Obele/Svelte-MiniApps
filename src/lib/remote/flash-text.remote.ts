@@ -52,28 +52,6 @@ export const getUserFlashTexts = query(async () => {
 	})) satisfies FlashTextItem[];
 });
 
-export const lookupFlashText = query(v.string(), async (slug) => {
-	const flashText = await prisma.flashText.findUnique({
-		where: { slug }
-	});
-
-	if (!flashText) return null;
-
-	if (new Date() > flashText.expiresAt) {
-		await prisma.flashText.delete({ where: { id: flashText.id } }).catch(() => {});
-		return null;
-	}
-
-	return {
-		id: flashText.id,
-		slug: flashText.slug,
-		content: flashText.content,
-		expiresAt: flashText.expiresAt.toISOString(),
-		createdAt: flashText.createdAt.toISOString(),
-		userId: flashText.userId
-	} satisfies FlashTextItem;
-});
-
 // ============================================================================
 // FORMS
 // ============================================================================

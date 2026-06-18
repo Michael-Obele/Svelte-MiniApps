@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import {
 		createFlashText,
 		deleteFlashText,
 		getCurrentUser,
 		getUserFlashTexts,
-		lookupFlashText,
 		type FlashTextItem
 	} from '$lib/remote';
+	import { Button } from '$lib/components/ui/button';
 	import {
 		Card,
 		CardContent,
@@ -16,16 +16,13 @@
 		CardHeader,
 		CardTitle
 	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Textarea } from '$lib/components/ui/textarea';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Separator } from '$lib/components/ui/separator';
 	import { Skeleton } from '$lib/components/ui/skeleton';
+	import { Textarea } from '$lib/components/ui/textarea';
 	import * as Tabs from '$lib/components/ui/tabs';
 	import {
-		AlertTriangle,
 		Check,
 		Clipboard,
 		ClipboardPaste,
@@ -37,27 +34,21 @@
 		Trash
 	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	let activeTab = $state<'create' | 'lookup'>('create');
 	let isCreating = $state(false);
 	let copyConfirmed = $state(false);
-	let lookupCopyConfirmed = $state(false);
 	let currentUser = $state<{ id: string } | null>(null);
 	let userFlashTexts = $state<FlashTextItem[]>([]);
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
 	let lookupInput = $state('');
-	let lookupResult = $state<FlashTextItem | null>(null);
-	let lookupState = $state<'idle' | 'loading' | 'found' | 'missing' | 'error'>('idle');
-	let lookupMessage = $state<string | null>(null);
 	let createdSlug = $derived(page.url.searchParams.get('slug'));
 	let createdExpiresAt = $derived(page.url.searchParams.get('expiresAt'));
 	let shareUrl = $derived(createdSlug ? `${page.url.origin}/f/${createdSlug}` : null);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
-	let lookupCharCount = $derived(lookupResult?.content?.length ?? 0);
-	let lookupLineCount = $derived(lookupResult?.content?.split('\n').length ?? 0);
 
 	$effect(() => {
 		getCurrentUser().then((user) => {
@@ -114,20 +105,6 @@
 		setTimeout(() => (copyConfirmed = false), 2000);
 	}
 
-	async function handleLookupCopy() {
-		if (!lookupResult) return;
-		await navigator.clipboard.writeText(`${page.url.origin}/f/${lookupResult.slug}`);
-		lookupCopyConfirmed = true;
-		toast.success('Link copied!');
-		setTimeout(() => (lookupCopyConfirmed = false), 2000);
-	}
-
-	function handleOpenLookupLink() {
-		const slug = lookupResult?.slug;
-		if (!slug) return;
-		goto(`/f/${slug}`);
-	}
-
 	async function handleDelete(id: string) {
 		deletingId = id;
 		try {
@@ -178,32 +155,13 @@
 	}
 
 	async function handleLookup() {
-		lookupMessage = null;
-		lookupResult = null;
-
 		const slug = extractFlashTextSlug(lookupInput);
 		if (!slug) {
-			lookupState = 'error';
-			lookupMessage = 'Paste a valid FlashText code or share link.';
+			toast.error('Paste a valid FlashText code or share link.');
 			return;
 		}
 
-		lookupState = 'loading';
-
-		try {
-			const flashText = await lookupFlashText(slug);
-			if (!flashText) {
-				lookupState = 'missing';
-				lookupMessage = 'That link is expired or not found.';
-				return;
-			}
-
-			lookupResult = flashText;
-			lookupState = 'found';
-		} catch {
-			lookupState = 'error';
-			lookupMessage = 'Could not load that FlashText right now.';
-		}
+		await goto(`/f/${slug}`);
 	}
 </script>
 
@@ -363,7 +321,7 @@
 				<CardHeader>
 					<CardTitle>Open a FlashText</CardTitle>
 					<CardDescription>
-						Paste the short code or the full share link to preview the text without leaving the app.
+						Paste the short code or the full share link to open the public page.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -386,14 +344,9 @@
 						</div>
 
 						<div class="flex flex-wrap gap-2">
-							<Button type="submit" disabled={lookupState === 'loading'}>
-								{#if lookupState === 'loading'}
-									<Loader2 class="mr-2 size-4 animate-spin" />
-									Looking up...
-								{:else}
-									<ClipboardPaste class="mr-2 size-4" />
-									View Text
-								{/if}
+							<Button type="submit">
+								<ClipboardPaste class="mr-2 size-4" />
+								Open public page
 							</Button>
 							<Button type="button" variant="ghost" onclick={() => (lookupInput = '')}>Clear</Button
 							>
@@ -402,135 +355,82 @@
 				</CardContent>
 			</Card>
 
-			{#if lookupState === 'loading'}
-				<Card class="border-dashed">
-					<CardContent class="text-muted-foreground flex items-center gap-3 p-6 text-sm">
-						<Loader2 class="size-4 animate-spin" />
-						Checking that code...
-					</CardContent>
-				</Card>
-			{:else if lookupResult}
-				<div transition:fade class="space-y-4">
-					<Card>
-						<CardHeader>
-							<CardTitle class="flex items-center gap-2">
-								<Link class="size-5 text-green-500" />
-								<span>FlashText Loaded</span>
-							</CardTitle>
-							<CardDescription>The code is valid and the text is still active.</CardDescription>
-						</CardHeader>
-						<CardContent class="space-y-4">
-							<div class="flex flex-wrap gap-2">
-								<Badge variant="secondary" class="font-mono text-xs">{lookupResult.slug}</Badge>
-								<Badge variant="secondary" class="text-xs">{lookupCharCount} chars</Badge>
-								<Badge variant="secondary" class="text-xs">{lookupLineCount} lines</Badge>
-							</div>
-							<div
-								class="bg-muted/50 max-h-[50vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap"
-							>
-								{lookupResult.content}
-							</div>
-							<div class="flex flex-wrap gap-2">
-								<Button variant="outline" size="sm" onclick={handleLookupCopy}>
-									{#if lookupCopyConfirmed}
-										<Check class="mr-2 size-4 text-green-500" />
-										Copied!
-									{:else}
-										<Copy class="mr-2 size-4" />
-										Copy Link
-									{/if}
-								</Button>
-								<Button variant="ghost" size="sm" onclick={handleOpenLookupLink}>
-									Open public link
-								</Button>
-							</div>
-						</CardContent>
-					</Card>
-				</div>
-			{:else if lookupState === 'missing' || lookupState === 'error'}
-				<Card class="border-destructive/50 bg-destructive/5">
+			{#if currentUser}
+				<Card>
 					<CardHeader>
-						<CardTitle class="flex items-center gap-2">
-							<AlertTriangle class="text-destructive size-5" />
-							<span class="text-destructive">Link Expired or Not Found</span>
-						</CardTitle>
-						<CardDescription>
-							{lookupMessage ??
-								'FlashText links are temporary and automatically deleted after expiry.'}
-						</CardDescription>
+						<CardTitle>Recent FlashTexts</CardTitle>
+						<CardDescription>Quick access to the latest links you created.</CardDescription>
 					</CardHeader>
-				</Card>
-			{:else}
-				<Card class="border-dashed">
-					<CardContent class="text-muted-foreground p-6 text-sm">
-						Paste a FlashText code or full link to preview the text here.
+					<CardContent>
+						{#if isLoadingPastes}
+							<div class="space-y-3">
+								{#each Array.from({ length: 3 }) as _, index (index)}
+									<div
+										class="flex flex-col gap-4 rounded-lg border p-4 sm:flex-row sm:items-center sm:justify-between"
+									>
+										<div class="space-y-2">
+											<Skeleton class="h-4 w-32" />
+											<Skeleton class="h-3 w-56" />
+										</div>
+										<Skeleton class="h-9 w-28" />
+									</div>
+								{/each}
+							</div>
+						{:else if userFlashTexts.length === 0}
+							<p class="text-muted-foreground text-sm">
+								Your recent FlashTexts will appear here after you create them.
+							</p>
+						{:else}
+							<div class="space-y-3">
+								{#each userFlashTexts as paste (paste.id)}
+									<div
+										class="flex flex-col gap-4 rounded-lg border p-4 sm:flex-row sm:items-center sm:justify-between"
+									>
+										<div class="space-y-2">
+											<div class="flex flex-wrap items-center gap-2">
+												<Badge variant="secondary" class="font-mono text-xs">{paste.slug}</Badge>
+												<Badge variant="secondary" class="text-xs"
+													>{formatDate(paste.createdAt)}</Badge
+												>
+											</div>
+											<p class="text-muted-foreground font-mono text-sm leading-relaxed">
+												{previewContent(paste.content)}
+											</p>
+										</div>
+										<div class="flex flex-wrap gap-2">
+											<Button
+												variant="outline"
+												size="sm"
+												onclick={async () => {
+													await navigator.clipboard.writeText(`${page.url.origin}/f/${paste.slug}`);
+													toast.success('Link copied!');
+												}}
+											>
+												<Copy class="mr-2 size-4" />
+												Copy Link
+											</Button>
+											<Button
+												variant="ghost"
+												size="sm"
+												disabled={deletingId === paste.id}
+												onclick={() => handleDelete(paste.id)}
+											>
+												{#if deletingId === paste.id}
+													<Loader2 class="mr-2 size-4 animate-spin" />
+													Deleting...
+												{:else}
+													<Trash class="text-destructive mr-2 size-4" />
+													Delete
+												{/if}
+											</Button>
+										</div>
+									</div>
+								{/each}
+							</div>
+						{/if}
 					</CardContent>
 				</Card>
 			{/if}
 		</Tabs.Content>
 	</Tabs.Root>
-
-	{#if currentUser}
-		<Separator />
-
-		<div class="space-y-4">
-			<h2 class="text-lg font-semibold">Your Recent Pastes</h2>
-
-			{#if isLoadingPastes}
-				<div class="space-y-3">
-					{#each [1, 2, 3] as skeletonId (skeletonId)}
-						<Skeleton class="h-20 w-full rounded-lg" />
-					{/each}
-				</div>
-			{:else if userFlashTexts.length === 0}
-				<p class="text-muted-foreground text-sm">No active pastes. Create one above!</p>
-			{:else}
-				<div class="space-y-2">
-					{#each userFlashTexts as paste (paste.id)}
-						<div transition:fly={{ y: 10, duration: 200 }}>
-							<Card class="group">
-								<CardContent class="flex items-start justify-between gap-4 p-4">
-									<div class="min-w-0 flex-1 space-y-1">
-										<p class="text-muted-foreground truncate font-mono text-sm">
-											{previewContent(paste.content)}
-										</p>
-										<div class="text-muted-foreground flex flex-wrap items-center gap-2 text-xs">
-											<Badge variant="secondary" class="text-xs">/f/{paste.slug}</Badge>
-											<span>Expires: {formatDate(paste.expiresAt)}</span>
-										</div>
-									</div>
-									<div
-										class="flex shrink-0 gap-1 opacity-0 transition-opacity group-hover:opacity-100"
-									>
-										<Button
-											variant="ghost"
-											size="icon"
-											onclick={() => {
-												navigator.clipboard.writeText(`${page.url.origin}/f/${paste.slug}`);
-												toast.success('Link copied!');
-											}}
-										>
-											<Copy class="size-3.5" />
-										</Button>
-										<Button
-											variant="ghost"
-											size="icon"
-											disabled={deletingId === paste.id}
-											onclick={() => handleDelete(paste.id)}
-										>
-											{#if deletingId === paste.id}
-												<Loader2 class="size-3.5 animate-spin" />
-											{:else}
-												<Trash class="text-destructive size-3.5" />
-											{/if}
-										</Button>
-									</div>
-								</CardContent>
-							</Card>
-						</div>
-					{/each}
-				</div>
-			{/if}
-		</div>
-	{/if}
 </div>

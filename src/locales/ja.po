@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-06-03T11:27:22.813Z\n"
+"PO-Revision-Date: 2026-06-03T11:51:41.475Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -3412,6 +3412,7 @@ msgstr "アカウントを削除"
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/apps/(app)/budget-tracker/components/BudgetCard.svelte
 #: src/routes/apps/(app)/budget-tracker/components/ExpenseDialog.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Delete"
 msgstr "<0/> 削除"
@@ -6666,6 +6667,7 @@ msgstr "購入を追加"
 msgid "⚠️ This action cannot be undone."
 msgstr "⚠️ この操作は元に戻せません。"
 
+#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
 msgid "<0/> Deleting..."
 msgstr "<0/> 削除中..."
@@ -11573,7 +11575,6 @@ msgstr ""
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
-#: src/routes/f/[slug]/+page.svelte
 msgid "FlashText"
 msgstr "フラッシュテキスト"
 
@@ -11587,7 +11588,6 @@ msgstr "自己消滅リンクでテキストを一時的に共有できます。
 msgid "Expired"
 msgstr "期限切れ"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Link copied!"
@@ -11660,8 +11660,6 @@ msgstr "このリンクは期限切れで、もうアクセスできません。
 #~ msgstr "このリンクを共有 — <0/>以内に期限切れ"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copied!"
 msgstr "<0/> コピーしました！"
 
@@ -11669,23 +11667,17 @@ msgstr "<0/> コピーしました！"
 msgid "Create New"
 msgstr "新規作成"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Your Recent Pastes"
-msgstr "最近のペースト"
+#~ msgid "Your Recent Pastes"
+#~ msgstr "最近のペースト"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "No active pastes. Create one above!"
-msgstr "アクティブなペーストはありません。上から作成してください！"
+#~ msgid "No active pastes. Create one above!"
+#~ msgstr "アクティブなペーストはありません。上から作成してください！"
 
-#. placeholder {0}: paste.slug
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "/f/{0}"
-msgstr "/f/{0}"
+#~ msgid "/f/{0}"
+#~ msgstr "/f/{0}"
 
-#. placeholder {0}: formatDate(paste.expiresAt)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Expires: {0}"
-msgstr "期限切れ: {0}"
+#~ msgid "Expires: {0}"
+#~ msgstr "期限切れ: {0}"
 
 #~ msgid ""
 #~ "Paste your text below. A temporary link will be generated — anyone with the link can view it\n"
@@ -11706,7 +11698,6 @@ msgstr "期限切れ — FlashText"
 msgid "Temporary shared text — view-only"
 msgstr "一時共有テキスト — 閲覧専用"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "Link Expired or Not Found"
 msgstr "リンクの期限切れまたは見つかりません"
@@ -11727,16 +11718,12 @@ msgstr "<0/> 自分のFlashTextを作成"
 msgid "Expires in <0/>"
 msgstr "<0/> 後に期限切れ"
 
-#. placeholder {0}: lookupCharCount
 #. placeholder {0}: charCount
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} chars"
 msgstr "{0} 文字"
 
-#. placeholder {0}: lookupLineCount
 #. placeholder {0}: lineCount
-#: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} lines"
 msgstr "{0} 行"
@@ -11780,9 +11767,8 @@ msgstr "<0/> コードで開く"
 msgid "Open a FlashText"
 msgstr "FlashTextを開く"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Paste the short code or the full share link to preview the text without leaving the app."
-msgstr "アプリから離れずにテキストをプレビューするには、短いコードまたは完全な共有リンクを貼り付けてください。"
+#~ msgid "Paste the short code or the full share link to preview the text without leaving the app."
+#~ msgstr "アプリから離れずにテキストをプレビューするには、短いコードまたは完全な共有リンクを貼り付けてください。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText link or code"
@@ -11792,37 +11778,29 @@ msgstr "FlashTextリンクまたはコード"
 msgid "Paste /f/abc123 or just abc123"
 msgstr "/f/abc123 または abc123 のみを貼り付けてください"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> Looking up..."
-msgstr "<0/> 検索中..."
+#~ msgid "<0/> Looking up..."
+#~ msgstr "<0/> 検索中..."
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> View Text"
-msgstr "<0/> テキストを表示"
+#~ msgid "<0/> View Text"
+#~ msgstr "<0/> テキストを表示"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "<0/> Checking that code..."
-msgstr "<0/> コードを確認中..."
+#~ msgid "<0/> Checking that code..."
+#~ msgstr "<0/> コードを確認中..."
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "FlashText Loaded"
-msgstr "FlashTextが読み込まれました"
+#~ msgid "FlashText Loaded"
+#~ msgstr "FlashTextが読み込まれました"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "The code is valid and the text is still active."
-msgstr "コードは有効で、テキストはまだアクティブです。"
+#~ msgid "The code is valid and the text is still active."
+#~ msgstr "コードは有効で、テキストはまだアクティブです。"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Open public link"
-msgstr "公開リンクを開く"
+#~ msgid "Open public link"
+#~ msgstr "公開リンクを開く"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "FlashText links are temporary and automatically deleted after expiry."
-msgstr "FlashTextリンクは一時的なもので、有効期限が切れると自動的に削除されます。"
+#~ msgid "FlashText links are temporary and automatically deleted after expiry."
+#~ msgstr "FlashTextリンクは一時的なもので、有効期限が切れると自動的に削除されます。"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Paste a FlashText code or full link to preview the text here."
-msgstr "ここにテキストをプレビューするには、FlashTextコードまたは完全なリンクを貼り付けてください。"
+#~ msgid "Paste a FlashText code or full link to preview the text here."
+#~ msgstr "ここにテキストをプレビューするには、FlashTextコードまたは完全なリンクを貼り付けてください。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Create temporary text links and open them by code."
@@ -11843,3 +11821,23 @@ msgstr "このリンクを共有 - <0/>で期限切れになります。"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText modes"
 msgstr "FlashTextモード"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste the short code or the full share link to open the public page."
+msgstr "公開ページを開くには、短いコードまたは共有リンク全体を貼り付けてください。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "<0/> Open public page"
+msgstr "<0/> 公開ページを開く"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Recent FlashTexts"
+msgstr "最近のFlashTexts"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Quick access to the latest links you created."
+msgstr "作成した最新のリンクに素早くアクセスできます。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Your recent FlashTexts will appear here after you create them."
+msgstr "作成後、最近のFlashTextsがここに表示されます。"
