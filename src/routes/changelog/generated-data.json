@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "b879d0e5f5a0c9f3826074bde6fe59d389f9a988",
-  "generatedAt": "2026-06-18T12:21:18.425Z",
+  "lastProcessedCommit": "574457beebf57d359a6cc33c62784c0c80ae4942",
+  "generatedAt": "2026-06-18T13:42:52.128Z",
   "timeline": [
     {
       "date": "June 18, 2026",
@@ -23,6 +23,61 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "feat: implement DoseActionDialogs component and integrate with HistoryView and TodayTracker refactor: streamline dialog handling in medication tracker components",
+      "description": "Updated src/routes/apps/(app)/medication-tracker/+page.svelte, src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte, src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte and more",
+      "items": [
+        "feat: implement DoseActionDialogs component and integrate with HistoryView and TodayTracker refactor: streamline dialog handling in medication tracker components (b1c6fa8)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "feat: add HowToUseDialog component and update index exports",
+      "description": "Updated src/lib/components/blocks/HowToUseDialog.svelte, src/lib/components/blocks/index.ts",
+      "items": [
+        "feat: add HowToUseDialog component and update index exports (62da5f5)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "Update localization files for medication tracker components",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "Update localization files for medication tracker components (574457b)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "refactor: simplify device icon handling and remove unused session header",
+      "description": "Updated src/routes/(auth)/profile/SessionManagement.svelte, src/routes/(auth)/profile/sessions/+page.svelte",
+      "items": [
+        "refactor: simplify device icon handling and remove unused session header (5353840)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 18, 2026",
+      "title": "fix: update import path for HowToUseDialog component across multiple apps",
+      "description": "Updated src/routes/apps/(app)/advanced-emoji-tools/+page.svelte, src/routes/apps/(app)/budget-tracker/+page.svelte, src/routes/apps/(app)/currency-converter/+page.svelte and more",
+      "items": [
+        "fix: update import path for HowToUseDialog component across multiple apps (3aac4ec)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "June 18, 2026",
