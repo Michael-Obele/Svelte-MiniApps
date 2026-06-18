@@ -3,7 +3,7 @@
 	import { Button } from '@/ui/button/index.js';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/ui/card';
 	import { HelpCircle, Clock, TrendingUp, TriangleAlert } from '@lucide/svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { githubContributionTrackerHowToUse } from './how-to-use-config';
 	import { PersistedState } from '$lib/persisted-state';
 

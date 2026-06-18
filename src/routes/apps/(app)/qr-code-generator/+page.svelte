@@ -3,7 +3,7 @@
 	import { TextInput, ContactInput, SocialLinks, QRCodeDisplay } from './components';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import * as Tabs from '@/ui/tabs';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { qrCodeGeneratorHowToUse } from './how-to-use-config';
 	import { Button } from '@/ui/button';
 	import { HelpCircle } from '@lucide/svelte';

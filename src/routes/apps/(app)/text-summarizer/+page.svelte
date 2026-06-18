@@ -10,7 +10,7 @@
 	import DOMPurify from 'isomorphic-dompurify';
 	import { marked } from 'marked';
 	import { sampleText, sampleIntroduction } from './data';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { textSummarizerHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 

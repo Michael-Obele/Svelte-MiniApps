@@ -27,7 +27,7 @@
 	import * as AlertDialog from '@/ui/alert-dialog';
 	import { enhance } from '$app/forms';
 	import { toast } from 'svelte-sonner';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { budgetTrackerHowToUse } from './how-to-use-config';
 
 	// Reactive store reference for budgets

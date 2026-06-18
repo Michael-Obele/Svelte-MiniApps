@@ -15,7 +15,7 @@
 	import { Skeleton } from '@/ui/skeleton';
 	import { PasswordDisplay } from './components';
 	import { getSavedPasswords, savePassword, getCurrentUser } from '$lib/remote';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from '$lib/persisted-state';

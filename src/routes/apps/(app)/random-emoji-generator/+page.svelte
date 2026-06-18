@@ -4,7 +4,7 @@
 	import { Button } from '@/ui/button/index.js';
 	import { copyToClipboard } from '$lib/utils';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { randomEmojiGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from '$lib/persisted-state';

@@ -11,7 +11,7 @@
 	import { browser } from '$app/environment';
 	import { markdownDemo } from './data.svelte';
 	import { PersistedState } from '$lib/persisted-state';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { markdownEditorHowToUse } from './how-to-use-config';
 	import { Button } from '@/ui/button';
 	import { HelpCircle } from '@lucide/svelte';

@@ -13,7 +13,7 @@
 		type UnitType
 	} from './unit-data-convert.js';
 	import { ArrowRightLeft, X, Eraser } from '@lucide/svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { unitConverterHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from '$lib/persisted-state';

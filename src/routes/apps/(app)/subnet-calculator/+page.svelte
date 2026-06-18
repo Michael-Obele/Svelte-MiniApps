@@ -9,7 +9,7 @@
 	import { Button } from '@/ui/button';
 	import { Badge } from '@/ui/badge';
 	import { AlertCircle, Copy, Network, Binary, Code, Info } from 'lucide-svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { subnetCalculatorHowToUse } from './how-to-use-config';
 	import { toast } from 'svelte-sonner';
 	import {

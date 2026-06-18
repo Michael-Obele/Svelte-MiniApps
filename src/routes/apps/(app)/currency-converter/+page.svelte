@@ -11,7 +11,7 @@
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
 	import { Badge } from '@/ui/badge';
 	import { Separator } from '@/ui/separator';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
 	import { PersistedState } from '$lib/persisted-state';
 	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';

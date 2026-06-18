@@ -23,7 +23,7 @@
 	import NoWord from '$lib/assets/not-found.svelte';
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { dictionaryAppHowToUse } from './how-to-use-config';
 	import { PersistedState } from '$lib/persisted-state';
 
@@ -62,7 +62,6 @@
 	description="Look up words and their meanings with our English Dictionary App. Explore definitions, synonyms, antonyms, and more. Built with SvelteKit for a fast and engaging experience."
 	keywords="English Dictionary, Word Lookup, Definitions, Synonyms, Antonyms, Svelte, SvelteKit, Dictionary App"
 	route="/apps/english-dictionary-app"
-	image={site().image}
 />
 
 <div class="mx-auto max-w-3xl px-4 py-8">

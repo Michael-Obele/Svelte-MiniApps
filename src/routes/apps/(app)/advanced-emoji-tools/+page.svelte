@@ -13,7 +13,7 @@
 	import * as ContextMenu from '@/ui/context-menu/index.js';
 	import { copyToClipboard } from '$lib/utils';
 	import { fade, fly } from 'svelte/transition';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { advancedEmojiToolsHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
 	import { PersistedState } from '$lib/persisted-state';

@@ -3,7 +3,7 @@
 	import { PersistedState } from '$lib/persisted-state';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
 	import { Plus, X, Edit, Check, AlertTriangle, HelpCircle } from '@lucide/svelte';
-	import HowToUseDialog from '@/ui/HowToUseDialog.svelte';
+	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { todoListHowToUse } from './how-to-use-config';
 	import TodoItem from '$lib/components/todo/todo-item.svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
