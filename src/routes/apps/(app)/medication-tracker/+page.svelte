@@ -37,7 +37,13 @@
 	import { backupMedicationData, loadMedicationData } from '$lib/remote';
 
 	// Component imports
-	import { SessionManager, MedicationList, TodayTracker, StatsView, HistoryView } from './components';
+	import {
+		SessionManager,
+		MedicationList,
+		TodayTracker,
+		StatsView,
+		HistoryView
+	} from './components';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { medicationTrackerHowToUse } from './how-to-use-config';
 
@@ -45,7 +51,7 @@
 	let { data } = $props<{ data: any }>();
 
 	// Authentication and backup state
-	let isAuthenticated = $state(!!data.user);
+	let isAuthenticated = $derived(!!data.user);
 	let hasUnsavedChanges = $state(false);
 	let needsBackup = $state(true); // Track if data needs to be backed up
 	let isBackingUp = $state(false);
