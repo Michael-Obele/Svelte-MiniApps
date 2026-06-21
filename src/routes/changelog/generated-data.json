@@ -1,7 +1,51 @@
 {
-  "lastProcessedCommit": "326ed2d1bf648a8863cc83a5df5420c81a8415f9",
-  "generatedAt": "2026-06-20T23:38:53.316Z",
+  "lastProcessedCommit": "9dc4c2e96ae1dfa3e86b7548517b563792189253",
+  "generatedAt": "2026-06-21T08:21:52.623Z",
   "timeline": [
+    {
+      "date": "June 21, 2026",
+      "title": "docs: add workout tracker design document",
+      "description": "Updated docs/plans/2026-06-21-workout-tracker-design.md",
+      "items": [
+        "docs: add workout tracker design document (dd0f430)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 21, 2026",
+      "title": "docs: add multi-week routines + free-form day logging to workout tracker design",
+      "description": "Updated docs/plans/2026-06-21-workout-tracker-design.md",
+      "items": [
+        "docs: add multi-week routines + free-form day logging to workout tracker design (d320953)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 21, 2026",
+      "title": "docs: update sync framework design to replace PersistedState with svelte-idb",
+      "description": "Updated docs/plans/2026-06-21-sync-framework-design.md",
+      "items": [
+        "docs: update sync framework design to replace PersistedState with svelte-idb (9dc4c2e)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 21, 2026",
+      "title": "docs: add centralized sync framework design",
+      "description": "Updated docs/plans/2026-06-21-sync-framework-design.md",
+      "items": [
+        "docs: add centralized sync framework design (60da310)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "June 20, 2026",
       "title": "refactor: reorganize component imports and update isAuthenticated state to use $derived",
