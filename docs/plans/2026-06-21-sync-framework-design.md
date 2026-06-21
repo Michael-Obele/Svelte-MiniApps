@@ -49,22 +49,24 @@ src/lib/sync/
 Replaces the current `PersistedState` wrapper with `svelte-idb`'s `createReactiveDB` directly.
 
 **Before (PersistedState):**
+
 ```typescript
 export const sessions = new PersistedState<Session[]>('med-sessions', []);
 // sessions.current is reactive but requires manual save logic
 ```
 
 **After (svelte-idb):**
+
 ```typescript
 import { createReactiveDB } from 'svelte-idb/svelte';
 
 const db = createReactiveDB({
-  name: 'medication-tracker',
-  version: 1,
-  stores: {
-    sessions: { keyPath: 'id' },
-    logs: { keyPath: 'id' },
-  },
+	name: 'medication-tracker',
+	version: 1,
+	stores: {
+		sessions: { keyPath: 'id' },
+		logs: { keyPath: 'id' }
+	}
 });
 
 export const sessions = db.sessions.liveAll<Session>();
@@ -72,6 +74,7 @@ export const sessions = db.sessions.liveAll<Session>();
 ```
 
 **Key svelte-idb APIs used:**
+
 - `createReactiveDB(config)` — creates reactive IndexedDB database
 - `db.store.liveAll()` — returns `ILiveQuery<T[]>` with reactive `.current`, `.loading`, `.error`
 - `db.store.put(record)` — upsert (auto-updates liveAll queries)
@@ -83,39 +86,41 @@ export const sessions = db.sessions.liveAll<Session>();
 
 ```typescript
 export class SyncManager<TStores extends string> {
-  // Reactive sync state (Svelte 5 $state in class fields)
-  needsBackup = $state(false);
-  isBackingUp = $state(false);
-  isSyncing = $state(false);
-  lastSyncAt = $state<number | null>(null);
-  syncError = $state<string | null>(null);
+	// Reactive sync state (Svelte 5 $state in class fields)
+	needsBackup = $state(false);
+	isBackingUp = $state(false);
+	isSyncing = $state(false);
+	lastSyncAt = $state<number | null>(null);
+	syncError = $state<string | null>(null);
 
-  // Private fields
-  #db: ReactiveDatabase<any>;
-  #stores: TStores[];
-  #loadFn: () => Promise<Partial<Record<TStores, any[]>>>;
-  #backupForm: FormObject;
-  #backupCommand: (data: any) => Promise<{ success: boolean }>;
-  #strategy: MergeStrategy;
-  #trigger: AutoBackupTrigger | PollingTrigger | ManualTrigger;
-  #isAuthenticated: () => boolean;
+	// Private fields
+	#db: ReactiveDatabase<any>;
+	#stores: TStores[];
+	#loadFn: () => Promise<Partial<Record<TStores, any[]>>>;
+	#backupForm: FormObject;
+	#backupCommand: (data: any) => Promise<{ success: boolean }>;
+	#strategy: MergeStrategy;
+	#trigger: AutoBackupTrigger | PollingTrigger | ManualTrigger;
+	#isAuthenticated: () => boolean;
 
-  constructor(config: SyncConfig<TStores>) { /* ... */ }
+	constructor(config: SyncConfig<TStores>) {
+		/* ... */
+	}
 
-  // Merge server data (from +page.server.ts load) with local svelte-idb data
-  async syncOnMount(serverData: Partial<Record<TStores, any[]>>): Promise<void>;
+	// Merge server data (from +page.server.ts load) with local svelte-idb data
+	async syncOnMount(serverData: Partial<Record<TStores, any[]>>): Promise<void>;
 
-  // Manual backup — uses form (progressive enhancement)
-  async handleManualBackup(): Promise<void>;
+	// Manual backup — uses form (progressive enhancement)
+	async handleManualBackup(): Promise<void>;
 
-  // Auto backup — uses command (programmatic, called by trigger)
-  async handleAutoBackup(): Promise<void>;
+	// Auto backup — uses command (programmatic, called by trigger)
+	async handleAutoBackup(): Promise<void>;
 
-  // Manual sync — fetches from server, merges, writes to local
-  async handleSync(): Promise<void>;
+	// Manual sync — fetches from server, merges, writes to local
+	async handleSync(): Promise<void>;
 
-  markDirty(): void;
-  destroy(): void;
+	markDirty(): void;
+	destroy(): void;
 }
 ```
 
@@ -124,15 +129,15 @@ export class SyncManager<TStores extends string> {
 ```typescript
 // states.svelte.ts
 const sync = new SyncManager({
-  db,
-  stores: ['sessions', 'logs'],
-  loadFn: loadMedicationData,
-  backupForm: backupMedicationForm,
-  backupCommand: backupMedicationCommand,
-  strategy: timestampMerge,
-  trigger: 'auto-backup',
-  autoBackupDelay: 5000,
-  isAuthenticated: () => !!data.user,
+	db,
+	stores: ['sessions', 'logs'],
+	loadFn: loadMedicationData,
+	backupForm: backupMedicationForm,
+	backupCommand: backupMedicationCommand,
+	strategy: timestampMerge,
+	trigger: 'auto-backup',
+	autoBackupDelay: 5000,
+	isAuthenticated: () => !!data.user
 });
 
 // +page.svelte
@@ -144,37 +149,42 @@ onDestroy(() => sync.destroy());
 
 ```typescript
 export interface MergeStrategy {
-  merge<T extends { id: string; updatedAt?: string; createdAt?: string }>(
-    local: T[], server: T[], storeName: string
-  ): T[];
+	merge<T extends { id: string; updatedAt?: string; createdAt?: string }>(
+		local: T[],
+		server: T[],
+		storeName: string
+	): T[];
 }
 
 // Built-in strategies
-export const timestampMerge: MergeStrategy;  // last-write-wins by updatedAt
-export const serverWins: MergeStrategy;      // always use server data
-export const localWins: MergeStrategy;       // keep local, add only new server records
+export const timestampMerge: MergeStrategy; // last-write-wins by updatedAt
+export const serverWins: MergeStrategy; // always use server data
+export const localWins: MergeStrategy; // keep local, add only new server records
 
 // Custom resolver hook (for smoke-free-tracker's domain-specific logic)
 export function customMerge(
-  resolver: (local: any[], server: any[], storeName: string) => any[]
+	resolver: (local: any[], server: any[], storeName: string) => any[]
 ): MergeStrategy;
 ```
 
 ## Trigger Classes
 
 ### AutoBackupTrigger
+
 - Debounced timer, fires `handleAutoBackup()` after delay
 - Watches `needsBackup` reactively via `$effect`
 - Only fires if `isAuthenticated()` returns true
 - Default delay: 5000ms
 
 ### PollingTrigger
+
 - Interval-based, calls `handleSync()` periodically
-- Exponential backoff on failure: base * 2^failures, capped at max
+- Exponential backoff on failure: base \* 2^failures, capped at max
 - Default: 120000ms base, 600000ms max
 - Resets on successful sync
 
 ### ManualTrigger
+
 - No automatic sync
 - App calls `handleManualBackup()` / `handleSync()` explicitly
 - Used by purchase-tracker, scenario-tracker
@@ -185,11 +195,11 @@ export function customMerge(
 
 ```typescript
 export const loadMedicationData = createLoadQuery({
-  stores: ['sessions', 'logs'],
-  models: {
-    sessions: { model: 'medicationSession', include: { medications: true } },
-    logs: { model: 'medicationLog' },
-  },
+	stores: ['sessions', 'logs'],
+	models: {
+		sessions: { model: 'medicationSession', include: { medications: true } },
+		logs: { model: 'medicationLog' }
+	}
 });
 ```
 
@@ -197,11 +207,11 @@ export const loadMedicationData = createLoadQuery({
 
 ```typescript
 export const backupMedicationForm = createBackupForm({
-  models: {
-    sessions: { model: 'medicationSession', schema: MedicationSchema },
-    logs: { model: 'medicationLog', schema: LogSchema },
-  },
-  deleteOrder: ['logs', 'sessions'],
+	models: {
+		sessions: { model: 'medicationSession', schema: MedicationSchema },
+		logs: { model: 'medicationLog', schema: LogSchema }
+	},
+	deleteOrder: ['logs', 'sessions']
 });
 // Form has single hidden field with serialized JSON
 // Server handler parses JSON, validates with Valibot, saves to Prisma in transaction
@@ -211,8 +221,10 @@ export const backupMedicationForm = createBackupForm({
 
 ```typescript
 export const backupMedicationCommand = createBackupCommand({
-  models: { /* same as form */ },
-  deleteOrder: ['logs', 'sessions'],
+	models: {
+		/* same as form */
+	},
+	deleteOrder: ['logs', 'sessions']
 });
 // Accepts structured object directly, validates with Valibot, saves to Prisma in transaction
 ```
@@ -244,28 +256,28 @@ export const backupMedicationCommand = createBackupCommand(config);
 ```typescript
 // Client
 export interface SyncConfig<TStores extends string> {
-  db: ReactiveDatabase<any>;
-  stores: TStores[];
-  loadFn: () => Promise<Partial<Record<TStores, any[]>>>;
-  backupForm: FormObject;
-  backupCommand: (data: any) => Promise<{ success: boolean }>;
-  strategy: MergeStrategy;
-  trigger: 'auto-backup' | 'polling' | 'manual';
-  autoBackupDelay?: number;          // default 5000ms
-  pollingInterval?: number;          // default 120000ms
-  maxPollingInterval?: number;       // default 600000ms
-  isAuthenticated: () => boolean;
+	db: ReactiveDatabase<any>;
+	stores: TStores[];
+	loadFn: () => Promise<Partial<Record<TStores, any[]>>>;
+	backupForm: FormObject;
+	backupCommand: (data: any) => Promise<{ success: boolean }>;
+	strategy: MergeStrategy;
+	trigger: 'auto-backup' | 'polling' | 'manual';
+	autoBackupDelay?: number; // default 5000ms
+	pollingInterval?: number; // default 120000ms
+	maxPollingInterval?: number; // default 600000ms
+	isAuthenticated: () => boolean;
 }
 
 // Server
 export interface LoadConfig<TStores extends string> {
-  stores: TStores[];
-  models: Record<TStores, { model: string; include?: object; orderBy?: object }>;
+	stores: TStores[];
+	models: Record<TStores, { model: string; include?: object; orderBy?: object }>;
 }
 
 export interface BackupConfig<TStores extends string> {
-  models: Record<TStores, { model: string; schema: v.GenericSchema }>;
-  deleteOrder: readonly TStores[];
+	models: Record<TStores, { model: string; schema: v.GenericSchema }>;
+	deleteOrder: readonly TStores[];
 }
 ```
 
