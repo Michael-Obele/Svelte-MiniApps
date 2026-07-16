@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cn } from '$lib/utils';
 	import { site } from '$lib/index.svelte';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import * as Alert from '@/ui/alert/index.js';
@@ -9,7 +10,7 @@
 	import Label from '@/ui/label/label.svelte';
 	import { Button } from '@/ui/button';
 	import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card';
-	import { Badge } from '@/ui/badge';
+	import { Badge, badgeVariants } from '@/ui/badge';
 	import { Separator } from '@/ui/separator';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
@@ -22,11 +23,23 @@
 		rememberCurrencySelection,
 		resetCurrencySelection
 	} from './state.svelte';
+	import { useSearchParams, createSearchParamsSchema } from 'runed/kit';
 	import CurrencyCombobox from './currency-combobox.svelte';
 
 	let showHowToUseDialog = $state(false);
 	const defaultFromCurrency = 'USD';
 	const defaultToCurrency = 'EUR';
+
+	// URL search params as source of truth for from/to currency
+	const urlSchema = createSearchParamsSchema({
+		from: { type: 'string', default: currencySelection.current.fromCurrency },
+		to: { type: 'string', default: currencySelection.current.toCurrency }
+	});
+	const urlParams = useSearchParams(urlSchema, {
+		pushHistory: false,
+		noScroll: true,
+		showDefaults: true
+	});
 
 	// Track if user has seen the how-to guide
 	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {});
@@ -59,39 +72,41 @@
 		return currencies.find((currency) => currency.value !== fromCurrency)?.value ?? fromCurrency;
 	}
 
-	function sanitizeStoredSelection() {
+	function sanitizeUrlParams() {
 		if (currencies.length === 0) return;
 
-		const normalizedFrom = normalizeCurrencyCode(currencySelection.current.fromCurrency);
-		const normalizedTo = normalizeCurrencyCode(currencySelection.current.toCurrency);
+		const normalizedFrom = normalizeCurrencyCode(urlParams.from);
+		const normalizedTo = normalizeCurrencyCode(urlParams.to);
 		const nextFrom = isValidCurrency(normalizedFrom) ? normalizedFrom : defaultFromCurrency;
 		const nextTo =
 			isValidCurrency(normalizedTo) && normalizedTo !== nextFrom
 				? normalizedTo
 				: getDefaultTargetCurrency(nextFrom);
 
-		if (
-			nextFrom !== currencySelection.current.fromCurrency ||
-			nextTo !== currencySelection.current.toCurrency
-		) {
-			currencySelection.current = {
-				...currencySelection.current,
-				fromCurrency: nextFrom,
-				toCurrency: nextTo
-			};
+		if (normalizedFrom !== nextFrom || normalizedTo !== nextTo) {
+			urlParams.update({ from: nextFrom, to: nextTo });
 		}
 	}
 
-	// Derived validated currency codes (fallback to USD/EUR if invalid)
+	function selectRecentPair(pair: { fromCurrency: string; toCurrency: string }) {
+		urlParams.update({
+			from: normalizeCurrencyCode(pair.fromCurrency),
+			to: normalizeCurrencyCode(pair.toCurrency)
+		});
+		rememberCurrencySelection(pair.fromCurrency, pair.toCurrency);
+	}
+
+	// Derived validated currency codes from URL params (fallback to defaults if invalid)
 	let fromCurrency = $derived(
-		isValidCurrency(normalizeCurrencyCode(currencySelection.current.fromCurrency))
-			? normalizeCurrencyCode(currencySelection.current.fromCurrency)
+		isValidCurrency(normalizeCurrencyCode(urlParams.from))
+			? normalizeCurrencyCode(urlParams.from)
 			: defaultFromCurrency
 	);
 	let toCurrency = $derived(
-		isValidCurrency(normalizeCurrencyCode(currencySelection.current.toCurrency))
-			? normalizeCurrencyCode(currencySelection.current.toCurrency)
-			: defaultToCurrency
+		isValidCurrency(normalizeCurrencyCode(urlParams.to)) &&
+			normalizeCurrencyCode(urlParams.to) !== fromCurrency
+			? normalizeCurrencyCode(urlParams.to)
+			: getDefaultTargetCurrency(fromCurrency)
 	);
 
 	// Formatted amount preview using Intl.NumberFormat
@@ -115,7 +130,7 @@
 	onMount(async () => {
 		try {
 			currencies = await getCurrencies();
-			sanitizeStoredSelection();
+			sanitizeUrlParams();
 		} catch (error) {
 			console.error('Failed to load currencies:', error);
 			toast.error('Failed to load currencies');
@@ -134,16 +149,25 @@
 	}
 
 	function persistCurrencySelection(nextFromCurrency: string, nextToCurrency: string) {
+		urlParams.update({
+			from: normalizeCurrencyCode(nextFromCurrency),
+			to: normalizeCurrencyCode(nextToCurrency)
+		});
 		rememberCurrencySelection(nextFromCurrency, nextToCurrency);
 	}
 
 	function swapCurrencies() {
 		const nextFromCurrency = toCurrency;
 		const nextToCurrency = fromCurrency;
+		urlParams.update({
+			from: normalizeCurrencyCode(nextFromCurrency),
+			to: normalizeCurrencyCode(nextToCurrency)
+		});
 		rememberCurrencySelection(nextFromCurrency, nextToCurrency);
 	}
 
 	function resetCurrencies() {
+		urlParams.update({ from: defaultFromCurrency, to: defaultToCurrency });
 		resetCurrencySelection();
 	}
 
@@ -243,12 +267,12 @@
 							<div class="space-y-2">
 								<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
 								<CurrencyCombobox
-									id="currencyFrom"
-									label="Convert From"
-									currencies={currencies}
-									bind:value={currencySelection.current.fromCurrency}
-									onSelect={(value) => persistCurrencySelection(value, toCurrency)}
-								/>
+										id="currencyFrom"
+										label="Convert From"
+										currencies={currencies}
+										bind:value={urlParams.from}
+										onSelect={(value) => persistCurrencySelection(value, toCurrency)}
+									/>
 							</div>
 
 							<div class="flex justify-center lg:pb-1">
@@ -268,12 +292,12 @@
 							<div class="space-y-2">
 								<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
 								<CurrencyCombobox
-									id="currencyTo"
-									label="Convert To"
-									currencies={currencies}
-									bind:value={currencySelection.current.toCurrency}
-									onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
-								/>
+										id="currencyTo"
+										label="Convert To"
+										currencies={currencies}
+										bind:value={urlParams.to}
+										onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
+									/>
 							</div>
 						</div>
 
@@ -287,11 +311,18 @@
 							<div class="mt-3 flex flex-wrap gap-2">
 								{#if recentPairs.length > 0}
 									{#each recentPairs as pair (pair.fromCurrency + pair.toCurrency)}
-										<Badge variant="secondary" class="gap-1.5">
+										<button
+											type="button"
+											onclick={() => selectRecentPair(pair)}
+											class={cn(
+												badgeVariants({ variant: 'secondary' }),
+												'cursor-pointer gap-1.5 hover:opacity-80'
+											)}
+										>
 											{pair.fromCurrency}
 											<ArrowLeftRight class="size-3" />
 											{pair.toCurrency}
-										</Badge>
+										</button>
 									{/each}
 								{:else}
 									<div class="text-muted-foreground flex items-center gap-2 text-sm">

@@ -83,7 +83,7 @@ export function done() {
 		{
 			name: 'currency-converter',
 			time: '2025-07-25T00:00:00.000Z',
-			update: '2026-04-14T00:00:00.000Z'
+			update: '2026-07-16T00:00:00.000Z'
 		},
 		{ name: 'advanced-emoji-tools', time: '2025-09-15T00:00:00.000Z' },
 		{
