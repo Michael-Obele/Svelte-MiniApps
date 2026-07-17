@@ -1,7 +1,18 @@
 {
-  "lastProcessedCommit": "1231122397c6d530df190bacc12dfea538659ee3",
-  "generatedAt": "2026-07-16T10:52:23.184Z",
+  "lastProcessedCommit": "7aef8ed8db15909491a97a49178bd052cbdc06b0",
+  "generatedAt": "2026-07-17T15:21:20.214Z",
   "timeline": [
+    {
+      "date": "July 17, 2026",
+      "title": "fix(android-icon): replace default Capacitor icons with Svelte MiniApps branding",
+      "description": "Updated android/app/src/main/res/mipmap-hdpi/ic_launcher.png, android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png, android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png and more",
+      "items": [
+        "fix(android-icon): replace default Capacitor icons with Svelte MiniApps branding (7aef8ed)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
     {
       "date": "July 16, 2026",
       "title": "Use URL search params for currency selection",
@@ -210,6 +221,116 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "refactor(capacitor): conditionally skip PWA/Partytown/changelog for Capacitor builds",
+      "description": "Updated package.json, src/locales/de.po, src/locales/fr.po and more",
+      "items": [
+        "refactor(capacitor): conditionally skip PWA/Partytown/changelog for Capacitor builds (da7d688)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "feat(android): add GitHub Actions workflow for Android build process feat(icon): update launcher foreground and background icons for better design fix(locales): update PO revision dates for multiple languages",
+      "description": "Updated .github/workflows/android-build.yml, android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml, android/app/src/main/res/drawable/ic_launcher_background.xml and more",
+      "items": [
+        "feat(android): add GitHub Actions workflow for Android build process feat(icon): update launcher foreground and background icons for better design fix(locales): update PO revision dates for multiple languages (caa352f)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "fix(ci): add placeholder env vars for $env/static/private at build time",
+      "description": "Updated .github/workflows/android-build.yml",
+      "items": [
+        "fix(ci): add placeholder env vars for $env/static/private at build time (71e63dd)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "fix(ci): remove error suppression from sdkmanager, deduplicate Java step, add upload error detection",
+      "description": "Updated .github/workflows/android-build.yml",
+      "items": [
+        "fix(ci): remove error suppression from sdkmanager, deduplicate Java step, add upload error detection (6b9a4c5)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "feat(capacitor): add Android platform with Capacitor",
+      "description": "Updated android/.gitignore, android/app/.gitignore, android/app/build.gradle and more",
+      "items": [
+        "feat(capacitor): add Android platform with Capacitor (5bca0c2)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "feat(capacitor): switch to server-linked mode pointing at https://svelte-apps.me/",
+      "description": "Updated .github/workflows/android-build.yml, capacitor.config.ts, package.json and more",
+      "items": [
+        "feat(capacitor): switch to server-linked mode pointing at https://svelte-apps.me/ (5369b35)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "chore(locales): update PO revision dates",
+      "description": "Updated src/locales/de.po, src/locales/fr.po, src/locales/ja.po and more",
+      "items": [
+        "chore(locales): update PO revision dates (4e70e67)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "feat(capacitor): add Capacitor config, deps, and adapter-static setup",
+      "description": "Updated bun.lockb, capacitor.config.ts, package.json and more",
+      "items": [
+        "feat(capacitor): add Capacitor config, deps, and adapter-static setup (3bce93a)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "ci(android): remove redundant SW hash generation step from workflow",
+      "description": "Updated .github/workflows/android-build.yml",
+      "items": [
+        "ci(android): remove redundant SW hash generation step from workflow (1600102)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "June 16, 2026",
+      "title": "fix(android-build): standardize quotes in Java setup step",
+      "description": "Updated .github/workflows/android-build.yml",
+      "items": [
+        "fix(android-build): standardize quotes in Java setup step (0db1a5f)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "June 3, 2026",
