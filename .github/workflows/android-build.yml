@@ -1,0 +1,108 @@
+name: Android Build
+
+on:
+  push:
+    branches: [master, main, feat/capacitor-integration]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Create placeholder build directory for Capacitor sync
+        run: mkdir -p build
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK build tools & platform
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-36" \
+            "build-tools;36.0.0" \
+            "platform-tools"
+
+      - name: Sync Capacitor with web build
+        run: npx cap sync
+
+      - name: Build Android APK (debug)
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Extract version from build.gradle
+        id: version
+        run: |
+          VERSION_NAME=$(grep versionName android/app/build.gradle | awk '{print $2}' | tr -d '"')
+          VERSION_CODE=$(grep versionCode android/app/build.gradle | awk '{print $2}')
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "App version: $VERSION_NAME (code $VERSION_CODE)"
+
+      - name: Rename APK
+        run: |
+          VERSION="${{ steps.version.outputs.version_name }}"
+          mkdir -p android/app/build/outputs/apk/debug
+          if [ -f android/app/build/outputs/apk/debug/app-debug.apk ]; then
+            mv android/app/build/outputs/apk/debug/app-debug.apk \
+              "android/app/build/outputs/apk/debug/Svelte-MiniApps-v${VERSION}-debug.apk"
+          fi
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Svelte-MiniApps-v${{ steps.version.outputs.version_name }}-debug
+          path: android/app/build/outputs/apk/debug/Svelte-MiniApps-*.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Create GitHub Release
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${{ steps.version.outputs.version_name }}"
+          TAG="v${VERSION}-b${GITHUB_RUN_NUMBER}"
+          APK_PATH="android/app/build/outputs/apk/debug/Svelte-MiniApps-v${VERSION}-debug.apk"
+
+          echo "Creating release: $TAG"
+
+          # Create or update the release
+          if gh release view "$TAG" --json name &>/dev/null; then
+            echo "Release $TAG exists — uploading asset"
+            gh release upload "$TAG" "$APK_PATH" --clobber
+          else
+            echo "Creating new release $TAG"
+            gh release create "$TAG" \
+              --title "Svelte MiniApps v${VERSION}" \
+              --notes "Automated Android debug build from commit ${GITHUB_SHA:0:7}" \
+              --generate-notes \
+              "$APK_PATH"
+          fi
