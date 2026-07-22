@@ -2,17 +2,23 @@ name: Android Build
 
 on:
   push:
-    branches: [master, main, feat/capacitor-integration]
+    branches: [master, main]
   pull_request:
     branches: [master, main]
   workflow_dispatch:
 
+env:
+  APP_SLUG: Svelte-MiniApps
+  APP_NAME: Svelte MiniApps
+  APP_ID: com.svelte.miniapps
+
 jobs:
-  build-android:
+  # ── Debug APK — every push / PR ──
+  debug-build:
+    name: Debug APK
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -66,43 +72,180 @@ jobs:
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "App version: $VERSION_NAME (code $VERSION_CODE)"
 
-      - name: Rename APK
+      - name: Rename debug APK
         run: |
           VERSION="${{ steps.version.outputs.version_name }}"
           mkdir -p android/app/build/outputs/apk/debug
           if [ -f android/app/build/outputs/apk/debug/app-debug.apk ]; then
             mv android/app/build/outputs/apk/debug/app-debug.apk \
-              "android/app/build/outputs/apk/debug/Svelte-MiniApps-v${VERSION}-debug.apk"
+              "android/app/build/outputs/apk/debug/${{ env.APP_SLUG }}-v${VERSION}-debug.apk"
           fi
 
-      - name: Upload APK artifact
+      - name: Upload debug APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Svelte-MiniApps-v${{ steps.version.outputs.version_name }}-debug
-          path: android/app/build/outputs/apk/debug/Svelte-MiniApps-*.apk
+          name: ${{ env.APP_SLUG }}-v${{ steps.version.outputs.version_name }}-debug
+          path: android/app/build/outputs/apk/debug/${{ env.APP_SLUG }}-*.apk
           if-no-files-found: error
           retention-days: 14
 
-      - name: Create GitHub Release
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+  # ── Release AAB (signed) — master only, requires secrets ──
+  release-build:
+    name: Release AAB (signed)
+    runs-on: ubuntu-latest
+    if: >
+      github.ref == 'refs/heads/main'
+      || github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+    outputs:
+      version_name: ${{ steps.version.outputs.version_name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Create placeholder build directory for Capacitor sync
+        run: mkdir -p build
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK build tools & platform
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-36" \
+            "build-tools;36.0.0" \
+            "platform-tools"
+
+      - name: Sync Capacitor with web build
+        run: npx cap sync
+
+      - name: Decode signing keystore
+        id: keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 --decode > "${{ github.workspace }}/release.keystore"
+            echo "keystore_file=${{ github.workspace }}/release.keystore" >> "$GITHUB_OUTPUT"
+            echo "KEYSTORE_BASE64=$KEYSTORE_BASE64" >> "$GITHUB_OUTPUT"
+            echo "Keystore decoded successfully — AAB will be signed"
+          else
+            echo "KEYSTORE_BASE64 not set — AAB will be unsigned"
+          fi
+
+      - name: Extract version from build.gradle
+        id: version
+        run: |
+          VERSION_NAME=$(grep versionName android/app/build.gradle | awk '{print $2}' | tr -d '"')
+          VERSION_CODE=$(grep versionCode android/app/build.gradle | awk '{print $2}')
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "App version: $VERSION_NAME (code $VERSION_CODE)"
+
+      - name: Build release AAB (signed)
+        if: steps.keystore.outputs.keystore_file != ''
+        env:
+          KEYSTORE_PATH: ${{ steps.keystore.outputs.keystore_file }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew bundleRelease
+
+      - name: Build release AAB (unsigned — no keystore secrets)
+        if: steps.keystore.outputs.keystore_file == ''
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew bundleRelease
+
+      - name: Rename release AAB
+        run: |
+          VERSION="${{ steps.version.outputs.version_name }}"
+          mkdir -p android/app/build/outputs/bundle/release
+          if [ -f android/app/build/outputs/bundle/release/app-release.aab ]; then
+            mv android/app/build/outputs/bundle/release/app-release.aab \
+              "android/app/build/outputs/bundle/release/${{ env.APP_SLUG }}-v${VERSION}.aab"
+          fi
+
+      - name: Upload release AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP_SLUG }}-v${{ steps.version.outputs.version_name }}
+          path: android/app/build/outputs/bundle/release/${{ env.APP_SLUG }}-*.aab
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Create GitHub Release with AAB
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           VERSION="${{ steps.version.outputs.version_name }}"
           TAG="v${VERSION}-b${GITHUB_RUN_NUMBER}"
-          APK_PATH="android/app/build/outputs/apk/debug/Svelte-MiniApps-v${VERSION}-debug.apk"
+          AAB_PATH="android/app/build/outputs/bundle/release/${{ env.APP_SLUG }}-v${VERSION}.aab"
 
           echo "Creating release: $TAG"
 
-          # Create or update the release
           if gh release view "$TAG" --json name &>/dev/null; then
             echo "Release $TAG exists — uploading asset"
-            gh release upload "$TAG" "$APK_PATH" --clobber
+            gh release upload "$TAG" "$AAB_PATH" --clobber
           else
             echo "Creating new release $TAG"
             gh release create "$TAG" \
-              --title "Svelte MiniApps v${VERSION}" \
-              --notes "Automated Android debug build from commit ${GITHUB_SHA:0:7}" \
+              --title "${{ env.APP_NAME }} v${VERSION}" \
+              --notes "Signed release AAB build from commit ${GITHUB_SHA:0:7}" \
               --generate-notes \
-              "$APK_PATH"
+              "$AAB_PATH"
           fi
+
+  # ── Upload to Google Play — depends on release-build ──
+  playstore-upload:
+    name: Upload to Play Store
+    runs-on: ubuntu-latest
+    needs: [release-build]
+    if: >
+      always()
+      && needs.release-build.result == 'success'
+      && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download release AAB artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.APP_SLUG }}-v${{ needs.release-build.outputs.version_name }}
+          path: ./aab
+
+      - name: Upload to Google Play (internal track)
+        uses: r0adkll/upload-google-play@v1
+        continue-on-error: true
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ env.APP_ID }}
+          releaseFiles: ./aab/*.aab
+          track: internal
+          status: completed

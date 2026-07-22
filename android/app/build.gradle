@@ -16,10 +16,30 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // Signing config for Play Store release — only active when CI provides the env vars
+    signingConfigs {
+        release {
+            def keystoreEnv = System.getenv("KEYSTORE_PATH")
+            if (keystoreEnv != null) {
+                storeFile = file(keystoreEnv)
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+                keyAlias = System.getenv("KEY_ALIAS") ?: ""
+                keyPassword = System.getenv("KEY_PASSWORD") ?: ""
+            }
+        }
+    }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Only sign release builds when CI env vars are present
+            if (System.getenv("KEYSTORE_PATH") != null) {
+                signingConfig = signingConfigs.release
+            }
         }
     }
 }
