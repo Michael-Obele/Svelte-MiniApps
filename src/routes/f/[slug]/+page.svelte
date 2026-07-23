@@ -8,13 +8,30 @@
 	} from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Clipboard, Timer, Copy, Check, AlertTriangle, ArrowLeft } from 'lucide-svelte';
+	import { Separator } from '$lib/components/ui/separator';
+	import {
+		Clipboard,
+		Timer,
+		Copy,
+		Check,
+		AlertTriangle,
+		ArrowLeft,
+		Download,
+		FileText,
+		FileImage,
+		Film,
+		Music,
+		Archive,
+		File as FileIcon
+	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
+	import { formatFileSize, getFileIconHint } from '$lib/types/flash-file';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let currentFlashText = $derived(data.flashText);
+	let currentFiles = $derived(data.files);
 
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);
@@ -61,6 +78,24 @@
 
 	let charCount = $derived(currentFlashText?.content?.length ?? 0);
 	let lineCount = $derived(currentFlashText?.content?.split('\n').length ?? 0);
+
+	/** Pick the right Lucide icon component for a content type. */
+	function getFileIcon(contentType: string) {
+		switch (getFileIconHint(contentType)) {
+			case 'image':
+				return FileImage;
+			case 'video':
+				return Film;
+			case 'audio':
+				return Music;
+			case 'archive':
+				return Archive;
+			case 'doc':
+				return FileText;
+			default:
+				return FileIcon;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -106,7 +141,6 @@
 			</Card>
 		</div>
 	{:else}
-		<!-- Active FlashText -->
 		<div transition:fade class="space-y-4">
 			<!-- Meta Card -->
 			<Card>
@@ -124,6 +158,12 @@
 						</div>
 						<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
 						<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
+						{#if currentFiles.length > 0}
+							<Badge variant="secondary" class="text-xs">
+								{currentFiles.length}
+								{currentFiles.length === 1 ? 'file' : 'files'}
+							</Badge>
+						{/if}
 					</div>
 					<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
 						{#if copyConfirmed}
@@ -146,8 +186,72 @@
 					<pre
 						class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
 						{currentFlashText.content}</pre>
-					</CardContent>
+				</CardContent>
 			</Card>
+
+			<!-- Files Card -->
+			{#if currentFiles.length > 0}
+				<Card>
+					<CardHeader class="pb-3">
+						<CardTitle class="flex items-center gap-2 text-sm font-medium">
+							<Download class="text-muted-foreground size-4" />
+							<span>Attached Files ({currentFiles.length})</span>
+						</CardTitle>
+						<CardDescription>
+							Files expire together with this flash text. Downloads are tracked.
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<ul class="space-y-2">
+							{#each currentFiles as file, index (file.id)}
+								{@const IconComponent = getFileIcon(file.contentType)}
+								<li>
+									{#if index > 0}
+										<Separator class="my-2" />
+									{/if}
+									<div
+										class="hover:bg-muted/50 flex flex-col gap-3 rounded-md p-2 transition-colors sm:flex-row sm:items-center sm:justify-between"
+									>
+										<div class="flex min-w-0 items-start gap-3">
+											<div
+												class="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-md"
+											>
+												<IconComponent class="size-5" />
+											</div>
+											<div class="min-w-0 flex-1 space-y-1">
+												<p class="truncate text-sm font-medium" title={file.fileName}>
+													{file.fileName}
+												</p>
+												<div
+													class="text-muted-foreground flex flex-wrap items-center gap-2 text-xs"
+												>
+													<span>{formatFileSize(file.fileSize)}</span>
+													<Separator orientation="vertical" class="h-3" />
+													<span class="truncate">{file.contentType}</span>
+													{#if file.downloadCount > 0}
+														<Separator orientation="vertical" class="h-3" />
+														<span>{file.downloadCount} downloads</span>
+													{/if}
+												</div>
+											</div>
+										</div>
+										<Button
+											variant="outline"
+											size="sm"
+											href={`/api/flash-files/${file.slug}`}
+											disabled={isExpired}
+											class="shrink-0"
+										>
+											<Download class="mr-2 size-4" />
+											Download
+										</Button>
+									</div>
+								</li>
+							{/each}
+						</ul>
+					</CardContent>
+				</Card>
+			{/if}
 
 			<!-- Footer -->
 			<p class="text-muted-foreground text-center text-xs">

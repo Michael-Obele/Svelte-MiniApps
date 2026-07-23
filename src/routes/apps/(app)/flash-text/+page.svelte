@@ -6,7 +6,9 @@
 		deleteFlashText,
 		getCurrentUser,
 		getUserFlashTexts,
-		type FlashTextItem
+		getFlashTextFiles,
+		type FlashTextItem,
+		type FlashFileItem
 	} from '$lib/remote';
 	import { Button } from '$lib/components/ui/button';
 	import {
@@ -22,28 +24,35 @@
 	import { Skeleton } from '$lib/components/ui/skeleton';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import * as Tabs from '$lib/components/ui/tabs';
+	import * as Separator from '$lib/components/ui/separator';
 	import {
 		Check,
 		Clipboard,
 		ClipboardPaste,
 		Copy,
+		FileText,
 		Link,
 		Loader2,
+		Paperclip,
 		QrCode,
 		SquarePen,
 		Timer,
 		Trash
 	} from 'lucide-svelte';
-import { QRCodeImage } from 'svelte-qrcode-image';
-import * as AlertDialog from '$lib/components/ui/alert-dialog';
+	import { QRCodeImage } from 'svelte-qrcode-image';
+	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
+	import { formatFileSize, MAX_FILE_SIZE } from '$lib/types/flash-file';
+	import FileUploader from './FileUploader.svelte';
 
 	let activeTab = $state<'create' | 'lookup'>('create');
 	let isCreating = $state(false);
 	let copyConfirmed = $state(false);
 	let currentUser = $state<{ id: string } | null>(null);
 	let userFlashTexts = $state<FlashTextItem[]>([]);
+	let attachedFiles = $state<FlashFileItem[]>([]);
+	let isLoadingFiles = $state(false);
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
 	let lookupInput = $state('');
@@ -99,6 +108,30 @@ import * as AlertDialog from '$lib/components/ui/alert-dialog';
 			isLoadingPastes = false;
 		}
 	}
+
+	async function loadAttachedFiles(slug: string) {
+		isLoadingFiles = true;
+		try {
+			attachedFiles = await getFlashTextFiles(slug);
+		} catch {
+			attachedFiles = [];
+		} finally {
+			isLoadingFiles = false;
+		}
+	}
+
+	function handleFilesUploaded(uploaded: FlashFileItem[]) {
+		attachedFiles = [...attachedFiles, ...uploaded];
+		toast.success(`${uploaded.length} file${uploaded.length === 1 ? '' : 's'} uploaded`);
+	}
+
+	$effect(() => {
+		if (createdSlug) {
+			loadAttachedFiles(createdSlug);
+		} else {
+			attachedFiles = [];
+		}
+	});
 
 	async function handleCopy() {
 		if (!shareUrl) return;
@@ -327,10 +360,7 @@ import * as AlertDialog from '$lib/components/ui/alert-dialog';
 											</AlertDialog.Description>
 										</AlertDialog.Header>
 										<div class="flex justify-center py-4">
-											<QRCodeImage
-												text={shareUrl ?? ''}
-												displayClass="h-64 w-64 rounded-md"
-											/>
+											<QRCodeImage text={shareUrl ?? ''} displayClass="h-64 w-64 rounded-md" />
 										</div>
 										<AlertDialog.Footer>
 											<AlertDialog.Cancel>Close</AlertDialog.Cancel>
@@ -340,6 +370,61 @@ import * as AlertDialog from '$lib/components/ui/alert-dialog';
 
 								<Button variant="ghost" size="sm" onclick={handleNew}>Create New</Button>
 							</div>
+						</CardContent>
+					</Card>
+				</div>
+			{/if}
+
+			{#if createdSlug && !isExpired}
+				<div transition:fly={{ y: 20, duration: 300 }}>
+					<Card>
+						<CardHeader>
+							<CardTitle class="flex items-center gap-2">
+								<Paperclip class="size-5" />
+								<span>Attach Files</span>
+								{#if attachedFiles.length > 0}
+									<Badge variant="secondary" class="text-xs">
+										{attachedFiles.length}
+										{attachedFiles.length === 1 ? 'file' : 'files'}
+									</Badge>
+								{/if}
+							</CardTitle>
+							<CardDescription>
+								Add up to {formatFileSize(MAX_FILE_SIZE)} per file. Files expire together with this flash
+								text.
+							</CardDescription>
+						</CardHeader>
+						<CardContent class="space-y-4">
+							<FileUploader
+								slug={createdSlug}
+								onUploaded={(files: FlashFileItem[]) => handleFilesUploaded(files)}
+							/>
+
+							{#if isLoadingFiles}
+								<div class="space-y-2 pt-2">
+									<Skeleton class="h-12 w-full" />
+								</div>
+							{:else if attachedFiles.length > 0}
+								<div class="space-y-2 pt-2">
+									<Separator.Root />
+									<p class="text-muted-foreground text-xs font-medium">
+										Attached files ({attachedFiles.length})
+									</p>
+									<ul class="space-y-1">
+										{#each attachedFiles as file (file.id)}
+											<li class="bg-muted/30 flex items-center gap-3 rounded-md border p-2 text-sm">
+												<FileText class="text-muted-foreground size-4 shrink-0" />
+												<span class="min-w-0 flex-1 truncate" title={file.fileName}>
+													{file.fileName}
+												</span>
+												<Badge variant="secondary" class="shrink-0 text-[10px]">
+													{(file.fileSize / 1024).toFixed(0)} KB
+												</Badge>
+											</li>
+										{/each}
+									</ul>
+								</div>
+							{/if}
 						</CardContent>
 					</Card>
 				</div>

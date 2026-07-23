@@ -120,7 +120,11 @@ export {
 	getUserFlashTexts,
 	createFlashText,
 	deleteFlashText,
-	cleanupExpiredFlashTexts
+	cleanupExpiredFlashTexts,
+	// File operations
+	getFlashTextFiles,
+	getUserFlashFilesList,
+	deleteFlashFile
 } from './flash-text.remote';
 
-export type { FlashTextItem } from './flash-text.remote';
+export type { FlashTextItem, FlashFileItem } from './flash-text.remote';
