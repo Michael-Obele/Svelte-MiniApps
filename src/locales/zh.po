@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-28T05:41:42.596Z\n"
-"PO-Revision-Date: 2026-07-16T10:28:47.924Z\n"
+"PO-Revision-Date: 2026-07-22T15:58:17.258Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -902,6 +902,7 @@ msgstr "将在 {0} 秒后自动备份"
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -4404,6 +4405,7 @@ msgstr "已安排 {0} {1}"
 msgid "adherence"
 msgstr "依从性"
 
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
@@ -11871,3 +11873,112 @@ msgstr "扫描此二维码即可打开 FlashText 链接。```"
 #: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Change when this dose is scheduled to be taken."
 msgstr "更改此剂量的计划服用时间。"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Attach Files"
+msgstr "附加文件"
+
+#~ msgid "Add up to 25 MB per file. Files expire together with this flash text."
+#~ msgstr "每个文件最多可添加25 MB。文件与此闪文字同时过期。"
+
+#. placeholder {0}: attachedFiles.length
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Attached files ({0})"
+msgstr "已附加文件 ({0})"
+
+#. placeholder {0}: (file.fileSize / 1024).toFixed(0)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "{0} KB"
+msgstr "{0} KB"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "File is empty"
+msgstr "文件为空"
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Exceeds {0} limit"
+msgstr "超过 {0} 大小限制"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed"
+msgstr "上传失败"
+
+#~ msgid "POST"
+#~ msgstr "POST"
+
+#. placeholder {0}: xhr.status
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed ({0})"
+msgstr "上传失败 ({0})"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Network error during upload"
+msgstr "上传期间网络错误"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload cancelled"
+msgstr "上传已取消"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Click or drop files to upload"
+msgstr "点击或拖拽文件上传"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Drop files to upload"
+msgstr "拖拽文件上传"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Click to choose files or drag & drop here"
+msgstr "点击选择文件或拖拽文件到此处"
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Up to {0} per file. Files expire with the flash text."
+msgstr "每个文件最大 {0}。文件随闪存文本一起过期。"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Create the flash text first"
+msgstr "请先创建闪存文本"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Files can only be attached to an existing flash text."
+msgstr "文件只能附加到已有的闪存文本上。"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Remove from queue"
+msgstr "从队列中移除"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "<0/> Uploaded"
+msgstr "<0/> 已上传"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "PUT"
+msgstr "PUT"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Content-Type"
+msgstr "内容类型"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "X-File-Name"
+msgstr "X-文件名"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed (no response from server)"
+msgstr "上传失败（服务器无响应）"
+
+#~ msgid ""
+#~ "Add up to {0} per file. Files expire together with this\n"
+#~ "flash text."
+#~ msgstr ""
+#~ "每个文件最多添加 {0}。文件与此\n"
+#~ "闪信文本同时过期。"
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Add up to {0} per file. Files expire together with this flash\n"
+"text."
+msgstr "每个文件最多添加 {0}。文件将与此闪存文本一同过期。"

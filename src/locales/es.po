@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-24T09:30:24.050Z\n"
-"PO-Revision-Date: 2026-06-18T13:43:30.879Z\n"
+"PO-Revision-Date: 2026-07-22T15:57:02.421Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1767,6 +1767,7 @@ msgstr "Ingresa tu nombre de usuario"
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
@@ -3922,6 +3923,7 @@ msgstr "{0} {1} programadas"
 msgid "adherence"
 msgstr "Adherencia"
 
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HowToUseDialog.svelte
@@ -11941,3 +11943,114 @@ msgstr "Escanea este código QR para abrir el enlace de FlashText."
 #: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Change when this dose is scheduled to be taken."
 msgstr "Cambiar la hora programada para tomar esta dosis."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Attach Files"
+msgstr "Adjuntar archivos"
+
+#~ msgid "Add up to 25 MB per file. Files expire together with this flash text."
+#~ msgstr "Añade hasta 25 MB por archivo. Los archivos expiran junto con este texto flash."
+
+#. placeholder {0}: attachedFiles.length
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Attached files ({0})"
+msgstr "Archivos adjuntos ({0})"
+
+#. placeholder {0}: (file.fileSize / 1024).toFixed(0)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "{0} KB"
+msgstr "{0} KB"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "File is empty"
+msgstr "El archivo está vacío"
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Exceeds {0} limit"
+msgstr "Excede el límite de {0}"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed"
+msgstr "Error al cargar"
+
+#~ msgid "POST"
+#~ msgstr "POST"
+
+#. placeholder {0}: xhr.status
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed ({0})"
+msgstr "Error al cargar ({0})"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Network error during upload"
+msgstr "Error de red durante la carga"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload cancelled"
+msgstr "Carga cancelada"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Click or drop files to upload"
+msgstr "Haz clic o arrastra archivos para cargar"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Drop files to upload"
+msgstr "Arrastra archivos para cargar"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Click to choose files or drag & drop here"
+msgstr "Haz clic para elegir archivos o arrastra y suelta aquí"
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Up to {0} per file. Files expire with the flash text."
+msgstr "Hasta {0} por archivo. Los archivos caducan con el texto flash."
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Create the flash text first"
+msgstr "Crea primero el texto flash"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Files can only be attached to an existing flash text."
+msgstr "Los archivos solo se pueden adjuntar a un texto flash existente."
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Remove from queue"
+msgstr "Eliminar de la cola"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "<0/> Uploaded"
+msgstr "<0/> Cargado"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "PUT"
+msgstr "PUT"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Content-Type"
+msgstr "Tipo de contenido"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "X-File-Name"
+msgstr "X-Nombre-de-archivo"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed (no response from server)"
+msgstr "Carga fallida (sin respuesta del servidor)"
+
+#~ msgid ""
+#~ "Add up to {0} per file. Files expire together with this\n"
+#~ "flash text."
+#~ msgstr ""
+#~ "Agregue hasta {0} por archivo. Los archivos caducan junto con este\n"
+#~ "texto flash."
+
+#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid ""
+"Add up to {0} per file. Files expire together with this flash\n"
+"text."
+msgstr ""
+"Añade hasta {0} por archivo. Los archivos expiran junto con este\n"
+"texto flash."
