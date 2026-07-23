@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "b8960fbec1fd1977a5332746413de39555ccd291",
-  "generatedAt": "2026-07-23T20:55:48.749Z",
+  "lastProcessedCommit": "846b4a649af15d89ab4fa05df92f415453faff5c",
+  "generatedAt": "2026-07-23T21:03:34.464Z",
   "timeline": [
     {
       "date": "July 23, 2026",
@@ -30,6 +30,17 @@
       "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
       "items": [
         "i18n(flash-text): add German translations (97512b6)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 23, 2026",
+      "title": "feat(flash-text): move max file size resolution to server-side env var",
+      "description": "Updated src/lib/types/flash-file.ts, src/routes/api/flash-files/upload/+server.ts, src/types/env.d.ts",
+      "items": [
+        "feat(flash-text): move max file size resolution to server-side env var (846b4a6)"
       ],
       "type": "feature",
       "icon": "Rocket",
