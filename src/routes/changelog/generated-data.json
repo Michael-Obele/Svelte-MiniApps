@@ -1,7 +1,62 @@
 {
-  "lastProcessedCommit": "7aef8ed8db15909491a97a49178bd052cbdc06b0",
-  "generatedAt": "2026-07-17T15:21:20.214Z",
+  "lastProcessedCommit": "b8960fbec1fd1977a5332746413de39555ccd291",
+  "generatedAt": "2026-07-23T20:55:48.749Z",
   "timeline": [
+    {
+      "date": "July 23, 2026",
+      "title": "feat(flash-text): migrate cleanup function to shared helper with R2 support",
+      "description": "Updated netlify/functions/cleanup-flash-texts.js",
+      "items": [
+        "feat(flash-text): migrate cleanup function to shared helper with R2 support (ba3687f)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 23, 2026",
+      "title": "feat(flash-text): add file attachment support with R2 storage and cleanup",
+      "description": "Updated .env.example, bun.lockb, package.json and more",
+      "items": [
+        "feat(flash-text): add file attachment support with R2 storage and cleanup (b8960fb)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 23, 2026",
+      "title": "i18n(flash-text): add German translations",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/es.po and more",
+      "items": [
+        "i18n(flash-text): add German translations (97512b6)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 23, 2026",
+      "title": "feat(flash-text): add file upload support with R2 storage integration",
+      "description": "Updated prisma/schema.prisma",
+      "items": [
+        "feat(flash-text): add file upload support with R2 storage integration (7aa101f)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 22, 2026",
+      "title": "ci(android): add signed release AAB builds with two-stage workflow",
+      "description": "Updated .github/workflows/android-build.yml, android/app/build.gradle, src/routes/apps/(app)/age-calculator/+page.svelte",
+      "items": [
+        "ci(android): add signed release AAB builds with two-stage workflow (7211277)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
     {
       "date": "July 17, 2026",
       "title": "fix(android-icon): replace default Capacitor icons with Svelte MiniApps branding",
