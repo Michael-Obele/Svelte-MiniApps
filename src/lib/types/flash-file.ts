@@ -21,7 +21,7 @@ export interface FlashFileItem {
 }
 
 /**
- * Maximum upload size in bytes.
+ * Maximum upload size in bytes (default: 600 MB).
  *
  * R2 supports up to 5 TB per object, so 600 MB is well within the hard
  * limit. We pick 600 MB because (a) it's enough for almost any file
@@ -29,19 +29,11 @@ export interface FlashFileItem {
  * route streams the body straight to R2 so memory usage stays flat
  * regardless of file size.
  *
- * Override at deploy time by setting `MAX_FILE_SIZE_MB` in the
- * environment. The constant is computed at module-load so it can be
- * tweaked per environment without code changes.
+ * NOTE: This constant is shared with the client (used by FileUploader
+ * for UI validation). For deploy-time overrides, the server upload
+ * handler reads `MAX_FILE_SIZE_MB` from `$env/static/private`.
  */
-function resolveMaxFileSize(): number {
-	const raw = process.env.MAX_FILE_SIZE_MB;
-	if (!raw) return 600 * 1024 * 1024;
-	const mb = Number.parseInt(raw, 10);
-	if (!Number.isFinite(mb) || mb <= 0) return 600 * 1024 * 1024;
-	return mb * 1024 * 1024;
-}
-
-export const MAX_FILE_SIZE = resolveMaxFileSize();
+export const MAX_FILE_SIZE = 600 * 1024 * 1024;
 
 /** Allowed MIME type prefixes. Empty array = allow all. */
 export const ALLOWED_FILE_PREFIXES: string[] = [

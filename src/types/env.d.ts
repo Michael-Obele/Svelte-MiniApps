@@ -16,6 +16,7 @@ declare module '$env/static/private' {
 	export const AUTH_GOOGLE_SECRET: string;
 	export const MISTRAL_API_KEY: string;
 	export const EXCHANGE_RATE_API_KEY: string;
+	export const MAX_FILE_SIZE_MB: string;
 	// Add any other private environment variables here
 }
 
@@ -39,6 +40,7 @@ declare module '$env/dynamic/private' {
 		AUTH_GOOGLE_SECRET: string;
 		MISTRAL_API_KEY: string;
 		EXCHANGE_RATE_API_KEY: string;
+		MAX_FILE_SIZE_MB: string;
 		// Add any other private environment variables here
 		[key: string]: string;
 	};

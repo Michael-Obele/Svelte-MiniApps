@@ -24,6 +24,15 @@ import { recordFlashFile } from '$lib/server/flash-files';
 import { r2 } from '$lib/server/r2';
 import { getCurrentUser } from '$lib/remote/auth.remote';
 import { ALLOWED_FILE_PREFIXES, MAX_FILE_SIZE } from '$lib/types/flash-file';
+import { MAX_FILE_SIZE_MB } from '$env/static/private';
+
+/** Resolve the effective max file size, preferring the env var override. */
+function resolveEffectiveMaxFileSize(): number {
+	if (!MAX_FILE_SIZE_MB) return MAX_FILE_SIZE;
+	const mb = Number.parseInt(MAX_FILE_SIZE_MB, 10);
+	if (!Number.isFinite(mb) || mb <= 0) return MAX_FILE_SIZE;
+	return mb * 1024 * 1024;
+}
 
 const ALLOWED_ALL = ALLOWED_FILE_PREFIXES.length === 0;
 
@@ -33,6 +42,7 @@ function isAllowedType(contentType: string): boolean {
 }
 
 export const PUT: RequestHandler = async ({ request, url }) => {
+	const effectiveMaxFileSize = resolveEffectiveMaxFileSize();
 	if (!r2.isConfigured()) {
 		throw error(
 			503,
@@ -64,10 +74,10 @@ export const PUT: RequestHandler = async ({ request, url }) => {
 			'Missing or invalid Content-Length header. The upload must be a single PUT with a known size.'
 		);
 	}
-	if (contentLength > MAX_FILE_SIZE) {
+	if (contentLength > effectiveMaxFileSize) {
 		throw error(
 			413,
-			`File exceeds maximum size of ${Math.round(MAX_FILE_SIZE / (1024 * 1024))} MB`
+			`File exceeds maximum size of ${Math.round(effectiveMaxFileSize / (1024 * 1024))} MB`
 		);
 	}
 	if (!isAllowedType(contentType)) {
