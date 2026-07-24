@@ -17,7 +17,7 @@ already mentally committed to the workflow.
 
 <section
 	id="how-it-works"
-	class="bg-muted/40 border-border/60 w-full border-y py-12 md:py-20 lg:py-24"
+	class="from-primary/[0.05] border-border/60 w-full border-y bg-gradient-to-b to-transparent py-12 md:py-20 lg:py-24"
 >
 	<div class="container mx-auto px-4 md:px-6">
 		<div class="mx-auto mb-10 max-w-2xl text-center md:mb-14">

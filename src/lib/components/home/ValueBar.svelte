@@ -45,7 +45,10 @@ is the actual message.
 	let competitorAnnual = $derived(COMPETITOR.price * 12);
 </script>
 
-<section id="value" class="bg-muted/40 border-border/60 w-full border-y py-12 md:py-20 lg:py-24">
+<section
+	id="value"
+	class="from-primary/[0.05] border-border/60 w-full border-y bg-gradient-to-b to-transparent py-12 md:py-20 lg:py-24"
+>
 	<div class="container mx-auto px-4 md:px-6">
 		<div class="mx-auto mb-10 max-w-2xl text-center md:mb-14">
 			<Badge variant="secondary" class="border-primary/30 bg-primary/10 text-primary">

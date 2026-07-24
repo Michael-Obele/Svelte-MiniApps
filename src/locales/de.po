@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2026-07-24T21:54:50.004Z\n"
+"PO-Revision-Date: 2026-07-24T22:10:13.247Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -5875,9 +5875,6 @@ msgstr "Generiere sofort sichere, zufällige Passwörter"
 msgid "Your password will appear here"
 msgstr "Ihr Passwort erscheint hier"
 
-#~ msgid "Password Strength: {0}%"
-#~ msgstr "Passwortstärke: {0}%"
-
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Uppercase Letters"
 msgstr "Großbuchstaben"
@@ -5893,9 +5890,6 @@ msgstr "Zahlen"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Special Characters"
 msgstr "Sonderzeichen"
-
-#~ msgid "Generate Password"
-#~ msgstr "Passwort generieren"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
@@ -11320,7 +11314,7 @@ msgstr "In der Cloud speichern"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Unsaved changes"
-msgstr ""
+msgstr "<0/> Ungespeicherte Änderungen"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/flash-text/+page.svelte
@@ -11868,19 +11862,9 @@ msgstr "Von \"Ich brauche ein Werkzeug\" bis \"erledigt\" in drei Klicks."
 msgid "Most visitors find a tool and finish their task in <0>under 60 seconds.</0>"
 msgstr "Die meisten Besucher finden ein Werkzeug und erledigen ihre Aufgabe in <0>unter 60 Sekunden.</0>"
 
-#~ msgid "<0/> Try it now — no sign-up"
-#~ msgstr "<0/> Jetzt ausprobieren – keine Registrierung"
-
 #: src/lib/components/home/LivePreview.svelte
 msgid "Generate a strong password right here."
 msgstr "Hier ein starkes Passwort generieren."
-
-#~ msgid ""
-#~ "No sign-up, no modal, no waiting. Adjust the length, hit generate, copy. If you like it,\n"
-#~ "the full app remembers the options you pick."
-#~ msgstr ""
-#~ "Keine Registrierung, kein Pop-up, kein Warten. Länge anpassen, generieren, kopieren. Wenn es gefällt,\n"
-#~ "merkt sich die vollständige App die gewählten Optionen."
 
 #: src/lib/components/home/LivePreview.svelte
 msgid "Uses your browser's secure random generator"
@@ -11889,18 +11873,6 @@ msgstr "Nutzt den sicheren Zufallsgenerator deines Browsers"
 #: src/lib/components/home/LivePreview.svelte
 msgid "Nothing is sent to a server"
 msgstr "Nichts wird an einen Server gesendet"
-
-#~ msgid "Regenerate password"
-#~ msgstr "Passwort neu generieren"
-
-#~ msgid "Copied to clipboard"
-#~ msgstr "In die Zwischenablage kopiert"
-
-#~ msgid "Length"
-#~ msgstr "Länge"
-
-#~ msgid "<0/> A-Z"
-#~ msgstr "<0/> A-Z"
 
 #: src/lib/components/home/SocialProof.svelte
 msgid "Categories"
@@ -12044,15 +12016,9 @@ msgstr "Ein Budget verfolgen"
 msgid "Generate a password"
 msgstr "Ein Passwort generieren"
 
-#~ msgid "Share text that self-destructs"
-#~ msgstr "Text teilen, der sich selbst zerstört"
-
 #: src/lib/components/home/Welcome.svelte
 msgid "Where to start?"
 msgstr "Wo anfangen?"
-
-#~ msgid "<0/> Use the full app"
-#~ msgstr "<0/> Nutzen Sie die vollständige App"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save this password"
@@ -12114,57 +12080,61 @@ msgstr "Fehler beim Laden der gespeicherten Passwörter"
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "FlashText History"
-msgstr ""
+msgstr "FlashText-Verlauf"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Your FlashText history and shared links."
-msgstr ""
+msgstr "Ihr FlashText-Verlauf und Ihre geteilten Links."
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "All your shared texts and uploaded files"
-msgstr ""
+msgstr "Alle Ihre geteilten Texte und hochgeladenen Dateien"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Back to FlashText"
-msgstr ""
+msgstr "<0/> Zurück zu FlashText"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Sign in required"
-msgstr ""
+msgstr "Anmeldung erforderlich"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid ""
 "Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
 "appear here."
 msgstr ""
+"Bitte melden Sie sich an, um Ihren FlashText-Verlauf anzuzeigen. Ihre geteilten Links und hochgeladenen Dateien werden\n"
+"hier angezeigt."
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "No history yet"
-msgstr ""
+msgstr "Noch kein Verlauf"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid ""
 "Create your first FlashText or upload a file — your shared links and files will appear\n"
 "here."
 msgstr ""
+"Erstellen Sie Ihren ersten FlashText oder laden Sie eine Datei hoch — Ihre geteilten Links und Dateien werden\n"
+"hier angezeigt."
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Create a FlashText"
-msgstr ""
+msgstr "<0/> FlashText erstellen"
 
 #. placeholder {0}: history.length
 #. placeholder {1}: history.length === 1 ? 'entry' : 'entries'
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Showing {0} {1}"
-msgstr ""
+msgstr "Zeige {0} {1}"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> View"
-msgstr ""
+msgstr "<0/> Anzeigen"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Password Length"
@@ -12173,11 +12143,6 @@ msgstr "Passwortlänge"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "<0/> Generate Password"
 msgstr "<0/> Passwort generieren"
-
-#~ msgid ""
-#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength\n"
-#~ "meter, full controls, full color-coded display."
-#~ msgstr "Keine Anmeldung, kein Dialog, kein Warten. Das gleiche Tool, das die App antreibt – vollwertiges Messgerät, vollständige Steuerung, vollfarbige Darstellung."
 
 #: src/lib/components/home/LivePreview.svelte
 msgid "Open the full app <0/>"
@@ -12190,9 +12155,6 @@ msgid ""
 msgstr ""
 "Keine Anmeldung, kein Modal, kein Warten. Das gleiche Tool, das die App antreibt — voller Stärkemesser,\n"
 "volle Steuerung, vollständige farbcodierte Anzeige."
-
-#~ msgid "Copied"
-#~ msgstr "Kopiert"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save to my account"
@@ -12210,9 +12172,6 @@ msgstr "<0/> Passwort kopieren"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "{0}% strong"
 msgstr "{0}% stark"
-
-#~ msgid "Share text"
-#~ msgstr "Text teilen"
 
 #: src/lib/components/home/Welcome.svelte
 msgid "Share self-destructing text"

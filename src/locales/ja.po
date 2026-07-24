@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-07-24T21:54:53.802Z\n"
+"PO-Revision-Date: 2026-07-24T22:10:13.273Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -7117,9 +7117,6 @@ msgstr "<0/> 保存"
 msgid "Your password will appear here"
 msgstr "パスワードがここに表示されます"
 
-#~ msgid "Password Strength: {0}%"
-#~ msgstr "パスワード強度: {0}%"
-
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Uppercase Letters"
 msgstr "大文字"
@@ -7135,9 +7132,6 @@ msgstr "数字"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Special Characters"
 msgstr "特殊文字"
-
-#~ msgid "Generate Password"
-#~ msgstr "パスワードを生成"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
@@ -11183,7 +11177,7 @@ msgstr "クラウドに保存"
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Unsaved changes"
-msgstr ""
+msgstr "<0/> 未保存の変更"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/flash-text/+page.svelte
@@ -11731,19 +11725,9 @@ msgstr "「道具が必要」から「完了」まで３回のクリックで。
 msgid "Most visitors find a tool and finish their task in <0>under 60 seconds.</0>"
 msgstr "ほとんどの訪問者はツールを見つけて、<0>60秒未満</0>でタスクを完了します。"
 
-#~ msgid "<0/> Try it now — no sign-up"
-#~ msgstr "<0/> 今すぐ試す — サインアップ不要"
-
 #: src/lib/components/home/LivePreview.svelte
 msgid "Generate a strong password right here."
 msgstr "ここで強力なパスワードを生成できます。"
-
-#~ msgid ""
-#~ "No sign-up, no modal, no waiting. Adjust the length, hit generate, copy. If you like it,\n"
-#~ "the full app remembers the options you pick."
-#~ msgstr ""
-#~ "サインアップ不要、モーダル不要、待ち時間なし。長さを調整して、生成をクリック、コピー。気に入ったら、\n"
-#~ "フルアプリが選択したオプションを記憶します。"
 
 #: src/lib/components/home/LivePreview.svelte
 msgid "Uses your browser's secure random generator"
@@ -11752,18 +11736,6 @@ msgstr "ブラウザの安全な乱数生成器を使用します"
 #: src/lib/components/home/LivePreview.svelte
 msgid "Nothing is sent to a server"
 msgstr "サーバーに送信されるものはありません"
-
-#~ msgid "Regenerate password"
-#~ msgstr "パスワードを再生成"
-
-#~ msgid "Copied to clipboard"
-#~ msgstr "クリップボードにコピーしました"
-
-#~ msgid "Length"
-#~ msgstr "長さ"
-
-#~ msgid "<0/> A-Z"
-#~ msgstr "<0/> A-Z"
 
 #: src/lib/components/home/SocialProof.svelte
 msgid "Categories"
@@ -11907,15 +11879,9 @@ msgstr "予算を管理する"
 msgid "Generate a password"
 msgstr "パスワードを生成する"
 
-#~ msgid "Share text that self-destructs"
-#~ msgstr "自動消滅するテキストを共有する"
-
 #: src/lib/components/home/Welcome.svelte
 msgid "Where to start?"
 msgstr "どこから始めますか？"
-
-#~ msgid "<0/> Use the full app"
-#~ msgstr "<0/> フルアプリを使用する"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save this password"
@@ -11977,57 +11943,61 @@ msgstr "保存されたパスワードの読み込みに失敗しました"
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "FlashText History"
-msgstr ""
+msgstr "FlashText 履歴"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Your FlashText history and shared links."
-msgstr ""
+msgstr "あなたのFlashText履歴と共有リンクです。"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "All your shared texts and uploaded files"
-msgstr ""
+msgstr "すべての共有テキストとアップロードファイル"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Back to FlashText"
-msgstr ""
+msgstr "<0/> FlashTextに戻る"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Sign in required"
-msgstr ""
+msgstr "サインインが必要です"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid ""
 "Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
 "appear here."
 msgstr ""
+"FlashText履歴を表示するにはサインインしてください。共有リンクとアップロードファイルが\n"
+"ここに表示されます。"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "No history yet"
-msgstr ""
+msgstr "履歴がまだありません"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid ""
 "Create your first FlashText or upload a file — your shared links and files will appear\n"
 "here."
 msgstr ""
+"最初のFlashTextを作成するか、ファイルをアップロードしてください — 共有リンクとファイルが\n"
+"ここに表示されます。"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Create a FlashText"
-msgstr ""
+msgstr "<0/> FlashTextを作成"
 
 #. placeholder {0}: history.length
 #. placeholder {1}: history.length === 1 ? 'entry' : 'entries'
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Showing {0} {1}"
-msgstr ""
+msgstr "{0} {1}を表示中"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> View"
-msgstr ""
+msgstr "<0/> 表示"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Password Length"
@@ -12036,11 +12006,6 @@ msgstr "パスワードの長さ"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "<0/> Generate Password"
 msgstr "<0/> パスワードを生成"
-
-#~ msgid ""
-#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength\n"
-#~ "meter, full controls, full color-coded display."
-#~ msgstr "サインアップ不要、モーダル不要、待ち時間なし。アプリを動かすのと同じツール—強度メーターも、コントロールも、色分け表示もすべてフル搭載。"
 
 #: src/lib/components/home/LivePreview.svelte
 msgid "Open the full app <0/>"
@@ -12053,9 +12018,6 @@ msgid ""
 msgstr ""
 "サインアップ不要、モーダル不要、待ち時間なし。アプリを支えるのと同じツール —\n"
 "フルストレングスメーター、フルコントロール、フルカラーコード表示。"
-
-#~ msgid "Copied"
-#~ msgstr "コピーしました"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save to my account"
@@ -12073,9 +12035,6 @@ msgstr "<0/> パスワードをコピー"
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "{0}% strong"
 msgstr "{0}% 強度```"
-
-#~ msgid "Share text"
-#~ msgstr "テキストを共有"
 
 #: src/lib/components/home/Welcome.svelte
 msgid "Share self-destructing text"
