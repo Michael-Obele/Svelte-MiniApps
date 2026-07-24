@@ -33,9 +33,6 @@
 					<span class="text-muted-foreground text-xs">✓</span>
 				{/if}
 			</DropdownMenu.Item>
-			{#if lang.code === 'pt'}
-				<DropdownMenu.Separator />
-			{/if}
 		{/each}
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
