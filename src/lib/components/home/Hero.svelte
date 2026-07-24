@@ -1,116 +1,139 @@
 <!--
 @component
 
-Hero — displays a time-aware greeting, short intro text, and a CTA button linking to /apps.
+Hero — conversion-optimised above-the-fold section.
 
-Usage:
-```svelte
-<Hero {data} />
-```
+Applies 4 psychology principles:
+  1. Smart Default     — Trust micro-bar pre-renders all 4 badges
+  2. Outcome-led copy  — Headline tells users what they GET, not what we are
+  3. Dual CTAs         — Primary (browse) + Secondary (try live) per Casey Hill
+  4. Brand anchor      — Large, low-opacity Svelte logo as a background
+                         watermark (preserves the Svelte Hack 2025 brand
+                         signal without competing with the headline for
+                         conversion real estate)
 
-Props:
-- data — server page data (optional, used for username).
+The right column used to be a 6-app mockup grid. Replaced with the Svelte
+logo to honor your request to keep the brand mark visible while removing
+the redundant "look at all the apps" messaging from above the fold.
 
 -->
 
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { ArrowRight } from 'lucide-svelte';
+	import { ArrowRight, Play, Check, Zap, Lock, Github, Trophy } from '@lucide/svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
-	const arrow = '/lottie/trending-flat.json';
 
-	import { generateMantra, getMillisecondsUntilNextPeriod } from '$lib/utility/greetings';
-	import BlurInText from '@/blocks/BlurInText.svelte';
+	import { getTrustBadges } from './data.svelte';
 
-	let greeting = $state(generateMantra());
+	// Map icon name → component for the trust micro-bar.
+	const ICON_MAP = { check: Check, zap: Zap, lock: Lock, github: Github } as const;
 
-	// Update greeting when time period changes
-	$effect(() => {
-		const timeoutId = setTimeout(() => {
-			greeting = generateMantra();
-			// Recursively set the next timeout
-			timeoutId.refresh();
-		}, getMillisecondsUntilNextPeriod());
-
-		return () => clearTimeout(timeoutId);
-	});
+	let trustBadges = $derived(getTrustBadges());
 
 	let { data } = $props();
 </script>
 
-{#snippet welcomeHeader(username: string)}
-	Welcome
-	{#if username}
-		Back,
-		<span class="text-primary capitalize">
-			{username}!
-		</span>
-	{/if}
-	to...
-{/snippet}
-
-<section id="hero" class="bg-background relative w-full overflow-hidden py-12 md:py-24 lg:py-32">
-	<!-- Background Glow -->
+<section
+	id="hero"
+	class="from-background to-background relative w-full overflow-hidden bg-gradient-to-b via-red-50/30 py-12 md:py-20 lg:py-24 dark:via-red-950/10"
+>
+	<!-- Soft ambient glow — does not interfere with the CTA hierarchy. -->
+	<div
+		aria-hidden="true"
+		class="bg-primary/10 pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl md:h-[640px] md:w-[640px]"
+	></div>
 
 	<div class="relative z-10 container mx-auto px-4 md:px-6">
-		<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
-			<div class="flex flex-col justify-center space-y-8">
-				<div class="space-y-4">
-					<BlurInText
-						as="h2"
-						class="text-foreground text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none"
-					>
-						{@render welcomeHeader(data?.user?.username)}
-						<br />
-
-						<BlurInText
-							as="span"
-							word="Svelte Mini Apps"
-							class="text-primary text-xl font-bold tracking-tighter sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl/none"
-						/>
-					</BlurInText>
-
-					<BlurInText
-						as="p"
-						word="Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
-						class="text-muted-foreground max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-					/>
-				</div>
-				<div class="flex flex-col gap-4 sm:flex-row">
-					<BlurInText as="span" class="inline-flex items-center">
-						<Button
-							href="/apps"
-							size="lg"
-							class="bg-primary hover:bg-primary/90 border-none text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] dark:shadow-[0_0_20px_rgba(220,38,38,0.2)]"
-						>
-							Start Exploring
-							<lord-icon
-								target="#hero"
-								src={arrow}
-								colors="primary:white,secondary:red"
-								trigger="loop-on-hover"
-								class="ml-2 hidden h-5 w-5 md:grid"
-								state="hover-pinch"
-							>
-							</lord-icon>
-						</Button>
-					</BlurInText>
-				</div>
-			</div>
-			<div class="relative flex justify-center lg:justify-end">
-				<div
-					class="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]"
+		<div class="grid items-center gap-10 lg:grid-cols-5 lg:gap-12">
+			<!-- ─────────────  COPY COLUMN  ───────────── -->
+			<div class="flex flex-col justify-center space-y-6 lg:col-span-3">
+				<!-- Eyebrow: Svelte Hack 2025 award (loss aversion) -->
+				<Badge
+					variant="secondary"
+					class="w-fit border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400"
 				>
-					<!-- Glowing Svelte Logo -->
-					<!-- Deep ambient glow -->
+					<Trophy class="mr-1.5 h-3.5 w-3.5" />
+					Svelte Hack 2025 winner
+				</Badge>
 
-					<!-- Core glow -->
-					<div
-						class="bg-primary/10 dark:bg-primary/20 pointer-events-none absolute inset-0 hidden rounded-full blur-[90px] sm:inline-block"
-					></div>
+				<!-- Headline: outcome-led -->
+				<h1
+					class="text-foreground text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+				>
+					Hand-picked tools for the
+					<span class="text-primary">small jobs</span>
+					that fill your day.
+				</h1>
 
-					<Svelte class="relative z-10 h-full w-full drop-shadow-[0_0_40px_rgba(220,38,38,0.3)]" />
+				<!-- Subheadline: clarifies the outcome (no number repetition) -->
+				<p class="text-muted-foreground max-w-[640px] text-lg md:text-xl/relaxed">
+					Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you
+					click them. Free, open source, and your data stays in your browser.
+				</p>
+
+				<!-- Smart Default: trust micro-bar (4 badges) -->
+				<ul class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+					{#each trustBadges as badge (badge.label)}
+						{@const Icon = ICON_MAP[badge.icon as keyof typeof ICON_MAP]}
+						<li class="text-muted-foreground flex items-center gap-1.5">
+							<Icon class="h-4 w-4 text-emerald-600 dark:text-emerald-500" />
+							<span>{badge.label}</span>
+						</li>
+					{/each}
+				</ul>
+
+				<!-- Dual CTAs: Primary (outcome) + Secondary (preview) -->
+				<div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
+					<Button
+						href="/apps"
+						size="lg"
+						class="bg-primary hover:bg-primary/90 group text-white shadow-[0_0_24px_rgba(220,38,38,0.35)] dark:shadow-[0_0_24px_rgba(220,38,38,0.25)]"
+					>
+						Browse the toolkit
+						<ArrowRight class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+					</Button>
+					<a
+						href="#live-preview"
+						class={buttonVariants({
+							variant: 'outline',
+							size: 'lg',
+							className: 'border-primary/30 hover:border-primary/60'
+						})}
+					>
+						<Play class="mr-2 h-4 w-4 fill-current" />
+						Try one right now
+					</a>
+				</div>
+
+				<!-- Login-aware greeting for returning users (kept for personal touch). -->
+				{#if data?.user?.username}
+					<p class="text-muted-foreground text-sm">
+						Welcome back,
+						<span class="text-foreground font-medium capitalize">{data.user.username}</span>
+						— your dashboard is waiting.
+					</p>
+				{/if}
+			</div>
+
+			<!--
+			  ─────────────  BRAND WATERMARK COLUMN  ─────────────
+			  The Svelte logo is rendered as a large, low-opacity background
+			  mark so the Svelte Hack 2025 brand signal stays visible without
+			  competing with the headline or repeating "20+ tools" above the fold.
+			-->
+			<div class=" relative hidden lg:col-span-2 lg:flex lg:items-center lg:justify-center">
+				<!-- Soft tint behind the logo to give it presence without solid color. -->
+				<div aria-hidden="true" class="bg-primary/5 absolute inset-0 rounded-full blur-2xl"></div>
+				<!--
+				  Wrapper div carries the opacity — the Svelte asset only
+				  accepts `class` as a prop, so we apply opacity-15 to the
+				  wrapper instead of via inline style.
+				-->
+				<div
+					class="relative opacity-15 drop-shadow-[0_0_40px_rgba(220,38,38,0.25)] transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-80"
+				>
+					<Svelte class="h-72 w-72 xl:h-96 xl:w-96" />
 				</div>
 			</div>
 		</div>

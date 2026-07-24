@@ -1,53 +1,53 @@
 <!--
 @component
 
-AppsSection — displays a compact grid of available mini-apps and a coming soon section.
-Both sections are collapsible with different default states.
+AppsSection — the actual app gallery.
 
-Usage:
-```svelte
-<AppsSection />
-```
+Simplified in the second pass: this is now the single canonical place
+where we name the apps. No featured strip, no trust micro-bar, no
+app-count badge — those were duplicating the hero messaging. The "Built
+with Svelte" line is preserved (one mention, in a non-decision spot) so
+the framework brand anchor stays visible.
+
+Layout:
+  1. Section heading + outcome-led copy
+  2. "Built with Svelte" brand anchor (one mention)
+  3. All-apps grid (always expanded by default — Goal Gradient)
+  4. Coming Soon section (collapsible)
 
 -->
+
 <script lang="ts">
 	import { projects, done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
 	import { MediaQuery } from 'svelte/reactivity';
-	import { AppWindow, CircleDashed, Construction, ChevronDown, ArrowRight } from 'lucide-svelte';
+	import { AppWindow, ArrowRight, CircleDashed, Construction } from '@lucide/svelte';
 	import { Separator } from '$lib/components/ui/separator';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Collapsible from '$lib/components/ui/collapsible';
+	import Svelte from '$lib/assets/svelte.svelte';
 	import type { Project } from '$lib/index.svelte';
 
-	// Create locale-aware collator that reacts to language changes
 	let collator = $derived(new Intl.Collator(persistedLocale.current));
 
-	// Sort projects alphabetically by title
 	let sortedProjects = $derived([...projects()].sort((a, b) => collator.compare(a.title, b.title)));
 
-	// Filter projects that are marked as done
 	let doneProjects = $derived(sortedProjects.filter((p) => done().some((d) => d.name === p.link)));
 
-	// Filter projects that are NOT done (Coming Soon)
 	let comingSoon = $derived(sortedProjects.filter((p) => !done().some((d) => d.name === p.link)));
 
-	// Collapsible state - Active Apps open by default on desktop, closed on mobile
+	// Smart Default: open by default on every viewport (Goal Gradient — show progress).
 	const isDesktop = new MediaQuery('(min-width: 768px)');
-	let activeAppsOpen = $state(false);
-
-	$effect(() => {
-		activeAppsOpen = isDesktop.current;
-	});
-
-	let comingSoonOpen: boolean = $derived(isDesktop.current);
+	let activeAppsOpen = $state(true);
+	// User can still toggle; initial value is seeded from the viewport media query.
+	let comingSoonOpen = $state(isDesktop.current);
 </script>
 
 {#snippet appCard(project: Project)}
 	{@const Icon = project.icon || AppWindow}
 	<a
 		href={'/apps/' + project.link}
-		class="group bg-card text-card-foreground hover:border-primary/50 relative flex flex-col items-center overflow-hidden rounded-xl border p-3 shadow-sm transition-all duration-200 hover:shadow-md md:flex-row md:p-4"
+		class="group bg-card text-card-foreground hover:border-primary/50 relative flex flex-col items-center overflow-hidden rounded-xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md md:flex-row md:p-4"
 	>
 		<div
 			class="bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary mb-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors md:mb-0"
@@ -62,7 +62,7 @@ Usage:
 			</h3>
 		</div>
 
-		<!-- Status Badges -->
+		<!-- Status badges -->
 		<div class="absolute top-2 right-2 flex gap-1">
 			{#if isNewApp(project.link)}
 				<span class="relative flex h-2 w-2">
@@ -89,54 +89,58 @@ Usage:
 
 <section id="apps" class="bg-background w-full py-12 md:py-24 lg:py-32">
 	<div class="container mx-auto px-4 md:px-6">
-		<div class="mb-12 flex flex-col items-center justify-center space-y-4 text-center">
+		<div class="mb-10 flex flex-col items-center justify-center space-y-4 text-center md:mb-14">
 			<h2 class="text-foreground text-3xl font-bold tracking-tighter sm:text-5xl">
-				Tools That Make a Difference
+				Every app is free, instant, and stays in your browser.
 			</h2>
 			<p
 				class="text-muted-foreground max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 			>
-				From managing your budget to boosting productivity, each app is designed to help you get
-				things done. Built with <span class="font-semibold text-red-600 dark:text-red-500"
-					>Svelte</span
-				>, these tools are fast, responsive, and easy to use.
+				From tracking a budget to sharing an expiring note — pick a tool, get to work in one click.
 			</p>
+
+			<!--
+			  Brand anchor: small "Built with Svelte" line. One mention only.
+			  This is the framework brand signal — not a sales pitch.
+			-->
+			<a
+				href="https://svelte.dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs transition-colors"
+			>
+				<Svelte class="h-3.5 w-3.5" />
+				<span>Built with Svelte · Open source on GitHub</span>
+			</a>
 		</div>
 
-		<!-- Active Apps Section -->
-		<Collapsible.Root bind:open={activeAppsOpen}>
+		<!-- Active Apps Section (always open by default — Goal Gradient) -->
+		<div>
 			<div class="mb-4 flex items-center justify-between">
 				<h3 class="flex items-center gap-2 text-xl font-semibold">
 					<AppWindow class="h-5 w-5" />
-					Active Apps ({doneProjects.length})
+					All apps
 				</h3>
-				<Collapsible.Trigger
+				<button
+					type="button"
+					onclick={() => (activeAppsOpen = !activeAppsOpen)}
 					class="hover:bg-muted flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors"
 				>
 					{activeAppsOpen ? 'Collapse' : 'Expand'}
-					<ChevronDown
-						class="h-4 w-4 transition-transform duration-200 {activeAppsOpen ? 'rotate-180' : ''}"
+					<ArrowRight
+						class="h-4 w-4 transition-transform duration-200 {activeAppsOpen ? 'rotate-90' : ''}"
 					/>
-				</Collapsible.Trigger>
+				</button>
 			</div>
 
-			<Collapsible.Content>
+			{#if activeAppsOpen}
 				<div class="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 					{#each doneProjects as project (project.link)}
 						{@render appCard(project)}
 					{/each}
 				</div>
-				<div class="mt-6 flex justify-center md:hidden">
-					<a
-						href="/apps"
-						class={buttonVariants({ variant: 'outline', className: 'w-full sm:w-auto' })}
-					>
-						View All Apps
-						<ArrowRight class="ml-2 h-4 w-4" />
-					</a>
-				</div>
-			</Collapsible.Content>
-		</Collapsible.Root>
+			{/if}
+		</div>
 
 		<!-- Coming Soon Section -->
 		{#if comingSoon.length > 0}
@@ -149,9 +153,9 @@ Usage:
 						>
 							<Construction class="h-5 w-5" />
 							<span class="text-muted-foreground">Coming Soon ({comingSoon.length})</span>
-							<ChevronDown
+							<ArrowRight
 								class="text-muted-foreground h-4 w-4 transition-transform duration-200 {comingSoonOpen
-									? 'rotate-180'
+									? 'rotate-90'
 									: ''}"
 							/>
 						</Collapsible.Trigger>
@@ -170,5 +174,16 @@ Usage:
 				</Collapsible.Root>
 			</div>
 		{/if}
+
+		<!--
+		  Single deep-link for users who want more: "Browse the full list →" as
+		  a link, not a tail-CTA. This is one mention, not a pitch.
+		-->
+		<div class="mt-12 text-center">
+			<a href="/apps" class={buttonVariants({ variant: 'link', className: 'text-primary px-0' })}>
+				Browse the full list
+				<ArrowRight class="ml-1.5 h-4 w-4" />
+			</a>
+		</div>
 	</div>
 </section>

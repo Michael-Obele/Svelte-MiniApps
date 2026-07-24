@@ -1,7 +1,13 @@
 <!--
 @component
 
-Welcome — header section showing a time-based greeting and a mantra with controls to like or regenerate it.
+Welcome — small personalised greeting + "where to start?" tile row.
+
+The personal touch (greeting + mantra) is preserved for return visitors.
+A new "Where to start?" tile row sits below — 3 quick-jump CTAs that
+match common intents (I need a budget / I need a password / I need to
+share something). IKEA Effect: by clicking, the user is already
+committing to using the site, not just browsing it.
 
 Usage:
 ```svelte
@@ -14,7 +20,7 @@ Props:
 -->
 <script lang="ts">
 	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client.svelte';
-	import { RefreshCw, Star, StarOff } from '@lucide/svelte';
+	import { RefreshCw, Star, StarOff, ArrowRight, Wallet, Lock, Share2 } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { Skeleton } from '@/ui/skeleton';
@@ -34,6 +40,25 @@ Props:
 		getMantra().refresh();
 	}
 
+	// Quick-start suggestions. Smart Default: pre-pick the most common entry points.
+	const QUICK_STARTS = [
+		{
+			label: 'Track a budget',
+			href: '/apps/budget-tracker',
+			Icon: Wallet
+		},
+		{
+			label: 'Generate a password',
+			href: '/apps/random-password-generator',
+			Icon: Lock
+		},
+		{
+			label: 'Share text that self-destructs',
+			href: '/apps/flash-text',
+			Icon: Share2
+		}
+	];
+
 	// Update greeting when time period changes
 	$effect(() => {
 		const timeoutId = setTimeout(() => {
@@ -47,20 +72,20 @@ Props:
 	});
 </script>
 
-<header class="mx-auto my-12 flex flex-col justify-center space-y-2">
+<header class="mx-auto my-10 flex flex-col justify-center space-y-4 md:my-14">
 	<BlurFade delay={0.25}>
 		<BlurInText
 			as="h1"
-			class="text-center text-3xl font-bold tracking-tighter text-primary sm:text-5xl xl:text-6xl/none"
+			class="text-primary text-center text-2xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none"
 		>
-			<span class="capitalize text-slate-700 dark:text-slate-200">
+			<span class="text-slate-700 capitalize dark:text-slate-200">
 				{`${greeting.greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
 			</span>
 		</BlurInText>
 	</BlurFade>
 	<BlurFade class="px-1" delay={0.25 * 2}>
 		{#if mantra}
-			<div class="my-2 flex flex-wrap items-center justify-center gap-2 text-center">
+			<div class="flex flex-wrap items-center justify-center gap-2 text-center">
 				{#if data.user?.username}
 					<!-- Use remote form for like functionality -->
 					{@const form = likeMantra.for(mantra)}
@@ -87,12 +112,9 @@ Props:
 					</form>
 				{/if}
 
-				<button
-					onclick={handleGenerate}
-					class="text-muted-foreground max-w-full cursor-pointer text-2xl font-medium break-words underline-offset-4 hover:underline sm:text-3xl xl:text-4xl/none"
-				>
+				<p class="text-muted-foreground max-w-full text-base font-medium break-words sm:text-lg">
 					{mantra}
-				</button>
+				</p>
 
 				<Button
 					variant="link"
@@ -104,7 +126,34 @@ Props:
 				</Button>
 			</div>
 		{:else}
-			<Skeleton class="mx-auto h-10 w-[35vw] rounded-md text-center" />
+			<Skeleton class="mx-auto h-6 w-[35vw] rounded-md text-center" />
 		{/if}
+	</BlurFade>
+
+	<!-- Where to start? — conversion-oriented quick-jump row -->
+	<BlurFade delay={0.5}>
+		<div class="mx-auto mt-4 max-w-2xl px-4">
+			<p
+				class="text-muted-foreground mb-3 text-center text-xs font-semibold tracking-widest uppercase"
+			>
+				Where to start?
+			</p>
+			<div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+				{#each QUICK_STARTS as start (start.href)}
+					<a
+						href={start.href}
+						class="bg-card text-card-foreground hover:border-primary/50 group flex items-center gap-3 rounded-lg border p-3 text-sm font-medium transition-all hover:shadow-sm"
+					>
+						<start.Icon
+							class="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-colors"
+						/>
+						<span class="flex-1 truncate">{start.label}</span>
+						<ArrowRight
+							class="text-muted-foreground h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+						/>
+					</a>
+				{/each}
+			</div>
+		</div>
 	</BlurFade>
 </header>

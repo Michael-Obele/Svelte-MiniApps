@@ -26,7 +26,9 @@
 			</lord-icon>
 		{/if}
 	</h2>
-	<p class="max-w-[700px] text-left text-base text-gray-600 md:text-lg lg:text-xl dark:text-gray-400">
+	<p
+		class="max-w-[700px] text-left text-base text-gray-600 md:text-lg lg:text-xl dark:text-gray-400"
+	>
 		{@render paragraph?.()}
 	</p>
 </div>

@@ -6,12 +6,7 @@
 		paragraph?: import('svelte').Snippet;
 	}
 
-	let {
-		dir = 'left',
-		icon,
-		header,
-		paragraph
-	}: Props = $props();
+	let { dir = 'left', icon, header, paragraph }: Props = $props();
 </script>
 
 <div class="block max-w-md rounded-lg p-6 {dir === 'right' ? 'justify-self-end' : ''}">
