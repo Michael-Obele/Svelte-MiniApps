@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2026-07-24T07:52:10.520Z\n"
+"PO-Revision-Date: 2026-07-24T21:52:24.196Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -12,7 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/lib/components/home/Hero.svelte
 #: src/lib/index.svelte.ts
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
@@ -550,10 +549,6 @@ msgstr "Zurück"
 #: src/routes/+layout.svelte
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "Eine Sammlung von Mini-Apps, die mit SvelteKit erstellt wurden"
-
-#: src/routes/+page.svelte
-msgid "Your everyday digital companion - a collection of beautifully crafted tools to simplify your life."
-msgstr "Ihr täglicher digitaler Begleiter - eine Sammlung wunderschön gestalteter Tools, um Ihr Leben zu vereinfachen."
 
 #: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -1930,10 +1925,6 @@ msgstr ""
 msgid "In the meantime, you can continue using the <0>current version</0> with all its existing features."
 msgstr "In der Zwischenzeit können Sie die <0>aktuelle Version</0> mit allen ihren bestehenden Funktionen weiterhin nutzen."
 
-#: src/lib/components/home/AppsSection.svelte
-msgid "Tools That Make a Difference"
-msgstr "Werkzeuge, die einen Unterschied machen"
-
 #: src/lib/components/home/Content.svelte
 msgid "<0>Join</0> the Journey"
 msgstr "<0>Begleiten</0> Sie die Reise"
@@ -1955,22 +1946,6 @@ msgstr ""
 "Ihre Erkenntnisse und Erfahrungen helfen, diese Werkzeuge zu etwas wirklich Nützlichem zu formen. Ob es darum geht,\n"
 "Ideen auszutauschen, Probleme zu melden oder mir einfach mitzuteilen, wie Sie die Apps nutzen, jedes\n"
 "Feedback zählt. Möchten Sie mehr über das Projekt erfahren? Sehen Sie sich unsere <0>Geschichte</0> an."
-
-#: src/lib/components/home/Hero.svelte
-msgid "Back, <0>{0}!</0>"
-msgstr "Willkommen zurück, <0>{0}!</0>"
-
-#: src/lib/components/home/Hero.svelte
-msgid "Welcome <0/> to..."
-msgstr "Willkommen <0/> bei..."
-
-#: src/lib/components/home/Hero.svelte
-msgid "Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
-msgstr "Entdecken Sie unsere kuratierte Sammlung eleganter Svelte-Anwendungen, die sorgfältig entwickelt wurden, um Ihren digitalen Workflow mit modernen, effizienten Lösungen zu verbessern."
-
-#: src/lib/components/home/Hero.svelte
-msgid "Start Exploring <0/>"
-msgstr "Entdecken Sie <0/>"
 
 #: src/lib/components/home/Quote.svelte
 msgid "New Mantra"
@@ -2372,6 +2347,7 @@ msgstr "Geben Sie Ihren Benutzernamen ein"
 #: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
@@ -2398,7 +2374,6 @@ msgstr "Geben Sie Ihren Benutzernamen ein"
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -3095,6 +3070,7 @@ msgstr "Clientseitiger Export (MVP)"
 msgid "No server changes"
 msgstr "Keine Serveränderungen"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Works offline"
 msgstr "Funktioniert offline"
@@ -3560,6 +3536,7 @@ msgstr "Budget auswählen"
 
 #: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -3734,6 +3711,7 @@ msgstr "Erstellen und verwalten Sie Budgets, verfolgen Sie Ausgaben und visualis
 msgid "FinanceApplication"
 msgstr "Finanzanwendung"
 
+#: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Offer"
 msgstr "Angebot"
@@ -3776,6 +3754,7 @@ msgid "Auto-backup ({0}s)"
 msgstr "Automatische Sicherung ({0}s)"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Saved"
 msgstr "Gespeichert"
 
@@ -4918,6 +4897,7 @@ msgstr "{0} gesamt"
 msgid "No treatment sessions yet. Create one above to get started."
 msgstr "Noch keine Behandlungssitzungen. Erstellen Sie oben eine, um zu beginnen."
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Active"
@@ -5865,20 +5845,16 @@ msgstr "Emoji in die Zwischenablage kopiert"
 msgid "<0/> Copy"
 msgstr "<0/> Kopieren"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Please select at least one character type"
-msgstr "Bitte wähle mindestens einen Zeichentyp aus"
-
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "Passwort in die Zwischenablage kopiert"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "Das Kopieren des Passworts ist fehlgeschlagen"
@@ -5895,34 +5871,31 @@ msgstr "Passwort-Generator"
 msgid "Generate secure, random passwords instantly"
 msgstr "Generiere sofort sichere, zufällige Passwörter"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Your password will appear here"
 msgstr "Ihr Passwort erscheint hier"
 
-#. placeholder {0}: Math.round(passwordStrength)
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Strength: {0}%"
-msgstr "Passwortstärke: {0}%"
+#~ msgid "Password Strength: {0}%"
+#~ msgstr "Passwortstärke: {0}%"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Uppercase Letters"
 msgstr "Großbuchstaben"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Lowercase Letters"
 msgstr "Kleinbuchstaben"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Numbers"
 msgstr "Zahlen"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Special Characters"
 msgstr "Sonderzeichen"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Generate Password"
-msgstr "Passwort generieren"
+#~ msgid "Generate Password"
+#~ msgstr "Passwort generieren"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Hide Saved Passwords"
@@ -6784,6 +6757,7 @@ msgstr "Eingabetext"
 msgid "Enter or paste the text you want to summarize"
 msgstr "Geben Sie den Text ein oder fügen Sie ihn ein, den Sie zusammenfassen möchten"
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text"
 msgstr "Text"
@@ -6850,6 +6824,7 @@ msgstr "Ihr zusammengefasster Text wird hier angezeigt"
 msgid "Click \"Generate Summary\" to create a summary of your text"
 msgstr "Klicken Sie auf „Zusammenfassung generieren“, um eine Zusammenfassung Ihres Textes zu erstellen"
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Copied!"
 msgstr "Kopiert!"
@@ -7034,27 +7009,26 @@ msgstr "Ungültiges Passwort"
 msgid "Incorrect username or password"
 msgstr "Falscher Benutzername oder falsches Passwort"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save Password"
 msgstr "Passwort speichern"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Add an optional description to help you remember what this password is for."
 msgstr "Fügen Sie eine optionale Beschreibung hinzu, die Ihnen hilft, sich zu merken, wofür dieses Passwort ist."
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Description (Optional)"
 msgstr "Beschreibung (Optional)"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
-#. placeholder {0}: editedDetails.length
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 Zeichen"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "<0/> Save"
 msgstr "<0/> Speichern"
 
@@ -8687,12 +8661,6 @@ msgstr "<0/> Notiz aktualisieren"
 msgid "<0/> GitHub"
 msgstr "<0/> GitHub"
 
-#: src/lib/components/home/AppsSection.svelte
-msgid ""
-"From managing your budget to boosting productivity, each app is designed to help you get\n"
-"things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
-msgstr "Von der Budgetverwaltung bis zur Steigerung der Produktivität ist jede App darauf ausgelegt, Ihnen zu helfen, Dinge zu erledigen. Diese mit <0>Svelte</0> erstellten Tools sind schnell, reaktionsschnell und einfach zu bedienen."
-
 #: src/routes/apps/+page.svelte
 msgid "Discover a collection of powerful tools built with <0>Svelte</0>."
 msgstr "Entdecke eine Sammlung leistungsstarker Tools, die mit <0>Svelte</0> erstellt wurden."
@@ -8728,11 +8696,6 @@ msgstr "<0/> Abgeschlossen"
 #: src/routes/(auth)/logout/+page.svelte
 msgid "Sign out of your Svelte Mini Apps account"
 msgstr "Melde dich von deinem Svelte Mini Apps Konto ab"
-
-#. placeholder {0}: doneProjects.length
-#: src/lib/components/home/AppsSection.svelte
-msgid "<0/> Active Apps ({0})"
-msgstr "<0/> Aktive Apps ({0})"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "Collapse"
@@ -10149,17 +10112,8 @@ msgstr ""
 "nicht rückgängig gemacht werden."
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Length"
-msgstr "Passwortlänge"
-
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View Saved Passwords"
 msgstr "Gespeicherte Passwörter anzeigen"
-
-#. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Saved ({0})"
-msgstr "Gespeichert ({0})"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Generate and save your first password above"
@@ -10334,14 +10288,6 @@ msgstr "Lokal"
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "View"
 msgstr "Ansicht"
-
-#: src/lib/components/home/AppsSection.svelte
-msgid "View All Apps <0/>"
-msgstr "Alle Apps anzeigen <0/>"
-
-#: src/lib/components/home/Banner.svelte
-msgid "Proud Winners of Svelte Hack 2025! Check out our <0>2025 Timeline</0> <1/>"
-msgstr "Stolze Gewinner des Svelte Hack 2025! Schau dir unsere <0>2025-Zeitachse</0> <1/>"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
@@ -11031,6 +10977,7 @@ msgstr "Suche nach App-Name, Beschreibung, Tag oder Slug..."
 msgid "Clear search"
 msgstr "Suche löschen"
 
+#: src/lib/components/home/AppsSection.svelte
 #: src/routes/apps/AppFilters.svelte
 msgid "<0/> All apps"
 msgstr "<0/> Alle Apps"
@@ -11211,6 +11158,7 @@ msgstr "Aktivieren Sie den öffentlichen Zugriff, um einen Live-Freigabelink zu 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> Link kopieren"
 
@@ -11387,6 +11335,7 @@ msgid "Share text temporarily with self-destructing links. Paste text, get a sho
 msgstr "Teilen Sie Text vorübergehend mit selbstzerstörenden Links. Fügen Sie Text ein, erhalten Sie eine kurzlebige öffentliche URL (1–24 Stunden), und jeder mit dem Link kann sie ansehen – kein Konto erforderlich."
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "Expired"
@@ -11404,12 +11353,6 @@ msgstr "Text vorübergehend mit selbstzerstörbaren Links teilen"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Create a Share Link"
 msgstr "Einen Freigabelink erstellen"
-
-#~ msgid "Your Text"
-#~ msgstr "Ihr Text"
-
-#~ msgid "Paste your text here... (whitespace & formatting preserved)"
-#~ msgstr "Fügen Sie hier Ihren Text ein... (Leerzeichen & Formatierung bleiben erhalten)"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Expires After"
@@ -11547,16 +11490,6 @@ msgstr "Fügen Sie /f/abc123 oder einfach abc123 ein."
 msgid "Create temporary text links and open them by code."
 msgstr "Erstellen Sie temporäre Textlinks und öffnen Sie sie per Code."
 
-#~ msgid ""
-#~ "Paste your text below. A temporary link will be generated, and the short code can be\n"
-#~ "opened in the second tab."
-#~ msgstr ""
-#~ "Fügen Sie Ihren Text unten ein. Es wird ein temporärer Link generiert, und der Kurzcode kann\n"
-#~ "im zweiten Tab geöffnet werden."
-
-#~ msgid "Share this link - it expires in <0/>"
-#~ msgstr "Teilen Sie diesen Link - er läuft in <0/> ab."
-
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText modes"
 msgstr "FlashText-Modi"
@@ -11616,12 +11549,6 @@ msgstr "Ändern, wann diese Dosis eingenommen werden soll."
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Attach Files"
 msgstr "Dateien anhängen"
-
-#~ msgid "Attached files ({0})"
-#~ msgstr "Angehängte Dateien ({0})"
-
-#~ msgid "{0} KB"
-#~ msgstr "{0} KB"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/FileUploader.svelte
@@ -11700,13 +11627,6 @@ msgstr "PUT"
 msgid "Content-Type"
 msgstr "Inhaltstyp"
 
-#~ msgid ""
-#~ "Add up to {0} per file. Files expire together with this flash\n"
-#~ "text."
-#~ msgstr ""
-#~ "Fügen Sie bis zu {0} pro Datei hinzu. Dateien laufen zusammen mit diesem Flash-\n"
-#~ "Text ab."
-
 #. placeholder {0}: currentFiles.length
 #: src/routes/f/[slug]/+page.svelte
 msgid "Attached Files ({0})"
@@ -11725,26 +11645,9 @@ msgstr "{0} Downloads"
 msgid "<0/> Download"
 msgstr "<0/> Download"
 
-#~ msgid ""
-#~ "Paste your text below, or leave it empty if you just want to share files.\n"
-#~ "A temporary link will be generated — you can attach files after creation."
-#~ msgstr ""
-#~ "Füge deinen Text unten ein, oder lass ihn leer, wenn du nur Dateien teilen möchtest.\n"
-#~ "Es wird ein temporärer Link erstellt — du kannst nach der Erstellung Dateien anhängen."
-
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your Text <0>(optional — leave blank for file-only)</0>"
 msgstr "Dein Text <0>(optional — für Dateien nur leer lassen)</0>"
-
-#~ msgid "Paste your text here, or leave blank to share files only... (whitespace & formatting preserved)"
-#~ msgstr "Füge deinen Text hier ein, oder lass ihn leer, um nur Dateien zu teilen... (Leerzeichen und Formatierung bleiben erhalten)```"
-
-#~ msgid ""
-#~ "Paste your text below, or leave it empty if you just want to share files. A temporary\n"
-#~ "link will be generated — you can attach files after creation."
-#~ msgstr ""
-#~ "Fügen Sie unten Ihren Text ein oder lassen Sie ihn leer, wenn Sie nur Dateien teilen möchten. Ein temporärer\n"
-#~ "Link wird generiert — Sie können nach der Erstellung Dateien anhängen."
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid ""
@@ -11817,8 +11720,494 @@ msgstr "Es sind auch keine Dateien angehängt."
 msgid "This share contains only files — no text was included. <0/>"
 msgstr "Diese Freigabe enthält nur Dateien — es wurde kein Text hinzugefügt. <0/>"
 
-#~ msgid "X-File-Name"
-#~ msgstr "X-Dateiname"
+#: src/lib/components/home/AppsSection.svelte
+msgid "Every app is free, instant, and stays in your browser."
+msgstr "Jede App ist kostenlos, sofort einsatzbereit und bleibt in Ihrem Browser."
 
-#~ msgid "Upload failed (no response from server)"
-#~ msgstr "Upload fehlgeschlagen (keine Antwort vom Server)"
+#: src/lib/components/home/data.svelte.ts
+msgid "Pick a tool"
+msgstr "Wähle ein Tool"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Browse 20+ purpose-built apps for budgets, passwords, time, notes, and more — all on one site."
+msgstr "Durchstöbere 20+ zweckorientierte Apps für Budgets, Passwörter, Zeit, Notizen und mehr – alles auf einer Website."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Use it instantly"
+msgstr "Sofort nutzen"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Click in, get to work. No account, no sign-up, no install. Data stays in your browser by default."
+msgstr "Einfach klicken und loslegen. Kein Konto, keine Anmeldung, keine Installation. Daten bleiben standardmäßig in deinem Browser."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Save it (if you want)"
+msgstr "Speichern (wenn du möchtest)"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Install as a PWA and keep the full toolkit offline — your work follows you, never locked to a vendor."
+msgstr "Installiere als PWA und behalte das gesamte Toolkit offline – deine Arbeit folgt dir, nie an einen Anbieter gebunden."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Free forever"
+msgstr "Für immer kostenlos"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "No account needed"
+msgstr "Kein Konto benötigt"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Open source"
+msgstr "Open Source"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Do I need to create an account to use the apps?"
+msgstr "Muss ich ein Konto erstellen, um die Apps zu nutzen?"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "No. Every tool works without sign-up. Your data is stored in your browser by default, so you stay in control. Accounts only exist if you want cloud sync or to save progress across devices."
+msgstr "Nein. Jedes Tool funktioniert ohne Anmeldung. Deine Daten werden standardmäßig in deinem Browser gespeichert, sodass du die Kontrolle behältst. Konten gibt es nur, wenn du Cloud-Synchronisation oder das Speichern des Fortschritts auf mehreren Geräten wünschst."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Is my data safe and private?"
+msgstr "Sind meine Daten sicher und privat?"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. The default behaviour is local-first: budget entries, notes, to-dos, and timers all live in your browser's storage and never touch a server. When you do use a server-backed tool like FlashText, links self-destruct on schedule."
+msgstr "Ja. Das Standardverhalten ist lokal-first: Budgeteinträge, Notizen, Aufgaben und Timer leben alle im Speicher deines Browsers und berühren nie einen Server. Wenn du ein servergestütztes Tool wie FlashText verwendest, zerstören sich Links planmäßig selbst."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "How is this free? What is the catch?"
+msgstr "Wie kann das kostenlos sein? Was ist der Haken?"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "There is no catch. The whole project is open source on GitHub and maintained as a portfolio + community resource. No ads, no tracking, no premium tier hidden behind a paywall. You can audit every line."
+msgstr "Es gibt keinen Haken. Das gesamte Projekt ist auf GitHub Open Source und wird als Portfolio- und Community-Ressource betrieben. Keine Werbung, kein Tracking, keine versteckte Premium-Stufe hinter einer Bezahlschranke. Du kannst jede Zeile überprüfen."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Can I use these apps offline?"
+msgstr "Kann ich diese Apps offline nutzen?"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. The site is a Progressive Web App — install it once and the full toolkit keeps working on a plane, on the train, or anywhere with no signal. Updates land automatically the next time you reconnect."
+msgstr "Ja. Die Website ist eine Progressive Web App – einmal installieren und das gesamte Toolkit funktioniert weiter im Flugzeug, im Zug oder überall ohne Signal. Updates werden automatisch eingespielt, sobald du wieder verbunden bist."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Will more tools be added?"
+msgstr "Werden weitere Tools hinzugefügt?"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. New tools ship every few weeks — 20 are live today and more are in the pipeline. Open an issue on GitHub if you want a specific tool next."
+msgstr "Ja. Alle paar Wochen kommen neue Tools hinzu – heute sind 20 live und weitere sind in Planung. Erstelle ein Issue auf GitHub, wenn du als Nächstes ein bestimmtes Tool wünschst."
+
+#: src/lib/components/home/Banner.svelte
+msgid "Svelte Hack 2025 winner"
+msgstr "Gewinner des Svelte Hack 2025"
+
+#: src/lib/components/home/Banner.svelte
+msgid "— see how we built it"
+msgstr "— sieh, wie wir es gebaut haben"
+
+#: src/lib/components/home/Banner.svelte
+msgid "Dismiss banner"
+msgstr "Banner schließen"
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Frequently asked"
+msgstr "Häufig gestellte"
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Questions that come up before the first click."
+msgstr "Fragen, die vor dem ersten Klick aufkommen."
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Still wondering something? <0>support@svelte-apps.me</0>"
+msgstr "Noch offene Fragen? <0>support@svelte-apps.me</0>"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "<0/> Free · Forever · No card"
+msgstr "<0/> Kostenlos · Für immer · Keine Karte"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Pick a tool. Get the small job done in under a minute."
+msgstr "Wähle ein Werkzeug. Erledige die kleine Aufgabe in weniger als einer Minute."
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Open the full toolkit <0/>"
+msgstr "Öffne das vollständige Toolkit <0/>"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "<0/> Try one without leaving"
+msgstr "<0/> Probiere einen aus, ohne zu gehen"
+
+#: src/lib/components/home/Hero.svelte
+msgid "<0/> Svelte Hack 2025 winner"
+msgstr "<0/> Svelte Hack 2025 Gewinner"
+
+#: src/lib/components/home/Hero.svelte
+msgid "Hand-picked tools for the <0>small jobs</0> that fill your day."
+msgstr "Handverlesene Tools für die <0>kleinen Aufgaben</0>, die Ihren Tag füllen."
+
+#: src/lib/components/home/Hero.svelte
+msgid "<0/> Try one right now"
+msgstr "<0/> Probieren Sie gleich eine aus"
+
+#: src/lib/components/home/Hero.svelte
+msgid "Welcome back, <0/> — your dashboard is waiting."
+msgstr "Willkommen zurück, <0/> — Ihr Dashboard wartet."
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "How it works"
+msgstr "Wie es funktioniert"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "From \"I need a tool\" to \"done\" in three clicks."
+msgstr "Von \"Ich brauche ein Werkzeug\" bis \"erledigt\" in drei Klicks."
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Most visitors find a tool and finish their task in <0>under 60 seconds.</0>"
+msgstr "Die meisten Besucher finden ein Werkzeug und erledigen ihre Aufgabe in <0>unter 60 Sekunden.</0>"
+
+#~ msgid "<0/> Try it now — no sign-up"
+#~ msgstr "<0/> Jetzt ausprobieren – keine Registrierung"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Generate a strong password right here."
+msgstr "Hier ein starkes Passwort generieren."
+
+#~ msgid ""
+#~ "No sign-up, no modal, no waiting. Adjust the length, hit generate, copy. If you like it,\n"
+#~ "the full app remembers the options you pick."
+#~ msgstr ""
+#~ "Keine Registrierung, kein Pop-up, kein Warten. Länge anpassen, generieren, kopieren. Wenn es gefällt,\n"
+#~ "merkt sich die vollständige App die gewählten Optionen."
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Uses your browser's secure random generator"
+msgstr "Nutzt den sicheren Zufallsgenerator deines Browsers"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Nothing is sent to a server"
+msgstr "Nichts wird an einen Server gesendet"
+
+#~ msgid "Regenerate password"
+#~ msgstr "Passwort neu generieren"
+
+#~ msgid "Copied to clipboard"
+#~ msgstr "In die Zwischenablage kopiert"
+
+#~ msgid "Length"
+#~ msgstr "Länge"
+
+#~ msgid "<0/> A-Z"
+#~ msgstr "<0/> A-Z"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Categories"
+msgstr "Kategorien"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Svelte Hack winner"
+msgstr "Svelte Hack Gewinner"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Accounts required"
+msgstr "Konten erforderlich"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Finally — a budget tracker that does not ask for my credit card. Up and running in 30 seconds."
+msgstr "Endlich – ein Budget-Tracker, der nicht nach meiner Kreditkarte fragt. In 30 Sekunden einsatzbereit."
+
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+msgid "Featured user review"
+msgstr "Ausgewählte Benutzerbewertung"
+
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+msgid "Visitor feedback"
+msgstr "Besucher-Feedback"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "I keep the whole site installed as a PWA. Half my daily tools live in one tab and they still work on the train."
+msgstr "Ich habe die gesamte Website als PWA installiert. Die Hälfte meiner täglichen Tools lebt in einem Tab und funktioniert auch im Zug."
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Open source, offline, no login. The Mini Apps suite is the productivity tool I recommend most."
+msgstr "Open Source, offline, kein Login. Die Mini-Apps-Suite ist das Produktivitätstool, das ich am meisten empfehle."
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "<0/> Built and used by a real community"
+msgstr "<0/> Von einer echten Community entwickelt und genutzt"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "<0/> Star the project, open an issue, or send a PR on GitHub"
+msgstr "<0/> Sternen Sie das Projekt, eröffnen Sie ein Issue oder senden Sie einen PR auf GitHub"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> The math is simple"
+msgstr "<0/> Die Rechnung ist einfach"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "20 focused tools vs 1 tool for $15/month."
+msgstr "20 spezialisierte Werkzeuge vs. 1 Werkzeug für 15 $/Monat."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Most productivity apps charge per tool, per month, per seat. We don't."
+msgstr "Die meisten Produktivitäts-Apps verlangen Gebühren pro Werkzeug, pro Monat, pro Sitzplatz. Wir nicht."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "What you pay elsewhere"
+msgstr "Was Sie anderswo bezahlen"
+
+#. placeholder {0}: competitorAnnual
+#: src/lib/components/home/ValueBar.svelte
+msgid "${0}/year — for one tool."
+msgstr "${0}/Jahr – für ein Werkzeug."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> 1 tool, no suite"
+msgstr "<0/> 1 Werkzeug, keine Suite"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Account required"
+msgstr "<0/> Konto erforderlich"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Offline support"
+msgstr "<0/> Offline-Unterstützung"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Closed source"
+msgstr "<0/> Geschlossener Quellcode"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Your data on their servers"
+msgstr "<0/> Ihre Daten auf deren Servern"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> What you get here"
+msgstr "<0/> Was Sie hier bekommen"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Saves the average user $180/year in subscriptions."
+msgstr "Spart dem durchschnittlichen Nutzer 180 $/Jahr an Abonnements."
+
+#. placeholder {0}: 20
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> {0}+ focused tools, growing"
+msgstr "<0/> {0}+ spezialisierte Werkzeuge, stetig wachsend"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No account needed"
+msgstr "<0/> Kein Konto erforderlich"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Full offline support (PWA)"
+msgstr "<0/> Vollständige Offline-Unterstützung (PWA)"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Open source on GitHub"
+msgstr "<0/> Open Source auf GitHub"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Your data stays in your browser"
+msgstr "<0/> Ihre Daten bleiben in Ihrem Browser"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
+msgstr "<0/> <1>180 $ pro Jahr gespart</1> im Vergleich zur typischen kostenpflichtigen Produktivitätssuite. Auf 20 verschiedene Arten wiederverwendet."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No paywall"
+msgstr "<0/> Keine Paywall"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No ads"
+msgstr "<0/> Keine Werbung"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No \"Pro\" tier"
+msgstr "<0/> Keine \"Pro\"-Stufe"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Hire me if you want a custom one"
+msgstr "<0/> Beauftragen Sie mich, wenn Sie eine individuelle Lösung wünschen"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Track a budget"
+msgstr "Ein Budget verfolgen"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Generate a password"
+msgstr "Ein Passwort generieren"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Share text that self-destructs"
+msgstr "Text teilen, der sich selbst zerstört"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Where to start?"
+msgstr "Wo anfangen?"
+
+#~ msgid "<0/> Use the full app"
+#~ msgstr "<0/> Nutzen Sie die vollständige App"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Save this password"
+msgstr "Dieses Passwort speichern"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Sign in to save"
+msgstr "Anmelden, um zu speichern"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Copied"
+msgstr "<0/> Kopiert"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Same generator that powers the full app"
+msgstr "Derselbe Generator, der die vollständige App antreibt."
+
+#: src/lib/components/home/Hero.svelte
+msgid "Browse the toolkit <0/>"
+msgstr "Durchstöbere das Toolkit <0/>"
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "Built with Svelte · Open source on GitHub"
+msgstr "Erstellt mit Svelte · Open Source auf GitHub"
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "Browse the full list <0/>"
+msgstr "Vollständige Liste durchsuchen <0/>"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "To first result"
+msgstr "Zum ersten Ergebnis"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Free, offline, and open source. You can also <0>read the code on GitHub</0> or <1>hire me</1> to build the next one."
+msgstr "Kostenlos, offline und Open Source. Du kannst auch <0>den Code auf GitHub ansehen</0> oder <1>mich engagieren</1>, um das nächste zu bauen."
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "From tracking a budget to sharing an expiring note — pick a tool, get to work in one click."
+msgstr "Vom Verfolgen eines Budgets bis zum Teilen einer ablaufenden Notiz – wähle ein Werkzeug und mach dich mit einem Klick an die Arbeit."
+
+#: src/lib/components/home/Hero.svelte
+msgid ""
+"Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
+"click them. Free, open source, and your data stays in your browser."
+msgstr ""
+"Budgets, Passwörter, QR-Codes, Timer, Notizen — fokussierte Mini-Apps, die sofort funktionieren, sobald du\n"
+"sie anklickst. Kostenlos, Open Source, und deine Daten bleiben in deinem Browser."
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved Passwords <0>({0})</0>"
+msgstr "Gespeicherte Passwörter <0>({0})</0>"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Failed to load saved passwords"
+msgstr "Fehler beim Laden der gespeicherten Passwörter"
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "FlashText History"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Your FlashText history and shared links."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "All your shared texts and uploaded files"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> Back to FlashText"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Sign in required"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid ""
+"Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
+"appear here."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "No history yet"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid ""
+"Create your first FlashText or upload a file — your shared links and files will appear\n"
+"here."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> Create a FlashText"
+msgstr ""
+
+#. placeholder {0}: history.length
+#. placeholder {1}: history.length === 1 ? 'entry' : 'entries'
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Showing {0} {1}"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "File"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> View"
+msgstr ""
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Password Length"
+msgstr "Passwortlänge"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Generate Password"
+msgstr "<0/> Passwort generieren"
+
+#~ msgid ""
+#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength\n"
+#~ "meter, full controls, full color-coded display."
+#~ msgstr "Keine Anmeldung, kein Dialog, kein Warten. Das gleiche Tool, das die App antreibt – vollwertiges Messgerät, vollständige Steuerung, vollfarbige Darstellung."
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Open the full app <0/>"
+msgstr "Öffne die vollständige App <0/>"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid ""
+"No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
+"full controls, full color-coded display."
+msgstr ""
+"Keine Anmeldung, kein Modal, kein Warten. Das gleiche Tool, das die App antreibt — voller Stärkemesser,\n"
+"volle Steuerung, vollständige farbcodierte Anzeige."
+
+#~ msgid "Copied"
+#~ msgstr "Kopiert"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Save to my account"
+msgstr "In meinem Konto speichern"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Copy password to clipboard"
+msgstr "Passwort in die Zwischenablage kopieren"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Copy password"
+msgstr "<0/> Passwort kopieren"
+
+#. placeholder {0}: Math.round(passwordStrength)
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "{0}% strong"
+msgstr "{0}% stark"

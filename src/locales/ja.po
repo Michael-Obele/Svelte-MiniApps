@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-07-24T07:52:15.885Z\n"
+"PO-Revision-Date: 2026-07-24T21:52:24.283Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -14,6 +14,7 @@ msgstr ""
 
 #: src/lib/components/budget-tracker/BudgetSection.svelte
 #: src/lib/components/budget-tracker/ExpensesList.svelte
+#: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -144,7 +145,6 @@ msgstr "キャッシュ {0}"
 msgid "Loading..."
 msgstr "読み込み中..."
 
-#: src/lib/components/home/Hero.svelte
 #: src/lib/index.svelte.ts
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
@@ -690,10 +690,6 @@ msgstr "戻る"
 #: src/routes/+layout.svelte
 msgid "A collection of mini apps built with SvelteKit"
 msgstr "SvelteKit で構築されたミニアプリ集"
-
-#: src/routes/+page.svelte
-msgid "Your everyday digital companion - a collection of beautifully crafted tools to simplify your life."
-msgstr "あなたの毎日のデジタルコンパニオン - あなたの生活をシンプルにするために美しく作られたツールのコレクション。"
 
 #: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
@@ -2993,21 +2989,6 @@ msgid "In the meantime, you can continue using the <0>current version</0> with a
 msgstr "それまでの間、既存のすべての機能を備えた<0>現在のバージョン</0>を引き続き使用できます。"
 
 #: src/lib/components/home/AppsSection.svelte
-msgid "Tools That Make a Difference"
-msgstr "変化をもたらすツール"
-
-#: src/lib/components/home/AppsSection.svelte
-msgid ""
-"From managing your budget to boosting productivity, each app is designed to help you get\n"
-"things done. Built with <0>Svelte</0>, these tools are fast, responsive, and easy to use."
-msgstr "予算管理から生産性の向上まで、各アプリは物事を成し遂げるのに役立つように設計されています。<0>Svelte</0>で構築されたこれらのツールは、高速で応答性が高く、使いやすいです。"
-
-#. placeholder {0}: doneProjects.length
-#: src/lib/components/home/AppsSection.svelte
-msgid "<0/> Active Apps ({0})"
-msgstr "<0/> アクティブなアプリ ({0})"
-
-#: src/lib/components/home/AppsSection.svelte
 msgid "Collapse"
 msgstr "折りたたむ"
 
@@ -3036,22 +3017,6 @@ msgid ""
 "it's sharing ideas, reporting issues, or just letting me know how you use the apps, every\n"
 "bit of feedback counts. Want to learn more about the project? Check out our <0>story</0>."
 msgstr "あなたの洞察と経験は、これらのツールを本当に役立つものにするのに役立ちます。アイデアを共有したり、問題を報告したり、アプリの使い方を教えてくれたり、どんなフィードバックでも重要です。プロジェクトについてもっと知りたいですか？<0>私たちのストーリー</0>をご覧ください。"
-
-#: src/lib/components/home/Hero.svelte
-msgid "Back, <0>{0}!</0>"
-msgstr "おかえりなさい、<0>{0}!</0>"
-
-#: src/lib/components/home/Hero.svelte
-msgid "Welcome <0/> to..."
-msgstr "ようこそ <0/> ..."
-
-#: src/lib/components/home/Hero.svelte
-msgid "Explore our curated collection of elegant Svelte applications, thoughtfully designed to enhance your digital workflow with modern, efficient solutions."
-msgstr "洗練されたSvelteアプリケーションの厳選されたコレクションをご覧ください。最新の効率的なソリューションで、デジタルワークフローを強化できるように設計されています。"
-
-#: src/lib/components/home/Hero.svelte
-msgid "Start Exploring <0/>"
-msgstr "探索を開始 <0/>"
 
 #: src/lib/components/home/Quote.svelte
 msgid "New Mantra"
@@ -3410,6 +3375,7 @@ msgstr "ユーザー名を入力してください"
 #: src/lib/components/budget-tracker/BudgetDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
 #: src/routes/(auth)/profile/SessionManagement.svelte
@@ -3436,7 +3402,6 @@ msgstr "ユーザー名を入力してください"
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditItemDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/AddEditPurchaseDialog.svelte
 #: src/routes/apps/(app)/purchase-tracker/components/ConfirmDeleteDialog.svelte
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -4207,6 +4172,7 @@ msgstr "クライアント側のエクスポート（MVP）"
 msgid "No server changes"
 msgstr "サーバーの変更なし"
 
+#: src/lib/components/home/data.svelte.ts
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Works offline"
 msgstr "オフラインで動作"
@@ -4775,6 +4741,7 @@ msgstr "シンプルかつ強力な予算追跡ツールで、予算の作成と
 msgid "FinanceApplication"
 msgstr "財務アプリケーション"
 
+#: src/routes/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Offer"
 msgstr "オファー"
@@ -4817,6 +4784,7 @@ msgid "Auto-backup ({0}s)"
 msgstr "自動バックアップ（{0}秒）"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Saved"
 msgstr "保存済み"
 
@@ -5978,6 +5946,7 @@ msgstr "合計 {0}"
 msgid "No treatment sessions yet. Create one above to get started."
 msgstr "まだ治療セッションはありません。上から作成して開始してください。"
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Active"
@@ -7095,20 +7064,16 @@ msgstr "絵文字をクリップボードにコピーしました"
 msgid "<0/> Copy"
 msgstr "<0/> コピー"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Please select at least one character type"
-msgstr "少なくとも1つの文字タイプを選択してください"
-
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Password copied to clipboard"
 msgstr "パスワードをクリップボードにコピーしました"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Failed to copy password"
 msgstr "パスワードのコピーに失敗しました"
@@ -7125,58 +7090,54 @@ msgstr "パスワードジェネレーター"
 msgid "Generate secure, random passwords instantly"
 msgstr "安全なランダムパスワードを即座に生成"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save Password"
 msgstr "パスワードを保存"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Add an optional description to help you remember what this password is for."
 msgstr "このパスワードが何のためのものか思い出すのに役立つように、オプションの説明を追加してください。"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Description (Optional)"
 msgstr "説明 (オプション)"
 
 #. placeholder {0}: passwordDetails.length
 #. placeholder {0}: editedDetails.length
-#. placeholder {0}: editedDetails.length
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
 msgstr "{0}/200 文字"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "<0/> Save"
 msgstr "<0/> 保存"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Your password will appear here"
 msgstr "パスワードがここに表示されます"
 
-#. placeholder {0}: Math.round(passwordStrength)
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Strength: {0}%"
-msgstr "パスワード強度: {0}%"
+#~ msgid "Password Strength: {0}%"
+#~ msgstr "パスワード強度: {0}%"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Uppercase Letters"
 msgstr "大文字"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Lowercase Letters"
 msgstr "小文字"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Numbers"
 msgstr "数字"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
 msgid "Special Characters"
 msgstr "特殊文字"
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Generate Password"
-msgstr "パスワードを生成"
+#~ msgid "Generate Password"
+#~ msgstr "パスワードを生成"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View all passwords"
@@ -8679,6 +8640,7 @@ msgstr "入力テキスト"
 msgid "Enter or paste the text you want to summarize"
 msgstr "要約したいテキストを入力または貼り付けてください"
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Text"
 msgstr "テキスト"
@@ -8745,6 +8707,7 @@ msgstr "要約されたテキストがここに表示されます"
 msgid "Click \"Generate Summary\" to create a summary of your text"
 msgstr "「要約を生成」をクリックして、テキストの要約を作成します"
 
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Copied!"
 msgstr "コピーしました！"
@@ -10008,17 +9971,8 @@ msgid ""
 msgstr "アカウントとすべての関連データを完全に削除します。この操作は元に戻せません。"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Password Length"
-msgstr "パスワードの長さ"
-
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View Saved Passwords"
 msgstr "保存済みのパスワードを表示"
-
-#. placeholder {0}: loadingPasswords ? '...' : savedPasswords ? savedPasswords.length : '0'
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Saved ({0})"
-msgstr "保存済み ({0})"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Generate and save your first password above"
@@ -10178,14 +10132,6 @@ msgstr "ローカル"
 #: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "View"
 msgstr "表示"
-
-#: src/lib/components/home/AppsSection.svelte
-msgid "View All Apps <0/>"
-msgstr "すべてのアプリを表示 <0/>"
-
-#: src/lib/components/home/Banner.svelte
-msgid "Proud Winners of Svelte Hack 2025! Check out our <0>2025 Timeline</0> <1/>"
-msgstr "Svelte Hack 2025の誇り高き受賞者！私たちの <0>2025年のタイムライン</0>をご覧ください <1/>"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
@@ -10896,6 +10842,7 @@ msgstr "アプリ名、説明、タグ、またはスラッグで検索..."
 msgid "Clear search"
 msgstr "検索をクリア"
 
+#: src/lib/components/home/AppsSection.svelte
 #: src/routes/apps/AppFilters.svelte
 msgid "<0/> All apps"
 msgstr "<0/> すべてのアプリ"
@@ -11076,6 +11023,7 @@ msgstr "公開アクセスを有効にしてライブ共有リンクを生成し
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Copy Link"
 msgstr "<0/> リンクをコピー"
 
@@ -11250,6 +11198,7 @@ msgid "Share text temporarily with self-destructing links. Paste text, get a sho
 msgstr "自己消滅リンクでテキストを一時的に共有できます。テキストを貼り付けると、短期間有効な公開URL（1～24時間）が生成されます。リンクを持っている人なら誰でも表示でき、アカウントは不要です。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "Expired"
@@ -11267,12 +11216,6 @@ msgstr "自己破壊リンクを使ってテキストを一時的に共有"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Create a Share Link"
 msgstr "共有リンクを作成"
-
-#~ msgid "Your Text"
-#~ msgstr "あなたのテキスト"
-
-#~ msgid "Paste your text here... (whitespace & formatting preserved)"
-#~ msgstr "ここにテキストを貼り付けてください...（空白と書式は保持されます）"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Expires After"
@@ -11410,16 +11353,6 @@ msgstr "/f/abc123 または abc123 のみを貼り付けてください"
 msgid "Create temporary text links and open them by code."
 msgstr "一時的なテキストリンクを作成し、コードで開きます。"
 
-#~ msgid ""
-#~ "Paste your text below. A temporary link will be generated, and the short code can be\n"
-#~ "opened in the second tab."
-#~ msgstr ""
-#~ "以下のテキストを貼り付けてください。一時的なリンクが生成され、短いコードを\n"
-#~ "2番目のタブで開くことができます。"
-
-#~ msgid "Share this link - it expires in <0/>"
-#~ msgstr "このリンクを共有 - <0/>で期限切れになります。"
-
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "FlashText modes"
 msgstr "FlashTextモード"
@@ -11479,12 +11412,6 @@ msgstr "この服用の予定時刻を変更します。"
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Attach Files"
 msgstr "ファイルを添付"
-
-#~ msgid "Attached files ({0})"
-#~ msgstr "添付ファイル ({0})"
-
-#~ msgid "{0} KB"
-#~ msgstr "{0} KB"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 #: src/routes/apps/(app)/flash-text/FileUploader.svelte
@@ -11563,13 +11490,6 @@ msgstr "PUT"
 msgid "Content-Type"
 msgstr "コンテンツタイプ"
 
-#~ msgid ""
-#~ "Add up to {0} per file. Files expire together with this flash\n"
-#~ "text."
-#~ msgstr ""
-#~ "1ファイルあたり最大{0}まで追加できます。\n"
-#~ "ファイルはこのフラッシュテキストと一緒に期限切れになります。"
-
 #. placeholder {0}: currentFiles.length
 #: src/routes/f/[slug]/+page.svelte
 msgid "Attached Files ({0})"
@@ -11588,26 +11508,9 @@ msgstr "{0} ダウンロード"
 msgid "<0/> Download"
 msgstr "<0/> ダウンロード"
 
-#~ msgid ""
-#~ "Paste your text below, or leave it empty if you just want to share files.\n"
-#~ "A temporary link will be generated — you can attach files after creation."
-#~ msgstr ""
-#~ "以下のテキストボックスにテキストを貼り付けるか、ファイルのみを共有したい場合は空のままにしてください。\n"
-#~ "一時的なリンクが生成されます — 作成後にファイルを添付できます。"
-
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Your Text <0>(optional — leave blank for file-only)</0>"
 msgstr "あなたのテキスト <0>(オプション — ファイルのみの場合は空白のまま)</0>"
-
-#~ msgid "Paste your text here, or leave blank to share files only... (whitespace & formatting preserved)"
-#~ msgstr "ここにテキストを貼り付けるか、ファイルのみを共有する場合は空白のままにしてください... (空白や書式は保持されます)"
-
-#~ msgid ""
-#~ "Paste your text below, or leave it empty if you just want to share files. A temporary\n"
-#~ "link will be generated — you can attach files after creation."
-#~ msgstr ""
-#~ "以下のテキストを貼り付けてください。ファイルのみを共有したい場合は空のままでも構いません。一時的な\n"
-#~ "リンクが生成されます — 作成後にファイルを添付できます。"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid ""
@@ -11680,10 +11583,494 @@ msgstr "ファイルも添付されていません。"
 msgid "This share contains only files — no text was included. <0/>"
 msgstr "この共有にはファイルのみが含まれています — テキストは含まれていません。<0/>"
 
-#: src/routes/apps/(app)/flash-text/FileUploader.svelte
-msgid "X-File-Name"
-msgstr "X-ファイル名"
+#: src/lib/components/home/AppsSection.svelte
+msgid "Every app is free, instant, and stays in your browser."
+msgstr "すべてのアプリは無料で、すぐに使え、ブラウザ内に保持されます。"
 
-#: src/routes/apps/(app)/flash-text/FileUploader.svelte
-msgid "Upload failed (no response from server)"
-msgstr "アップロードに失敗しました（サーバーからの応答がありません）"
+#: src/lib/components/home/data.svelte.ts
+msgid "Pick a tool"
+msgstr "ツールを選ぶ"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Browse 20+ purpose-built apps for budgets, passwords, time, notes, and more — all on one site."
+msgstr "予算、パスワード、時間、メモなど、20以上の目的別アプリをすべて1つのサイトでご利用いただけます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Use it instantly"
+msgstr "すぐに使う"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Click in, get to work. No account, no sign-up, no install. Data stays in your browser by default."
+msgstr "クリックしてすぐに作業開始。アカウント不要、登録不要、インストール不要。データはデフォルトでブラウザに保存されます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Save it (if you want)"
+msgstr "保存する（お好みで）"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Install as a PWA and keep the full toolkit offline — your work follows you, never locked to a vendor."
+msgstr "PWAとしてインストールすれば、全ツールキットをオフラインで利用可能。作業データはどこでも使え、ベンダーに縛られることはありません。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Free forever"
+msgstr "永久無料"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "No account needed"
+msgstr "アカウント不要"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Open source"
+msgstr "オープンソース"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Do I need to create an account to use the apps?"
+msgstr "アプリを使用するためにアカウントを作成する必要がありますか？"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "No. Every tool works without sign-up. Your data is stored in your browser by default, so you stay in control. Accounts only exist if you want cloud sync or to save progress across devices."
+msgstr "いいえ。すべてのツールはサインアップなしで使えます。データはデフォルトでブラウザに保存されるため、あなたが管理できます。アカウントは、クラウド同期やデバイス間での進行状況の保存が必要な場合のみ存在します。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Is my data safe and private?"
+msgstr "データは安全でプライベートですか？"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. The default behaviour is local-first: budget entries, notes, to-dos, and timers all live in your browser's storage and never touch a server. When you do use a server-backed tool like FlashText, links self-destruct on schedule."
+msgstr "はい。デフォルトの動作はローカル優先です。予算の入力、メモ、ToDo、タイマーはすべてブラウザのストレージに保存され、サーバーに送信されることはありません。FlashTextのようなサーバー利用のツールを使用する場合でも、リンクはスケジュールに従って自動破棄されます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "How is this free? What is the catch?"
+msgstr "なぜ無料なのですか？何か裏はありますか？"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "There is no catch. The whole project is open source on GitHub and maintained as a portfolio + community resource. No ads, no tracking, no premium tier hidden behind a paywall. You can audit every line."
+msgstr "裏はありません。このプロジェクト全体はGitHubでオープンソースであり、ポートフォリオ兼コミュニティリソースとして保守されています。広告なし、トラッキングなし、ペイウォールの背後に隠れたプレミアム層もありません。すべての行を監査できます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Can I use these apps offline?"
+msgstr "これらのアプリをオフラインで使用できますか？"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. The site is a Progressive Web App — install it once and the full toolkit keeps working on a plane, on the train, or anywhere with no signal. Updates land automatically the next time you reconnect."
+msgstr "はい。このサイトはプログレッシブウェブアプリです。一度インストールすれば、飛行機の中、電車の中、または電波のない場所でも全ツールキットが動作し続けます。更新は次回接続時に自動的に適用されます。"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Will more tools be added?"
+msgstr "さらにツールは追加されますか？"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Yes. New tools ship every few weeks — 20 are live today and more are in the pipeline. Open an issue on GitHub if you want a specific tool next."
+msgstr "はい。新しいツールは数週間ごとにリリースされています。現在20のツールが利用可能で、さらに準備中です。次に特定のツールをご希望の場合は、GitHubでIssueを開いてください。"
+
+#: src/lib/components/home/Banner.svelte
+msgid "Svelte Hack 2025 winner"
+msgstr "Svelte Hack 2025 優勝"
+
+#: src/lib/components/home/Banner.svelte
+msgid "— see how we built it"
+msgstr "— 作り方を見る"
+
+#: src/lib/components/home/Banner.svelte
+msgid "Dismiss banner"
+msgstr "バナーを閉じる"
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Frequently asked"
+msgstr "よくある質問"
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Questions that come up before the first click."
+msgstr "最初のクリックの前に出てくる質問。"
+
+#: src/lib/components/home/FAQ.svelte
+msgid "Still wondering something? <0>support@svelte-apps.me</0>"
+msgstr "まだ何か疑問がありますか？ <0>support@svelte-apps.me</0>"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "<0/> Free · Forever · No card"
+msgstr "<0/> 無料 · 永久 · カード不要"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Pick a tool. Get the small job done in under a minute."
+msgstr "ツールを選べば、小さな作業が1分以内で完了します。"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Open the full toolkit <0/>"
+msgstr "フルツールキットを開く <0/>"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "<0/> Try one without leaving"
+msgstr "<0/> そのまま試す"
+
+#: src/lib/components/home/Hero.svelte
+msgid "<0/> Svelte Hack 2025 winner"
+msgstr "<0/> Svelte Hack 2025 受賞"
+
+#: src/lib/components/home/Hero.svelte
+msgid "Hand-picked tools for the <0>small jobs</0> that fill your day."
+msgstr "あなたの一日を満たす<0>小さな仕事</0>のための厳選ツール。"
+
+#: src/lib/components/home/Hero.svelte
+msgid "<0/> Try one right now"
+msgstr "<0/> 今すぐ試す"
+
+#: src/lib/components/home/Hero.svelte
+msgid "Welcome back, <0/> — your dashboard is waiting."
+msgstr "お帰りなさい、<0/> — ダッシュボードが待っています。"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "How it works"
+msgstr "使い方"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "From \"I need a tool\" to \"done\" in three clicks."
+msgstr "「道具が必要」から「完了」まで３回のクリックで。"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Most visitors find a tool and finish their task in <0>under 60 seconds.</0>"
+msgstr "ほとんどの訪問者はツールを見つけて、<0>60秒未満</0>でタスクを完了します。"
+
+#~ msgid "<0/> Try it now — no sign-up"
+#~ msgstr "<0/> 今すぐ試す — サインアップ不要"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Generate a strong password right here."
+msgstr "ここで強力なパスワードを生成できます。"
+
+#~ msgid ""
+#~ "No sign-up, no modal, no waiting. Adjust the length, hit generate, copy. If you like it,\n"
+#~ "the full app remembers the options you pick."
+#~ msgstr ""
+#~ "サインアップ不要、モーダル不要、待ち時間なし。長さを調整して、生成をクリック、コピー。気に入ったら、\n"
+#~ "フルアプリが選択したオプションを記憶します。"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Uses your browser's secure random generator"
+msgstr "ブラウザの安全な乱数生成器を使用します"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Nothing is sent to a server"
+msgstr "サーバーに送信されるものはありません"
+
+#~ msgid "Regenerate password"
+#~ msgstr "パスワードを再生成"
+
+#~ msgid "Copied to clipboard"
+#~ msgstr "クリップボードにコピーしました"
+
+#~ msgid "Length"
+#~ msgstr "長さ"
+
+#~ msgid "<0/> A-Z"
+#~ msgstr "<0/> A-Z"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Categories"
+msgstr "カテゴリ"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Svelte Hack winner"
+msgstr "Svelte Hack 優勝"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Accounts required"
+msgstr "アカウント不要"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Finally — a budget tracker that does not ask for my credit card. Up and running in 30 seconds."
+msgstr "ついに、クレジットカードを求められない予算トラッカーが登場。30秒でセットアップ完了。"
+
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+msgid "Featured user review"
+msgstr "注目のユーザーレビュー"
+
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+#: src/lib/components/home/SocialProof.svelte
+msgid "Visitor feedback"
+msgstr "訪問者の声"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "I keep the whole site installed as a PWA. Half my daily tools live in one tab and they still work on the train."
+msgstr "サイト全体をPWAとしてインストールしています。日々のツールの半分が1つのタブにあり、電車の中でも使えます。"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "Open source, offline, no login. The Mini Apps suite is the productivity tool I recommend most."
+msgstr "オープンソース、オフライン、ログイン不要。Mini Appsスイートは私が最もおすすめする生産性ツールです。"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "<0/> Built and used by a real community"
+msgstr "<0/> 実際のコミュニティによって構築・利用されています"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "<0/> Star the project, open an issue, or send a PR on GitHub"
+msgstr "<0/> GitHubでプロジェクトにスターを付けたり、イシューを開いたり、PRを送ったりしてください"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> The math is simple"
+msgstr "<0/> 計算は単純です"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "20 focused tools vs 1 tool for $15/month."
+msgstr "20個の専門ツール vs 1ツール月額$15。"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Most productivity apps charge per tool, per month, per seat. We don't."
+msgstr "ほとんどの生産性アプリはツールごと、月額ごと、シートごとに課金します。私たちはそうしません。"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "What you pay elsewhere"
+msgstr "他社で支払う金額"
+
+#. placeholder {0}: competitorAnnual
+#: src/lib/components/home/ValueBar.svelte
+msgid "${0}/year — for one tool."
+msgstr "${0}/年 — ツール1つ分。"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> 1 tool, no suite"
+msgstr "<0/> 1ツール、スイートなし"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Account required"
+msgstr "<0/> アカウント必須"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Offline support"
+msgstr "<0/> オフライン対応"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Closed source"
+msgstr "<0/> クローズドソース"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Your data on their servers"
+msgstr "<0/> データは彼らのサーバー上"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> What you get here"
+msgstr "<0/> こちらで得られるもの"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Saves the average user $180/year in subscriptions."
+msgstr "平均的なユーザーは年間$180のサブスクリプション費用を節約。"
+
+#. placeholder {0}: 20
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> {0}+ focused tools, growing"
+msgstr "<0/> {0}以上の専門ツール、増加中"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No account needed"
+msgstr "<0/> アカウント不要"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Full offline support (PWA)"
+msgstr "<0/> 完全オフライン対応 (PWA)"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Open source on GitHub"
+msgstr "<0/> GitHubでオープンソース"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Your data stays in your browser"
+msgstr "<0/> データはブラウザ内に留まります"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
+msgstr "<0/> 通常の有料生産性スイートと比べて<1>年間$180節約</1>。20通りの方法で再利用可能。"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No paywall"
+msgstr "<0/> ペイウォールなし"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No ads"
+msgstr "<0/> 広告なし"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> No \"Pro\" tier"
+msgstr "<0/> 「Pro」プランなし"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "<0/> Hire me if you want a custom one"
+msgstr "<0/> カスタムが必要なら私を雇ってください"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Track a budget"
+msgstr "予算を管理する"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Generate a password"
+msgstr "パスワードを生成する"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Share text that self-destructs"
+msgstr "自動消滅するテキストを共有する"
+
+#: src/lib/components/home/Welcome.svelte
+msgid "Where to start?"
+msgstr "どこから始めますか？"
+
+#~ msgid "<0/> Use the full app"
+#~ msgstr "<0/> フルアプリを使用する"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Save this password"
+msgstr "このパスワードを保存する"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Sign in to save"
+msgstr "保存するにはサインイン"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Copied"
+msgstr "<0/> コピーしました"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Same generator that powers the full app"
+msgstr "フルアプリを動かすのと同じジェネレーター"
+
+#: src/lib/components/home/Hero.svelte
+msgid "Browse the toolkit <0/>"
+msgstr "ツールキットを見る <0/>"
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "Built with Svelte · Open source on GitHub"
+msgstr "Svelteで構築 · GitHubでオープンソース"
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "Browse the full list <0/>"
+msgstr "全リストを表示 <0/>"
+
+#: src/lib/components/home/SocialProof.svelte
+msgid "To first result"
+msgstr "最初の結果へ"
+
+#: src/lib/components/home/FinalCTA.svelte
+msgid "Free, offline, and open source. You can also <0>read the code on GitHub</0> or <1>hire me</1> to build the next one."
+msgstr "無料、オフライン、オープンソース。また、<0>GitHubでコードを読む</0>か、<1>私を雇う</1>ことで次のアプリを構築することもできます。"
+
+#: src/lib/components/home/AppsSection.svelte
+msgid "From tracking a budget to sharing an expiring note — pick a tool, get to work in one click."
+msgstr "予算の管理から有効期限付きのメモの共有まで、ツールを選んでワンクリックで作業を始められます。"
+
+#: src/lib/components/home/Hero.svelte
+msgid ""
+"Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
+"click them. Free, open source, and your data stays in your browser."
+msgstr ""
+"予算、パスワード、QRコード、タイマー、メモ — クリックした瞬間に動作する、目的特化型のミニアプリです。\n"
+"無料かつオープンソースで、あなたのデータはブラウザ内に留まります。"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved Passwords <0>({0})</0>"
+msgstr "保存されたパスワード <0>({0})</0>"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Failed to load saved passwords"
+msgstr "保存されたパスワードの読み込みに失敗しました"
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "FlashText History"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Your FlashText history and shared links."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "All your shared texts and uploaded files"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> Back to FlashText"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Sign in required"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid ""
+"Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
+"appear here."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "No history yet"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid ""
+"Create your first FlashText or upload a file — your shared links and files will appear\n"
+"here."
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> Create a FlashText"
+msgstr ""
+
+#. placeholder {0}: history.length
+#. placeholder {1}: history.length === 1 ? 'entry' : 'entries'
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Showing {0} {1}"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "File"
+msgstr ""
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "<0/> View"
+msgstr ""
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Password Length"
+msgstr "パスワードの長さ"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Generate Password"
+msgstr "<0/> パスワードを生成"
+
+#~ msgid ""
+#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength\n"
+#~ "meter, full controls, full color-coded display."
+#~ msgstr "サインアップ不要、モーダル不要、待ち時間なし。アプリを動かすのと同じツール—強度メーターも、コントロールも、色分け表示もすべてフル搭載。"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "Open the full app <0/>"
+msgstr "フルアプリを開く <0/>"
+
+#: src/lib/components/home/LivePreview.svelte
+msgid ""
+"No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
+"full controls, full color-coded display."
+msgstr ""
+"サインアップ不要、モーダル不要、待ち時間なし。アプリを支えるのと同じツール —\n"
+"フルストレングスメーター、フルコントロール、フルカラーコード表示。"
+
+#~ msgid "Copied"
+#~ msgstr "コピーしました"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Save to my account"
+msgstr "アカウントに保存```"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Copy password to clipboard"
+msgstr "パスワードをクリップボードにコピー"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "<0/> Copy password"
+msgstr "<0/> パスワードをコピー"
+
+#. placeholder {0}: Math.round(passwordStrength)
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "{0}% strong"
+msgstr "{0}% 強度```"
