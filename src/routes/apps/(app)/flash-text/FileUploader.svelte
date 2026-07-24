@@ -2,13 +2,17 @@
 	/**
 	 * Drag-and-drop + click-to-pick file uploader used by the flash-text app.
 	 *
-	 * Uploads each selected file to `PUT /api/flash-files/upload?slug=...` with
-	 * the raw file body and the file name in the `X-File-Name` header. The
-	 * server streams `request.body` straight through to R2, so memory usage
-	 * stays flat regardless of file size (up to 600 MB).
+	 * Upload flow (saves Netlify function invocations by using presigned URLs):
 	 *
-	 * Emits an `uploaded` event with the list of successfully uploaded files
-	 * so the parent can refresh its own state.
+	 *   1. POST metadata to `/api/flash-files/start-upload` (lightweight JSON,
+	 *      no file body — just 1 tiny function invocation).
+	 *   2. Server validates ownership, creates the DB record, returns a
+	 *      presigned PUT URL for the R2 object.
+	 *   3. Client PUTs the file body directly to R2 using the presigned URL
+	 *      (zero function invocations — data goes straight from browser to R2).
+	 *
+	 * This replaces the old streaming-PUT approach that proxied every byte
+	 * through a Netlify function (burning 1 invocation per upload + bandwidth).
 	 */
 	import { Button } from '$lib/components/ui/button';
 	import { Progress } from '$lib/components/ui/progress';
@@ -169,20 +173,109 @@
 	type UploadResult = { ok: true; file: FlashFileItem } | { ok: false; error: string };
 
 	/**
-	 * PUT the raw file bytes to the upload endpoint. The browser sets
-	 * `Content-Length` automatically for Blob/file bodies, so the server
-	 * can stream straight through to R2 without buffering.
+	 * Two-step upload using a presigned URL:
+	 *   1. POST metadata to `/api/flash-files/start-upload` — validates,
+	 *      creates DB record, returns a presigned PUT URL (tiny request).
+	 *   2. XHR PUT the file body directly to the presigned R2 URL — data
+	 *      goes straight from browser to R2, no Netlify function invocations
+	 *      for the actual bytes.
 	 */
-	function uploadWithProgress(
+	async function uploadWithProgress(
 		file: File,
 		onProgress: (pct: number) => void
 	): Promise<UploadResult> {
+		// Step 1: Request a presigned URL from our lightweight endpoint.
+		let presignedUrl: string;
+		let fileSlug: string;
+		let fileMeta: {
+			fileName: string;
+			fileSize: number;
+			contentType: string;
+			expiresAt: string;
+		};
+
+		try {
+			const res = await fetch('/api/flash-files/start-upload', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					slug,
+					fileName: file.name,
+					contentType: file.type || 'application/octet-stream',
+					contentLength: file.size
+				})
+			});
+
+			if (!res.ok) {
+				let msg = `Upload setup failed (${res.status})`;
+				try {
+					const body = (await res.json()) as { message?: string };
+					if (body?.message) msg = body.message;
+				} catch {
+					// ignore parse errors
+				}
+				return { ok: false, error: msg };
+			}
+
+			const data = (await res.json()) as {
+				presignedUrl: string;
+				file: {
+					slug: string;
+					fileName: string;
+					fileSize: number;
+					contentType: string;
+					expiresAt: string;
+				};
+			};
+
+			presignedUrl = data.presignedUrl;
+			fileSlug = data.file.slug;
+			fileMeta = data.file;
+		} catch (e) {
+			return { ok: false, error: 'Network error during upload setup' };
+		}
+
+		// Step 2: Upload the file body directly to R2 using the presigned URL.
+		const uploadResult = await uploadToPresignedUrl(
+			presignedUrl,
+			file,
+			onProgress
+		);
+
+		if (!uploadResult.ok) return uploadResult;
+
+		return {
+			ok: true,
+			file: {
+				id: crypto.randomUUID(),
+				slug: fileSlug,
+				flashTextId: '',
+				fileName: fileMeta.fileName,
+				fileSize: fileMeta.fileSize,
+				contentType: fileMeta.contentType,
+				downloadCount: 0,
+				expiresAt: fileMeta.expiresAt,
+				createdAt: new Date().toISOString(),
+				userId: null
+			}
+		};
+	}
+
+	/**
+	 * PUT the raw file bytes directly to the presigned R2 URL via XHR
+	 * (supports upload progress events).
+	 */
+	function uploadToPresignedUrl(
+		url: string,
+		file: File,
+		onProgress: (pct: number) => void
+	): Promise<{ ok: true } | { ok: false; error: string }> {
 		return new Promise((resolve) => {
 			const xhr = new XMLHttpRequest();
-			const uploadUrl = `/api/flash-files/upload?slug=${encodeURIComponent(slug)}`;
-			xhr.open('PUT', uploadUrl);
+			xhr.open('PUT', url);
+			// The presigned URL was signed with this content type, so it
+			// must match exactly.
 			xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
-			xhr.setRequestHeader('X-File-Name', encodeURIComponent(file.name));
 
 			xhr.upload.onprogress = (event) => {
 				if (event.lengthComputable) {
@@ -191,49 +284,17 @@
 			};
 			xhr.onload = () => {
 				if (xhr.status >= 200 && xhr.status < 300) {
-					try {
-						const data = JSON.parse(xhr.responseText) as FlashFileItem & { slug: string };
-						resolve({
-							ok: true,
-							file: {
-								id: data.id ?? crypto.randomUUID(),
-								slug: data.slug,
-								flashTextId: '',
-								fileName: data.fileName,
-								fileSize: data.fileSize,
-								contentType: data.contentType,
-								downloadCount: 0,
-								expiresAt: data.expiresAt,
-								createdAt: new Date().toISOString(),
-								userId: null
-							}
-						});
-					} catch {
-						resolve({ ok: false, error: 'Invalid response from server' });
-					}
+					resolve({ ok: true });
 				} else {
 					let msg = `Upload failed (${xhr.status})`;
-					try {
-						const body = JSON.parse(xhr.responseText) as { message?: string };
-						if (body?.message) msg = body.message;
-					} catch {
-						// Server may return a plain-text body (e.g. SvelteKit's
-						// 503 for "not configured"). The browser exposes it via
-						// `xhr.responseText` as a string, so fall back to that.
-						if (xhr.responseText) msg = `${msg}: ${xhr.responseText.slice(0, 200)}`;
+					if (xhr.responseText) {
+						msg = `${msg}: ${xhr.responseText.slice(0, 200)}`;
 					}
 					resolve({ ok: false, error: msg });
 				}
 			};
 			xhr.onerror = () => resolve({ ok: false, error: 'Network error during upload' });
 			xhr.onabort = () => resolve({ ok: false, error: 'Upload cancelled' });
-			xhr.onloadend = () => {
-				// 0 status means the request never made it (e.g. CORS or DNS).
-				// `onerror` should also fire, but this is a belt-and-braces fallback.
-				if (xhr.status === 0 && xhr.readyState === 4) {
-					resolve({ ok: false, error: 'Upload failed (no response from server)' });
-				}
-			};
 			xhr.send(file);
 		});
 	}

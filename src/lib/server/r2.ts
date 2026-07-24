@@ -1,5 +1,5 @@
 /**
- * Cloudflare R2 client (S3-compatible) using the lightweight `aws4fetch` package.
+ * Cloudflare R2 client (S3-compatible) using the official AWS SDK.
  *
  * Used by the FlashFile feature to upload, download, and delete objects stored
  * in a private R2 bucket. The bucket is not exposed publicly; downloads flow
@@ -12,9 +12,21 @@
  *   - R2_SECRET_ACCESS_KEY
  *   - R2_BUCKET_NAME
  *   - R2_PUBLIC_BASE_URL  (optional — used for presigned read URLs returned to clients)
+ *
+ * NOTE: We use @aws-sdk/client-s3 (not s3mini) because the official SDK properly
+ * handles S3 custom metadata encoding internally. s3mini passes raw values as
+ * HTTP headers, which causes ByteString errors in undici/fetch when metadata
+ * contains non-ASCII characters (like em-dashes in filenames). The AWS SDK
+ * URL-encodes metadata values before sending and URL-decodes them on retrieval.
  */
 
-import { AwsClient } from 'aws4fetch';
+import {
+	S3Client,
+	PutObjectCommand,
+	GetObjectCommand,
+	DeleteObjectCommand
+} from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 export interface R2Config {
 	accountId: string;
@@ -33,18 +45,17 @@ export interface R2ObjectInfo {
 }
 
 class R2Client {
-	#client: AwsClient | null = null;
+	#client: S3Client | null = null;
 	#config: R2Config | null = null;
-	#endpoint: string | null = null;
 
 	/**
-	 * Lazily initialise the underlying `AwsClient` from environment variables.
+	 * Lazily initialise the underlying `S3Client` from environment variables.
 	 * Throws a clear error if any of the required env vars are missing so
 	 * problems surface immediately during local development.
 	 */
-	#ensure(): { client: AwsClient; config: R2Config; endpoint: string } {
-		if (this.#client && this.#config && this.#endpoint) {
-			return { client: this.#client, config: this.#config, endpoint: this.#endpoint };
+	#ensure(): { client: S3Client; config: R2Config } {
+		if (this.#client && this.#config) {
+			return { client: this.#client, config: this.#config };
 		}
 
 		const accountId = process.env.R2_ACCOUNT_ID;
@@ -74,16 +85,19 @@ class R2Client {
 			publicBaseUrl: publicBaseUrl || undefined
 		};
 
-		this.#client = new AwsClient({
-			accessKeyId: config.accessKeyId,
-			secretAccessKey: config.secretAccessKey,
-			service: 's3',
-			region: 'auto'
+		this.#client = new S3Client({
+			region: 'auto',
+			endpoint: `https://${config.accountId}.r2.cloudflarestorage.com`,
+			credentials: {
+				accessKeyId: config.accessKeyId,
+				secretAccessKey: config.secretAccessKey
+			},
+			// Force path-style addressing for R2 compatibility.
+			forcePathStyle: true
 		});
 		this.#config = config;
-		this.#endpoint = `https://${config.accountId}.r2.cloudflarestorage.com`;
 
-		return { client: this.#client, config, endpoint: this.#endpoint };
+		return { client: this.#client, config: this.#config };
 	}
 
 	/** Whether all required env vars are present. Useful for guarding optional flows. */
@@ -108,15 +122,12 @@ class R2Client {
 		return config.bucketName;
 	}
 
-	/** Build the absolute S3 endpoint URL for an object key. */
-	#objectUrl(key: string): string {
-		const { config, endpoint } = this.#ensure();
-		return `${endpoint}/${config.bucketName}/${encodeS3Key(key)}`;
-	}
-
 	/**
 	 * Upload a `Blob` / `File` / `ArrayBuffer` / `ReadableStream` to R2.
-	 * `contentType` is preserved as `Content-Type` so downloads get the right MIME.
+	 *
+	 * The AWS SDK handles non-ASCII `customMetadata` values transparently —
+	 * it URL-encodes them before sending as `x-amz-meta-*` headers and
+	 * URL-decodes them on retrieval. No ByteString issues.
 	 *
 	 * For streaming uploads, pass `contentLength` explicitly. Without it the
 	 * R2 S3 endpoint can silently truncate the upload (R2 requires a known
@@ -125,116 +136,135 @@ class R2Client {
 	 */
 	async putObject(
 		key: string,
-		body: ReadableStream | ArrayBuffer | Blob,
+		body: ReadableStream | Uint8Array | Blob,
 		contentType: string,
 		customMetadata?: Record<string, string>,
 		contentLength?: number
 	): Promise<R2ObjectInfo> {
-		const { client } = this.#ensure();
-		const url = this.#objectUrl(key);
-		const headers: Record<string, string> = {
-			'content-type': contentType || 'application/octet-stream'
-		};
-		// Pin Content-Length whenever we know it. For Blob/ArrayBuffer we can
-		// derive it; for streams we require the caller to pass it.
-		if (typeof contentLength === 'number' && contentLength > 0) {
-			headers['content-length'] = String(contentLength);
-		} else if (body instanceof ArrayBuffer) {
-			headers['content-length'] = String(body.byteLength);
-		} else if (body instanceof Blob && body.size > 0) {
-			headers['content-length'] = String(body.size);
-		}
-		if (customMetadata) {
-			for (const [k, v] of Object.entries(customMetadata)) {
-				headers[`x-amz-meta-${k.toLowerCase()}`] = v;
-			}
-		}
+		const { client, config } = this.#ensure();
 
-		const request = new Request(url, {
-			method: 'PUT',
-			body,
-			headers
+		const cmd = new PutObjectCommand({
+			Bucket: config.bucketName,
+			Key: key,
+			Body: body,
+			ContentType: contentType || 'application/octet-stream',
+			...(customMetadata && Object.keys(customMetadata).length > 0 && { Metadata: customMetadata }),
+			...(typeof contentLength === 'number' &&
+				contentLength > 0 && { ContentLength: contentLength })
 		});
-		const signed = await client.sign(request);
-		const response = await fetch(signed);
 
-		if (!response.ok) {
-			const errText = await response.text().catch(() => response.statusText);
-			throw new Error(`R2 upload failed (${response.status}): ${errText}`);
-		}
+		const response = await client.send(cmd);
 
-		const etag = response.headers.get('ETag') ?? '';
 		return {
 			key,
-			size: contentLength ?? (body instanceof Blob ? body.size : 0),
+			size: contentLength ?? 0,
 			contentType,
-			etag,
+			etag: response.ETag ?? '',
 			uploaded: new Date()
 		};
 	}
 
 	/**
 	 * Download an object as a `ReadableStream` along with its metadata.
-	 * Returns `null` if the object doesn't exist.
+	 * Returns `null` if the object doesn't exist (NoSuchKey).
 	 */
 	async getObject(
 		key: string
 	): Promise<{ body: ReadableStream; contentType: string; size: number; etag: string } | null> {
-		const { client } = this.#ensure();
-		const url = this.#objectUrl(key);
-		const request = new Request(url, { method: 'GET' });
-		const signed = await client.sign(request);
-		const response = await fetch(signed);
+		const { client, config } = this.#ensure();
 
-		if (response.status === 404) return null;
-		if (!response.ok) {
-			const errText = await response.text().catch(() => response.statusText);
-			throw new Error(`R2 download failed (${response.status}): ${errText}`);
+		try {
+			const response = await client.send(
+				new GetObjectCommand({
+					Bucket: config.bucketName,
+					Key: key
+				})
+			);
+
+			if (!response.Body) return null;
+
+			return {
+				body: response.Body as ReadableStream,
+				contentType: response.ContentType ?? 'application/octet-stream',
+				size: response.ContentLength ?? 0,
+				etag: response.ETag ?? ''
+			};
+		} catch (e: unknown) {
+			if (isNoSuchKey(e)) return null;
+			throw e;
 		}
-
-		if (!response.body) return null;
-
-		return {
-			body: response.body,
-			contentType: response.headers.get('content-type') ?? 'application/octet-stream',
-			size: Number(response.headers.get('content-length') ?? 0),
-			etag: response.headers.get('etag') ?? ''
-		};
 	}
 
-	/** Delete one or more object keys. Silently succeeds for missing objects. */
+	/** Delete an object. Silently succeeds for missing objects. */
 	async deleteObject(key: string): Promise<void> {
-		const { client } = this.#ensure();
-		const url = this.#objectUrl(key);
-		const request = new Request(url, { method: 'DELETE' });
-		const signed = await client.sign(request);
-		const response = await fetch(signed);
-		if (!response.ok && response.status !== 404) {
-			const errText = await response.text().catch(() => response.statusText);
-			throw new Error(`R2 delete failed (${response.status}): ${errText}`);
+		const { client, config } = this.#ensure();
+
+		try {
+			await client.send(
+				new DeleteObjectCommand({
+					Bucket: config.bucketName,
+					Key: key
+				})
+			);
+		} catch (e: unknown) {
+			// 404 is a no-op — object was already gone.
+			if (isNoSuchKey(e)) return;
+			throw e;
 		}
 	}
 
 	/**
-	 * Generate a presigned GET URL that a client can use to download an object
-	 * directly from R2 without proxying through our server. Defaults to 1 hour.
+	 * Generate a presigned GET URL so the browser can download directly from
+	 * R2 without proxying through a Netlify function. Defaults to 1 hour.
 	 */
 	async getPresignedDownloadUrl(key: string, expiresInSeconds = 3600): Promise<string> {
-		const { client, endpoint, config } = this.#ensure();
-		const url = new URL(`${endpoint}/${config.bucketName}/${encodeS3Key(key)}`);
-		url.searchParams.set('X-Amz-Expires', String(expiresInSeconds));
-		const request = new Request(url, { method: 'GET' });
-		const signed = await client.sign(request, { aws: { signQuery: true } });
-		return signed.url;
+		const { client, config } = this.#ensure();
+		return getSignedUrl(
+			client,
+			new GetObjectCommand({
+				Bucket: config.bucketName,
+				Key: key
+			}),
+			{ expiresIn: expiresInSeconds }
+		);
+	}
+
+	/**
+	 * Generate a presigned PUT URL so the browser can upload directly to R2
+	 * without proxying the file body through a Netlify function.
+	 *
+	 * The caller must already have validated ownership, file type, and size.
+	 * The URL expires in 30 minutes (plenty for large files, short enough to
+	 * limit abuse).
+	 */
+	async getPresignedUploadUrl(
+		key: string,
+		contentType: string,
+		expiresInSeconds = 1800
+	): Promise<string> {
+		const { client, config } = this.#ensure();
+		return getSignedUrl(
+			client,
+			new PutObjectCommand({
+				Bucket: config.bucketName,
+				Key: key,
+				ContentType: contentType
+			}),
+			{ expiresIn: expiresInSeconds }
+		);
 	}
 }
 
-/** Encode an S3 object key the way R2 expects (path-style, preserving slashes). */
-function encodeS3Key(key: string): string {
-	return key
-		.split('/')
-		.map((segment) => encodeURIComponent(segment))
-		.join('/');
+/**
+ * Check if an error is an S3 NoSuchKey / 404.
+ * The AWS SDK throws `NoSuchKey` for missing objects (and NotFound for buckets).
+ */
+function isNoSuchKey(e: unknown): boolean {
+	if (e && typeof e === 'object' && 'name' in e) {
+		const name = (e as { name: string }).name;
+		return name === 'NoSuchKey' || name === 'NotFound';
+	}
+	return false;
 }
 
 /** Singleton — the client is stateless and safe to share. */

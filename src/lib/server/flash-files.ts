@@ -177,14 +177,11 @@ export async function cleanupExpiredFlashFiles(): Promise<{
 /**
  * Aggressive, all-in-one cleanup sweep.
  *
- * Called on every public read (the public `f/[slug]` page and the
- * `api/flash-files/[slug]` download route) so that opening *any* active
- * flash text also reaps every expired entry — both DB rows and their
- * backing R2 objects. This keeps the bucket and the database tidy between
- * hourly Netlify cron runs.
+ * Called by the hourly Netlify cron (`netlify/functions/cleanup-flash-texts.js`)
+ * so expired flash texts and files are reaped without relying on user traffic.
  *
  * Bounded per call so a single request can never block the event loop
- * behind a huge delete (the next request will mop up the remainder).
+ * behind a huge delete (the next tick will mop up the remainder).
  *
  * @param options.batchSize  Max number of files/texts to handle per call.
  */
@@ -254,34 +251,12 @@ export async function cleanupAllExpired(options: { batchSize?: number } = {}): P
 }
 
 /**
- * Eager-cleanup wrapper used on every public read.
+ * Aggressive, all-in-one cleanup sweep.
  *
- * Cost control: we run a cheap count first and bail out if the backlog
- * is too big — that way a single request can never trigger hundreds of
- * DB + R2 delete calls, which would burn Netlify invocations on a
- * busy site. The hourly `cleanup-flash-texts` cron uses a much larger
- * batch (500) and will mop up anything we skip here.
+ * Called by the hourly Netlify cron (`netlify/functions/cleanup-flash-texts.js`)
+ * so expired flash texts and files are reaped without relying on user traffic.
  *
- * Set `FLASH_CLEANUP_ON_READ=false` in the environment to disable the
- * eager sweep entirely and rely on the cron alone.
+ * Bounded per call so a single request can never block the event loop
+ * behind a huge delete (the next tick will mop up the remainder).
  */
-export async function cleanupAllExpiredSafe(): Promise<void> {
-	if (process.env.FLASH_CLEANUP_ON_READ === 'false') return;
 
-	try {
-		const [expiredFileCount, expiredTextCount] = await Promise.all([
-			prisma.flashFile.count({ where: { expiresAt: { lt: new Date() } } }),
-			prisma.flashText.count({ where: { expiresAt: { lt: new Date() } } })
-		]);
-
-		// Skip the eager sweep if the backlog is large — the hourly cron
-		// will handle it more efficiently. Threshold of 100 is high enough
-		// that normal traffic never trips it, but low enough that even a
-		// worst-case backlog is cleared within a few cron ticks.
-		if (expiredFileCount + expiredTextCount > 100) return;
-
-		await cleanupAllExpired();
-	} catch (error) {
-		console.error('Eager flash cleanup failed', error);
-	}
-}

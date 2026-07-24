@@ -20,31 +20,10 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 		dir: 'ltr'
 	},
 	{
-		code: 'es',
-		name: 'Spanish',
-		nativeName: 'Español',
-		flag: '🇪🇸',
-		dir: 'ltr'
-	},
-	{
-		code: 'fr',
-		name: 'French',
-		nativeName: 'Français',
-		flag: '🇫🇷',
-		dir: 'ltr'
-	},
-	{
 		code: 'de',
 		name: 'German',
 		nativeName: 'Deutsch',
 		flag: '🇩🇪',
-		dir: 'ltr'
-	},
-	{
-		code: 'zh',
-		name: 'Chinese',
-		nativeName: '中文',
-		flag: '🇨🇳',
 		dir: 'ltr'
 	},
 	{
@@ -53,21 +32,7 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 		nativeName: '日本語',
 		flag: '🇯🇵',
 		dir: 'ltr'
-	},
-	{
-		code: 'pt',
-		name: 'Portuguese',
-		nativeName: 'Português',
-		flag: '🇵🇹',
-		dir: 'ltr'
 	}
-	// {
-	// 	code: 'ar',
-	// 	name: 'Arabic',
-	// 	nativeName: 'العربية',
-	// 	flag: '🇸🇦',
-	// 	dir: 'rtl'
-	// }
 ];
 
 /**

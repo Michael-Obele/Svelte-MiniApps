@@ -119,12 +119,15 @@ export { searchDictionary, type DictionaryEntry, type ApiError } from './diction
 export {
 	getUserFlashTexts,
 	createFlashText,
+	createFlashTextQuick,
 	deleteFlashText,
 	cleanupExpiredFlashTexts,
 	// File operations
 	getFlashTextFiles,
 	getUserFlashFilesList,
-	deleteFlashFile
+	deleteFlashFile,
+	// History
+	getUserHistory
 } from './flash-text.remote';
 
-export type { FlashTextItem, FlashFileItem } from './flash-text.remote';
+export type { FlashTextItem, FlashFileItem, HistoryEntry } from './flash-text.remote';

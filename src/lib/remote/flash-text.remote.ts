@@ -62,13 +62,75 @@ export const getUserFlashTexts = query(async () => {
 	})) satisfies FlashTextItem[];
 });
 
+export type HistoryEntry = {
+	id: string;
+	type: 'text' | 'file';
+	slug: string;
+	label: string;
+	detail: string;
+	createdAt: string;
+	expiresAt: string;
+	parentSlug?: string;
+};
+
+/** Combined history of all user's flash texts and file uploads. */
+export const getUserHistory = query(async (): Promise<HistoryEntry[]> => {
+	const user = await getCurrentUser();
+	if (!user) return [];
+
+	const [flashTexts, flashFiles] = await Promise.all([
+		prisma.flashText.findMany({
+			where: { userId: user.id },
+			orderBy: { createdAt: 'desc' },
+			take: 100
+		}),
+		prisma.flashFile.findMany({
+			where: { userId: user.id },
+			orderBy: { createdAt: 'desc' },
+			take: 100,
+			include: { flashText: { select: { slug: true } } }
+		})
+	]);
+
+	const entries: HistoryEntry[] = [
+		...flashTexts.map((ft) => ({
+			id: `text-${ft.id}`,
+			type: 'text' as const,
+			slug: ft.slug,
+			label: ft.content
+				? ft.content.length > 80
+					? `${ft.content.slice(0, 80)}...`
+					: ft.content
+				: '(No text — file only)',
+			detail: ft.content ? `${ft.content.length} chars` : '0 chars',
+			createdAt: ft.createdAt.toISOString(),
+			expiresAt: ft.expiresAt.toISOString(),
+			parentSlug: undefined
+		})),
+		...flashFiles.map((ff) => ({
+			id: `file-${ff.id}`,
+			type: 'file' as const,
+			slug: ff.slug,
+			label: ff.fileName,
+			detail: `${(ff.fileSize / 1024).toFixed(1)} KB`,
+			createdAt: ff.createdAt.toISOString(),
+			expiresAt: ff.expiresAt.toISOString(),
+			parentSlug: ff.flashText.slug
+		}))
+	];
+
+	entries.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+	return entries;
+});
+
 // ============================================================================
 // FORMS
 // ============================================================================
 
 export const createFlashText = form(
 	v.object({
-		content: v.pipe(v.string(), v.nonEmpty('Content is required')),
+		content: v.optional(v.string(), ''),
 		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required'))
 	}),
 	async (data) => {
@@ -88,7 +150,7 @@ export const createFlashText = form(
 			data: {
 				id: crypto.randomUUID(),
 				slug,
-				content: data.content,
+				content: data.content ?? '',
 				expiresAt,
 				userId
 			}
@@ -98,6 +160,42 @@ export const createFlashText = form(
 			303,
 			`/apps/flash-text?slug=${encodeURIComponent(flashText.slug)}&expiresAt=${encodeURIComponent(flashText.expiresAt.toISOString())}`
 		);
+	}
+);
+
+/** Same as createFlashText but returns data instead of redirecting — used by the inline create flow. */
+export const createFlashTextQuick = command(
+	v.object({
+		content: v.optional(v.string(), ''),
+		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required'))
+	}),
+	async (data) => {
+		let userId: string | null = null;
+		try {
+			const user = await getCurrentUser();
+			userId = user?.id ?? null;
+		} catch {
+			// No auth — anonymous paste
+		}
+
+		const expiryHours = parseInt(data.expiryHours, 10);
+		const slug = generateSlug();
+		const expiresAt = new Date(Date.now() + expiryHours * 60 * 60 * 1000);
+
+		const flashText = await prisma.flashText.create({
+			data: {
+				id: crypto.randomUUID(),
+				slug,
+				content: data.content ?? '',
+				expiresAt,
+				userId
+			}
+		});
+
+		return {
+			slug: flashText.slug,
+			expiresAt: flashText.expiresAt.toISOString()
+		};
 	}
 );
 

@@ -33,6 +33,11 @@
 	let currentFlashText = $derived(data.flashText);
 	let currentFiles = $derived(data.files);
 
+	/** Presigned download URLs keyed by file.id — generated in the load function. */
+	function downloadUrl(file: { id: string; slug: string }): string {
+		return data.fileDownloadUrls?.[file.id] ?? `/api/flash-files/${file.slug}`;
+	}
+
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
@@ -156,8 +161,12 @@
 								>
 							{/if}
 						</div>
-						<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
-						<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
+						{#if currentFlashText.content}
+							<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
+							<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
+						{:else}
+							<Badge variant="secondary" class="text-xs">No text</Badge>
+						{/if}
 						{#if currentFiles.length > 0}
 							<Badge variant="secondary" class="text-xs">
 								{currentFiles.length}
@@ -165,29 +174,49 @@
 							</Badge>
 						{/if}
 					</div>
-					<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
-						{#if copyConfirmed}
-							<Check class="mr-2 size-4 text-green-500" />
-							Copied!
-						{:else}
-							<Copy class="mr-2 size-4" />
-							Copy Text
-						{/if}
-					</Button>
+					{#if currentFlashText.content}
+						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
+							{#if copyConfirmed}
+								<Check class="mr-2 size-4 text-green-500" />
+								Copied!
+							{:else}
+								<Copy class="mr-2 size-4" />
+								Copy Text
+							{/if}
+						</Button>
+					{/if}
 				</CardContent>
 			</Card>
 
-			<!-- Content Card -->
-			<Card>
-				<CardHeader class="pb-3">
-					<CardTitle class="text-muted-foreground text-sm font-medium">Shared Text</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<pre
-						class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
-						{currentFlashText.content}</pre>
-				</CardContent>
-			</Card>
+			<!-- Content Card (or file-only placeholder) -->
+			{#if currentFlashText.content}
+				<Card>
+					<CardHeader class="pb-3">
+						<CardTitle class="text-muted-foreground text-sm font-medium">Shared Text</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<pre
+							class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
+							{currentFlashText.content}</pre>
+					</CardContent>
+				</Card>
+			{:else}
+				<Card>
+					<CardHeader class="pb-3">
+						<CardTitle class="text-muted-foreground text-sm font-medium">No Text Content</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p class="text-muted-foreground py-4 text-center text-sm">
+							This share contains only files — no text was included.
+							{#if currentFiles.length > 0}
+								Files are listed below.
+							{:else}
+								No files are attached either.
+							{/if}
+						</p>
+					</CardContent>
+				</Card>
+			{/if}
 
 			<!-- Files Card -->
 			{#if currentFiles.length > 0}
@@ -238,7 +267,7 @@
 										<Button
 											variant="outline"
 											size="sm"
-											href={`/api/flash-files/${file.slug}`}
+											href={downloadUrl(file)}
 											disabled={isExpired}
 											class="shrink-0"
 										>

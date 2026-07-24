@@ -33,10 +33,13 @@
 			: sortedProjects
 	);
 
-	// Function to handle keyboard shortcut
+	// Function to handle keyboard shortcut (Ctrl+K or Cmd+K)
 	function handleKeydown(event: KeyboardEvent) {
 		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+			// Don't re-trigger if the dialog is already open
+			if (dialogOpen) return;
 			event.preventDefault();
+			event.stopPropagation();
 			dialogOpen = true;
 		}
 	}
