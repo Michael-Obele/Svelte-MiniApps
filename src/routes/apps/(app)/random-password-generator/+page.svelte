@@ -1,34 +1,16 @@
 <script lang="ts">
-	import { Button, buttonVariants } from '@/ui/button';
-	import { Input } from '@/ui/input';
-	import { Slider } from '@/ui/slider';
-	import { Switch } from '@/ui/switch';
-	import { Label } from '@/ui/label';
-	import { Progress } from '@/ui/progress';
-	import { toast } from 'svelte-sonner';
-	import { Copy, Star, StarOff, Check, ExternalLink } from '@lucide/svelte';
+	import { Button } from '@/ui/button';
 	import { site } from '$lib/index.svelte';
-	import { fade } from 'svelte/transition';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import { copyToClipboard } from '$lib/utils';
 	import type { PageProps } from './$types';
-	import { Skeleton } from '@/ui/skeleton';
 	import { PasswordDisplay } from './components';
-	import { getSavedPasswords, savePassword, getCurrentUser } from '$lib/remote';
+	import { getSavedPasswords, getCurrentUser } from '$lib/remote';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
-	import { HelpCircle } from '@lucide/svelte';
+	import { HelpCircle, ExternalLink } from '@lucide/svelte';
 	import { PersistedState } from '$lib/persisted-state';
-	import * as Dialog from '@/ui/dialog';
 	import { ScrollArea } from '@/ui/scroll-area';
-
-	// Define User type inline to match what getCurrentUser returns
-	type User = {
-		id: string;
-		username: string;
-		role: string;
-		createdAt: Date;
-	};
+	import PasswordGenerator from '$lib/components/password/PasswordGenerator.svelte';
 
 	type PasswordRecord = {
 		id: string;
@@ -37,170 +19,13 @@
 		details: string | null;
 	};
 
-	let password = $state('');
-	let passwordLength = $state(12);
-	let includeUppercase = $state(true);
-	let includeLowercase = $state(true);
-	let includeNumbers = $state(true);
-	let includeSymbols = $state(true);
-	let isSaved = $state(false);
+	// View toggle for the saved-passwords panel. Everything else (user, list)
+	// comes from the project's standard remote-query pattern: awaited directly
+	// in markup so the query's built-in loading + dedup + refresh state is
+	// used instead of a manual `$effect` + `$state` pair.
 	let viewing = $state(false);
-	let saving = $state(false);
-
-	let copySuccess = $state(false);
-	let savedPasswords = $state<PasswordRecord[] | null>(null);
-	let loadingPasswords = $state(false);
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('random-password-generator-has-seen-how-to-use', false);
-	let showSavePopover = $state(false);
-	let passwordDetails = $state('');
-
-	const generatePassword = () => {
-		const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-		const numbers = '0123456789';
-		const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-
-		let chars = '';
-		if (includeUppercase) chars += uppercase;
-		if (includeLowercase) chars += lowercase;
-		if (includeNumbers) chars += numbers;
-		if (includeSymbols) chars += symbols;
-
-		if (!chars) {
-			toast.error('Please select at least one character type');
-			return;
-		}
-
-		let result = '';
-		for (let i = 0; i < passwordLength; i++) {
-			result += chars.charAt(Math.floor(Math.random() * chars.length));
-		}
-		password = result;
-
-		if (result) {
-			isSaved = false;
-		}
-	};
-
-	// Automatically calculate password strength when password or options change
-	let passwordStrength = $derived.by(() => {
-		if (!password) return 0;
-		let strength = 0;
-		if (password.length >= 12) strength += 25;
-		if (includeUppercase && /[A-Z]/.test(password)) strength += 25;
-		if (includeLowercase && /[a-z]/.test(password)) strength += 25;
-		if (includeNumbers && /\d/.test(password)) strength += 12.5;
-		if (includeSymbols && /[^A-Za-z0-9]/.test(password)) strength += 12.5;
-		return strength;
-	});
-
-	// Create colored password display
-	let coloredPassword = $derived.by(() => {
-		if (!password) return [];
-		return password.split('').map((char) => {
-			let colorClass = '';
-			if (/\d/.test(char)) {
-				colorClass = 'text-orange-700 dark:text-orange-400'; // Numbers in orange (darker for light mode, lighter for dark mode)
-			} else if (/[^A-Za-z0-9]/.test(char)) {
-				colorClass = 'text-purple-700 dark:text-purple-400'; // Special characters in purple (darker for light mode, lighter for dark mode)
-			} else {
-				colorClass = 'text-foreground'; // Letters in default color
-			}
-			return { char, colorClass };
-		});
-	});
-
-	const getStrengthColor = (strength: number): string => {
-		if (strength <= 25) return 'bg-red-500';
-		if (strength <= 50) return 'bg-orange-500';
-		if (strength <= 75) return 'bg-yellow-500';
-		return 'bg-green-500';
-	};
-
-	async function handleCopy() {
-		await copyToClipboard(
-			password,
-			'Password copied to clipboard',
-			'Failed to copy password',
-			() => {
-				// Success callback - show check icon
-				copySuccess = true;
-				setTimeout(() => {
-					copySuccess = false;
-				}, 2000); // Hide check icon after 2 seconds
-			}
-		);
-	}
-
-	async function handleSave() {
-		if (saving || !currentUser || !password) return;
-
-		try {
-			saving = true;
-			await savePassword({ password, details: passwordDetails || null });
-			await getSavedPasswords().refresh();
-			savedPasswords = await getSavedPasswords();
-			toast.success('Password saved successfully!');
-			showSavePopover = false;
-			passwordDetails = '';
-		} catch (error) {
-			console.error('Error saving password:', error);
-			toast.error('Failed to save password');
-		} finally {
-			saving = false;
-			isSaved = true;
-		}
-	}
-
-	async function handleView() {
-		if (viewing) {
-			viewing = false;
-			return;
-		}
-
-		// If we don't have passwords loaded yet, load them
-		if (!savedPasswords && !loadingPasswords) {
-			await loadSavedPasswords();
-		}
-
-		viewing = true;
-	}
-
-	// Use effect to get current user asynchronously
-	let currentUser = $state<User | null>(null);
-
-	// Load current user on mount
-	$effect(() => {
-		getCurrentUser()
-			.then((user) => {
-				currentUser = user;
-			})
-			.catch((error) => {
-				console.error('Error loading current user:', error);
-			});
-	});
-
-	// Load saved passwords when user becomes available
-	$effect(() => {
-		if (currentUser && !savedPasswords && !loadingPasswords) {
-			loadSavedPasswords();
-		}
-	});
-
-	async function loadSavedPasswords() {
-		if (loadingPasswords) return;
-
-		try {
-			loadingPasswords = true;
-			savedPasswords = await getSavedPasswords();
-		} catch (error) {
-			console.error('Error loading saved passwords:', error);
-			toast.error('Failed to load saved passwords');
-		} finally {
-			loadingPasswords = false;
-		}
-	}
 </script>
 
 <RouteHead
@@ -229,184 +54,70 @@
 		</div>
 
 		<div class="bg-card space-y-4 rounded-lg border p-6">
-			<div class="space-y-2">
-				<div class="flex items-center gap-3">
-					<Dialog.Root bind:open={showSavePopover}>
-						{#if !saving}
-							<Dialog.Trigger
-								class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex size-12 items-center justify-center gap-2 rounded-md border text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-								disabled={!currentUser || !password}
-							>
-								<Star class="h-5 w-5 {isSaved ? 'fill-current' : ''}" />
-							</Dialog.Trigger>
-						{:else}
-							<div class="flex size-12 items-center justify-center rounded-md border">
-								<div
-									class="size-5 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
-								></div>
-							</div>
-						{/if}
-						<Dialog.Content class="w-80">
-							<Dialog.Header>
-								<Dialog.Title>Save Password</Dialog.Title>
-								<Dialog.Description>
-									Add an optional description to help you remember what this password is for.
-								</Dialog.Description>
-							</Dialog.Header>
-							<div class="grid gap-4 py-4">
-								<div class="grid gap-2">
-									<Label for="password-details">Description (Optional)</Label>
-									<Input
-										id="password-details"
-										bind:value={passwordDetails}
-										placeholder="e.g., My email account, Work laptop..."
-										maxlength={200}
-									/>
-									<p class="text-muted-foreground text-xs">
-										{passwordDetails.length}/200 characters
-									</p>
-								</div>
-							</div>
-							<Dialog.Footer>
-								<Button variant="outline" onclick={() => (showSavePopover = false)}>Cancel</Button>
-								<Button onclick={handleSave} disabled={saving}>
-									{#if saving}
-										<div
-											class="mr-2 size-4 animate-spin rounded-full border-2 border-gray-300 border-t-white"
-										></div>
-									{/if}
-									Save
-								</Button>
-							</Dialog.Footer>
-						</Dialog.Content>
-					</Dialog.Root>
+			<!--
+			  Generation core: full app UI. The same component is shown on
+			  the homepage as a live preview, so the visitor already knows
+			  the controls by the time they reach this page.
+			-->
+			<PasswordGenerator />
+		</div>
 
-					<div
-						class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[3rem] w-full items-center rounded-md border px-4 py-3 font-mono text-lg focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-xl"
-					>
-						{#if password}
-							{#each coloredPassword as { char, colorClass }}
-								<span class={colorClass}>{char}</span>
-							{/each}
-						{:else}
-							<span class="text-muted-foreground text-lg md:text-xl"
-								>Your password will appear here</span
-							>
-						{/if}
-					</div>
+		<!--
+		  Saved passwords section.
+		  `getCurrentUser()` is awaited as a block (mirrors the `passwords/+page.svelte`
+		  pattern, which uses `{#await getSavedPasswords()}`). The query has its
+		  own loading + dedup + refresh state — we just consume the result.
+
+		  Block-level `{#await}` is the supported place to await remote queries
+		  in markup; inline `{#if (await ...)}` is rejected by the compiler
+		  under the experimental.async flag.
+		-->
+		{#await getCurrentUser() then user}
+			{#if user?.username}
+				<div class="flex gap-3 pt-2">
+					<Button onclick={() => (viewing = !viewing)} variant="secondary" class="h-11 flex-1">
+						<span class="hidden sm:inline">
+							{viewing ? 'Hide Saved Passwords' : 'View Saved Passwords'}
+						</span>
+						<span class="sm:hidden">Saved</span>
+					</Button>
 					<Button
+						href="/apps/random-password-generator/passwords"
 						variant="outline"
 						size="lg"
-						onclick={handleCopy}
-						disabled={!password}
-						class="size-12 shrink-0"
+						title="View all passwords"
+						class="size-11"
 					>
-						{#if copySuccess}
-							<Check class="h-5 w-5" />
-						{:else}
-							<Copy class="h-5 w-5" />
-						{/if}
+						<ExternalLink class="h-5 w-5" />
 					</Button>
 				</div>
 
-				{#if password}
-					<div transition:fade>
-						<Progress
-							value={passwordStrength}
-							class="h-2 transition-all duration-300 ease-out"
-							classInner={getStrengthColor(passwordStrength)}
-						/>
-						<p class="text-muted-foreground my-4 text-sm">
-							Password Strength: {Math.round(passwordStrength)}%
-						</p>
-					</div>
-				{/if}
-			</div>
-
-			<div class="space-y-6">
-				<div class="space-y-4">
-					<div class="flex items-center justify-between">
-						<Label for="passwordLength" class="text-base font-medium">Password Length</Label>
-						<span class="bg-muted rounded px-2 py-1 font-mono text-sm">{passwordLength}</span>
-					</div>
-					<Slider
-						id="passwordLength"
-						bind:value={passwordLength}
-						min={8}
-						max={32}
-						step={1}
-						type="single"
-						class="my-3"
-					/>
-				</div>
-
-				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-					<div
-						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
-					>
-						<Label class="cursor-pointer">Uppercase Letters</Label>
-						<Switch bind:checked={includeUppercase} />
-					</div>
-					<div
-						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
-					>
-						<Label class="cursor-pointer">Lowercase Letters</Label>
-						<Switch bind:checked={includeLowercase} />
-					</div>
-					<div
-						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
-					>
-						<Label class="cursor-pointer">Numbers</Label>
-						<Switch bind:checked={includeNumbers} />
-					</div>
-					<div
-						class="hover:bg-muted/50 flex items-center justify-between rounded-lg border p-3 transition-colors"
-					>
-						<Label class="cursor-pointer">Special Characters</Label>
-						<Switch bind:checked={includeSymbols} />
-					</div>
-				</div>
-
-				<Button class="h-12 w-full text-base font-medium" onclick={generatePassword}>
-					Generate Password
-				</Button>
-
-				{#if currentUser?.username}
-					<div class="flex gap-3 pt-2">
-						<Button onclick={handleView} variant="secondary" class="h-11 flex-1" disabled={viewing}>
-							<span class="hidden sm:inline">View Saved Passwords</span>
-							<span class="sm:hidden"
-								>Saved ({loadingPasswords
-									? '...'
-									: savedPasswords
-										? savedPasswords.length
-										: '0'})</span
-							>
-						</Button>
-						<Button
-							href="/apps/random-password-generator/passwords"
-							variant="outline"
-							size="lg"
-							title="View all passwords"
-							class="size-11"
-						>
-							<ExternalLink class="h-5 w-5" />
-						</Button>
-					</div>
-
-					<Button
-						onclick={() => (viewing = false)}
-						variant="secondary"
-						class="w-full {!viewing ? 'hidden' : ''}"
-						disabled={!viewing}
-					>
-						Hide Saved Passwords
-					</Button>
-
-					{#if viewing && savedPasswords}
+				{#if viewing}
+					<!--
+					  Await the saved-passwords query directly. Same pattern
+					  as the full passwords list page — behaviour and
+					  loading states stay consistent across both surfaces.
+					-->
+					{#await getSavedPasswords()}
 						<div class="mt-6 space-y-4">
 							<div class="flex items-center justify-between">
 								<h3 class="text-lg font-semibold">Saved Passwords</h3>
+							</div>
+							<div class="flex items-center justify-center py-8">
+								<div
+									class="size-6 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600"
+								></div>
+							</div>
+						</div>
+					{:then passwords}
+						<div class="mt-6 space-y-4">
+							<div class="flex items-center justify-between">
+								<h3 class="text-lg font-semibold">
+									Saved Passwords
+									<span class="text-muted-foreground text-sm font-normal">
+										({passwords.length})
+									</span>
+								</h3>
 								<Button
 									onclick={() => (viewing = false)}
 									variant="ghost"
@@ -418,7 +129,7 @@
 							</div>
 							<ScrollArea class="bg-muted/20 h-[400px] w-full rounded-lg border p-4">
 								<div class="space-y-3">
-									{#each savedPasswords as savedPassword (savedPassword.id)}
+									{#each passwords as savedPassword (savedPassword.id)}
 										<PasswordDisplay password={savedPassword} />
 									{:else}
 										<div class="py-8 text-center">
@@ -431,10 +142,16 @@
 								</div>
 							</ScrollArea>
 						</div>
-					{/if}
+					{:catch error}
+						<p class="text-destructive mt-6 text-sm">
+							{error instanceof Error ? error.message : 'Failed to load saved passwords'}
+						</p>
+					{/await}
 				{/if}
-			</div>
-		</div>
+			{/if}
+		{:catch}
+			<!-- User query failed; treat as unauthenticated and skip the section. -->
+		{/await}
 	</div>
 </div>
 
