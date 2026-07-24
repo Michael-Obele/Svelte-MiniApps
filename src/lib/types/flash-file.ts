@@ -30,10 +30,24 @@ export interface FlashFileItem {
  * regardless of file size.
  *
  * NOTE: This constant is shared with the client (used by FileUploader
- * for UI validation). For deploy-time overrides, the server upload
- * handler reads `MAX_FILE_SIZE_MB` from `$env/static/private`.
+ * for UI validation). You can override it for server-side checks by
+ * changing `RESOLVED_MAX_FILE_SIZE_MB` below.
  */
 export const MAX_FILE_SIZE = 600 * 1024 * 1024;
+
+/**
+ * Overridable max file size in megabytes for server-side enforcement.
+ * Change this number if you want a different limit without touching
+ * `MAX_FILE_SIZE`. Set to 0 to disable the override and always use
+ * `MAX_FILE_SIZE`.
+ */
+export const RESOLVED_MAX_FILE_SIZE_MB = 600;
+
+/** Resolve the effective max file size using the code-level override. */
+export function resolveEffectiveMaxFileSize(): number {
+	if (!RESOLVED_MAX_FILE_SIZE_MB || RESOLVED_MAX_FILE_SIZE_MB <= 0) return MAX_FILE_SIZE;
+	return RESOLVED_MAX_FILE_SIZE_MB * 1024 * 1024;
+}
 
 /** Allowed MIME type prefixes. Empty array = allow all. */
 export const ALLOWED_FILE_PREFIXES: string[] = [

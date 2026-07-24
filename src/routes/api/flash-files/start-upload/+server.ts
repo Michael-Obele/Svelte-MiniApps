@@ -23,16 +23,7 @@ import { getFlashTextBySlug } from '$lib/server/flash-text';
 import { recordFlashFile } from '$lib/server/flash-files';
 import { r2 } from '$lib/server/r2';
 import { getCurrentUser } from '$lib/remote/auth.remote';
-import { ALLOWED_FILE_PREFIXES, MAX_FILE_SIZE } from '$lib/types/flash-file';
-import { MAX_FILE_SIZE_MB } from '$env/static/private';
-
-/** Resolve the effective max file size, preferring the env var override. */
-function resolveEffectiveMaxFileSize(): number {
-	if (!MAX_FILE_SIZE_MB) return MAX_FILE_SIZE;
-	const mb = Number.parseInt(MAX_FILE_SIZE_MB, 10);
-	if (!Number.isFinite(mb) || mb <= 0) return MAX_FILE_SIZE;
-	return mb * 1024 * 1024;
-}
+import { ALLOWED_FILE_PREFIXES, MAX_FILE_SIZE, resolveEffectiveMaxFileSize } from '$lib/types/flash-file';
 
 const ALLOWED_ALL = ALLOWED_FILE_PREFIXES.length === 0;
 

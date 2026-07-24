@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-07-24T07:09:45.607Z\n"
+"PO-Revision-Date: 2026-07-24T07:52:15.885Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -11679,3 +11679,11 @@ msgstr "ファイルも添付されていません。"
 #: src/routes/f/[slug]/+page.svelte
 msgid "This share contains only files — no text was included. <0/>"
 msgstr "この共有にはファイルのみが含まれています — テキストは含まれていません。<0/>"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "X-File-Name"
+msgstr "X-ファイル名"
+
+#: src/routes/apps/(app)/flash-text/FileUploader.svelte
+msgid "Upload failed (no response from server)"
+msgstr "アップロードに失敗しました（サーバーからの応答がありません）"
