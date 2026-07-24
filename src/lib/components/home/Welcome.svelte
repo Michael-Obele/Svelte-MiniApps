@@ -53,7 +53,7 @@ Props:
 			Icon: Lock
 		},
 		{
-			label: 'Share text that self-destructs',
+			label: 'Share self-destructing text',
 			href: '/apps/flash-text',
 			Icon: Share2
 		}
@@ -138,7 +138,7 @@ Props:
 			>
 				Where to start?
 			</p>
-			<div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+			<div class="flex flex-wrap justify-center gap-2">
 				{#each QUICK_STARTS as start (start.href)}
 					<a
 						href={start.href}
