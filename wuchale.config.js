@@ -4,7 +4,7 @@ import { generateText } from 'ai';
 import { deepseek } from '@ai-sdk/deepseek';
 import { defineConfig } from 'wuchale';
 
-const deepseekModel = process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
+const deepseekModel = 'deepseek-v4-flash';
 
 /**
  * @param {string} messages
@@ -27,7 +27,7 @@ async function translateWithDeepSeek(messages, instruction) {
 
 export default defineConfig({
 	// sourceLocale is en by default
-	otherLocales: ['es', 'fr', 'de', 'zh', 'ja', 'pt'],
+	otherLocales: ['de', 'ja'],
 	adapters: {
 		main: svelte({
 			files: {
