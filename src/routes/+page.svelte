@@ -70,7 +70,7 @@
 	<ValueBar />
 
 	<!-- Social proof (stats + community quotes) -->
-	<SocialProof />
+	<!-- <SocialProof /> -->
 
 	<!-- Info blocks (preserved — product story / values) -->
 	<InfoBlocks />
