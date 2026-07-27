@@ -1,7 +1,40 @@
 {
-  "lastProcessedCommit": "89595c6bfa048ad58be5d0b1ae64daf5c1207b87",
-  "generatedAt": "2026-07-24T22:11:07.095Z",
+  "lastProcessedCommit": "b30d10096faf39fb209bfd1492aeb681a7d69994",
+  "generatedAt": "2026-07-27T10:10:02.408Z",
   "timeline": [
+    {
+      "date": "July 27, 2026",
+      "title": "feat: add in-memory caching for GitHub stats API calls",
+      "description": "Updated src/routes/+page.server.ts",
+      "items": [
+        "feat: add in-memory caching for GitHub stats API calls (b30d100)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 27, 2026",
+      "title": "feat: add GitHub activity sparkline, app category donut chart, and animate HowItWorks/ValueBar",
+      "description": "Updated src/lib/components/home/AppsSection.svelte, src/lib/components/home/GitHubStats.svelte, src/lib/components/home/HowItWorks.svelte and more",
+      "items": [
+        "feat: add GitHub activity sparkline, app category donut chart, and animate HowItWorks/ValueBar (2b34a9c)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 25, 2026",
+      "title": "fix: temporarily disable SocialProof component on landing page",
+      "description": "Updated src/routes/+page.svelte",
+      "items": [
+        "fix: temporarily disable SocialProof component on landing page (a1a4490)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
     {
       "date": "July 24, 2026",
       "title": "feat(apps-section): simplify hero text and keep app grid open by default",
