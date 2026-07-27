@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-07-24T22:10:13.212Z\n"
+"PO-Revision-Date: 2026-07-27T09:49:50.751Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -198,6 +198,7 @@ msgstr "Available Years"
 msgid "Other years with contribution data"
 msgstr "Other years with contribution data"
 
+#: src/lib/components/home/ValueBar.svelte
 #: src/lib/index.svelte.ts
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
@@ -8742,21 +8743,17 @@ msgstr "Expand"
 msgid "Coming Soon ({0})"
 msgstr "Coming Soon ({0})"
 
-#: src/lib/components/home/data.svelte.ts
-msgid "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
-msgstr "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
+#~ msgid "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
+#~ msgstr "Your new favorite productivity toolkit. Lightning-fast mini apps crafted for your daily needs. Budget tracking, habit building, task management, and more — each app loads instantly and works beautifully on any device."
 
-#: src/lib/components/home/data.svelte.ts
-msgid "Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow."
-msgstr "Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow."
+#~ msgid "Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow."
+#~ msgstr "Blazing fast and incredibly smooth. Built with Svelte, our apps respond instantly to every interaction — no lag, no waiting. Experience the difference that cutting-edge technology makes in your daily workflow."
 
-#: src/lib/components/home/data.svelte.ts
-msgid "Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done."
-msgstr "Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done."
+#~ msgid "Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done."
+#~ msgstr "Zero learning curve. Maximum productivity. Each mini app is designed to be instantly intuitive — open it and start working. No tutorials needed, no complexity, just clean tools that help you get things done."
 
-#: src/lib/components/home/data.svelte.ts
-msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
-msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
+#~ msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
+#~ msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow. Seamlessly sync across all your devices and scale from basic features to advanced capabilities as your needs grow."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -11796,6 +11793,7 @@ msgstr "Save it (if you want)"
 msgid "Install as a PWA and keep the full toolkit offline — your work follows you, never locked to a vendor."
 msgstr "Install as a PWA and keep the full toolkit offline — your work follows you, never locked to a vendor."
 
+#: src/lib/components/home/ValueBar.svelte
 #: src/lib/components/home/data.svelte.ts
 msgid "Free forever"
 msgstr "Free forever"
@@ -11976,75 +11974,56 @@ msgstr "<0/> Star the project, open an issue, or send a PR on GitHub"
 msgid "<0/> The math is simple"
 msgstr "<0/> The math is simple"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "20 focused tools vs 1 tool for $15/month."
-msgstr "20 focused tools vs 1 tool for $15/month."
+#~ msgid "20 focused tools vs 1 tool for $15/month."
+#~ msgstr "20 focused tools vs 1 tool for $15/month."
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "Most productivity apps charge per tool, per month, per seat. We don't."
-msgstr "Most productivity apps charge per tool, per month, per seat. We don't."
+#~ msgid "Most productivity apps charge per tool, per month, per seat. We don't."
+#~ msgstr "Most productivity apps charge per tool, per month, per seat. We don't."
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "What you pay elsewhere"
-msgstr "What you pay elsewhere"
+#~ msgid "What you pay elsewhere"
+#~ msgstr "What you pay elsewhere"
 
-#. placeholder {0}: competitorAnnual
-#: src/lib/components/home/ValueBar.svelte
-msgid "${0}/year — for one tool."
-msgstr "${0}/year — for one tool."
+#~ msgid "${0}/year — for one tool."
+#~ msgstr "${0}/year — for one tool."
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> 1 tool, no suite"
-msgstr "<0/> 1 tool, no suite"
+#~ msgid "<0/> 1 tool, no suite"
+#~ msgstr "<0/> 1 tool, no suite"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Account required"
-msgstr "<0/> Account required"
+#~ msgid "<0/> Account required"
+#~ msgstr "<0/> Account required"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Offline support"
-msgstr "<0/> Offline support"
+#~ msgid "<0/> Offline support"
+#~ msgstr "<0/> Offline support"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Closed source"
-msgstr "<0/> Closed source"
+#~ msgid "<0/> Closed source"
+#~ msgstr "<0/> Closed source"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Your data on their servers"
-msgstr "<0/> Your data on their servers"
+#~ msgid "<0/> Your data on their servers"
+#~ msgstr "<0/> Your data on their servers"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> What you get here"
-msgstr "<0/> What you get here"
+#~ msgid "<0/> What you get here"
+#~ msgstr "<0/> What you get here"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "Saves the average user $180/year in subscriptions."
-msgstr "Saves the average user $180/year in subscriptions."
+#~ msgid "Saves the average user $180/year in subscriptions."
+#~ msgstr "Saves the average user $180/year in subscriptions."
 
-#. placeholder {0}: 20
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> {0}+ focused tools, growing"
-msgstr "<0/> {0}+ focused tools, growing"
+#~ msgid "<0/> {0}+ focused tools, growing"
+#~ msgstr "<0/> {0}+ focused tools, growing"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> No account needed"
-msgstr "<0/> No account needed"
+#~ msgid "<0/> No account needed"
+#~ msgstr "<0/> No account needed"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Full offline support (PWA)"
-msgstr "<0/> Full offline support (PWA)"
+#~ msgid "<0/> Full offline support (PWA)"
+#~ msgstr "<0/> Full offline support (PWA)"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Open source on GitHub"
-msgstr "<0/> Open source on GitHub"
+#~ msgid "<0/> Open source on GitHub"
+#~ msgstr "<0/> Open source on GitHub"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Your data stays in your browser"
-msgstr "<0/> Your data stays in your browser"
+#~ msgid "<0/> Your data stays in your browser"
+#~ msgstr "<0/> Your data stays in your browser"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
-msgstr "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
+#~ msgid "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
+#~ msgstr "<0/> <1>$180 saved per year</1> vs the typical paid productivity suite. Reused 20 different ways."
 
 #: src/lib/components/home/ValueBar.svelte
 msgid "<0/> No paywall"
@@ -12058,9 +12037,8 @@ msgstr "<0/> No ads"
 msgid "<0/> No \"Pro\" tier"
 msgstr "<0/> No \"Pro\" tier"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid "<0/> Hire me if you want a custom one"
-msgstr "<0/> Hire me if you want a custom one"
+#~ msgid "<0/> Hire me if you want a custom one"
+#~ msgstr "<0/> Hire me if you want a custom one"
 
 #: src/lib/components/home/Welcome.svelte
 msgid "Track a budget"
@@ -12230,3 +12208,223 @@ msgstr "{0}% strong"
 #: src/lib/components/home/Welcome.svelte
 msgid "Share self-destructing text"
 msgstr "Share self-destructing text"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Lightning-fast mini apps for budgets, passwords, QR codes, notes & more — each loads instantly and works offline."
+msgstr "Lightning-fast mini apps for budgets, passwords, QR codes, notes & more — each loads instantly and works offline."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Blazing fast and incredibly smooth. Every interaction responds instantly — no lag, no waiting."
+msgstr "Blazing fast and incredibly smooth. Every interaction responds instantly — no lag, no waiting."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "No tutorials needed. Each app is designed to be instantly intuitive — open it and start working."
+msgstr "No tutorials needed. Each app is designed to be instantly intuitive — open it and start working."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow."
+msgstr "Works everywhere you do. Student, professional, or anywhere in between — our apps adapt to your workflow."
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Finance"
+msgstr "Finance"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Text & Notes"
+msgstr "Text & Notes"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Developer"
+msgstr "Developer"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Utilities"
+msgstr "Utilities"
+
+#: src/lib/components/home/data.svelte.ts
+msgid "Creative"
+msgstr "Creative"
+
+#~ msgid "W{0}"
+#~ msgstr "W{0}"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Recently updated"
+msgstr "Recently updated"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated today"
+msgstr "Updated today"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated yesterday"
+msgstr "Updated yesterday"
+
+#. placeholder {0}: days
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated {0} days ago"
+msgstr "Updated {0} days ago"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated last week"
+msgstr "Updated last week"
+
+#. placeholder {0}: Math.floor(days / 7)
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated {0} weeks ago"
+msgstr "Updated {0} weeks ago"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Updated this month"
+msgstr "Updated this month"
+
+#~ msgid ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it, or open\n"
+#~ "an issue. No black boxes, no surprises."
+#~ msgstr ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it, or open\n"
+#~ "an issue. No black boxes, no surprises."
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "View the source on GitHub →"
+msgstr "View the source on GitHub →"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Tools ready to go"
+msgstr "Tools ready to go"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Budgets, passwords, QR codes, notes & more"
+msgstr "Budgets, passwords, QR codes, notes & more"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Clicks to your first result"
+msgstr "Clicks to your first result"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "No sign-up, no install, just click and work"
+msgstr "No sign-up, no install, just click and work"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Works offline as a PWA"
+msgstr "Works offline as a PWA"
+
+#: src/lib/components/home/HowItWorks.svelte
+msgid "Install once, keep the full toolkit anywhere"
+msgstr "Install once, keep the full toolkit anywhere"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Typical single-tool app"
+msgstr "Typical single-tool app"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "20 tools, $0. The competition charges that per tool."
+msgstr "20 tools, $0. The competition charges that per tool."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Single-tool app"
+msgstr "Single-tool app"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "$180/yr"
+msgstr "$180/yr"
+
+#~ msgid "$0 forever"
+#~ msgstr "$0 forever"
+
+#: src/lib/components/home/ValueBar.svelte
+msgid ""
+"Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
+"source and always will be."
+msgstr ""
+"Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
+"source and always will be."
+
+#. placeholder {0}: 20
+#: src/lib/components/home/ValueBar.svelte
+msgid "See all {0}+ free tools <0/>"
+msgstr "See all {0}+ free tools <0/>"
+
+#~ msgid "M{0}"
+#~ msgstr "M{0}"
+
+#~ msgid "{0} commits across the last 8 months"
+#~ msgstr "{0} commits across the last 8 months"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Commit data loading…"
+msgstr "Commit data loading…"
+
+#~ msgid ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it,\n"
+#~ "or open an issue."
+#~ msgstr ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it,\n"
+#~ "or open an issue."
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid ""
+"One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
+"open an issue."
+msgstr ""
+"One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
+"open an issue."
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Jan"
+msgstr "Jan"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Feb"
+msgstr "Feb"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Mar"
+msgstr "Mar"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Apr"
+msgstr "Apr"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "May"
+msgstr "May"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Jun"
+msgstr "Jun"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Jul"
+msgstr "Jul"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Aug"
+msgstr "Aug"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Sep"
+msgstr "Sep"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Oct"
+msgstr "Oct"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Nov"
+msgstr "Nov"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "Dec"
+msgstr "Dec"
+
+#. placeholder {0}: totalCommits
+#: src/lib/components/home/GitHubStats.svelte
+msgid "{0} commits across the last 12 months"
+msgstr "{0} commits across the last 12 months"
+
+#. placeholder {0}: data.commits
+#. placeholder {1}: data.commits !== 1 ? 's' : ''
+#: src/lib/components/home/GitHubStats.svelte
+msgid "{0} commit{1}"
+msgstr "{0} commit{1}"

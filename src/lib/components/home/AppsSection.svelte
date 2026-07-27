@@ -26,6 +26,8 @@ Layout:
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import Svelte from '$lib/assets/svelte.svelte';
+	import { PieChart } from 'layerchart';
+	import { getAppCategories } from './data.svelte';
 	import type { Project } from '$lib/index.svelte';
 
 	let collator = $derived(new Intl.Collator(persistedLocale.current));
@@ -41,6 +43,15 @@ Layout:
 	let activeAppsOpen = $state(true);
 	// User can still toggle; initial value is seeded from the viewport media query.
 	let comingSoonOpen = $state(isDesktop.current);
+
+	let categoryData = $derived(getAppCategories());
+	const donutColors = [
+		'var(--chart-1)',
+		'var(--chart-2)',
+		'var(--chart-3)',
+		'var(--chart-4)',
+		'var(--chart-5)'
+	];
 </script>
 
 {#snippet appCard(project: Project)}
@@ -112,6 +123,33 @@ Layout:
 				<Svelte class="h-3.5 w-3.5" />
 				<span>Built with Svelte · Open source on GitHub</span>
 			</a>
+
+			<!-- Category donut: compact visual breakdown of app types -->
+			<div class="mt-6 flex items-center justify-center gap-6">
+				<div class="relative h-[140px] w-[140px]">
+					<PieChart
+						data={categoryData}
+						key="name"
+						value="count"
+						innerRadius={-50}
+						cRange={donutColors}
+					>
+						{#snippet tooltip()}{/snippet}
+					</PieChart>
+				</div>
+				<div class="hidden flex-col gap-1.5 sm:flex">
+					{#each categoryData as cat (cat.name)}
+						<div class="flex items-center gap-2 text-xs">
+							<span
+								class="inline-block h-2.5 w-2.5 rounded-full"
+								style="background-color: {cat.color}"
+							></span>
+							<span class="text-muted-foreground">{cat.name}</span>
+							<span class="text-foreground font-medium">{cat.count}</span>
+						</div>
+					{/each}
+				</div>
+			</div>
 		</div>
 
 		<!-- Active Apps Section (always open by default — Goal Gradient) -->

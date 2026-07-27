@@ -5,11 +5,11 @@
 		Banner,
 		FAQ,
 		FinalCTA,
+		GitHubStats,
 		Hero,
 		HowItWorks,
 		InfoBlocks,
 		LivePreview,
-		SocialProof,
 		ValueBar,
 		Welcome
 	} from '$lib/components/home';
@@ -69,8 +69,8 @@
 	<!-- Value bar (contrast effect: $0 vs $180/yr competitor) -->
 	<ValueBar />
 
-	<!-- Social proof (stats + community quotes) -->
-	<!-- <SocialProof /> -->
+	<!-- GitHub activity (proof of life: sparkline + maintenance indicator) -->
+	<GitHubStats github={data.github} />
 
 	<!-- Info blocks (preserved — product story / values) -->
 	<InfoBlocks />

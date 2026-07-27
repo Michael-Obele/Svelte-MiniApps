@@ -1,18 +1,93 @@
 <!--
 @component
 
-HowItWorks — 3-step "Pick → Use → Saved" goal gradient.
+HowItWorks — 3 animated stat cards that show the (Goal Gradient) in motion.
 
-Each step starts at 33% progress (not 0%) by visual design — the numbered chips
-make the path feel short. IKEA Effect: by reading the 3 steps, the user has
-already mentally committed to the workflow.
+Instead of paragraphs of text, each card pairs a count-up number with
+one line of copy. Motion.js scroll() + stagger handles the reveal.
+The count-up animation itself communicates "fast" better than words.
 
+Psychology: Goal Gradient — visible progress numbers make the path
+feel short. IKEA Effect — reading the 3 animated cards commits the
+user to the workflow mentally.
 -->
 
 <script lang="ts">
-	import { getHowItWorksSteps } from './data.svelte';
+	import { Tween } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+	import { Zap, MousePointerClick, ShieldCheck } from '@lucide/svelte';
 
-	let steps = $derived(getHowItWorksSteps());
+	// Animated counters with count-down target for "clicks"
+	const toolCount = new Tween(0, { duration: 1800, easing: cubicOut });
+	const clickCount = new Tween(12, { duration: 2000, easing: cubicOut }); // 12 → 3
+	const offlineCount = new Tween(0, { duration: 1600, easing: cubicOut });
+
+	async function triggerAnimations() {
+		// Snap to starting values instantly (duration 0), then animate to targets
+		await toolCount.set(0, { duration: 0 });
+		toolCount.target = 20;
+
+		await clickCount.set(12, { duration: 0 });
+		clickCount.target = 3;
+
+		await offlineCount.set(0, { duration: 0 });
+		offlineCount.target = 100;
+	}
+
+	// Replay count-up on every scroll-into-view
+	onMount(() => {
+		// Initial trigger on first paint
+		triggerAnimations();
+
+		let isVisible = true;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting && !isVisible) {
+						isVisible = true;
+						triggerAnimations();
+					} else if (!entry.isIntersecting) {
+						isVisible = false;
+					}
+				}
+			},
+			{ threshold: 0.4 }
+		);
+
+		const section = document.getElementById('how-it-works');
+		if (section) observer.observe(section);
+
+		return () => observer.disconnect();
+	});
+
+	const STEPS = [
+		{
+			number: 1,
+			value: toolCount,
+			suffix: '+',
+			label: 'Tools ready to go',
+			description: 'Budgets, passwords, QR codes, notes & more',
+			Icon: Zap
+		},
+		{
+			number: 2,
+			value: clickCount,
+			suffix: '',
+			label: 'Clicks to your first result',
+			description: 'No sign-up, no install, just click and work',
+			Icon: MousePointerClick
+		},
+		{
+			number: 3,
+			value: offlineCount,
+			suffix: '%',
+			label: 'Works offline as a PWA',
+			description: 'Install once, keep the full toolkit anywhere',
+			Icon: ShieldCheck
+		}
+	];
 </script>
 
 <section
@@ -29,36 +104,51 @@ already mentally committed to the workflow.
 			</h2>
 		</div>
 
-		<ol class="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 md:gap-4 lg:gap-6">
-			{#each steps as step (step.number)}
+		<ol class="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+			{#each STEPS as step, i (step.number)}
+				{@const { Icon } = step}
 				<li
-					class="bg-card text-card-foreground group relative flex flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md md:p-8"
+					class="step-card bg-card text-card-foreground flex flex-col items-center gap-4 rounded-2xl border p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md md:p-8"
+					style:animation="fadeUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) {i * 0.15}s both"
 				>
-					<!-- Step number chip (visible progress) -->
-					<div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl {step.accent}">
-						<span class="text-lg font-bold">{step.number}</span>
+					<div
+						class="bg-primary/10 text-primary flex h-14 w-14 items-center justify-center rounded-xl"
+					>
+						<Icon class="h-7 w-7" />
 					</div>
 
-					<!-- Goal-gradient progress line (visible between steps) -->
-					{#if step.number < steps.length}
-						<div
-							aria-hidden="true"
-							class="from-border absolute top-12 right-0 left-full hidden h-px bg-gradient-to-r to-transparent md:block"
-						></div>
-					{/if}
+					<!-- Count-up number: the main visual -->
+					<div class="text-primary text-4xl font-bold tracking-tighter md:text-5xl">
+						{Math.round(step.value.current)}{step.suffix}
+					</div>
 
-					<h3 class="mb-2 text-lg font-semibold md:text-xl">{step.title}</h3>
-					<p class="text-muted-foreground text-sm leading-relaxed md:text-base">
-						{step.description}
-					</p>
+					<div>
+						<h3 class="text-foreground text-lg font-semibold">{step.label}</h3>
+						<p class="text-muted-foreground mt-1 text-sm leading-relaxed">
+							{step.description}
+						</p>
+					</div>
 				</li>
 			{/each}
 		</ol>
 
-		<!-- Goal Gradient callout: "you're 1 click away from done" -->
+		<!-- Goal Gradient callout -->
 		<p class="text-muted-foreground mt-10 text-center text-sm md:text-base">
 			Most visitors find a tool and finish their task in
 			<span class="text-foreground font-semibold">under 60 seconds.</span>
 		</p>
 	</div>
 </section>
+
+<style>
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
