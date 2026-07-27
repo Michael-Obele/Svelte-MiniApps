@@ -23,6 +23,7 @@ the redundant "look at all the apps" messaging from above the fold.
 	import { Badge } from '$lib/components/ui/badge';
 	import { ArrowRight, Play, Check, Zap, Lock, Github, Trophy } from '@lucide/svelte';
 	import Svelte from '$lib/assets/svelte.svelte';
+	import { onMount } from 'svelte';
 
 	import { getTrustBadges } from './data.svelte';
 
@@ -32,6 +33,24 @@ the redundant "look at all the apps" messaging from above the fold.
 	let trustBadges = $derived(getTrustBadges());
 
 	let { data } = $props();
+
+	// 0 = waiting (pre-flicker pause), 1 = playing auto-flicker, 2 = hover-only
+	let flickerPhase = $state(0);
+
+	onMount(() => {
+		const t1 = setTimeout(() => {
+			flickerPhase = 1; // start flicker after 750ms
+		}, 750);
+
+		const t2 = setTimeout(() => {
+			flickerPhase = 2; // switch to hover-only after flicker completes
+		}, 1950); // 750ms delay + 1.2s animation
+
+		return () => {
+			clearTimeout(t1);
+			clearTimeout(t2);
+		};
+	});
 </script>
 
 <section
@@ -132,10 +151,11 @@ the redundant "look at all the apps" messaging from above the fold.
 				  wrapper instead of via inline style.
 				-->
 				<div
+					data-flicker-phase={flickerPhase}
 					class="flicker-logo group relative drop-shadow-[0_0_40px_rgba(220,38,38,0.25)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:drop-shadow-[0_0_80px_rgba(220,38,38,0.45)]"
 				>
 					<div
-						class="relative opacity-15 transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-80"
+						class="flicker-inner relative opacity-15 transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-80"
 					>
 						<Svelte class="h-72 w-72 xl:h-96 xl:w-96" />
 					</div>
@@ -147,14 +167,25 @@ the redundant "look at all the apps" messaging from above the fold.
 
 <style>
 	:global {
-		/* Staggered flickering light-on effect for the Svelte logo SVG paths.
-		   Mimics neon signs struggling to ignite — rapid on/off pulses
-		   before settling into steady illumination on hover. */
-		.flicker-logo:hover svg g path:nth-of-type(1) {
+		/* Phase 1: auto-flicker — lift the wrapper opacity cap so paths shine at full brightness */
+		.flicker-logo[data-flicker-phase='1'] .flicker-inner {
+			opacity: 1;
+		}
+
+		.flicker-logo[data-flicker-phase='1'] svg g path:nth-of-type(1) {
 			animation: flickerOn 0.9s ease-out both;
 		}
 
-		.flicker-logo:hover svg g path:nth-of-type(2) {
+		.flicker-logo[data-flicker-phase='1'] svg g path:nth-of-type(2) {
+			animation: flickerOn 0.9s 0.25s ease-out both;
+		}
+
+		/* Phase 2: after auto-flicker — only on hover */
+		.flicker-logo[data-flicker-phase='2']:hover svg g path:nth-of-type(1) {
+			animation: flickerOn 0.9s ease-out both;
+		}
+
+		.flicker-logo[data-flicker-phase='2']:hover svg g path:nth-of-type(2) {
 			animation: flickerOn 0.9s 0.25s ease-out both;
 		}
 
