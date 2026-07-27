@@ -125,17 +125,73 @@ the redundant "look at all the apps" messaging from above the fold.
 			<div class=" relative hidden lg:col-span-2 lg:flex lg:items-center lg:justify-center">
 				<!-- Soft tint behind the logo to give it presence without solid color. -->
 				<div aria-hidden="true" class="bg-primary/5 absolute inset-0 rounded-full blur-2xl"></div>
+
 				<!--
 				  Wrapper div carries the opacity — the Svelte asset only
 				  accepts `class` as a prop, so we apply opacity-15 to the
 				  wrapper instead of via inline style.
 				-->
 				<div
-					class="relative opacity-15 drop-shadow-[0_0_40px_rgba(220,38,38,0.25)] transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-80"
+					class="flicker-logo group relative drop-shadow-[0_0_40px_rgba(220,38,38,0.25)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:drop-shadow-[0_0_80px_rgba(220,38,38,0.45)]"
 				>
-					<Svelte class="h-72 w-72 xl:h-96 xl:w-96" />
+					<div
+						class="relative opacity-15 transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-80"
+					>
+						<Svelte class="h-72 w-72 xl:h-96 xl:w-96" />
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<style>
+	:global {
+		/* Staggered flickering light-on effect for the Svelte logo SVG paths.
+		   Mimics neon signs struggling to ignite — rapid on/off pulses
+		   before settling into steady illumination on hover. */
+		.flicker-logo:hover svg g path:nth-of-type(1) {
+			animation: flickerOn 0.9s ease-out both;
+		}
+
+		.flicker-logo:hover svg g path:nth-of-type(2) {
+			animation: flickerOn 0.9s 0.25s ease-out both;
+		}
+
+		@keyframes flickerOn {
+			0%,
+			3%,
+			9%,
+			14%,
+			18%,
+			24% {
+				opacity: 0.15;
+			}
+			2%,
+			7%,
+			11%,
+			17%,
+			22% {
+				opacity: 1;
+			}
+			30% {
+				opacity: 0.35;
+			}
+			45% {
+				opacity: 1;
+			}
+			60% {
+				opacity: 0.5;
+			}
+			75% {
+				opacity: 1;
+			}
+			88% {
+				opacity: 0.7;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+	}
+</style>
