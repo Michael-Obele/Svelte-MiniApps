@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "9eafd3059a7d83e911a298c6e84e63501473a440",
-  "generatedAt": "2026-07-27T11:25:14.714Z",
+  "lastProcessedCommit": "7c9bec4b50254778e609e29a9b4736491704e01e",
+  "generatedAt": "2026-07-27T11:37:10.458Z",
   "timeline": [
     {
       "date": "July 27, 2026",
@@ -34,6 +34,17 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 27, 2026",
+      "title": "fix(flash-files): force direct R2 download with Content-Disposition",
+      "description": "Updated src/lib/server/flash-files.ts, src/lib/server/r2.ts, src/routes/api/flash-files/[slug]/+server.ts and more",
+      "items": [
+        "fix(flash-files): force direct R2 download with Content-Disposition (7c9bec4)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "July 27, 2026",
