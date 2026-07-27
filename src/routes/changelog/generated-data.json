@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "b30d10096faf39fb209bfd1492aeb681a7d69994",
-  "generatedAt": "2026-07-27T10:10:02.408Z",
+  "lastProcessedCommit": "9eafd3059a7d83e911a298c6e84e63501473a440",
+  "generatedAt": "2026-07-27T11:25:14.714Z",
   "timeline": [
     {
       "date": "July 27, 2026",
@@ -8,6 +8,28 @@
       "description": "Updated src/routes/+page.server.ts",
       "items": [
         "feat: add in-memory caching for GitHub stats API calls (b30d100)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 27, 2026",
+      "title": "feat(hero): add phased flicker animation for Svelte logo",
+      "description": "Updated src/lib/components/home/Hero.svelte, src/locales/de.po, src/locales/en.po and more",
+      "items": [
+        "feat(hero): add phased flicker animation for Svelte logo (9eafd30)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 27, 2026",
+      "title": "feat(hero): add neon flicker animation",
+      "description": "Updated src/lib/components/home/Hero.svelte",
+      "items": [
+        "feat(hero): add neon flicker animation (8a3f346)"
       ],
       "type": "feature",
       "icon": "Rocket",
