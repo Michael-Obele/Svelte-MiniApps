@@ -17,6 +17,7 @@ function toItem(file: {
 	fileName: string;
 	fileSize: number;
 	contentType: string;
+	storageKey: string;
 	downloadCount: number;
 	expiresAt: Date;
 	createdAt: Date;
@@ -29,6 +30,7 @@ function toItem(file: {
 		fileName: file.fileName,
 		fileSize: file.fileSize,
 		contentType: file.contentType,
+		storageKey: file.storageKey,
 		downloadCount: file.downloadCount,
 		expiresAt: file.expiresAt.toISOString(),
 		createdAt: file.createdAt.toISOString(),

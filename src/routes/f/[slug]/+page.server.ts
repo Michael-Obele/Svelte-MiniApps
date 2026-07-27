@@ -18,7 +18,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		await Promise.allSettled(
 			files.map(async (file) => {
 				if (file.storageKey) {
-					const url = await r2.getPresignedDownloadUrl(file.storageKey, 300);
+					const url = await r2.getPresignedDownloadUrl(file.storageKey, 300, file.fileName);
 					fileDownloadUrls[file.id] = url;
 				}
 			})

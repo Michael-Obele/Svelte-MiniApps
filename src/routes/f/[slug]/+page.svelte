@@ -268,6 +268,8 @@
 											variant="outline"
 											size="sm"
 											href={downloadUrl(file)}
+											target="_blank"
+											rel="noopener noreferrer"
 											disabled={isExpired}
 											class="shrink-0"
 										>

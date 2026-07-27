@@ -216,17 +216,33 @@ class R2Client {
 	/**
 	 * Generate a presigned GET URL so the browser can download directly from
 	 * R2 without proxying through a Netlify function. Defaults to 1 hour.
+	 *
+	 * When `fileName` is provided, the presigned URL includes
+	 * `response-content-disposition=attachment` so the browser forces a
+	 * download rather than displaying the file inline.
 	 */
-	async getPresignedDownloadUrl(key: string, expiresInSeconds = 3600): Promise<string> {
+	async getPresignedDownloadUrl(
+		key: string,
+		expiresInSeconds = 3600,
+		fileName?: string
+	): Promise<string> {
 		const { client, config } = this.#ensure();
-		return getSignedUrl(
-			client,
-			new GetObjectCommand({
-				Bucket: config.bucketName,
-				Key: key
-			}),
-			{ expiresIn: expiresInSeconds }
-		);
+
+		const commandInput: { Bucket: string; Key: string; ResponseContentDisposition?: string } = {
+			Bucket: config.bucketName,
+			Key: key
+		};
+
+		if (fileName) {
+			// Encode the filename for RFC 5987 compliance so non-ASCII names
+			// survive the redirect hop.
+			const encoded = encodeURIComponent(fileName);
+			commandInput.ResponseContentDisposition = `attachment; filename="${encoded}"; filename*=UTF-8''${encoded}`;
+		}
+
+		return getSignedUrl(client, new GetObjectCommand(commandInput), {
+			expiresIn: expiresInSeconds
+		});
 	}
 
 	/**

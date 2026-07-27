@@ -32,7 +32,9 @@ export const GET: RequestHandler = async ({ params }) => {
 
 	// Generate a short-lived presigned URL (5 min) and redirect.
 	// The client downloads directly from R2 — no data flows through us.
-	const presignedUrl = await r2.getPresignedDownloadUrl(file.storageKey, 300);
+	// Pass fileName so R2 serves Content-Disposition: attachment, forcing
+	// the browser to download rather than display the file inline.
+	const presignedUrl = await r2.getPresignedDownloadUrl(file.storageKey, 300, file.fileName);
 
 	throw redirect(302, presignedUrl);
 };
