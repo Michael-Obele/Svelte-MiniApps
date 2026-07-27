@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-07-27T10:20:37.409Z\n"
+"PO-Revision-Date: 2026-07-27T12:17:45.370Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -1192,7 +1192,6 @@ msgstr "クリア"
 msgid "Close"
 msgstr "閉じる"
 
-#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
@@ -2543,6 +2542,7 @@ msgid "hire@svelte-apps.me"
 msgstr "hire@svelte-apps.me"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/UserProfileCard.svelte
@@ -2550,8 +2550,6 @@ msgstr "hire@svelte-apps.me"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Footer.svelte
 #: src/routes/hire/+page.svelte
 msgid "Twitter"
 msgstr "Twitter"
@@ -2563,18 +2561,17 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/hire/+page.svelte
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/lib/components/blocks/Footer.svelte
 #: src/routes/hire/+page.svelte
 msgid "Discord: michael_obele"
 msgstr "Discord: michael_obele"
 
-#: src/lib/components/blocks/Footer.svelte
 #: src/routes/hire/+page.svelte
 msgid "Discord"
 msgstr "Discord"
@@ -2699,9 +2696,8 @@ msgstr "このアプリはベータ版です。機能は不安定または不完
 msgid "Blur In"
 msgstr "ぼかしイン"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Explore"
-msgstr "探検"
+#~ msgid "Explore"
+#~ msgstr "探検"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "All Apps"
@@ -2717,31 +2713,24 @@ msgstr "ホーム"
 msgid "View Source"
 msgstr "ソースを表示"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Company"
-msgstr "会社"
+#~ msgid "Company"
+#~ msgstr "会社"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "About Us"
-msgstr "私たちについて"
+#~ msgid "About Us"
+#~ msgstr "私たちについて"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Work with Us"
-msgstr "私たちと一緒に働きませんか"
+#~ msgid "Work with Us"
+#~ msgstr "私たちと一緒に働きませんか"
 
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Footer.svelte
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Support"
-msgstr "サポート"
+#~ msgid "Support"
+#~ msgstr "サポート"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Get Support"
 msgstr "サポートを受ける"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Contact Us"
-msgstr "お問い合わせ"
+#~ msgid "Contact Us"
+#~ msgstr "お問い合わせ"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
@@ -2753,19 +2742,16 @@ msgstr "ミニアプリ"
 msgid "<0/> A collection of useful mini applications built with Svelte and love."
 msgstr "<0/> Svelteと愛で作られた便利なミニアプリケーション集。"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Hire the Developer"
-msgstr "開発者を雇う"
+#~ msgid "Hire the Developer"
+#~ msgstr "開発者を雇う"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Back to top <0/>"
-msgstr "トップに戻る <0/>"
+#~ msgid "Back to top <0/>"
+#~ msgstr "トップに戻る <0/>"
 
 #: src/lib/components/blocks/Footer.svelte
 msgid "Work with Michael"
 msgstr "Michaelと一緒に働く"
 
-#: src/lib/components/blocks/Footer.svelte
 #: src/routes/changelog/announcements/+page.svelte
 msgid "Feedback"
 msgstr "フィードバック"
@@ -2774,18 +2760,14 @@ msgstr "フィードバック"
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "Sponsor Michael-Obele"
-msgstr "Michael-Obeleを支援する"
+#~ msgid "Sponsor Michael-Obele"
+#~ msgstr "Michael-Obeleを支援する"
 
-#. placeholder {0}: currentYear
-#: src/lib/components/blocks/Footer.svelte
-msgid "<0/> 2024- {0} Svelte Apps. All rights reserved."
-msgstr "<0/> 2024-{0} Svelte Apps. 無断複写・転載を禁じます。"
+#~ msgid "<0/> 2024- {0} Svelte Apps. All rights reserved."
+#~ msgstr "<0/> 2024-{0} Svelte Apps. 無断複写・転載を禁じます。"
 
-#: src/lib/components/blocks/Footer.svelte
-msgid "<0/> <1>Pro Tip:</1> This app is installable!"
-msgstr "<0/> <1>プロのヒント:</1> このアプリはインストール可能です！"
+#~ msgid "<0/> <1>Pro Tip:</1> This app is installable!"
+#~ msgstr "<0/> <1>プロのヒント:</1> このアプリはインストール可能です！"
 
 #: src/lib/components/blocks/Info.svelte
 msgid "App Information"
@@ -2837,6 +2819,7 @@ msgstr "M3 17L21 6"
 msgid "Apps"
 msgstr "アプリ"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 msgid "About"
 msgstr "概要"
@@ -3280,6 +3263,7 @@ msgstr "未接続"
 msgid "Disconnect"
 msgstr "切断"
 
+#: src/lib/components/blocks/Footer.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Connect"
@@ -12237,3 +12221,91 @@ msgstr "過去12ヶ月間の{0}件のコミット"
 #: src/lib/components/home/GitHubStats.svelte
 msgid "{0} commit{1}"
 msgstr "{0} コミット{1}"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Discover"
+msgstr "発見"
+
+#~ msgid "All Apps (21)"
+#~ msgstr "すべてのアプリ (21)"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "What's New"
+msgstr "新着情報"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Build"
+msgstr "ビルド"
+
+#~ msgid "View Source <0/>"
+#~ msgstr "ソースを表示 <0/>"
+
+#~ msgid "Sponsor <0/>"
+#~ msgstr "スポンサーになる <0/>"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Trust"
+msgstr "信頼"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "MIT License"
+msgstr "MIT ライセンス"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Code of Conduct"
+msgstr "行動規範"
+
+#~ msgid "<0/> 21 free tools"
+#~ msgstr "<0/> 21の無料ツール"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "<0/> Open source"
+msgstr "<0/> オープンソース"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "No ads • No tracking"
+msgstr "広告なし • 追跡なし"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "<0/> Loved these tools? Work with Michael"
+msgstr "<0/> これらのツールを気に入りましたか？ Michaelと一緒に働きませんか？"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "X (Twitter)"
+msgstr "X (Twitter)"
+
+#. placeholder {0}: currentYear
+#: src/lib/components/blocks/Footer.svelte
+msgid "<0/> 2024-{0} Svelte Apps"
+msgstr "<0/> 2024-{0} Svelteアプリ"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "<0/> Back to top"
+msgstr "<0/> トップに戻る"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Install for offline use"
+msgstr "オフラインで使用するためにインストール"
+
+#~ msgid "— your tools, anytime"
+#~ msgstr "— あなたのツール、いつでも"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "Sponsor"
+msgstr "スポンサー"
+
+#~ msgid "& your tools, anytime"
+#~ msgstr "& あなたのツール、いつでも"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "your tools, anytime"
+msgstr "あなたのツール、いつでも"
+
+#. placeholder {0}: appCount
+#: src/lib/components/blocks/Footer.svelte
+msgid "<0/> {0} free tools"
+msgstr "<0/> {0}個の無料ツール"
+
+#: src/lib/components/blocks/Footer.svelte
+msgid "X / Twitter"
+msgstr "X / Twitter"
