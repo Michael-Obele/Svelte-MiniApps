@@ -1,47 +1,100 @@
 import type { PageServerLoad } from './$types';
 import { generateMantra } from '$lib/utility/greetings.server';
 
-async function fetchGitHubStats(): Promise<{
+// ─── In-memory cache ───────────────────────────────────────────
+// GitHub's unauthenticated API allows 60 requests/hour per IP.
+// Caching avoids hitting the rate limit on every SSR page load.
+// The data is public (repo stats), so shared across all users is safe.
+
+type GitHubStatsData = {
 	lastCommitDate: string | null;
 	weeklyActivity: Array<{ total: number; week: number }>;
-} | null> {
+};
+
+let cachedStats: GitHubStatsData | null = null;
+let cacheTimestamp = 0;
+const STATS_TTL = 60 * 60 * 1000; // 1 hour — weekly stats change slowly
+
+let cachedCommitDate: string | null = null;
+let commitDateTimestamp = 0;
+const COMMIT_DATE_TTL = 5 * 60 * 1000; // 5 minutes — last commit changes more often
+
+async function fetchGitHubStats(): Promise<GitHubStatsData | null> {
+	const now = Date.now();
+
+	// Return cached data if still fresh — zero API calls
+	if (cachedStats && now - cacheTimestamp < STATS_TTL) {
+		// Still refresh lastCommitDate if its cache is stale (cheap 1-commit API)
+		if (!cachedCommitDate || now - commitDateTimestamp >= COMMIT_DATE_TTL) {
+			const fresh = await fetchLastCommitDate();
+			if (fresh) {
+				cachedCommitDate = fresh;
+				commitDateTimestamp = now;
+			}
+		}
+		return { ...cachedStats, lastCommitDate: cachedCommitDate ?? cachedStats.lastCommitDate };
+	}
+
 	try {
-		// Use GitHub Stats API — returns 52 weeks of commit counts (1 full year)
+		// Primary: GitHub Stats API — 52 weeks of commit counts
 		const statsRes = await fetch(
 			'https://api.github.com/repos/Michael-Obele/Svelte-MiniApps/stats/commit_activity',
 			{ headers: { Accept: 'application/vnd.github.v3+json' } }
 		);
-		if (!statsRes.ok) return fallbackFromCommits();
 
-		const stats: Array<{ total: number; week: number }> = await statsRes.json();
-		if (!Array.isArray(stats) || stats.length === 0) return fallbackFromCommits();
+		if (statsRes.ok) {
+			const stats: Array<{ total: number; week: number }> = await statsRes.json();
+			if (Array.isArray(stats) && stats.length > 0) {
+				const weeklyActivity = stats.map((w) => ({ total: w.total, week: w.week }));
 
-		// Pass both total AND the week timestamp so the component can
-		// accurately place each week into the right month
-		const weeklyActivity = stats.map((w) => ({ total: w.total, week: w.week }));
+				const lastCommitDate = (await fetchLastCommitDate()) ?? null;
 
-		// Last commit date from the most recent commit (separate call, lightweight)
-		const lastCommitRes = await fetch(
+				cachedStats = { lastCommitDate, weeklyActivity };
+				cacheTimestamp = now;
+				if (lastCommitDate) {
+					cachedCommitDate = lastCommitDate;
+					commitDateTimestamp = now;
+				}
+				return cachedStats;
+			}
+		}
+
+		// Fallback: paginated commits API
+		const fallback = await fallbackFromCommits();
+		if (fallback) {
+			cachedStats = fallback;
+			cacheTimestamp = now;
+			if (fallback.lastCommitDate) {
+				cachedCommitDate = fallback.lastCommitDate;
+				commitDateTimestamp = now;
+			}
+			return fallback;
+		}
+
+		// If everything fails, return stale cache if we have it
+		return cachedStats;
+	} catch {
+		// Return stale data rather than nothing
+		return cachedStats;
+	}
+}
+
+async function fetchLastCommitDate(): Promise<string | null> {
+	try {
+		const res = await fetch(
 			'https://api.github.com/repos/Michael-Obele/Svelte-MiniApps/commits?per_page=1',
 			{ headers: { Accept: 'application/vnd.github.v3+json' } }
 		);
-		let lastCommitDate: string | null = null;
-		if (lastCommitRes.ok) {
-			const [latest]: Array<{ commit: { author: { date: string } } }> = await lastCommitRes.json();
-			lastCommitDate = latest?.commit?.author?.date ?? null;
-		}
-
-		return { lastCommitDate, weeklyActivity };
+		if (!res.ok) return null;
+		const [latest]: Array<{ commit: { author: { date: string } } }> = await res.json();
+		return latest?.commit?.author?.date ?? null;
 	} catch {
 		return null;
 	}
 }
 
-/** Fallback: fetch ALL commits via pagination, filter CI noise */
-async function fallbackFromCommits(): Promise<{
-	lastCommitDate: string | null;
-	weeklyActivity: Array<{ total: number; week: number }>;
-} | null> {
+/** Fallback: paginate through all commits within 52-week window */
+async function fallbackFromCommits(): Promise<GitHubStatsData | null> {
 	try {
 		// Paginate through all commits within the last 52 weeks
 		const ALL_WEEKS = 52;
