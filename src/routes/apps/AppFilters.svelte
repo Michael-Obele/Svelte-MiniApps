@@ -4,6 +4,7 @@
 	import * as Dialog from '@/ui/dialog/index.js';
 	import * as ToggleGroup from '@/ui/toggle-group/index.js';
 	import Input from '@/ui/input/input.svelte';
+	import { onMount } from 'svelte';
 	import { done, projects } from '$lib/index.svelte';
 
 	let {
@@ -35,7 +36,12 @@
 
 	// Function to handle keyboard shortcut (Ctrl+K or Cmd+K)
 	function handleKeydown(event: KeyboardEvent) {
-		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+		// Must be Ctrl+K or Cmd+K (check both event.key for character and event.code for physical key)
+		if (
+			(event.ctrlKey || event.metaKey) &&
+			event.code === 'KeyK' &&
+			(event.key === 'k' || event.key === 'K')
+		) {
 			// Don't re-trigger if the dialog is already open
 			if (dialogOpen) return;
 			event.preventDefault();
@@ -44,13 +50,18 @@
 		}
 	}
 
+	onMount(() => {
+		window.addEventListener('keydown', handleKeydown);
+		return () => {
+			window.removeEventListener('keydown', handleKeydown);
+		};
+	});
+
 	// Check if a project is completed
 	function isCompleted(link: string): boolean {
 		return done().some((d) => d.name === link);
 	}
 </script>
-
-<svelte:document onkeydown={handleKeydown} />
 
 <!-- Enhanced Filter & Search Section -->
 <div class="mb-12 flex w-full flex-col items-center justify-center gap-6">
