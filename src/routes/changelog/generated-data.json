@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "7c9bec4b50254778e609e29a9b4736491704e01e",
-  "generatedAt": "2026-07-27T11:37:10.458Z",
+  "lastProcessedCommit": "0db76ff74475dd8c27c5588f78ebe820084c5c38",
+  "generatedAt": "2026-07-28T01:15:54.777Z",
   "timeline": [
     {
       "date": "July 27, 2026",
@@ -52,6 +52,17 @@
       "description": "Updated src/lib/components/home/AppsSection.svelte, src/lib/components/home/GitHubStats.svelte, src/lib/components/home/HowItWorks.svelte and more",
       "items": [
         "feat: add GitHub activity sparkline, app category donut chart, and animate HowItWorks/ValueBar (2b34a9c)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "July 27, 2026",
+      "title": "feat(footer): add mobile accordion navigation, badges, and enhanced link groups",
+      "description": "Updated src/lib/components/blocks/Footer.svelte, src/locales/de.po, src/locales/en.po and more",
+      "items": [
+        "feat(footer): add mobile accordion navigation, badges, and enhanced link groups (0db76ff)"
       ],
       "type": "feature",
       "icon": "Rocket",
