@@ -6,10 +6,10 @@
 	import AppFilters from './AppFilters.svelte';
 	import { filter } from '$lib/states.svelte';
 	import { done, projects } from '$lib/index.svelte';
+	import { onMount } from 'svelte';
 
 	let app = $state('');
 	let searchQuery = $state('');
-	let dialogOpen = $state(false);
 
 	// Alphabetically sorted projects (locale-aware)
 	let sortedProjects = $derived([...projects()].sort((a, b) => a.title.localeCompare(b.title)));
@@ -44,7 +44,7 @@
 	</div>
 
 	<!-- Enhanced Filter & Search Section -->
-	<AppFilters {filter} bind:app bind:searchQuery bind:dialogOpen />
+	<AppFilters {filter} bind:app bind:searchQuery />
 
 	{#if app}
 		<List filteredBy={app} />

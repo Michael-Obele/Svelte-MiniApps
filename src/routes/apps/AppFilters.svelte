@@ -4,20 +4,21 @@
 	import * as Dialog from '@/ui/dialog/index.js';
 	import * as ToggleGroup from '@/ui/toggle-group/index.js';
 	import Input from '@/ui/input/input.svelte';
-	import { onMount } from 'svelte';
+	import { PressedKeys } from 'runed';
 	import { done, projects } from '$lib/index.svelte';
 
 	let {
 		filter,
 		app = $bindable(''),
-		searchQuery = $bindable(''),
-		dialogOpen = $bindable(false)
+		searchQuery = $bindable('')
 	}: {
 		filter: { current: string };
 		app?: string;
 		searchQuery?: string;
-		dialogOpen?: boolean;
 	} = $props();
+
+	// Dialog open state — fully owned by this component
+	let dialogOpen = $state(false);
 
 	// Alphabetically sorted projects (locale-aware)
 	let sortedProjects = $derived([...projects()].sort((a, b) => a.title.localeCompare(b.title)));
@@ -34,34 +35,37 @@
 			: sortedProjects
 	);
 
-	// Function to handle keyboard shortcut (Ctrl+K or Cmd+K)
-	function handleKeydown(event: KeyboardEvent) {
-		// Must be Ctrl+K or Cmd+K (check both event.key for character and event.code for physical key)
-		if (
-			(event.ctrlKey || event.metaKey) &&
-			event.code === 'KeyK' &&
-			(event.key === 'k' || event.key === 'K')
-		) {
-			// Don't re-trigger if the dialog is already open
-			if (dialogOpen) return;
-			event.preventDefault();
-			event.stopPropagation();
-			dialogOpen = true;
-		}
+	// Track currently pressed keys via Runed's PressedKeys utility.
+	// `onKeys` only fires once the full combination is held, so pressing
+	// Ctrl/Cmd alone can never open the dialog — the `k` must also be pressed.
+	const keys = new PressedKeys();
+
+	function openSearch() {
+		// Don't re-trigger if the dialog is already open
+		if (dialogOpen) return;
+		dialogOpen = true;
 	}
 
-	onMount(() => {
-		window.addEventListener('keydown', handleKeydown);
-		return () => {
-			window.removeEventListener('keydown', handleKeydown);
-		};
-	});
+	// Ctrl+K (Windows/Linux) and Cmd+K (macOS) open the search dialog
+	keys.onKeys(['control', 'k'], openSearch);
+	keys.onKeys(['meta', 'k'], openSearch);
+
+	// Suppress the browser's native Ctrl+K / Cmd+K (focuses the address/search
+	// bar) so it doesn't steal focus from our dialog. PressedKeys' onKeys
+	// callback doesn't receive the event, so we prevent the default here.
+	function preventNativeCombo(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault();
+		}
+	}
 
 	// Check if a project is completed
 	function isCompleted(link: string): boolean {
 		return done().some((d) => d.name === link);
 	}
 </script>
+
+<svelte:window onkeydown={preventNativeCombo} />
 
 <!-- Enhanced Filter & Search Section -->
 <div class="mb-12 flex w-full flex-col items-center justify-center gap-6">
