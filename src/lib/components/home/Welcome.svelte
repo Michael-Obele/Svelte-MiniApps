@@ -19,21 +19,33 @@ Props:
 
 -->
 <script lang="ts">
-	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client.svelte';
+	import {
+		getGreetingAndNextPeriod,
+		getFallbackMantra
+	} from '$lib/utility/greetings.client.svelte';
 	import { RefreshCw, Star, StarOff, ArrowRight, Wallet, Lock, Share2 } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { Skeleton } from '@/ui/skeleton';
 	import { Button } from '@/ui/button';
 	import { getMantra, likeMantra } from '$lib/remote/mantra.remote';
+	import { browser } from '$app/environment';
 
 	let { data } = $props();
 
-	// Get current greeting based on time of day
-	let greeting = $derived(getGreetingAndNextPeriod());
+	// Greeting is pure local state — the timer below advances it at each period
+	// boundary. (State, not derived: the timer assigns to it.)
+	let greeting = $state(getGreetingAndNextPeriod().greeting);
 
-	// Access the current value from the query
+	// Mantra is decorative: never block the hero on the network. If the RPC
+	// errors or hangs (offline, flaky mobile connection, service-worker shell
+	// without a reachable backend), `.current` stays undefined forever — so we
+	// render a local fallback instantly and swap in the server mantra when it
+	// arrives. Browser-gated so SSR still shows the skeleton (avoids
+	// cross-timezone hydration mismatches) and the fallback appears on mount.
 	let mantra = $derived(getMantra().current);
+	let fallbackMantra = $derived(browser ? getFallbackMantra() : '');
+	let displayMantra = $derived(mantra ?? fallbackMantra);
 
 	function handleGenerate() {
 		// Call refresh on the cached query instance
@@ -59,16 +71,20 @@ Props:
 		}
 	];
 
-	// Update greeting when time period changes
+	// Advance the greeting at the next period boundary. A recursive setTimeout
+	// — the previous `timeoutId.refresh()` was a Node.js Timeout API that
+	// throws in the browser, where setTimeout returns a number.
 	$effect(() => {
-		const timeoutId = setTimeout(() => {
-			const { greeting: newGreeting } = getGreetingAndNextPeriod();
-			greeting.greeting = newGreeting;
-			// Recursively set the next timeout
-			timeoutId.refresh();
-		}, getGreetingAndNextPeriod().millisecondsUntilNext);
+		let timer: ReturnType<typeof setTimeout>;
 
-		return () => clearTimeout(timeoutId);
+		const tick = () => {
+			const { greeting: next, millisecondsUntilNext } = getGreetingAndNextPeriod();
+			greeting = next;
+			timer = setTimeout(tick, millisecondsUntilNext);
+		};
+
+		timer = setTimeout(tick, getGreetingAndNextPeriod().millisecondsUntilNext);
+		return () => clearTimeout(timer);
 	});
 </script>
 
@@ -79,15 +95,15 @@ Props:
 			class="text-primary text-center text-2xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none"
 		>
 			<span class="text-slate-700 capitalize dark:text-slate-200">
-				{`${greeting.greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
+				{`${greeting}${data.user?.username ? ` ${data.user.username}` : ''}!`}
 			</span>
 		</BlurInText>
 	</BlurFade>
 	<BlurFade class="px-1" delay={0.25 * 2}>
-		{#if mantra}
+		{#if displayMantra}
 			<div class="flex flex-wrap items-center justify-center gap-2 text-center">
-				{#if data.user?.username}
-					<!-- Use remote form for like functionality -->
+				{#if data.user?.username && mantra}
+					<!-- Use remote form for like functionality (only for server mantras) -->
 					{@const form = likeMantra.for(mantra)}
 					<form
 						{...form.enhance(async ({ submit }) => {
@@ -113,7 +129,7 @@ Props:
 				{/if}
 
 				<p class="text-muted-foreground max-w-full text-base font-medium break-words sm:text-lg">
-					{mantra}
+					{displayMantra}
 				</p>
 
 				<Button

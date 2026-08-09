@@ -4,6 +4,31 @@
  */
 
 /**
+ * Local mantras shown while the server mantra query is loading or unreachable.
+ * The remote query is decorative — the hero must never block on the network.
+ */
+const FALLBACK_MANTRAS = [
+	'Breathe in, spark out',
+	'Small steps, big magic',
+	'Today is your canvas',
+	'Shine your quirky light',
+	'Flow like a wild river',
+	'Create something whimsical',
+	'Dazzle the world today',
+	'Dream boldly, start small'
+];
+
+/**
+ * Returns a stable, deterministic fallback mantra for the given date.
+ * Same day → same mantra, so it never flickers between renders.
+ */
+export function getFallbackMantra(date: Date = new Date()): string {
+	const startOfYear = new Date(date.getFullYear(), 0, 0);
+	const dayOfYear = Math.floor((date.getTime() - startOfYear.getTime()) / 86400000);
+	return FALLBACK_MANTRAS[dayOfYear % FALLBACK_MANTRAS.length];
+}
+
+/**
  * Returns a greeting message based on the current time and calculates the time until the next greeting period.
  *
  * @returns An object containing the current greeting and milliseconds until the next greeting period.
