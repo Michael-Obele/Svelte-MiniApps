@@ -81,7 +81,11 @@ export function done() {
 			update: '2025-10-15T00:00:00.000Z'
 		},
 		{ name: 'purchase-tracker', time: '2025-09-10T00:00:00.000Z' },
-		{ name: 'medication-tracker', time: '2025-10-05T00:00:00.000Z' },
+		{
+			name: 'medication-tracker',
+			time: '2025-10-05T00:00:00.000Z',
+			update: '2026-08-09T00:00:00.000Z'
+		},
 		{
 			name: 'smoke-free-tracker',
 			time: '2025-10-11T00:00:00.000Z',

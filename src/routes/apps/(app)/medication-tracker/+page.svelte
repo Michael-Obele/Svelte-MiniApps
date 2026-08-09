@@ -15,7 +15,6 @@
 		CalendarDays,
 		ListChecks,
 		Cloud,
-		CloudOff,
 		RefreshCw,
 		RefreshCcwDot,
 		HelpCircle,
@@ -34,7 +33,16 @@
 	import * as medState from './states.svelte';
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
 	import { hasSeenGuide } from './persisted-config.svelte';
-	import { backupMedicationData, loadMedicationData } from '$lib/remote';
+	import { backupMedicationData, loadMedicationData, createMedicationLog } from '$lib/remote';
+
+	// Offline-first sync: queue dose logs locally, replay them on reconnect
+	import { enqueue } from '$lib/sync/outbox';
+	import { registerHandler, drain } from '$lib/sync/sync-engine.svelte';
+	import SyncStatus from '@/blocks/SyncStatus.svelte';
+
+	registerHandler('medication', 'append-log', (payload) =>
+		createMedicationLog(payload as Parameters<typeof createMedicationLog>[0])
+	);
 
 	// Component imports
 	import {
@@ -53,11 +61,9 @@
 	// Authentication and backup state
 	let isAuthenticated = $derived(!!data.user);
 	let hasUnsavedChanges = $state(false);
-	let needsBackup = $state(true); // Track if data needs to be backed up
 	let isBackingUp = $state(false);
 	let showBackupDialog = $state(false);
 	let isSyncing = $state(false);
-	let autoBackupTimer: ReturnType<typeof setTimeout> | null = null;
 
 	// Reactive state
 	// Note: activeSession, todayLogs, upcomingLogs, and stats are now $derived below
@@ -163,7 +169,6 @@
 			medState.medicationLogs.current = mergedLogs;
 
 			toast.success('Data synced from server');
-			needsBackup = false; // Data just loaded from server
 			didSync = true;
 		}
 
@@ -181,28 +186,6 @@
 		}
 	});
 
-	// Auto-backup functionality
-	function scheduleAutoBackup() {
-		// Clear existing timer
-		if (autoBackupTimer) {
-			clearTimeout(autoBackupTimer);
-		}
-
-		// Only schedule if authenticated and needs backup
-		if (isAuthenticated && needsBackup && !isBackingUp) {
-			autoBackupTimer = setTimeout(() => {
-				handleBackup();
-			}, 5000); // 5 seconds
-		}
-	}
-
-	// Watch for changes to trigger auto-backup
-	$effect(() => {
-		if (needsBackup) {
-			scheduleAutoBackup();
-		}
-	});
-
 	// Auto-mark overdue pending logs as missed
 	let missedCheckTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -210,7 +193,6 @@
 		if (!browser) return;
 
 		const now = new Date();
-		let hasChanges = false;
 
 		const allLogs = medState.medicationLogs.current;
 
@@ -221,13 +203,8 @@
 				// Mark as missed if the scheduled time has passed
 				if (scheduledTime < now) {
 					medState.updateLog(log.id, { status: 'missed' });
-					hasChanges = true;
 				}
 			}
-		}
-
-		if (hasChanges) {
-			needsBackup = true;
 		}
 	}
 
@@ -242,9 +219,6 @@
 
 	// Cleanup on component unmount
 	onDestroy(() => {
-		if (autoBackupTimer) {
-			clearTimeout(autoBackupTimer);
-		}
 		if (missedCheckTimer) {
 			clearInterval(missedCheckTimer);
 		}
@@ -295,22 +269,9 @@
 		}
 	}
 
-	// Track changes for backup
-	$effect(() => {
-		if (!browser) return;
-
-		// Access the reactive state to trigger effect
-		medState.treatmentSessions.current;
-		medState.medicationLogs.current;
-
-		// Mark as needing backup when data changes
-		if (isAuthenticated) {
-			needsBackup = true;
-		}
-	});
-
-	// Note: hasUnsavedChanges tracking removed to prevent infinite loops
-	// In a production app, you'd want to track this more carefully with proper guards
+	// Track changes for backup — removed: an implicit whole-table backup was
+	// destructive (see backupMedicationData). Dose logs are enqueued in the
+	// offline outbox instead (markAsTaken / markAsSkipped below).
 
 	// Backup to server
 	async function handleBackup() {
@@ -329,14 +290,7 @@
 
 			if (result.success) {
 				toast.success('Data backed up successfully');
-				needsBackup = false;
 				hasUnsavedChanges = false;
-
-				// Clear auto-backup timer
-				if (autoBackupTimer) {
-					clearTimeout(autoBackupTimer);
-					autoBackupTimer = null;
-				}
 			} else {
 				toast.error('Failed to backup data');
 			}
@@ -453,7 +407,6 @@
 			medState.medicationLogs.current = mergedLogs;
 
 			hasUnsavedChanges = false;
-			needsBackup = false;
 			toast.success('Data synced from server successfully');
 		} catch (error) {
 			console.error('Sync failed:', error);
@@ -463,19 +416,43 @@
 		}
 	}
 
+	// Enqueues the updated dose log so the offline outbox can replay it. Uses
+	// the same log object the local state holds — same values, same id — so a
+	// replay updates rather than duplicating.
+	async function enqueueDoseUpdate(logId: string) {
+		if (!isAuthenticated) return;
+
+		const log = medState.medicationLogs.current.find((l) => l.id === logId);
+		if (!log) return;
+
+		await enqueue('medication', 'append-log', {
+			id: log.id,
+			sessionId: log.sessionId,
+			medicationId: log.medicationId,
+			scheduledTime: log.scheduledTime,
+			status: log.status,
+			actualTime: log.actualTime,
+			notes: log.notes,
+			createdAt: log.createdAt,
+			updatedAt: log.updatedAt
+		});
+
+		void drain();
+	}
+
 	function markAsTaken(logId: string) {
 		medState.updateLog(logId, {
 			status: 'taken',
 			actualTime: new Date().toISOString()
 		});
-		needsBackup = true;
+		void enqueueDoseUpdate(logId);
 	}
 
 	function markAsSkipped(logId: string) {
 		medState.updateLog(logId, {
 			status: 'skipped'
 		});
-		needsBackup = true;
+		void enqueueDoseUpdate(logId);
 	}
 
 	// Get medication by ID
@@ -592,17 +569,7 @@
 			<div class="flex flex-col flex-wrap gap-2">
 				{#if isAuthenticated}
 					<div class="flex flex-wrap items-center gap-2">
-						{#if needsBackup}
-							<Badge variant="outline" class="text-orange-600 dark:text-orange-400">
-								<CloudOff class="mr-1 size-3" />
-								<span class="inline">Not Backed Up</span>
-							</Badge>
-						{:else}
-							<Badge variant="outline" class="text-green-600 dark:text-green-400">
-								<Cloud class="mr-1 size-3" />
-								<span class="inline">Backed Up</span>
-							</Badge>
-						{/if}
+						<SyncStatus />
 
 						<Tooltip.Provider>
 							<Tooltip.Root>
@@ -840,7 +807,6 @@
 						{getMedication}
 						{formatTime}
 						{isPast}
-						onDataChanged={() => (needsBackup = true)}
 					/>
 				</div>
 			</Tabs.Content>
@@ -859,7 +825,6 @@
 					session={activeSession}
 					logs={allSessionLogs}
 					{getMedication}
-					onDataChanged={() => (needsBackup = true)}
 					onMarkTaken={markAsTaken}
 					onMarkSkipped={markAsSkipped}
 				/>
