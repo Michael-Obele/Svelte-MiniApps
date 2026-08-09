@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-08-09T16:17:53.624Z\n"
+"PO-Revision-Date: 2026-08-09T19:03:27.265Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -139,7 +139,6 @@ msgstr "読み込み中..."
 #: src/lib/index.svelte.ts
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
-#: src/routes/hire/+page.svelte
 msgid "Svelte Mini Apps"
 msgstr "Svelteのミニアプリ集"
 
@@ -609,9 +608,6 @@ msgid "<0/> Email Me"
 msgstr "<0/> メールを送る"
 
 #: src/routes/about/Attributions.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
 msgid "SvelteKit"
 msgstr "SvelteKit"
 
@@ -647,9 +643,6 @@ msgid "Beautiful & consistent icon toolkit made for designers and developers."
 msgstr "デザイナーと開発者向けに作られた、美しく一貫性のあるアイコンツールキット。"
 
 #: src/routes/about/Attributions.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
 msgid "Tailwind CSS"
 msgstr "Tailwind CSS"
 
@@ -1996,308 +1989,227 @@ msgstr "直感的なエクスペリエンスのためにUIデザインとナビ�
 msgid "Enhanced offline indicators and interaction feedback"
 msgstr "オフラインインジケーターとインタラクションフィードバックを強化"
 
-#: src/routes/hire/+page.svelte
-msgid "Svelte/SvelteKit"
-msgstr "Svelte/SvelteKit"
+#~ msgid "Svelte/SvelteKit"
+#~ msgstr "Svelte/SvelteKit"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Expert"
-msgstr "エキスパート"
+#~ msgid "Expert"
+#~ msgstr "エキスパート"
 
-#: src/routes/hire/+page.svelte
-msgid "SM"
-msgstr "SM"
+#~ msgid "SM"
+#~ msgstr "SM"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "TypeScript"
-msgstr "TypeScript"
+#~ msgid "TypeScript"
+#~ msgstr "TypeScript"
 
-#: src/routes/hire/+page.svelte
-msgid "TS"
-msgstr "TS"
+#~ msgid "TS"
+#~ msgstr "TS"
 
-#: src/routes/hire/+page.svelte
-msgid "React/Next.js"
-msgstr "React/Next.js"
+#~ msgid "React/Next.js"
+#~ msgstr "React/Next.js"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Advanced"
-msgstr "上級"
+#~ msgid "Advanced"
+#~ msgstr "上級"
 
-#: src/routes/hire/+page.svelte
-msgid "R"
-msgstr "R"
+#~ msgid "R"
+#~ msgstr "R"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Node.js"
-msgstr "Node.js"
+#~ msgid "Node.js"
+#~ msgstr "Node.js"
 
-#: src/routes/hire/+page.svelte
-msgid "ND"
-msgstr "ND"
+#~ msgid "ND"
+#~ msgstr "ND"
 
-#: src/routes/hire/+page.svelte
-msgid "Python"
-msgstr "Python"
+#~ msgid "Python"
+#~ msgstr "Python"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Intermediate"
-msgstr "中級"
+#~ msgid "Intermediate"
+#~ msgstr "中級"
 
-#: src/routes/hire/+page.svelte
-msgid "PY"
-msgstr "PY"
+#~ msgid "PY"
+#~ msgstr "PY"
 
-#: src/routes/hire/+page.svelte
-msgid "Database Design"
-msgstr "データベース設計"
+#~ msgid "Database Design"
+#~ msgstr "データベース設計"
 
-#: src/routes/hire/+page.svelte
-msgid "DB"
-msgstr "DB"
+#~ msgid "DB"
+#~ msgstr "DB"
 
-#: src/routes/hire/+page.svelte
-msgid "UI/UX Design"
-msgstr "UI/UXデザイン"
+#~ msgid "UI/UX Design"
+#~ msgstr "UI/UXデザイン"
 
-#: src/routes/hire/+page.svelte
-msgid "UX"
-msgstr "UX"
+#~ msgid "UX"
+#~ msgstr "UX"
 
-#: src/routes/hire/+page.svelte
-msgid "DevOps/CI/CD"
-msgstr "DevOps/CI/CD"
+#~ msgid "DevOps/CI/CD"
+#~ msgstr "DevOps/CI/CD"
 
-#: src/routes/hire/+page.svelte
-msgid "DO"
-msgstr "DO"
+#~ msgid "DO"
+#~ msgstr "DO"
 
-#: src/routes/hire/+page.svelte
-msgid "A collection of productivity mini-apps built with SvelteKit and modern web technologies"
-msgstr "SvelteKitと最新のWeb技術で構築された生産性ミニアプリ集"
+#~ msgid "A collection of productivity mini-apps built with SvelteKit and modern web technologies"
+#~ msgstr "SvelteKitと最新のWeb技術で構築された生産性ミニアプリ集"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Svelte 5"
-msgstr "Svelte 5"
+#~ msgid "Svelte 5"
+#~ msgstr "Svelte 5"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "Prisma"
-msgstr "Prisma"
+#~ msgid "Prisma"
+#~ msgstr "Prisma"
 
-#: src/routes/hire/+page.svelte
-msgid "Featured Project"
-msgstr "注目のプロジェクト"
+#~ msgid "Featured Project"
+#~ msgstr "注目のプロジェクト"
 
 #: src/routes/hire/+page.svelte
 msgid "VaultNote"
 msgstr "VaultNote"
 
-#: src/routes/hire/+page.svelte
-msgid "A modern, secure, and open-source desktop application designed to be a productivity hub for professionals, developers, and power users. VaultNote integrates essential tools into a single, focused, and trustworthy environment."
-msgstr "プロフェッショナル、開発者、パワーユーザー向けの生産性ハブとして設計された、モダンで安全なオープンソースのデスクトップアプリケーション。VaultNoteは、不可欠なツールを単一の集中化された信頼できる環境に統合します。"
+#~ msgid "A modern, secure, and open-source desktop application designed to be a productivity hub for professionals, developers, and power users. VaultNote integrates essential tools into a single, focused, and trustworthy environment."
+#~ msgstr "プロフェッショナル、開発者、パワーユーザー向けの生産性ハブとして設計された、モダンで安全なオープンソースのデスクトップアプリケーション。VaultNoteは、不可欠なツールを単一の集中化された信頼できる環境に統合します。"
 
-#: src/routes/hire/+page.svelte
-msgid "Rust"
-msgstr "Rust"
+#~ msgid "Rust"
+#~ msgstr "Rust"
 
-#: src/routes/hire/+page.svelte
-msgid "Tauri"
-msgstr "Tauri"
+#~ msgid "Tauri"
+#~ msgstr "Tauri"
 
-#: src/routes/hire/+page.svelte
-msgid "Active Development"
-msgstr "開発中"
+#~ msgid "Active Development"
+#~ msgstr "開発中"
 
-#: src/routes/hire/+page.svelte
-msgid "Myth Buster"
-msgstr "Myth Buster"
+#~ msgid "Myth Buster"
+#~ msgstr "Myth Buster"
 
-#: src/routes/hire/+page.svelte
-msgid "An interactive web application transforming myth verification into a profound, user-guided research journey. Leveraging the Perplexity Sonar API, it acts as a dynamic AI research assistant empowering users to uncover layers of information, critically examine evidence, explore diverse contexts, and synthesize knowledge into coherent understanding."
-msgstr "神話の検証を、ユーザー主導の深遠な研究の旅に変えるインタラクティブなWebアプリケーション。Perplexity Sonar APIを活用して、動的なAIリサーチアシスタントとして機能し、ユーザーが情報の層を明らかにし、証拠を批判的に検証し、多様なコンテキストを探求し、知識を首尾一貫した理解に統合できるようにします。"
+#~ msgid "An interactive web application transforming myth verification into a profound, user-guided research journey. Leveraging the Perplexity Sonar API, it acts as a dynamic AI research assistant empowering users to uncover layers of information, critically examine evidence, explore diverse contexts, and synthesize knowledge into coherent understanding."
+#~ msgstr "神話の検証を、ユーザー主導の深遠な研究の旅に変えるインタラクティブなWebアプリケーション。Perplexity Sonar APIを活用して、動的なAIリサーチアシスタントとして機能し、ユーザーが情報の層を明らかにし、証拠を批判的に検証し、多様なコンテキストを探求し、知識を首尾一貫した理解に統合できるようにします。"
 
-#: src/routes/hire/+page.svelte
-msgid "Perplexity Sonar API"
-msgstr "Perplexity Sonar API"
+#~ msgid "Perplexity Sonar API"
+#~ msgstr "Perplexity Sonar API"
 
-#: src/routes/hire/+page.svelte
-msgid "PostgreSQL"
-msgstr "PostgreSQL"
+#~ msgid "PostgreSQL"
+#~ msgstr "PostgreSQL"
 
-#: src/routes/hire/+page.svelte
-msgid "Hackathon Project"
-msgstr "ハッカソンプロジェクト"
+#~ msgid "Hackathon Project"
+#~ msgstr "ハッカソンプロジェクト"
 
-#: src/routes/hire/+page.svelte
-msgid "Various Open Source"
-msgstr "様々なオープンソース"
+#~ msgid "Various Open Source"
+#~ msgstr "様々なオープンソース"
 
-#: src/routes/hire/+page.svelte
-msgid "Contributions to open source projects and community development"
-msgstr "オープンソースプロジェクトとコミュニティ開発への貢献"
+#~ msgid "Contributions to open source projects and community development"
+#~ msgstr "オープンソースプロジェクトとコミュニティ開発への貢献"
 
-#: src/routes/hire/+page.svelte
-msgid "JavaScript"
-msgstr "JavaScript"
+#~ msgid "JavaScript"
+#~ msgstr "JavaScript"
 
-#: src/routes/hire/+page.svelte
-msgid "React"
-msgstr "React"
+#~ msgid "React"
+#~ msgstr "React"
 
-#: src/routes/hire/+page.svelte
-msgid "Community Contributions"
-msgstr "コミュニティへの貢献"
+#~ msgid "Community Contributions"
+#~ msgstr "コミュニティへの貢献"
 
-#: src/routes/hire/+page.svelte
-msgid "Full-Stack Web Development"
-msgstr "フルスタックWeb開発"
+#~ msgid "Full-Stack Web Development"
+#~ msgstr "フルスタックWeb開発"
 
-#: src/routes/hire/+page.svelte
-msgid "End-to-end web application development with modern frameworks"
-msgstr "最新フレームワークによるエンドツーエンドのWebアプリケーション開発"
+#~ msgid "End-to-end web application development with modern frameworks"
+#~ msgstr "最新フレームワークによるエンドツーエンドのWebアプリケーション開発"
 
-#: src/routes/hire/+page.svelte
-msgid "Svelte/SvelteKit Consulting"
-msgstr "Svelte/SvelteKitコンサルティング"
+#~ msgid "Svelte/SvelteKit Consulting"
+#~ msgstr "Svelte/SvelteKitコンサルティング"
 
-#: src/routes/hire/+page.svelte
-msgid "Expert guidance on Svelte ecosystem and best practices"
-msgstr "Svelteエコシステムとベストプラクティスに関する専門的なガイダンス"
+#~ msgid "Expert guidance on Svelte ecosystem and best practices"
+#~ msgstr "Svelteエコシステムとベストプラクティスに関する専門的なガイダンス"
 
-#: src/routes/hire/+page.svelte
-msgid "UI/UX Implementation"
-msgstr "UI/UX実装"
+#~ msgid "UI/UX Implementation"
+#~ msgstr "UI/UX実装"
 
-#: src/routes/hire/+page.svelte
-msgid "Transforming designs into pixel-perfect, responsive interfaces"
-msgstr "デザインをピクセルパーフェクトでレスポンシブなインターフェースに変換"
+#~ msgid "Transforming designs into pixel-perfect, responsive interfaces"
+#~ msgstr "デザインをピクセルパーフェクトでレスポンシブなインターフェースに変換"
 
-#: src/routes/hire/+page.svelte
-msgid "Performance Optimization"
-msgstr "パフォーマンスの最適化"
+#~ msgid "Performance Optimization"
+#~ msgstr "パフォーマンスの最適化"
 
-#: src/routes/hire/+page.svelte
-msgid "Improving application speed, accessibility, and user experience"
-msgstr "アプリケーションの速度、アクセシビリティ、およびユーザーエクスペリエンスの向上"
+#~ msgid "Improving application speed, accessibility, and user experience"
+#~ msgstr "アプリケーションの速度、アクセシビリティ、およびユーザーエクスペリエンスの向上"
 
-#: src/routes/hire/+page.svelte
-msgid "Hire Michael - Full-Stack Developer | Svelte Mini Apps"
-msgstr "マイケルを雇う - フルスタック開発者 | Svelte Mini Apps"
+#~ msgid "Hire Michael - Full-Stack Developer | Svelte Mini Apps"
+#~ msgstr "マイケルを雇う - フルスタック開発者 | Svelte Mini Apps"
 
-#: src/routes/hire/+page.svelte
-msgid "Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."
-msgstr "マイケルを雇う — フルスタック開発者であり、Svelteのメンテナー。SvelteKit、TypeScript、Nodeで高速で保守可能なWebアプリを構築します。フリーランス、契約、コラボレーションに意欲的です。"
+#~ msgid "Hire Michael — Full‑stack developer and Svelte maintainer. I build fast, maintainable web apps with SvelteKit, TypeScript and Node. Open to freelance, contract, and collaboration."
+#~ msgstr "マイケルを雇う — フルスタック開発者であり、Svelteのメンテナー。SvelteKit、TypeScript、Nodeで高速で保守可能なWebアプリを構築します。フリーランス、契約、コラボレーションに意欲的です。"
 
-#: src/routes/hire/+page.svelte
-msgid "<0/> Back to Home"
-msgstr "<0/> ホームに戻る"
+#~ msgid "<0/> Back to Home"
+#~ msgstr "<0/> ホームに戻る"
 
-#: src/routes/hire/+page.svelte
-msgid "Available for Work"
-msgstr "お仕事受付中"
+#~ msgid "Available for Work"
+#~ msgstr "お仕事受付中"
 
-#: src/routes/hire/+page.svelte
-msgid "Let's Build Something <0>Amazing</0>"
-msgstr "何か<0>素晴らしい</0>ものを一緒に作りましょう"
+#~ msgid "Let's Build Something <0>Amazing</0>"
+#~ msgstr "何か<0>素晴らしい</0>ものを一緒に作りましょう"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Full‑stack developer specializing in <0>Svelte & SvelteKit</0>. I build fast, maintainable web applications with modern technologies. Open to\n"
-"freelance, contract work, and exciting collaborations."
-msgstr "私は<0>Svelte & SvelteKit</0>を専門とするフルスタック開発者です。最新の技術を使用して、高速で保守可能なWebアプリケーションを構築しています。フリーランス、契約業務、刺激的なコラボレーションをお待ちしています。"
+#~ msgid ""
+#~ "Full‑stack developer specializing in <0>Svelte & SvelteKit</0>. I build fast, maintainable web applications with modern technologies. Open to\n"
+#~ "freelance, contract work, and exciting collaborations."
+#~ msgstr "私は<0>Svelte & SvelteKit</0>を専門とするフルスタック開発者です。最新の技術を使用して、高速で保守可能なWebアプリケーションを構築しています。フリーランス、契約業務、刺激的なコラボレーションをお待ちしています。"
 
-#: src/routes/hire/+page.svelte
-msgid "<0/> Get In Touch <1/>"
-msgstr "<0/> お問い合わせ <1/>"
+#~ msgid "<0/> Get In Touch <1/>"
+#~ msgstr "<0/> お問い合わせ <1/>"
 
-#: src/routes/hire/+page.svelte
-msgid "View Work <0/>"
-msgstr "実績を見る <0/>"
+#~ msgid "View Work <0/>"
+#~ msgstr "実績を見る <0/>"
 
-#: src/routes/hire/+page.svelte
-msgid "Years Experience"
-msgstr "経験年数"
+#~ msgid "Years Experience"
+#~ msgstr "経験年数"
 
-#: src/routes/hire/+page.svelte
-msgid "Projects Completed"
-msgstr "完了したプロジェクト"
+#~ msgid "Projects Completed"
+#~ msgstr "完了したプロジェクト"
 
-#: src/routes/hire/+page.svelte
-msgid "Client Satisfaction"
-msgstr "顧客満足度"
+#~ msgid "Client Satisfaction"
+#~ msgstr "顧客満足度"
 
-#: src/routes/hire/+page.svelte
-msgid "About Me"
-msgstr "自己紹介"
+#~ msgid "About Me"
+#~ msgstr "自己紹介"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Full‑stack developer and open source enthusiast passionate about building fast,\n"
-"maintainable web applications. I specialize in <0>SvelteKit</0>, <1>TypeScript</1>, and modern web technologies."
-msgstr "高速で保守可能なWebアプリケーションの構築に情熱を注ぐ、フルスタック開発者であり、オープンソース愛好家です。<0>SvelteKit</0>、<1>TypeScript</1>、および最新のWebテクノロジーを専門としています。"
+#~ msgid ""
+#~ "Full‑stack developer and open source enthusiast passionate about building fast,\n"
+#~ "maintainable web applications. I specialize in <0>SvelteKit</0>, <1>TypeScript</1>, and modern web technologies."
+#~ msgstr "高速で保守可能なWebアプリケーションの構築に情熱を注ぐ、フルスタック開発者であり、オープンソース愛好家です。<0>SvelteKit</0>、<1>TypeScript</1>、および最新のWebテクノロジーを専門としています。"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
-"innovative solutions. Let's create something exceptional together!"
-msgstr "コード以外にも、Svelteプロジェクトに貢献したり、開発者を指導したり、革新的なソリューションでコラボレーションするのが大好きです。一緒に特別な何かを作りましょう！"
+#~ msgid ""
+#~ "Beyond code, I contribute to Svelte projects, mentor developers, and love collaborating on\n"
+#~ "innovative solutions. Let's create something exceptional together!"
+#~ msgstr "コード以外にも、Svelteプロジェクトに貢献したり、開発者を指導したり、革新的なソリューションでコラボレーションするのが大好きです。一緒に特別な何かを作りましょう！"
 
-#: src/routes/hire/+page.svelte
-msgid "<0/> Available Now"
-msgstr "<0/> いますぐ利用可能"
+#~ msgid "<0/> Available Now"
+#~ msgstr "<0/> いますぐ利用可能"
 
-#: src/routes/hire/+page.svelte
-msgid "<0/> Fast Response"
-msgstr "<0/> 迅速な対応"
+#~ msgid "<0/> Fast Response"
+#~ msgstr "<0/> 迅速な対応"
 
-#: src/routes/hire/+page.svelte
-msgid "Technical Skills"
-msgstr "技術スキル"
+#~ msgid "Technical Skills"
+#~ msgstr "技術スキル"
 
-#: src/routes/hire/+page.svelte
-msgid "Services Offered"
-msgstr "提供サービス"
+#~ msgid "Services Offered"
+#~ msgstr "提供サービス"
 
-#: src/routes/hire/+page.svelte
-msgid "Get In Touch"
-msgstr "お問い合わせ"
+#~ msgid "Get In Touch"
+#~ msgstr "お問い合わせ"
 
-#: src/routes/hire/+page.svelte
-msgid "Email Me"
-msgstr "メールを送る"
+#~ msgid "Email Me"
+#~ msgstr "メールを送る"
 
-#: src/routes/hire/+page.svelte
-msgid "hire@svelte-apps.me"
-msgstr "hire@svelte-apps.me"
+#~ msgid "hire@svelte-apps.me"
+#~ msgstr "hire@svelte-apps.me"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/UserProfileCard.svelte
-#: src/routes/hire/+page.svelte
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/routes/hire/+page.svelte
-msgid "Twitter"
-msgstr "Twitter"
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Footer.svelte
-#: src/routes/hire/+page.svelte
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
@@ -2305,40 +2217,32 @@ msgstr "LinkedIn"
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/blocks/Navbar.svelte
-#: src/routes/hire/+page.svelte
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/routes/hire/+page.svelte
-msgid "Discord: michael_obele"
-msgstr "Discord: michael_obele"
+#~ msgid "Discord: michael_obele"
+#~ msgstr "Discord: michael_obele"
 
-#: src/routes/hire/+page.svelte
-msgid "Discord"
-msgstr "Discord"
+#~ msgid "Discord"
+#~ msgstr "Discord"
 
-#: src/routes/hire/+page.svelte
-msgid "Featured Projects"
-msgstr "注目のプロジェクト"
+#~ msgid "Featured Projects"
+#~ msgstr "注目のプロジェクト"
 
-#: src/routes/hire/+page.svelte
-msgid "View project"
-msgstr "プロジェクトを見る"
+#~ msgid "View project"
+#~ msgstr "プロジェクトを見る"
 
-#: src/routes/hire/+page.svelte
-msgid "Let's Work Together!"
-msgstr "一緒に働きましょう！"
+#~ msgid "Let's Work Together!"
+#~ msgstr "一緒に働きましょう！"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"I'm open to freelance and consulting work, as well as collaboration on open source\n"
-"projects and mentoring. Share a brief note about your project and I'll get back to you\n"
-"within 24 hours."
-msgstr "フリーランスやコンサルティングのお仕事、オープンソースプロジェクトでのコラボレーション、メンタリングなど、幅広く対応しています。プロジェクトの概要をお知らせいただければ、24時間以内にご連絡いたします。"
+#~ msgid ""
+#~ "I'm open to freelance and consulting work, as well as collaboration on open source\n"
+#~ "projects and mentoring. Share a brief note about your project and I'll get back to you\n"
+#~ "within 24 hours."
+#~ msgstr "フリーランスやコンサルティングのお仕事、オープンソースプロジェクトでのコラボレーション、メンタリングなど、幅広く対応しています。プロジェクトの概要をお知らせいただければ、24時間以内にご連絡いたします。"
 
-#: src/routes/hire/+page.svelte
-msgid "<0/> Start a Conversation <1/>"
-msgstr "<0/> 会話を始める <1/>"
+#~ msgid "<0/> Start a Conversation <1/>"
+#~ msgstr "<0/> 会話を始める <1/>"
 
 #: src/routes/offline/+page.svelte
 msgid "Offline | Svelte Mini Apps"
@@ -2450,6 +2354,7 @@ msgid "Feedback"
 msgstr "フィードバック"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/routes/hire/+page.svelte
 msgid "Contact"
 msgstr "お問い合わせ"
 
@@ -5950,8 +5855,8 @@ msgid "Total Time Invested"
 msgstr "総投資時間"
 
 #. placeholder {0}: stats.totalTimeSpent
-#. placeholder {0}: option.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
+#. placeholder {0}: option.totalTimeSpent
 #. placeholder {0}: stats.totalTimeSpent
 #. placeholder {0}: activity.timeSpent
 #. placeholder {0}: option.totalTimeSpent
@@ -10557,10 +10462,485 @@ msgstr ""
 msgid "Health"
 msgstr "健康"
 
-#: src/lib/components/home/AppsSection.svelte
-msgid "apps"
-msgstr "アプリ"
+#~ msgid "apps"
+#~ msgstr "アプリ"
 
 #: src/lib/components/home/AppsSection.svelte
 msgid "All apps"
 msgstr "すべてのアプリ"
+
+#: src/routes/hire/+page.svelte
+msgid "Hiring inquiry"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid ""
+"Hi Michael,\n"
+"\n"
+"I would like to talk about a project.\n"
+"\n"
+"Project type:\n"
+"Timeline:\n"
+"\n"
+"—"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Svelte-MiniApps"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BANK 01"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SVELTE MINI APPS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "SVELTE 5"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "SVELTEKIT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "TYPESCRIPT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "TAILWIND"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PRISMA"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "ACTIVE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "COMMITS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BANK 02"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "VAULTNOTE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Secure desktop productivity hub — markdown editor, clipboard manager, zero-knowledge password vault — in Rust + Tauri."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "RUST"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "TAURI"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "RELEASING"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "RELEASES"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BANK 03"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SHADCN-SVELTE MCP"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MCP server and tooling that gives AI agents the shadcn-svelte component docs and developer utilities."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MCP"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MASTRA"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BANK 04"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SVELTEKIT-API-GEN"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Automatically generate OpenAPI 3.0 specs from your SvelteKit server endpoints using JSDoc @swagger annotations."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SHIPPED"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BANK 05"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "CINDER"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "High-performance, self-hosted web scraping API built with Go. 23 commits in August 2026 alone."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "GO"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BUILDING"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "COMMITS · AUG 2026"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SVELTE / SVELTEKIT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "EXPERT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "ADVANCED"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "NODE / BUN"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "TAILWIND CSS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PRISMA / POSTGRESQL"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "NETWORK ENGINEERING"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PYTHON"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "INTERMEDIATE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "UI / UX"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "DEVOPS / CI-CD"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "EMAIL"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "GITHUB"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "X"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "LINKEDIN"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BLUESKY"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "DISCORD"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "DEV.TO"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SELECT A STEP TO INSPECT"
+msgstr ""
+
+#. placeholder {0}: pad2(selectedWeek + 1)
+#. placeholder {1}: commits
+#: src/routes/hire/+page.svelte
+msgid "WK {0} · {1} COMMITS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Hire Michael — Full-Stack Engineer | Svelte Mini Apps"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Full-stack engineer shipping web, desktop, mobile and AI tooling — Svelte 5, TypeScript, Rust, Go. Open to freelance, contract and collaboration."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> BACK TO HOME"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> SVELTE HACK 2025 WINNER"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> AVAILABLE NOW"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Intro"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PERSONAL SHIPPING MACHINE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MICHAEL OBELE <0>v2026.08</0>"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid ""
+"Full-stack engineer. I build fast, verifiable software across every surface — web apps,\n"
+"desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to\n"
+"freelance, contract and collaboration."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+#: src/routes/hire/+page.svelte
+msgid "<0/> START A SESSION <1/>"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "VIEW BANKS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SHIPPING TEMPO"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "CONTRIB / 12 MO"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PUBLIC REPOS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "LIVE FROM API"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "LAST COMMIT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SVELTE-MINIAPPS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "* CONTRIBUTION COUNT VERIFIED 2026-08-09"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "16-WEEK SHIPPING LOG"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SIGNAL LOST"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "LIVE FROM GITHUB"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Stop the chase light"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Start the chase light"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> STOP"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> PLAY"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SIGNAL LOST — LIVE FEED UNAVAILABLE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Weekly commit log"
+msgstr ""
+
+#. placeholder {0}: i + 1
+#. placeholder {1}: lit ? w.commits : 0
+#: src/routes/hire/+page.svelte
+msgid "Week {0}: {1} commits"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "STEPS 1–4 RED · 5–8 ORANGE · 9–12 YELLOW · 13–16 WHITE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "CLICK A STEP TO INSPECT"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Spec sheet"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "SPEC SHEET"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MODEL"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Full-stack software engineer"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "DAY JOB"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Network engineer"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "BUILDS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid ""
+"Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers\n"
+"· backend services (Go)"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "CORE STACK"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Svelte 5 · TypeScript · Rust · Go · Bun"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "LICENSE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "MIT — everything I build is open source"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "RESPONSE"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Replies within 24 hours"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Featured projects"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PATTERN BANKS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "137 REPOS ON GITHUB <0/>"
+msgstr ""
+
+#. placeholder {0}: project.name
+#: src/routes/hire/+page.svelte
+msgid "Open {0} on GitHub"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Skills"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "INSTRUMENT TRACKS"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "PATCH BAY"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "Start a session"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "READY TO RUN?"
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid ""
+"Freelance, contract, collaboration or mentoring — send a short note about your project\n"
+"and I will get back to you within 24 hours."
+msgstr ""
+
+#: src/routes/hire/+page.svelte
+msgid "<0/> REPLIES WITHIN 24 HOURS"
+msgstr ""

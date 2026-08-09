@@ -113,7 +113,7 @@ Layout:
 			</a>
 
 			<!-- Category donut: live breakdown derived from the shipped catalog -->
-			<div class="mt-6 flex items-center justify-center gap-6">
+			<!-- <div class="mt-6 flex items-center justify-center gap-6">
 				<div class="relative h-[140px] w-[140px]">
 					<PieChart
 						data={categoryData}
@@ -147,7 +147,7 @@ Layout:
 						</div>
 					{/each}
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 		<!-- Shipped Apps Grid (always open by default — Goal Gradient) -->
