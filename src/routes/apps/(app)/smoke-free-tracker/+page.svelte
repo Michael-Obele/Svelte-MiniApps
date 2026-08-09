@@ -32,7 +32,16 @@
 	import { toast } from 'svelte-sonner';
 
 	// Import remote functions for backup
-	import { backupSmokeFreeData, loadSmokeFreeData, syncSmokeFreeData } from '$lib/remote';
+	import { backupSmokeFreeData, loadSmokeFreeData, syncSmokeFreeData, appendCravingLog } from '$lib/remote';
+
+	// Offline-first sync: queue craving logs locally, replay them on reconnect
+	import { enqueue } from '$lib/sync/outbox';
+	import { registerHandler, drain } from '$lib/sync/sync-engine.svelte';
+	import SyncStatus from '@/blocks/SyncStatus.svelte';
+
+	registerHandler('smoke-free', 'append-craving', (payload) =>
+		appendCravingLog(payload as Parameters<typeof appendCravingLog>[0])
+	);
 
 	// Import state management
 	import * as smokeState from './states.svelte';
@@ -65,11 +74,9 @@
 
 	// Backup state
 	let isAuthenticated = $state(false);
-	let needsBackup = $state(true);
 	let isBackingUp = $state(false);
 	let showBackupDialog = $state(false);
 	let isSyncing = $state(false);
-	let autoBackupTimer: ReturnType<typeof setTimeout> | null = null;
 
 	// Reactive calculations
 	let statistics = $derived(
@@ -88,19 +95,6 @@
 	onMount(() => {
 		// Set authentication state
 		isAuthenticated = !!data.user;
-
-		// Check if user has been away for a while and trigger backup if needed
-		if (browser && isAuthenticated) {
-			const lastBackupTime = smokeState.lastBackupTime.current;
-			const now = Date.now();
-			const timeSinceLastBackup = lastBackupTime ? now - parseInt(lastBackupTime) : Infinity;
-
-			// If more than 30 minutes since last backup, trigger a backup
-			if (timeSinceLastBackup > 30 * 60 * 1000) {
-				console.log('🔄 User returned after extended absence, triggering backup');
-				needsBackup = true;
-			}
-		}
 
 		// Load active attempt from local state
 		activeAttempt = smokeState.getActiveAttempt() ?? null;
@@ -202,7 +196,6 @@
 			}
 
 			activeAttempt = smokeState.getActiveAttempt() ?? null;
-			needsBackup = false; // Data just synced
 		} // Update time every second for live countdown
 		timeInterval = setInterval(() => {
 			currentTime = new Date();
@@ -213,9 +206,6 @@
 		if (timeInterval) {
 			clearInterval(timeInterval);
 		}
-		if (autoBackupTimer) {
-			clearTimeout(autoBackupTimer);
-		}
 	});
 
 	// Functions
@@ -224,8 +214,6 @@
 		activeAttempt = attempt || null;
 		showStartDialog = false;
 		toast.success('Your smoke-free journey begins now! 🎉');
-		needsBackup = true;
-		scheduleAutoBackup();
 	}
 
 	// Helper function to determine which attempt to keep when merging
@@ -263,37 +251,20 @@
 		activeAttempt = newAttempt ?? null;
 		showResetDialog = false;
 		toast.info('Previous attempt saved to history. Starting fresh! 💪');
-		needsBackup = true;
-		scheduleAutoBackup();
 	}
 
-	function handleCravingLogged() {
+	// Called by CravingLogger after a craving is logged locally. The returned
+	// log carries the client-generated id, so the outbox replay upserts
+	// instead of duplicating. Anonymous users stay local-only.
+	async function handleCravingLogged(log?: CravingLog) {
 		showCravingDialog = false;
 		toast.success('Craving logged! Stay strong! 💪');
-		needsBackup = true;
-		scheduleAutoBackup();
-	}
 
-	// Auto-backup functionality
-	function scheduleAutoBackup() {
-		if (autoBackupTimer) {
-			clearTimeout(autoBackupTimer);
-		}
-
-		// Only schedule if authenticated and needs backup
-		if (isAuthenticated && needsBackup && !isBackingUp) {
-			autoBackupTimer = setTimeout(() => {
-				handleBackup();
-			}, 300000); // 5 minutes delay
+		if (log && isAuthenticated) {
+			await enqueue('smoke-free', 'append-craving', log);
+			void drain();
 		}
 	}
-
-	// Watch for changes to trigger auto-backup
-	$effect(() => {
-		if (needsBackup) {
-			scheduleAutoBackup();
-		}
-	});
 
 	// Backup to server
 	async function handleBackup() {
@@ -313,16 +284,9 @@
 
 			if (result.success) {
 				toast.success('Data backed up successfully');
-				needsBackup = false;
 
 				// Store last backup time
 				smokeState.lastBackupTime.current = Date.now().toString();
-
-				// Clear auto-backup timer
-				if (autoBackupTimer) {
-					clearTimeout(autoBackupTimer);
-					autoBackupTimer = null;
-				}
 			} else {
 				toast.error('Failed to backup data');
 			}
@@ -352,7 +316,6 @@
 
 			if (result.action === 'backed_up') {
 				toast.success('Local data synced to cloud');
-				needsBackup = false;
 			} else if (result.action === 'use_server') {
 				// Update local state with server data, but preserve local active attempts
 				const localActiveAttempts = smokeState.smokingAttempts.current.filter((a) => a.isActive);
@@ -371,7 +334,6 @@
 				smokeState.smokingAttempts.current = mergedAttempts;
 				smokeState.cravingLogs.current = result.data.cravings;
 				toast.success('Data synced from cloud');
-				needsBackup = false;
 			}
 		} catch (error) {
 			console.error('Sync error:', error);

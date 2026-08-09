@@ -6,12 +6,12 @@
 	import { Label } from '@/ui/label';
 	import { Textarea } from '@/ui/textarea';
 	import * as Select from '@/ui/select';
-	import type { SmokingAttempt } from '../states.svelte';
+	import type { SmokingAttempt, CravingLog } from '../states.svelte';
 	import { logCraving, getCravingsForAttempt, deleteCravingLog } from '../states.svelte';
 
 	interface Props {
 		attempt: SmokingAttempt;
-		onLogged?: () => void;
+		onLogged?: (log?: CravingLog) => void;
 		compact?: boolean;
 	}
 
@@ -58,7 +58,9 @@
 	function handleSubmit(e: Event) {
 		e.preventDefault();
 
-		logCraving(
+		// Returns the created log (with its client-generated id) so the page
+		// can queue it in the offline outbox.
+		const log = logCraving(
 			attempt.id,
 			intensity,
 			trigger || undefined,
@@ -74,7 +76,7 @@
 		wasSuccessful = true;
 		notes = '';
 
-		if (onLogged) onLogged();
+		if (onLogged) onLogged(log);
 	}
 
 	function handleDelete(logId: string) {

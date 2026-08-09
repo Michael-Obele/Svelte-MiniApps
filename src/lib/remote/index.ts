@@ -44,7 +44,8 @@ export {
 export {
 	loadSmokeFreeData,
 	backupSmokeFreeData,
-	syncSmokeFreeData
+	syncSmokeFreeData,
+	appendCravingLog
 } from './smoke-free-tracker.remote';
 
 // Remote functions for profile management

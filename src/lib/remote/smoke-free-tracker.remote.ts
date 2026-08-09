@@ -287,3 +287,52 @@ export const syncSmokeFreeData = command(
 		}
 	}
 );
+
+/**
+ * Appends a single craving log. Unlike `backupSmokeFreeData` this never
+ * deletes existing rows, so replaying it from the offline outbox is safe.
+ * The client supplies the id, so a replay upserts rather than duplicating.
+ */
+export const appendCravingLog = command(CravingLogSchema, async (craving) => {
+	const user = await getCurrentUser();
+
+	if (!user) {
+		throw new Error('User not authenticated');
+	}
+
+	// Ownership check: without it, any authenticated user could append a log
+	// to someone else's attempt by guessing an id.
+	const attempt = await prisma.smokingAttempt.findFirst({
+		where: { id: craving.attemptId, userId: user.id },
+		select: { id: true }
+	});
+
+	if (!attempt) {
+		throw new Error('Attempt not found');
+	}
+
+	await prisma.cravingLog.upsert({
+		where: { id: craving.id },
+		update: {
+			intensity: craving.intensity,
+			trigger: craving.trigger,
+			copingStrategy: craving.copingStrategy,
+			notes: craving.notes,
+			success: craving.success
+		},
+		create: {
+			id: craving.id,
+			attemptId: craving.attemptId,
+			timestamp: new Date(craving.timestamp),
+			intensity: craving.intensity,
+			trigger: craving.trigger,
+			copingStrategy: craving.copingStrategy,
+			notes: craving.notes,
+			success: craving.success
+		}
+	});
+
+	await loadSmokeFreeData().refresh();
+
+	return { success: true };
+});
