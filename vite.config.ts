@@ -33,5 +33,10 @@ export default defineConfig({
 	},
 	optimizeDeps: {
 		exclude: ['@node-rs/argon2']
+	},
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}'],
+		environment: 'jsdom',
+		globals: false
 	}
 });
