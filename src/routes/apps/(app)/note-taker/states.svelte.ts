@@ -110,50 +110,6 @@ export async function initNotes() {
 	// The reactive notes state will automatically update when persistedNotes changes
 }
 
-// Actions - now just update PersistedState, reactive state updates automatically
-export async function addNote(title: string, content: string) {
-	const now = new Date().toISOString();
-	const newNote: Note = {
-		id: crypto.randomUUID(),
-		title,
-		content,
-		createdAt: now,
-		updatedAt: now
-	};
-
-	await noteAdapter.saveItem({
-		id: newNote.id,
-		payload: newNote,
-		createdAt: newNote.createdAt,
-		updatedAt: newNote.updatedAt
-	});
-
-	needsSync.value = true;
-	return newNote;
-}
-
-export async function updateNote(id: string, updates: Partial<Omit<Note, 'id' | 'createdAt'>>) {
-	const note = notes.current.find((n) => n.id === id);
-	if (!note) return;
-
-	const updatedNote = {
-		...note,
-		...updates,
-		updatedAt: new Date().toISOString()
-	};
-
-	await noteAdapter.saveItem({
-		id: updatedNote.id,
-		payload: updatedNote,
-		createdAt: updatedNote.createdAt,
-		updatedAt: updatedNote.updatedAt
-	});
-
-	needsSync.value = true;
-
-	return updatedNote;
-}
-
 export async function deleteNoteLocal(id: string) {
 	await noteAdapter.deleteItem(id);
 	needsSync.value = true;

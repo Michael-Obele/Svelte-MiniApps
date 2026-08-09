@@ -26,47 +26,6 @@ import {
 } from '@lucide/svelte';
 import { generatedTimeline, type GeneratedTimelineItem } from './generated-data';
 
-export function getItems() {
-	return [
-		{
-			title: 'Offline-First Architecture',
-			description:
-				'Complete rebuild focusing on offline capabilities and local-first data management. Users can use the nuke button to clear cached data if they notice issues with the app.',
-			className: 'md:col-span-2',
-			color: 'from-blue-500/20 via-transparent',
-			icon: Code
-		},
-		{
-			title: 'Enhanced Performance',
-			description: 'Optimized load times and responsiveness through local data management.',
-			className: 'md:col-span-1',
-			color: 'from-purple-500/20 via-transparent',
-			icon: Rocket
-		},
-		{
-			title: 'Svelte 5 Migration',
-			description: 'Complete upgrade to Svelte 5 with modern features and optimizations.',
-			className: 'md:col-span-1',
-			color: 'from-green-500/20 via-transparent',
-			icon: Search
-		},
-		{
-			title: 'Local Data Persistence',
-			description: 'Robust local storage implementation with IndexedDB and background sync.',
-			className: 'md:col-span-1',
-			color: 'from-yellow-500/20 via-transparent',
-			icon: Wrench
-		},
-		{
-			title: 'PWA Support',
-			description: 'Full Progressive Web App capabilities with offline support and installability.',
-			className: 'md:col-span-1',
-			color: 'from-red-500/20 via-transparent',
-			icon: CircleSlash
-		}
-	];
-}
-
 // Utility function to determine icon style based on type.
 export const getTypeStyles = (type: string) => {
 	switch (type) {

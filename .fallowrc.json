@@ -1,7 +1,110 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
-	"ignorePatterns": ["src/lib/components/ui/**", "**/src/lib/server/**", "wuchale.config.js"],
+	"entry": [
+		"src/index.{ts,tsx,js,jsx}",
+		"src/main.{ts,tsx,js,jsx}",
+		"scripts/**",
+		"netlify/functions/**"
+	],
+	"ignorePatterns": [
+		"src/lib/components/ui/**",
+		"**/src/lib/server/**",
+		"wuchale.config.js",
+		"src/locales/**",
+		"vitest-mocks/**"
+	],
+	// Exports referenced only inside their declaring file are live API, not dead code.
+	"ignoreExportsUsedInFile": true,
+	// Dependencies consumed at build/bundle time (SvelteKit compiles `svelte` +
+	// `@sveltejs/kit` into the adapter output), from vite.config.ts, or from
+	// server modules excluded via ignorePatterns. Fallow cannot see these
+	// usages, so they are declared as always-used.
+	"ignoreDependencies": [
+		"svelte",
+		"@sveltejs/kit",
+		"tailwindcss",
+		"clsx",
+		"tailwind-merge",
+		"svelte-sonner",
+		"valibot",
+		"@internationalized/date",
+		"@iconify/tailwind4",
+		"@builder.io/partytown",
+		"@sveltejs/enhanced-img",
+		"@wuchale/vite-plugin",
+		"ai",
+		"@ai-sdk/deepseek",
+		"@wuchale/svelte",
+		"netlify-plugin-cache",
+		"@aws-sdk/client-s3",
+		"@aws-sdk/s3-request-presigner",
+		"formsnap",
+		"paneforge",
+		"d3-array"
+	],
+	// Known fallow limitations, verified by hand:
+	//  - imports from .svelte components into their .svelte.ts twin modules are
+	//    not seen (getStreakMinutes <- MilestonesView, getTypeAccent <-
+	//    changelog page, getCravingsForAttempt <- CravingLogger, etc.)
+	//  - exports consumed only by tests (budget state helpers)
+	//  - tooling-regenerated files (changelog generated-data.ts)
+	"ignoreExports": [
+		{
+			"file": "src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts",
+			"exports": ["getStreakMinutes", "getDisplayStartDate", "getCravingsForAttempt"]
+		},
+		{
+			"file": "src/routes/changelog/data.svelte.ts",
+			"exports": ["getTypeAccent"]
+		},
+		{
+			"file": "src/lib/utility/subnet-calculator.ts",
+			"exports": ["validateIPv4Address", "validateIPv6Address"]
+		},
+		{
+			"file": "src/lib/budget-tracker/states.svelte.ts",
+			"exports": [
+				"addToBudgetAmount",
+				"addSelectedExpense",
+				"removeSelectedExpense",
+				"toggleSelectedExpense",
+				"clearSelectedExpenses",
+				"isExpenseSelected"
+			]
+		},
+		{
+			"file": "src/routes/changelog/generated-data.ts",
+			"exports": ["lastUpdated", "lastProcessedCommit"]
+		},
+		{
+			"file": "src/lib/types.ts",
+			"exports": ["SlotItemMap"]
+		},
+		{
+			"file": "src/lib/utils.ts",
+			"exports": ["WithoutChildrenOrChild", "WithElementRef"]
+		},
+		// persisted-state/adapter.ts exports are consumed through the
+		// `PersistedAdapter` object interface by .svelte.ts modules
+		// (budget-tracker/states.svelte.ts imports createAdapter +
+		// importLocalStorage) which fallow cannot see.
+		{
+			"file": "src/lib/persisted-state/adapter.ts",
+			"exports": [
+				"getDefaultAdapter",
+				"init",
+				"saveItem",
+				"getItem",
+				"listItems",
+				"deleteItem",
+				"clearAll",
+				"toServerFormat",
+				"fromServerFormat",
+				"syncWithServer",
+				"importLocalStorage"
+			]
+		}
+	],
 	"duplicates": {
 		"mode": "mild",
 		"minTokens": 80,
@@ -10,9 +113,9 @@
 		"skipLocal": true,
 		"ignoreDefaults": true
 	},
-	"dynamicallyLoaded": ["**/src/lib/remote/**", "src/lib/types/**", "**/*.d.ts"], // preferred over ignorePatterns
+	"dynamicallyLoaded": ["**/src/lib/remote/**", "src/lib/types/**", "**/*.d.ts"],
 	"rules": {
-		"unused-dependencies": "warn", // or "off" if you prefer
+		"unused-dependencies": "warn",
 		"unused-dev-dependencies": "off"
 	}
 }

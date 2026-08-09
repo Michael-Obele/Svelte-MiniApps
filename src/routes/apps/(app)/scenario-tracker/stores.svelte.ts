@@ -16,7 +16,7 @@ const DEFAULT_START_DATE = new Date();
 const DEFAULT_END_DATE = new Date(DEFAULT_START_DATE.getTime() + 10 * 365.25 * 24 * 60 * 60 * 1000);
 
 // Persisted settings for start/end dates
-export const scenarioSettings = new PersistedState<{ startDate: string; endDate: string }>(
+const scenarioSettings = new PersistedState<{ startDate: string; endDate: string }>(
 	'scenario-tracker-settings',
 	{
 		startDate: DEFAULT_START_DATE.toISOString(),
@@ -286,14 +286,6 @@ export function getDashboardStats(): DashboardStats {
 	};
 }
 
-export function getOptionById(id: string): Option | undefined {
-	return options.current.find((opt) => opt.id === id);
-}
-
 export function getRisksByOption(optionId: string | null): Risk[] {
 	return risks.current.filter((r) => r.optionId === optionId);
-}
-
-export function getGeneralRisks(): Risk[] {
-	return risks.current.filter((r) => r.optionId === null);
 }

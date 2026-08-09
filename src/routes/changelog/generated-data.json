@@ -1,7 +1,183 @@
 {
-  "lastProcessedCommit": "ec916f8feadecdcd156b700e811c71499a404835",
-  "generatedAt": "2026-08-01T08:22:17.361Z",
+  "lastProcessedCommit": "899bd408a22bb2d9dede95163ca66a25d58b34b9",
+  "generatedAt": "2026-08-09T11:24:49.231Z",
   "timeline": [
+    {
+      "date": "August 9, 2026",
+      "title": "feat: add durable outbox queue for offline mutations",
+      "description": "Updated vitest-mocks/app/environment.js, vitest.config.ts",
+      "items": [
+        "feat: add durable outbox queue for offline mutations (de1fbf3)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: add sync engine and status indicator",
+      "description": "Updated src/lib/components/blocks/SyncStatus.svelte, src/lib/sync/sync-engine.svelte.ts",
+      "items": [
+        "feat: add sync engine and status indicator (d55e684)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: offline-first craving logging for smoke-free tracker",
+      "description": "Updated src/lib/index.svelte.ts, src/lib/remote/index.ts, src/lib/remote/smoke-free-tracker.remote.ts and more",
+      "items": [
+        "feat: offline-first craving logging for smoke-free tracker (c52dd0b)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: prefill destination apps from share-target params",
+      "description": "Updated src/routes/apps/(app)/flash-text/+page.svelte, src/routes/apps/(app)/qr-code-generator/+page.svelte, src/routes/apps/(app)/text-summarizer/+page.svelte",
+      "items": [
+        "feat: prefill destination apps from share-target params (c438459)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "chore: configure vitest include globs and jsdom environment",
+      "description": "Updated vite.config.ts",
+      "items": [
+        "chore: configure vitest include globs and jsdom environment (c1919bc)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "chore: remove unused ORM, AI SDK, and Dexie dependencies",
+      "description": "Updated bun.lockb, package.json, src/routes/apps/(app)/medication-tracker/persisted-config.svelte.ts",
+      "items": [
+        "chore: remove unused ORM, AI SDK, and Dexie dependencies (bf1ccf2)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: add share-target routing resolver with tests",
+      "description": "Updated src/lib/utility/share-routing.test.ts",
+      "items": [
+        "feat: add share-target routing resolver with tests (9ebac19)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: add durable outbox queue for offline mutations",
+      "description": "Updated src/lib/sync/outbox.test.ts, src/lib/sync/outbox.ts",
+      "items": [
+        "feat: add durable outbox queue for offline mutations (93d7b4f)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "test: add e2e coverage for share-target routing",
+      "description": "Updated e2e/share-target.test.ts, playwright.config.ts",
+      "items": [
+        "test: add e2e coverage for share-target routing (899bd40)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "fix: align Android App Links with com.svelte.miniapps package",
+      "description": "Updated android/app/src/main/AndroidManifest.xml, netlify.toml, static/.well-known/assetlinks.json",
+      "items": [
+        "fix: align Android App Links with com.svelte.miniapps package (823014e)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat(share-routing): add share-target routing for PWA mini-apps",
+      "description": "Updated src/lib/utility/share-routing.ts, src/routes/share-target/+page.server.ts",
+      "items": [
+        "feat(share-routing): add share-target routing for PWA mini-apps (5d86dad)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: end-to-end encrypt FlashText pastes with key in URL fragment",
+      "description": "Updated prisma/schema.prisma, src/lib/remote/flash-text.remote.ts, src/lib/server/flash-text.ts and more",
+      "items": [
+        "feat: end-to-end encrypt FlashText pastes with key in URL fragment (4878cc7)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: implement share-target and web+miniapps protocol routes",
+      "description": "Updated src/routes/handle-protocol/+page.server.ts, src/routes/handle-protocol/+page.svelte, src/routes/share-target/+page.svelte",
+      "items": [
+        "feat: implement share-target and web+miniapps protocol routes (3c94d85)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: offline-first dose logging for medication tracker",
+      "description": "Updated src/lib/index.svelte.ts, src/routes/apps/(app)/medication-tracker/+page.svelte",
+      "items": [
+        "feat: offline-first dose logging for medication tracker (28047ab)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: add AES-GCM encryption utilities for FlashText",
+      "description": "Updated src/lib/utility/flash-crypto.test.ts, src/lib/utility/flash-crypto.ts",
+      "items": [
+        "feat: add AES-GCM encryption utilities for FlashText (24edb39)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "chore: trim app catalog to shipped apps",
+      "description": "Updated src/lib/index.svelte.ts",
+      "items": [
+        "chore: trim app catalog to shipped apps (22754ae)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
     {
       "date": "August 1, 2026",
       "title": "chore: add docs to gitignore",

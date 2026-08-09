@@ -801,7 +801,6 @@
 					<!-- Today's Schedule -->
 					<TodayTracker
 						{todayLogs}
-						{activeSession}
 						onMarkTaken={markAsTaken}
 						onMarkSkipped={markAsSkipped}
 						{getMedication}
@@ -813,10 +812,7 @@
 
 			<!-- Medications View -->
 			<Tabs.Content value="medications">
-				<MedicationList
-					session={activeSession}
-					onAddMedication={() => (showMedicationDialog = true)}
-				/>
+				<MedicationList session={activeSession} />
 			</Tabs.Content>
 
 			<!-- History View -->

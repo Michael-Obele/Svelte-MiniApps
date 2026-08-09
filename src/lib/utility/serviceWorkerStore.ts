@@ -1,4 +1,4 @@
-import { writable, derived, type Writable, type Readable } from 'svelte/store';
+import { writable, type Writable } from 'svelte/store';
 import { toast } from 'svelte-sonner';
 import { type Icon, RefreshCw } from '@lucide/svelte';
 
@@ -66,43 +66,6 @@ export async function applyUpdate() {
 		}, 500);
 	}
 }
-
-/**
- * Checks if a service worker update is available
- * @returns Readable store indicating whether an update is available
- */
-export function isUpdateAvailable(): Readable<boolean> {
-	return { subscribe: updateAvailable.subscribe };
-}
-
-/**
- * Gets the current update hash
- * @returns Readable store with the current update hash or null if no update is available
- */
-export function getUpdateHash(): Readable<string | null> {
-	return { subscribe: updateHash.subscribe };
-}
-
-/**
- * Checks if a service worker update is ready to be applied
- * @returns Readable store indicating whether an update is ready
- */
-export function isUpdateReady(): Readable<boolean> {
-	return { subscribe: updateReady.subscribe };
-}
-
-// Export a derived store for components that need to react to update state
-export const serviceWorkerStore = derived(
-	[updateAvailable, updateHash, updateReady],
-	([$updateAvailable, $updateHash, $updateReady]) => {
-		return {
-			updateAvailable: $updateAvailable,
-			updateHash: $updateHash,
-			updateReady: $updateReady,
-			applyUpdate
-		};
-	}
-);
 
 // Add the isReloading property to the Window interface
 declare global {

@@ -41,7 +41,7 @@
 	// Import language store initialization
 	import { initLanguage } from '$lib/stores/language-store.svelte';
 
-	let { children, data }: LayoutProps = $props();
+	let { children }: LayoutProps = $props();
 
 	onMount(async () => {
 		// Dynamically import @lordicon/element *inside* onMount

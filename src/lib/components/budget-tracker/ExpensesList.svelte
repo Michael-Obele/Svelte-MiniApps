@@ -8,14 +8,12 @@
 
 	// Props with proper typing
 	interface Props {
-		budgets: Budget[];
 		openEditExpenseDialog: (budgetId: string, expense: Expense) => void;
 		getCurrencySymbol: (currencyCode: string) => string;
 		formatNumberWithCommas: (value: string | number) => string;
 	}
 
 	let {
-		budgets = $bindable<Budget[]>([]),
 		openEditExpenseDialog,
 		getCurrencySymbol,
 		formatNumberWithCommas

@@ -20,9 +20,8 @@
 	import { deleteMedication } from '$lib/remote';
 
 	// Props
-	let { session, onAddMedication } = $props<{
+	let { session } = $props<{
 		session: TreatmentSession;
-		onAddMedication: () => void;
 	}>();
 
 	// State

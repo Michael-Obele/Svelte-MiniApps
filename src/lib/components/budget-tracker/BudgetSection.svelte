@@ -14,8 +14,7 @@
 		currencies = $bindable<{ value: string; label: string; symbol: string; icon?: string }[]>(),
 		addBudget,
 		formatNumber,
-		formsSection = $bindable(),
-		budgets = $bindable<Budget[]>([])
+		formsSection = $bindable()
 	} = $props();
 </script>
 

@@ -22,8 +22,7 @@ export const load: PageServerLoad = async (event) => {
 	const errorMessage = error ? oauthErrors[error] : null;
 
 	return {
-		error: errorMessage,
-		user: event.locals.user
+		error: errorMessage
 	};
 };
 

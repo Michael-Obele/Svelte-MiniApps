@@ -1,5 +1,4 @@
 import type { PageServerLoad } from './$types';
-import { generateMantra } from '$lib/utility/greetings.server';
 
 // ─── In-memory cache ───────────────────────────────────────────
 // GitHub's unauthenticated API allows 60 requests/hour per IP.
@@ -166,8 +165,6 @@ async function fallbackFromCommits(): Promise<GitHubStatsData | null> {
 export const load: PageServerLoad = async (event) => {
 	const github = await fetchGitHubStats();
 	return {
-		user: event.locals.user,
-		mantra: generateMantra(),
 		github
 	};
 };

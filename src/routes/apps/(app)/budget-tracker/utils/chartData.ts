@@ -35,31 +35,6 @@ export function formatCategoryChartData(expenses: Expense[]): ChartDataPoint[] {
 }
 
 /**
- * Format budget vs spent data for comparison bar chart
- */
-export function formatComparisonChartData(budget: Budget): Array<{
-	category: string;
-	allocated: number;
-	spent: number;
-}> {
-	const spent = budget.expenses.reduce((sum, exp) => sum + exp.amount, 0);
-	const remaining = Math.max(budget.amount - spent, 0);
-
-	return [
-		{
-			category: budget.name,
-			allocated: budget.amount,
-			spent: spent
-		},
-		{
-			category: 'Remaining',
-			allocated: remaining,
-			spent: 0
-		}
-	];
-}
-
-/**
  * Format expenses for trend line chart over time period
  * Returns daily/weekly aggregated spending
  */

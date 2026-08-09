@@ -10,7 +10,9 @@ Usage:
 
 -->
 <script lang="ts">
-	import { ContentBlock } from './index';
+	// Default import from the .svelte file, not the barrel — the barrel
+	// re-exports InfoBlocks itself, which would create an import cycle.
+	import ContentBlock from './ContentBlock.svelte';
 	import { getContentBlocksData } from './data.svelte';
 
 	// ✅ Call the function to get reactive translated data

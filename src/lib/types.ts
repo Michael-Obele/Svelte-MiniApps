@@ -10,14 +10,6 @@ export interface Column {
   todos: Todo[];
 }
 
-export interface TodoItemProps {
-  todo: Todo;
-  columnId: string;
-  onEdit: (todo: Todo, columnId: string) => void;
-  onDelete: (todoId: string, columnId: string) => void;
-  [key: string]: any;
-}
-
 export interface UIState {
   // Column editing
   titleEditing: boolean;

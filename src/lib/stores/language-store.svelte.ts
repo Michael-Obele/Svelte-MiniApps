@@ -53,23 +53,13 @@ export async function changeLanguage(lang: Language) {
 }
 
 /**
- * Get the current language object
- * Returns the English language as fallback if the current locale is invalid
- */
-export function getCurrentLanguage(): Language {
-	const lang = getLanguage(persistedLocale.current);
-	// Fallback to English if language not found (should never happen due to validation)
-	return lang || getLanguage('en')!;
-}
-
-/**
  * Initialize language settings on app load
  * This should be called once at app startup
  */
 export function initLanguage() {
 	if (!browser) return;
 
-	const currentLang = getCurrentLanguage();
+	const currentLang = getLanguage(persistedLocale.current) ?? getLanguage('en')!;
 
 	// Update document attributes
 	if (document.documentElement) {

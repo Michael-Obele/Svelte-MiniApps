@@ -5,6 +5,7 @@
 	import { code } from '@cartamd/plugin-code';
 	import { slash } from '@cartamd/plugin-slash';
 	import 'carta-md/default.css';
+	// @ts-expect-error: github-markdown-css has no types
 	import 'github-markdown-css';
 	import '@cartamd/plugin-code/default.css';
 	import '@cartamd/plugin-slash/default.css';

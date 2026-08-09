@@ -42,27 +42,3 @@ export function getLanguage(code: string): Language | undefined {
 	return AVAILABLE_LANGUAGES.find((lang) => lang.code === code);
 }
 
-/**
- * Get language name by code
- */
-export function getLanguageName(code: string): string {
-	const language = getLanguage(code);
-	return language?.nativeName || code;
-}
-
-/**
- * Check if a language code is valid
- */
-export function isValidLanguage(code: string): boolean {
-	return AVAILABLE_LANGUAGES.some((lang) => lang.code === code);
-}
-
-/**
- * Get default language code
- */
-export const DEFAULT_LANGUAGE = 'en';
-
-/**
- * Get all language codes
- */
-export const LANGUAGE_CODES = AVAILABLE_LANGUAGES.map((lang) => lang.code);

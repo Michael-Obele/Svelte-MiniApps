@@ -22,10 +22,8 @@
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 	import { google, bluesky, X } from '$lib/components/blocks/Icons.svelte';
 	import XIcon from '@/blocks/XIcon.svelte';
-	import type { PageProps } from './$types';
-
-	let { data }: PageProps = $props();
-
+	
+	
 	// Skills and technologies (revamped: initials avatars + level pill)
 	const skills = [
 		{

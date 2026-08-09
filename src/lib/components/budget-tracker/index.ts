@@ -1,15 +1,8 @@
 export { default as BudgetCard } from './BudgetCard.svelte';
 export { default as BudgetDialog } from './BudgetDialog.svelte';
 export { default as BudgetSection } from './BudgetSection.svelte';
-export { default as BudgetsList } from './BudgetsList.svelte';
 export { default as ExpenseDialog } from './ExpenseDialog.svelte';
 export { default as ExpenseSection } from './ExpenseSection.svelte';
 export { default as ExpensesList } from './ExpensesList.svelte';
-export { default as ExpensesSection } from './ExpensesSection.svelte';
 export { default as FloatingBtn } from './FloatingBtn.svelte';
 export { default as QuickNavigation } from './QuickNavigation.svelte';
-export { default as QuickStatsGrid } from './QuickStatsGrid.svelte';
-export { default as CategoryChart } from './Charts/CategoryChart.svelte';
-export { default as ComparisonChart } from './Charts/ComparisonChart.svelte';
-export { default as TrendChart } from './Charts/TrendChart.svelte';
-export { default as Test } from './Test.svelte';

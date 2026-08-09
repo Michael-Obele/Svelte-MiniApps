@@ -9,7 +9,6 @@
 	import icons from 'currency-icons';
 
 	import {
-		BudgetsList,
 		FloatingBtn,
 		BudgetDialog,
 		QuickNavigation,
@@ -769,7 +768,6 @@
 				{currencies}
 				{addBudget}
 				{formatNumber}
-				budgets={budgetState.budgets.current}
 			/>
 
 			<ExpenseSection
@@ -865,7 +863,6 @@
 				<!-- Recent Expenses Section -->
 				<div class="mx-auto mt-6">
 					<ExpensesList
-						budgets={budgetState.budgets.current}
 						{openEditExpenseDialog}
 						{getCurrencySymbol}
 						{formatNumberWithCommas}

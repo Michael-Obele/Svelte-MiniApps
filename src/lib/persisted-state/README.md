@@ -1,24 +1,44 @@
 # Persisted State Adapter (Library)
 
-This is a copy of the `adapter.ts` file for use from `$lib/persisted-state` in SvelteKit.
+Local-first persistence backed by IndexedDB via `svelte-idb`.
 
-Quick usage
------------
-Import the functions from library in client code only (e.g., inside `onMount`):
+## Primary API
+
+The recommended high-level API is the `PersistedState` class:
 
 ```ts
-import { init, saveItem, getItem, listItems } from '$lib/persisted-state/adapter';
-// or the default export:
-// import persistedAdapter from '$lib/persisted-state';
+import { PersistedState } from '$lib/persisted-state';
 
-await init({ dbName: 'app-store', storeName: 'items' });
-await saveItem({ payload: { title: 'Local todo' } });
-const all = await listItems();
+const prefs = new PersistedState('my-prefs', { theme: 'dark' });
+prefs.current = { theme: 'light' }; // persisted to IndexedDB automatically
+```
 
-// Example: Svelte store wrapper (per-app)
-import { createPersistedStore } from '$lib/persisted-state';
-const budgetStore = createPersistedStore({ dbName: 'miniapps-budget-v1', storeName: 'budgets' });
+`PersistedState` hydrates from IndexedDB, persists on write, and syncs across
+tabs via `BroadcastChannel` when `syncTabs: true`.
 
+## Low-level adapter
+
+```ts
+import { createAdapter } from '$lib/persisted-state/adapter';
+
+const adapter = createAdapter({
+	dbName: 'app-store',
+	storeName: 'items'
+});
+
+await adapter.init();
+await adapter.saveItem({ payload: { title: 'Local todo' } });
+const all = await adapter.listItems();
+```
+
+`createAdapter(opts)` returns a `PersistedAdapter` with:
+
+- `init()` / `listItems<T>()` / `saveItem(item)` / `getItem(id)` / `deleteItem(id)` / `clearAll()`
+- `importLocalStorage(prefix)` — first-run migration from localStorage
+- `syncWithServer(syncOpts)` — last-write-wins merge against a server payload
+- `toServerFormat(item)` / `fromServerFormat(obj)` — wire format helpers
+
+```ts
 // Example: Provide upgrade function if you need custom migrations
 const adapter = createAdapter({
 	dbName: 'miniapps-budget-v2',
@@ -30,11 +50,4 @@ const adapter = createAdapter({
 		}
 	}
 });
-await adapter.init();
-// `budgetStore.items` is a reactive runes $state array you can use in components
 ```
-
-Notes
------
-- Keep using `$lib/persisted-state/adapter` for direct imports or `$lib/persisted-state` for default adapter as convenience.
-- Remember to call `init()` from client context only (e.g., onMount).

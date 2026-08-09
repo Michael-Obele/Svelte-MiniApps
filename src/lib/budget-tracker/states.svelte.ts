@@ -95,29 +95,6 @@ export function addToBudgetAmount(id: string, additionalAmount: number) {
 	budgetState.current = updatedBudgets;
 }
 
-// New function to toggle expense completion
-export function toggleExpenseCompletion(budgetId: string, expenseId: string) {
-	const updatedBudgets = budgetState.current.map((budget) => {
-		if (budget.id === budgetId) {
-			return {
-				...budget,
-				expenses: budget.expenses.map((expense) => {
-					if (expense.id === expenseId) {
-						return {
-							...expense,
-							isCompleted: !expense.isCompleted
-						};
-					}
-					return expense;
-				})
-			};
-		}
-		return budget;
-	});
-
-	// Update the persisted state
-	budgetState.current = updatedBudgets;
-}
 
 export function addExpense(
 	budgetId: string,
@@ -275,57 +252,7 @@ export function getTotalExpenses(): number {
 	);
 }
 
-// Export the selected expenses state
-export const selectedExpenses = {
-	subscribe: (callback: (value: string[]) => void) => {
-		callback(selectedExpensesState.current);
-		const unsubscribe = $effect.root(() => {
-			$effect(() => {
-				callback(selectedExpensesState.current);
-			});
-			return () => {};
-		});
-		return unsubscribe;
-	},
-	get current() {
-		return selectedExpensesState.current;
-	},
-	set current(value: string[]) {
-		selectedExpensesState.current = value;
-	}
-};
 
-// Export the per-budget strikethrough state
-export const budgetStrikethroughModes = {
-	subscribe: (callback: (value: Record<string, boolean>) => void) => {
-		callback(budgetStrikethroughState.current);
-		const unsubscribe = $effect.root(() => {
-			$effect(() => {
-				callback(budgetStrikethroughState.current);
-			});
-			return () => {};
-		});
-		return unsubscribe;
-	},
-	get current() {
-		return budgetStrikethroughState.current;
-	},
-	set current(value: Record<string, boolean>) {
-		budgetStrikethroughState.current = value;
-	},
-	getBudgetMode: (budgetId: string) => {
-		return budgetStrikethroughState.current[budgetId] ?? false;
-	},
-	setBudgetMode: (budgetId: string, enabled: boolean) => {
-		const current = budgetStrikethroughState.current;
-		budgetStrikethroughState.current = {
-			...current,
-			[budgetId]: enabled
-		};
-	}
-};
-
-// Helper functions for selected expenses
 export function addSelectedExpense(expenseId: string) {
 	if (!selectedExpensesState.current.includes(expenseId)) {
 		selectedExpensesState.current = [...selectedExpensesState.current, expenseId];

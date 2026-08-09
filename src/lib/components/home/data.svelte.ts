@@ -50,72 +50,7 @@ export function getContentBlocksData() {
 	];
 }
 
-export function getInfoBlocksData() {
-	return [
-		{
-			dir: 'left',
-			iconDir: 'right',
-			header: 'Share the Joy:',
-			// @wc-context: Community engagement section - encouraging users to share positive experiences with Mini Apps
-			// @wc-include
-			paragraph:
-				'<strong>Found a MiniApp that made your day easier?</strong> Why keep it to yourself? Share your success story with friends, family, or colleagues who might benefit too! Your recommendation could help someone discover the perfect tool to simplify their daily routine.',
-			iconId: 'ercyvufy' // @wc-ignore
-		},
-		{
-			dir: 'right',
-			iconId: 'rpgflpkp', // @wc-ignore
-			iconDir: 'left',
-			header: 'Help Us Improve:',
-			// @wc-context: Community engagement section - inviting users to provide feedback and report issues
-			// @wc-include
-			paragraph:
-				"<strong>Your voice matters!</strong> Whether you've got a brilliant idea, spotted a bug, or just want to share your experience - we're listening. Head over to our <strong>GitHub repository</strong> to open an issue or start a discussion. Every piece of feedback helps us build better tools for you."
-		},
-		{
-			dir: 'left',
-			iconDir: 'right',
-			header: 'Join the Creation:',
-			// @wc-context: Community engagement section - inviting developers to contribute to the open source project
-			// @wc-include
-			paragraph:
-				"<strong>Love coding?</strong> You could be the next contributor to make these Mini Apps even more awesome! Our project is <strong>open source</strong>, which means you're invited to dive in, explore the code, and bring your ideas to life. Whether you're a seasoned developer or just starting out, there's a place for you in our community.",
-			// @wc-ignore
-			iconId: 'kndkiwmf'
-		}
-	];
-}
 
-// "How it works" — Goal Gradient 3-step framework.
-// Each step tells the user what they GET, not what we do.
-export function getHowItWorksSteps() {
-	return [
-		{
-			number: 1,
-			title: 'Pick a tool',
-			description:
-				'Browse 20+ purpose-built apps for budgets, passwords, time, notes, and more — all on one site.',
-			accent: 'bg-blue-500/10 text-blue-600 dark:text-blue-400'
-		},
-		{
-			number: 2,
-			title: 'Use it instantly',
-			description:
-				'Click in, get to work. No account, no sign-up, no install. Data stays in your browser by default.',
-			accent: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
-		},
-		{
-			number: 3,
-			title: 'Save it (if you want)',
-			description:
-				'Install as a PWA and keep the full toolkit offline — your work follows you, never locked to a vendor.',
-			accent: 'bg-violet-500/10 text-violet-600 dark:text-violet-400'
-		}
-	];
-}
-
-// Trust micro-bar badges shown in the hero and apps section.
-// "Smart defaults" — the user already trusts these before they read further.
 export function getTrustBadges() {
 	return [
 		{ label: 'Free forever', icon: 'check' },

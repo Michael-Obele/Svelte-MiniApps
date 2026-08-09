@@ -20,7 +20,6 @@
 	// Props
 	let {
 		todayLogs,
-		activeSession,
 		onMarkTaken,
 		onMarkSkipped,
 		getMedication,
@@ -29,7 +28,6 @@
 		onDataChanged
 	} = $props<{
 		todayLogs: MedicationLog[];
-		activeSession: TreatmentSession;
 		onMarkTaken: (logId: string) => void;
 		onMarkSkipped: (logId: string, notes?: string) => void;
 		getMedication: (medicationId: string) => Medication | undefined;

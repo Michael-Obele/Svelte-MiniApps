@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
@@ -11,8 +11,7 @@
 	import { registerUser } from '$lib/remote';
 	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
 
-	let { data }: { data: PageData } = $props();
-
+	
 	const register = registerUser;
 	let showPassword = $state(false);
 	let showConfirmPassword = $state(false);

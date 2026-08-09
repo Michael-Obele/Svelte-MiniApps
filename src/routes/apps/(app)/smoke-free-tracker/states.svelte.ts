@@ -193,36 +193,6 @@ export function getMotivationalQuotes() {
 	];
 }
 
-export function getCommonTriggers() {
-	return [
-		'Stress',
-		'After meals',
-		'With coffee',
-		'Social situations',
-		'Boredom',
-		'Alcohol',
-		'Driving',
-		'Work break',
-		'Seeing others smoke',
-		'Morning routine'
-	];
-}
-
-export function getCopingStrategies() {
-	return [
-		'Deep breathing',
-		'Drink water',
-		'Chew gum',
-		'Go for a walk',
-		'Call a friend',
-		'Exercise',
-		'Meditation',
-		'Distract yourself',
-		'Eat healthy snack',
-		'Review your goals'
-	];
-}
-
 // ===========================
 // HELPER FUNCTIONS
 // ===========================
@@ -291,18 +261,18 @@ export function getStreakMinutes(attempt: SmokingAttempt): number {
 	return Math.floor((now - lastSmokeTime) / (1000 * 60));
 }
 
-export function getDisplayStreakMinutes(attempt: SmokingAttempt): number {
-	if (!browser) return 0;
-	const displayStartTime = new Date(getDisplayStartDate(attempt)).getTime();
-	const now = Date.now();
-	return Math.floor((now - displayStartTime) / (1000 * 60));
-}
-
 export function getDisplayStartDate(attempt: SmokingAttempt): string {
 	if (userSettings.current.customStartDateEnabled) {
 		return attempt.customStartDate || attempt.startDate;
 	}
 	return attempt.startDate;
+}
+
+export function getDisplayStreakMinutes(attempt: SmokingAttempt): number {
+	if (!browser) return 0;
+	const displayStartTime = new Date(getDisplayStartDate(attempt)).getTime();
+	const now = Date.now();
+	return Math.floor((now - displayStartTime) / (1000 * 60));
 }
 
 export function setCustomStartDate(attemptId: string, customStartDate: string): boolean {
