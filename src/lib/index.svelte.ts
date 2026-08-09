@@ -8,34 +8,15 @@ import {
 	Activity,
 	Lock,
 	Smile,
-	Palette,
-	ListTodo,
 	FileText,
-	Binary,
 	Timer,
 	DollarSign,
-	Music,
 	QrCode,
 	CheckSquare,
-	Calendar,
-	Image,
-	Globe,
-	PenTool,
 	Github,
 	FileCode,
 	Book,
-	Clock,
-	Calculator,
-	Gamepad2,
-	Dices,
-	Utensils,
 	Notebook,
-	Cloud,
-	Divide,
-	Brain,
-	Search,
-	Dumbbell,
-	Flower2,
 	Target,
 	Network,
 	Clipboard
@@ -223,30 +204,6 @@ export function projects(): Project[] {
 			icon: Smile
 		},
 		{
-			title: 'Color Picker',
-			details: 'Lets you choose a color and shows its HEX code or RGB values.',
-			// @wc-include
-			tag: 'design',
-			tagClass: 'design',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'color-picker',
-			icon: Palette
-		},
-		{
-			title: 'Checklist Maker',
-			details: 'Allows you to create checklists and mark items as completed.',
-			// @wc-include
-			tag: 'productivity',
-			tagClass: 'productivity',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'checklist-maker',
-			icon: ListTodo
-		},
-		{
 			title: 'Text Summarizer',
 			details: 'Creates a shorter version of a text by keeping within a word limit.',
 			// @wc-include
@@ -257,18 +214,6 @@ export function projects(): Project[] {
 			class: 'easy',
 			link: 'text-summarizer',
 			icon: FileText
-		},
-		{
-			title: 'Morse Code Translator',
-			details: 'Translates between text and Morse code.',
-			// @wc-include
-			tag: 'education',
-			tagClass: 'education',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'morse-code-translator',
-			icon: Binary
 		},
 		{
 			title: 'Countdown Timer',
@@ -295,30 +240,6 @@ export function projects(): Project[] {
 			icon: DollarSign
 		},
 		{
-			title: 'BMI Calculator',
-			details: 'Calculates your Body Mass Index based on your height and weight.',
-			// @wc-include
-			tag: 'health',
-			tagClass: 'health',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'bmi-calculator',
-			icon: Activity
-		},
-		{
-			title: 'Music Player',
-			details: 'Plays audio files stored on your device and lets you browse them.',
-			// @wc-include
-			tag: 'multimedia',
-			tagClass: 'multimedia',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'music-player',
-			icon: Music
-		},
-		{
 			title: 'QR Code Generator',
 			details: 'Creates QR codes that contain URLs, text, or vCards.',
 			// @wc-include
@@ -341,54 +262,6 @@ export function projects(): Project[] {
 			class: 'medium',
 			link: 'todo-list',
 			icon: CheckSquare
-		},
-		{
-			title: 'Habit Tracker',
-			details: 'Tracks your daily habits and shows your progress over time.',
-			// @wc-include
-			tag: 'productivity',
-			tagClass: 'productivity',
-			// @wc-include
-			difficulty: 'hard',
-			class: 'hard',
-			link: 'habit-tracker',
-			icon: Calendar
-		},
-		{
-			title: 'Photo Editor',
-			details: 'Provides basic tools like cropping, resizing, and applying filters to edit photos.',
-			// @wc-include
-			tag: 'design',
-			tagClass: 'design',
-			// @wc-include
-			difficulty: 'hard',
-			class: 'hard',
-			link: 'photo-editor',
-			icon: Image
-		},
-		{
-			title: 'Wikipedia Article Explorer',
-			details: 'Lets you search Wikipedia and explore linked articles visually.',
-			// @wc-include
-			tag: 'education',
-			tagClass: 'education',
-			// @wc-include
-			difficulty: 'hard',
-			class: 'hard',
-			link: 'wikipedia-explorer',
-			icon: Globe
-		},
-		{
-			title: 'Simple Drawing App',
-			details: 'Lets you create basic drawings using lines, shapes, and colors.',
-			// @wc-include
-			tag: 'design',
-			tagClass: 'design',
-			// @wc-include
-			difficulty: 'hard',
-			class: 'hard',
-			link: 'drawing-app',
-			icon: PenTool
 		},
 		{
 			title: 'GitHub Contribution Tracker',
@@ -430,19 +303,6 @@ export function projects(): Project[] {
 			icon: Book
 		},
 		{
-			title: 'Pomodoro Timer',
-			details:
-				'Creates a timer with a countdown and lets you set customizable work/break intervals. It also uses audio notifications to alert you.',
-			// @wc-include
-			tag: 'productivity',
-			tagClass: 'productivity',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'pomodoro-timer',
-			icon: Clock
-		},
-		{
 			title: 'Random Emoji Generator',
 			details: 'Generates a random emoji with a single click.',
 			// @wc-include
@@ -455,56 +315,6 @@ export function projects(): Project[] {
 			icon: Smile
 		},
 		{
-			title: 'Age Calculator',
-			details: 'Calculates your age based on the date you were born.',
-			// @wc-include
-			tag: 'math',
-			tagClass: 'math',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'age-calculator',
-			icon: Calculator
-		},
-		{
-			title: 'Rock Paper Scissors Game',
-			details:
-				'Lets you play the classic rock, paper, scissors game against the computer and shows the outcome.',
-			// @wc-include
-			tag: 'game',
-			tagClass: 'game',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'rock-paper-scissors',
-			icon: Gamepad2
-		},
-		{
-			title: 'Dice Roll Simulator',
-			details: 'Simulates rolling dice and visually shows the result.',
-			// @wc-include
-			tag: 'game',
-			tagClass: 'game',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'dice-roller',
-			icon: Dices
-		},
-		{
-			title: 'Recipe Book Organizer',
-			details:
-				'Helps you manage your recipes by letting you create, organize, and potentially convert them into instructions.',
-			// @wc-include
-			tag: 'productivity',
-			tagClass: 'productivity',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'recipe-organizer',
-			icon: Utensils
-		},
-		{
 			title: 'Note Taker',
 			details: 'Capture your thoughts and sync them across devices.',
 			// @wc-include
@@ -515,79 +325,6 @@ export function projects(): Project[] {
 			class: 'medium',
 			link: 'note-taker',
 			icon: Notebook
-		},
-		// New Projects
-		{
-			title: 'Weather App',
-			details: 'Displays current weather information based on user location or input city.',
-			// @wc-include
-			tag: 'utility',
-			tagClass: 'utility',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'weather-app',
-			icon: Cloud
-		},
-		{
-			title: 'Expense Splitter',
-			details: 'Helps users split expenses among friends or family and calculates who owes what.',
-			// @wc-include
-			tag: 'finance',
-			tagClass: 'finance',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'expense-splitter',
-			icon: Divide
-		},
-		{
-			title: 'Flashcard Quizzer',
-			details: 'Allows users to create flashcards for studying and quizzes them on the content.',
-			// @wc-include
-			tag: 'education',
-			tagClass: 'education',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'flashcard-quizzer',
-			icon: Brain
-		},
-		{
-			title: 'Recipe Finder',
-			details: 'Lets users search for recipes based on ingredients they have at home.',
-			// @wc-include
-			tag: 'productivity',
-			tagClass: 'productivity',
-			// @wc-include
-			difficulty: 'medium',
-			class: 'medium',
-			link: 'recipe-finder',
-			icon: Search
-		},
-		{
-			title: 'Fitness Tracker',
-			details: 'Tracks workouts, calories burned, and progress over time.',
-			// @wc-include
-			tag: 'health',
-			tagClass: 'health',
-			// @wc-include
-			difficulty: 'hard',
-			class: 'hard',
-			link: 'fitness-tracker',
-			icon: Dumbbell
-		},
-		{
-			title: 'Meditation Timer',
-			details: 'A timer specifically for meditation sessions with options for different intervals.',
-			// @wc-include
-			tag: 'health',
-			tagClass: 'health',
-			// @wc-include
-			difficulty: 'easy',
-			class: 'easy',
-			link: 'meditation-timer',
-			icon: Flower2
 		},
 		{
 			title: 'Scenario Tracker',
