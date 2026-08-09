@@ -19,17 +19,14 @@ Props:
 
 -->
 <script lang="ts">
-	import {
-		getGreetingAndNextPeriod,
-		getFallbackMantra
-	} from '$lib/utility/greetings.client.svelte';
+	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client.svelte';
+	import { generateLocalMantra } from '$lib/utility/mantra.client';
 	import { RefreshCw, Star, StarOff, ArrowRight, Wallet, Lock, Share2 } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { Skeleton } from '@/ui/skeleton';
 	import { Button } from '@/ui/button';
-	import { getMantra, likeMantra } from '$lib/remote/mantra.remote';
-	import { browser } from '$app/environment';
+	import { likeMantra } from '$lib/remote/mantra.remote';
 
 	let { data } = $props();
 
@@ -37,19 +34,18 @@ Props:
 	// boundary. (State, not derived: the timer assigns to it.)
 	let greeting = $state(getGreetingAndNextPeriod().greeting);
 
-	// Mantra is decorative: never block the hero on the network. If the RPC
-	// errors or hangs (offline, flaky mobile connection, service-worker shell
-	// without a reachable backend), `.current` stays undefined forever — so we
-	// render a local fallback instantly and swap in the server mantra when it
-	// arrives. Browser-gated so SSR still shows the skeleton (avoids
-	// cross-timezone hydration mismatches) and the fallback appears on mount.
-	let mantra = $derived(getMantra().current);
-	let fallbackMantra = $derived(browser ? getFallbackMantra() : '');
-	let displayMantra = $derived(mantra ?? fallbackMantra);
+	// The mantra is generated ON DEVICE — no network, no RPC, works offline in
+	// the mobile shell. Initialised once after hydration (SSR keeps the
+	// skeleton, so there is no hydration mismatch), then reload regenerates
+	// synchronously and always yields a fresh mantra.
+	let mantra = $state('');
+
+	$effect(() => {
+		if (!mantra) mantra = generateLocalMantra();
+	});
 
 	function handleGenerate() {
-		// Call refresh on the cached query instance
-		getMantra().refresh();
+		mantra = generateLocalMantra();
 	}
 
 	// Quick-start suggestions. Smart Default: pre-pick the most common entry points.
@@ -100,10 +96,11 @@ Props:
 		</BlurInText>
 	</BlurFade>
 	<BlurFade class="px-1" delay={0.25 * 2}>
-		{#if displayMantra}
+		{#if mantra}
 			<div class="flex flex-wrap items-center justify-center gap-2 text-center">
-				{#if data.user?.username && mantra}
-					<!-- Use remote form for like functionality (only for server mantras) -->
+				{#if data.user?.username}
+					<!-- Like a mantra: the hidden input carries the on-device mantra
+					     string, so liking works without any generation RPC. -->
 					{@const form = likeMantra.for(mantra)}
 					<form
 						{...form.enhance(async ({ submit }) => {
@@ -129,7 +126,7 @@ Props:
 				{/if}
 
 				<p class="text-muted-foreground max-w-full text-base font-medium break-words sm:text-lg">
-					{displayMantra}
+					{mantra}
 				</p>
 
 				<Button
@@ -138,7 +135,7 @@ Props:
 					onclick={handleGenerate}
 					title="Get a new mantra"
 				>
-					<RefreshCw class="h-4 w-4 {getMantra().loading ? 'animate-spin' : ''}" />
+					<RefreshCw class="h-4 w-4" />
 				</Button>
 			</div>
 		{:else}

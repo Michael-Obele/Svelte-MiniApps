@@ -2,7 +2,8 @@
 export { getCurrentUser, loginUser, registerUser } from './auth.remote';
 
 // Remote functions for mantra management
-export { getMantra, likeMantra } from './mantra.remote';
+// (getMantra removed: mantras are generated on-device — see mantra.client.ts)
+export { likeMantra } from './mantra.remote';
 
 // Remote functions for password management
 export { getSavedPasswords, savePassword, deletePassword, editPassword } from './password.remote';

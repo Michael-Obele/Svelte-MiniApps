@@ -1,22 +1,7 @@
-import { getRequestEvent, query, form } from '$app/server';
+import { getRequestEvent, form } from '$app/server';
 import { prisma } from '$lib/server/db';
-import { generateMantra } from '$lib/utility/greetings';
 import * as v from 'valibot';
 import { error } from '@sveltejs/kit';
-
-// ============================================================================
-// QUERIES - Read data from the server
-// ============================================================================
-
-/**
- * Get a new random mantra
- */
-export const getMantra = query(async () => {
-	console.log('Generating new mantra...');
-	const mantraQuery = generateMantra();
-	console.log(`Generated new mantra: "${mantraQuery}"`);
-	return mantraQuery;
-});
 
 // ============================================================================
 // FORMS - Write data to the server

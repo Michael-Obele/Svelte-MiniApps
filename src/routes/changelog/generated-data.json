@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "705bf8f5e5bd78367d260443864313f332eb2992",
-  "generatedAt": "2026-08-09T11:53:32.729Z",
+  "lastProcessedCommit": "77f503cc104da0c22406ca16f94af2451ce8661d",
+  "generatedAt": "2026-08-09T14:34:45.903Z",
   "timeline": [
     {
       "date": "August 9, 2026",
@@ -114,6 +114,17 @@
     },
     {
       "date": "August 9, 2026",
+      "title": "fix: hero no longer blocks on the mantra query — local fallback renders instantly",
+      "description": "Updated src/lib/components/home/Welcome.svelte, src/lib/utility/greetings.client.svelte.ts",
+      "items": [
+        "fix: hero no longer blocks on the mantra query — local fallback renders instantly (77f503c)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "August 9, 2026",
       "title": "chore: remove dead code flagged by fallow and document suppressions",
       "description": "Updated .fallowrc.json, bun.lockb, package.json and more",
       "items": [
@@ -140,6 +151,17 @@
       "description": "Updated prisma/schema.prisma, src/lib/remote/flash-text.remote.ts, src/lib/server/flash-text.ts and more",
       "items": [
         "feat: end-to-end encrypt FlashText pastes with key in URL fragment (4878cc7)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: make Wuchale translation opt-in instead of auto-running at build",
+      "description": "Updated package.json, src/routes/changelog/generated-data.json, wuchale.config.js",
+      "items": [
+        "feat: make Wuchale translation opt-in instead of auto-running at build (46dec7a)"
       ],
       "type": "feature",
       "icon": "Rocket",
@@ -184,6 +206,17 @@
       "description": "Updated src/lib/index.svelte.ts",
       "items": [
         "chore: trim app catalog to shipped apps (22754ae)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "chore: clean up stale translation entries and update German catalog",
+      "description": "Updated src/locales/de.po, src/locales/en.po, src/locales/ja.po",
+      "items": [
+        "chore: clean up stale translation entries and update German catalog (2225a33)"
       ],
       "type": "improvement",
       "icon": "Code",
