@@ -14,6 +14,14 @@
 [functions."cleanup-flash-texts"]
   schedule = "@hourly"
 
+# Android App Links verification requires the assetlinks file to be served
+# over HTTPS as application/json with NO redirects (no www->apex, no http->https).
+# A 301 here breaks verification with no visible error.
+[[headers]]
+  for = "/.well-known/assetlinks.json"
+  [headers.values]
+    Content-Type = "application/json"
+
 [images]
   # Optional: If you ever test CDN as fallback
   # remote_images = ["https://example-external-domain.com/.*"]
