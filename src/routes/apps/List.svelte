@@ -1,6 +1,5 @@
 <script lang="ts">
 	import AppGrid from './AppGrid.svelte';
-	import { done } from '$lib/index.svelte';
 	import { projects } from '$lib/index.svelte';
 	import { persistedLocale } from '$lib/stores/language-store.svelte';
 
@@ -15,12 +14,6 @@
 
 	// Sort projects alphabetically by title using locale-aware sorting
 	let sortedProjects = $derived(projects().sort((a, b) => collator.compare(a.title, b.title)));
-
-	let sortedDoneProjects = $derived(
-		projects()
-			.filter((item) => done().some((d) => d.name === item.link))
-			.sort((a, b) => collator.compare(a.title, b.title))
-	);
 
 	let filteredProjects = $derived(
 		filteredBy
@@ -37,10 +30,8 @@
 	);
 </script>
 
-{#if filteredBy === 'all'}
-	<AppGrid items={sortedProjects} />
-{:else if filteredBy === 'done'}
-	<AppGrid items={sortedDoneProjects} />
-{:else}
+{#if filteredBy}
 	<AppGrid items={filteredProjects} />
+{:else}
+	<AppGrid items={sortedProjects} />
 {/if}

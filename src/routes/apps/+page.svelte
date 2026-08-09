@@ -4,20 +4,13 @@
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import AppGrid from './AppGrid.svelte';
 	import AppFilters from './AppFilters.svelte';
-	import { filter } from '$lib/states.svelte';
-	import { done, projects } from '$lib/index.svelte';
-	import { onMount } from 'svelte';
+	import { projects } from '$lib/index.svelte';
 
 	let app = $state('');
 	let searchQuery = $state('');
 
 	// Alphabetically sorted projects (locale-aware)
 	let sortedProjects = $derived([...projects()].sort((a, b) => a.title.localeCompare(b.title)));
-
-	// Check if a project is completed
-	function isCompleted(link: string): boolean {
-		return done().some((d) => d.name === link);
-	}
 </script>
 
 <RouteHead
@@ -43,14 +36,12 @@
 		</p>
 	</div>
 
-	<!-- Enhanced Filter & Search Section -->
-	<AppFilters {filter} bind:app bind:searchQuery />
+	<!-- Search & Jump-to-app Section -->
+	<AppFilters bind:app bind:searchQuery />
 
 	{#if app}
 		<List filteredBy={app} />
-	{:else if filter.current === 'all'}
+	{:else}
 		<AppGrid items={sortedProjects} />
-	{:else if filter.current === 'done'}
-		<AppGrid items={sortedProjects.filter((p) => isCompleted(p.link))} />
 	{/if}
 </div>

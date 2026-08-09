@@ -1,18 +1,15 @@
 <script lang="ts">
 	import { Button } from '@/ui/button/index.js';
-	import { Check, Command, Grid2x2Check, LayoutGrid, Search, X } from '@lucide/svelte';
+	import { Command, Search, X } from '@lucide/svelte';
 	import * as Dialog from '@/ui/dialog/index.js';
-	import * as ToggleGroup from '@/ui/toggle-group/index.js';
 	import Input from '@/ui/input/input.svelte';
 	import { PressedKeys } from 'runed';
-	import { done, projects } from '$lib/index.svelte';
+	import { projects } from '$lib/index.svelte';
 
 	let {
-		filter,
 		app = $bindable(''),
 		searchQuery = $bindable('')
 	}: {
-		filter: { current: string };
 		app?: string;
 		searchQuery?: string;
 	} = $props();
@@ -58,57 +55,12 @@
 			event.preventDefault();
 		}
 	}
-
-	// Check if a project is completed
-	function isCompleted(link: string): boolean {
-		return done().some((d) => d.name === link);
-	}
 </script>
 
 <svelte:window onkeydown={preventNativeCombo} />
 
-<!-- Enhanced Filter & Search Section -->
+<!-- App Search Section -->
 <div class="mb-12 flex w-full flex-col items-center justify-center gap-6">
-	<!-- Filter Toggle Group with Icons -->
-	<div class="flex flex-col items-center gap-3">
-		<p class="text-muted-foreground text-sm font-medium">Filter by</p>
-		<ToggleGroup.Root
-			type="single"
-			value={filter.current}
-			onValueChange={(value) => {
-				if (value) filter.current = value;
-			}}
-			variant="outline"
-			size="lg"
-			class="from-background/80 to-muted/30 ring-border/50 inline-flex rounded-xl bg-gradient-to-br p-1.5 shadow-lg ring-1 backdrop-blur-sm transition-all"
-		>
-			<ToggleGroup.Item
-				value="all"
-				aria-label="Show all apps"
-				class={`gap-2 px-6 py-2.5 text-base font-medium transition-all duration-300 ${
-					filter.current === 'all'
-						? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:bg-red-700 dark:shadow-[0_0_20px_rgba(220,38,38,0.3)]'
-						: 'hover:bg-accent/50'
-				}`}
-			>
-				<LayoutGrid class="h-4 w-4" />
-				All Apps
-			</ToggleGroup.Item>
-			<ToggleGroup.Item
-				value="done"
-				aria-label="Show completed apps"
-				class={`gap-2 px-6 py-2.5 text-base font-medium transition-all duration-300 ${
-					filter.current === 'done'
-						? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:bg-red-700 dark:shadow-[0_0_20px_rgba(220,38,38,0.3)]'
-						: 'hover:bg-accent/50'
-				}`}
-			>
-				<Grid2x2Check class="h-4 w-4" />
-				Completed
-			</ToggleGroup.Item>
-		</ToggleGroup.Root>
-	</div>
-
 	<!-- Search Bar -->
 	<Dialog.Root bind:open={dialogOpen}>
 		<Dialog.Trigger class="w-full max-w-xl">
@@ -188,27 +140,6 @@
 					{/if}
 				</div>
 
-				<div class="grid gap-2 sm:grid-cols-2">
-					<div class="bg-muted/35 rounded-xl border p-3">
-						<div class="mb-2 flex items-center gap-2 text-sm font-medium">
-							<LayoutGrid class="size-4 text-red-500" />
-							All apps
-						</div>
-						<p class="text-muted-foreground text-sm">
-							Browse the full catalogue when you want to explore everything.
-						</p>
-					</div>
-					<div class="bg-muted/35 rounded-xl border p-3">
-						<div class="mb-2 flex items-center gap-2 text-sm font-medium">
-							<Grid2x2Check class="size-4 text-red-500" />
-							Completed apps
-						</div>
-						<p class="text-muted-foreground text-sm">
-							Surface the tools that are already available to use right now.
-						</p>
-					</div>
-				</div>
-
 				<div class="max-h-[320px] space-y-2 overflow-y-auto pr-1">
 					{#if filteredProjects.length === 0}
 						<div class="text-muted-foreground rounded-xl border border-dashed py-8 text-center">
@@ -216,63 +147,29 @@
 						</div>
 					{:else}
 						{#each filteredProjects as project (project.link)}
-							{#if isCompleted(project.link)}
-								<a
-									href={'/apps/' + project.link}
-									class="group from-background to-muted/20 flex w-full cursor-pointer items-center justify-between rounded-xl border bg-gradient-to-r px-4 py-3 text-left transition-all hover:border-red-500/25 hover:bg-red-50/70 dark:hover:bg-red-900/10"
-								>
-									<div>
-										<div
-											class="text-foreground flex items-center gap-2 font-medium group-hover:text-red-600 dark:group-hover:text-red-400"
-										>
-											{project.title}
-											<span
-												class="inline-flex items-center gap-1 rounded-full bg-emerald-500/12 px-2 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300"
-											>
-												<Check class="size-3" />
-												Ready
-											</span>
-										</div>
-										<div class="text-muted-foreground text-sm">
-											{project.details}
-										</div>
-										<div
-											class="mt-2 inline-block rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900/30 dark:text-red-300"
-										>
-											{project.tag}
-										</div>
+							<a
+								href={'/apps/' + project.link}
+								class="group from-background to-muted/20 flex w-full cursor-pointer items-center justify-between rounded-xl border bg-gradient-to-r px-4 py-3 text-left transition-all hover:border-red-500/25 hover:bg-red-50/70 dark:hover:bg-red-900/10"
+							>
+								<div>
+									<div
+										class="text-foreground flex items-center gap-2 font-medium group-hover:text-red-600 dark:group-hover:text-red-400"
+									>
+										{project.title}
 									</div>
-									<div class="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
-										{project.difficulty}
+									<div class="text-muted-foreground text-sm">
+										{project.details}
 									</div>
-								</a>
-							{:else}
-								<div
-									class="bg-muted/20 border-border/50 flex w-full cursor-not-allowed items-center justify-between rounded-xl border px-4 py-3 text-left opacity-70"
-								>
-									<div>
-										<div class="text-muted-foreground flex items-center gap-2 font-medium">
-											{project.title}
-											<span
-												class="rounded-full border px-2 py-0.5 text-[10px] tracking-[0.2em] uppercase"
-											>
-												Coming Soon
-											</span>
-										</div>
-										<div class="text-muted-foreground text-sm">
-											{project.details}
-										</div>
-										<div
-											class="bg-muted text-muted-foreground mt-2 inline-block rounded-full px-2 py-0.5 text-xs font-medium"
-										>
-											{project.tag}
-										</div>
-									</div>
-									<div class="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
-										{project.difficulty}
+									<div
+										class="mt-2 inline-block rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900/30 dark:text-red-300"
+									>
+										{project.tag}
 									</div>
 								</div>
-							{/if}
+								<div class="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
+									{project.difficulty}
+								</div>
+							</a>
 						{/each}
 					{/if}
 				</div>

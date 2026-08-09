@@ -50,7 +50,6 @@ export function getContentBlocksData() {
 	];
 }
 
-
 export function getTrustBadges() {
 	return [
 		{ label: 'Free forever', icon: 'check' },
@@ -93,13 +92,42 @@ export function getFaqItems() {
 }
 
 // App category breakdown for the donut chart in AppsSection.
-// Returns distribution of apps across functional categories.
+// Derived from the shipped catalog so the chart can never drift out of
+// sync: every app's `tag` maps into one of the five human-readable
+// buckets below, and only apps present in `done()` are counted.
+import { done, projects } from '$lib/index.svelte';
+
+const CATEGORY_BUCKETS: Record<string, string> = {
+	finance: 'Finance',
+	health: 'Health',
+	'developer-tools': 'Developer',
+	utility: 'Utilities',
+	productivity: 'Productivity',
+	security: 'Productivity',
+	fun: 'Productivity'
+};
+
+const CATEGORY_COLORS = [
+	'var(--chart-1)',
+	'var(--chart-2)',
+	'var(--chart-3)',
+	'var(--chart-4)',
+	'var(--chart-5)'
+];
+
 export function getAppCategories() {
-	return [
-		{ name: 'Finance', count: 4, color: 'var(--chart-1)' },
-		{ name: 'Text & Notes', count: 5, color: 'var(--chart-2)' },
-		{ name: 'Developer', count: 4, color: 'var(--chart-3)' },
-		{ name: 'Utilities', count: 5, color: 'var(--chart-4)' },
-		{ name: 'Creative', count: 3, color: 'var(--chart-5)' }
-	];
+	const counts = new Map<string, number>();
+
+	for (const project of projects()) {
+		// Only count apps that are actually shipped (prune guard).
+		if (!done().some((d) => d.name === project.link)) continue;
+		const bucket = CATEGORY_BUCKETS[project.tag] ?? 'Utilities';
+		counts.set(bucket, (counts.get(bucket) ?? 0) + 1);
+	}
+
+	return [...counts.entries()].map(([name, count], i) => ({
+		name,
+		count,
+		color: CATEGORY_COLORS[i % CATEGORY_COLORS.length]
+	}));
 }
