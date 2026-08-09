@@ -2,7 +2,7 @@ import { PersistedState } from '$lib/persisted-state';
 
 /**
  * Persisted configuration for the medication tracker app
- * Uses PersistedState to store UI preferences that don't need to be in Dexie
+ * Uses PersistedState to store UI preferences that don't need to be synced
  */
 
 // Track if user has seen the how-to guide
