@@ -7,6 +7,15 @@ import { defineConfig } from 'wuchale';
 const deepseekModel = 'deepseek-v4-flash';
 
 /**
+ * Translation is opt-in: set WUCHALE_TRANSLATE=1 (plus DEEPSEEK_API_KEY) when
+ * running `bunx wuchale` manually. Without the flag the `ai` config is
+ * undefined, which tells the vite plugin and the CLI to only extract strings
+ * into the .po catalogs and never call the AI — so `bun run build` and `bun
+ * dev` never auto-translate and never require an API key.
+ */
+const useAiTranslation = !!process.env.WUCHALE_TRANSLATE;
+
+/**
  * @param {string} messages
  * @param {string} instruction
  */
@@ -45,10 +54,12 @@ export default defineConfig({
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
 	},
-	ai: {
-		name: `DeepSeek (${deepseekModel})`,
-		batchSize: 40,
-		parallel: 5,
-		translate: translateWithDeepSeek
-	}
+	ai: useAiTranslation
+		? {
+				name: `DeepSeek (${deepseekModel})`,
+				batchSize: 40,
+				parallel: 5,
+				translate: translateWithDeepSeek
+			}
+		: undefined
 });

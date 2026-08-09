@@ -28,6 +28,8 @@
 		"extract:sync": "bunx wuchale --sync",
 		"extract:watch": "bunx wuchale --watch",
 		"extract:stat": "bunx wuchale status",
+		"translate": "WUCHALE_TRANSLATE=1 bunx wuchale --sync",
+		"translate:clean": "WUCHALE_TRANSLATE=1 bunx wuchale --clean --sync",
 		"extract:init": "bunx wuchale init",
 		"fix:po": "node scripts/fix-po-backticks.js",
 		"cap:init": "npx cap init",
