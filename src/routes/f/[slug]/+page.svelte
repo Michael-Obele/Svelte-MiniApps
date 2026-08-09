@@ -8,6 +8,7 @@
 	} from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
+	import { Textarea } from '$lib/components/ui/textarea';
 	import { Separator } from '$lib/components/ui/separator';
 	import {
 		Clipboard,
@@ -41,6 +42,20 @@
 	let copyConfirmed = $state(false);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
+	let textareaEl = $state<HTMLTextAreaElement | null>(null);
+
+	// Auto-grow the viewer: short pastes get a compact box, long ones scroll.
+	// One line → 2 rows; 20+ lines → capped with overflow scrolling.
+	let textRows = $derived(
+		currentFlashText?.content
+			? Math.min(20, Math.max(2, currentFlashText.content.split('\n').length))
+			: 2
+	);
+
+	// View-only display: focus = select all, so one click + Ctrl/Cmd+C copies.
+	function handleFocusSelect() {
+		textareaEl?.select();
+	}
 
 	// Countdown timer
 	$effect(() => {
@@ -174,30 +189,41 @@
 							</Badge>
 						{/if}
 					</div>
-					{#if currentFlashText.content}
-						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
-							{#if copyConfirmed}
-								<Check class="mr-2 size-4 text-green-500" />
-								Copied!
-							{:else}
-								<Copy class="mr-2 size-4" />
-								Copy Text
-							{/if}
-						</Button>
-					{/if}
 				</CardContent>
 			</Card>
 
 			<!-- Content Card (or file-only placeholder) -->
 			{#if currentFlashText.content}
 				<Card>
-					<CardHeader class="pb-3">
-						<CardTitle class="text-muted-foreground text-sm font-medium">Shared Text</CardTitle>
+					<CardHeader class="flex flex-row items-center justify-between space-y-0 pb-3">
+						<CardTitle class="flex items-center gap-2 text-sm font-medium">
+							<FileText class="text-muted-foreground size-4" />
+							Shared Text
+						</CardTitle>
+						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
+							{#if copyConfirmed}
+								<Check class="mr-2 size-4 text-green-500" />
+								Copied!
+							{:else}
+								<Copy class="mr-2 size-4" />
+								Copy
+							{/if}
+						</Button>
 					</CardHeader>
-					<CardContent>
-						<pre
-							class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
-							{currentFlashText.content}</pre>
+					<CardContent class="space-y-2">
+						<Textarea
+							readonly
+							bind:ref={textareaEl}
+							value={currentFlashText.content}
+							rows={textRows}
+							spellcheck="false"
+							onfocus={handleFocusSelect}
+							aria-label="Shared text content"
+							class="bg-muted/50 min-h-0 max-h-[70vh] resize-none overflow-auto font-mono text-sm leading-relaxed focus-visible:ring-ring/40"
+						/>
+						<p class="text-muted-foreground text-center text-xs">
+							Click the text to select all — then press Ctrl/Cmd+C to copy.
+						</p>
 					</CardContent>
 				</Card>
 			{:else}
