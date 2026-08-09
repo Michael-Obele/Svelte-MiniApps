@@ -213,7 +213,7 @@
 							spellcheck="false"
 							onfocus={handleFocusSelect}
 							aria-label="Shared text content"
-							class="bg-muted/50 max-h-[70vh] min-h-0 resize-none overflow-auto font-mono text-sm leading-relaxed"
+							class="bg-muted/50 max-h-[70vh] min-h-0 resize-none overflow-auto font-mono text-sm leading-relaxed focus-visible:ring-0 focus-visible:ring-offset-0"
 						/>
 						<p class="text-muted-foreground text-center text-xs">
 							Click the text to select all — then press Ctrl/Cmd+C to copy.
