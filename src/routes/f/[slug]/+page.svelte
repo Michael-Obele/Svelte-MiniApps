@@ -124,15 +124,39 @@
 </svelte:head>
 
 <div class="mx-auto max-w-3xl space-y-6 p-4 sm:p-6">
-	<!-- Header -->
-	<div class="flex items-center gap-3">
+	<!-- Page header with inline meta (expiry + badges) — no separate meta card -->
+	<div class="flex flex-wrap items-center gap-3">
 		<div class="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
 			<Clipboard class="text-primary size-5" />
 		</div>
-		<div>
+		<div class="min-w-0 flex-1">
 			<h1 class="text-2xl font-bold tracking-tight">FlashText</h1>
 			<p class="text-muted-foreground text-sm">Temporary shared text — view-only</p>
 		</div>
+		{#if currentFlashText}
+			<div class="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
+				<div class="flex items-center gap-1.5">
+					<Timer class="size-4" />
+					{#if isExpired}
+						<span class="text-destructive font-semibold">Expired</span>
+					{:else}
+						<span>Expires in <span class="font-semibold tabular-nums">{timeRemaining}</span></span>
+					{/if}
+				</div>
+				{#if currentFlashText.content}
+					<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
+					<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
+				{:else}
+					<Badge variant="secondary" class="text-xs">No text</Badge>
+				{/if}
+				{#if currentFiles.length > 0}
+					<Badge variant="secondary" class="text-xs">
+						{currentFiles.length}
+						{currentFiles.length === 1 ? 'file' : 'files'}
+					</Badge>
+				{/if}
+			</div>
+		{/if}
 	</div>
 
 	{#if !currentFlashText}
@@ -145,8 +169,8 @@
 						<span class="text-destructive">Link Expired or Not Found</span>
 					</CardTitle>
 					<CardDescription>
-						This text has either expired or the link is invalid. FlashText links are temporary and
-						automatically deleted after their expiry time (max 24 hours).
+						This text has expired or the link is invalid — FlashText links are temporary (max 24
+						hours) and are deleted after expiry.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -162,36 +186,6 @@
 		</div>
 	{:else}
 		<div transition:fade class="space-y-4">
-			<!-- Meta Card -->
-			<Card>
-				<CardContent class="flex flex-wrap items-center justify-between gap-4 p-4">
-					<div class="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
-						<div class="flex items-center gap-1.5">
-							<Timer class="size-4" />
-							{#if isExpired}
-								<span class="text-destructive font-semibold">Expired</span>
-							{:else}
-								<span
-									>Expires in <span class="font-semibold tabular-nums">{timeRemaining}</span></span
-								>
-							{/if}
-						</div>
-						{#if currentFlashText.content}
-							<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
-							<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
-						{:else}
-							<Badge variant="secondary" class="text-xs">No text</Badge>
-						{/if}
-						{#if currentFiles.length > 0}
-							<Badge variant="secondary" class="text-xs">
-								{currentFiles.length}
-								{currentFiles.length === 1 ? 'file' : 'files'}
-							</Badge>
-						{/if}
-					</div>
-				</CardContent>
-			</Card>
-
 			<!-- Content Card (or file-only placeholder) -->
 			{#if currentFlashText.content}
 				<Card>
@@ -219,7 +213,7 @@
 							spellcheck="false"
 							onfocus={handleFocusSelect}
 							aria-label="Shared text content"
-							class="bg-muted/50 min-h-0 max-h-[70vh] resize-none overflow-auto font-mono text-sm leading-relaxed focus-visible:ring-ring/40"
+							class="bg-muted/50 max-h-[70vh] min-h-0 resize-none overflow-auto font-mono text-sm leading-relaxed"
 						/>
 						<p class="text-muted-foreground text-center text-xs">
 							Click the text to select all — then press Ctrl/Cmd+C to copy.
@@ -227,21 +221,14 @@
 					</CardContent>
 				</Card>
 			{:else}
-				<Card>
-					<CardHeader class="pb-3">
-						<CardTitle class="text-muted-foreground text-sm font-medium">No Text Content</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-muted-foreground py-4 text-center text-sm">
-							This share contains only files — no text was included.
-							{#if currentFiles.length > 0}
-								Files are listed below.
-							{:else}
-								No files are attached either.
-							{/if}
-						</p>
-					</CardContent>
-				</Card>
+				<p class="text-muted-foreground text-center text-sm">
+					This share contains only files.
+					{#if currentFiles.length > 0}
+						Files are listed below.
+					{:else}
+						No files are attached either.
+					{/if}
+				</p>
 			{/if}
 
 			<!-- Files Card -->
