@@ -7,8 +7,12 @@
 	import { qrCodeGeneratorHowToUse } from './how-to-use-config';
 	import { Button } from '@/ui/button';
 	import { HelpCircle } from '@lucide/svelte';
+	import { page } from '$app/state';
 
-	let inputText = $state('');
+	// Seeded from the share-target ?url= param. Read once at initialisation —
+	// the $effect below rewrites inputText on tab change, so a second writer
+	// would fight it.
+	let inputText = $state(page.url.searchParams.get('url') ?? '');
 	let selectedTab = $state('text');
 	let showHowToUseDialog = $state(false);
 	let contactInfo = $state({

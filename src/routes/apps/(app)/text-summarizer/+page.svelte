@@ -13,10 +13,21 @@
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { textSummarizerHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
+	import { page } from '$app/state';
 
 	// Define states with persistence for content
 	let inputText = new PersistedState('summarizer-input-text', sampleText);
 	let summary = new PersistedState('summarizer-summary', '');
+
+	// Seed from the share-target ?text= param. Awaiting reload() ensures the
+	// IndexedDB hydration has finished, so the seed is not clobbered by the
+	// persisted value and is itself persisted as the newest content.
+	const sharedText = page.url.searchParams.get('text');
+	if (sharedText) {
+		void inputText.reload().then(() => {
+			inputText.current = sharedText;
+		});
+	}
 
 	// Safety check for persistence values
 	if (inputText.current === undefined) {

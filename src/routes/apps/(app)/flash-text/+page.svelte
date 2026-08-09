@@ -61,7 +61,8 @@
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
 	let lookupInput = $state('');
-	let textContent = $state('');
+	// Seeded from the share-target ?content= param (e.g. Android share → flash-text).
+	let textContent = $state(page.url.searchParams.get('content') ?? '');
 	let expiryHours = $state('6');
 
 	// Created link state — $state initialized from URL on mount,
