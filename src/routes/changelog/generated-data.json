@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "77f503cc104da0c22406ca16f94af2451ce8661d",
-  "generatedAt": "2026-08-09T14:34:45.903Z",
+  "lastProcessedCommit": "bbd6323f72bf4a03d8d4a2e66acf19afd13d03c1",
+  "generatedAt": "2026-08-09T17:16:31.955Z",
   "timeline": [
     {
       "date": "August 9, 2026",
@@ -70,6 +70,17 @@
     },
     {
       "date": "August 9, 2026",
+      "title": "refactor: simplify AppsSection gallery and remove coming-soon collapsible",
+      "description": "Updated src/lib/components/home/AppsSection.svelte, src/lib/components/home/data.svelte.ts, src/lib/states.svelte.ts and more",
+      "items": [
+        "refactor: simplify AppsSection gallery and remove coming-soon collapsible (bbd6323)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "August 9, 2026",
       "title": "feat: add share-target routing resolver with tests",
       "description": "Updated src/lib/utility/share-routing.test.ts",
       "items": [
@@ -78,6 +89,17 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "refactor: shorten FlashText viewer — merge meta into header, drop redundant cards",
+      "description": "Updated src/routes/f/[slug]/+page.svelte",
+      "items": [
+        "refactor: shorten FlashText viewer — merge meta into header, drop redundant cards (95b99d3)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
     },
     {
       "date": "August 9, 2026",
@@ -103,6 +125,17 @@
     },
     {
       "date": "August 9, 2026",
+      "title": "fix: redesign Shared Text viewer card — readonly auto-grow textarea",
+      "description": "Updated src/routes/f/[slug]/+page.svelte",
+      "items": [
+        "fix: redesign Shared Text viewer card — readonly auto-grow textarea (84d6d82)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "August 9, 2026",
       "title": "fix: align Android App Links with com.svelte.miniapps package",
       "description": "Updated android/app/src/main/AndroidManifest.xml, netlify.toml, static/.well-known/assetlinks.json",
       "items": [
@@ -111,6 +144,17 @@
       "type": "fix",
       "icon": "Wrench",
       "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "feat: on-device mantra generator using chance + compromise, fix article grammar",
+      "description": "Updated bun.lockb, package.json, src/lib/components/home/Welcome.svelte and more",
+      "items": [
+        "feat: on-device mantra generator using chance + compromise, fix article grammar (81ad9d2)"
+      ],
+      "type": "feature",
+      "icon": "Rocket",
+      "color": "from-green-500 to-emerald-500"
     },
     {
       "date": "August 9, 2026",
@@ -133,6 +177,17 @@
       "type": "improvement",
       "icon": "Code",
       "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "August 9, 2026",
+      "title": "fix: remove focus ring on readonly FlashText textarea",
+      "description": "Updated src/routes/f/[slug]/+page.svelte",
+      "items": [
+        "fix: remove focus ring on readonly FlashText textarea (5da08c7)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "August 9, 2026",
