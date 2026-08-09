@@ -387,10 +387,11 @@ model ScenarioRisk {
 // ============================================
 
 model FlashText {
-  id        String       @id @default(uuid())
-  slug      String       @unique
-  content   String
-  expiresAt DateTime     @map("expires_at")
+  id          String       @id @default(uuid())
+  slug        String       @unique
+  content     String
+  isEncrypted Boolean      @default(false) @map("is_encrypted")
+  expiresAt   DateTime     @map("expires_at")
   createdAt DateTime     @default(now()) @map("created_at")
   userId    String?      @map("user_id")
   user      User?        @relation(fields: [userId], references: [id], onDelete: SetNull)

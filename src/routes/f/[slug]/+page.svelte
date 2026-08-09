@@ -27,11 +27,54 @@
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
 	import { formatFileSize, getFileIconHint } from '$lib/types/flash-file';
+	import { decryptFlashText, FlashDecryptError } from '$lib/utility/flash-crypto';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let currentFlashText = $derived(data.flashText);
 	let currentFiles = $derived(data.files);
+
+	let decrypted = $state<string | null>(null);
+	let decryptError = $state<string | null>(null);
+
+	// Genuine async I/O against WebCrypto plus a window.location read, so it
+	// cannot be a $derived. Assigns only to decrypted/decryptError, never to
+	// anything it reads — no loop.
+	$effect(() => {
+		if (!currentFlashText?.isEncrypted) return;
+
+		const key = window.location.hash.slice(1);
+		if (!key) {
+			decryptError = 'This link is incomplete — the decryption key is missing from the URL.';
+			return;
+		}
+
+		let cancelled = false;
+
+		decryptFlashText(currentFlashText.content, key)
+			.then((text) => {
+				if (cancelled) return;
+				decrypted = text;
+				decryptError = null;
+			})
+			.catch((err) => {
+				if (cancelled) return;
+				decryptError =
+					err instanceof FlashDecryptError
+						? 'Could not decrypt — the key in this link is wrong or the paste was altered.'
+						: 'Something went wrong while decrypting.';
+			});
+
+		return () => {
+			cancelled = true;
+		};
+	});
+
+	/**
+	 * Single source of truth for displayable text. Plaintext pastes created
+	 * before encryption shipped fall through unchanged.
+	 */
+	let displayText = $derived(currentFlashText?.isEncrypted ? decrypted : currentFlashText?.content);
 
 	/** Presigned download URLs keyed by file.id — generated in the load function. */
 	function downloadUrl(file: { id: string; slug: string }): string {
@@ -75,14 +118,14 @@
 
 	async function handleCopy() {
 		if (!currentFlashText) return;
-		await navigator.clipboard.writeText(currentFlashText.content);
+		await navigator.clipboard.writeText(displayText ?? '');
 		copyConfirmed = true;
 		toast.success('Text copied!');
 		setTimeout(() => (copyConfirmed = false), 2000);
 	}
 
-	let charCount = $derived(currentFlashText?.content?.length ?? 0);
-	let lineCount = $derived(currentFlashText?.content?.split('\n').length ?? 0);
+	let charCount = $derived(displayText?.length ?? 0);
+	let lineCount = $derived(displayText?.split('\n').length ?? 0);
 
 	/** Pick the right Lucide icon component for a content type. */
 	function getFileIcon(contentType: string) {
@@ -161,7 +204,7 @@
 								>
 							{/if}
 						</div>
-						{#if currentFlashText.content}
+						{#if displayText}
 							<Badge variant="secondary" class="text-xs">{charCount} chars</Badge>
 							<Badge variant="secondary" class="text-xs">{lineCount} lines</Badge>
 						{:else}
@@ -174,8 +217,8 @@
 							</Badge>
 						{/if}
 					</div>
-					{#if currentFlashText.content}
-						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
+					{#if displayText}
+						<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired || !displayText}>
 							{#if copyConfirmed}
 								<Check class="mr-2 size-4 text-green-500" />
 								Copied!
@@ -188,8 +231,26 @@
 				</CardContent>
 			</Card>
 
+			<!-- Decrypt states: shown before the content card so a broken key or
+			     missing fragment is visible instead of a raw-ciphertext render. -->
+			{#if decryptError}
+				<Card class="border-destructive/50 bg-destructive/5">
+					<CardHeader>
+						<CardTitle class="flex items-center gap-2">
+							<AlertTriangle class="text-destructive size-5" />
+							<span class="text-destructive">Cannot Decrypt</span>
+						</CardTitle>
+						<CardDescription>{decryptError}</CardDescription>
+					</CardHeader>
+				</Card>
+			{:else if currentFlashText.isEncrypted && !decrypted}
+				<Card>
+					<CardContent class="text-muted-foreground p-8 text-center text-sm">Decrypting…</CardContent>
+				</Card>
+			{/if}
+
 			<!-- Content Card (or file-only placeholder) -->
-			{#if currentFlashText.content}
+			{#if displayText}
 				<Card>
 					<CardHeader class="pb-3">
 						<CardTitle class="text-muted-foreground text-sm font-medium">Shared Text</CardTitle>
@@ -197,7 +258,7 @@
 					<CardContent>
 						<pre
 							class="bg-muted/50 max-h-[70vh] overflow-auto rounded-md p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap">
-							{currentFlashText.content}</pre>
+							{displayText}</pre>
 					</CardContent>
 				</Card>
 			{:else}

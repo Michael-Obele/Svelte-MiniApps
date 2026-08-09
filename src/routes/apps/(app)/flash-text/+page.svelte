@@ -48,6 +48,7 @@
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
 	import { formatFileSize, MAX_FILE_SIZE } from '$lib/types/flash-file';
+	import { generateFlashKey, encryptFlashText } from '$lib/utility/flash-crypto';
 
 	// ============================================================================
 	// STATE
@@ -69,7 +70,12 @@
 	// then set directly after creation (no $effect needed).
 	let createdSlug = $state(page.url.searchParams.get('slug'));
 	let createdExpiresAt = $state(page.url.searchParams.get('expiresAt'));
-	let shareUrl = $derived(createdSlug ? `${page.url.origin}/f/${createdSlug}` : null);
+	let createdKey = $state<string | null>(null);
+	let shareUrl = $derived(
+		createdSlug
+			? `${page.url.origin}/f/${createdSlug}${createdKey ? `#${createdKey}` : ''}`
+			: null
+	);
 	let timeRemaining = $state<string | null>(null);
 	let isExpired = $state(false);
 
@@ -200,16 +206,26 @@
 		isCreating = true;
 
 		try {
-			// 1. Create the flash text (returns slug without redirecting)
+			// 1. Encrypt the text if there is any. The key travels in the URL
+			//    fragment and is never sent to the server — that property is
+			//    the whole point of the encryption. File-only pastes skip
+			//    encryption so the viewer's "No Text Content" card still works.
+			const hasText = textContent.trim().length > 0;
+			const key = hasText ? await generateFlashKey() : null;
+			const content = hasText ? await encryptFlashText(textContent, key as string) : '';
+
+			// 2. Create the flash text (returns slug without redirecting)
 			const result = await createFlashTextQuick({
-				content: textContent,
-				expiryHours
+				content,
+				expiryHours,
+				isEncrypted: hasText
 			});
 
-			// 2. Set state directly — timer reacts immediately to local $state,
+			// 3. Set state directly — timer reacts immediately to local $state,
 			//    no dependency on async goto.
 			createdSlug = result.slug;
 			createdExpiresAt = result.expiresAt;
+			createdKey = key;
 
 			// 3. Update URL for shareability (fire-and-forget, not awaited)
 			goto(
@@ -225,7 +241,8 @@
 			// 5. Refresh user pastes if logged in
 			if (currentUser) await loadUserPastes();
 
-			// 6. Clear the form
+			// 6. Clear the form — createdSlug/createdKey stay set so the
+			//    share link card keeps showing the full URL including the key.
 			textContent = '';
 			queuedFiles = [];
 		} catch (err) {
@@ -653,6 +670,12 @@
 							>
 								<span class="text-muted-foreground">{shareUrl}</span>
 							</div>
+							{#if createdKey}
+								<p class="text-muted-foreground text-sm">
+									🔒 Encrypted in your browser. The key is in the link — anyone with the link can read
+									it, and we cannot recover the text if you lose it.
+								</p>
+							{/if}
 							<div class="flex flex-wrap gap-2">
 								<Button variant="outline" size="sm" onclick={handleCopy} disabled={isExpired}>
 									{#if copyConfirmed}

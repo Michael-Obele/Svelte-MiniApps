@@ -5,6 +5,7 @@ export interface FlashTextItem {
 	id: string;
 	slug: string;
 	content: string;
+	isEncrypted: boolean;
 	expiresAt: string;
 	createdAt: string;
 	userId: string | null;
@@ -39,6 +40,7 @@ export async function getFlashTextBySlug(slug: string): Promise<FlashTextItem | 
 		id: flashText.id,
 		slug: flashText.slug,
 		content: flashText.content,
+		isEncrypted: flashText.isEncrypted,
 		expiresAt: flashText.expiresAt.toISOString(),
 		createdAt: flashText.createdAt.toISOString(),
 		userId: flashText.userId

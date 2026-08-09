@@ -20,6 +20,7 @@ export interface FlashTextItem {
 	id: string;
 	slug: string;
 	content: string;
+	isEncrypted: boolean;
 	expiresAt: string;
 	createdAt: string;
 	userId: string | null;
@@ -56,6 +57,7 @@ export const getUserFlashTexts = query(async () => {
 		id: ft.id,
 		slug: ft.slug,
 		content: ft.content,
+		isEncrypted: ft.isEncrypted,
 		expiresAt: ft.expiresAt.toISOString(),
 		createdAt: ft.createdAt.toISOString(),
 		userId: ft.userId
@@ -97,12 +99,14 @@ export const getUserHistory = query(async (): Promise<HistoryEntry[]> => {
 			id: `text-${ft.id}`,
 			type: 'text' as const,
 			slug: ft.slug,
-			label: ft.content
-				? ft.content.length > 80
-					? `${ft.content.slice(0, 80)}...`
-					: ft.content
-				: '(No text — file only)',
-			detail: ft.content ? `${ft.content.length} chars` : '0 chars',
+			label: ft.isEncrypted
+				? '🔒 Encrypted paste'
+				: ft.content
+					? ft.content.length > 80
+						? `${ft.content.slice(0, 80)}...`
+						: ft.content
+					: '(No text — file only)',
+			detail: ft.isEncrypted ? 'End-to-end encrypted' : `${ft.content.length} chars`,
 			createdAt: ft.createdAt.toISOString(),
 			expiresAt: ft.expiresAt.toISOString(),
 			parentSlug: undefined
@@ -131,7 +135,8 @@ export const getUserHistory = query(async (): Promise<HistoryEntry[]> => {
 export const createFlashText = form(
 	v.object({
 		content: v.optional(v.string(), ''),
-		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required'))
+		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required')),
+		isEncrypted: v.optional(v.boolean(), false)
 	}),
 	async (data) => {
 		let userId: string | null = null;
@@ -151,6 +156,7 @@ export const createFlashText = form(
 				id: crypto.randomUUID(),
 				slug,
 				content: data.content ?? '',
+				isEncrypted: data.isEncrypted,
 				expiresAt,
 				userId
 			}
@@ -167,7 +173,8 @@ export const createFlashText = form(
 export const createFlashTextQuick = command(
 	v.object({
 		content: v.optional(v.string(), ''),
-		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required'))
+		expiryHours: v.pipe(v.string(), v.nonEmpty('Expiry is required')),
+		isEncrypted: v.optional(v.boolean(), false)
 	}),
 	async (data) => {
 		let userId: string | null = null;
@@ -187,6 +194,7 @@ export const createFlashTextQuick = command(
 				id: crypto.randomUUID(),
 				slug,
 				content: data.content ?? '',
+				isEncrypted: data.isEncrypted,
 				expiresAt,
 				userId
 			}
