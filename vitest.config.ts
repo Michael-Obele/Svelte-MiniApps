@@ -11,7 +11,7 @@ export default defineConfig({
 		alias: {
 			$lib: '/src/lib',
 			'@': '/src',
-			$app: './vitest-mocks/app'
+			$app: '/vitest-mocks/app'
 		}
 	}
 });
