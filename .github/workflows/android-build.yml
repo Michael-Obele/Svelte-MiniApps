@@ -168,6 +168,8 @@ jobs:
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "App version: $VERSION_NAME (code $VERSION_CODE)"
+
+      - name: Build release AAB (signed)
         if: steps.keystore.outputs.keystore_file != ''
         env:
           KEYSTORE_PATH: ${{ steps.keystore.outputs.keystore_file }}
