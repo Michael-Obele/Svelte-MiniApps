@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "cd93e41d3b00536da3ae79dc877dea0773a4c0c8",
-  "generatedAt": "2026-08-15T14:46:48.121Z",
+  "lastProcessedCommit": "7d1ad2b0ff25928fcb5ebdd69ccea1e4dd70370e",
+  "generatedAt": "2026-08-15T14:54:22.899Z",
   "timeline": [
     {
       "date": "August 15, 2026",
@@ -12,6 +12,17 @@
       "type": "feature",
       "icon": "Rocket",
       "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "date": "August 15, 2026",
+      "title": "fix: harden debug APK release attachment with explicit repo and diagnostics",
+      "description": "Updated .github/workflows/android-build.yml",
+      "items": [
+        "fix: harden debug APK release attachment with explicit repo and diagnostics (7d1ad2b)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
     },
     {
       "date": "August 15, 2026",
