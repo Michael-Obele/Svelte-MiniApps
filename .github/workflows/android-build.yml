@@ -235,6 +235,9 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download debug APK artifact
         uses: actions/download-artifact@v4
         with:
@@ -245,9 +248,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euxo pipefail
           VERSION="${{ needs.release-build.outputs.version_name }}"
           TAG="v${VERSION}-b${GITHUB_RUN_NUMBER}"
-          gh release upload "$TAG" ./apk/*.apk --clobber
+          echo "Repo: ${GITHUB_REPOSITORY} | Version: ${VERSION} | Tag: ${TAG}"
+          APK_FILE=$(find ./apk -name '*.apk' | head -1)
+          echo "APK file: ${APK_FILE}"
+          gh release upload --repo "${GITHUB_REPOSITORY}" "$TAG" "$APK_FILE" --clobber
           echo "Attached debug APK to $TAG"
 
   # ── Upload to Google Play — depends on release-build ──
