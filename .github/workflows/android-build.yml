@@ -66,8 +66,12 @@ jobs:
       - name: Extract version from build.gradle
         id: version
         run: |
-          VERSION_NAME=$(grep versionName android/app/build.gradle | awk '{print $2}' | tr -d '"')
-          VERSION_CODE=$(grep versionCode android/app/build.gradle | awk '{print $2}')
+          VERSION_NAME=$(grep -m1 '^[[:space:]]*versionName[[:space:]]' android/app/build.gradle | awk '{print $2}' | tr -d '"')
+          VERSION_CODE=$(grep -m1 '^[[:space:]]*versionCode[[:space:]]' android/app/build.gradle | awk '{print $2}')
+          if [ -z "$VERSION_NAME" ] || [ -z "$VERSION_CODE" ]; then
+            echo "::error::Could not extract version from android/app/build.gradle"
+            exit 1
+          fi
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "App version: $VERSION_NAME (code $VERSION_CODE)"
@@ -155,13 +159,15 @@ jobs:
       - name: Extract version from build.gradle
         id: version
         run: |
-          VERSION_NAME=$(grep versionName android/app/build.gradle | awk '{print $2}' | tr -d '"')
-          VERSION_CODE=$(grep versionCode android/app/build.gradle | awk '{print $2}')
+          VERSION_NAME=$(grep -m1 '^[[:space:]]*versionName[[:space:]]' android/app/build.gradle | awk '{print $2}' | tr -d '"')
+          VERSION_CODE=$(grep -m1 '^[[:space:]]*versionCode[[:space:]]' android/app/build.gradle | awk '{print $2}')
+          if [ -z "$VERSION_NAME" ] || [ -z "$VERSION_CODE" ]; then
+            echo "::error::Could not extract version from android/app/build.gradle"
+            exit 1
+          fi
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "App version: $VERSION_NAME (code $VERSION_CODE)"
-
-      - name: Build release AAB (signed)
         if: steps.keystore.outputs.keystore_file != ''
         env:
           KEYSTORE_PATH: ${{ steps.keystore.outputs.keystore_file }}
