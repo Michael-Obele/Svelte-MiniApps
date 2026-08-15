@@ -57,24 +57,20 @@ jobs:
       - name: Sync Capacitor with web build
         run: npx cap sync
 
+      - name: Resolve app version
+        id: version
+        run: |
+          VERSION_CODE=$(git rev-list --count HEAD)
+          VERSION_NAME="1.0.${VERSION_CODE}"
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "App version: $VERSION_NAME (code $VERSION_CODE)"
+
       - name: Build Android APK (debug)
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
-
-      - name: Extract version from build.gradle
-        id: version
-        run: |
-          VERSION_NAME=$(grep -m1 '^[[:space:]]*versionName[[:space:]]' android/app/build.gradle | awk '{print $2}' | tr -d '"')
-          VERSION_CODE=$(grep -m1 '^[[:space:]]*versionCode[[:space:]]' android/app/build.gradle | awk '{print $2}')
-          if [ -z "$VERSION_NAME" ] || [ -z "$VERSION_CODE" ]; then
-            echo "::error::Could not extract version from android/app/build.gradle"
-            exit 1
-          fi
-          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
-          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
-          echo "App version: $VERSION_NAME (code $VERSION_CODE)"
+          ./gradlew assembleDebug -PversionCode=${{ steps.version.outputs.version_code }} -PversionName=${{ steps.version.outputs.version_name }}
 
       - name: Rename debug APK
         run: |
@@ -156,15 +152,11 @@ jobs:
             echo "KEYSTORE_BASE64 not set — AAB will be unsigned"
           fi
 
-      - name: Extract version from build.gradle
+      - name: Resolve app version
         id: version
         run: |
-          VERSION_NAME=$(grep -m1 '^[[:space:]]*versionName[[:space:]]' android/app/build.gradle | awk '{print $2}' | tr -d '"')
-          VERSION_CODE=$(grep -m1 '^[[:space:]]*versionCode[[:space:]]' android/app/build.gradle | awk '{print $2}')
-          if [ -z "$VERSION_NAME" ] || [ -z "$VERSION_CODE" ]; then
-            echo "::error::Could not extract version from android/app/build.gradle"
-            exit 1
-          fi
+          VERSION_CODE=$(git rev-list --count HEAD)
+          VERSION_NAME="1.0.${VERSION_CODE}"
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
           echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
           echo "App version: $VERSION_NAME (code $VERSION_CODE)"
@@ -179,14 +171,14 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew bundleRelease
+          ./gradlew bundleRelease -PversionCode=${{ steps.version.outputs.version_code }} -PversionName=${{ steps.version.outputs.version_name }}
 
       - name: Build release AAB (unsigned — no keystore secrets)
         if: steps.keystore.outputs.keystore_file == ''
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew bundleRelease
+          ./gradlew bundleRelease -PversionCode=${{ steps.version.outputs.version_code }} -PversionName=${{ steps.version.outputs.version_name }}
 
       - name: Rename release AAB
         run: |

@@ -7,8 +7,9 @@ android {
         applicationId "com.svelte.miniapps"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        // CI passes -PversionCode/-PversionName (see android-build.yml); local builds fall back below
+        versionCode project.findProperty('versionCode')?.toInteger() ?: 1
+        versionName project.findProperty('versionName') ?: "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
