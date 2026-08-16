@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "ae8c71d91163681f061b6fd2d57f0963eee4a23c",
-  "generatedAt": "2026-08-16T07:04:31.913Z",
+  "lastProcessedCommit": "8615db15ab1e23796fb8c766b27af60990833d77",
+  "generatedAt": "2026-08-16T07:39:30.483Z",
   "timeline": [
     {
       "date": "August 16, 2026",
@@ -19,6 +19,17 @@
       "description": "Updated .github/workflows/android-build.yml",
       "items": [
         "fix: ship release-signed APK and surface play upload failures (ae8c71d)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "August 16, 2026",
+      "title": "fix: update assetlinks fingerprint to new signing keystore",
+      "description": "Updated static/.well-known/assetlinks.json",
+      "items": [
+        "fix: update assetlinks fingerprint to new signing keystore (8615db1)"
       ],
       "type": "fix",
       "icon": "Wrench",
