@@ -10,6 +10,7 @@
 	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
 	import { registerServiceWorker } from '$lib/utility/serviceWorker';
+	import { initAppIntents } from '$lib/utility/appIntents';
 	import { Agentation, type AnnotationProps, type KeyBindings } from 'sv-agentation';
 
 	const keyBindings: KeyBindings = {
@@ -47,6 +48,7 @@
 		// Dynamically import @lordicon/element *inside* onMount
 		if (browser) {
 			registerServiceWorker();
+			initAppIntents();
 			// Initialize language settings
 			initLanguage();
 		}
