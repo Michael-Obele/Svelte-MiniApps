@@ -47,7 +47,7 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
-	import { formatFileSize, MAX_FILE_SIZE } from '$lib/types/flash-file';
+	import { formatFileSize, MAX_FILE_SIZE, resolveContentType } from '$lib/types/flash-file';
 
 	// ============================================================================
 	// STATE
@@ -267,6 +267,10 @@
 		file: File,
 		onProgress: (pct: number) => void
 	): Promise<boolean> {
+		// Resolve once so the DB record, presigned URL, and PUT all agree on the
+		// content type (browsers sometimes report an empty type for e.g. .zip).
+		const contentType = resolveContentType(file);
+
 		// Step 1: Get presigned URL
 		let presignedUrl: string;
 		try {
@@ -276,7 +280,7 @@
 				body: JSON.stringify({
 					slug,
 					fileName: file.name,
-					contentType: file.type || 'application/octet-stream',
+					contentType,
 					contentLength: file.size
 				})
 			});
@@ -301,7 +305,7 @@
 		}
 
 		// Step 2: PUT file body to presigned URL
-		const uploaded = await putFileToPresignedUrl(presignedUrl, file, onProgress);
+		const uploaded = await putFileToPresignedUrl(presignedUrl, file, contentType, onProgress);
 		if (!uploaded.ok) {
 			toast.error(uploaded.error);
 			return false;
@@ -313,12 +317,13 @@
 	function putFileToPresignedUrl(
 		url: string,
 		file: File,
+		contentType: string,
 		onProgress: (pct: number) => void
 	): Promise<{ ok: true } | { ok: false; error: string }> {
 		return new Promise((resolve) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open('PUT', url);
-			xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+			xhr.setRequestHeader('Content-Type', contentType);
 
 			xhr.upload.onprogress = (event) => {
 				if (event.lengthComputable) {

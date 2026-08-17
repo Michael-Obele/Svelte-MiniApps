@@ -49,23 +49,56 @@ export function resolveEffectiveMaxFileSize(): number {
 	return RESOLVED_MAX_FILE_SIZE_MB * 1024 * 1024;
 }
 
-/** Allowed MIME type prefixes. Empty array = allow all. */
-export const ALLOWED_FILE_PREFIXES: string[] = [
-	'image/',
-	'video/',
-	'audio/',
-	'text/',
-	'application/pdf',
-	'application/json',
-	'application/zip',
-	'application/x-tar',
-	'application/gzip',
-	'application/octet-stream',
-	'application/msword',
-	'application/vnd.openxmlformats-officedocument',
-	'application/vnd.ms-excel',
-	'application/vnd.ms-powerpoint'
-];
+/**
+ * Allowed MIME type prefixes. Empty array = allow all.
+ *
+ * Flash Text is a temporary file-sharing tool, so any file type is accepted.
+ * A whitelist would silently reject valid uploads because browsers disagree
+ * on the MIME type they report for the same extension — e.g. `.zip` is
+ * `application/zip` in Chrome but `application/x-zip-compressed` in Firefox
+ * and some Windows browsers, and other archives (`7z`, `rar`, …) aren't
+ * standardized at all. Size enforcement still applies via `MAX_FILE_SIZE` /
+ * `resolveEffectiveMaxFileSize()`.
+ */
+export const ALLOWED_FILE_PREFIXES: string[] = [];
+
+/**
+ * Fallback content types for extensions where browsers commonly report an
+ * empty MIME type (notably `.zip` on some platforms and older Safari).
+ */
+const EXTENSION_CONTENT_TYPES: Record<string, string> = {
+	zip: 'application/zip',
+	'7z': 'application/x-7z-compressed',
+	rar: 'application/vnd.rar',
+	tar: 'application/x-tar',
+	gz: 'application/gzip',
+	tgz: 'application/gzip',
+	bz2: 'application/x-bzip2',
+	pdf: 'application/pdf',
+	json: 'application/json',
+	xml: 'application/xml',
+	csv: 'text/csv',
+	txt: 'text/plain',
+	md: 'text/markdown',
+	html: 'text/html',
+	doc: 'application/msword',
+	docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+	xls: 'application/vnd.ms-excel',
+	xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	ppt: 'application/vnd.ms-powerpoint',
+	pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+};
+
+/**
+ * Resolve the content type to send for a file. Prefers the browser-reported
+ * MIME type; falls back to a known type derived from the file extension when
+ * the browser reports none (common for `.zip` and other archives), and finally
+ * to `application/octet-stream`.
+ */
+export function resolveContentType(file: { name: string; type: string }): string {
+	if (file.type) return file.type;
+	return EXTENSION_CONTENT_TYPES[getFileExtension(file.name)] ?? 'application/octet-stream';
+}
 
 /** Human-friendly size label, e.g. "12.4 MB". */
 export function formatFileSize(bytes: number): string {
