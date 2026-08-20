@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-08-09T19:03:26.855Z\n"
+"PO-Revision-Date: 2026-08-20T12:00:52.250Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -154,6 +154,11 @@ msgstr "MMM"
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/test-charts/+page.svelte
 #: src/routes/test-charts/+page.svelte
@@ -177,10 +182,8 @@ msgstr "Top Contributed Repositories"
 msgid "Most starred repositories you contributed to in {0}"
 msgstr "Most starred repositories you contributed to in {0}"
 
-#. placeholder {0}: year
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
-msgid "Daily contribution activity throughout {0}"
-msgstr "Daily contribution activity throughout {0}"
+#~ msgid "Daily contribution activity throughout {0}"
+#~ msgstr "Daily contribution activity throughout {0}"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Activity Summary"
@@ -4553,6 +4556,7 @@ msgid "Missed"
 msgstr "Missed"
 
 #: src/routes/(auth)/profile/activity/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
@@ -6161,6 +6165,7 @@ msgstr "<0/> Save Settings"
 msgid "<0/> Streak Information"
 msgstr "<0/> Streak Information"
 
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StatisticsView.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "Longest Streak"
@@ -6230,6 +6235,7 @@ msgid "<0/> Attempt #{0}"
 msgstr "<0/> Attempt #{0}"
 
 #: src/routes/(auth)/profile/+page.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "days"
 msgstr "days"
@@ -6792,26 +6798,23 @@ msgstr "Contribution Calendar"
 msgid "Less"
 msgstr "Less"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Mon"
 msgstr "Mon"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Wed"
 msgstr "Wed"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Fri"
 msgstr "Fri"
 
-#. placeholder {0}: day.value
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
-msgid "{0} contributions"
-msgstr "{0} contributions"
+#~ msgid "{0} contributions"
+#~ msgstr "{0} contributions"
 
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
-msgid "EEEE, MMMM d, yyyy"
-msgstr "EEEE, MMMM d, yyyy"
+#~ msgid "EEEE, MMMM d, yyyy"
+#~ msgstr "EEEE, MMMM d, yyyy"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "Contribution Breakdown"
@@ -11137,3 +11140,101 @@ msgstr ""
 #: src/routes/hire/+page.svelte
 msgid "<0/> REPLIES WITHIN 24 HOURS"
 msgstr "<0/> REPLIES WITHIN 24 HOURS"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Avg Per Day"
+msgstr "Avg Per Day"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Active Days"
+msgstr "Active Days"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "Best Day"
+msgstr "Best Day"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
+msgid "contributions"
+msgstr "contributions"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Sun"
+msgstr "Sun"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Tue"
+msgstr "Tue"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Thu"
+msgstr "Thu"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Sat"
+msgstr "Sat"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Contribution Types"
+msgstr "Contribution Types"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Breakdown of contribution categories"
+msgstr "Breakdown of contribution categories"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Count"
+msgstr "Count"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "No contribution data"
+msgstr "No contribution data"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Activity by Day"
+msgstr "Activity by Day"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Which days you contribute the most"
+msgstr "Which days you contribute the most"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Daily Contributions"
+msgstr "Daily Contributions"
+
+#. placeholder {0}: year
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Contribution activity trend throughout {0}"
+msgstr "Contribution activity trend throughout {0}"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Weekly Trend"
+msgstr "Weekly Trend"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Contributions aggregated by week"
+msgstr "Contributions aggregated by week"
+
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
+msgid "Weekly Total"
+msgstr "Weekly Total"
+
+#. placeholder {0}: year
+#. placeholder {1}: totalForYear.toLocaleString()
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+msgid "Daily contribution activity throughout {0} — {1} total contributions"
+msgstr "Daily contribution activity throughout {0} — {1} total contributions"
+
+#. placeholder {0}: monthAvg
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+msgid "{0}/day"
+msgstr "{0}/day"
+
+#. placeholder {0}: activeDays
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+msgid "{0} active days"
+msgstr "{0} active days"
+
+#. placeholder {0}: maxDay.value
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
+msgid "Peak: {0}"
+msgstr "Peak: {0}"

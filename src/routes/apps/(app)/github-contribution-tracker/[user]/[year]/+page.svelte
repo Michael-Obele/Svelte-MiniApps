@@ -111,11 +111,47 @@
 		);
 		const repoCount = stats?.totalRepositoryContributions ?? 0;
 
+		// Best day
+		const bestDay = calendarData.reduce(
+			(max: { value: number; date: Date }, d: { date: Date; value: number }) =>
+				d.value > max.value ? d : max,
+			{ value: 0, date: new Date() }
+		);
+
+		// Best month
+		const bestMonth = monthlyData.reduce(
+			(max: { contributions: number; month: string }, m) =>
+				m.contributions > max.contributions ? m : max,
+			{ contributions: 0, month: '' }
+		);
+
+		// Active days (days with > 0 contributions)
+		const activeDays = calendarData.filter((d: { value: number }) => d.value > 0).length;
+		const activePercentage = ((activeDays / 365) * 100).toFixed(1);
+
+		// Longest streak
+		let longestStreak = 0;
+		let currentStreak = 0;
+		for (const day of calendarData) {
+			if (day.value > 0) {
+				currentStreak++;
+				longestStreak = Math.max(longestStreak, currentStreak);
+			} else {
+				currentStreak = 0;
+			}
+		}
+
 		const insights = {
 			avgPerDay,
 			mostActiveType: mostActiveType.label,
 			repoCount,
-			hasPrivateContributions: (stats?.restrictedContributionsCount ?? 0) > 0
+			hasPrivateContributions: (stats?.restrictedContributionsCount ?? 0) > 0,
+			bestDay,
+			bestMonth: bestMonth.month,
+			bestMonthCount: bestMonth.contributions,
+			activeDays,
+			activePercentage,
+			longestStreak
 		};
 
 		return {
@@ -201,7 +237,9 @@
 			<CardContent class="p-6">
 				<div class="flex items-center justify-between">
 					<div class="space-y-1">
-						<p class="text-muted-foreground text-sm font-medium">Total Contributions</p>
+						<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+							Total Contributions
+						</p>
 						<p class="text-3xl font-bold tabular-nums">
 							{computed.totalContributions.toLocaleString()}
 						</p>
@@ -219,7 +257,9 @@
 				<CardContent class="p-6">
 					<div class="flex items-center justify-between">
 						<div class="space-y-1">
-							<p class="text-muted-foreground text-sm font-medium">{type.label}</p>
+							<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+								{type.label}
+							</p>
 							<p class="text-3xl font-bold tabular-nums">{type.value.toLocaleString()}</p>
 						</div>
 						<div class="rounded-full p-3" style="background-color: {type.color}15">
@@ -229,6 +269,60 @@
 				</CardContent>
 			</Card>
 		{/each}
+	</div>
+
+	<!-- Extended Stats Row -->
+	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<Card class="transition-all duration-200 hover:shadow-lg">
+			<CardContent class="p-4">
+				<div class="space-y-1">
+					<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+						Avg Per Day
+					</p>
+					<p class="text-2xl font-bold tabular-nums">{computed.insights.avgPerDay}</p>
+				</div>
+			</CardContent>
+		</Card>
+		<Card class="transition-all duration-200 hover:shadow-lg">
+			<CardContent class="p-4">
+				<div class="space-y-1">
+					<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+						Active Days
+					</p>
+					<p class="text-2xl font-bold tabular-nums">
+						{computed.insights.activeDays}
+						<span class="text-muted-foreground text-sm font-medium"
+							>({computed.insights.activePercentage}%)</span
+						>
+					</p>
+				</div>
+			</CardContent>
+		</Card>
+		<Card class="transition-all duration-200 hover:shadow-lg">
+			<CardContent class="p-4">
+				<div class="space-y-1">
+					<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+						Longest Streak
+					</p>
+					<p class="text-2xl font-bold tabular-nums">
+						{computed.insights.longestStreak} <span class="text-sm font-medium">days</span>
+					</p>
+				</div>
+			</CardContent>
+		</Card>
+		<Card class="transition-all duration-200 hover:shadow-lg">
+			<CardContent class="p-4">
+				<div class="space-y-1">
+					<p class="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+						Best Day
+					</p>
+					<p class="text-2xl font-bold tabular-nums">
+						{computed.insights.bestDay.value}
+						<span class="text-muted-foreground text-sm font-medium">contributions</span>
+					</p>
+				</div>
+			</CardContent>
+		</Card>
 	</div>
 
 	<!-- Streak Stats -->
