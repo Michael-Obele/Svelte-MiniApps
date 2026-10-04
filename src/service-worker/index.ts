@@ -1,18 +1,25 @@
-/// <reference types="@sveltejs/kit" />
-/// <reference lib="webworker" />
 /// <reference no-default-lib="true"/>
 /// <reference lib="esnext" />
+/// <reference lib="webworker" />
 
-import { build, files, version } from '$service-worker';
+import { self as sw } from '$app/service-worker';
+import { dev, version } from '$app/env';
+import { assets, immutable } from '$app/manifest';
+import { resolve } from '$app/paths';
 
-// Type-safe service worker global scope
-const sw = self as unknown as ServiceWorkerGlobalScope;
+// `resolve()` is typed against SvelteKit's generated union of known pathnames,
+// but the paths exposed by `$app/manifest` are arbitrary strings. Widen it for
+// manifest entries: https://github.com/sveltejs/kit/issues/16802
+const resolveManifestPath = resolve as unknown as (path: string) => string;
 
-// Determine if we're in development mode based on version
-// In development, SvelteKit sets version to a timestamp that changes frequently
-const IS_DEV = version.includes('.') === false && !isNaN(Number(version));
+const IS_DEV = dev;
 const CACHE_NAME = `app-cache-v${version}`; // Include version in cache name
-const ASSETS = [...build, ...files];
+// `immutable` is the Vite output, `assets` is everything in `static`. Their
+// paths are relative to the base path, so resolve them to pathnames.
+const ASSETS = [
+	...immutable.map((entry) => resolveManifestPath(entry.path)),
+	...assets.map((entry) => resolveManifestPath(entry.path))
+];
 const OFFLINE_URL = '/offline';
 const HASH_FILE = '/service-worker-hash.json';
 
@@ -31,7 +38,10 @@ const STRATEGIES = {
 // Define caching strategies for different types of requests
 const ROUTE_STRATEGIES = [
 	{ pattern: /\/(api|auth)\//, strategy: STRATEGIES.NETWORK_FIRST },
-	{ pattern: /\.(js|css|woff2|woff|ttf|svg|png|jpg|jpeg|webp|avif)$/, strategy: STRATEGIES.CACHE_FIRST },
+	{
+		pattern: /\.(js|css|woff2|woff|ttf|svg|png|jpg|jpeg|webp|avif)$/,
+		strategy: STRATEGIES.CACHE_FIRST
+	},
 	{ pattern: /\/manifest\.json$/, strategy: STRATEGIES.STALE_WHILE_REVALIDATE },
 	{ pattern: /\/favicon\//, strategy: STRATEGIES.CACHE_FIRST }
 ];
@@ -128,7 +138,7 @@ sw.addEventListener('install', (event: ExtendableEvent) => {
 						}
 					})
 				);
-				
+
 				console.log('[Service Worker] Installation complete');
 			} catch (error) {
 				console.error('[Service Worker] Installation failed:', error);
@@ -237,8 +247,8 @@ sw.addEventListener('fetch', (event: FetchEvent) => {
 					return await fetchWithRetry(request); // Use fetchWithRetry for API requests
 				} catch (error) {
 					console.error('[Service Worker] Network request failed:', error);
-					return new Response(JSON.stringify({ error: 'Network error', offline: true }), { 
-						status: 503, 
+					return new Response(JSON.stringify({ error: 'Network error', offline: true }), {
+						status: 503,
 						statusText: 'Network error',
 						headers: { 'Content-Type': 'application/json' }
 					});
@@ -279,7 +289,7 @@ sw.addEventListener('fetch', (event: FetchEvent) => {
 
 	// For all other requests, determine strategy based on URL patterns
 	const strategy = getStrategyForUrl(request.url);
-	
+
 	event.respondWith(
 		(async () => {
 			switch (strategy) {
@@ -354,13 +364,13 @@ function getStrategyForUrl(url: string): string {
 async function handleCacheFirst(request: Request): Promise<Response> {
 	const cache = await caches.open(CACHE_NAME);
 	const cachedResponse = await cache.match(request);
-	
+
 	if (cachedResponse && cachedResponse.ok) {
 		// Revalidate in the background
 		fetchAndCache(request, CACHE_NAME).catch(() => {});
 		return cachedResponse;
 	}
-	
+
 	try {
 		const networkResponse = await fetch(request);
 		if (networkResponse.ok) {
@@ -385,11 +395,11 @@ async function handleNetworkFirst(request: Request): Promise<Response> {
 	} catch (error) {
 		const cache = await caches.open(CACHE_NAME);
 		const cachedResponse = await cache.match(request);
-		
+
 		if (cachedResponse && cachedResponse.ok) {
 			return cachedResponse;
 		}
-		
+
 		console.error('[Service Worker] Network request failed and no cache available:', error);
 		return new Response('Network error', { status: 503 });
 	}
@@ -399,28 +409,30 @@ async function handleNetworkFirst(request: Request): Promise<Response> {
 async function handleStaleWhileRevalidate(request: Request): Promise<Response> {
 	const cache = await caches.open(CACHE_NAME);
 	const cachedResponse = await cache.match(request);
-	
-	const networkResponsePromise = fetch(request).then(response => {
-		if (response.ok) {
-			cache.put(request, response.clone());
-		}
-		return response;
-	}).catch(error => {
-		console.error('[Service Worker] Network request failed:', error);
-		return null;
-	});
-	
+
+	const networkResponsePromise = fetch(request)
+		.then((response) => {
+			if (response.ok) {
+				cache.put(request, response.clone());
+			}
+			return response;
+		})
+		.catch((error) => {
+			console.error('[Service Worker] Network request failed:', error);
+			return null;
+		});
+
 	// Return the cached response immediately if available
 	if (cachedResponse && cachedResponse.ok) {
 		networkResponsePromise.catch(() => {}); // Handle in background
 		return cachedResponse;
 	}
-	
+
 	// Otherwise wait for the network response
 	const networkResponse = await networkResponsePromise;
 	if (networkResponse) {
 		return networkResponse;
 	}
-	
+
 	return new Response('Network error', { status: 503 });
 }

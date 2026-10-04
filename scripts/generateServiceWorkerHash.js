@@ -7,7 +7,7 @@ function generateServiceWorkerHash() {
 	try {
 		// Consider multiple files for hash generation
 		const filesToHash = [
-			'./src/service-worker.ts',
+			'./src/service-worker/index.ts',
 			'./src/lib/utility/serviceWorker.ts',
 			'./src/lib/utility/serviceWorkerStore.ts',
 			'./static/manifest.json'
@@ -30,7 +30,7 @@ function generateServiceWorkerHash() {
 
 		// Add build timestamp to ensure uniqueness
 		const buildTimestamp = Date.now().toString();
-		
+
 		// Generate a deterministic hash based on content and timestamp
 		const hash = crypto
 			.createHash('sha256')
@@ -61,13 +61,13 @@ function generateServiceWorkerHash() {
 		return hash;
 	} catch (error) {
 		console.error('Failed to generate service worker hash:', error);
-		
+
 		// Create a fallback hash if an error occurs
 		const fallbackHash = crypto
 			.createHash('sha256')
 			.update('fallback-' + Date.now())
 			.digest('hex');
-			
+
 		try {
 			fs.writeFileSync(
 				path.resolve('./static/service-worker-hash.json'),
