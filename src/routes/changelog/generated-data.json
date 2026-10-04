@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "4493b0d292ed708eb33219c946402a2cbd120fa9",
-  "generatedAt": "2026-10-04T17:41:35.648Z",
+  "lastProcessedCommit": "08ed9904d8d9941ed7257340ed90d1a8f68c590f",
+  "generatedAt": "2026-10-04T19:05:23.436Z",
   "timeline": [
     {
       "date": "October 4, 2026",
@@ -63,6 +63,17 @@
       "description": "Updated AGENTS.md, CONTRIBUTING.md, bun.lockb and more",
       "items": [
         "chore: drop ESLint, keep Prettier as the only formatter (4493b0d)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 4, 2026",
+      "title": "chore(deps): bump isomorphic-dompurify to 2.26.0",
+      "description": "Updated bun.lockb, package.json, src/routes/apps/(app)/markdown-editor/+page.svelte",
+      "items": [
+        "chore(deps): bump isomorphic-dompurify to 2.26.0 (08ed990)"
       ],
       "type": "improvement",
       "icon": "Code",
