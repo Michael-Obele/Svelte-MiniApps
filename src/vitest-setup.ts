@@ -50,8 +50,18 @@ class LocalStorageMock {
 		return Object.keys(this.store).length;
 	}
 } // Setup localStorage and sessionStorage mocks
-global.localStorage = new LocalStorageMock();
-global.sessionStorage = new LocalStorageMock();
+// jsdom exposes these as getter-only properties on the window, so they must be
+// redefined rather than assigned.
+Object.defineProperty(globalThis, 'localStorage', {
+	value: new LocalStorageMock(),
+	writable: true,
+	configurable: true
+});
+Object.defineProperty(globalThis, 'sessionStorage', {
+	value: new LocalStorageMock(),
+	writable: true,
+	configurable: true
+});
 
 // Add event listener and dispatch event for storage events
 const originalSetItem = global.localStorage.setItem;
