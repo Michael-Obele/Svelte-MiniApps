@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2026-08-20T12:00:52.306Z\n"
+"PO-Revision-Date: 2026-10-04T17:00:27.094Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -1282,7 +1282,6 @@ msgstr "Sie sind offline"
 msgid "It looks like you've lost your internet connection. Some features might be unavailable."
 msgstr "Es sieht so aus, als hätten Sie Ihre Internetverbindung verloren. Einige Funktionen sind möglicherweise nicht verfügbar."
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/offline/+page.svelte
 msgid "Checking..."
 msgstr "Prüfen..."
@@ -1376,9 +1375,8 @@ msgstr "Über"
 msgid "Hire"
 msgstr "Anheuern"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "See GitHub Repo"
-msgstr "GitHub-Repo ansehen"
+#~ msgid "See GitHub Repo"
+#~ msgstr "GitHub-Repo ansehen"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "My Account"
@@ -1394,6 +1392,7 @@ msgstr "Einstellungen"
 msgid "Log out"
 msgstr "Abmelden"
 
+#: src/lib/components/blocks/Navbar.svelte
 #: src/lib/components/blocks/Navbar.svelte
 msgid "Login"
 msgstr "Anmelden"
@@ -1774,6 +1773,7 @@ msgid "Disconnect"
 msgstr "Trennen"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Connect"
@@ -3102,7 +3102,6 @@ msgid "Convert currencies effortlessly with our easy-to-use currency converter. 
 msgstr "Konvertieren Sie Währungen mühelos mit unserem einfach zu bedienenden Währungsrechner. Erhalten Sie sofortige Ergebnisse und genaue Wechselkurse."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/markdown-editor/+page.svelte
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> How to Use"
@@ -4776,9 +4775,8 @@ msgid ""
 "journey."
 msgstr "Verfolge deine Fortschritte, überwache gesundheitliche Verbesserungen und bleibe auf deiner rauchfreien Reise motiviert."
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Your Journey"
-msgstr "<0/> Starte deine Reise"
+#~ msgid "<0/> Start Your Journey"
+#~ msgstr "<0/> Starte deine Reise"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Milestones"
@@ -4853,9 +4851,8 @@ msgstr "• Überwache gespartes Geld und vermiedene Zigaretten"
 msgid "• Log and manage cravings effectively"
 msgstr "• Protokolliere und verwalte Verlangen effektiv"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Journey"
-msgstr "<0/> Reise beginnen"
+#~ msgid "<0/> Start Journey"
+#~ msgstr "<0/> Reise beginnen"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Confirm You Smoked"
@@ -5553,9 +5550,8 @@ msgstr "<0/> Speichern"
 msgid "More options"
 msgstr "Mehr Optionen"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Toggle navigation menu"
-msgstr "Navigationsmenü umschalten"
+#~ msgid "Toggle navigation menu"
+#~ msgstr "Navigationsmenü umschalten"
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline | Svelte Mini Apps Changelog"
@@ -7770,11 +7766,10 @@ msgstr "Planungsdauer"
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ Das Enddatum muss nach dem Startdatum liegen"
 
-#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
-msgid ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
-"devices. <1>Sign in</1> to sync your data."
-msgstr "<0>Hinweis:</0> Sie sind nicht angemeldet. Die Einstellungen werden lokal gespeichert und nicht auf allen Geräten synchronisiert. <1>Anmelden</1>, um Ihre Daten zu synchronisieren."
+#~ msgid ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
+#~ "devices. <1>Sign in</1> to sync your data."
+#~ msgstr "<0>Hinweis:</0> Sie sind nicht angemeldet. Die Einstellungen werden lokal gespeichert und nicht auf allen Geräten synchronisiert. <1>Anmelden</1>, um Ihre Daten zu synchronisieren."
 
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
@@ -11168,4 +11163,58 @@ msgstr ""
 #. placeholder {0}: maxDay.value
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Peak: {0}"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Main"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "GitHub repository"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Account menu"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Open navigation menu"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Mini Apps"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Site navigation"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mobile"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> GitHub"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Bluesky"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
+msgid ""
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+"across devices. <1>Sign in</1> to sync your data."
+msgstr ""
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Your Journey"
+msgstr ""
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Journey"
+msgstr ""
+
+#: src/routes/apps/(app)/markdown-editor/+page.svelte
+msgid "<0/>How to Use"
 msgstr ""

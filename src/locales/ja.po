@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-08-20T12:00:52.334Z\n"
+"PO-Revision-Date: 2026-10-04T17:00:34.025Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -69,7 +69,6 @@ msgid "Currency Converter"
 msgstr "通貨換算ツール"
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/markdown-editor/+page.svelte
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> How to Use"
@@ -2270,7 +2269,6 @@ msgstr "オフラインです"
 msgid "It looks like you've lost your internet connection. Some features might be unavailable."
 msgstr "インターネット接続が失われたようです。一部の機能が利用できなくなる可能性があります。"
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/offline/+page.svelte
 msgid "Checking..."
 msgstr "確認中..."
@@ -2372,9 +2370,8 @@ msgstr "概要"
 msgid "Hire"
 msgstr "採用情報"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "See GitHub Repo"
-msgstr "GitHubリポジトリを見る"
+#~ msgid "See GitHub Repo"
+#~ msgstr "GitHubリポジトリを見る"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "More options"
@@ -2395,12 +2392,12 @@ msgid "Log out"
 msgstr "ログアウト"
 
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/blocks/Navbar.svelte
 msgid "Login"
 msgstr "ログイン"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Toggle navigation menu"
-msgstr "ナビゲーションメニューの切り替え"
+#~ msgid "Toggle navigation menu"
+#~ msgstr "ナビゲーションメニューの切り替え"
 
 #: src/lib/components/blocks/NukeButton.svelte
 msgid "Clearing cache..."
@@ -2705,6 +2702,7 @@ msgid "Disconnect"
 msgstr "切断"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Connect"
@@ -6278,11 +6276,10 @@ msgstr "計画期間"
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ 終了日は開始日より後の日付でなければなりません"
 
-#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
-msgid ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
-"devices. <1>Sign in</1> to sync your data."
-msgstr "<0>注:</0> ログインしていません。設定はローカルに保存され、デバイス間で同期されません。 <1>サインイン</1> してデータを同期してください。"
+#~ msgid ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
+#~ "devices. <1>Sign in</1> to sync your data."
+#~ msgstr "<0>注:</0> ログインしていません。設定はローカルに保存され、デバイス間で同期されません。 <1>サインイン</1> してデータを同期してください。"
 
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
@@ -6420,9 +6417,8 @@ msgid ""
 "journey."
 msgstr "進捗を追跡し、健康の改善をモニターし、禁煙の旅でモチベーションを維持しましょう。"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Your Journey"
-msgstr "<0/> 旅を始めましょう"
+#~ msgid "<0/> Start Your Journey"
+#~ msgstr "<0/> 旅を始めましょう"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Milestones"
@@ -6497,9 +6493,8 @@ msgstr "• 節約したお金と避けた喫煙本数を把握する"
 msgid "• Log and manage cravings effectively"
 msgstr "• 渇望を効果的に記録・管理する"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Journey"
-msgstr "<0/> 旅を始める"
+#~ msgid "<0/> Start Journey"
+#~ msgstr "<0/> 旅を始める"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Confirm You Smoked"
@@ -11044,4 +11039,58 @@ msgstr ""
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Weekly Total"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Main"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "GitHub repository"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Account menu"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Open navigation menu"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Mini Apps"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Site navigation"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mobile"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> GitHub"
+msgstr ""
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Bluesky"
+msgstr ""
+
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
+msgid ""
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+"across devices. <1>Sign in</1> to sync your data."
+msgstr ""
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Your Journey"
+msgstr ""
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Journey"
+msgstr ""
+
+#: src/routes/apps/(app)/markdown-editor/+page.svelte
+msgid "<0/>How to Use"
 msgstr ""

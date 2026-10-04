@@ -3,13 +3,13 @@
 
 /// <reference types="wuchale/virtual" />
 
-import { loadCatalog, loadIDs, key } from 'virtual:wuchale/proxy' // or proxy/sync
-import { registerLoaders, defaultCollection } from 'wuchale/load-utils'
+import { loadCatalog, loadIDs, key } from 'virtual:wuchale/proxy'; // or proxy/sync
+import { registerLoaders, defaultCollection } from 'wuchale/load-utils';
 
-const catalogs = $state({})
+const catalogs = $state({});
 
 // for non-reactive
-export const get = registerLoaders(key, loadCatalog, loadIDs, defaultCollection(catalogs))
+export const get = registerLoaders(key, loadCatalog, loadIDs, defaultCollection(catalogs));
 
 // same function, only will be inside $derived when used
-export default get
+export default get;

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-08-20T12:00:52.250Z\n"
+"PO-Revision-Date: 2026-10-04T17:00:20.700Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -2329,7 +2329,6 @@ msgstr "You're Offline"
 msgid "It looks like you've lost your internet connection. Some features might be unavailable."
 msgstr "It looks like you've lost your internet connection. Some features might be unavailable."
 
-#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/offline/+page.svelte
 msgid "Checking..."
 msgstr "Checking..."
@@ -2435,9 +2434,8 @@ msgstr "About"
 msgid "Hire"
 msgstr "Hire"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "See GitHub Repo"
-msgstr "See GitHub Repo"
+#~ msgid "See GitHub Repo"
+#~ msgstr "See GitHub Repo"
 
 #: src/lib/components/blocks/Navbar.svelte
 msgid "More options"
@@ -2458,12 +2456,12 @@ msgid "Log out"
 msgstr "Log out"
 
 #: src/lib/components/blocks/Navbar.svelte
+#: src/lib/components/blocks/Navbar.svelte
 msgid "Login"
 msgstr "Login"
 
-#: src/lib/components/blocks/Navbar.svelte
-msgid "Toggle navigation menu"
-msgstr "Toggle navigation menu"
+#~ msgid "Toggle navigation menu"
+#~ msgstr "Toggle navigation menu"
 
 #: src/lib/components/blocks/NukeButton.svelte
 msgid "Clearing cache..."
@@ -2757,6 +2755,7 @@ msgid "Disconnect"
 msgstr "Disconnect"
 
 #: src/lib/components/blocks/Footer.svelte
+#: src/lib/components/blocks/Navbar.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 #: src/routes/(auth)/profile/AccountSettingsList.svelte
 msgid "Connect"
@@ -4259,7 +4258,6 @@ msgid "Convert currencies effortlessly with our easy-to-use currency converter. 
 msgstr "Convert currencies effortlessly with our easy-to-use currency converter. Get instant results and accurate exchange rates."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/markdown-editor/+page.svelte
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> How to Use"
@@ -5688,9 +5686,8 @@ msgstr ""
 "Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
 "journey."
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Your Journey"
-msgstr "<0/> Start Your Journey"
+#~ msgid "<0/> Start Your Journey"
+#~ msgstr "<0/> Start Your Journey"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Milestones"
@@ -5765,9 +5762,8 @@ msgstr "• Monitor money saved and cigarettes avoided"
 msgid "• Log and manage cravings effectively"
 msgstr "• Log and manage cravings effectively"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid "<0/> Start Journey"
-msgstr "<0/> Start Journey"
+#~ msgid "<0/> Start Journey"
+#~ msgstr "<0/> Start Journey"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Confirm You Smoked"
@@ -7793,13 +7789,12 @@ msgstr "Planning Duration"
 msgid "⚠️ End date must be after start date"
 msgstr "⚠️ End date must be after start date"
 
-#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
-msgid ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
-"devices. <1>Sign in</1> to sync your data."
-msgstr ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
-"devices. <1>Sign in</1> to sync your data."
+#~ msgid ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
+#~ "devices. <1>Sign in</1> to sync your data."
+#~ msgstr ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across\n"
+#~ "devices. <1>Sign in</1> to sync your data."
 
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "<0/> Cancel"
@@ -11238,3 +11233,59 @@ msgstr "{0} active days"
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Peak: {0}"
 msgstr "Peak: {0}"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Main"
+msgstr "Main"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "GitHub repository"
+msgstr "GitHub repository"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Account menu"
+msgstr "Account menu"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Open navigation menu"
+msgstr "Open navigation menu"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Mini Apps"
+msgstr "<0/> Mini Apps"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Site navigation"
+msgstr "Site navigation"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "Mobile"
+msgstr "Mobile"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> GitHub"
+msgstr "<0/> GitHub"
+
+#: src/lib/components/blocks/Navbar.svelte
+msgid "<0/> Bluesky"
+msgstr "<0/> Bluesky"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
+msgid ""
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+"across devices. <1>Sign in</1> to sync your data."
+msgstr ""
+"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+"across devices. <1>Sign in</1> to sync your data."
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Your Journey"
+msgstr "<0/>Start Your Journey"
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "<0/>Start Journey"
+msgstr "<0/>Start Journey"
+
+#: src/routes/apps/(app)/markdown-editor/+page.svelte
+msgid "<0/>How to Use"
+msgstr "<0/>How to Use"
