@@ -17,7 +17,7 @@ A modern Svelte 5 PWA with multiple single-purpose mini-apps, built on SvelteKit
 - **Unit Tests**: `npm run test:unit` or `vitest run`
 - **Single Unit Test**: `vitest run <test-file>`
 - **Watch Tests**: `npm run test:watch` or `vitest`
-- **Lint**: `npm run lint` (prettier + eslint) — may fail on AI-generated files in `ai-generated/`
+- **Format check**: `npm run format:check` (Prettier)
 - **Format**: `npm run format`
 
 ### Build & Deploy
@@ -70,7 +70,7 @@ static/                        # Static assets & PWA files
 - **Database**: Prisma ORM with PostgreSQL
 - **Testing**: Vitest (unit)
 - **PWA**: Service Worker with Vite PWA plugin
-- **Linting**: ESLint + Prettier
+- **Formatting**: Prettier (no ESLint)
 
 ## Svelte 5 Rules (Required)
 
@@ -201,16 +201,13 @@ mount(() => {
 
 ### Formatting (Prettier)
 
+Prettier is the only formatter/linter in this repo — there is no ESLint.
+
 - Use tabs (not spaces)
 - Single quotes
 - No trailing commas
 - Print width: 100 characters
 - Plugins: prettier-plugin-svelte, prettier-plugin-tailwindcss
-
-### Linting (ESLint)
-
-- TypeScript ESLint + Svelte plugin
-- Prettier integration
 - Ignores: build/, .svelte-kit/, dist/
 
 ### TypeScript

@@ -62,9 +62,9 @@ src/
 
 ### Code Style
 
-- We use Prettier and ESLint for code formatting
+- We use Prettier for code formatting
 - Run `npm run format` before committing
-- Run `npm run lint` to check for issues
+- Run `npm run format:check` to verify formatting
 
 ### Components
 

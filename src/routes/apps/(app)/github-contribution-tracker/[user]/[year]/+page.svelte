@@ -328,13 +328,11 @@
 	{#if computed.streakStats?.light || computed.streakStats?.dark}
 		<Card>
 			<CardContent class="p-4">
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{#if computed.streakStats.light}
 					<div class="dark:hidden">
 						{@html computed.streakStats.light}
 					</div>
 				{/if}
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{#if computed.streakStats.dark}
 					<div class="hidden dark:block">
 						{@html computed.streakStats.dark}

@@ -301,7 +301,6 @@
                   in the renderMarkdown function to prevent XSS attacks.
                   See the renderMarkdown function implementation above.
                 -->
-								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 								{@html renderMarkdown(inputText.current)}
 							</div>
 						{/if}
