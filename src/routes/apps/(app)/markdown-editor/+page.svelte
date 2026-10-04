@@ -1,6 +1,5 @@
 <script lang="ts">
 	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
-	import DOMPurify from 'isomorphic-dompurify';
 	import { Carta, MarkdownEditor, Markdown } from 'carta-md';
 	import { code } from '@cartamd/plugin-code';
 	import { slash } from '@cartamd/plugin-slash';
