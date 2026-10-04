@@ -4,7 +4,7 @@
  * Handlers are registered by feature modules rather than imported here, so
  * this file stays free of app-specific knowledge.
  */
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { listPending, markFailed, remove, backoffMs, type OutboxEntry } from './outbox';
 
 export type SyncStatus = 'idle' | 'syncing' | 'offline' | 'error';

@@ -4,7 +4,7 @@
 	import * as Dialog from '@/ui/dialog/index.js';
 	import Input from '@/ui/input/input.svelte';
 	import { PressedKeys } from 'runed';
-	import { projects } from '$lib/index.svelte';
+	import { projects } from '#lib/index.svelte.js';
 
 	let {
 		app = $bindable(''),

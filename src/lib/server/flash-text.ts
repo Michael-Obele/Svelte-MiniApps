@@ -1,5 +1,5 @@
-import { prisma } from '$lib/server/db';
-import { r2 } from '$lib/server/r2';
+import { prisma } from '#lib/server/db.js';
+import { r2 } from '#lib/server/r2.js';
 
 export interface FlashTextItem {
 	id: string;

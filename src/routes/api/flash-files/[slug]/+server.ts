@@ -12,8 +12,8 @@
 
 import type { RequestHandler } from './$types';
 import { error, redirect } from '@sveltejs/kit';
-import { getFlashFileBySlug, incrementDownloadCount } from '$lib/server/flash-files';
-import { r2 } from '$lib/server/r2';
+import { getFlashFileBySlug, incrementDownloadCount } from '#lib/server/flash-files.js';
+import { r2 } from '#lib/server/r2.js';
 
 export const GET: RequestHandler = async ({ params }) => {
 	if (!r2.isConfigured()) {

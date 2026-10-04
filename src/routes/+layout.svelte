@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { browser, dev } from '$app/environment';
+	import { browser, dev } from '$app/env';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from '@/ui/sonner';
 	import '../app.css';
-	import Footer from '$lib/components/blocks/Footer.svelte';
-	import Navbar from '$lib/components/blocks/Navbar.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import Footer from '#lib/components/blocks/Footer.svelte';
+	import Navbar from '#lib/components/blocks/Navbar.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import type { LayoutProps } from './$types';
 	// import lottie from 'lottie-web';
 	import { onMount, type Snippet } from 'svelte';
-	import { registerServiceWorker } from '$lib/utility/serviceWorker';
-	import { initAppIntents } from '$lib/utility/appIntents';
+	import { registerServiceWorker } from '#lib/utility/serviceWorker.js';
+	import { initAppIntents } from '#lib/utility/appIntents.js';
 	import { Agentation, type AnnotationProps, type KeyBindings } from 'sv-agentation';
 
 	const keyBindings: KeyBindings = {
@@ -40,7 +40,7 @@
 	};
 
 	// Import language store initialization
-	import { initLanguage } from '$lib/stores/language-store.svelte';
+	import { initLanguage } from '#lib/stores/language-store.svelte.js';
 
 	let { children }: LayoutProps = $props();
 

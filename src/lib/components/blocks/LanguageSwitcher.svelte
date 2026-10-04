@@ -1,8 +1,11 @@
 <script lang="ts">
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '$lib/languages';
-	import { buttonVariants } from '../ui/button';
-	import { persistedLocale, changeLanguage } from '$lib/stores/language-store.svelte';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu/index.js';
+	import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '#lib/languages.js';
+	import { buttonVariants, type ButtonVariant } from '../ui/button';
+	import { persistedLocale, changeLanguage } from '#lib/stores/language-store.svelte.js';
+
+	// Defaults to `outline` so existing call sites (e.g. the footer) keep their look.
+	let { variant = 'outline' }: { variant?: ButtonVariant } = $props();
 
 	// Derive current language from shared persisted state
 	// This automatically updates across all component instances
@@ -10,11 +13,7 @@
 </script>
 
 <DropdownMenu.Root>
-	<DropdownMenu.Trigger
-		class="border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 {buttonVariants(
-			{ variant: 'outline' }
-		)}"
-	>
+	<DropdownMenu.Trigger class={buttonVariants({ variant, size: 'sm' })}>
 		<span class="text-lg" aria-hidden="true">{currentLanguage?.flag}</span>
 		<span class="hidden sm:inline">{currentLanguage?.nativeName}</span>
 		<span class="sm:hidden">{currentLanguage?.code.toUpperCase()}</span>

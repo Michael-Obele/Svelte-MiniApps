@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 
 export const prerender = false;
 

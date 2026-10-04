@@ -1,5 +1,5 @@
 import { getRequestEvent, form } from '$app/server';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 import * as v from 'valibot';
 import { error } from '@sveltejs/kit';
 

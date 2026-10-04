@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
+	import { dev } from '$app/env';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
+	import BlurInText from '#lib/components/blocks/BlurInText.svelte';
 	import { slide } from 'svelte/transition';
 	import {
 		Card,
@@ -10,17 +10,17 @@
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Dialog from '$lib/components/ui/dialog/index.js';
-	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
+	} from '#lib/components/ui/card/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
 	import { getAllTimeline, getTypeStyles } from '../data.svelte';
 	import { Bot, SquarePen } from '@lucide/svelte';
 	import ChangelogStats from '../ChangelogStats.svelte';
 	import DebugOrder from '../DebugOrder.svelte';
 	import Checkbox from '@/ui/checkbox/checkbox.svelte';
 	import { Label } from '@/ui/label';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { ScrollArea } from '@/ui/scroll-area';
 
 	const allTimeline = getAllTimeline();
@@ -42,8 +42,7 @@
 
 	// Handle URL parameters to highlight specific timeline items on mount
 	onMount(() => {
-		const url = new URL(page.url);
-		const highlightParam = url.searchParams.get('highlight');
+		const highlightParam = page.url.searchParams.get('highlight');
 
 		if (highlightParam) {
 			// Find the timeline item that matches the highlight parameter
@@ -229,8 +228,6 @@
 		<!-- Details List -->
 
 		{@render Items(selectedItem)}
-		<Dialog.Footer>
-			<Button onclick={() => (selectedItem = null)}>Close</Button>
-		</Dialog.Footer>
+		<Dialog.Footer><Button onclick={() => (selectedItem = null)}>Close</Button></Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

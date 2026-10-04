@@ -19,10 +19,10 @@ the redundant "look at all the apps" messaging from above the fold.
 -->
 
 <script lang="ts">
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { ArrowRight, Play, Check, Zap, Lock, Github, Trophy } from '@lucide/svelte';
-	import Svelte from '$lib/assets/svelte.svelte';
+	import Svelte from '#lib/assets/svelte.svelte';
 	import { onMount } from 'svelte';
 
 	import { getTrustBadges } from './data.svelte';

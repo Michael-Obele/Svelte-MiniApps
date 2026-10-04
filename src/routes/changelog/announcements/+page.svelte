@@ -1,15 +1,15 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import {
 		Card,
 		CardHeader,
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
+	} from '#lib/components/ui/card/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Alert, AlertTitle, AlertDescription } from '#lib/components/ui/alert/index.js';
 	import { Smartphone, Monitor, Download, Users, MessageSquare, TestTube } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 

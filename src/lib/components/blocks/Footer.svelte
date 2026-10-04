@@ -2,9 +2,9 @@
 	import ThemeSwitch from '@/blocks/ThemeSwitch.svelte';
 	import LanguageSwitcher from '@/blocks/LanguageSwitcher.svelte';
 	import NukeButton from '@/blocks/NukeButton.svelte';
-	import Svelte from '$lib/assets/svelte.svelte';
+	import Svelte from '#lib/assets/svelte.svelte';
 
-	import { scrollToTop } from '$lib/utils';
+	import { scrollToTop } from '#lib/utils.js';
 	import {
 		ArrowUp,
 		Github,
@@ -28,7 +28,7 @@
 	import * as Tooltip from '@/ui/tooltip';
 
 	// Dynamic app count — stays accurate as apps are added/removed
-	import { projects } from '$lib/index.svelte';
+	import { projects } from '#lib/index.svelte.js';
 
 	const currentYear = new Date().getFullYear();
 	const appCount = $derived(projects().length);

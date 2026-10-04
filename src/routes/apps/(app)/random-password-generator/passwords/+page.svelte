@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { Button } from '@/ui/button';
 	import { ArrowLeft, Shield } from '@lucide/svelte';
-	import { site } from '$lib/index.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { site } from '#lib/index.svelte.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { PasswordDisplay } from '../components';
-	import { getSavedPasswords } from '$lib/remote';
+	import { getSavedPasswords } from '#lib/remote/index.js';
 	import * as Card from '@/ui/card';
 	import { Separator } from '@/ui/separator';
 </script>

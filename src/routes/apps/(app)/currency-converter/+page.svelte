@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { site } from '$lib/index.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { cn } from '#lib/utils.js';
+	import { site } from '#lib/index.svelte.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import * as Alert from '@/ui/alert/index.js';
 	import { ArrowLeftRight, Clock, Globe, History, HelpCircle, Loader } from '@lucide/svelte';
 	import Input from '@/ui/input/input.svelte';
@@ -14,8 +14,8 @@
 	import { Separator } from '@/ui/separator';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { currencyConverterHowToUse } from './how-to-use-config';
-	import { PersistedState } from '$lib/persisted-state';
-	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '$lib/remote';
+	import { PersistedState } from '#lib/persisted-state/index.js';
+	import { getCurrencies, convertCurrencyForm, type CurrencyInfo } from '#lib/remote/index.js';
 	import { onMount } from 'svelte';
 	import {
 		currencySelection,
@@ -267,12 +267,12 @@
 							<div class="space-y-2">
 								<Label for="currencyFrom" class="text-sm font-medium">Convert From</Label>
 								<CurrencyCombobox
-										id="currencyFrom"
-										label="Convert From"
-										currencies={currencies}
-										bind:value={urlParams.from}
-										onSelect={(value) => persistCurrencySelection(value, toCurrency)}
-									/>
+									id="currencyFrom"
+									label="Convert From"
+									{currencies}
+									bind:value={urlParams.from}
+									onSelect={(value) => persistCurrencySelection(value, toCurrency)}
+								/>
 							</div>
 
 							<div class="flex justify-center lg:pb-1">
@@ -292,12 +292,12 @@
 							<div class="space-y-2">
 								<Label for="currencyTo" class="text-sm font-medium">Convert To</Label>
 								<CurrencyCombobox
-										id="currencyTo"
-										label="Convert To"
-										currencies={currencies}
-										bind:value={urlParams.to}
-										onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
-									/>
+									id="currencyTo"
+									label="Convert To"
+									{currencies}
+									bind:value={urlParams.to}
+									onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
+								/>
 							</div>
 						</div>
 

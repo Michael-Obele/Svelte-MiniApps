@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import {
 		AppsSection,
 		Banner,
@@ -12,10 +12,10 @@
 		LivePreview,
 		ValueBar,
 		Welcome
-	} from '$lib/components/home';
+	} from '#lib/components/home/index.js';
 
 	import type { PageProps } from './$types';
-	import { site } from '$lib/index.svelte';
+	import { site } from '#lib/index.svelte.js';
 
 	let websiteTitle = 'Svelte Mini Apps';
 	let websiteDescription =

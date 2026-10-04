@@ -70,7 +70,7 @@ Create server-side functionality in `src/routes/apps/(app)/budget-tracker/+page.
 // src/routes/apps/(app)/budget-tracker/+page.server.ts
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 
 // Load function to fetch budgets and expenses
 export const load = (async ({ locals }) => {
@@ -255,7 +255,7 @@ For more flexibility, implement RESTful API endpoints:
 ```typescript
 // src/routes/api/budgets/+server.ts
 import { json } from '@sveltejs/kit';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 
 export async function GET() {
 	const budgets = await prisma.budget.findMany({
@@ -684,7 +684,7 @@ Create a script to migrate existing localStorage data to the database:
 ```typescript
 // src/routes/api/migrate-budgets/+server.ts
 import { json } from '@sveltejs/kit';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 
 export async function POST({ request }) {
 	try {

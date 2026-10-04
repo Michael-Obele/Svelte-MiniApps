@@ -19,11 +19,15 @@
 
 import type { RequestHandler } from './$types';
 import { error, json } from '@sveltejs/kit';
-import { getFlashTextBySlug } from '$lib/server/flash-text';
-import { recordFlashFile } from '$lib/server/flash-files';
-import { r2 } from '$lib/server/r2';
-import { getCurrentUser } from '$lib/remote/auth.remote';
-import { ALLOWED_FILE_PREFIXES, MAX_FILE_SIZE, resolveEffectiveMaxFileSize } from '$lib/types/flash-file';
+import { getFlashTextBySlug } from '#lib/server/flash-text.js';
+import { recordFlashFile } from '#lib/server/flash-files.js';
+import { r2 } from '#lib/server/r2.js';
+import { getCurrentUser } from '#lib/remote/auth.remote.js';
+import {
+	ALLOWED_FILE_PREFIXES,
+	MAX_FILE_SIZE,
+	resolveEffectiveMaxFileSize
+} from '#lib/types/flash-file.js';
 
 const ALLOWED_ALL = ALLOWED_FILE_PREFIXES.length === 0;
 

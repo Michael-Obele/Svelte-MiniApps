@@ -7,7 +7,7 @@ import {
 	Eye,
 	type Icon as IconType
 } from '@lucide/svelte';
-import type { HowToUseConfig, Step, Feature, Tip } from '$lib/types/how-to-use';
+import type { HowToUseConfig, Step, Feature, Tip } from '#lib/types/how-to-use.js';
 
 // Getting Started Steps
 const gettingStartedSteps: Step[] = [

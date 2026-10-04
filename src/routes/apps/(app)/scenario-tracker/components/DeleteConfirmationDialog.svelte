@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Button } from '$lib/components/ui/button';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Trash2 } from 'lucide-svelte';
 
 	let {
@@ -35,7 +35,7 @@
 				{cancelText}
 			</Button>
 			<Button variant="destructive" onclick={onConfirm}>
-				<Trash2 class="size-4 mr-2" />
+				<Trash2 class="mr-2 size-4" />
 				{confirmText}
 			</Button>
 		</Dialog.Footer>

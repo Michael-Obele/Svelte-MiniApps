@@ -1,6 +1,6 @@
 import { getRequestEvent, query, form } from '$app/server';
-import { prisma } from '$lib/server/db';
-import { hashPassword, verifyPasswordHash } from '$lib/server/password.server';
+import { prisma } from '#lib/server/db.js';
+import { hashPassword, verifyPasswordHash } from '#lib/server/password.server.js';
 import * as v from 'valibot';
 import { error, redirect } from '@sveltejs/kit';
 

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Clock, Activity, Zap } from 'lucide-svelte';
-	import * as Sheet from '$lib/components/ui/sheet';
+	import * as Sheet from '#lib/components/ui/sheet/index.js';
 
 	// Type definition for recent activity array
 	interface RecentActivity {

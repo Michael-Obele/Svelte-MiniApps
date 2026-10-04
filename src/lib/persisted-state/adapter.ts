@@ -4,7 +4,7 @@
  * - Keeps a localStorage import path for first-run migrations
  * - Preserves the existing adapter helper API used throughout the app
  */
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { createDB } from 'svelte-idb';
 
 export type AdapterOptions = {
@@ -59,7 +59,8 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 	const dbName = opts?.dbName ?? DEFAULT_DB_NAME;
 	const storeName = opts?.storeName ?? DEFAULT_STORE_NAME;
 	const version = opts?.version ?? DEFAULT_DB_VERSION;
-	const useLocalStorageFallback = opts?.useLocalStorageFallback ?? DEFAULT_USE_LOCALSTORAGE_FALLBACK;
+	const useLocalStorageFallback =
+		opts?.useLocalStorageFallback ?? DEFAULT_USE_LOCALSTORAGE_FALLBACK;
 	let dbInstance: SvelteIdbDatabase | null = null;
 
 	async function init() {
@@ -110,12 +111,7 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 		try {
 			const parsed = JSON.parse(raw) as Partial<PersistedItem<T>> | T;
 
-			if (
-				typeof parsed === 'object' &&
-				parsed !== null &&
-				'id' in parsed &&
-				'payload' in parsed
-			) {
+			if (typeof parsed === 'object' && parsed !== null && 'id' in parsed && 'payload' in parsed) {
 				return {
 					id: String((parsed as PersistedItem<T>).id),
 					createdAt: (parsed as PersistedItem<T>).createdAt ?? new Date().toISOString(),
@@ -143,7 +139,9 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 		}
 	}
 
-	async function saveItem<T = any>(item: Partial<PersistedItem<T>> & { payload: T }): Promise<PersistedItem<T>> {
+	async function saveItem<T = any>(
+		item: Partial<PersistedItem<T>> & { payload: T }
+	): Promise<PersistedItem<T>> {
 		const record = createRecord(item);
 		const db = await getDB();
 
@@ -238,7 +236,9 @@ export function createAdapter(opts?: AdapterOptions): PersistedAdapter {
 		};
 	}
 
-	async function syncWithServer<T = any>(opts: SyncOptions<T>): Promise<{ pushed: number; pulled: number }> {
+	async function syncWithServer<T = any>(
+		opts: SyncOptions<T>
+	): Promise<{ pushed: number; pulled: number }> {
 		const localItems = await listItems<T>();
 		const localPayload = localItems.map((item) => toServerFormat(item));
 

@@ -6,9 +6,9 @@
  * `flash-text.remote.ts` call into this module.
  */
 
-import { prisma } from '$lib/server/db';
-import { r2 } from '$lib/server/r2';
-import type { FlashFileItem } from '$lib/types/flash-file';
+import { prisma } from '#lib/server/db.js';
+import { r2 } from '#lib/server/r2.js';
+import type { FlashFileItem } from '#lib/types/flash-file.js';
 
 function toItem(file: {
 	id: string;
@@ -261,4 +261,3 @@ export async function cleanupAllExpired(options: { batchSize?: number } = {}): P
  * Bounded per call so a single request can never block the event loop
  * behind a huge delete (the next tick will mop up the remainder).
  */
-

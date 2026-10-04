@@ -13,17 +13,17 @@
 		addScenarioTimelineEntry,
 		updateScenarioTimelineEntry,
 		deleteScenarioTimelineEntry
-	} from '$lib/remote';
+	} from '#lib/remote/index.js';
 	import { toast } from 'svelte-sonner';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import * as Dialog from '$lib/components/ui/dialog';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
 	import { Checkbox } from '@/ui/checkbox';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import { Plus, Pencil, Trash2, Calendar, Save } from 'lucide-svelte';
 

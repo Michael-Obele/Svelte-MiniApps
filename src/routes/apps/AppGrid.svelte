@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AppCard from './AppCard.svelte';
-	import { projects, type Project } from '$lib/index.svelte';
+	import { projects, type Project } from '#lib/index.svelte.js';
 
 	let { items = projects() } = $props<{ items?: Project[] }>();
 </script>

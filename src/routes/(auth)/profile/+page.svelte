@@ -1,9 +1,9 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Progress } from '$lib/components/ui/progress';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Progress } from '#lib/components/ui/progress/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import {
 		Code,
 		Zap,
@@ -18,11 +18,11 @@
 	} from 'lucide-svelte';
 	import UserProfileCard from './UserProfileCard.svelte';
 	import FavoriteAppList from './FavoriteAppList.svelte';
-	import { projects, done } from '$lib/index.svelte';
+	import { projects, done } from '#lib/index.svelte.js';
 	import { onMount } from 'svelte';
-	import { getFavoriteApps, getRecentActivity } from '$lib/utils';
+	import { getFavoriteApps, getRecentActivity } from '#lib/utils.js';
 	import RecentActivityCard from './RecentActivityCard.svelte';
-	import type { getUserProfile } from '$lib/remote/profile.remote';
+	import type { getUserProfile } from '#lib/remote/profile.remote.js';
 
 	// Type definitions
 	type FavoriteApp = {
@@ -267,7 +267,7 @@
 		<!-- Completed Apps -->
 		<Card.Root class="transition-all hover:shadow-md">
 			<Card.Header class="pb-2">
-				<Card.Title class="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
 					<Code class="size-4" />
 					Completed Apps
 				</Card.Title>
@@ -275,14 +275,14 @@
 			<Card.Content>
 				<div class="text-3xl font-bold">{stats.completedApps}/{stats.totalApps}</div>
 				<Progress value={stats.progress} class="mt-3 h-2" />
-				<p class="mt-2 text-xs text-muted-foreground">{stats.progress}% complete</p>
+				<p class="text-muted-foreground mt-2 text-xs">{stats.progress}% complete</p>
 			</Card.Content>
 		</Card.Root>
 
 		<!-- Current Streak -->
 		<Card.Root class="transition-all hover:shadow-md">
 			<Card.Header class="pb-2">
-				<Card.Title class="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
 					<Flame class="size-4 text-orange-500" />
 					Current Streak
 				</Card.Title>
@@ -290,9 +290,9 @@
 			<Card.Content>
 				<div class="flex items-baseline gap-1">
 					<span class="text-3xl font-bold">{stats.streak}</span>
-					<span class="text-sm text-muted-foreground">days</span>
+					<span class="text-muted-foreground text-sm">days</span>
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{#if stats.streak > 0}
 						🔥 Keep it going!
 					{:else}
@@ -305,14 +305,14 @@
 		<!-- Total Usage -->
 		<Card.Root class="transition-all hover:shadow-md">
 			<Card.Header class="pb-2">
-				<Card.Title class="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
 					<Activity class="size-4 text-blue-500" />
 					Total Usage
 				</Card.Title>
 			</Card.Header>
 			<Card.Content>
 				<div class="text-3xl font-bold">{stats.totalUsage}</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{stats.uniqueAppsUsed} unique apps explored
 				</p>
 			</Card.Content>
@@ -321,7 +321,7 @@
 		<!-- Developer Level -->
 		<Card.Root class="transition-all hover:shadow-md">
 			<Card.Header class="pb-2">
-				<Card.Title class="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+				<Card.Title class="text-muted-foreground flex items-center gap-2 text-sm font-medium">
 					<Trophy class="size-4 text-purple-500" />
 					Level
 				</Card.Title>
@@ -331,7 +331,7 @@
 					<span class="text-3xl font-bold">{stats.level}</span>
 					<Badge variant="secondary" class="text-xs">{stats.points} XP</Badge>
 				</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+				<p class="text-muted-foreground mt-2 text-xs">
 					{pointsToNextLevel} more uses to level up
 				</p>
 			</Card.Content>
@@ -379,19 +379,19 @@
 						</div>
 						<div>
 							<p class="text-sm font-medium">{achievement.title}</p>
-							<p class="text-xs text-muted-foreground">{achievement.description}</p>
+							<p class="text-muted-foreground text-xs">{achievement.description}</p>
 						</div>
 						{#if achievement.maxProgress && !achievement.unlocked}
 							<Progress
 								value={((achievement.progress ?? 0) / achievement.maxProgress) * 100}
 								class="mt-1 h-1.5 w-full"
 							/>
-							<p class="text-xs text-muted-foreground">
+							<p class="text-muted-foreground text-xs">
 								{achievement.progress}/{achievement.maxProgress}
 							</p>
 						{/if}
 						{#if achievement.unlocked}
-							<Badge variant="default" class="size-5 absolute -right-1 -top-1 p-0">✓</Badge>
+							<Badge variant="default" class="absolute -top-1 -right-1 size-5 p-0">✓</Badge>
 						{/if}
 					</div>
 				{/each}
@@ -424,10 +424,10 @@
 				<div class="space-y-3">
 					{#each favoriteApps as app (app.appLink)}
 						<div
-							class="group flex items-start gap-3 rounded-lg border p-3 transition-all hover:bg-muted/50"
+							class="group hover:bg-muted/50 flex items-start gap-3 rounded-lg border p-3 transition-all"
 						>
 							<div
-								class="size-10 flex shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
+								class="flex size-10 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-500"
 							>
 								<Award class="size-5" />
 							</div>
@@ -438,7 +438,7 @@
 										{app.usageCount} uses
 									</Badge>
 								</div>
-								<p class="mt-1 line-clamp-2 text-sm text-muted-foreground">
+								<p class="text-muted-foreground mt-1 line-clamp-2 text-sm">
 									{app.appDescription}
 								</p>
 								<Button
@@ -454,8 +454,8 @@
 					{/each}
 				</div>
 			{:else}
-				<div class="flex flex-col items-center justify-center py-8 text-muted-foreground">
-					<Star class="size-8 mb-2 opacity-50" />
+				<div class="text-muted-foreground flex flex-col items-center justify-center py-8">
+					<Star class="mb-2 size-8 opacity-50" />
 					<p>No favorite apps yet</p>
 					<p class="text-xs">Start using apps to see your favorites here</p>
 				</div>

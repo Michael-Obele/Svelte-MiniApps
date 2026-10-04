@@ -63,14 +63,14 @@
 								<CircleXIcon class="h-4 w-4 lg:h-5 lg:w-5" />
 								<AlertTitle class="lg:text-lg">Before (Svelte 4)</AlertTitle>
 								<AlertDescription>
-									<code class="rounded bg-destructive/10 px-1 lg:text-base">{example.before}</code>
+									<code class="bg-destructive/10 rounded px-1 lg:text-base">{example.before}</code>
 								</AlertDescription>
 							</Alert>
 							<Alert>
 								<CircleCheckBigIcon class="h-4 w-4 lg:h-5 lg:w-5" />
 								<AlertTitle class="lg:text-lg">After (Svelte 5)</AlertTitle>
 								<AlertDescription>
-									<code class="rounded bg-primary/10 px-1 lg:text-base">{example.after}</code>
+									<code class="bg-primary/10 rounded px-1 lg:text-base">{example.after}</code>
 								</AlertDescription>
 							</Alert>
 						</div>

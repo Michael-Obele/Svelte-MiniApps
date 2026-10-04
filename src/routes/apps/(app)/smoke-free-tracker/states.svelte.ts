@@ -1,5 +1,5 @@
-import { PersistedState } from '$lib/persisted-state';
-import { browser } from '$app/environment';
+import { PersistedState } from '#lib/persisted-state/index.js';
+import { browser } from '$app/env';
 
 // ===========================
 // TYPES & INTERFACES
@@ -56,7 +56,7 @@ export const smokingAttempts = new PersistedState<SmokingAttempt[]>(
 
 /* Migration example:
 // To migrate to the new adapter:
-// import { createAdapter } from '$lib/persisted-state/adapter';
+// import { createAdapter } from '#lib/persisted-state/adapter.js';
 // const adapter = createAdapter({ dbName: 'miniapps-smoke-free-v1', storeName: 'smoke-free-tracker:attempts' });
 // await adapter.init();
 // await adapter.importLocalStorage('smoke-free-tracker:attempts');
@@ -452,13 +452,14 @@ export function getStatistics(attempt: SmokingAttempt, settings: UserSettings): 
 	const streakMinutes = settings.customStartDateEnabled
 		? getDisplayStreakMinutes(attempt)
 		: getStreakMinutes(attempt);
-	const cravings = getAttemptCravings(attempt.id);
 
+	const cravings = getAttemptCravings(attempt.id);
 	const cigarettesAvoided = Math.floor((streakMinutes / 1440) * settings.cigarettesPerDay);
 	const packsAvoided = cigarettesAvoided / settings.cigarettesPerPack;
 	const moneySaved = packsAvoided * settings.pricePerPack;
 
 	const successfulCravings = cravings.filter((c) => c.success).length;
+
 	const cravingSuccessRate =
 		cravings.length > 0 ? Math.round((successfulCravings / cravings.length) * 100) : 0;
 

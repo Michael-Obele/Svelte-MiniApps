@@ -1,6 +1,6 @@
-import { getFlashTextBySlug } from '$lib/server/flash-text';
-import { getFilesForFlashText } from '$lib/server/flash-files';
-import { r2 } from '$lib/server/r2';
+import { getFlashTextBySlug } from '#lib/server/flash-text.js';
+import { getFilesForFlashText } from '#lib/server/flash-files.js';
+import { r2 } from '#lib/server/r2.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

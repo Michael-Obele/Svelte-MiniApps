@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Illustration from './Illustration.svelte';
-	import Tools from '$lib/assets/Solving Problem 1.png?enhanced';
+	import Tools from '#lib/assets/Solving Problem 1.png?enhanced';
 	import Group from './Group.svelte';
 	import Header from './Header.svelte';
 	let { id } = $props();

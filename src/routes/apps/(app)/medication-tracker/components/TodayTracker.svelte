@@ -18,23 +18,16 @@
 	import DoseActionDialogs from './DoseActionDialogs.svelte';
 
 	// Props
-	let {
-		todayLogs,
-		onMarkTaken,
-		onMarkSkipped,
-		getMedication,
-		formatTime,
-		isPast,
-		onDataChanged
-	} = $props<{
-		todayLogs: MedicationLog[];
-		onMarkTaken: (logId: string) => void;
-		onMarkSkipped: (logId: string, notes?: string) => void;
-		getMedication: (medicationId: string) => Medication | undefined;
-		formatTime: (isoString: string) => string;
-		isPast: (isoString: string) => boolean;
-		onDataChanged?: () => void;
-	}>();
+	let { todayLogs, onMarkTaken, onMarkSkipped, getMedication, formatTime, isPast, onDataChanged } =
+		$props<{
+			todayLogs: MedicationLog[];
+			onMarkTaken: (logId: string) => void;
+			onMarkSkipped: (logId: string, notes?: string) => void;
+			getMedication: (medicationId: string) => Medication | undefined;
+			formatTime: (isoString: string) => string;
+			isPast: (isoString: string) => boolean;
+			onDataChanged?: () => void;
+		}>();
 
 	// Dialog state
 	let openDialog = $state('');

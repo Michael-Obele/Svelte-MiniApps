@@ -6,9 +6,9 @@
 		DialogTitle,
 		DialogFooter,
 		DialogDescription
-	} from '$lib/components/ui/dialog';
-	import { Button } from '$lib/components/ui/button';
-	import { ScrollArea } from '$lib/components/ui/scroll-area';
+	} from '#lib/components/ui/dialog/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { ScrollArea } from '#lib/components/ui/scroll-area/index.js';
 	import type { Note } from '../states.svelte';
 
 	let {

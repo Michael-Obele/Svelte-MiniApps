@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import DOMPurify from 'isomorphic-dompurify';
 	import { Carta, MarkdownEditor, Markdown } from 'carta-md';
 	import { code } from '@cartamd/plugin-code';
@@ -9,9 +9,9 @@
 	import 'github-markdown-css';
 	import '@cartamd/plugin-code/default.css';
 	import '@cartamd/plugin-slash/default.css';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import { markdownDemo } from './data.svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { markdownEditorHowToUse } from './how-to-use-config';
 	import { Button } from '@/ui/button';
@@ -69,10 +69,9 @@
 						> for quick syntax tips.
 					</p>
 				</div>
-				<Button variant="outline" onclick={() => (showHowToUseDialog = true)}>
-					<HelpCircle class="mr-2 size-4" />
-					How to Use
-				</Button>
+				<Button variant="outline" onclick={() => (showHowToUseDialog = true)}
+					><HelpCircle class="mr-2 size-4" />How to Use</Button
+				>
 			</div>
 			<section class="mt-6">
 				{#if browser}

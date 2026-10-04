@@ -2,7 +2,7 @@
 	import { Card } from '@/ui/card';
 	import * as Chart from '@/ui/chart';
 	import type { ChartConfig } from '@/ui/chart';
-	import type { Budget } from '$lib/budget-tracker/states.svelte';
+	import type { Budget } from '#lib/budget-tracker/states.svelte.js';
 	import { BarChart, Tooltip } from 'layerchart';
 
 	interface Props {

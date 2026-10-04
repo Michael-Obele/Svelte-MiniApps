@@ -12,7 +12,7 @@
 	import type { TreatmentSession, Medication, MedicationLog } from '../states.svelte';
 
 	// Import remote functions
-	import { deleteMedicationLog } from '$lib/remote';
+	import { deleteMedicationLog } from '#lib/remote/index.js';
 
 	// Props
 	let { session, medication } = $props<{

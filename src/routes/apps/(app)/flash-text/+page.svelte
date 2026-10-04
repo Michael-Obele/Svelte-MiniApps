@@ -7,23 +7,23 @@
 		getCurrentUser,
 		getUserFlashTexts,
 		type FlashTextItem
-	} from '$lib/remote';
-	import { Button } from '$lib/components/ui/button';
+	} from '#lib/remote/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Skeleton } from '$lib/components/ui/skeleton';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Progress } from '$lib/components/ui/progress';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import * as Separator from '$lib/components/ui/separator';
+	} from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Skeleton } from '#lib/components/ui/skeleton/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
+	import { Progress } from '#lib/components/ui/progress/index.js';
+	import * as Tabs from '#lib/components/ui/tabs/index.js';
+	import * as Separator from '#lib/components/ui/separator/index.js';
 	import {
 		AlertCircle,
 		Check,
@@ -44,10 +44,10 @@
 		X
 	} from 'lucide-svelte';
 	import { QRCodeImage } from 'svelte-qrcode-image';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
-	import { formatFileSize, MAX_FILE_SIZE, resolveContentType } from '$lib/types/flash-file';
+	import { formatFileSize, MAX_FILE_SIZE, resolveContentType } from '#lib/types/flash-file.js';
 
 	// ============================================================================
 	// STATE
@@ -214,7 +214,7 @@
 			// 3. Update URL for shareability (fire-and-forget, not awaited)
 			goto(
 				`/apps/flash-text?slug=${encodeURIComponent(result.slug)}&expiresAt=${encodeURIComponent(result.expiresAt)}`,
-				{ replaceState: true, noScroll: true }
+				{ replace: true, reset: false }
 			);
 
 			// 4. Upload all queued files
@@ -381,7 +381,7 @@
 
 	function handleNew() {
 		activeTab = 'create';
-		goto('/apps/flash-text', { replaceState: true, noScroll: true });
+		goto('/apps/flash-text', { replace: true, reset: false });
 	}
 
 	function previewContent(text: string, maxLen = 120): string {

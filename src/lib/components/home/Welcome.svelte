@@ -19,14 +19,14 @@ Props:
 
 -->
 <script lang="ts">
-	import { getGreetingAndNextPeriod } from '$lib/utility/greetings.client.svelte';
-	import { generateLocalMantra } from '$lib/utility/mantra.client';
+	import { getGreetingAndNextPeriod } from '#lib/utility/greetings.client.svelte.js';
+	import { generateLocalMantra } from '#lib/utility/mantra.client.js';
 	import { RefreshCw, Star, StarOff, ArrowRight, Wallet, Lock, Share2 } from '@lucide/svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import BlurFade from '@/blocks/BlurFade.svelte';
 	import { Skeleton } from '@/ui/skeleton';
 	import { Button } from '@/ui/button';
-	import { likeMantra } from '$lib/remote/mantra.remote';
+	import { likeMantra } from '#lib/remote/mantra.remote.js';
 
 	let { data } = $props();
 

@@ -13,7 +13,7 @@ recency badge) builds trust without anchoring to weak numbers.
 -->
 
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { AreaChart, Tooltip } from 'layerchart';
 	import { GitCommit, Activity } from '@lucide/svelte';
 
@@ -93,7 +93,7 @@ recency badge) builds trust without anchoring to weak numbers.
 <section id="github-stats" class="bg-background w-full py-12 md:py-16 lg:py-20">
 	<div class="container mx-auto px-4 md:px-6">
 		<div
-			class="bg-card text-card-foreground border-border/60 mx-auto max-w-3xl rounded-2xl border p-6 shadow-sm md:p-8"
+			class="bg-card text-card-foreground border-border/60 mx-auto max-w-5xl rounded-xl border p-6 shadow-sm md:p-8"
 		>
 			<!-- Sparkline: 12 months of commit activity -->
 			<div class="mb-6">

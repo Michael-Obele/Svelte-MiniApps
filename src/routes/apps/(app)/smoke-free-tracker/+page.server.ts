@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { loadSmokeFreeData } from '$lib/remote';
+import { loadSmokeFreeData } from '#lib/remote/index.js';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	// Check if user is authenticated

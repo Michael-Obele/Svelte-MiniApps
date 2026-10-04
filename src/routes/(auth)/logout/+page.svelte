@@ -4,13 +4,16 @@
 	import { LogOut } from '@lucide/svelte';
 	import { invalidate, invalidateAll } from '$app/navigation';
 	import { toast } from 'svelte-sonner';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	$effect(() => {
 		invalidateAll();
 	});
 </script>
 
-<RouteHead title="Logout | Svelte Mini Apps" description="Sign out of your Svelte Mini Apps account" />
+<RouteHead
+	title="Logout | Svelte Mini Apps"
+	description="Sign out of your Svelte Mini Apps account"
+/>
 
 <div class="container flex min-h-screen min-w-screen flex-col items-center justify-center">
 	<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

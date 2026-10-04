@@ -7,16 +7,16 @@
 		addScenarioRisk,
 		updateScenarioRisk,
 		deleteScenarioRisk
-	} from '$lib/remote';
+	} from '#lib/remote/index.js';
 	import { toast } from 'svelte-sonner';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as Select from '$lib/components/ui/select';
-	import { Button } from '$lib/components/ui/button';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import * as Select from '#lib/components/ui/select/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 	import { Plus, Pencil, Trash2, AlertTriangle, Shield, Save } from 'lucide-svelte';
 

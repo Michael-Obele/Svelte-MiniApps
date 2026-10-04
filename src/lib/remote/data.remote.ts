@@ -329,7 +329,10 @@ export const getContributionData = query(contributionQuerySchema, async (input) 
 			}
 			if (statusCode === 401 || statusCode === 403) {
 				console.error(`[GitHub API] Throwing 500 - Authentication failed (Status: ${statusCode})`);
-				throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
+				throw error(
+					500,
+					'GitHub API authentication failed. Please check your token configuration.'
+				);
 			}
 		}
 
@@ -383,7 +386,10 @@ export const getContributionYears = query(
 				const statusCode = response?.status || (err as any).status;
 
 				if (statusCode === 401 || statusCode === 403) {
-					throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
+					throw error(
+						500,
+						'GitHub API authentication failed. Please check your token configuration.'
+					);
 				}
 			}
 

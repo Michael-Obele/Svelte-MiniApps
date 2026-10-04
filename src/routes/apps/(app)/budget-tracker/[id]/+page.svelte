@@ -25,14 +25,18 @@
 	import ComparisonChart from '@/budget-tracker/Charts/ComparisonChart.svelte';
 	import TrendChart from '@/budget-tracker/Charts/TrendChart.svelte';
 	import ExpensesSection from '@/budget-tracker/ExpensesSection.svelte';
-	import * as budgetState from '$lib/budget-tracker/states.svelte';
-	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
+	import * as budgetState from '#lib/budget-tracker/states.svelte.js';
+	import type { Budget, Expense } from '#lib/budget-tracker/states.svelte.js';
 	import { toast } from 'svelte-sonner';
 	import { tick } from 'svelte';
 	import icons from 'currency-icons';
 	import { BudgetDialog, ExpenseDialog } from '@/budget-tracker';
-	import { getBudgetShareSettings, regenerateBudgetShareLink, setBudgetSharing } from '$lib/remote';
-	import { copyToClipboard } from '$lib/utils';
+	import {
+		getBudgetShareSettings,
+		regenerateBudgetShareLink,
+		setBudgetSharing
+	} from '#lib/remote/index.js';
+	import { copyToClipboard } from '#lib/utils.js';
 	import { page } from '$app/state';
 
 	// ── Backup state ─────────────────────────────────────────
@@ -67,7 +71,7 @@
 	}
 
 	const isAuthenticated = $derived(!!(page.data as { user?: unknown }).user);
-	const budgetId = $derived(page.params.id);
+	const budgetId = $derived(page.params.id ?? '');
 	const shareQuery = $derived(getBudgetShareSettings(budgetId));
 
 	// Get the budget by ID

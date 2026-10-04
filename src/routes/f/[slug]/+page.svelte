@@ -5,11 +5,11 @@
 		CardHeader,
 		CardTitle,
 		CardDescription
-	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Separator } from '$lib/components/ui/separator';
+	} from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
 	import {
 		Clipboard,
 		Timer,
@@ -27,7 +27,7 @@
 	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { fade } from 'svelte/transition';
-	import { formatFileSize, getFileIconHint } from '$lib/types/flash-file';
+	import { formatFileSize, getFileIconHint } from '#lib/types/flash-file.js';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();

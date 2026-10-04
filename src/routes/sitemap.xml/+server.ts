@@ -1,4 +1,4 @@
-import { done } from '$lib/index.svelte';
+import { done } from '#lib/index.svelte.js';
 
 // Your domain
 // const site = 'https://svelte-mini-apps.netlify.app'; // Netlify Domain

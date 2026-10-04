@@ -12,10 +12,10 @@ adjacent references, not in isolation.
 -->
 
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { BarChart } from 'layerchart';
 	import { Sparkles, ArrowRight, Heart } from '@lucide/svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
 	const OURS = { price: 0, unit: 'forever' } as const;
 	const chartData = [
 		{ name: 'Typical single-tool app', cost: 180 },

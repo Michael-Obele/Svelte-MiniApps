@@ -1,5 +1,5 @@
 import { query, command } from '$app/server';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 import { getCurrentUser } from './auth.remote';
 import * as v from 'valibot';
 

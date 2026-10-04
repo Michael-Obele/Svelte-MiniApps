@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
+	import BlurInText from '#lib/components/blocks/BlurInText.svelte';
 	import { Motion } from 'svelte-motion';
 	import { getAllTimeline, getUpdates, getTypeAccent } from './data.svelte';
 	import {
@@ -8,13 +8,13 @@
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { Alert, AlertTitle, AlertDescription } from '$lib/components/ui/alert';
+	} from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Alert, AlertTitle, AlertDescription } from '#lib/components/ui/alert/index.js';
 	import { ArrowRightIcon, ExternalLink } from '@lucide/svelte';
 	import Highlight from './Highlight.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu/index.js';
 	import { ChevronDown, Megaphone } from '@lucide/svelte';
 	import { Code, Rocket, Search, Wrench, CircleSlash } from '@lucide/svelte';
 	import { Badge } from '@/ui/badge';

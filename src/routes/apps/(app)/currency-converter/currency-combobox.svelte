@@ -5,8 +5,8 @@
 	import * as Command from '@/ui/command';
 	import * as Popover from '@/ui/popover';
 	import { Button } from '@/ui/button';
-	import { cn } from '$lib/utils';
-	import type { CurrencyInfo } from '$lib/remote';
+	import { cn } from '#lib/utils.js';
+	import type { CurrencyInfo } from '#lib/remote/index.js';
 
 	interface Props {
 		id: string;

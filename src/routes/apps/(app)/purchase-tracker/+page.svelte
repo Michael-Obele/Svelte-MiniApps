@@ -8,11 +8,11 @@
 		updateItem,
 		type Item
 	} from './states.svelte';
-	import { getCurrentUser, createItemForm, updateItemForm, getItems } from '$lib/remote';
-	import { Card } from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+	import { getCurrentUser, createItemForm, updateItemForm, getItems } from '#lib/remote/index.js';
+	import { Card } from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import {
 		Dialog,
 		DialogContent,
@@ -20,7 +20,7 @@
 		DialogFooter,
 		DialogHeader,
 		DialogTitle
-	} from '$lib/components/ui/dialog';
+	} from '#lib/components/ui/dialog/index.js';
 	import {
 		Table,
 		TableBody,
@@ -28,8 +28,8 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
-	import * as Select from '$lib/components/ui/select';
+	} from '#lib/components/ui/table/index.js';
+	import * as Select from '#lib/components/ui/select/index.js';
 	import { CirclePlus, Trash2, FilePen } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 

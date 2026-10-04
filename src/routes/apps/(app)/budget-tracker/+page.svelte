@@ -5,7 +5,7 @@
 	import { fade } from 'svelte/transition';
 	import { beforeNavigate } from '$app/navigation';
 	import { Loader2, HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import icons from 'currency-icons';
 
 	import {
@@ -18,11 +18,11 @@
 		ExpensesList,
 		BudgetCard
 	} from '@/budget-tracker';
-	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
-	import * as budgetState from '$lib/budget-tracker/states.svelte';
+	import type { Budget, Expense } from '#lib/budget-tracker/states.svelte.js';
+	import * as budgetState from '#lib/budget-tracker/states.svelte.js';
 	import RouteHead from '@/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
-	import { scrollToID } from '$lib/utils';
+	import { scrollToID } from '#lib/utils.js';
 	import * as AlertDialog from '@/ui/alert-dialog';
 	import { enhance } from '$app/forms';
 	import { toast } from 'svelte-sonner';
@@ -566,7 +566,7 @@
 		return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
 	}
 
-	import { Checkbox } from '$lib/components/ui/checkbox/index.js';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.js';
 	import { Label } from '@/ui/label';
 </script>
 
@@ -862,11 +862,7 @@
 
 				<!-- Recent Expenses Section -->
 				<div class="mx-auto mt-6">
-					<ExpensesList
-						{openEditExpenseDialog}
-						{getCurrencySymbol}
-						{formatNumberWithCommas}
-					/>
+					<ExpensesList {openEditExpenseDialog} {getCurrencySymbol} {formatNumberWithCommas} />
 				</div>
 			{/if}
 		</div>

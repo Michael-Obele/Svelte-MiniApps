@@ -10,7 +10,7 @@ with at least one answer.
 -->
 
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
 	import { getFaqItems } from './data.svelte';
 
 	let items = $derived(getFaqItems());

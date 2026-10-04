@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { Button } from '@/ui/button';
-	import { site } from '$lib/index.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { site } from '#lib/index.svelte.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import type { PageProps } from './$types';
 	import { PasswordDisplay } from './components';
-	import { getSavedPasswords, getCurrentUser } from '$lib/remote';
+	import { getSavedPasswords, getCurrentUser } from '#lib/remote/index.js';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { randomPasswordGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle, ExternalLink } from '@lucide/svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import { ScrollArea } from '@/ui/scroll-area';
-	import PasswordGenerator from '$lib/components/password/PasswordGenerator.svelte';
+	import PasswordGenerator from '#lib/components/password/PasswordGenerator.svelte';
 
 	type PasswordRecord = {
 		id: string;

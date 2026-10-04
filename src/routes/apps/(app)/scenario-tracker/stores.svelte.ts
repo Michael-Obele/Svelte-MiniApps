@@ -1,4 +1,4 @@
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 import {
 	type Option,
 	type Activity,
@@ -274,8 +274,7 @@ export function getDashboardStats(): DashboardStats {
 	const startDate = getStartDate();
 
 	// Calculate total duration in years
-	const totalDuration =
-		(endDate.getTime() - startDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+	const totalDuration = (endDate.getTime() - startDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
 
 	return {
 		totalTimeSpent: totalTime,

@@ -14,10 +14,10 @@ This component is a thin marketing wrapper around it.
 -->
 
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
 	import { Sparkles, ShieldCheck, ArrowRight } from '@lucide/svelte';
-	import PasswordGenerator from '$lib/components/password/PasswordGenerator.svelte';
+	import PasswordGenerator from '#lib/components/password/PasswordGenerator.svelte';
 </script>
 
 <section id="live-preview" class="bg-background w-full py-12 md:py-20 lg:py-24">

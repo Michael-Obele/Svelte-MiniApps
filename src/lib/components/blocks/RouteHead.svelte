@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { site } from '$lib/index.svelte';
+	import { site } from '#lib/index.svelte.js';
 	import { page } from '$app/state';
 
 	type OpenGraphType =

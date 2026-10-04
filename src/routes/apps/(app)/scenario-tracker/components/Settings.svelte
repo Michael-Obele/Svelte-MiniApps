@@ -9,12 +9,12 @@
 		parseDate,
 		today
 	} from '@internationalized/date';
-	import { cn } from '$lib/utils.js';
-	import { buttonVariants, Button } from '$lib/components/ui/button/index.js';
-	import { Calendar } from '$lib/components/ui/calendar/index.js';
-	import * as Popover from '$lib/components/ui/popover/index.js';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Label } from '$lib/components/ui/label';
+	import { cn } from '#lib/utils.js';
+	import { buttonVariants, Button } from '#lib/components/ui/button/index.js';
+	import { Calendar } from '#lib/components/ui/calendar/index.js';
+	import * as Popover from '#lib/components/ui/popover/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import { toast } from 'svelte-sonner';
 	import { Settings as SettingsIcon, Save, X } from 'lucide-svelte';
 
@@ -67,7 +67,9 @@
 		if (!editStartDate || !editEndDate) return 0;
 		const start = calendarDateToDate(editStartDate);
 		const end = calendarDateToDate(editEndDate);
-		return Math.round(((end.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000)) * 10) / 10;
+		return (
+			Math.round(((end.getTime() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000)) * 10) / 10
+		);
 	});
 
 	// Validate dates
@@ -109,7 +111,7 @@
 	}
 </script>
 
-<Dialog.Root {open} onOpenChange={onOpenChange}>
+<Dialog.Root {open} {onOpenChange}>
 	<Dialog.Content class="sm:max-w-[500px]">
 		<Dialog.Header>
 			<Dialog.Title class="flex items-center gap-2">
@@ -192,17 +194,17 @@
 						{durationYears} years
 					</div>
 					{#if !isValid}
-						<p class="mt-2 text-sm text-red-500">
-							⚠️ End date must be after start date
-						</p>
+						<p class="mt-2 text-sm text-red-500">⚠️ End date must be after start date</p>
 					{/if}
 				</div>
 			{/if}
 
 			{#if !isAuthenticated}
-				<div class="bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-lg border border-amber-500/20 p-4 text-sm">
-					<strong>Note:</strong> You're not logged in. Settings will be saved locally and won't sync across
-					devices. <a href="/login" class="underline">Sign in</a> to sync your data.
+				<div
+					class="rounded-lg border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-700 dark:text-amber-400"
+				>
+					<strong>Note:</strong> You're not logged in. Settings will be saved locally and won't sync
+					across devices. <a href="/login" class="underline">Sign in</a> to sync your data.
 				</div>
 			{/if}
 		</div>

@@ -6,12 +6,12 @@
 	import { Label } from '@/ui/label';
 	import { Alert, AlertDescription } from '@/ui/alert';
 	import { AlertCircle, Eye, EyeOff, Github } from '@lucide/svelte';
-	import Svelte from '$lib/assets/svelte.svelte';
-	import google from '$lib/assets/google-logo.svg';
+	import Svelte from '#lib/assets/svelte.svelte';
+	import google from '#lib/assets/google-logo.svg';
 	import { invalidateAll } from '$app/navigation';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { page } from '$app/state';
-	import { loginUser } from '$lib/remote';
+	import { loginUser } from '#lib/remote/index.js';
 
 	$effect(() => {
 		invalidateAll();
@@ -46,7 +46,10 @@
 	}
 </script>
 
-<RouteHead title="Login | Svelte Mini Apps" description="Login to access your Svelte Mini Apps account" />
+<RouteHead
+	title="Login | Svelte Mini Apps"
+	description="Login to access your Svelte Mini Apps account"
+/>
 
 <section class="bg-background min-h-screen py-3">
 	<div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">

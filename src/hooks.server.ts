@@ -1,11 +1,10 @@
-import type { Handle } from '@sveltejs/kit';
-import { dev } from '$app/environment';
-import * as auth from '$lib/server/auth.js';
+import { dev } from '$app/env';
+import * as auth from '#lib/server/auth.js';
 import * as main from './locales/loader.server.svelte.js';
 import * as js from './locales/loader.server.js';
 import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
 import { locales } from 'virtual:wuchale/locales';
-import { sequence } from '@sveltejs/kit/hooks';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
 
 // load at server startup (only server-side loader)
 loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);

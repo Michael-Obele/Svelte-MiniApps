@@ -1,15 +1,15 @@
 import { query, command, form } from '$app/server';
 import { redirect } from '@sveltejs/kit';
-import { prisma } from '$lib/server/db';
-import { r2 } from '$lib/server/r2';
+import { prisma } from '#lib/server/db.js';
+import { r2 } from '#lib/server/r2.js';
 import { getCurrentUser } from './auth.remote';
 import {
 	getFilesForFlashText,
 	getUserFlashFiles,
 	deleteFlashFile as deleteFlashFileRecord,
 	cleanupAllExpired
-} from '$lib/server/flash-files';
-import type { FlashFileItem } from '$lib/types/flash-file';
+} from '#lib/server/flash-files.js';
+import type { FlashFileItem } from '#lib/types/flash-file.js';
 import * as v from 'valibot';
 
 // ============================================================================

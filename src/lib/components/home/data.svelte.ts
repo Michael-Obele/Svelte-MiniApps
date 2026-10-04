@@ -95,7 +95,7 @@ export function getFaqItems() {
 // Derived from the shipped catalog so the chart can never drift out of
 // sync: every app's `tag` maps into one of the five human-readable
 // buckets below, and only apps present in `done()` are counted.
-import { done, projects } from '$lib/index.svelte';
+import { done, projects } from '#lib/index.svelte.js';
 
 const CATEGORY_BUCKETS: Record<string, string> = {
 	finance: 'Finance',

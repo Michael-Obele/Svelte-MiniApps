@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import {
 		AppWindow,
 		Box,
@@ -13,7 +13,7 @@
 		Sparkles,
 		Zap
 	} from 'lucide-svelte';
-	import { isNewApp, isRecentlyUpdated, type Project } from '$lib/index.svelte';
+	import { isNewApp, isRecentlyUpdated, type Project } from '#lib/index.svelte.js';
 
 	let { project }: { project: Project } = $props();
 

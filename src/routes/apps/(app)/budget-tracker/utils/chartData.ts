@@ -1,4 +1,4 @@
-import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
+import type { Budget, Expense } from '#lib/budget-tracker/states.svelte.js';
 
 export interface ChartDataPoint {
 	name: string;

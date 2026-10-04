@@ -8,7 +8,7 @@
 		splitDescription,
 		getDataManagement
 	} from './data.svelte';
-	import Why from '$lib/assets/Question 7.png?enhanced';
+	import Why from '#lib/assets/Question 7.png?enhanced';
 	import Group from './Group.svelte';
 	import Header from './Header.svelte';
 	let { id } = $props();

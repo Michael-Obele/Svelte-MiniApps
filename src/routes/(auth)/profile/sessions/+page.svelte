@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { getUserSessions, revokeSession, revokeAllOtherSessions } from '$lib/remote';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Skeleton } from '$lib/components/ui/skeleton';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
+	import { getUserSessions, revokeSession, revokeAllOtherSessions } from '#lib/remote/index.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Skeleton } from '#lib/components/ui/skeleton/index.js';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import {
 		Monitor,

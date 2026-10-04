@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { PieChart } from 'layerchart';
 	import TrendingUpIcon from '@lucide/svelte/icons/trending-up';
-	import * as Chart from '$lib/components/ui/chart/index.js';
-	import * as Card from '$lib/components/ui/card/index.js';
+	import * as Chart from '#lib/components/ui/chart/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
 
 	const chartData = [
 		{ browser: 'chrome', visitors: 275, color: 'var(--color-chrome)' },

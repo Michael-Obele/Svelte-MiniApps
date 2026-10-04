@@ -38,7 +38,9 @@ describe('resolveShareTarget', () => {
 	});
 
 	it('does not mistake prose mentioning a price for a conversion', () => {
-		expect(resolveShareTarget({ text: 'it cost me 25 USD yesterday' })).toContain('/apps/flash-text');
+		expect(resolveShareTarget({ text: 'it cost me 25 USD yesterday' })).toContain(
+			'/apps/flash-text'
+		);
 	});
 
 	it('falls back to the apps index when nothing usable is shared', () => {

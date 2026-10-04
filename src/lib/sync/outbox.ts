@@ -5,7 +5,7 @@
  * requests, this replays *user intent* captured while offline, which must
  * survive a reload.
  */
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { createDB } from 'svelte-idb';
 
 export interface OutboxEntry {

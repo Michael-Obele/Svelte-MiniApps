@@ -41,4 +41,3 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 export function getLanguage(code: string): Language | undefined {
 	return AVAILABLE_LANGUAGES.find((lang) => lang.code === code);
 }
-

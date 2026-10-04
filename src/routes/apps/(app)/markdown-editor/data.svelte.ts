@@ -1,4 +1,4 @@
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 
 export let markdownDemo = `# Welcome to Markdown Magic!
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	let retryCount = $state(0);
 	let isChecking = $state(false);
 	let isOnline = $state(false);

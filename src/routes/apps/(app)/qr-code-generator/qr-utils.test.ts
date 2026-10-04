@@ -114,9 +114,7 @@ describe('QR Code Generator Utilities', () => {
 		});
 
 		it('should add https prefix to URLs without protocol', () => {
-			const socialLinks = [
-				{ label: 'Website', url: 'example.com' }
-			];
+			const socialLinks = [{ label: 'Website', url: 'example.com' }];
 
 			const result = generateSocialLinks(socialLinks);
 
@@ -186,9 +184,7 @@ describe('QR Code Generator Utilities', () => {
 		});
 
 		it('should handle special characters in labels and URLs', () => {
-			const socialLinks = [
-				{ label: 'Café & Restaurant', url: 'https://café-restaurant.com' }
-			];
+			const socialLinks = [{ label: 'Café & Restaurant', url: 'https://café-restaurant.com' }];
 
 			const generateSocialLinks = (socialLinks: Array<{ label: string; url: string }>) => {
 				const validLinks = socialLinks.filter((link) => link.label && link.url);

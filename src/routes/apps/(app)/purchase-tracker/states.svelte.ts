@@ -1,5 +1,5 @@
 // @wc-ignore-file
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 import icons from 'currency-icons';
 
 // Types
@@ -77,7 +77,7 @@ const customCategoriesState = new PersistedState<PurchaseCategory[]>('purchase-c
 
 /* Migration notes:
 // To migrate to adapter:
-// import { createAdapter } from '$lib/persisted-state/adapter';
+// import { createAdapter } from '#lib/persisted-state/adapter.js';
 // const purchaseAdapter = createAdapter({ dbName: 'miniapps-purchases-v1', storeName: 'purchase-items' });
 // await purchaseAdapter.init();
 // await purchaseAdapter.importLocalStorage('purchase-items');

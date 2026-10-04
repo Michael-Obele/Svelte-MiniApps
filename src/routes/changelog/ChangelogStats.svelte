@@ -1,11 +1,10 @@
-<!-- Changelog Statistics Component -->
 <script lang="ts">
 	import { Button } from '@/ui/button';
 	import { getAllTimeline } from './data.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.js';
 	import { Bot, SquarePen, TrendingUp, Calendar, Code } from '@lucide/svelte';
-	import { dev } from '$app/environment';
+	import { dev } from '$app/env';
 
 	const allTimeline = getAllTimeline();
 
@@ -48,6 +47,8 @@
 	let showStats = $state(false);
 </script>
 
+<!-- Changelog Statistics Component -->
+
 {#if showStats}
 	<Card class="mb-6">
 		<CardHeader>
@@ -59,8 +60,10 @@
 		<CardContent>
 			<div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
 				<!-- Total Entries -->
+
 				<div class="rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-800">
 					<div class="text-2xl font-bold text-gray-900 dark:text-gray-100">{stats.total}</div>
+
 					<div
 						class="flex items-center justify-center gap-1 text-sm text-gray-600 dark:text-gray-400"
 					>
@@ -70,8 +73,10 @@
 				</div>
 
 				<!-- Manual Entries -->
+
 				<div class="rounded-lg bg-blue-50 p-3 text-center dark:bg-blue-900/20">
 					<div class="text-2xl font-bold text-blue-900 dark:text-blue-100">{stats.manual}</div>
+
 					<div
 						class="flex items-center justify-center gap-1 text-sm text-blue-600 dark:text-blue-400"
 					>
@@ -81,8 +86,10 @@
 				</div>
 
 				<!-- Generated Entries -->
+
 				<div class="rounded-lg bg-green-50 p-3 text-center dark:bg-green-900/20">
 					<div class="text-2xl font-bold text-green-900 dark:text-green-100">{stats.generated}</div>
+
 					<div
 						class="flex items-center justify-center gap-1 text-sm text-green-600 dark:text-green-400"
 					>

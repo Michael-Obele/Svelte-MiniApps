@@ -8,7 +8,7 @@
 
 	import { Bomb } from '@lucide/svelte';
 	import { getDataManagement } from './data.svelte';
-	import Data from '$lib/assets/Bomb.png?enhanced';
+	import Data from '#lib/assets/Bomb.png?enhanced';
 	let { id } = $props();
 	import Group from './Group.svelte';
 

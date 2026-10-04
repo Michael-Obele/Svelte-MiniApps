@@ -7,7 +7,7 @@ Local-first persistence backed by IndexedDB via `svelte-idb`.
 The recommended high-level API is the `PersistedState` class:
 
 ```ts
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 
 const prefs = new PersistedState('my-prefs', { theme: 'dark' });
 prefs.current = { theme: 'light' }; // persisted to IndexedDB automatically
@@ -19,7 +19,7 @@ tabs via `BroadcastChannel` when `syncTabs: true`.
 ## Low-level adapter
 
 ```ts
-import { createAdapter } from '$lib/persisted-state/adapter';
+import { createAdapter } from '#lib/persisted-state/adapter.js';
 
 const adapter = createAdapter({
 	dbName: 'app-store',

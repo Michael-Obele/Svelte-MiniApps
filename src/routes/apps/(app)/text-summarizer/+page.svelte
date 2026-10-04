@@ -1,12 +1,12 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button/index.js';
 	import { Textarea } from '@/ui/textarea/index.js';
 	import { Slider } from '@/ui/slider';
 	import * as Card from '@/ui/card';
 	import { AlertCircle, Copy, Info } from '@lucide/svelte';
 	import * as Alert from '@/ui/alert/index.js';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import DOMPurify from 'isomorphic-dompurify';
 	import { marked } from 'marked';
 	import { sampleText, sampleIntroduction } from './data';

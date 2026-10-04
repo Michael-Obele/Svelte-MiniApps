@@ -42,8 +42,8 @@
 		Play,
 		Star
 	} from '@lucide/svelte';
-	import Bluesky from '$lib/assets/bluesky-outline-light.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import Bluesky from '#lib/assets/bluesky-outline-light.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import XIcon from '@/blocks/XIcon.svelte';
 	import type { PageProps } from './$types';
 

@@ -1,12 +1,12 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import { Button } from '$lib/components/ui/button';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
+	import * as Tabs from '#lib/components/ui/tabs/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Textarea } from '#lib/components/ui/textarea/index.js';
 	import {
 		LayoutDashboard,
 		Calendar,
@@ -27,7 +27,7 @@
 		DeleteConfirmationDialog
 	} from './components';
 	import { scenarioTrackerHowToUse } from './how-to-use-config';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import { toast } from 'svelte-sonner';
 
 	import {
@@ -49,7 +49,7 @@
 		updateScenarioSettings,
 		addScenarioOption,
 		deleteScenarioOption
-	} from '$lib/remote';
+	} from '#lib/remote/index.js';
 
 	let currentUser = $state<{
 		id: string;

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Separator } from '$lib/components/ui/separator';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
 	import AccountSettingsList from '../AccountSettingsList.svelte';
 	import { User, Link, Bell } from 'lucide-svelte';
 </script>
@@ -15,7 +15,9 @@
 	<!-- Page Header -->
 	<div>
 		<h2 class="text-xl font-semibold tracking-tight">Account Settings</h2>
-		<p class="text-muted-foreground text-sm">Manage your profile information and connected accounts</p>
+		<p class="text-muted-foreground text-sm">
+			Manage your profile information and connected accounts
+		</p>
 	</div>
 
 	<!-- Main Settings Card -->
@@ -27,7 +29,9 @@
 				</div>
 				<div>
 					<Card.Title>Profile & Account</Card.Title>
-					<Card.Description>Update your personal information and manage security settings</Card.Description>
+					<Card.Description
+						>Update your personal information and manage security settings</Card.Description
+					>
 				</div>
 			</div>
 		</Card.Header>

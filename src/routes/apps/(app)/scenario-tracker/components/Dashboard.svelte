@@ -2,9 +2,9 @@
 	import type { Option, DashboardStats } from '../types';
 	import { formatDate, getSeverityColor } from '../types';
 	import { options, risks, getDashboardStats, getStartDate, getEndDate } from '../stores.svelte';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '#lib/components/ui/card/index.js';
 	import { Progress } from '@/ui/progress';
-	import { Badge } from '$lib/components/ui/badge';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import {
 		Clock,
 		Target,

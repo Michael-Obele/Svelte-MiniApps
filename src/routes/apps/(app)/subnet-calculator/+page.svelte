@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { site } from '$lib/index.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { site } from '#lib/index.svelte.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/ui/card';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
@@ -19,7 +19,7 @@
 		validateIPv6Address,
 		type IPv4SubnetInfo,
 		type IPv6SubnetInfo
-	} from '$lib/utility/subnet-calculator';
+	} from '#lib/utility/subnet-calculator.js';
 
 	let isIPv6 = $state(false);
 	let ipInput = $state('192.168.1.5');

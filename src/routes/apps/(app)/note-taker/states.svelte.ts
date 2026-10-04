@@ -1,6 +1,6 @@
-import { PersistedState } from '$lib/persisted-state';
-import type { PersistedItem } from '$lib/persisted-state/adapter';
-import { syncNoteData } from '$lib/remote';
+import { PersistedState } from '#lib/persisted-state/index.js';
+import type { PersistedItem } from '#lib/persisted-state/adapter.js';
+import { syncNoteData } from '#lib/remote/index.js';
 
 export interface Note {
 	id: string;

@@ -2,8 +2,8 @@
 	import { Card } from '@/ui/card';
 	import { Button } from '@/ui/button';
 	import { Pencil, Trash2, Clock, Package } from '@lucide/svelte';
-	import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
-	import * as budgetState from '$lib/budget-tracker/states.svelte';
+	import type { Budget, Expense } from '#lib/budget-tracker/states.svelte.js';
+	import * as budgetState from '#lib/budget-tracker/states.svelte.js';
 	import { toast } from 'svelte-sonner';
 
 	// Props with proper typing
@@ -13,11 +13,7 @@
 		formatNumberWithCommas: (value: string | number) => string;
 	}
 
-	let {
-		openEditExpenseDialog,
-		getCurrencySymbol,
-		formatNumberWithCommas
-	}: Props = $props();
+	let { openEditExpenseDialog, getCurrencySymbol, formatNumberWithCommas }: Props = $props();
 
 	// Make allExpenses reactive using $state
 	let allExpenses = $state(budgetState.getAllExpenses());

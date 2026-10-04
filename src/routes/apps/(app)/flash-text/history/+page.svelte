@@ -7,17 +7,17 @@
 		deleteFlashText,
 		deleteFlashFile,
 		type HistoryEntry
-	} from '$lib/remote';
-	import { Button } from '$lib/components/ui/button';
+	} from '#lib/remote/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Skeleton } from '$lib/components/ui/skeleton';
+	} from '#lib/components/ui/card/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Skeleton } from '#lib/components/ui/skeleton/index.js';
 	import {
 		ArrowLeft,
 		Clipboard,

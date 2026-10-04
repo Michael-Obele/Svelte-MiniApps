@@ -1,6 +1,6 @@
 import { redirect, error } from '@sveltejs/kit';
-import { resolveProtocolTarget } from '$lib/utility/share-routing';
-import { projects } from '$lib/index.svelte';
+import { resolveProtocolTarget } from '#lib/utility/share-routing.js';
+import { projects } from '#lib/index.svelte.js';
 import type { PageServerLoad } from './$types';
 
 /**

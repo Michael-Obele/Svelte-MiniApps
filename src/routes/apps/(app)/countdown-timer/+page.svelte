@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { Plus } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button';
-	import TimerCard from '$lib/components/countdown/TimerCard.svelte';
-	import AddTimerModal from '$lib/components/countdown/AddTimerModal.svelte';
-	import { browser } from '$app/environment';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import TimerCard from '#lib/components/countdown/TimerCard.svelte';
+	import AddTimerModal from '#lib/components/countdown/AddTimerModal.svelte';
+	import { browser } from '$app/env';
 	import { flip } from 'svelte/animate';
 
 	// State

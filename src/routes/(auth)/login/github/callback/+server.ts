@@ -4,9 +4,9 @@ import {
 	createSession,
 	setSessionTokenCookie,
 	SESSION_COOKIE_NAME
-} from '$lib/server/session';
-import { github } from '$lib/server/oauth';
-import { prisma } from '$lib/server/db';
+} from '#lib/server/session.js';
+import { github } from '#lib/server/oauth.js';
+import { prisma } from '#lib/server/db.js';
 import { redirect } from '@sveltejs/kit';
 import { encodeHexLowerCase } from '@oslojs/encoding';
 import { sha256 } from '@oslojs/crypto/sha2';

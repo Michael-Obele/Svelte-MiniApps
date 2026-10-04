@@ -1,17 +1,17 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // Mock the dependencies that the component uses
-vi.mock('$lib/utils', () => ({
+vi.mock('#lib/utils.js', () => ({
 	copyToClipboard: vi.fn()
 }));
 
-vi.mock('$lib/remote', () => ({
+vi.mock('#lib/remote/index.js', () => ({
 	getSavedPasswords: vi.fn(),
 	savePassword: vi.fn(),
 	getCurrentUser: vi.fn()
 }));
 
-vi.mock('$lib/index.svelte', () => ({
+vi.mock('#lib/index.svelte.js', () => ({
 	site: vi.fn(() => ({
 		name: 'Test App',
 		image: 'test-image.jpg'
@@ -25,7 +25,7 @@ vi.mock('svelte-sonner', () => ({
 	}
 }));
 
-vi.mock('$lib/persisted-state', () => ({
+vi.mock('#lib/persisted-state/index.js', () => ({
 	PersistedState: class {
 		constructor(key: string, defaultValue: any) {
 			this.current = defaultValue;

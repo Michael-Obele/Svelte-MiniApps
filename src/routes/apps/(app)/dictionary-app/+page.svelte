@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { searchDictionary } from '$lib/remote/dictionary.remote';
-	import type { DictionaryEntry } from '$lib/remote/dictionary.remote';
+	import { searchDictionary } from '#lib/remote/dictionary.remote.js';
+	import type { DictionaryEntry } from '#lib/remote/dictionary.remote.js';
 
 	import { Button } from '@/ui/button/index.js';
 	import { Input } from '@/ui/input/index.js';
@@ -20,12 +20,12 @@
 		ArrowRight
 	} from '@lucide/svelte';
 
-	import NoWord from '$lib/assets/not-found.svelte';
-	import { site } from '$lib/index.svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import NoWord from '#lib/assets/not-found.svelte';
+	import { site } from '#lib/index.svelte.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { dictionaryAppHowToUse } from './how-to-use-config';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 
 	let showHowToUse = $state(false);
 	let hasSeenHowToUse = new PersistedState('dictionary-app-has-seen-how-to-use', false);

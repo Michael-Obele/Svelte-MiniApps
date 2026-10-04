@@ -2,12 +2,12 @@
 	import * as emoji from 'node-emoji';
 	import { Clipboard, RefreshCcw } from '@lucide/svelte';
 	import { Button } from '@/ui/button/index.js';
-	import { copyToClipboard } from '$lib/utils';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { copyToClipboard } from '#lib/utils.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { randomEmojiGeneratorHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 
 	let randomEmoji = $state(emoji.random());
 	let showHowToUse = $state(false);

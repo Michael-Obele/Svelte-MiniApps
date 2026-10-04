@@ -18,15 +18,15 @@ Layout:
 -->
 
 <script lang="ts">
-	import { projects, done, isNewApp, isRecentlyUpdated } from '$lib/index.svelte';
-	import { persistedLocale } from '$lib/stores/language-store.svelte';
+	import { projects, done, isNewApp, isRecentlyUpdated } from '#lib/index.svelte.js';
+	import { persistedLocale } from '#lib/stores/language-store.svelte.js';
 	import { ArrowRight, ArrowUpRight, Blocks } from '@lucide/svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import Svelte from '$lib/assets/svelte.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import Svelte from '#lib/assets/svelte.svelte';
 	import { PieChart } from 'layerchart';
 	import { getAppCategories } from './data.svelte';
-	import type { Project } from '$lib/index.svelte';
+	import type { Project } from '#lib/index.svelte.js';
 
 	let collator = $derived(new Intl.Collator(persistedLocale.current));
 

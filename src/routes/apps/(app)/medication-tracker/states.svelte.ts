@@ -1,6 +1,6 @@
-import { PersistedState } from '$lib/persisted-state';
-import { browser } from '$app/environment';
-import { deleteMedicationLog } from '$lib/remote';
+import { PersistedState } from '#lib/persisted-state/index.js';
+import { browser } from '$app/env';
+import { deleteMedicationLog } from '#lib/remote/index.js';
 
 // Types
 export interface Medication {
@@ -370,11 +370,7 @@ export function getLogsForMedication(medicationId: string): MedicationLog[] {
 	return medicationLogs.current.filter((log) => log.medicationId === medicationId);
 }
 
-function getLogsForDateRange(
-	sessionId: string,
-	startDate: Date,
-	endDate: Date
-): MedicationLog[] {
+function getLogsForDateRange(sessionId: string, startDate: Date, endDate: Date): MedicationLog[] {
 	if (!browser) return [];
 	return medicationLogs.current.filter((log) => {
 		if (log.sessionId !== sessionId) return false;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useMotionTemplate, useMotionValue, Motion } from 'svelte-motion';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { onMount } from 'svelte';
 
 	export let text: string | undefined = undefined;
@@ -66,7 +66,7 @@
 					class="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay group-hover/card:opacity-100"
 				>
 					<p
-						class="absolute inset-x-0 h-full whitespace-pre-wrap break-words font-mono text-xs font-bold text-white transition duration-500"
+						class="absolute inset-x-0 h-full font-mono text-xs font-bold break-words whitespace-pre-wrap text-white transition duration-500"
 					>
 						{randomString}
 					</p>
@@ -78,9 +78,7 @@
 				class="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white"
 			>
 				<!-- svelte-ignore element_invalid_self_closing_tag -->
-				<div
-					class="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80"
-				/>
+				<div class="absolute h-full w-full rounded-full bg-white/80 blur-sm dark:bg-black/80" />
 				{#if text}
 					<span class="z-20 text-black dark:text-white">{text}</span>
 				{/if}

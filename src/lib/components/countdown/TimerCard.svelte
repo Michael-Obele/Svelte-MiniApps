@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { Trash2, Clock, CalendarDays, MoreHorizontal, Pencil } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { cn } from '$lib/utils';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { cn } from '#lib/utils.js';
 	import confetti from 'canvas-confetti';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu/index.js';
 
 	let { timer, onDelete, onEdit } = $props<{
 		timer: { id: string; title: string; targetDate: string; color: string };

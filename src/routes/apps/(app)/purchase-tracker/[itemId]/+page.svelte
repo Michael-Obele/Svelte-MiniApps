@@ -17,17 +17,17 @@
 		getPurchasesForItem as getServerPurchases,
 		createPurchaseForm,
 		updatePurchaseForm
-	} from '$lib/remote';
+	} from '#lib/remote/index.js';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+	} from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 	import {
 		Dialog,
 		DialogContent,
@@ -35,7 +35,7 @@
 		DialogFooter,
 		DialogHeader,
 		DialogTitle
-	} from '$lib/components/ui/dialog';
+	} from '#lib/components/ui/dialog/index.js';
 	import {
 		Table,
 		TableBody,
@@ -43,7 +43,7 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
+	} from '#lib/components/ui/table/index.js';
 	import { CirclePlus, Trash2, FilePen, ArrowLeft } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 

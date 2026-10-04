@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import Vision from './Vision.svelte';
 	import Philosophy from './Philosophy.svelte';
 	import Tools from './Tools.svelte';

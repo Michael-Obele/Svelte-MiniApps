@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { toast } from 'svelte-sonner';
-import { projects } from '$lib/index.svelte';
+import { projects } from '#lib/index.svelte.js';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));

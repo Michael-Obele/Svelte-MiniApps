@@ -1,7 +1,7 @@
 // src/routes/apps/(app)/budget-tracker/+page.server.ts
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 
 // Load function to fetch budgets and expenses
 export const load = (async ({ locals }) => {

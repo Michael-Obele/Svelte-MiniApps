@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { syncState, startSync } from '$lib/sync/sync-engine.svelte';
+	import { syncState, startSync } from '#lib/sync/sync-engine.svelte.js';
 	import { Cloud, CloudOff, RefreshCw, TriangleAlert } from '@lucide/svelte';
 
 	// startSync returns a cleanup function, which is exactly what $effect wants.

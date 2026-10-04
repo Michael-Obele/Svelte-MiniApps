@@ -1,4 +1,4 @@
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 
 /**
  * Persisted configuration for the medication tracker app

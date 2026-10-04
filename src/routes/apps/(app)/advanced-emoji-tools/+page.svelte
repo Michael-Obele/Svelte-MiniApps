@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { site } from '$lib/index.svelte';
+	import { site } from '#lib/index.svelte.js';
 	import * as emoji from 'node-emoji';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { toast } from 'svelte-sonner';
 	import * as Card from '@/ui/card';
 	import * as Tabs from '@/ui/tabs';
@@ -11,12 +11,12 @@
 	import { Badge } from '@/ui/badge';
 	import { Separator } from '@/ui/separator';
 	import * as ContextMenu from '@/ui/context-menu/index.js';
-	import { copyToClipboard } from '$lib/utils';
+	import { copyToClipboard } from '#lib/utils.js';
 	import { fade, fly } from 'svelte/transition';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { advancedEmojiToolsHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 
 	interface EmojiResult {
 		emoji: string;

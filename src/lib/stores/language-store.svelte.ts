@@ -1,5 +1,5 @@
-import { browser } from '$app/environment';
-import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '$lib/languages';
+import { browser } from '$app/env';
+import { AVAILABLE_LANGUAGES, getLanguage, type Language } from '#lib/languages.js';
 import { PersistedState } from 'runed';
 import { loadLocale } from 'wuchale/load-utils';
 

@@ -6,7 +6,7 @@
 	import { Input } from '@/ui/input';
 	import { Switch } from '@/ui/switch';
 	import { User, Shield, Trash2, AlertTriangle, Github, Chrome } from '@lucide/svelte';
-	import { deleteAccount, getUserProfile } from '$lib/remote';
+	import { deleteAccount, getUserProfile } from '#lib/remote/index.js';
 	import { toast } from 'svelte-sonner';
 	import { goto } from '$app/navigation';
 
@@ -38,12 +38,12 @@
 			<div class="space-y-4">
 				<div class="flex items-center justify-between rounded-lg border p-4">
 					<div class="flex items-center gap-3">
-						<div class="rounded-full bg-primary/10 p-2">
-							<User class="h-4 w-4 text-primary" />
+						<div class="bg-primary/10 rounded-full p-2">
+							<User class="text-primary h-4 w-4" />
 						</div>
 						<div>
 							<p class="font-medium">Username</p>
-							<p class="text-sm text-muted-foreground">{userData.username}</p>
+							<p class="text-muted-foreground text-sm">{userData.username}</p>
 						</div>
 					</div>
 					<Button variant="ghost" size="sm">Change</Button>
@@ -51,16 +51,16 @@
 
 				<div class="flex items-center justify-between rounded-lg border p-4">
 					<div class="flex items-center gap-3">
-						<div class="rounded-full bg-primary/10 p-2">
-							<Shield class="h-4 w-4 text-primary" />
+						<div class="bg-primary/10 rounded-full p-2">
+							<Shield class="text-primary h-4 w-4" />
 						</div>
 						<div>
 							<p class="font-medium">Account Role</p>
-							<p class="text-sm capitalize text-muted-foreground">{userData.role}</p>
+							<p class="text-muted-foreground text-sm capitalize">{userData.role}</p>
 						</div>
 					</div>
 					{#if userData.isAdmin}
-						<span class="text-sm font-medium text-primary">Admin Access</span>
+						<span class="text-primary text-sm font-medium">Admin Access</span>
 					{/if}
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 						<Github class="h-5 w-5" />
 						<div>
 							<p class="font-medium">GitHub</p>
-							<p class="text-sm text-muted-foreground">
+							<p class="text-muted-foreground text-sm">
 								{userData.hasGithub ? 'Connected' : 'Not connected'}
 							</p>
 						</div>
@@ -92,7 +92,7 @@
 						<Chrome class="h-5 w-5" />
 						<div>
 							<p class="font-medium">Google</p>
-							<p class="text-sm text-muted-foreground">
+							<p class="text-muted-foreground text-sm">
 								{userData.hasGoogle ? 'Connected' : 'Not connected'}
 							</p>
 						</div>
@@ -113,7 +113,7 @@
 				<div class="flex items-center justify-between rounded-lg border p-4">
 					<div class="flex-1">
 						<p class="font-medium">Two-Factor Authentication</p>
-						<p class="text-sm text-muted-foreground">
+						<p class="text-muted-foreground text-sm">
 							Add an extra layer of security to your account
 						</p>
 					</div>
@@ -123,7 +123,7 @@
 				<div class="flex items-center justify-between rounded-lg border p-4">
 					<div class="flex-1">
 						<p class="font-medium">Email Notifications</p>
-						<p class="text-sm text-muted-foreground">Receive security alerts via email</p>
+						<p class="text-muted-foreground text-sm">Receive security alerts via email</p>
 					</div>
 					<Switch bind:checked={emailNotifications} />
 				</div>
@@ -131,7 +131,7 @@
 				<div class="flex items-center justify-between rounded-lg border p-4">
 					<div class="flex-1">
 						<p class="font-medium">Marketing Emails</p>
-						<p class="text-sm text-muted-foreground">Receive updates about new features</p>
+						<p class="text-muted-foreground text-sm">Receive updates about new features</p>
 					</div>
 					<Switch bind:checked={marketingEmails} />
 				</div>
@@ -142,14 +142,14 @@
 
 		<!-- Danger Zone -->
 		<div>
-			<h3 class="mb-4 text-lg font-semibold text-destructive">Danger Zone</h3>
-			<div class="rounded-lg border border-destructive/50 bg-destructive/5 p-4">
+			<h3 class="text-destructive mb-4 text-lg font-semibold">Danger Zone</h3>
+			<div class="border-destructive/50 bg-destructive/5 rounded-lg border p-4">
 				<div class="flex items-start justify-between">
 					<div class="flex items-start gap-3">
-						<AlertTriangle class="h-5 w-5 text-destructive" />
+						<AlertTriangle class="text-destructive h-5 w-5" />
 						<div>
-							<p class="font-medium text-destructive">Delete Account</p>
-							<p class="text-sm text-muted-foreground">
+							<p class="text-destructive font-medium">Delete Account</p>
+							<p class="text-muted-foreground text-sm">
 								Permanently delete your account and all associated data. This action cannot be
 								undone.
 							</p>
@@ -193,9 +193,9 @@
 				})}
 			>
 				<div class="grid gap-4 py-4">
-					<div class="rounded-lg bg-destructive/10 p-4">
-						<p class="text-sm font-medium text-destructive">Warning:</p>
-						<ul class="mt-2 list-inside list-disc space-y-1 text-sm text-muted-foreground">
+					<div class="bg-destructive/10 rounded-lg p-4">
+						<p class="text-destructive text-sm font-medium">Warning:</p>
+						<ul class="text-muted-foreground mt-2 list-inside list-disc space-y-1 text-sm">
 							<li>All your budgets and expenses will be deleted</li>
 							<li>All your saved passwords will be deleted</li>
 							<li>All your mantras and social pages will be deleted</li>

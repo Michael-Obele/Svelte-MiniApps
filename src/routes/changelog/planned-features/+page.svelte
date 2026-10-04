@@ -1,14 +1,14 @@
 <script lang="ts">
-	import BlurInText from '$lib/components/blocks/BlurInText.svelte';
+	import BlurInText from '#lib/components/blocks/BlurInText.svelte';
 	import {
 		Card,
 		CardHeader,
 		CardTitle,
 		CardDescription,
 		CardContent
-	} from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
+	} from '#lib/components/ui/card/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import {
 		Smartphone,
 		Monitor,
@@ -22,7 +22,7 @@
 		Download,
 		Github
 	} from '@lucide/svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 
 	// Feature data based on plan/planned-features.md
 	const highLevelFeatures = [

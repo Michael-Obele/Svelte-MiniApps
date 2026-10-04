@@ -1,5 +1,4 @@
 <script lang="ts">
-	
 	import { Button } from '@/ui/button';
 	import { Input } from '@/ui/input';
 	import { Label } from '@/ui/label';
@@ -8,10 +7,9 @@
 	import Loading from '@/blocks/Loading.svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { Switch } from '@/ui/switch/index.js';
-	import { registerUser } from '$lib/remote';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { registerUser } from '#lib/remote/index.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 
-	
 	const register = registerUser;
 	let showPassword = $state(false);
 	let showConfirmPassword = $state(false);

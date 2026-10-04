@@ -1,6 +1,6 @@
 import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
-import { prisma } from '$lib/server/db';
+import { prisma } from '#lib/server/db.js';
 import type { Session, User } from '@prisma/client';
 import { hashPassword, verifyPasswordHash } from './password.server';
 

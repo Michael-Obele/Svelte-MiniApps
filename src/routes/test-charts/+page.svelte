@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
-	import { mockContributionData } from '$lib/test-data/github-contribution-mock';
+	import { mockContributionData } from '#lib/test-data/github-contribution-mock.js';
 	import { scaleLinear, scaleBand } from 'd3-scale';
 	import { max } from 'd3-array';
 	import { format as formatDate } from 'date-fns';

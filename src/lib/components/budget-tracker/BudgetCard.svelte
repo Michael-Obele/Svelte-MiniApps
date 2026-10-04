@@ -4,7 +4,7 @@
 	import { Progress } from '@/ui/progress';
 	import * as DropdownMenu from '@/ui/dropdown-menu';
 	import { EllipsisVertical, Plus, Pencil, Eye, Trash2, ArrowRight } from '@lucide/svelte';
-	import type { Budget } from '$lib/budget-tracker/states.svelte';
+	import type { Budget } from '#lib/budget-tracker/states.svelte.js';
 
 	interface Props {
 		budget: Budget;

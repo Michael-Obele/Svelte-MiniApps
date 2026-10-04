@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { PersistedState } from '$lib/persisted-state';
+	import { PersistedState } from '#lib/persisted-state/index.js';
 	import { FlexiBoard, FlexiTarget, FlexiWidget } from 'svelte-flexiboards';
 	import { Plus, X, Edit, Check, AlertTriangle, HelpCircle } from '@lucide/svelte';
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { todoListHowToUse } from './how-to-use-config';
-	import TodoItem from '$lib/components/todo/todo-item.svelte';
-	import * as Card from '$lib/components/ui/card/index.js';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
-	import * as Alert from '$lib/components/ui/alert/index.js';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import Input from '$lib/components/ui/input/input.svelte';
+	import TodoItem from '#lib/components/todo/todo-item.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
+	import * as Alert from '#lib/components/ui/alert/index.js';
+	import Button from '#lib/components/ui/button/button.svelte';
+	import Input from '#lib/components/ui/input/input.svelte';
 	import {
 		todoStore,
 		addColumn,
@@ -25,8 +25,8 @@
 		setEditingTodo,
 		resetUIState,
 		toggleTodoCompleted
-	} from '$lib/stores/todo-store.svelte';
-	import type { Column, Todo, SlotItemMap } from '$lib/types';
+	} from '#lib/stores/todo-store.svelte.js';
+	import type { Column, Todo, SlotItemMap } from '#lib/types.js';
 
 	// Reactive reference to the store's current value
 	let todoState = $derived(todoStore.current);
@@ -35,8 +35,7 @@
 
 	// How-to guide state
 	let showHowToUseDialog = $state(false);
-	let hasSeenGuide = new PersistedState<boolean>(todoListHowToUse.storageKey, false, {
-	});
+	let hasSeenGuide = new PersistedState<boolean>(todoListHowToUse.storageKey, false, {});
 
 	// Keyboard event handlers for the edit modal
 	function handleEditKeydown(e: KeyboardEvent) {

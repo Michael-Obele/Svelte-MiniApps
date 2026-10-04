@@ -9,13 +9,13 @@
 	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/ui/card';
 	import { toast } from 'svelte-sonner';
 	import { slide } from 'svelte/transition';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 
 	import * as medState from '../states.svelte';
 	import type { TreatmentSession } from '../states.svelte';
 
 	// Import remote functions
-	import { deleteMedicationSession } from '$lib/remote';
+	import { deleteMedicationSession } from '#lib/remote/index.js';
 
 	// Props
 	let { open = $bindable(false) } = $props();
@@ -409,6 +409,7 @@
 
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showEditDialog = false)}>Cancel</Button>
+
 			<Button onclick={saveEdits}>Save Changes</Button>
 		</Dialog.Footer>
 	</Dialog.Content>

@@ -39,27 +39,6 @@ user to the workflow mentally.
 	onMount(() => {
 		// Initial trigger on first paint
 		triggerAnimations();
-
-		let isVisible = true;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					if (entry.isIntersecting && !isVisible) {
-						isVisible = true;
-						triggerAnimations();
-					} else if (!entry.isIntersecting) {
-						isVisible = false;
-					}
-				}
-			},
-			{ threshold: 0.4 }
-		);
-
-		const section = document.getElementById('how-it-works');
-		if (section) observer.observe(section);
-
-		return () => observer.disconnect();
 	});
 
 	const STEPS = [

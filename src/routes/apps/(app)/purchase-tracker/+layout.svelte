@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getCurrentUser, backupPurchaseData, syncPurchaseData } from '$lib/remote';
+	import { getCurrentUser, backupPurchaseData, syncPurchaseData } from '#lib/remote/index.js';
 	import { items, purchases } from './states.svelte';
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import { Download, RefreshCw } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 

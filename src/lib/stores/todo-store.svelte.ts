@@ -1,5 +1,5 @@
-import { PersistedState } from '$lib/persisted-state';
-import type { Column, Todo, TodoState, UIState } from '$lib/types';
+import { PersistedState } from '#lib/persisted-state/index.js';
+import type { Column, Todo, TodoState, UIState } from '#lib/types.js';
 import { v4 as uuidv4 } from 'uuid';
 
 // Initialize with default values

@@ -10,7 +10,7 @@
 	const randomIncrement = 10; // Max random increment per step
 	const minProgressTime = 800; // Minimum time to show progress (ms)
 	const minimumVisibleDelay = 200; // Minimum load time before showing bar (ms)
-	
+
 	// Optional prop to manually trigger the progress bar (for non-navigation loading)
 	let { active = false } = $props<{ active?: boolean }>();
 
@@ -20,7 +20,7 @@
 	let completeTimer: ReturnType<typeof setTimeout> | null = null;
 	let showDelayTimer: ReturnType<typeof setTimeout> | null = null;
 	let startTime = 0;
-	
+
 	// Handle both navigation and manual trigger
 	$effect(() => {
 		// Check if we're navigating to a new page or if manually activated
@@ -38,14 +38,14 @@
 		if (incrementTimer) clearInterval(incrementTimer);
 		if (completeTimer) clearTimeout(completeTimer);
 		if (showDelayTimer) clearTimeout(showDelayTimer);
-		
+
 		// Record start time
 		startTime = Date.now();
-		
+
 		// Reset progress
 		progressValue = 0;
 		visible = false;
-		
+
 		// Only show the bar if loading lasts longer than minimumVisibleDelay
 		showDelayTimer = setTimeout(() => {
 			visible = true;
@@ -69,22 +69,22 @@
 			clearTimeout(showDelayTimer);
 			showDelayTimer = null;
 		}
-		
+
 		// Calculate elapsed time
 		const elapsedTime = Date.now() - startTime;
 		const remainingTime = Math.max(0, minProgressTime - elapsedTime);
-		
+
 		// If the bar was never shown (very fast load), skip animation
 		if (!visible) {
 			progressValue = 0;
 			return;
 		}
-		
+
 		// Complete the progress after ensuring minimum display time
 		completeTimer = setTimeout(() => {
 			// Complete the progress
 			progressValue = 100;
-			
+
 			// Hide after completion animation
 			setTimeout(() => {
 				visible = false;
@@ -103,10 +103,7 @@
 </script>
 
 {#if visible}
-	<div 
-		class="fixed top-0 left-0 z-50 w-full" 
-		transition:fade={{ duration: 200 }}
-	>
+	<div class="fixed top-0 left-0 z-50 w-full" transition:fade={{ duration: 200 }}>
 		<Progress value={progressValue} class="h-1 rounded-none" classInner="bg-primary" />
 	</div>
 {/if}

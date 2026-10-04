@@ -2,8 +2,8 @@
 	import { FlexiWidget } from 'svelte-flexiboards';
 	import { Pencil, X, CheckCircle2 } from '@lucide/svelte';
 	import Grabber from '../common/grabber.svelte';
-	import { toggleTodoCompleted } from '$lib/stores/todo-store.svelte';
-	import type { Todo } from '$lib/types';
+	import { toggleTodoCompleted } from '#lib/stores/todo-store.svelte.js';
+	import type { Todo } from '#lib/types.js';
 	import type { Snippet } from 'svelte';
 	import type { FlexiWidgetProps } from 'svelte-flexiboards';
 
@@ -70,7 +70,7 @@
 					class="pointer-events-auto relative z-10 mr-2 h-4 w-4 cursor-pointer rounded border-gray-300 text-green-500 focus:ring-green-500 dark:border-gray-600"
 				/>
 				{#if showCompletionIcon}
-					<div class="absolute left-6 top-0 animate-bounce text-green-500">
+					<div class="absolute top-0 left-6 animate-bounce text-green-500">
 						<CheckCircle2 size={16} />
 					</div>
 				{/if}

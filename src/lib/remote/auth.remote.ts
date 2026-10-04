@@ -1,9 +1,9 @@
 import { getRequestEvent, query, form } from '$app/server';
 import { error, redirect, fail, invalid } from '@sveltejs/kit';
 import * as v from 'valibot';
-import * as auth from '$lib/server/auth';
-import { prisma } from '$lib/server/db';
-import { dev } from '$app/environment';
+import * as auth from '#lib/server/auth.js';
+import { prisma } from '#lib/server/db.js';
+import { dev } from '$app/env';
 
 // Type for the current user (matches what auth.ts returns)
 type CurrentUser = {

@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { loadMedicationData } from '$lib/remote';
+import { loadMedicationData } from '#lib/remote/index.js';
 
 export const load: PageServerLoad = async (event) => {
 	const { locals } = event;

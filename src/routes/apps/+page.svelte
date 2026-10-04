@@ -1,10 +1,10 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import List from './List.svelte';
 	import BlurInText from '@/blocks/BlurInText.svelte';
 	import AppGrid from './AppGrid.svelte';
 	import AppFilters from './AppFilters.svelte';
-	import { projects } from '$lib/index.svelte';
+	import { projects } from '#lib/index.svelte.js';
 
 	let app = $state('');
 	let searchQuery = $state('');

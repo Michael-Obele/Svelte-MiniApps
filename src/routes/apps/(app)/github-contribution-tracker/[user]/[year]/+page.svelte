@@ -10,7 +10,7 @@
 		MessageSquare,
 		TriangleAlert
 	} from '@lucide/svelte';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 	import { Button } from '@/ui/button';
 	import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/ui/card';
 	import * as Tabs from '@/ui/tabs';
@@ -28,9 +28,8 @@
 	let { data } = $props();
 
 	// Get params from URL for display
-	const username = page.params.user;
-	const year = page.params.year;
-
+	const username = page.params.user ?? '';
+	const year = page.params.year ?? '';
 	// Computed stats derived from load function data
 	const computed = $derived.by(() => computeStats(data.contributionData));
 

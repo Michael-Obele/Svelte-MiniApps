@@ -1,5 +1,5 @@
 import { toast } from 'svelte-sonner';
-import * as budgetState from '$lib/budget-tracker/states.svelte';
+import * as budgetState from '#lib/budget-tracker/states.svelte.js';
 
 /**
  * Checks if local data has been migrated to the server

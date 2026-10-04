@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import * as budgetState from '$lib/budget-tracker/states.svelte';
-import { PersistedState } from '$lib/persisted-state';
-import type { Budget, Expense } from '$lib/budget-tracker/states.svelte';
+import * as budgetState from '#lib/budget-tracker/states.svelte.js';
+import { PersistedState } from '#lib/persisted-state/index.js';
+import type { Budget, Expense } from '#lib/budget-tracker/states.svelte.js';
 
 /**
  * Mock implementation for the PersistedState class from the local wrapper
@@ -12,9 +12,10 @@ let mockBudgets: Budget[] = [];
 let mockSubscribers: Function[] = [];
 
 // Mock PersistedState
-vi.mock('$lib/persisted-state', () => {
+vi.mock('#lib/persisted-state/index.js', () => {
 	return {
-		PersistedState: vi.fn().mockImplementation(() => {
+		// A regular function (not an arrow) so it can be used with `new`
+		PersistedState: vi.fn().mockImplementation(function () {
 			return {
 				get current() {
 					return mockBudgets;

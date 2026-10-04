@@ -130,7 +130,7 @@ const CONTRIBUTION_QUERY = gql`
  * Creates a GraphQL client with GitHub token
  */
 // Import dynamic private environment variables
-import { env } from '$env/dynamic/private';
+import { GITHUB_TOKEN, VITE_GITHUB_TOKEN } from '$app/env/private';
 
 /**
  * Creates a GraphQL client with GitHub token
@@ -138,9 +138,9 @@ import { env } from '$env/dynamic/private';
 function createGitHubClient(): GraphQLClient {
 	// Try standard GITHUB_TOKEN first, then fall back to VITE_ prefixed version
 	// Using $env/dynamic/private ensures we get the runtime value in all adapters
-	let token = env.GITHUB_TOKEN || env.VITE_GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '';
-	token = token.trim();
+	let token = GITHUB_TOKEN || VITE_GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '';
 
+	token = token.trim();
 	console.log(`[GitHub API] Checking for GitHub token...`);
 	if (!token) {
 		console.error(`[GitHub API] No GITHUB_TOKEN or VITE_GITHUB_TOKEN found in environment`);
@@ -380,7 +380,10 @@ export const load: PageServerLoad = async ({ params }) => {
 			}
 			if (statusCode === 401 || statusCode === 403) {
 				console.error(`[GitHub API] Throwing 500 - Authentication failed (Status: ${statusCode})`);
-				throw error(500, 'GitHub API authentication failed. Please check your token configuration.');
+				throw error(
+					500,
+					'GitHub API authentication failed. Please check your token configuration.'
+				);
 			}
 		}
 

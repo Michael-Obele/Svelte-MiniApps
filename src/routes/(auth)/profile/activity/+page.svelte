@@ -1,12 +1,12 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { Clock, Activity, Zap, Search, Calendar, Download } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import { getRecentActivity } from '$lib/utils';
+	import { getRecentActivity } from '#lib/utils.js';
 
 	interface ActivityItem {
 		appLink: string;

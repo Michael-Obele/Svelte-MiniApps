@@ -1,11 +1,11 @@
 <script lang="ts">
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Switch } from '$lib/components/ui/switch';
-	import { updatePassword } from '$lib/remote';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { Switch } from '#lib/components/ui/switch/index.js';
+	import { updatePassword } from '#lib/remote/index.js';
 	import { toast } from 'svelte-sonner';
 	import {
 		Shield,
@@ -49,7 +49,9 @@
 	});
 
 	// Password match validation
-	let passwordsMatch = $derived(newPasswordValue === confirmPasswordValue && newPasswordValue.length > 0);
+	let passwordsMatch = $derived(
+		newPasswordValue === confirmPasswordValue && newPasswordValue.length > 0
+	);
 
 	// Sync form values with local state for validation
 	$effect(() => {
@@ -72,15 +74,15 @@
 	<!-- Page Header -->
 	<div>
 		<h2 class="text-xl font-semibold tracking-tight">Security</h2>
-		<p class="text-sm text-muted-foreground">Manage your password and security settings</p>
+		<p class="text-muted-foreground text-sm">Manage your password and security settings</p>
 	</div>
 
 	<!-- Change Password Card -->
 	<Card.Root>
 		<Card.Header>
 			<div class="flex items-center gap-2">
-				<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10">
-					<Lock class="size-4 text-primary" />
+				<div class="bg-primary/10 flex size-8 items-center justify-center rounded-lg">
+					<Lock class="text-primary size-4" />
 				</div>
 				<div>
 					<Card.Title>Change Password</Card.Title>
@@ -121,7 +123,7 @@
 						<button
 							type="button"
 							onclick={() => (showCurrentPassword = !showCurrentPassword)}
-							class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+							class="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
 						>
 							{#if showCurrentPassword}
 								<EyeOff class="size-4" />
@@ -148,7 +150,7 @@
 						<button
 							type="button"
 							onclick={() => (showNewPassword = !showNewPassword)}
-							class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+							class="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
 						>
 							{#if showNewPassword}
 								<EyeOff class="size-4" />
@@ -170,13 +172,13 @@
 									></div>
 								{/each}
 							</div>
-							<p class="text-xs text-muted-foreground">
+							<p class="text-muted-foreground text-xs">
 								Password strength: <span class="font-medium">{passwordStrength.label}</span>
 							</p>
 						</div>
 					{/if}
 
-					<p class="text-xs text-muted-foreground">Must be at least 8 characters long</p>
+					<p class="text-muted-foreground text-xs">Must be at least 8 characters long</p>
 				</div>
 
 				<!-- Confirm Password -->
@@ -195,7 +197,7 @@
 						<button
 							type="button"
 							onclick={() => (showConfirmPassword = !showConfirmPassword)}
-							class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+							class="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
 						>
 							{#if showConfirmPassword}
 								<EyeOff class="size-4" />
@@ -206,7 +208,7 @@
 					</div>
 
 					{#if confirmPasswordValue.length > 0 && !passwordsMatch}
-						<div class="flex items-center gap-1 text-xs text-destructive">
+						<div class="text-destructive flex items-center gap-1 text-xs">
 							<AlertCircle class="size-3" />
 							<span>Passwords do not match</span>
 						</div>
@@ -232,8 +234,8 @@
 	<Card.Root>
 		<Card.Header>
 			<div class="flex items-center gap-2">
-				<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10">
-					<Shield class="size-4 text-primary" />
+				<div class="bg-primary/10 flex size-8 items-center justify-center rounded-lg">
+					<Shield class="text-primary size-4" />
 				</div>
 				<div>
 					<Card.Title>Security Options</Card.Title>
@@ -244,10 +246,10 @@
 		<Card.Content class="space-y-4">
 			<div class="flex items-center justify-between rounded-lg border p-4">
 				<div class="flex items-center gap-3">
-					<Smartphone class="size-5 text-muted-foreground" />
+					<Smartphone class="text-muted-foreground size-5" />
 					<div>
 						<p class="font-medium">Two-Factor Authentication</p>
-						<p class="text-sm text-muted-foreground">
+						<p class="text-muted-foreground text-sm">
 							Add an extra layer of security (Coming Soon)
 						</p>
 					</div>
@@ -257,10 +259,10 @@
 
 			<div class="flex items-center justify-between rounded-lg border p-4">
 				<div class="flex items-center gap-3">
-					<ShieldCheck class="size-5 text-muted-foreground" />
+					<ShieldCheck class="text-muted-foreground size-5" />
 					<div>
 						<p class="font-medium">Login Alerts</p>
-						<p class="text-sm text-muted-foreground">Get notified of new logins (Coming Soon)</p>
+						<p class="text-muted-foreground text-sm">Get notified of new logins (Coming Soon)</p>
 					</div>
 				</div>
 				<Switch bind:checked={loginAlerts} disabled />
@@ -277,7 +279,7 @@
 			</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<ul class="space-y-2 text-sm text-muted-foreground">
+			<ul class="text-muted-foreground space-y-2 text-sm">
 				<li>• Use at least 8 characters with a mix of letters, numbers, and symbols</li>
 				<li>• Avoid using common words or personal information</li>
 				<li>• Don't reuse passwords across multiple sites</li>

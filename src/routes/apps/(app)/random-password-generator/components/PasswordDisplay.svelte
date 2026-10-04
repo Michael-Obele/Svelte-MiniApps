@@ -2,12 +2,12 @@
 	import { Input } from '@/ui/input';
 	import { Button } from '@/ui/button';
 	import { Eye, EyeOff, Copy, Trash2, Check, Pencil } from '@lucide/svelte';
-	import { copyToClipboard } from '$lib/utils';
+	import { copyToClipboard } from '#lib/utils.js';
 	import { toast } from 'svelte-sonner';
 	import * as Dialog from '@/ui/dialog';
 	import { Label } from '@/ui/label';
 	import { Textarea } from '@/ui/textarea';
-	import { editPassword, deletePassword, getSavedPasswords } from '$lib/remote';
+	import { editPassword, deletePassword, getSavedPasswords } from '#lib/remote/index.js';
 
 	let {
 		password,

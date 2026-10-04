@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { ScrollArea } from '@/ui/scroll-area/index.js';
 	import { Button } from '@/ui/button';
-	import { done, projects } from '$lib/index.svelte';
+	import { done, projects } from '#lib/index.svelte.js';
 	import { Star, ExternalLink, Heart, Activity } from '@lucide/svelte';
 	import { onMount } from 'svelte';
-	import { getFavoriteApps } from '$lib/utils';
+	import { getFavoriteApps } from '#lib/utils.js';
 
 	// Define the type for favorite app items
 	type FavoriteApp = {

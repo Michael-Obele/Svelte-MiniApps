@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Select from '$lib/components/ui/select';
-	import * as Card from '$lib/components/ui/card';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Select from '#lib/components/ui/select/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
 	import {
 		unitTypes,
 		units,
@@ -16,8 +16,8 @@
 	import HowToUseDialog from '@/blocks/HowToUseDialog.svelte';
 	import { unitConverterHowToUse } from './how-to-use-config';
 	import { HelpCircle } from '@lucide/svelte';
-	import { PersistedState } from '$lib/persisted-state';
-	import RouteHead from '$lib/components/blocks/RouteHead.svelte';
+	import { PersistedState } from '#lib/persisted-state/index.js';
+	import RouteHead from '#lib/components/blocks/RouteHead.svelte';
 
 	let inputValue: string = $state('');
 	let fromUnit: string = $state('meter');
@@ -107,7 +107,10 @@
 	};
 </script>
 
-<RouteHead title="Unit Converter - Svelte Mini Apps" description="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure." />
+<RouteHead
+	title="Unit Converter - Svelte Mini Apps"
+	description="Convert between various units of measurement including length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure."
+/>
 
 <div class="container mx-auto max-w-4xl p-4">
 	<div class="mb-8 text-center">

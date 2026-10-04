@@ -16,7 +16,7 @@
 		updateNoteForm,
 		deleteNote,
 		getNotes
-	} from '$lib/remote';
+	} from '#lib/remote/index.js';
 	import {
 		Card,
 		CardContent,
@@ -24,11 +24,11 @@
 		CardTitle,
 		CardFooter,
 		CardDescription
-	} from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Separator } from '$lib/components/ui/separator';
+	} from '#lib/components/ui/card/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
 	import { CreateNoteDialog, EditNoteDialog, ViewNoteDialog } from './components';
 	import {
 		Plus,

@@ -1,5 +1,5 @@
 import { locales } from 'virtual:wuchale/locales';
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 import { loadLocale } from 'wuchale/load-utils';
 // so that the loaders are registered
 import '../locales/loader.svelte.js';

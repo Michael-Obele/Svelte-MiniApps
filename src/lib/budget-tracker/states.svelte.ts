@@ -1,4 +1,4 @@
-import { PersistedState } from '$lib/persisted-state';
+import { PersistedState } from '#lib/persisted-state/index.js';
 
 // Types
 export interface Expense {
@@ -26,7 +26,7 @@ const budgetState = new PersistedState<Budget[]>('budgets', [], {
 /*
 Migration notes:
 - To migrate to the new adapter (IndexedDB-backed):
-	import { createAdapter, importLocalStorage } from '$lib/persisted-state/adapter';
+	import { createAdapter, importLocalStorage } from '#lib/persisted-state/adapter.js';
 	const adapter = createAdapter({ dbName: 'miniapps-budget-v1', storeName: 'budgets' });
 	await adapter.init();
 	// optional: import existing localStorage entries into the new IndexedDB store
@@ -94,7 +94,6 @@ export function addToBudgetAmount(id: string, additionalAmount: number) {
 	// Update the persisted state
 	budgetState.current = updatedBudgets;
 }
-
 
 export function addExpense(
 	budgetId: string,
@@ -251,7 +250,6 @@ export function getTotalExpenses(): number {
 		0
 	);
 }
-
 
 export function addSelectedExpense(expenseId: string) {
 	if (!selectedExpensesState.current.includes(expenseId)) {

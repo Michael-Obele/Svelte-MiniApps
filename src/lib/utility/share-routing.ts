@@ -21,9 +21,34 @@ const SUMMARIZE_THRESHOLD = 400;
  * whereas matching every three-letter word would hijack ordinary sentences.
  */
 const CURRENCY_CODES = new Set([
-	'usd', 'eur', 'gbp', 'jpy', 'cny', 'inr', 'ngn', 'cad', 'aud', 'chf',
-	'zar', 'brl', 'mxn', 'sek', 'nok', 'dkk', 'pln', 'rub', 'krw', 'sgd',
-	'nzd', 'hkd', 'try', 'aed', 'sar', 'kes', 'ghs', 'egp'
+	'usd',
+	'eur',
+	'gbp',
+	'jpy',
+	'cny',
+	'inr',
+	'ngn',
+	'cad',
+	'aud',
+	'chf',
+	'zar',
+	'brl',
+	'mxn',
+	'sek',
+	'nok',
+	'dkk',
+	'pln',
+	'rub',
+	'krw',
+	'sgd',
+	'nzd',
+	'hkd',
+	'try',
+	'aed',
+	'sar',
+	'kes',
+	'ghs',
+	'egp'
 ]);
 
 /** Currency symbols that can prefix an amount, e.g. "$25". */
@@ -36,15 +61,52 @@ const CURRENCY_SYMBOLS = ['$', '€', '£', '¥', '₹', '₦', '₩'];
  */
 const UNIT_TOKENS = new Set([
 	// length
-	'mm', 'cm', 'm', 'km', 'in', 'inch', 'inches', 'ft', 'foot', 'feet', 'yd', 'mi', 'mile', 'miles',
+	'mm',
+	'cm',
+	'm',
+	'km',
+	'in',
+	'inch',
+	'inches',
+	'ft',
+	'foot',
+	'feet',
+	'yd',
+	'mi',
+	'mile',
+	'miles',
 	// mass
-	'mg', 'g', 'kg', 'lb', 'lbs', 'oz', 'ton', 'tonne',
+	'mg',
+	'g',
+	'kg',
+	'lb',
+	'lbs',
+	'oz',
+	'ton',
+	'tonne',
 	// temperature
-	'c', 'f', 'k', 'celsius', 'fahrenheit', 'kelvin',
+	'c',
+	'f',
+	'k',
+	'celsius',
+	'fahrenheit',
+	'kelvin',
 	// volume
-	'ml', 'l', 'litre', 'liter', 'litres', 'liters', 'gal', 'gallon', 'pt', 'qt',
+	'ml',
+	'l',
+	'litre',
+	'liter',
+	'litres',
+	'liters',
+	'gal',
+	'gallon',
+	'pt',
+	'qt',
 	// digital
-	'kb', 'mb', 'gb', 'tb'
+	'kb',
+	'mb',
+	'gb',
+	'tb'
 ]);
 
 function firstNonEmpty(...values: Array<string | null | undefined>): string {
@@ -101,7 +163,10 @@ function isCurrencyAmount(value: string): boolean {
 
 /** Detects "<amount> <unit>", e.g. "12 kg", "30cm", "98.6 F". */
 function isUnitAmount(value: string): boolean {
-	const match = value.trim().toLowerCase().match(/^([\d.,]+)\s*([a-z]+)$/);
+	const match = value
+		.trim()
+		.toLowerCase()
+		.match(/^([\d.,]+)\s*([a-z]+)$/);
 	if (!match) return false;
 	return UNIT_TOKENS.has(match[2]);
 }

@@ -17,7 +17,7 @@
 	import ScheduleViewer from './ScheduleViewer.svelte';
 
 	// Import remote functions
-	import { deleteMedication } from '$lib/remote';
+	import { deleteMedication } from '#lib/remote/index.js';
 
 	// Props
 	let { session } = $props<{

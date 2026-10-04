@@ -1,8 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit';
-import * as auth from '$lib/server/auth';
-import { prisma } from '$lib/server/db';
+import * as auth from '#lib/server/auth.js';
+import { prisma } from '#lib/server/db.js';
 import type { Actions, PageServerLoad } from './$types';
-import { dev } from '$app/environment';
+import { dev } from '$app/env';
 
 const oauthErrors = {
 	missing_params: 'Missing OAuth parameters',

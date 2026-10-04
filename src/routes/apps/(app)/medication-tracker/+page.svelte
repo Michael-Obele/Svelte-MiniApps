@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import {
 		Plus,
 		Pill,
@@ -33,11 +33,15 @@
 	import * as medState from './states.svelte';
 	import type { TreatmentSession, Medication, MedicationLog } from './states.svelte';
 	import { hasSeenGuide } from './persisted-config.svelte';
-	import { backupMedicationData, loadMedicationData, createMedicationLog } from '$lib/remote';
+	import {
+		backupMedicationData,
+		loadMedicationData,
+		createMedicationLog
+	} from '#lib/remote/index.js';
 
 	// Offline-first sync: queue dose logs locally, replay them on reconnect
-	import { enqueue } from '$lib/sync/outbox';
-	import { registerHandler, drain } from '$lib/sync/sync-engine.svelte';
+	import { enqueue } from '#lib/sync/outbox.js';
+	import { registerHandler, drain } from '#lib/sync/sync-engine.svelte.js';
 	import SyncStatus from '@/blocks/SyncStatus.svelte';
 
 	registerHandler('medication', 'append-log', (payload) =>
@@ -106,8 +110,8 @@
 					const serverTime = new Date(
 						(serverSession as any).updatedAt || serverSession.createdAt
 					).getTime();
-					const localTime = new Date(localSession.updatedAt || localSession.createdAt).getTime();
 
+					const localTime = new Date(localSession.updatedAt || localSession.createdAt).getTime();
 					const newerSession = serverTime >= localTime ? serverSession : localSession;
 					mergedSessions.push({
 						...newerSession,
@@ -146,8 +150,8 @@
 					const serverTime = new Date(
 						(serverLog as any).updatedAt || serverLog.createdAt
 					).getTime();
-					const localTime = new Date(localLog.updatedAt || localLog.createdAt).getTime();
 
+					const localTime = new Date(localLog.updatedAt || localLog.createdAt).getTime();
 					const newerLog = serverTime >= localTime ? serverLog : localLog;
 					mergedLogs.push({
 						...newerLog,
@@ -694,12 +698,15 @@
 				<CardContent class="pt-6">
 					<div class="py-8 text-center">
 						<Pill class="mx-auto mb-4 size-16 text-gray-400" />
+
 						<h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 							No Active Treatment Session
 						</h3>
+
 						<p class="mb-4 text-gray-600 dark:text-gray-400">
 							Create a treatment session to start tracking your medications
 						</p>
+
 						<Button onclick={() => (showSessionDialog = true)}>
 							<Plus class="mr-2 size-4" />
 							Create Treatment Session
@@ -827,9 +834,7 @@
 			</Tabs.Content>
 
 			<!-- Stats View -->
-			<Tabs.Content value="stats">
-				<StatsView session={activeSession} {stats} />
-			</Tabs.Content>
+			<Tabs.Content value="stats"><StatsView session={activeSession} {stats} /></Tabs.Content>
 		</Tabs.Root>
 	{/if}
 

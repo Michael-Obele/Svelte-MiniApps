@@ -2,7 +2,7 @@
 	import { Card } from '@/ui/card';
 	import * as Chart from '@/ui/chart';
 	import * as ToggleGroup from '@/ui/toggle-group';
-	import type { Expense } from '$lib/budget-tracker/states.svelte';
+	import type { Expense } from '#lib/budget-tracker/states.svelte.js';
 	import {
 		formatTrendChartData,
 		getDateLabel

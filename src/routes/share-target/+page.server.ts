@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { resolveShareTarget } from '$lib/utility/share-routing';
+import { resolveShareTarget } from '#lib/utility/share-routing.js';
 import type { PageServerLoad } from './$types';
 
 /**

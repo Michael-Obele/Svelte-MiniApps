@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AppGrid from './AppGrid.svelte';
-	import { projects } from '$lib/index.svelte';
-	import { persistedLocale } from '$lib/stores/language-store.svelte';
+	import { projects } from '#lib/index.svelte.js';
+	import { persistedLocale } from '#lib/stores/language-store.svelte.js';
 
 	interface Props {
 		filteredBy: string;

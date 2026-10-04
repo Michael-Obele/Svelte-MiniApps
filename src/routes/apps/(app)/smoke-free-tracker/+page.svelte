@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
-	import { browser } from '$app/environment';
+	import { browser } from '$app/env';
 	import {
 		Clock,
 		TrendingUp,
@@ -32,11 +32,16 @@
 	import { toast } from 'svelte-sonner';
 
 	// Import remote functions for backup
-	import { backupSmokeFreeData, loadSmokeFreeData, syncSmokeFreeData, appendCravingLog } from '$lib/remote';
+	import {
+		backupSmokeFreeData,
+		loadSmokeFreeData,
+		syncSmokeFreeData,
+		appendCravingLog
+	} from '#lib/remote/index.js';
 
 	// Offline-first sync: queue craving logs locally, replay them on reconnect
-	import { enqueue } from '$lib/sync/outbox';
-	import { registerHandler, drain } from '$lib/sync/sync-engine.svelte';
+	import { enqueue } from '#lib/sync/outbox.js';
+	import { registerHandler, drain } from '#lib/sync/sync-engine.svelte.js';
 	import SyncStatus from '@/blocks/SyncStatus.svelte';
 
 	registerHandler('smoke-free', 'append-craving', (payload) =>
@@ -432,10 +437,9 @@
 						Track your progress, monitor health improvements, and stay motivated on your smoke-free
 						journey.
 					</p>
-					<Button size="lg" onclick={() => (showStartDialog = true)}>
-						<Target class="mr-2 size-5" />
-						Start Your Journey
-					</Button>
+					<Button size="lg" onclick={() => (showStartDialog = true)}
+						><Target class="mr-2 size-5" />Start Your Journey</Button
+					>
 				</CardContent>
 			</Card>
 		</div>
@@ -589,10 +593,7 @@
 
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (showStartDialog = false)}>Cancel</Button>
-			<Button onclick={startNewAttempt}>
-				<Target class="mr-2 size-4" />
-				Start Journey
-			</Button>
+			<Button onclick={startNewAttempt}><Target class="mr-2 size-4" />Start Journey</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>
@@ -634,9 +635,9 @@
 		</div>
 
 		<Dialog.Footer>
-			<Button variant="outline" onclick={() => (showResetConfirmationDialog = false)}>
-				Cancel
-			</Button>
+			<Button variant="outline" onclick={() => (showResetConfirmationDialog = false)}>Cancel</Button
+			>
+
 			<Button
 				variant="destructive"
 				onclick={() => {

@@ -1,5 +1,5 @@
 import { notifyUpdateAvailable } from './serviceWorkerStore';
-import { browser } from '$app/environment';
+import { browser } from '$app/env';
 
 let isRegistered = false;
 
@@ -28,7 +28,7 @@ export async function registerServiceWorker() {
 	}
 
 	try {
-		// Register the service worker with the appropriate type
+		// SvelteKit 3 bundles and registers service workers as modules
 		const registration = await navigator.serviceWorker.register('/service-worker.js', {
 			type: import.meta.env.DEV ? 'module' : 'classic',
 			updateViaCache: 'none',
@@ -44,10 +44,10 @@ export async function registerServiceWorker() {
 
 		// Set up update checking
 		setupUpdateChecking(registration);
-		
+
 		// Handle updates
 		setupUpdateHandling(registration);
-		
+
 		// Return the registration for potential further use
 		return registration;
 	} catch (error) {
@@ -62,22 +62,26 @@ export async function registerServiceWorker() {
  */
 function setupUpdateChecking(registration: ServiceWorkerRegistration) {
 	// Check for updates every hour in development, every day in production
-	const CHECK_INTERVAL = import.meta.env.DEV 
-		? 60 * 60 * 1000 // 1 hour
-		: 24 * 60 * 60 * 1000; // 24 hours
-	
+	const CHECK_INTERVAL = import.meta.env.DEV
+		? 60 * 60 * 1000
+		: // 1 hour
+			24 * 60 * 60 * 1000; // 24 hours
+
 	let lastCheck = Date.now();
 
 	// Initial check on page load
 	setTimeout(() => checkForUpdates(registration), 5000);
 
 	// Periodic update check
-	setInterval(() => {
-		if (Date.now() - lastCheck >= CHECK_INTERVAL) {
-			lastCheck = Date.now();
-			checkForUpdates(registration);
-		}
-	}, Math.min(CHECK_INTERVAL, 60 * 60 * 1000)); // Check at most every hour
+	setInterval(
+		() => {
+			if (Date.now() - lastCheck >= CHECK_INTERVAL) {
+				lastCheck = Date.now();
+				checkForUpdates(registration);
+			}
+		},
+		Math.min(CHECK_INTERVAL, 60 * 60 * 1000)
+	); // Check at most every hour
 }
 
 /**
@@ -93,7 +97,7 @@ async function checkForUpdates(registration: ServiceWorkerRegistration) {
 		const hashData = await hashResponse.json();
 		const newHash = hashData.hash;
 		const storedHash = localStorage.getItem('serviceWorkerHash');
-		
+
 		// Only trigger update if hash has changed
 		if (newHash && newHash !== storedHash) {
 			console.log('[ServiceWorker] New hash detected:', newHash);
@@ -144,16 +148,16 @@ function setupUpdateHandling(registration: ServiceWorkerRegistration) {
 	// Handle messages from the service worker
 	navigator.serviceWorker.addEventListener('message', (event) => {
 		console.log('[ServiceWorker] Message received:', event.data);
-		
+
 		if (event.data?.type === 'NEW_VERSION_AVAILABLE' && event.data?.hash) {
 			notifyUpdateAvailable(registration, event.data.hash);
 		}
-		
+
 		if (event.data?.type === 'SKIP_WAITING' && registration.waiting) {
 			registration.waiting.postMessage({ type: 'SKIP_WAITING' });
 		}
 	});
-	
+
 	// Handle controller change (after skipWaiting)
 	navigator.serviceWorker.addEventListener('controllerchange', () => {
 		console.log('[ServiceWorker] Controller changed, reloading page');

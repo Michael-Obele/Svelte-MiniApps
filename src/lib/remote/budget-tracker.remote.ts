@@ -1,6 +1,6 @@
 import { getRequestEvent, query, form } from '$app/server';
-import { prisma } from '$lib/server/db';
-import { createBudgetShareToken, getBudgetSharePath } from '$lib/server/budget-sharing';
+import { prisma } from '#lib/server/db.js';
+import { createBudgetShareToken, getBudgetSharePath } from '#lib/server/budget-sharing.js';
 import * as v from 'valibot';
 
 export type BudgetShareSettings = {

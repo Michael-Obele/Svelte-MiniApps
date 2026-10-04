@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getFuture, getNext, splitDescription } from './data.svelte';
-	import Vision from '$lib/assets/Rocket Boy.png?enhanced';
+	import Vision from '#lib/assets/Rocket Boy.png?enhanced';
 	import Group from './Group.svelte';
 	import Illustration from './Illustration.svelte';
 	import Header from './Header.svelte';
