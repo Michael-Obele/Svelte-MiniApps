@@ -60,12 +60,14 @@ const config = {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// LayerChart tokens mapped to shadcn-svelte colors.
+				// DEFAULT was missing (so `bg-surface` / `to-surface/40` resolved to
+				// nothing) and 200 read `var(---muted)` — a 3-dash typo for --muted.
 				surface: {
+					DEFAULT: 'hsl(var(--surface) / <alpha-value>)',
 					content: 'hsl(var(--card-foreground) / <alpha-value>)',
 					100: 'hsl(var(--background) / <alpha-value>)',
-					200: 'hsl(var(---muted) / <alpha-value>)',
-					// not sure what color maps here (should be darker than 200).  Could add a new color to `app.css`
-					300: 'hsl(var(--background) / <alpha-value>)'
+					200: 'hsl(var(--muted) / <alpha-value>)',
+					300: 'hsl(var(--border) / <alpha-value>)'
 				}
 			},
 			borderRadius: {

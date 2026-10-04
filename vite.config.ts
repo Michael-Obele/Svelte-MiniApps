@@ -1,3 +1,6 @@
+import { mdsvex } from 'mdsvex';
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
@@ -9,12 +12,6 @@ import lingo from 'vite-plugin-lingo';
 
 export default defineConfig({
 	plugins: [
-		// sentrySvelteKit({
-		// 	sourceMapsUploadOptions: {
-		// 		org: 'obele',
-		// 		project: 'javascript-sveltekit'
-		// 	}
-		// }),
 		tailwindcss(),
 		enhancedImages(),
 		partytownVite({
@@ -22,10 +19,23 @@ export default defineConfig({
 		}),
 		wuchale(),
 		lingo({
-			route: '/_lang', // Route where editor UI is served
-			localesDir: './src/locales' // Path to .po files
+			route: '/_lang' /* Route where editor UI is served */,
+			localesDir: './src/locales' /* Path to .po files */
 		}),
-		sveltekit()
+
+		sveltekit({
+			preprocess: [vitePreprocess()],
+			compilerOptions: { experimental: { async: true } },
+			experimental: { remoteFunctions: true },
+			adapter: adapter(),
+			serviceWorker: { register: false },
+			alias: { '@/*': './src/lib/components/*' },
+			inspector: {
+				toggleKeyCombo: 'alt-x',
+				showToggleButton: 'always',
+				toggleButtonPos: 'bottom-right'
+			}
+		})
 	],
 	server: {
 		port: 5178,
@@ -33,10 +43,5 @@ export default defineConfig({
 	},
 	optimizeDeps: {
 		exclude: ['@node-rs/argon2']
-	},
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}'],
-		environment: 'jsdom',
-		globals: false
 	}
 });

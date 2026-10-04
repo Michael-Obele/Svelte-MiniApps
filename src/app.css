@@ -28,7 +28,14 @@
 		--border: hsl(0 0% 89.8%);
 		--input: hsl(0 0% 89.8%);
 		--ring: hsl(0 72.2% 50.6%);
-		--radius: 0.5rem;
+
+		/* Radius base = shadcn-svelte's "Small" preset (RADII: small = 0.45rem).
+		   The old 0.5rem was shadcn-svelte's "Default", which the user wanted
+		   tightened, not loosened. */
+		--radius: 0.45rem;
+
+		/* Flat surface — consumed by the `section-soft` shell utility. */
+		--surface: hsl(0 0% 98%);
 
 		/* Preserved sidebar variables (wrapped) */
 		--sidebar-background: hsl(0 0% 98%);
@@ -68,6 +75,7 @@
 		--border: hsl(0 0% 14.9%);
 		--input: hsl(0 0% 14.9%);
 		--ring: hsl(0 72.2% 50.6%);
+		--surface: hsl(0 0% 9%);
 
 		/* Preserved sidebar variables (wrapped) */
 		--sidebar-background: hsl(240 5.9% 10%);
@@ -93,11 +101,16 @@
 
 /* Light theme token aliases */
 @theme inline {
-	/* Radius (for rounded-*) */
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
+	/* Radius — shadcn-svelte RATIO ramp. Replaces the old fixed ±4px offsets so
+	   every step scales off the single --radius switch above, and every step is
+	   tighter than it was before (md 6→5.76px, lg 8→7.2px, xl 12→10.08px). */
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
 	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
 
 	/* Colors mapped to the existing CSS variables */
 	--color-background: var(--background);
@@ -132,10 +145,7 @@
 
 /* Dark theme token aliases mirror the variables defined under .dark so aliases update with theme */
 .dark {
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
+	/* The radius ramp is theme-independent — declared once in @theme inline. */
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -265,4 +275,42 @@
 
 .game {
 	@apply bg-amber-100 text-amber-800 dark:bg-gray-700 dark:text-amber-400;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Shell primitives — ported from shadcn-svelte's docs/src/app.css.
+
+   Consumed by PageHeader / PageNav and the per-page containers so every
+   non-app route shares one width, one vertical rhythm and one hairline
+   treatment instead of the 7 widths / 6 rhythms it has today.
+
+   NOTE: the `container` utility is deliberately NOT redefined. Tailwind's
+   built-in container (centered, 2rem padding, 1400px @2xl per
+   tailwind.config.ts) already matches shadcn-svelte's values, and overriding
+   it would restyle the intentionally-untouched src/routes/apps/** pages.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/** Outer wrapper: owns the page gutter. Pair with `container` inside. */
+@utility container-wrapper {
+	@apply mx-auto w-full px-2;
+}
+
+/** Hairline divider colour used by PageHeader / PageNav section rules. */
+@utility border-grid {
+	@apply border-border/50 dark:border-border;
+}
+
+/** Soft page background gradient for the main content band. */
+@utility section-soft {
+	@apply from-background to-surface/40 dark:bg-background bg-gradient-to-b;
+}
+
+/** Hide scrollbars while keeping the element scrollable. */
+@utility no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
