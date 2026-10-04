@@ -1,6 +1,6 @@
 {
-  "lastProcessedCommit": "7f77c13ca06f1c294063b8f70009a34ec682e538",
-  "generatedAt": "2026-10-04T17:25:28.684Z",
+  "lastProcessedCommit": "4493b0d292ed708eb33219c946402a2cbd120fa9",
+  "generatedAt": "2026-10-04T17:41:35.648Z",
   "timeline": [
     {
       "date": "October 4, 2026",
@@ -26,6 +26,17 @@
     },
     {
       "date": "October 4, 2026",
+      "title": "chore: remove ESLint flat config",
+      "description": "Updated eslint.config.js",
+      "items": [
+        "chore: remove ESLint flat config (aebb218)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 4, 2026",
       "title": "feat: migrate app to SvelteKit 3 and refresh UI",
       "description": "Updated src/env.ts, src/hooks.server.ts, src/lib/budget-tracker/states.svelte.ts and more",
       "items": [
@@ -41,6 +52,17 @@
       "description": "Updated scripts/generateServiceWorkerHash.js, scripts/watchServiceWorkerHash.js, src/service-worker/index.ts and more",
       "items": [
         "refactor: move service worker into its own TypeScript project (4806f7d)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
+    {
+      "date": "October 4, 2026",
+      "title": "chore: drop ESLint, keep Prettier as the only formatter",
+      "description": "Updated AGENTS.md, CONTRIBUTING.md, bun.lockb and more",
+      "items": [
+        "chore: drop ESLint, keep Prettier as the only formatter (4493b0d)"
       ],
       "type": "improvement",
       "icon": "Code",
