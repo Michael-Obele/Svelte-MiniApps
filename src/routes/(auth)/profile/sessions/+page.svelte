@@ -246,7 +246,7 @@
 						}
 					})}
 				>
-					<input type="hidden" name="sessionId" value={sessionToRevoke?.id ?? ''} />
+					<input {...revokeForm.fields.sessionId.as('hidden', sessionToRevoke?.id ?? '')} />
 					<Button type="submit" variant="destructive" disabled={!!revokeForm.pending}>
 						{#if revokeForm.pending}
 							Revoking...
@@ -285,7 +285,7 @@
 					}
 				})}
 			>
-				<input type="hidden" name="confirm" value="CONFIRM" />
+				<input {...revokeAllOtherSessions.fields.confirm.as('hidden', 'CONFIRM')} />
 				<Button type="submit" variant="destructive" disabled={!!revokeAllOtherSessions.pending}>
 					{#if revokeAllOtherSessions.pending}
 						Revoking...

@@ -30,22 +30,23 @@
 	const defaultFromCurrency = 'USD';
 	const defaultToCurrency = 'EUR';
 
-	// URL search params as source of truth for from/to currency
+	// URL search params as source of truth for from/to/amount
 	const urlSchema = createSearchParamsSchema({
 		from: { type: 'string', default: currencySelection.current.fromCurrency },
-		to: { type: 'string', default: currencySelection.current.toCurrency }
+		to: { type: 'string', default: currencySelection.current.toCurrency },
+		amount: { type: 'number', default: 0 }
 	});
 	const urlParams = useSearchParams(urlSchema, {
 		pushHistory: false,
 		noScroll: true,
-		showDefaults: true
+		showDefaults: false
 	});
 
 	// Track if user has seen the how-to guide
 	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {});
 
-	// Amount state for formatted display
-	let amountValue = $state<number>(0);
+ 	// Amount for formatted preview — derived from form field so preview updates while typing
+	let amountValue = $derived((convertCurrencyForm.fields.amount.value() as number | undefined) ?? 0);
 
 	// Currencies state with full info
 	let currencies = $state<CurrencyInfo[]>([]);
@@ -83,7 +84,21 @@
 				? normalizedTo
 				: getDefaultTargetCurrency(nextFrom);
 
-		if (normalizedFrom !== nextFrom || normalizedTo !== nextTo) {
+		const urlAmount = urlParams.amount ?? 0;
+		const sanitizedAmount = urlAmount > 0 && urlAmount <= 999999999 ? urlAmount : 0;
+
+		const needsUpdate =
+			normalizedFrom !== nextFrom ||
+			normalizedTo !== nextTo ||
+			(sanitizedAmount !== urlAmount && sanitizedAmount === 0 && urlAmount !== 0);
+
+		if (needsUpdate) {
+			urlParams.update({
+				from: nextFrom,
+				to: nextTo,
+				...(sanitizedAmount !== urlAmount ? { amount: sanitizedAmount } : {})
+			});
+		} else if (normalizedFrom !== nextFrom || normalizedTo !== nextTo) {
 			urlParams.update({ from: nextFrom, to: nextTo });
 		}
 	}
@@ -167,14 +182,16 @@
 	}
 
 	function resetCurrencies() {
-		urlParams.update({ from: defaultFromCurrency, to: defaultToCurrency });
+		urlParams.update({ from: defaultFromCurrency, to: defaultToCurrency, amount: 0 });
 		resetCurrencySelection();
+		convertCurrencyForm.fields.amount.set(0);
 	}
 
-	// Handle amount input change
+	// Handle amount input change — only update form field, URL is updated on submit
 	function handleAmountChange(e: Event) {
 		const target = e.target as HTMLInputElement;
-		amountValue = parseFloat(target.value) || 0;
+		const next = parseFloat(target.value) || 0;
+		convertCurrencyForm.fields.amount.set(next);
 	}
 
 	// Track form state
@@ -239,6 +256,14 @@
 						try {
 							await submit();
 							if (convertCurrencyForm.result) {
+								const submittedAmount = convertCurrencyForm.fields.amount.value() as
+									| number
+									| undefined;
+								if (submittedAmount && submittedAmount > 0) {
+									urlParams.update({ amount: submittedAmount });
+								} else {
+									urlParams.update({ amount: 0 });
+								}
 								toast.success('Successfully converted currencies');
 							}
 						} catch (error) {
@@ -251,8 +276,8 @@
 					class="space-y-6"
 				>
 					<!-- Hidden fields for from/to with validated values -->
-					<input type="hidden" name="from" value={fromCurrency} />
-					<input type="hidden" name="to" value={toCurrency} />
+					<input {...convertCurrencyForm.fields.from.as('hidden', fromCurrency)} />
+					<input {...convertCurrencyForm.fields.to.as('hidden', toCurrency)} />
 
 					{#if currenciesLoading}
 						<div
@@ -365,7 +390,7 @@
 						<div class="grid gap-4 md:grid-cols-2">
 							<div class="space-y-1">
 								<Input
-									{...convertCurrencyForm.fields.amount.as('number')}
+									{...convertCurrencyForm.fields.amount.as('number', urlParams.amount ? urlParams.amount : undefined)}
 									id="currencyAmount"
 									placeholder="Enter amount"
 									step="0.01"

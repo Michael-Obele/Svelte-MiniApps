@@ -602,8 +602,8 @@
 						})}
 						class="flex flex-col gap-3 rounded-2xl border p-4 sm:flex-row sm:items-center sm:justify-between"
 					>
-						<input type="hidden" name="budgetId" value={budget.id} />
-						<input type="hidden" name="isPublic" value={String(shareVisibility)} />
+						<input {...setBudgetSharing.fields.budgetId.as('hidden', budget.id)} />
+						<input {...setBudgetSharing.fields.isPublic.as('hidden', shareVisibility ? 'true' : 'false')} />
 						<div class="space-y-1">
 							<p class="text-foreground text-sm font-medium">Anyone with the link can view</p>
 							<p class="text-muted-foreground max-w-lg text-xs leading-5">
@@ -677,7 +677,7 @@
 									}
 								})}
 							>
-								<input type="hidden" name="budgetId" value={budget.id} />
+								<input {...regenerateBudgetShareLink.fields.budgetId.as('hidden', budget.id)} />
 								<Button
 									type="submit"
 									variant="outline"

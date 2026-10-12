@@ -109,7 +109,7 @@ Props:
 						})}
 					>
 						<!-- Hidden input to bind the mantra value to the form field -->
-						<input type="hidden" name="mantra" value={mantra} />
+						<input {...form.fields.mantra.as('hidden', mantra)} />
 
 						{#if !form.pending}
 							<button type="submit">
