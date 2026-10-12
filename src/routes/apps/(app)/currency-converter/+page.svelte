@@ -23,30 +23,53 @@
 		rememberCurrencySelection,
 		resetCurrencySelection
 	} from './state.svelte';
-	import { useSearchParams, createSearchParamsSchema } from 'runed/kit';
 	import CurrencyCombobox from './currency-combobox.svelte';
+	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
 
 	let showHowToUseDialog = $state(false);
 	const defaultFromCurrency = 'USD';
 	const defaultToCurrency = 'EUR';
 
-	// URL search params as source of truth for from/to/amount
-	const urlSchema = createSearchParamsSchema({
-		from: { type: 'string', default: currencySelection.current.fromCurrency },
-		to: { type: 'string', default: currencySelection.current.toCurrency },
-		amount: { type: 'number', default: 0 }
+	// The URL is the source of truth for from/to/amount, so a shared link restores the whole view.
+	// ponytail: written by hand because runed's useSearchParams still passes goto's removed
+	// `noScroll`/`keepFocus`, which SvelteKit 3 rejects, so every one of its URL writes no-ops.
+	const urlParams = $derived(page.url.searchParams);
+	const rawFrom = $derived(urlParams.get('from') ?? '');
+	const rawTo = $derived(urlParams.get('to') ?? '');
+	const rawAmount = $derived(urlParams.get('amount') ?? '');
+
+	// Amount from the URL, ignored unless it is a usable positive number
+	const amountParam = $derived.by(() => {
+		const amount = Number(rawAmount);
+		return amount > 0 && amount <= 999999999 ? amount : 0;
 	});
-	const urlParams = useSearchParams(urlSchema, {
-		pushHistory: false,
-		noScroll: true,
-		showDefaults: false
-	});
+
+	/** Write from/to/amount to the URL. A value of 0 or '' removes the key. */
+	async function setUrlParams(next: { from?: string; to?: string; amount?: number }) {
+		const url = new URL(page.url.href);
+		for (const [key, value] of Object.entries(next)) {
+			if (value === undefined || value === null || value === '' || value === 0) {
+				url.searchParams.delete(key);
+			} else {
+				url.searchParams.set(key, String(value));
+			}
+		}
+		// reset: false is Kit 3's replacement for the old noScroll/keepFocus pair
+		try {
+			return await goto(url, { replace: true, reset: false });
+		} catch (error) {
+			console.error('Failed to update the URL', error);
+		}
+	}
 
 	// Track if user has seen the how-to guide
 	let hasSeenGuide = new PersistedState<boolean>('currency-converter-has-seen-guide', false, {});
 
- 	// Amount for formatted preview — derived from form field so preview updates while typing
-	let amountValue = $derived((convertCurrencyForm.fields.amount.value() as number | undefined) ?? 0);
+	// Amount for formatted preview — derived from form field so preview updates while typing
+	let amountValue = $derived(
+		(convertCurrencyForm.fields.amount.value() as number | undefined) ?? 0
+	);
 
 	// Currencies state with full info
 	let currencies = $state<CurrencyInfo[]>([]);
@@ -73,38 +96,18 @@
 		return currencies.find((currency) => currency.value !== fromCurrency)?.value ?? fromCurrency;
 	}
 
+	/** Rewrite params that are missing, invalid or stale so the URL always describes the view. */
 	function sanitizeUrlParams() {
 		if (currencies.length === 0) return;
 
-		const normalizedFrom = normalizeCurrencyCode(urlParams.from);
-		const normalizedTo = normalizeCurrencyCode(urlParams.to);
-		const nextFrom = isValidCurrency(normalizedFrom) ? normalizedFrom : defaultFromCurrency;
-		const nextTo =
-			isValidCurrency(normalizedTo) && normalizedTo !== nextFrom
-				? normalizedTo
-				: getDefaultTargetCurrency(nextFrom);
-
-		const urlAmount = urlParams.amount ?? 0;
-		const sanitizedAmount = urlAmount > 0 && urlAmount <= 999999999 ? urlAmount : 0;
-
-		const needsUpdate =
-			normalizedFrom !== nextFrom ||
-			normalizedTo !== nextTo ||
-			(sanitizedAmount !== urlAmount && sanitizedAmount === 0 && urlAmount !== 0);
-
-		if (needsUpdate) {
-			urlParams.update({
-				from: nextFrom,
-				to: nextTo,
-				...(sanitizedAmount !== urlAmount ? { amount: sanitizedAmount } : {})
-			});
-		} else if (normalizedFrom !== nextFrom || normalizedTo !== nextTo) {
-			urlParams.update({ from: nextFrom, to: nextTo });
+		const nextAmount = amountParam > 0 ? String(amountParam) : '';
+		if (rawFrom !== fromCurrency || rawTo !== toCurrency || rawAmount !== nextAmount) {
+			setUrlParams({ from: fromCurrency, to: toCurrency, amount: amountParam });
 		}
 	}
 
 	function selectRecentPair(pair: { fromCurrency: string; toCurrency: string }) {
-		urlParams.update({
+		setUrlParams({
 			from: normalizeCurrencyCode(pair.fromCurrency),
 			to: normalizeCurrencyCode(pair.toCurrency)
 		});
@@ -113,14 +116,13 @@
 
 	// Derived validated currency codes from URL params (fallback to defaults if invalid)
 	let fromCurrency = $derived(
-		isValidCurrency(normalizeCurrencyCode(urlParams.from))
-			? normalizeCurrencyCode(urlParams.from)
+		isValidCurrency(normalizeCurrencyCode(rawFrom))
+			? normalizeCurrencyCode(rawFrom)
 			: defaultFromCurrency
 	);
 	let toCurrency = $derived(
-		isValidCurrency(normalizeCurrencyCode(urlParams.to)) &&
-			normalizeCurrencyCode(urlParams.to) !== fromCurrency
-			? normalizeCurrencyCode(urlParams.to)
+		isValidCurrency(normalizeCurrencyCode(rawTo)) && normalizeCurrencyCode(rawTo) !== fromCurrency
+			? normalizeCurrencyCode(rawTo)
 			: getDefaultTargetCurrency(fromCurrency)
 	);
 
@@ -164,7 +166,7 @@
 	}
 
 	function persistCurrencySelection(nextFromCurrency: string, nextToCurrency: string) {
-		urlParams.update({
+		setUrlParams({
 			from: normalizeCurrencyCode(nextFromCurrency),
 			to: normalizeCurrencyCode(nextToCurrency)
 		});
@@ -174,7 +176,7 @@
 	function swapCurrencies() {
 		const nextFromCurrency = toCurrency;
 		const nextToCurrency = fromCurrency;
-		urlParams.update({
+		setUrlParams({
 			from: normalizeCurrencyCode(nextFromCurrency),
 			to: normalizeCurrencyCode(nextToCurrency)
 		});
@@ -182,16 +184,14 @@
 	}
 
 	function resetCurrencies() {
-		urlParams.update({ from: defaultFromCurrency, to: defaultToCurrency, amount: 0 });
+		setUrlParams({ from: defaultFromCurrency, to: defaultToCurrency, amount: 0 });
 		resetCurrencySelection();
 		convertCurrencyForm.fields.amount.set(0);
 	}
 
-	// Handle amount input change — only update form field, URL is updated on submit
-	function handleAmountChange(e: Event) {
+	function handleAmountInput(e: Event) {
 		const target = e.target as HTMLInputElement;
-		const next = parseFloat(target.value) || 0;
-		convertCurrencyForm.fields.amount.set(next);
+		convertCurrencyForm.fields.amount.set(target.valueAsNumber || 0);
 	}
 
 	// Track form state
@@ -252,20 +252,15 @@
 			</CardHeader>
 			<CardContent>
 				<form
-					{...convertCurrencyForm.enhance(async ({ submit }) => {
+					{...convertCurrencyForm.enhance(async (form) => {
 						try {
-							await submit();
-							if (convertCurrencyForm.result) {
-								const submittedAmount = convertCurrencyForm.fields.amount.value() as
-									| number
-									| undefined;
-								if (submittedAmount && submittedAmount > 0) {
-									urlParams.update({ amount: submittedAmount });
-								} else {
-									urlParams.update({ amount: 0 });
-								}
-								toast.success('Successfully converted currencies');
-							}
+							if (!(await form.submit())) return; // invalid input: keep the URL as it was
+
+							// Put the converted amount in the URL so the result is shareable and reloadable
+							const amountToSync = Number(form.fields.amount.value() ?? 0);
+							if (amountToSync > 0) setUrlParams({ amount: amountToSync });
+
+							toast.success('Successfully converted currencies');
 						} catch (error) {
 							console.error('Conversion error:', error);
 							toast.error(
@@ -295,7 +290,7 @@
 									id="currencyFrom"
 									label="Convert From"
 									{currencies}
-									bind:value={urlParams.from}
+									value={fromCurrency}
 									onSelect={(value) => persistCurrencySelection(value, toCurrency)}
 								/>
 							</div>
@@ -320,7 +315,7 @@
 									id="currencyTo"
 									label="Convert To"
 									{currencies}
-									bind:value={urlParams.to}
+									value={toCurrency}
 									onSelect={(value) => persistCurrencySelection(fromCurrency, value)}
 								/>
 							</div>
@@ -390,13 +385,16 @@
 						<div class="grid gap-4 md:grid-cols-2">
 							<div class="space-y-1">
 								<Input
-									{...convertCurrencyForm.fields.amount.as('number', urlParams.amount ? urlParams.amount : undefined)}
+									{...convertCurrencyForm.fields.amount.as(
+										'number',
+										amountParam ? amountParam : undefined
+									)}
 									id="currencyAmount"
 									placeholder="Enter amount"
 									step="0.01"
 									min="0.01"
 									class="w-full"
-									oninput={handleAmountChange}
+									oninput={handleAmountInput}
 								/>
 								<p class="text-muted-foreground text-xs">Enter the amount to convert</p>
 							</div>
