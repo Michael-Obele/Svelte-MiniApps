@@ -1,7 +1,29 @@
 {
-  "lastProcessedCommit": "08ed9904d8d9941ed7257340ed90d1a8f68c590f",
-  "generatedAt": "2026-10-04T19:05:23.436Z",
+  "lastProcessedCommit": "f1a93dce86a807bcea8d7728094730e7a3a59133",
+  "generatedAt": "2026-10-20T17:43:23.617Z",
   "timeline": [
+    {
+      "date": "October 12, 2026",
+      "title": "fix(currency-converter): replace runed useSearchParams with manual URL",
+      "description": "Updated src/lib/index.svelte.ts, src/routes/apps/(app)/currency-converter/+page.svelte",
+      "items": [
+        "fix(currency-converter): replace runed useSearchParams with manual URL (f1a93dc)"
+      ],
+      "type": "fix",
+      "icon": "Wrench",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "date": "October 12, 2026",
+      "title": "refactor(forms): use form field helpers for hidden inputs",
+      "description": "Updated src/lib/components/home/Welcome.svelte, src/lib/remote/budget-tracker.remote.ts, src/routes/(auth)/profile/sessions/+page.svelte and more",
+      "items": [
+        "refactor(forms): use form field helpers for hidden inputs (df0b4e7)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
     {
       "date": "October 4, 2026",
       "title": "docs: consolidate agent instructions and track SvelteKit 3 tasks",
