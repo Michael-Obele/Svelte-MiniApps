@@ -13,6 +13,11 @@
 	import { initAppIntents } from '#lib/utility/appIntents.js';
 	import { Agentation, type AnnotationProps, type KeyBindings } from 'sv-agentation';
 
+	// Analytics: InsightFlare tracker, emitted only when the deploy sets
+	// VITE_INSIGHTFLARE_SRC (https://<instance>/script.js?siteId=<id>).
+	// Kept out of the repo so the site id and instance are not hardcoded.
+	const analyticsSrc = import.meta.env.VITE_INSIGHTFLARE_SRC as string | undefined;
+
 	const keyBindings: KeyBindings = {
 		// Defaults:
 		// inspect: 'i',
@@ -56,6 +61,12 @@
 		defineElement();
 	});
 </script>
+
+<svelte:head>
+	{#if analyticsSrc}
+		<script defer src={analyticsSrc}></script>
+	{/if}
+</svelte:head>
 
 <RouteHead title="Svelte Mini Apps" description="A collection of mini apps built with SvelteKit" />
 
