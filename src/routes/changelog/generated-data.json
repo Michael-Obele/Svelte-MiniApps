@@ -1,7 +1,18 @@
 {
-  "lastProcessedCommit": "e086c5a2ea68da7a244e06bc51a4427fd8e3ad23",
-  "generatedAt": "2026-10-31T11:46:44.289Z",
+  "lastProcessedCommit": "a0252d8cf1e02f24cbd833dd1ba208c8c89f0357",
+  "generatedAt": "2026-11-13T10:04:08.784Z",
   "timeline": [
+    {
+      "date": "November 13, 2026",
+      "title": "Allow larger FlashText uploads within storage limits",
+      "description": "Updated prisma/migrations/20261113000000_flash_file_size_bigint/migration.sql, prisma/schema.prisma, src/lib/index.svelte.ts and more",
+      "items": [
+        "Allow larger FlashText uploads within storage limits (a0252d8)"
+      ],
+      "type": "improvement",
+      "icon": "Code",
+      "color": "from-purple-500 to-violet-500"
+    },
     {
       "date": "October 31, 2026",
       "title": "Add InsightFlare analytics script via env variable",
