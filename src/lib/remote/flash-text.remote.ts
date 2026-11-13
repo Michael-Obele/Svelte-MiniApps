@@ -112,7 +112,7 @@ export const getUserHistory = query(async (): Promise<HistoryEntry[]> => {
 			type: 'file' as const,
 			slug: ff.slug,
 			label: ff.fileName,
-			detail: `${(ff.fileSize / 1024).toFixed(1)} KB`,
+			detail: `${(Number(ff.fileSize) / 1024).toFixed(1)} KB`,
 			createdAt: ff.createdAt.toISOString(),
 			expiresAt: ff.expiresAt.toISOString(),
 			parentSlug: ff.flashText.slug

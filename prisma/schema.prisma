@@ -33,7 +33,8 @@ model User {
   scenarioOptions         ScenarioOption[]
   scenarioTimelineEntries ScenarioTimelineEntry[]
   scenarioRisks           ScenarioRisk[]
-    flashTexts              FlashText[]
+  flashTexts              FlashText[]
+
   @@index([username])
   @@map("user")
 }
@@ -387,13 +388,13 @@ model ScenarioRisk {
 // ============================================
 
 model FlashText {
-  id        String       @id @default(uuid())
-  slug      String       @unique
+  id        String      @id @default(uuid())
+  slug      String      @unique
   content   String
-  expiresAt DateTime     @map("expires_at")
-  createdAt DateTime     @default(now()) @map("created_at")
-  userId    String?      @map("user_id")
-  user      User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  expiresAt DateTime    @map("expires_at")
+  createdAt DateTime    @default(now()) @map("created_at")
+  userId    String?     @map("user_id")
+  user      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
   files     FlashFile[]
 
   @@index([slug])
@@ -406,18 +407,18 @@ model FlashText {
 // ============================================
 
 model FlashFile {
-  id             String    @id @default(uuid())
-  slug           String    @unique
-  flashTextId    String    @map("flash_text_id")
-  fileName       String    @map("file_name")
-  fileSize       Int       @map("file_size")
-  contentType    String    @map("content_type")
-  storageKey     String    @unique @map("storage_key")
-  downloadCount  Int       @default(0) @map("download_count")
-  expiresAt      DateTime  @map("expires_at")
-  createdAt      DateTime  @default(now()) @map("created_at")
-  userId         String?   @map("user_id")
-  flashText      FlashText @relation(fields: [flashTextId], references: [id], onDelete: Cascade)
+  id            String    @id @default(uuid())
+  slug          String    @unique
+  flashTextId   String    @map("flash_text_id")
+  fileName      String    @map("file_name")
+  fileSize      BigInt    @map("file_size")
+  contentType   String    @map("content_type")
+  storageKey    String    @unique @map("storage_key")
+  downloadCount Int       @default(0) @map("download_count")
+  expiresAt     DateTime  @map("expires_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  userId        String?   @map("user_id")
+  flashText     FlashText @relation(fields: [flashTextId], references: [id], onDelete: Cascade)
 
   @@index([slug])
   @@index([flashTextId])

@@ -47,7 +47,15 @@
 	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
-	import { formatFileSize, MAX_FILE_SIZE, resolveContentType } from '#lib/types/flash-file.js';
+	import {
+		formatFileSize,
+		LARGE_FILE_THRESHOLD,
+		resolveEffectiveMaxFileSize,
+		resolveContentType
+	} from '#lib/types/flash-file.js';
+
+	// Effective per-file ceiling (temporarily raised to 6 GB for FlashText).
+	const maxFileSize = resolveEffectiveMaxFileSize();
 
 	// ============================================================================
 	// STATE
@@ -92,7 +100,7 @@
 
 	function validateFile(file: File): string | null {
 		if (file.size === 0) return 'File is empty';
-		if (file.size > MAX_FILE_SIZE) return `Exceeds ${formatFileSize(MAX_FILE_SIZE)} limit`;
+		if (file.size > maxFileSize) return `Exceeds ${formatFileSize(maxFileSize)} limit`;
 		return null;
 	}
 
@@ -102,7 +110,18 @@
 
 		for (const file of incoming) {
 			if (queuedFiles.some((q) => q.file.name === file.name && q.file.size === file.size)) continue;
-			const error = validateFile(file);
+
+			let error = validateFile(file);
+
+			// Unlike normal files (many per upload), only ONE large file may be
+			// queued at a time — otherwise a single upload could blow the free tier.
+			if (!error && file.size > LARGE_FILE_THRESHOLD) {
+				const hasLarge =
+					queuedFiles.some((q) => q.status !== 'error' && q.file.size > LARGE_FILE_THRESHOLD) ||
+					next.some((q) => q.status !== 'error' && q.file.size > LARGE_FILE_THRESHOLD);
+				if (hasLarge) error = 'Only one large file per upload';
+			}
+
 			next.push({
 				id: crypto.randomUUID(),
 				file,
@@ -512,7 +531,8 @@
 									{/if}
 								</p>
 								<p class="text-muted-foreground text-xs">
-									Up to {formatFileSize(MAX_FILE_SIZE)} per file
+									Up to {formatFileSize(maxFileSize)} per file — only one file over
+									{formatFileSize(LARGE_FILE_THRESHOLD)} per upload
 								</p>
 							</div>
 						</div>

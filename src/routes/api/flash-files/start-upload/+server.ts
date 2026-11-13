@@ -20,12 +20,15 @@
 import type { RequestHandler } from './$types';
 import { error, json } from '@sveltejs/kit';
 import { getFlashTextBySlug } from '#lib/server/flash-text.js';
-import { recordFlashFile } from '#lib/server/flash-files.js';
+import { recordFlashFile, getStorageUsage, getActiveLargeFile } from '#lib/server/flash-files.js';
 import { r2 } from '#lib/server/r2.js';
 import { getCurrentUser } from '#lib/remote/auth.remote.js';
 import {
 	ALLOWED_FILE_PREFIXES,
-	MAX_FILE_SIZE,
+	LARGE_FILE_THRESHOLD,
+	STORAGE_BUDGET_BYTES,
+	STORAGE_BUDGET_GB,
+	formatFileSize,
 	resolveEffectiveMaxFileSize
 } from '#lib/types/flash-file.js';
 
@@ -104,13 +107,44 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		);
 	}
 
+	// ----- 2b. Storage guards -------------------------------------------
+
+	// Only one "large" file (over the normal per-file limit) may be uploaded
+	// at a time, so a one-off 6 GB upload can't crowd out everyone else.
+	// NOTE: soft guard — two simultaneous large uploads can both slip through.
+	if (size > LARGE_FILE_THRESHOLD) {
+		const existingLarge = await getActiveLargeFile();
+		if (existingLarge) {
+			throw error(
+				409,
+				`Only one large file (over ${formatFileSize(LARGE_FILE_THRESHOLD)}) can be stored at a ` +
+					`time. "${existingLarge.fileName}" is active until ${existingLarge.expiresAt.toISOString()}.`
+			);
+		}
+	}
+
+	// Freeze new uploads once total stored size reaches the free-plan budget.
+	// Files expire on their own (≤ 24 h), freeing the space again. This is what
+	// stops a large file from exhausting the 10 GB free tier.
+	const { usedBytes } = await getStorageUsage();
+	if (usedBytes + size > STORAGE_BUDGET_BYTES) {
+		throw error(
+			507,
+			`Storage is full (free-plan limit of ${STORAGE_BUDGET_GB} GB). ` +
+				`New uploads are paused until existing files expire.`
+		);
+	}
+
 	// ----- 3. Create DB record + presigned URL ---------------------------
 
 	const storageKey = `flash-files/${parent.id}/${crypto.randomUUID()}-${sanitizeName(fileName)}`;
 
+	// Large files need longer than the 30-minute default to finish uploading.
+	const uploadUrlExpirySeconds = size > LARGE_FILE_THRESHOLD ? 6 * 60 * 60 : 1800;
 	const presignedUrl = await r2.getPresignedUploadUrl(
 		storageKey,
-		parsedContentType || 'application/octet-stream'
+		parsedContentType || 'application/octet-stream',
+		uploadUrlExpirySeconds
 	);
 
 	const recorded = await recordFlashFile({

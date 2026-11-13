@@ -21,7 +21,7 @@ export interface FlashFileItem {
 }
 
 /**
- * Maximum upload size in bytes (default: 600 MB).
+ * Normal per-file ceiling in bytes (600 MB).
  *
  * R2 supports up to 5 TB per object, so 600 MB is well within the hard
  * limit. We pick 600 MB because (a) it's enough for almost any file
@@ -29,19 +29,39 @@ export interface FlashFileItem {
  * route streams the body straight to R2 so memory usage stays flat
  * regardless of file size.
  *
- * NOTE: This constant is shared with the client (used by FileUploader
- * for UI validation). You can override it for server-side checks by
- * changing `RESOLVED_MAX_FILE_SIZE_MB` below.
+ * This also doubles as the "large file" threshold: anything bigger is a
+ * one-off large upload, and only one of those may exist at a time.
+ *
+ * NOTE: This constant is shared with the client for UI validation. The
+ * effective limit can be temporarily raised via `RESOLVED_MAX_FILE_SIZE_MB`.
  */
 export const MAX_FILE_SIZE = 600 * 1024 * 1024;
 
 /**
- * Overridable max file size in megabytes for server-side enforcement.
- * Change this number if you want a different limit without touching
- * `MAX_FILE_SIZE`. Set to 0 to disable the override and always use
+ * Files larger than this are treated as "large". Only ONE non-expired large
+ * file may be stored at a time. Enforced in /api/flash-files/start-upload.
+ */
+export const LARGE_FILE_THRESHOLD = MAX_FILE_SIZE;
+
+/**
+ * Total R2 storage budget before new uploads are refused.
+ *
+ * Cloudflare R2's free tier is 10 GB. Kept in GB (decimal, 10^9 bytes) so the
+ * budget can never exceed the plan regardless of how Cloudflare meters it.
+ * When the summed size of all non-expired files reaches this, uploads are
+ * frozen until files expire (each file lives at most 24 h).
+ */
+export const STORAGE_BUDGET_GB = 10;
+export const STORAGE_BUDGET_BYTES = STORAGE_BUDGET_GB * 1000 ** 3;
+
+/**
+ * TEMPORARY: overridable max file size in megabytes.
+ *
+ * Currently raised to 6144 (6 GB) so a single large file can be shared. To
+ * restore the normal limit, set this back to 600; set to 0 to fall back to
  * `MAX_FILE_SIZE`.
  */
-export const RESOLVED_MAX_FILE_SIZE_MB = 600;
+export const RESOLVED_MAX_FILE_SIZE_MB = 6 * 1024;
 
 /** Resolve the effective max file size using the code-level override. */
 export function resolveEffectiveMaxFileSize(): number {

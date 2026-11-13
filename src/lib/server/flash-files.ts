@@ -8,6 +8,7 @@
 
 import { prisma } from '#lib/server/db.js';
 import { r2 } from '#lib/server/r2.js';
+import { LARGE_FILE_THRESHOLD } from '#lib/types/flash-file.js';
 import type { FlashFileItem } from '#lib/types/flash-file.js';
 
 function toItem(file: {
@@ -15,7 +16,7 @@ function toItem(file: {
 	slug: string;
 	flashTextId: string;
 	fileName: string;
-	fileSize: number;
+	fileSize: bigint | number;
 	contentType: string;
 	storageKey: string;
 	downloadCount: number;
@@ -28,7 +29,9 @@ function toItem(file: {
 		slug: file.slug,
 		flashTextId: file.flashTextId,
 		fileName: file.fileName,
-		fileSize: file.fileSize,
+		// Prisma stores fileSize as BigInt (files can exceed 2 GB); the client
+		// contract is a plain number (safe up to 2^53).
+		fileSize: Number(file.fileSize),
 		contentType: file.contentType,
 		storageKey: file.storageKey,
 		downloadCount: file.downloadCount,
@@ -69,7 +72,7 @@ export async function recordFlashFile(params: {
 			slug,
 			flashTextId: params.flashTextId,
 			fileName: params.fileName,
-			fileSize: params.fileSize,
+			fileSize: BigInt(params.fileSize),
 			contentType: params.contentType,
 			storageKey: params.storageKey,
 			expiresAt: params.expiresAt,
@@ -77,6 +80,40 @@ export async function recordFlashFile(params: {
 		}
 	});
 	return toItem(file);
+}
+
+/**
+ * Summed byte size of every non-expired file, plus the file count. Used to
+ * enforce the free-plan storage budget in /api/flash-files/start-upload.
+ */
+export async function getStorageUsage(): Promise<{ usedBytes: number; fileCount: number }> {
+	const agg = await prisma.flashFile.aggregate({
+		where: { expiresAt: { gt: new Date() } },
+		_sum: { fileSize: true },
+		_count: { _all: true }
+	});
+	return {
+		usedBytes: Number(agg._sum.fileSize ?? 0),
+		fileCount: agg._count._all
+	};
+}
+
+/**
+ * The soonest-expiring non-expired file larger than `LARGE_FILE_THRESHOLD`,
+ * or null if there isn't one. Only one such file may exist at a time.
+ */
+export async function getActiveLargeFile(): Promise<{
+	fileName: string;
+	fileSize: number;
+	expiresAt: Date;
+} | null> {
+	const file = await prisma.flashFile.findFirst({
+		where: { expiresAt: { gt: new Date() }, fileSize: { gt: LARGE_FILE_THRESHOLD } },
+		orderBy: { expiresAt: 'asc' },
+		select: { fileName: true, fileSize: true, expiresAt: true }
+	});
+	if (!file) return null;
+	return { fileName: file.fileName, fileSize: Number(file.fileSize), expiresAt: file.expiresAt };
 }
 
 /** List all (non-expired) files attached to a flash text. */

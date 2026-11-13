@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-29T11:50:39.124Z\n"
-"PO-Revision-Date: 2026-10-04T17:00:27.094Z\n"
+"PO-Revision-Date: 2026-11-13T07:54:14.472Z\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: \n"
@@ -9842,7 +9842,7 @@ msgstr "Dateien anhängen"
 msgid "File is empty"
 msgstr "Datei ist leer"
 
-#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#. placeholder {0}: formatFileSize(maxFileSize)
 #. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Exceeds {0} limit"
@@ -9914,10 +9914,8 @@ msgstr "Dateien hier ablegen"
 msgid "Drop files here or click to browse"
 msgstr "Dateien hier ablegen oder klicken, um zu durchsuchen"
 
-#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Up to {0} per file"
-msgstr "Bis zu {0} pro Datei"
+#~ msgid "Up to {0} per file"
+#~ msgstr "Bis zu {0} pro Datei"
 
 #. placeholder {0}: queuedFiles.length
 #. placeholder {1}: queuedFiles.length === 1 ? 'file' : 'files'
@@ -11217,4 +11215,17 @@ msgstr ""
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid "<0/>How to Use"
+msgstr ""
+
+#~ msgid "Up to {0} per file — only one large file at a time"
+#~ msgstr ""
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Only one large file per upload"
+msgstr ""
+
+#. placeholder {0}: formatFileSize(maxFileSize)
+#. placeholder {1}: formatFileSize(LARGE_FILE_THRESHOLD)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Up to {0} per file — only one file over {1} per upload"
 msgstr ""
