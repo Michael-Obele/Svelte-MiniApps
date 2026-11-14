@@ -50,12 +50,10 @@
 	import {
 		formatFileSize,
 		LARGE_FILE_THRESHOLD,
+		MAX_FILE_SIZE,
 		resolveEffectiveMaxFileSize,
 		resolveContentType
 	} from '#lib/types/flash-file.js';
-
-	// Effective per-file ceiling (temporarily raised to 6 GB for FlashText).
-	const maxFileSize = resolveEffectiveMaxFileSize();
 
 	// ============================================================================
 	// STATE
@@ -65,6 +63,10 @@
 	let isCreating = $state(false);
 	let copyConfirmed = $state(false);
 	let currentUser = $state<{ id: string } | null>(null);
+
+	// Per-file ceiling: the temporary 600 MB → 6 GB raise is for signed-in users
+	// only. /api/flash-files/start-upload enforces this independently.
+	const maxFileSize = $derived(currentUser ? resolveEffectiveMaxFileSize() : MAX_FILE_SIZE);
 	let userFlashTexts = $state<FlashTextItem[]>([]);
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
@@ -100,6 +102,8 @@
 
 	function validateFile(file: File): string | null {
 		if (file.size === 0) return 'File is empty';
+		if (file.size > LARGE_FILE_THRESHOLD && !currentUser)
+			return `Sign in to upload files over ${formatFileSize(LARGE_FILE_THRESHOLD)}`;
 		if (file.size > maxFileSize) return `Exceeds ${formatFileSize(maxFileSize)} limit`;
 		return null;
 	}
@@ -281,6 +285,18 @@
 
 	type UploadResult = { ok: true } | { ok: false; error: string };
 
+	interface StartUploadResponse {
+		file: { id: string; slug: string };
+		upload:
+			| { kind: 'single'; url: string }
+			| {
+					kind: 'multipart';
+					uploadId: string;
+					partSize: number;
+					parts: { partNumber: number; url: string }[];
+			  };
+	}
+
 	async function uploadSingleFile(
 		slug: string,
 		file: File,
@@ -290,8 +306,8 @@
 		// content type (browsers sometimes report an empty type for e.g. .zip).
 		const contentType = resolveContentType(file);
 
-		// Step 1: Get presigned URL
-		let presignedUrl: string;
+		// Step 1: prepare the upload (DB row + presigned URL or part URLs)
+		let started: StartUploadResponse;
 		try {
 			const res = await fetch('/api/flash-files/start-upload', {
 				method: 'POST',
@@ -305,49 +321,127 @@
 			});
 
 			if (!res.ok) {
-				let msg = `Upload setup failed (${res.status})`;
-				try {
-					const body = (await res.json()) as { message?: string };
-					if (body?.message) msg = body.message;
-				} catch {
-					/* ignore */
-				}
-				toast.error(msg);
+				toast.error(await readErrorMessage(res, 'Upload setup failed'));
 				return false;
 			}
 
-			const data = (await res.json()) as { presignedUrl: string; file: { slug: string } };
-			presignedUrl = data.presignedUrl;
+			started = (await res.json()) as StartUploadResponse;
 		} catch {
 			toast.error('Network error during upload setup');
 			return false;
 		}
 
-		// Step 2: PUT file body to presigned URL
-		const uploaded = await putFileToPresignedUrl(presignedUrl, file, contentType, onProgress);
-		if (!uploaded.ok) {
-			toast.error(uploaded.error);
-			return false;
-		}
+		// Step 2: send the bytes straight to R2
+		const sent = await sendFileBody(started, file, contentType, onProgress);
+		if (sent.ok) return true;
 
-		return true;
+		toast.error(sent.error);
+		// Step 3: roll back so the share never lists a file whose object was
+		// never written (downloading one of those returns R2 `NoSuchKey`).
+		// Awaited so an immediate retry isn't rejected by the stale row.
+		await abortUpload(
+			started.file.id,
+			started.upload.kind === 'multipart' ? started.upload.uploadId : null
+		);
+		return false;
 	}
 
-	function putFileToPresignedUrl(
-		url: string,
+	/** PUT the file — as one request, or as parts when it exceeds R2's 5 GiB PUT ceiling. */
+	async function sendFileBody(
+		started: StartUploadResponse,
 		file: File,
 		contentType: string,
 		onProgress: (pct: number) => void
-	): Promise<{ ok: true } | { ok: false; error: string }> {
+	): Promise<UploadResult> {
+		const { upload } = started;
+
+		if (upload.kind === 'single') {
+			return putBlob(
+				upload.url,
+				file,
+				(loaded) => {
+					onProgress(Math.min(99, Math.round((loaded / file.size) * 100)));
+				},
+				contentType
+			);
+		}
+
+		// Multipart: R2 caps a single PUT at 5 GiB, so a 6 GB file would come
+		// back as HTTP 400. Upload each part, then let the server assemble them
+		// (it re-reads the part ETags from R2, so nothing here depends on
+		// cross-origin header exposure).
+		let sentBytes = 0;
+		for (const part of upload.parts) {
+			const start = (part.partNumber - 1) * upload.partSize;
+			const blob = file.slice(start, Math.min(start + upload.partSize, file.size));
+
+			const partResult = await putBlob(part.url, blob, (loaded) => {
+				onProgress(Math.min(99, Math.round(((sentBytes + loaded) / file.size) * 100)));
+			});
+			if (!partResult.ok) {
+				return { ok: false, error: `Part ${part.partNumber} failed — ${partResult.error}` };
+			}
+
+			sentBytes += blob.size;
+			onProgress(Math.min(99, Math.round((sentBytes / file.size) * 100)));
+		}
+
+		try {
+			const res = await fetch('/api/flash-files/finish-upload', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					fileId: started.file.id,
+					uploadId: upload.uploadId,
+					action: 'complete'
+				})
+			});
+			if (!res.ok) return { ok: false, error: await readErrorMessage(res, 'Upload failed') };
+			return { ok: true };
+		} catch {
+			return { ok: false, error: 'Network error while finishing the upload' };
+		}
+	}
+
+	/** Discard a failed upload. Resolves once the row is gone (or the call failed). */
+	async function abortUpload(fileId: string, uploadId: string | null): Promise<void> {
+		try {
+			await fetch('/api/flash-files/finish-upload', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ fileId, uploadId: uploadId ?? undefined, action: 'abort' })
+			});
+		} catch {
+			// Best effort — the hourly cleanup reaps the row either way.
+		}
+	}
+
+	/** Prefer the server's message (SvelteKit puts it in `message`). */
+	async function readErrorMessage(res: Response, fallback: string): Promise<string> {
+		try {
+			const body = (await res.json()) as { message?: string };
+			if (body?.message) return body.message;
+		} catch {
+			/* not JSON */
+		}
+		return `${fallback} (${res.status})`;
+	}
+
+	function putBlob(
+		url: string,
+		blob: Blob,
+		onProgress: (loadedBytes: number) => void,
+		contentType?: string
+	): Promise<UploadResult> {
 		return new Promise((resolve) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open('PUT', url);
-			xhr.setRequestHeader('Content-Type', contentType);
+			// Multipart part URLs are not signed with a content type, so only
+			// single-part uploads send one.
+			if (contentType) xhr.setRequestHeader('Content-Type', contentType);
 
 			xhr.upload.onprogress = (event) => {
-				if (event.lengthComputable) {
-					onProgress(Math.round((event.loaded / event.total) * 100));
-				}
+				if (event.lengthComputable) onProgress(event.loaded);
 			};
 			xhr.onload = () => {
 				if (xhr.status >= 200 && xhr.status < 300) {
@@ -358,7 +452,7 @@
 			};
 			xhr.onerror = () => resolve({ ok: false, error: 'Network error during upload' });
 			xhr.onabort = () => resolve({ ok: false, error: 'Upload cancelled' });
-			xhr.send(file);
+			xhr.send(blob);
 		});
 	}
 
@@ -531,8 +625,13 @@
 									{/if}
 								</p>
 								<p class="text-muted-foreground text-xs">
-									Up to {formatFileSize(maxFileSize)} per file — only one file over
-									{formatFileSize(LARGE_FILE_THRESHOLD)} per upload
+									Up to {formatFileSize(maxFileSize)} per file
+									{#if currentUser}
+										— only one file over {formatFileSize(LARGE_FILE_THRESHOLD)} per upload
+									{:else}
+										· <a class="underline underline-offset-2" href="/login">sign in</a> to upload
+										files over {formatFileSize(LARGE_FILE_THRESHOLD)}
+									{/if}
 								</p>
 							</div>
 						</div>

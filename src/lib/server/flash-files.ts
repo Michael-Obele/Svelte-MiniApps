@@ -51,6 +51,27 @@ export function generateFileSlug(): string {
 	return slug;
 }
 
+/** Fetch a file row by its id (the id is the upload capability — see the
+ * finish-upload route). Returns the raw row, including `storageKey`. */
+export async function getFlashFileRowById(id: string) {
+	return prisma.flashFile.findUnique({ where: { id } });
+}
+
+/**
+ * Remove a file row whose upload never produced an object.
+ *
+ * Used by /api/flash-files/start-upload when signing or multipart setup
+ * fails, and by /api/flash-files/finish-upload when the browser aborts.
+ */
+export async function deletePendingFlashFile(id: string): Promise<void> {
+	const file = await prisma.flashFile.findUnique({ where: { id } });
+	if (!file) return;
+
+	// Best-effort: the object may not exist at all.
+	await r2.deleteObject(file.storageKey).catch(() => {});
+	await prisma.flashFile.delete({ where: { id } }).catch(() => {});
+}
+
 /**
  * Persist metadata for a freshly-uploaded file. The R2 upload itself happens
  * inside the remote function before this is called; this only records the

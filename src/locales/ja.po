@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-25T13:35:46.344Z\n"
-"PO-Revision-Date: 2026-11-13T07:54:14.505Z\n"
+"PO-Revision-Date: 2026-11-14T05:24:43.616Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -11100,8 +11100,34 @@ msgstr ""
 msgid "Only one large file per upload"
 msgstr ""
 
-#. placeholder {0}: formatFileSize(maxFileSize)
-#. placeholder {1}: formatFileSize(LARGE_FILE_THRESHOLD)
+#~ msgid "Up to {0} per file — only one file over {1} per upload"
+#~ msgstr ""
+
+#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
 #: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Up to {0} per file — only one file over {1} per upload"
+msgid "Sign in to upload files over {0}"
+msgstr ""
+
+#. placeholder {0}: part.partNumber
+#. placeholder {1}: partResult.error
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Part {0} failed — {1}"
+msgstr ""
+
+#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "· <0>sign in</0> to upload files over {0}"
+msgstr ""
+
+#~ msgid "Up to {0} per file — only one file over {1} per upload <0/>"
+#~ msgstr ""
+
+#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "— only one file over {0} per upload"
+msgstr ""
+
+#. placeholder {0}: formatFileSize(maxFileSize)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Up to {0} per file <0/>"
 msgstr ""

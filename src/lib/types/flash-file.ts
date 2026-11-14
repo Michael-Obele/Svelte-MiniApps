@@ -60,6 +60,10 @@ export const STORAGE_BUDGET_BYTES = STORAGE_BUDGET_GB * 1000 ** 3;
  * Currently raised to 6144 (6 GB) so a single large file can be shared. To
  * restore the normal limit, set this back to 600; set to 0 to fall back to
  * `MAX_FILE_SIZE`.
+ *
+ * Files above `LARGE_FILE_THRESHOLD` (600 MB) are restricted to signed-in
+ * users — they are the only uploads that can consume the whole free R2
+ * budget, and they are the only ones using multipart upload.
  */
 export const RESOLVED_MAX_FILE_SIZE_MB = 6 * 1024;
 
@@ -67,6 +71,38 @@ export const RESOLVED_MAX_FILE_SIZE_MB = 6 * 1024;
 export function resolveEffectiveMaxFileSize(): number {
 	if (!RESOLVED_MAX_FILE_SIZE_MB || RESOLVED_MAX_FILE_SIZE_MB <= 0) return MAX_FILE_SIZE;
 	return RESOLVED_MAX_FILE_SIZE_MB * 1024 * 1024;
+}
+
+/**
+ * Files at or above this size are uploaded with R2 multipart upload.
+ *
+ * Cloudflare R2 rejects a single `PutObject` larger than 5 GiB
+ * (see https://developers.cloudflare.com/r2/platform/limits/ — "Maximum
+ * upload size: 5 GiB (single-part) / 4.995 TiB (multi-part)"). The browser
+ * PUT to a presigned single-part URL therefore fails with HTTP 400 for
+ * anything bigger, which is why a 5.57 GB file never uploaded.
+ *
+ * 4 GiB keeps a full GiB of headroom below that ceiling so a slightly
+ * under-5 GiB file can't straddle the limit.
+ */
+export const MULTIPART_THRESHOLD = 4 * 1024 * 1024 * 1024;
+
+/** Preferred multipart part size (32 MiB — cheap to re-send one part). */
+export const MULTIPART_PART_SIZE = 32 * 1024 * 1024;
+
+/** Part count we plan for. R2's hard limit is 10,000 parts per upload. */
+export const MAX_MULTIPART_PARTS = 900;
+
+/**
+ * Split a file into multipart parts. Parts must be at least 5 MiB (R2/S3
+ * rule) and there may be at most 10,000 of them, so the part size grows with
+ * the file instead of the part count.
+ */
+export function planMultipartUpload(totalBytes: number): { partSize: number; partCount: number } {
+	const mib = 1024 * 1024;
+	const minForCountLimit = Math.ceil(totalBytes / MAX_MULTIPART_PARTS / mib) * mib;
+	const partSize = Math.max(MULTIPART_PART_SIZE, minForCountLimit);
+	return { partSize, partCount: Math.ceil(totalBytes / partSize) };
 }
 
 /**
