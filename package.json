@@ -7,8 +7,8 @@
 		"build": "bun run changelog:generate && bun run scripts/generateServiceWorkerHash.js && vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"check": "bunx wuchale && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "bunx wuchale && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"test:unit": "vitest run",
@@ -130,8 +130,7 @@
 		"@types/d3-time": "^3.0.4",
 		"@types/d3-time-format": "^4.0.3",
 		"@types/sanitize-html": "^2.13.0",
-		"@wuchale/svelte": "^0.16.6",
-		"@wuchale/vite-plugin": "^0.14.8",
+		"@wuchale/svelte": "^0.20.7",
 		"ai": "^6.0.168",
 		"arctic": "^2.3.0",
 		"canvas-confetti": "^1.9.4",
@@ -165,7 +164,7 @@
 		"svelte-motion": "^0.12.2",
 		"svelte-qrcode-image": "^2.0.0-alpha.1",
 		"uuid": "^11.1.0",
-		"wuchale": "^0.17.5"
+		"wuchale": "^0.25.8"
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",

@@ -35,10 +35,14 @@ async function translateWithDeepSeek(messages, instruction) {
 }
 
 export default defineConfig({
-	// sourceLocale is en by default
-	otherLocales: ['de', 'ja'],
+	locales: ['en', 'de', 'ja'],
+	// On dev, only messages already in the catalogue are transformed. New
+	// strings pass through as their source text, so adding an app never
+	// renders `[i18n-404]` markers. Run `bun run extract` to add new messages.
+	dev: 'read',
 	adapters: {
 		main: svelte({
+			loader: 'sveltekit',
 			files: {
 				include: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}', 'src/**/*.client.svelte.{js,ts}'],
 				ignore: [
@@ -51,6 +55,7 @@ export default defineConfig({
 			}
 		}),
 		js: js({
+			loader: 'vite',
 			files: ['src/**/+{page,layout}.{js,ts}', 'src/**/+{page,layout}.server.{js,ts}']
 		})
 	},
@@ -59,7 +64,8 @@ export default defineConfig({
 				name: `DeepSeek (${deepseekModel})`,
 				batchSize: 40,
 				parallel: 5,
+				group: {},
 				translate: translateWithDeepSeek
 			}
-		: undefined
+		: null
 });

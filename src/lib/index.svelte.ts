@@ -19,7 +19,8 @@ import {
 	Notebook,
 	Target,
 	Network,
-	Clipboard
+	Clipboard,
+	Hash
 } from 'lucide-svelte';
 
 /**
@@ -103,7 +104,8 @@ export function done() {
 			name: 'flash-text',
 			time: '2026-06-01T00:00:00.000Z',
 			update: '2026-11-14T00:00:00.000Z'
-		}
+		},
+		{ name: 'word-counter', time: '2026-11-15T00:00:00.000Z' }
 	];
 }
 
@@ -372,6 +374,19 @@ export function projects(): Project[] {
 			class: 'medium',
 			link: 'flash-text',
 			icon: Clipboard
+		},
+		{
+			title: 'Word Counter',
+			details:
+				'Live word, character, sentence, and paragraph counts with reading time, keyword density, and writing limits for X, SMS, LinkedIn, and essays.',
+			// @wc-include
+			tag: 'utility',
+			tagClass: 'utility',
+			// @wc-include
+			difficulty: 'easy',
+			class: 'easy',
+			link: 'word-counter',
+			icon: Hash
 		}
 	];
 }

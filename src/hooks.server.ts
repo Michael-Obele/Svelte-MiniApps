@@ -1,14 +1,14 @@
 import { dev } from '$app/env';
 import * as auth from '#lib/server/auth.js';
-import * as main from './locales/loader.server.svelte.js';
-import * as js from './locales/loader.server.js';
+import * as main from './locales/main.loader.server.svelte.js';
+import * as js from './locales/js.loader.server.js';
 import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
-import { locales } from 'virtual:wuchale/locales';
+import { locales } from './locales/data.js';
 import { sequence, type Handle } from '@sveltejs/kit/hooks';
 
 // load at server startup (only server-side loader)
-loadLocales(main.key, main.loadIDs, main.loadCatalog, locales);
-loadLocales(js.key, js.loadIDs, js.loadCatalog, locales);
+loadLocales(main.key, main.loadCount, main.loadCatalog, locales);
+loadLocales(js.key, js.loadCount, js.loadCatalog, locales);
 
 const handleAuth: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(auth.sessionCookieName);
@@ -41,7 +41,7 @@ export const handleLang: Handle = async ({ event, resolve }) => {
 	// Read locale from cookie (set by client-side localStorage sync)
 	// Fallback to 'en' if cookie is not set or invalid
 	const cookieLocale = event.cookies.get('app-locale');
-	const locale = cookieLocale && locales.includes(cookieLocale) ? cookieLocale : 'en';
+	const locale = locales.find((available) => available === cookieLocale) ?? 'en';
 
 	return await runWithLocale(locale, () => resolve(event));
 };

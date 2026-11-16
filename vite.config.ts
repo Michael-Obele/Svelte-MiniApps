@@ -7,7 +7,7 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { partytownVite } from '@builder.io/partytown/utils';
 import { join } from 'path';
 import tailwindcss from '@tailwindcss/vite';
-import { wuchale } from '@wuchale/vite-plugin';
+import { wuchale } from 'wuchale/vite';
 import lingo from 'vite-plugin-lingo';
 
 export default defineConfig({

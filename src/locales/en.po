@@ -1,16 +1,11 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-31T12:39:41.944Z\n"
-"PO-Revision-Date: 2026-11-14T05:24:43.568Z\n"
-"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
 "Language: en\n"
-"Language-Team: \n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"MIME-Version: 1.0\n"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/github-contribution-tracker/+page.svelte
@@ -95,13 +90,12 @@ msgstr "Issues"
 msgid "Reviews"
 msgstr "Reviews"
 
-#. placeholder {0}: username
-#. placeholder {1}: year
+#. 0: username; 1: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
 msgstr "Visualize {0}'s GitHub contributions for {1} with interactive charts, heatmaps, and detailed insights."
 
-#. placeholder {0}: year
+#. 0: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 msgid "GitHub Contributions in {0}"
 msgstr "GitHub Contributions in {0}"
@@ -111,7 +105,6 @@ msgid "<0/> Back"
 msgstr "<0/> Back"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
-#: src/routes/test-charts/+page.svelte
 msgid "Total Contributions"
 msgstr "Total Contributions"
 
@@ -139,29 +132,25 @@ msgstr "Insights"
 msgid "Monthly Contributions"
 msgstr "Monthly Contributions"
 
-#. placeholder {0}: year
+#. 0: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Total contributions per month in {0}"
 msgstr "Total contributions per month in {0}"
 
-#: src/routes/test-charts/+page.svelte
-#: src/routes/test-charts/+page.svelte
-msgid "MMM"
-msgstr "MMM"
+#~ msgid "MMM"
+#~ msgstr "MMM"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
-#: src/routes/test-charts/+page.svelte
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
+#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
-#: src/routes/test-charts/+page.svelte
-#: src/routes/test-charts/+page.svelte
 msgid "Contributions"
 msgstr "Contributions"
 
@@ -177,7 +166,7 @@ msgstr "Top programming languages in contributed repositories"
 msgid "Top Contributed Repositories"
 msgstr "Top Contributed Repositories"
 
-#. placeholder {0}: year
+#. 0: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/RepositoriesTab.svelte
 msgid "Most starred repositories you contributed to in {0}"
 msgstr "Most starred repositories you contributed to in {0}"
@@ -227,9 +216,11 @@ msgstr "Converts between various units (length, temperature, volume, etc.)"
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
+#: src/lib/index.svelte.ts
 msgid "utility"
 msgstr "utility"
 
+#: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
 #: src/lib/index.svelte.ts
@@ -624,33 +615,30 @@ msgstr "Svelte, Min iApps, About, Tools, Applications, Ecosystem, Innovative, Un
 msgid "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
 msgstr "Svelte Mini Apps: Powerful Tiny Tools Built with <0>SvelteKit <0/></0>"
 
-#: src/routes/about/+page.svelte
-msgid ""
-"<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
-"everyday tasks with ease."
-msgstr ""
-"<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
-"everyday tasks with ease."
+#~ msgid ""
+#~ "<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
+#~ "everyday tasks with ease."
+#~ msgstr ""
+#~ "<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer\n"
+#~ "everyday tasks with ease."
 
-#: src/routes/about/+page.svelte
-msgid ""
-"<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for\n"
-"seamless offline access. Conquer your daily challenges, even without an internet connection."
-msgstr ""
-"<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for\n"
-"seamless offline access. Conquer your daily challenges, even without an internet connection."
+#~ msgid ""
+#~ "<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for\n"
+#~ "seamless offline access. Conquer your daily challenges, even without an internet connection."
+#~ msgstr ""
+#~ "<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for\n"
+#~ "seamless offline access. Conquer your daily challenges, even without an internet connection."
 
 #: src/routes/about/+page.svelte
 msgid "Like What You See?"
 msgstr "Like What You See?"
 
-#: src/routes/about/+page.svelte
-msgid ""
-"I'm available for freelance work, consulting, and exciting collaborations. Let's build\n"
-"something amazing together with modern web technologies!"
-msgstr ""
-"I'm available for freelance work, consulting, and exciting collaborations. Let's build\n"
-"something amazing together with modern web technologies!"
+#~ msgid ""
+#~ "I'm available for freelance work, consulting, and exciting collaborations. Let's build\n"
+#~ "something amazing together with modern web technologies!"
+#~ msgstr ""
+#~ "I'm available for freelance work, consulting, and exciting collaborations. Let's build\n"
+#~ "something amazing together with modern web technologies!"
 
 #: src/routes/about/+page.svelte
 msgid "<0/> Hire Me <1/>"
@@ -680,9 +668,7 @@ msgstr "Beautiful, accessible, and customizable UI components for Svelte applica
 msgid "Lordicon"
 msgstr "Lordicon"
 
-#. placeholder {0}: theme.red.accent
-#. placeholder {1}: theme.green.accent
-#. placeholder {2}: theme.green.text
+#. 0: theme.red.accent; 1: theme.green.accent; 2: theme.green.text
 #: src/routes/about/Attributions.svelte
 msgid "Powerful animated icons library that brings life to the user interface. <span class=\"{0}\">Note:</span> Lordicon is <span class=\"font-semibold {1}\">not open source</span>, but offers <span class=\"{2}\">free usage with attribution</span>."
 msgstr "Powerful animated icons library that brings life to the user interface. <span class=\"{0}\">Note:</span> Lordicon is <span class=\"font-semibold {1}\">not open source</span>, but offers <span class=\"{2}\">free usage with attribution</span>."
@@ -735,28 +721,26 @@ msgstr "Svelte Mini Apps is built with the help of these amazing open-source pro
 msgid "Visit Website"
 msgstr "Visit Website"
 
-#: src/routes/about/Attributions.svelte
-msgid ""
-"We are grateful to all the open-source contributors who make these tools available to the\n"
-"community."
-msgstr ""
-"We are grateful to all the open-source contributors who make these tools available to the\n"
-"community."
+#~ msgid ""
+#~ "We are grateful to all the open-source contributors who make these tools available to the\n"
+#~ "community."
+#~ msgstr ""
+#~ "We are grateful to all the open-source contributors who make these tools available to the\n"
+#~ "community."
 
 #: src/routes/about/DataManagement.svelte
 #: src/routes/about/data.svelte.ts
 msgid "Data Management & Troubleshooting"
 msgstr "Data Management & Troubleshooting"
 
-#: src/routes/about/DataManagement.svelte
-msgid ""
-"Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage.\n"
-"This is especially useful if you encounter any caching issues or need to reset the app to its\n"
-"default state."
-msgstr ""
-"Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage.\n"
-"This is especially useful if you encounter any caching issues or need to reset the app to its\n"
-"default state."
+#~ msgid ""
+#~ "Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage.\n"
+#~ "This is especially useful if you encounter any caching issues or need to reset the app to its\n"
+#~ "default state."
+#~ msgstr ""
+#~ "Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage.\n"
+#~ "This is especially useful if you encounter any caching issues or need to reset the app to its\n"
+#~ "default state."
 
 #: src/routes/about/Features.svelte
 msgid "Why Choose Svelte Mini Apps?"
@@ -778,13 +762,12 @@ msgstr "The <0>\"Aha Moment\"</0> Behind Svelte Mini Apps:"
 msgid "The reason behind Svelte Mini Apps"
 msgstr "The reason behind Svelte Mini Apps"
 
-#: src/routes/about/Philosophy.svelte
-msgid ""
-"We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
-"problems.</1>"
-msgstr ""
-"We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
-"problems.</1>"
+#~ msgid ""
+#~ "We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
+#~ "problems.</1>"
+#~ msgstr ""
+#~ "We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight\n"
+#~ "problems.</1>"
 
 #: src/routes/about/Philosophy.svelte
 msgid "We wanted something <0>modular, efficient, and focused</0> on getting the job done, just like that trusty screwdriver you use all the time."
@@ -794,17 +777,15 @@ msgstr "We wanted something <0>modular, efficient, and focused</0> on getting th
 msgid "Explore a Range of Tools:"
 msgstr "Explore a Range of Tools:"
 
-#: src/routes/about/Tools.svelte
-msgid "Tools for Svelte Mini Apps"
-msgstr "Tools for Svelte Mini Apps"
+#~ msgid "Tools for Svelte Mini Apps"
+#~ msgstr "Tools for Svelte Mini Apps"
 
-#: src/routes/about/Tools.svelte
-msgid ""
-"Our collection covers a wide variety of use cases, from basic tools like unit converters to\n"
-"more complex ones like persistent to-do lists."
-msgstr ""
-"Our collection covers a wide variety of use cases, from basic tools like unit converters to\n"
-"more complex ones like persistent to-do lists."
+#~ msgid ""
+#~ "Our collection covers a wide variety of use cases, from basic tools like unit converters to\n"
+#~ "more complex ones like persistent to-do lists."
+#~ msgstr ""
+#~ "Our collection covers a wide variety of use cases, from basic tools like unit converters to\n"
+#~ "more complex ones like persistent to-do lists."
 
 #: src/routes/about/Tools.svelte
 msgid "Browse"
@@ -838,13 +819,12 @@ msgstr "Svelte Mini Apps is an <0>ever-evolving project, <0>and <0>you</0> hold 
 msgid "Have ideas or feedback?"
 msgstr "Have ideas or feedback?"
 
-#: src/routes/about/Vision.svelte
-msgid ""
-"Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
-"suggestions with us."
-msgstr ""
-"Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
-"suggestions with us."
+#~ msgid ""
+#~ "Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
+#~ "suggestions with us."
+#~ msgstr ""
+#~ "Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or\n"
+#~ "suggestions with us."
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/routes/about/Vision.svelte
@@ -963,7 +943,7 @@ msgstr "Explore Our Mini Applications"
 msgid "Search Apps"
 msgstr "Search Apps"
 
-#. placeholder {0}: searchQuery
+#. 0: searchQuery
 #: src/routes/apps/AppFilters.svelte
 msgid "No projects found matching \"{0}\""
 msgstr "No projects found matching \"{0}\""
@@ -988,6 +968,7 @@ msgid "Close"
 msgstr "Close"
 
 #: src/lib/components/blocks/Navbar.svelte
+#: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
@@ -1035,6 +1016,7 @@ msgid "Full Progressive Web App capabilities with offline support and installabi
 msgstr "Full Progressive Web App capabilities with offline support and installability."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
+#: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Timeline"
@@ -1048,6 +1030,7 @@ msgstr "Detailed timeline of our Svelte 5 migration journey"
 msgid "View Timeline"
 msgstr "View Timeline"
 
+#: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
 msgid "Announcements"
 msgstr "Announcements"
@@ -1060,6 +1043,7 @@ msgstr "Latest news and upcoming features"
 msgid "View Announcements"
 msgstr "View Announcements"
 
+#: src/routes/changelog/+layout.svelte
 #: src/routes/changelog/+page.svelte
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Planned Features"
@@ -1092,15 +1076,14 @@ msgstr "Article"
 msgid "Michael Obele"
 msgstr "Michael Obele"
 
-#: src/routes/changelog/+page.svelte
-msgid ""
-"Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,\n"
-"faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer\n"
-"experience across the app."
-msgstr ""
-"Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,\n"
-"faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer\n"
-"experience across the app."
+#~ msgid ""
+#~ "Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,\n"
+#~ "faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer\n"
+#~ "experience across the app."
+#~ msgstr ""
+#~ "Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience,\n"
+#~ "faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer\n"
+#~ "experience across the app."
 
 #: src/routes/changelog/+page.svelte
 msgid "<0/> More <1/>"
@@ -1143,13 +1126,12 @@ msgstr "Legacy version access and migration resources"
 msgid "Legacy"
 msgstr "Legacy"
 
-#: src/routes/changelog/+page.svelte
-msgid ""
-"If you depend on the Svelte 4 release, open the legacy app. The new app focuses on\n"
-"performance and PWA features; review your integration before upgrading."
-msgstr ""
-"If you depend on the Svelte 4 release, open the legacy app. The new app focuses on\n"
-"performance and PWA features; review your integration before upgrading."
+#~ msgid ""
+#~ "If you depend on the Svelte 4 release, open the legacy app. The new app focuses on\n"
+#~ "performance and PWA features; review your integration before upgrading."
+#~ msgstr ""
+#~ "If you depend on the Svelte 4 release, open the legacy app. The new app focuses on\n"
+#~ "performance and PWA features; review your integration before upgrading."
 
 #: src/routes/changelog/+page.svelte
 msgid "Open Legacy App"
@@ -1190,17 +1172,17 @@ msgstr "Hide"
 msgid "Show"
 msgstr "Show"
 
-#. placeholder {0}: showStats ? 'Hide' : 'Show'
+#. 0: showStats ? 'Hide' \\: 'Show'
 #: src/routes/changelog/ChangelogStats.svelte
 msgid "<0/> {0} Statistics"
 msgstr "<0/> {0} Statistics"
 
-#. placeholder {0}: showDebug ? 'Hide' : 'Show'
+#. 0: showDebug ? 'Hide' \\: 'Show'
 #: src/routes/changelog/DebugOrder.svelte
 msgid "{0} Debug Order"
 msgstr "{0} Debug Order"
 
-#. placeholder {0}: allTimeline.length
+#. 0: allTimeline.length
 #: src/routes/changelog/DebugOrder.svelte
 msgid "Debug: Timeline Order (Total: {0})"
 msgstr "Debug: Timeline Order (Total: {0})"
@@ -2264,6 +2246,7 @@ msgstr "GitHub"
 
 #: src/lib/components/blocks/Footer.svelte
 #: src/lib/components/blocks/Footer.svelte
+#: src/routes/apps/(app)/word-counter/+page.svelte
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
@@ -2313,13 +2296,12 @@ msgstr "Check your internet connection status and access cached content while of
 msgid "You're Online"
 msgstr "You're Online"
 
-#: src/routes/offline/+page.svelte
-msgid ""
-"Your internet connection has been restored. You can now access all features and continue\n"
-"using the application."
-msgstr ""
-"Your internet connection has been restored. You can now access all features and continue\n"
-"using the application."
+#~ msgid ""
+#~ "Your internet connection has been restored. You can now access all features and continue\n"
+#~ "using the application."
+#~ msgstr ""
+#~ "Your internet connection has been restored. You can now access all features and continue\n"
+#~ "using the application."
 
 #: src/routes/offline/+page.svelte
 msgid "You're Offline"
@@ -2333,8 +2315,7 @@ msgstr "It looks like you've lost your internet connection. Some features might 
 msgid "Checking..."
 msgstr "Checking..."
 
-#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
-#. placeholder {0}: retryCount > 0 ? `(${retryCount})` : ''
+#. 0: retryCount > 0 ? `(${retryCount})` \\: ''
 #: src/routes/offline/+page.svelte
 msgid "Retry Connection {0}"
 msgstr "Retry Connection {0}"
@@ -2551,9 +2532,8 @@ msgstr "Organization"
 msgid "ImageObject"
 msgstr "ImageObject"
 
-#: src/lib/components/blocks/RouteHead.svelte
-msgid "{@html structuredDataJson}"
-msgstr "{@html structuredDataJson}"
+#~ msgid "{@html structuredDataJson}"
+#~ msgstr "{@html structuredDataJson}"
 
 #: src/lib/components/blocks/ThemeSwitch.svelte
 msgid "Toggle theme"
@@ -2712,6 +2692,7 @@ msgid "<0/> Sign Out"
 msgstr "<0/> Sign Out"
 
 #: src/routes/(auth)/profile/+layout.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
 msgid "Refresh"
 msgstr "Refresh"
 
@@ -2892,9 +2873,8 @@ msgstr "Deleting..."
 msgid "Loading account settings..."
 msgstr "Loading account settings..."
 
-#. placeholder {0}: app.usageCount
-#. placeholder {0}: app.usageCount
-#. placeholder {0}: app.usageCount
+#. 0: app.usageCount
+#. 0: app.usageCount
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/(auth)/profile/FavoriteAppList.svelte
 msgid "{0} uses"
@@ -2912,8 +2892,10 @@ msgstr "No favorite apps yet. Start using apps to see your favorites here!"
 msgid "Current Streak"
 msgstr "Current Streak"
 
-#. placeholder {0}: profile.stats.accountAge
+#. 0: profile.stats.accountAge
+#. 0: days
 #: src/routes/(auth)/profile/+layout.svelte
+#: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "{0} days"
 msgstr "{0} days"
 
@@ -3026,10 +3008,8 @@ msgstr "Unknown"
 msgid "Updating profile..."
 msgstr "Updating profile..."
 
-#: src/routes/(auth)/profile/+layout.svelte
-#: src/routes/(auth)/profile/UserProfileCard.svelte
-msgid "U"
-msgstr "U"
+#~ msgid "U"
+#~ msgstr "U"
 
 #: src/routes/(auth)/profile/UserProfileCard.svelte
 msgid "Admin"
@@ -3241,13 +3221,12 @@ msgstr "Stay updated with the latest announcements and future plans for Svelte M
 msgid "Latest Announcements"
 msgstr "Latest Announcements"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid ""
-"Stay informed about major milestones, new features, and exciting developments in Svelte\n"
-"MiniApps."
-msgstr ""
-"Stay informed about major milestones, new features, and exciting developments in Svelte\n"
-"MiniApps."
+#~ msgid ""
+#~ "Stay informed about major milestones, new features, and exciting developments in Svelte\n"
+#~ "MiniApps."
+#~ msgstr ""
+#~ "Stay informed about major milestones, new features, and exciting developments in Svelte\n"
+#~ "MiniApps."
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "<0/> Planned Highlights"
@@ -3257,13 +3236,12 @@ msgstr "<0/> Planned Highlights"
 msgid "How You Can Help"
 msgstr "How You Can Help"
 
-#: src/routes/changelog/announcements/+page.svelte
-msgid ""
-"We value your input! Here are ways you can contribute to the development of mobile and\n"
-"desktop apps."
-msgstr ""
-"We value your input! Here are ways you can contribute to the development of mobile and\n"
-"desktop apps."
+#~ msgid ""
+#~ "We value your input! Here are ways you can contribute to the development of mobile and\n"
+#~ "desktop apps."
+#~ msgstr ""
+#~ "We value your input! Here are ways you can contribute to the development of mobile and\n"
+#~ "desktop apps."
 
 #: src/routes/changelog/announcements/+page.svelte
 msgid "No Announcements Yet"
@@ -3393,9 +3371,8 @@ msgstr "Design"
 msgid "Data Model"
 msgstr "Data Model"
 
-#: src/routes/changelog/planned-features/+page.svelte
-msgid "UI"
-msgstr "UI"
+#~ msgid "UI"
+#~ msgstr "UI"
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "Logic"
@@ -3518,13 +3495,12 @@ msgstr "Planned Features | Svelte Mini Apps Changelog"
 msgid "Explore upcoming features and planned enhancements for Svelte-MiniApps, including mobile apps, desktop companions, and new functionality."
 msgstr "Explore upcoming features and planned enhancements for Svelte-MiniApps, including mobile apps, desktop companions, and new functionality."
 
-#: src/routes/changelog/planned-features/+page.svelte
-msgid ""
-"Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to\n"
-"enhanced learning tools and accessibility improvements, explore our development roadmap."
-msgstr ""
-"Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to\n"
-"enhanced learning tools and accessibility improvements, explore our development roadmap."
+#~ msgid ""
+#~ "Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to\n"
+#~ "enhanced learning tools and accessibility improvements, explore our development roadmap."
+#~ msgstr ""
+#~ "Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to\n"
+#~ "enhanced learning tools and accessibility improvements, explore our development roadmap."
 
 #: src/routes/changelog/planned-features/+page.svelte
 msgid "High-Level Features"
@@ -3658,13 +3634,12 @@ msgstr "Timeline | Svelte Mini Apps Changelog"
 msgid "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
 msgstr "Detailed timeline of our Svelte 4 to Svelte 5 migration journey, featuring key milestones, technical updates, and development progress."
 
-#: src/routes/changelog/timeline/+page.svelte
-msgid ""
-"Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates,\n"
-"and development progress tracking our modernization efforts."
-msgstr ""
-"Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates,\n"
-"and development progress tracking our modernization efforts."
+#~ msgid ""
+#~ "Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates,\n"
+#~ "and development progress tracking our modernization efforts."
+#~ msgstr ""
+#~ "Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates,\n"
+#~ "and development progress tracking our modernization efforts."
 
 #: src/routes/changelog/timeline/+page.svelte
 msgid "Manual Entries"
@@ -3774,21 +3749,17 @@ msgstr "Convert your text to and from emoji format"
 msgid "Enter text here..."
 msgstr "Enter text here..."
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid "<0>✨</0> Emojify"
-msgstr "<0>✨</0> Emojify"
+#~ msgid "<0>✨</0> Emojify"
+#~ msgstr "<0>✨</0> Emojify"
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid "<0>📝</0> Unemojify"
-msgstr "<0>📝</0> Unemojify"
+#~ msgid "<0>📝</0> Unemojify"
+#~ msgstr "<0>📝</0> Unemojify"
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid "<0>🗑️</0> Strip Emojis"
-msgstr "<0>🗑️</0> Strip Emojis"
+#~ msgid "<0>🗑️</0> Strip Emojis"
+#~ msgstr "<0>🗑️</0> Strip Emojis"
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid "<0>🎯</0> Keep Only Emojis"
-msgstr "<0>🎯</0> Keep Only Emojis"
+#~ msgid "<0>🎯</0> Keep Only Emojis"
+#~ msgstr "<0>🎯</0> Keep Only Emojis"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "📋 Copy"
@@ -3850,9 +3821,8 @@ msgstr "Emoji and name copied to clipboard!"
 msgid "Copy Both <0>⌥⌘C</0>"
 msgstr "Copy Both <0>⌥⌘C</0>"
 
-#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
-msgid "<0>🎲</0> Get Another"
-msgstr "<0>🎲</0> Get Another"
+#~ msgid "<0>🎲</0> Get Another"
+#~ msgstr "<0>🎲</0> Get Another"
 
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Emoji Search"
@@ -3866,14 +3836,14 @@ msgstr "Find the perfect emoji for your needs"
 msgid "Search emojis..."
 msgstr "Search emojis..."
 
-#. placeholder {0}: result.name
-#. placeholder {0}: result.name
+#. 0: result.name
+#. 0: result.name
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Copied {0}!"
 msgstr "Copied {0}!"
 
-#. placeholder {0}: result.name
+#. 0: result.name
 #: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
 msgid "Copied name: {0}"
 msgstr "Copied name: {0}"
@@ -3889,118 +3859,38 @@ msgstr "Copied emoji and name!"
 msgid "Select Budget"
 msgstr "Select Budget"
 
-#: src/lib/components/budget-tracker/BudgetSection.svelte
-#: src/lib/components/budget-tracker/ExpensesList.svelte
-#: src/routes/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/state.svelte.ts
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "USD"
-msgstr "USD"
+#~ msgid "USD"
+#~ msgstr "USD"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-#: src/routes/apps/(app)/currency-converter/state.svelte.ts
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "EUR"
-msgstr "EUR"
+#~ msgid "EUR"
+#~ msgstr "EUR"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "GBP"
-msgstr "GBP"
+#~ msgid "GBP"
+#~ msgstr "GBP"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "JPY"
-msgstr "JPY"
+#~ msgid "JPY"
+#~ msgstr "JPY"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "CAD"
-msgstr "CAD"
+#~ msgid "CAD"
+#~ msgstr "CAD"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "AUD"
-msgstr "AUD"
+#~ msgid "AUD"
+#~ msgstr "AUD"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid "CHF"
-msgstr "CHF"
+#~ msgid "CHF"
+#~ msgstr "CHF"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid "CNY"
-msgstr "CNY"
+#~ msgid "CNY"
+#~ msgstr "CNY"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "INR"
-msgstr "INR"
+#~ msgid "INR"
+#~ msgstr "INR"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid "BRL"
-msgstr "BRL"
+#~ msgid "BRL"
+#~ msgstr "BRL"
 
-#: src/routes/apps/(app)/budget-tracker/+page.svelte
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/purchase-tracker/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "NGN"
-msgstr "NGN"
+#~ msgid "NGN"
+#~ msgstr "NGN"
 
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Auto-backup cancelled"
@@ -4079,7 +3969,7 @@ msgstr "How to Use"
 msgid "Help"
 msgstr "Help"
 
-#. placeholder {0}: autoBackupCountdown
+#. 0: autoBackupCountdown
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Auto-backup in {0}s"
 msgstr "Auto-backup in {0}s"
@@ -4092,7 +3982,7 @@ msgstr "Auto-backup disabled - unsaved changes"
 msgid "Enable"
 msgstr "Enable"
 
-#. placeholder {0}: AUTO_BACKUP_DELAY / 1000
+#. 0: AUTO_BACKUP_DELAY / 1000
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Auto-backup ({0}s)"
 msgstr "Auto-backup ({0}s)"
@@ -4152,6 +4042,7 @@ msgid "Currency"
 msgstr "Currency"
 
 #: src/lib/components/budget-tracker/BudgetSection.svelte
+#: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseDialog.svelte
 #: src/lib/components/budget-tracker/ExpenseSection.svelte
@@ -4248,7 +4139,7 @@ msgstr "No expenses yet. Add your first expense to get started."
 msgid "Quick Navigation"
 msgstr "Quick Navigation"
 
-#. placeholder {0}: site().name
+#. 0: site().name
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Currency Converter - {0}"
 msgstr "Currency Converter - {0}"
@@ -4299,14 +4190,12 @@ msgstr "<0/> Converting..."
 msgid "Conversion Result"
 msgstr "Conversion Result"
 
-#. placeholder {0}: result.fromCurrency
-#. placeholder {1}: Number(result.rate).toLocaleString( 'en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 } )
-#. placeholder {2}: result.toCurrency
+#. 0: result.fromCurrency; 1: Number(result.rate).toLocaleString( 'en-US', { minimumFractionDigits\\: 4, maximumFractionDigits\\: 4 } ); 2: result.toCurrency
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Exchange Rate: 1 {0} = {1} {2}"
 msgstr "Exchange Rate: 1 {0} = {1} {2}"
 
-#. placeholder {0}: result.cacheAge !== undefined ? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago` : 'just now'
+#. 0: result.cacheAge !== undefined ? `${Math.floor(result.cacheAge / 60)}m ${result.cacheAge % 60}s ago` \\: 'just now'
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Cached {0}"
 msgstr "Cached {0}"
@@ -4339,7 +4228,7 @@ msgstr "Synonyms:"
 msgid "Antonyms:"
 msgstr "Antonyms:"
 
-#. placeholder {0}: entry.license.name
+#. 0: entry.license.name
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "License: {0} <0/>"
 msgstr "License: {0} <0/>"
@@ -4364,13 +4253,12 @@ msgstr "Markdown Editor - Write and Preview Markdown with Ease"
 msgid "Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
 msgstr "Experience a seamless Markdown editing with our Svelte and Carta-MD powered editor. Write, preview, and save your markdown content effortlessly."
 
-#: src/routes/apps/(app)/markdown-editor/+page.svelte
-msgid ""
-"Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content\n"
-"is automatically saved to localStorage so you won't lose changes."
-msgstr ""
-"Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content\n"
-"is automatically saved to localStorage so you won't lose changes."
+#~ msgid ""
+#~ "Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content\n"
+#~ "is automatically saved to localStorage so you won't lose changes."
+#~ msgstr ""
+#~ "Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content\n"
+#~ "is automatically saved to localStorage so you won't lose changes."
 
 #: src/routes/apps/(app)/markdown-editor/+page.svelte
 msgid "New to Markdown? See the <0>Markdown guide</0> for quick syntax tips."
@@ -4427,7 +4315,7 @@ msgstr "• Ended"
 msgid "• Ongoing"
 msgstr "• Ongoing"
 
-#. placeholder {0}: session.medications.length
+#. 0: session.medications.length
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "{0} medications <0/>"
 msgstr "{0} medications <0/>"
@@ -4441,13 +4329,12 @@ msgstr "Syncing..."
 msgid "Sync from server"
 msgstr "Sync from server"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
-msgid ""
-"<0>Sync from server:</0> Ensures local data is synchronized, then downloads\n"
-"and merges server data using timestamps for conflict resolution."
-msgstr ""
-"<0>Sync from server:</0> Ensures local data is synchronized, then downloads\n"
-"and merges server data using timestamps for conflict resolution."
+#~ msgid ""
+#~ "<0>Sync from server:</0> Ensures local data is synchronized, then downloads\n"
+#~ "and merges server data using timestamps for conflict resolution."
+#~ msgstr ""
+#~ "<0>Sync from server:</0> Ensures local data is synchronized, then downloads\n"
+#~ "and merges server data using timestamps for conflict resolution."
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
@@ -4460,13 +4347,12 @@ msgstr "Backing up..."
 msgid "Backup"
 msgstr "Backup"
 
-#: src/routes/apps/(app)/medication-tracker/+page.svelte
-msgid ""
-"<0>Backup:</0> Save your current local data to the server. Use this to\n"
-"prevent data loss."
-msgstr ""
-"<0>Backup:</0> Save your current local data to the server. Use this to\n"
-"prevent data loss."
+#~ msgid ""
+#~ "<0>Backup:</0> Save your current local data to the server. Use this to\n"
+#~ "prevent data loss."
+#~ msgstr ""
+#~ "<0>Backup:</0> Save your current local data to the server. Use this to\n"
+#~ "prevent data loss."
 
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "Manage Sessions"
@@ -4476,17 +4362,17 @@ msgstr "Manage Sessions"
 msgid "Manage"
 msgstr "Manage"
 
-#. placeholder {0}: formatDate(activeSession.startDate)
+#. 0: formatDate(activeSession.startDate)
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "Started {0}"
 msgstr "Started {0}"
 
-#. placeholder {0}: formatDate(activeSession.endDate)
+#. 0: formatDate(activeSession.endDate)
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "• Ended {0}"
 msgstr "• Ended {0}"
 
-#. placeholder {0}: activeSession.medications.length
+#. 0: activeSession.medications.length
 #: src/routes/apps/(app)/medication-tracker/+page.svelte
 msgid "• {0} medications"
 msgstr "• {0} medications"
@@ -4553,24 +4439,8 @@ msgstr "Skipped"
 msgid "Missed"
 msgstr "Missed"
 
-#: src/routes/(auth)/profile/activity/+page.svelte
-#: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-#: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
-#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid "T"
-msgstr "T"
+#~ msgid "T"
+#~ msgstr "T"
 
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
@@ -4585,8 +4455,7 @@ msgstr "Medication status reset to pending"
 msgid "<0/> Medication History"
 msgstr "<0/> Medication History"
 
-#. placeholder {0}: session.name
-#. placeholder {0}: session.name
+#. 0: session.name
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "View your medication schedule grouped by day for {0}"
 msgstr "View your medication schedule grouped by day for {0}"
@@ -4599,10 +4468,7 @@ msgstr "No History Yet"
 msgid "Your medication history will appear here once you start taking medications"
 msgstr "Your medication history will appear here once you start taking medications"
 
-#. placeholder {0}: stats.total
-#. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
-#. placeholder {0}: stats.total
-#. placeholder {1}: stats.total === 1 ? 'medication' : 'medications'
+#. 0: stats.total; 1: stats.total === 1 ? 'medication' \\: 'medications'
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 msgid "{0} {1} scheduled"
 msgstr "{0} {1} scheduled"
@@ -4617,10 +4483,8 @@ msgstr "adherence"
 msgid "Pending"
 msgstr "Pending"
 
-#. placeholder {0}: formatTime(log.actualTime)
-#. placeholder {0}: formatTime(log.actualTime)
-#. placeholder {0}: formatTime(log.actualTime)
-#. placeholder {0}: formatTime(log.actualTime)
+#. 0: formatTime(log.actualTime)
+#. 0: formatTime(log.actualTime)
 #: src/routes/apps/(app)/medication-tracker/components/HistoryView.svelte
 #: src/routes/apps/(app)/medication-tracker/components/TodayTracker.svelte
 msgid "at {0}"
@@ -4683,13 +4547,12 @@ msgstr "Save Time"
 msgid "Reschedule Medication"
 msgstr "Reschedule Medication"
 
-#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
-msgid ""
-"💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
-"the Schedule button in the Medications list."
-msgstr ""
-"💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
-"the Schedule button in the Medications list."
+#~ msgid ""
+#~ "💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
+#~ "the Schedule button in the Medications list."
+#~ msgstr ""
+#~ "💡 This reschedules only this single dose. To change the entire medication schedule, use\n"
+#~ "the Schedule button in the Medications list."
 
 #: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "New Date"
@@ -4715,9 +4578,8 @@ msgstr "Medication updated"
 msgid "Please add at least one time"
 msgstr "Please add at least one time"
 
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-msgid "T12:00:00"
-msgstr "T12:00:00"
+#~ msgid "T12:00:00"
+#~ msgstr "T12:00:00"
 
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Medications"
@@ -4763,8 +4625,7 @@ msgstr "Frequency:"
 msgid "Instructions:"
 msgstr "Instructions:"
 
-#. placeholder {0}: formatDate(med.endDate)
-#. placeholder {0}: formatDate(med.endDate)
+#. 0: formatDate(med.endDate)
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "<0/> Ends: {0}"
 msgstr "<0/> Ends: {0}"
@@ -4830,8 +4691,7 @@ msgstr "End Date <0>(optional - leave empty for ongoing)</0>"
 msgid "Leave empty for ongoing medication"
 msgstr "Leave empty for ongoing medication"
 
-#. placeholder {0}: suggestedTimes.join(', ')
-#. placeholder {0}: suggestedTimes.join(', ')
+#. 0: suggestedTimes.join(', ')
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "• Suggested times: {0}"
 msgstr "• Suggested times: {0}"
@@ -4852,8 +4712,7 @@ msgstr "Instructions"
 msgid "Schedule Doses"
 msgstr "Schedule Doses"
 
-#. placeholder {0}: schedulingMedication?.name
-#. placeholder {0}: schedulingMedication?.name
+#. 0: schedulingMedication?.name
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Create scheduled reminders for {0}"
 msgstr "Create scheduled reminders for {0}"
@@ -4887,15 +4746,12 @@ msgstr "Daily Times"
 msgid "Add Time"
 msgstr "Add Time"
 
-#. placeholder {0}: scheduleTimes.length
-#. placeholder {0}: scheduleTimes.length
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-msgid ""
-"✅ Will create <0/> scheduled doses ({0}x\n"
-"per day)"
-msgstr ""
-"✅ Will create <0/> scheduled doses ({0}x\n"
-"per day)"
+#~ msgid ""
+#~ "✅ Will create <0/> scheduled doses ({0}x\n"
+#~ "per day)"
+#~ msgstr ""
+#~ "✅ Will create <0/> scheduled doses ({0}x\n"
+#~ "per day)"
 
 #: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
 msgid "Generate Schedule"
@@ -4905,24 +4761,19 @@ msgstr "Generate Schedule"
 msgid "Delete Medication?"
 msgstr "Delete Medication?"
 
-#. placeholder {0}: deletingMedication?.name
-#. placeholder {0}: deletingMedication?.name
-#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
-msgid ""
-"This will permanently delete \"{0}\" and all its logs. This action\n"
-"cannot be undone."
-msgstr ""
-"This will permanently delete \"{0}\" and all its logs. This action\n"
-"cannot be undone."
+#~ msgid ""
+#~ "This will permanently delete \"{0}\" and all its logs. This action\n"
+#~ "cannot be undone."
+#~ msgstr ""
+#~ "This will permanently delete \"{0}\" and all its logs. This action\n"
+#~ "cannot be undone."
 
-#. placeholder {0}: totalLogs
-#. placeholder {0}: totalLogs
+#. 0: totalLogs
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "<0/> View Schedule ({0})"
 msgstr "<0/> View Schedule ({0})"
 
-#. placeholder {0}: medication.name
-#. placeholder {0}: medication.name
+#. 0: medication.name
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Schedule for {0}"
 msgstr "Schedule for {0}"
@@ -4935,10 +4786,8 @@ msgstr "Total"
 msgid "No scheduled doses yet."
 msgstr "No scheduled doses yet."
 
-#. placeholder {0}: totalLogs
-#. placeholder {0}: totalLogs
-#. placeholder {0}: totalLogs
-#. placeholder {0}: totalLogs
+#. 0: totalLogs
+#. 0: totalLogs
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 #: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
 msgid "Delete All ({0})"
@@ -4981,13 +4830,12 @@ msgstr "Session updated successfully"
 msgid "Treatment Sessions"
 msgstr "Treatment Sessions"
 
-#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-msgid ""
-"Manage your treatment sessions. Each session groups medications for a specific treatment\n"
-"period."
-msgstr ""
-"Manage your treatment sessions. Each session groups medications for a specific treatment\n"
-"period."
+#~ msgid ""
+#~ "Manage your treatment sessions. Each session groups medications for a specific treatment\n"
+#~ "period."
+#~ msgstr ""
+#~ "Manage your treatment sessions. Each session groups medications for a specific treatment\n"
+#~ "period."
 
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Create New Session"
@@ -5024,8 +4872,7 @@ msgstr "<0/> Create Session"
 msgid "Your Sessions"
 msgstr "Your Sessions"
 
-#. placeholder {0}: allSessions?.length || 0
-#. placeholder {0}: allSessions?.length || 0
+#. 0: allSessions?.length || 0
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "{0} total"
 msgstr "{0} total"
@@ -5040,8 +4887,7 @@ msgstr "No treatment sessions yet. Create one above to get started."
 msgid "Active"
 msgstr "Active"
 
-#. placeholder {0}: formatDate(session.endDate)
-#. placeholder {0}: formatDate(session.endDate)
+#. 0: formatDate(session.endDate)
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> Ended {0}"
 msgstr "<0/> Ended {0}"
@@ -5050,10 +4896,7 @@ msgstr "<0/> Ended {0}"
 msgid "<0/> Ongoing"
 msgstr "<0/> Ongoing"
 
-#. placeholder {0}: session.medications.length
-#. placeholder {1}: session.medications.length !== 1 ? 's' : ''
-#. placeholder {0}: session.medications.length
-#. placeholder {1}: session.medications.length !== 1 ? 's' : ''
+#. 0: session.medications.length; 1: session.medications.length !== 1 ? 's' \\: ''
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "<0/> {0} med{1}"
 msgstr "<0/> {0} med{1}"
@@ -5074,15 +4917,12 @@ msgstr "<0/> Restart"
 msgid "Delete Treatment Session?"
 msgstr "Delete Treatment Session?"
 
-#. placeholder {0}: sessionToDelete?.name
-#. placeholder {0}: sessionToDelete?.name
-#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
-msgid ""
-"This will permanently delete \"{0}\" and all associated medication logs.\n"
-"This action cannot be undone."
-msgstr ""
-"This will permanently delete \"{0}\" and all associated medication logs.\n"
-"This action cannot be undone."
+#~ msgid ""
+#~ "This will permanently delete \"{0}\" and all associated medication logs.\n"
+#~ "This action cannot be undone."
+#~ msgstr ""
+#~ "This will permanently delete \"{0}\" and all associated medication logs.\n"
+#~ "This action cannot be undone."
 
 #: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
 msgid "Edit Treatment Session"
@@ -5112,8 +4952,7 @@ msgstr "Medication-Specific Statistics"
 msgid "Track adherence for each medication individually"
 msgstr "Track adherence for each medication individually"
 
-#. placeholder {0}: stats.totalDoses
-#. placeholder {0}: stats.totalDoses
+#. 0: stats.totalDoses
 #: src/routes/apps/(app)/medication-tracker/components/StatsView.svelte
 msgid "{0} total doses"
 msgstr "{0} total doses"
@@ -5194,7 +5033,7 @@ msgstr "Edit Time Taken"
 msgid "Adjust the time when this medication was actually taken."
 msgstr "Adjust the time when this medication was actually taken."
 
-#. placeholder {0}: scheduledTime
+#. 0: scheduledTime
 #: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
 msgid "Scheduled time: {0}"
 msgstr "Scheduled time: {0}"
@@ -5357,6 +5196,7 @@ msgid "Emoji copied to clipboard"
 msgstr "Emoji copied to clipboard"
 
 #: src/routes/apps/(app)/random-emoji-generator/+page.svelte
+#: src/routes/apps/(app)/word-counter/+page.svelte
 #: src/routes/f/[slug]/+page.svelte
 msgid "<0/> Copy"
 msgstr "<0/> Copy"
@@ -5371,55 +5211,45 @@ msgstr ""
 "\n"
 ""
 
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"BEGIN:VCARD\n"
-"VERSION:3.0\n"
-""
-msgstr ""
-"BEGIN:VCARD\n"
-"VERSION:3.0\n"
-""
+#~ msgid ""
+#~ "BEGIN:VCARD\n"
+#~ "VERSION:3.0\n"
+#~ ""
+#~ msgstr ""
+#~ "BEGIN:VCARD\n"
+#~ "VERSION:3.0\n"
+#~ ""
 
-#. placeholder {0}: contactInfo.name
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"FN:{0}\n"
-""
-msgstr ""
-"FN:{0}\n"
-""
+#~ msgid ""
+#~ "FN:{0}\n"
+#~ ""
+#~ msgstr ""
+#~ "FN:{0}\n"
+#~ ""
 
-#. placeholder {0}: contactInfo.phone
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"TEL:{0}\n"
-""
-msgstr ""
-"TEL:{0}\n"
-""
+#~ msgid ""
+#~ "TEL:{0}\n"
+#~ ""
+#~ msgstr ""
+#~ "TEL:{0}\n"
+#~ ""
 
-#. placeholder {0}: contactInfo.email
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"EMAIL:{0}\n"
-""
-msgstr ""
-"EMAIL:{0}\n"
-""
+#~ msgid ""
+#~ "EMAIL:{0}\n"
+#~ ""
+#~ msgstr ""
+#~ "EMAIL:{0}\n"
+#~ ""
 
-#. placeholder {0}: contactInfo.website
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid ""
-"URL:{0}\n"
-""
-msgstr ""
-"URL:{0}\n"
-""
+#~ msgid ""
+#~ "URL:{0}\n"
+#~ ""
+#~ msgstr ""
+#~ "URL:{0}\n"
+#~ ""
 
-#: src/routes/apps/(app)/qr-code-generator/+page.svelte
-msgid "END:VCARD"
-msgstr "END:VCARD"
+#~ msgid "END:VCARD"
+#~ msgstr "END:VCARD"
 
 #: src/routes/apps/(app)/qr-code-generator/+page.svelte
 msgid "Generate and download QR codes for links, contact info, or any data you want to embed."
@@ -5505,9 +5335,8 @@ msgstr "Enter Text or URL"
 msgid "Enter text or paste a URL"
 msgstr "Enter text or paste a URL"
 
-#: src/lib/components/password/PasswordGenerator.svelte
-msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
@@ -5543,8 +5372,8 @@ msgstr "Add an optional description to help you remember what this password is f
 msgid "Description (Optional)"
 msgstr "Description (Optional)"
 
-#. placeholder {0}: passwordDetails.length
-#. placeholder {0}: editedDetails.length
+#. 0: passwordDetails.length
+#. 0: editedDetails.length
 #: src/lib/components/password/PasswordGenerator.svelte
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "{0}/200 characters"
@@ -5606,10 +5435,7 @@ msgstr "Edit password"
 msgid "Delete password"
 msgstr "Delete password"
 
-#. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
-#. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
-#. placeholder {0}: new Date(password.createdAt).toLocaleDateString()
-#. placeholder {1}: new Date( password.createdAt ).toLocaleTimeString()
+#. 0: new Date(password.createdAt).toLocaleDateString(); 1: new Date( password.createdAt ).toLocaleTimeString()
 #: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
 msgid "Saved on {0} at {1}"
 msgstr "Saved on {0} at {1}"
@@ -5678,13 +5504,12 @@ msgstr "I Smoked"
 msgid "Ready to Quit Smoking?"
 msgstr "Ready to Quit Smoking?"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
-"journey."
-msgstr ""
-"Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
-"journey."
+#~ msgid ""
+#~ "Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
+#~ "journey."
+#~ msgstr ""
+#~ "Track your progress, monitor health improvements, and stay motivated on your smoke-free\n"
+#~ "journey."
 
 #~ msgid "<0/> Start Your Journey"
 #~ msgstr "<0/> Start Your Journey"
@@ -5721,7 +5546,7 @@ msgstr "Craving Success"
 msgid "<0/> Next Milestone"
 msgstr "<0/> Next Milestone"
 
-#. placeholder {0}: smokeState.formatDuration( statistics.nextMilestone.duration - statistics.streakMinutes )
+#. 0: smokeState.formatDuration( statistics.nextMilestone.duration - statistics.streakMinutes )
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "{0} remaining"
 msgstr "{0} remaining"
@@ -5769,13 +5594,12 @@ msgstr "• Log and manage cravings effectively"
 msgid "Confirm You Smoked"
 msgstr "Confirm You Smoked"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
-"ensure accurate tracking."
-msgstr ""
-"Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
-"ensure accurate tracking."
+#~ msgid ""
+#~ "Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
+#~ "ensure accurate tracking."
+#~ msgstr ""
+#~ "Before we reset your streak, please confirm that you actually had a cigarette. This helps\n"
+#~ "ensure accurate tracking."
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "What happens when you reset?"
@@ -5801,13 +5625,12 @@ msgstr "• Your longest streak record remains intact"
 msgid "Are you sure you smoked?"
 msgstr "Are you sure you smoked?"
 
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
-"logging it instead."
-msgstr ""
-"Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
-"logging it instead."
+#~ msgid ""
+#~ "Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
+#~ "logging it instead."
+#~ msgstr ""
+#~ "Only proceed if you actually had a cigarette. If this was a craving you resisted, consider\n"
+#~ "logging it instead."
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Yes, I Smoked - Reset Streak"
@@ -5817,14 +5640,12 @@ msgstr "Yes, I Smoked - Reset Streak"
 msgid "Record a Smoke?"
 msgstr "Record a Smoke?"
 
-#. placeholder {0}: statistics?.longestStreak ?? '0 minutes'
-#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
-msgid ""
-"Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
-"going. Your longest streak of {0} is still an achievement!"
-msgstr ""
-"Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
-"going. Your longest streak of {0} is still an achievement!"
+#~ msgid ""
+#~ "Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
+#~ "going. Your longest streak of {0} is still an achievement!"
+#~ msgstr ""
+#~ "Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep\n"
+#~ "going. Your longest streak of {0} is still an achievement!"
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "Reset Streak"
@@ -5980,8 +5801,7 @@ msgstr "<0/> Log Craving"
 msgid "Recent Cravings"
 msgstr "Recent Cravings"
 
-#. placeholder {0}: getIntensityLabel(craving.intensity)
-#. placeholder {0}: getIntensityLabel(craving.intensity)
+#. 0: getIntensityLabel(craving.intensity)
 #: src/routes/apps/(app)/smoke-free-tracker/components/CravingLogger.svelte
 msgid "{0} Intensity"
 msgstr "{0} Intensity"
@@ -6010,8 +5830,7 @@ msgstr "<0/> Attempt History"
 msgid "No attempts yet. Start your journey above!"
 msgstr "No attempts yet. Start your journey above!"
 
-#. placeholder {0}: attempt.resetCount + 1
-#. placeholder {0}: attempt.resetCount + 1
+#. 0: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Attempt #{0}"
 msgstr "Attempt #{0}"
@@ -6042,8 +5861,7 @@ msgstr "<0/> Total Duration"
 msgid "<0/> Status"
 msgstr "<0/> Status"
 
-#. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
-#. placeholder {0}: new Date(attempt.endDate).toLocaleDateString()
+#. 0: new Date(attempt.endDate).toLocaleDateString()
 #: src/routes/apps/(app)/smoke-free-tracker/components/HistoryView.svelte
 msgid "Ended: {0}"
 msgstr "Ended: {0}"
@@ -6060,20 +5878,16 @@ msgstr "<0/> Achieved"
 msgid "<0/> Locked"
 msgstr "<0/> Locked"
 
-#. placeholder {0}: stats.progress
-#. placeholder {0}: option.progress
-#. placeholder {0}: milestone.progress.toFixed(0)
-#. placeholder {0}: milestone.progress.toFixed(0)
-#. placeholder {0}: milestone.progress.toFixed(0)
-#. placeholder {0}: milestone.progress.toFixed(0)
+#. 0: stats.progress
+#. 0: option.progress
+#. 0: milestone.progress.toFixed(0)
 #: src/routes/(auth)/profile/+page.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "{0}% complete"
 msgstr "{0}% complete"
 
-#. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
-#. placeholder {0}: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
+#. 0: new Date( new Date(attempt.lastSmokeDate).getTime() + milestone.duration * 60000 ).toLocaleString()
 #: src/routes/apps/(app)/smoke-free-tracker/components/MilestonesView.svelte
 msgid "Achieved {0}"
 msgstr "Achieved {0}"
@@ -6126,15 +5940,14 @@ msgstr "No goals added yet. Add your personal motivations above!"
 msgid "<0/> Custom Start Date"
 msgstr "<0/> Custom Start Date"
 
-#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
-msgid ""
-"If you started your smoke-free journey before using this app, enable this feature and set\n"
-"the date you actually quit smoking. This will adjust your streak display to show your true\n"
-"quit date."
-msgstr ""
-"If you started your smoke-free journey before using this app, enable this feature and set\n"
-"the date you actually quit smoking. This will adjust your streak display to show your true\n"
-"quit date."
+#~ msgid ""
+#~ "If you started your smoke-free journey before using this app, enable this feature and set\n"
+#~ "the date you actually quit smoking. This will adjust your streak display to show your true\n"
+#~ "quit date."
+#~ msgstr ""
+#~ "If you started your smoke-free journey before using this app, enable this feature and set\n"
+#~ "the date you actually quit smoking. This will adjust your streak display to show your true\n"
+#~ "quit date."
 
 #: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
 msgid "Enable custom start date"
@@ -6224,8 +6037,7 @@ msgstr "Next Milestone"
 msgid "<0/> Smoke-Free For"
 msgstr "<0/> Smoke-Free For"
 
-#. placeholder {0}: attempt.resetCount + 1
-#. placeholder {0}: attempt.resetCount + 1
+#. 0: attempt.resetCount + 1
 #: src/routes/apps/(app)/smoke-free-tracker/components/StreakTimer.svelte
 msgid "<0/> Attempt #{0}"
 msgstr "<0/> Attempt #{0}"
@@ -6348,21 +6160,19 @@ msgstr "Text Summarizer - Create Concise Summaries Instantly"
 msgid "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
 msgstr "Quickly summarize long text into concise versions with our Text Summarizer tool. Perfect for students, researchers, and professionals who need to extract key information."
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
-"techniques, not AI."
-msgstr ""
-"Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
-"techniques, not AI."
+#~ msgid ""
+#~ "Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
+#~ "techniques, not AI."
+#~ msgstr ""
+#~ "Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive\n"
+#~ "techniques, not AI."
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
-"and getting results instantly. Try it with sample text or your own content!"
-msgstr ""
-"Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
-"and getting results instantly. Try it with sample text or your own content!"
+#~ msgid ""
+#~ "Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
+#~ "and getting results instantly. Try it with sample text or your own content!"
+#~ msgstr ""
+#~ "Save time and focus on what matters by pasting your text, adjusting the summary length,\n"
+#~ "and getting results instantly. Try it with sample text or your own content!"
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Input Text"
@@ -6381,8 +6191,10 @@ msgstr "Text"
 msgid "Preview"
 msgstr "Preview"
 
-#. placeholder {0}: inputWordCount
+#. 0: inputWordCount
+#. 0: format(stats.words)
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
+#: src/routes/apps/(app)/word-counter/+page.svelte
 msgid "{0} words"
 msgstr "{0} words"
 
@@ -6402,17 +6214,17 @@ msgstr "Summary Settings"
 msgid "Adjust how your summary is generated"
 msgstr "Adjust how your summary is generated"
 
-#. placeholder {0}: summaryRatioState
+#. 0: summaryRatioState
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Summary Length: {0}% of original"
 msgstr "Summary Length: {0}% of original"
 
-#. placeholder {0}: targetWordCount
+#. 0: targetWordCount
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Target: ~{0} words"
 msgstr "Target: ~{0} words"
 
-#. placeholder {0}: maxWordsState
+#. 0: maxWordsState
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Maximum Words: {0}"
 msgstr "Maximum Words: {0}"
@@ -6425,8 +6237,7 @@ msgstr "Generate Summary"
 msgid "Summary"
 msgstr "Summary"
 
-#. placeholder {0}: summaryWordCount
-#. placeholder {1}: Math.round( (summaryWordCount / Math.max(1, inputWordCount)) * 100 )
+#. 0: summaryWordCount; 1: Math.round( (summaryWordCount / Math.max(1, inputWordCount)) * 100 )
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "{0} words ({1}% of original)"
 msgstr "{0} words ({1}% of original)"
@@ -6452,13 +6263,12 @@ msgstr "Copy to Clipboard"
 msgid "<0/> How It Works"
 msgstr "<0/> How It Works"
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"This Text Summarizer uses an extractive summarization algorithm to identify and\n"
-"extract the most important sentences from your text."
-msgstr ""
-"This Text Summarizer uses an extractive summarization algorithm to identify and\n"
-"extract the most important sentences from your text."
+#~ msgid ""
+#~ "This Text Summarizer uses an extractive summarization algorithm to identify and\n"
+#~ "extract the most important sentences from your text."
+#~ msgstr ""
+#~ "This Text Summarizer uses an extractive summarization algorithm to identify and\n"
+#~ "extract the most important sentences from your text."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "The process works as follows:"
@@ -6480,15 +6290,14 @@ msgstr "The highest-scoring sentences are selected to form a coherent summary."
 msgid "The summary length is adjusted based on your settings."
 msgstr "The summary length is adjusted based on your settings."
 
-#: src/routes/apps/(app)/text-summarizer/+page.svelte
-msgid ""
-"Note: For best results, use well-structured text with clear paragraphs. This\n"
-"summarizer works best with informational or educational content rather than creative\n"
-"writing."
-msgstr ""
-"Note: For best results, use well-structured text with clear paragraphs. This\n"
-"summarizer works best with informational or educational content rather than creative\n"
-"writing."
+#~ msgid ""
+#~ "Note: For best results, use well-structured text with clear paragraphs. This\n"
+#~ "summarizer works best with informational or educational content rather than creative\n"
+#~ "writing."
+#~ msgstr ""
+#~ "Note: For best results, use well-structured text with clear paragraphs. This\n"
+#~ "summarizer works best with informational or educational content rather than creative\n"
+#~ "writing."
 
 #: src/routes/apps/(app)/text-summarizer/+page.svelte
 msgid "Reset Everything"
@@ -6601,8 +6410,7 @@ msgstr "To"
 msgid "Result"
 msgstr "Result"
 
-#. placeholder {0}: formattedInputValue
-#. placeholder {1}: formattedFromUnitLabel
+#. 0: formattedInputValue; 1: formattedFromUnitLabel
 #: src/routes/apps/(app)/unit-converter/+page.svelte
 msgid "{0} {1} equals"
 msgstr "{0} {1} equals"
@@ -6615,13 +6423,12 @@ msgstr "Converting..."
 msgid "Enter a value to see the conversion result"
 msgstr "Enter a value to see the conversion result"
 
-#: src/routes/apps/(app)/unit-converter/+page.svelte
-msgid ""
-"Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
-"energy, force, power, and pressure units."
-msgstr ""
-"Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
-"energy, force, power, and pressure units."
+#~ msgid ""
+#~ "Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
+#~ "energy, force, power, and pressure units."
+#~ msgstr ""
+#~ "Supports conversion between length, temperature, volume, mass, area, time, angle, data,\n"
+#~ "energy, force, power, and pressure units."
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "View and manage your saved passwords securely."
@@ -6639,13 +6446,12 @@ msgstr "Generate New Password"
 msgid "No Saved Passwords"
 msgstr "No Saved Passwords"
 
-#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
-msgid ""
-"Start generating secure passwords to keep track of them here. Your passwords are\n"
-"encrypted and stored safely."
-msgstr ""
-"Start generating secure passwords to keep track of them here. Your passwords are\n"
-"encrypted and stored safely."
+#~ msgid ""
+#~ "Start generating secure passwords to keep track of them here. Your passwords are\n"
+#~ "encrypted and stored safely."
+#~ msgstr ""
+#~ "Start generating secure passwords to keep track of them here. Your passwords are\n"
+#~ "encrypted and stored safely."
 
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "Create Your First Password"
@@ -6655,8 +6461,7 @@ msgstr "Create Your First Password"
 msgid "Your Password Vault"
 msgstr "Your Password Vault"
 
-#. placeholder {0}: passwords.length
-#. placeholder {1}: passwords.length === 1 ? 'password' : 'passwords'
+#. 0: passwords.length; 1: passwords.length === 1 ? 'password' \\: 'passwords'
 #: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
 msgid "{0} {1} stored securely"
 msgstr "{0} {1} stored securely"
@@ -6665,15 +6470,14 @@ msgstr "{0} {1} stored securely"
 msgid "Secure Storage"
 msgstr "Secure Storage"
 
-#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
-msgid ""
-"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
-"passwords at any time. For maximum security, consider using a dedicated password\n"
-"manager for sensitive accounts."
-msgstr ""
-"All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
-"passwords at any time. For maximum security, consider using a dedicated password\n"
-"manager for sensitive accounts."
+#~ msgid ""
+#~ "All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+#~ "passwords at any time. For maximum security, consider using a dedicated password\n"
+#~ "manager for sensitive accounts."
+#~ msgstr ""
+#~ "All passwords are encrypted and stored securely. You can view, copy, and delete your\n"
+#~ "passwords at any time. For maximum security, consider using a dedicated password\n"
+#~ "manager for sensitive accounts."
 
 #: src/routes/(auth)/login/+page.server.ts
 msgid "Invalid username"
@@ -6709,82 +6513,59 @@ msgstr "Development Mode"
 msgid "This app is currently under development and may have bugs or incomplete features."
 msgstr "This app is currently under development and may have bugs or incomplete features."
 
-#: src/routes/test-charts/+page.svelte
-msgid "LayerChart Test Page"
-msgstr "LayerChart Test Page"
+#~ msgid "LayerChart Test Page"
+#~ msgstr "LayerChart Test Page"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Testing charts with static mock data (no API calls)"
-msgstr "Testing charts with static mock data (no API calls)"
+#~ msgid "Testing charts with static mock data (no API calls)"
+#~ msgstr "Testing charts with static mock data (no API calls)"
 
-#: src/routes/test-charts/+page.svelte
-msgid "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
-msgstr "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
+#~ msgid "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
+#~ msgstr "This page uses static data from <0>src/lib/test-data/github-contribution-mock.ts</0> to test LayerChart components."
 
-#: src/routes/test-charts/+page.svelte
-msgid "Test 1: Monthly Contributions Bar Chart"
-msgstr "Test 1: Monthly Contributions Bar Chart"
+#~ msgid "Test 1: Monthly Contributions Bar Chart"
+#~ msgstr "Test 1: Monthly Contributions Bar Chart"
 
-#. placeholder {0}: monthlyData.length
-#: src/routes/test-charts/+page.svelte
-msgid "Testing Bars component with {0} months of data"
-msgstr "Testing Bars component with {0} months of data"
+#~ msgid "Testing Bars component with {0} months of data"
+#~ msgstr "Testing Bars component with {0} months of data"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Test 2: Contribution Calendar Heatmap"
-msgstr "Test 2: Contribution Calendar Heatmap"
+#~ msgid "Test 2: Contribution Calendar Heatmap"
+#~ msgstr "Test 2: Contribution Calendar Heatmap"
 
-#. placeholder {0}: calendarData.length
-#: src/routes/test-charts/+page.svelte
-msgid "Testing Calendar component with {0} days of data"
-msgstr "Testing Calendar component with {0} days of data"
+#~ msgid "Testing Calendar component with {0} days of data"
+#~ msgstr "Testing Calendar component with {0} days of data"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Test 3: Simplified Bar Chart"
-msgstr "Test 3: Simplified Bar Chart"
+#~ msgid "Test 3: Simplified Bar Chart"
+#~ msgstr "Test 3: Simplified Bar Chart"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Minimal configuration to isolate issues"
-msgstr "Minimal configuration to isolate issues"
+#~ msgid "Minimal configuration to isolate issues"
+#~ msgstr "Minimal configuration to isolate issues"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Debug Information"
-msgstr "Debug Information"
+#~ msgid "Debug Information"
+#~ msgstr "Debug Information"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Monthly Data Sample (first 3):"
-msgstr "Monthly Data Sample (first 3):"
+#~ msgid "Monthly Data Sample (first 3):"
+#~ msgstr "Monthly Data Sample (first 3):"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Calendar Data Sample (first 5):"
-msgstr "Calendar Data Sample (first 5):"
+#~ msgid "Calendar Data Sample (first 5):"
+#~ msgstr "Calendar Data Sample (first 5):"
 
-#: src/routes/test-charts/+page.svelte
-msgid "Data Structure:"
-msgstr "Data Structure:"
+#~ msgid "Data Structure:"
+#~ msgstr "Data Structure:"
 
-#. placeholder {0}: monthlyData.length
-#: src/routes/test-charts/+page.svelte
-msgid "Monthly Data: {0} items with date (Date) and contributionCount (number)"
-msgstr "Monthly Data: {0} items with date (Date) and contributionCount (number)"
+#~ msgid "Monthly Data: {0} items with date (Date) and contributionCount (number)"
+#~ msgstr "Monthly Data: {0} items with date (Date) and contributionCount (number)"
 
-#. placeholder {0}: calendarData.length
-#: src/routes/test-charts/+page.svelte
-msgid "Calendar Data: {0} items with date (Date), value (number), and color (string)"
-msgstr "Calendar Data: {0} items with date (Date), value (number), and color (string)"
+#~ msgid "Calendar Data: {0} items with date (Date), value (number), and color (string)"
+#~ msgstr "Calendar Data: {0} items with date (Date), value (number), and color (string)"
 
-#. placeholder {0}: calendarDataByYear.map(([year]) => year).join(', ')
-#: src/routes/test-charts/+page.svelte
-msgid "Calendar Data Years: {0}"
-msgstr "Calendar Data Years: {0}"
+#~ msgid "Calendar Data Years: {0}"
+#~ msgstr "Calendar Data Years: {0}"
 
-#: src/routes/test-icon-selector/+page.svelte
-msgid "Icon Selector Demo"
-msgstr "Icon Selector Demo"
+#~ msgid "Icon Selector Demo"
+#~ msgstr "Icon Selector Demo"
 
-#: src/routes/test-icon-selector/+page.svelte
-msgid "Icon Selector Card Demo"
-msgstr "Icon Selector Card Demo"
+#~ msgid "Icon Selector Card Demo"
+#~ msgstr "Icon Selector Card Demo"
 
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Contribution Calendar"
@@ -6828,7 +6609,7 @@ msgstr "Average per day"
 msgid "Most active in"
 msgstr "Most active in"
 
-#. placeholder {0}: computed.stats?.restrictedContributionsCount ?? 0
+#. 0: computed.stats?.restrictedContributionsCount ?? 0
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/InsightsTab.svelte
 msgid "+ {0} private contributions"
 msgstr "+ {0} private contributions"
@@ -7026,7 +6807,7 @@ msgstr "Cost"
 msgid "Add New Purchase"
 msgstr "Add New Purchase"
 
-#. placeholder {0}: currentItem.name
+#. 0: currentItem.name
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Record a new purchase for {0}."
 msgstr "Record a new purchase for {0}."
@@ -7074,8 +6855,8 @@ msgstr "Purchase saved (saved locally)"
 msgid "Purchase updated (saved locally)"
 msgstr "Purchase updated (saved locally)"
 
-#. placeholder {0}: currentItem.defaultCurrency || 'USD'
-#. placeholder {0}: currentItem.defaultCurrency || 'USD'
+#. 0: currentItem.defaultCurrency || 'USD'
+#. 0: currentItem.defaultCurrency || 'USD'
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 #: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
 msgid "Cost ({0})"
@@ -7173,14 +6954,8 @@ msgstr "<0/> Updated"
 msgid "Sign out of your Svelte Mini Apps account"
 msgstr "Sign out of your Svelte Mini Apps account"
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
-#: src/routes/apps/(app)/scenario-tracker/stores.svelte.ts
-msgid "TBD"
-msgstr "TBD"
+#~ msgid "TBD"
+#~ msgstr "TBD"
 
 #: src/lib/index.svelte.ts
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
@@ -7283,7 +7058,7 @@ msgstr "Brief description of this option"
 msgid "Color"
 msgstr "Color"
 
-#. placeholder {0}: color.label
+#. 0: color.label
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Select {0} color"
 msgstr "Select {0} color"
@@ -7297,13 +7072,12 @@ msgstr "Allocation (%)"
 msgid "Reset All Data?"
 msgstr "Reset All Data?"
 
-#: src/routes/apps/(app)/scenario-tracker/+page.svelte
-msgid ""
-"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
-"default options will be restored. This action cannot be undone."
-msgstr ""
-"This will permanently delete all your options, activities, timeline entries, and risks. The\n"
-"default options will be restored. This action cannot be undone."
+#~ msgid ""
+#~ "This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+#~ "default options will be restored. This action cannot be undone."
+#~ msgstr ""
+#~ "This will permanently delete all your options, activities, timeline entries, and risks. The\n"
+#~ "default options will be restored. This action cannot be undone."
 
 #: src/routes/apps/(app)/scenario-tracker/+page.svelte
 msgid "Yes, Reset Everything"
@@ -7313,17 +7087,16 @@ msgstr "Yes, Reset Everything"
 msgid "Time Remaining"
 msgstr "Time Remaining"
 
-#. placeholder {0}: stats.remainingYears
-#. placeholder {0}: durationYears
-#. placeholder {0}: stats.remainingYears
-#. placeholder {0}: durationYears
+#. 0: Math.floor(days / 365)
+#. 0: stats.remainingYears
+#. 0: durationYears
+#: src/routes/(auth)/profile/UserProfileCard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
 msgid "{0} years"
 msgstr "{0} years"
 
-#. placeholder {0}: stats.remainingDays.toLocaleString()
-#. placeholder {0}: stats.remainingDays.toLocaleString()
+#. 0: stats.remainingDays.toLocaleString()
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} days left"
 msgstr "{0} days left"
@@ -7332,12 +7105,9 @@ msgstr "{0} days left"
 msgid "Total Time Invested"
 msgstr "Total Time Invested"
 
-#. placeholder {0}: stats.totalTimeSpent
-#. placeholder {0}: activity.timeSpent
-#. placeholder {0}: option.totalTimeSpent
-#. placeholder {0}: stats.totalTimeSpent
-#. placeholder {0}: activity.timeSpent
-#. placeholder {0}: option.totalTimeSpent
+#. 0: stats.totalTimeSpent
+#. 0: option.totalTimeSpent
+#. 0: activity.timeSpent
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
@@ -7356,8 +7126,7 @@ msgstr "Average Progress"
 msgid "Active Risks"
 msgstr "Active Risks"
 
-#. placeholder {0}: highRisksCount
-#. placeholder {0}: highRisksCount
+#. 0: highRisksCount
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} high/critical severity"
 msgstr "{0} high/critical severity"
@@ -7370,16 +7139,13 @@ msgstr "<0/> Options Overview"
 msgid "Track progress across your scenario options"
 msgstr "Track progress across your scenario options"
 
-#. placeholder {0}: option.totalTimeSpent
-#. placeholder {0}: option.totalTimeSpent
+#. 0: option.totalTimeSpent
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "{0} hrs invested"
 msgstr "{0} hrs invested"
 
-#. placeholder {0}: option.estimatedTimeToCompletion
-#. placeholder {0}: option.estimatedTimeToCompletion
-#. placeholder {0}: option.estimatedTimeToCompletion
-#. placeholder {0}: option.estimatedTimeToCompletion
+#. 0: option.estimatedTimeToCompletion
+#. 0: option.estimatedTimeToCompletion
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 #: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
 msgid "Est. completion: {0}"
@@ -7397,20 +7163,17 @@ msgstr "<0/> Time Allocation"
 msgid "How you're dividing your effort"
 msgstr "How you're dividing your effort"
 
-#. placeholder {0}: 100 - totalAllocation
-#. placeholder {0}: 100 - totalAllocation
+#. 0: 100 - totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "({0}% unallocated)"
 msgstr "({0}% unallocated)"
 
-#. placeholder {0}: totalAllocation - 100
-#. placeholder {0}: totalAllocation - 100
+#. 0: totalAllocation - 100
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "(over-allocated by {0}%)"
 msgstr "(over-allocated by {0}%)"
 
-#. placeholder {0}: totalAllocation
-#. placeholder {0}: totalAllocation
+#. 0: totalAllocation
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Total: {0}% <0/>"
 msgstr "Total: {0}% <0/>"
@@ -7423,8 +7186,7 @@ msgstr "Add options to see allocation chart"
 msgid "Deadline"
 msgstr "Deadline"
 
-#. placeholder {0}: formatDate(endDate.toISOString())
-#. placeholder {0}: formatDate(endDate.toISOString())
+#. 0: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Your planning window ends on {0}"
 msgstr "Your planning window ends on {0}"
@@ -7433,14 +7195,12 @@ msgstr "Your planning window ends on {0}"
 msgid "Progress through planning period"
 msgstr "Progress through planning period"
 
-#. placeholder {0}: formatDate(startDate.toISOString())
-#. placeholder {0}: formatDate(startDate.toISOString())
+#. 0: formatDate(startDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Started: {0}"
 msgstr "Started: {0}"
 
-#. placeholder {0}: formatDate(endDate.toISOString())
-#. placeholder {0}: formatDate(endDate.toISOString())
+#. 0: formatDate(endDate.toISOString())
 #: src/routes/apps/(app)/scenario-tracker/components/Dashboard.svelte
 msgid "Deadline: {0}"
 msgstr "Deadline: {0}"
@@ -7945,8 +7705,7 @@ msgstr "Start your streak today!"
 msgid "<0/> Total Usage"
 msgstr "<0/> Total Usage"
 
-#. placeholder {0}: stats.uniqueAppsUsed
-#. placeholder {0}: stats.uniqueAppsUsed
+#. 0: stats.uniqueAppsUsed
 #: src/routes/(auth)/profile/+page.svelte
 msgid "{0} unique apps explored"
 msgstr "{0} unique apps explored"
@@ -7955,22 +7714,17 @@ msgstr "{0} unique apps explored"
 msgid "<0/> Level"
 msgstr "<0/> Level"
 
-#. placeholder {0}: stats.points
-#. placeholder {0}: stats.points
+#. 0: stats.points
 #: src/routes/(auth)/profile/+page.svelte
 msgid "{0} XP"
 msgstr "{0} XP"
 
-#. placeholder {0}: pointsToNextLevel
-#. placeholder {0}: pointsToNextLevel
+#. 0: pointsToNextLevel
 #: src/routes/(auth)/profile/+page.svelte
 msgid "{0} more uses to level up"
 msgstr "{0} more uses to level up"
 
-#. placeholder {0}: unlockedCount
-#. placeholder {1}: achievements.length
-#. placeholder {0}: unlockedCount
-#. placeholder {1}: achievements.length
+#. 0: unlockedCount; 1: achievements.length
 #: src/routes/(auth)/profile/+page.svelte
 msgid "{0} of {1} unlocked"
 msgstr "{0} of {1} unlocked"
@@ -8083,8 +7837,7 @@ msgstr "Session"
 msgid "<0/> Current"
 msgstr "<0/> Current"
 
-#. placeholder {0}: formatRelativeTime(session.createdAt)
-#. placeholder {0}: formatRelativeTime(session.createdAt)
+#. 0: formatRelativeTime(session.createdAt)
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "<0/> Created {0}"
 msgstr "<0/> Created {0}"
@@ -8123,13 +7876,12 @@ msgstr "Manage your active sessions across devices."
 msgid "Loading sessions..."
 msgstr "Loading sessions..."
 
-#. placeholder {0}: sessions.length
-#. placeholder {1}: sessions.length !== 1 ? 's' : ''
+#. 0: sessions.length; 1: sessions.length !== 1 ? 's' \\: ''
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "{0} active session{1}"
 msgstr "{0} active session{1}"
 
-#. placeholder {0}: formatExpiryDate(session.expiresAt)
+#. 0: formatExpiryDate(session.expiresAt)
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "Expires {0}"
 msgstr "Expires {0}"
@@ -8178,10 +7930,8 @@ msgstr "All Activity"
 msgid "Complete activity history"
 msgstr "Complete activity history"
 
-#. placeholder {0}: formatActivityDate(activity.date)
-#. placeholder {1}: formatTime(activity.date)
-#. placeholder {0}: formatActivityDate(activity.date)
-#. placeholder {1}: formatTime(activity.date)
+#. 0: formatActivityDate(activity.date); 1: formatTime(activity.date)
+#. 0: formatActivityDate(activity.date); 1: formatTime(activity.date)
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 #: src/routes/(auth)/profile/RecentActivityCard.svelte
 msgid "{0} at {1}"
@@ -8351,7 +8101,7 @@ msgstr "<0/> Activity History"
 msgid "Complete log of your app usage and interactions"
 msgstr "Complete log of your app usage and interactions"
 
-#. placeholder {0}: totalActivities
+#. 0: totalActivities
 #: src/routes/(auth)/profile/activity/+page.svelte
 msgid "<0/> {0} total"
 msgstr "<0/> {0} total"
@@ -8419,13 +8169,12 @@ msgstr "Pronunciations:"
 msgid "Play"
 msgstr "Play"
 
-#. placeholder {0}: meaning.definitions.length
-#. placeholder {1}: meaning.definitions.length > 1 ? 's' : ''
+#. 0: meaning.definitions.length; 1: meaning.definitions.length > 1 ? 's' \\: ''
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "{0} definition{1}"
 msgstr "{0} definition{1}"
 
-#. placeholder {0}: meaning.definitions.length - 5
+#. 0: meaning.definitions.length - 5
 #: src/routes/apps/(app)/dictionary-app/+page.svelte
 msgid "+{0} more definitions"
 msgstr "+{0} more definitions"
@@ -8450,33 +8199,27 @@ msgstr "Start exploring words"
 msgid "Enter any English word above to discover its meanings, pronunciations, and more."
 msgstr "Enter any English word above to discover its meanings, pronunciations, and more."
 
-#: src/routes/(auth)/profile/sessions/+page.svelte
-msgid "CONFIRM"
-msgstr "CONFIRM"
+#~ msgid "CONFIRM"
+#~ msgstr "CONFIRM"
 
-#: src/routes/(auth)/profile/sessions/+page.svelte
-msgid ""
-"This will log out the device and end its session. The user will need to log in again on that\n"
-"device."
-msgstr ""
-"This will log out the device and end its session. The user will need to log in again on that\n"
-"device."
+#~ msgid ""
+#~ "This will log out the device and end its session. The user will need to log in again on that\n"
+#~ "device."
+#~ msgstr ""
+#~ "This will log out the device and end its session. The user will need to log in again on that\n"
+#~ "device."
 
-#. placeholder {0}: otherSessionsCount
-#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
-#. placeholder {0}: otherSessionsCount
-#. placeholder {1}: otherSessionsCount !== 1 ? 's' : ''
+#. 0: otherSessionsCount; 1: otherSessionsCount !== 1 ? 's' \\: ''
 #: src/routes/(auth)/profile/sessions/+page.svelte
 msgid "This will log out all other devices ({0} session{1}). Your current session will remain active."
 msgstr "This will log out all other devices ({0} session{1}). Your current session will remain active."
 
-#: src/routes/(auth)/profile/AccountSettingsList.svelte
-msgid ""
-"Permanently delete your account and all associated data. This action cannot be\n"
-"undone."
-msgstr ""
-"Permanently delete your account and all associated data. This action cannot be\n"
-"undone."
+#~ msgid ""
+#~ "Permanently delete your account and all associated data. This action cannot be\n"
+#~ "undone."
+#~ msgstr ""
+#~ "Permanently delete your account and all associated data. This action cannot be\n"
+#~ "undone."
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "View Saved Passwords"
@@ -8490,7 +8233,7 @@ msgstr "Generate and save your first password above"
 msgid "Note Details"
 msgstr "Note Details"
 
-#. placeholder {0}: new Date(note.updatedAt).toLocaleString()
+#. 0: new Date(note.updatedAt).toLocaleString()
 #: src/routes/apps/(app)/note-taker/components/ViewNoteDialog.svelte
 msgid "Last updated: {0}"
 msgstr "Last updated: {0}"
@@ -8522,10 +8265,6 @@ msgid "Sec"
 msgstr "Sec"
 
 #: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
 msgid "PM"
 msgstr "PM"
 
@@ -8533,9 +8272,6 @@ msgstr "PM"
 msgid "Carbon"
 msgstr "Carbon"
 
-#: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
-#: src/lib/components/countdown/AddTimerModal.svelte
 #: src/lib/components/countdown/AddTimerModal.svelte
 msgid "AM"
 msgstr "AM"
@@ -8584,7 +8320,7 @@ msgstr "Time is ticking. What are you waiting for?"
 msgid "Create one now"
 msgstr "Create one now"
 
-#. placeholder {0}: token
+#. 0: token
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/+page.server.ts
 msgid "Bearer {0}"
 msgstr "Bearer {0}"
@@ -8650,23 +8386,12 @@ msgstr "Subnet Calculator"
 msgid "Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly."
 msgstr "Real-time IPv4 and IPv6 subnet calculator with CIDR notation. Calculate network addresses, subnet masks, broadcast addresses, and usable IP ranges instantly."
 
-#. placeholder {0}: label
+#. 0: label
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "Copied: {0}"
 msgstr "Copied: {0}"
 
-#. placeholder {0}: info.ipAddress
-#. placeholder {1}: info.networkAddress
-#. placeholder {2}: info.cidrNotation
-#. placeholder {3}: info.subnetMask
-#. placeholder {4}: info.wildcardMask
-#. placeholder {5}: info.binarySubnetMask
-#. placeholder {6}: info.firstUsableIp
-#. placeholder {7}: info.lastUsableIp
-#. placeholder {8}: info.broadcastAddress
-#. placeholder {9}: info.totalHosts
-#. placeholder {10}: info.usableHosts
-#. placeholder {11}: info.ipClass
+#. 0: info.ipAddress; 1: info.networkAddress; 2: info.cidrNotation; 3: info.subnetMask; 4: info.wildcardMask; 5: info.binarySubnetMask; 6: info.firstUsableIp; 7: info.lastUsableIp; 8: info.broadcastAddress; 9: info.totalHosts; 10: info.usableHosts; 11: info.ipClass
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid ""
 "Subnet Calculator Results - IPv4\n"
@@ -8707,11 +8432,7 @@ msgstr ""
 "\n"
 "IP Class: {11}"
 
-#. placeholder {0}: info.ipAddress
-#. placeholder {1}: info.networkAddress
-#. placeholder {2}: info.cidrNotation
-#. placeholder {3}: info.totalAddresses
-#. placeholder {4}: info.addressScope
+#. 0: info.ipAddress; 1: info.networkAddress; 2: info.cidrNotation; 3: info.totalAddresses; 4: info.addressScope
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid ""
 "Subnet Calculator Results - IPv6\n"
@@ -8941,15 +8662,12 @@ msgstr "<0/> Binary Subnet Mask"
 msgid "Network Bits (1) | Host Bits (0)"
 msgstr "Network Bits (1) | Host Bits (0)"
 
-#. placeholder {0}: 32 - (info.totalHosts === 1 ? 0 : Math.log2(info.totalHosts))
-#. placeholder {1}: Math.log2(info.totalHosts)
-#: src/routes/apps/(app)/subnet-calculator/+page.svelte
-msgid ""
-"First {0} bits are network\n"
-"portion, remaining {1} bits are host portion."
-msgstr ""
-"First {0} bits are network\n"
-"portion, remaining {1} bits are host portion."
+#~ msgid ""
+#~ "First {0} bits are network\n"
+#~ "portion, remaining {1} bits are host portion."
+#~ msgstr ""
+#~ "First {0} bits are network\n"
+#~ "portion, remaining {1} bits are host portion."
 
 #: src/routes/apps/(app)/subnet-calculator/+page.svelte
 msgid "<0/> Binary Representation"
@@ -8968,7 +8686,7 @@ msgstr "Total Budget"
 msgid "Remaining"
 msgstr "Remaining"
 
-#. placeholder {0}: budget.name
+#. 0: budget.name
 #: src/routes/apps/(app)/budget-tracker/+page.svelte
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Are you sure you want to delete \"{0}\"?"
@@ -8990,13 +8708,11 @@ msgstr "<0/> View Details"
 #: src/lib/components/budget-tracker/BudgetCard.svelte
 #: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
 #: src/lib/components/budget-tracker/Charts/ComparisonChart.svelte
+#: src/lib/components/budget-tracker/Charts/TrendChart.svelte
 msgid "Spent"
 msgstr "Spent"
 
-#. placeholder {0}: budget.expenses.length
-#. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
-#. placeholder {0}: budget.expenses.length
-#. placeholder {1}: budget.expenses.length !== 1 ? 's' : ''
+#. 0: budget.expenses.length; 1: budget.expenses.length !== 1 ? 's' \\: ''
 #: src/lib/components/budget-tracker/BudgetCard.svelte
 msgid "{0} expense{1}"
 msgstr "{0} expense{1}"
@@ -9046,8 +8762,7 @@ msgstr "No expense data yet"
 msgid "No expense data for this period"
 msgstr "No expense data for this period"
 
-#. placeholder {0}: budget.expenses.length
-#. placeholder {0}: budget.expenses.length
+#. 0: budget.expenses.length
 #: src/lib/components/budget-tracker/ExpensesSection.svelte
 msgid "Expenses ({0})"
 msgstr "Expenses ({0})"
@@ -9080,7 +8795,7 @@ msgstr "Enter the expense details below. Click save when you're done."
 msgid "Budget Not Found | Budget Tracker"
 msgstr "Budget Not Found | Budget Tracker"
 
-#. placeholder {0}: budget.name
+#. 0: budget.name
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Review {0}, compare spending, and manage expenses in the Budget Tracker."
 msgstr "Review {0}, compare spending, and manage expenses in the Budget Tracker."
@@ -9133,13 +8848,12 @@ msgstr "Need to start over?"
 msgid "Reset saved pair"
 msgstr "Reset saved pair"
 
-#: src/routes/apps/(app)/currency-converter/+page.svelte
-msgid ""
-"Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
-"rate accuracy."
-msgstr ""
-"Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
-"rate accuracy."
+#~ msgid ""
+#~ "Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
+#~ "rate accuracy."
+#~ msgstr ""
+#~ "Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure\n"
+#~ "rate accuracy."
 
 #: src/routes/apps/(app)/currency-converter/+page.svelte
 msgid "Cached rate"
@@ -9229,8 +8943,8 @@ msgstr "Approaching limit"
 msgid "On track"
 msgstr "On track"
 
-#. placeholder {0}: budget.currency
-#. placeholder {0}: budget.currency
+#. 0: budget.currency
+#. 0: budget.currency
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "<0/> {0} budget"
@@ -9259,8 +8973,8 @@ msgstr "Most recent expense logged"
 msgid "<0/> Coverage"
 msgstr "<0/> Coverage"
 
-#. placeholder {0}: percentUsed.toFixed(0)
-#. placeholder {0}: percentUsed.toFixed(0)
+#. 0: percentUsed.toFixed(0)
+#. 0: percentUsed.toFixed(0)
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "{0}% of this budget is already used"
@@ -9316,19 +9030,17 @@ msgstr "Largest item"
 msgid "Total spent"
 msgstr "Total spent"
 
-#. placeholder {0}: hiddenItemCount
-#. placeholder {0}: hiddenItemCount
+#. 0: hiddenItemCount
 #: src/lib/components/budget-tracker/Charts/CategoryChart.svelte
 msgid "Grouped {0} smaller items into Other."
 msgstr "Grouped {0} smaller items into Other."
 
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid ""
-"Review the budget at a glance, inspect where the money is going, and manage expenses\n"
-"without switching context."
-msgstr ""
-"Review the budget at a glance, inspect where the money is going, and manage expenses\n"
-"without switching context."
+#~ msgid ""
+#~ "Review the budget at a glance, inspect where the money is going, and manage expenses\n"
+#~ "without switching context."
+#~ msgstr ""
+#~ "Review the budget at a glance, inspect where the money is going, and manage expenses\n"
+#~ "without switching context."
 
 #: src/routes/apps/AppFilters.svelte
 msgid "Open app search"
@@ -9362,8 +9074,7 @@ msgstr "Available balance"
 msgid "Active Base"
 msgstr "Active Base"
 
-#. placeholder {0}: budget.expenses.length
-#. placeholder {0}: budget.expenses.length
+#. 0: budget.expenses.length
 #: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 msgid "{0} expenses"
 msgstr "{0} expenses"
@@ -9380,14 +9091,12 @@ msgstr "Near Limit"
 msgid "On Track"
 msgstr "On Track"
 
-#. placeholder {0}: percentUsed.toFixed(1)
-#. placeholder {0}: percentUsed.toFixed(1)
+#. 0: percentUsed.toFixed(1)
 #: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 msgid "{0}% used"
 msgstr "{0}% used"
 
-#. placeholder {0}: formatNumber(Math.abs(remaining))
-#. placeholder {0}: formatNumber(Math.abs(remaining))
+#. 0: formatNumber(Math.abs(remaining))
 #: src/lib/components/budget-tracker/QuickStatsGrid.svelte
 msgid "Exceeded by {0}"
 msgstr "Exceeded by {0}"
@@ -9409,7 +9118,6 @@ msgstr "Toggle this menu"
 msgid "Alt"
 msgstr "Alt"
 
-#: src/routes/apps/(app)/+layout.svelte
 #: src/routes/apps/(app)/+layout.svelte
 msgid "D"
 msgstr "D"
@@ -9483,13 +9191,12 @@ msgstr "Sign in to create a shareable budget link."
 msgid "Back up this budget to your account before sharing it."
 msgstr "Back up this budget to your account before sharing it."
 
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid ""
-"Sharing only works for budgets that exist on the server, so the public page stays in\n"
-"sync."
-msgstr ""
-"Sharing only works for budgets that exist on the server, so the public page stays in\n"
-"sync."
+#~ msgid ""
+#~ "Sharing only works for budgets that exist on the server, so the public page stays in\n"
+#~ "sync."
+#~ msgstr ""
+#~ "Sharing only works for budgets that exist on the server, so the public page stays in\n"
+#~ "sync."
 
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "Anyone with the link can view"
@@ -9570,7 +9277,7 @@ msgstr "Average"
 msgid "Peak day"
 msgstr "Peak day"
 
-#. placeholder {0}: formatNumber(latestSpend)
+#. 0: formatNumber(latestSpend)
 #: src/lib/components/budget-tracker/Charts/TrendChart.svelte
 msgid "Latest interval: {0}"
 msgstr "Latest interval: {0}"
@@ -9579,30 +9286,31 @@ msgstr "Latest interval: {0}"
 msgid "Spend clarity without the clutter"
 msgstr "Spend clarity without the clutter"
 
-#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
-msgid ""
-"Start with the balance view to see how close the budget is to its cap, then read the\n"
-"trend chart to spot whether the current pace is accelerating or settling."
-msgstr ""
-"Start with the balance view to see how close the budget is to its cap, then read the\n"
-"trend chart to spot whether the current pace is accelerating or settling."
+#~ msgid ""
+#~ "Start with the balance view to see how close the budget is to its cap, then read the\n"
+#~ "trend chart to spot whether the current pace is accelerating or settling."
+#~ msgstr ""
+#~ "Start with the balance view to see how close the budget is to its cap, then read the\n"
+#~ "trend chart to spot whether the current pace is accelerating or settling."
 
-#. placeholder {0}: expenseCount
+#. 0: expenseCount
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "{0} logged"
 msgstr "{0} logged"
 
-#. placeholder {0}: formatNumber(totalSpent)
+#. 0: formatNumber(totalSpent)
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "{0} spent"
 msgstr "{0} spent"
 
-#. placeholder {0}: formatNumber(remaining)
+#. 0: formatNumber(remaining)
+#. 0: format(remaining)
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/word-counter/+page.svelte
 msgid "{0} left"
 msgstr "{0} left"
 
-#. placeholder {0}: budget.name
+#. 0: budget.name
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "View a shared read-only budget for {0} in Svelte Mini Apps."
 msgstr "View a shared read-only budget for {0} in Svelte Mini Apps."
@@ -9615,13 +9323,12 @@ msgstr "<0/> Back to Budget Tracker"
 msgid "<0/> Read-only link"
 msgstr "<0/> Read-only link"
 
-#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
-msgid ""
-"This shared budget is view only. You can review spend, trends, and logged expenses, but\n"
-"editing stays with the owner."
-msgstr ""
-"This shared budget is view only. You can review spend, trends, and logged expenses, but\n"
-"editing stays with the owner."
+#~ msgid ""
+#~ "This shared budget is view only. You can review spend, trends, and logged expenses, but\n"
+#~ "editing stays with the owner."
+#~ msgstr ""
+#~ "This shared budget is view only. You can review spend, trends, and logged expenses, but\n"
+#~ "editing stays with the owner."
 
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "<0/> Budget amount"
@@ -9631,13 +9338,12 @@ msgstr "<0/> Budget amount"
 msgid "Original allocation"
 msgstr "Original allocation"
 
-#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
-msgid ""
-"Shared links are view only. No edits, deletes, or new expenses can be made from this\n"
-"page."
-msgstr ""
-"Shared links are view only. No edits, deletes, or new expenses can be made from this\n"
-"page."
+#~ msgid ""
+#~ "Shared links are view only. No edits, deletes, or new expenses can be made from this\n"
+#~ "page."
+#~ msgstr ""
+#~ "Shared links are view only. No edits, deletes, or new expenses can be made from this\n"
+#~ "page."
 
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Expense log"
@@ -9659,7 +9365,7 @@ msgstr "No expenses have been logged yet."
 msgid "No budgets to back up"
 msgstr "No budgets to back up"
 
-#. placeholder {0}: lastBackedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+#. 0: lastBackedAt.toLocaleTimeString([], { hour\\: '2-digit', minute\\: '2-digit' })
 #: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
 msgid "<0/> Backed up {0}"
 msgstr "<0/> Backed up {0}"
@@ -9787,17 +9493,17 @@ msgstr "<0/> Create your own FlashText"
 msgid "Expires in <0/>"
 msgstr "Expires in <0/>"
 
-#. placeholder {0}: charCount
+#. 0: charCount
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} chars"
 msgstr "{0} chars"
 
-#. placeholder {0}: lineCount
+#. 0: lineCount
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} lines"
 msgstr "{0} lines"
 
-#. placeholder {0}: new Date(currentFlashText.createdAt).toLocaleString()
+#. 0: new Date(currentFlashText.createdAt).toLocaleString()
 #: src/routes/f/[slug]/+page.svelte
 msgid "Created {0} · <0>Create your own</0>"
 msgstr "Created {0} · <0>Create your own</0>"
@@ -9894,18 +9600,17 @@ msgstr "Attach Files"
 msgid "File is empty"
 msgstr "File is empty"
 
-#. placeholder {0}: formatFileSize(maxFileSize)
-#. placeholder {0}: formatFileSize(MAX_FILE_SIZE)
+#. 0: formatFileSize(maxFileSize)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Exceeds {0} limit"
 msgstr "Exceeds {0} limit"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Upload failed"
 msgstr "Upload failed"
 
-#. placeholder {0}: xhr.status
-#. placeholder {0}: xhr.status
+#. 0: xhr.status
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Upload failed ({0})"
 msgstr "Upload failed ({0})"
@@ -9918,15 +9623,14 @@ msgstr "Network error during upload"
 msgid "Upload cancelled"
 msgstr "Upload cancelled"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "PUT"
-msgstr "PUT"
+#~ msgid "PUT"
+#~ msgstr "PUT"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Content-Type"
 msgstr "Content-Type"
 
-#. placeholder {0}: currentFiles.length
+#. 0: currentFiles.length
 #: src/routes/f/[slug]/+page.svelte
 msgid "Attached Files ({0})"
 msgstr "Attached Files ({0})"
@@ -9935,7 +9639,7 @@ msgstr "Attached Files ({0})"
 msgid "Files expire together with this flash text. Downloads are tracked."
 msgstr "Files expire together with this flash text. Downloads are tracked."
 
-#. placeholder {0}: file.downloadCount
+#. 0: file.downloadCount
 #: src/routes/f/[slug]/+page.svelte
 msgid "{0} downloads"
 msgstr "{0} downloads"
@@ -9948,13 +9652,12 @@ msgstr "<0/> Download"
 msgid "Your Text <0>(optional — leave blank for file-only)</0>"
 msgstr "Your Text <0>(optional — leave blank for file-only)</0>"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid ""
-"Paste your text below, drop files, or both. A temporary link will be generated with\n"
-"everything bundled together."
-msgstr ""
-"Paste your text below, drop files, or both. A temporary link will be generated with\n"
-"everything bundled together."
+#~ msgid ""
+#~ "Paste your text below, drop files, or both. A temporary link will be generated with\n"
+#~ "everything bundled together."
+#~ msgstr ""
+#~ "Paste your text below, drop files, or both. A temporary link will be generated with\n"
+#~ "everything bundled together."
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Paste your text here, or leave blank to share files only..."
@@ -9971,8 +9674,7 @@ msgstr "Drop files here or click to browse"
 #~ msgid "Up to {0} per file"
 #~ msgstr "Up to {0} per file"
 
-#. placeholder {0}: queuedFiles.length
-#. placeholder {1}: queuedFiles.length === 1 ? 'file' : 'files'
+#. 0: queuedFiles.length; 1: queuedFiles.length === 1 ? 'file' \\: 'files'
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "{0} {1} queued"
 msgstr "{0} {1} queued"
@@ -9981,7 +9683,7 @@ msgstr "{0} {1} queued"
 msgid "Uploaded"
 msgstr "Uploaded"
 
-#. placeholder {0}: qfile.file.name
+#. 0: qfile.file.name
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Remove {0}"
 msgstr "Remove {0}"
@@ -9994,7 +9696,7 @@ msgstr "Add text, files, or both — at least one is needed"
 msgid "Share this link — it expires in <0/>"
 msgstr "Share this link — it expires in <0/>"
 
-#. placeholder {0}: queuedFiles.some( (q) => q.status === 'uploading' || q.status === 'queued' ) ? 'uploading...' : queuedFiles.every((q) => q.status === 'done') ? 'uploaded' : ''
+#. 0: queuedFiles.some( (q) => q.status === 'uploading' || q.status === 'queued' ) ? 'uploading...' \\: queuedFiles.every((q) => q.status === 'done') ? 'uploaded' \\: ''
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Files {0}"
 msgstr "Files {0}"
@@ -10213,17 +9915,15 @@ msgstr "Free, offline, and open source. You can also <0>read the code on GitHub<
 msgid "From tracking a budget to sharing an expiring note — pick a tool, get to work in one click."
 msgstr "From tracking a budget to sharing an expiring note — pick a tool, get to work in one click."
 
-#: src/lib/components/home/Hero.svelte
-msgid ""
-"Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
-"click them. Free, open source, and your data stays in your browser."
-msgstr ""
-"Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
-"click them. Free, open source, and your data stays in your browser."
+#~ msgid ""
+#~ "Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
+#~ "click them. Free, open source, and your data stays in your browser."
+#~ msgstr ""
+#~ "Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you\n"
+#~ "click them. Free, open source, and your data stays in your browser."
 
-#: src/routes/apps/(app)/random-password-generator/+page.svelte
-msgid "Saved Passwords <0>({0})</0>"
-msgstr "Saved Passwords <0>({0})</0>"
+#~ msgid "Saved Passwords <0>({0})</0>"
+#~ msgstr "Saved Passwords <0>({0})</0>"
 
 #: src/routes/apps/(app)/random-password-generator/+page.svelte
 msgid "Failed to load saved passwords"
@@ -10250,32 +9950,29 @@ msgstr "<0/> Back to FlashText"
 msgid "Sign in required"
 msgstr "Sign in required"
 
-#: src/routes/apps/(app)/flash-text/history/+page.svelte
-msgid ""
-"Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
-"appear here."
-msgstr ""
-"Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
-"appear here."
+#~ msgid ""
+#~ "Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
+#~ "appear here."
+#~ msgstr ""
+#~ "Please sign in to view your FlashText history. Your shared links and uploaded files will\n"
+#~ "appear here."
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "No history yet"
 msgstr "No history yet"
 
-#: src/routes/apps/(app)/flash-text/history/+page.svelte
-msgid ""
-"Create your first FlashText or upload a file — your shared links and files will appear\n"
-"here."
-msgstr ""
-"Create your first FlashText or upload a file — your shared links and files will appear\n"
-"here."
+#~ msgid ""
+#~ "Create your first FlashText or upload a file — your shared links and files will appear\n"
+#~ "here."
+#~ msgstr ""
+#~ "Create your first FlashText or upload a file — your shared links and files will appear\n"
+#~ "here."
 
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "<0/> Create a FlashText"
 msgstr "<0/> Create a FlashText"
 
-#. placeholder {0}: history.length
-#. placeholder {1}: history.length === 1 ? 'entry' : 'entries'
+#. 0: history.length; 1: history.length === 1 ? 'entry' \\: 'entries'
 #: src/routes/apps/(app)/flash-text/history/+page.svelte
 msgid "Showing {0} {1}"
 msgstr "Showing {0} {1}"
@@ -10300,13 +9997,12 @@ msgstr "<0/> Generate Password"
 msgid "Open the full app <0/>"
 msgstr "Open the full app <0/>"
 
-#: src/lib/components/home/LivePreview.svelte
-msgid ""
-"No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
-"full controls, full color-coded display."
-msgstr ""
-"No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
-"full controls, full color-coded display."
+#~ msgid ""
+#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
+#~ "full controls, full color-coded display."
+#~ msgstr ""
+#~ "No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter,\n"
+#~ "full controls, full color-coded display."
 
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "Save to my account"
@@ -10320,7 +10016,7 @@ msgstr "Copy password to clipboard"
 msgid "<0/> Copy password"
 msgstr "<0/> Copy password"
 
-#. placeholder {0}: Math.round(passwordStrength)
+#. 0: Math.round(passwordStrength)
 #: src/lib/components/password/PasswordGenerator.svelte
 msgid "{0}% strong"
 msgstr "{0}% strong"
@@ -10370,7 +10066,7 @@ msgstr "Updated today"
 msgid "Updated yesterday"
 msgstr "Updated yesterday"
 
-#. placeholder {0}: days
+#. 0: days
 #: src/lib/components/home/GitHubStats.svelte
 msgid "Updated {0} days ago"
 msgstr "Updated {0} days ago"
@@ -10379,7 +10075,7 @@ msgstr "Updated {0} days ago"
 msgid "Updated last week"
 msgstr "Updated last week"
 
-#. placeholder {0}: Math.floor(days / 7)
+#. 0: Math.floor(days / 7)
 #: src/lib/components/home/GitHubStats.svelte
 msgid "Updated {0} weeks ago"
 msgstr "Updated {0} weeks ago"
@@ -10432,15 +10128,14 @@ msgstr "Single-tool app"
 msgid "$180/yr"
 msgstr "$180/yr"
 
-#: src/lib/components/home/ValueBar.svelte
-msgid ""
-"Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
-"source and always will be."
-msgstr ""
-"Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
-"source and always will be."
+#~ msgid ""
+#~ "Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
+#~ "source and always will be."
+#~ msgstr ""
+#~ "Most productivity apps charge per tool, per month. We don't charge at all — the code is open\n"
+#~ "source and always will be."
 
-#. placeholder {0}: 20
+#. 0: 20
 #: src/lib/components/home/ValueBar.svelte
 msgid "See all {0}+ free tools <0/>"
 msgstr "See all {0}+ free tools <0/>"
@@ -10449,13 +10144,12 @@ msgstr "See all {0}+ free tools <0/>"
 msgid "Commit data loading…"
 msgstr "Commit data loading…"
 
-#: src/lib/components/home/GitHubStats.svelte
-msgid ""
-"One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
-"open an issue."
-msgstr ""
-"One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
-"open an issue."
+#~ msgid ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
+#~ "open an issue."
+#~ msgstr ""
+#~ "One developer, shipping often. Every line of code is public — audit it, fork it, or\n"
+#~ "open an issue."
 
 #: src/lib/components/home/GitHubStats.svelte
 msgid "Jan"
@@ -10505,13 +10199,12 @@ msgstr "Nov"
 msgid "Dec"
 msgstr "Dec"
 
-#. placeholder {0}: totalCommits
+#. 0: totalCommits
 #: src/lib/components/home/GitHubStats.svelte
 msgid "{0} commits across the last 12 months"
 msgstr "{0} commits across the last 12 months"
 
-#. placeholder {0}: data.commits
-#. placeholder {1}: data.commits !== 1 ? 's' : ''
+#. 0: data.commits; 1: data.commits !== 1 ? 's' \\: ''
 #: src/lib/components/home/GitHubStats.svelte
 msgid "{0} commit{1}"
 msgstr "{0} commit{1}"
@@ -10556,7 +10249,7 @@ msgstr "<0/> Loved these tools? Work with Michael"
 msgid "X (Twitter)"
 msgstr "X (Twitter)"
 
-#. placeholder {0}: currentYear
+#. 0: currentYear
 #: src/lib/components/blocks/Footer.svelte
 msgid "<0/> 2024-{0} Svelte Apps"
 msgstr "<0/> 2024-{0} Svelte Apps"
@@ -10577,7 +10270,7 @@ msgstr "Sponsor"
 msgid "your tools, anytime"
 msgstr "your tools, anytime"
 
-#. placeholder {0}: appCount
+#. 0: appCount
 #: src/lib/components/blocks/Footer.svelte
 msgid "<0/> {0} free tools"
 msgstr "<0/> {0} free tools"
@@ -10595,7 +10288,7 @@ msgstr "Unsupported protocol payload"
 msgid "Routing your shared content…"
 msgstr "Routing your shared content…"
 
-#. placeholder {0}: syncState.pendingCount
+#. 0: syncState.pendingCount
 #: src/lib/components/blocks/SyncStatus.svelte
 msgid "Offline — {0} saved locally"
 msgstr "Offline — {0} saved locally"
@@ -10624,13 +10317,12 @@ msgstr "Click the text to select all — then press Ctrl/Cmd+C to copy."
 msgid "This share contains only files. <0/>"
 msgstr "This share contains only files. <0/>"
 
-#: src/routes/f/[slug]/+page.svelte
-msgid ""
-"This text has expired or the link is invalid — FlashText links are temporary (max 24\n"
-"hours) and are deleted after expiry."
-msgstr ""
-"This text has expired or the link is invalid — FlashText links are temporary (max 24\n"
-"hours) and are deleted after expiry."
+#~ msgid ""
+#~ "This text has expired or the link is invalid — FlashText links are temporary (max 24\n"
+#~ "hours) and are deleted after expiry."
+#~ msgstr ""
+#~ "This text has expired or the link is invalid — FlashText links are temporary (max 24\n"
+#~ "hours) and are deleted after expiry."
 
 #: src/lib/components/home/data.svelte.ts
 msgid "Health"
@@ -10656,7 +10348,7 @@ msgid ""
 "Project type:\n"
 "Timeline:\n"
 "\n"
-"—"
+"— "
 msgstr ""
 "Hi Michael,\n"
 "\n"
@@ -10665,236 +10357,168 @@ msgstr ""
 "Project type:\n"
 "Timeline:\n"
 "\n"
-"—"
+"— "
 
 #: src/routes/hire/+page.svelte
 msgid "Svelte-MiniApps"
 msgstr "Svelte-MiniApps"
 
-#: src/routes/hire/+page.svelte
-msgid "BANK 01"
-msgstr "BANK 01"
+#~ msgid "BANK 01"
+#~ msgstr "BANK 01"
 
-#: src/routes/hire/+page.svelte
-msgid "SVELTE MINI APPS"
-msgstr "SVELTE MINI APPS"
+#~ msgid "SVELTE MINI APPS"
+#~ msgstr "SVELTE MINI APPS"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "SVELTE 5"
-msgstr "SVELTE 5"
+#~ msgid "SVELTE 5"
+#~ msgstr "SVELTE 5"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "SVELTEKIT"
-msgstr "SVELTEKIT"
+#~ msgid "SVELTEKIT"
+#~ msgstr "SVELTEKIT"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "TYPESCRIPT"
-msgstr "TYPESCRIPT"
+#~ msgid "TYPESCRIPT"
+#~ msgstr "TYPESCRIPT"
 
-#: src/routes/hire/+page.svelte
-msgid "TAILWIND"
-msgstr "TAILWIND"
+#~ msgid "TAILWIND"
+#~ msgstr "TAILWIND"
 
-#: src/routes/hire/+page.svelte
-msgid "PRISMA"
-msgstr "PRISMA"
+#~ msgid "PRISMA"
+#~ msgstr "PRISMA"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "ACTIVE"
-msgstr "ACTIVE"
+#~ msgid "ACTIVE"
+#~ msgstr "ACTIVE"
 
-#: src/routes/hire/+page.svelte
-msgid "COMMITS"
-msgstr "COMMITS"
+#~ msgid "COMMITS"
+#~ msgstr "COMMITS"
 
-#: src/routes/hire/+page.svelte
-msgid "BANK 02"
-msgstr "BANK 02"
+#~ msgid "BANK 02"
+#~ msgstr "BANK 02"
 
-#: src/routes/hire/+page.svelte
-msgid "VAULTNOTE"
-msgstr "VAULTNOTE"
+#~ msgid "VAULTNOTE"
+#~ msgstr "VAULTNOTE"
 
 #: src/routes/hire/+page.svelte
 msgid "Secure desktop productivity hub — markdown editor, clipboard manager, zero-knowledge password vault — in Rust + Tauri."
 msgstr "Secure desktop productivity hub — markdown editor, clipboard manager, zero-knowledge password vault — in Rust + Tauri."
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "RUST"
-msgstr "RUST"
+#~ msgid "RUST"
+#~ msgstr "RUST"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "TAURI"
-msgstr "TAURI"
+#~ msgid "TAURI"
+#~ msgstr "TAURI"
 
-#: src/routes/hire/+page.svelte
-msgid "RELEASING"
-msgstr "RELEASING"
+#~ msgid "RELEASING"
+#~ msgstr "RELEASING"
 
-#: src/routes/hire/+page.svelte
-msgid "RELEASES"
-msgstr "RELEASES"
+#~ msgid "RELEASES"
+#~ msgstr "RELEASES"
 
-#: src/routes/hire/+page.svelte
-msgid "BANK 03"
-msgstr "BANK 03"
+#~ msgid "BANK 03"
+#~ msgstr "BANK 03"
 
-#: src/routes/hire/+page.svelte
-msgid "SHADCN-SVELTE MCP"
-msgstr "SHADCN-SVELTE MCP"
+#~ msgid "SHADCN-SVELTE MCP"
+#~ msgstr "SHADCN-SVELTE MCP"
 
 #: src/routes/hire/+page.svelte
 msgid "MCP server and tooling that gives AI agents the shadcn-svelte component docs and developer utilities."
 msgstr "MCP server and tooling that gives AI agents the shadcn-svelte component docs and developer utilities."
 
-#: src/routes/hire/+page.svelte
-msgid "MCP"
-msgstr "MCP"
+#~ msgid "MCP"
+#~ msgstr "MCP"
 
-#: src/routes/hire/+page.svelte
-msgid "MASTRA"
-msgstr "MASTRA"
+#~ msgid "MASTRA"
+#~ msgstr "MASTRA"
 
-#: src/routes/hire/+page.svelte
-msgid "BANK 04"
-msgstr "BANK 04"
+#~ msgid "BANK 04"
+#~ msgstr "BANK 04"
 
-#: src/routes/hire/+page.svelte
-msgid "SVELTEKIT-API-GEN"
-msgstr "SVELTEKIT-API-GEN"
+#~ msgid "SVELTEKIT-API-GEN"
+#~ msgstr "SVELTEKIT-API-GEN"
 
 #: src/routes/hire/+page.svelte
 msgid "Automatically generate OpenAPI 3.0 specs from your SvelteKit server endpoints using JSDoc @swagger annotations."
 msgstr "Automatically generate OpenAPI 3.0 specs from your SvelteKit server endpoints using JSDoc @swagger annotations."
 
-#: src/routes/hire/+page.svelte
-msgid "SHIPPED"
-msgstr "SHIPPED"
+#~ msgid "SHIPPED"
+#~ msgstr "SHIPPED"
 
-#: src/routes/hire/+page.svelte
-msgid "BANK 05"
-msgstr "BANK 05"
+#~ msgid "BANK 05"
+#~ msgstr "BANK 05"
 
-#: src/routes/hire/+page.svelte
-msgid "CINDER"
-msgstr "CINDER"
+#~ msgid "CINDER"
+#~ msgstr "CINDER"
 
 #: src/routes/hire/+page.svelte
 msgid "High-performance, self-hosted web scraping API built with Go. 23 commits in August 2026 alone."
 msgstr "High-performance, self-hosted web scraping API built with Go. 23 commits in August 2026 alone."
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "GO"
-msgstr "GO"
+#~ msgid "GO"
+#~ msgstr "GO"
 
-#: src/routes/hire/+page.svelte
-msgid "BUILDING"
-msgstr "BUILDING"
+#~ msgid "BUILDING"
+#~ msgstr "BUILDING"
 
-#: src/routes/hire/+page.svelte
-msgid "COMMITS · AUG 2026"
-msgstr "COMMITS · AUG 2026"
+#~ msgid "COMMITS · AUG 2026"
+#~ msgstr "COMMITS · AUG 2026"
 
-#: src/routes/hire/+page.svelte
-msgid "SVELTE / SVELTEKIT"
-msgstr "SVELTE / SVELTEKIT"
+#~ msgid "SVELTE / SVELTEKIT"
+#~ msgstr "SVELTE / SVELTEKIT"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "EXPERT"
-msgstr "EXPERT"
+#~ msgid "EXPERT"
+#~ msgstr "EXPERT"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "ADVANCED"
-msgstr "ADVANCED"
+#~ msgid "ADVANCED"
+#~ msgstr "ADVANCED"
 
-#: src/routes/hire/+page.svelte
-msgid "NODE / BUN"
-msgstr "NODE / BUN"
+#~ msgid "NODE / BUN"
+#~ msgstr "NODE / BUN"
 
-#: src/routes/hire/+page.svelte
-msgid "TAILWIND CSS"
-msgstr "TAILWIND CSS"
+#~ msgid "TAILWIND CSS"
+#~ msgstr "TAILWIND CSS"
 
-#: src/routes/hire/+page.svelte
-msgid "PRISMA / POSTGRESQL"
-msgstr "PRISMA / POSTGRESQL"
+#~ msgid "PRISMA / POSTGRESQL"
+#~ msgstr "PRISMA / POSTGRESQL"
 
-#: src/routes/hire/+page.svelte
-msgid "NETWORK ENGINEERING"
-msgstr "NETWORK ENGINEERING"
+#~ msgid "NETWORK ENGINEERING"
+#~ msgstr "NETWORK ENGINEERING"
 
-#: src/routes/hire/+page.svelte
-msgid "PYTHON"
-msgstr "PYTHON"
+#~ msgid "PYTHON"
+#~ msgstr "PYTHON"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "INTERMEDIATE"
-msgstr "INTERMEDIATE"
+#~ msgid "INTERMEDIATE"
+#~ msgstr "INTERMEDIATE"
 
-#: src/routes/hire/+page.svelte
-msgid "UI / UX"
-msgstr "UI / UX"
+#~ msgid "UI / UX"
+#~ msgstr "UI / UX"
 
-#: src/routes/hire/+page.svelte
-msgid "DEVOPS / CI-CD"
-msgstr "DEVOPS / CI-CD"
+#~ msgid "DEVOPS / CI-CD"
+#~ msgstr "DEVOPS / CI-CD"
 
-#: src/routes/hire/+page.svelte
-msgid "EMAIL"
-msgstr "EMAIL"
+#~ msgid "EMAIL"
+#~ msgstr "EMAIL"
 
-#: src/routes/hire/+page.svelte
-msgid "GITHUB"
-msgstr "GITHUB"
+#~ msgid "GITHUB"
+#~ msgstr "GITHUB"
 
-#: src/routes/hire/+page.svelte
-msgid "X"
-msgstr "X"
+#~ msgid "X"
+#~ msgstr "X"
 
-#: src/routes/hire/+page.svelte
-msgid "LINKEDIN"
-msgstr "LINKEDIN"
+#~ msgid "LINKEDIN"
+#~ msgstr "LINKEDIN"
 
-#: src/routes/hire/+page.svelte
-msgid "BLUESKY"
-msgstr "BLUESKY"
+#~ msgid "BLUESKY"
+#~ msgstr "BLUESKY"
 
-#: src/routes/hire/+page.svelte
-#: src/routes/hire/+page.svelte
-msgid "DISCORD"
-msgstr "DISCORD"
+#~ msgid "DISCORD"
+#~ msgstr "DISCORD"
 
-#: src/routes/hire/+page.svelte
-msgid "DEV.TO"
-msgstr "DEV.TO"
+#~ msgid "DEV.TO"
+#~ msgstr "DEV.TO"
 
-#: src/routes/hire/+page.svelte
-msgid "SELECT A STEP TO INSPECT"
-msgstr "SELECT A STEP TO INSPECT"
+#~ msgid "SELECT A STEP TO INSPECT"
+#~ msgstr "SELECT A STEP TO INSPECT"
 
-#. placeholder {0}: pad2(selectedWeek + 1)
-#. placeholder {1}: commits
-#: src/routes/hire/+page.svelte
-msgid "WK {0} · {1} COMMITS"
-msgstr "WK {0} · {1} COMMITS"
+#~ msgid "WK {0} · {1} COMMITS"
+#~ msgstr "WK {0} · {1} COMMITS"
 
 #: src/routes/hire/+page.svelte
 msgid "Hire Michael — Full-Stack Engineer | Svelte Mini Apps"
@@ -10928,15 +10552,14 @@ msgstr "PERSONAL SHIPPING MACHINE"
 msgid "MICHAEL OBELE <0>v2026.08</0>"
 msgstr "MICHAEL OBELE <0>v2026.08</0>"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Full-stack engineer. I build fast, verifiable software across every surface — web apps,\n"
-"desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to\n"
-"freelance, contract and collaboration."
-msgstr ""
-"Full-stack engineer. I build fast, verifiable software across every surface — web apps,\n"
-"desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to\n"
-"freelance, contract and collaboration."
+#~ msgid ""
+#~ "Full-stack engineer. I build fast, verifiable software across every surface — web apps,\n"
+#~ "desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to\n"
+#~ "freelance, contract and collaboration."
+#~ msgstr ""
+#~ "Full-stack engineer. I build fast, verifiable software across every surface — web apps,\n"
+#~ "desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to\n"
+#~ "freelance, contract and collaboration."
 
 #: src/routes/hire/+page.svelte
 #: src/routes/hire/+page.svelte
@@ -10979,13 +10602,11 @@ msgstr "* CONTRIBUTION COUNT VERIFIED 2026-08-09"
 msgid "16-WEEK SHIPPING LOG"
 msgstr "16-WEEK SHIPPING LOG"
 
-#: src/routes/hire/+page.svelte
-msgid "SIGNAL LOST"
-msgstr "SIGNAL LOST"
+#~ msgid "SIGNAL LOST"
+#~ msgstr "SIGNAL LOST"
 
-#: src/routes/hire/+page.svelte
-msgid "LIVE FROM GITHUB"
-msgstr "LIVE FROM GITHUB"
+#~ msgid "LIVE FROM GITHUB"
+#~ msgstr "LIVE FROM GITHUB"
 
 #: src/routes/hire/+page.svelte
 msgid "Stop the chase light"
@@ -11011,8 +10632,7 @@ msgstr "SIGNAL LOST — LIVE FEED UNAVAILABLE"
 msgid "Weekly commit log"
 msgstr "Weekly commit log"
 
-#. placeholder {0}: i + 1
-#. placeholder {1}: lit ? w.commits : 0
+#. 0: i + 1; 1: lit ? w.commits \\: 0
 #: src/routes/hire/+page.svelte
 msgid "Week {0}: {1} commits"
 msgstr "Week {0}: {1} commits"
@@ -11053,13 +10673,12 @@ msgstr "Network engineer"
 msgid "BUILDS"
 msgstr "BUILDS"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers\n"
-"· backend services (Go)"
-msgstr ""
-"Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers\n"
-"· backend services (Go)"
+#~ msgid ""
+#~ "Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers\n"
+#~ "· backend services (Go)"
+#~ msgstr ""
+#~ "Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers\n"
+#~ "· backend services (Go)"
 
 #: src/routes/hire/+page.svelte
 msgid "CORE STACK"
@@ -11097,7 +10716,7 @@ msgstr "PATTERN BANKS"
 msgid "137 REPOS ON GITHUB <0/>"
 msgstr "137 REPOS ON GITHUB <0/>"
 
-#. placeholder {0}: project.name
+#. 0: project.name
 #: src/routes/hire/+page.svelte
 msgid "Open {0} on GitHub"
 msgstr "Open {0} on GitHub"
@@ -11122,13 +10741,12 @@ msgstr "Start a session"
 msgid "READY TO RUN?"
 msgstr "READY TO RUN?"
 
-#: src/routes/hire/+page.svelte
-msgid ""
-"Freelance, contract, collaboration or mentoring — send a short note about your project\n"
-"and I will get back to you within 24 hours."
-msgstr ""
-"Freelance, contract, collaboration or mentoring — send a short note about your project\n"
-"and I will get back to you within 24 hours."
+#~ msgid ""
+#~ "Freelance, contract, collaboration or mentoring — send a short note about your project\n"
+#~ "and I will get back to you within 24 hours."
+#~ msgstr ""
+#~ "Freelance, contract, collaboration or mentoring — send a short note about your project\n"
+#~ "and I will get back to you within 24 hours."
 
 #: src/routes/hire/+page.svelte
 msgid "<0/> REPLIES WITHIN 24 HOURS"
@@ -11194,7 +10812,7 @@ msgstr "Which days you contribute the most"
 msgid "Daily Contributions"
 msgstr "Daily Contributions"
 
-#. placeholder {0}: year
+#. 0: year
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/OverviewTab.svelte
 msgid "Contribution activity trend throughout {0}"
 msgstr "Contribution activity trend throughout {0}"
@@ -11211,23 +10829,22 @@ msgstr "Contributions aggregated by week"
 msgid "Weekly Total"
 msgstr "Weekly Total"
 
-#. placeholder {0}: year
-#. placeholder {1}: totalForYear.toLocaleString()
+#. 0: year; 1: totalForYear.toLocaleString()
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Daily contribution activity throughout {0} — {1} total contributions"
 msgstr "Daily contribution activity throughout {0} — {1} total contributions"
 
-#. placeholder {0}: monthAvg
+#. 0: monthAvg
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "{0}/day"
 msgstr "{0}/day"
 
-#. placeholder {0}: activeDays
+#. 0: activeDays
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "{0} active days"
 msgstr "{0} active days"
 
-#. placeholder {0}: maxDay.value
+#. 0: maxDay.value
 #: src/routes/apps/(app)/github-contribution-tracker/[user]/[year]/components/CalendarTab.svelte
 msgid "Peak: {0}"
 msgstr "Peak: {0}"
@@ -11268,13 +10885,12 @@ msgstr "<0/> GitHub"
 msgid "<0/> Bluesky"
 msgstr "<0/> Bluesky"
 
-#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
-msgid ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
-"across devices. <1>Sign in</1> to sync your data."
-msgstr ""
-"<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
-"across devices. <1>Sign in</1> to sync your data."
+#~ msgid ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+#~ "across devices. <1>Sign in</1> to sync your data."
+#~ msgstr ""
+#~ "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync\n"
+#~ "across devices. <1>Sign in</1> to sync your data."
 
 #: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
 msgid "<0/>Start Your Journey"
@@ -11298,18 +10914,17 @@ msgstr "Only one large file per upload"
 #~ msgid "Up to {0} per file — only one file over {1} per upload"
 #~ msgstr "Up to {0} per file — only one file over {1} per upload"
 
-#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
+#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Sign in to upload files over {0}"
 msgstr "Sign in to upload files over {0}"
 
-#. placeholder {0}: part.partNumber
-#. placeholder {1}: partResult.error
+#. 0: part.partNumber; 1: partResult.error
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Part {0} failed — {1}"
 msgstr "Part {0} failed — {1}"
 
-#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
+#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "· <0>sign in</0> to upload files over {0}"
 msgstr "· <0>sign in</0> to upload files over {0}"
@@ -11317,12 +10932,1117 @@ msgstr "· <0>sign in</0> to upload files over {0}"
 #~ msgid "Up to {0} per file — only one file over {1} per upload <0/>"
 #~ msgstr "Up to {0} per file — only one file over {1} per upload <0/>"
 
-#. placeholder {0}: formatFileSize(LARGE_FILE_THRESHOLD)
+#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "— only one file over {0} per upload"
 msgstr "— only one file over {0} per upload"
 
-#. placeholder {0}: formatFileSize(maxFileSize)
+#. 0: formatFileSize(maxFileSize)
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Up to {0} per file <0/>"
 msgstr "Up to {0} per file <0/>"
+
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+msgid "Authentication required"
+msgstr "Authentication required"
+
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+msgid "Invalid budget data format"
+msgstr "Invalid budget data format"
+
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+msgid "No budgets to backup"
+msgstr "No budgets to backup"
+
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+msgid "Budget ID not provided"
+msgstr "Budget ID not provided"
+
+#: src/routes/apps/(app)/budget-tracker/+page.server.ts
+msgid "Budget not found or you do not have permission to delete it"
+msgstr "Budget not found or you do not have permission to delete it"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.server.ts
+msgid "Budget not found"
+msgstr "Budget not found"
+
+#: src/lib/index.svelte.ts
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Word Counter"
+msgstr "Word Counter"
+
+#: src/lib/index.svelte.ts
+msgid "Live word, character, sentence, and paragraph counts with reading time, keyword density, and writing limits for X, SMS, LinkedIn, and essays."
+msgstr "Live word, character, sentence, and paragraph counts with reading time, keyword density, and writing limits for X, SMS, LinkedIn, and essays."
+
+#. 0: currentError.title; 1: page.status
+#: src/routes/+error.svelte
+msgid "{0} - Error {1}"
+msgstr "{0} - Error {1}"
+
+#: src/routes/about/+page.svelte
+msgid "<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer everyday tasks with ease."
+msgstr "<0>Supercharge your workflow!</0> Svelte Mini Apps are tiny, focused tools built with <1>SvelteKit</1> for lightning speed. Conquer everyday tasks with ease."
+
+#: src/routes/about/+page.svelte
+msgid "<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for seamless offline access. Conquer your daily challenges, even without an internet connection."
+msgstr "<0>Work anytime, anywhere!</0> These tiny web apps, built with <1>SvelteKit</1>, let you install them for seamless offline access. Conquer your daily challenges, even without an internet connection."
+
+#: src/routes/about/+page.svelte
+msgid "I'm available for freelance work, consulting, and exciting collaborations. Let's build something amazing together with modern web technologies!"
+msgstr "I'm available for freelance work, consulting, and exciting collaborations. Let's build something amazing together with modern web technologies!"
+
+#: src/routes/about/Attributions.svelte
+msgid "We are grateful to all the open-source contributors who make these tools available to the community."
+msgstr "We are grateful to all the open-source contributors who make these tools available to the community."
+
+#: src/routes/about/DataManagement.svelte
+msgid "Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
+msgstr "Our app includes a powerful \"Nuke Button\" <0/> that allows you to clear all cached data, including service worker caches and local storage. This is especially useful if you encounter any caching issues or need to reset the app to its default state."
+
+#: src/routes/about/Philosophy.svelte
+msgid "We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight problems.</1>"
+msgstr "We've all been there - <0>wrestling with a complex framework for a simple task.</0> <1>Svelte Mini Apps were born from the frustration of heavyweight solutions for lightweight problems.</1>"
+
+#: src/routes/about/Tools.svelte
+msgid "Our collection covers a wide variety of use cases, from basic tools like unit converters to more complex ones like persistent to-do lists."
+msgstr "Our collection covers a wide variety of use cases, from basic tools like unit converters to more complex ones like persistent to-do lists."
+
+#: src/routes/about/Vision.svelte
+msgid "Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or suggestions with us."
+msgstr "Your input shapes the future of Svelte Mini Apps. Share your thoughts, feature requests, or suggestions with us."
+
+#: src/routes/changelog/+page.svelte
+msgid "If you depend on the Svelte 4 release, open the legacy app. The new app focuses on performance and PWA features; review your integration before upgrading."
+msgstr "If you depend on the Svelte 4 release, open the legacy app. The new app focuses on performance and PWA features; review your integration before upgrading."
+
+#: src/routes/changelog/+page.svelte
+msgid "Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience, faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer experience across the app."
+msgstr "Explore our Svelte 5 migration — a focused modernization bringing offline-first resilience, faster rendering with smaller bundles, enhanced PWA capabilities, and improved developer experience across the app."
+
+#: src/routes/offline/+page.svelte
+msgid "Your internet connection has been restored. You can now access all features and continue using the application."
+msgstr "Your internet connection has been restored. You can now access all features and continue using the application."
+
+#: src/routes/hire/+page.svelte
+msgid "Full-stack engineer. I build fast, verifiable software across every surface — web apps, desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to freelance, contract and collaboration."
+msgstr "Full-stack engineer. I build fast, verifiable software across every surface — web apps, desktop with Tauri, mobile with Capacitor, libraries, plugins and MCP servers. Open to freelance, contract and collaboration."
+
+#: src/routes/hire/+page.svelte
+msgid "Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers · backend services (Go)"
+msgstr "Web apps · desktop (Tauri) · mobile (Capacitor) · libraries · Vite plugins · MCP servers · backend services (Go)"
+
+#: src/routes/hire/+page.svelte
+msgid "Freelance, contract, collaboration or mentoring — send a short note about your project and I will get back to you within 24 hours."
+msgstr "Freelance, contract, collaboration or mentoring — send a short note about your project and I will get back to you within 24 hours."
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Failed to clear cache completely"
+msgstr "Failed to clear cache completely"
+
+#. 0: name
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "{0}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+msgstr "{0}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+
+#. 0: name; 1: window.location.hostname
+#. 0: name; 1: parentDomain
+#: src/lib/components/blocks/NukeButton.svelte
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "{0}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain={1};"
+msgstr "{0}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain={1};"
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Failed to clear cookies completely"
+msgstr "Failed to clear cookies completely"
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Failed to clear local storage"
+msgstr "Failed to clear local storage"
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Failed to clear session storage"
+msgstr "Failed to clear session storage"
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Failed to clear IndexedDB completely"
+msgstr "Failed to clear IndexedDB completely"
+
+#: src/lib/components/blocks/NukeButton.svelte
+msgid "Some data may not have been cleared"
+msgstr "Some data may not have been cleared"
+
+#. 0: syncState.pendingCount
+#: src/lib/components/blocks/SyncStatus.svelte
+msgid "{0} pending — will retry"
+msgstr "{0} pending — will retry"
+
+#: src/lib/components/home/GitHubStats.svelte
+msgid "One developer, shipping often. Every line of code is public — audit it, fork it, or open an issue."
+msgstr "One developer, shipping often. Every line of code is public — audit it, fork it, or open an issue."
+
+#: src/lib/components/home/Hero.svelte
+msgid "Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you click them. Free, open source, and your data stays in your browser."
+msgstr "Budgets, passwords, QR codes, timers, notes — focused mini apps that work the moment you click them. Free, open source, and your data stays in your browser."
+
+#: src/lib/components/home/LivePreview.svelte
+msgid "No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter, full controls, full color-coded display."
+msgstr "No sign-up, no modal, no waiting. The same tool that powers the app — full strength meter, full controls, full color-coded display."
+
+#: src/lib/components/home/ValueBar.svelte
+msgid "Most productivity apps charge per tool, per month. We don't charge at all — the code is open source and always will be."
+msgstr "Most productivity apps charge per tool, per month. We don't charge at all — the code is open source and always will be."
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Password saved successfully!"
+msgstr "Password saved successfully!"
+
+#: src/lib/components/password/PasswordGenerator.svelte
+msgid "Failed to save password"
+msgstr "Failed to save password"
+
+#: src/routes/(auth)/profile/AccountSettingsList.svelte
+msgid "Permanently delete your account and all associated data. This action cannot be undone."
+msgstr "Permanently delete your account and all associated data. This action cannot be undone."
+
+#: src/routes/(auth)/profile/AccountSettingsList.svelte
+msgid "Account deleted successfully. Redirecting..."
+msgstr "Account deleted successfully. Redirecting..."
+
+#: src/routes/(auth)/profile/AccountSettingsList.svelte
+msgid "Failed to delete account"
+msgstr "Failed to delete account"
+
+#. 0: Math.floor(days / 30)
+#: src/routes/(auth)/profile/UserProfileCard.svelte
+msgid "{0} months"
+msgstr "{0} months"
+
+#: src/routes/(auth)/profile/UserProfileCard.svelte
+msgid "Profile updated successfully!"
+msgstr "Profile updated successfully!"
+
+#: src/routes/(auth)/profile/UserProfileCard.svelte
+msgid "Failed to update profile"
+msgstr "Failed to update profile"
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "App storage now uses IndexedDB only."
+msgstr "App storage now uses IndexedDB only."
+
+#: src/routes/apps/(app)/+layout.svelte
+msgid "LocalStorage fallback has been removed for app data."
+msgstr "LocalStorage fallback has been removed for app data."
+
+#: src/routes/changelog/announcements/+page.svelte
+msgid "Stay informed about major milestones, new features, and exciting developments in Svelte MiniApps."
+msgstr "Stay informed about major milestones, new features, and exciting developments in Svelte MiniApps."
+
+#: src/routes/changelog/announcements/+page.svelte
+msgid "We value your input! Here are ways you can contribute to the development of mobile and desktop apps."
+msgstr "We value your input! Here are ways you can contribute to the development of mobile and desktop apps."
+
+#: src/routes/changelog/planned-features/+page.svelte
+msgid "Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to enhanced learning tools and accessibility improvements, explore our development roadmap."
+msgstr "Discover what's coming next for Svelte-MiniApps. From mobile and desktop companion apps to enhanced learning tools and accessibility improvements, explore our development roadmap."
+
+#: src/routes/changelog/timeline/+page.svelte
+msgid "Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates, and development progress tracking our modernization efforts."
+msgstr "Follow our detailed journey from Svelte 4 to Svelte 5, with key milestones, technical updates, and development progress tracking our modernization efforts."
+
+#: src/routes/f/[slug]/+page.svelte
+msgid "This text has expired or the link is invalid — FlashText links are temporary (max 24 hours) and are deleted after expiry."
+msgstr "This text has expired or the link is invalid — FlashText links are temporary (max 24 hours) and are deleted after expiry."
+
+#: src/routes/(auth)/profile/security/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
+msgid "Password updated successfully!"
+msgstr "Password updated successfully!"
+
+#: src/routes/(auth)/profile/security/+page.svelte
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
+msgid "Failed to update password"
+msgstr "Failed to update password"
+
+#. 0: minutes
+#. 0: Math.floor(diffInSeconds / 60)
+#: src/routes/(auth)/profile/sessions/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "{0}m ago"
+msgstr "{0}m ago"
+
+#. 0: hours
+#. 0: Math.floor(diffInSeconds / 3600)
+#: src/routes/(auth)/profile/sessions/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "{0}h ago"
+msgstr "{0}h ago"
+
+#. 0: days
+#. 0: Math.floor(diffInSeconds / 86400)
+#: src/routes/(auth)/profile/sessions/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "{0}d ago"
+msgstr "{0}d ago"
+
+#: src/routes/(auth)/profile/sessions/+page.svelte
+msgid "This will log out the device and end its session. The user will need to log in again on that device."
+msgstr "This will log out the device and end its session. The user will need to log in again on that device."
+
+#: src/routes/(auth)/profile/sessions/+page.svelte
+msgid "Session revoked successfully"
+msgstr "Session revoked successfully"
+
+#: src/routes/(auth)/profile/sessions/+page.svelte
+msgid "Failed to revoke session"
+msgstr "Failed to revoke session"
+
+#: src/routes/(auth)/profile/sessions/+page.svelte
+msgid "All other sessions have been revoked"
+msgstr "All other sessions have been revoked"
+
+#: src/routes/(auth)/profile/sessions/+page.svelte
+msgid "Failed to revoke sessions"
+msgstr "Failed to revoke sessions"
+
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+msgid "<0/> Emojify"
+msgstr "<0/> Emojify"
+
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+msgid "<0/> Unemojify"
+msgstr "<0/> Unemojify"
+
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+msgid "<0/> Strip Emojis"
+msgstr "<0/> Strip Emojis"
+
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+msgid "<0/> Keep Only Emojis"
+msgstr "<0/> Keep Only Emojis"
+
+#: src/routes/apps/(app)/advanced-emoji-tools/+page.svelte
+msgid "<0/> Get Another"
+msgstr "<0/> Get Another"
+
+#. 0: retryMessage
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Auto-backing up... {0}"
+msgstr "Auto-backing up... {0}"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Auto-backup successful!"
+msgstr "Auto-backup successful!"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Auto-backup failed, retrying in 10s..."
+msgstr "Auto-backup failed, retrying in 10s..."
+
+#. 0: MAX_RETRY_ATTEMPTS
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Auto-backup failed after {0} attempts."
+msgstr "Auto-backup failed after {0} attempts."
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Backup Successful"
+msgstr "Backup Successful"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Backup Failed"
+msgstr "Backup Failed"
+
+#. 0: form.migrated ?? 0
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Successfully backed up {0} budgets to server."
+msgstr "Successfully backed up {0} budgets to server."
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Unknown error during backup."
+msgstr "Unknown error during backup."
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Load Successful"
+msgstr "Load Successful"
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Load Failed"
+msgstr "Load Failed"
+
+#. 0: form.budgets?.length
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Loaded {0} budgets from server."
+msgstr "Loaded {0} budgets from server."
+
+#: src/routes/apps/(app)/budget-tracker/+page.svelte
+msgid "Unknown error during load."
+msgstr "Unknown error during load."
+
+#. 0: currentYear + 1
+#: src/routes/apps/(app)/countdown-timer/+page.svelte
+msgid "New Year {0}"
+msgstr "New Year {0}"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Failed to load currencies"
+msgstr "Failed to load currencies"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Successfully converted currencies"
+msgstr "Successfully converted currencies"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "An error occurred during conversion"
+msgstr "An error occurred during conversion"
+
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure rate accuracy."
+msgstr "Use Force Fresh Rate sparingly. The cache is only active for 8 minutes to ensure rate accuracy."
+
+#. 0: Math.floor(result.cacheAge / 60); 1: result.cacheAge % 60
+#: src/routes/apps/(app)/currency-converter/+page.svelte
+msgid "{0}m {1}s ago"
+msgstr "{0}m {1}s ago"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Failed to create link. Please try again."
+msgstr "Failed to create link. Please try again."
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Upload setup failed"
+msgstr "Upload setup failed"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Network error during upload setup"
+msgstr "Network error during upload setup"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Network error while finishing the upload"
+msgstr "Network error while finishing the upload"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste deleted"
+msgstr "Paste deleted"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Failed to delete"
+msgstr "Failed to delete"
+
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Paste your text below, drop files, or both. A temporary link will be generated with everything bundled together."
+msgstr "Paste your text below, drop files, or both. A temporary link will be generated with everything bundled together."
+
+#: src/routes/apps/(app)/markdown-editor/+page.svelte
+msgid "Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content is automatically saved to localStorage so you won't lose changes."
+msgstr "Write, preview, and edit Markdown with a lightweight, browser-based editor. Your content is automatically saved to localStorage so you won't lose changes."
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+msgid "Data synced from server"
+msgstr "Data synced from server"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Data backed up successfully"
+msgstr "Data backed up successfully"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Failed to backup data"
+msgstr "Failed to backup data"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "An error occurred during backup"
+msgstr "An error occurred during backup"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+msgid "Data synced from server successfully"
+msgstr "Data synced from server successfully"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+msgid "Failed to sync data from server"
+msgstr "Failed to sync data from server"
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+msgid "<0>Sync from server:</0> Ensures local data is synchronized, then downloads and merges server data using timestamps for conflict resolution."
+msgstr "<0>Sync from server:</0> Ensures local data is synchronized, then downloads and merges server data using timestamps for conflict resolution."
+
+#: src/routes/apps/(app)/medication-tracker/+page.svelte
+msgid "<0>Backup:</0> Save your current local data to the server. Use this to prevent data loss."
+msgstr "<0>Backup:</0> Save your current local data to the server. Use this to prevent data loss."
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "New changes available"
+msgstr "New changes available"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Notes synced successfully"
+msgstr "Notes synced successfully"
+
+#: src/routes/apps/(app)/note-taker/+page.svelte
+#: src/routes/apps/(app)/note-taker/+page.svelte
+msgid "Failed to sync notes"
+msgstr "Failed to sync notes"
+
+#. 0: result.itemsCount; 1: result.purchasesCount
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Backup created: {0} items, {1} purchases"
+msgstr "Backup created: {0} items, {1} purchases"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Backup failed"
+msgstr "Backup failed"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Failed to create backup"
+msgstr "Failed to create backup"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Data synced successfully"
+msgstr "Data synced successfully"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Sync failed"
+msgstr "Sync failed"
+
+#: src/routes/apps/(app)/purchase-tracker/+layout.svelte
+msgid "Failed to sync data"
+msgstr "Failed to sync data"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item created successfully"
+msgstr "Item created successfully"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Failed to create item"
+msgstr "Failed to create item"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Item updated successfully"
+msgstr "Item updated successfully"
+
+#: src/routes/apps/(app)/purchase-tracker/+page.svelte
+msgid "Failed to update item"
+msgstr "Failed to update item"
+
+#: src/routes/apps/(app)/random-password-generator/+page.svelte
+msgid "Saved Passwords <0/>"
+msgstr "Saved Passwords <0/>"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Adding option..."
+msgstr "Adding option..."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Option added successfully"
+msgstr "Option added successfully"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Failed to add option"
+msgstr "Failed to add option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Deleting option..."
+msgstr "Deleting option..."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Option deleted"
+msgstr "Option deleted"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Failed to delete option"
+msgstr "Failed to delete option"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Saving settings..."
+msgstr "Saving settings..."
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Settings saved"
+msgstr "Settings saved"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "Failed to save settings to server"
+msgstr "Failed to save settings to server"
+
+#: src/routes/apps/(app)/scenario-tracker/+page.svelte
+msgid "This will permanently delete all your options, activities, timeline entries, and risks. The default options will be restored. This action cannot be undone."
+msgstr "This will permanently delete all your options, activities, timeline entries, and risks. The default options will be restored. This action cannot be undone."
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Local data synced to cloud"
+msgstr "Local data synced to cloud"
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Data synced from cloud"
+msgstr "Data synced from cloud"
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "An error occurred during sync"
+msgstr "An error occurred during sync"
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Track your progress, monitor health improvements, and stay motivated on your smoke-free journey."
+msgstr "Track your progress, monitor health improvements, and stay motivated on your smoke-free journey."
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Before we reset your streak, please confirm that you actually had a cigarette. This helps ensure accurate tracking."
+msgstr "Before we reset your streak, please confirm that you actually had a cigarette. This helps ensure accurate tracking."
+
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Only proceed if you actually had a cigarette. If this was a craving you resisted, consider logging it instead."
+msgstr "Only proceed if you actually had a cigarette. If this was a craving you resisted, consider logging it instead."
+
+#. 0: statistics?.longestStreak ?? '0 minutes'
+#: src/routes/apps/(app)/smoke-free-tracker/+page.svelte
+msgid "Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep going. Your longest streak of {0} is still an achievement!"
+msgstr "Don't be too hard on yourself. Recovery isn't linear. Let's reset your streak and keep going. Your longest streak of {0} is still an achievement!"
+
+#. 0: Math.floor(minutes); 1: Math.floor(minutes) !== 1 ? 's' \\: ''
+#: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
+msgid "{0} minute{1}"
+msgstr "{0} minute{1}"
+
+#. 0: hours; 1: hours !== 1 ? 's' \\: ''; 2: mins > 0 ? ` ${mins} min${mins !== 1 ? 's' \\: ''}` \\: ''
+#: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
+msgid "{0} hour{1}{2}"
+msgstr "{0} hour{1}{2}"
+
+#. 0: days; 1: days !== 1 ? 's' \\: ''; 2: hours > 0 ? ` ${hours} hour${hours !== 1 ? 's' \\: ''}` \\: ''
+#: src/routes/apps/(app)/smoke-free-tracker/states.svelte.ts
+msgid "{0} day{1}{2}"
+msgstr "{0} day{1}{2}"
+
+#. 0: 32 - (info.totalHosts === 1 ? 0 \\: Math.log2(info.totalHosts)); 1: Math.log2(info.totalHosts)
+#: src/routes/apps/(app)/subnet-calculator/+page.svelte
+msgid "First {0} bits are network portion, remaining {1} bits are host portion."
+msgstr "First {0} bits are network portion, remaining {1} bits are host portion."
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Please enter some text to summarize"
+msgstr "Please enter some text to summarize"
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "The text couldn't be summarized effectively. Try adjusting the summary ratio or max words setting."
+msgstr "The text couldn't be summarized effectively. Try adjusting the summary ratio or max words setting."
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Unknown error"
+msgstr "Unknown error"
+
+#. 0: err instanceof Error ? err.message \\: 'Unknown error'
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Error generating summary: {0}"
+msgstr "Error generating summary: {0}"
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Failed to copy to clipboard"
+msgstr "Failed to copy to clipboard"
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive techniques, not AI."
+msgstr "Welcome to the <0>Text Summarizer</0>! Quickly create concise summaries of longer texts using algorithmic extractive techniques, not AI."
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Save time and focus on what matters by pasting your text, adjusting the summary length, and getting results instantly. Try it with sample text or your own content!"
+msgstr "Save time and focus on what matters by pasting your text, adjusting the summary length, and getting results instantly. Try it with sample text or your own content!"
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "This Text Summarizer uses an extractive summarization algorithm to identify and extract the most important sentences from your text."
+msgstr "This Text Summarizer uses an extractive summarization algorithm to identify and extract the most important sentences from your text."
+
+#: src/routes/apps/(app)/text-summarizer/+page.svelte
+msgid "Note: For best results, use well-structured text with clear paragraphs. This summarizer works best with informational or educational content rather than creative writing."
+msgstr "Note: For best results, use well-structured text with clear paragraphs. This summarizer works best with informational or educational content rather than creative writing."
+
+#: src/routes/apps/(app)/unit-converter/+page.svelte
+msgid "Unsupported conversion"
+msgstr "Unsupported conversion"
+
+#: src/routes/apps/(app)/unit-converter/+page.svelte
+msgid "Supports conversion between length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure units."
+msgstr "Supports conversion between length, temperature, volume, mass, area, time, angle, data, energy, force, power, and pressure units."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "No limit"
+msgstr "No limit"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Count without a target"
+msgstr "Count without a target"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "X post"
+msgstr "X post"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Essay"
+msgstr "Essay"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid ""
+"Writing is thinking made visible. Every draft, however rough, teaches you something the blank page never could: where the argument holds, where it wanders, and where it needs a sharper example.\n"
+"\n"
+"A word counter is a quiet instrument. It will not tell you what to say, but it will tell you how much you have said — and whether that is the right amount."
+msgstr ""
+"Writing is thinking made visible. Every draft, however rough, teaches you something the blank page never could: where the argument holds, where it wanders, and where it needs a sharper example.\n"
+"\n"
+"A word counter is a quiet instrument. It will not tell you what to say, but it will tell you how much you have said — and whether that is the right amount."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Text copied to clipboard"
+msgstr "Text copied to clipboard"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Could not access the clipboard"
+msgstr "Could not access the clipboard"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Word Counter - Live Word, Character & Reading Time Stats"
+msgstr "Word Counter - Live Word, Character & Reading Time Stats"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Count words, characters, sentences, and paragraphs as you type. Get reading time, keyword density, and writing limits for X, SMS, LinkedIn, and essays — all in your browser."
+msgstr "Count words, characters, sentences, and paragraphs as you type. Get reading time, keyword density, and writing limits for X, SMS, LinkedIn, and essays — all in your browser."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Words, characters, and reading time — updated as you type."
+msgstr "Words, characters, and reading time — updated as you type."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> How to use"
+msgstr "<0/> How to use"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Your text"
+msgstr "Your text"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> Sample"
+msgstr "<0/> Sample"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> Clear"
+msgstr "<0/> Clear"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Paste or type your text here…"
+msgstr "Paste or type your text here…"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Writing limit"
+msgstr "Writing limit"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Counting without a limit"
+msgstr "Counting without a limit"
+
+#. 0: format(-remaining)
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "{0} over"
+msgstr "{0} over"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Progress toward the selected writing limit"
+msgstr "Progress toward the selected writing limit"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Text to analyze"
+msgstr "Text to analyze"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Counts update live. Your draft is saved in this browser only."
+msgstr "Counts update live. Your draft is saved in this browser only."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Live stats"
+msgstr "Live stats"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Words"
+msgstr "Words"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Characters"
+msgstr "Characters"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "No spaces"
+msgstr "No spaces"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Sentences"
+msgstr "Sentences"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Paragraphs"
+msgstr "Paragraphs"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Lines"
+msgstr "Lines"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Unique words"
+msgstr "Unique words"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> Reading"
+msgstr "<0/> Reading"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> Speaking"
+msgstr "<0/> Speaking"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "<0/> Keyword density"
+msgstr "<0/> Keyword density"
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Most frequent words, with stop words excluded."
+msgstr "Most frequent words, with stop words excluded."
+
+#: src/routes/apps/(app)/word-counter/+page.svelte
+msgid "Start typing to see which words carry the most weight."
+msgstr "Start typing to see which words carry the most weight."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget backed up — shared page is now up to date"
+msgstr "Budget backed up — shared page is now up to date"
+
+#. 0: budget.name
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "{0} | Budget Tracker"
+msgstr "{0} | Budget Tracker"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Review the budget at a glance, inspect where the money is going, and manage expenses without switching context."
+msgstr "Review the budget at a glance, inspect where the money is going, and manage expenses without switching context."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Start with the balance view to see how close the budget is to its cap, then read the trend chart to spot whether the current pace is accelerating or settling."
+msgstr "Start with the balance view to see how close the budget is to its cap, then read the trend chart to spot whether the current pace is accelerating or settling."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Sharing only works for budgets that exist on the server, so the public page stays in sync."
+msgstr "Sharing only works for budgets that exist on the server, so the public page stays in sync."
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget sharing enabled"
+msgstr "Budget sharing enabled"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Budget sharing turned off"
+msgstr "Budget sharing turned off"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Unable to update sharing settings"
+msgstr "Unable to update sharing settings"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Share link regenerated"
+msgstr "Share link regenerated"
+
+#: src/routes/apps/(app)/budget-tracker/[id]/+page.svelte
+msgid "Unable to regenerate share link"
+msgstr "Unable to regenerate share link"
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Failed to load history"
+msgstr "Failed to load history"
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Deleted"
+msgstr "Deleted"
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Please sign in to view your FlashText history. Your shared links and uploaded files will appear here."
+msgstr "Please sign in to view your FlashText history. Your shared links and uploaded files will appear here."
+
+#: src/routes/apps/(app)/flash-text/history/+page.svelte
+msgid "Create your first FlashText or upload a file — your shared links and files will appear here."
+msgstr "Create your first FlashText or upload a file — your shared links and files will appear here."
+
+#: src/routes/apps/(app)/medication-tracker/components/DoseActionDialogs.svelte
+msgid "💡 This reschedules only this single dose. To change the entire medication schedule, use the Schedule button in the Medications list."
+msgstr "💡 This reschedules only this single dose. To change the entire medication schedule, use the Schedule button in the Medications list."
+
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "Medication deleted"
+msgstr "Medication deleted"
+
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "Failed to delete medication. Please try again."
+msgstr "Failed to delete medication. Please try again."
+
+#. 0: logs.length
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "Created {0} scheduled doses"
+msgstr "Created {0} scheduled doses"
+
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "Schedule updated (no new doses needed)"
+msgstr "Schedule updated (no new doses needed)"
+
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "Failed to update schedule. Please try again."
+msgstr "Failed to update schedule. Please try again."
+
+#. 0: scheduleTimes.length
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "✅ Will create <0/> scheduled doses ({0}x per day)"
+msgstr "✅ Will create <0/> scheduled doses ({0}x per day)"
+
+#. 0: deletingMedication?.name
+#: src/routes/apps/(app)/medication-tracker/components/MedicationList.svelte
+msgid "This will permanently delete \"{0}\" and all its logs. This action cannot be undone."
+msgstr "This will permanently delete \"{0}\" and all its logs. This action cannot be undone."
+
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+msgid "Scheduled dose deleted"
+msgstr "Scheduled dose deleted"
+
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+msgid "Failed to delete scheduled dose. Please try again."
+msgstr "Failed to delete scheduled dose. Please try again."
+
+#. 0: medicationLogs.length
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+msgid "Deleted all {0} scheduled doses"
+msgstr "Deleted all {0} scheduled doses"
+
+#: src/routes/apps/(app)/medication-tracker/components/ScheduleViewer.svelte
+msgid "Failed to delete some scheduled doses. Please try again."
+msgstr "Failed to delete some scheduled doses. Please try again."
+
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+msgid "Session deleted"
+msgstr "Session deleted"
+
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+msgid "Failed to delete session. Please try again."
+msgstr "Failed to delete session. Please try again."
+
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+msgid "Manage your treatment sessions. Each session groups medications for a specific treatment period."
+msgstr "Manage your treatment sessions. Each session groups medications for a specific treatment period."
+
+#. 0: sessionToDelete?.name
+#: src/routes/apps/(app)/medication-tracker/components/SessionManager.svelte
+msgid "This will permanently delete \"{0}\" and all associated medication logs. This action cannot be undone."
+msgstr "This will permanently delete \"{0}\" and all associated medication logs. This action cannot be undone."
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+msgid "Note saved locally"
+msgstr "Note saved locally"
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+msgid "Failed to save note locally"
+msgstr "Failed to save note locally"
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+msgid "Note saved"
+msgstr "Note saved"
+
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/CreateNoteDialog.svelte
+msgid "Failed to save note"
+msgstr "Failed to save note"
+
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "Note updated locally"
+msgstr "Note updated locally"
+
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "Failed to update note locally"
+msgstr "Failed to update note locally"
+
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "Note updated"
+msgstr "Note updated"
+
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+#: src/routes/apps/(app)/note-taker/components/EditNoteDialog.svelte
+msgid "Failed to update note"
+msgstr "Failed to update note"
+
+#. 0: currentItem.name
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "{0} - Purchases"
+msgstr "{0} - Purchases"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase created successfully"
+msgstr "Purchase created successfully"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Failed to create purchase"
+msgstr "Failed to create purchase"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Purchase updated successfully"
+msgstr "Purchase updated successfully"
+
+#: src/routes/apps/(app)/purchase-tracker/[itemId]/+page.svelte
+msgid "Failed to update purchase"
+msgstr "Failed to update purchase"
+
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
+msgid "Password deleted successfully!"
+msgstr "Password deleted successfully!"
+
+#: src/routes/apps/(app)/random-password-generator/components/PasswordDisplay.svelte
+msgid "Failed to delete password"
+msgstr "Failed to delete password"
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "Start generating secure passwords to keep track of them here. Your passwords are encrypted and stored safely."
+msgstr "Start generating secure passwords to keep track of them here. Your passwords are encrypted and stored safely."
+
+#: src/routes/apps/(app)/random-password-generator/passwords/+page.svelte
+msgid "All passwords are encrypted and stored securely. You can view, copy, and delete your passwords at any time. For maximum security, consider using a dedicated password manager for sensitive accounts."
+msgstr "All passwords are encrypted and stored securely. You can view, copy, and delete your passwords at any time. For maximum security, consider using a dedicated password manager for sensitive accounts."
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Saving changes..."
+msgstr "Saving changes..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Option updated successfully"
+msgstr "Option updated successfully"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Failed to update option"
+msgstr "Failed to update option"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Updating activity..."
+msgstr "Updating activity..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Adding activity..."
+msgstr "Adding activity..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Activity updated"
+msgstr "Activity updated"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Activity added"
+msgstr "Activity added"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Failed to update activity"
+msgstr "Failed to update activity"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Failed to add activity"
+msgstr "Failed to add activity"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Deleting activity..."
+msgstr "Deleting activity..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Activity deleted"
+msgstr "Activity deleted"
+
+#: src/routes/apps/(app)/scenario-tracker/components/OptionDetail.svelte
+msgid "Failed to delete activity"
+msgstr "Failed to delete activity"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Updating risk..."
+msgstr "Updating risk..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Adding risk..."
+msgstr "Adding risk..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Risk updated"
+msgstr "Risk updated"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Risk added"
+msgstr "Risk added"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Failed to update risk"
+msgstr "Failed to update risk"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Failed to add risk"
+msgstr "Failed to add risk"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Deleting risk..."
+msgstr "Deleting risk..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Risk deleted"
+msgstr "Risk deleted"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Risks.svelte
+msgid "Failed to delete risk"
+msgstr "Failed to delete risk"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Settings.svelte
+msgid "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across devices. <1>Sign in</1> to sync your data."
+msgstr "<0>Note:</0> You're not logged in. Settings will be saved locally and won't sync across devices. <1>Sign in</1> to sync your data."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Updating entry..."
+msgstr "Updating entry..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Adding entry..."
+msgstr "Adding entry..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Timeline entry updated"
+msgstr "Timeline entry updated"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Timeline entry added"
+msgstr "Timeline entry added"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Failed to update entry"
+msgstr "Failed to update entry"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Failed to add entry"
+msgstr "Failed to add entry"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Deleting entry..."
+msgstr "Deleting entry..."
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Timeline entry deleted"
+msgstr "Timeline entry deleted"
+
+#: src/routes/apps/(app)/scenario-tracker/components/Timeline.svelte
+msgid "Failed to delete entry"
+msgstr "Failed to delete entry"
+
+#: src/routes/apps/(app)/smoke-free-tracker/components/SettingsDialog.svelte
+msgid "If you started your smoke-free journey before using this app, enable this feature and set the date you actually quit smoking. This will adjust your streak display to show your true quit date."
+msgstr "If you started your smoke-free journey before using this app, enable this feature and set the date you actually quit smoking. This will adjust your streak display to show your true quit date."
+
+#. 0: budget.name
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "{0} | Shared Budget"
+msgstr "{0} | Shared Budget"
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "This shared budget is view only. You can review spend, trends, and logged expenses, but editing stays with the owner."
+msgstr "This shared budget is view only. You can review spend, trends, and logged expenses, but editing stays with the owner."
+
+#: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
+msgid "Shared links are view only. No edits, deletes, or new expenses can be made from this page."
+msgstr "Shared links are view only. No edits, deletes, or new expenses can be made from this page."
