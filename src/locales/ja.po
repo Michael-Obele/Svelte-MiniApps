@@ -9516,7 +9516,6 @@ msgid "Exceeds {0} limit"
 msgstr "{0}の上限を超えています"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Upload failed"
 msgstr "アップロードに失敗しました"
 
@@ -10798,40 +10797,29 @@ msgstr ""
 #~ msgid "Up to {0} per file — only one large file at a time"
 #~ msgstr ""
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Only one large file per upload"
-msgstr ""
+#~ msgid "Only one large file per upload"
+#~ msgstr ""
 
 #~ msgid "Up to {0} per file — only one file over {1} per upload"
 #~ msgstr ""
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Sign in to upload files over {0}"
-msgstr ""
+#~ msgid "Sign in to upload files over {0}"
+#~ msgstr ""
 
-#. 0: part.partNumber; 1: partResult.error
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Part {0} failed — {1}"
-msgstr ""
+#~ msgid "Part {0} failed — {1}"
+#~ msgstr ""
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "· <0>sign in</0> to upload files over {0}"
-msgstr ""
+#~ msgid "· <0>sign in</0> to upload files over {0}"
+#~ msgstr ""
 
 #~ msgid "Up to {0} per file — only one file over {1} per upload <0/>"
 #~ msgstr ""
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "— only one file over {0} per upload"
-msgstr ""
+#~ msgid "— only one file over {0} per upload"
+#~ msgstr ""
 
-#. 0: formatFileSize(maxFileSize)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Up to {0} per file <0/>"
-msgstr ""
+#~ msgid "Up to {0} per file <0/>"
+#~ msgstr ""
 
 #: src/routes/apps/(app)/budget-tracker/+page.server.ts
 #: src/routes/apps/(app)/budget-tracker/+page.server.ts
@@ -11208,9 +11196,8 @@ msgstr ""
 msgid "Network error during upload setup"
 msgstr ""
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Network error while finishing the upload"
-msgstr ""
+#~ msgid "Network error while finishing the upload"
+#~ msgstr ""
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Paste deleted"
@@ -11933,4 +11920,9 @@ msgstr ""
 
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Shared links are view only. No edits, deletes, or new expenses can be made from this page."
+msgstr ""
+
+#. 0: formatFileSize(maxFileSize)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Up to {0} per file (no account needed)"
 msgstr ""

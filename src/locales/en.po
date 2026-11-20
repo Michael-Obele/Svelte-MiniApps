@@ -9606,7 +9606,6 @@ msgid "Exceeds {0} limit"
 msgstr "Exceeds {0} limit"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
-#: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Upload failed"
 msgstr "Upload failed"
 
@@ -10907,40 +10906,29 @@ msgstr "<0/>How to Use"
 #~ msgid "Up to {0} per file — only one large file at a time"
 #~ msgstr "Up to {0} per file — only one large file at a time"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Only one large file per upload"
-msgstr "Only one large file per upload"
+#~ msgid "Only one large file per upload"
+#~ msgstr "Only one large file per upload"
 
 #~ msgid "Up to {0} per file — only one file over {1} per upload"
 #~ msgstr "Up to {0} per file — only one file over {1} per upload"
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Sign in to upload files over {0}"
-msgstr "Sign in to upload files over {0}"
+#~ msgid "Sign in to upload files over {0}"
+#~ msgstr "Sign in to upload files over {0}"
 
-#. 0: part.partNumber; 1: partResult.error
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Part {0} failed — {1}"
-msgstr "Part {0} failed — {1}"
+#~ msgid "Part {0} failed — {1}"
+#~ msgstr "Part {0} failed — {1}"
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "· <0>sign in</0> to upload files over {0}"
-msgstr "· <0>sign in</0> to upload files over {0}"
+#~ msgid "· <0>sign in</0> to upload files over {0}"
+#~ msgstr "· <0>sign in</0> to upload files over {0}"
 
 #~ msgid "Up to {0} per file — only one file over {1} per upload <0/>"
 #~ msgstr "Up to {0} per file — only one file over {1} per upload <0/>"
 
-#. 0: formatFileSize(LARGE_FILE_THRESHOLD)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "— only one file over {0} per upload"
-msgstr "— only one file over {0} per upload"
+#~ msgid "— only one file over {0} per upload"
+#~ msgstr "— only one file over {0} per upload"
 
-#. 0: formatFileSize(maxFileSize)
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Up to {0} per file <0/>"
-msgstr "Up to {0} per file <0/>"
+#~ msgid "Up to {0} per file <0/>"
+#~ msgstr "Up to {0} per file <0/>"
 
 #: src/routes/apps/(app)/budget-tracker/+page.server.ts
 #: src/routes/apps/(app)/budget-tracker/+page.server.ts
@@ -11317,9 +11305,8 @@ msgstr "Upload setup failed"
 msgid "Network error during upload setup"
 msgstr "Network error during upload setup"
 
-#: src/routes/apps/(app)/flash-text/+page.svelte
-msgid "Network error while finishing the upload"
-msgstr "Network error while finishing the upload"
+#~ msgid "Network error while finishing the upload"
+#~ msgstr "Network error while finishing the upload"
 
 #: src/routes/apps/(app)/flash-text/+page.svelte
 msgid "Paste deleted"
@@ -12046,3 +12033,8 @@ msgstr "This shared budget is view only. You can review spend, trends, and logge
 #: src/routes/apps/(app)/budget-tracker/share/[token]/+page.svelte
 msgid "Shared links are view only. No edits, deletes, or new expenses can be made from this page."
 msgstr "Shared links are view only. No edits, deletes, or new expenses can be made from this page."
+
+#. 0: formatFileSize(maxFileSize)
+#: src/routes/apps/(app)/flash-text/+page.svelte
+msgid "Up to {0} per file (no account needed)"
+msgstr "Up to {0} per file (no account needed)"

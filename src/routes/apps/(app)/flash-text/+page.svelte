@@ -47,13 +47,7 @@
 	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
 	import { toast } from 'svelte-sonner';
 	import { fly } from 'svelte/transition';
-	import {
-		formatFileSize,
-		LARGE_FILE_THRESHOLD,
-		MAX_FILE_SIZE,
-		resolveEffectiveMaxFileSize,
-		resolveContentType
-	} from '#lib/types/flash-file.js';
+	import { formatFileSize, MAX_FILE_SIZE, resolveContentType } from '#lib/types/flash-file.js';
 
 	// ============================================================================
 	// STATE
@@ -64,9 +58,9 @@
 	let copyConfirmed = $state(false);
 	let currentUser = $state<{ id: string } | null>(null);
 
-	// Per-file ceiling: the temporary 600 MB → 6 GB raise is for signed-in users
-	// only. /api/flash-files/start-upload enforces this independently.
-	const maxFileSize = $derived(currentUser ? resolveEffectiveMaxFileSize() : MAX_FILE_SIZE);
+	// Per-file ceiling: 600 MB for everyone. /api/flash-files/start-upload
+	// enforces this independently.
+	const maxFileSize = MAX_FILE_SIZE;
 	let userFlashTexts = $state<FlashTextItem[]>([]);
 	let isLoadingPastes = $state(false);
 	let deletingId = $state<string | null>(null);
@@ -102,8 +96,6 @@
 
 	function validateFile(file: File): string | null {
 		if (file.size === 0) return 'File is empty';
-		if (file.size > LARGE_FILE_THRESHOLD && !currentUser)
-			return `Sign in to upload files over ${formatFileSize(LARGE_FILE_THRESHOLD)}`;
 		if (file.size > maxFileSize) return `Exceeds ${formatFileSize(maxFileSize)} limit`;
 		return null;
 	}
@@ -115,16 +107,7 @@
 		for (const file of incoming) {
 			if (queuedFiles.some((q) => q.file.name === file.name && q.file.size === file.size)) continue;
 
-			let error = validateFile(file);
-
-			// Unlike normal files (many per upload), only ONE large file may be
-			// queued at a time — otherwise a single upload could blow the free tier.
-			if (!error && file.size > LARGE_FILE_THRESHOLD) {
-				const hasLarge =
-					queuedFiles.some((q) => q.status !== 'error' && q.file.size > LARGE_FILE_THRESHOLD) ||
-					next.some((q) => q.status !== 'error' && q.file.size > LARGE_FILE_THRESHOLD);
-				if (hasLarge) error = 'Only one large file per upload';
-			}
+			const error = validateFile(file);
 
 			next.push({
 				id: crypto.randomUUID(),
@@ -287,14 +270,7 @@
 
 	interface StartUploadResponse {
 		file: { id: string; slug: string };
-		upload:
-			| { kind: 'single'; url: string }
-			| {
-					kind: 'multipart';
-					uploadId: string;
-					partSize: number;
-					parts: { partNumber: number; url: string }[];
-			  };
+		upload: { kind: 'single'; url: string };
 	}
 
 	async function uploadSingleFile(
@@ -306,7 +282,7 @@
 		// content type (browsers sometimes report an empty type for e.g. .zip).
 		const contentType = resolveContentType(file);
 
-		// Step 1: prepare the upload (DB row + presigned URL or part URLs)
+		// Step 1: prepare the upload (DB row + presigned URL)
 		let started: StartUploadResponse;
 		try {
 			const res = await fetch('/api/flash-files/start-upload', {
@@ -339,77 +315,34 @@
 		// Step 3: roll back so the share never lists a file whose object was
 		// never written (downloading one of those returns R2 `NoSuchKey`).
 		// Awaited so an immediate retry isn't rejected by the stale row.
-		await abortUpload(
-			started.file.id,
-			started.upload.kind === 'multipart' ? started.upload.uploadId : null
-		);
+		await abortUpload(started.file.id);
 		return false;
 	}
 
-	/** PUT the file — as one request, or as parts when it exceeds R2's 5 GiB PUT ceiling. */
+	/** PUT the whole file to its presigned URL (files are capped at 600 MB). */
 	async function sendFileBody(
 		started: StartUploadResponse,
 		file: File,
 		contentType: string,
 		onProgress: (pct: number) => void
 	): Promise<UploadResult> {
-		const { upload } = started;
-
-		if (upload.kind === 'single') {
-			return putBlob(
-				upload.url,
-				file,
-				(loaded) => {
-					onProgress(Math.min(99, Math.round((loaded / file.size) * 100)));
-				},
-				contentType
-			);
-		}
-
-		// Multipart: R2 caps a single PUT at 5 GiB, so a 6 GB file would come
-		// back as HTTP 400. Upload each part, then let the server assemble them
-		// (it re-reads the part ETags from R2, so nothing here depends on
-		// cross-origin header exposure).
-		let sentBytes = 0;
-		for (const part of upload.parts) {
-			const start = (part.partNumber - 1) * upload.partSize;
-			const blob = file.slice(start, Math.min(start + upload.partSize, file.size));
-
-			const partResult = await putBlob(part.url, blob, (loaded) => {
-				onProgress(Math.min(99, Math.round(((sentBytes + loaded) / file.size) * 100)));
-			});
-			if (!partResult.ok) {
-				return { ok: false, error: `Part ${part.partNumber} failed — ${partResult.error}` };
-			}
-
-			sentBytes += blob.size;
-			onProgress(Math.min(99, Math.round((sentBytes / file.size) * 100)));
-		}
-
-		try {
-			const res = await fetch('/api/flash-files/finish-upload', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					fileId: started.file.id,
-					uploadId: upload.uploadId,
-					action: 'complete'
-				})
-			});
-			if (!res.ok) return { ok: false, error: await readErrorMessage(res, 'Upload failed') };
-			return { ok: true };
-		} catch {
-			return { ok: false, error: 'Network error while finishing the upload' };
-		}
+		return putBlob(
+			started.upload.url,
+			file,
+			(loaded) => {
+				onProgress(Math.min(100, Math.round((loaded / file.size) * 100)));
+			},
+			contentType
+		);
 	}
 
 	/** Discard a failed upload. Resolves once the row is gone (or the call failed). */
-	async function abortUpload(fileId: string, uploadId: string | null): Promise<void> {
+	async function abortUpload(fileId: string): Promise<void> {
 		try {
 			await fetch('/api/flash-files/finish-upload', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ fileId, uploadId: uploadId ?? undefined, action: 'abort' })
+				body: JSON.stringify({ fileId, action: 'abort' })
 			});
 		} catch {
 			// Best effort — the hourly cleanup reaps the row either way.
@@ -436,8 +369,8 @@
 		return new Promise((resolve) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open('PUT', url);
-			// Multipart part URLs are not signed with a content type, so only
-			// single-part uploads send one.
+			// The presigned URL is signed with this content type, so the PUT must
+			// send the same one.
 			if (contentType) xhr.setRequestHeader('Content-Type', contentType);
 
 			xhr.upload.onprogress = (event) => {
@@ -625,13 +558,7 @@
 									{/if}
 								</p>
 								<p class="text-muted-foreground text-xs">
-									Up to {formatFileSize(maxFileSize)} per file
-									{#if currentUser}
-										— only one file over {formatFileSize(LARGE_FILE_THRESHOLD)} per upload
-									{:else}
-										· <a class="underline underline-offset-2" href="/login">sign in</a> to upload
-										files over {formatFileSize(LARGE_FILE_THRESHOLD)}
-									{/if}
+									Up to {formatFileSize(maxFileSize)} per file (no account needed)
 								</p>
 							</div>
 						</div>

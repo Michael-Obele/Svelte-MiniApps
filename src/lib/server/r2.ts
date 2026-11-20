@@ -25,12 +25,7 @@ import {
 	PutObjectCommand,
 	GetObjectCommand,
 	HeadObjectCommand,
-	DeleteObjectCommand,
-	CreateMultipartUploadCommand,
-	UploadPartCommand,
-	ListPartsCommand,
-	CompleteMultipartUploadCommand,
-	AbortMultipartUploadCommand
+	DeleteObjectCommand
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
@@ -277,11 +272,11 @@ class R2Client {
 	 * without proxying the file body through a Netlify function.
 	 *
 	 * The caller must already have validated ownership, file type, and size.
-	 * The URL expires in 30 minutes (plenty for large files, short enough to
-	 * limit abuse).
+	 * The URL expires in 30 minutes — plenty for a file capped at 600 MB, short
+	 * enough to limit abuse.
 	 *
-	 * NOTE: R2 rejects a single PUT larger than 5 GiB — use
-	 * `startMultipartUpload` for anything near that ceiling.
+	 * The browser PUTs the body in a single request. That is safe because R2
+	 * only rejects a single PUT above 5 GiB and the per-file ceiling is 600 MB.
 	 */
 	async getPresignedUploadUrl(
 		key: string,
@@ -299,151 +294,15 @@ class R2Client {
 			{ expiresIn: expiresInSeconds }
 		);
 	}
-
-	// ---------------------------------------------------------------------
-	// Multipart upload — required for objects above R2's 5 GiB PUT ceiling.
-	//
-	// The flow is: startMultipartUpload() → browser PUTs each part to a
-	// presigned URL → completeMultipartUpload() (parts are re-read from R2
-	// with listParts, so the browser never has to expose ETags).
-	// ---------------------------------------------------------------------
-
-	/** Begin a multipart upload and return its R2 upload id. */
-	async startMultipartUpload(key: string, contentType: string): Promise<string> {
-		const { client, config } = this.#ensure();
-
-		const response = await client.send(
-			new CreateMultipartUploadCommand({
-				Bucket: config.bucketName,
-				Key: key,
-				ContentType: contentType || 'application/octet-stream'
-			})
-		);
-
-		if (!response.UploadId) {
-			throw new Error(`R2 did not return an upload id for ${key}`);
-		}
-		return response.UploadId;
-	}
-
-	/**
-	 * Presign one `UploadPart` URL per part number. Signing is a local HMAC
-	 * operation, so issuing every part up front costs no R2 round trip.
-	 */
-	async getPresignedPartUrls(
-		key: string,
-		uploadId: string,
-		partNumbers: number[],
-		expiresInSeconds = 21600
-	): Promise<{ partNumber: number; url: string }[]> {
-		const { client, config } = this.#ensure();
-
-		return Promise.all(
-			partNumbers.map(async (partNumber) => ({
-				partNumber,
-				url: await getSignedUrl(
-					client,
-					new UploadPartCommand({
-						Bucket: config.bucketName,
-						Key: key,
-						UploadId: uploadId,
-						PartNumber: partNumber
-					}),
-					{ expiresIn: expiresInSeconds }
-				)
-			}))
-		);
-	}
-
-	/**
-	 * Every part R2 has accepted so far, ordered by part number — or `null` when
-	 * the upload id no longer exists (already completed or aborted).
-	 */
-	async listParts(
-		key: string,
-		uploadId: string
-	): Promise<{ partNumber: number; etag: string; size: number }[] | null> {
-		const { client, config } = this.#ensure();
-
-		try {
-			const response = await client.send(
-				new ListPartsCommand({
-					Bucket: config.bucketName,
-					Key: key,
-					UploadId: uploadId
-				})
-			);
-
-			return (response.Parts ?? [])
-				.map((part) => ({
-					partNumber: part.PartNumber ?? 0,
-					etag: part.ETag ?? '',
-					size: part.Size ?? 0
-				}))
-				.sort((a, b) => a.partNumber - b.partNumber);
-		} catch (e: unknown) {
-			if (isNoSuchUpload(e)) return null;
-			throw e;
-		}
-	}
-
-	/** Assemble the uploaded parts into the final object. */
-	async completeMultipartUpload(
-		key: string,
-		uploadId: string,
-		parts: { partNumber: number; etag: string }[]
-	): Promise<void> {
-		const { client, config } = this.#ensure();
-
-		await client.send(
-			new CompleteMultipartUploadCommand({
-				Bucket: config.bucketName,
-				Key: key,
-				UploadId: uploadId,
-				MultipartUpload: {
-					Parts: parts.map((part) => ({ PartNumber: part.partNumber, ETag: part.etag }))
-				}
-			})
-		);
-	}
-
-	/** Discard a multipart upload and everything already uploaded for it. */
-	async abortMultipartUpload(key: string, uploadId: string): Promise<void> {
-		const { client, config } = this.#ensure();
-
-		try {
-			await client.send(
-				new AbortMultipartUploadCommand({
-					Bucket: config.bucketName,
-					Key: key,
-					UploadId: uploadId
-				})
-			);
-		} catch (e: unknown) {
-			// Already completed or aborted — nothing left to clean up.
-			if (isNoSuchUpload(e)) return;
-			throw e;
-		}
-	}
 }
 
-/**
- * Check if an error is an S3 NoSuchKey / 404.
+/** Check if an error is an S3 NoSuchKey / 404.
  * The AWS SDK throws `NoSuchKey` for missing objects (and NotFound for buckets).
  */
 function isNoSuchKey(e: unknown): boolean {
 	if (e && typeof e === 'object' && 'name' in e) {
 		const name = (e as { name: string }).name;
 		return name === 'NoSuchKey' || name === 'NotFound';
-	}
-	return false;
-}
-
-/** Check if an error means the multipart upload no longer exists. */
-function isNoSuchUpload(e: unknown): boolean {
-	if (e && typeof e === 'object' && 'name' in e) {
-		const name = (e as { name: string }).name;
-		return name === 'NoSuchUpload' || name === 'NotFound';
 	}
 	return false;
 }

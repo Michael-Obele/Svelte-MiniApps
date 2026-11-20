@@ -103,7 +103,7 @@ export function done() {
 		{
 			name: 'flash-text',
 			time: '2026-06-01T00:00:00.000Z',
-			update: '2026-11-14T00:00:00.000Z'
+			update: '2026-11-20T00:00:00.000Z'
 		},
 		{ name: 'word-counter', time: '2026-11-15T00:00:00.000Z' }
 	];

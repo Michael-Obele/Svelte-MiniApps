@@ -21,27 +21,18 @@ export interface FlashFileItem {
 }
 
 /**
- * Normal per-file ceiling in bytes (600 MB).
+ * Per-file ceiling in bytes (600 MB), for everyone — signed in or not.
  *
  * R2 supports up to 5 TB per object, so 600 MB is well within the hard
  * limit. We pick 600 MB because (a) it's enough for almost any file
- * users would want to share temporarily, and (b) the SvelteKit server
- * route streams the body straight to R2 so memory usage stays flat
- * regardless of file size.
- *
- * This also doubles as the "large file" threshold: anything bigger is a
- * one-off large upload, and only one of those may exist at a time.
+ * users would want to share temporarily, and (b) the browser PUTs the
+ * body straight to R2 via a presigned URL, so nothing is streamed
+ * through the server.
  *
  * NOTE: This constant is shared with the client for UI validation. The
- * effective limit can be temporarily raised via `RESOLVED_MAX_FILE_SIZE_MB`.
+ * server re-checks it in /api/flash-files/start-upload.
  */
 export const MAX_FILE_SIZE = 600 * 1024 * 1024;
-
-/**
- * Files larger than this are treated as "large". Only ONE non-expired large
- * file may be stored at a time. Enforced in /api/flash-files/start-upload.
- */
-export const LARGE_FILE_THRESHOLD = MAX_FILE_SIZE;
 
 /**
  * Total R2 storage budget before new uploads are refused.
@@ -55,57 +46,6 @@ export const STORAGE_BUDGET_GB = 10;
 export const STORAGE_BUDGET_BYTES = STORAGE_BUDGET_GB * 1000 ** 3;
 
 /**
- * TEMPORARY: overridable max file size in megabytes.
- *
- * Currently raised to 6144 (6 GB) so a single large file can be shared. To
- * restore the normal limit, set this back to 600; set to 0 to fall back to
- * `MAX_FILE_SIZE`.
- *
- * Files above `LARGE_FILE_THRESHOLD` (600 MB) are restricted to signed-in
- * users — they are the only uploads that can consume the whole free R2
- * budget, and they are the only ones using multipart upload.
- */
-export const RESOLVED_MAX_FILE_SIZE_MB = 6 * 1024;
-
-/** Resolve the effective max file size using the code-level override. */
-export function resolveEffectiveMaxFileSize(): number {
-	if (!RESOLVED_MAX_FILE_SIZE_MB || RESOLVED_MAX_FILE_SIZE_MB <= 0) return MAX_FILE_SIZE;
-	return RESOLVED_MAX_FILE_SIZE_MB * 1024 * 1024;
-}
-
-/**
- * Files at or above this size are uploaded with R2 multipart upload.
- *
- * Cloudflare R2 rejects a single `PutObject` larger than 5 GiB
- * (see https://developers.cloudflare.com/r2/platform/limits/ — "Maximum
- * upload size: 5 GiB (single-part) / 4.995 TiB (multi-part)"). The browser
- * PUT to a presigned single-part URL therefore fails with HTTP 400 for
- * anything bigger, which is why a 5.57 GB file never uploaded.
- *
- * 4 GiB keeps a full GiB of headroom below that ceiling so a slightly
- * under-5 GiB file can't straddle the limit.
- */
-export const MULTIPART_THRESHOLD = 4 * 1024 * 1024 * 1024;
-
-/** Preferred multipart part size (32 MiB — cheap to re-send one part). */
-export const MULTIPART_PART_SIZE = 32 * 1024 * 1024;
-
-/** Part count we plan for. R2's hard limit is 10,000 parts per upload. */
-export const MAX_MULTIPART_PARTS = 900;
-
-/**
- * Split a file into multipart parts. Parts must be at least 5 MiB (R2/S3
- * rule) and there may be at most 10,000 of them, so the part size grows with
- * the file instead of the part count.
- */
-export function planMultipartUpload(totalBytes: number): { partSize: number; partCount: number } {
-	const mib = 1024 * 1024;
-	const minForCountLimit = Math.ceil(totalBytes / MAX_MULTIPART_PARTS / mib) * mib;
-	const partSize = Math.max(MULTIPART_PART_SIZE, minForCountLimit);
-	return { partSize, partCount: Math.ceil(totalBytes / partSize) };
-}
-
-/**
  * Allowed MIME type prefixes. Empty array = allow all.
  *
  * Flash Text is a temporary file-sharing tool, so any file type is accepted.
@@ -113,8 +53,7 @@ export function planMultipartUpload(totalBytes: number): { partSize: number; par
  * on the MIME type they report for the same extension — e.g. `.zip` is
  * `application/zip` in Chrome but `application/x-zip-compressed` in Firefox
  * and some Windows browsers, and other archives (`7z`, `rar`, …) aren't
- * standardized at all. Size enforcement still applies via `MAX_FILE_SIZE` /
- * `resolveEffectiveMaxFileSize()`.
+ * standardized at all. Size enforcement still applies via `MAX_FILE_SIZE`.
  */
 export const ALLOWED_FILE_PREFIXES: string[] = [];
 

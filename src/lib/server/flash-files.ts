@@ -8,7 +8,6 @@
 
 import { prisma } from '#lib/server/db.js';
 import { r2 } from '#lib/server/r2.js';
-import { LARGE_FILE_THRESHOLD } from '#lib/types/flash-file.js';
 import type { FlashFileItem } from '#lib/types/flash-file.js';
 
 function toItem(file: {
@@ -60,8 +59,8 @@ export async function getFlashFileRowById(id: string) {
 /**
  * Remove a file row whose upload never produced an object.
  *
- * Used by /api/flash-files/start-upload when signing or multipart setup
- * fails, and by /api/flash-files/finish-upload when the browser aborts.
+ * Used by /api/flash-files/start-upload when presigning fails, and by
+ * /api/flash-files/finish-upload when the browser aborts.
  */
 export async function deletePendingFlashFile(id: string): Promise<void> {
 	const file = await prisma.flashFile.findUnique({ where: { id } });
@@ -117,24 +116,6 @@ export async function getStorageUsage(): Promise<{ usedBytes: number; fileCount:
 		usedBytes: Number(agg._sum.fileSize ?? 0),
 		fileCount: agg._count._all
 	};
-}
-
-/**
- * The soonest-expiring non-expired file larger than `LARGE_FILE_THRESHOLD`,
- * or null if there isn't one. Only one such file may exist at a time.
- */
-export async function getActiveLargeFile(): Promise<{
-	fileName: string;
-	fileSize: number;
-	expiresAt: Date;
-} | null> {
-	const file = await prisma.flashFile.findFirst({
-		where: { expiresAt: { gt: new Date() }, fileSize: { gt: LARGE_FILE_THRESHOLD } },
-		orderBy: { expiresAt: 'asc' },
-		select: { fileName: true, fileSize: true, expiresAt: true }
-	});
-	if (!file) return null;
-	return { fileName: file.fileName, fileSize: Number(file.fileSize), expiresAt: file.expiresAt };
 }
 
 /** List all (non-expired) files attached to a flash text. */
